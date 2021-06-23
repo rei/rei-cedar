@@ -1,7 +1,11 @@
 # REI Cedar Style Framework!
-[![Build Status](https://travis-ci.org/rei/rei-cedar.svg?branch=master)](https://travis-ci.org/rei/rei-cedar)
 [![codecov](https://codecov.io/gh/rei/rei-cedar/branch/master/graph/badge.svg)](https://codecov.io/gh/rei/rei-cedar)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+## Work In Progress
+
+This project tracks the migration of [@rei/cedar](https://github.com/rei/rei-cedar) to Vue 3. This is a work in progress and the code contained in this repo is not production ready. Please reach out to the Cedar team if you have any questions.
+
 
 Welcome to REI's style framework! The overall goals of this project are to provide a common scaffolding for UI elements,
 and a set of themes that build on this scaffolding. We started this project in 2015 as a fork of
@@ -86,7 +90,3 @@ When creating a pull request run `git cz` rather than `git commit` and follow th
 
 This projects Changelogs are generated.
 - Generate the Changelog: `npm run changelog`
-
-## JSX
-
-Cedar templates are written in JSX rather than as `.vue` SFCs in order to support tree-shaking. See [JSX notes](jsx.md) for more information.
