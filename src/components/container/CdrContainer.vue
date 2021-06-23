@@ -1,12 +1,11 @@
-
 <template>
   <component :is="tag" :class="mapClasses($style, baseClass, modifierClass)">
     <slot />
-  </component>);
+  </component>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import { buildClass } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
@@ -35,6 +34,7 @@ export default defineComponent({
     return {
       baseClass,
       modifierClass,
+      mapClasses,
     };
   },
 });

@@ -267,7 +267,7 @@ export default defineComponent({
     }
     // TODO: listen for events emitted from tabs???
     const setFocusToActiveTabHeader = () => {
-      cdrTabsHeaderEl.value.children[activeTabIndex].focus();
+      cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
     }
     const getHeaderWidth = () => {
       let headerElements = [];

@@ -2,6 +2,8 @@
 
 exports[`CdrFormGroup renders correctly 1`] = `
 <fieldset
+  aria-errormessage="false"
+  aria-invalid="false"
   class="cdr-form-group"
 >
   <legend>
@@ -29,12 +31,18 @@ exports[`CdrFormGroup renders error state correctly 1`] = `
   class="cdr-form-group"
 >
   <legend>
+    
     hey
+    
+    <!--v-if-->
+    <!--v-if-->
   </legend>
   <div
     class="cdr-form-group__wrapper cdr-form-group--error"
   >
+    
     form elements!
+    
   </div>
   <div
     class="cdr-form-error"
@@ -45,7 +53,10 @@ exports[`CdrFormGroup renders error state correctly 1`] = `
     <span
       class="cdr-form-error__icon"
     />
-     Something is happening?
+     
+    
+    Something is happening?
+    
   </div>
 </fieldset>
 `;

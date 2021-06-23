@@ -37,12 +37,12 @@
         )"
         :id="id"
         :disabled="disabled"
-        :aria-required="required"
-        :aria-invalid="!!error"
-        :aria-errormessage="!!error && `${id}-error`"
+        :aria-required="required || null"
+        :aria-invalid="!!error || null"
+        :aria-errormessage="(!!error && `${id}-error`) || null"
         v-bind="inputAttrs"
         :value="modelValue"
-        :aria-describedby="describedby || false"
+        :aria-describedby="describedby || null"
         @input="$emit('update:modelValue', $event.target.value)"
         @focus="isFocused = true"
         @blur="isFocused = false"
@@ -61,11 +61,11 @@
         )"
         :id="id"
         :disabled="disabled"
-        :aria-required="required"
-        :aria-invalid="!!error"
-        :aria-errormessage="!!error && `${id}-error`"
+        :aria-required="required || null"
+        :aria-invalid="!!error || null"
+        :aria-errormessage="(!!error && `${id}-error`) || null"
         v-bind="inputAttrs"
-        :aria-describedby="describedby || false"
+        :aria-describedby="describedby || null"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         @focus="isFocused = true"
@@ -239,9 +239,9 @@ export default defineComponent({
         autocorrect: 'off',
         spellcheck: 'false',
         autocapitalize: 'off',
-        pattern: isNum && '[0-9]*',
-        inputmode: isNum && 'numeric',
-        novalidate: isNum,
+        pattern: (isNum && '[0-9]*') || null,
+        inputmode: (isNum && 'numeric') || null,
+        novalidate: isNum || null,
         ...ctx.attrs,
       };
     });

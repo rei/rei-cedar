@@ -1,7 +1,7 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrAlert from 'componentdir/alert/CdrAlert';
+import CdrBanner from 'componentdir/banner/CdrBanner';
 // import IconCheckFill from 'componentdir/icon/comps/check-fill';
-describe('CdrAlert', () => {
+describe('CdrBanner', () => {
   it('matches snapshot', () => {
     const wrapper = mount(CdrBanner, {
       propsData: {

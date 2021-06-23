@@ -30,7 +30,7 @@ describe('CdrTabs', () => {
 
       expect(wrapper.vm.tabs.length).toBe(2);
       expect(wrapper.findAll('button').length).toBe(2);
-      expect(wrapper.vm.activeTabIndex).toBe(1);
+      expect(wrapper.vm.activeTabIndex).toBe(0);
       setTimeout(() => { // for debounce
         expect(spyGetHeaderWidth).toHaveBeenCalled();
         expect(spyCalculateOverflow).toHaveBeenCalled();
@@ -56,7 +56,7 @@ describe('CdrTabs', () => {
       const spyCalculateOverflow = spyOn(wrapper.vm, 'calculateOverflow');
       const spyUpdateUnderline = spyOn(wrapper.vm, 'updateUnderline');
 
-      wrapper.find('.cdr-tabs__header').parentElement.dispatchEvent(new Event('scroll'));
+      wrapper.find('.cdr-tabs__header-container').element.dispatchEvent(new Event('scroll'));
       await wrapper.vm.$nextTick();
 
       setTimeout(() => { // for debounce
@@ -271,10 +271,10 @@ describe('CdrTabs', () => {
     await wrapper.vm.$nextTick();
     wrapper.vm.hideScrollBar();
     await wrapper.vm.$nextTick();
-    expect(wrapper.find('.cdr-tabs').style.getPropertyValue('overflow-x')).toBe('hidden');
+    expect(wrapper.find('.cdr-tabs').element.style.getPropertyValue('overflow-x')).toBe('hidden');
     window.dispatchEvent(new Event('transitionend'));
     await wrapper.vm.$nextTick();
-    expect(wrapper.find('.cdr-tabs').style.getPropertyValue('overflow-x')).toBe('unset');
+    expect(wrapper.find('.cdr-tabs').element.style.getPropertyValue('overflow-x')).toBe('unset');
     // wrapper.destroy();
   });
 

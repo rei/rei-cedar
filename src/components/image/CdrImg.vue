@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="ratio"
-    :style="ratioObj"
+    :style="ratioObject"
     :class="$style[ratioClass]"
   >
     <img
@@ -110,7 +110,7 @@ export default defineComponent({
     const radiusClass = computed(() => buildClass(baseClass, props.radius));
 
     const cropObject = computed(() => ({ objectPosition: props.crop }));
-    const ratioObj = computed(() => {
+    const ratioObject = computed(() => {
       let ratioPct;
       if (props.ratio === 'square') {
         ratioPct = '100%';
@@ -133,7 +133,7 @@ export default defineComponent({
       modifierClass,
       radiusClass,
       cropObject,
-      ratioObj,
+      ratioObject,
       cropClass,
       coverClass,
       mapClasses,

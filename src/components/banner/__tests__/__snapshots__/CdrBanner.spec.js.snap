@@ -4,8 +4,8 @@ exports[`CdrBanner matches snapshot 1`] = `
 <div
   class="cdr-banner cdr-banner--info"
 >
-
+  
   🤪 hey im a banner
-
+  
 </div>
 `;

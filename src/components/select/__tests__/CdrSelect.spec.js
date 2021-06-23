@@ -12,9 +12,6 @@ describe('cdrSelect', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-<<<<<<< HEAD
-  it('hide-label sets aria-label correctly', () => {
-=======
   it('renders error state correctly', () => {
     const wrapper = mount(CdrSelect, {
       propsData: {
@@ -27,7 +24,6 @@ describe('cdrSelect', () => {
   });
 
   it('hide-label applies sr-only to label element', () => {
->>>>>>> next
     const wrapper = mount(CdrSelect, {
       propsData: {
         label: 'test',
@@ -35,11 +31,7 @@ describe('cdrSelect', () => {
         id: 'test',
       },
     });
-<<<<<<< HEAD
-    expect(wrapper.find('select').attributes('aria-label')).toBe('test');
-=======
     expect(wrapper.find('label').classes()).toContain('cdr-label-standalone__label--sr-only');
->>>>>>> next
   });
 
   it('renders a prompt', () => {
@@ -101,11 +93,7 @@ describe('cdrSelect', () => {
         id: 'test',
       },
     });
-<<<<<<< HEAD
-    expect(wrapper.find('select').attributes('required')).toBe('');
-=======
     expect(wrapper.find('select').attributes('aria-required')).toBe('true');
->>>>>>> next
   });
 
   it('sets select autofocus attribute correctly', () => {
@@ -328,6 +316,6 @@ describe('cdrSelect', () => {
         id: 'aria-test',
       },
     });
-    expect(wrapper.vm.$refs.select.hasAttribute('aria-describedby')).toBe(false);
+    expect(wrapper.find('select').attributes('aria-describedby')).toBe(undefined);
   });
 });

@@ -4,6 +4,8 @@ exports[`CdrContainer matches snapshot 1`] = `
 <div
   class="cdr-container cdr-container--static"
 >
+  
   foo
+  
 </div>
 `;

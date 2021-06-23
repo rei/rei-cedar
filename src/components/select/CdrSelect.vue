@@ -43,12 +43,12 @@
         :multiple="multiple"
         :size="multipleSize"
         :disabled="disabled"
-        :aria-required="required"
+        :aria-required="required || null"
 
-        :aria-invalid="!!error"
-        :aria-errormessage="!!error && `${id}-error`"
+        :aria-invalid="!!error || null"
+        :aria-errormessage="(!!error && `${id}-error`) || null"
         v-bind="$attrs"
-        :aria-describedby="describedby || false"
+        :aria-describedby="describedby || null"
         :value="modelValue"
         @change="$emit('update:modelValue', multiple
           ? processMultiple($event.target.options)
@@ -78,7 +78,7 @@
 
     <template #info-action v-if="hasInfoAction">
       <slot name="info-action" />
-    </div>
+    </template>
 
     <template #error v-if="error">
       <cdr-form-error

@@ -43,7 +43,7 @@
       <slot name="info" />
     </span>
 
-    <div :class=":style['cdr-label-standalone__post-content']">
+    <div :class="$style['cdr-label-standalone__post-content']">
       <slot name="helper-text-bottom"/>
       <slot name="error"/>
     </div>

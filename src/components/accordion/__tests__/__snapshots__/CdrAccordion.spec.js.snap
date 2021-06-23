@@ -24,7 +24,7 @@ exports[`CdrAccordion renders correctly 1`] = `
       </span>
       <svg
         aria-hidden="true"
-        class="cdr-icon cdr-accordion__icon closed"
+        class="cdr-icon cdr-accordion__icon cdr-tabs--closed"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -41,12 +41,12 @@ exports[`CdrAccordion renders correctly 1`] = `
     </button>
   </h2>
   <div
-    class="cdr-accordion__content-container closed"
+    class="cdr-accordion__content-container cdr-tabs--closed"
     style="max-height: 0;"
   >
     <div
       aria-hidden="true"
-      class="cdr-accordion__content closed"
+      class="cdr-accordion__content cdr-tabs--closed"
       id="test-collapsible"
     >
       
@@ -81,7 +81,7 @@ exports[`CdrAccordion renders correctly unwrapped 1`] = `
       </span>
       <svg
         aria-hidden="true"
-        class="cdr-icon cdr-accordion__icon closed"
+        class="cdr-icon cdr-accordion__icon cdr-tabs--closed"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -98,12 +98,12 @@ exports[`CdrAccordion renders correctly unwrapped 1`] = `
     </button>
   </h2>
   <div
-    class="cdr-accordion__content-container closed"
+    class="cdr-accordion__content-container cdr-tabs--closed"
     style="max-height: 0;"
   >
     <div
       aria-hidden="true"
-      class="cdr-accordion__content closed"
+      class="cdr-accordion__content cdr-tabs--closed"
       id="test-collapsible"
     >
       

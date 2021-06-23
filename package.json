@@ -59,8 +59,8 @@
     "@rei/cdr-tokens": "^9.0.0",
     "@rei/cedar-icons": "^2.1.0",
     "@rollup/plugin-alias": "^3.1.2",
-    "@vue/compiler-sfc": "^3.0.11",
-    "@vue/test-utils": "^2.0.0-rc.6",
+    "@vue/compiler-sfc": "^3.1.2",
+    "@vue/test-utils": "^2.0.0-rc.8",
     "autoprefixer": "^10.2.5",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
@@ -126,10 +126,9 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0",
     "tinycolor2": "^1.4.2",
-    "ts-jest": "^26.5.5",
-    "vue": "^3.0.11",
-    "vue-jest": "^5.0.0-alpha.8",
-    "vue-router": "^4.0.6"
+    "vue": "^3.1.2",
+    "vue-jest": "^5.0.0-alpha.10",
+    "vue-router": "^4.0.10"
   },
   "engines": {
     "node": ">= 10.0.0",

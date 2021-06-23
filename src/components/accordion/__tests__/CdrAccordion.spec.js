@@ -154,7 +154,7 @@ describe('CdrAccordion', () => {
       },
     });
 
-    expect(wrapper.vm.isOpenClass).toEqual('closed');
+    expect(wrapper.vm.isOpenClass).toEqual('cdr-tabs--closed');
   });
 
   it('focused style', async () => {

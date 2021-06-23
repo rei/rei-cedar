@@ -28,7 +28,7 @@ describe('CdrFormLabelStandalone', () => {
   });
 
   it('renders label as sr-only if hideLabel is passed', () => {
-    const wrapper = shallowMount(CdrLabelStandalone, {
+    const wrapper = mount(CdrLabelStandalone, {
       propsData: {
         label: 'Label Test',
         forId: 'test',

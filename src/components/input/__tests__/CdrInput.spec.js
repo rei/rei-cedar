@@ -94,7 +94,7 @@ describe('CdrInput', () => {
   });
 
   it('sets attrs for number type input', () => {
-    const wrapper = shallowMount(CdrInput, {
+    const wrapper = mount(CdrInput, {
       propsData: {
         label: 'test',
         required: true,
@@ -102,21 +102,21 @@ describe('CdrInput', () => {
         id: 'test',
       },
     });
-    expect(wrapper.find('input').attributes('novalidate')).toBe('novalidate');
+    expect(wrapper.find('input').attributes('novalidate')).toBe('');
     expect(wrapper.find('input').attributes('pattern')).toBe('[0-9]*');
     expect(wrapper.find('input').attributes('inputmode')).toBe('numeric');
     expect(wrapper.find('input').attributes('type')).toBe('number');
   });
 
   it('sets attrs for numeric freeform input', () => {
-    const wrapper = shallowMount(CdrInput, {
+    const wrapper = mount(CdrInput, {
       propsData: {
         label: 'test',
         required: true,
         numeric: true
       },
     });
-    expect(wrapper.find('input').attributes('novalidate')).toBe('novalidate');
+    expect(wrapper.find('input').attributes('novalidate')).toBe('');
     expect(wrapper.find('input').attributes('pattern')).toBe('[0-9]*');
     expect(wrapper.find('input').attributes('inputmode')).toBe('numeric');
     expect(wrapper.find('input').attributes('type')).toBe('text');
@@ -493,6 +493,6 @@ describe('CdrInput', () => {
         id: 'aria-test',
       },
     });
-    expect(wrapper.vm.$refs.input.hasAttribute('aria-describedby')).toBe(false);
+    expect(wrapper.find('input').attributes('aria-describedby')).toBe(undefined);
   });
 });

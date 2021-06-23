@@ -17,7 +17,10 @@ exports[`CdrTabs mounted mounts tabs 1`] = `
       <div
         class="cdr-tabs__header"
         role="tablist"
-      />
+      >
+        
+        
+      </div>
     </nav>
     <div
       class="cdr-tabs__gradient cdr-tabs__gradient--right"
@@ -29,7 +32,10 @@ exports[`CdrTabs mounted mounts tabs 1`] = `
   </div>
   <div
     class="cdr-tabs__content-container"
-  />
+  >
+    
+    
+  </div>
 </div>
 `;
 

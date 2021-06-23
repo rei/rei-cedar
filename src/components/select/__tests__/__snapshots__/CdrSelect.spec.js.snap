@@ -2,14 +2,8 @@
 
 exports[`cdrSelect renders correctly 1`] = `
 <div
-<<<<<<< HEAD
-  data-v-app=""
->
-  
-=======
   class="cdr-label-standalone"
 >
->>>>>>> next
   <div
     class="cdr-label-standalone__label-wrapper"
   >
@@ -22,11 +16,11 @@ exports[`cdrSelect renders correctly 1`] = `
     </label>
     <!--v-if-->
     <!--v-if-->
-    <!--v-if-->
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
   >
+    
     <div
       class="cdr-select-wrap"
     >
@@ -58,15 +52,18 @@ exports[`cdrSelect renders correctly 1`] = `
         <!--v-if-->
       </svg>
     </div>
+    
     <!--v-if-->
   </div>
-<<<<<<< HEAD
   <!--v-if-->
-  
-=======
   <div
     class="cdr-label-standalone__post-content"
-  />
+  >
+    
+    
+    
+    
+  </div>
 </div>
 `;
 
@@ -81,37 +78,59 @@ exports[`cdrSelect renders error state correctly 1`] = `
       class="cdr-label-standalone__label"
       for="renders"
     >
-      Label Test
+      Label Test 
+      <!--v-if-->
     </label>
+    <!--v-if-->
+    <!--v-if-->
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
   >
+    
     <div
       class="cdr-select-wrap"
     >
+      <!--v-if-->
       <select
         aria-errormessage="renders-error"
         aria-invalid="true"
-        class="cdr-select cdr-select__prompt cdr-select--primary cdr-select--error"
+        class="cdr-select cdr-select--medium cdr-select--preicon cdr-select--primary cdr-select--error"
         id="renders"
-      />
+      >
+        <!--v-if-->
+        
+        
+        
+        
+      </select>
       <svg
         aria-hidden="true"
-        class="cdr-icon cdr-select__caret"
+        class="cdr-icon cdr-icon--medium cdr-select__caret"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
+        
+        
+        
         <path
           d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
           role="presentation"
         />
+        
+        <!--v-if-->
       </svg>
     </div>
+    
+    <!--v-if-->
   </div>
+  <!--v-if-->
   <div
     class="cdr-label-standalone__post-content"
   >
+    
+    
+    
     <div
       class="cdr-form-error"
       id="renders-error"
@@ -121,9 +140,12 @@ exports[`cdrSelect renders error state correctly 1`] = `
       <span
         class="cdr-form-error__icon"
       />
-       What happened?
+       
+      
+      What happened?
+      
     </div>
+    
   </div>
->>>>>>> next
 </div>
 `;

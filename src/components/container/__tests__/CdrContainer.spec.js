@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrContainer from 'componentdir/container/CdrContainer';
 
 describe('CdrContainer', () => {
@@ -22,7 +22,7 @@ describe('CdrContainer', () => {
     });
     // cdr-container base class corresponds to "fluid"
     // default is "static" which adds an addition class
-    expect(wrapper.classes()).not.toContain('cdr-container--fluid');
+    expect(wrapper.classes()).toContain('cdr-container--fluid');
     expect(wrapper.classes()).not.toContain('cdr-container--static');
     expect(wrapper.classes()).toContain('cdr-container');
   });

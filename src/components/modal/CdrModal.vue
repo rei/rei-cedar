@@ -146,6 +146,8 @@ export default defineComponent({
     const totalHeight = ref(0);
     const scrollHeight = ref(0);
     const offsetHeight = ref(0);
+    const offsetWidth = ref(0);
+    const clientWidth = ref(0);
     const fullscreen = ref(false);
 
     const modalEl = ref(null);
@@ -160,6 +162,8 @@ export default defineComponent({
         headerHeight.value = headerEl.value.offsetHeight;
         scrollHeight.value = contentEl.value.scrollHeight;
         offsetHeight.value = contentEl.value.offsetHeight;
+        offsetWidth.value = contentEl.value.offsetWidth;
+        clientWidth.value = contentEl.value.clientWidth;
       });
     }
     const handleKeyDown = ({ key }) => {
@@ -312,8 +316,8 @@ export default defineComponent({
     });
 
     const scrollPadding = computed(() => {
-      const isScrolling = contentEl.value.scrollHeight > contentEl.value.offsetHeight;
-      const hasScrollbar = contentEl.value.offsetWidth - contentEl.value.clientWidth > 0;
+      const isScrolling = scrollHeight.value > offsetHeight.value;
+      const hasScrollbar = offsetWidth.value - clientWidth.value > 0;
       if (isScrolling && hasScrollbar) {
         return 4;
       } else if (isScrolling) {
