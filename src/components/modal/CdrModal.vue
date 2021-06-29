@@ -79,7 +79,7 @@
 
 import debounce from 'lodash-es/debounce';
 import tabbable from 'tabbable';
-import { defineComponent, useCssModule, computed, ref, watch, onMounted, nextTick } from 'vue';
+import { defineComponent, useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted } from 'vue';
 import {
   CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
@@ -190,6 +190,10 @@ export default defineComponent({
       // documentElement.scrollTop = this.scrollTop;
       // documentElement.scrollLeft = this.scrollLeft;
     }
+
+    const handleResize = debounce(() => {
+      measureContent();
+    }, 300)
 
     const handleOpened = () => {
       const { activeElement } = document;
@@ -336,11 +340,12 @@ export default defineComponent({
       if (props.opened) {
         handleOpened();
       }
-
-      window.addEventListener('resize', debounce(() => {
-        measureContent();
-      }, 300));
+      window.addEventListener('resize', handleResize);
     });
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', handleResize);
+    })
 
     return {
       style: useCssModule(),
