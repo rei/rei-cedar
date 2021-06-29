@@ -87,27 +87,10 @@ const plugins = [
     extensions: ['.mjs', '.js', '.vue', '.json'],
   }),
   vue({
-    // style: {
-    //   postcssModulesOptions: {
-    //     generateScopedName,
-    //   },
-    // },
-    // data: {
-    //   // this gets prepended in all components <style>
-    //   scss() {
-    //     return `$cdr-warn: false;
-    //     @import "${resolve('node_modules/@rei/cdr-tokens/dist/scss/cdr-tokens.scss')}";
-    //     @import "${resolve('src/css/settings/_index.scss')}";`;
-    //   },
-    // },
-    // https://github.com/vuejs/rollup-plugin-vue/blob/cd652cd92e7d21bda00f32e47530a8946963a1cc/docs/migrating.md
-    // css: false, // TODO: THIS WILL auto inject styles!!!!! might make dev simpler!!!!
+    target: 'browser',
     preprocessStyles: true,
     cssModulesOptions: {
       generateScopedName,
-    },
-    template: {
-      isProduction: env === 'prod',
     },
   }),
   postcss({
@@ -122,13 +105,10 @@ const plugins = [
     mode: postcssMode,
     extensions: ['.scss', '.css'],
     sourceMap: env === 'dev' ? 'inline' : false,
-    modules: {
-      generateScopedName,
-    },
   }),
   babel({
     exclude: 'node_modules/**',
-    runtimeHelpers: true, // ????
+    runtimeHelpers: true,
   }),
   commonjs({
       extensions: ['.js', '.vue']
