@@ -18,7 +18,7 @@
     @include cdr-form-figure-radio-checked-mixin;
   }
 
-  // /* Hover */
+  /* Hover */
   &:hover {
     .cdr-label-wrapper__figure {
       @include cdr-form-figure-radio-hover-mixin;
@@ -29,8 +29,8 @@
     }
   }
 
-  // /* Disabled
-  // ========== */
+  /* Disabled
+  ========== */
   &__input:disabled {
 
     & ~ .cdr-label-wrapper__figure {
@@ -46,9 +46,8 @@
     }
   }
 
-  //
-  // /* Focus
-  // ========== */
+  /* Focus
+  ========== */
   &__input:focus ~ .cdr-label-wrapper__figure {
     @include cdr-form-figure-radio-focus-mixin;
   }
@@ -57,9 +56,8 @@
     @include cdr-form-figure-radio-checked-focus-mixin;
   }
 
-  //
-  // /* Active
-  // ========== */
+  /* Active
+  ========== */
   &:active {
     .cdr-label-wrapper__figure, .cdr-radio__input:checked ~ .cdr-label-wrapper__figure {
       @include cdr-form-figure-radio-active-mixin;

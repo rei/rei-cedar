@@ -1,33 +1,33 @@
 <template>
   <nav
-    :class="$style['cdr-breadcrumb']"
+    :class="style['cdr-breadcrumb']"
     :id="id"
     aria-label="breadcrumbs"
   >
     <ol
       :id="`${id}List`"
-      :class="$style['cdr-breadcrumb__list']"
+      :class="style['cdr-breadcrumb__list']"
     >
       <li
-        :class="$style['cdr-breadcrumb__item']"
+        :class="style['cdr-breadcrumb__item']"
         v-if="truncate"
       >
         <button
           @click="handleEllipsisClick"
           aria-expanded="false"
-          :class="$style['cdr-breadcrumb__ellipses']"
+          :class="style['cdr-breadcrumb__ellipses']"
           :aria-controls="`${id}List`"
           :aria-label="ellipsisLabel"
         >
           <span
-            :class="$style['cdr-breadcrumb__ellipses-icon']"
+            :class="style['cdr-breadcrumb__ellipses-icon']"
             aria-hidden="true"
           >
             . . .
           </span>
         </button>
         <span
-          :class="$style['cdr-breadcrumb__delimiter']"
+          :class="style['cdr-breadcrumb__delimiter']"
           aria-hidden="true"
         >
           /
@@ -36,19 +36,19 @@
 
       <li
         v-for="(breadcrumb, index) in items"
-        :class="$style['cdr-breadcrumb__item']"
+        :class="style['cdr-breadcrumb__item']"
         :key="breadcrumb.item.id || breadcrumb.item.name.replace(/ /g, '-').toLowerCase()"
         v-show="!truncate || (index >= items.length - 2)"
         ref="itemListEl"
       >
         <slot
           name="link"
-          :class="$style['cdr-breadcrumb__link']"
+          :class="style['cdr-breadcrumb__link']"
           :href="breadcrumb.item.url"
           :content="breadcrumb.item.name"
         >
           <a
-            :class="$style['cdr-breadcrumb__link']"
+            :class="style['cdr-breadcrumb__link']"
             :href="breadcrumb.item.url"
             @click="$emit('navigate', breadcrumb, e)"
           >
@@ -58,7 +58,7 @@
 
         <span
           v-if="index < items.length - 1"
-          :class="$style['cdr-breadcrumb__delimiter']"
+          :class="style['cdr-breadcrumb__delimiter']"
           aria-hidden="true"
         >
           /
@@ -70,7 +70,7 @@
 <script>
       // <!-- TODO: remove scoped slot vue-router-ish support? just use emit/prevent pattern? -->
 import {
-  defineComponent, computed, ref, watch,
+  defineComponent, useCssModule, computed, ref, watch,
 } from 'vue';
 
 export default defineComponent({
@@ -128,6 +128,7 @@ export default defineComponent({
     });
 
     return {
+      style: useCssModule(),
       truncate,
       handleEllipsisClick,
       itemListEl,
@@ -137,5 +138,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrBreadcrumb.scss">
+<style lang="scss" module src="./styles/CdrBreadcrumb.module.scss">
 </style>

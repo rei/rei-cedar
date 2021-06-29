@@ -1,16 +1,16 @@
 <template>
   <div
-    :class="mapClasses($style, baseClass, modifierClass, sizeClass)"
+    :class="mapClasses(style, baseClass, modifierClass, sizeClass)"
     ref="containerEl"
     :style="{ height }"
   >
     <div
-      :class="$style['cdr-tabs__gradient-container']"
+      :class="style['cdr-tabs__gradient-container']"
       @keyup.right="rightArrowNav"
       @keyup.left="leftArrowNav"
       @keydown.down.prevent="handleDownArrowNav"
     >
-      <div :class="mapClasses($style,
+      <div :class="mapClasses(style,
         'cdr-tabs__gradient',
         'cdr-tabs__gradient--left',
           overflowLeft ? 'cdr-tabs__gradient--active' : ''
@@ -18,10 +18,10 @@
         :style="gradientLeftStyle"
       ></div>
       <nav
-        :class="$style['cdr-tabs__header-container']"
+        :class="style['cdr-tabs__header-container']"
       >
         <div
-          :class="$style['cdr-tabs__header']"
+          :class="style['cdr-tabs__header']"
           role="tablist"
           ref="cdrTabsHeaderEl"
         >
@@ -33,7 +33,7 @@
             :aria-controls="tab.disabled ? '' : tab.id"
             :id="tab.disabled ? '' : tab.ariaLabelledby"
             :key="tab.id"
-            :class="mapClasses($style,
+            :class="mapClasses(style,
               (activeTabIndex === i && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
               'cdr-tabs__header-item',
               tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
@@ -42,10 +42,10 @@
             @click.prevent="(e) => tab.disabled ? null : handleClick(tab, e)"
           >
             {{ tab.name }}
-          </button> 
+          </button>
         </div>
       </nav>
-      <div :class="mapClasses($style,
+      <div :class="mapClasses(style,
         'cdr-tabs__gradient',
         'cdr-tabs__gradient--right',
         overflowRight ? 'cdr-tabs__gradient--active' : '',
@@ -53,12 +53,12 @@
         :style="gradientRightStyle"
       ></div>
       <div
-        :class="$style['cdr-tabs__underline']"
+        :class="style['cdr-tabs__underline']"
         :style="underlineStyle"
       />
     </div>
     <div
-      :class="$style['cdr-tabs__content-container']"
+      :class="style['cdr-tabs__content-container']"
       ref="slotWrapperEl"
     >
       <slot />
@@ -71,7 +71,7 @@ import { buildClass } from '../../utils/buildClass'
 
 
 
-import { defineComponent, computed, ref, onMounted, provide, nextTick } from 'vue';
+import { defineComponent, useCssModule, computed, ref, onMounted, provide, nextTick } from 'vue';
 import debounce from 'lodash-es/debounce';
 import mapClasses from '../../utils/mapClasses';
 import {
@@ -211,14 +211,14 @@ export default defineComponent({
         changeTab(nextTab);
       }
     }, 300, { leading: true, trailing: false })
-    
+
     const leftArrowNav = debounce(function handleLeftArrow() {
       const previousTab = getPreviousTab(activeTabIndex.value - 1);
       if (previousTab !== -1) {
         changeTab(previousTab);
       }
     }, 300, { leading: true, trailing: false })
-    
+
     const calculateOverflow = () => {
       let containerWidth = 0;
       if (containerEl.value) {
@@ -324,9 +324,10 @@ export default defineComponent({
     })
 
     return {
+      style: useCssModule(),
       mapClasses,
-      baseClass, 
-      modifierClass, 
+      baseClass,
+      modifierClass,
       sizeClass,
       tabs,
 
@@ -364,5 +365,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrTabs.scss">
+<style lang="scss" module src="./styles/CdrTabs.module.scss">
 </style>

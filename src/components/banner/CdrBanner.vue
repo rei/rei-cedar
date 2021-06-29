@@ -1,11 +1,11 @@
 <template>
-  <div :class="[$style[baseClass], $style[typeClass]]">
+  <div :class="[style[baseClass], style[typeClass]]">
     <slot />
   </div>
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import { buildClass } from '../../utils/buildClass';
 
@@ -25,6 +25,7 @@ export default defineComponent({
     const baseClass = 'cdr-banner';
     const typeClass = computed(() => props.type && buildClass(baseClass, props.type));
     return {
+      style: useCssModule(),
       baseClass,
       typeClass,
     };
@@ -32,5 +33,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrBanner.scss">
+<style lang="scss" module src="./styles/CdrBanner.module.scss">
 </style>

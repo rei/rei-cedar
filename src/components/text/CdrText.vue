@@ -1,14 +1,14 @@
 <template>
   <component
     :is="tag"
-    :class="$style['cdr-text']"
+    :class="style['cdr-text']"
   >
     <slot />
   </component>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { useCssModule, defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CdrText',
@@ -18,8 +18,13 @@ export default defineComponent({
       default: 'p',
     },
   },
+  setup() {
+    return {
+      style: useCssModule(),
+    }
+  }
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrText.scss">
+<style lang="scss" module src="./styles/CdrText.module.scss">
 </style>

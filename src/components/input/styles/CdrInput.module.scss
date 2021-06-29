@@ -75,7 +75,6 @@
     padding-left: calc(#{$cdr-space-half-x} + #{$cdr-space-quarter-x} + 25px) !important;
   }
 
-// add right padding so input content does not overlap post-icon(s)\
   &--posticon {
     padding-right: 45px;
   }

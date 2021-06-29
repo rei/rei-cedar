@@ -1,6 +1,6 @@
 <template>
   <div :class="mapClasses(
-    $style,
+    style,
     'cdr-popover--wrapper',
     hasTrigger && 'cdr-popover--position',
   )">
@@ -18,9 +18,9 @@
       :id="id"
       :content-class="contentClass"
     >
-      <div :class="$style['cdr-popover__container']">
-        <div :class="$style['cdr-popover__content']">
-          <div v-if="hasTitle" :class="$style['cdr-popover__title']">
+      <div :class="style['cdr-popover__container']">
+        <div :class="style['cdr-popover__content']">
+          <div v-if="hasTitle" :class="style['cdr-popover__title']">
             <slot name="title">
               {{ label }}
             </slot>
@@ -28,7 +28,7 @@
           <slot />
         </div>
         <cdr-button
-          :class="$style['cdr-popover__close-button']"
+          :class="style['cdr-popover__close-button']"
           icon-only
           @click="closePopover"
           aria-label="Close"
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, onMounted, nextTick } from 'vue';
+import { defineComponent, useCssModule, ref, watch, onMounted, nextTick } from 'vue';
 import tabbable from 'tabbable';
 import IconXSm from '../icon/comps/x-sm';
 import CdrButton from '../button/CdrButton';
@@ -144,6 +144,7 @@ export default defineComponent({
     });
 
     return {
+      style: useCssModule(),
       mapClasses,
       hasTrigger,
       triggerEl,
@@ -156,5 +157,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrPopover.scss">
+<style lang="scss" module src="./styles/CdrPopover.module.scss">
 </style>

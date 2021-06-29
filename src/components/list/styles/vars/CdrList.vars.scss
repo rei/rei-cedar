@@ -10,7 +10,7 @@
 
 @mixin cdr-list-base-nested-mixin() {
   margin-top: $cdr-space-half-x;
-  padding-left: 1em; // TODO: is em correct?
+  padding-left: 1em;
   list-style-type: none;
 }
 

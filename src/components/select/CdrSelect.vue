@@ -21,16 +21,16 @@
     </template>
 
     <!-- default slot -->
-    <div :class="$style['cdr-select-wrap']">
+    <div :class="style['cdr-select-wrap']">
       <span
         v-if="hasPreIcon"
-        :class="$style['cdr-select__pre-icon']"
+        :class="style['cdr-select__pre-icon']"
       >
         <slot name="pre-icon" />
       </span>
 
       <select
-        :class="mapClasses($style,
+        :class="mapClasses(style,
           baseClass,
           sizeClass,
           promptClass,
@@ -57,7 +57,7 @@
       >
         <option
           v-if="prompt"
-          :class="$style['cdr-select__prompt']"
+          :class="style['cdr-select__prompt']"
           value=""
           disabled
         >
@@ -73,7 +73,7 @@
         <slot />
       </select>
 
-      <icon-caret-down :class="mapClasses($style, 'cdr-select__caret', caretDisabledClass)" />
+      <icon-caret-down :class="mapClasses(style, 'cdr-select__caret', caretDisabledClass)" />
     </div>
 
     <template #info-action v-if="hasInfoAction">
@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import toArray from 'lodash-es/toArray';
 import IconCaretDown from '../icon/comps/caret-down';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
@@ -224,6 +224,7 @@ export default defineComponent({
       .map((o) => o.value);
 
     return {
+      style: useCssModule(),
       baseClass,
       computedOpts,
       hasHelper,
@@ -247,5 +248,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrSelect.scss">
+<style lang="scss" module src="./styles/CdrSelect.module.scss">
 </style>

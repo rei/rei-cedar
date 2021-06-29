@@ -5,7 +5,6 @@
 }
 
 @mixin cdr-caption-summary-mixin() {
-  // TODO: possible type token
   font-family: $cdr-font-family-sans;
   font-size: 1.4rem;
   font-weight: 400;
@@ -22,7 +21,6 @@
 }
 
 @mixin cdr-caption-cite-mixin() {
-  // TODO: possible type token
   font-family: $cdr-font-family-sans;
   font-size: 1.2rem;
   font-weight: 400;

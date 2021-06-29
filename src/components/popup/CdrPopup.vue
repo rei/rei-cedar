@@ -2,7 +2,7 @@
   <div
     ref="rootEl"
     :class="mapClasses(
-      $style,
+      style,
       baseClass,
       openClass,
       exitingClass,
@@ -13,18 +13,18 @@
   >
     <div
       v-bind="$attrs"
-      :class="mapClasses($style, 'cdr-popup__content', contentClass)"
+      :class="mapClasses(style, 'cdr-popup__content', contentClass)"
       ref="popupEl"
     >
       <slot />
     </div>
-    <div :class="$style['cdr-popup__arrow']" />
+    <div :class="style['cdr-popup__arrow']" />
   </div>
 </template>
 
 <script>
 import {
-  defineComponent, computed, ref, watch, nextTick, onMounted, onUnmounted,
+  defineComponent, useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted,
 } from 'vue';
 import debounce from 'lodash-es/debounce';
 import propValidator from '../../utils/propValidator';
@@ -170,6 +170,7 @@ export default defineComponent({
     });
 
     return {
+      style: useCssModule(),
       mapClasses,
       rootEl,
       popupEl,
@@ -186,5 +187,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrPopup.scss">
+<style lang="scss" module src="./styles/CdrPopup.module.scss">
 </style>

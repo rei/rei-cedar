@@ -1,8 +1,8 @@
 <template>
-  <div :class="$style[wrapperClass]">
+  <div :class="style[wrapperClass]">
     <table
       v-bind="$attrs"
-      :class="mapClasses($style,
+      :class="mapClasses(style,
                          baseClass,
                          sizeClass,
                          stripedClass,
@@ -18,7 +18,7 @@
 </template>
 <!-- TODO: class and style are now part of attrs, which breaks stuff? -->
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
 import { buildClass, buildBooleanClass } from '../../utils/buildClass';
@@ -68,6 +68,7 @@ export default defineComponent({
     const wrapperClass = computed(() => props.responsive && buildClass('cdr-table', 'responsive'));
 
     return {
+      style: useCssModule(),
       mapClasses,
       wrapperClass,
       baseClass,
@@ -82,5 +83,5 @@ export default defineComponent({
 
 </script>
 
-<style lang="scss" module src="./styles/CdrTable.scss">
+<style lang="scss" module src="./styles/CdrTable.module.scss">
 </style>

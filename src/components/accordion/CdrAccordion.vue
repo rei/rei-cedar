@@ -1,6 +1,6 @@
 <template>
   <li
-    :class="mapClasses($style, baseClass, modifierClass, compactClass, borderAlignedClass, focusedClass)"
+    :class="mapClasses(style, baseClass, modifierClass, compactClass, borderAlignedClass, focusedClass)"
     :id="`${id}-accordion`"
   >
     <component
@@ -8,7 +8,7 @@
       :class="headingClass"
     >
       <button
-        :class="[$style['cdr-accordion__button'], 'js-cdr-accordion-button']"
+        :class="[style['cdr-accordion__button'], 'js-cdr-accordion-button']"
         :id="id"
         @click="onClick"
         @focus="onFocus"
@@ -17,7 +17,7 @@
         :aria-controls="`${id}-collapsible`"
       >
         <span
-          :class="$style['cdr-accordion__label']"
+          :class="style['cdr-accordion__label']"
           :id="`${id}-label`"
         >
           <slot name="label">
@@ -25,17 +25,17 @@
           </slot>
         </span>
         <icon-caret-down
-          :class="mapClasses($style, iconClass, isOpenClass)"
+          :class="mapClasses(style, iconClass, isOpenClass)"
           :size="compact ? 'small' : null"
         />
       </button>
     </component>
     <div
-      :class="mapClasses($style, containerClass, isOpenClass)"
+      :class="mapClasses(style, containerClass, isOpenClass)"
       :style="{ maxHeight: maxHeight }"
     >
       <div
-        :class="mapClasses($style, contentClass, isOpenClass)"
+        :class="mapClasses(style, contentClass, isOpenClass)"
         :aria-hidden="`${!opened}`"
         :id="`${id}-collapsible`"
         ref="accordionContentEl"
@@ -47,7 +47,7 @@
 </template>
 <script>
 import {
-  defineComponent, computed, watch, onMounted, ref, inject,
+  defineComponent, useCssModule, computed, watch, onMounted, ref, inject,
 } from 'vue';
 import IconCaretDown from '../icon/comps/caret-down';
 import { buildClass, modifyClassName } from '../../utils/buildClass';
@@ -171,6 +171,7 @@ export default defineComponent({
 
 
     return {
+      style: useCssModule(),
       headingTag,
       headingClass,
       buttonClass,
@@ -197,5 +198,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrAccordion.scss">
+<style lang="scss" module src="./styles/CdrAccordion.module.scss">
 </style>

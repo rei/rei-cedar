@@ -1,12 +1,12 @@
 <template>
-  <div :class="$style[baseClass]" role="status" tabindex="0">
-    <span :class="$style[iconClass]" /> <slot name="error">
+  <div :class="style[baseClass]" role="status" tabindex="0">
+    <span :class="style[iconClass]" /> <slot name="error">
       {{ error }}
     </slot>
   </div>
 </template>
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, useCssModule } from 'vue';
 
 export default defineComponent({
   name: 'CdrFormError',
@@ -18,6 +18,7 @@ export default defineComponent({
     const iconClass = 'cdr-form-error__icon';
 
     return {
+      style: useCssModule(),
       baseClass,
       iconClass,
     };
@@ -25,5 +26,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrFormError.scss">
+<style lang="scss" module src="./styles/CdrFormError.module.scss">
 </style>

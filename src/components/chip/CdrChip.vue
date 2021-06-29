@@ -1,27 +1,27 @@
 <template>
   <button
-    :class="$style[baseClass]"
+    :class="style[baseClass]"
   >
     <span
       v-if="hasIconLeft"
-      :class="$style['cdr-chip__icon-left']"
+      :class="style['cdr-chip__icon-left']"
     >
       <slot name="icon-left" />
     </span>
     <span
       v-if="hasIconRight"
-      :class="$style['cdr-chip__icon-right']"
+      :class="style['cdr-chip__icon-right']"
     >
       <slot name="icon-right" />
     </span>
-    <span :class="$style['cdr-chip__content']">
+    <span :class="style['cdr-chip__content']">
       <slot />
     </span>
   </button>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, useCssModule } from 'vue';
 import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
@@ -41,6 +41,7 @@ export default defineComponent({
     const hasIconLeft = ctx.slots['icon-left'];
     const hasIconRight = ctx.slots['icon-right'];
     return {
+      style: useCssModule(),
       baseClass,
       hasIconLeft,
       hasIconRight,
@@ -49,5 +50,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrChip.scss">
+<style lang="scss" module src="./styles/CdrChip.module.scss">
 </style>

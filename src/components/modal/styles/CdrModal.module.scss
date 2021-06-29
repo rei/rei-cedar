@@ -5,9 +5,9 @@ $modal-animation-duration: 150ms;
 .cdr-modal {
   @supports (-webkit-touch-callout: none) {
     & * {
-      // Safari iOS hack: force hardware acceleration on all elements inside modal
-      //     otherwise content that is offscreen will flicker/disappear when scrolling
-      // Issue has to do with scrolling inside a position: fixed or relative container
+      /* Safari iOS hack: force hardware acceleration on all elements inside modal
+           otherwise content that is offscreen will flicker/disappear when scrolling
+       Issue has to do with scrolling inside a position: fixed or relative container */
       will-change: transform;
     }
   }
@@ -56,7 +56,7 @@ $modal-animation-duration: 150ms;
     left: 0;
     right: 0;
     transition: opacity $modal-animation-duration $modal-animation-duration;
-    width: 100%; // IE 11
+    width: 100%;
     z-index: 0;
     &:focus {
       outline: 0;
@@ -64,7 +64,7 @@ $modal-animation-duration: 150ms;
   }
 
   &__innerWrap {
-    width: 100%; // IE 11
+    width: 100%;
     padding: $cdr-space-one-x;
   }
 
@@ -91,7 +91,7 @@ $modal-animation-duration: 150ms;
     border: 1px solid $cdr-color-icon-default;
     flex: none;
     margin-left: $cdr-space-half-x;
-    padding: 7px; // NOTE: button should be 40x40, so drop padding by 1px
+    padding: 7px;
     position: relative;
     top: -2px;
     right: -4px;
@@ -142,7 +142,6 @@ $modal-animation-duration: 150ms;
   }
 }
 
-// TODO: why wasn't this scoped? what???
 .cdr-modal--closed {
   transition: z-index 0s $modal-animation-duration * 2,
   visibility 0s $modal-animation-duration * 2;

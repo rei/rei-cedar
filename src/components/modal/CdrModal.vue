@@ -1,20 +1,20 @@
 <template>
   <div
-    :class="mapClasses($style, baseClass, !opened && 'cdr-modal--closed')"
+    :class="mapClasses(style, baseClass, !opened && 'cdr-modal--closed')"
     ref="wrapperEl"
   >
     <div
-      :class="[$style['cdr-modal__outerWrap'], wrapperClass]"
+      :class="[style['cdr-modal__outerWrap'], wrapperClass]"
     >
       <div
         aria-hidden="true"
         @click="onClick"
-        :class="[$style['cdr-modal__overlay'], overlayClass]"
+        :class="[style['cdr-modal__overlay'], overlayClass]"
       />
       <div :tabIndex="opened ? '0' : undefined"/>
       <div
         ref="modalEl"
-        :class="mapClasses($style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
+        :class="mapClasses(style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
         tabIndex="-1"
         :role="role"
         :aria-modal="!!opened"
@@ -23,22 +23,22 @@
       >
         <slot name="modal">
           <div
-            :class="[$style['cdr-modal__innerWrap'], contentClass]"
+            :class="[style['cdr-modal__innerWrap'], contentClass]"
             :style="reallyClosed ? {display: 'none'} : undefined"
           >
             <section>
-              <div :class="$style['cdr-modal__content']">
+              <div :class="style['cdr-modal__content']">
                 <div
-                  :class="$style['cdr-modal__header']"
+                  :class="style['cdr-modal__header']"
                   ref="headerEl"
                 >
-                  <div :class="$style['cdr-modal__title']">
+                  <div :class="style['cdr-modal__title']">
                     <slot name="title" v-if="showTitle">
                       <h1>{{ label }}</h1>
                     </slot>
                   </div>
                   <cdr-button
-                    :class="$style['cdr-modal__close-button']"
+                    :class="style['cdr-modal__close-button']"
                     icon-only
                     :with-background="true"
                     @click="onClick"
@@ -52,10 +52,10 @@
                 </div>
                 <div
                   role="document"
-                  :class="$style['cdr-modal__text']"
+                  :class="style['cdr-modal__text']"
                 >
                   <div
-                    :class="$style['cdr-modal__text-content']"
+                    :class="style['cdr-modal__text-content']"
                     :style="{ maxHeight: `${scrollMaxHeight}px`, paddingRight: `${scrollPadding}px`}"
                     ref="contentEl"
                     tabindex="0"
@@ -79,7 +79,7 @@
 
 import debounce from 'lodash-es/debounce';
 import tabbable from 'tabbable';
-import { defineComponent, computed, ref, watch, onMounted, nextTick } from 'vue';
+import { defineComponent, useCssModule, computed, ref, watch, onMounted, nextTick } from 'vue';
 import {
   CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
@@ -343,6 +343,7 @@ export default defineComponent({
     });
 
     return {
+      style: useCssModule(),
       baseClass,
       mapClasses,
       dialogAttrs,
@@ -363,5 +364,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrModal.scss">
+<style lang="scss" module src="./styles/CdrModal.module.scss">
 </style>

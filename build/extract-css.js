@@ -20,7 +20,7 @@ buildCss({
 const components = glob.sync('./src/components/**/styles/*.scss')
   .map((path) => {
     const componentName = path.split('/styles/')[1];
-    const filename = _.kebabCase(componentName).replace('-scss', '.css');
+    const filename = _.kebabCase(componentName).replace('-module-scss', '.css');
     return {
       srcPath: path,
       outPath: `./dist/style/${filename}`,

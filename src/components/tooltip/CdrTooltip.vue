@@ -1,6 +1,6 @@
 <template>
   <div :class="mapClasses(
-    $style, 'cdr-tooltip--wrapper', hasTrigger && 'cdr-tooltip--position'
+    style, 'cdr-tooltip--wrapper', hasTrigger && 'cdr-tooltip--position'
   )">
     <div ref="triggerEl">
       <slot name="trigger" />
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, watch } from 'vue';
+import { defineComponent, useCssModule, ref, onMounted, watch } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup';
 import propValidator from '../../utils/propValidator';
@@ -104,6 +104,7 @@ export default defineComponent({
     })
 
     return {
+      style: useCssModule(),
       hasTrigger,
       isOpen,
       mapClasses,
@@ -116,5 +117,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrTooltip.scss">
+<style lang="scss" module src="./styles/CdrTooltip.module.scss">
 </style>

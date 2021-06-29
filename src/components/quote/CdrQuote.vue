@@ -1,10 +1,10 @@
 <template>
   <component
     :is="tag"
-    :class="mapClasses($style, baseClass, modifierClass)"
+    :class="mapClasses(style, baseClass, modifierClass)"
   >
     <p
-      :class="$style[summaryClass]"
+      :class="style[summaryClass]"
       v-if="summary"
     >
       {{ summary }}
@@ -12,7 +12,7 @@
     <slot />
     <cite
       v-if="citation"
-      :class="$style[citationClass]"
+      :class="style[citationClass]"
       tag="cite"
     >
       {{ citation }}
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
@@ -48,6 +48,7 @@ export default defineComponent({
     const baseClass = 'cdr-quote';
     const modifierClass = computed(() => buildClass(baseClass, props.modifier));
     return {
+      style: useCssModule(),
       mapClasses,
       baseClass,
       modifierClass,
@@ -58,5 +59,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrQuote.scss">
+<style lang="scss" module src="./styles/CdrQuote.module.scss">
 </style>

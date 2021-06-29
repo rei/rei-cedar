@@ -1,14 +1,14 @@
 <template>
   <component
     :is="tag"
-    :class="$style[baseClass]"
+    :class="style[baseClass]"
   >
     <slot />
   </component>
 </template>
 <script>
 
-import { defineComponent } from 'vue';
+import { defineComponent, useCssModule } from 'vue';
 
 export default defineComponent({
   name: 'CdrCard',
@@ -20,11 +20,12 @@ export default defineComponent({
   },
   setup() {
     return {
+      style: useCssModule(),
       baseClass: 'cdr-card',
     };
   },
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrCard.scss">
+<style lang="scss" module src="./styles/CdrCard.module.scss">
 </style>

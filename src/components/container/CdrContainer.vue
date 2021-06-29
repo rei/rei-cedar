@@ -1,11 +1,11 @@
 <template>
-  <component :is="tag" :class="mapClasses($style, baseClass, modifierClass)">
+  <component :is="tag" :class="mapClasses(style, baseClass, modifierClass)">
     <slot />
   </component>
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import { buildClass } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
@@ -32,6 +32,7 @@ export default defineComponent({
     const baseClass = 'cdr-container';
     const modifierClass = computed(() => buildClass(baseClass, props.modifier));
     return {
+      style: useCssModule(),
       baseClass,
       modifierClass,
       mapClasses,
@@ -40,5 +41,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrContainer.scss">
+<style lang="scss" module src="./styles/CdrContainer.module.scss">
 </style>

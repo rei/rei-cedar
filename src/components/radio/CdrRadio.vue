@@ -1,6 +1,6 @@
 <template>
   <cdr-label-wrapper
-    :class="$style[baseClass]"
+    :class="style[baseClass]"
     :size="size"
     :modifier="modifier"
     :label-class="labelClass"
@@ -10,7 +10,7 @@
   >
     <template #input>
       <input
-        :class="[$style['cdr-radio__input'], inputClass]"
+        :class="[style['cdr-radio__input'], inputClass]"
         type="radio"
         :name="name"
         :checked="modelValue === customValue"
@@ -26,7 +26,7 @@
 
 
 // TODO: need to do the like "map modelvalue to internal state and emit events when parent gets update yada yada" dance i think :~(
-import { defineComponent, watch } from 'vue';
+import { defineComponent, useCssModule, watch } from 'vue';
 
 import propValidator from '../../utils/propValidator';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
@@ -87,11 +87,12 @@ export default defineComponent({
   setup() {
     const baseClass = 'cdr-radio';
     return {
+      style: useCssModule(),
       baseClass,
     };
   },
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrRadio.scss">
+<style lang="scss" module src="./styles/CdrRadio.module.scss">
 </style>

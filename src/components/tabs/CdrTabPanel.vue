@@ -2,7 +2,7 @@
   <div
     :aria-hidden="!active"
     :aria-labelledby="ariaLabelledby"
-    :class="mapClasses($style, baseClass, modifierClass, animationDirection && `cdr-tab-panel-${animationDirection}`)"
+    :class="mapClasses(style, baseClass, modifierClass, animationDirection && `cdr-tab-panel-${animationDirection}`)"
     :hidden="hidden"
     :id="id"
     tabindex="0"
@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import { defineComponent, computed, ref, inject, onBeforeMount } from 'vue';
+import { defineComponent, useCssModule, computed, ref, inject, onBeforeMount } from 'vue';
 
 // TODO: PUT MODIFIER HERE!
 import { buildClass } from '../../utils/buildClass';
@@ -97,6 +97,7 @@ export default defineComponent({
     })
 
     return {
+      style: useCssModule(),
       modifierClass,
       animationDirection,
       baseClass,
@@ -113,5 +114,5 @@ export default defineComponent({
 
 </script>
 
-<style lang="scss" module src="./styles/CdrTabPanel.scss">
+<style lang="scss" module src="./styles/CdrTabPanel.module.scss">
 </style>

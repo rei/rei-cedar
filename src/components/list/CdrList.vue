@@ -1,14 +1,14 @@
 <template>
   <component
     :is="tag"
-    :class="[$style[baseClass], $style[modifierClass]]"
+    :class="[style[baseClass], style[modifierClass]]"
   >
     <slot />
   </component>
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 
 import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
@@ -34,6 +34,7 @@ export default defineComponent({
     const baseClass = 'cdr-list';
     const modifierClass = computed(() => props.modifier && buildClass(baseClass, props.modifier));
     return {
+      style: useCssModule(),
       baseClass,
       modifierClass,
     };
@@ -41,5 +42,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrList.scss">
+<style lang="scss" module src="./styles/CdrList.module.scss">
 </style>

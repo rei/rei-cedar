@@ -115,7 +115,6 @@
   transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
 };
 
-// responsize size mixins
 
 @mixin label-wrapper-small-mixin($breakpoint: '') {
   &--small#{$breakpoint} {
