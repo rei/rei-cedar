@@ -2,11 +2,11 @@
   <div
     v-if="ratio"
     :style="ratioObject"
-    :class="$style[ratioClass]"
+    :class="style[ratioClass]"
   >
     <img
       :style="cropObject"
-      :class="mapClasses($style,
+      :class="mapClasses(style,
                          baseClass,
                          modifierClass,
                          radiusClass,
@@ -21,7 +21,7 @@
   </div>
   <img
     v-else
-    :class="mapClasses($style,
+    :class="mapClasses(style,
                        baseClass,
                        modifierClass,
                        radiusClass,
@@ -32,7 +32,7 @@
   >
 </template>
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
 import { buildClass } from '../../utils/buildClass';
@@ -127,6 +127,7 @@ export default defineComponent({
     const coverClass = computed(() => props.cover && buildClass(coverWrapperClass, 'cover'));
 
     return {
+      style: useCssModule(),
       baseClass,
       ratioClass,
       coverWrapperClass,

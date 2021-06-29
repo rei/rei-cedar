@@ -21,11 +21,11 @@
     </template>
 
     <!-- default input slot -->
-    <div :class="mapClasses($style, 'cdr-input-wrap', focusedClass)">
+    <div :class="mapClasses(style, 'cdr-input-wrap', focusedClass)">
       <textarea
         v-if="rows && rows > 1"
         :rows="rows"
-        :class="mapClasses($style,
+        :class="mapClasses(style,
                            baseClass,
                            multilineClass,
                            preIconClass,
@@ -50,7 +50,7 @@
       <input
         v-else
         :type="type"
-        :class="mapClasses($style,
+        :class="mapClasses(style,
                            baseClass,
                            preIconClass,
                            postIconClass,
@@ -73,14 +73,14 @@
       >
       <span
         v-if="hasPreIcon"
-        :class="$style['cdr-input__pre-icon']"
+        :class="style['cdr-input__pre-icon']"
       >
         <slot name="pre-icon" />
       </span>
 
       <span
         v-if="hasPostIcon"
-        :class="$style['cdr-input__post-icon']"
+        :class="style['cdr-input__post-icon']"
       >
         <slot name="post-icon" />
       </span>
@@ -97,7 +97,7 @@
     <template #helper-text-bottom v-if="hasHelperBottom && !error">
       <span
         :id="`${id}-helper-text-bottom`"
-        :class="$style['cdr-input__helper-text']"
+        :class="style['cdr-input__helper-text']"
       >
         <slot name="helper-text-bottom" />
       </span>
@@ -118,7 +118,7 @@
   </cdr-label-standalone>
 </template>
 <script>
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, useCssModule, computed, ref } from 'vue';
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
 import CdrFormError from '../formError/CdrFormError';
@@ -247,6 +247,7 @@ export default defineComponent({
     });
 
     return {
+      style: useCssModule(),
       baseClass,
       sizeClass,
       focusedClass,

@@ -1,24 +1,24 @@
 <template>
   <nav :aria-label="ariaLabel">
-    <ol :class="$style['cdr-pagination']">
+    <ol :class="style['cdr-pagination']">
       <li v-if="innerValue > pages[0].page">
         <component
           :is="linkTag"
           aria-label="Go to previous page"
           :href="(linkTag === 'a' && prevPageData && prevPageData.url) || undefined"
-          :class="mapClasses($style, 'cdr-pagination__link', 'cdr-pagination__prev')"
+          :class="mapClasses(style, 'cdr-pagination__link', 'cdr-pagination__prev')"
           @click="(e) => navigate(prevPageData.page, e)"
         >
-          <icon-caret-left :class="$style['cdr-pagination_caret--prev']" />
+          <icon-caret-left :class="style['cdr-pagination_caret--prev']" />
         </component>
       </li>
       <li v-else aria-hidden="true">
         <span
           aria-disabled="true"
-          :class="mapClasses($style, 'cdr-pagination__link', 'cdr-pagination__prev', 'cdr-pagination__link--disabled')"
+          :class="mapClasses(style, 'cdr-pagination__link', 'cdr-pagination__prev', 'cdr-pagination__link--disabled')"
         >
           <icon-caret-left
-            :class="$style['cdr-pagination_caret--prev']"
+            :class="style['cdr-pagination_caret--prev']"
             inherit-color
           />
         </span>
@@ -28,13 +28,13 @@
       <li
         v-for="n in paginationData"
         :key="`pagination-${id}-li-${n.page}`"
-        :class="$style['cdr-pagination__li--links']"
+        :class="style['cdr-pagination__li--links']"
       >
 
         <component
           v-if="n.page"
           :is="linkTag"
-          :class="mapClasses($style, 'cdr-pagination__link', n.page === innerValue && 'cdr-pagination__link--current')"
+          :class="mapClasses(style, 'cdr-pagination__link', n.page === innerValue && 'cdr-pagination__link--current')"
           :aria-label="n.page === innerValue ? `Current page, page ${n.page}` : `Go to page ${n.page}`"
           :aria-current="n.page === innerValue ? 'page' : null"
           :href="(linkTag === 'a' && n.url) || undefined"
@@ -42,12 +42,12 @@
         >
           {{ n.page }}
         </component>
-        <span v-else :class="$style['cdr-pagination__ellipse']">
+        <span v-else :class="style['cdr-pagination__ellipse']">
           &hellip;
         </span>
       </li>
 
-      <li :class="$style['cdr-pagination__li--select']">
+      <li :class="style['cdr-pagination__li--select']">
         <cdr-select
           :id="`pagination-select-${id}`"
           v-model="innerValue"
@@ -71,19 +71,19 @@
           :is="linkTag"
           aria-label="Go to next page"
           :href="(linkTag === 'a' && nextPageData && nextPageData.url) || undefined"
-          :class="mapClasses($style, 'cdr-pagination__link', 'cdr-pagination__next')"
+          :class="mapClasses(style, 'cdr-pagination__link', 'cdr-pagination__next')"
           @click="(e) => navigate(nextPageData.page, e)"
         >
-          <icon-caret-right :class="$style['cdr-pagination_caret--next']"/>
+          <icon-caret-right :class="style['cdr-pagination_caret--next']"/>
         </component>
       </li>
       <li v-else aria-hidden="true">
         <span
           aria-disabled="true"
-          :class="mapClasses($style, 'cdr-pagination__link', 'cdr-pagination__next', 'cdr-pagination__link--disabled')"
+          :class="mapClasses(style, 'cdr-pagination__link', 'cdr-pagination__next', 'cdr-pagination__link--disabled')"
         >
           <icon-caret-right
-            :class="$style['cdr-pagination_caret--next']"
+            :class="style['cdr-pagination_caret--next']"
             inherit-color
           />
         </span>
@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref, watch, nextTick, onMounted } from 'vue';
+import { defineComponent, useCssModule, computed, ref, watch, nextTick, onMounted } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
@@ -265,6 +265,7 @@ export default defineComponent({
     watch(() => props.pages, () => setCurrentIdx(innerValue.value))
 
     return {
+      style: useCssModule(),
       innerValue,
       currentIdx,
       ariaLabel,

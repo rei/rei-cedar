@@ -1,17 +1,17 @@
 <template>
   <fieldset
-    :class="$style[baseClass]"
+    :class="style[baseClass]"
     @focusin="focusin"
     @keydown="handleKeyDown"
   >
-    <legend :class="$style[legendClass]">
+    <legend :class="style[legendClass]">
       <slot name="label">
         {{ label }}
       </slot>
     </legend>
     <div
       ref="chipsEl"
-      :class="$style['cdr-chip-group__content']"
+      :class="style['cdr-chip-group__content']"
     >
       <slot />
     </div>
@@ -20,7 +20,7 @@
 
 <script>
 import {
-  defineComponent, computed, ref, onMounted,
+  defineComponent, useCssModule, computed, ref, onMounted,
 } from 'vue';
 
 export default defineComponent({
@@ -96,6 +96,7 @@ export default defineComponent({
       currentIdx = Array.prototype.indexOf.call(chips, e.target);
     };
     return {
+      style: useCssModule(),
       baseClass,
       legendClass,
       handleKeydown,

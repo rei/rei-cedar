@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    :class="$style['cdr-text']"
+    :class="style['cdr-text']"
   >
     <slot />
   </component>
@@ -20,7 +20,7 @@ export default defineComponent({
   },
   setup() {
     return {
-      // $style: useCssModule(),
+      style: useCssModule(),
     }
   }
 });

@@ -1,14 +1,14 @@
 <template>
-  <div :class="$style[baseClass]">
+  <div :class="style[baseClass]">
     <p
       v-if="summary"
-      :class="$style[summaryClass]"
+      :class="style[summaryClass]"
     >
       {{ summary }}
     </p>
     <cite
       v-if="credit"
-      :class="$style[citeClass]"
+      :class="style[citeClass]"
     >
       {{ credit }}
     </cite>
@@ -17,7 +17,7 @@
 
 <script>
 
-import { defineComponent } from 'vue';
+import { defineComponent, useCssModule } from 'vue';
 
 export default defineComponent({
   name: 'CdrCaption',
@@ -27,6 +27,7 @@ export default defineComponent({
   },
   setup() {
     return {
+      style: useCssModule(),
       baseClass: 'cdr-caption',
       summaryClass: 'cdr-caption__summary',
       citeClass: 'cdr-caption__cite',

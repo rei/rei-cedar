@@ -1,11 +1,11 @@
 <template>
-  <div :class="$style[baseClass]">
+  <div :class="style[baseClass]">
     <slot />
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, useCssModule } from 'vue';
 
 export default defineComponent({
   name: '{NAME-FULLNAME}',
@@ -13,6 +13,7 @@ export default defineComponent({
     const baseClass = '{NAME-TAGNAME}';
     return {
       baseClass,
+      style: useCssModule(),
     };
   },
 });

@@ -2,29 +2,29 @@
   <component
     :is="tag"
     :href="href"
-    :class="mapClasses($style,
+    :class="mapClasses(style,
                        baseClass,
                        sizeClass,
                        linkedClass,
     )"
   >
-    <div :class="$style['cdr-rating__ratings']">
+    <div :class="style['cdr-rating__ratings']">
 
       <span
         v-for="star in Array(whole).keys()"
-        :class="mapClasses($style, 'cdr-rating__icon', 'cdr-rating__100')"
+        :class="mapClasses(style, 'cdr-rating__icon', 'cdr-rating__100')"
         :key="`rating-whole-${star}`"
         aria-hidden="true"
       />
       <span
         v-if="remainder"
-        :class="mapClasses($style, 'cdr-rating__icon', `cdr-rating__${remainder}`)"
+        :class="mapClasses(style, 'cdr-rating__icon', `cdr-rating__${remainder}`)"
         aria-hidden="true"
       />
 
       <span
         v-for="empty in Array(empties).keys()"
-        :class="mapClasses($style,
+        :class="mapClasses(style,
                            'cdr-rating__icon',
                            emptyClass,
         )"
@@ -36,11 +36,11 @@
     <span
       v-if="count !== null"
       aria-hidden="true"
-      :class="$style['cdr-rating__count']"
+      :class="style['cdr-rating__count']"
     >
       <span
         v-if="href"
-        :class="$style['cdr-rating__number']"
+        :class="style['cdr-rating__number']"
       >
         {{ displayRating }}
       </span>
@@ -54,13 +54,13 @@
       </span>
     </span>
 
-    <span :class="$style['cdr-rating__caption-sr']">
+    <span :class="style['cdr-rating__caption-sr']">
       {{ srText }}
     </span>
   </component>
 </template>
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
@@ -157,6 +157,7 @@ export default defineComponent({
     });
 
     return {
+      style: useCssModule(),
       tag,
       baseClass,
       sizeClass,

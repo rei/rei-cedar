@@ -1,8 +1,8 @@
 <template>
-  <div :class="$style[baseClass]">
-    <div :class="$style['cdr-label-standalone__label-wrapper']">
+  <div :class="style[baseClass]">
+    <div :class="style['cdr-label-standalone__label-wrapper']">
       <label
-        :class="mapClasses($style, 'cdr-label-standalone__label', disabledLabelClass, srOnlyLabelClass)"
+        :class="mapClasses(style, 'cdr-label-standalone__label', disabledLabelClass, srOnlyLabelClass)"
         :for="forId"
       >
         {{ label }}{{ required || optional ? '' : '' }}
@@ -13,24 +13,24 @@
 
         <span
           v-else-if="optional"
-          :class="$style['cdr-label-standalone__optional']"
+          :class="style['cdr-label-standalone__optional']"
         >(optional)</span>
       </label>
 
       <br v-if="!hideLabel && hasHelper">
       <span
-        :class="$style['cdr-label-standalone__helper']"
+        :class="style['cdr-label-standalone__helper']"
         :id="`${forId}-helper-text-top`"
         v-if="hasHelper"
       >
         <slot name="helper" />
       </span>
     </div>
-    <div :class="mapClasses($style, 'cdr-label-standalone__input-wrap', inputSpacingClass)">
+    <div :class="mapClasses(style, 'cdr-label-standalone__input-wrap', inputSpacingClass)">
       <slot />
       <div
         v-if="hasInfoAction"
-        :class="$style['cdr-label-standalone__info-action']"
+        :class="style['cdr-label-standalone__info-action']"
       >
         <slot name="info-action" />
       </div>
@@ -38,19 +38,19 @@
 
     <span
       v-if="hasInfo"
-      :class="$style['cdr-label-standalone__info']"
+      :class="style['cdr-label-standalone__info']"
     >
       <slot name="info" />
     </span>
 
-    <div :class="$style['cdr-label-standalone__post-content']">
+    <div :class="style['cdr-label-standalone__post-content']">
       <slot name="helper-text-bottom"/>
       <slot name="error"/>
     </div>
   </div>
 </template>
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 
 export default defineComponent({
@@ -78,6 +78,7 @@ export default defineComponent({
     const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
       && 'cdr-label-standalone__input--spacing');
     return {
+      style: useCssModule(),
       mapClasses,
       hasHelper,
       hasInfo,

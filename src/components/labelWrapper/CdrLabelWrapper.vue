@@ -1,7 +1,7 @@
 <template>
-  <div :class="$style['cdr-label-wrapper__container']">
+  <div :class="style['cdr-label-wrapper__container']">
     <label
-      :class="mapClasses($style,
+      :class="mapClasses(style,
                          'cdr-label-wrapper',
                          `cdr-label-wrapper--${background}`,
                          disabledClass,
@@ -10,15 +10,15 @@
       ).concat(` ${labelClass || ''}`)"
     >
       <slot name="input" />
-      <span :class="$style['cdr-label-wrapper__figure']" />
-      <div :class="mapClasses($style, 'cdr-label-wrapper__content', contentClass)">
+      <span :class="style['cdr-label-wrapper__figure']" />
+      <div :class="mapClasses(style, 'cdr-label-wrapper__content', contentClass)">
         <slot />
       </div>
     </label>
   </div>
 </template>
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import { buildClass } from '../../utils/buildClass';
 import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
@@ -39,6 +39,7 @@ export default defineComponent({
     const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
     const disabledClass = computed(() => props.disabled && buildClass(baseClass, 'disabled')); // TODO: this works right?
     return {
+      style: useCssModule(),
       mapClasses,
       baseClass,
       modifierClass,

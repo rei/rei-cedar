@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    :class="mapClasses($style, baseClass, modifierClass, inheritColorClass)"
+    :class="mapClasses(style, baseClass, modifierClass, inheritColorClass)"
     :target="target"
     :rel="computedRel"
     :href="computedHref"
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
 import { buildClass } from '../../utils/buildClass';
@@ -55,6 +55,7 @@ export default defineComponent({
     const inheritColorClass = computed(() => props.inheritColor && 'cdr-link--inherit-color');
 
     return {
+      style: useCssModule(),
       mapClasses,
       computedHref,
       computedRel,

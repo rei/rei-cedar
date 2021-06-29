@@ -1,6 +1,6 @@
 <template>
   <fieldset
-    :class="mapClasses($style, baseClass, disabledClass)"
+    :class="mapClasses(style, baseClass, disabledClass)"
     :disabled="disabled"
     :aria-invalid="!!error"
     :aria-errormessage="!!error && `${id}-error`"
@@ -15,10 +15,10 @@
       > *</span>
       <span
         v-if="optional && !required"
-        :class="$style['cdr-form-group__optional']"
+        :class="style['cdr-form-group__optional']"
       > (optional)</span>
     </legend>
-    <div :class="mapClasses($style, 'cdr-form-group__wrapper', errorClass)">
+    <div :class="mapClasses(style, 'cdr-form-group__wrapper', errorClass)">
       <slot />
     </div>
     <cdr-form-error
@@ -33,7 +33,7 @@
   </fieldset>
 </template>
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import CdrFormError from '../formError/CdrFormError';
 
@@ -71,6 +71,7 @@ export default defineComponent({
     //    return this.id ? this.id : this._uid; // eslint-disable-line no-underscore-dangle
     //  },
     return {
+      style: useCssModule(),
       mapClasses,
       baseClass,
       errorClass,

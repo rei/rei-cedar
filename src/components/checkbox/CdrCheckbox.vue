@@ -1,6 +1,6 @@
 <template>
   <cdr-label-wrapper
-    :class="$style[baseClass]"
+    :class="style[baseClass]"
     :size="size"
     :modifier="modifier"
     :label-class="labelClass"
@@ -10,7 +10,7 @@
   >
     <template #input>
       <input
-        :class="[$style['cdr-checkbox__input'], inputClass]"
+        :class="[style['cdr-checkbox__input'], inputClass]"
         type="checkbox"
         v-bind="$attrs"
         :checked="modelValue"
@@ -25,7 +25,7 @@
   </cdr-label-wrapper>
 </template>
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, useCssModule } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
@@ -93,6 +93,7 @@ export default defineComponent({
     const baseClass = 'cdr-checkbox';
 
     return {
+      style: useCssModule(),
       baseClass,
     };
   },

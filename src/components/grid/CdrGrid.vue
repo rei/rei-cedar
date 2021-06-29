@@ -1,14 +1,14 @@
 <template>
   <component
     :is="tag"
-    :class="mapClasses($style, baseClass, gutterClass)"
+    :class="mapClasses(style, baseClass, gutterClass)"
   >
     <slot />
   </component>
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
@@ -40,6 +40,7 @@ export default defineComponent({
       && props.gutter.split(' ').map((val) => `cdr-grid--gutter-${val}`).join(' '));
 
     return {
+      style: useCssModule(),
       mapClasses,
       baseClass,
       gutterClass,

@@ -1,7 +1,7 @@
 <template>
   <svg
     v-bind="dataObj"
-    :class="mapClasses($style, baseClass, sizeClass, inheritColorClass)"
+    :class="mapClasses(style, baseClass, sizeClass, inheritColorClass)"
   >
     <slot />
     <use
@@ -11,7 +11,7 @@
   </svg>
 </template>
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 
 import { buildClass } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
@@ -54,6 +54,7 @@ export default defineComponent({
       'xlink:href': props.use,
     }
     return {
+      style: useCssModule(),
       baseClass,
       inheritColorClass,
       sizeClass,

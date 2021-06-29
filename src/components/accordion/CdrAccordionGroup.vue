@@ -1,6 +1,6 @@
 <template>
   <ul
-    :class="$style[baseClass]"
+    :class="style[baseClass]"
     ref="accordionGroupEl"
     @focusin="focusin"
     @keydown="handleKeyDown"
@@ -10,7 +10,7 @@
 </template>
 <script>
 import {
-  defineComponent, computed, ref, onMounted, provide,
+  defineComponent, useCssModule, computed, ref, onMounted, provide,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 import getCurrentBreakpoint from '../../mixins/breakpoints';
@@ -95,6 +95,7 @@ export default defineComponent({
     };
 
     return {
+      style: useCssModule(),
       handleKeyDown,
       focusin,
       baseClass,

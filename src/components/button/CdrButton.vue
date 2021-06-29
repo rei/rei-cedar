@@ -23,7 +23,7 @@
 
 <!-- NOTE: REMOVED icon slot. use icon-left -->
 <script>
-import { useCssModule,defineComponent, computed } from 'vue';
+import { defineComponent, useCssModule, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
 import { buildClass, buildBooleanClass } from '../../utils/buildClass';
