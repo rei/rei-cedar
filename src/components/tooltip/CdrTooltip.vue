@@ -117,5 +117,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrTooltip.scss">
+<style lang="scss" module src="./styles/CdrTooltip.module.scss">
 </style>
