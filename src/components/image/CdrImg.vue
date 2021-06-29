@@ -142,5 +142,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrImg.scss">
+<style lang="scss" module src="./styles/CdrImg.module.scss">
 </style>

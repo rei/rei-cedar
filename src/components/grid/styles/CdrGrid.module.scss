@@ -4,7 +4,6 @@
 .cdr-grid {
   @include cdr-grid-base-mixin;
 
-  // Responsive Gutters
   &--gutter-none {
     @include cdr-grid-gutter-none-mixin;
   }

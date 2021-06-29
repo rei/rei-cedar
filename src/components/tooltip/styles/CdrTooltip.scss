@@ -21,7 +21,6 @@
     padding: $cdr-space-inset-three-quarter-x-squish;
   }
 
-  // set arrow color on popup
   .cdr-popup--bottom .cdr-popup__arrow {
     &::before {
       border-bottom-color: $cdr-color-border-tooltip-default;

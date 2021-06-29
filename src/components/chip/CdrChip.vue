@@ -49,5 +49,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrChip.scss">
+<style lang="scss" module src="./styles/CdrChip.module.scss">
 </style>

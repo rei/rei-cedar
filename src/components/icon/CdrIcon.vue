@@ -65,5 +65,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrIcon.scss">
+<style lang="scss" module src="./styles/CdrIcon.module.scss">
 </style>

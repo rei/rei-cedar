@@ -58,5 +58,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrQuote.scss">
+<style lang="scss" module src="./styles/CdrQuote.module.scss">
 </style>

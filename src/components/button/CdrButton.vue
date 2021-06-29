@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    :class="mapClasses($style,
+    :class="mapClasses(style,
                        baseClass,
                        modifierClass,
                        sizeClass,
@@ -23,7 +23,7 @@
 
 <!-- NOTE: REMOVED icon slot. use icon-left -->
 <script>
-import { defineComponent, computed } from 'vue';
+import { useCssModule,defineComponent, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
 import { buildClass, buildBooleanClass } from '../../utils/buildClass';
@@ -104,7 +104,7 @@ export default defineComponent({
       && props.withBackground && buildClass(baseClass, 'with-background'));
 
     return {
-
+      style: useCssModule(),
       buttonType: props.tag === 'button' ? props.type : null,
       baseClass,
       modifierClass,
@@ -121,5 +121,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrButton.scss">
+<style lang="scss" module src="./styles/CdrButton.module.scss">
 </style>

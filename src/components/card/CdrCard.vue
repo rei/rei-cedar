@@ -26,5 +26,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrCard.scss">
+<style lang="scss" module src="./styles/CdrCard.module.scss">
 </style>

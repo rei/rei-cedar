@@ -66,5 +66,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrLink.scss">
+<style lang="scss" module src="./styles/CdrLink.module.scss">
 </style>

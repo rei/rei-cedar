@@ -32,5 +32,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrBanner.scss">
+<style lang="scss" module src="./styles/CdrBanner.module.scss">
 </style>

@@ -42,7 +42,7 @@
             @click.prevent="(e) => tab.disabled ? null : handleClick(tab, e)"
           >
             {{ tab.name }}
-          </button> 
+          </button>
         </div>
       </nav>
       <div :class="mapClasses($style,
@@ -211,14 +211,14 @@ export default defineComponent({
         changeTab(nextTab);
       }
     }, 300, { leading: true, trailing: false })
-    
+
     const leftArrowNav = debounce(function handleLeftArrow() {
       const previousTab = getPreviousTab(activeTabIndex.value - 1);
       if (previousTab !== -1) {
         changeTab(previousTab);
       }
     }, 300, { leading: true, trailing: false })
-    
+
     const calculateOverflow = () => {
       let containerWidth = 0;
       if (containerEl.value) {
@@ -325,8 +325,8 @@ export default defineComponent({
 
     return {
       mapClasses,
-      baseClass, 
-      modifierClass, 
+      baseClass,
+      modifierClass,
       sizeClass,
       tabs,
 
@@ -364,5 +364,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrTabs.scss">
+<style lang="scss" module src="./styles/CdrTabs.module.scss">
 </style>

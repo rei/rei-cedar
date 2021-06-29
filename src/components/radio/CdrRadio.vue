@@ -93,5 +93,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrRadio.scss">
+<style lang="scss" module src="./styles/CdrRadio.module.scss">
 </style>

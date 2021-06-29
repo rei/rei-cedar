@@ -270,5 +270,5 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" module src="./styles/CdrInput.scss">
+<style lang="scss" module src="./styles/CdrInput.module.scss">
 </style>

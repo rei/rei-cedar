@@ -186,5 +186,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrPopup.scss">
+<style lang="scss" module src="./styles/CdrPopup.module.scss">
 </style>

@@ -98,5 +98,5 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" module src="./styles/CdrCheckbox.scss">
+<style lang="scss" module src="./styles/CdrCheckbox.module.scss">
 </style>

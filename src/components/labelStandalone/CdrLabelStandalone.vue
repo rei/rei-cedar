@@ -92,5 +92,5 @@ export default defineComponent({
 
 </script>
 
-<style lang="scss" module src="./styles/CdrLabelStandalone.scss">
+<style lang="scss" module src="./styles/CdrLabelStandalone.module.scss">
 </style>

@@ -35,5 +35,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrCaption.scss">
+<style lang="scss" module src="./styles/CdrCaption.module.scss">
 </style>

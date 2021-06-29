@@ -113,5 +113,5 @@ export default defineComponent({
 
 </script>
 
-<style lang="scss" module src="./styles/CdrTabPanel.scss">
+<style lang="scss" module src="./styles/CdrTabPanel.module.scss">
 </style>

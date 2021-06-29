@@ -363,5 +363,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrModal.scss">
+<style lang="scss" module src="./styles/CdrModal.module.scss">
 </style>

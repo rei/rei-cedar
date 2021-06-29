@@ -80,5 +80,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrFormGroup.scss">
+<style lang="scss" module src="./styles/CdrFormGroup.module.scss">
 </style>

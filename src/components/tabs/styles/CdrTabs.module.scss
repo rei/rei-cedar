@@ -26,7 +26,7 @@
   height: 500px;
   overflow-x: hidden;
 
-  // https://davidwalsh.name/osx-overflow
+  /* https://davidwalsh.name/osx-overflow */
   ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
@@ -101,7 +101,7 @@
       font-weight: 500;
     }
 
-    // Prevent content from shifting when font-weight changes
+    /* Prevent content from shifting when font-weight changes */
     &::before {
       display: block;
       content: attr(js-name);
@@ -164,7 +164,6 @@
   }
 
 
-// TODO: MOVE MODIFIERS TO TAB PANEL!!!!!
   /* Compact
     ========== */
   &--compact, &--small {

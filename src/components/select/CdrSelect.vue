@@ -247,5 +247,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrSelect.scss">
+<style lang="scss" module src="./styles/CdrSelect.module.scss">
 </style>

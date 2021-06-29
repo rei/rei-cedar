@@ -2,7 +2,7 @@
   <nav :aria-label="ariaLabel">
     <ol :class="$style['cdr-pagination']">
       <li v-if="innerValue > pages[0].page">
-        <component 
+        <component
           :is="linkTag"
           aria-label="Go to previous page"
           :href="(linkTag === 'a' && prevPageData && prevPageData.url) || undefined"
@@ -30,8 +30,8 @@
         :key="`pagination-${id}-li-${n.page}`"
         :class="$style['cdr-pagination__li--links']"
       >
-       
-        <component 
+
+        <component
           v-if="n.page"
           :is="linkTag"
           :class="mapClasses($style, 'cdr-pagination__link', n.page === innerValue && 'cdr-pagination__link--current')"
@@ -61,13 +61,13 @@
             :value="page.page"
           >
             Page {{ page.page }}{{ totalPages === null ? '' : ` of ${totalPages}` }}
-          </option> 
+          </option>
         </cdr-select>
       </li>
 
 
       <li v-if="innerValue < pages[pages.length - 1].page">
-        <component 
+        <component
           :is="linkTag"
           aria-label="Go to next page"
           :href="(linkTag === 'a' && nextPageData && nextPageData.url) || undefined"
@@ -280,5 +280,5 @@ export default defineComponent({
 
 </script>
 
-<style lang="scss" module src="./styles/CdrPagination.scss">
+<style lang="scss" module src="./styles/CdrPagination.module.scss">
 </style>

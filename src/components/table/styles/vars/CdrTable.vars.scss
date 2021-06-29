@@ -86,14 +86,11 @@
   }
 
   thead {
-    // override body styling when head is present
     & + tbody tr {
-      // striping rows
       &:nth-child(even) {
         background-color: $cdr-color-background-table-row-alt;
       }
 
-      // disabled default
       &:nth-child(odd) {
         background-color: $cdr-color-background-table-row;
       }
@@ -103,7 +100,6 @@
   tbody,
   tfoot {
     tr {
-      // striping rows
       &:nth-child(odd) {
         background-color: $cdr-color-background-table-row-alt;
       }
@@ -115,7 +111,6 @@
   width: 100%;
 }
 
-// TODO: can this be moved onto the table and remove wrapping div???
 @mixin cdr-table-responsive-mixin {
   display: block;
   width: 100%;

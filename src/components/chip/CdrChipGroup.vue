@@ -106,5 +106,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrChipGroup.scss">
+<style lang="scss" module src="./styles/CdrChipGroup.module.scss">
 </style>

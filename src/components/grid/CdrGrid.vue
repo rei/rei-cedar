@@ -49,5 +49,5 @@ export default defineComponent({
 
 </script>
 
-<style lang="scss" module src="./styles/CdrGrid.scss">
+<style lang="scss" module src="./styles/CdrGrid.module.scss">
 </style>

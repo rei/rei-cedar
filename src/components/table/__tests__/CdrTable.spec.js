@@ -2,7 +2,7 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import { h } from 'vue';
 import CdrTable from 'componentdir/table/CdrTable';
 
-const basicContent = { template: 
+const basicContent = { template:
   `<thead>
     <tr>
       <th>head 1</th>

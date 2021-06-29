@@ -25,5 +25,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrFormError.scss">
+<style lang="scss" module src="./styles/CdrFormError.module.scss">
 </style>

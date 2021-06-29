@@ -197,5 +197,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrAccordion.scss">
+<style lang="scss" module src="./styles/CdrAccordion.module.scss">
 </style>

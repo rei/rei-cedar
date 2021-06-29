@@ -38,7 +38,7 @@ export default defineComponent({
     const accordionGroupEl = ref(null);
 
     const isUnwrapped = ref(!!props.unwrap);
-  //   
+  //
     const nextIdx = computed(() => {
       const idx = currentIdx.value + 1;
       return idx >= accordionButtons.value.length ? 0 : idx;
@@ -104,5 +104,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrAccordionGroup.scss">
+<style lang="scss" module src="./styles/CdrAccordionGroup.module.scss">
 </style>

@@ -137,5 +137,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrBreadcrumb.scss">
+<style lang="scss" module src="./styles/CdrBreadcrumb.module.scss">
 </style>

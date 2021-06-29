@@ -41,5 +41,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrList.scss">
+<style lang="scss" module src="./styles/CdrList.module.scss">
 </style>

@@ -175,5 +175,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrRating.scss">
+<style lang="scss" module src="./styles/CdrRating.module.scss">
 </style>

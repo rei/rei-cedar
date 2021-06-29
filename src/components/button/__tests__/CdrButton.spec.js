@@ -4,7 +4,9 @@ import sinon from 'sinon'
 
 describe('CdrButton', () => {
   it('renders correctly', () => {
-    const wrapper = mount(CdrButton);
+    const wrapper = mount(CdrButton, {
+      attrs: {what: 'huh'}
+    });
     expect(wrapper.element).toMatchSnapshot();
   });
 

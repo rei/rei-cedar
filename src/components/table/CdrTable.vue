@@ -82,5 +82,5 @@ export default defineComponent({
 
 </script>
 
-<style lang="scss" module src="./styles/CdrTable.scss">
+<style lang="scss" module src="./styles/CdrTable.module.scss">
 </style>
