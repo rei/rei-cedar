@@ -12,23 +12,26 @@
 import {
   defineComponent, useCssModule, computed, ref, onMounted, provide,
 } from 'vue';
+import debounce from 'lodash-es/debounce';
 import propValidator from '../../utils/propValidator';
 import getCurrentBreakpoint from '../../mixins/breakpoints';
 
 export default defineComponent({
   name: 'CdrAccordionGroup',
-  unwrap: {
-    type: [String, Boolean],
-    default: false,
-    validator: (value) => {
-      if (typeof value === 'string') {
-        return propValidator(
-          value,
-          ['@xs', '@sm', '@md', '@lg'],
-          false,
-        );
-      }
-      return typeof value === 'boolean';
+  props: {
+    unwrap: {
+      type: [String, Boolean],
+      default: false,
+      validator: (value) => {
+        if (typeof value === 'string') {
+          return propValidator(
+            value,
+            ['@xs', '@sm', '@md', '@lg'],
+            false,
+          );
+        }
+        return typeof value === 'boolean';
+      },
     },
   },
   setup(props, ctx) {
@@ -49,18 +52,21 @@ export default defineComponent({
       return idx <= -1 ? accordionButtons.value.length - 1 : idx;
     });
 
+      console.log('what', props)
     // TODO: how to handle $el?
     onMounted(() => {
+      console.log('what', props.unwrap)
       accordionButtons.value = accordionGroupEl.value.querySelectorAll('.js-cdr-accordion-button')
-      if (typeof unwrap === 'string') {
-        isUnwrapped.value = unwrap.indexOf(getCurrentBreakpoint()) !== -1;
+      if (typeof props.unwrap === 'string') {
+        console.log('unwrappy', props.unwrap)
+        isUnwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
         window.addEventListener('resize', debounce(() => {
-          isUnwrapped.value = unwrap.indexOf(getCurrentBreakpoint()) !== -1;
+          isUnwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
         }, 300));
       }
     });
-// TODO: is this reactive????
-    provide('unwrap', {value: isUnwrapped.value});
+// TODO: unwrap logic needs to be refactored. Might need to pass a reactive object into provide? Is not currently working
+    provide('unwrap', {val: isUnwrapped.value});
 
     const handleKeyDown = (e) => {
       // something besides the button is focused

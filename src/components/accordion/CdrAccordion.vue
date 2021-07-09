@@ -5,7 +5,7 @@
   >
     <component
       :is="headingTag"
-      :class="headingClass"
+      :class="style[headingClass]"
     >
       <button
         :class="[style['cdr-accordion__button'], 'js-cdr-accordion-button']"
@@ -99,10 +99,12 @@ export default defineComponent({
 
   setup(props, ctx) {
 
-    const unwrap = inject('unwrap', {value: false});
+    const unwrap = inject('unwrap', {val: false});
+
+    console.log('HEY', unwrap.value);
 
     const headingTag = `h${props.level}`;
-    const headingClass = computed(() => (unwrap.value
+    const headingClass = computed(() => (unwrap.value && unwrap.value.val
       ? 'cdr-accordion__header--unwrapped'
       : 'cdr-accordion__header'));
 
@@ -127,7 +129,7 @@ export default defineComponent({
 
 
     const unwrapClass = computed(() => {
-      return unwrap.value ? modifyClassName('cdr-accordion', 'unwrap') : null;
+      return unwrap.value && unwrap.value.val ? modifyClassName('cdr-accordion', 'unwrap') : null;
     });
 
     const modifierClass = computed(() => buildClass(baseClass, props.modifier));
