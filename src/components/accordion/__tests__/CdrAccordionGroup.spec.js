@@ -19,7 +19,7 @@ describe('CdrAccordionGroup', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-  xit('renders correctly unwrapped', () => {
+  it('renders correctly unwrapped', () => {
     const wrapper = mount(h(CdrAccordionGroup, { unwrap: true }, {default: () => [
       h(CdrAccordion, {id: 'tab1', level: '2', label: 'label1'}),
       h(CdrAccordion, {id: 'tab2', level: '2', label: 'label2'}),
@@ -27,7 +27,7 @@ describe('CdrAccordionGroup', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-  xit('has correct a11y', async () => {
+  it('has correct a11y', async () => {
     // const elem = document.createElement('div')
     // if (document.body) {
     //   document.body.appendChild(elem)

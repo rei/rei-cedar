@@ -121,7 +121,7 @@ describe('cdrSelect', () => {
     expect(wrapper.find('select').attributes('multiple')).toBe('');
   });
 
-  xit('emits change event with correct value', async () => {
+  it('emits change event with correct value', async () => {
     const wrapper = mount(CdrSelect, {
       propsData: {
         label: 'test',
@@ -139,7 +139,7 @@ describe('cdrSelect', () => {
     expect(wrapper.emitted().change[0][1] instanceof Event).toBeTruthy();
   });
 
-  xit('emits change event with correct value for multiple', () => {
+  it('emits change event with correct value for multiple', () => {
     const wrapper = mount(CdrSelect, {
       propsData: {
         label: 'test',

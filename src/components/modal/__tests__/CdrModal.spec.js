@@ -145,7 +145,7 @@ describe('CdrModal.vue', () => {
 
   // test currently fails because $refs.modal is undefined,
   // TODO but this test also doesn't really test anything...
-  xit('handleFocus', async (done) => {
+  it('handleFocus', async (done) => {
     const elem = document.createElement('div')
     if (document.body) {
       document.body.appendChild(elem)
@@ -171,7 +171,7 @@ describe('CdrModal.vue', () => {
     });
   });
 // TODO: test does not test anything lol
-  xit('handleClosed', async () => {
+  it('handleClosed', async () => {
     const elem = document.createElement('div')
     if (document.body) {
       document.body.appendChild(elem)
@@ -200,7 +200,7 @@ describe('CdrModal.vue', () => {
     }, 500);
   });
 // TODO: resize event no longer triggering resize handler?
-  xit('resize event', async (done) => {
+  it('resize event', async (done) => {
     const wrapper = mount(CdrModal, {
       propsData: {
         opened: true,

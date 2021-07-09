@@ -7,7 +7,7 @@ import CdrChip from 'componentdir/chip/CdrChip';
 // TODO: VTU currently doesn't allow array passed into slots
 
 describe('CdrChipGroup', () => {
-  xit('renders correctly', () => {
+  it('renders correctly', () => {
     const wrapper = mount(CdrChipGroup, {
       props: {
         label: 'test',
@@ -22,7 +22,7 @@ describe('CdrChipGroup', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-  xit('renders correctly with label visible', () => {
+  it('renders correctly with label visible', () => {
     const wrapper = mount(CdrChipGroup, {
       stubs: {
         'cdr-chip': CdrChip,
@@ -41,7 +41,7 @@ describe('CdrChipGroup', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-  xit('renders label slot', () => {
+  it('renders label slot', () => {
     const wrapper = mount(CdrChipGroup, {
       stubs: {
         'cdr-chip': CdrChip,
@@ -61,7 +61,7 @@ describe('CdrChipGroup', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-  xit('sets current index on mount', () => {
+  it('sets current index on mount', () => {
     const wrapper = mount(CdrChipGroup, {
       stubs: {
         'cdr-chip': CdrChip,
@@ -79,7 +79,7 @@ describe('CdrChipGroup', () => {
     expect(wrapper.vm.currentIdx).toBe(1);
   });
 
-  xit('has correct a11y', async () => {
+  it('has correct a11y', async () => {
     const elem = document.createElement('div')
     if (document.body) {
       document.body.appendChild(elem)

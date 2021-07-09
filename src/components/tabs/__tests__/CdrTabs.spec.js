@@ -220,7 +220,7 @@ describe('CdrTabs', () => {
     expect(wrapper.find('.cdr-tabs__header').attributes()['role']).toBe('tablist');
   });
 
-  xit('handleDownArrowNav', async () => {
+  it('handleDownArrowNav', async () => {
     const elem = document.createElement('div')
     if (document.body) {
       document.body.appendChild(elem)

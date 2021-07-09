@@ -26,12 +26,6 @@ describe('CdrLink', () => {
     expect(wrapper.attributes().href).toBe('www.rei.com');
   });
 
-  // TODO: is this even useful?
-  // it('sets a default link text', () => {
-  //   const wrapper = shallowMount(CdrLink);
-  //   expect(wrapper.text()).toBe('#');
-  // });
-
   it('sets rel attr correctly', () => {
     const wrapper = shallowMount(CdrLink, {
       propsData: {

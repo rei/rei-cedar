@@ -359,7 +359,7 @@ describe('CdrInput', () => {
 // TODO: find way to check slot content in setup (probably a no)
 // OR do something on mount to detect this instead (probably most elegant option?)
 // OR create a prop that user can use to signal number of post-icons (hammer solution)
-  xit('adds spacing class when multiple elements are present in post-icon slot', () => {
+  it('adds spacing class when multiple elements are present in post-icon slot', () => {
     const wrapper = mount(CdrInput, {
       propsData: {
         id: 'test',

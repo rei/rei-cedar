@@ -139,7 +139,7 @@ describe('CdrBreadcrumb', () => {
   });
 
   // TODO: ref does not seem to update?
-  xit('applies focus to first breadcrumb on ellipsis click', async (done) => {
+  it('applies focus to first breadcrumb on ellipsis click', async (done) => {
     const elem = document.createElement('div')
     if (document.body) {
       document.body.appendChild(elem)
