@@ -13,8 +13,8 @@
         :class="[style['cdr-checkbox__input'], inputClass]"
         type="checkbox"
         v-bind="$attrs"
-        :checked="modelValue"
-        @change="$emit('update:modelValue', $event.target.checked)"
+        :checked="newValue"
+        @change="$emit('update:modelValue', $event.target.checked, $event)"
         :true-value="customValue ? null : trueValue"
         :false-value="customValue ? null : falseValue"
         :value="customValue"
@@ -25,7 +25,7 @@
   </cdr-label-wrapper>
 </template>
 <script>
-import { defineComponent, useCssModule } from 'vue';
+import { defineComponent, useCssModule, ref, watch } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
@@ -89,12 +89,19 @@ export default defineComponent({
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
     },
   },
-  setup() {
+  setup(props) {
     const baseClass = 'cdr-checkbox';
+
+    const newValue = ref(props.modelValue);
+
+    watch(() => props.value, (val) => {
+      newValue.value = val;
+    })
 
     return {
       style: useCssModule(),
       baseClass,
+      newValue,
     };
   },
 });

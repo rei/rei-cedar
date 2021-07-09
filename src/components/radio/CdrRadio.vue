@@ -13,10 +13,10 @@
         :class="[style['cdr-radio__input'], inputClass]"
         type="radio"
         :name="name"
-        :checked="modelValue === customValue"
+        :checked="newValue == customValue"
         :value="customValue"
         v-bind="$attrs"
-        @change="$emit('update:modelValue', $event.target.checked)"
+        @change="$emit('update:modelValue', $event.target.checked && customValue, $event)"
       >
     </template>
     <slot />
@@ -25,8 +25,7 @@
 <script>
 
 
-// TODO: need to do the like "map modelvalue to internal state and emit events when parent gets update yada yada" dance i think :~(
-import { defineComponent, useCssModule, watch } from 'vue';
+import { defineComponent, useCssModule, watch, ref } from 'vue';
 
 import propValidator from '../../utils/propValidator';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
@@ -84,11 +83,20 @@ export default defineComponent({
     },
   },
 
-  setup() {
+  setup(props) {
     const baseClass = 'cdr-radio';
+
+
+    const newValue = ref(props.modelValue);
+
+    watch(() => props.value, (val) => {
+      newValue.value = val;
+    })
+
     return {
       style: useCssModule(),
       baseClass,
+      newValue,
     };
   },
 });

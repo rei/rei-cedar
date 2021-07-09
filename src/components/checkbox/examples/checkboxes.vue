@@ -208,7 +208,7 @@ export default {
       checked: true,
       sizeEx: false,
       sizeEx2: true,
-      ex1: false,
+      ex1: true,
       ex2: 'checked',
       ex3: 'checked',
       exGroup: ['A', { value: 'D' }, [9, 8]],

@@ -60,51 +60,56 @@ describe('CdrCheckbox', () => {
     expect(wrapper.find('.custom-content-class').exists()).toBe(true);
   });
 
-  // TODO: events don't seem to fire on click anymore in VTU?
-  xit('emits change events with correct values for default checkbox', async () => {
+  it('emits change events with correct values for default checkbox', async () => {
     const wrapper = mount(CdrCheckbox, {
       propsData: {
         modelValue: false,
       },
     });
+
     const cb = wrapper.find('input');
-    cb.trigger('click');
 
-    cb.trigger('click');
+    cb.element.checked = true;
+    cb.trigger('change');
+    expect(wrapper.emitted()['update:modelValue'][0][0]).toBe(true);
 
-    await wrapper.vm.$nextTick();
-    
-    expect(wrapper.emitted().change[0][0]).toBe(true);
-    cb.trigger('click');
-    expect(wrapper.emitted().change[1][0]).toBe(false);
+    cb.element.checked = false;
+    cb.trigger('change');
+    expect(wrapper.emitted()['update:modelValue'][1][0]).toBe(false);
   });
 
-  xit('emits change events with correct values for custom checkbox', () => {
-    const wrapper = mount(CdrCheckbox, {
-      propsData: {
-        trueValue: 'checked',
-        falseValue: 'unchecked',
-        modelValue: '',
-      },
-    });
-    const cb = wrapper.find('input');
-    cb.trigger('click');
-    expect(wrapper.emitted().change[0][0]).toBe('checked');
-    cb.trigger('click');
-    expect(wrapper.emitted().change[1][0]).toBe('unchecked');
-  });
-
-  xit('emits change events with correct values for group checkbox', () => {
-    const wrapper = mount(CdrCheckbox, {
-      propsData: {
-        customValue: 'b',
-        modelValue: ['a'],
-      },
-    });
-    const cb = wrapper.find('input');
-    cb.trigger('click');
-    expect(wrapper.emitted().change[0][0]).toEqual(['a', 'b']);
-    cb.trigger('click');
-    expect(wrapper.emitted().change[1][0]).toEqual(['a']);
-  });
+// TODO: these 2 tests no longer work properly, they are also sort of testing vue internals.
+// Not sure how best to handle these...
+  // it('emits change events with correct values for custom checkbox', () => {
+  //   const wrapper = mount(CdrCheckbox, {
+  //     propsData: {
+  //       trueValue: 'checked',
+  //       falseValue: 'unchecked',
+  //       modelValue: '',
+  //     },
+  //   });
+  //   const cb = wrapper.find('input');
+  //   cb.element.checked = true;
+  //   cb.trigger('change');
+  //   expect(wrapper.emitted()['update:modelValue'][0][0]).toBe('checked');
+  //   cb.element.checked = false;
+  //   cb.trigger('change');
+  //   expect(wrapper.emitted()['update:modelValue'][1][0]).toBe('unchecked');
+  // });
+  //
+  // it('emits change events with correct values for group checkbox', () => {
+  //   const wrapper = mount(CdrCheckbox, {
+  //     propsData: {
+  //       customValue: 'b',
+  //       modelValue: ['a'],
+  //     },
+  //   });
+  //   const cb = wrapper.find('input');
+  //   cb.element.checked = true;
+  //   cb.trigger('change');
+  //   expect(wrapper.emitted()['update:modelValue'][0][0]).toEqual(['a', 'b']);
+  //   cb.element.checked = false;
+  //   cb.trigger('change');
+  //   expect(wrapper.emitted()['update:modelValue'][1][0]).toEqual(['a']);
+  // });
 });
