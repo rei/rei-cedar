@@ -40,9 +40,8 @@ export default defineComponent({
 
     const chipsEl = ref(null);
 
-    // TODO: refs here? or fine as is?
     let chips = [];
-    let currentIdx = 0;
+    let currentIdx = ref(0);
 
     const nextIdx = computed(() => {
       const idx = currentIdx + 1;
@@ -57,16 +56,15 @@ export default defineComponent({
       : 'cdr-chip-group__legend'));
 
     onMounted(() => {
-      // TODO: potentially simplified by new ref system?
       chips = Array.prototype.filter.call(chipsEl.value.children,
         (chip) => !(chip.getAttribute('disabled') || chip.getAttribute('aria-disabled')));
-      currentIdx = Array.prototype.findIndex.call(chips,
+      currentIdx.value = Array.prototype.findIndex.call(chips,
         (chip) => chip.getAttribute('aria-checked') === 'true');
     });
 
     const handleKeydown = (e) => {
       // something besides the button is focused
-      if (currentIdx === -1) return;
+      if (currentIdx.value === -1) return;
 
       const { key } = e;
       switch (key) {
@@ -93,7 +91,7 @@ export default defineComponent({
     };
     const handleFocusin = (e) => {
       // find out which, if any, button is focused
-      currentIdx = Array.prototype.indexOf.call(chips, e.target);
+      currentIdx.value = Array.prototype.indexOf.call(chips, e.target);
     };
     return {
       style: useCssModule(),
@@ -102,6 +100,8 @@ export default defineComponent({
       handleKeydown,
       handleFocusin,
       chipsEl,
+      currentIdx,
+      chips,
     };
   },
 });
