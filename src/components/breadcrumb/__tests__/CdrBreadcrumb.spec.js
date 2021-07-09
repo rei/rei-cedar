@@ -138,7 +138,7 @@ describe('CdrBreadcrumb', () => {
     expect(wrapper.text()).toBe('http://rei.com TEST Scoped cdr-breadcrumb__link');
   });
 
-  // TODO: ref does not seem to update?
+  // TODO: focus logic seems to not be working here?
   xit('applies focus to first breadcrumb on ellipsis click', async (done) => {
     const elem = document.createElement('div')
     if (document.body) {
@@ -157,7 +157,7 @@ describe('CdrBreadcrumb', () => {
       expect(document.activeElement.textContent).toBe(itemsA[0].item.name);
       wrapper.destroy();
       done();
-    }, 1050)
+    }, 1500)
   });
 
 });

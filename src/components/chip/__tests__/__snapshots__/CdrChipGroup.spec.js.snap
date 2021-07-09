@@ -6,20 +6,29 @@ exports[`CdrChipGroup renders correctly 1`] = `
 >
   <legend
     class="cdr-chip-group__legend--hidden"
-  />
+  >
+    
+    test
+    
+  </legend>
   <div
     class="cdr-chip-group__content"
   >
+    
     <button
       aria-checked="true"
       class="cdr-chip"
       role="radio"
       tabindex="0"
     >
+      <!--v-if-->
+      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
+        
         chip 1
+        
       </span>
     </button>
     <button
@@ -28,12 +37,17 @@ exports[`CdrChipGroup renders correctly 1`] = `
       role="radio"
       tabindex="-1"
     >
+      <!--v-if-->
+      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
+        
         chip 2
+        
       </span>
     </button>
+    
   </div>
 </fieldset>
 `;
@@ -44,20 +58,29 @@ exports[`CdrChipGroup renders correctly with label visible 1`] = `
 >
   <legend
     class="cdr-chip-group__legend"
-  />
+  >
+    
+    test
+    
+  </legend>
   <div
     class="cdr-chip-group__content"
   >
+    
     <button
       aria-checked="true"
       class="cdr-chip"
       role="radio"
       tabindex="0"
     >
+      <!--v-if-->
+      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
+        
         chip 1
+        
       </span>
     </button>
     <button
@@ -66,12 +89,17 @@ exports[`CdrChipGroup renders correctly with label visible 1`] = `
       role="radio"
       tabindex="-1"
     >
+      <!--v-if-->
+      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
+        
         chip 2
+        
       </span>
     </button>
+    
   </div>
 </fieldset>
 `;
@@ -83,23 +111,28 @@ exports[`CdrChipGroup renders label slot 1`] = `
   <legend
     class="cdr-chip-group__legend"
   >
-    <div>
-      hey im overriding here!!!
-    </div>
+    
+    hey im overriding here!!!
+    
   </legend>
   <div
     class="cdr-chip-group__content"
   >
+    
     <button
       aria-checked="true"
       class="cdr-chip"
       role="radio"
       tabindex="0"
     >
+      <!--v-if-->
+      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
+        
         chip 1
+        
       </span>
     </button>
     <button
@@ -108,12 +141,17 @@ exports[`CdrChipGroup renders label slot 1`] = `
       role="radio"
       tabindex="-1"
     >
+      <!--v-if-->
+      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
+        
         chip 2
+        
       </span>
     </button>
+    
   </div>
 </fieldset>
 `;

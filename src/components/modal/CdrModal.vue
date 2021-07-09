@@ -364,6 +364,7 @@ export default defineComponent({
       measureContent,
       removeNoScroll,
       scrollPadding,
+      handleFocus,
     };
   },
 });

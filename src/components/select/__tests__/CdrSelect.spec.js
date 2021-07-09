@@ -121,6 +121,7 @@ describe('cdrSelect', () => {
     expect(wrapper.find('select').attributes('multiple')).toBe('');
   });
 
+// TODO: something wrong with v-model binding for CdrSelect?
   xit('emits change event with correct value', async () => {
     const wrapper = mount(CdrSelect, {
       propsData: {
@@ -132,7 +133,6 @@ describe('cdrSelect', () => {
     });
     const select = wrapper.find('select');
     const options = select.findAll('option');
-    console.log('whooooo', options);
     options[0].setSelected();
     await wrapper.vm.$nextTick();
     expect(wrapper.emitted().change[0][0]).toBe('3');

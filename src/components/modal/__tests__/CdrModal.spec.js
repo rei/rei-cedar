@@ -145,7 +145,7 @@ describe('CdrModal.vue', () => {
 
   // test currently fails because $refs.modal is undefined,
   // TODO but this test also doesn't really test anything...
-  xit('handleFocus', async (done) => {
+  it('handleFocus', async (done) => {
     const elem = document.createElement('div')
     if (document.body) {
       document.body.appendChild(elem)
@@ -170,8 +170,8 @@ describe('CdrModal.vue', () => {
       done();
     });
   });
-// TODO: test does not test anything lol
-  xit('handleClosed', async () => {
+// TODO: this test does not test anything lol
+  xit('handleClosed', async (done) => {
     const elem = document.createElement('div')
     if (document.body) {
       document.body.appendChild(elem)
@@ -197,10 +197,19 @@ describe('CdrModal.vue', () => {
       // TODO: this does nothing
       expect(wrapper.vm.unsubscribe).toBe(null);
       wrapper.destroy();
+      done();
     }, 500);
   });
+
 // TODO: resize event no longer triggering resize handler?
+// Timeout in this test conflicting with timeout in previous test?
+// 
   xit('resize event', async (done) => {
+
+    const elem = document.createElement('div')
+    if (document.body) {
+      document.body.appendChild(elem)
+    }
     const wrapper = mount(CdrModal, {
       propsData: {
         opened: true,
@@ -209,14 +218,17 @@ describe('CdrModal.vue', () => {
       slots: {
         default: 'Sticky content',
       },
+
+      attachTo: elem,
     });
     const spyMeasureContent = spyOn(wrapper.vm, 'measureContent');
 
-    await wrapper.vm.$nextTick();
     window.dispatchEvent(new Event('resize'));
+        await wrapper.vm.$nextTick();
     await wrapper.vm.$nextTick();
     setTimeout(() => {
       expect(spyMeasureContent).toHaveBeenCalled();
+      wrapper.destroy();
       done();
     }, 500);
   });

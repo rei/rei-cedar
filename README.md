@@ -13,6 +13,27 @@ and a set of themes that build on this scaffolding. We started this project in 2
 The project has evolved into what it is today, and will continue to grow to fit our expanding needs. Feel free to watch
 the Cedar grow and learn from what we are doing, or jump in and provide some recommendations.
 
+### Migration Status
+
+Vue 2 Cedar was written in JSX because at that time it was the only way to generate a tree-shakeable vue component library. We have migrated to .vue SFC's for vue 3 and have also adopted the "composition API" which should make the Cedar bundle significantly smaller as it will no longer need to import all of Vue. All of the "view-model" logic for a component is exported as part of it's `setup()` function. There are definitely opportunities to DRY up this code by extracting common computed property logic or to simply better organize the contents of the setup functions. Helper functions could be moved into `/utils` or simply a `.js` file in the component directory and imported rather than defined in the setup function itself. The Vue mastery courses around vue 3, particularly the one by Evan You are the best resource I have found for understanding the composition API
+
+Vue 2 private API usage: Cedar used the `vnode` API in a few places in vue 2 which simply does not work in vue 3. This is particularly problematic for CdrTabs which maintains a close parent-child relationship between the CdrTabs wrapper and CdrTabPanel contents. Will need to refactor that component to use a flux architecture, with CdrTabs using provide/inject to pass data into the tab panels, and CdrTabPanel's emitting events that CdrTabs listens for.
+
+Unit Tests: many unit tests are commented out or `xit`'d currently. Searching for `xit(` in the spec files should point out where tests either need work or bugs in components themselves. I know CdrModal, CdrSelect, and CdrTabs definitely have some issues, with CdrTabs being the most broken. In some cases, Vue/VTU have just changed such that our old method of unit testing no longer works and those tests may need to be removed or replaced (i.e, test a instance method directly rather than triggering an event on a component and validating that the component updates based on what the instance method does). That's a much better unit testing pattern in general, complex stuff like "click a button and see what happens" is more of an integration test. May make sense to set up a proper integration testing framework against the kitchen sink for validating these more complex use cases. Most of the broken unit tests are around triggering events, applying focus, etc. and all those would be better handled by testing the function that gets called by those events rather than trying to trigger the events themselves. VTU has also dropped the ability to forcibly set data or methods on components which makes things a lot harder to fake.
+
+Unit Test Slots: Note that when passing slots into a component in VTU you have to use the `h()` render function helper to have it work properly. This might get resolved in a future version of VTU. Search for `h(` in the .spec.js files for examples of how to do this. Essentially using h() you are creating a new component that gets passed to the VTU `mount` function.
+
+Build: The dev/test/prod builds should all work. However there are still breaking bugs in the vue ecosystem that prevent tree-shaking from working which will be the biggest blocker for release. It may be possible to bypass the tree shaking issues by having consumers import Cedar components directly rather than from the index entry point, for example
+
+```
+import { CdrButton, CdrLink } from '@rei/cedar'; // imports from entry point, if tree-shaking is broken this imports ALL of cedar
+
+import CdrButton from '@rei/cedar/dist/components/CdrButton.vue'; // Importing components individually would allow febs/webpack to tree-shake Cedar
+import CdrLink from '@rei/cedar/dist/components/CdrLink.vue'; // Might be possible to make a webpack alias in FEBS that would automagically do this so consumers could maintain the old import syntax.
+```
+
+Visual Regression: It should be possible to generate backstop reference images in the vue 2 Cedar repo and then copy them into `/backstop_data` in this repo to validate that components are rendering the same.
+
 ## Using Cedar
 
 See the [Cedar docs](https://rei.github.io/rei-cedar-docs/) for usage instructions.

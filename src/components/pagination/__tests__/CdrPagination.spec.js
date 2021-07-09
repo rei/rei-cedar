@@ -54,10 +54,6 @@ describe('CdrPagination', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-    // TODO: add test to validate navigation via emits
-  // it('renders scoped slot correctly', async () => {
-  // });
-
   it('has a wrapping nav element for a11y', () => {
     const wrapper = mount(CdrPagination, {
       propsData: {
@@ -278,7 +274,7 @@ describe('CdrPagination', () => {
     expect(wrapper.emitted().navigate[4][0]).toBe(1);
     expect(wrapper.emitted().navigate[4][1]).toBe('?page=1');
     expect(wrapper.emitted().navigate[4][2] instanceof Event).toBeTruthy();
-    
+
     let link2 = wrapper.findAll('ol > li > a')[1];
     link2.trigger('click'); // 1 -> 2
     await wrapper.vm.$nextTick();

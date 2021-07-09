@@ -74,7 +74,7 @@ describe('CdrIcon', () => {
     expect(wrapper.find('.cdr-icon--small').exists()).toBe(true);
   });
 
-  // TODO: is this even possible anymore?
+  // TODO: is this even possible anymore? Depends on vnode stuff
   // it('accepts full SVG in slot', () => {
   //   const wrapper = mount(CdrIcon, {
   //     slots: {

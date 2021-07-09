@@ -74,9 +74,7 @@ describe('CdrRadio', () => {
     expect(wrapper.find('input').attributes('name')).toBe('testName');
   });
 
-  // TODO: how to unit test checked state?
-
-  xit('evaluates simple not checked state correctly', () => {
+  it('evaluates simple not checked state correctly', () => {
     const wrapper = mount(CdrRadio, {
       propsData: {
         customValue: 'A',
@@ -84,11 +82,10 @@ describe('CdrRadio', () => {
         modelValue: 'AA',
       },
     });
-    console.log(wrapper.html(), 'no')
-    expect(wrapper.find('input').checked).toBe(false);
+    expect(wrapper.find('input').element.checked).toBe(false);
   });
 
-  xit('evaluates simple checked state correctly', () => {
+  it('evaluates simple checked state correctly', () => {
     const wrapper = mount(CdrRadio, {
       propsData: {
         customValue: 'A',
@@ -96,11 +93,10 @@ describe('CdrRadio', () => {
         modelValue: 'A',
       },
     });
-    console.log(wrapper.html(), 'yes')
-    expect(wrapper.find('input').attributes('checked')).toBe(true);
+    expect(wrapper.find('input').element.checked).toBe(true);
   });
 
-  xit('evaluates complex group not checked state correctly', () => {
+  it('evaluates complex group not checked state correctly', () => {
     const wrapper = mount(CdrRadio, {
       propsData: {
         customValue: {test: 'B', arr: [1,2,3]},
@@ -108,9 +104,14 @@ describe('CdrRadio', () => {
         modelValue: {test: 'B'},
       },
     });
-    expect(wrapper.find('input').checked).toBe(false);
+    expect(wrapper.find('input').element.checked).toBe(false);
   });
 
+// TODO: would need to update CdrRadio.vue to do deepEquality check in order to support complex objects like this.
+// I am not sure if this is something we actually need to support or if it's worth the cost of implementing into CdrRadio?
+// For example, a consumer could bind ID/Key strings to the radio and use them to look up the associated object in their code rather than binding arbitrary objects
+// <cdr-radio v-model="foo">
+// const options = {foo: {test: 'b', arr: [1,2,3]}}, etc.
   xit('evaluates complex group checked state correctly', () => {
     const wrapper = mount(CdrRadio, {
       propsData: {
@@ -119,10 +120,10 @@ describe('CdrRadio', () => {
         modelValue: {test: 'B', arr: [1,2,3]},
       },
     });
-    expect(wrapper.find('input').checked).toBe(true);
+    expect(wrapper.find('input').element.checked).toBe(true);
   });
 
-  xit('emits a change event with correct value', () => {
+  it('emits a change event with correct value', () => {
     const wrapper = mount(CdrRadio, {
       propsData: {
         customValue: 'A',
@@ -132,7 +133,8 @@ describe('CdrRadio', () => {
     });
 
     const rb = wrapper.find('input');
-    rb.trigger('click')
-    expect(wrapper.emitted().change[0][0]).toBe('A');
+    rb.element.checked = 'true';
+    rb.trigger('change')
+    expect(wrapper.emitted()['update:modelValue'][0][0]).toBe('A');
   });
 });
