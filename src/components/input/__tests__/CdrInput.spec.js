@@ -1,6 +1,8 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import sinon from 'sinon';
+import { h } from '@vue/runtime-core';
 import CdrInput from 'componentdir/input/CdrInput';
+import CdrButton from 'componentdir/button/CdrButton';
 
 describe('CdrInput', () => {
   it('renders correctly', () => {
@@ -356,19 +358,18 @@ describe('CdrInput', () => {
     expect(wrapper.find('.cdr-input--posticon').exists()).toBe(true);
   });
 
-// TODO: find way to check slot content in setup (probably a no)
-// OR do something on mount to detect this instead (probably most elegant option?)
-// OR create a prop that user can use to signal number of post-icons (hammer solution)
   it('adds spacing class when multiple elements are present in post-icon slot', () => {
-    const wrapper = mount(CdrInput, {
-      propsData: {
+    const wrapper = mount(h(CdrInput, {
         id: 'test',
         label: 'test',
       },
-      slots: {
-        'post-icon': '<div>😎</div><div>🤠</div>',
+      {
+        'post-icon': () => [
+          h(CdrButton),
+          h(CdrButton)
+        ],
       },
-    });
+    ));
     expect(wrapper.find('.cdr-input--posticons').exists()).toBe(true);
   });
 

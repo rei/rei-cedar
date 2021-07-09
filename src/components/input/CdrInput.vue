@@ -209,8 +209,7 @@ export default defineComponent({
     const hasHelperBottom = ctx.slots['helper-text-bottom'];
     const hasPreIcon = ctx.slots['pre-icon'];
     const hasPostIcon = ctx.slots['post-icon'];
-    // TODO: either this no longer works, or doesnt work in unit test due to VTU array slot bug?
-    const hasPostIcons = false; // hasPostIcon && ctx.slots['post-icon']().length > 1;
+    const hasPostIcons = hasPostIcon && ctx.slots['post-icon']().length > 1;
     const hasInfo = ctx.slots.info;
     const hasInfoAction = ctx.slots['info-action'];
 
