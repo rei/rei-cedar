@@ -7,6 +7,7 @@
     <ol
       :id="`${id}List`"
       :class="style['cdr-breadcrumb__list']"
+      ref="itemListEl"
     >
       <li
         :class="style['cdr-breadcrumb__item']"
@@ -39,7 +40,6 @@
         :class="style['cdr-breadcrumb__item']"
         :key="breadcrumb.item.id || breadcrumb.item.name.replace(/ /g, '-').toLowerCase()"
         v-show="!truncate || (index >= items.length - 2)"
-        ref="itemListEl"
       >
         <slot
           name="link"
@@ -119,7 +119,8 @@ export default defineComponent({
       truncate.value = false;
       setTimeout(() => {
         // TODO: ref does not seem to update children here?
-        itemListEl.value.children[0].focus();
+        console.log(itemListEl.value.querySelector('.cdr-breadcrumb__item'))
+        itemListEl.value.querySelector('.cdr-breadcrumb__item').focus();
       }, 1000);
     };
     const ellipsisLabel = computed(() => {
