@@ -127,7 +127,7 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0",
     "tinycolor2": "^1.4.2",
-    "vue": "^3.1.2",
+    "vue": "^3.2.21",
     "vue-jest": "^5.0.0-alpha.10",
     "vue-router": "^4.0.10"
   },
@@ -159,7 +159,7 @@
     "tabbable": "^4.0.0"
   },
   "peerDependencies": {
-    "@vue/compiler-sfc": "^3.1.2",
-    "vue": "^3.1.2"
+    "@vue/compiler-sfc": "^3.2.21",
+    "vue": "^3.2.21"
   }
 }
