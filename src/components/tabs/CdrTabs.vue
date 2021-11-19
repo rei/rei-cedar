@@ -72,7 +72,7 @@ import { buildClass } from '../../utils/buildClass'
 
 
 import { defineComponent, useCssModule, computed, ref, onMounted, provide, nextTick } from 'vue';
-import debounce from 'lodash-es/debounce';
+import debounce from 'lodash/debounce';
 import mapClasses from '../../utils/mapClasses';
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
