@@ -12,7 +12,7 @@
 import {
   defineComponent, useCssModule, computed, ref, onMounted, provide,
 } from 'vue';
-import debounce from 'lodash-es/debounce';
+import debounce from 'lodash/debounce';
 import propValidator from '../../utils/propValidator';
 import getCurrentBreakpoint from '../../mixins/breakpoints';
 
