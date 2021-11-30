@@ -24,6 +24,7 @@ import selects from 'componentsdir/select/examples/Selects';
 import tables from 'componentsdir/table/examples/Table';
 import tabs from 'componentsdir/tabs/examples/Tabs';
 import texts from 'componentsdir/text/examples/Text';
+import toast from 'componentsdir/toast/examples/Toast';
 import tooltip from 'componentsdir/tooltip/examples/Tooltip';
 
 export default {
@@ -53,5 +54,6 @@ export default {
   tables,
   tabs,
   texts,
+  toast,
   tooltip,
 };
