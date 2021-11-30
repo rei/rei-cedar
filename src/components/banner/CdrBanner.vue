@@ -42,7 +42,7 @@ import {
 import propValidator from '../../utils/propValidator';
 import { buildClass } from '../../utils/buildClass';
 
-const ctx = useSlots();
+const slots = useSlots();
 const props = defineProps({
   type: {
     type: String,
@@ -56,13 +56,13 @@ const props = defineProps({
 const baseClass = 'cdr-banner';
 const style = useCssModule();
 const typeClass = computed(() => props.type && buildClass(baseClass, props.type));
-const prominenceClass = computed(() => (ctx['message-body']
+const prominenceClass = computed(() => (slots['message-body']
   ? buildClass(`${baseClass}__wrapper`, 'prominence')
   : undefined));
-const hasIconLeft = ctx['icon-left'];
-const hasIconRight = ctx['icon-right'];
-const hasMessageBody = ctx['message-body'];
-const hasInfoAction = ctx['info-action'];
+const hasIconLeft = slots['icon-left'];
+const hasIconRight = slots['icon-right'];
+const hasMessageBody = slots['message-body'];
+const hasInfoAction = slots['info-action'];
 
 </script>
 
