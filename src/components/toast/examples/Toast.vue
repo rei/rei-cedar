@@ -3,7 +3,7 @@
     <h2>Toast</h2>
     <cdr-grid class="toast-configurator">
       <div>
-        <cdr-form-group label="Toast type">
+        <cdr-form-group label="Toast type" id="type">
           <cdr-radio
             name="type"
             custom-value="default"
@@ -42,7 +42,7 @@
         </cdr-form-group>
       </div>
       <div>
-        <cdr-form-group label="Auto dismiss">
+        <cdr-form-group label="Auto dismiss" id="autoDismiss">
           <cdr-radio
             name="autodismiss"
             :custom-value="true"
@@ -60,7 +60,7 @@
         </cdr-form-group>
       </div>
       <div>
-        <cdr-form-group label="Dismiss delay">
+        <cdr-form-group label="Dismiss delay" id="dismissDelay">
           <cdr-input
             v-model="dismissDelay"
             :numeric="true"
@@ -69,7 +69,7 @@
         </cdr-form-group>
       </div>
       <div>
-        <cdr-form-group label="Content">
+        <cdr-form-group label="Content" id="content">
           <cdr-input
             v-model="toastMessage"
             label="Message"

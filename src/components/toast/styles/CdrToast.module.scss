@@ -7,17 +7,17 @@
   @include cdr-toast-base-mixin;
 
   &__transition {
-    &-enter-from {
+    &--toast-enter-from {
       opacity: 0;
       transform: translateX(2.4rem);
     }
-    &-enter-active {
+    &--toast-enter-active {
       transition: all $cdr-duration-5-x $timing-function;
     }
-    &-leave-to {
+    &--toast-leave-to {
       opacity: 0;
     }
-    &-leave-active {
+    &--toast-leave-active {
       transition: opacity $cdr-duration-2-x $timing-function;
     }
   }

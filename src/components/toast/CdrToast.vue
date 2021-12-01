@@ -1,6 +1,6 @@
 <script setup>
 import {
-  useCssModule, computed, useSlots, ref, watch, onUpdated, Transition,
+  useCssModule, computed, useSlots, ref, watch, onUpdated,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 import { buildClass } from '../../utils/buildClass';
@@ -30,7 +30,7 @@ const props = defineProps({
     default: 5000,
   },
 });
-const emit = defineEmits(['open', 'close']);
+const emit = defineEmits(['open', 'closed']);
 
 const baseClass = 'cdr-toast';
 const style = useCssModule();
@@ -72,14 +72,14 @@ const addHandlers = () => {
   toastElement = toastEl.value;
   if (toastElement) {
     toastElement.addEventListener('mouseover', openToast);
-    toastElement.addEventListener('mouseleave', closeToast);
+    toastElement.addEventListener('mouseleave', closeToastWithDelay);
   }
 };
 
 const removeHandlers = () => {
   if (toastElement) {
     toastElement.removeEventListener('mouseover', openToast);
-    toastElement.removeEventListener('mouseleave', closeToast);
+    toastElement.removeEventListener('mouseleave', closeToastWithDelay);
   }
 };
 
@@ -93,7 +93,12 @@ onUpdated(() => {
 </script>
 
 <template>
-  <transition name="cdr-toast__transition">
+  <transition
+    :enter-from-class="style['cdr-toast__transition--toast-enter-from']"
+    :enter-active-class="style['cdr-toast__transition--toast-enter-active']"
+    :leave-to-class="style['cdr-toast__transition--toast-leave-to']"
+    :leave-active-class="style['cdr-toast__transition--toast-leave-active']"
+  >
     <div
       v-if="opened"
       :class="[style[baseClass], style[typeClass]]"
