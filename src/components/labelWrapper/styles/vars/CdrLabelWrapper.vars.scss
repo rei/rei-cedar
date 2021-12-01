@@ -73,8 +73,8 @@
   height: $cdr-form-figure-size-small;
 
   &::after {
-    width: $cdr-form-figure-size-small / 4;
-    height: $cdr-form-figure-size-small / 4;
+    width: calc($cdr-form-figure-size-small / 4);
+    height: calc($cdr-form-figure-size-small / 4);
   }
 }
 
@@ -83,8 +83,8 @@
   height: $cdr-form-figure-size-medium;
 
   &::after {
-    width: $cdr-form-figure-size-medium / 4;
-    height: $cdr-form-figure-size-medium / 4;
+    width: calc($cdr-form-figure-size-medium / 4);
+    height: calc($cdr-form-figure-size-medium / 4);
   }
 }
 
@@ -93,8 +93,8 @@
   height: $cdr-form-figure-size-large;
 
   &::after {
-    width: $cdr-form-figure-size-large / 4;
-    height: $cdr-form-figure-size-large / 4;
+    width: calc($cdr-form-figure-size-large / 4);
+    height: calc($cdr-form-figure-size-large / 4);
   }
 }
 
@@ -103,8 +103,8 @@
   width: $cdr-form-figure-size-medium;
   height: $cdr-form-figure-size-medium;
   &::after {
-    width: $cdr-form-figure-size-medium / 4;
-    height: $cdr-form-figure-size-medium / 4;
+    width: calc($cdr-form-figure-size-medium / 4);
+    height: calc($cdr-form-figure-size-medium / 4);
   }
 
   position: absolute;
