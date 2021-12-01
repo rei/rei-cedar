@@ -37,7 +37,7 @@
 
 <script setup>
 import {
-  defineProps, useCssModule, computed, useSlots,
+  useCssModule, computed, useSlots,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 import { buildClass } from '../../utils/buildClass';
