@@ -77,7 +77,7 @@
 
 <script>
 
-import debounce from 'lodash-es/debounce';
+import debounce from 'lodash/debounce';
 import tabbable from 'tabbable';
 import { defineComponent, useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted } from 'vue';
 import {
@@ -193,7 +193,7 @@ export default defineComponent({
 
     const handleResize = debounce(() => {
       measureContent();
-    }, 300)
+    }, 300);
 
     const handleOpened = () => {
       const { activeElement } = document;
