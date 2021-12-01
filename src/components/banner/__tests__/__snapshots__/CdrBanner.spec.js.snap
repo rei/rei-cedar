@@ -14,9 +14,7 @@ exports[`CdrBanner renders a right-icon 1`] = `
         class="cdr-banner__icon-left"
       >
         
-        
         <div />
-        
         
       </div>
       <span
@@ -30,9 +28,7 @@ exports[`CdrBanner renders a right-icon 1`] = `
         class="cdr-banner__icon-right"
       >
         
-        
         <div />
-        
         
       </div>
     </div>
@@ -56,9 +52,7 @@ exports[`CdrBanner renders correctly 1`] = `
         class="cdr-banner__icon-left"
       >
         
-        
         <div />
-        
         
       </div>
       <span
@@ -90,9 +84,7 @@ exports[`CdrBanner renders the info-action slot 1`] = `
         class="cdr-banner__icon-left"
       >
         
-        
         <div />
-        
         
       </div>
       <span
@@ -106,9 +98,7 @@ exports[`CdrBanner renders the info-action slot 1`] = `
         class="cdr-banner__icon-right"
       >
         
-        
         <div />
-        
         
       </div>
     </div>
@@ -118,9 +108,7 @@ exports[`CdrBanner renders the info-action slot 1`] = `
     class="cdr-banner__info-action"
   >
     
-    
     <div />
-    
     
   </div>
 </div>
@@ -140,9 +128,7 @@ exports[`CdrBanner renders the message-body slot 1`] = `
         class="cdr-banner__icon-left"
       >
         
-        
         <div />
-        
         
       </div>
       <span

@@ -6,13 +6,11 @@ exports[`CdrPopover matches snapshot 1`] = `
 >
   <div>
     
-    
     <button
       aria-controls="popover-test"
       aria-haspopup="dialog"
       id="popover-trigger"
     />
-    
     
   </div>
   <div
