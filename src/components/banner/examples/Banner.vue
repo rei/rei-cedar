@@ -1,27 +1,87 @@
 <template>
   <div>
     <h2>banner</h2>
-    <cdr-banner type="info">
-      <icon-information-fill /> info banner
+    <cdr-banner type="warning">
+      <div><icon-warning-fill inherit-color /> This is the legacy banner API example</div>
     </cdr-banner>
     <br>
-    <cdr-banner type="success">
-      <icon-check-fill /> success banner
+    <cdr-banner>
+      <template #icon-left>
+        <icon-question-fill inherit-color />
+      </template>
+      Default banner
+    </cdr-banner>
+    <br>
+    <cdr-banner type="info">
+      <template #icon-left>
+        <icon-information-fill inherit-color />
+      </template>
+      Information banner
     </cdr-banner>
     <br>
     <cdr-banner type="warning">
-      <icon-warning-fill /> warning banner
+      <template #icon-left>
+        <icon-warning-fill inherit-color />
+      </template>
+      Warning banner
     </cdr-banner>
     <br>
     <cdr-banner type="error">
-      <icon-x-fill /> error banner
+      <template #icon-left>
+        <icon-error-fill inherit-color />
+      </template>
+      Error banner
     </cdr-banner>
     <br>
-    <cdr-banner type="error">
-      <cdr-text class="cdr-text-dev--heading-serif-strong-1200">
-        <icon-x-fill /> error banner
-      </cdr-text>
+    <cdr-banner type="success">
+      <template #icon-left>
+        <icon-check-fill inherit-color />
+      </template>
+      Success banner
     </cdr-banner>
+    <br>
+
+    <cdr-banner type="warning">
+      <template #icon-left>
+        <icon-warning-fill inherit-color />
+      </template>
+      Banner with a message body
+      <template #message-body>
+        This is some extra information about the message.
+      </template>
+    </cdr-banner>
+    <br>
+
+    <cdr-banner type="success">
+      <template #icon-left>
+        <icon-check-fill />
+      </template>
+      This is a banner with an icon-right slot, typically used to close the banner.
+      <template #icon-right>
+        <cdr-button
+          :icon-only="true"
+          aria-label="More information about icon"
+        >
+          <template #icon>
+            <icon-x-lg inherit-color />
+          </template>
+        </cdr-button>
+      </template>
+      <template #message-body>
+        Your parent template should handle the close action.
+      </template>
+    </cdr-banner>
+    <br>
+    <cdr-banner type="info">
+      <template #icon-left>
+        <icon-information-fill inherit-color />
+      </template>
+      Banner with info-action slot
+      <template #info-action>
+        <icon-information-stroke />
+      </template>
+    </cdr-banner>
+    <br>
   </div>
 </template>
 

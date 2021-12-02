@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.0.0-alpha.0",
+  "version": "13.0.0-alpha.1",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -56,8 +56,8 @@
     "@betit/rollup-plugin-rename-extensions": "^0.1.0",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^11.0.0",
-    "@rei/cdr-tokens": "^9.0.0",
-    "@rei/cedar-icons": "^2.1.0",
+    "@rei/cdr-tokens": "^10.0.0",
+    "@rei/cedar-icons": "^2.2.0",
     "@rollup/plugin-alias": "^3.1.2",
     "@vue/compiler-sfc": "^3.1.2",
     "@vue/test-utils": "^2.0.0-rc.9",
@@ -127,7 +127,7 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0",
     "tinycolor2": "^1.4.2",
-    "vue": "^3.2.21",
+    "vue": "^3.2.23",
     "vue-jest": "^5.0.0-alpha.10",
     "vue-router": "^4.0.10"
   },
@@ -159,7 +159,7 @@
     "tabbable": "^4.0.0"
   },
   "peerDependencies": {
-    "@vue/compiler-sfc": "^3.2.21",
-    "vue": "^3.2.21"
+    "@vue/compiler-sfc": "^3.2.23",
+    "vue": "^3.2.23"
   }
 }

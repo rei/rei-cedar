@@ -3,8 +3,8 @@
   &::after {
     content: '';
     position: absolute;
-    width: $cdr-form-figure-size-medium / 4;
-    height: $cdr-form-figure-size-medium / 4;
+    width: calc($cdr-form-figure-size-medium / 4);
+    height: calc($cdr-form-figure-size-medium / 4);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

@@ -6,12 +6,10 @@ exports[`CdrTooltip matches snapshot 1`] = `
 >
   <div>
     
-    
     <button
       aria-describedby="tooltip-test"
       id="tooltip-trigger"
     />
-    
     
   </div>
   <div
