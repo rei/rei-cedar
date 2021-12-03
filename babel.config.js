@@ -3,28 +3,23 @@
 module.exports = function (api) {
   const env = process.env.NODE_ENV;
   const babelEnv = process.env.BABEL_ENV;
-
+  const supportedBrowsers = require("@rei/browsers-config");
   api.cache(true);
 
   // TODO: refactor to use babel `env` API here instead
 
-  const targets = env === 'test' ?
-  {
-    node: 'current',
-  } :
-  {
-    browsers: [
-      'Chrome >= 77',
-      'Firefox >= 70',
-      'iOS > 11',
-      'Safari >= 9',
-      'Edge >= 17'
-    ],
-  };
+  const targets = env === 'test' 
+  ? {
+      node: 'current',
+    } 
+  : supportedBrowsers;
 
   const presetEnvConfig = (env === 'prod') ?
   {
-    modules: false, // TODO: cjs settings?
+    modules: false, // enables tree-shaking
+    targets, // polyfill based on supported browsers
+    corejs: 3, // use corejs@3 for polyfills
+    useBuiltIns: 'usage', // polyfill based on usage in source code.
   } :
   {
     targets
@@ -37,18 +32,7 @@ module.exports = function (api) {
     ],
   ];
 
-  const plugins = [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": 3,
-        "useESModules": babelEnv === 'esm',
-      }
-    ],
-  ];
-
   return {
     presets,
-    plugins,
   };
 }
