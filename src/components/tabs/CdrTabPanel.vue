@@ -2,7 +2,9 @@
   <div
     :aria-hidden="!active"
     :aria-labelledby="ariaLabelledby"
-    :class="mapClasses(style, baseClass, modifierClass, animationDirection && `cdr-tab-panel-${animationDirection}`)"
+    :class="mapClasses(
+      style, baseClass, modifierClass, animationDirection && `cdr-tab-panel-${animationDirection}`
+    )"
     :hidden="hidden"
     :id="id"
     tabindex="0"
@@ -15,7 +17,9 @@
   </div>
 </template>
 <script>
-import { defineComponent, useCssModule, computed, ref, inject, onBeforeMount } from 'vue';
+import {
+  defineComponent, useCssModule, computed, ref, inject, onBeforeMount,
+} from 'vue';
 
 // TODO: PUT MODIFIER HERE!
 import { buildClass } from '../../utils/buildClass';
@@ -73,7 +77,7 @@ export default defineComponent({
     const handleUpArrowNav = () => {
       // YOU WAHT NOW?!?!?!
       // TODO: emit event for tabPanel to deal with????
-      ctx.emit('tab-arrow-up')
+      ctx.emit('tab-arrow-up');
       // $parent.setFocusToActiveTabHeader();
     };
     const animationEnd = (event) => {
@@ -93,8 +97,8 @@ export default defineComponent({
         ariaLabelledby: props.ariaLabelledby,
         setActive,
         setAnimationDirection,
-      })
-    })
+      });
+    });
 
     return {
       style: useCssModule(),

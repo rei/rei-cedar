@@ -10,13 +10,15 @@
       @keyup.left="leftArrowNav"
       @keydown.down.prevent="handleDownArrowNav"
     >
-      <div :class="mapClasses(style,
-        'cdr-tabs__gradient',
-        'cdr-tabs__gradient--left',
+      <div
+        :class="mapClasses(
+          style,
+          'cdr-tabs__gradient',
+          'cdr-tabs__gradient--left',
           overflowLeft ? 'cdr-tabs__gradient--active' : ''
         )"
         :style="gradientLeftStyle"
-      ></div>
+      />
       <nav
         :class="style['cdr-tabs__header-container']"
       >
@@ -33,7 +35,8 @@
             :aria-controls="tab.disabled ? '' : tab.id"
             :id="tab.disabled ? '' : tab.ariaLabelledby"
             :key="tab.id"
-            :class="mapClasses(style,
+            :class="mapClasses(
+              style,
               (activeTabIndex === i && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
               'cdr-tabs__header-item',
               tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
@@ -45,13 +48,15 @@
           </button>
         </div>
       </nav>
-      <div :class="mapClasses(style,
-        'cdr-tabs__gradient',
-        'cdr-tabs__gradient--right',
-        overflowRight ? 'cdr-tabs__gradient--active' : '',
-      )"
+      <div
+        :class="mapClasses(
+          style,
+          'cdr-tabs__gradient',
+          'cdr-tabs__gradient--right',
+          overflowRight ? 'cdr-tabs__gradient--active' : '',
+        )"
         :style="gradientRightStyle"
-      ></div>
+      />
       <div
         :class="style['cdr-tabs__underline']"
         :style="underlineStyle"
@@ -66,17 +71,15 @@
   </div>
 </template>
 <script>
-import { buildClass } from '../../utils/buildClass'
-
-
-
-
-import { defineComponent, useCssModule, computed, ref, onMounted, provide, nextTick } from 'vue';
+import {
+  defineComponent, useCssModule, computed, ref, onMounted, provide, nextTick,
+} from 'vue';
 import debounce from 'lodash/debounce';
-import mapClasses from '../../utils/mapClasses';
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
+import mapClasses from '../../utils/mapClasses';
+import { buildClass } from '../../utils/buildClass';
 
 export default defineComponent({
   name: 'CdrTabs',
@@ -97,7 +100,6 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-
     const tabs = ref([]);
     provide('tabs', tabs);
 
@@ -111,7 +113,6 @@ export default defineComponent({
     const overflowRight = ref(false);
     const animationInProgress = false;
 
-
     const containerEl = ref(null);
     const slotWrapperEl = ref(null);
     const cdrTabsHeaderEl = ref(null);
@@ -120,12 +121,10 @@ export default defineComponent({
     const modifierClass = computed(() => buildClass('cdr-tabs', props.modifier));
     const sizeClass = computed(() => props.size && buildClass('cdr-tabs', props.size));
 
-    const underlineStyle = computed(() => {
-      return {
-        transform: `translateX(${underlineOffsetX.value}px)`,
-        width: `${underlineWidth.value}px`,
-      };
-    });
+    const underlineStyle = computed(() => ({
+      transform: `translateX(${underlineOffsetX.value}px)`,
+      width: `${underlineWidth.value}px`,
+    }));
     const gradientLeftStyle = computed(() => {
       const gradient = `linear-gradient(to left, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
       return {
@@ -139,7 +138,7 @@ export default defineComponent({
       };
     });
 
-// TODO: i feel it in my heart that these 2 function can be 1-liners
+    // TODO: i feel it in my heart that these 2 function can be 1-liners
     const getNextTab = (startIndex) => {
       for (let i = startIndex; i < tabs.value.length; i += 1) {
         if (!tabs.value[i].disabled) {
@@ -156,7 +155,7 @@ export default defineComponent({
       }
 
       return -1;
-    }
+    };
 
     const getPreviousTab = (startIndex) => {
       for (let i = startIndex; i > -1; i -= 1) {
@@ -174,9 +173,9 @@ export default defineComponent({
       }
 
       return -1;
-    }
+    };
 
-    const handleClick = debounce(function handleClickCallback(tabClicked) {
+    const handleClick = debounce((tabClicked) => {
       // TODO: render index in buttons to bind this event, no need to find index????
       const newIndex = tabs.value.findIndex((tab) => tabClicked.name === tab.name);
       changeTab(newIndex);
@@ -204,20 +203,20 @@ export default defineComponent({
       activeTabIndex.value = newIndex;
       updateUnderline();
       cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
-    }
-    const rightArrowNav = debounce(function handleRightArrow() {
+    };
+    const rightArrowNav = debounce(() => {
       const nextTab = getNextTab(activeTabIndex.value + 1);
       if (nextTab !== -1) {
         changeTab(nextTab);
       }
-    }, 300, { leading: true, trailing: false })
+    }, 300, { leading: true, trailing: false });
 
-    const leftArrowNav = debounce(function handleLeftArrow() {
+    const leftArrowNav = debounce(() => {
       const previousTab = getPreviousTab(activeTabIndex.value - 1);
       if (previousTab !== -1) {
         changeTab(previousTab);
       }
-    }, 300, { leading: true, trailing: false })
+    }, 300, { leading: true, trailing: false });
 
     const calculateOverflow = () => {
       let containerWidth = 0;
@@ -234,7 +233,7 @@ export default defineComponent({
         overflowLeft.value = false;
         overflowRight.value = false;
       }
-    }
+    };
     const updateUnderline = () => {
       const elements = Array.from(cdrTabsHeaderEl.value.children); // TODO: cache this? probably?
       if (elements.length > 0) {
@@ -256,7 +255,7 @@ export default defineComponent({
           underlineOffsetX.value = 0;
         }
       }
-    }
+    };
     // TODO: what?
     const handleDownArrowNav = () => {
       if (!animationInProgress) {
@@ -264,11 +263,11 @@ export default defineComponent({
         // cdrTabsHeaderEl.value.
         // $el.lastElementChild.children[activeTabIndex].focus();
       }
-    }
+    };
     // TODO: listen for events emitted from tabs???
     const setFocusToActiveTabHeader = () => {
       cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
-    }
+    };
     const getHeaderWidth = () => {
       let headerElements = [];
       if (cdrTabsHeaderEl.value) {
@@ -283,7 +282,7 @@ export default defineComponent({
         totalWidth += element.offsetWidth || 0;
       });
       return totalWidth;
-    }
+    };
     const hideScrollBar = () => {
       const containerRef = containerEl.value.style;
       const slotRef = slotWrapperEl.value.style;
@@ -293,10 +292,9 @@ export default defineComponent({
       }, { once: true });
       containerRef.setProperty('overflow-x', 'hidden');
       slotRef.setProperty('overflow-y', 'hidden');
-    }
+    };
 
     onMounted(() => {
-
       activeTabIndex.value = getNextTab(props.activeTab);
 
       if (tabs.value[activeTabIndex.value] && tabs.value[activeTabIndex.value].setActive) {
@@ -321,7 +319,7 @@ export default defineComponent({
         calculateOverflow();
         updateUnderline();
       }, 50));
-    })
+    });
 
     return {
       style: useCssModule(),
@@ -347,7 +345,6 @@ export default defineComponent({
       underlineStyle,
       gradientLeftStyle,
       gradientRightStyle,
-
 
       getHeaderWidth,
       calculateOverflow,
