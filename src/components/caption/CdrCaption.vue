@@ -1,8 +1,7 @@
 <script setup>
 
 import { 
-  defineComponent, 
-  useCssModule 
+  useCssModule
 } from 'vue';
 
 const props = defineProps({
