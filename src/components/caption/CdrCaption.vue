@@ -1,3 +1,27 @@
+<script setup>
+
+import { 
+  defineComponent, 
+  useCssModule 
+} from 'vue';
+import { buildClass } from '../../utils/buildClass';
+
+const props = defineProps({
+  summary: {
+    type: String,
+  },
+  credit: {
+    type: String,
+  },
+});
+
+const baseClass = 'cdr-caption';
+const style = useCssModule();
+const summaryClass = 'cdr-caption__summary';
+const citeClass = 'cdr-caption__cite';
+
+</script>
+
 <template>
   <div :class="style[baseClass]">
     <p
@@ -14,27 +38,6 @@
     </cite>
   </div>
 </template>
-
-<script>
-
-import { defineComponent, useCssModule } from 'vue';
-
-export default defineComponent({
-  name: 'CdrCaption',
-  props: {
-    summary: String,
-    credit: String,
-  },
-  setup() {
-    return {
-      style: useCssModule(),
-      baseClass: 'cdr-caption',
-      summaryClass: 'cdr-caption__summary',
-      citeClass: 'cdr-caption__cite',
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrCaption.module.scss">
 </style>
