@@ -4,7 +4,6 @@ import {
   defineComponent, 
   useCssModule 
 } from 'vue';
-import { buildClass } from '../../utils/buildClass';
 
 const props = defineProps({
   summary: {
