@@ -1,46 +1,39 @@
+<script setup>
+import { useCssModule, computed } from 'vue';
+
+import propValidator from '../../utils/propValidator';
+
+const props = defineProps({
+  /**
+     * Tag accepts a user defined element and expects either: 'ul' = Unordered List or 'ol' = Ordered List.
+     */
+  tag: {
+    type: String,
+    default: 'ul',
+    validator: (value) => propValidator(value, ['ul', 'ol']),
+  },
+  modifier: {
+    type: String,
+    default: '',
+    validator: (value) => propValidator(value, ['', 'ordered', 'unordered', 'compact', 'inline']),
+  },
+});
+const baseClass = 'cdr-list';
+const style = useCssModule();
+const modifierClasses = computed(() => {
+  const modifiers = props.modifier.split(' ');
+  return modifiers.map((mod) => style[`${baseClass}--${mod}`]);
+});
+</script>
+
 <template>
   <component
-    :is="tag"
-    :class="[style[baseClass], style[modifierClass]]"
+    :is="props.tag"
+    :class="[style[baseClass], modifierClasses]"
   >
     <slot />
   </component>
 </template>
-
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
-
-import { buildClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
-
-export default defineComponent({
-  name: 'CdrList',
-  props: {
-    /**
-     * Tag accepts a user defined element and expects either: 'ul' = Unordered List or 'ol' = Ordered List.
-     */
-    tag: {
-      type: String,
-      default: 'ul',
-      validator: (value) => propValidator(value, ['ul', 'ol']),
-    },
-    modifier: {
-      type: String,
-      default: '',
-      validator: (value) => propValidator(value, ['', 'ordered', 'unordered', 'compact', 'inline']),
-    },
-  },
-  setup(props) {
-    const baseClass = 'cdr-list';
-    const modifierClass = computed(() => props.modifier && buildClass(baseClass, props.modifier));
-    return {
-      style: useCssModule(),
-      baseClass,
-      modifierClass,
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrList.module.scss">
 </style>
