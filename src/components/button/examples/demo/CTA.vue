@@ -15,7 +15,6 @@
         :size="button.size"
         :full-width="button.fullWidth"
         :modifier="button.modifier"
-        :elevated="button.elevated"
         href="rei.com"
         tag="a"
       >
@@ -94,12 +93,6 @@ export default {
               fullWidth: true,
               modifier: 'dark',
             },
-            {
-              label: 'Elevated Dark',
-              size: 'medium',
-              elevated: true,
-              modifier: 'dark',
-            },
           ],
         },
 
@@ -129,12 +122,6 @@ export default {
               label: 'Full-Width Sale',
               size: 'medium',
               fullWidth: true,
-              modifier: 'sale',
-            },
-            {
-              label: 'Elevated Sale',
-              size: 'medium',
-              elevated: true,
               modifier: 'sale',
             },
           ],
@@ -168,12 +155,6 @@ export default {
               fullWidth: true,
               modifier: 'primary',
             },
-            {
-              label: 'Elevated Primary',
-              size: 'medium',
-              elevated: true,
-              modifier: 'primary',
-            },
           ],
         },
 
@@ -203,12 +184,6 @@ export default {
               label: 'Full-Width Secondary',
               size: 'medium',
               fullWidth: true,
-              modifier: 'secondary',
-            },
-            {
-              label: 'Elevated Secondary',
-              size: 'medium',
-              elevated: true,
               modifier: 'secondary',
             },
           ],

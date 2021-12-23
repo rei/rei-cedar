@@ -30,10 +30,6 @@ size: {
     ['small', 'medium', 'large'],
   ),
 },
-elevated: {
-  type: Boolean,
-  default: false,
-},
 fullWidth: {
   type: [String, Boolean],
   default: false,
@@ -64,7 +60,6 @@ const style = useCssModule();
 /************************  Computed properties *************************/
 const buttonType = computed(() => props.tag === 'button' ? props.type : null);
 const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
-const elevatedClass = computed(() => props.elevated && `${baseClass}--elevated`);
 const fullWidthClass = computed(() => !props.iconOnly && props.fullWidth
   && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
 const sizeClass = computed(() => (!props.iconOnly
