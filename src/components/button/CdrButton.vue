@@ -62,6 +62,7 @@ const baseClass = 'cdr-button';
 const style = useCssModule();
 
 /************************  Computed properties *************************/
+const buttonType = computed(() => props.tag === 'button' ? props.type : null);
 const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
 const elevatedClass = computed(() => props.elevated && `${baseClass}--elevated`);
 const fullWidthClass = computed(() => !props.iconOnly && props.fullWidth
