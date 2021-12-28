@@ -1,3 +1,17 @@
+<script setup>
+import { useCssModule } from 'vue';
+
+const props = defineProps({
+    tag: {
+      type: String,
+      default: 'article',
+    }
+})
+
+const baseClass = 'cdr-card';
+const style = useCssModule();
+</script>
+
 <template>
   <component
     :is="tag"
@@ -6,26 +20,6 @@
     <slot />
   </component>
 </template>
-<script>
-
-import { defineComponent, useCssModule } from 'vue';
-
-export default defineComponent({
-  name: 'CdrCard',
-  props: {
-    tag: {
-      type: String,
-      default: 'article',
-    },
-  },
-  setup() {
-    return {
-      style: useCssModule(),
-      baseClass: 'cdr-card',
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrCard.module.scss">
 </style>
