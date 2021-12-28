@@ -1,5 +1,5 @@
 <script setup>
-import { useCssModule, defineProps } from 'vue';
+import { useCssModule } from 'vue';
 
 const props = defineProps({
     tag: {
