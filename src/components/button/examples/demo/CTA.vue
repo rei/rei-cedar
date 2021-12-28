@@ -14,9 +14,7 @@
         :key="index2"
         :size="button.size"
         :full-width="button.fullWidth"
-        :disabled="button.disabled"
         :modifier="button.modifier"
-        :elevated="button.elevated"
         href="rei.com"
         tag="a"
       >
@@ -43,28 +41,24 @@ export default {
           buttons: [
             {
               label: 'Large Link',
-              disabled: false,
               size: 'large',
               fullWidth: false,
               modifier: 'link',
             },
             {
               label: 'Medium Link',
-              disabled: false,
               size: 'medium',
               fullWidth: false,
               modifier: 'link',
             },
             {
               label: 'Small Link',
-              disabled: false,
               size: 'small',
               fullWidth: false,
               modifier: 'link',
             },
             {
               label: 'Full-Width Link',
-              disabled: false,
               size: 'medium',
               fullWidth: true,
               modifier: 'link',
@@ -77,37 +71,26 @@ export default {
           buttons: [
             {
               label: 'Large Dark',
-              disabled: false,
               size: 'large',
               fullWidth: false,
               modifier: 'dark',
             },
             {
               label: 'Medium Dark',
-              disabled: false,
               size: 'medium',
               fullWidth: false,
               modifier: 'dark',
             },
             {
               label: 'Small Dark',
-              disabled: false,
               size: 'small',
               fullWidth: false,
               modifier: 'dark',
             },
             {
               label: 'Full-Width Dark',
-              disabled: false,
               size: 'medium',
               fullWidth: true,
-              modifier: 'dark',
-            },
-            {
-              label: 'Elevated Dark',
-              disabled: false,
-              size: 'medium',
-              elevated: true,
               modifier: 'dark',
             },
           ],
@@ -119,37 +102,26 @@ export default {
           buttons: [
             {
               label: 'Large Sale',
-              disabled: false,
               size: 'large',
               fullWidth: false,
               modifier: 'sale',
             },
             {
               label: 'Medium Sale',
-              disabled: false,
               size: 'medium',
               fullWidth: false,
               modifier: 'sale',
             },
             {
               label: 'Small Sale',
-              disabled: false,
               size: 'small',
               fullWidth: false,
               modifier: 'sale',
             },
             {
               label: 'Full-Width Sale',
-              disabled: false,
               size: 'medium',
               fullWidth: true,
-              modifier: 'sale',
-            },
-            {
-              label: 'Elevated Sale',
-              disabled: false,
-              size: 'medium',
-              elevated: true,
               modifier: 'sale',
             },
           ],
@@ -161,37 +133,26 @@ export default {
           buttons: [
             {
               label: 'Large Primary',
-              disabled: false,
               size: 'large',
               fullWidth: false,
               modifier: 'primary',
             },
             {
               label: 'Medium Primary',
-              disabled: false,
               size: 'medium',
               fullWidth: false,
               modifier: 'primary',
             },
             {
               label: 'Small Primary',
-              disabled: false,
               size: 'small',
               fullWidth: false,
               modifier: 'primary',
             },
             {
               label: 'Full-Width Primary',
-              disabled: false,
               size: 'medium',
               fullWidth: true,
-              modifier: 'primary',
-            },
-            {
-              label: 'Elevated Primary',
-              disabled: false,
-              size: 'medium',
-              elevated: true,
               modifier: 'primary',
             },
           ],
@@ -203,37 +164,26 @@ export default {
           buttons: [
             {
               label: 'Large Secondary',
-              disabled: false,
               size: 'large',
               fullWidth: false,
               modifier: 'secondary',
             },
             {
               label: 'Medium Secondary',
-              disabled: false,
               size: 'medium',
               fullWidth: false,
               modifier: 'secondary',
             },
             {
               label: 'Small Secondary',
-              disabled: false,
               size: 'small',
               fullWidth: false,
               modifier: 'secondary',
             },
             {
               label: 'Full-Width Secondary',
-              disabled: false,
               size: 'medium',
               fullWidth: true,
-              modifier: 'secondary',
-            },
-            {
-              label: 'Elevated Secondary',
-              disabled: false,
-              size: 'medium',
-              elevated: true,
               modifier: 'secondary',
             },
           ],

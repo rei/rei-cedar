@@ -19,34 +19,18 @@
     ========================================================================== */
   &--primary {
     @include cdr-button-primary-mixin;
-
-    &.cdr-button--elevated {
-      @include cdr-button-primary-elevated-mixin;
-    }
   }
 
   &--secondary {
     @include cdr-button-secondary-mixin;
-
-    &.cdr-button--elevated {
-      @include cdr-button-secondary-elevated-mixin;
-    }
   }
 
   &--dark {
     @include cdr-button-dark-mixin;
-
-    &.cdr-button--elevated {
-      @include cdr-button-dark-elevated-mixin;
-    }
   }
 
   &--sale {
     @include cdr-button-sale-mixin;
-
-    &.cdr-button--elevated {
-      @include cdr-button-sale-elevated-mixin;
-    }
   }
 
   &--link {
@@ -119,7 +103,7 @@
       @include cdr-button-large-mixin;
     }
 
-    &--fullWidth\@xs {
+    &--full-width\@xs {
       @include cdr-button-full-width-mixin;
     }
   }
@@ -140,7 +124,7 @@
       @include cdr-button-large-mixin;
     }
 
-    &--fullWidth\@sm {
+    &--full-width\@sm {
       @include cdr-button-full-width-mixin;
     }
   }
@@ -161,7 +145,7 @@
       @include cdr-button-large-mixin;
     }
 
-    &--fullWidth\@md {
+    &--full-width\@md {
       @include cdr-button-full-width-mixin;
     }
   }
@@ -183,7 +167,7 @@
       @include cdr-button-large-mixin;
     }
 
-    &--fullWidth\@lg {
+    &--full-width\@lg {
       @include cdr-button-full-width-mixin;
     }
   }
