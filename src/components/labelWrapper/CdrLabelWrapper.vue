@@ -19,7 +19,7 @@
 </template>
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
-import { buildClass } from '../../utils/buildClass';
+import { responsiveModifyClass } from '../../utils/buildClass';
 import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 
@@ -35,9 +35,9 @@ export default defineComponent({
   },
   setup(props) {
     const baseClass = 'cdr-label-wrapper';
-    const modifierClass = computed(() => buildClass(baseClass, props.modifier));
-    const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
-    const disabledClass = computed(() => props.disabled && buildClass(baseClass, 'disabled')); // TODO: this works right?
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+    const sizeClass = computed(() => props.size && responsiveModifyClass(baseClass, '', props.size));
+    const disabledClass = computed(() => props.disabled && `${baseClass}--disabled`); // TODO: this works right?
     return {
       style: useCssModule(),
       mapClasses,

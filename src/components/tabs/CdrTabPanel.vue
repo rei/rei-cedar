@@ -18,7 +18,6 @@
 import { defineComponent, useCssModule, computed, ref, inject, onBeforeMount } from 'vue';
 
 // TODO: PUT MODIFIER HERE!
-import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
@@ -57,7 +56,7 @@ export default defineComponent({
     const hidden = ref(true);
     const animationDirection = ref(null);
 
-    const modifierClass = computed(() => buildClass(baseClass, props.modifier));
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
 
     const setActive = (state) => {
       // TODO: provide/inject current active tab index or something?

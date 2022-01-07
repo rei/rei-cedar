@@ -124,7 +124,6 @@ import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
 import CdrFormError from '../formError/CdrFormError';
 import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
-import { buildClass } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
 
 export default defineComponent({
@@ -220,7 +219,7 @@ export default defineComponent({
     const postIconsClass = computed(() => hasPostIcons && 'cdr-input--posticons');
     const errorClass = computed(() => props.error && 'cdr-input--error');
     const backgroundClass = computed(() => `cdr-input--${props.background}`);
-    const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
     const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
 
     const describedby = computed(() => {

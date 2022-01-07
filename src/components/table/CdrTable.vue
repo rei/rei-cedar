@@ -21,7 +21,7 @@
 import { defineComponent, useCssModule, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
-import { buildClass, buildBooleanClass } from '../../utils/buildClass';
+import { buildBooleanClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
@@ -58,14 +58,14 @@ export default defineComponent({
   },
   setup(props) {
     const baseClass = 'cdr-table';
-    const sizeClass = computed(() => props.size && buildClass('cdr-table', props.size));
-    const stripedClass = computed(() => props.striped && buildClass('cdr-table', 'striped'));
-    const hoverClass = computed(() => props.hover && buildClass('cdr-table', 'hover'));
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const stripedClass = computed(() => props.striped && `${baseClass}--striped`);
+    const hoverClass = computed(() => props.hover && `${baseClass}--hover`);
     const borderClass = computed(() => props.border && !props.striped
-      && buildClass('cdr-table', 'border'));
+      && `${baseClass}--border`);
     const fullWidthClass = computed(() => props.fullWidth
       && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
-    const wrapperClass = computed(() => props.responsive && buildClass('cdr-table', 'responsive'));
+    const wrapperClass = computed(() => props.responsive && `${baseClass}--responsive`);
 
     return {
       style: useCssModule(),

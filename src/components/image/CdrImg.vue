@@ -35,7 +35,6 @@
 import { defineComponent, useCssModule, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
-import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
@@ -106,8 +105,8 @@ export default defineComponent({
     const baseClass = 'cdr-image';
     const ratioClass = 'cdr-image-ratio';
     const coverWrapperClass = 'cdr-image-ratio__cover';
-    const modifierClass = computed(() => buildClass(baseClass, props.modifier));
-    const radiusClass = computed(() => buildClass(baseClass, props.radius));
+    const modifierClass = computed(() => props.modifer && `${baseClass}--${props.modifer}`);
+    const radiusClass = computed(() => props.radius && `${baseClass}--${props.radius}`);
 
     const cropObject = computed(() => ({ objectPosition: props.crop }));
     const ratioObject = computed(() => {
@@ -123,8 +122,8 @@ export default defineComponent({
       return { '--ratio': ratioPct };
     });
 
-    const cropClass = computed(() => props.crop && buildClass(coverWrapperClass, 'crop'));
-    const coverClass = computed(() => props.cover && buildClass(coverWrapperClass, 'cover'));
+    const cropClass = computed(() => props.crop && `${coverWrapperClass}--crop`);
+    const coverClass = computed(() => props.cover && `${coverWrapperClass}--cover`);
 
     return {
       style: useCssModule(),

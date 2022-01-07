@@ -10,25 +10,6 @@ const modifyClassName = (base, modifier) => `${base}--${modifier}`;
  * @param {String} prop -- the prop to build classes from
  */
 
-// TODO PULL FULLWIDTH UTILITY INTO THIS!!!!!
-const buildClass = (baseClass, prop, propNamePrefix = false) => {
-  if (!prop) return undefined;
-  let propArgsArr = prop.split(' ').filter((x) => x);
-  let builtClasses = [];
-
-  if (propNamePrefix) {
-    /*
-      prefix class names with prop name
-    */
-    propArgsArr = propArgsArr.map((mod) => `${prop}${mod}`);
-  }
-
-  builtClasses = builtClasses
-    .concat(propArgsArr.map((mod) => modifyClassName(baseClass, mod)));
-
-  return builtClasses.join(' ');
-};
-
 /**
  * supports pattern to have props that are boolean or breakpoint strings
  *
@@ -43,6 +24,8 @@ const buildClass = (baseClass, prop, propNamePrefix = false) => {
  *
  * This takes that and returns classes of "cdr-table--full-width@sm cdr-table--full-width@lg"
  */
+
+// TODO: I think I want to swap the order of modifer and prop args here, currently passing an empty string for modifier half the time.
 const responsiveModifyClass = (base, modifier, prop) => {
   if (typeof prop === 'string') {
     return prop.split(' ')
@@ -61,7 +44,6 @@ const buildBooleanClass = (baseClass, prop, name) => {
 };
 
 export {
-  buildClass,
   modifyClassName,
   responsiveModifyClass,
   buildBooleanClass,

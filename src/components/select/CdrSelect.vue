@@ -103,7 +103,6 @@ import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
 import CdrFormError from '../formError/CdrFormError';
 import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
-import { buildClass } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
 
 export default defineComponent({
@@ -184,7 +183,7 @@ export default defineComponent({
     const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
     const errorClass = computed(() => props.error && 'cdr-select--error');
     const backgroundClass = computed(() => `cdr-select--${props.background}`);
-    const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
     const caretDisabledClass = computed(() => props.disabled && 'cdr-select__caret--disabled');
 
 

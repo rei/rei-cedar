@@ -3,7 +3,6 @@ import {
   useCssModule, computed, useSlots, ref, watch, onUpdated,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
-import { buildClass } from '../../utils/buildClass';
 import IconXSm from '../icon/comps/x-sm';
 import CdrButton from '../button/CdrButton';
 
@@ -40,7 +39,7 @@ const toastEl = ref(null);
 let timeout;
 let toastElement;
 
-const typeClass = computed(() => props.type && buildClass(baseClass, props.type));
+const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
 
 const openToast = (e) => {
   if (timeout) {
