@@ -13,8 +13,8 @@
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
 
-import { buildClass } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
+import { responsiveModifyClass } from '../..//utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
@@ -41,8 +41,8 @@ export default defineComponent({
     const baseClass = 'cdr-icon';
     const hideSr = !ctx.attrs['aria-label'] && !ctx.attrs['aria-labelledby'];
     const inheritColorClass = computed(() => props.inheritColor
-      && buildClass(baseClass, 'inherit-color'));
-    const sizeClass = computed(() => buildClass('cdr-icon', props.size));
+      && `${baseClass}--inherit-color`);
+    const sizeClass = computed(() => props.size && responsiveModifyClass(baseClass, '', props.size));
     const dataObj = {
       xmlns: 'http://www.w3.org/2000/svg',
       viewBox: '0 0 24 24',

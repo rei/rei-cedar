@@ -1,6 +1,6 @@
 <template>
   <li
-    :class="mapClasses(style, baseClass, modifierClass, compactClass, borderAlignedClass, focusedClass)"
+    :class="mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass)"
     :id="`${id}-accordion`"
   >
     <component
@@ -50,7 +50,7 @@ import {
   defineComponent, useCssModule, computed, watch, onMounted, ref, inject,
 } from 'vue';
 import IconCaretDown from '../icon/comps/caret-down';
-import { buildClass, modifyClassName } from '../../utils/buildClass';
+import { modifyClassName } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
 
 export default defineComponent({
@@ -132,8 +132,6 @@ export default defineComponent({
       return unwrap.value && unwrap.value.val ? modifyClassName('cdr-accordion', 'unwrap') : null;
     });
 
-    const modifierClass = computed(() => buildClass(baseClass, props.modifier));
-
     const iconClass = 'cdr-accordion__icon';
 
     const containerClass = 'cdr-accordion__content-container';
@@ -189,7 +187,6 @@ export default defineComponent({
       containerClass,
       isOpenClass,
       contentClass,
-      modifierClass,
       onClick,
       onFocus,
       onBlur,

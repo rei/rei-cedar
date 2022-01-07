@@ -40,7 +40,6 @@ import {
   useCssModule, computed, useSlots,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
-import { buildClass } from '../../utils/buildClass';
 
 const slots = useSlots();
 const props = defineProps({
@@ -55,9 +54,9 @@ const props = defineProps({
 });
 const baseClass = 'cdr-banner';
 const style = useCssModule();
-const typeClass = computed(() => props.type && buildClass(baseClass, props.type));
+const typeClass = computed(() => `${baseClass}--${props.type}`);
 const prominenceClass = computed(() => (slots['message-body']
-  ? buildClass(`${baseClass}__wrapper`, 'prominence')
+  ? `${baseClass}__wrapper--prominence`
   : undefined));
 const hasIconLeft = slots['icon-left'];
 const hasIconRight = slots['icon-right'];

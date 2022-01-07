@@ -61,7 +61,6 @@
 </template>
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
-import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
@@ -108,8 +107,8 @@ export default defineComponent({
   },
   setup(props) {
     const baseClass = 'cdr-rating';
-    const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
-    const linkedClass = computed(() => props.href && buildClass(baseClass, 'linked'));
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const linkedClass = computed(() => props.href && `${baseClass}--linked`);
     const emptyClass = computed(() => ((props.rounded > 0 || props.count > 0)
       ? 'cdr-rating__placeholder'
       : 'cdr-rating__placeholder--no-reviews'));

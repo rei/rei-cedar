@@ -85,7 +85,6 @@ const withBackgroundClass = computed(() => props.iconOnly
                        iconOnlyClass,
                        iconLeftClass,
                        iconRightClass,
-                       elevatedClass,
                        iconOnlyClass,
                        withBackgroundClass,
     )"

@@ -14,7 +14,6 @@
 import { defineComponent, useCssModule, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
-import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
@@ -51,7 +50,7 @@ export default defineComponent({
       return props.rel;
     });
     const baseClass = 'cdr-link';
-    const modifierClass = computed(() => props.modifier && buildClass(baseClass, props.modifier));
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
     const inheritColorClass = computed(() => props.inheritColor && 'cdr-link--inherit-color');
 
     return {

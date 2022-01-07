@@ -66,11 +66,6 @@
   </div>
 </template>
 <script>
-import { buildClass } from '../../utils/buildClass'
-
-
-
-
 import { defineComponent, useCssModule, computed, ref, onMounted, provide, nextTick } from 'vue';
 import debounce from 'lodash/debounce';
 import mapClasses from '../../utils/mapClasses';
@@ -117,8 +112,8 @@ export default defineComponent({
     const cdrTabsHeaderEl = ref(null);
 
     const baseClass = 'cdr-tabs';
-    const modifierClass = computed(() => buildClass('cdr-tabs', props.modifier));
-    const sizeClass = computed(() => props.size && buildClass('cdr-tabs', props.size));
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
 
     const underlineStyle = computed(() => {
       return {

@@ -23,7 +23,6 @@
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { buildClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
@@ -46,7 +45,7 @@ export default defineComponent({
   },
   setup(props) {
     const baseClass = 'cdr-quote';
-    const modifierClass = computed(() => buildClass(baseClass, props.modifier));
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
     return {
       style: useCssModule(),
       mapClasses,
