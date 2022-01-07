@@ -1,5 +1,3 @@
-
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 (function () {
     'use strict';
 
@@ -11678,12 +11676,20 @@
       _hoisted_2$W
     ];
 
-    function render$44(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$43(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3T, _hoisted_3$N))
     }
 
-    script$4c.render = render$44;
+    script$4c.render = render$43;
     script$4c.__file = "src/dev/App.vue";
+
+    function mapClasses(style) {
+      for (var _len = arguments.length, classes = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        classes[_key - 1] = arguments[_key];
+      }
+
+      return classes.reduce((acc, el) => acc.concat((el || '').split(' ')), []).map(className => style[className]).filter(x => x).join(' ');
+    } // TODO: make mapClasses available in every template?
 
     // TODO: make arg order consistent
 
@@ -11695,25 +11701,7 @@
      *
      * @param {String} prop -- the prop to build classes from
      */
-    // TODO PULL FULLWIDTH UTILITY INTO THIS!!!!!
 
-
-    const buildClass = function (baseClass, prop) {
-      let propNamePrefix = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-      if (!prop) return undefined;
-      let propArgsArr = prop.split(' ').filter(x => x);
-      let builtClasses = [];
-
-      if (propNamePrefix) {
-        /*
-          prefix class names with prop name
-        */
-        propArgsArr = propArgsArr.map(mod => "".concat(prop).concat(mod));
-      }
-
-      builtClasses = builtClasses.concat(propArgsArr.map(mod => modifyClassName(baseClass, mod)));
-      return builtClasses.join(' ');
-    };
     /**
      * supports pattern to have props that are boolean or breakpoint strings
      *
@@ -11728,6 +11716,7 @@
      *
      * This takes that and returns classes of "cdr-table--full-width@sm cdr-table--full-width@lg"
      */
+    // TODO: I think I want to swap the order of modifer and prop args here, currently passing an empty string for modifier half the time.
 
 
     const responsiveModifyClass = (base, modifier, prop) => {
@@ -11747,14 +11736,6 @@
       return responsiveModifyClass(baseClass, name, prop);
     };
     // buildclass name should reflect the prop type!!!!
-
-    function mapClasses(style) {
-      for (var _len = arguments.length, classes = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        classes[_key - 1] = arguments[_key];
-      }
-
-      return classes.reduce((acc, el) => acc.concat((el || '').split(' ')), []).map(className => style[className]).filter(x => x).join(' ');
-    } // TODO: make mapClasses available in every template?
 
     /**
      * Validates space separated string against an array of accepted values.
@@ -11806,8 +11787,8 @@
         const baseClass = 'cdr-icon';
         const hideSr = !ctx.attrs['aria-label'] && !ctx.attrs['aria-labelledby'];
         const inheritColorClass = computed(() => props.inheritColor
-          && buildClass(baseClass, 'inherit-color'));
-        const sizeClass = computed(() => buildClass('cdr-icon', props.size));
+          && `${baseClass}--inherit-color`);
+        const sizeClass = computed(() => props.size && responsiveModifyClass(baseClass, '', props.size));
         const dataObj = {
           xmlns: 'http://www.w3.org/2000/svg',
           viewBox: '0 0 24 24',
@@ -11830,7 +11811,7 @@
       },
     });
 
-    function render$43(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$42(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("svg", mergeProps(_ctx.dataObj, {
         class: _ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.sizeClass, _ctx.inheritColorClass)
       }), [
@@ -11848,7 +11829,7 @@
     const cssModules$y = script$4b.__cssModules = {};
     cssModules$y["$style"] = style0$y;
 
-    script$4b.render = render$43;
+    script$4b.render = render$42;
     script$4b.__file = "src/components/icon/CdrIcon.vue";
 
     var script$4a = defineComponent({
@@ -11868,7 +11849,7 @@
       d: "M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
     }, null, -1 /* HOISTED */);
 
-    function render$42(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$41(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_icon = resolveComponent("cdr-icon");
 
       return (openBlock(), createBlock(_component_cdr_icon, normalizeProps(guardReactiveProps(_ctx.props)), {
@@ -11880,7 +11861,7 @@
       }, 16 /* FULL_PROPS */))
     }
 
-    script$4a.render = render$42;
+    script$4a.render = render$41;
     script$4a.__file = "src/components/icon/comps/caret-down.vue";
 
     var script$49 = defineComponent({
@@ -11962,8 +11943,6 @@
           return unwrap.value && unwrap.value.val ? modifyClassName('cdr-accordion', 'unwrap') : null;
         });
 
-        const modifierClass = computed(() => buildClass(baseClass, props.modifier));
-
         const iconClass = 'cdr-accordion__icon';
 
         const containerClass = 'cdr-accordion__content-container';
@@ -12019,7 +11998,6 @@
           containerClass,
           isOpenClass,
           contentClass,
-          modifierClass,
           onClick,
           onFocus,
           onBlur,
@@ -12034,11 +12012,11 @@
     const _hoisted_3$M = ["id"];
     const _hoisted_4$J = ["aria-hidden", "id"];
 
-    function render$41(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$40(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
 
       return (openBlock(), createElementBlock("li", {
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.modifierClass, _ctx.compactClass, _ctx.borderAlignedClass, _ctx.focusedClass)),
+        class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.compactClass, _ctx.borderAlignedClass, _ctx.focusedClass)),
         id: `${_ctx.id}-accordion`
       }, [
         (openBlock(), createBlock(resolveDynamicComponent(_ctx.headingTag), {
@@ -12091,7 +12069,7 @@
     const cssModules$x = script$49.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$49.render = render$41;
+    script$49.render = render$40;
     script$49.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12731,7 +12709,7 @@
       },
     });
 
-    function render$40(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3$(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("ul", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         ref: "accordionGroupEl",
@@ -12747,7 +12725,7 @@
     const cssModules$w = script$48.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$48.render = render$40;
+    script$48.render = render$3$;
     script$48.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$47 = {
@@ -12769,9 +12747,9 @@
 
     const baseClass = 'cdr-banner';
     const style = useCssModule();
-    const typeClass = computed(() => props.type && buildClass(baseClass, props.type));
+    const typeClass = computed(() => `${baseClass}--${props.type}`);
     const prominenceClass = computed(() => (slots['message-body']
-      ? buildClass(`${baseClass}__wrapper`, 'prominence')
+      ? `${baseClass}__wrapper--prominence`
       : undefined));
     const hasIconLeft = slots['icon-left'];
     const hasIconRight = slots['icon-right'];
@@ -12912,7 +12890,7 @@
     const _hoisted_3$L = ["aria-controls", "aria-label"];
     const _hoisted_4$I = ["href", "onClick"];
 
-    function render$3$(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3_(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -12982,7 +12960,7 @@
     const cssModules$u = script$46.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$46.render = render$3$;
+    script$46.render = render$3_;
     script$46.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$45 = {
@@ -13070,7 +13048,6 @@
                            unref(iconOnlyClass),
                            unref(iconLeftClass),
                            unref(iconRightClass),
-                           _ctx.elevatedClass,
                            unref(iconOnlyClass),
                            unref(withBackgroundClass),
         )),
@@ -13146,25 +13123,23 @@
 
     script$44.__file = "src/components/caption/CdrCaption.vue";
 
-    var script$43 = defineComponent({
-      name: 'CdrCard',
+    var script$43 = {
       props: {
         tag: {
           type: String,
           default: 'article',
-        },
-      },
-      setup() {
-        return {
-          style: useCssModule(),
-          baseClass: 'cdr-card',
-        };
-      },
-    });
+        }
+    },
+      setup(__props) {
 
-    function render$3_(_ctx, _cache, $props, $setup, $data, $options) {
-      return (openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
-        class: normalizeClass(_ctx.style[_ctx.baseClass])
+
+
+    const baseClass = 'cdr-card';
+    const style = useCssModule();
+
+    return (_ctx, _cache) => {
+      return (openBlock(), createBlock(resolveDynamicComponent(__props.tag), {
+        class: normalizeClass(unref(style)[baseClass])
       }, {
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default")
@@ -13172,13 +13147,16 @@
         _: 3 /* FORWARDED */
       }, 8 /* PROPS */, ["class"]))
     }
+    }
+
+    };
 
     var style0$r = {"cdr-card":"cdr-card_13-0-0-alpha-3"};
 
     const cssModules$r = script$43.__cssModules = {};
     cssModules$r["$style"] = style0$r;
 
-    script$43.render = render$3_;
+
     script$43.__file = "src/components/card/CdrCard.vue";
 
     var backgroundProps = {
@@ -13199,9 +13177,9 @@
       },
       setup(props) {
         const baseClass = 'cdr-label-wrapper';
-        const modifierClass = computed(() => buildClass(baseClass, props.modifier));
-        const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
-        const disabledClass = computed(() => props.disabled && buildClass(baseClass, 'disabled')); // TODO: this works right?
+        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+        const sizeClass = computed(() => props.size && responsiveModifyClass(baseClass, '', props.size));
+        const disabledClass = computed(() => props.disabled && `${baseClass}--disabled`);
         return {
           style: useCssModule(),
           mapClasses,
@@ -19720,8 +19698,8 @@
         const baseClass = 'cdr-image';
         const ratioClass = 'cdr-image-ratio';
         const coverWrapperClass = 'cdr-image-ratio__cover';
-        const modifierClass = computed(() => buildClass(baseClass, props.modifier));
-        const radiusClass = computed(() => buildClass(baseClass, props.radius));
+        const modifierClass = computed(() => props.modifer && `${baseClass}--${props.modifer}`);
+        const radiusClass = computed(() => props.radius && `${baseClass}--${props.radius}`);
 
         const cropObject = computed(() => ({ objectPosition: props.crop }));
         const ratioObject = computed(() => {
@@ -19737,8 +19715,8 @@
           return { '--ratio': ratioPct };
         });
 
-        const cropClass = computed(() => props.crop && buildClass(coverWrapperClass, 'crop'));
-        const coverClass = computed(() => props.cover && buildClass(coverWrapperClass, 'cover'));
+        const cropClass = computed(() => props.crop && `${coverWrapperClass}--crop`);
+        const coverClass = computed(() => props.cover && `${coverWrapperClass}--cover`);
 
         return {
           style: useCssModule(),
@@ -20011,7 +19989,7 @@
         const postIconsClass = computed(() => hasPostIcons && 'cdr-input--posticons');
         const errorClass = computed(() => props.error && 'cdr-input--error');
         const backgroundClass = computed(() => `cdr-input--${props.background}`);
-        const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
+        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
         const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
 
         const describedby = computed(() => {
@@ -20253,7 +20231,7 @@
           return props.rel;
         });
         const baseClass = 'cdr-link';
-        const modifierClass = computed(() => props.modifier && buildClass(baseClass, props.modifier));
+        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
         const inheritColorClass = computed(() => props.inheritColor && 'cdr-link--inherit-color');
 
         return {
@@ -22071,7 +22049,7 @@
         const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
         const errorClass = computed(() => props.error && 'cdr-select--error');
         const backgroundClass = computed(() => `cdr-select--${props.background}`);
-        const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
+        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
         const caretDisabledClass = computed(() => props.disabled && 'cdr-select__caret--disabled');
 
 
@@ -23038,7 +23016,7 @@
       },
       setup(props) {
         const baseClass = 'cdr-quote';
-        const modifierClass = computed(() => buildClass(baseClass, props.modifier));
+        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
         return {
           style: useCssModule(),
           mapClasses,
@@ -23234,8 +23212,8 @@
       },
       setup(props) {
         const baseClass = 'cdr-rating';
-        const sizeClass = computed(() => props.size && buildClass(baseClass, props.size));
-        const linkedClass = computed(() => props.href && buildClass(baseClass, 'linked'));
+        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+        const linkedClass = computed(() => props.href && `${baseClass}--linked`);
         const emptyClass = computed(() => ((props.rounded > 0 || props.count > 0)
           ? 'cdr-rating__placeholder'
           : 'cdr-rating__placeholder--no-reviews'));
@@ -23409,14 +23387,14 @@
       },
       setup(props) {
         const baseClass = 'cdr-table';
-        const sizeClass = computed(() => props.size && buildClass('cdr-table', props.size));
-        const stripedClass = computed(() => props.striped && buildClass('cdr-table', 'striped'));
-        const hoverClass = computed(() => props.hover && buildClass('cdr-table', 'hover'));
+        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+        const stripedClass = computed(() => props.striped && `${baseClass}--striped`);
+        const hoverClass = computed(() => props.hover && `${baseClass}--hover`);
         const borderClass = computed(() => props.border && !props.striped
-          && buildClass('cdr-table', 'border'));
+          && `${baseClass}--border`);
         const fullWidthClass = computed(() => props.fullWidth
           && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
-        const wrapperClass = computed(() => props.responsive && buildClass('cdr-table', 'responsive'));
+        const wrapperClass = computed(() => props.responsive && `${baseClass}--responsive`);
 
         return {
           style: useCssModule(),
@@ -23494,7 +23472,7 @@
         const hidden = ref(true);
         const animationDirection = ref(null);
 
-        const modifierClass = computed(() => buildClass(baseClass, props.modifier));
+        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
 
         const setActive = (state) => {
           // TODO: provide/inject current active tab index or something?
@@ -23614,8 +23592,8 @@
         const cdrTabsHeaderEl = ref(null);
 
         const baseClass = 'cdr-tabs';
-        const modifierClass = computed(() => buildClass('cdr-tabs', props.modifier));
-        const sizeClass = computed(() => props.size && buildClass('cdr-tabs', props.size));
+        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
 
         const underlineStyle = computed(() => {
           return {
@@ -24012,7 +23990,7 @@
     let timeout;
     let toastElement;
 
-    const typeClass = computed(() => props.type && buildClass(baseClass, props.type));
+    const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
 
     const openToast = (e) => {
       if (timeout) {
