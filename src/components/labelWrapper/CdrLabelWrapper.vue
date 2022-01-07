@@ -37,7 +37,7 @@ export default defineComponent({
     const baseClass = 'cdr-label-wrapper';
     const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
     const sizeClass = computed(() => props.size && responsiveModifyClass(baseClass, '', props.size));
-    const disabledClass = computed(() => props.disabled && `${baseClass}--disabled`); // TODO: this works right?
+    const disabledClass = computed(() => props.disabled && `${baseClass}--disabled`);
     return {
       style: useCssModule(),
       mapClasses,
