@@ -1,3 +1,13 @@
+<script setup>
+import { useCssModule, useSlots } from 'vue';
+
+const slots = useSlots();
+const baseClass = 'cdr-chip';
+const style = useCssModule();
+const hasIconLeft = slots['icon-left'];
+const hasIconRight = slots['icon-right'];
+</script>
+
 <template>
   <button
     :class="style[baseClass]"
@@ -19,36 +29,6 @@
     </span>
   </button>
 </template>
-
-<script>
-import { defineComponent, useCssModule } from 'vue';
-import propValidator from '../../utils/propValidator';
-
-export default defineComponent({
-  name: 'CdrChip',
-  props: {
-    type: {
-      type: String,
-      validator: (value) => propValidator(
-        value,
-        ['info', 'warning', 'success', 'error'],
-      ),
-      default: 'info',
-    },
-  },
-  setup(props, ctx) {
-    const baseClass = 'cdr-chip';
-    const hasIconLeft = ctx.slots['icon-left'];
-    const hasIconRight = ctx.slots['icon-right'];
-    return {
-      style: useCssModule(),
-      baseClass,
-      hasIconLeft,
-      hasIconRight,
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrChip.module.scss">
 </style>
