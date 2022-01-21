@@ -11676,11 +11676,11 @@
       _hoisted_2$W
     ];
 
-    function render$43(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$41(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3T, _hoisted_3$N))
     }
 
-    script$4c.render = render$43;
+    script$4c.render = render$41;
     script$4c.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -11811,7 +11811,7 @@
       },
     });
 
-    function render$42(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$40(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("svg", mergeProps(_ctx.dataObj, {
         class: _ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.sizeClass, _ctx.inheritColorClass)
       }), [
@@ -11829,7 +11829,7 @@
     const cssModules$y = script$4b.__cssModules = {};
     cssModules$y["$style"] = style0$y;
 
-    script$4b.render = render$42;
+    script$4b.render = render$40;
     script$4b.__file = "src/components/icon/CdrIcon.vue";
 
     var script$4a = defineComponent({
@@ -11849,7 +11849,7 @@
       d: "M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
     }, null, -1 /* HOISTED */);
 
-    function render$41(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3$(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_icon = resolveComponent("cdr-icon");
 
       return (openBlock(), createBlock(_component_cdr_icon, normalizeProps(guardReactiveProps(_ctx.props)), {
@@ -11861,7 +11861,7 @@
       }, 16 /* FULL_PROPS */))
     }
 
-    script$4a.render = render$41;
+    script$4a.render = render$3$;
     script$4a.__file = "src/components/icon/comps/caret-down.vue";
 
     var script$49 = defineComponent({
@@ -12012,7 +12012,7 @@
     const _hoisted_3$M = ["id"];
     const _hoisted_4$J = ["aria-hidden", "id"];
 
-    function render$40(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3_(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
 
       return (openBlock(), createElementBlock("li", {
@@ -12069,7 +12069,7 @@
     const cssModules$x = script$49.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$49.render = render$40;
+    script$49.render = render$3_;
     script$49.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12709,7 +12709,7 @@
       },
     });
 
-    function render$3$(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3Z(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("ul", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         ref: "accordionGroupEl",
@@ -12725,7 +12725,7 @@
     const cssModules$w = script$48.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$48.render = render$3$;
+    script$48.render = render$3Z;
     script$48.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$47 = {
@@ -12890,7 +12890,7 @@
     const _hoisted_3$L = ["aria-controls", "aria-label"];
     const _hoisted_4$I = ["href", "onClick"];
 
-    function render$3_(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3Y(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -12960,7 +12960,7 @@
     const cssModules$u = script$46.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$46.render = render$3_;
+    script$46.render = render$3Y;
     script$46.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$45 = {
@@ -13191,7 +13191,7 @@
       },
     });
 
-    function render$3Z(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3X(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style['cdr-label-wrapper__container'])
       }, [
@@ -13222,7 +13222,7 @@
     const cssModules$q = script$42.__cssModules = {};
     cssModules$q["$style"] = style0$q;
 
-    script$42.render = render$3Z;
+    script$42.render = render$3X;
     script$42.__file = "src/components/labelWrapper/CdrLabelWrapper.vue";
 
     var sizeProps = {
@@ -13308,7 +13308,7 @@
 
     const _hoisted_1$3P = ["checked", "true-value", "false-value", "value", "indeterminate"];
 
-    function render$3Y(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$3W(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_label_wrapper = resolveComponent("cdr-label-wrapper");
 
       return (openBlock(), createBlock(_component_cdr_label_wrapper, {
@@ -13345,74 +13345,60 @@
     const cssModules$p = script$41.__cssModules = {};
     cssModules$p["$style"] = style0$p;
 
-    script$41.render = render$3Y;
+    script$41.render = render$3W;
     script$41.__file = "src/components/checkbox/CdrCheckbox.vue";
 
-    var script$40 = defineComponent({
-      name: 'CdrChip',
-      props: {
-        type: {
-          type: String,
-          validator: (value) => validateProp(
-            value,
-            ['info', 'warning', 'success', 'error'],
-          ),
-          default: 'info',
-        },
-      },
-      setup(props, ctx) {
-        const baseClass = 'cdr-chip';
-        const hasIconLeft = ctx.slots['icon-left'];
-        const hasIconRight = ctx.slots['icon-right'];
-        return {
-          style: useCssModule(),
-          baseClass,
-          hasIconLeft,
-          hasIconRight,
-        };
-      },
-    });
+    var script$40 = {
+      setup(__props) {
 
-    function render$3X(_ctx, _cache, $props, $setup, $data, $options) {
+    const slots = useSlots();
+    const baseClass = 'cdr-chip';
+    const style = useCssModule();
+    const hasIconLeft = slots['icon-left'];
+    const hasIconRight = slots['icon-right'];
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("button", {
-        class: normalizeClass(_ctx.style[_ctx.baseClass])
+        class: normalizeClass(unref(style)[baseClass])
       }, [
-        (_ctx.hasIconLeft)
+        (unref(hasIconLeft))
           ? (openBlock(), createElementBlock("span", {
               key: 0,
-              class: normalizeClass(_ctx.style['cdr-chip__icon-left'])
+              class: normalizeClass(unref(style)['cdr-chip__icon-left'])
             }, [
               renderSlot(_ctx.$slots, "icon-left")
             ], 2 /* CLASS */))
           : createCommentVNode("v-if", true),
-        (_ctx.hasIconRight)
+        (unref(hasIconRight))
           ? (openBlock(), createElementBlock("span", {
               key: 1,
-              class: normalizeClass(_ctx.style['cdr-chip__icon-right'])
+              class: normalizeClass(unref(style)['cdr-chip__icon-right'])
             }, [
               renderSlot(_ctx.$slots, "icon-right")
             ], 2 /* CLASS */))
           : createCommentVNode("v-if", true),
         createBaseVNode("span", {
-          class: normalizeClass(_ctx.style['cdr-chip__content'])
+          class: normalizeClass(unref(style)['cdr-chip__content'])
         }, [
           renderSlot(_ctx.$slots, "default")
         ], 2 /* CLASS */)
       ], 2 /* CLASS */))
     }
+    }
+
+    };
 
     var style0$o = {"cdr-chip":"cdr-chip_13-0-0-alpha-3","cdr-chip__icon-left":"cdr-chip__icon-left_13-0-0-alpha-3","cdr-chip__icon-right":"cdr-chip__icon-right_13-0-0-alpha-3","cdr-chip__content":"cdr-chip__content_13-0-0-alpha-3"};
 
     const cssModules$o = script$40.__cssModules = {};
     cssModules$o["$style"] = style0$o;
 
-    script$40.render = render$3X;
+
     script$40.__file = "src/components/chip/CdrChip.vue";
 
-    var script$3$ = defineComponent({
-      name: 'CdrChipGroup',
+    var script$3$ = {
       props: {
-        label: {
+      label: {
           type: String,
           required: true,
         },
@@ -13420,105 +13406,104 @@
           type: Boolean,
           default: true,
         },
-      },
-      setup(props) {
-        const baseClass = 'cdr-chip-group';
+    },
+      setup(__props) {
 
-        const chipsEl = ref(null);
+    const props = __props;
 
-        let chips = [];
-        let currentIdx = ref(0);
 
-        const nextIdx = computed(() => {
-          const idx = currentIdx + 1;
-          return idx >= chips.length ? 0 : idx;
-        });
-        const prevIdx = computed(() => {
-          const idx = currentIdx - 1;
-          return idx <= -1 ? (chips.length - 1) : idx;
-        });
-        const legendClass = computed(() => (props.hideLabel
-          ? 'cdr-chip-group__legend--hidden'
-          : 'cdr-chip-group__legend'));
 
-        onMounted(() => {
-          chips = Array.prototype.filter.call(chipsEl.value.children,
-            (chip) => !(chip.getAttribute('disabled') || chip.getAttribute('aria-disabled')));
-          currentIdx.value = Array.prototype.findIndex.call(chips,
-            (chip) => chip.getAttribute('aria-checked') === 'true');
-        });
+    const baseClass = 'cdr-chip-group';
+    const style = useCssModule();
+    const chipsEl = ref(null);
 
-        const handleKeydown = (e) => {
-          // something besides the button is focused
-          if (currentIdx.value === -1) return;
+    let chips = [];
+    let currentIdx = ref(0);
 
-          const { key } = e;
-          switch (key) {
-            case 'Home':
-              e.preventDefault();
-              chips[0].focus();
-              break;
-            case 'End':
-              e.preventDefault();
-              chips[chips.length - 1].focus();
-              break;
-            case 'ArrowDown':
-            case 'Down':
-              e.preventDefault();
-              chips[nextIdx.value].focus();
-              break;
-            case 'ArrowUp':
-            case 'Up':
-              e.preventDefault();
-              chips[prevIdx.value].focus();
-              break;
-          }
-        };
-        const handleFocusin = (e) => {
-          // find out which, if any, button is focused
-          currentIdx.value = Array.prototype.indexOf.call(chips, e.target);
-        };
-        return {
-          style: useCssModule(),
-          baseClass,
-          legendClass,
-          handleKeydown,
-          handleFocusin,
-          chipsEl,
-          currentIdx,
-          chips,
-        };
-      },
+    const nextIdx = computed(() => {
+      const idx = currentIdx + 1;
+      return idx >= chips.length ? 0 : idx;
+    });
+    const prevIdx = computed(() => {
+      const idx = currentIdx - 1;
+      return idx <= -1 ? (chips.length - 1) : idx;
+    });
+    const legendClass = computed(() => (props.hideLabel
+      ? 'cdr-chip-group__legend--hidden'
+      : 'cdr-chip-group__legend'));
+
+    onMounted(() => {
+      chips = Array.prototype.filter.call(chipsEl.value.children,
+        (chip) => !(chip.getAttribute('disabled') || chip.getAttribute('aria-disabled')));
+      currentIdx.value = Array.prototype.findIndex.call(chips,
+        (chip) => chip.getAttribute('aria-checked') === 'true');
     });
 
-    function render$3W(_ctx, _cache, $props, $setup, $data, $options) {
+    const handleKeyDown = (e) => {
+      // something besides the button is focused
+      if (currentIdx.value === -1) return;
+
+      const { key } = e;
+      switch (key) {
+        case 'Home':
+          e.preventDefault();
+          chips[0].focus();
+          break;
+        case 'End':
+          e.preventDefault();
+          chips[chips.length - 1].focus();
+          break;
+        case 'ArrowDown':
+        case 'Down':
+          e.preventDefault();
+          chips[nextIdx.value].focus();
+          break;
+        case 'ArrowUp':
+        case 'Up':
+          e.preventDefault();
+          chips[prevIdx.value].focus();
+          break;
+      }
+    };
+    const handleFocusIn = (e) => {
+      // find out which, if any, button is focused
+      currentIdx.value = Array.prototype.indexOf.call(chips, e.target);
+    };
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("fieldset", {
-        class: normalizeClass(_ctx.style[_ctx.baseClass]),
-        onFocusin: _cache[0] || (_cache[0] = (...args) => (_ctx.focusin && _ctx.focusin(...args))),
-        onKeydown: _cache[1] || (_cache[1] = (...args) => (_ctx.handleKeyDown && _ctx.handleKeyDown(...args)))
+        class: normalizeClass(unref(style)[baseClass]),
+        onFocusin: handleFocusIn,
+        onKeydown: handleKeyDown
       }, [
         createBaseVNode("legend", {
-          class: normalizeClass(_ctx.style[_ctx.legendClass])
+          class: normalizeClass(unref(style)[unref(legendClass)])
         }, [
           renderSlot(_ctx.$slots, "label", {}, () => [
-            createTextVNode(toDisplayString(_ctx.label), 1 /* TEXT */)
+            createTextVNode(toDisplayString(__props.label), 1 /* TEXT */)
           ])
         ], 2 /* CLASS */),
         createBaseVNode("div", {
-          ref: "chipsEl",
-          class: normalizeClass(_ctx.style['cdr-chip-group__content'])
+          ref: (_value, _refs) => {
+            _refs['chipsEl'] = _value;
+            chipsEl.value = _value;
+          },
+          class: normalizeClass(unref(style)['cdr-chip-group__content'])
         }, [
           renderSlot(_ctx.$slots, "default")
         ], 2 /* CLASS */)
       ], 34 /* CLASS, HYDRATE_EVENTS */))
     }
+    }
+
+    };
 
     var style0$n = {"cdr-chip-group":"cdr-chip-group_13-0-0-alpha-3","cdr-chip-group__content":"cdr-chip-group__content_13-0-0-alpha-3","cdr-chip-group__legend--hidden":"cdr-chip-group__legend--hidden_13-0-0-alpha-3","cdr-chip-group__legend":"cdr-chip-group__legend_13-0-0-alpha-3"};
 
     const cssModules$n = script$3$.__cssModules = {};
     cssModules$n["$style"] = style0$n;
 
-    script$3$.render = render$3W;
+
     script$3$.__file = "src/components/chip/CdrChipGroup.vue";
 
     var script$3_ = {
