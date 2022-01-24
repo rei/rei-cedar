@@ -1656,9 +1656,15 @@ input[type="month"] {
   position: absolute;
   left: 0.8rem;
 }
+.cdr-chip__icon-left_13-0-0-alpha-3 svg {
+  fill: inherit;
+}
 .cdr-chip__icon-right_13-0-0-alpha-3 {
   position: absolute;
   right: 0.8rem;
+}
+.cdr-chip__icon-right_13-0-0-alpha-3 svg {
+  fill: inherit;
 }
 .cdr-chip__icon-left_13-0-0-alpha-3 ~ .cdr-chip__content_13-0-0-alpha-3 {
   margin-left: 1.6rem;
