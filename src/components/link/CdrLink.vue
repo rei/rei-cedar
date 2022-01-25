@@ -1,24 +1,9 @@
-<template>
-  <component
-    :is="tag"
-    :class="mapClasses(style, baseClass, modifierClass, inheritColorClass)"
-    :target="target"
-    :rel="computedRel"
-    :href="computedHref"
-  >
-    <slot />
-  </component>
-</template>
-
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
-
+<script setup>
+import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
-export default defineComponent({
-  name: 'CdrLink',
-  props: {
+const props = defineProps({
     tag: {
       type: String,
       default: 'a',
@@ -40,31 +25,33 @@ export default defineComponent({
     target: String,
     /** @ignore */
     rel: String,
-  },
-  setup(props) {
-    const computedHref = computed(() => (props.tag === 'a' ? props.href : null));
-    const computedRel = computed(() => {
-      if (props.target === '_blank') {
-        return props.rel || 'noopener noreferrer';
-      }
-      return props.rel;
-    });
-    const baseClass = 'cdr-link';
-    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
-    const inheritColorClass = computed(() => props.inheritColor && 'cdr-link--inherit-color');
-
-    return {
-      style: useCssModule(),
-      mapClasses,
-      computedHref,
-      computedRel,
-      baseClass,
-      modifierClass,
-      inheritColorClass,
-    };
-  },
 });
+const baseClass = 'cdr-link';
+const style = useCssModule();
+
+const computedHref = computed(() => (props.tag === 'a' ? props.href : null));
+const computedRel = computed(() => {
+  if (props.target === '_blank') {
+    return props.rel || 'noopener noreferrer';
+  }
+  return props.rel;
+});
+
+const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+const inheritColorClass = computed(() => props.inheritColor && 'cdr-link--inherit-color');
 </script>
+
+<template>
+  <component
+    :is="tag"
+    :class="mapClasses(style, baseClass, modifierClass, inheritColorClass)"
+    :target="target"
+    :rel="computedRel"
+    :href="computedHref"
+  >
+    <slot />
+  </component>
+</template>
 
 <style lang="scss" module src="./styles/CdrLink.module.scss">
 </style>
