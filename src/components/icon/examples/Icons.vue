@@ -41,48 +41,39 @@
     <hr class="icon-hr">
     <cdr-text>Using Sprite</cdr-text>
     <!-- TODO: eradicate rows -->
-    <cdr-row
-      cols="3 6@md 10@lg"
-    >
-      <cdr-col
-        v-for="(val, key) in filteredIcons"
-        :key="key"
-      >
-        <div>
-          <div class="center">
-            <cdr-icon :use="`#${getSpriteId(key)}`" />
-            <cdr-text>{{ getSpriteId(key) }}</cdr-text>
-          </div>
-        </div>
-      </cdr-col>
-    </cdr-row>
 
-    <hr class="icon-hr">
+    <cdr-grid
+      class="icon-grid"
+    >
+      <div v-for="(val, key) in filteredIcons" :key="key">
+        <div class="center">
+          <cdr-icon :use="`#${getSpriteId(key)}`" />
+          <cdr-text>{{ getSpriteId(key) }}</cdr-text>
+        </div>
+      </div>
+    </cdr-grid>
+
+    <hr class="icon-hr" />
 
     <cdr-text>Using Inline Components</cdr-text>
-    <cdr-row
-      cols="3 6@md 10@lg"
+
+    <cdr-grid
+      class="icon-grid"
     >
-      <cdr-col
-        v-for="(val, key) in filteredIcons"
-        :key="key"
-      >
-        <div>
-          <div class="center">
-            <component :is="key" />
-            <cdr-text>{{ getSpriteId(key) }}</cdr-text>
-          </div>
+      <div v-for="(val, key) in filteredIcons" :key="key">
+        <div class="center">
+          <component :is="key" />
+          <cdr-text>{{ getSpriteId(key) }}</cdr-text>
         </div>
-      </cdr-col>
-    </cdr-row>
+      </div>
+    </cdr-grid>
 
     <hr class="icon-hr">
     <h4>
       Container with pink fill color
     </h4>
     <div class="inherit-container">
-      <cdr-row cols="2">
-        <cdr-col>
+      <cdr-grid style="grid-template-columns: 1fr 1fr">
           <div>
             <span>Icon with inherit-color</span>
             <cdr-icon
@@ -90,16 +81,13 @@
               inherit-color
             />
           </div>
-        </cdr-col>
-        <cdr-col>
           <div>
             <span>Icon WITHOUT inherit-color</span>
             <cdr-icon
               use="#account-profile"
             />
           </div>
-        </cdr-col>
-      </cdr-row>
+      </cdr-grid>
     </div>
     <hr class="icon-hr">
   </div>
@@ -139,6 +127,9 @@ export default {
 </script>
 
 <style lang="scss">
+  .icon-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
   .icon-examples {
     line-height: 1;
 
