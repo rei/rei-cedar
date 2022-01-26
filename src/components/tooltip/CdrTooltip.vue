@@ -94,7 +94,7 @@ onMounted(() => {
       :id="id"
       @closed="closeTooltip"
     >
-      <slot ref="popupEl"/>
+      <slot />
     </cdr-popup>
   </div>
 </template>
