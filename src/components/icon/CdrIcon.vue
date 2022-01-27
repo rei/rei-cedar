@@ -6,7 +6,7 @@
     <slot />
     <use
       v-if="use"
-      v-bind="useAttributes"
+      v-bind="hrefAttrs"
     />
   </svg>
 </template>
@@ -48,7 +48,7 @@ const dataObj = {
 };
 if (hideSr) dataObj['aria-hidden'] = true;
 
-const useAttributes = {
+const hrefAttrs = {
   href: props.use,
   'xlink:href': props.use,
 };
