@@ -11,7 +11,7 @@
   </svg>
 </template>
 <script setup>
-import { useCssModule, useAttrs, computed, defineProps } from 'vue';
+import { useCssModule, useAttrs, computed } from 'vue';
 
 import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../..//utils/buildClass';
