@@ -128,7 +128,9 @@ export default {
 
 <style lang="scss">
   .icon-grid {
+    margin: 5rem 0;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 7.2rem 3.2rem;
   }
   .icon-examples {
     line-height: 1;

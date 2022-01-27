@@ -5,18 +5,8 @@
   <path role="presentation" d="M20 17a1 1 0 010 2H4a1 1 0 010-2h16zm0-6a1 1 0 010 2H4a1 1 0 010-2h16zm0-6a1 1 0 010 2H4a1 1 0 110-2h16z"></path>
 </cdr-icon>
 </template>
-<script>
-  import { defineComponent } from 'vue';
+<script setup>
+  import { defineProps } from 'vue';
   import CdrIcon from '../CdrIcon';
-  export default defineComponent({
-    name: 'IconNavigationMenu',
-    components: {
-      CdrIcon,
-    },
-    setup(props) {
-      return {
-        props
-      };
-    },
-  });
+  const props = defineProps();
 </script>
