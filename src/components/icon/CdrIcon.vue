@@ -6,7 +6,7 @@
     <slot />
     <use
       v-if="use"
-      v-bind="useAttrs"
+      v-bind="useAttributes"
     />
   </svg>
 </template>
