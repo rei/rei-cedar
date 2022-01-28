@@ -11679,11 +11679,11 @@
       _hoisted_2$W
     ];
 
-    function render$1d(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$1c(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3T, _hoisted_3$N))
     }
 
-    script$4c.render = render$1d;
+    script$4c.render = render$1c;
     script$4c.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -12013,7 +12013,7 @@
     const _hoisted_3$M = ["id"];
     const _hoisted_4$J = ["aria-hidden", "id"];
 
-    function render$1c(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$1b(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
 
       return (openBlock(), createElementBlock("li", {
@@ -12070,7 +12070,7 @@
     const cssModules$x = script$49.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$49.render = render$1c;
+    script$49.render = render$1b;
     script$49.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12710,7 +12710,7 @@
       },
     });
 
-    function render$1b(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$1a(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("ul", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         ref: "accordionGroupEl",
@@ -12726,7 +12726,7 @@
     const cssModules$w = script$48.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$48.render = render$1b;
+    script$48.render = render$1a;
     script$48.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$47 = {
@@ -12891,7 +12891,7 @@
     const _hoisted_3$L = ["aria-controls", "aria-label"];
     const _hoisted_4$I = ["href", "onClick"];
 
-    function render$1a(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$19(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -12961,7 +12961,7 @@
     const cssModules$u = script$46.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$46.render = render$1a;
+    script$46.render = render$19;
     script$46.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$45 = {
@@ -13192,7 +13192,7 @@
       },
     });
 
-    function render$19(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style['cdr-label-wrapper__container'])
       }, [
@@ -13223,7 +13223,7 @@
     const cssModules$q = script$42.__cssModules = {};
     cssModules$q["$style"] = style0$q;
 
-    script$42.render = render$19;
+    script$42.render = render$18;
     script$42.__file = "src/components/labelWrapper/CdrLabelWrapper.vue";
 
     var sizeProps = {
@@ -13309,7 +13309,7 @@
 
     const _hoisted_1$3P = ["checked", "true-value", "false-value", "value", "indeterminate"];
 
-    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_label_wrapper = resolveComponent("cdr-label-wrapper");
 
       return (openBlock(), createBlock(_component_cdr_label_wrapper, {
@@ -13346,7 +13346,7 @@
     const cssModules$p = script$41.__cssModules = {};
     cssModules$p["$style"] = style0$p;
 
-    script$41.render = render$18;
+    script$41.render = render$17;
     script$41.__file = "src/components/checkbox/CdrCheckbox.vue";
 
     var script$40 = {
@@ -13578,7 +13578,7 @@
 
     const _hoisted_1$3O = /*#__PURE__*/createTextVNode();
 
-    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         role: "status",
@@ -13599,7 +13599,7 @@
     const cssModules$l = script$3Z.__cssModules = {};
     cssModules$l["$style"] = style0$l;
 
-    script$3Z.render = render$17;
+    script$3Z.render = render$16;
     script$3Z.__file = "src/components/formError/CdrFormError.vue";
 
     var script$3Y = defineComponent({
@@ -13651,7 +13651,7 @@
       "aria-label": "required"
     };
 
-    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_form_error = resolveComponent("cdr-form-error");
 
       return (openBlock(), createElementBlock("fieldset", {
@@ -13699,7 +13699,7 @@
     const cssModules$k = script$3Y.__cssModules = {};
     cssModules$k["$style"] = style0$k;
 
-    script$3Y.render = render$16;
+    script$3Y.render = render$15;
     script$3Y.__file = "src/components/formGroup/CdrFormGroup.vue";
 
     var script$3X = {
@@ -19616,152 +19616,141 @@
         IconZoomOut: script$1a
     });
 
-    var script$19 = defineComponent({
-      name: 'CdrImg',
-      inheritAttrs: false,
-      props: {
-        /**
-         * Required. Image source url.
-         */
-        src: {
-          type: String,
-          required: true,
-        },
-        /**
-         * Required. Image alt text.
-         */
-        alt: {
-          type: String,
-          default: '',
-        },
-        /**
-         * Aspect ratio of the media container. {auto, square, 1-2, 2-3, 3-4, 9-16, 2-1, 3-2, 4-3, 16-9}
-         */
-        ratio: {
-          type: String,
-          validator: (value) => ([
-            'auto',
-            'square',
-            '1-2',
-            '2-3',
-            '3-4',
-            '9-16',
-            '2-1',
-            '3-2',
-            '4-3',
-            '16-9'].indexOf(value) >= 0) || false,
-        },
-        /**
-         * Requires a `ratio`. Area to crop the image overflow to. {left, center, right} {top, center, bottom}
-         */
-        crop: {
-          type: String,
-        },
-        /**
-         * Requires a `ratio`. Scale the image to be as large as possible to fill the area (background-position: cover;)
-         */
-        cover: {
-          type: Boolean,
-        },
-        /**
-         * Sets a border radius to an element {square, top, right, bottom, left}
-         */
-        radius: {
-          type: String,
-          validator: (value) => ([
-            'circle',
-            'rounded'].indexOf(value) >= 0) || false,
-        },
-
-        modifier: {
-          type: String,
-          default: '',
-          validator: (value) => validateProp(value, ['', 'responsive']),
-        },
-      },
-
-      setup(props) {
-        const baseClass = 'cdr-image';
-        const ratioClass = 'cdr-image-ratio';
-        const coverWrapperClass = 'cdr-image-ratio__cover';
-        const modifierClass = computed(() => props.modifer && `${baseClass}--${props.modifer}`);
-        const radiusClass = computed(() => props.radius && `${baseClass}--${props.radius}`);
-
-        const cropObject = computed(() => ({ objectPosition: props.crop }));
-        const ratioObject = computed(() => {
-          let ratioPct;
-          if (props.ratio === 'square') {
-            ratioPct = '100%';
-          } else if (props.ratio === 'auto') {
-            ratioPct = '0';
-          } else {
-            const [x, y] = props.ratio.split('-');
-            ratioPct = `${(y / x) * 100}%`;
-          }
-          return { '--ratio': ratioPct };
-        });
-
-        const cropClass = computed(() => props.crop && `${coverWrapperClass}--crop`);
-        const coverClass = computed(() => props.cover && `${coverWrapperClass}--cover`);
-
-        return {
-          style: useCssModule(),
-          baseClass,
-          ratioClass,
-          coverWrapperClass,
-          modifierClass,
-          radiusClass,
-          cropObject,
-          ratioObject,
-          cropClass,
-          coverClass,
-          mapClasses,
-        };
-      },
-    });
-
     const _hoisted_1$$ = ["src", "alt"];
     const _hoisted_2$S = ["src", "alt"];
 
-    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
-      return (_ctx.ratio)
+    var script$19 = {
+      props: {
+      /**
+       * Required. Image source url.
+       */
+      src: {
+        type: String,
+        required: true,
+      },
+      /**
+       * Required. Image alt text.
+       */
+      alt: {
+        type: String,
+        default: '',
+      },
+      /**
+       * Aspect ratio of the media container. {auto, square, 1-2, 2-3, 3-4, 9-16, 2-1, 3-2, 4-3, 16-9}
+       */
+      ratio: {
+        type: String,
+        validator: (value) => ([
+          'auto',
+          'square',
+          '1-2',
+          '2-3',
+          '3-4',
+          '9-16',
+          '2-1',
+          '3-2',
+          '4-3',
+          '16-9'].indexOf(value) >= 0) || false,
+      },
+      /**
+       * Requires a `ratio`. Area to crop the image overflow to. {left, center, right} {top, center, bottom}
+       */
+      crop: {
+        type: String,
+      },
+      /**
+       * Requires a `ratio`. Scale the image to be as large as possible to fill the area (background-position: cover;)
+       */
+      cover: {
+        type: Boolean,
+      },
+      /**
+       * Sets a border radius to an element {square, top, right, bottom, left}
+       */
+      radius: {
+        type: String,
+        validator: (value) => ([
+          'circle',
+          'rounded'].indexOf(value) >= 0) || false,
+      },
+
+      modifier: {
+        type: String,
+        default: '',
+        validator: (value) => validateProp(value, ['', 'responsive']),
+      }  
+    },
+      setup(__props) {
+
+    const props = __props;
+
+
+    const style = useCssModule();
+    const baseClass = 'cdr-image';
+    const ratioClass = 'cdr-image-ratio';
+    const coverWrapperClass = 'cdr-image-ratio__cover';
+    const modifierClass = computed(() => props.modifer && `${baseClass}--${props.modifer}`);
+    const radiusClass = computed(() => props.radius && `${baseClass}--${props.radius}`);
+    const cropObject = computed(() => ({ objectPosition: props.crop }));
+    const ratioObject = computed(() => {
+      let ratioPct;
+      if (props.ratio === 'square') {
+        ratioPct = '100%';
+      } else if (props.ratio === 'auto') {
+        ratioPct = '0';
+      } else {
+        const [x, y] = props.ratio.split('-');
+        ratioPct = `${(y / x) * 100}%`;
+      }
+      return { '--ratio': ratioPct };
+    });
+
+    const cropClass = computed(() => props.crop && `${coverWrapperClass}--crop`);
+    const coverClass = computed(() => props.cover && `${coverWrapperClass}--cover`);
+
+
+    return (_ctx, _cache) => {
+      return (__props.ratio)
         ? (openBlock(), createElementBlock("div", {
             key: 0,
-            style: normalizeStyle(_ctx.ratioObject),
-            class: normalizeClass(_ctx.style[_ctx.ratioClass])
+            style: normalizeStyle(unref(ratioObject)),
+            class: normalizeClass(unref(style)[ratioClass])
           }, [
             createBaseVNode("img", mergeProps({
-              style: _ctx.cropObject,
-              class: _ctx.mapClasses(_ctx.style,
-                             _ctx.baseClass,
-                             _ctx.modifierClass,
-                             _ctx.radiusClass,
-                             _ctx.coverWrapperClass,
-                             _ctx.cropClass,
-                             _ctx.coverClass,
+              style: unref(cropObject),
+              class: unref(mapClasses)(unref(style),
+                             baseClass,
+                             unref(modifierClass),
+                             unref(radiusClass),
+                             coverWrapperClass,
+                             unref(cropClass),
+                             unref(coverClass),
           ),
-              src: _ctx.src,
-              alt: _ctx.alt
+              src: __props.src,
+              alt: __props.alt
             }, _ctx.$attrs), null, 16 /* FULL_PROPS */, _hoisted_1$$)
           ], 6 /* CLASS, STYLE */))
         : (openBlock(), createElementBlock("img", mergeProps({
             key: 1,
-            class: _ctx.mapClasses(_ctx.style,
-                           _ctx.baseClass,
-                           _ctx.modifierClass,
-                           _ctx.radiusClass,
+            class: unref(mapClasses)(unref(style),
+                           baseClass,
+                           unref(modifierClass),
+                           unref(radiusClass),
         ),
-            src: _ctx.src,
-            alt: _ctx.alt
+            src: __props.src,
+            alt: __props.alt
           }, _ctx.$attrs), null, 16 /* FULL_PROPS */, _hoisted_2$S))
     }
+    }
+
+    };
 
     var style0$i = {"cdr-image":"cdr-image_13-0-0-alpha-3","cdr-image--responsive":"cdr-image--responsive_13-0-0-alpha-3","cdr-image--rounded":"cdr-image--rounded_13-0-0-alpha-3","cdr-image--circle":"cdr-image--circle_13-0-0-alpha-3","cdr-image-ratio":"cdr-image-ratio_13-0-0-alpha-3","cdr-image-ratio__cover":"cdr-image-ratio__cover_13-0-0-alpha-3","cdr-image-ratio__cover--crop":"cdr-image-ratio__cover--crop_13-0-0-alpha-3","cdr-image-ratio__cover--cover":"cdr-image-ratio__cover--cover_13-0-0-alpha-3"};
 
     const cssModules$i = script$19.__cssModules = {};
     cssModules$i["$style"] = style0$i;
 
-    script$19.render = render$15;
+
     script$19.__file = "src/components/image/CdrImg.vue";
 
     var script$18 = defineComponent({
