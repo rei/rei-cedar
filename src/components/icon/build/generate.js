@@ -39,6 +39,11 @@ Object.keys(iconData).forEach(function (name) {
 </template>
 <script setup>
   import CdrIcon from '../CdrIcon';
+  const props = defineProps({
+    props: {
+      type: Object,
+    },
+  })
 </script>
 `;
 
