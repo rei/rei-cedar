@@ -11679,11 +11679,11 @@
       _hoisted_2$W
     ];
 
-    function render$1b(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$1a(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3S, _hoisted_3$N))
     }
 
-    script$4c.render = render$1b;
+    script$4c.render = render$1a;
     script$4c.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -12013,7 +12013,7 @@
     const _hoisted_3$M = ["id"];
     const _hoisted_4$J = ["aria-hidden", "id"];
 
-    function render$1a(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$19(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
 
       return (openBlock(), createElementBlock("li", {
@@ -12070,7 +12070,7 @@
     const cssModules$x = script$49.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$49.render = render$1a;
+    script$49.render = render$19;
     script$49.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12710,7 +12710,7 @@
       },
     });
 
-    function render$19(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("ul", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         ref: "accordionGroupEl",
@@ -12726,7 +12726,7 @@
     const cssModules$w = script$48.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$48.render = render$19;
+    script$48.render = render$18;
     script$48.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$47 = {
@@ -12891,7 +12891,7 @@
     const _hoisted_3$L = ["aria-controls", "aria-label"];
     const _hoisted_4$I = ["href", "onClick"];
 
-    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -12961,7 +12961,7 @@
     const cssModules$u = script$46.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$46.render = render$18;
+    script$46.render = render$17;
     script$46.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$45 = {
@@ -13192,7 +13192,7 @@
       },
     });
 
-    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style['cdr-label-wrapper__container'])
       }, [
@@ -13223,7 +13223,7 @@
     const cssModules$q = script$42.__cssModules = {};
     cssModules$q["$style"] = style0$q;
 
-    script$42.render = render$17;
+    script$42.render = render$16;
     script$42.__file = "src/components/labelWrapper/CdrLabelWrapper.vue";
 
     var sizeProps = {
@@ -13232,106 +13232,97 @@
       validator: value => validateProp(value, ['small', 'medium', 'large'])
     };
 
-    var script$41 = defineComponent({
-      name: 'CdrCheckbox',
-      components: {
-        CdrLabelWrapper: script$42,
-      },
-      inheritAttrs: false,
-      props: {
-        /**
-         * Class that is added to the label for custom styles
-         */
-        labelClass: String,
-        /**
-         * Class that is added to the input for custom styles
-         */
-        inputClass: String,
-        /**
-         * Class that is added to the slot wrapper for custom styles
-         */
-        contentClass: String,
-        /**
-         * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
-        */
-        indeterminate: {
-          type: Boolean,
-          default: false,
-        },
-        /**
-         * The value when checked.
-        */
-        trueValue: {
-          type: [String, Number, Boolean, Object, Array, Symbol, Function],
-          default: true,
-        },
-        /**
-         * The value when unchecked.
-        */
-        falseValue: {
-          type: [String, Number, Boolean, Object, Array, Symbol, Function],
-          default: false,
-        },
-        /**
-         * The value when used in a checkbox group. Replaces `trueValue` and `falseValue`.
-        */
-        customValue: [String, Number, Boolean, Object, Array, Symbol, Function],
-        // Set which background type the input renders on
-        background: backgroundProps,
-        size: sizeProps,
-
-        modifier: {
-          type: String,
-          default: '',
-          validator: (value) => validateProp(value, ['', 'hide-figure']),
-        },
-        /** @ignore */
-        modelValue: {
-          type: [String, Number, Boolean, Object, Array, Symbol, Function],
-        },
-      },
-      setup(props) {
-        const baseClass = 'cdr-checkbox';
-
-        const newValue = ref(props.modelValue);
-
-        watch(() => props.value, (val) => {
-          newValue.value = val;
-        });
-
-        return {
-          style: useCssModule(),
-          baseClass,
-          newValue,
-        };
-      },
-    });
-
     const _hoisted_1$3O = ["checked", "true-value", "false-value", "value", "indeterminate"];
 
-    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
-      const _component_cdr_label_wrapper = resolveComponent("cdr-label-wrapper");
 
-      return (openBlock(), createBlock(_component_cdr_label_wrapper, {
-        class: normalizeClass(_ctx.style[_ctx.baseClass]),
-        size: _ctx.size,
-        modifier: _ctx.modifier,
-        "label-class": _ctx.labelClass,
-        "content-class": _ctx.contentClass,
-        background: _ctx.background,
+    var script$41 = {
+      props: {
+      /**
+       * Class that is added to the label for custom styles
+       */
+      labelClass: String,
+      /**
+       * Class that is added to the input for custom styles
+       */
+      inputClass: String,
+      /**
+       * Class that is added to the slot wrapper for custom styles
+       */
+      contentClass: String,
+      /**
+       * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
+      */
+      indeterminate: {
+        type: Boolean,
+        default: false,
+      },
+      /**
+       * The value when checked.
+      */
+      trueValue: {
+        type: [String, Number, Boolean, Object, Array, Symbol, Function],
+        default: true,
+      },
+      /**
+       * The value when unchecked.
+      */
+      falseValue: {
+        type: [String, Number, Boolean, Object, Array, Symbol, Function],
+        default: false,
+      },
+      /**
+       * The value when used in a checkbox group. Replaces `trueValue` and `falseValue`.
+      */
+      customValue: [String, Number, Boolean, Object, Array, Symbol, Function],
+      // Set which background type the input renders on
+      background: backgroundProps,
+      size: sizeProps,
+
+      modifier: {
+        type: String,
+        default: '',
+        validator: (value) => validateProp(value, ['', 'hide-figure']),
+      },
+      /** @ignore */
+      modelValue: {
+        type: [String, Number, Boolean, Object, Array, Symbol, Function],
+      }
+    },
+      setup(__props) {
+
+    const props = __props;
+
+
+
+    const style = useCssModule();
+    const baseClass = 'cdr-checkbox';
+    const newValue = ref(props.modelValue);
+
+    watch(() => props.value, (val) => {
+      newValue.value = val;
+    });
+
+    return (_ctx, _cache) => {
+      return (openBlock(), createBlock(unref(script$42), {
+        class: normalizeClass(unref(style)[baseClass]),
+        size: __props.size,
+        modifier: __props.modifier,
+        "label-class": __props.labelClass,
+        "content-class": __props.contentClass,
+        background: __props.background,
         disabled: _ctx.$attrs.disabled
       }, {
         input: withCtx(() => [
           createBaseVNode("input", mergeProps({
-            class: [_ctx.style['cdr-checkbox__input'], _ctx.inputClass],
+            class: [unref(style)['cdr-checkbox__input'], __props.inputClass],
             type: "checkbox"
           }, _ctx.$attrs, {
-            checked: _ctx.newValue,
+            checked: newValue.value,
             onChange: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.checked, $event))),
-            "true-value": _ctx.customValue ? null : _ctx.trueValue,
-            "false-value": _ctx.customValue ? null : _ctx.falseValue,
-            value: _ctx.customValue,
-            indeterminate: _ctx.indeterminate
+            "true-value": __props.customValue ? null : __props.trueValue,
+            "false-value": __props.customValue ? null : __props.falseValue,
+            value: __props.customValue,
+            indeterminate: __props.indeterminate
           }), null, 16 /* FULL_PROPS */, _hoisted_1$3O)
         ]),
         default: withCtx(() => [
@@ -13340,13 +13331,16 @@
         _: 3 /* FORWARDED */
       }, 8 /* PROPS */, ["class", "size", "modifier", "label-class", "content-class", "background", "disabled"]))
     }
+    }
+
+    };
 
     var style0$p = {"cdr-checkbox":"cdr-checkbox_13-0-0-alpha-3","cdr-checkbox__input":"cdr-checkbox__input_13-0-0-alpha-3","cdr-label-wrapper__figure":"cdr-label-wrapper__figure_13-0-0-alpha-3"};
 
     const cssModules$p = script$41.__cssModules = {};
     cssModules$p["$style"] = style0$p;
 
-    script$41.render = render$16;
+
     script$41.__file = "src/components/checkbox/CdrCheckbox.vue";
 
     var script$40 = {
@@ -24500,15 +24494,15 @@
     const _hoisted_28$b = /*#__PURE__*/createTextVNode(" REI.com ");
     const _hoisted_29$9 = /*#__PURE__*/createTextVNode(" adventure projects ");
     const _hoisted_30$8 = /*#__PURE__*/createTextVNode(" stewardship ");
-    const _hoisted_31$8 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
-    const _hoisted_32$8 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
-    const _hoisted_33$8 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
-    const _hoisted_34$8 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
-    const _hoisted_35$8 = /*#__PURE__*/createBaseVNode("h3", null, " Unwrapped Standalone ", -1 /* HOISTED */);
-    const _hoisted_36$7 = /*#__PURE__*/createTextVNode(" A short label ");
-    const _hoisted_37$5 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
-    const _hoisted_38$4 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
-    const _hoisted_39$3 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
+    const _hoisted_31$7 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_32$7 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
+    const _hoisted_33$7 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
+    const _hoisted_34$7 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
+    const _hoisted_35$7 = /*#__PURE__*/createBaseVNode("h3", null, " Unwrapped Standalone ", -1 /* HOISTED */);
+    const _hoisted_36$6 = /*#__PURE__*/createTextVNode(" A short label ");
+    const _hoisted_37$4 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
+    const _hoisted_38$3 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
+    const _hoisted_39$2 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
     const _hoisted_40$2 = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
     const _hoisted_41$2 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
     const _hoisted_42$2 = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
@@ -24701,14 +24695,14 @@
                 onAccordionToggle: _cache[4] || (_cache[4] = $event => ($data.accordionCompact2 = !$data.accordionCompact2))
               }, {
                 label: withCtx(() => [
-                  _hoisted_31$8
+                  _hoisted_31$7
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_list, { tag: "ol" }, {
                     default: withCtx(() => [
-                      _hoisted_32$8,
-                      _hoisted_33$8,
-                      _hoisted_34$8
+                      _hoisted_32$7,
+                      _hoisted_33$7,
+                      _hoisted_34$7
                     ]),
                     _: 1 /* STABLE */
                   })
@@ -24719,7 +24713,7 @@
             _: 1 /* STABLE */
           })
         ]),
-        _hoisted_35$8,
+        _hoisted_35$7,
         createVNode(_component_cdr_accordion_group, { unwrap: "@md @lg" }, {
           default: withCtx(() => [
             createVNode(_component_cdr_accordion, {
@@ -24729,19 +24723,19 @@
               onAccordionToggle: _cache[5] || (_cache[5] = $event => ($data.accordionDefault = !$data.accordionDefault))
             }, {
               label: withCtx(() => [
-                _hoisted_36$7
+                _hoisted_36$6
               ]),
               default: withCtx(() => [
                 createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
                   default: withCtx(() => [
-                    _hoisted_37$5,
+                    _hoisted_37$4,
                     createVNode(_component_cdr_text, {
                       tag: "strong",
                       class: "cdr-text-dev--body-strong-300"
                     }, {
                       default: withCtx(() => [
-                        _hoisted_38$4,
-                        _hoisted_39$3
+                        _hoisted_38$3,
+                        _hoisted_39$2
                       ]),
                       _: 1 /* STABLE */
                     }),
@@ -25640,15 +25634,15 @@
     const _hoisted_28$a = /*#__PURE__*/createTextVNode(" Full Width Icon Left ");
     const _hoisted_29$8 = /*#__PURE__*/createTextVNode(" Full Width Icon Right ");
     const _hoisted_30$7 = { class: "button-example inset" };
-    const _hoisted_31$7 = {
+    const _hoisted_31$6 = {
       class: "button-text-wrap",
       style: {"max-width":"300px"}
     };
-    const _hoisted_32$7 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the left)! ");
-    const _hoisted_33$7 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the right)! ");
-    const _hoisted_34$7 = { class: "button-example inset" };
-    const _hoisted_35$7 = /*#__PURE__*/createBaseVNode("h3", null, " Icon only button ", -1 /* HOISTED */);
-    const _hoisted_36$6 = { class: "button-example inset dark" };
+    const _hoisted_32$6 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the left)! ");
+    const _hoisted_33$6 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the right)! ");
+    const _hoisted_34$6 = { class: "button-example inset" };
+    const _hoisted_35$6 = /*#__PURE__*/createBaseVNode("h3", null, " Icon only button ", -1 /* HOISTED */);
+    const _hoisted_36$5 = { class: "button-example inset dark" };
 
     function render$M(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_check_lg = resolveComponent("icon-check-lg");
@@ -25868,7 +25862,7 @@
           })
         ]),
         createBaseVNode("div", _hoisted_30$7, [
-          createBaseVNode("div", _hoisted_31$7, [
+          createBaseVNode("div", _hoisted_31$6, [
             createVNode(_component_cdr_button, {
               size: "medium",
               modifier: "secondary"
@@ -25879,7 +25873,7 @@
                   use: "#twitter"
                 }),
                 createCommentVNode(" eslint-disable-next-line "),
-                _hoisted_32$7
+                _hoisted_32$6
               ]),
               _: 1 /* STABLE */
             }),
@@ -25894,14 +25888,14 @@
                   use: "#twitter"
                 }),
                 createCommentVNode(" eslint-disable-next-line "),
-                _hoisted_33$7
+                _hoisted_33$6
               ]),
               _: 1 /* STABLE */
             })
           ])
         ]),
-        createBaseVNode("div", _hoisted_34$7, [
-          _hoisted_35$7,
+        createBaseVNode("div", _hoisted_34$6, [
+          _hoisted_35$6,
           createVNode(_component_cdr_button, {
             "icon-only": true,
             "full-width": true,
@@ -25969,7 +25963,7 @@
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_36$6, [
+        createBaseVNode("div", _hoisted_36$5, [
           createVNode(_component_cdr_button, {
             "icon-only": true,
             "with-background": true,
@@ -26364,34 +26358,25 @@
     const _hoisted_9$q = /*#__PURE__*/createTextVNode("large");
     const _hoisted_10$o = /*#__PURE__*/createTextVNode("responsive");
     const _hoisted_11$n = /*#__PURE__*/createTextVNode("single");
-    const _hoisted_12$n = /*#__PURE__*/createTextVNode("single compact");
-    const _hoisted_13$m = { "data-backstop": "checkbox-checked" };
-    const _hoisted_14$m = /*#__PURE__*/createTextVNode("checked");
-    const _hoisted_15$k = /*#__PURE__*/createTextVNode("checked compact");
-    const _hoisted_16$k = /*#__PURE__*/createTextVNode("custom true");
-    const _hoisted_17$i = /*#__PURE__*/createTextVNode("A");
-    const _hoisted_18$g = /*#__PURE__*/createTextVNode("B");
-    const _hoisted_19$f = /*#__PURE__*/createTextVNode("C");
-    const _hoisted_20$c = /*#__PURE__*/createTextVNode("D");
-    const _hoisted_21$c = /*#__PURE__*/createTextVNode("E");
-    const _hoisted_22$c = /*#__PURE__*/createTextVNode("F");
-    const _hoisted_23$c = /*#__PURE__*/createTextVNode("A compact");
-    const _hoisted_24$a = /*#__PURE__*/createTextVNode("B compact");
-    const _hoisted_25$a = /*#__PURE__*/createTextVNode("C compact");
-    const _hoisted_26$a = /*#__PURE__*/createTextVNode(" disabled checkbox ");
-    const _hoisted_27$9 = /*#__PURE__*/createTextVNode("disabled and checked checkbox");
-    const _hoisted_28$9 = /*#__PURE__*/createTextVNode("disabled checkbox compact");
-    const _hoisted_29$7 = /*#__PURE__*/createTextVNode("disabled and checked checkbox compact");
-    const _hoisted_30$6 = { class: "wrap" };
-    const _hoisted_31$6 = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing ");
-    const _hoisted_32$6 = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
-    const _hoisted_33$6 = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
-    const _hoisted_34$6 = /*#__PURE__*/createTextVNode("indeterminate compact (not functional)");
-    const _hoisted_35$6 = /*#__PURE__*/createTextVNode("indeterminate compact (not functional)");
-    const _hoisted_36$5 = /*#__PURE__*/createTextVNode(" Hidden box ");
-    const _hoisted_37$4 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
-    const _hoisted_38$3 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
-    const _hoisted_39$2 = /*#__PURE__*/createTextVNode(" Select All ");
+    const _hoisted_12$n = { "data-backstop": "checkbox-checked" };
+    const _hoisted_13$m = /*#__PURE__*/createTextVNode("checked");
+    const _hoisted_14$m = /*#__PURE__*/createTextVNode("custom true");
+    const _hoisted_15$k = /*#__PURE__*/createTextVNode("A");
+    const _hoisted_16$k = /*#__PURE__*/createTextVNode("B");
+    const _hoisted_17$i = /*#__PURE__*/createTextVNode("C");
+    const _hoisted_18$g = /*#__PURE__*/createTextVNode("D");
+    const _hoisted_19$f = /*#__PURE__*/createTextVNode("E");
+    const _hoisted_20$c = /*#__PURE__*/createTextVNode("F");
+    const _hoisted_21$c = /*#__PURE__*/createTextVNode(" disabled checkbox ");
+    const _hoisted_22$c = /*#__PURE__*/createTextVNode("disabled and checked checkbox");
+    const _hoisted_23$c = { class: "wrap" };
+    const _hoisted_24$a = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing ");
+    const _hoisted_25$a = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
+    const _hoisted_26$a = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
+    const _hoisted_27$9 = /*#__PURE__*/createTextVNode(" Hidden box ");
+    const _hoisted_28$9 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
+    const _hoisted_29$7 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
+    const _hoisted_30$6 = /*#__PURE__*/createTextVNode(" Select All ");
 
     function render$F(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_checkbox = resolveComponent("cdr-checkbox");
@@ -26493,43 +26478,21 @@
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "onChange"]),
-        createVNode(_component_cdr_checkbox, {
-          modifier: "compact",
-          modelValue: $data.ex1,
-          "onUpdate:modelValue": _cache[9] || (_cache[9] = $event => (($data.ex1) = $event))
-        }, {
-          default: withCtx(() => [
-            _hoisted_12$n
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
         createVNode(_component_cdr_text, null, {
           default: withCtx(() => [
             createTextVNode("single: " + toDisplayString($data.ex1), 1 /* TEXT */)
           ]),
           _: 1 /* STABLE */
         }),
-        createBaseVNode("div", _hoisted_13$m, [
+        createBaseVNode("div", _hoisted_12$n, [
           createVNode(_component_cdr_checkbox, {
             modelValue: $data.ex2,
-            "onUpdate:modelValue": _cache[10] || (_cache[10] = $event => (($data.ex2) = $event)),
+            "onUpdate:modelValue": _cache[9] || (_cache[9] = $event => (($data.ex2) = $event)),
             "true-value": "checked",
             "false-value": "unchecked"
           }, {
             default: withCtx(() => [
-              _hoisted_14$m
-            ]),
-            _: 1 /* STABLE */
-          }, 8 /* PROPS */, ["modelValue"]),
-          createVNode(_component_cdr_checkbox, {
-            modifier: "compact",
-            modelValue: $data.ex2,
-            "onUpdate:modelValue": _cache[11] || (_cache[11] = $event => (($data.ex2) = $event)),
-            "true-value": "checked",
-            "false-value": "unchecked"
-          }, {
-            default: withCtx(() => [
-              _hoisted_15$k
+              _hoisted_13$m
             ]),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"])
@@ -26542,11 +26505,11 @@
         }),
         createVNode(_component_cdr_checkbox, {
           modelValue: $data.ex3,
-          "onUpdate:modelValue": _cache[12] || (_cache[12] = $event => (($data.ex3) = $event)),
+          "onUpdate:modelValue": _cache[10] || (_cache[10] = $event => (($data.ex3) = $event)),
           "true-value": "checked"
         }, {
           default: withCtx(() => [
-            _hoisted_16$k
+            _hoisted_14$m
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -26559,6 +26522,26 @@
         createVNode(_component_cdr_checkbox, {
           "custom-value": "A",
           modelValue: $data.exGroup,
+          "onUpdate:modelValue": _cache[11] || (_cache[11] = $event => (($data.exGroup) = $event))
+        }, {
+          default: withCtx(() => [
+            _hoisted_15$k
+          ]),
+          _: 1 /* STABLE */
+        }, 8 /* PROPS */, ["modelValue"]),
+        createVNode(_component_cdr_checkbox, {
+          "custom-value": "B",
+          modelValue: $data.exGroup,
+          "onUpdate:modelValue": _cache[12] || (_cache[12] = $event => (($data.exGroup) = $event))
+        }, {
+          default: withCtx(() => [
+            _hoisted_16$k
+          ]),
+          _: 1 /* STABLE */
+        }, 8 /* PROPS */, ["modelValue"]),
+        createVNode(_component_cdr_checkbox, {
+          "custom-value": "C",
+          modelValue: $data.exGroup,
           "onUpdate:modelValue": _cache[13] || (_cache[13] = $event => (($data.exGroup) = $event))
         }, {
           default: withCtx(() => [
@@ -26567,7 +26550,7 @@
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
         createVNode(_component_cdr_checkbox, {
-          "custom-value": "B",
+          "custom-value": {value:'D'},
           modelValue: $data.exGroup,
           "onUpdate:modelValue": _cache[14] || (_cache[14] = $event => (($data.exGroup) = $event))
         }, {
@@ -26577,7 +26560,7 @@
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
         createVNode(_component_cdr_checkbox, {
-          "custom-value": "C",
+          "custom-value": $data.testVal,
           modelValue: $data.exGroup,
           "onUpdate:modelValue": _cache[15] || (_cache[15] = $event => (($data.exGroup) = $event))
         }, {
@@ -26585,9 +26568,9 @@
             _hoisted_19$f
           ]),
           _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
+        }, 8 /* PROPS */, ["custom-value", "modelValue"]),
         createVNode(_component_cdr_checkbox, {
-          "custom-value": {value:'D'},
+          "custom-value": $data.testVal2,
           modelValue: $data.exGroup,
           "onUpdate:modelValue": _cache[16] || (_cache[16] = $event => (($data.exGroup) = $event))
         }, {
@@ -26595,60 +26578,7 @@
             _hoisted_20$c
           ]),
           _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        createVNode(_component_cdr_checkbox, {
-          "custom-value": $data.testVal,
-          modelValue: $data.exGroup,
-          "onUpdate:modelValue": _cache[17] || (_cache[17] = $event => (($data.exGroup) = $event))
-        }, {
-          default: withCtx(() => [
-            _hoisted_21$c
-          ]),
-          _: 1 /* STABLE */
         }, 8 /* PROPS */, ["custom-value", "modelValue"]),
-        createVNode(_component_cdr_checkbox, {
-          "custom-value": $data.testVal2,
-          modelValue: $data.exGroup,
-          "onUpdate:modelValue": _cache[18] || (_cache[18] = $event => (($data.exGroup) = $event))
-        }, {
-          default: withCtx(() => [
-            _hoisted_22$c
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["custom-value", "modelValue"]),
-        createVNode(_component_cdr_checkbox, {
-          "custom-value": "A",
-          modifier: "compact",
-          modelValue: $data.exGroup,
-          "onUpdate:modelValue": _cache[19] || (_cache[19] = $event => (($data.exGroup) = $event))
-        }, {
-          default: withCtx(() => [
-            _hoisted_23$c
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        createVNode(_component_cdr_checkbox, {
-          "custom-value": "B",
-          modifier: "compact",
-          modelValue: $data.exGroup,
-          "onUpdate:modelValue": _cache[20] || (_cache[20] = $event => (($data.exGroup) = $event))
-        }, {
-          default: withCtx(() => [
-            _hoisted_24$a
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        createVNode(_component_cdr_checkbox, {
-          "custom-value": "C",
-          modifier: "compact",
-          modelValue: $data.exGroup,
-          "onUpdate:modelValue": _cache[21] || (_cache[21] = $event => (($data.exGroup) = $event))
-        }, {
-          default: withCtx(() => [
-            _hoisted_25$a
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
         createVNode(_component_cdr_text, null, {
           default: withCtx(() => [
             createTextVNode("group: " + toDisplayString($data.exGroup), 1 /* TEXT */)
@@ -26657,55 +26587,35 @@
         }),
         createVNode(_component_cdr_checkbox, { disabled: "" }, {
           default: withCtx(() => [
-            _hoisted_26$a
+            _hoisted_21$c
           ]),
           _: 1 /* STABLE */
         }),
         createVNode(_component_cdr_checkbox, {
           modelValue: $data.checked,
-          "onUpdate:modelValue": _cache[22] || (_cache[22] = $event => (($data.checked) = $event)),
+          "onUpdate:modelValue": _cache[17] || (_cache[17] = $event => (($data.checked) = $event)),
           disabled: ""
         }, {
           default: withCtx(() => [
-            _hoisted_27$9
+            _hoisted_22$c
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        createVNode(_component_cdr_checkbox, {
-          disabled: "",
-          modifier: "compact"
-        }, {
-          default: withCtx(() => [
-            _hoisted_28$9
-          ]),
-          _: 1 /* STABLE */
-        }),
-        createVNode(_component_cdr_checkbox, {
-          modelValue: $data.checked,
-          "onUpdate:modelValue": _cache[23] || (_cache[23] = $event => (($data.checked) = $event)),
-          disabled: "",
-          modifier: "compact"
-        }, {
-          default: withCtx(() => [
-            _hoisted_29$7
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        createBaseVNode("div", _hoisted_30$6, [
+        createBaseVNode("div", _hoisted_23$c, [
           createVNode(_component_cdr_checkbox, {
             name: "complex1",
             modelValue: $data.complex1,
-            "onUpdate:modelValue": _cache[24] || (_cache[24] = $event => (($data.complex1) = $event))
+            "onUpdate:modelValue": _cache[18] || (_cache[18] = $event => (($data.complex1) = $event))
           }, {
             default: withCtx(() => [
-              _hoisted_31$6
+              _hoisted_24$a
             ]),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"])
         ]),
         createVNode(_component_cdr_checkbox, { indeterminate: "" }, {
           default: withCtx(() => [
-            _hoisted_32$6
+            _hoisted_25$a
           ]),
           _: 1 /* STABLE */
         }),
@@ -26714,59 +26624,43 @@
           disabled: ""
         }, {
           default: withCtx(() => [
-            _hoisted_33$6
-          ]),
-          _: 1 /* STABLE */
-        }),
-        createVNode(_component_cdr_checkbox, {
-          indeterminate: "",
-          modifier: "compact"
-        }, {
-          default: withCtx(() => [
-            _hoisted_34$6
-          ]),
-          _: 1 /* STABLE */
-        }),
-        createVNode(_component_cdr_checkbox, {
-          indeterminate: "",
-          disabled: "",
-          modifier: "compact"
-        }, {
-          default: withCtx(() => [
-            _hoisted_35$6
+            _hoisted_26$a
           ]),
           _: 1 /* STABLE */
         }),
         createVNode(_component_cdr_checkbox, { modifier: "hide-figure" }, {
           default: withCtx(() => [
-            _hoisted_36$5
+            _hoisted_27$9
           ]),
           _: 1 /* STABLE */
         }),
         createVNode(_component_cdr_checkbox, {
           modifier: "hide-figure",
           modelValue: $data.complex2,
-          "onUpdate:modelValue": _cache[25] || (_cache[25] = $event => (($data.complex2) = $event)),
+          "onUpdate:modelValue": _cache[19] || (_cache[19] = $event => (($data.complex2) = $event)),
           "input-class": "no-box",
           "content-class": "no-box__content"
         }, {
           default: withCtx(() => [
-            _hoisted_37$4
+            _hoisted_28$9
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        _hoisted_38$3,
-        createVNode(_component_cdr_form_group, { label: "Choose your toppings" }, {
+        _hoisted_29$7,
+        createVNode(_component_cdr_form_group, {
+          id: "toppings-form",
+          label: "Choose your toppings"
+        }, {
           default: withCtx(() => [
             createVNode(_component_cdr_checkbox, {
               modelValue: $data.allSelected,
-              "onUpdate:modelValue": _cache[26] || (_cache[26] = $event => (($data.allSelected) = $event)),
+              "onUpdate:modelValue": _cache[20] || (_cache[20] = $event => (($data.allSelected) = $event)),
               indeterminate: $options.isIndeterminate,
               onChange: $options.selectAll,
               "aria-controls": "toppings"
             }, {
               default: withCtx(() => [
-                _hoisted_39$2
+                _hoisted_30$6
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "indeterminate", "onChange"]),
@@ -26782,7 +26676,7 @@
                   }, [
                     createVNode(_component_cdr_checkbox, {
                       modelValue: $data.selected,
-                      "onUpdate:modelValue": _cache[27] || (_cache[27] = $event => (($data.selected) = $event)),
+                      "onUpdate:modelValue": _cache[21] || (_cache[21] = $event => (($data.selected) = $event)),
                       "custom-value": c,
                       name: "toppings",
                       "aria-labelledby": "toppings"
