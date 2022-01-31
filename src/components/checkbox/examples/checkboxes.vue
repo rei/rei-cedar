@@ -41,10 +41,6 @@
       v-model="ex1"
       @change="logChange"
     >single</cdr-checkbox>
-    <cdr-checkbox
-      modifier="compact"
-      v-model="ex1"
-    >single compact</cdr-checkbox>
     <cdr-text>single: {{ ex1 }}</cdr-text>
 
     <div data-backstop="checkbox-checked">
@@ -53,12 +49,6 @@
         true-value="checked"
         false-value="unchecked"
       >checked</cdr-checkbox>
-      <cdr-checkbox
-        modifier="compact"
-        v-model="ex2"
-        true-value="checked"
-        false-value="unchecked"
-      >checked compact</cdr-checkbox>
     </div>
     <cdr-text>checked: {{ ex2 }}</cdr-text>
 
@@ -93,21 +83,6 @@
       v-model="exGroup"
     >F</cdr-checkbox>
 
-    <cdr-checkbox
-      custom-value="A"
-      modifier="compact"
-      v-model="exGroup"
-    >A compact</cdr-checkbox>
-    <cdr-checkbox
-      custom-value="B"
-      modifier="compact"
-      v-model="exGroup"
-    >B compact</cdr-checkbox>
-    <cdr-checkbox
-      custom-value="C"
-      modifier="compact"
-      v-model="exGroup"
-    >C compact</cdr-checkbox>
     <cdr-text>group: {{ exGroup }}</cdr-text>
 
     <cdr-checkbox disabled>
@@ -117,15 +92,6 @@
       v-model="checked"
       disabled
     >disabled and checked checkbox</cdr-checkbox>
-    <cdr-checkbox
-      disabled
-      modifier="compact"
-    >disabled checkbox compact</cdr-checkbox>
-    <cdr-checkbox
-      v-model="checked"
-      disabled
-      modifier="compact"
-    >disabled and checked checkbox compact</cdr-checkbox>
 
     <div class="wrap">
       <cdr-checkbox
@@ -142,15 +108,6 @@
       indeterminate
       disabled
     >indeterminate (not functional)</cdr-checkbox>
-    <cdr-checkbox
-      indeterminate
-      modifier="compact"
-    >indeterminate compact (not functional)</cdr-checkbox>
-    <cdr-checkbox
-      indeterminate
-      disabled
-      modifier="compact"
-    >indeterminate compact (not functional)</cdr-checkbox>
 
     <cdr-checkbox modifier="hide-figure">
       Hidden box
@@ -167,7 +124,7 @@
       Checkbox group with indeterminate state:
     </h3>
 
-    <cdr-form-group label="Choose your toppings">
+    <cdr-form-group id="toppings-form" label="Choose your toppings">
       <cdr-checkbox
         v-model="allSelected"
         :indeterminate="isIndeterminate"
