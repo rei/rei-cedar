@@ -11679,11 +11679,11 @@
       _hoisted_2$W
     ];
 
-    function render$19(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3S, _hoisted_3$N))
     }
 
-    script$4c.render = render$19;
+    script$4c.render = render$18;
     script$4c.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -12013,7 +12013,7 @@
     const _hoisted_3$M = ["id"];
     const _hoisted_4$J = ["aria-hidden", "id"];
 
-    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
 
       return (openBlock(), createElementBlock("li", {
@@ -12070,7 +12070,7 @@
     const cssModules$x = script$49.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$49.render = render$18;
+    script$49.render = render$17;
     script$49.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12710,7 +12710,7 @@
       },
     });
 
-    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("ul", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         ref: "accordionGroupEl",
@@ -12726,7 +12726,7 @@
     const cssModules$w = script$48.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$48.render = render$17;
+    script$48.render = render$16;
     script$48.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$47 = {
@@ -12891,7 +12891,7 @@
     const _hoisted_3$L = ["aria-controls", "aria-label"];
     const _hoisted_4$I = ["href", "onClick"];
 
-    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -12961,7 +12961,7 @@
     const cssModules$u = script$46.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$46.render = render$16;
+    script$46.render = render$15;
     script$46.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$45 = {
@@ -13192,7 +13192,7 @@
       },
     });
 
-    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style['cdr-label-wrapper__container'])
       }, [
@@ -13223,7 +13223,7 @@
     const cssModules$q = script$42.__cssModules = {};
     cssModules$q["$style"] = style0$q;
 
-    script$42.render = render$15;
+    script$42.render = render$14;
     script$42.__file = "src/components/labelWrapper/CdrLabelWrapper.vue";
 
     var sizeProps = {
@@ -13572,7 +13572,7 @@
 
     const _hoisted_1$3N = /*#__PURE__*/createTextVNode();
 
-    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         role: "status",
@@ -13593,14 +13593,17 @@
     const cssModules$l = script$3Z.__cssModules = {};
     cssModules$l["$style"] = style0$l;
 
-    script$3Z.render = render$14;
+    script$3Z.render = render$13;
     script$3Z.__file = "src/components/formError/CdrFormError.vue";
 
-    var script$3Y = defineComponent({
-      name: 'CdrFormGroup',
-      components: {
-        CdrFormError: script$3Z,
-      },
+    const _hoisted_1$3M = ["disabled", "aria-invalid", "aria-errormessage"];
+    const _hoisted_2$T = {
+      key: 0,
+      "aria-label": "required"
+    };
+
+
+    var script$3Y = {
       props: {
         id: {
           type: String,
@@ -13620,64 +13623,48 @@
         optional: Boolean,
         disabled: Boolean,
       },
-      setup(props, ctx) {
-        const baseClass = 'cdr-form-group';
-        const errorClass = computed(() => props.error && 'cdr-form-group--error');
-        const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
+      setup(__props) {
 
-        // const groupId = computed(() => props.id)
-        // groupId() {
-        //    return this.id ? this.id : this._uid; // eslint-disable-line no-underscore-dangle
-        //  },
-        return {
-          style: useCssModule(),
-          mapClasses,
-          baseClass,
-          errorClass,
-          disabledClass,
-        };
-      },
-    });
+    const props = __props;
 
-    const _hoisted_1$3M = ["disabled", "aria-invalid", "aria-errormessage"];
-    const _hoisted_2$T = {
-      key: 0,
-      "aria-label": "required"
-    };
 
-    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
-      const _component_cdr_form_error = resolveComponent("cdr-form-error");
 
+      const baseClass = 'cdr-form-group';
+      const errorClass = computed(() => props.error && 'cdr-form-group--error');
+      const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
+      const style = useCssModule();
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("fieldset", {
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.disabledClass)),
-        disabled: _ctx.disabled,
-        "aria-invalid": !!_ctx.error,
-        "aria-errormessage": !!_ctx.error && `${_ctx.id}-error`
+        class: normalizeClass(unref(mapClasses)(unref(style), baseClass, unref(disabledClass))),
+        disabled: __props.disabled,
+        "aria-invalid": !!__props.error,
+        "aria-errormessage": !!__props.error && `${__props.id}-error`
       }, [
         createBaseVNode("legend", null, [
           renderSlot(_ctx.$slots, "label", {}, () => [
-            createTextVNode(toDisplayString(_ctx.label), 1 /* TEXT */)
+            createTextVNode(toDisplayString(__props.label), 1 /* TEXT */)
           ]),
-          (_ctx.required)
+          (__props.required)
             ? (openBlock(), createElementBlock("span", _hoisted_2$T, " *"))
             : createCommentVNode("v-if", true),
-          (_ctx.optional && !_ctx.required)
+          (__props.optional && !__props.required)
             ? (openBlock(), createElementBlock("span", {
                 key: 1,
-                class: normalizeClass(_ctx.style['cdr-form-group__optional'])
+                class: normalizeClass(unref(style)['cdr-form-group__optional'])
               }, " (optional)", 2 /* CLASS */))
             : createCommentVNode("v-if", true)
         ]),
         createBaseVNode("div", {
-          class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-form-group__wrapper', _ctx.errorClass))
+          class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-form-group__wrapper', unref(errorClass)))
         }, [
           renderSlot(_ctx.$slots, "default")
         ], 2 /* CLASS */),
-        (_ctx.error)
-          ? (openBlock(), createBlock(_component_cdr_form_error, {
+        (__props.error)
+          ? (openBlock(), createBlock(unref(script$3Z), {
               key: 0,
-              error: _ctx.error,
-              id: `${_ctx.id}-error`
+              error: __props.error,
+              id: `${__props.id}-error`
             }, {
               error: withCtx(() => [
                 renderSlot(_ctx.$slots, "error")
@@ -13687,13 +13674,16 @@
           : createCommentVNode("v-if", true)
       ], 10 /* CLASS, PROPS */, _hoisted_1$3M))
     }
+    }
+
+    };
 
     var style0$k = {"cdr-form-group":"cdr-form-group_13-0-0-alpha-3","cdr-form-group--error":"cdr-form-group--error_13-0-0-alpha-3","cdr-form-group--disabled":"cdr-form-group--disabled_13-0-0-alpha-3","cdr-form-group__optional":"cdr-form-group__optional_13-0-0-alpha-3","cdr-form-group__required":"cdr-form-group__required_13-0-0-alpha-3","cdr-form-group__wrapper":"cdr-form-group__wrapper_13-0-0-alpha-3"};
 
     const cssModules$k = script$3Y.__cssModules = {};
     cssModules$k["$style"] = style0$k;
 
-    script$3Y.render = render$13;
+
     script$3Y.__file = "src/components/formGroup/CdrFormGroup.vue";
 
     var script$3X = {
@@ -27039,7 +27029,10 @@
       const _component_cdr_text = resolveComponent("cdr-text");
 
       return (openBlock(), createElementBlock("div", _hoisted_1$z, [
-        createVNode(_component_cdr_form_group, { label: "What's your favorite letter?" }, {
+        createVNode(_component_cdr_form_group, {
+          label: "What's your favorite letter?",
+          id: "favorite-letter"
+        }, {
           default: withCtx(() => [
             createVNode(_component_cdr_checkbox, {
               "custom-value": "A",
@@ -27074,7 +27067,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        createVNode(_component_cdr_form_group, null, {
+        createVNode(_component_cdr_form_group, { id: "favorite-letter-label-override" }, {
           default: withCtx(() => [
             createBaseVNode("template", _hoisted_5$t, [
               createVNode(_component_cdr_text, { class: "cdr-text-dev--heading-sans-600" }, {
@@ -27119,6 +27112,7 @@
         }),
         createVNode(_component_cdr_form_group, {
           label: "What's your favorite optional letter?",
+          id: "favorite-optional-letter",
           optional: true
         }, {
           default: withCtx(() => [
@@ -27159,7 +27153,8 @@
           label: "What's your favorite required letter?",
           error: $data.hasError,
           required: true,
-          "aria-describedby": "errorStatus"
+          "aria-describedby": "errorStatus",
+          id: "favorite-required-letter"
         }, {
           default: withCtx(() => [
             createVNode(_component_cdr_checkbox, {
@@ -27204,7 +27199,8 @@
           error: $data.hasAlert,
           "error-role": "alert",
           required: true,
-          "aria-describedby": "errorAlert"
+          "aria-describedby": "errorAlert",
+          id: "different-favorite-required-letter"
         }, {
           default: withCtx(() => [
             createVNode(_component_cdr_checkbox, {
@@ -27247,7 +27243,8 @@
         createVNode(_component_cdr_form_group, {
           label: "Disabled example",
           disabled: true,
-          required: true
+          required: true,
+          id: "disabled-example"
         }, {
           default: withCtx(() => [
             createVNode(_component_cdr_checkbox, {
@@ -27318,7 +27315,10 @@
       const _component_cdr_form_group = resolveComponent("cdr-form-group");
 
       return (openBlock(), createElementBlock("div", _hoisted_1$y, [
-        createVNode(_component_cdr_form_group, { label: "What's your favorite radio?" }, {
+        createVNode(_component_cdr_form_group, {
+          label: "What's your favorite radio?",
+          id: "favorite-radio"
+        }, {
           default: withCtx(() => [
             createVNode(_component_cdr_radio, {
               name: "example",
@@ -27358,7 +27358,8 @@
         }),
         createVNode(_component_cdr_form_group, {
           label: "Disabled Radio Example",
-          disabled: true
+          disabled: true,
+          id: "disabled-radio"
         }, {
           default: withCtx(() => [
             createVNode(_component_cdr_radio, {
@@ -27438,18 +27439,23 @@
       const _component_cdr_form_group = resolveComponent("cdr-form-group");
 
       return (openBlock(), createElementBlock("div", _hoisted_1$x, [
-        createVNode(_component_cdr_form_group, { label: "Party time." }, {
+        createVNode(_component_cdr_form_group, {
+          label: "Party time.",
+          id: "party-time"
+        }, {
           default: withCtx(() => [
             createVNode(_component_cdr_input, {
               modelValue: $data.inputModel,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => (($data.inputModel) = $event)),
-              label: "Is it?"
+              label: "Is it?",
+              id: "party-time-question"
             }, null, 8 /* PROPS */, ["modelValue"]),
             createVNode(_component_cdr_select, {
               label: "Really?",
               modelValue: $data.selectModel,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => (($data.selectModel) = $event)),
-              prompt: "Choose one"
+              prompt: "Choose one",
+              id: "party-time-confirmation"
             }, {
               default: withCtx(() => [
                 _hoisted_2$v,
