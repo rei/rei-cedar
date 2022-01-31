@@ -24,87 +24,73 @@
     <slot />
   </cdr-label-wrapper>
 </template>
-<script>
-import { defineComponent, useCssModule, ref, watch } from 'vue';
+<script setup>
+import { useCssModule, ref, watch } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
 import backgroundProps from '../../props/background';
 
-export default defineComponent({
-  name: 'CdrCheckbox',
-  components: {
-    CdrLabelWrapper,
+const props = defineProps({
+  /**
+   * Class that is added to the label for custom styles
+   */
+  labelClass: String,
+  /**
+   * Class that is added to the input for custom styles
+   */
+  inputClass: String,
+  /**
+   * Class that is added to the slot wrapper for custom styles
+   */
+  contentClass: String,
+  /**
+   * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
+  */
+  indeterminate: {
+    type: Boolean,
+    default: false,
   },
-  inheritAttrs: false,
-  props: {
-    /**
-     * Class that is added to the label for custom styles
-     */
-    labelClass: String,
-    /**
-     * Class that is added to the input for custom styles
-     */
-    inputClass: String,
-    /**
-     * Class that is added to the slot wrapper for custom styles
-     */
-    contentClass: String,
-    /**
-     * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
-    */
-    indeterminate: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The value when checked.
-    */
-    trueValue: {
-      type: [String, Number, Boolean, Object, Array, Symbol, Function],
-      default: true,
-    },
-    /**
-     * The value when unchecked.
-    */
-    falseValue: {
-      type: [String, Number, Boolean, Object, Array, Symbol, Function],
-      default: false,
-    },
-    /**
-     * The value when used in a checkbox group. Replaces `trueValue` and `falseValue`.
-    */
-    customValue: [String, Number, Boolean, Object, Array, Symbol, Function],
-    // Set which background type the input renders on
-    background: backgroundProps,
-    size: sizeProps,
-
-    modifier: {
-      type: String,
-      default: '',
-      validator: (value) => propValidator(value, ['', 'hide-figure']),
-    },
-    /** @ignore */
-    modelValue: {
-      type: [String, Number, Boolean, Object, Array, Symbol, Function],
-    },
+  /**
+   * The value when checked.
+  */
+  trueValue: {
+    type: [String, Number, Boolean, Object, Array, Symbol, Function],
+    default: true,
   },
-  setup(props) {
-    const baseClass = 'cdr-checkbox';
-
-    const newValue = ref(props.modelValue);
-
-    watch(() => props.value, (val) => {
-      newValue.value = val;
-    })
-
-    return {
-      style: useCssModule(),
-      baseClass,
-      newValue,
-    };
+  /**
+   * The value when unchecked.
+  */
+  falseValue: {
+    type: [String, Number, Boolean, Object, Array, Symbol, Function],
+    default: false,
   },
+  /**
+   * The value when used in a checkbox group. Replaces `trueValue` and `falseValue`.
+  */
+  customValue: [String, Number, Boolean, Object, Array, Symbol, Function],
+  // Set which background type the input renders on
+  background: backgroundProps,
+  size: sizeProps,
+
+  modifier: {
+    type: String,
+    default: '',
+    validator: (value) => propValidator(value, ['', 'hide-figure']),
+  },
+  /** @ignore */
+  modelValue: {
+    type: [String, Number, Boolean, Object, Array, Symbol, Function],
+  }
 });
+
+const style = useCssModule();
+const baseClass = 'cdr-checkbox';
+const newValue = ref(props.modelValue);
+
+watch(() => props.value, (val) => {
+  newValue.value = val;
+})
 </script>
 <style lang="scss" module src="./styles/CdrCheckbox.module.scss">
 </style>
