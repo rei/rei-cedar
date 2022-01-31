@@ -1,14 +1,16 @@
 <template>
   <div data-backstop="form-group-multi">
-    <cdr-form-group label="Party time.">
+    <cdr-form-group label="Party time." id="party-time">
       <cdr-input
         v-model="inputModel"
         label="Is it?"
+        id="party-time-question"
       />
       <cdr-select
         label="Really?"
         v-model="selectModel"
         prompt="Choose one"
+        id="party-time-confirmation"
       >
         <option value="yes">
           yes

@@ -1,6 +1,6 @@
 <template>
   <div data-backstop="form-group-radios">
-    <cdr-form-group label="What's your favorite radio?">
+    <cdr-form-group label="What's your favorite radio?" id="favorite-radio">
 
       <cdr-radio
         name="example"
@@ -25,6 +25,7 @@
     <cdr-form-group
       label="Disabled Radio Example"
       :disabled="true"
+      id="disabled-radio"
     >
 
       <cdr-radio

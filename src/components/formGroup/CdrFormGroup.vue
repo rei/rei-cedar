@@ -32,17 +32,12 @@
     </cdr-form-error>
   </fieldset>
 </template>
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
+<script setup>
+import {useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import CdrFormError from '../formError/CdrFormError';
 
-export default defineComponent({
-  name: 'CdrFormGroup',
-  components: {
-    CdrFormError,
-  },
-  props: {
+const props = defineProps({
     id: {
       type: String,
       required: true,
@@ -60,25 +55,12 @@ export default defineComponent({
     required: Boolean,
     optional: Boolean,
     disabled: Boolean,
-  },
-  setup(props, ctx) {
-    const baseClass = 'cdr-form-group';
-    const errorClass = computed(() => props.error && 'cdr-form-group--error');
-    const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
+  })
 
-    // const groupId = computed(() => props.id)
-    // groupId() {
-    //    return this.id ? this.id : this._uid; // eslint-disable-line no-underscore-dangle
-    //  },
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      errorClass,
-      disabledClass,
-    };
-  },
-});
+  const baseClass = 'cdr-form-group';
+  const errorClass = computed(() => props.error && 'cdr-form-group--error');
+  const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
+  const style = useCssModule();
 </script>
 
 <style lang="scss" module src="./styles/CdrFormGroup.module.scss">

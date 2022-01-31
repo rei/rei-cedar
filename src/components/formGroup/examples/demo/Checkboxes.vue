@@ -2,6 +2,7 @@
   <div data-backstop="form-group-checkboxes">
     <cdr-form-group
       label="What's your favorite letter?"
+      id="favorite-letter"
     >
       <cdr-checkbox
         custom-value="A"
@@ -17,7 +18,7 @@
       >C</cdr-checkbox>
     </cdr-form-group>
 
-    <cdr-form-group>
+    <cdr-form-group id="favorite-letter-label-override">
 
       <template slot="label">
         <cdr-text class="cdr-text-dev--heading-sans-600">
@@ -40,6 +41,7 @@
 
     <cdr-form-group
       label="What's your favorite optional letter?"
+      id="favorite-optional-letter"
       :optional="true"
     >
       <cdr-checkbox
@@ -61,6 +63,7 @@
       :error="hasError"
       :required="true"
       aria-describedby="errorStatus"
+      id="favorite-required-letter"
     >
       <cdr-checkbox
         custom-value="A"
@@ -88,6 +91,7 @@
       error-role="alert"
       :required="true"
       aria-describedby="errorAlert"
+      id="different-favorite-required-letter"
     >
       <cdr-checkbox
         custom-value="Q"
@@ -113,6 +117,7 @@
       label="Disabled example"
       :disabled="true"
       :required="true"
+      id="disabled-example"
     >
       <cdr-checkbox
         custom-value="A"
