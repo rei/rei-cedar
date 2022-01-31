@@ -66,9 +66,12 @@
       @opened="tooltipHandler"
       @closed="tooltipHandler"
     >
-      <cdr-button slot="trigger">
-        tooltip
-      </cdr-button>
+      <template #trigger>
+        <cdr-button>
+          tooltip
+        </cdr-button>
+      </template>
+
       <div>
         Hello! This tooltip contains important information about the web site you are visiting!
         We're using the internet right now!
