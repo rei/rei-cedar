@@ -11679,11 +11679,11 @@
       _hoisted_2$W
     ];
 
-    function render$1a(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$19(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3S, _hoisted_3$N))
     }
 
-    script$4c.render = render$1a;
+    script$4c.render = render$19;
     script$4c.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -12013,7 +12013,7 @@
     const _hoisted_3$M = ["id"];
     const _hoisted_4$J = ["aria-hidden", "id"];
 
-    function render$19(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
 
       return (openBlock(), createElementBlock("li", {
@@ -12070,7 +12070,7 @@
     const cssModules$x = script$49.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$49.render = render$19;
+    script$49.render = render$18;
     script$49.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12710,7 +12710,7 @@
       },
     });
 
-    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("ul", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         ref: "accordionGroupEl",
@@ -12726,7 +12726,7 @@
     const cssModules$w = script$48.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$48.render = render$18;
+    script$48.render = render$17;
     script$48.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$47 = {
@@ -12891,7 +12891,7 @@
     const _hoisted_3$L = ["aria-controls", "aria-label"];
     const _hoisted_4$I = ["href", "onClick"];
 
-    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -12961,7 +12961,7 @@
     const cssModules$u = script$46.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$46.render = render$17;
+    script$46.render = render$16;
     script$46.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$45 = {
@@ -13192,7 +13192,7 @@
       },
     });
 
-    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style['cdr-label-wrapper__container'])
       }, [
@@ -13223,7 +13223,7 @@
     const cssModules$q = script$42.__cssModules = {};
     cssModules$q["$style"] = style0$q;
 
-    script$42.render = render$16;
+    script$42.render = render$15;
     script$42.__file = "src/components/labelWrapper/CdrLabelWrapper.vue";
 
     var sizeProps = {
@@ -13572,7 +13572,7 @@
 
     const _hoisted_1$3N = /*#__PURE__*/createTextVNode();
 
-    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         role: "status",
@@ -13593,7 +13593,7 @@
     const cssModules$l = script$3Z.__cssModules = {};
     cssModules$l["$style"] = style0$l;
 
-    script$3Z.render = render$15;
+    script$3Z.render = render$14;
     script$3Z.__file = "src/components/formError/CdrFormError.vue";
 
     var script$3Y = defineComponent({
@@ -13645,7 +13645,7 @@
       "aria-label": "required"
     };
 
-    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_form_error = resolveComponent("cdr-form-error");
 
       return (openBlock(), createElementBlock("fieldset", {
@@ -13693,7 +13693,7 @@
     const cssModules$k = script$3Y.__cssModules = {};
     cssModules$k["$style"] = style0$k;
 
-    script$3Y.render = render$14;
+    script$3Y.render = render$13;
     script$3Y.__file = "src/components/formGroup/CdrFormGroup.vue";
 
     var script$3X = {
@@ -19793,7 +19793,7 @@
     const _hoisted_3$K = { key: 0 };
     const _hoisted_4$H = ["id"];
 
-    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style[_ctx.baseClass])
       }, [
@@ -19862,7 +19862,7 @@
     const cssModules$h = script$18.__cssModules = {};
     cssModules$h["$style"] = style0$h;
 
-    script$18.render = render$13;
+    script$18.render = render$12;
     script$18.__file = "src/components/labelStandalone/CdrLabelStandalone.vue";
 
     var script$17 = defineComponent({
@@ -20012,7 +20012,7 @@
     const _hoisted_2$Q = ["type", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
     const _hoisted_3$J = ["id"];
 
-    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$11(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_form_error = resolveComponent("cdr-form-error");
       const _component_cdr_label_standalone = resolveComponent("cdr-label-standalone");
 
@@ -20163,7 +20163,7 @@
     const cssModules$g = script$17.__cssModules = {};
     cssModules$g["$style"] = style0$g;
 
-    script$17.render = render$12;
+    script$17.render = render$11;
     script$17.__file = "src/components/input/CdrInput.vue";
 
     var script$16 = {
@@ -20765,7 +20765,7 @@
     const _hoisted_2$P = ["role", "aria-modal", "aria-label"];
     const _hoisted_3$I = ["tabIndex"];
 
-    function render$11(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_x_lg = resolveComponent("icon-x-lg");
       const _component_cdr_button = resolveComponent("cdr-button");
 
@@ -20857,7 +20857,7 @@
     const cssModules$d = script$14.__cssModules = {};
     cssModules$d["$style"] = style0$d;
 
-    script$14.render = render$11;
+    script$14.render = render$10;
     script$14.__file = "src/components/modal/CdrModal.vue";
 
     /**
@@ -22081,7 +22081,7 @@
     const _hoisted_1$W = ["id", "multiple", "size", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
     const _hoisted_2$O = ["value"];
 
-    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$$(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
       const _component_cdr_form_error = resolveComponent("cdr-form-error");
       const _component_cdr_label_standalone = resolveComponent("cdr-label-standalone");
@@ -22206,7 +22206,7 @@
     const cssModules$c = script$13.__cssModules = {};
     cssModules$c["$style"] = style0$c;
 
-    script$13.render = render$10;
+    script$13.render = render$$;
     script$13.__file = "src/components/select/CdrSelect.vue";
 
     var script$12 = defineComponent({
@@ -22400,7 +22400,7 @@
       "aria-hidden": "true"
     };
 
-    function render$$(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$_(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_left = resolveComponent("icon-caret-left");
       const _component_cdr_select = resolveComponent("cdr-select");
       const _component_icon_caret_right = resolveComponent("icon-caret-right");
@@ -22519,7 +22519,7 @@
     const cssModules$b = script$12.__cssModules = {};
     cssModules$b["$style"] = style0$b;
 
-    script$12.render = render$$;
+    script$12.render = render$_;
     script$12.__file = "src/components/pagination/CdrPagination.vue";
 
     function calculatePlacement (triggerRect, popupRect, screenWidth, screenHeight, originalPosition) {
@@ -22749,7 +22749,7 @@
       },
     });
 
-    function render$_(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         ref: "rootEl",
         class: normalizeClass(_ctx.mapClasses(
@@ -22779,7 +22779,7 @@
     const cssModules$a = script$11.__cssModules = {};
     cssModules$a["$style"] = style0$a;
 
-    script$11.render = render$_;
+    script$11.render = render$Z;
     script$11.__file = "src/components/popup/CdrPopup.vue";
 
     var script$10 = defineComponent({
@@ -22887,7 +22887,7 @@
 
     const _hoisted_1$U = { ref: "triggerEl" };
 
-    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_x_sm = resolveComponent("icon-x-sm");
       const _component_cdr_button = resolveComponent("cdr-button");
       const _component_cdr_popup = resolveComponent("cdr-popup");
@@ -22959,7 +22959,7 @@
     const cssModules$9 = script$10.__cssModules = {};
     cssModules$9["$style"] = style0$9;
 
-    script$10.render = render$Z;
+    script$10.render = render$Y;
     script$10.__file = "src/components/popover/CdrPopover.vue";
 
     var script$$ = defineComponent({
@@ -22994,7 +22994,7 @@
       },
     });
 
-    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
         class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.modifierClass))
       }, {
@@ -23023,7 +23023,7 @@
     const cssModules$8 = script$$.__cssModules = {};
     cssModules$8["$style"] = style0$8;
 
-    script$$.render = render$Y;
+    script$$.render = render$X;
     script$$.__file = "src/components/quote/CdrQuote.vue";
 
     var script$_ = defineComponent({
@@ -23097,7 +23097,7 @@
 
     const _hoisted_1$T = ["name", "checked", "value"];
 
-    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$W(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_label_wrapper = resolveComponent("cdr-label-wrapper");
 
       return (openBlock(), createBlock(_component_cdr_label_wrapper, {
@@ -23132,11 +23132,13 @@
     const cssModules$7 = script$_.__cssModules = {};
     cssModules$7["$style"] = style0$7;
 
-    script$_.render = render$X;
+    script$_.render = render$W;
     script$_.__file = "src/components/radio/CdrRadio.vue";
 
-    var script$Z = defineComponent({
-      name: 'CdrRating',
+    const _hoisted_1$S = { key: 1 };
+
+     
+    var script$Z = {
       props: {
         /**
          * Rating value (out of 5)
@@ -23176,147 +23178,135 @@
           ),
         },
       },
-      setup(props) {
-        const baseClass = 'cdr-rating';
-        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-        const linkedClass = computed(() => props.href && `${baseClass}--linked`);
-        const emptyClass = computed(() => ((props.rounded > 0 || props.count > 0)
-          ? 'cdr-rating__placeholder'
-          : 'cdr-rating__placeholder--no-reviews'));
-        const tag = computed(() => (props.href ? 'a' : 'div'));
+      setup(__props) {
 
-        const displayRating = computed(() => (Math.round(props.rating * 10) / 10).toFixed(1));
+    const props = __props;
 
-        const rounded = computed(() => Math.round(props.rating * 4) / 4);
 
-        const whole = computed(() => Math.floor(rounded.value));
 
-        const remainder = computed(() => rounded.value.toFixed(2).split('.')[1]);
+    const baseClass = 'cdr-rating';
+    const style = useCssModule();
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const linkedClass = computed(() => props.href && `${baseClass}--linked`);
+    const emptyClass = computed(() => ((props.rounded > 0 || props.count > 0)
+      ? 'cdr-rating__placeholder'
+      : 'cdr-rating__placeholder--no-reviews'));
+    const tag = computed(() => (props.href ? 'a' : 'div'));
 
-        const empties = computed(() => 5 - whole.value - (remainder.value > 0 ? 1 : 0));
+    const displayRating = computed(() => (Math.round(props.rating * 10) / 10).toFixed(1));
 
-        const formattedCount = computed(() => (props.compact ? `(${props.count})` : `${props.count}`));
+    const rounded = computed(() => Math.round(props.rating * 4) / 4);
 
-        const srText = computed(() => {
-          // linked
-          if (props.href) {
-            // no reviews
-            if (props.count === 0 || props.count === '0') {
-              return 'No reviews yet; be the first!';
-            }
-            // no count
-            if (props.count === null) {
-              return `View the reviews with an average rating of ${displayRating.value} out of 5 stars`;
-            }
-            // default
-            return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`; // eslint-disable-line max-len
-          }
+    const whole = computed(() => Math.floor(rounded.value));
 
-          // non-linked
-          // no reviews
-          if (props.count === 0 || props.count === '0') {
-            return '0 reviews';
-          }
-          // no count
-          if (props.count === null) {
-            return `Rated ${displayRating.value} out of 5 stars`;
-          }
-          // default
-          // eslint-disable-next-line
-          return `${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
-        });
+    const remainder = computed(() => rounded.value.toFixed(2).split('.')[1]);
 
-        return {
-          style: useCssModule(),
-          tag,
-          baseClass,
-          sizeClass,
-          linkedClass,
-          emptyClass,
-          displayRating,
-          rounded,
-          whole,
-          remainder,
-          empties,
-          formattedCount,
-          srText,
-          mapClasses,
-        };
-      },
+    const empties = computed(() => 5 - whole.value - (remainder.value > 0 ? 1 : 0));
+
+    const formattedCount = computed(() => (props.compact ? `(${props.count})` : `${props.count}`));
+
+    const srText = computed(() => {
+      // linked
+      if (props.href) {
+        // no reviews
+        if (props.count === 0 || props.count === '0') {
+          return 'No reviews yet; be the first!';
+        }
+        // no count
+        if (props.count === null) {
+          return `View the reviews with an average rating of ${displayRating.value} out of 5 stars`;
+        }
+        // default
+        return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`; // eslint-disable-line max-len
+      }
+
+      // non-linked
+      // no reviews
+      if (props.count === 0 || props.count === '0') {
+        return '0 reviews';
+      }
+      // no count
+      if (props.count === null) {
+        return `Rated ${displayRating.value} out of 5 stars`;
+      }
+      // default
+      // eslint-disable-next-line
+      return `${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
     });
 
-    const _hoisted_1$S = { key: 1 };
-
-    function render$W(_ctx, _cache, $props, $setup, $data, $options) {
-      return (openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
-        href: _ctx.href,
-        class: normalizeClass(_ctx.mapClasses(_ctx.style,
-                           _ctx.baseClass,
-                           _ctx.sizeClass,
-                           _ctx.linkedClass,
+    return (_ctx, _cache) => {
+      return (openBlock(), createBlock(resolveDynamicComponent(unref(tag)), {
+        href: __props.href,
+        class: normalizeClass(unref(mapClasses)(unref(style),
+                           baseClass,
+                           unref(sizeClass),
+                           unref(linkedClass),
         ))
       }, {
         default: withCtx(() => [
           createBaseVNode("div", {
-            class: normalizeClass(_ctx.style['cdr-rating__ratings'])
+            class: normalizeClass(unref(style)['cdr-rating__ratings'])
           }, [
-            (openBlock(true), createElementBlock(Fragment, null, renderList(Array(_ctx.whole).keys(), (star) => {
+            (openBlock(true), createElementBlock(Fragment, null, renderList(Array(unref(whole)).keys(), (star) => {
               return (openBlock(), createElementBlock("span", {
-                class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-rating__icon', 'cdr-rating__100')),
+                class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-rating__icon', 'cdr-rating__100')),
                 key: `rating-whole-${star}`,
                 "aria-hidden": "true"
               }, null, 2 /* CLASS */))
             }), 128 /* KEYED_FRAGMENT */)),
-            (_ctx.remainder)
+            (unref(remainder))
               ? (openBlock(), createElementBlock("span", {
                   key: 0,
-                  class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-rating__icon', `cdr-rating__${_ctx.remainder}`)),
+                  class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-rating__icon', `cdr-rating__${unref(remainder)}`)),
                   "aria-hidden": "true"
                 }, null, 2 /* CLASS */))
               : createCommentVNode("v-if", true),
-            (openBlock(true), createElementBlock(Fragment, null, renderList(Array(_ctx.empties).keys(), (empty) => {
+            (openBlock(true), createElementBlock(Fragment, null, renderList(Array(unref(empties)).keys(), (empty) => {
               return (openBlock(), createElementBlock("span", {
-                class: normalizeClass(_ctx.mapClasses(_ctx.style,
+                class: normalizeClass(unref(mapClasses)(unref(style),
                                'cdr-rating__icon',
-                               _ctx.emptyClass,
+                               unref(emptyClass),
             )),
                 key: `rating-empty-${empty}`,
                 "aria-hidden": "true"
               }, null, 2 /* CLASS */))
             }), 128 /* KEYED_FRAGMENT */))
           ], 2 /* CLASS */),
-          (_ctx.count !== null)
+          (__props.count !== null)
             ? (openBlock(), createElementBlock("span", {
                 key: 0,
                 "aria-hidden": "true",
-                class: normalizeClass(_ctx.style['cdr-rating__count'])
+                class: normalizeClass(unref(style)['cdr-rating__count'])
               }, [
-                (_ctx.href)
+                (__props.href)
                   ? (openBlock(), createElementBlock("span", {
                       key: 0,
-                      class: normalizeClass(_ctx.style['cdr-rating__number'])
-                    }, toDisplayString(_ctx.displayRating), 3 /* TEXT, CLASS */))
+                      class: normalizeClass(unref(style)['cdr-rating__number'])
+                    }, toDisplayString(unref(displayRating)), 3 /* TEXT, CLASS */))
                   : createCommentVNode("v-if", true),
-                createBaseVNode("span", null, toDisplayString(_ctx.formattedCount), 1 /* TEXT */),
-                (!_ctx.compact)
+                createBaseVNode("span", null, toDisplayString(unref(formattedCount)), 1 /* TEXT */),
+                (!__props.compact)
                   ? (openBlock(), createElementBlock("span", _hoisted_1$S, "  Reviews "))
                   : createCommentVNode("v-if", true)
               ], 2 /* CLASS */))
             : createCommentVNode("v-if", true),
           createBaseVNode("span", {
-            class: normalizeClass(_ctx.style['cdr-rating__caption-sr'])
-          }, toDisplayString(_ctx.srText), 3 /* TEXT, CLASS */)
+            class: normalizeClass(unref(style)['cdr-rating__caption-sr'])
+          }, toDisplayString(unref(srText)), 3 /* TEXT, CLASS */)
         ]),
         _: 1 /* STABLE */
       }, 8 /* PROPS */, ["href", "class"]))
     }
+    }
+
+    };
 
     var style0$6 = {"cdr-rating__icon":"cdr-rating__icon_13-0-0-alpha-3","cdr-rating__count":"cdr-rating__count_13-0-0-alpha-3","cdr-rating":"cdr-rating_13-0-0-alpha-3","cdr-rating__number":"cdr-rating__number_13-0-0-alpha-3","cdr-rating__ratings":"cdr-rating__ratings_13-0-0-alpha-3","cdr-rating__caption-sr":"cdr-rating__caption-sr_13-0-0-alpha-3","cdr-rating__placeholder":"cdr-rating__placeholder_13-0-0-alpha-3","cdr-rating__placeholder--no-reviews":"cdr-rating__placeholder--no-reviews_13-0-0-alpha-3","cdr-rating__100":"cdr-rating__100_13-0-0-alpha-3","cdr-rating__75":"cdr-rating__75_13-0-0-alpha-3","cdr-rating__50":"cdr-rating__50_13-0-0-alpha-3","cdr-rating__25":"cdr-rating__25_13-0-0-alpha-3","cdr-rating--linked":"cdr-rating--linked_13-0-0-alpha-3","cdr-rating--large":"cdr-rating--large_13-0-0-alpha-3","cdr-rating--medium":"cdr-rating--medium_13-0-0-alpha-3","cdr-rating--small":"cdr-rating--small_13-0-0-alpha-3","cdr-rating--small@xs":"cdr-rating--small@xs_13-0-0-alpha-3","cdr-rating--medium@xs":"cdr-rating--medium@xs_13-0-0-alpha-3","cdr-rating--large@xs":"cdr-rating--large@xs_13-0-0-alpha-3","cdr-rating--small@sm":"cdr-rating--small@sm_13-0-0-alpha-3","cdr-rating--medium@sm":"cdr-rating--medium@sm_13-0-0-alpha-3","cdr-rating--large@sm":"cdr-rating--large@sm_13-0-0-alpha-3","cdr-rating--small@md":"cdr-rating--small@md_13-0-0-alpha-3","cdr-rating--medium@md":"cdr-rating--medium@md_13-0-0-alpha-3","cdr-rating--large@md":"cdr-rating--large@md_13-0-0-alpha-3","cdr-rating--small@lg":"cdr-rating--small@lg_13-0-0-alpha-3","cdr-rating--medium@lg":"cdr-rating--medium@lg_13-0-0-alpha-3","cdr-rating--large@lg":"cdr-rating--large@lg_13-0-0-alpha-3"};
 
     const cssModules$6 = script$Z.__cssModules = {};
     cssModules$6["$style"] = style0$6;
 
-    script$Z.render = render$W;
+
     script$Z.__file = "src/components/rating/CdrRating.vue";
 
     var script$Y = defineComponent({
