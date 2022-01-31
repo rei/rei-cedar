@@ -60,11 +60,7 @@ const props = defineProps({
   const baseClass = 'cdr-form-group';
   const errorClass = computed(() => props.error && 'cdr-form-group--error');
   const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
-  const groupId = computed(() => {return this.id ? this.id : this._uid;})
   const style = useCssModule();
-  // groupId() {
-  //    return this.id ? this.id : this._uid; // eslint-disable-line no-underscore-dangle
-  //  },
 </script>
 
 <style lang="scss" module src="./styles/CdrFormGroup.module.scss">
