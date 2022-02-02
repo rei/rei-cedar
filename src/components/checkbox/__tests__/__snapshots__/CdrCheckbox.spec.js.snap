@@ -19,7 +19,7 @@ exports[`CdrCheckbox renders correctly 1`] = `
     <span
       class="cdr-label-wrapper__figure"
     />
-    <div
+    <span
       class="cdr-label-wrapper__content"
     >
       
@@ -27,7 +27,7 @@ exports[`CdrCheckbox renders correctly 1`] = `
       Label Test
       
       
-    </div>
+    </span>
   </label>
 </div>
 `;
