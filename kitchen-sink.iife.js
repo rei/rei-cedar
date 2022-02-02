@@ -11679,11 +11679,11 @@
       _hoisted_2$W
     ];
 
-    function render$18(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3S, _hoisted_3$N))
     }
 
-    script$4c.render = render$18;
+    script$4c.render = render$17;
     script$4c.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -12013,7 +12013,7 @@
     const _hoisted_3$M = ["id"];
     const _hoisted_4$J = ["aria-hidden", "id"];
 
-    function render$17(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
 
       return (openBlock(), createElementBlock("li", {
@@ -12070,7 +12070,7 @@
     const cssModules$x = script$49.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$49.render = render$17;
+    script$49.render = render$16;
     script$49.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12710,7 +12710,7 @@
       },
     });
 
-    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("ul", {
         class: normalizeClass(_ctx.style[_ctx.baseClass]),
         ref: "accordionGroupEl",
@@ -12726,7 +12726,7 @@
     const cssModules$w = script$48.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$48.render = render$16;
+    script$48.render = render$15;
     script$48.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$47 = {
@@ -12891,7 +12891,7 @@
     const _hoisted_3$L = ["aria-controls", "aria-label"];
     const _hoisted_4$I = ["href", "onClick"];
 
-    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -12961,7 +12961,7 @@
     const cssModules$u = script$46.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$46.render = render$15;
+    script$46.render = render$14;
     script$46.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$45 = {
@@ -13166,64 +13166,61 @@
       validator: value => validateProp(value, ['primary', 'secondary'])
     };
 
-    var script$42 = defineComponent({
-      name: 'CdrLabelWrapper',
+    var script$42 = {
       props: {
-        labelClass: String,
-        contentClass: String,
-        background: backgroundProps,
-        disabled: Boolean,
-        modifier: String,
-        size: String,
+          labelClass: String,
+          contentClass: String,
+          background: backgroundProps,
+          disabled: Boolean,
+          modifier: String,
+          size: String,
       },
-      setup(props) {
-        const baseClass = 'cdr-label-wrapper';
-        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
-        const sizeClass = computed(() => props.size && responsiveModifyClass(baseClass, '', props.size));
-        const disabledClass = computed(() => props.disabled && `${baseClass}--disabled`);
-        return {
-          style: useCssModule(),
-          mapClasses,
-          baseClass,
-          modifierClass,
-          sizeClass,
-          disabledClass,
-        };
-      },
-    });
+      setup(__props) {
 
-    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
+    const props = __props;
+
+      
+      const style = useCssModule();
+      const baseClass = 'cdr-label-wrapper';
+      const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+      const sizeClass = computed(() => props.size && responsiveModifyClass(baseClass, '', props.size));
+      const disabledClass = computed(() => props.disabled && `${baseClass}--disabled`);
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("div", {
-        class: normalizeClass(_ctx.style['cdr-label-wrapper__container'])
+        class: normalizeClass(unref(style)['cdr-label-wrapper__container'])
       }, [
         createBaseVNode("label", {
-          class: normalizeClass(_ctx.mapClasses(_ctx.style,
+          class: normalizeClass(unref(mapClasses)(unref(style),
                              'cdr-label-wrapper',
-                             `cdr-label-wrapper--${_ctx.background}`,
-                             _ctx.disabledClass,
-                             _ctx.modifierClass,
-                             _ctx.sizeClass,
-          ).concat(` ${_ctx.labelClass || ''}`))
+                             `cdr-label-wrapper--${__props.background}`,
+                             unref(disabledClass),
+                             unref(modifierClass),
+                             unref(sizeClass),
+          ).concat(` ${__props.labelClass || ''}`))
         }, [
           renderSlot(_ctx.$slots, "input"),
           createBaseVNode("span", {
-            class: normalizeClass(_ctx.style['cdr-label-wrapper__figure'])
+            class: normalizeClass(unref(style)['cdr-label-wrapper__figure'])
           }, null, 2 /* CLASS */),
-          createBaseVNode("div", {
-            class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-label-wrapper__content', _ctx.contentClass))
+          createBaseVNode("span", {
+            class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-label-wrapper__content', __props.contentClass))
           }, [
             renderSlot(_ctx.$slots, "default")
           ], 2 /* CLASS */)
         ], 2 /* CLASS */)
       ], 2 /* CLASS */))
     }
+    }
+
+    };
 
     var style0$q = {"cdr-label-wrapper":"cdr-label-wrapper_13-0-0-alpha-3","cdr-label-wrapper__container":"cdr-label-wrapper__container_13-0-0-alpha-3","cdr-label-wrapper--primary":"cdr-label-wrapper--primary_13-0-0-alpha-3","cdr-label-wrapper--secondary":"cdr-label-wrapper--secondary_13-0-0-alpha-3","cdr-label-wrapper--disabled":"cdr-label-wrapper--disabled_13-0-0-alpha-3","cdr-label-wrapper__figure":"cdr-label-wrapper__figure_13-0-0-alpha-3","cdr-label-wrapper__content":"cdr-label-wrapper__content_13-0-0-alpha-3","cdr-label-wrapper--hide-figure":"cdr-label-wrapper--hide-figure_13-0-0-alpha-3","cdr-label-wrapper--small":"cdr-label-wrapper--small_13-0-0-alpha-3","cdr-label-wrapper--medium":"cdr-label-wrapper--medium_13-0-0-alpha-3","cdr-label-wrapper--large":"cdr-label-wrapper--large_13-0-0-alpha-3","cdr-label-wrapper--small@xs":"cdr-label-wrapper--small@xs_13-0-0-alpha-3","cdr-label-wrapper--medium@xs":"cdr-label-wrapper--medium@xs_13-0-0-alpha-3","cdr-label-wrapper--large@xs":"cdr-label-wrapper--large@xs_13-0-0-alpha-3","cdr-label-wrapper--small@sm":"cdr-label-wrapper--small@sm_13-0-0-alpha-3","cdr-label-wrapper--medium@sm":"cdr-label-wrapper--medium@sm_13-0-0-alpha-3","cdr-label-wrapper--large@sm":"cdr-label-wrapper--large@sm_13-0-0-alpha-3","cdr-label-wrapper--small@md":"cdr-label-wrapper--small@md_13-0-0-alpha-3","cdr-label-wrapper--medium@md":"cdr-label-wrapper--medium@md_13-0-0-alpha-3","cdr-label-wrapper--large@md":"cdr-label-wrapper--large@md_13-0-0-alpha-3","cdr-label-wrapper--small@lg":"cdr-label-wrapper--small@lg_13-0-0-alpha-3","cdr-label-wrapper--medium@lg":"cdr-label-wrapper--medium@lg_13-0-0-alpha-3","cdr-label-wrapper--large@lg":"cdr-label-wrapper--large@lg_13-0-0-alpha-3"};
 
     const cssModules$q = script$42.__cssModules = {};
     cssModules$q["$style"] = style0$q;
 
-    script$42.render = render$14;
+
     script$42.__file = "src/components/labelWrapper/CdrLabelWrapper.vue";
 
     var sizeProps = {
