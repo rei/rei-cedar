@@ -17,13 +17,13 @@ exports[`CdrLabelWrapper matches snapshot 1`] = `
     <span
       class="cdr-label-wrapper__figure"
     />
-    <div
+    <span
       class="cdr-label-wrapper__content custom-content-class"
     >
       
       Label Wrapper Test
       
-    </div>
+    </span>
   </label>
 </div>
 `;

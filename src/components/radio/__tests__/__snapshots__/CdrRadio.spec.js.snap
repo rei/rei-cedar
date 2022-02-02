@@ -18,12 +18,12 @@ exports[`CdrRadio renders an input 1`] = `
     <span
       class="cdr-label-wrapper__figure"
     />
-    <div
+    <span
       class="cdr-label-wrapper__content"
     >
       
       
-    </div>
+    </span>
   </label>
 </div>
 `;
