@@ -164,17 +164,57 @@
       label="Top helper with status validation"
       :background="backgroundColor"
     >
-      <template slot="helper-text-top">
+      <template #helper-text-top>
         <span id="myHelpText">Must be 4 or less characters</span>
       </template>
 
-      <template
-        slot="error"
-      >
+      <template #error>
         <span id="errorMessage">you have added too many characters, remove some</span>
       </template>
 
       <template slot="info">
+        <cdr-link
+          modifier="standalone"
+          href="#/inputs"
+        >
+          Support link
+        </cdr-link>
+      </template>
+    </cdr-input>
+
+    <cdr-input
+      class="demo-input"
+      v-model="helperValidationModel"
+      :error="errorFromProps"
+      @blur="validate"
+      label="Top helper with status validation"
+      :background="backgroundColor"
+    >
+
+      <template #error>
+        <span id="errorMessage">this error comes from slots, and will override any errors from props</span>
+      </template>
+
+      <template slot="info">
+        <cdr-link
+          modifier="standalone"
+          href="#/inputs"
+        >
+          Support link
+        </cdr-link>
+      </template>
+    </cdr-input>
+
+    <cdr-input
+      class="demo-input"
+      v-model="helperValidationModel"
+      :error="errorFromProps"
+      @blur="validate"
+      label="Top helper with status validation"
+      :background="backgroundColor"
+    >
+
+      <template #info>
         <cdr-link
           modifier="standalone"
           href="#/inputs"
@@ -322,6 +362,7 @@ export default {
       optionalModel: '',
       hiddenModel: '',
       disabledModel: '',
+      errorFromProps: 'this error is from props and will appear if no slotted template is provided',
       helperValidationModel: '',
       helperValidationError: true,
       requiredWithIcons: '',
