@@ -1748,20 +1748,7 @@ input[type="month"] {
   margin-top: 0.4rem;
 }
 .cdr-form-error__icon_13-0-0-alpha-3 {
-  position: relative;
-  width: 1.8rem;
-  height: 1.8rem;
-  display: inline-block;
-}
-.cdr-form-error__icon_13-0-0-alpha-3::after {
-  content: "";
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Ccircle cx='9' cy='9' r='8' stroke='%23FFF5F5' stroke-width='2' opacity='0.75'/%3E %3Ccircle cx='9' cy='9' r='6.25' fill='white' stroke='%23B33322' stroke-width='1.5'/%3E %3Crect x='5.6416' y='6.70215' width='1.5' height='8' rx='0.75' transform='rotate(-45 5.6416 6.70215)' fill='%23B33322'/%3E %3C/svg%3E");
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 0.2rem;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  margin-right: 0.4rem;
 }
 /* intentionally empty */
 .cdr-form-group_13-0-0-alpha-3 {
