@@ -19,8 +19,7 @@ describe('CdrAccordionGroup', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-// TODO: unwrap logic not working, more info in CdrAccordion.spec.js
-  xit('renders correctly unwrapped', () => {
+  it('renders correctly unwrapped', () => {
     const wrapper = mount(h(CdrAccordionGroup, { unwrap: true }, {default: () => [
       h(CdrAccordion, {id: 'tab1', level: '2', label: 'label1'}),
       h(CdrAccordion, {id: 'tab2', level: '2', label: 'label2'}),
