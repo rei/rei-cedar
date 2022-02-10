@@ -45,7 +45,6 @@ describe('CdrAccordion', () => {
       }
     });
     await wrapper.vm.$nextTick();
-    console.log(wrapper.html());
     expect(wrapper.element).toMatchSnapshot()
   });
 
@@ -179,7 +178,20 @@ describe('CdrAccordion', () => {
     await wrapper.vm.$nextTick();
     expect(wrapper.vm.focused).toBeFalsy();
   });
-
+  it('no-spacing style', async () => {
+    const wrapper = shallowMount(CdrAccordion, {
+      propsData: {
+        id: 'test',
+        level: '2',
+        contentSpacing: false,
+      },
+      slots: {
+        default: 'This is some slot text.',
+        label: 'label',
+      },
+    });
+    expect(wrapper.classes()).toContain('cdr-accordion--no-spacing');
+  });
   it('style class checks prop values', () => {
     const wrapper = shallowMount(CdrAccordion, {
       propsData: {

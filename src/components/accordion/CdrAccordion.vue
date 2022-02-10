@@ -36,11 +36,20 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  // Sets the heading level
+  /**
+   * Sets the heading level
+   */
   level: {
     type: [String, Number],
     required: true,
   },
+  /**
+   * Toggles content spacing (padding)
+   */
+  contentSpacing: {
+      type: Boolean,
+      default: true,
+    },
   label: {
     type: String,
   },
@@ -71,19 +80,25 @@ const headingClass = computed(() => (isUnwrapped.value
   ? 'cdr-accordion__header--unwrapped'
   : 'cdr-accordion__header'));
 const compactClass = computed(() => (props.compact
-  ? modifyClassName('cdr-accordion', 'compact')
+  ? modifyClassName(baseClass, 'compact')
   : ''));
 const borderAlignedClass = computed(() => (props.borderAligned
-  ? modifyClassName('cdr-accordion', 'border-aligned')
+  ? modifyClassName(baseClass, 'border-aligned')
   : ''));
 const focusedClass = computed(() => (focused.value
-  ? modifyClassName('cdr-accordion', 'focused')
+  ? modifyClassName(baseClass, 'focused')
   : null));
 const unwrapClass = computed(() => {
   return isUnwrapped.value
-    ? modifyClassName('cdr-accordion', 'unwrap')
+    ? modifyClassName(baseClass, 'unwrap')
     : null;
 });
+const noSpacingClass = computed(() => {
+  return !props.contentSpacing
+    ? modifyClassName(baseClass, 'no-spacing')
+    : null;
+});
+
 const isOpenClass = computed(() => (props.opened || isUnwrapped.value
   ? 'cdr-accordion--open'
   : 'cdr-accordion--closed'));
@@ -128,7 +143,7 @@ onMounted(() => {
 <template>
   <li
     :class="!isUnwrapped
-      ? mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass)
+      ? mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass, noSpacingClass)
       : null"
     :id="`${id}-accordion`"
   >
