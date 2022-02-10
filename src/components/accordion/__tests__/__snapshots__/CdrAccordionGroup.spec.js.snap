@@ -15,6 +15,7 @@ exports[`CdrAccordionGroup renders correctly 1`] = `
       <button
         aria-controls="tab1-collapsible"
         aria-expanded="false"
+        aria-pressed="false"
         class="js-cdr-accordion-button"
         id="tab1"
       >
@@ -68,6 +69,7 @@ exports[`CdrAccordionGroup renders correctly 1`] = `
       <button
         aria-controls="tab2-collapsible"
         aria-expanded="false"
+        aria-pressed="false"
         class="js-cdr-accordion-button"
         id="tab2"
       >

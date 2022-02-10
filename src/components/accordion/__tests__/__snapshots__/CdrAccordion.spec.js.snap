@@ -11,6 +11,7 @@ exports[`CdrAccordion renders correctly 1`] = `
     <button
       aria-controls="test-collapsible"
       aria-expanded="false"
+      aria-pressed="false"
       class="js-cdr-accordion-button"
       id="test"
     >
