@@ -1,23 +1,151 @@
+<script setup>
+import {
+  useCssModule, computed, watch, onMounted, ref, inject,
+} from 'vue';
+import IconCaretDown from '../icon/comps/caret-down';
+import { modifyClassName } from '../../utils/buildClass';
+import mapClasses from '../../utils/mapClasses';
+
+
+const props = defineProps({
+  /**
+   * The unique id of an accordion.
+   */
+  id: {
+    type: String,
+    required: true,
+  },
+  /**
+   * Toggle this value to open/close the accordion.
+   */
+  opened: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Sets a compact style.
+   */
+  compact: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Sets a border-aligned style.
+   */
+  borderAligned: {
+    type: Boolean,
+    default: false,
+  },
+  // Sets the heading level
+  level: {
+    type: [String, Number],
+    required: true,
+  },
+  label: {
+    type: String,
+  },
+});
+const emit = defineEmits(['accordion-toggle']);
+const unwrap = inject('unwrap');
+const style = useCssModule();
+const accordionContentEl = ref(null);
+const focused = ref(false);
+const maxHeight = ref(props.opened
+  ? 'none'
+  : 0);
+const headingTag = `h${props.level}`;
+const labelClass = 'cdr-accordion__label';
+const baseClass = 'cdr-accordion';
+const iconClass = 'cdr-accordion__icon';
+const containerClass = 'cdr-accordion__content-container';
+const contentClass = 'cdr-accordion__content';
+
+const isUnwrapped = computed(() => unwrap && unwrap.isUnwrapped);
+const headingContent = computed(() => (isUnwrapped.value
+  ? 'div'
+  : 'button'));
+const headingContentStyle = computed(() => (isUnwrapped.value
+  ? 'js-cdr-accordion-button'
+  : [style['cdr-accordion__button'], 'js-cdr-accordion-button']));
+const headingClass = computed(() => (isUnwrapped.value
+  ? 'cdr-accordion__header--unwrapped'
+  : 'cdr-accordion__header'));
+const compactClass = computed(() => (props.compact
+  ? modifyClassName('cdr-accordion', 'compact')
+  : ''));
+const borderAlignedClass = computed(() => (props.borderAligned
+  ? modifyClassName('cdr-accordion', 'border-aligned')
+  : ''));
+const focusedClass = computed(() => (focused.value
+  ? modifyClassName('cdr-accordion', 'focused')
+  : null));
+const unwrapClass = computed(() => {
+  return isUnwrapped.value
+    ? modifyClassName('cdr-accordion', 'unwrap')
+    : null;
+});
+const isOpenClass = computed(() => (props.opened || isUnwrapped.value
+  ? 'cdr-accordion--open'
+  : 'cdr-accordion--closed'));
+const listeners = computed(() => isUnwrapped.value 
+  ? {}
+  : {
+    click: onClick,
+    focus: onFocus,
+    blur: onBlur,
+});
+
+const onClick = (event) => {
+  emit('accordion-toggle', event);
+};
+const onFocus = () => {
+  focused.value = true;
+};
+const onBlur = () => {
+  focused.value = false;
+};
+
+watch(() => props.opened, (opened) => {
+  maxHeight.value = !opened ? `${accordionContentEl.value.clientHeight}px` : 0;
+  // nextTick is not sufficient here, must wait for CSS to re-paint
+  setTimeout(() => {
+    // on next frame, set maxHeight to new value
+    maxHeight.value = opened ? `${accordionContentEl.value.clientHeight}px` : 0;
+    setTimeout(() => {
+      // after animation is complete, remove max-height so content can reflow
+      maxHeight.value = opened ? 'none' : 0;
+    }, 350); // cdr-duration-3x + 50ms
+  }, 50);
+});
+
+onMounted(() => {
+  if (props.opened && accordionContentEl.value) {
+    maxHeight.value = 'none';
+  }
+});
+</script>
+
 <template>
   <li
-    :class="mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass)"
+    :class="!isUnwrapped
+      ? mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass)
+      : null"
     :id="`${id}-accordion`"
   >
     <component
       :is="headingTag"
       :class="style[headingClass]"
     >
-      <button
-        :class="[style['cdr-accordion__button'], 'js-cdr-accordion-button']"
+      <component
+        :is="headingContent"
+        :class="headingContentStyle"
         :id="id"
-        @click="onClick"
-        @focus="onFocus"
-        @blur="onBlur"
-        :aria-expanded="`${opened}`"
-        :aria-controls="`${id}-collapsible`"
+        v-on="listeners"
+        :aria-expanded="!isUnwrapped ? `${opened}` : null"
+        :aria-controls="!isUnwrapped ? `${id}-collapsible` : null"
       >
         <span
-          :class="style['cdr-accordion__label']"
+          :class="style[labelClass]"
           :id="`${id}-label`"
         >
           <slot name="label">
@@ -25,18 +153,19 @@
           </slot>
         </span>
         <icon-caret-down
+          v-if="!isUnwrapped"
           :class="mapClasses(style, iconClass, isOpenClass)"
           :size="compact ? 'small' : null"
         />
-      </button>
+      </component>
     </component>
     <div
-      :class="mapClasses(style, containerClass, isOpenClass)"
-      :style="{ maxHeight: maxHeight }"
+      :class="mapClasses(style, containerClass, isOpenClass, unwrapClass)"
+      :style="{ maxHeight: isUnwrapped ? 'none' : maxHeight }"
     >
       <div
-        :class="mapClasses(style, contentClass, isOpenClass)"
-        :aria-hidden="`${!opened}`"
+        :class="mapClasses(style, contentClass, isOpenClass, unwrapClass)"
+        :aria-hidden="!isUnwrapped ? `${!opened}` : null"
         :id="`${id}-collapsible`"
         ref="accordionContentEl"
       >
@@ -45,157 +174,6 @@
     </div>
   </li>
 </template>
-<script>
-import {
-  defineComponent, useCssModule, computed, watch, onMounted, ref, inject,
-} from 'vue';
-import IconCaretDown from '../icon/comps/caret-down';
-import { modifyClassName } from '../../utils/buildClass';
-import mapClasses from '../../utils/mapClasses';
-
-export default defineComponent({
-  name: 'CdrAccordion',
-  components: {
-    IconCaretDown,
-  },
-  props: {
-    /**
-     * The unique id of an accordion.
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Toggle this value to open/close the accordion.
-     */
-    opened: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Sets a compact style.
-     */
-    compact: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Sets a border-aligned style.
-     */
-    borderAligned: {
-      type: Boolean,
-      default: false,
-    },
-    // Sets the heading level
-    level: {
-      type: [String, Number],
-      required: true,
-    },
-    label: {
-      type: String,
-    },
-  },
-
-  setup(props, ctx) {
-
-    const unwrap = inject('unwrap', {val: false});
-
-    console.log('HEY', unwrap.value);
-
-    const headingTag = `h${props.level}`;
-    const headingClass = computed(() => (unwrap.value && unwrap.value.val
-      ? 'cdr-accordion__header--unwrapped'
-      : 'cdr-accordion__header'));
-
-    const buttonClass = 'cdr-accordion__button js-cdr-accordion-button';
-
-    const accordionContentEl = ref(null);
-    const focused = ref(false);
-    const maxHeight = ref(props.opened ? 'none' : 0);
-
-    const labelClass = 'cdr-accordion__label';
-
-    const baseClass = 'cdr-accordion';
-    const compactClass = computed(() => (props.compact
-      ? modifyClassName('cdr-accordion', 'compact')
-      : ''));
-    const borderAlignedClass = computed(() => (props.borderAligned
-      ? modifyClassName('cdr-accordion', 'border-aligned')
-      : ''));
-    const focusedClass = computed(() => (focused.value
-      ? modifyClassName('cdr-accordion', 'focused')
-      : null));
-
-
-    const unwrapClass = computed(() => {
-      return unwrap.value && unwrap.value.val ? modifyClassName('cdr-accordion', 'unwrap') : null;
-    });
-
-    const iconClass = 'cdr-accordion__icon';
-
-    const containerClass = 'cdr-accordion__content-container';
-
-    // is this class really not scoped?!?!?!?
-    const isOpenClass = computed(() => (props.opened ? 'cdr-tabs--open' : 'cdr-tabs--closed'));
-    const contentClass = 'cdr-accordion__content';
-
-    const onClick = (event) => {
-      ctx.emit('accordion-toggle', event);
-    };
-    const onFocus = () => {
-      focused.value = true;
-    };
-    const onBlur = () => {
-      focused.value = false;
-    };
-
-    watch(() => props.opened, (opened) => {
-      maxHeight.value = !opened ? `${accordionContentEl.value.clientHeight}px` : 0;
-      // nextTick is not sufficient here, must wait for CSS to re-paint
-      setTimeout(() => {
-        // on next frame, set maxHeight to new value
-        maxHeight.value = opened ? `${accordionContentEl.value.clientHeight}px` : 0;
-        setTimeout(() => {
-          // after animation is complete, remove max-height so content can reflow
-          maxHeight.value = opened ? 'none' : 0;
-        }, 350); // cdr-duration-3x + 50ms
-      }, 50);
-    });
-
-    onMounted(() => {
-      if (props.opened && accordionContentEl.value) {
-        maxHeight.value = 'none';
-      }
-    });
-
-
-    return {
-      style: useCssModule(),
-      headingTag,
-      headingClass,
-      buttonClass,
-      accordionContentEl,
-      focused,
-      maxHeight,
-      baseClass,
-      labelClass,
-      compactClass,
-      borderAlignedClass,
-      focusedClass,
-      iconClass,
-      containerClass,
-      isOpenClass,
-      contentClass,
-      onClick,
-      onFocus,
-      onBlur,
-      unwrapClass,
-      mapClasses,
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrAccordion.module.scss">
 </style>

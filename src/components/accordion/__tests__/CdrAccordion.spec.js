@@ -24,11 +24,7 @@ describe('CdrAccordion', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-// TODO: unwrap logic is not working correctly at the moment, need to refactor the provide/inject logic.
-// Sadly not a lot of docs available on provide/inject in the composition API at the moment :/
-// Probably need to pass a reactive/ref object into the `provide`.
-// in vue 2 passing in an object to provide handled that but the {val: boolean} pattern doesn't seem to work anymore
-  xit('renders correctly unwrapped', async () => {
+  it('renders correctly unwrapped', async () => {
     const wrapper = mount(CdrAccordion, {
       propsData: {
         id: 'test',
@@ -40,11 +36,16 @@ describe('CdrAccordion', () => {
       },
       global: {
         provide: {
-          unwrap: {val: true}
+          unwrap: {
+            isUnwrapped: {
+              value: true
+            }
+          }
         }
       }
     });
     await wrapper.vm.$nextTick();
+    console.log(wrapper.html());
     expect(wrapper.element).toMatchSnapshot()
   });
 
@@ -159,7 +160,7 @@ describe('CdrAccordion', () => {
       },
     });
 
-    expect(wrapper.vm.isOpenClass).toEqual('cdr-tabs--closed');
+    expect(wrapper.vm.isOpenClass).toEqual('cdr-accordion--closed');
   });
 
   it('focused style', async () => {
