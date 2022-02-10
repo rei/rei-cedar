@@ -83,6 +83,8 @@ input[type="month"] {
     ========================================================================== */
   /* Border-Aligned
      ========== */
+  /* No content spacing
+     ========== */
   /* Compact
      ========== */
   /* Border-Aligned and Compact
@@ -170,10 +172,10 @@ input[type="month"] {
   font-size: 1.6rem;
   line-height: 2.6rem;
 }
-.cdr-accordion__content_13-0-0-alpha-3.cdr-tabs--open_13-0-0-alpha-3 {
+.cdr-accordion__content_13-0-0-alpha-3.cdr-accordion--open_13-0-0-alpha-3 {
   opacity: 1;
 }
-.cdr-accordion__content_13-0-0-alpha-3.cdr-tabs--closed_13-0-0-alpha-3 {
+.cdr-accordion__content_13-0-0-alpha-3.cdr-accordion--closed_13-0-0-alpha-3 {
   visibility: hidden;
 }
 .cdr-accordion--unwrap_13-0-0-alpha-3 {
@@ -188,6 +190,9 @@ input[type="month"] {
 }
 .cdr-accordion--border-aligned_13-0-0-alpha-3 .cdr-accordion__content_13-0-0-alpha-3 {
   padding: 0.8rem 0 1.6rem;
+}
+.cdr-accordion--no-spacing_13-0-0-alpha-3 .cdr-accordion__content_13-0-0-alpha-3 {
+  padding: 0;
 }
 .cdr-accordion--compact_13-0-0-alpha-3 .cdr-accordion__button_13-0-0-alpha-3 {
   font-family: Graphik, "Helvetica Neue", sans-serif;

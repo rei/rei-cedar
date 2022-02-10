@@ -6520,6 +6520,22 @@
     }
 
     /**
+     * For prefixing keys in v-on="obj" with "on"
+     * @private
+     */
+    function toHandlers(obj) {
+        const ret = {};
+        if (!isObject$1(obj)) {
+            warn$1(`v-on with no argument expects an object value.`);
+            return ret;
+        }
+        for (const key in obj) {
+            ret[toHandlerKey(key)] = obj[key];
+        }
+        return ret;
+    }
+
+    /**
      * #2437 In Vue 3, functional components do not have a public instance proxy but
      * they exist in the internal parent chain. For code that relies on traversing
      * public $parent chains, skip functional ones and go to the parent instead.
@@ -11751,11 +11767,11 @@
       _hoisted_2$W
     ];
 
-    function render$16(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3V, _hoisted_3$N))
     }
 
-    script$4g.render = render$16;
+    script$4g.render = render$14;
     script$4g.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -11937,212 +11953,218 @@
 
     script$4e.__file = "src/components/icon/comps/caret-down.vue";
 
-    var script$4d = defineComponent({
-      name: 'CdrAccordion',
-      components: {
-        IconCaretDown: script$4e,
-      },
+    const _hoisted_1$3T = ["id"];
+    const _hoisted_2$V = ["id"];
+    const _hoisted_3$M = ["aria-hidden", "id"];
+
+
+
+    var script$4d = {
       props: {
-        /**
-         * The unique id of an accordion.
-         */
-        id: {
-          type: String,
-          required: true,
-        },
-        /**
-         * Toggle this value to open/close the accordion.
-         */
-        opened: {
-          type: Boolean,
-          default: false,
-        },
-        /**
-         * Sets a compact style.
-         */
-        compact: {
-          type: Boolean,
-          default: false,
-        },
-        /**
-         * Sets a border-aligned style.
-         */
-        borderAligned: {
-          type: Boolean,
-          default: false,
-        },
-        // Sets the heading level
-        level: {
-          type: [String, Number],
-          required: true,
-        },
-        label: {
-          type: String,
-        },
+      /**
+       * The unique id of an accordion.
+       */
+      id: {
+        type: String,
+        required: true,
       },
-
-      setup(props, ctx) {
-
-        const unwrap = inject('unwrap', {val: false});
-
-        console.log('HEY', unwrap.value);
-
-        const headingTag = `h${props.level}`;
-        const headingClass = computed(() => (unwrap.value && unwrap.value.val
-          ? 'cdr-accordion__header--unwrapped'
-          : 'cdr-accordion__header'));
-
-        const buttonClass = 'cdr-accordion__button js-cdr-accordion-button';
-
-        const accordionContentEl = ref(null);
-        const focused = ref(false);
-        const maxHeight = ref(props.opened ? 'none' : 0);
-
-        const labelClass = 'cdr-accordion__label';
-
-        const baseClass = 'cdr-accordion';
-        const compactClass = computed(() => (props.compact
-          ? modifyClassName('cdr-accordion', 'compact')
-          : ''));
-        const borderAlignedClass = computed(() => (props.borderAligned
-          ? modifyClassName('cdr-accordion', 'border-aligned')
-          : ''));
-        const focusedClass = computed(() => (focused.value
-          ? modifyClassName('cdr-accordion', 'focused')
-          : null));
-
-
-        const unwrapClass = computed(() => {
-          return unwrap.value && unwrap.value.val ? modifyClassName('cdr-accordion', 'unwrap') : null;
-        });
-
-        const iconClass = 'cdr-accordion__icon';
-
-        const containerClass = 'cdr-accordion__content-container';
-
-        // is this class really not scoped?!?!?!?
-        const isOpenClass = computed(() => (props.opened ? 'cdr-tabs--open' : 'cdr-tabs--closed'));
-        const contentClass = 'cdr-accordion__content';
-
-        const onClick = (event) => {
-          ctx.emit('accordion-toggle', event);
-        };
-        const onFocus = () => {
-          focused.value = true;
-        };
-        const onBlur = () => {
-          focused.value = false;
-        };
-
-        watch(() => props.opened, (opened) => {
-          maxHeight.value = !opened ? `${accordionContentEl.value.clientHeight}px` : 0;
-          // nextTick is not sufficient here, must wait for CSS to re-paint
-          setTimeout(() => {
-            // on next frame, set maxHeight to new value
-            maxHeight.value = opened ? `${accordionContentEl.value.clientHeight}px` : 0;
-            setTimeout(() => {
-              // after animation is complete, remove max-height so content can reflow
-              maxHeight.value = opened ? 'none' : 0;
-            }, 350); // cdr-duration-3x + 50ms
-          }, 50);
-        });
-
-        onMounted(() => {
-          if (props.opened && accordionContentEl.value) {
-            maxHeight.value = 'none';
-          }
-        });
-
-
-        return {
-          style: useCssModule(),
-          headingTag,
-          headingClass,
-          buttonClass,
-          accordionContentEl,
-          focused,
-          maxHeight,
-          baseClass,
-          labelClass,
-          compactClass,
-          borderAlignedClass,
-          focusedClass,
-          iconClass,
-          containerClass,
-          isOpenClass,
-          contentClass,
-          onClick,
-          onFocus,
-          onBlur,
-          unwrapClass,
-          mapClasses,
-        };
+      /**
+       * Toggle this value to open/close the accordion.
+       */
+      opened: {
+        type: Boolean,
+        default: false,
       },
+      /**
+       * Sets a compact style.
+       */
+      compact: {
+        type: Boolean,
+        default: false,
+      },
+      /**
+       * Sets a border-aligned style.
+       */
+      borderAligned: {
+        type: Boolean,
+        default: false,
+      },
+      /**
+       * Sets the heading level
+       */
+      level: {
+        type: [String, Number],
+        required: true,
+      },
+      /**
+       * Toggles content spacing (padding)
+       */
+      contentSpacing: {
+          type: Boolean,
+          default: true,
+        },
+      label: {
+        type: String,
+      },
+    },
+      emits: ['accordion-toggle'],
+      setup(__props, { emit }) {
+
+    const props = __props;
+
+
+
+    const unwrap = inject('unwrap');
+    const style = useCssModule();
+    const accordionContentEl = ref(null);
+    const focused = ref(false);
+    const maxHeight = ref(props.opened
+      ? 'none'
+      : 0);
+    const headingTag = `h${props.level}`;
+    const labelClass = 'cdr-accordion__label';
+    const baseClass = 'cdr-accordion';
+    const iconClass = 'cdr-accordion__icon';
+    const containerClass = 'cdr-accordion__content-container';
+    const contentClass = 'cdr-accordion__content';
+
+    const isUnwrapped = computed(() => unwrap && unwrap.isUnwrapped);
+    const headingContent = computed(() => (isUnwrapped.value
+      ? 'div'
+      : 'button'));
+    const headingContentStyle = computed(() => (isUnwrapped.value
+      ? 'js-cdr-accordion-button'
+      : [style['cdr-accordion__button'], 'js-cdr-accordion-button']));
+    const headingClass = computed(() => (isUnwrapped.value
+      ? 'cdr-accordion__header--unwrapped'
+      : 'cdr-accordion__header'));
+    const compactClass = computed(() => (props.compact
+      ? modifyClassName(baseClass, 'compact')
+      : ''));
+    const borderAlignedClass = computed(() => (props.borderAligned
+      ? modifyClassName(baseClass, 'border-aligned')
+      : ''));
+    const focusedClass = computed(() => (focused.value
+      ? modifyClassName(baseClass, 'focused')
+      : null));
+    const unwrapClass = computed(() => {
+      return isUnwrapped.value
+        ? modifyClassName(baseClass, 'unwrap')
+        : null;
+    });
+    const noSpacingClass = computed(() => {
+      return !props.contentSpacing
+        ? modifyClassName(baseClass, 'no-spacing')
+        : null;
     });
 
-    const _hoisted_1$3T = ["id"];
-    const _hoisted_2$V = ["id", "aria-expanded", "aria-controls"];
-    const _hoisted_3$M = ["id"];
-    const _hoisted_4$J = ["aria-hidden", "id"];
+    const isOpenClass = computed(() => (props.opened || isUnwrapped.value
+      ? 'cdr-accordion--open'
+      : 'cdr-accordion--closed'));
+    const listeners = computed(() => isUnwrapped.value 
+      ? {}
+      : {
+        click: onClick,
+        focus: onFocus,
+        blur: onBlur,
+    });
 
-    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
-      const _component_icon_caret_down = resolveComponent("icon-caret-down");
+    const onClick = (event) => {
+      emit('accordion-toggle', event);
+    };
+    const onFocus = () => {
+      focused.value = true;
+    };
+    const onBlur = () => {
+      focused.value = false;
+    };
 
+    watch(() => props.opened, (opened) => {
+      maxHeight.value = !opened ? `${accordionContentEl.value.clientHeight}px` : 0;
+      // nextTick is not sufficient here, must wait for CSS to re-paint
+      setTimeout(() => {
+        // on next frame, set maxHeight to new value
+        maxHeight.value = opened ? `${accordionContentEl.value.clientHeight}px` : 0;
+        setTimeout(() => {
+          // after animation is complete, remove max-height so content can reflow
+          maxHeight.value = opened ? 'none' : 0;
+        }, 350); // cdr-duration-3x + 50ms
+      }, 50);
+    });
+
+    onMounted(() => {
+      if (props.opened && accordionContentEl.value) {
+        maxHeight.value = 'none';
+      }
+    });
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("li", {
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.compactClass, _ctx.borderAlignedClass, _ctx.focusedClass)),
-        id: `${_ctx.id}-accordion`
+        class: normalizeClass(!unref(isUnwrapped)
+          ? unref(mapClasses)(unref(style), baseClass, unref(compactClass), unref(borderAlignedClass), unref(focusedClass), unref(noSpacingClass))
+          : null),
+        id: `${__props.id}-accordion`
       }, [
-        (openBlock(), createBlock(resolveDynamicComponent(_ctx.headingTag), {
-          class: normalizeClass(_ctx.style[_ctx.headingClass])
+        (openBlock(), createBlock(resolveDynamicComponent(headingTag), {
+          class: normalizeClass(unref(style)[unref(headingClass)])
         }, {
           default: withCtx(() => [
-            createBaseVNode("button", {
-              class: normalizeClass([_ctx.style['cdr-accordion__button'], 'js-cdr-accordion-button']),
-              id: _ctx.id,
-              onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.onClick && _ctx.onClick(...args))),
-              onFocus: _cache[1] || (_cache[1] = (...args) => (_ctx.onFocus && _ctx.onFocus(...args))),
-              onBlur: _cache[2] || (_cache[2] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args))),
-              "aria-expanded": `${_ctx.opened}`,
-              "aria-controls": `${_ctx.id}-collapsible`
-            }, [
-              createBaseVNode("span", {
-                class: normalizeClass(_ctx.style['cdr-accordion__label']),
-                id: `${_ctx.id}-label`
-              }, [
-                renderSlot(_ctx.$slots, "label", {}, () => [
-                  createTextVNode(toDisplayString(_ctx.label), 1 /* TEXT */)
-                ])
-              ], 10 /* CLASS, PROPS */, _hoisted_3$M),
-              createVNode(_component_icon_caret_down, {
-                class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.iconClass, _ctx.isOpenClass)),
-                size: _ctx.compact ? 'small' : null
-              }, null, 8 /* PROPS */, ["class", "size"])
-            ], 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_2$V)
+            (openBlock(), createBlock(resolveDynamicComponent(unref(headingContent)), mergeProps({
+              class: unref(headingContentStyle),
+              id: __props.id
+            }, toHandlers(unref(listeners)), {
+              "aria-expanded": !unref(isUnwrapped) ? `${__props.opened}` : null,
+              "aria-pressed": !unref(isUnwrapped) ? `${__props.opened}` : null,
+              "aria-controls": !unref(isUnwrapped) ? `${__props.id}-collapsible` : null
+            }), {
+              default: withCtx(() => [
+                createBaseVNode("span", {
+                  class: normalizeClass(unref(style)[labelClass]),
+                  id: `${__props.id}-label`
+                }, [
+                  renderSlot(_ctx.$slots, "label", {}, () => [
+                    createTextVNode(toDisplayString(__props.label), 1 /* TEXT */)
+                  ])
+                ], 10 /* CLASS, PROPS */, _hoisted_2$V),
+                (!unref(isUnwrapped))
+                  ? (openBlock(), createBlock(unref(script$4e), {
+                      key: 0,
+                      class: normalizeClass(unref(mapClasses)(unref(style), iconClass, unref(isOpenClass))),
+                      size: __props.compact ? 'small' : null
+                    }, null, 8 /* PROPS */, ["class", "size"]))
+                  : createCommentVNode("v-if", true)
+              ]),
+              _: 3 /* FORWARDED */
+            }, 16 /* FULL_PROPS */, ["class", "id", "aria-expanded", "aria-pressed", "aria-controls"]))
           ]),
           _: 3 /* FORWARDED */
         }, 8 /* PROPS */, ["class"])),
         createBaseVNode("div", {
-          class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.containerClass, _ctx.isOpenClass)),
-          style: normalizeStyle({ maxHeight: _ctx.maxHeight })
+          class: normalizeClass(unref(mapClasses)(unref(style), containerClass, unref(isOpenClass), unref(unwrapClass))),
+          style: normalizeStyle({ maxHeight: unref(isUnwrapped) ? 'none' : maxHeight.value })
         }, [
           createBaseVNode("div", {
-            class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.contentClass, _ctx.isOpenClass)),
-            "aria-hidden": `${!_ctx.opened}`,
-            id: `${_ctx.id}-collapsible`,
-            ref: "accordionContentEl"
+            class: normalizeClass(unref(mapClasses)(unref(style), contentClass, unref(isOpenClass), unref(unwrapClass))),
+            "aria-hidden": !unref(isUnwrapped) ? `${!__props.opened}` : null,
+            id: `${__props.id}-collapsible`,
+            ref_key: "accordionContentEl",
+            ref: accordionContentEl
           }, [
             renderSlot(_ctx.$slots, "default")
-          ], 10 /* CLASS, PROPS */, _hoisted_4$J)
+          ], 10 /* CLASS, PROPS */, _hoisted_3$M)
         ], 6 /* CLASS, STYLE */)
       ], 10 /* CLASS, PROPS */, _hoisted_1$3T))
     }
+    }
 
-    var style0$x = {"cdr-accordion":"cdr-accordion_13-0-0-alpha-3","cdr-accordion__button":"cdr-accordion__button_13-0-0-alpha-3","cdr-accordion__label":"cdr-accordion__label_13-0-0-alpha-3","cdr-accordion__header":"cdr-accordion__header_13-0-0-alpha-3","cdr-accordion__header--unwrapped":"cdr-accordion__header--unwrapped_13-0-0-alpha-3","cdr-accordion__icon":"cdr-accordion__icon_13-0-0-alpha-3","cdr-tabs--open":"cdr-tabs--open_13-0-0-alpha-3","cdr-accordion__content-container":"cdr-accordion__content-container_13-0-0-alpha-3","cdr-accordion__content":"cdr-accordion__content_13-0-0-alpha-3","cdr-tabs--closed":"cdr-tabs--closed_13-0-0-alpha-3","cdr-accordion--unwrap":"cdr-accordion--unwrap_13-0-0-alpha-3","cdr-accordion--border-aligned":"cdr-accordion--border-aligned_13-0-0-alpha-3","cdr-accordion--compact":"cdr-accordion--compact_13-0-0-alpha-3","cdr-accordion--focused":"cdr-accordion--focused_13-0-0-alpha-3"};
+    };
+
+    var style0$x = {"cdr-accordion":"cdr-accordion_13-0-0-alpha-3","cdr-accordion__button":"cdr-accordion__button_13-0-0-alpha-3","cdr-accordion__label":"cdr-accordion__label_13-0-0-alpha-3","cdr-accordion__header":"cdr-accordion__header_13-0-0-alpha-3","cdr-accordion__header--unwrapped":"cdr-accordion__header--unwrapped_13-0-0-alpha-3","cdr-accordion__icon":"cdr-accordion__icon_13-0-0-alpha-3","cdr-tabs--open":"cdr-tabs--open_13-0-0-alpha-3","cdr-accordion__content-container":"cdr-accordion__content-container_13-0-0-alpha-3","cdr-accordion__content":"cdr-accordion__content_13-0-0-alpha-3","cdr-accordion--open":"cdr-accordion--open_13-0-0-alpha-3","cdr-accordion--closed":"cdr-accordion--closed_13-0-0-alpha-3","cdr-accordion--unwrap":"cdr-accordion--unwrap_13-0-0-alpha-3","cdr-accordion--border-aligned":"cdr-accordion--border-aligned_13-0-0-alpha-3","cdr-accordion--no-spacing":"cdr-accordion--no-spacing_13-0-0-alpha-3","cdr-accordion--compact":"cdr-accordion--compact_13-0-0-alpha-3","cdr-accordion--focused":"cdr-accordion--focused_13-0-0-alpha-3"};
 
     const cssModules$x = script$4d.__cssModules = {};
     cssModules$x["$style"] = style0$x;
 
-    script$4d.render = render$15;
+
     script$4d.__file = "src/components/accordion/CdrAccordion.vue";
 
     /**
@@ -12689,116 +12711,111 @@
       return 'xs';
     }
 
-    var script$4c = defineComponent({
-      name: 'CdrAccordionGroup',
+    var script$4c = {
       props: {
-        unwrap: {
-          type: [String, Boolean],
-          default: false,
-          validator: (value) => {
-            if (typeof value === 'string') {
-              return validateProp(
-                value,
-                ['@xs', '@sm', '@md', '@lg'],
-                false,
-              );
-            }
-            return typeof value === 'boolean';
-          },
+      unwrap: {
+        type: [String, Boolean],
+        default: false,
+        validator: (value) => {
+          if (typeof value === 'string') {
+            return validateProp(
+              value,
+              ['@xs', '@sm', '@md', '@lg'],
+              false,
+            );
+          }
+          return typeof value === 'boolean';
         },
       },
-      setup(props, ctx) {
-        const baseClass = 'cdr-accordion-group';
-        const currentIdx = ref(0);
-        const accordionButtons = ref([]);
-        const accordionGroupEl = ref(null);
+    },
+      setup(__props) {
 
-        const isUnwrapped = ref(!!props.unwrap);
-      //
-        const nextIdx = computed(() => {
-          const idx = currentIdx.value + 1;
-          return idx >= accordionButtons.value.length ? 0 : idx;
-        });
+    const props = __props;
 
-        const prevIdx = computed(() => {
-          const idx = currentIdx.value - 1;
-          return idx <= -1 ? accordionButtons.value.length - 1 : idx;
-        });
 
-          console.log('what', props);
-        // TODO: how to handle $el?
-        onMounted(() => {
-          console.log('what', props.unwrap);
-          accordionButtons.value = accordionGroupEl.value.querySelectorAll('.js-cdr-accordion-button');
-          if (typeof props.unwrap === 'string') {
-            console.log('unwrappy', props.unwrap);
-            isUnwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
-            window.addEventListener('resize', debounce$1(() => {
-              isUnwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
-            }, 300));
-          }
-        });
-    // TODO: unwrap logic needs to be refactored. Might need to pass a reactive object into provide? Is not currently working
-        provide('unwrap', {val: isUnwrapped.value});
 
-        const handleKeyDown = (e) => {
-          // something besides the button is focused
-          if (currentIdx.value === -1) return;
+    const baseClass = 'cdr-accordion-group';
+    const style = useCssModule();
+    const currentIdx = ref(0);
+    const accordionButtons = ref([]);
+    const accordionGroupEl = ref(null);
+    const unwrapped = reactive({
+      isUnwrapped: !!props.unwrap,
+    });
+    provide('unwrap', unwrapped);
 
-          const { key } = e;
-          switch (key) {
-            case 'Home':
-              e.preventDefault();
-              accordionButtons.value[0].focus();
-              break;
-            case 'End':
-              e.preventDefault();
-              accordionButtons.value[accordionButtons.value.length - 1].focus();
-              break;
-            case 'ArrowDown':
-            case 'Down':
-              e.preventDefault();
-              accordionButtons.value[nextIdx.value].focus();
-              break;
-            case 'ArrowUp':
-            case 'Up':
-              e.preventDefault();
-              accordionButtons.value[prevIdx.value].focus();
-              break;
-          }
-        };
-        const focusin = (e) => {
-          // find out which, if any, button is focused
-          currentIdx.value = Array.prototype.indexOf.call(accordionButtons, e.target);
-        };
+    const nextIdx = computed(() => {
+      const idx = currentIdx.value + 1;
+      return idx >= accordionButtons.value.length ? 0 : idx;
+    });
+    const prevIdx = computed(() => {
+      const idx = currentIdx.value - 1;
+      return idx <= -1 ? accordionButtons.value.length - 1 : idx;
+    });
+    const handleKeyDown = (e) => {
+      // something besides the button is focused
+      if (currentIdx.value === -1) return;
 
-        return {
-          style: useCssModule(),
-          handleKeyDown,
-          focusin,
-          baseClass,
-          accordionGroupEl,
-        };
-      },
+      const { key } = e;
+      switch (key) {
+        case 'Home':
+          e.preventDefault();
+          accordionButtons.value[0].focus();
+          break;
+        case 'End':
+          e.preventDefault();
+          accordionButtons.value[accordionButtons.value.length - 1].focus();
+          break;
+        case 'ArrowDown':
+        case 'Down':
+          e.preventDefault();
+          accordionButtons.value[nextIdx.value].focus();
+          break;
+        case 'ArrowUp':
+        case 'Up':
+          e.preventDefault();
+          accordionButtons.value[prevIdx.value].focus();
+          break;
+      }
+    };
+    const focusin = (e) => {
+      // find out which, if any, button is focused
+      currentIdx.value = Array.prototype.indexOf.call(accordionButtons.value, e.target);
+    };
+
+    onMounted(() => {
+      accordionButtons.value = accordionGroupEl.value.querySelectorAll('.js-cdr-accordion-button');
+      if (typeof props.unwrap === 'string') {
+        unwrapped.isUnwrapped = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
+        window.addEventListener('resize', debounce$1(() => {
+          unwrapped.isUnwrapped = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
+        }, 300));
+      }
     });
 
-    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
+
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("ul", {
-        class: normalizeClass(_ctx.style[_ctx.baseClass]),
-        ref: "accordionGroupEl",
-        onFocusin: _cache[0] || (_cache[0] = (...args) => (_ctx.focusin && _ctx.focusin(...args))),
-        onKeydown: _cache[1] || (_cache[1] = (...args) => (_ctx.handleKeyDown && _ctx.handleKeyDown(...args)))
+        class: normalizeClass(unref(style)[baseClass]),
+        ref_key: "accordionGroupEl",
+        ref: accordionGroupEl,
+        onFocusin: focusin,
+        onKeydown: handleKeyDown
       }, [
         renderSlot(_ctx.$slots, "default")
       ], 34 /* CLASS, HYDRATE_EVENTS */))
     }
+    }
+
+    };
 
     var style0$w = {"cdr-accordion-group":"cdr-accordion-group_13-0-0-alpha-3","cdr-accordion":"cdr-accordion_13-0-0-alpha-3"};
 
     const cssModules$w = script$4c.__cssModules = {};
     cssModules$w["$style"] = style0$w;
 
-    script$4c.render = render$14;
+
     script$4c.__file = "src/components/accordion/CdrAccordionGroup.vue";
 
     var script$4b = {
@@ -24608,6 +24625,7 @@
           accordionDefault2: false,
           accordionCompact: false,
           accordionCompact2: false,
+          accordionContentSpacing: false,
           grouped: [
             {
               label: 'These are border-aligned',
@@ -24680,19 +24698,25 @@
     const _hoisted_32$7 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
     const _hoisted_33$7 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
     const _hoisted_34$7 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
-    const _hoisted_35$7 = /*#__PURE__*/createBaseVNode("h3", null, " Unwrapped Standalone ", -1 /* HOISTED */);
-    const _hoisted_36$7 = /*#__PURE__*/createTextVNode(" A short label ");
+    const _hoisted_35$7 = /*#__PURE__*/createBaseVNode("h3", null, " No content padding ", -1 /* HOISTED */);
+    const _hoisted_36$7 = /*#__PURE__*/createTextVNode(" This has no padding around content ");
     const _hoisted_37$5 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
     const _hoisted_38$4 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
     const _hoisted_39$3 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
     const _hoisted_40$2 = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
-    const _hoisted_41$2 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
-    const _hoisted_42$2 = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
-    const _hoisted_43$2 = /*#__PURE__*/createBaseVNode("li", null, "It includes no extra styling", -1 /* HOISTED */);
-    const _hoisted_44$2 = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
-    const _hoisted_45$2 = /*#__PURE__*/createBaseVNode("li", null, "to this list because", -1 /* HOISTED */);
-    const _hoisted_46$2 = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
-    const _hoisted_47$2 = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
+    const _hoisted_41$2 = /*#__PURE__*/createBaseVNode("h3", null, " Unwrapped Standalone ", -1 /* HOISTED */);
+    const _hoisted_42$2 = /*#__PURE__*/createTextVNode(" A short label ");
+    const _hoisted_43$2 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
+    const _hoisted_44$2 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
+    const _hoisted_45$2 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
+    const _hoisted_46$2 = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
+    const _hoisted_47$2 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_48$2 = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
+    const _hoisted_49$2 = /*#__PURE__*/createBaseVNode("li", null, "It includes no extra styling", -1 /* HOISTED */);
+    const _hoisted_50$2 = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
+    const _hoisted_51$2 = /*#__PURE__*/createBaseVNode("li", null, "to this list because", -1 /* HOISTED */);
+    const _hoisted_52$2 = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
+    const _hoisted_53$2 = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
 
     function render$S(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_text = resolveComponent("cdr-text");
@@ -24896,13 +24920,14 @@
           })
         ]),
         _hoisted_35$7,
-        createVNode(_component_cdr_accordion_group, { unwrap: "@md @lg" }, {
+        createVNode(_component_cdr_accordion_group, null, {
           default: withCtx(() => [
             createVNode(_component_cdr_accordion, {
-              id: "default-unwrap",
+              id: "content-spacing",
               level: "3",
-              opened: $data.accordionDefault,
-              onAccordionToggle: _cache[5] || (_cache[5] = $event => ($data.accordionDefault = !$data.accordionDefault))
+              "content-spacing": false,
+              opened: $data.accordionContentSpacing,
+              onAccordionToggle: _cache[5] || (_cache[5] = $event => ($data.accordionContentSpacing = !$data.accordionContentSpacing))
             }, {
               label: withCtx(() => [
                 _hoisted_36$7
@@ -24927,25 +24952,61 @@
                 })
               ]),
               _: 1 /* STABLE */
+            }, 8 /* PROPS */, ["opened"])
+          ]),
+          _: 1 /* STABLE */
+        }),
+        _hoisted_41$2,
+        createVNode(_component_cdr_accordion_group, { unwrap: "@md @lg" }, {
+          default: withCtx(() => [
+            createVNode(_component_cdr_accordion, {
+              id: "default-unwrap",
+              level: "3",
+              opened: $data.accordionDefault,
+              onAccordionToggle: _cache[6] || (_cache[6] = $event => ($data.accordionDefault = !$data.accordionDefault))
+            }, {
+              label: withCtx(() => [
+                _hoisted_42$2
+              ]),
+              default: withCtx(() => [
+                createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
+                  default: withCtx(() => [
+                    _hoisted_43$2,
+                    createVNode(_component_cdr_text, {
+                      tag: "strong",
+                      class: "cdr-text-dev--body-strong-300"
+                    }, {
+                      default: withCtx(() => [
+                        _hoisted_44$2,
+                        _hoisted_45$2
+                      ]),
+                      _: 1 /* STABLE */
+                    }),
+                    _hoisted_46$2
+                  ]),
+                  _: 1 /* STABLE */
+                })
+              ]),
+              _: 1 /* STABLE */
             }, 8 /* PROPS */, ["opened"]),
             createVNode(_component_cdr_accordion, {
               id: "default-long-label-unwrap",
               level: "3",
               opened: $data.accordionDefault2,
-              onAccordionToggle: _cache[6] || (_cache[6] = $event => ($data.accordionDefault2 = !$data.accordionDefault2))
+              onAccordionToggle: _cache[7] || (_cache[7] = $event => ($data.accordionDefault2 = !$data.accordionDefault2))
             }, {
               label: withCtx(() => [
-                _hoisted_41$2
+                _hoisted_47$2
               ]),
               default: withCtx(() => [
                 createVNode(_component_cdr_list, { modifier: "unordered" }, {
                   default: withCtx(() => [
-                    _hoisted_42$2,
-                    _hoisted_43$2,
-                    _hoisted_44$2,
-                    _hoisted_45$2,
-                    _hoisted_46$2,
-                    _hoisted_47$2
+                    _hoisted_48$2,
+                    _hoisted_49$2,
+                    _hoisted_50$2,
+                    _hoisted_51$2,
+                    _hoisted_52$2,
+                    _hoisted_53$2
                   ]),
                   _: 1 /* STABLE */
                 })
