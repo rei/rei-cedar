@@ -102,10 +102,10 @@
     </div>
 
     <cdr-checkbox
-      indeterminate
+      indeterminate="true"
     >indeterminate (not functional)</cdr-checkbox>
     <cdr-checkbox
-      indeterminate
+      indeterminate="true"
       disabled
     >indeterminate (not functional)</cdr-checkbox>
 
