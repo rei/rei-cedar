@@ -13,7 +13,7 @@
       data-backstop="modal"
       role="dialog"
     >
-      <template v-slot:title>
+      <template #title>
         <cdr-text
           tag="h2"
           class="cdr-text-dev--heading-serif-600 modal-title"
@@ -23,7 +23,7 @@
       </template>
 
       <template
-        slot="modal"
+        #modal
         v-if="override"
       >
         Wow i can just take over the whole modal, huh?
