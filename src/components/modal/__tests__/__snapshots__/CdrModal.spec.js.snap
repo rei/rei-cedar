@@ -11,6 +11,10 @@ exports[`CdrModal.vue default open 1`] = `
       aria-hidden="true"
       class="cdr-modal__overlay"
     />
+    <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
+           content outside the modal is not properly obscurred when opened using certain readers.
+           Once more browsers catch up to the spec, this hack can probably be removed.
+           https://a11ysupport.io/tests/apg__modal-dialog-example -->
     <div
       tabindex="0"
     />
@@ -32,15 +36,11 @@ exports[`CdrModal.vue default open 1`] = `
             <div
               class="cdr-modal__header"
             >
-              <div
-                class="cdr-modal__title"
-              >
-                
-                <h1>
-                  Label is the modal title
-                </h1>
-                
-              </div>
+              
+              <h1>
+                Label is the modal title
+              </h1>
+              
               <button
                 aria-label="Close"
                 class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
@@ -71,18 +71,14 @@ exports[`CdrModal.vue default open 1`] = `
               </button>
             </div>
             <div
-              class="cdr-modal__text"
+              class="cdr-modal__text-content"
               role="document"
+              style="max-height: -80px; padding-right: 0px;"
+              tabindex="0"
             >
-              <div
-                class="cdr-modal__text-content"
-                style="max-height: -80px; padding-right: 0px;"
-                tabindex="0"
-              >
-                
-                Sticky content
-                
-              </div>
+              
+              Sticky content
+              
             </div>
           </div>
         </section>
@@ -107,6 +103,10 @@ exports[`CdrModal.vue fullscreen snapshot 1`] = `
       aria-hidden="true"
       class="cdr-modal__overlay"
     />
+    <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
+           content outside the modal is not properly obscurred when opened using certain readers.
+           Once more browsers catch up to the spec, this hack can probably be removed.
+           https://a11ysupport.io/tests/apg__modal-dialog-example -->
     <div
       tabindex="0"
     />
@@ -128,15 +128,11 @@ exports[`CdrModal.vue fullscreen snapshot 1`] = `
             <div
               class="cdr-modal__header"
             >
-              <div
-                class="cdr-modal__title"
-              >
-                
-                <h1>
-                  Label is the modal title
-                </h1>
-                
-              </div>
+              
+              <h1>
+                Label is the modal title
+              </h1>
+              
               <button
                 aria-label="Close"
                 class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
@@ -167,17 +163,13 @@ exports[`CdrModal.vue fullscreen snapshot 1`] = `
               </button>
             </div>
             <div
-              class="cdr-modal__text"
+              class="cdr-modal__text-content"
               role="document"
+              style="max-height: -80px; padding-right: 0px;"
+              tabindex="0"
             >
-              <div
-                class="cdr-modal__text-content"
-                style="max-height: -80px; padding-right: 0px;"
-                tabindex="0"
-              >
-                
-                
-              </div>
+              
+              
             </div>
           </div>
         </section>
