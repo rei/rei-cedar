@@ -141,6 +141,56 @@
      */
     const isSVGTag = /*#__PURE__*/ makeMap(SVG_TAGS);
 
+    function looseCompareArrays(a, b) {
+        if (a.length !== b.length)
+            return false;
+        let equal = true;
+        for (let i = 0; equal && i < a.length; i++) {
+            equal = looseEqual(a[i], b[i]);
+        }
+        return equal;
+    }
+    function looseEqual(a, b) {
+        if (a === b)
+            return true;
+        let aValidType = isDate(a);
+        let bValidType = isDate(b);
+        if (aValidType || bValidType) {
+            return aValidType && bValidType ? a.getTime() === b.getTime() : false;
+        }
+        aValidType = isArray$1(a);
+        bValidType = isArray$1(b);
+        if (aValidType || bValidType) {
+            return aValidType && bValidType ? looseCompareArrays(a, b) : false;
+        }
+        aValidType = isObject$1(a);
+        bValidType = isObject$1(b);
+        if (aValidType || bValidType) {
+            /* istanbul ignore if: this if will probably never be called */
+            if (!aValidType || !bValidType) {
+                return false;
+            }
+            const aKeysCount = Object.keys(a).length;
+            const bKeysCount = Object.keys(b).length;
+            if (aKeysCount !== bKeysCount) {
+                return false;
+            }
+            for (const key in a) {
+                const aHasKey = a.hasOwnProperty(key);
+                const bHasKey = b.hasOwnProperty(key);
+                if ((aHasKey && !bHasKey) ||
+                    (!aHasKey && bHasKey) ||
+                    !looseEqual(a[key], b[key])) {
+                    return false;
+                }
+            }
+        }
+        return String(a) === String(b);
+    }
+    function looseIndexOf(arr, val) {
+        return arr.findIndex(item => looseEqual(item, val));
+    }
+
     /**
      * For converting {{ interpolation }} values to displayed strings.
      * @private
@@ -201,6 +251,7 @@
     const isArray$1 = Array.isArray;
     const isMap = (val) => toTypeString(val) === '[object Map]';
     const isSet = (val) => toTypeString(val) === '[object Set]';
+    const isDate = (val) => val instanceof Date;
     const isFunction$1 = (val) => typeof val === 'function';
     const isString$1 = (val) => typeof val === 'string';
     const isSymbol$1 = (val) => typeof val === 'symbol';
@@ -8144,6 +8195,76 @@
         return document.body.offsetHeight;
     }
 
+    const getModelAssigner = (vnode) => {
+        const fn = vnode.props['onUpdate:modelValue'];
+        return isArray$1(fn) ? value => invokeArrayFns(fn, value) : fn;
+    };
+    const vModelCheckbox = {
+        // #4096 array checkboxes need to be deep traversed
+        deep: true,
+        created(el, _, vnode) {
+            el._assign = getModelAssigner(vnode);
+            addEventListener(el, 'change', () => {
+                const modelValue = el._modelValue;
+                const elementValue = getValue$1(el);
+                const checked = el.checked;
+                const assign = el._assign;
+                if (isArray$1(modelValue)) {
+                    const index = looseIndexOf(modelValue, elementValue);
+                    const found = index !== -1;
+                    if (checked && !found) {
+                        assign(modelValue.concat(elementValue));
+                    }
+                    else if (!checked && found) {
+                        const filtered = [...modelValue];
+                        filtered.splice(index, 1);
+                        assign(filtered);
+                    }
+                }
+                else if (isSet(modelValue)) {
+                    const cloned = new Set(modelValue);
+                    if (checked) {
+                        cloned.add(elementValue);
+                    }
+                    else {
+                        cloned.delete(elementValue);
+                    }
+                    assign(cloned);
+                }
+                else {
+                    assign(getCheckboxValue(el, checked));
+                }
+            });
+        },
+        // set initial checked on mount to wait for true-value/false-value
+        mounted: setChecked,
+        beforeUpdate(el, binding, vnode) {
+            el._assign = getModelAssigner(vnode);
+            setChecked(el, binding, vnode);
+        }
+    };
+    function setChecked(el, { value, oldValue }, vnode) {
+        el._modelValue = value;
+        if (isArray$1(value)) {
+            el.checked = looseIndexOf(value, vnode.props.value) > -1;
+        }
+        else if (isSet(value)) {
+            el.checked = value.has(vnode.props.value);
+        }
+        else if (value !== oldValue) {
+            el.checked = looseEqual(value, getCheckboxValue(el, true));
+        }
+    }
+    // retrieve raw value set via :value bindings
+    function getValue$1(el) {
+        return '_value' in el ? el._value : el.value;
+    }
+    // retrieve raw value for true-value and false-value set via :true-value or :false-value bindings
+    function getCheckboxValue(el, checked) {
+        const key = checked ? '_trueValue' : '_falseValue';
+        return key in el ? el[key] : checked;
+    }
+
     const systemModifiers = ['ctrl', 'shift', 'alt', 'meta'];
     const modifierGuards = {
         stop: e => e.stopPropagation(),
@@ -13318,10 +13439,15 @@
       validator: value => validateProp(value, ['small', 'medium', 'large'])
     };
 
-    const _hoisted_1$3R = ["checked", "true-value", "false-value", "value", "indeterminate"];
+    const _hoisted_1$3R = ["true-value", "false-value", "value"];
 
 
-    var script$45 = {
+    const __default__ = {
+      inheritAttrs: false,
+      customOptions: {}
+    };
+
+    var script$45 = /*#__PURE__*/Object.assign(__default__, {
       props: {
       /**
        * Class that is added to the label for custom styles
@@ -13339,7 +13465,7 @@
        * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
       */
       indeterminate: {
-        type: Boolean,
+        type: [Boolean, String],
         default: false,
       },
       /**
@@ -13374,19 +13500,31 @@
         type: [String, Number, Boolean, Object, Array, Symbol, Function],
       }
     },
-      setup(__props) {
+      emits: ['update:modelValue'],
+      setup(__props, { emit }) {
 
     const props = __props;
 
 
+     
 
+     const vIndeterminate = (el, binding)=>{
+        if(!!binding.value) {
+          el.setAttribute("indeterminate", binding.value);
+          return;
+        }
+        el.removeAttribute("indeterminate");
+      };
+     const checkboxModel = computed({
+      get() {
+        return props.modelValue
+      },
+      set(newValue) {
+        emit('update:modelValue', newValue);
+      }
+    });
     const style = useCssModule();
     const baseClass = 'cdr-checkbox';
-    const newValue = ref(props.modelValue);
-
-    watch(() => props.value, (val) => {
-      newValue.value = val;
-    });
 
     return (_ctx, _cache) => {
       return (openBlock(), createBlock(unref(script$46), {
@@ -13399,17 +13537,18 @@
         disabled: _ctx.$attrs.disabled
       }, {
         input: withCtx(() => [
-          createBaseVNode("input", mergeProps({
+          withDirectives(createBaseVNode("input", mergeProps({
             class: [unref(style)['cdr-checkbox__input'], __props.inputClass],
             type: "checkbox"
           }, _ctx.$attrs, {
-            checked: newValue.value,
-            onChange: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.checked, $event))),
             "true-value": __props.customValue ? null : __props.trueValue,
             "false-value": __props.customValue ? null : __props.falseValue,
             value: __props.customValue,
-            indeterminate: __props.indeterminate
-          }), null, 16 /* FULL_PROPS */, _hoisted_1$3R)
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => (isRef(checkboxModel) ? (checkboxModel).value = $event : null))
+          }), null, 16 /* FULL_PROPS */, _hoisted_1$3R), [
+            [vIndeterminate, __props.indeterminate],
+            [vModelCheckbox, unref(checkboxModel)]
+          ])
         ]),
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default")
@@ -13419,7 +13558,7 @@
     }
     }
 
-    };
+    });
 
     var style0$p = {"cdr-checkbox":"cdr-checkbox_13-0-0-alpha-3","cdr-checkbox__input":"cdr-checkbox__input_13-0-0-alpha-3","cdr-label-wrapper__figure":"cdr-label-wrapper__figure_13-0-0-alpha-3"};
 
@@ -24694,7 +24833,7 @@
     const _hoisted_28$b = /*#__PURE__*/createTextVNode(" REI.com ");
     const _hoisted_29$9 = /*#__PURE__*/createTextVNode(" adventure projects ");
     const _hoisted_30$8 = /*#__PURE__*/createTextVNode(" stewardship ");
-    const _hoisted_31$7 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_31$8 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
     const _hoisted_32$7 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
     const _hoisted_33$7 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
     const _hoisted_34$7 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
@@ -24901,7 +25040,7 @@
                 onAccordionToggle: _cache[4] || (_cache[4] = $event => ($data.accordionCompact2 = !$data.accordionCompact2))
               }, {
                 label: withCtx(() => [
-                  _hoisted_31$7
+                  _hoisted_31$8
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_list, { tag: "ol" }, {
@@ -25877,7 +26016,7 @@
     const _hoisted_28$a = /*#__PURE__*/createTextVNode(" Full Width Icon Left ");
     const _hoisted_29$8 = /*#__PURE__*/createTextVNode(" Full Width Icon Right ");
     const _hoisted_30$7 = { class: "button-example inset" };
-    const _hoisted_31$6 = {
+    const _hoisted_31$7 = {
       class: "button-text-wrap",
       style: {"max-width":"300px"}
     };
@@ -26105,7 +26244,7 @@
           })
         ]),
         createBaseVNode("div", _hoisted_30$7, [
-          createBaseVNode("div", _hoisted_31$6, [
+          createBaseVNode("div", _hoisted_31$7, [
             createVNode(_component_cdr_button, {
               size: "medium",
               modifier: "secondary"
@@ -26610,16 +26749,17 @@
     const _hoisted_18$g = /*#__PURE__*/createTextVNode("D");
     const _hoisted_19$f = /*#__PURE__*/createTextVNode("E");
     const _hoisted_20$c = /*#__PURE__*/createTextVNode("F");
-    const _hoisted_21$c = /*#__PURE__*/createTextVNode(" disabled checkbox ");
-    const _hoisted_22$c = /*#__PURE__*/createTextVNode("disabled and checked checkbox");
-    const _hoisted_23$c = { class: "wrap" };
-    const _hoisted_24$a = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing ");
-    const _hoisted_25$a = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
+    const _hoisted_21$c = /*#__PURE__*/createTextVNode("Note: Arrays currently can't be nested in an array of values. The value becomes stringified. This appears to be a bug in Vue. Try toggling the \"F\" checkbox to see the current effect of nesting an array value");
+    const _hoisted_22$c = /*#__PURE__*/createTextVNode(" disabled checkbox ");
+    const _hoisted_23$c = /*#__PURE__*/createTextVNode("disabled and checked checkbox");
+    const _hoisted_24$a = { class: "wrap" };
+    const _hoisted_25$a = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing ");
     const _hoisted_26$a = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
-    const _hoisted_27$9 = /*#__PURE__*/createTextVNode(" Hidden box ");
-    const _hoisted_28$9 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
-    const _hoisted_29$7 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
-    const _hoisted_30$6 = /*#__PURE__*/createTextVNode(" Select All ");
+    const _hoisted_27$9 = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
+    const _hoisted_28$9 = /*#__PURE__*/createTextVNode(" Hidden box ");
+    const _hoisted_29$7 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
+    const _hoisted_30$6 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
+    const _hoisted_31$6 = /*#__PURE__*/createTextVNode(" Select All ");
 
     function render$F(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_checkbox = resolveComponent("cdr-checkbox");
@@ -26828,9 +26968,15 @@
           ]),
           _: 1 /* STABLE */
         }),
-        createVNode(_component_cdr_checkbox, { disabled: "" }, {
+        createVNode(_component_cdr_text, null, {
           default: withCtx(() => [
             _hoisted_21$c
+          ]),
+          _: 1 /* STABLE */
+        }),
+        createVNode(_component_cdr_checkbox, { disabled: "" }, {
+          default: withCtx(() => [
+            _hoisted_22$c
           ]),
           _: 1 /* STABLE */
         }),
@@ -26840,25 +26986,25 @@
           disabled: ""
         }, {
           default: withCtx(() => [
-            _hoisted_22$c
+            _hoisted_23$c
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        createBaseVNode("div", _hoisted_23$c, [
+        createBaseVNode("div", _hoisted_24$a, [
           createVNode(_component_cdr_checkbox, {
             name: "complex1",
             modelValue: $data.complex1,
             "onUpdate:modelValue": _cache[18] || (_cache[18] = $event => (($data.complex1) = $event))
           }, {
             default: withCtx(() => [
-              _hoisted_24$a
+              _hoisted_25$a
             ]),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"])
         ]),
         createVNode(_component_cdr_checkbox, { indeterminate: "" }, {
           default: withCtx(() => [
-            _hoisted_25$a
+            _hoisted_26$a
           ]),
           _: 1 /* STABLE */
         }),
@@ -26867,13 +27013,13 @@
           disabled: ""
         }, {
           default: withCtx(() => [
-            _hoisted_26$a
+            _hoisted_27$9
           ]),
           _: 1 /* STABLE */
         }),
         createVNode(_component_cdr_checkbox, { modifier: "hide-figure" }, {
           default: withCtx(() => [
-            _hoisted_27$9
+            _hoisted_28$9
           ]),
           _: 1 /* STABLE */
         }),
@@ -26885,11 +27031,11 @@
           "content-class": "no-box__content"
         }, {
           default: withCtx(() => [
-            _hoisted_28$9
+            _hoisted_29$7
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        _hoisted_29$7,
+        _hoisted_30$6,
         createVNode(_component_cdr_form_group, {
           id: "toppings-form",
           label: "Choose your toppings"
@@ -26903,7 +27049,7 @@
               "aria-controls": "toppings"
             }, {
               default: withCtx(() => [
-                _hoisted_30$6
+                _hoisted_31$6
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "indeterminate", "onChange"]),
