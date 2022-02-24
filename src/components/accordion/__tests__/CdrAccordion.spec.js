@@ -24,11 +24,7 @@ describe('CdrAccordion', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-// TODO: unwrap logic is not working correctly at the moment, need to refactor the provide/inject logic.
-// Sadly not a lot of docs available on provide/inject in the composition API at the moment :/
-// Probably need to pass a reactive/ref object into the `provide`.
-// in vue 2 passing in an object to provide handled that but the {val: boolean} pattern doesn't seem to work anymore
-  xit('renders correctly unwrapped', async () => {
+  it('renders correctly unwrapped', async () => {
     const wrapper = mount(CdrAccordion, {
       propsData: {
         id: 'test',
@@ -40,7 +36,11 @@ describe('CdrAccordion', () => {
       },
       global: {
         provide: {
-          unwrap: {val: true}
+          unwrap: {
+            isUnwrapped: {
+              value: true
+            }
+          }
         }
       }
     });
@@ -159,7 +159,7 @@ describe('CdrAccordion', () => {
       },
     });
 
-    expect(wrapper.vm.isOpenClass).toEqual('cdr-tabs--closed');
+    expect(wrapper.vm.isOpenClass).toEqual('cdr-accordion--closed');
   });
 
   it('focused style', async () => {
@@ -178,7 +178,20 @@ describe('CdrAccordion', () => {
     await wrapper.vm.$nextTick();
     expect(wrapper.vm.focused).toBeFalsy();
   });
-
+  it('no-spacing style', async () => {
+    const wrapper = shallowMount(CdrAccordion, {
+      propsData: {
+        id: 'test',
+        level: '2',
+        contentSpacing: false,
+      },
+      slots: {
+        default: 'This is some slot text.',
+        label: 'label',
+      },
+    });
+    expect(wrapper.classes()).toContain('cdr-accordion--no-spacing');
+  });
   it('style class checks prop values', () => {
     const wrapper = shallowMount(CdrAccordion, {
       propsData: {
