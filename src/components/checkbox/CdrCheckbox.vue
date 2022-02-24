@@ -13,19 +13,24 @@
         :class="[style['cdr-checkbox__input'], inputClass]"
         type="checkbox"
         v-bind="$attrs"
-        :checked="newValue"
-        @change="$emit('update:modelValue', $event.target.checked, $event)"
         :true-value="customValue ? null : trueValue"
         :false-value="customValue ? null : falseValue"
         :value="customValue"
-        :indeterminate="indeterminate"
-      >
+        v-indeterminate="indeterminate"
+        v-model="checkboxModel"
+      />
     </template>
     <slot />
   </cdr-label-wrapper>
 </template>
+<script>
+export default {
+  inheritAttrs: false,
+  customOptions: {}
+}
+</script>
 <script setup>
-import { useCssModule, ref, watch } from 'vue';
+import { useCssModule, computed } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
@@ -48,7 +53,7 @@ const props = defineProps({
    * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
   */
   indeterminate: {
-    type: Boolean,
+    type: [Boolean, String],
     default: false,
   },
   /**
@@ -83,14 +88,25 @@ const props = defineProps({
     type: [String, Number, Boolean, Object, Array, Symbol, Function],
   }
 });
+ const emit = defineEmits(['update:modelValue'])
 
+ const vIndeterminate = (el, binding)=>{
+    if(!!binding.value) {
+      el.setAttribute("indeterminate", binding.value)
+      return;
+    }
+    el.removeAttribute("indeterminate");
+  }
+ const checkboxModel = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    emit('update:modelValue', newValue)
+  }
+})
 const style = useCssModule();
 const baseClass = 'cdr-checkbox';
-const newValue = ref(props.modelValue);
-
-watch(() => props.value, (val) => {
-  newValue.value = val;
-})
 </script>
 <style lang="scss" module src="./styles/CdrCheckbox.module.scss">
 </style>

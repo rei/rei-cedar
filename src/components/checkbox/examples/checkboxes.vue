@@ -84,6 +84,7 @@
     >F</cdr-checkbox>
 
     <cdr-text>group: {{ exGroup }}</cdr-text>
+    <cdr-text>Note: Arrays currently can't be nested in an array of values. The value becomes stringified. This appears to be a bug in Vue. Try toggling the "F" checkbox to see the current effect of nesting an array value</cdr-text>
 
     <cdr-checkbox disabled>
       disabled checkbox
