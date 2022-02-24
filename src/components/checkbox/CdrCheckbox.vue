@@ -91,11 +91,11 @@ const props = defineProps({
  const emit = defineEmits(['update:modelValue'])
 
  const vIndeterminate = (el, binding)=>{
-    if(!binding.value) {
-      el.removeAttribute("indeterminate");
+    if(!!binding.value) {
+      el.setAttribute("indeterminate", binding.value)
       return;
     }
-    el.setAttribute("indeterminate", "indeterminate")
+    el.removeAttribute("indeterminate");
   }
  const checkboxModel = computed({
   get() {
