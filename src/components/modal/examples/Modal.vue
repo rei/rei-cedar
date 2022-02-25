@@ -63,7 +63,7 @@
       Override Content
     </cdr-checkbox>
     <hr>
-    <h2>Advance Modal Usage</h2>
+    <h2>Advanced Modal Usage</h2>
     <br />
     <fancy-modal />
     <br />
@@ -85,7 +85,7 @@ export default {
 },
   data() {
     return {
-      opened: this.$router.currentRoute.name === 'Modals',
+      opened: this.$route.name === 'Modals',
       overflowContent: false,
       override: false,
     };

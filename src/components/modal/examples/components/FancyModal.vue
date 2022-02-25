@@ -34,7 +34,12 @@
             role="document"
           >
             <div class="icon">
-              <membership />
+              <cdr-tooltip position="left">
+                <template #trigger>
+                  <membership-icon />
+                </template>
+                Hey look at me, I'm an absolutely positoned and transformed icon!
+              </cdr-tooltip> 
             </div>
             <cdr-text
               tag="h3"
@@ -66,15 +71,13 @@
 
 <script>
 import * as Components from 'srcdir/index';
-import Ski from '../../../icon/comps/ski.vue';
-import Membership from '../../../icon/comps/membership.vue';
+import MembershipIcon from '../../../icon/comps/membership.vue';
 
 export default {
   name: 'FancyModal',
   components: {
     ...Components,
-    Ski,
-    Membership
+    MembershipIcon,
 },
   data() {
     return {
@@ -187,6 +190,8 @@ export default {
   position: absolute;
   left: 75%;
   top: 12%;
-  transform: rotate(-18deg) scale(2);
+  svg {
+    transform: rotate(-18deg) scale(2);
+  }
 }
 </style>
