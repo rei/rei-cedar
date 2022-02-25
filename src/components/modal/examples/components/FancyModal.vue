@@ -33,6 +33,9 @@
             class="content green"
             role="document"
           >
+            <div class="icon">
+              <membership />
+            </div>
             <cdr-text
               tag="h3"
               class="cdr-text-dev--heading-serif-600"
@@ -63,12 +66,16 @@
 
 <script>
 import * as Components from 'srcdir/index';
+import Ski from '../../../icon/comps/ski.vue';
+import Membership from '../../../icon/comps/membership.vue';
 
 export default {
   name: 'FancyModal',
   components: {
     ...Components,
-  },
+    Ski,
+    Membership
+},
   data() {
     return {
       modalOpened: false,
@@ -175,5 +182,11 @@ export default {
 }
 .sr-only{
   @include cdr-display-sr-only;
+}
+.icon {
+  position: absolute;
+  left: 75%;
+  top: 12%;
+  transform: rotate(-18deg) scale(2);
 }
 </style>
