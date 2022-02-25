@@ -1,7 +1,7 @@
 <template>
   <div class="modal-example">
     <h2>
-      Modal
+      Basic Modal Configuration
     </h2>
 
     <cdr-modal
@@ -62,17 +62,27 @@
     <cdr-checkbox v-model="override">
       Override Content
     </cdr-checkbox>
+    <hr>
+    <h2>Advance Modal Usage</h2>
+    <br />
+    <fancy-modal />
+    <br />
+    <async-modal />
   </div>
 </template>
 
 <script>
 import * as Components from 'srcdir/index';
+import FancyModal from './components/FancyModal.vue'
+import AsyncModal from './components/AsyncModal.vue';
 
 export default {
   name: 'Modal',
   components: {
     ...Components,
-  },
+    FancyModal,
+    AsyncModal
+},
   data() {
     return {
       opened: this.$router.currentRoute.name === 'Modals',
