@@ -38,7 +38,7 @@ export default {
     async getCatFact() {
       await fetch("https://cat-fact.herokuapp.com/facts")
         .then(response => response.json())
-        .then(data => (this.catFact = data[0].text));
+        .then(data => (this.catFact = data[Math.floor(Math.random() * (4 - 0) + 0)].text));
     },
     handleOpen() {
       this.getCatFact();
