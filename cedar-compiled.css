@@ -2660,9 +2660,8 @@ input[type="month"] {
 .cdr-modal__header_13-0-0-alpha-3 {
   display: flex;
   padding-bottom: 1.6rem;
-}
-.cdr-modal__title_13-0-0-alpha-3 {
   flex: auto;
+  justify-content: space-between;
   font-family: Stuart, Georgia, serif;
   font-style: normal;
   font-weight: 500;
@@ -2683,11 +2682,8 @@ input[type="month"] {
 .cdr-modal__close-button_13-0-0-alpha-3:hover, .cdr-modal__close-button_13-0-0-alpha-3:focus {
   border: 0.1rem solid #928b80;
 }
-.cdr-modal__text_13-0-0-alpha-3 {
-  padding: 0;
-  position: relative;
-}
 .cdr-modal__text-content_13-0-0-alpha-3 {
+  padding: 0;
   overflow: auto;
   position: relative;
 }
