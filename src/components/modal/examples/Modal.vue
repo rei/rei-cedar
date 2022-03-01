@@ -26,7 +26,10 @@
         #modal
         v-if="override"
       >
-        Wow i can just take over the whole modal, huh?
+        <div>
+          <p>Wow i can just take over the whole modal, huh? Better make sure I have clear way to close it!</p>
+          <cdr-button @click="closed">Close modal</cdr-button>
+        </div>
       </template>
 
       <!-- eslint-disable-next-line -->
