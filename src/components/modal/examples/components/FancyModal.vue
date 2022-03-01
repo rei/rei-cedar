@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cdr-button @click="modalOpened = true">Open fancy modal</cdr-button>
+    <cdr-button @click="modalOpened = true" aria-haspopup="dialog">Open fancy modal</cdr-button>
     <cdr-modal
       label="Become a member of REI Co-op."
       :opened="modalOpened"
@@ -34,7 +34,7 @@
             role="document"
           >
             <div class="icon">
-              <cdr-tooltip position="left">
+              <cdr-tooltip id="fancy-tooltip" position="left">
                 <template #trigger>
                   <membership-icon />
                 </template>
@@ -127,12 +127,11 @@ export default {
       }
       .image {
         background-image: url("https://www.rei.com/assets/membership/benefits/modal/parenting/live.jpg");
-        background-position: center top;
         background-size: 100% auto;
         background-position: 0% 55%;
-        height: 180px;
         background-repeat: no-repeat;
         border-radius: $cdr-radius-softer $cdr-radius-softer 0 0;
+        height: 180px;
         @include cdr-sm-mq-up {
           flex: 0 50%;
           height: 370px;

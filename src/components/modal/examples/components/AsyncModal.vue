@@ -1,10 +1,9 @@
 <template>
   <div>
-    <cdr-button @click="handleOpen">Open async modal</cdr-button>
+    <cdr-button @click="handleOpen" aria-haspopup="dialog">Open async modal</cdr-button>
     <cdr-modal
       label="Cat facts!"
       :opened="modalOpened"
-      aria-describedby="description"
       @closed="modalOpened = false"
     >
       <template #title>
