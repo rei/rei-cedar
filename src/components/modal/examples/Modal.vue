@@ -1,7 +1,7 @@
 <template>
   <div class="modal-example">
     <h2>
-      Modal
+      Basic Modal Configuration
     </h2>
 
     <cdr-modal
@@ -13,7 +13,7 @@
       data-backstop="modal"
       role="dialog"
     >
-      <template v-slot:title>
+      <template #title>
         <cdr-text
           tag="h2"
           class="cdr-text-dev--heading-serif-600 modal-title"
@@ -23,7 +23,7 @@
       </template>
 
       <template
-        slot="modal"
+        #modal
         v-if="override"
       >
         Wow i can just take over the whole modal, huh?
@@ -62,20 +62,30 @@
     <cdr-checkbox v-model="override">
       Override Content
     </cdr-checkbox>
+    <hr>
+    <h2>Advanced Modal Usage</h2>
+    <br />
+    <fancy-modal />
+    <br />
+    <async-modal />
   </div>
 </template>
 
 <script>
 import * as Components from 'srcdir/index';
+import FancyModal from './components/FancyModal.vue'
+import AsyncModal from './components/AsyncModal.vue';
 
 export default {
   name: 'Modal',
   components: {
     ...Components,
-  },
+    FancyModal,
+    AsyncModal
+},
   data() {
     return {
-      opened: this.$router.currentRoute.name === 'Modals',
+      opened: this.$route.name === 'Modals',
       overflowContent: false,
       override: false,
     };

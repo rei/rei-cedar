@@ -1,12 +1,12 @@
 <script setup>
 import { useCssModule } from 'vue';
 
-const props = defineProps({
+defineProps({
     tag: {
       type: String,
       default: 'article',
     }
-})
+});
 
 const baseClass = 'cdr-card';
 const style = useCssModule();
