@@ -24795,7 +24795,7 @@
     const _hoisted_16$o = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
     const _hoisted_17$m = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
     const _hoisted_18$k = /*#__PURE__*/createBaseVNode("li", null, "It includes no extra styling", -1 /* HOISTED */);
-    const _hoisted_19$i = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
+    const _hoisted_19$j = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
     const _hoisted_20$f = /*#__PURE__*/createBaseVNode("li", null, "to this list because", -1 /* HOISTED */);
     const _hoisted_21$f = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
     const _hoisted_22$e = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
@@ -24919,7 +24919,7 @@
                     default: withCtx(() => [
                       _hoisted_17$m,
                       _hoisted_18$k,
-                      _hoisted_19$i,
+                      _hoisted_19$j,
                       _hoisted_20$f,
                       _hoisted_21$f,
                       _hoisted_22$e
@@ -25163,7 +25163,7 @@
     const _hoisted_16$n = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_17$l = /*#__PURE__*/createTextVNode(" This is a banner with an icon-right slot, typically used to close the banner. ");
     const _hoisted_18$j = /*#__PURE__*/createTextVNode(" Your parent template should handle the close action. ");
-    const _hoisted_19$h = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_19$i = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_20$e = /*#__PURE__*/createTextVNode(" Banner with info-action slot ");
     const _hoisted_21$e = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
 
@@ -25276,7 +25276,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_19$h,
+        _hoisted_19$i,
         createVNode(_component_cdr_banner, { type: "info" }, {
           "icon-left": withCtx(() => [
             createVNode(_component_icon_information_fill, { "inherit-color": "" })
@@ -25978,7 +25978,7 @@
     const _hoisted_16$m = /*#__PURE__*/createTextVNode(" Large and left Icon ");
     const _hoisted_17$k = /*#__PURE__*/createTextVNode(" Large and right Icon ");
     const _hoisted_18$i = { class: "button-example inset" };
-    const _hoisted_19$g = /*#__PURE__*/createBaseVNode("h3", null, " Using a sprite ", -1 /* HOISTED */);
+    const _hoisted_19$h = /*#__PURE__*/createBaseVNode("h3", null, " Using a sprite ", -1 /* HOISTED */);
     const _hoisted_20$d = /*#__PURE__*/createTextVNode(" Button and Icon ");
     const _hoisted_21$d = /*#__PURE__*/createTextVNode(" Button and Icon ");
     const _hoisted_22$d = /*#__PURE__*/createTextVNode(" Twitter ");
@@ -26111,7 +26111,7 @@
           })
         ]),
         createBaseVNode("div", _hoisted_18$i, [
-          _hoisted_19$g,
+          _hoisted_19$h,
           createVNode(_component_cdr_button, {
             size: "large",
             modifier: "secondary"
@@ -26721,7 +26721,7 @@
     const _hoisted_16$l = /*#__PURE__*/createTextVNode("B");
     const _hoisted_17$j = /*#__PURE__*/createTextVNode("C");
     const _hoisted_18$h = /*#__PURE__*/createTextVNode("D");
-    const _hoisted_19$f = /*#__PURE__*/createTextVNode("E");
+    const _hoisted_19$g = /*#__PURE__*/createTextVNode("E");
     const _hoisted_20$c = /*#__PURE__*/createTextVNode("F");
     const _hoisted_21$c = /*#__PURE__*/createTextVNode("Note: Arrays currently can't be nested in an array of values. The value becomes stringified. This appears to be a bug in Vue. Try toggling the \"F\" checkbox to see the current effect of nesting an array value");
     const _hoisted_22$c = /*#__PURE__*/createTextVNode(" disabled checkbox ");
@@ -26922,7 +26922,7 @@
           "onUpdate:modelValue": _cache[15] || (_cache[15] = $event => (($data.exGroup) = $event))
         }, {
           default: withCtx(() => [
-            _hoisted_19$f
+            _hoisted_19$g
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["custom-value", "modelValue"]),
@@ -27139,7 +27139,7 @@
     const _hoisted_16$k = /*#__PURE__*/createBaseVNode("h4", null, "Checkbox Chip multi selection", -1 /* HOISTED */);
     const _hoisted_17$i = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
     const _hoisted_18$g = /*#__PURE__*/createBaseVNode("h2", null, "disabled chip", -1 /* HOISTED */);
-    const _hoisted_19$e = /*#__PURE__*/createTextVNode(" Default ");
+    const _hoisted_19$f = /*#__PURE__*/createTextVNode(" Default ");
 
     function render$G(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_chip = resolveComponent("cdr-chip");
@@ -27289,7 +27289,7 @@
         _hoisted_18$g,
         createVNode(_component_cdr_chip, { disabled: "" }, {
           default: withCtx(() => [
-            _hoisted_19$e
+            _hoisted_19$f
           ]),
           _: 1 /* STABLE */
         })
@@ -27398,7 +27398,7 @@
     ], -1 /* HOISTED */);
     const _hoisted_17$h = /*#__PURE__*/createTextVNode("A");
     const _hoisted_18$f = /*#__PURE__*/createTextVNode("B");
-    const _hoisted_19$d = /*#__PURE__*/createTextVNode("C");
+    const _hoisted_19$e = /*#__PURE__*/createTextVNode("C");
     const _hoisted_20$b = /*#__PURE__*/createBaseVNode("template", { slot: "error" }, [
       /*#__PURE__*/createBaseVNode("span", { id: "errorAlert" }, "You must make a selection within two minutes!")
     ], -1 /* HOISTED */);
@@ -27615,7 +27615,7 @@
               onInput: $options.validateAlert
             }, {
               default: withCtx(() => [
-                _hoisted_19$d
+                _hoisted_19$e
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "onInput"]),
@@ -28407,7 +28407,7 @@
     const _hoisted_16$h = /*#__PURE__*/createTextVNode(" y-center, right ");
     const _hoisted_17$f = /*#__PURE__*/createTextVNode(" bottom, left ");
     const _hoisted_18$d = /*#__PURE__*/createTextVNode(" bottom, x-center ");
-    const _hoisted_19$c = /*#__PURE__*/createTextVNode(" bottom, right ");
+    const _hoisted_19$d = /*#__PURE__*/createTextVNode(" bottom, right ");
 
     function render$x(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_text = resolveComponent("cdr-text");
@@ -28647,7 +28647,7 @@
             createBaseVNode("div", null, [
               createVNode(_component_cdr_text, { class: "cdr-text-dev--subheading-sans-300" }, {
                 default: withCtx(() => [
-                  _hoisted_19$c
+                  _hoisted_19$d
                 ]),
                 _: 1 /* STABLE */
               }),
@@ -28933,7 +28933,7 @@
     const _hoisted_16$g = { slot: "info" };
     const _hoisted_17$e = /*#__PURE__*/createTextVNode(" Support link ");
     const _hoisted_18$c = /*#__PURE__*/createTextVNode(" Support link ");
-    const _hoisted_19$b = /*#__PURE__*/createBaseVNode("template", { slot: "helper-text-top" }, [
+    const _hoisted_19$c = /*#__PURE__*/createBaseVNode("template", { slot: "helper-text-top" }, [
       /*#__PURE__*/createBaseVNode("span", { id: "topHelp" }, "Hey im on top of the input!")
     ], -1 /* HOISTED */);
     const _hoisted_20$a = /*#__PURE__*/createBaseVNode("template", { slot: "helper-text-bottom" }, [
@@ -29235,7 +29235,7 @@
         }, {
           default: withCtx(() => [
             createVNode(_component_icon_map, { slot: "pre-icon" }),
-            _hoisted_19$b,
+            _hoisted_19$c,
             _hoisted_20$a,
             createBaseVNode("template", _hoisted_21$a, [
               createVNode(_component_cdr_link, {
@@ -29377,7 +29377,7 @@
     const _hoisted_16$f = /*#__PURE__*/createTextVNode(" Icons on both sides ");
     const _hoisted_17$d = /*#__PURE__*/createBaseVNode("h3", null, "Links, with inherited color", -1 /* HOISTED */);
     const _hoisted_18$b = { style: {"color":"darkgreen","fill":"darkgreen"} };
-    const _hoisted_19$a = /*#__PURE__*/createTextVNode(" inherit-color plain example ");
+    const _hoisted_19$b = /*#__PURE__*/createTextVNode(" inherit-color plain example ");
     const _hoisted_20$9 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_21$9 = /*#__PURE__*/createTextVNode(" cdr-link icon inherit ");
     const _hoisted_22$9 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
@@ -29498,7 +29498,7 @@
               href: "rei.com"
             }, {
               default: withCtx(() => [
-                _hoisted_19$a
+                _hoisted_19$b
               ]),
               _: 1 /* STABLE */
             }),
@@ -29826,7 +29826,7 @@
     const _hoisted_16$d = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_17$c = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_18$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_19$9 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_19$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_20$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_21$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_22$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
@@ -29906,7 +29906,7 @@
         }),
         createVNode(_component_cdr_list, { modifier: "inline unordered" }, {
           default: withCtx(() => [
-            _hoisted_19$9,
+            _hoisted_19$a,
             _hoisted_20$8,
             _hoisted_21$8,
             _hoisted_22$8,
@@ -29969,7 +29969,7 @@
     const _hoisted_16$c = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_17$b = /*#__PURE__*/createBaseVNode("h4", null, " Typography validation - text wrapping list ", -1 /* HOISTED */);
     const _hoisted_18$9 = /*#__PURE__*/createBaseVNode("li", null, "body--300", -1 /* HOISTED */);
-    const _hoisted_19$8 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
+    const _hoisted_19$9 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
     const _hoisted_20$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_21$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_22$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
@@ -30061,7 +30061,7 @@
               default: withCtx(() => [
                 _hoisted_18$9,
                 createBaseVNode("li", null, [
-                  _hoisted_19$8,
+                  _hoisted_19$9,
                   createVNode(_component_cdr_list, null, {
                     default: withCtx(() => [
                       _hoisted_20$7,
@@ -30135,7 +30135,7 @@
     const _hoisted_16$b = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_17$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_18$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_19$7 = /*#__PURE__*/createBaseVNode("h4", null, " Inline bare list ", -1 /* HOISTED */);
+    const _hoisted_19$8 = /*#__PURE__*/createBaseVNode("h4", null, " Inline bare list ", -1 /* HOISTED */);
     const _hoisted_20$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_21$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_22$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
@@ -30211,7 +30211,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_19$7,
+        _hoisted_19$8,
         createVNode(_component_cdr_list, { modifier: "inline" }, {
           default: withCtx(() => [
             _hoisted_20$6,
@@ -30266,7 +30266,7 @@
     const _hoisted_16$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_17$9 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
     const _hoisted_18$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_19$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_19$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_20$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_21$5 = /*#__PURE__*/createTextVNode(" text ");
     const _hoisted_22$5 = /*#__PURE__*/createTextVNode(" random text ");
@@ -30359,7 +30359,7 @@
                       createVNode(_component_cdr_list, null, {
                         default: withCtx(() => [
                           _hoisted_18$7,
-                          _hoisted_19$6
+                          _hoisted_19$7
                         ]),
                         _: 1 /* STABLE */
                       })
@@ -30768,29 +30768,30 @@
     const _hoisted_1$h = { class: "modal-example" };
     const _hoisted_2$f = /*#__PURE__*/createBaseVNode("h2", null, " Basic Modal Configuration ", -1 /* HOISTED */);
     const _hoisted_3$f = /*#__PURE__*/createTextVNode(" Terms & Conditions ");
-    const _hoisted_4$f = /*#__PURE__*/createTextVNode(" Wow i can just take over the whole modal, huh? ");
-    const _hoisted_5$f = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dictum ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam non urna sit amet dolor euismod consequat vitae non nunc. Nullam vulputate enim ac pharetra sagittis. Curabitur volutpat, metus eu euismod finibus, neque turpis viverra dolor, at ornare justo libero a arcu. Suspendisse nec lectus id leo aliquam posuere id eu mauris. Aenean fermentum justo ex, vel sagittis nulla efficitur nec. Mauris aliquet urna id felis maximus, et molestie erat bibendum. Donec dolor purus, iaculis vitae tellus at, iaculis facilisis nibh. Pellentesque at ex sit amet eros elementum iaculis quis ut justo. Pellentesque consequat in sapien ac blandit. Donec ullamcorper lacus sed interdum auctor.");
-    const _hoisted_6$d = {
+    const _hoisted_4$f = /*#__PURE__*/createBaseVNode("p", null, "Wow i can just take over the whole modal, huh? Better make sure I have clear way to close it!", -1 /* HOISTED */);
+    const _hoisted_5$f = /*#__PURE__*/createTextVNode("Close modal");
+    const _hoisted_6$d = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dictum ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam non urna sit amet dolor euismod consequat vitae non nunc. Nullam vulputate enim ac pharetra sagittis. Curabitur volutpat, metus eu euismod finibus, neque turpis viverra dolor, at ornare justo libero a arcu. Suspendisse nec lectus id leo aliquam posuere id eu mauris. Aenean fermentum justo ex, vel sagittis nulla efficitur nec. Mauris aliquet urna id felis maximus, et molestie erat bibendum. Donec dolor purus, iaculis vitae tellus at, iaculis facilisis nibh. Pellentesque at ex sit amet eros elementum iaculis quis ut justo. Pellentesque consequat in sapien ac blandit. Donec ullamcorper lacus sed interdum auctor.");
+    const _hoisted_7$c = {
       key: 0,
       style: {"display":"flex","justify-content":"space-between","align-items":"center"}
     };
-    const _hoisted_7$c = /*#__PURE__*/createTextVNode("Lorem Ipsum Etsum Flotsam Jetsons");
-    const _hoisted_8$c = /*#__PURE__*/createTextVNode("boop");
-    const _hoisted_9$b = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dictum ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam non urna sit amet dolor euismod consequat vitae non nunc. Nullam vulputate enim ac pharetra sagittis. Curabitur volutpat, metus eu euismod finibus, neque turpis viverra dolor, at ornare justo libero a arcu. Suspendisse nec lectus id leo aliquam posuere id eu mauris. Aenean fermentum justo ex, vel sagittis nulla efficitur nec. Mauris aliquet urna id felis maximus, et molestie erat bibendum. Donec dolor purus, iaculis vitae tellus at, iaculis facilisis nibh. Pellentesque at ex sit amet eros elementum iaculis quis ut justo. Pellentesque consequat in sapien ac blandit. Donec ullamcorper lacus sed interdum auctor.");
+    const _hoisted_8$c = /*#__PURE__*/createTextVNode("Lorem Ipsum Etsum Flotsam Jetsons");
+    const _hoisted_9$b = /*#__PURE__*/createTextVNode("boop");
     const _hoisted_10$b = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dictum ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam non urna sit amet dolor euismod consequat vitae non nunc. Nullam vulputate enim ac pharetra sagittis. Curabitur volutpat, metus eu euismod finibus, neque turpis viverra dolor, at ornare justo libero a arcu. Suspendisse nec lectus id leo aliquam posuere id eu mauris. Aenean fermentum justo ex, vel sagittis nulla efficitur nec. Mauris aliquet urna id felis maximus, et molestie erat bibendum. Donec dolor purus, iaculis vitae tellus at, iaculis facilisis nibh. Pellentesque at ex sit amet eros elementum iaculis quis ut justo. Pellentesque consequat in sapien ac blandit. Donec ullamcorper lacus sed interdum auctor.");
-    const _hoisted_11$a = /*#__PURE__*/createTextVNode("Launch modal ");
-    const _hoisted_12$a = /*#__PURE__*/createBaseVNode("h3", { class: "stack" }, " Content Options ", -1 /* HOISTED */);
-    const _hoisted_13$9 = /*#__PURE__*/createTextVNode(" Overflow Content ");
-    const _hoisted_14$9 = /*#__PURE__*/createTextVNode(" Override Content ");
-    const _hoisted_15$9 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_16$9 = /*#__PURE__*/createBaseVNode("h2", null, "Advanced Modal Usage", -1 /* HOISTED */);
-    const _hoisted_17$8 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_11$a = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dictum ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam non urna sit amet dolor euismod consequat vitae non nunc. Nullam vulputate enim ac pharetra sagittis. Curabitur volutpat, metus eu euismod finibus, neque turpis viverra dolor, at ornare justo libero a arcu. Suspendisse nec lectus id leo aliquam posuere id eu mauris. Aenean fermentum justo ex, vel sagittis nulla efficitur nec. Mauris aliquet urna id felis maximus, et molestie erat bibendum. Donec dolor purus, iaculis vitae tellus at, iaculis facilisis nibh. Pellentesque at ex sit amet eros elementum iaculis quis ut justo. Pellentesque consequat in sapien ac blandit. Donec ullamcorper lacus sed interdum auctor.");
+    const _hoisted_12$a = /*#__PURE__*/createTextVNode("Launch modal ");
+    const _hoisted_13$9 = /*#__PURE__*/createBaseVNode("h3", { class: "stack" }, " Content Options ", -1 /* HOISTED */);
+    const _hoisted_14$9 = /*#__PURE__*/createTextVNode(" Overflow Content ");
+    const _hoisted_15$9 = /*#__PURE__*/createTextVNode(" Override Content ");
+    const _hoisted_16$9 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
+    const _hoisted_17$8 = /*#__PURE__*/createBaseVNode("h2", null, "Advanced Modal Usage", -1 /* HOISTED */);
     const _hoisted_18$6 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_19$6 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
 
     function render$j(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_text = resolveComponent("cdr-text");
-      const _component_cdr_link = resolveComponent("cdr-link");
       const _component_cdr_button = resolveComponent("cdr-button");
+      const _component_cdr_link = resolveComponent("cdr-link");
       const _component_cdr_modal = resolveComponent("cdr-modal");
       const _component_cdr_checkbox = resolveComponent("cdr-checkbox");
       const _component_fancy_modal = resolveComponent("fancy-modal");
@@ -30821,21 +30822,21 @@
           default: withCtx(() => [
             createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
               default: withCtx(() => [
-                _hoisted_5$f
+                _hoisted_6$d
               ]),
               _: 1 /* STABLE */
             }),
             ($data.overflowContent)
-              ? (openBlock(), createElementBlock("div", _hoisted_6$d, [
+              ? (openBlock(), createElementBlock("div", _hoisted_7$c, [
                   createVNode(_component_cdr_link, null, {
                     default: withCtx(() => [
-                      _hoisted_7$c
+                      _hoisted_8$c
                     ]),
                     _: 1 /* STABLE */
                   }),
                   createVNode(_component_cdr_button, null, {
                     default: withCtx(() => [
-                      _hoisted_8$c
+                      _hoisted_9$b
                     ]),
                     _: 1 /* STABLE */
                   })
@@ -30847,7 +30848,7 @@
                   class: "cdr-text-dev--body-300"
                 }, {
                   default: withCtx(() => [
-                    _hoisted_9$b
+                    _hoisted_10$b
                   ]),
                   _: 1 /* STABLE */
                 }))
@@ -30858,7 +30859,7 @@
                   class: "cdr-text-dev--body-300"
                 }, {
                   default: withCtx(() => [
-                    _hoisted_10$b
+                    _hoisted_11$a
                   ]),
                   _: 1 /* STABLE */
                 }))
@@ -30870,7 +30871,15 @@
             ? {
                 name: "modal",
                 fn: withCtx(() => [
-                  _hoisted_4$f
+                  createBaseVNode("div", null, [
+                    _hoisted_4$f,
+                    createVNode(_component_cdr_button, { onClick: $options.closed }, {
+                      default: withCtx(() => [
+                        _hoisted_5$f
+                      ]),
+                      _: 1 /* STABLE */
+                    }, 8 /* PROPS */, ["onClick"])
+                  ])
                 ])
               }
             : undefined
@@ -30880,17 +30889,17 @@
           "aria-haspopup": "dialog"
         }, {
           default: withCtx(() => [
-            _hoisted_11$a
+            _hoisted_12$a
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_12$a,
+        _hoisted_13$9,
         createVNode(_component_cdr_checkbox, {
           modelValue: $data.overflowContent,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => (($data.overflowContent) = $event))
         }, {
           default: withCtx(() => [
-            _hoisted_13$9
+            _hoisted_14$9
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -30899,15 +30908,15 @@
           "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => (($data.override) = $event))
         }, {
           default: withCtx(() => [
-            _hoisted_14$9
+            _hoisted_15$9
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        _hoisted_15$9,
         _hoisted_16$9,
         _hoisted_17$8,
-        createVNode(_component_fancy_modal),
         _hoisted_18$6,
+        createVNode(_component_fancy_modal),
+        _hoisted_19$6,
         createVNode(_component_async_modal)
       ]))
     }
