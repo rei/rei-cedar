@@ -181,73 +181,7 @@
         </cdr-link>
       </template>
     </cdr-input>
-<cdr-input
-      class="demo-input"
-      :required="true"
-      v-model="megaModel"
-      :error="megaErr"
-      error-role="alert"
-      id="inputWithError"
-      label="Everything at the same time, alert validation"
-      @blur="megaErr = false"
-      size="large"
-    >
-      <icon-map #pre-icon />
-      <template #helper-text-top>
-        <span id="topHelp">Hey im on top of the input!</span>
-      </template>
-      <template #helper-text-bottom>
-        <span id="bottomHelp">Hey im below the input!</span>
-      </template>
-      <template #info>
-        <cdr-link
-          href="#baz"
-          modifier="standalone"
-        >
-          Hey im also on top of the input!
-        </cdr-link>
-      </template>
-      <template #info-action>
-        <cdr-link
-          tag="button"
-          type="button"
-        >
-          <span class="sr-only">I trigger some sort of action!</span>
-          <icon-check-stroke inherit-color />
-        </cdr-link>
-      </template>
-      <template #post-icon>
-        <cdr-tooltip
-          class="cdr-input__button"
-          id="mega-tooltip"
-        >
-          <cdr-button
-            #trigger
-            :icon-only="true"
-            @click="megaErr = 'you have five minutes to fix this'"
-            size="large"
-            aria-label="Click me to cause an error"
-          >
-            <icon-x-stroke />
-          </cdr-button>
-          I put the input into an error state!
-        </cdr-tooltip>
-        <cdr-popover
-          class="cdr-input__button"
-          id="mega-popover"
-        >
-          <cdr-button
-            #trigger
-            :icon-only="true"
-            size="large"
-            aria-label="Hello"
-          >
-            <icon-information-stroke />
-          </cdr-button>
-          Hey What's Up?
-        </cdr-popover>
-      </template>
-    </cdr-input>
+
     <cdr-input
       class="demo-input"
       v-model="helperValidationModel"
@@ -443,11 +377,11 @@ export default {
   },
   watch: {
     $route(to) {
-      this.setBackground("primary");
+       this.setBackground(to.query.background);
     },
   },
   mounted() {
-    this.setBackground("primary");
+    this.setBackground(this.$router.currentRoute.query.background);
   },
   methods: {
     validate() {
