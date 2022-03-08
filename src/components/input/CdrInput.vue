@@ -151,7 +151,6 @@ const props = defineProps({
       default: 'text',
       validator: (value) => propValidator(
         value,
-        // TODO: moar types?
         ['text', 'email', 'number', 'password', 'search', 'url', 'tel'],
       ),
     },
@@ -200,7 +199,6 @@ const props = defineProps({
     },
 })
 const baseClass = 'cdr-input';
-// console.log(ctx.slots['post-icon']);
 // TODO: delete un-used hasSlot props
 const isFocused = ref(false);
 const slots = useSlots();
@@ -234,7 +232,6 @@ const describedby = computed(() => {
 
 const attrsWithClassExcluded = computed(()=>{
   let returnObj = {}
-  // use const below
   for (const attr in attrs) {
     if (attr !== 'class') {
       returnObj[attr] = attrs[attr]
