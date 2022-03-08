@@ -1,20 +1,24 @@
 {
   "name": "@rei/cedar",
-  "version": "13.0.0-vite.0",
+  "version": "13.0.0-vite.3",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
   "private": false,
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "author": "REI Software Engineering",
-  "main": "dist/cedar.js",
-  "module": "dist/lib/src/index.js",
-  "style": "dist/style/cedar-full.css",
+  "main": "./dist/cedar-vite.umd.js",
+  "module": "./dist/cedar-vite.es.js",
+  "style": "./dist/style.css",
+  "exports": {
+    ".": {
+      "import": "./dist/cedar-vite.es.js",
+      "require": "./dist/cedar-vite.umd.js"
+    }
+  },
   "files": [
     "dist"
   ],
