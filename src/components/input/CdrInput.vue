@@ -1,11 +1,12 @@
 <template>
   <cdr-label-standalone
-    :for-id="id"
+    :for-id="uniqueId"
     :label="label"
     :hide-label="hideLabel"
     :required="required"
     :optional="optional"
     :disabled="disabled"
+    :class="attrs.class"
   >
     <template
       #helper
@@ -35,17 +36,16 @@
                            backgroundClass,
                            sizeClass,
         )"
-        :id="id"
+        :id="uniqueId"
         :disabled="disabled"
         :aria-required="required || null"
         :aria-invalid="!!error || null"
         :aria-errormessage="(!!error && `${id}-error`) || null"
         v-bind="inputAttrs"
-        :value="modelValue"
         :aria-describedby="describedby || null"
-        @input="$emit('update:modelValue', $event.target.value)"
         @focus="isFocused = true"
         @blur="isFocused = false"
+        v-model="inputModel"
       />
       <input
         v-else
@@ -59,17 +59,16 @@
                            backgroundClass,
                            sizeClass,
         )"
-        :id="id"
+        :id="uniqueId"
         :disabled="disabled"
         :aria-required="required || null"
         :aria-invalid="!!error || null"
         :aria-errormessage="(!!error && `${id}-error`) || null"
         v-bind="inputAttrs"
         :aria-describedby="describedby || null"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
         @focus="isFocused = true"
         @blur="isFocused = false"
+        v-model="inputModel"
       >
       <span
         v-if="hasPreIcon"
@@ -117,29 +116,30 @@
     </template>
   </cdr-label-standalone>
 </template>
+
 <script>
-import { defineComponent, useCssModule, computed, ref } from 'vue';
+export default {
+  inheritAttrs: false,
+  customOptions: {}
+}
+</script>
+<script setup>
+import { useAttrs, useSlots, useCssModule, defineEmits, computed, ref } from 'vue';
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
 import CdrFormError from '../formError/CdrFormError';
 import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
+import uid from '../../utils/uid';
 
-export default defineComponent({
-  name: 'CdrInput',
-  components: {
-    CdrLabelStandalone,
-    CdrFormError,
-  },
-  inheritAttrs: false,
-  props: {
+const emit = defineEmits(['update:modelValue'])
+const props = defineProps({
     /**
      * `id` for the input that is mapped to the label `for` attribute.
     */
     id: {
-      type: String,
-      required: true,
+      type: String   
     },
     /**
      *  'type' attribute for the input as defined by w3c.
@@ -196,78 +196,75 @@ export default defineComponent({
     required: Boolean,
     optional: Boolean,
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, Function],
     },
-  },
-  setup(props, ctx) {
-    const baseClass = 'cdr-input';
-    // console.log(ctx.slots['post-icon']);
-    // TODO: delete un-used hasSlot props
-    const isFocused = ref(false);
-    const hasHelperTop = ctx.slots['helper-text-top'];
-    const hasHelperBottom = ctx.slots['helper-text-bottom'];
-    const hasPreIcon = ctx.slots['pre-icon'];
-    const hasPostIcon = ctx.slots['post-icon'];
-    const hasPostIcons = hasPostIcon && ctx.slots['post-icon']().length > 1;
-    const hasInfo = ctx.slots.info;
-    const hasInfoAction = ctx.slots['info-action'];
+})
+const baseClass = 'cdr-input';
+// console.log(ctx.slots['post-icon']);
+// TODO: delete un-used hasSlot props
+const isFocused = ref(false);
+const slots = useSlots();
+const attrs = useAttrs();
+const hasHelperTop = slots['helper-text-top'];
+const hasHelperBottom = slots['helper-text-bottom'];
+const hasPreIcon = slots['pre-icon'];
+const hasPostIcon = slots['post-icon'];
+const hasPostIcons = hasPostIcon && slots['post-icon']().length > 1;
+const hasInfo = slots.info;
+const hasInfoAction = slots['info-action'];
 
-    const multilineClass = computed(() => props.rows > 1 && 'cdr-input--multiline');
-    const preIconClass = computed(() => hasPreIcon && 'cdr-input--preicon');
-    // TODO: make one class for this? if possible? there must have been a reason i did it like this.....
-    const postIconClass = computed(() => hasPostIcon && 'cdr-input--posticon');
-    const postIconsClass = computed(() => hasPostIcons && 'cdr-input--posticons');
-    const errorClass = computed(() => props.error && 'cdr-input--error');
-    const backgroundClass = computed(() => `cdr-input--${props.background}`);
-    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-    const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
+const uniqueId = props.id ? props.id : uid();
+const multilineClass = computed(() => props.rows > 1 && 'cdr-input--multiline');
+const preIconClass = computed(() => hasPreIcon && 'cdr-input--preicon');
+// TODO: make one class for this? if possible? there must have been a reason i did it like this.....
+const postIconClass = computed(() => hasPostIcon && 'cdr-input--posticon');
+const postIconsClass = computed(() => hasPostIcons && 'cdr-input--posticons');
+const errorClass = computed(() => props.error && 'cdr-input--error');
+const backgroundClass = computed(() => `cdr-input--${props.background}`);
+const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
 
-    const describedby = computed(() => {
-      return [
-        ctx.slots['helper-text-top'] ? `${props.id}-helper-text-top` : '',
-        ctx.slots['helper-text-bottom'] ? `${props.id}-helper-text-bottom` : '',
-        ctx.attrs['aria-describedby'],
-      ].filter((x) => x).join(' ');
-    })
+const describedby = computed(() => {
+  return [
+    slots['helper-text-top'] ? `${props.id}-helper-text-top` : '',
+    slots['helper-text-bottom'] ? `${props.id}-helper-text-bottom` : '',
+    attrs['aria-describedby'],
+  ].filter((x) => x).join(' ');
+})
 
+const attrsWithClassExcluded = computed(()=>{
+  let returnObj = {}
+  // use const below
+  for (const attr in attrs) {
+    if (attr !== 'class') {
+      returnObj[attr] = attrs[attr]
+    }
+  }
+  return returnObj;
+})
 
-    const inputAttrs = computed(() => {
-      const isNum = props.numeric || props.type === 'number';
-      return {
-        autocorrect: 'off',
-        spellcheck: 'false',
-        autocapitalize: 'off',
-        pattern: (isNum && '[0-9]*') || null,
-        inputmode: (isNum && 'numeric') || null,
-        novalidate: isNum || null,
-        ...ctx.attrs,
-      };
-    });
-
-    return {
-      style: useCssModule(),
-      baseClass,
-      sizeClass,
-      focusedClass,
-      multilineClass,
-      preIconClass,
-      postIconClass,
-      postIconsClass,
-      errorClass,
-      backgroundClass,
-      isFocused,
-      hasHelperTop,
-      hasHelperBottom,
-      hasPreIcon,
-      hasPostIcon,
-      hasInfo,
-      hasInfoAction,
-      inputAttrs,
-      describedby,
-      mapClasses,
-    };
-  },
+const inputAttrs = computed(() => {
+  const isNum = props.numeric || props.type === 'number';
+  return {
+    id: uniqueId,
+    autocorrect: 'off',
+    spellcheck: 'false',
+    autocapitalize: 'off',
+    pattern: (isNum && '[0-9]*') || null,
+    inputmode: (isNum && 'numeric') || null,
+    novalidate: isNum || null,
+    ...attrsWithClassExcluded.value,
+  };
 });
+const style = useCssModule();
+ const inputModel = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    emit('update:modelValue', newValue)
+  }
+})
 </script>
 <style lang="scss" module src="./styles/CdrInput.module.scss">
 </style>

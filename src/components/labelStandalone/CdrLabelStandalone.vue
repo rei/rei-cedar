@@ -76,7 +76,7 @@ export default defineComponent({
     const srOnlyLabelClass = computed(() => props.hideLabel
       && 'cdr-label-standalone__label--sr-only');
     const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
-      && 'cdr-label-standalone__input--spacing');
+      && 'cdr-label-standalone__input-spacing');
     return {
       style: useCssModule(),
       mapClasses,
