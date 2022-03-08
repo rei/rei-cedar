@@ -38,7 +38,7 @@ Object.keys(iconData).forEach(function (name) {
 </cdr-icon>
 </template>
 <script setup>
-  import CdrIcon from '../CdrIcon';
+  import CdrIcon from '../CdrIcon.vue';
   const props = defineProps({
     props: {
       type: Object,

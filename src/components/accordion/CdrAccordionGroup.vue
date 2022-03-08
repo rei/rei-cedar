@@ -2,9 +2,9 @@
 import {
   useCssModule, computed, ref, reactive, onMounted, provide,
 } from 'vue';
-import debounce from 'lodash/debounce';
-import propValidator from '../../utils/propValidator';
-import getCurrentBreakpoint from '../../mixins/breakpoints';
+import debounce from 'lodash-es/debounce';
+import propValidator from '../../utils/propValidator.js';
+import getCurrentBreakpoint from '../../mixins/breakpoints.js';
 
 const props = defineProps({
   unwrap: {

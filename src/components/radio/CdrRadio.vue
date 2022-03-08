@@ -27,10 +27,10 @@
 
 import { defineComponent, useCssModule, watch, ref } from 'vue';
 
-import propValidator from '../../utils/propValidator';
-import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
-import sizeProps from '../../props/size';
-import backgroundProps from '../../props/background';
+import propValidator from '../../utils/propValidator.js';
+import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
+import sizeProps from '../../props/size.js';
+import backgroundProps from '../../props/background.js';
 
 export default defineComponent({
   name: 'CdrRadio',

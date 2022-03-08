@@ -67,8 +67,8 @@
 </template>
 <script>
 import { defineComponent, useCssModule, computed, ref, onMounted, provide, nextTick } from 'vue';
-import debounce from 'lodash/debounce';
-import mapClasses from '../../utils/mapClasses';
+import debounce from 'lodash-es/debounce';
+import mapClasses from '../../utils/mapClasses.js';
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';

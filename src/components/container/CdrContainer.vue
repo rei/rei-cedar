@@ -1,7 +1,7 @@
 <script setup>
 import { useCssModule, computed } from 'vue';
-import propValidator from '../../utils/propValidator';
-import mapClasses from '../../utils/mapClasses';
+import propValidator from '../../utils/propValidator.js';
+import mapClasses from '../../utils/mapClasses.js';
 
 const props = defineProps({
   /** Any valid HTML tag */

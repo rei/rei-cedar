@@ -22,8 +22,8 @@
 
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import propValidator from '../../utils/propValidator';
+import mapClasses from '../../utils/mapClasses.js';
+import propValidator from '../../utils/propValidator.js';
 
 export default defineComponent({
   name: 'CdrQuote',

@@ -34,8 +34,8 @@
 </template>
 <script setup>
 import {useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import CdrFormError from '../formError/CdrFormError';
+import mapClasses from '../../utils/mapClasses.js';
+import CdrFormError from '../formError/CdrFormError.vue';
 
 const props = defineProps({
     id: {

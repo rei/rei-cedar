@@ -39,7 +39,7 @@
 import {
   useCssModule, computed, useSlots,
 } from 'vue';
-import propValidator from '../../utils/propValidator';
+import propValidator from '../../utils/propValidator.js';
 
 const slots = useSlots();
 const props = defineProps({

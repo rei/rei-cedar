@@ -51,7 +51,7 @@
 </template>
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
+import mapClasses from '../../utils/mapClasses.js';
 
 export default defineComponent({
   name: 'CdrLabelStandalone',

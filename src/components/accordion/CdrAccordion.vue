@@ -2,10 +2,9 @@
 import {
   useCssModule, computed, watch, onMounted, ref, inject,
 } from 'vue';
-import IconCaretDown from '../icon/comps/caret-down';
-import { modifyClassName } from '../../utils/buildClass';
-import mapClasses from '../../utils/mapClasses';
-
+import IconCaretDown from '../icon/comps/caret-down.vue';
+import { modifyClassName } from '../../utils/buildClass.js';
+import mapClasses from '../../utils/mapClasses.js';
 
 const props = defineProps({
   /**

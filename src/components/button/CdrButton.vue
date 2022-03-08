@@ -1,9 +1,9 @@
 <script setup>
 import { useCssModule, computed, useSlots } from 'vue';
 
-import mapClasses from '../../utils/mapClasses';
-import { responsiveModifyClass, buildBooleanClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
+import mapClasses from '../../utils/mapClasses.js';
+import { responsiveModifyClass, buildBooleanClass } from '../../utils/buildClass.js';
+import propValidator from '../../utils/propValidator.js';
 
 const slots = useSlots();
 const props = defineProps({

@@ -18,8 +18,8 @@
 import { defineComponent, useCssModule, computed, ref, inject, onBeforeMount } from 'vue';
 
 // TODO: PUT MODIFIER HERE!
-import propValidator from '../../utils/propValidator';
-import mapClasses from '../../utils/mapClasses';
+import propValidator from '../../utils/propValidator.js';
+import mapClasses from '../../utils/mapClasses.js';
 
 export default defineComponent({
   name: 'CdrTabPanel',

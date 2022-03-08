@@ -33,8 +33,8 @@
 </template>
 <script setup>
 import { useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import propValidator from '../../utils/propValidator';
+import mapClasses from '../../utils/mapClasses.js';
+import propValidator from '../../utils/propValidator.js';
 const props = defineProps({
   /**
    * Required. Image source url.

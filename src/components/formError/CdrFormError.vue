@@ -11,7 +11,7 @@
 
 <script setup>
 import { useCssModule } from 'vue';
-import IconErrorStroke from '../icon/comps/error-stroke';
+import IconErrorStroke from '../icon/comps/error-stroke.vue';
 
 const props = defineProps({
   error: [Boolean, String],

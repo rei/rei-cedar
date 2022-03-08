@@ -119,12 +119,12 @@
 </template>
 <script>
 import { defineComponent, useCssModule, computed, ref } from 'vue';
-import propValidator from '../../utils/propValidator';
-import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
-import CdrFormError from '../formError/CdrFormError';
-import sizeProps from '../../props/size';
-import backgroundProps from '../../props/background';
-import mapClasses from '../../utils/mapClasses';
+import propValidator from '../../utils/propValidator.js';
+import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
+import CdrFormError from '../formError/CdrFormError.vue';
+import sizeProps from '../../props/size.js';
+import backgroundProps from '../../props/background.js';
+import mapClasses from '../../utils/mapClasses.js';
 
 export default defineComponent({
   name: 'CdrInput',

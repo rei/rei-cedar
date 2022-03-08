@@ -2,9 +2,9 @@
 import {
   useCssModule, computed, useSlots, ref, watch, onUpdated,
 } from 'vue';
-import propValidator from '../../utils/propValidator';
-import IconXSm from '../icon/comps/x-sm';
-import CdrButton from '../button/CdrButton';
+import propValidator from '../../utils/propValidator.js';
+import IconXSm from '../icon/comps/x-sm.vue';
+import CdrButton from '../button/CdrButton.vue';
 
 const slots = useSlots();
 const props = defineProps({
