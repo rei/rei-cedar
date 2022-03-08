@@ -381,7 +381,7 @@ export default {
     },
   },
   mounted() {
-    this.setBackground(this.$router.currentRoute.query.background);
+    this.setBackground(this.$route.query.background);
   },
   methods: {
     validate() {
