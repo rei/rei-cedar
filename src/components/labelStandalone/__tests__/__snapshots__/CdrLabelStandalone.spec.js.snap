@@ -29,7 +29,7 @@ exports[`CdrFormLabelStandalone matches snapshot 1`] = `
     </span>
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
   >
     
     

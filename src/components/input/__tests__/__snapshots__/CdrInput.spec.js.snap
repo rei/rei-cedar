@@ -18,7 +18,7 @@ exports[`CdrInput renders correctly 1`] = `
     <!--v-if-->
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
   >
     
     <div
@@ -68,7 +68,7 @@ exports[`CdrInput renders error state correctly 1`] = `
     <!--v-if-->
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
   >
     
     <div
@@ -159,7 +159,7 @@ exports[`CdrInput renders number input correctly 1`] = `
     <!--v-if-->
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
   >
     
     <div
