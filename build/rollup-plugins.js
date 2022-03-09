@@ -5,24 +5,25 @@ import alias from '@rollup/plugin-alias';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-styles';
 import copyPlugin from 'rollup-plugin-copy';
-import vue from 'rollup-plugin-vue';
-import babel from '@rollup/plugin-babel';
+const chalk = require('chalk');
+//import vue from 'rollup-plugin-vue';
+//import babel from '@rollup/plugin-babel';
 import postcssImport from 'postcss-import';
 // import postcssModules from 'postcss-modules';
 import packageJson from '../package.json';
 
 const env = process.env.NODE_ENV;
-
+console.log(chalk.green(env));
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-function generateScopedName(name, filename, css) {
-  // don't scope anything in the `css/main.scss` (reset, utils, type, etc.)
-  if (filename.match(/main\.scss/) || env === 'test') return name;
-  // scope classes for components
-  return `${name}_${packageJson.version.replace(/\./g, '-')}`;
-}
+// function generateScopedName(name, filename, css) {
+//   // don't scope anything in the `css/main.scss` (reset, utils, type, etc.)
+//   if (filename.match(/main\.scss/) || env === 'test') return name;
+//   // scope classes for components
+//   return `${name}_${packageJson.version.replace(/\./g, '-')}`;
+// }
 
 // plugin configs
 let postcssMode = 'inject';
@@ -38,7 +39,7 @@ const copyTargets = [
 ];
 
 // prod only options
-if (env === 'prod') {
+if (env === 'production') {
   postcssMode = ['extract', './cedar-compiled.css'];
   copyOutput = 'dist';
 }
@@ -86,13 +87,13 @@ const plugins = [
     mainFields: ['module', 'jsnext:main', 'main'],
     extensions: ['.mjs', '.js', '.vue', '.json'],
   }),
-  vue({
-    target: 'browser',
-    preprocessStyles: true,
-    cssModulesOptions: {
-      generateScopedName,
-    },
-  }),
+  // vue({
+  //   target: 'browser',
+  //   preprocessStyles: true,
+  //   cssModulesOptions: {
+  //     generateScopedName,
+  //   },
+  // }),
   postcss({
     config: true,
     plugins: [postcssImport({
@@ -106,10 +107,10 @@ const plugins = [
     extensions: ['.scss', '.css'],
     sourceMap: env === 'dev' ? 'inline' : false,
   }),
-  babel({
-    exclude: 'node_modules/**',
-    babelHelpers: 'bundled',
-  }),
+  // babel({
+  //   exclude: 'node_modules/**',
+  //   babelHelpers: 'bundled',
+  // }),
   commonjs({
       extensions: ['.js', '.vue']
   }),

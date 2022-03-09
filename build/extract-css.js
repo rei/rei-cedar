@@ -72,7 +72,7 @@ function buildCss({ srcPath, outPath, scopeClasses }) {
         postcss(plugins)
         .process(result.css, options)
         .then((result) => {
-          fs.outputFile(outPath, result, function(err) {
+          fs.outputFile(outPath, result.css, function(err) {
             if (!err) {
               console.log(chalk.green(`success! created ${outPath}`));
             }
