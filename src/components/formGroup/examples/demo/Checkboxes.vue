@@ -20,7 +20,7 @@
 
     <cdr-form-group id="favorite-letter-label-override">
 
-      <template slot="label">
+      <template #label>
         <cdr-text class="cdr-text-dev--heading-sans-600">
           Optional Label Override Example
         </cdr-text>
@@ -68,19 +68,19 @@
       <cdr-checkbox
         custom-value="A"
         v-model="errorA"
-        @input="validate"
+        @change="validate"
       >A</cdr-checkbox>
       <cdr-checkbox
         custom-value="B"
         v-model="errorA"
-        @input="validate"
+        @change="validate"
       >B</cdr-checkbox>
       <cdr-checkbox
         custom-value="C"
         v-model="errorA"
-        @input="validate"
+        @change="validate"
       >C</cdr-checkbox>
-      <template slot="error">
+      <template #error>
         <span id="errorStatus">You must make a selection!</span>
       </template>
     </cdr-form-group>
@@ -96,19 +96,19 @@
       <cdr-checkbox
         custom-value="Q"
         v-model="errorB"
-        @input="validateAlert"
+        @change="validateAlert"
       >A</cdr-checkbox>
       <cdr-checkbox
         custom-value="Z"
         v-model="errorB"
-        @input="validateAlert"
+        @change="validateAlert"
       >B</cdr-checkbox>
       <cdr-checkbox
         custom-value="X"
         v-model="errorB"
-        @input="validateAlert"
+        @change="validateAlert"
       >C</cdr-checkbox>
-      <template slot="error">
+      <template #error>
         <span id="errorAlert">You must make a selection within two minutes!</span>
       </template>
     </cdr-form-group>
