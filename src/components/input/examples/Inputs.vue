@@ -169,7 +169,7 @@
       </template>
 
       <template #error>
-        <span id="errorMessage">you have added too many characters, remove some</span>
+        <span>you have added too many characters, remove some</span>
       </template>
 
       <template #info>
@@ -192,7 +192,7 @@
     >
 
       <template #error>
-        <span id="errorMessage">this error comes from slots, and will override any errors from props</span>
+        <span>this error comes from slots, and will override any errors from props</span>
       </template>
 
       <template #info>

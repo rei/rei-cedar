@@ -40,7 +40,7 @@
         :disabled="disabled"
         :aria-required="required || null"
         :aria-invalid="!!error || null"
-        :aria-errormessage="(!!error && `${id}-error`) || null"
+        :aria-errormessage="(!!error && `${uniqueId}-error`) || null"
         v-bind="inputAttrs"
         :aria-describedby="describedby || null"
         @focus="isFocused = true"
@@ -63,7 +63,7 @@
         :disabled="disabled"
         :aria-required="required || null"
         :aria-invalid="!!error || null"
-        :aria-errormessage="(!!error && `${id}-error`) || null"
+        :aria-errormessage="(!!error && `${uniqueId}-error`) || null"
         v-bind="inputAttrs"
         :aria-describedby="describedby || null"
         @focus="isFocused = true"
@@ -106,7 +106,7 @@
       <cdr-form-error
         :error="error"
         :role="errorRole"
-        :id="`${id}-error`"
+        :id="`${uniqueId}-error`"
         v-if="error"
       >
         <template #error>
