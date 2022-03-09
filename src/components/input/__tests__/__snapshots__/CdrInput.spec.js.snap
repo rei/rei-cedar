@@ -101,7 +101,6 @@ exports[`CdrInput renders error state correctly 1`] = `
       class="cdr-form-error"
       id="renders-error"
       role="status"
-      tabindex="0"
     >
       <span
         class="cdr-form-error__icon"
