@@ -8,7 +8,6 @@
         {{ label }}{{ required || optional ? '' : '' }}
         <span
           v-if="required"
-          aria-label="required"
         >*</span>
 
         <span

@@ -224,8 +224,8 @@ const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
 
 const describedby = computed(() => {
   return [
-    slots['helper-text-top'] ? `${props.id}-helper-text-top` : '',
-    slots['helper-text-bottom'] ? `${props.id}-helper-text-bottom` : '',
+    slots['helper-text-top'] ? `${uniqueId}-helper-text-top` : '',
+    slots['helper-text-bottom'] ? `${uniqueId}-helper-text-bottom` : '',
     attrs['aria-describedby'],
   ].filter((x) => x).join(' ');
 })
