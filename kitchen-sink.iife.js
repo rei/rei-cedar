@@ -29301,16 +29301,18 @@
                 class: "cdr-input__button",
                 id: "input-tooltip"
               }, {
-                default: withCtx(() => [
+                trigger: withCtx(() => [
                   createVNode(_component_cdr_button, {
                     "icon-only": true,
                     "aria-label": "navigate"
                   }, {
-                    trigger: withCtx(() => [
+                    default: withCtx(() => [
                       createVNode(_component_icon_map)
                     ]),
                     _: 1 /* STABLE */
-                  }),
+                  })
+                ]),
+                default: withCtx(() => [
                   _hoisted_4$n
                 ]),
                 _: 1 /* STABLE */
@@ -29450,18 +29452,20 @@
               class: "cdr-input__button",
               id: "mega-tooltip"
             }, {
-              default: withCtx(() => [
+              trigger: withCtx(() => [
                 createVNode(_component_cdr_button, {
                   "icon-only": true,
                   onClick: _cache[15] || (_cache[15] = $event => ($data.megaErr = 'you have five minutes to fix this')),
                   size: "large",
                   "aria-label": "Click me to cause an error"
                 }, {
-                  trigger: withCtx(() => [
+                  default: withCtx(() => [
                     createVNode(_component_icon_x_stroke)
                   ]),
                   _: 1 /* STABLE */
-                }),
+                })
+              ]),
+              default: withCtx(() => [
                 _hoisted_15$g
               ]),
               _: 1 /* STABLE */
@@ -29470,17 +29474,19 @@
               class: "cdr-input__button",
               id: "mega-popover"
             }, {
-              default: withCtx(() => [
+              trigger: withCtx(() => [
                 createVNode(_component_cdr_button, {
                   "icon-only": true,
                   size: "large",
                   "aria-label": "Hello"
                 }, {
-                  trigger: withCtx(() => [
+                  default: withCtx(() => [
                     createVNode(_component_icon_information_stroke)
                   ]),
                   _: 1 /* STABLE */
-                }),
+                })
+              ]),
+              default: withCtx(() => [
                 _hoisted_16$g
               ]),
               _: 1 /* STABLE */
