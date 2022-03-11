@@ -566,7 +566,7 @@
             }
         }
     }
-    function trigger(target, type, key, newValue, oldValue, oldTarget) {
+    function trigger$1(target, type, key, newValue, oldValue, oldTarget) {
         const depsMap = targetMap.get(target);
         if (!depsMap) {
             // never been tracked
@@ -770,10 +770,10 @@
             // don't trigger if target is something up in the prototype chain of original
             if (target === toRaw(receiver)) {
                 if (!hadKey) {
-                    trigger(target, "add" /* ADD */, key, value);
+                    trigger$1(target, "add" /* ADD */, key, value);
                 }
                 else if (hasChanged(value, oldValue)) {
-                    trigger(target, "set" /* SET */, key, value, oldValue);
+                    trigger$1(target, "set" /* SET */, key, value, oldValue);
                 }
             }
             return result;
@@ -784,7 +784,7 @@
         const oldValue = target[key];
         const result = Reflect.deleteProperty(target, key);
         if (result && hadKey) {
-            trigger(target, "delete" /* DELETE */, key, undefined, oldValue);
+            trigger$1(target, "delete" /* DELETE */, key, undefined, oldValue);
         }
         return result;
     }
@@ -882,7 +882,7 @@
         const hadKey = proto.has.call(target, value);
         if (!hadKey) {
             target.add(value);
-            trigger(target, "add" /* ADD */, value, value);
+            trigger$1(target, "add" /* ADD */, value, value);
         }
         return this;
     }
@@ -901,10 +901,10 @@
         const oldValue = get.call(target, key);
         target.set(key, value);
         if (!hadKey) {
-            trigger(target, "add" /* ADD */, key, value);
+            trigger$1(target, "add" /* ADD */, key, value);
         }
         else if (hasChanged(value, oldValue)) {
-            trigger(target, "set" /* SET */, key, value, oldValue);
+            trigger$1(target, "set" /* SET */, key, value, oldValue);
         }
         return this;
     }
@@ -923,7 +923,7 @@
         // forward the operation before queueing reactions
         const result = target.delete(key);
         if (hadKey) {
-            trigger(target, "delete" /* DELETE */, key, undefined, oldValue);
+            trigger$1(target, "delete" /* DELETE */, key, undefined, oldValue);
         }
         return result;
     }
@@ -937,7 +937,7 @@
         // forward the operation before queueing reactions
         const result = target.clear();
         if (hadItems) {
-            trigger(target, "clear" /* CLEAR */, undefined, undefined, oldTarget);
+            trigger$1(target, "clear" /* CLEAR */, undefined, undefined, oldTarget);
         }
         return result;
     }
@@ -3796,7 +3796,7 @@
         }
         // trigger updates for $attrs in case it's used in component slots
         if (hasAttrsChanged) {
-            trigger(instance, "set" /* SET */, '$attrs');
+            trigger$1(instance, "set" /* SET */, '$attrs');
         }
         {
             validateProps(rawProps || {}, props, instance);
@@ -4321,7 +4321,7 @@
             emitsCache: new WeakMap()
         };
     }
-    let uid = 0;
+    let uid$1 = 0;
     function createAppAPI(render, hydrate) {
         return function createApp(rootComponent, rootProps = null) {
             if (rootProps != null && !isObject$1(rootProps)) {
@@ -4332,7 +4332,7 @@
             const installedPlugins = new Set();
             let isMounted = false;
             const app = (context.app = {
-                _uid: uid++,
+                _uid: uid$1++,
                 _component: rootComponent,
                 _props: rootProps,
                 _container: null,
@@ -6846,13 +6846,13 @@
     }
 
     const emptyAppContext = createAppContext();
-    let uid$1 = 0;
+    let uid$1$1 = 0;
     function createComponentInstance(vnode, parent, suspense) {
         const type = vnode.type;
         // inherit parent app context - or - if root, adopt from root vnode
         const appContext = (parent ? parent.appContext : vnode.appContext) || emptyAppContext;
         const instance = {
-            uid: uid$1++,
+            uid: uid$1$1++,
             vnode,
             type,
             parent,
@@ -8214,6 +8214,80 @@
         const fn = vnode.props['onUpdate:modelValue'];
         return isArray$1(fn) ? value => invokeArrayFns(fn, value) : fn;
     };
+    function onCompositionStart(e) {
+        e.target.composing = true;
+    }
+    function onCompositionEnd(e) {
+        const target = e.target;
+        if (target.composing) {
+            target.composing = false;
+            trigger(target, 'input');
+        }
+    }
+    function trigger(el, type) {
+        const e = document.createEvent('HTMLEvents');
+        e.initEvent(type, true, true);
+        el.dispatchEvent(e);
+    }
+    // We are exporting the v-model runtime directly as vnode hooks so that it can
+    // be tree-shaken in case v-model is never used.
+    const vModelText = {
+        created(el, { modifiers: { lazy, trim, number } }, vnode) {
+            el._assign = getModelAssigner(vnode);
+            const castToNumber = number || (vnode.props && vnode.props.type === 'number');
+            addEventListener(el, lazy ? 'change' : 'input', e => {
+                if (e.target.composing)
+                    return;
+                let domValue = el.value;
+                if (trim) {
+                    domValue = domValue.trim();
+                }
+                else if (castToNumber) {
+                    domValue = toNumber$1(domValue);
+                }
+                el._assign(domValue);
+            });
+            if (trim) {
+                addEventListener(el, 'change', () => {
+                    el.value = el.value.trim();
+                });
+            }
+            if (!lazy) {
+                addEventListener(el, 'compositionstart', onCompositionStart);
+                addEventListener(el, 'compositionend', onCompositionEnd);
+                // Safari < 10.2 & UIWebView doesn't fire compositionend when
+                // switching focus before confirming composition choice
+                // this also fixes the issue where some browsers e.g. iOS Chrome
+                // fires "change" instead of "input" on autocomplete.
+                addEventListener(el, 'change', onCompositionEnd);
+            }
+        },
+        // set value on mounted so it's after min/max for type="range"
+        mounted(el, { value }) {
+            el.value = value == null ? '' : value;
+        },
+        beforeUpdate(el, { value, modifiers: { lazy, trim, number } }, vnode) {
+            el._assign = getModelAssigner(vnode);
+            // avoid clearing unresolved text. #2302
+            if (el.composing)
+                return;
+            if (document.activeElement === el) {
+                if (lazy) {
+                    return;
+                }
+                if (trim && el.value.trim() === value) {
+                    return;
+                }
+                if ((number || el.type === 'number') && toNumber$1(el.value) === value) {
+                    return;
+                }
+            }
+            const newValue = value == null ? '' : value;
+            if (el.value !== newValue) {
+                el.value = newValue;
+            }
+        }
+    };
     const vModelCheckbox = {
         // #4096 array checkboxes need to be deep traversed
         deep: true,
@@ -8270,6 +8344,80 @@
             el.checked = looseEqual(value, getCheckboxValue(el, true));
         }
     }
+    const vModelRadio = {
+        created(el, { value }, vnode) {
+            el.checked = looseEqual(value, vnode.props.value);
+            el._assign = getModelAssigner(vnode);
+            addEventListener(el, 'change', () => {
+                el._assign(getValue$1(el));
+            });
+        },
+        beforeUpdate(el, { value, oldValue }, vnode) {
+            el._assign = getModelAssigner(vnode);
+            if (value !== oldValue) {
+                el.checked = looseEqual(value, vnode.props.value);
+            }
+        }
+    };
+    const vModelSelect = {
+        // <select multiple> value need to be deep traversed
+        deep: true,
+        created(el, { value, modifiers: { number } }, vnode) {
+            const isSetModel = isSet(value);
+            addEventListener(el, 'change', () => {
+                const selectedVal = Array.prototype.filter
+                    .call(el.options, (o) => o.selected)
+                    .map((o) => number ? toNumber$1(getValue$1(o)) : getValue$1(o));
+                el._assign(el.multiple
+                    ? isSetModel
+                        ? new Set(selectedVal)
+                        : selectedVal
+                    : selectedVal[0]);
+            });
+            el._assign = getModelAssigner(vnode);
+        },
+        // set value in mounted & updated because <select> relies on its children
+        // <option>s.
+        mounted(el, { value }) {
+            setSelected(el, value);
+        },
+        beforeUpdate(el, _binding, vnode) {
+            el._assign = getModelAssigner(vnode);
+        },
+        updated(el, { value }) {
+            setSelected(el, value);
+        }
+    };
+    function setSelected(el, value) {
+        const isMultiple = el.multiple;
+        if (isMultiple && !isArray$1(value) && !isSet(value)) {
+            warn$1(`<select multiple v-model> expects an Array or Set value for its binding, ` +
+                    `but got ${Object.prototype.toString.call(value).slice(8, -1)}.`);
+            return;
+        }
+        for (let i = 0, l = el.options.length; i < l; i++) {
+            const option = el.options[i];
+            const optionValue = getValue$1(option);
+            if (isMultiple) {
+                if (isArray$1(value)) {
+                    option.selected = looseIndexOf(value, optionValue) > -1;
+                }
+                else {
+                    option.selected = value.has(optionValue);
+                }
+            }
+            else {
+                if (looseEqual(getValue$1(option), value)) {
+                    if (el.selectedIndex !== i)
+                        el.selectedIndex = i;
+                    return;
+                }
+            }
+        }
+        if (!isMultiple && el.selectedIndex !== -1) {
+            el.selectedIndex = -1;
+        }
+    }
     // retrieve raw value set via :value bindings
     function getValue$1(el) {
         return '_value' in el ? el._value : el.value;
@@ -8278,6 +8426,44 @@
     function getCheckboxValue(el, checked) {
         const key = checked ? '_trueValue' : '_falseValue';
         return key in el ? el[key] : checked;
+    }
+    const vModelDynamic = {
+        created(el, binding, vnode) {
+            callModelHook(el, binding, vnode, null, 'created');
+        },
+        mounted(el, binding, vnode) {
+            callModelHook(el, binding, vnode, null, 'mounted');
+        },
+        beforeUpdate(el, binding, vnode, prevVNode) {
+            callModelHook(el, binding, vnode, prevVNode, 'beforeUpdate');
+        },
+        updated(el, binding, vnode, prevVNode) {
+            callModelHook(el, binding, vnode, prevVNode, 'updated');
+        }
+    };
+    function callModelHook(el, binding, vnode, prevVNode, hook) {
+        let modelToUse;
+        switch (el.tagName) {
+            case 'SELECT':
+                modelToUse = vModelSelect;
+                break;
+            case 'TEXTAREA':
+                modelToUse = vModelText;
+                break;
+            default:
+                switch (vnode.props && vnode.props.type) {
+                    case 'checkbox':
+                        modelToUse = vModelCheckbox;
+                        break;
+                    case 'radio':
+                        modelToUse = vModelRadio;
+                        break;
+                    default:
+                        modelToUse = vModelText;
+                }
+        }
+        const fn = modelToUse[hook];
+        fn && fn(el, binding, vnode, prevVNode);
     }
 
     const systemModifiers = ['ctrl', 'shift', 'alt', 'meta'];
@@ -11903,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$15(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3X, _hoisted_3$O))
     }
 
-    script$4i.render = render$15;
+    script$4i.render = render$14;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -13116,7 +13302,7 @@
     const _hoisted_3$M = ["aria-controls", "aria-label"];
     const _hoisted_4$J = ["href", "onClick"];
 
-    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -13186,7 +13372,7 @@
     const cssModules$u = script$4c.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$4c.render = render$14;
+    script$4c.render = render$13;
     script$4c.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$4b = {
@@ -13457,12 +13643,12 @@
     const _hoisted_1$3T = ["true-value", "false-value", "value"];
 
 
-    const __default__ = {
+    const __default__$1 = {
       inheritAttrs: false,
       customOptions: {}
     };
 
-    var script$47 = /*#__PURE__*/Object.assign(__default__, {
+    var script$47 = /*#__PURE__*/Object.assign(__default__$1, {
       props: {
       /**
        * Class that is added to the label for custom styles
@@ -13845,8 +14031,7 @@
     return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(unref(style)[baseClass]),
-        role: "status",
-        tabindex: "0"
+        role: "status"
       }, [
         createBaseVNode("span", {
           class: normalizeClass(unref(style)[iconClass])
@@ -20135,7 +20320,7 @@
         const srOnlyLabelClass = computed(() => props.hideLabel
           && 'cdr-label-standalone__label--sr-only');
         const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
-          && 'cdr-label-standalone__input--spacing');
+          && 'cdr-label-standalone__input-spacing');
         return {
           style: useCssModule(),
           mapClasses,
@@ -20151,14 +20336,11 @@
     });
 
     const _hoisted_1$$ = ["for"];
-    const _hoisted_2$T = {
-      key: 0,
-      "aria-label": "required"
-    };
+    const _hoisted_2$T = { key: 0 };
     const _hoisted_3$L = { key: 0 };
     const _hoisted_4$I = ["id"];
 
-    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         class: normalizeClass(_ctx.style[_ctx.baseClass])
       }, [
@@ -20227,23 +20409,34 @@
     const cssModules$h = script$1a.__cssModules = {};
     cssModules$h["$style"] = style0$h;
 
-    script$1a.render = render$13;
+    script$1a.render = render$12;
     script$1a.__file = "src/components/labelStandalone/CdrLabelStandalone.vue";
 
-    var script$19 = defineComponent({
-      name: 'CdrInput',
-      components: {
-        CdrLabelStandalone: script$1a,
-        CdrFormError: script$42,
-      },
+    /**
+     * Quickly generates a unique id string.
+     */
+    function uid() {
+      const uid = Math.floor((1 + Math.random()) * 0x1000000).toString(16).substring(1);
+      return "cdr-id-".concat(uid);
+    }
+
+    const _hoisted_1$_ = ["rows", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby"];
+    const _hoisted_2$S = ["type", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby"];
+    const _hoisted_3$K = ["id"];
+
+
+    const __default__ = {
       inheritAttrs: false,
+      customOptions: {}
+    };
+
+    var script$19 = /*#__PURE__*/Object.assign(__default__, {
       props: {
         /**
          * `id` for the input that is mapped to the label `for` attribute.
         */
         id: {
-          type: String,
-          required: true,
+          type: String   
         },
         /**
          *  'type' attribute for the input as defined by w3c.
@@ -20255,7 +20448,6 @@
           default: 'text',
           validator: (value) => validateProp(
             value,
-            // TODO: moar types?
             ['text', 'email', 'number', 'password', 'search', 'url', 'tel'],
           ),
         },
@@ -20300,161 +20492,159 @@
         required: Boolean,
         optional: Boolean,
         modelValue: {
-          type: [String, Number],
+          type: [String, Number, Function],
         },
-      },
-      setup(props, ctx) {
-        const baseClass = 'cdr-input';
-        // console.log(ctx.slots['post-icon']);
-        // TODO: delete un-used hasSlot props
-        const isFocused = ref(false);
-        const hasHelperTop = ctx.slots['helper-text-top'];
-        const hasHelperBottom = ctx.slots['helper-text-bottom'];
-        const hasPreIcon = ctx.slots['pre-icon'];
-        const hasPostIcon = ctx.slots['post-icon'];
-        const hasPostIcons = hasPostIcon && ctx.slots['post-icon']().length > 1;
-        const hasInfo = ctx.slots.info;
-        const hasInfoAction = ctx.slots['info-action'];
+    },
+      emits: ['update:modelValue'],
+      setup(__props, { emit }) {
 
-        const multilineClass = computed(() => props.rows > 1 && 'cdr-input--multiline');
-        const preIconClass = computed(() => hasPreIcon && 'cdr-input--preicon');
-        // TODO: make one class for this? if possible? there must have been a reason i did it like this.....
-        const postIconClass = computed(() => hasPostIcon && 'cdr-input--posticon');
-        const postIconsClass = computed(() => hasPostIcons && 'cdr-input--posticons');
-        const errorClass = computed(() => props.error && 'cdr-input--error');
-        const backgroundClass = computed(() => `cdr-input--${props.background}`);
-        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-        const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
-
-        const describedby = computed(() => {
-          return [
-            ctx.slots['helper-text-top'] ? `${props.id}-helper-text-top` : '',
-            ctx.slots['helper-text-bottom'] ? `${props.id}-helper-text-bottom` : '',
-            ctx.attrs['aria-describedby'],
-          ].filter((x) => x).join(' ');
-        });
+    const props = __props;
 
 
-        const inputAttrs = computed(() => {
-          const isNum = props.numeric || props.type === 'number';
-          return {
-            autocorrect: 'off',
-            spellcheck: 'false',
-            autocapitalize: 'off',
-            pattern: (isNum && '[0-9]*') || null,
-            inputmode: (isNum && 'numeric') || null,
-            novalidate: isNum || null,
-            ...ctx.attrs,
-          };
-        });
 
-        return {
-          style: useCssModule(),
-          baseClass,
-          sizeClass,
-          focusedClass,
-          multilineClass,
-          preIconClass,
-          postIconClass,
-          postIconsClass,
-          errorClass,
-          backgroundClass,
-          isFocused,
-          hasHelperTop,
-          hasHelperBottom,
-          hasPreIcon,
-          hasPostIcon,
-          hasInfo,
-          hasInfoAction,
-          inputAttrs,
-          describedby,
-          mapClasses,
-        };
-      },
+    const baseClass = 'cdr-input';
+    // TODO: delete un-used hasSlot props
+    const isFocused = ref(false);
+    const slots = useSlots();
+    const attrs = useAttrs();
+    const hasHelperTop = slots['helper-text-top'];
+    const hasHelperBottom = slots['helper-text-bottom'];
+    const hasPreIcon = slots['pre-icon'];
+    const hasPostIcon = slots['post-icon'];
+    const hasPostIcons = hasPostIcon && slots['post-icon']().length > 1;
+    const hasInfo = slots.info;
+    const hasInfoAction = slots['info-action'];
+
+    const uniqueId = props.id ? props.id : uid();
+    const multilineClass = computed(() => props.rows > 1 && 'cdr-input--multiline');
+    const preIconClass = computed(() => hasPreIcon && 'cdr-input--preicon');
+    // TODO: make one class for this? if possible? there must have been a reason i did it like this.....
+    const postIconClass = computed(() => hasPostIcon && 'cdr-input--posticon');
+    const postIconsClass = computed(() => hasPostIcons && 'cdr-input--posticons');
+    const errorClass = computed(() => props.error && 'cdr-input--error');
+    const backgroundClass = computed(() => `cdr-input--${props.background}`);
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
+
+    const describedby = computed(() => {
+      return [
+        slots['helper-text-top'] ? `${uniqueId}-helper-text-top` : '',
+        slots['helper-text-bottom'] ? `${uniqueId}-helper-text-bottom` : '',
+        attrs['aria-describedby'],
+      ].filter((x) => x).join(' ');
     });
 
-    const _hoisted_1$_ = ["rows", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "value", "aria-describedby"];
-    const _hoisted_2$S = ["type", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
-    const _hoisted_3$K = ["id"];
+    const attrsWithClassExcluded = computed(()=>{
+      let returnObj = {};
+      for (const attr in attrs) {
+        if (attr !== 'class') {
+          returnObj[attr] = attrs[attr];
+        }
+      }
+      return returnObj;
+    });
 
-    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
-      const _component_cdr_form_error = resolveComponent("cdr-form-error");
-      const _component_cdr_label_standalone = resolveComponent("cdr-label-standalone");
+    const inputAttrs = computed(() => {
+      const isNum = props.numeric || props.type === 'number';
+      return {
+        id: uniqueId,
+        autocorrect: 'off',
+        spellcheck: 'false',
+        autocapitalize: 'off',
+        pattern: (isNum && '[0-9]*') || null,
+        inputmode: (isNum && 'numeric') || null,
+        novalidate: isNum || null,
+        ...attrsWithClassExcluded.value,
+      };
+    });
+    const style = useCssModule();
+     const inputModel = computed({
+      get() {
+        return props.modelValue
+      },
+      set(newValue) {
+        emit('update:modelValue', newValue);
+      }
+    });
 
-      return (openBlock(), createBlock(_component_cdr_label_standalone, {
-        "for-id": _ctx.id,
-        label: _ctx.label,
-        "hide-label": _ctx.hideLabel,
-        required: _ctx.required,
-        optional: _ctx.optional,
-        disabled: _ctx.disabled
+    return (_ctx, _cache) => {
+      return (openBlock(), createBlock(unref(script$1a), {
+        "for-id": unref(uniqueId),
+        label: __props.label,
+        "hide-label": __props.hideLabel,
+        required: __props.required,
+        optional: __props.optional,
+        disabled: __props.disabled,
+        class: normalizeClass(unref(attrs).class)
       }, createSlots({
         default: withCtx(() => [
           createBaseVNode("div", {
-            class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-input-wrap', _ctx.focusedClass))
+            class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-input-wrap', unref(focusedClass)))
           }, [
-            (_ctx.rows && _ctx.rows > 1)
-              ? (openBlock(), createElementBlock("textarea", mergeProps({
+            (__props.rows && __props.rows > 1)
+              ? withDirectives((openBlock(), createElementBlock("textarea", mergeProps({
                   key: 0,
-                  rows: _ctx.rows,
-                  class: _ctx.mapClasses(_ctx.style,
-                               _ctx.baseClass,
-                               _ctx.multilineClass,
-                               _ctx.preIconClass,
-                               _ctx.postIconClass,
-                               _ctx.postIconsClass,
-                               _ctx.errorClass,
-                               _ctx.backgroundClass,
-                               _ctx.sizeClass,
+                  rows: __props.rows,
+                  class: unref(mapClasses)(unref(style),
+                               baseClass,
+                               unref(multilineClass),
+                               unref(preIconClass),
+                               unref(postIconClass),
+                               unref(postIconsClass),
+                               unref(errorClass),
+                               unref(backgroundClass),
+                               unref(sizeClass),
             ),
-                  id: _ctx.id,
-                  disabled: _ctx.disabled,
-                  "aria-required": _ctx.required || null,
-                  "aria-invalid": !!_ctx.error || null,
-                  "aria-errormessage": (!!_ctx.error && `${_ctx.id}-error`) || null
-                }, _ctx.inputAttrs, {
-                  value: _ctx.modelValue,
-                  "aria-describedby": _ctx.describedby || null,
-                  onInput: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
-                  onFocus: _cache[1] || (_cache[1] = $event => (_ctx.isFocused = true)),
-                  onBlur: _cache[2] || (_cache[2] = $event => (_ctx.isFocused = false))
-                }), null, 16 /* FULL_PROPS */, _hoisted_1$_))
-              : (openBlock(), createElementBlock("input", mergeProps({
+                  id: unref(uniqueId),
+                  disabled: __props.disabled,
+                  "aria-required": __props.required || null,
+                  "aria-invalid": !!__props.error || null,
+                  "aria-errormessage": (!!__props.error && `${unref(uniqueId)}-error`) || null
+                }, unref(inputAttrs), {
+                  "aria-describedby": unref(describedby) || null,
+                  onFocus: _cache[0] || (_cache[0] = $event => (isFocused.value = true)),
+                  onBlur: _cache[1] || (_cache[1] = $event => (isFocused.value = false)),
+                  "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => (isRef(inputModel) ? (inputModel).value = $event : null))
+                }), null, 16 /* FULL_PROPS */, _hoisted_1$_)), [
+                  [vModelText, unref(inputModel)]
+                ])
+              : withDirectives((openBlock(), createElementBlock("input", mergeProps({
                   key: 1,
-                  type: _ctx.type,
-                  class: _ctx.mapClasses(_ctx.style,
-                               _ctx.baseClass,
-                               _ctx.preIconClass,
-                               _ctx.postIconClass,
-                               _ctx.postIconsClass,
-                               _ctx.errorClass,
-                               _ctx.backgroundClass,
-                               _ctx.sizeClass,
+                  type: __props.type,
+                  class: unref(mapClasses)(unref(style),
+                               baseClass,
+                               unref(preIconClass),
+                               unref(postIconClass),
+                               unref(postIconsClass),
+                               unref(errorClass),
+                               unref(backgroundClass),
+                               unref(sizeClass),
             ),
-                  id: _ctx.id,
-                  disabled: _ctx.disabled,
-                  "aria-required": _ctx.required || null,
-                  "aria-invalid": !!_ctx.error || null,
-                  "aria-errormessage": (!!_ctx.error && `${_ctx.id}-error`) || null
-                }, _ctx.inputAttrs, {
-                  "aria-describedby": _ctx.describedby || null,
-                  value: _ctx.modelValue,
-                  onInput: _cache[3] || (_cache[3] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
-                  onFocus: _cache[4] || (_cache[4] = $event => (_ctx.isFocused = true)),
-                  onBlur: _cache[5] || (_cache[5] = $event => (_ctx.isFocused = false))
-                }), null, 16 /* FULL_PROPS */, _hoisted_2$S)),
-            (_ctx.hasPreIcon)
+                  id: unref(uniqueId),
+                  disabled: __props.disabled,
+                  "aria-required": __props.required || null,
+                  "aria-invalid": !!__props.error || null,
+                  "aria-errormessage": (!!__props.error && `${unref(uniqueId)}-error`) || null
+                }, unref(inputAttrs), {
+                  "aria-describedby": unref(describedby) || null,
+                  onFocus: _cache[3] || (_cache[3] = $event => (isFocused.value = true)),
+                  onBlur: _cache[4] || (_cache[4] = $event => (isFocused.value = false)),
+                  "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (isRef(inputModel) ? (inputModel).value = $event : null))
+                }), null, 16 /* FULL_PROPS */, _hoisted_2$S)), [
+                  [vModelDynamic, unref(inputModel)]
+                ]),
+            (unref(hasPreIcon))
               ? (openBlock(), createElementBlock("span", {
                   key: 2,
-                  class: normalizeClass(_ctx.style['cdr-input__pre-icon'])
+                  class: normalizeClass(unref(style)['cdr-input__pre-icon'])
                 }, [
                   renderSlot(_ctx.$slots, "pre-icon")
                 ], 2 /* CLASS */))
               : createCommentVNode("v-if", true),
-            (_ctx.hasPostIcon)
+            (unref(hasPostIcon))
               ? (openBlock(), createElementBlock("span", {
                   key: 3,
-                  class: normalizeClass(_ctx.style['cdr-input__post-icon'])
+                  class: normalizeClass(unref(style)['cdr-input__post-icon'])
                 }, [
                   renderSlot(_ctx.$slots, "post-icon")
                 ], 2 /* CLASS */))
@@ -20463,7 +20653,7 @@
         ]),
         _: 2 /* DYNAMIC */
       }, [
-        (_ctx.hasHelperTop)
+        (unref(hasHelperTop))
           ? {
               name: "helper",
               fn: withCtx(() => [
@@ -20471,7 +20661,7 @@
               ])
             }
           : undefined,
-        (_ctx.hasInfo)
+        (unref(hasInfo))
           ? {
               name: "info",
               fn: withCtx(() => [
@@ -20479,7 +20669,7 @@
               ])
             }
           : undefined,
-        (_ctx.hasInfoAction)
+        (unref(hasInfoAction))
           ? {
               name: "info-action",
               fn: withCtx(() => [
@@ -20487,29 +20677,29 @@
               ])
             }
           : undefined,
-        (_ctx.hasHelperBottom && !_ctx.error)
+        (unref(hasHelperBottom) && !__props.error)
           ? {
               name: "helper-text-bottom",
               fn: withCtx(() => [
                 createBaseVNode("span", {
-                  id: `${_ctx.id}-helper-text-bottom`,
-                  class: normalizeClass(_ctx.style['cdr-input__helper-text'])
+                  id: `${__props.id}-helper-text-bottom`,
+                  class: normalizeClass(unref(style)['cdr-input__helper-text'])
                 }, [
                   renderSlot(_ctx.$slots, "helper-text-bottom")
                 ], 10 /* CLASS, PROPS */, _hoisted_3$K)
               ])
             }
           : undefined,
-        (_ctx.error)
+        (__props.error)
           ? {
               name: "error",
               fn: withCtx(() => [
-                (_ctx.error)
-                  ? (openBlock(), createBlock(_component_cdr_form_error, {
+                (__props.error)
+                  ? (openBlock(), createBlock(unref(script$42), {
                       key: 0,
-                      error: _ctx.error,
-                      role: _ctx.errorRole,
-                      id: `${_ctx.id}-error`
+                      error: __props.error,
+                      role: __props.errorRole,
+                      id: `${unref(uniqueId)}-error`
                     }, {
                       error: withCtx(() => [
                         renderSlot(_ctx.$slots, "error")
@@ -20520,15 +20710,18 @@
               ])
             }
           : undefined
-      ]), 1032 /* PROPS, DYNAMIC_SLOTS */, ["for-id", "label", "hide-label", "required", "optional", "disabled"]))
+      ]), 1032 /* PROPS, DYNAMIC_SLOTS */, ["for-id", "label", "hide-label", "required", "optional", "disabled", "class"]))
     }
+    }
+
+    });
 
     var style0$g = {"cdr-input":"cdr-input_13-0-0-alpha-3","cdr-input--focus":"cdr-input--focus_13-0-0-alpha-3","cdr-input--multiline":"cdr-input--multiline_13-0-0-alpha-3","cdr-input--preicon":"cdr-input--preicon_13-0-0-alpha-3","cdr-input--posticon":"cdr-input--posticon_13-0-0-alpha-3","cdr-input--posticons":"cdr-input--posticons_13-0-0-alpha-3","cdr-input--primary":"cdr-input--primary_13-0-0-alpha-3","cdr-input--secondary":"cdr-input--secondary_13-0-0-alpha-3","cdr-input--error":"cdr-input--error_13-0-0-alpha-3","cdr-input--large":"cdr-input--large_13-0-0-alpha-3","cdr-input--large@xs":"cdr-input--large@xs_13-0-0-alpha-3","cdr-input--large@sm":"cdr-input--large@sm_13-0-0-alpha-3","cdr-input--large@md":"cdr-input--large@md_13-0-0-alpha-3","cdr-input--large@lg":"cdr-input--large@lg_13-0-0-alpha-3","cdr-input__pre-icon":"cdr-input__pre-icon_13-0-0-alpha-3","cdr-input__post-icon":"cdr-input__post-icon_13-0-0-alpha-3","cdr-input__helper-text":"cdr-input__helper-text_13-0-0-alpha-3","cdr-input-wrap":"cdr-input-wrap_13-0-0-alpha-3"};
 
     const cssModules$g = script$19.__cssModules = {};
     cssModules$g["$style"] = style0$g;
 
-    script$19.render = render$12;
+
     script$19.__file = "src/components/input/CdrInput.vue";
 
     var script$18 = {
@@ -24820,17 +25013,17 @@
     const _hoisted_26$c = /*#__PURE__*/createBaseVNode("h3", null, " Compact ", -1 /* HOISTED */);
     const _hoisted_27$b = /*#__PURE__*/createTextVNode(" compact ");
     const _hoisted_28$b = /*#__PURE__*/createTextVNode(" REI.com ");
-    const _hoisted_29$9 = /*#__PURE__*/createTextVNode(" adventure projects ");
-    const _hoisted_30$8 = /*#__PURE__*/createTextVNode(" stewardship ");
-    const _hoisted_31$8 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
-    const _hoisted_32$7 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
-    const _hoisted_33$7 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
-    const _hoisted_34$7 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
-    const _hoisted_35$7 = /*#__PURE__*/createBaseVNode("h3", null, " No content padding ", -1 /* HOISTED */);
-    const _hoisted_36$7 = /*#__PURE__*/createTextVNode(" This has no padding around content ");
-    const _hoisted_37$5 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
-    const _hoisted_38$4 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
-    const _hoisted_39$3 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
+    const _hoisted_29$8 = /*#__PURE__*/createTextVNode(" adventure projects ");
+    const _hoisted_30$7 = /*#__PURE__*/createTextVNode(" stewardship ");
+    const _hoisted_31$7 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_32$6 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
+    const _hoisted_33$6 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
+    const _hoisted_34$6 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
+    const _hoisted_35$6 = /*#__PURE__*/createBaseVNode("h3", null, " No content padding ", -1 /* HOISTED */);
+    const _hoisted_36$6 = /*#__PURE__*/createTextVNode(" This has no padding around content ");
+    const _hoisted_37$4 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
+    const _hoisted_38$3 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
+    const _hoisted_39$2 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
     const _hoisted_40$2 = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
     const _hoisted_41$2 = /*#__PURE__*/createBaseVNode("h3", null, " Unwrapped Standalone ", -1 /* HOISTED */);
     const _hoisted_42$2 = /*#__PURE__*/createTextVNode(" A short label ");
@@ -25002,7 +25195,7 @@
                       createBaseVNode("li", null, [
                         createVNode(_component_cdr_link, { href: "https://www.rei.com/h/adventure-projects" }, {
                           default: withCtx(() => [
-                            _hoisted_29$9
+                            _hoisted_29$8
                           ]),
                           _: 1 /* STABLE */
                         })
@@ -25010,7 +25203,7 @@
                       createBaseVNode("li", null, [
                         createVNode(_component_cdr_link, { href: "https://www.rei.com/stewardship" }, {
                           default: withCtx(() => [
-                            _hoisted_30$8
+                            _hoisted_30$7
                           ]),
                           _: 1 /* STABLE */
                         })
@@ -25029,14 +25222,14 @@
                 onAccordionToggle: _cache[4] || (_cache[4] = $event => ($data.accordionCompact2 = !$data.accordionCompact2))
               }, {
                 label: withCtx(() => [
-                  _hoisted_31$8
+                  _hoisted_31$7
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_list, { tag: "ol" }, {
                     default: withCtx(() => [
-                      _hoisted_32$7,
-                      _hoisted_33$7,
-                      _hoisted_34$7
+                      _hoisted_32$6,
+                      _hoisted_33$6,
+                      _hoisted_34$6
                     ]),
                     _: 1 /* STABLE */
                   })
@@ -25047,7 +25240,7 @@
             _: 1 /* STABLE */
           })
         ]),
-        _hoisted_35$7,
+        _hoisted_35$6,
         createVNode(_component_cdr_accordion_group, null, {
           default: withCtx(() => [
             createVNode(_component_cdr_accordion, {
@@ -25058,19 +25251,19 @@
               onAccordionToggle: _cache[5] || (_cache[5] = $event => ($data.accordionContentSpacing = !$data.accordionContentSpacing))
             }, {
               label: withCtx(() => [
-                _hoisted_36$7
+                _hoisted_36$6
               ]),
               default: withCtx(() => [
                 createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
                   default: withCtx(() => [
-                    _hoisted_37$5,
+                    _hoisted_37$4,
                     createVNode(_component_cdr_text, {
                       tag: "strong",
                       class: "cdr-text-dev--body-strong-300"
                     }, {
                       default: withCtx(() => [
-                        _hoisted_38$4,
-                        _hoisted_39$3
+                        _hoisted_38$3,
+                        _hoisted_39$2
                       ]),
                       _: 1 /* STABLE */
                     }),
@@ -26003,17 +26196,17 @@
     const _hoisted_26$b = /*#__PURE__*/createTextVNode(" Responsive Right ");
     const _hoisted_27$a = { class: "button-example inset" };
     const _hoisted_28$a = /*#__PURE__*/createTextVNode(" Full Width Icon Left ");
-    const _hoisted_29$8 = /*#__PURE__*/createTextVNode(" Full Width Icon Right ");
-    const _hoisted_30$7 = { class: "button-example inset" };
-    const _hoisted_31$7 = {
+    const _hoisted_29$7 = /*#__PURE__*/createTextVNode(" Full Width Icon Right ");
+    const _hoisted_30$6 = { class: "button-example inset" };
+    const _hoisted_31$6 = {
       class: "button-text-wrap",
       style: {"max-width":"300px"}
     };
-    const _hoisted_32$6 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the left)! ");
-    const _hoisted_33$6 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the right)! ");
-    const _hoisted_34$6 = { class: "button-example inset" };
-    const _hoisted_35$6 = /*#__PURE__*/createBaseVNode("h3", null, " Icon only button ", -1 /* HOISTED */);
-    const _hoisted_36$6 = { class: "button-example inset dark" };
+    const _hoisted_32$5 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the left)! ");
+    const _hoisted_33$5 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the right)! ");
+    const _hoisted_34$5 = { class: "button-example inset" };
+    const _hoisted_35$5 = /*#__PURE__*/createBaseVNode("h3", null, " Icon only button ", -1 /* HOISTED */);
+    const _hoisted_36$5 = { class: "button-example inset dark" };
 
     function render$O(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_check_lg = resolveComponent("icon-check-lg");
@@ -26227,13 +26420,13 @@
                 use: "#clock",
                 "inherit-color": ""
               }),
-              _hoisted_29$8
+              _hoisted_29$7
             ]),
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_30$7, [
-          createBaseVNode("div", _hoisted_31$7, [
+        createBaseVNode("div", _hoisted_30$6, [
+          createBaseVNode("div", _hoisted_31$6, [
             createVNode(_component_cdr_button, {
               size: "medium",
               modifier: "secondary"
@@ -26244,7 +26437,7 @@
                   use: "#twitter"
                 }),
                 createCommentVNode(" eslint-disable-next-line "),
-                _hoisted_32$6
+                _hoisted_32$5
               ]),
               _: 1 /* STABLE */
             }),
@@ -26259,14 +26452,14 @@
                   use: "#twitter"
                 }),
                 createCommentVNode(" eslint-disable-next-line "),
-                _hoisted_33$6
+                _hoisted_33$5
               ]),
               _: 1 /* STABLE */
             })
           ])
         ]),
-        createBaseVNode("div", _hoisted_34$6, [
-          _hoisted_35$6,
+        createBaseVNode("div", _hoisted_34$5, [
+          _hoisted_35$5,
           createVNode(_component_cdr_button, {
             "icon-only": true,
             "full-width": true,
@@ -26334,7 +26527,7 @@
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_36$6, [
+        createBaseVNode("div", _hoisted_36$5, [
           createVNode(_component_cdr_button, {
             "icon-only": true,
             "with-background": true,
@@ -26746,9 +26939,9 @@
     const _hoisted_26$a = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
     const _hoisted_27$9 = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
     const _hoisted_28$9 = /*#__PURE__*/createTextVNode(" Hidden box ");
-    const _hoisted_29$7 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
-    const _hoisted_30$6 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
-    const _hoisted_31$6 = /*#__PURE__*/createTextVNode(" Select All ");
+    const _hoisted_29$6 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
+    const _hoisted_30$5 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
+    const _hoisted_31$5 = /*#__PURE__*/createTextVNode(" Select All ");
 
     function render$H(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_checkbox = resolveComponent("cdr-checkbox");
@@ -27020,11 +27213,11 @@
           "content-class": "no-box__content"
         }, {
           default: withCtx(() => [
-            _hoisted_29$7
+            _hoisted_29$6
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        _hoisted_30$6,
+        _hoisted_30$5,
         createVNode(_component_cdr_form_group, {
           id: "toppings-form",
           label: "Choose your toppings"
@@ -27038,7 +27231,7 @@
               "aria-controls": "toppings"
             }, {
               default: withCtx(() => [
-                _hoisted_31$6
+                _hoisted_31$5
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "indeterminate", "onChange"]),
@@ -28890,29 +29083,29 @@
       },
       watch: {
         $route(to) {
-          this.setBackground(to.query.background);
+           this.setBackground(to.query.background);
         },
       },
       mounted() {
-        this.setBackground(this.$router.currentRoute.query.background);
+        this.setBackground(this.$route.query.background);
       },
       methods: {
         validate() {
           this.helperValidationError = this.helperValidationModel.length > 4;
         },
         onMasterInput(value, e) {
-          console.log('On Master Input value = ', value, ' e = ', e); // eslint-disable-line
-          this.defaultModel = value;
-          this.requiredModel = value;
-          this.optionalModel = value;
-          this.hiddenModel = value;
-          this.disabledModel = value;
-          this.formWithButtons = value;
-          this.requiredWithIcons = value;
-          this.helperValidationModel = value;
-          this.multiRowModel = value;
-          this.sizeModel = value;
-          this.megaModel = value;
+          console.log('On Master Input value = ', this.masterModel, ' e = ', e); // eslint-disable-line
+          this.defaultModel = this.masterModel;
+          this.requiredModel = this.masterModel;
+          this.optionalModel = this.masterModel;
+          this.hiddenModel = this.masterModel;
+          this.disabledModel = this.masterModel;
+          this.formWithButtons = this.masterModel;
+          this.requiredWithIcons = this.masterModel;
+          this.helperValidationModel = this.masterModel;
+          this.multiRowModel = this.masterModel;
+          this.sizeModel = this.masterModel;
+          this.megaModel = this.masterModel;
         },
         setBackground(background) {
           switch (background) {
@@ -28931,47 +29124,32 @@
 
     const _hoisted_1$s = /*#__PURE__*/createBaseVNode("h2", null, " Text Inputs ", -1 /* HOISTED */);
     const _hoisted_2$q = { "data-backstop": "input-target" };
-    const _hoisted_3$n = { slot: "info-action" };
-    const _hoisted_4$n = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "Information!", -1 /* HOISTED */);
-    const _hoisted_5$n = { slot: "pre-icon" };
-    const _hoisted_6$l = { slot: "post-icon" };
-    const _hoisted_7$k = { slot: "helper-text" };
-    const _hoisted_8$k = { slot: "pre-icon" };
-    const _hoisted_9$j = { slot: "post-icon" };
-    const _hoisted_10$j = /*#__PURE__*/createTextVNode(" hey where am i? ");
-    const _hoisted_11$i = /*#__PURE__*/createBaseVNode("span", { id: "myHelpText" }, "Must be 4 or less characters", -1 /* HOISTED */);
-    const _hoisted_12$i = /*#__PURE__*/createBaseVNode("span", { id: "errorMessage" }, "you have added too many characters, remove some", -1 /* HOISTED */);
-    const _hoisted_13$g = { slot: "info" };
-    const _hoisted_14$g = /*#__PURE__*/createTextVNode(" Support link ");
-    const _hoisted_15$g = /*#__PURE__*/createBaseVNode("span", { id: "errorMessage" }, "this error comes from slots, and will override any errors from props", -1 /* HOISTED */);
-    const _hoisted_16$g = { slot: "info" };
-    const _hoisted_17$e = /*#__PURE__*/createTextVNode(" Support link ");
-    const _hoisted_18$c = /*#__PURE__*/createTextVNode(" Support link ");
-    const _hoisted_19$c = /*#__PURE__*/createBaseVNode("template", { slot: "helper-text-top" }, [
-      /*#__PURE__*/createBaseVNode("span", { id: "topHelp" }, "Hey im on top of the input!")
-    ], -1 /* HOISTED */);
-    const _hoisted_20$a = /*#__PURE__*/createBaseVNode("template", { slot: "helper-text-bottom" }, [
-      /*#__PURE__*/createBaseVNode("span", { id: "bottomHelp" }, "Hey im below the input!")
-    ], -1 /* HOISTED */);
-    const _hoisted_21$a = { slot: "info" };
-    const _hoisted_22$a = /*#__PURE__*/createTextVNode(" Hey im also on top of the input! ");
-    const _hoisted_23$a = { slot: "info-action" };
-    const _hoisted_24$9 = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "I trigger some sort of action!", -1 /* HOISTED */);
-    const _hoisted_25$9 = { slot: "post-icon" };
-    const _hoisted_26$9 = /*#__PURE__*/createTextVNode(" I put the input into an error state! ");
-    const _hoisted_27$8 = /*#__PURE__*/createTextVNode(" Hey What's Up? ");
+    const _hoisted_3$n = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "Information!", -1 /* HOISTED */);
+    const _hoisted_4$n = /*#__PURE__*/createTextVNode(" hey where am i? ");
+    const _hoisted_5$n = /*#__PURE__*/createBaseVNode("span", { id: "myHelpText" }, "Must be 4 or less characters", -1 /* HOISTED */);
+    const _hoisted_6$l = /*#__PURE__*/createBaseVNode("span", null, "you have added too many characters, remove some", -1 /* HOISTED */);
+    const _hoisted_7$k = /*#__PURE__*/createTextVNode(" Support link ");
+    const _hoisted_8$k = /*#__PURE__*/createBaseVNode("span", null, "this error comes from slots, and will override any errors from props", -1 /* HOISTED */);
+    const _hoisted_9$j = /*#__PURE__*/createTextVNode(" Support link ");
+    const _hoisted_10$j = /*#__PURE__*/createTextVNode(" Support link ");
+    const _hoisted_11$i = /*#__PURE__*/createBaseVNode("span", { id: "topHelp" }, "Hey im on top of the input!", -1 /* HOISTED */);
+    const _hoisted_12$i = /*#__PURE__*/createBaseVNode("span", { id: "bottomHelp" }, "Hey im below the input!", -1 /* HOISTED */);
+    const _hoisted_13$g = /*#__PURE__*/createTextVNode(" Hey im also on top of the input! ");
+    const _hoisted_14$g = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "I trigger some sort of action!", -1 /* HOISTED */);
+    const _hoisted_15$g = /*#__PURE__*/createTextVNode(" I put the input into an error state! ");
+    const _hoisted_16$g = /*#__PURE__*/createTextVNode(" Hey What's Up? ");
+    const _hoisted_17$e = { class: "demo-input" };
+    const _hoisted_18$c = { class: "demo-input" };
+    const _hoisted_19$c = { class: "demo-input" };
+    const _hoisted_20$a = { class: "demo-input" };
+    const _hoisted_21$a = { class: "demo-input" };
+    const _hoisted_22$a = { class: "demo-input" };
+    const _hoisted_23$a = { class: "demo-input" };
+    const _hoisted_24$9 = { class: "demo-input" };
+    const _hoisted_25$9 = { class: "demo-input" };
+    const _hoisted_26$9 = { class: "demo-input" };
+    const _hoisted_27$8 = { class: "demo-input" };
     const _hoisted_28$8 = { class: "demo-input" };
-    const _hoisted_29$6 = { class: "demo-input" };
-    const _hoisted_30$5 = { class: "demo-input" };
-    const _hoisted_31$5 = { class: "demo-input" };
-    const _hoisted_32$5 = { class: "demo-input" };
-    const _hoisted_33$5 = { class: "demo-input" };
-    const _hoisted_34$5 = { class: "demo-input" };
-    const _hoisted_35$5 = { class: "demo-input" };
-    const _hoisted_36$5 = { class: "demo-input" };
-    const _hoisted_37$4 = { class: "demo-input" };
-    const _hoisted_38$3 = { class: "demo-input" };
-    const _hoisted_39$2 = { class: "demo-input" };
 
     function render$u(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_input = resolveComponent("cdr-input");
@@ -29080,28 +29258,26 @@
           type: "email",
           background: $data.backgroundColor
         }, {
-          default: withCtx(() => [
-            createBaseVNode("template", _hoisted_3$n, [
-              createVNode(_component_cdr_link, {
-                tag: "button",
-                type: "button"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_icon_information_stroke, { "inherit-color": "" }),
-                  _hoisted_4$n
-                ]),
-                _: 1 /* STABLE */
-              })
-            ]),
-            createBaseVNode("template", _hoisted_5$n, [
-              createVNode(_component_cdr_icon, { use: "#twitter" })
-            ]),
-            createBaseVNode("template", _hoisted_6$l, [
-              createVNode(_component_cdr_icon, { use: "#check-lg" })
-            ]),
-            createBaseVNode("template", _hoisted_7$k, [
-              createTextVNode(" This is helper text. Input length: " + toDisplayString($data.requiredWithIcons.length), 1 /* TEXT */)
-            ])
+          "info-action": withCtx(() => [
+            createVNode(_component_cdr_link, {
+              tag: "button",
+              type: "button"
+            }, {
+              default: withCtx(() => [
+                createVNode(_component_icon_information_stroke, { "inherit-color": "" }),
+                _hoisted_3$n
+              ]),
+              _: 1 /* STABLE */
+            })
+          ]),
+          "pre-icon": withCtx(() => [
+            createVNode(_component_cdr_icon, { use: "#twitter" })
+          ]),
+          "post-icon": withCtx(() => [
+            createVNode(_component_cdr_icon, { use: "#check-lg" })
+          ]),
+          "helper-text": withCtx(() => [
+            createTextVNode(" This is helper text. Input length: " + toDisplayString($data.requiredWithIcons.length), 1 /* TEXT */)
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "background"]),
@@ -29117,41 +29293,38 @@
             autocomplete: "username",
             background: $data.backgroundColor
           }, {
-            default: withCtx(() => [
-              createBaseVNode("template", _hoisted_8$k, [
-                createVNode(_component_cdr_icon, { use: "#twitter" })
-              ]),
-              createBaseVNode("template", _hoisted_9$j, [
-                createVNode(_component_cdr_tooltip, {
-                  class: "cdr-input__button",
-                  id: "input-tooltip"
-                }, {
-                  default: withCtx(() => [
-                    createVNode(_component_cdr_button, {
-                      "icon-only": true,
-                      slot: "trigger",
-                      "aria-label": "navigate"
-                    }, {
-                      default: withCtx(() => [
-                        createVNode(_component_icon_map)
-                      ]),
-                      _: 1 /* STABLE */
-                    }),
-                    _hoisted_10$j
-                  ]),
-                  _: 1 /* STABLE */
-                }),
-                createVNode(_component_cdr_button, {
-                  "icon-only": true,
-                  class: "cdr-input__button",
-                  "aria-label": "close"
-                }, {
-                  default: withCtx(() => [
-                    createVNode(_component_icon_x_lg)
-                  ]),
-                  _: 1 /* STABLE */
-                })
-              ])
+            "pre-icon": withCtx(() => [
+              createVNode(_component_cdr_icon, { use: "#twitter" })
+            ]),
+            "post-icon": withCtx(() => [
+              createVNode(_component_cdr_tooltip, {
+                class: "cdr-input__button",
+                id: "input-tooltip"
+              }, {
+                default: withCtx(() => [
+                  createVNode(_component_cdr_button, {
+                    "icon-only": true,
+                    "aria-label": "navigate"
+                  }, {
+                    trigger: withCtx(() => [
+                      createVNode(_component_icon_map)
+                    ]),
+                    _: 1 /* STABLE */
+                  }),
+                  _hoisted_4$n
+                ]),
+                _: 1 /* STABLE */
+              }),
+              createVNode(_component_cdr_button, {
+                "icon-only": true,
+                class: "cdr-input__button",
+                "aria-label": "close"
+              }, {
+                default: withCtx(() => [
+                  createVNode(_component_icon_x_lg)
+                ]),
+                _: 1 /* STABLE */
+              })
             ]),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue", "background"])
@@ -29166,23 +29339,21 @@
           background: $data.backgroundColor
         }, {
           "helper-text-top": withCtx(() => [
-            _hoisted_11$i
+            _hoisted_5$n
           ]),
           error: withCtx(() => [
-            _hoisted_12$i
+            _hoisted_6$l
           ]),
-          default: withCtx(() => [
-            createBaseVNode("template", _hoisted_13$g, [
-              createVNode(_component_cdr_link, {
-                modifier: "standalone",
-                href: "#/inputs"
-              }, {
-                default: withCtx(() => [
-                  _hoisted_14$g
-                ]),
-                _: 1 /* STABLE */
-              })
-            ])
+          info: withCtx(() => [
+            createVNode(_component_cdr_link, {
+              modifier: "standalone",
+              href: "#/inputs"
+            }, {
+              default: withCtx(() => [
+                _hoisted_7$k
+              ]),
+              _: 1 /* STABLE */
+            })
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "error", "onBlur", "background"]),
@@ -29196,20 +29367,18 @@
           background: $data.backgroundColor
         }, {
           error: withCtx(() => [
-            _hoisted_15$g
+            _hoisted_8$k
           ]),
-          default: withCtx(() => [
-            createBaseVNode("template", _hoisted_16$g, [
-              createVNode(_component_cdr_link, {
-                modifier: "standalone",
-                href: "#/inputs"
-              }, {
-                default: withCtx(() => [
-                  _hoisted_17$e
-                ]),
-                _: 1 /* STABLE */
-              })
-            ])
+          info: withCtx(() => [
+            createVNode(_component_cdr_link, {
+              modifier: "standalone",
+              href: "#/inputs"
+            }, {
+              default: withCtx(() => [
+                _hoisted_9$j
+              ]),
+              _: 1 /* STABLE */
+            })
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "error", "onBlur", "background"]),
@@ -29228,7 +29397,7 @@
               href: "#/inputs"
             }, {
               default: withCtx(() => [
-                _hoisted_18$c
+                _hoisted_10$j
               ]),
               _: 1 /* STABLE */
             })
@@ -29247,76 +29416,78 @@
           onBlur: _cache[17] || (_cache[17] = $event => ($data.megaErr = false)),
           size: "large"
         }, {
+          "helper-text-top": withCtx(() => [
+            _hoisted_11$i
+          ]),
+          "helper-text-bottom": withCtx(() => [
+            _hoisted_12$i
+          ]),
+          info: withCtx(() => [
+            createVNode(_component_cdr_link, {
+              href: "#baz",
+              modifier: "standalone"
+            }, {
+              default: withCtx(() => [
+                _hoisted_13$g
+              ]),
+              _: 1 /* STABLE */
+            })
+          ]),
+          "info-action": withCtx(() => [
+            createVNode(_component_cdr_link, {
+              tag: "button",
+              type: "button"
+            }, {
+              default: withCtx(() => [
+                _hoisted_14$g,
+                createVNode(_component_icon_check_stroke, { "inherit-color": "" })
+              ]),
+              _: 1 /* STABLE */
+            })
+          ]),
+          "post-icon": withCtx(() => [
+            createVNode(_component_cdr_tooltip, {
+              class: "cdr-input__button",
+              id: "mega-tooltip"
+            }, {
+              default: withCtx(() => [
+                createVNode(_component_cdr_button, {
+                  "icon-only": true,
+                  onClick: _cache[15] || (_cache[15] = $event => ($data.megaErr = 'you have five minutes to fix this')),
+                  size: "large",
+                  "aria-label": "Click me to cause an error"
+                }, {
+                  trigger: withCtx(() => [
+                    createVNode(_component_icon_x_stroke)
+                  ]),
+                  _: 1 /* STABLE */
+                }),
+                _hoisted_15$g
+              ]),
+              _: 1 /* STABLE */
+            }),
+            createVNode(_component_cdr_popover, {
+              class: "cdr-input__button",
+              id: "mega-popover"
+            }, {
+              default: withCtx(() => [
+                createVNode(_component_cdr_button, {
+                  "icon-only": true,
+                  size: "large",
+                  "aria-label": "Hello"
+                }, {
+                  trigger: withCtx(() => [
+                    createVNode(_component_icon_information_stroke)
+                  ]),
+                  _: 1 /* STABLE */
+                }),
+                _hoisted_16$g
+              ]),
+              _: 1 /* STABLE */
+            })
+          ]),
           default: withCtx(() => [
-            createVNode(_component_icon_map, { slot: "pre-icon" }),
-            _hoisted_19$c,
-            _hoisted_20$a,
-            createBaseVNode("template", _hoisted_21$a, [
-              createVNode(_component_cdr_link, {
-                href: "#baz",
-                modifier: "standalone"
-              }, {
-                default: withCtx(() => [
-                  _hoisted_22$a
-                ]),
-                _: 1 /* STABLE */
-              })
-            ]),
-            createBaseVNode("template", _hoisted_23$a, [
-              createVNode(_component_cdr_link, {
-                tag: "button",
-                type: "button"
-              }, {
-                default: withCtx(() => [
-                  _hoisted_24$9,
-                  createVNode(_component_icon_check_stroke, { "inherit-color": "" })
-                ]),
-                _: 1 /* STABLE */
-              })
-            ]),
-            createBaseVNode("template", _hoisted_25$9, [
-              createVNode(_component_cdr_tooltip, {
-                class: "cdr-input__button",
-                id: "mega-tooltip"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_cdr_button, {
-                    slot: "trigger",
-                    "icon-only": true,
-                    onClick: _cache[15] || (_cache[15] = $event => ($data.megaErr = 'you have five minutes to fix this')),
-                    size: "large",
-                    "aria-label": "Click me to cause an error"
-                  }, {
-                    default: withCtx(() => [
-                      createVNode(_component_icon_x_stroke)
-                    ]),
-                    _: 1 /* STABLE */
-                  }),
-                  _hoisted_26$9
-                ]),
-                _: 1 /* STABLE */
-              }),
-              createVNode(_component_cdr_popover, {
-                class: "cdr-input__button",
-                id: "mega-popover"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_cdr_button, {
-                    slot: "trigger",
-                    "icon-only": true,
-                    size: "large",
-                    "aria-label": "Hello"
-                  }, {
-                    default: withCtx(() => [
-                      createVNode(_component_icon_information_stroke)
-                    ]),
-                    _: 1 /* STABLE */
-                  }),
-                  _hoisted_27$8
-                ]),
-                _: 1 /* STABLE */
-              })
-            ])
+            createVNode(_component_icon_map)
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "error"]),
@@ -29336,18 +29507,18 @@
           label: "Master input that overwrites all other inputs on this page",
           background: $data.backgroundColor
         }, null, 8 /* PROPS */, ["modelValue", "onInput", "background"]),
-        createBaseVNode("div", _hoisted_28$8, " Default Input Value = " + toDisplayString($data.defaultModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_29$6, " Required Input Value = " + toDisplayString($data.requiredModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_30$5, " Optional Input Value = " + toDisplayString($data.optionalModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_31$5, " Hidden Input Value = " + toDisplayString($data.hiddenModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_32$5, " Disabled Input Value = " + toDisplayString($data.disabledModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_33$5, " With Icons Input Value = " + toDisplayString($data.requiredWithIcons), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_34$5, " Form With Buttons Value = " + toDisplayString($data.formWithButtons), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_35$5, " Helper/Validation Input Value = " + toDisplayString($data.helperValidationModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_36$5, " Multi Row Input Value = " + toDisplayString($data.multiRowModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_37$4, " Size Inputs Value = " + toDisplayString($data.sizeModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_38$3, " Mega Input Value = " + toDisplayString($data.megaModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_39$2, " Master Inputs Value = " + toDisplayString($data.masterModel), 1 /* TEXT */)
+        createBaseVNode("div", _hoisted_17$e, " Default Input Value = " + toDisplayString($data.defaultModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_18$c, " Required Input Value = " + toDisplayString($data.requiredModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_19$c, " Optional Input Value = " + toDisplayString($data.optionalModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_20$a, " Hidden Input Value = " + toDisplayString($data.hiddenModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_21$a, " Disabled Input Value = " + toDisplayString($data.disabledModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_22$a, " With Icons Input Value = " + toDisplayString($data.requiredWithIcons), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_23$a, " Form With Buttons Value = " + toDisplayString($data.formWithButtons), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_24$9, " Helper/Validation Input Value = " + toDisplayString($data.helperValidationModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_25$9, " Multi Row Input Value = " + toDisplayString($data.multiRowModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_26$9, " Size Inputs Value = " + toDisplayString($data.sizeModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_27$8, " Mega Input Value = " + toDisplayString($data.megaModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_28$8, " Master Inputs Value = " + toDisplayString($data.masterModel), 1 /* TEXT */)
       ]))
     }
 
