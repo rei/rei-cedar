@@ -1,5 +1,5 @@
 <template>
-  <div :class="style[baseClass]" role="status" tabindex="0">
+  <div :class="style[baseClass]" role="status">
     <span :class="style[iconClass]">
       <icon-error-stroke size="small" inherit-color />
     </span>

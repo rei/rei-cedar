@@ -90,7 +90,7 @@
       type="email"
       :background="backgroundColor"
     >
-      <template slot="info-action">
+      <template #info-action>
         <cdr-link
           tag="button"
           type="button"
@@ -99,17 +99,17 @@
           <span class="sr-only">Information!</span>
         </cdr-link>
       </template>
-      <template slot="pre-icon">
+      <template #pre-icon>
         <cdr-icon
           use="#twitter"
         />
       </template>
-      <template slot="post-icon">
+      <template #post-icon>
         <cdr-icon
           use="#check-lg"
         />
       </template>
-      <template slot="helper-text">
+      <template #helper-text>
         This is helper text. Input length: {{ requiredWithIcons.length }}
       </template>
     </cdr-input>
@@ -125,19 +125,19 @@
         autocomplete="username"
         :background="backgroundColor"
       >
-        <template slot="pre-icon">
+        <template #pre-icon>
           <cdr-icon
             use="#twitter"
           />
         </template>
-        <template slot="post-icon">
+        <template #post-icon>
           <cdr-tooltip
             class="cdr-input__button"
             id="input-tooltip"
           >
             <cdr-button
               :icon-only="true"
-              slot="trigger"
+              #trigger
               aria-label="navigate"
             >
               <icon-map />
@@ -169,10 +169,10 @@
       </template>
 
       <template #error>
-        <span id="errorMessage">you have added too many characters, remove some</span>
+        <span>you have added too many characters, remove some</span>
       </template>
 
-      <template slot="info">
+      <template #info>
         <cdr-link
           modifier="standalone"
           href="#/inputs"
@@ -192,10 +192,10 @@
     >
 
       <template #error>
-        <span id="errorMessage">this error comes from slots, and will override any errors from props</span>
+        <span>this error comes from slots, and will override any errors from props</span>
       </template>
 
-      <template slot="info">
+      <template #info>
         <cdr-link
           modifier="standalone"
           href="#/inputs"
@@ -235,14 +235,14 @@
       @blur="megaErr = false"
       size="large"
     >
-      <icon-map slot="pre-icon" />
-      <template slot="helper-text-top">
+      <icon-map #pre-icon />
+      <template #helper-text-top>
         <span id="topHelp">Hey im on top of the input!</span>
       </template>
-      <template slot="helper-text-bottom">
+      <template #helper-text-bottom>
         <span id="bottomHelp">Hey im below the input!</span>
       </template>
-      <template slot="info">
+      <template #info>
         <cdr-link
           href="#baz"
           modifier="standalone"
@@ -250,7 +250,7 @@
           Hey im also on top of the input!
         </cdr-link>
       </template>
-      <template slot="info-action">
+      <template #info-action>
         <cdr-link
           tag="button"
           type="button"
@@ -259,13 +259,13 @@
           <icon-check-stroke inherit-color />
         </cdr-link>
       </template>
-      <template slot="post-icon">
+      <template #post-icon>
         <cdr-tooltip
           class="cdr-input__button"
           id="mega-tooltip"
         >
           <cdr-button
-            slot="trigger"
+            #trigger
             :icon-only="true"
             @click="megaErr = 'you have five minutes to fix this'"
             size="large"
@@ -280,7 +280,7 @@
           id="mega-popover"
         >
           <cdr-button
-            slot="trigger"
+            #trigger
             :icon-only="true"
             size="large"
             aria-label="Hello"
@@ -377,29 +377,29 @@ export default {
   },
   watch: {
     $route(to) {
-      this.setBackground(to.query.background);
+       this.setBackground(to.query.background);
     },
   },
   mounted() {
-    this.setBackground(this.$router.currentRoute.query.background);
+    this.setBackground(this.$route.query.background);
   },
   methods: {
     validate() {
       this.helperValidationError = this.helperValidationModel.length > 4;
     },
     onMasterInput(value, e) {
-      console.log('On Master Input value = ', value, ' e = ', e); // eslint-disable-line
-      this.defaultModel = value;
-      this.requiredModel = value;
-      this.optionalModel = value;
-      this.hiddenModel = value;
-      this.disabledModel = value;
-      this.formWithButtons = value;
-      this.requiredWithIcons = value;
-      this.helperValidationModel = value;
-      this.multiRowModel = value;
-      this.sizeModel = value;
-      this.megaModel = value;
+      console.log('On Master Input value = ', this.masterModel, ' e = ', e); // eslint-disable-line
+      this.defaultModel = this.masterModel;
+      this.requiredModel = this.masterModel;
+      this.optionalModel = this.masterModel;
+      this.hiddenModel = this.masterModel;
+      this.disabledModel = this.masterModel;
+      this.formWithButtons = this.masterModel;
+      this.requiredWithIcons = this.masterModel;
+      this.helperValidationModel = this.masterModel;
+      this.multiRowModel = this.masterModel;
+      this.sizeModel = this.masterModel;
+      this.megaModel = this.masterModel;
     },
     setBackground(background) {
       switch (background) {
