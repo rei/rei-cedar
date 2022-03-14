@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$14(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3X, _hoisted_3$O))
     }
 
-    script$4i.render = render$14;
+    script$4i.render = render$13;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -13302,7 +13302,7 @@
     const _hoisted_3$M = ["aria-controls", "aria-label"];
     const _hoisted_4$J = ["href", "onClick"];
 
-    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -13372,7 +13372,7 @@
     const cssModules$u = script$4c.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$4c.render = render$13;
+    script$4c.render = render$12;
     script$4c.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$4b = {
@@ -20297,119 +20297,116 @@
 
     script$1b.__file = "src/components/image/CdrImg.vue";
 
-    var script$1a = defineComponent({
-      name: 'CdrLabelStandalone',
-      props: {
-        forId: {
-          type: String,
-          required: true,
-        },
-        label: String,
-        disabled: Boolean,
-        required: Boolean,
-        optional: Boolean,
-        hideLabel: Boolean,
-      },
-      setup(props, ctx) {
-        const baseClass = 'cdr-label-standalone';
-        const hasHelper = ctx.slots.helper;
-        const hasInfo = ctx.slots.info;
-        const hasInfoAction = ctx.slots['info-action'];
-        const disabledLabelClass = computed(() => props.disabled
-          && 'cdr-label-standalone__label--disabled');
-        const srOnlyLabelClass = computed(() => props.hideLabel
-          && 'cdr-label-standalone__label--sr-only');
-        const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
-          && 'cdr-label-standalone__input-spacing');
-        return {
-          style: useCssModule(),
-          mapClasses,
-          hasHelper,
-          hasInfo,
-          hasInfoAction,
-          baseClass,
-          disabledLabelClass,
-          srOnlyLabelClass,
-          inputSpacingClass,
-        };
-      },
-    });
-
     const _hoisted_1$$ = ["for"];
     const _hoisted_2$T = { key: 0 };
     const _hoisted_3$L = { key: 0 };
     const _hoisted_4$I = ["id"];
 
-    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
+
+    var script$1a = {
+      props: {
+      forId: {
+        type: String,
+        required: true,
+      },
+      label: String,
+      disabled: Boolean,
+      required: Boolean,
+      optional: Boolean,
+      hideLabel: Boolean,
+    },
+      setup(__props) {
+
+    const props = __props;
+
+
+    const slots = useSlots();
+    const baseClass = 'cdr-label-standalone';
+    const hasHelper = slots.helper;
+    const hasInfo = slots.info;
+    const hasInfoAction = slots['info-action'];
+    const disabledLabelClass = computed(() => props.disabled
+      && 'cdr-label-standalone__label--disabled');
+    const srOnlyLabelClass = computed(() => props.hideLabel
+      && 'cdr-label-standalone__label--sr-only');
+    const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
+      && 'cdr-label-standalone__input-spacing');
+    const style = useCssModule();
+
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("div", {
-        class: normalizeClass(_ctx.style[_ctx.baseClass])
+        class: normalizeClass(unref(style)[baseClass])
       }, [
         createBaseVNode("div", {
-          class: normalizeClass(_ctx.style['cdr-label-standalone__label-wrapper'])
+          class: normalizeClass(unref(style)['cdr-label-standalone__label-wrapper'])
         }, [
           createBaseVNode("label", {
-            class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-label-standalone__label', _ctx.disabledLabelClass, _ctx.srOnlyLabelClass)),
-            for: _ctx.forId
+            class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-label-standalone__label', unref(disabledLabelClass), unref(srOnlyLabelClass))),
+            for: __props.forId
           }, [
-            createTextVNode(toDisplayString(_ctx.label) + toDisplayString(_ctx.required || _ctx.optional ? '' : '') + " ", 1 /* TEXT */),
-            (_ctx.required)
+            createTextVNode(toDisplayString(__props.label) + toDisplayString(__props.required || __props.optional ? '' : '') + " ", 1 /* TEXT */),
+            (__props.required)
               ? (openBlock(), createElementBlock("span", _hoisted_2$T, "*"))
-              : (_ctx.optional)
+              : (__props.optional)
                 ? (openBlock(), createElementBlock("span", {
                     key: 1,
-                    class: normalizeClass(_ctx.style['cdr-label-standalone__optional'])
+                    class: normalizeClass(unref(style)['cdr-label-standalone__optional'])
                   }, "(optional)", 2 /* CLASS */))
                 : createCommentVNode("v-if", true)
           ], 10 /* CLASS, PROPS */, _hoisted_1$$),
-          (!_ctx.hideLabel && _ctx.hasHelper)
+          (!__props.hideLabel && unref(hasHelper))
             ? (openBlock(), createElementBlock("br", _hoisted_3$L))
             : createCommentVNode("v-if", true),
-          (_ctx.hasHelper)
+          (unref(hasHelper))
             ? (openBlock(), createElementBlock("span", {
                 key: 1,
-                class: normalizeClass(_ctx.style['cdr-label-standalone__helper']),
-                id: `${_ctx.forId}-helper-text-top`
+                class: normalizeClass(unref(style)['cdr-label-standalone__helper']),
+                id: `${__props.forId}-helper-text-top`
               }, [
                 renderSlot(_ctx.$slots, "helper")
               ], 10 /* CLASS, PROPS */, _hoisted_4$I))
             : createCommentVNode("v-if", true)
         ], 2 /* CLASS */),
         createBaseVNode("div", {
-          class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-label-standalone__input-wrap', _ctx.inputSpacingClass))
+          class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-label-standalone__input-wrap', unref(inputSpacingClass)))
         }, [
           renderSlot(_ctx.$slots, "default"),
-          (_ctx.hasInfoAction)
+          (unref(hasInfoAction))
             ? (openBlock(), createElementBlock("div", {
                 key: 0,
-                class: normalizeClass(_ctx.style['cdr-label-standalone__info-action'])
+                class: normalizeClass(unref(style)['cdr-label-standalone__info-action'])
               }, [
                 renderSlot(_ctx.$slots, "info-action")
               ], 2 /* CLASS */))
             : createCommentVNode("v-if", true)
         ], 2 /* CLASS */),
-        (_ctx.hasInfo)
+        (unref(hasInfo))
           ? (openBlock(), createElementBlock("span", {
               key: 0,
-              class: normalizeClass(_ctx.style['cdr-label-standalone__info'])
+              class: normalizeClass(unref(style)['cdr-label-standalone__info'])
             }, [
               renderSlot(_ctx.$slots, "info")
             ], 2 /* CLASS */))
           : createCommentVNode("v-if", true),
         createBaseVNode("div", {
-          class: normalizeClass(_ctx.style['cdr-label-standalone__post-content'])
+          class: normalizeClass(unref(style)['cdr-label-standalone__post-content'])
         }, [
           renderSlot(_ctx.$slots, "helper-text-bottom"),
           renderSlot(_ctx.$slots, "error")
         ], 2 /* CLASS */)
       ], 2 /* CLASS */))
     }
+    }
+
+    };
 
     var style0$h = {"cdr-label-standalone":"cdr-label-standalone_13-0-0-alpha-3","cdr-label-standalone__label-wrapper":"cdr-label-standalone__label-wrapper_13-0-0-alpha-3","cdr-label-standalone__label":"cdr-label-standalone__label_13-0-0-alpha-3","cdr-label-standalone__label--sr-only":"cdr-label-standalone__label--sr-only_13-0-0-alpha-3","cdr-label-standalone__label--disabled":"cdr-label-standalone__label--disabled_13-0-0-alpha-3","cdr-label-standalone__optional":"cdr-label-standalone__optional_13-0-0-alpha-3","cdr-label-standalone__helper":"cdr-label-standalone__helper_13-0-0-alpha-3","cdr-label-standalone__info":"cdr-label-standalone__info_13-0-0-alpha-3","cdr-label-standalone__post-content":"cdr-label-standalone__post-content_13-0-0-alpha-3","cdr-label-standalone__info-action":"cdr-label-standalone__info-action_13-0-0-alpha-3","cdr-label-standalone__input-wrap":"cdr-label-standalone__input-wrap_13-0-0-alpha-3","cdr-label-standalone__input-spacing":"cdr-label-standalone__input-spacing_13-0-0-alpha-3"};
 
     const cssModules$h = script$1a.__cssModules = {};
     cssModules$h["$style"] = style0$h;
 
-    script$1a.render = render$12;
+
     script$1a.__file = "src/components/labelStandalone/CdrLabelStandalone.vue";
 
     /**
