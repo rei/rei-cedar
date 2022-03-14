@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$13(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3X, _hoisted_3$O))
     }
 
-    script$4i.render = render$13;
+    script$4i.render = render$12;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -13302,7 +13302,7 @@
     const _hoisted_3$M = ["aria-controls", "aria-label"];
     const _hoisted_4$J = ["href", "onClick"];
 
-    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$11(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -13372,7 +13372,7 @@
     const cssModules$u = script$4c.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$4c.render = render$12;
+    script$4c.render = render$11;
     script$4c.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$4b = {
@@ -22610,7 +22610,7 @@
     const _hoisted_1$Y = ["id", "multiple", "size", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
     const _hoisted_2$Q = ["value"];
 
-    function render$11(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_down = resolveComponent("icon-caret-down");
       const _component_cdr_form_error = resolveComponent("cdr-form-error");
       const _component_cdr_label_standalone = resolveComponent("cdr-label-standalone");
@@ -22735,7 +22735,7 @@
     const cssModules$c = script$15.__cssModules = {};
     cssModules$c["$style"] = style0$c;
 
-    script$15.render = render$11;
+    script$15.render = render$10;
     script$15.__file = "src/components/select/CdrSelect.vue";
 
     var script$14 = defineComponent({
@@ -22929,7 +22929,7 @@
       "aria-hidden": "true"
     };
 
-    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$$(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_left = resolveComponent("icon-caret-left");
       const _component_cdr_select = resolveComponent("cdr-select");
       const _component_icon_caret_right = resolveComponent("icon-caret-right");
@@ -23048,7 +23048,7 @@
     const cssModules$b = script$14.__cssModules = {};
     cssModules$b["$style"] = style0$b;
 
-    script$14.render = render$10;
+    script$14.render = render$$;
     script$14.__file = "src/components/pagination/CdrPagination.vue";
 
     function calculatePlacement (triggerRect, popupRect, screenWidth, screenHeight, originalPosition) {
@@ -23278,7 +23278,7 @@
       },
     });
 
-    function render$$(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$_(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         ref: "rootEl",
         class: normalizeClass(_ctx.mapClasses(
@@ -23308,7 +23308,7 @@
     const cssModules$a = script$13.__cssModules = {};
     cssModules$a["$style"] = style0$a;
 
-    script$13.render = render$$;
+    script$13.render = render$_;
     script$13.__file = "src/components/popup/CdrPopup.vue";
 
     var script$12 = defineComponent({
@@ -23416,7 +23416,7 @@
 
     const _hoisted_1$W = { ref: "triggerEl" };
 
-    function render$_(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_x_sm = resolveComponent("icon-x-sm");
       const _component_cdr_button = resolveComponent("cdr-button");
       const _component_cdr_popup = resolveComponent("cdr-popup");
@@ -23488,11 +23488,10 @@
     const cssModules$9 = script$12.__cssModules = {};
     cssModules$9["$style"] = style0$9;
 
-    script$12.render = render$_;
+    script$12.render = render$Z;
     script$12.__file = "src/components/popover/CdrPopover.vue";
 
-    var script$11 = defineComponent({
-      name: 'CdrQuote',
+    var script$11 = {
       props: {
         tag: {
           type: String,
@@ -23508,51 +23507,51 @@
         summary: String,
         /** Caption credit text */
         citation: String,
-      },
-      setup(props) {
-        const baseClass = 'cdr-quote';
-        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
-        return {
-          style: useCssModule(),
-          mapClasses,
-          baseClass,
-          modifierClass,
-          summaryClass: 'cdr-quote__summary',
-          citationClass: 'cdr-quote__citation',
-        };
-      },
-    });
+    },
+      setup(__props) {
 
-    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
-      return (openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.modifierClass))
+    const props = __props;
+
+
+    const baseClass = 'cdr-quote';
+    const summaryClass = 'cdr-quote__summary';
+    const citationClass = 'cdr-quote__citation';
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+    const style = useCssModule();
+
+    return (_ctx, _cache) => {
+      return (openBlock(), createBlock(resolveDynamicComponent(__props.tag), {
+        class: normalizeClass(unref(mapClasses)(unref(style), baseClass, unref(modifierClass)))
       }, {
         default: withCtx(() => [
-          (_ctx.summary)
+          (__props.summary)
             ? (openBlock(), createElementBlock("p", {
                 key: 0,
-                class: normalizeClass(_ctx.style[_ctx.summaryClass])
-              }, toDisplayString(_ctx.summary), 3 /* TEXT, CLASS */))
+                class: normalizeClass(unref(style)[summaryClass])
+              }, toDisplayString(__props.summary), 3 /* TEXT, CLASS */))
             : createCommentVNode("v-if", true),
           renderSlot(_ctx.$slots, "default"),
-          (_ctx.citation)
+          (__props.citation)
             ? (openBlock(), createElementBlock("cite", {
                 key: 1,
-                class: normalizeClass(_ctx.style[_ctx.citationClass]),
+                class: normalizeClass(unref(style)[citationClass]),
                 tag: "cite"
-              }, toDisplayString(_ctx.citation), 3 /* TEXT, CLASS */))
+              }, toDisplayString(__props.citation), 3 /* TEXT, CLASS */))
             : createCommentVNode("v-if", true)
         ]),
         _: 3 /* FORWARDED */
       }, 8 /* PROPS */, ["class"]))
     }
+    }
+
+    };
 
     var style0$8 = {"cdr-quote":"cdr-quote_13-0-0-alpha-3","cdr-quote__summary":"cdr-quote__summary_13-0-0-alpha-3","cdr-quote--pull":"cdr-quote--pull_13-0-0-alpha-3"};
 
     const cssModules$8 = script$11.__cssModules = {};
     cssModules$8["$style"] = style0$8;
 
-    script$11.render = render$Z;
+
     script$11.__file = "src/components/quote/CdrQuote.vue";
 
     var script$10 = defineComponent({
