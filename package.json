@@ -10,13 +10,13 @@
     "access": "public"
   },
   "author": "REI Software Engineering",
-  "main": "./dist/cedar-vite.umd.js",
-  "module": "./dist/cedar-vite.es.js",
+  "main": "./dist/cedar.umd.js",
+  "module": "./dist/cedar.es.js",
   "style": "./dist/style.css",
   "exports": {
     ".": {
-      "import": "./dist/cedar-vite.es.js",
-      "require": "./dist/cedar-vite.umd.js"
+      "import": "./dist/cedar.es.js",
+      "require": "./dist/cedar.umd.js"
     }
   },
   "files": [
@@ -98,7 +98,6 @@
     "@rollup/plugin-alias": "^3.1.2",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-multi-entry": "^2.1.0",
@@ -107,7 +106,6 @@
     "rollup-plugin-serve": "^1.1.0",
     "rollup-plugin-styles": "^3.14.1",
     "rollup-plugin-svg": "^2.0.0",
-    "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.32.11",
     "serve-handler": "^6.1.3",
     "sinon": "^11.1.0",

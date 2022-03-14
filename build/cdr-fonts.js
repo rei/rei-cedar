@@ -9,7 +9,7 @@ sass.render({
 }, (err, result) => {
   if (err) console.log('error:', err);
   else {
-    fs.outputFileSync('./static/cdr-fonts.css', result.css.toString(), 'utf-8');
-    console.log('Succesfully built static/cdr-fonts.css');
+    fs.outputFileSync('./public/cdr-fonts.css', result.css.toString(), 'utf-8');
+    console.log('Succesfully built public/cdr-fonts.css');
   }
 })
