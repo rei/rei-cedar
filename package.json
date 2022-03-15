@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.0.0-vite.3",
+  "version": "13.0.0-vite.7",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -12,7 +12,6 @@
   "author": "REI Software Engineering",
   "main": "./dist/cedar.umd.js",
   "module": "./dist/cedar.es.js",
-  "style": "./dist/style.css",
   "exports": {
     ".": {
       "import": "./dist/cedar.es.js",
@@ -29,7 +28,7 @@
   "scripts": {
     "prepublishOnly": "npm-run-all lint build",
     "dev": "vite",
-    "build": "vite build && npm run build:extractcss && npm run build:icons && npm run build:cssfonts",
+    "build": "vite build && npm run build:extractcss && npm run build:icons",
     "preview": "vite preview",
     "unit": "BABEL_ENV=cjs jest",
     "e2e": "cross-env NODE_ENV=test rollup -c rollup.config.dev.js && node test/e2e/runner.js",
@@ -44,9 +43,8 @@
     "approve": "backstop approve --configPath=backstop.js",
     "create": "node generator.js",
     "prerelease": "npm-publish-prerelease",
-    "build:variables": "node build/component-variables-transfer.js",
     "build:extractcss": "node build/extract-css.js",
-    "build:cssfonts": "node build/cdr-fonts.js",
+    "build:variables": "node build/component-variables-transfer.js",
     "build:icons": "node src/components/icon/build/generate.js"
   },
   "devDependencies": {
