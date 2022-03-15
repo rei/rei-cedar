@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path';
-import plugins from './build/rollup-plugins.js';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +15,11 @@ export default defineConfig({
       // into your library
       external: ['vue'],
       output: {
+        // assetFileNames: (asset) => {
+        //   return asset.name === 'style.css'
+        //     ? 'cedar-compiled.css'
+        //     : asset.name;
+        // },
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {

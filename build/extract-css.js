@@ -42,6 +42,17 @@ fs.outputFile('./dist/style/cedar-full.css', outFile, function(err) {
   }
 });
 
+// const compiledCss = sass.render({
+//   file: './dist/style/cedar-full.css',
+//   outputStyle: 'compressed',
+// });
+
+// fs.outputFile('./dist/cedar-compiled.css', compiledCss, function(err) {
+//   if (!err) {
+//     console.log(chalk.green(`success! created cedar-compiled.css`));
+//   }
+// })
+
 function createImport(data) {
   return `@import url('${data.outPath.replace('.', '@rei/cedar')}');`
 }
