@@ -1,4 +1,4 @@
-@import '../../../css/settings/index.scss';
+@import '../../../styles/settings/index.scss';
 
 $rating-color: #2b6692;
 $empty-star: '\2606';
@@ -114,11 +114,11 @@ $filled-star: '\2605';
     ========== */
 
   &__placeholder {
-    @include star-icon('static/star-0.svg');
+    @include star-icon('public/svg/star-0.svg');
     @include star-fallback($empty-star);
 
     &--no-reviews {
-      @include star-icon('static/star-null.svg');
+      @include star-icon('public/svg/star-null.svg');
       @include star-fallback($empty-star);
     }
   }
@@ -127,22 +127,22 @@ $filled-star: '\2605';
     ========== */
 
   &__100 {
-    @include star-icon('static/star-100.svg');
+    @include star-icon('public/svg/star-100.svg');
     @include star-fallback($filled-star);
   }
 
   &__75 {
-    @include star-icon('static/star-75.svg');
+    @include star-icon('public/svg/star-75.svg');
     @include star-fallback($filled-star, .75);
   }
 
   &__50 {
-    @include star-icon('static/star-50.svg');
+    @include star-icon('public/svg/star-50.svg');
     @include star-fallback($filled-star, .5);
   }
 
   &__25 {
-    @include star-icon('static/star-25.svg');
+    @include star-icon('public/svg/star-25.svg');
     @include star-fallback($filled-star, .33);
   }
 

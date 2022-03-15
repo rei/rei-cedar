@@ -3,7 +3,7 @@ const packageImporter = require('node-sass-package-importer');
 const fs = require('fs-extra');
 
 sass.render({
-  file: `./src/css/fonts.scss`,
+  file: `./src/styles/fonts.scss`,
   // outputStyle: 'compressed',
   importer: packageImporter(),
 }, (err, result) => {

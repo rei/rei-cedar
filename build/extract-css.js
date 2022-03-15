@@ -4,6 +4,7 @@ const fs = require('fs-extra');
 const glob = require('glob');
 const chalk = require('chalk');
 const postcss = require('postcss');
+const atImport = require("postcss-import")
 const postcssrc = require('postcss-load-config');
 const postcssModules = require('postcss-modules');
 const _ = require('lodash');
@@ -12,7 +13,7 @@ const packageJson = require('../package.json')
 const env = process.env.NODE_ENV;
 
 buildCss({
-  srcPath: './src/css/reset.scss',
+  srcPath: './src/styles/reset.scss',
   outPath: './dist/style/reset.css',
   scopeClasses: false,
 });
@@ -31,6 +32,11 @@ const components = glob.sync('./src/components/**/styles/*.scss')
 
 components.forEach(buildCss);
 
+const compiledOutFile = [{outPath: './dist/style/reset.css'}]
+  .concat(components)
+  .map(createCompiledImport)
+  .join('\n');
+
 const outFile = [{outPath: './dist/style/reset.css'}]
   .concat(components)
   .map(createImport)
@@ -41,6 +47,21 @@ fs.outputFile('./dist/style/cedar-full.css', outFile, function(err) {
     console.log(chalk.green(`success! created cedar-full.css`));
   }
 });
+console.log(compiledOutFile);
+
+
+postcss()
+  .use(atImport())
+  .process(compiledOutFile, {
+    from: undefined
+  })
+  .then((result) => {
+    fs.outputFile('./dist/cedar-compiled.css', result.css, function(err) {
+      if (!err) {
+        console.log(chalk.green(`success! created cedar-compiled.css`));
+      }
+    });
+  });
 
 // const compiledCss = sass.render({
 //   file: './dist/style/cedar-full.css',
@@ -55,6 +76,10 @@ fs.outputFile('./dist/style/cedar-full.css', outFile, function(err) {
 
 function createImport(data) {
   return `@import url('${data.outPath.replace('.', '@rei/cedar')}');`
+}
+
+function createCompiledImport(data) {
+  return `@import url('${data.outPath}');`
 }
 
 function buildCss({ srcPath, outPath, scopeClasses }) {
