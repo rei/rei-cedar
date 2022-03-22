@@ -7,7 +7,6 @@ export default {
 
 <script setup>
 import { useCssModule, useSlots, useAttrs, computed, defineEmits } from 'vue';
-import toArray from 'lodash/toArray';
 import IconCaretDown from '../icon/comps/caret-down';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
 import CdrFormError from '../formError/CdrFormError';
