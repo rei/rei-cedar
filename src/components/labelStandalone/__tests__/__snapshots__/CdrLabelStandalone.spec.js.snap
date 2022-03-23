@@ -12,7 +12,9 @@ exports[`CdrFormLabelStandalone matches snapshot 1`] = `
       for="test"
     >
       Label Test 
-      <span>
+      <span
+        aria-hidden="true"
+      >
         *
       </span>
     </label>
