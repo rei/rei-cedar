@@ -139,11 +139,11 @@
 
       prompt="Choose One"
     >
-      <template slot="helper-text">
+      <template #helper-text>
         This is helper text.
       </template>
 
-      <template slot="info">
+      <template #info>
         <cdr-link
           href="#/selects"
           modifier="standalone"
@@ -164,7 +164,7 @@
 
       prompt="Choose One"
     >
-      <template slot="info">
+      <template #info>
         <cdr-link
           href="#/selects"
           modifier="standalone"
@@ -185,7 +185,7 @@
 
       prompt="Choose One"
     >
-      <template slot="info-action">
+      <template #info-action>
         <cdr-link
           tag="button"
           type="button"
@@ -207,7 +207,7 @@
 
       prompt="Choose One"
     >
-      <template slot="pre-icon">
+      <template #pre-icon>
         <icon-lock-locked-stroke />
       </template>
     </cdr-select>
@@ -223,9 +223,10 @@
       aria-describedby="statusTest"
 
       prompt="Choose One"
-      :error="true"
+      :error="this.preIconModelError"
+      @change="validatePreIconModel"
     >
-      <template slot="error">
+      <template #error>
         <span id="statusTest">error message goes here</span>
       </template>
     </cdr-select>
@@ -241,12 +242,33 @@
       aria-describedby="alertTest"
 
       prompt="Choose One"
-      :error="true"
+      :error="this.preIconModel2Error"
+      @change="validatePreIconModel2"
     >
-      <template slot="error">
+      <template #error>
         <span id="alertTest">Alert error message goes here</span>
       </template>
     </cdr-select>
+    <hr class="icon-hr">
+
+    <!-- Nested Options -->
+    <cdr-select
+      v-model="nested"
+      :background="backgroundColor"
+      label="Nested Options"
+    >
+      <optgroup label="bread">
+        <option value="rye">rye</option>
+        <option value="sourdough">sourdough</option>
+        <option value="wheat">wheat</option>
+      </optgroup>
+      <optgroup label="toppings">
+        <option value="provolone">provolone</option>
+        <option value="peppers">peppers</option>
+        <option value="gabagool">gabagool</option>
+      </optgroup>
+    </cdr-select>
+    <cdr-text>Selected Value: {{ nested }}</cdr-text>
     <hr class="icon-hr">
 
     <!-- Large Select Example -->
@@ -311,7 +333,6 @@
       :options="multiple2Data"
     />
     <cdr-text>Selected Values: {{ multiple2 }}</cdr-text>
-    <hr class="icon-hr">
   </div>
 </template>
 
@@ -335,6 +356,9 @@ export default {
       infoIconModel: '',
       preIconModel: '',
       preIconModel2: '',
+      preIconModelError: true,
+      preIconModel2Error: true,
+      nested:'',
       multiple: ['1', '2'],
       multiple2: ['-1'],
       multiple2Data: ['a', 'b', 'c', 'd'],
@@ -343,15 +367,21 @@ export default {
   },
   watch: {
     $route(to) {
-      this.setBackground(to.query.background);
+       this.setBackground(to.query.background);
     },
   },
   mounted() {
-    this.setBackground(this.$router.currentRoute.query.background);
+    this.setBackground(this.$route.query.background);
   },
   methods: {
     inputEventHandler(selectedValue, event) {
       console.log('input Event event = ', event, ' selectedValue = ', selectedValue); // eslint-disable-line
+    },
+    validatePreIconModel() {
+      this.preIconModelError = !this.preIconModel.length;
+    },
+    validatePreIconModel2() {
+      this.preIconModel2Error = !this.preIconModel2.length;
     },
     inputChange(selectedValue, event) {
       console.log('change Event event = ', event, ' selectedValue = ', selectedValue); // eslint-disable-line

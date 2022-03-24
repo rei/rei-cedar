@@ -1,6 +1,137 @@
+<script>
+export default {
+  inheritAttrs: false,
+  customOptions: {}
+}
+</script>
+
+<script setup>
+import { useCssModule, useSlots, useAttrs, computed, defineEmits } from 'vue';
+import IconCaretDown from '../icon/comps/caret-down';
+import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
+import CdrFormError from '../formError/CdrFormError';
+import sizeProps from '../../props/size';
+import backgroundProps from '../../props/background';
+import mapClasses from '../../utils/mapClasses';
+import uid from '../../utils/uid';
+const emit = defineEmits(['update:modelValue'])
+const props = defineProps({
+  /**
+   * `id` for the select that is mapped to the label `for` attribute. If one is not provided, it will be generated.
+  */
+  id: {
+    type: String,
+  },
+  /**
+   * Label text. This is required for a11y even if hiding the label with `hideLabel`.
+  */
+  label: {
+    type: String,
+    required: true,
+  },
+  /**
+   * Removes the label element but sets the select `aria-label` to `label` text for a11y.
+  */
+  hideLabel: Boolean,
+  /**
+   * Adds an option that is disabled and selected by default to serve as a `placeholder` for the select.
+  */
+  prompt: String,
+  /**
+   * Build options programatically with data. Array of objects [{ text: String, value: String}] to give greater control. Array of strings ['String'] for simpler setup (value and text will be the same).
+  */
+  options: {
+    type: Array,
+  },
+  // Set which background type the select renders on
+  background: backgroundProps,
+  size: sizeProps,
+  // Set error styling
+  error: {
+    type: [Boolean, String],
+    default: false,
+  },
+  /**
+  * Override the error message role, default is `status`.
+  */
+  errorRole: {
+    type: String,
+    required: false,
+    default: 'status',
+  },
+  modelValue: {
+    type: [String, Number, Boolean, Object, Array, Symbol, Function],
+  },
+  disabled: Boolean,
+  required: Boolean,
+  optional: Boolean,
+  multiple: Boolean,
+  multipleSize: Number,
+})
+const slots = useSlots();
+const attrs = useAttrs();
+const baseClass = 'cdr-select';
+const hasHelper = slots['helper-text'];
+const hasInfo = slots.info;
+const hasInfoAction = slots['info-action'];
+const hasPreIcon = slots['pre-icon'];
+const uniqueId = props.id ? props.id : uid();
+
+
+const multipleClass = computed(() => props.multiple && 'cdr-select--multiple');
+const promptClass = computed(() => !props.modelValue && 'cdr-select__prompt');
+const multilineClass = computed(() => props.rows > 1 && 'cdr-select--multiline');
+const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
+const errorClass = computed(() => props.error && 'cdr-select--error');
+const backgroundClass = computed(() => `cdr-select--${props.background}`);
+const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+const caretDisabledClass = computed(() => props.disabled && 'cdr-select__caret--disabled');
+
+const describedby = computed(() => {
+  return [
+    slots['helper-text'] ? `${uniqueId}-helper-text-top` : '',
+    attrs['aria-describedby'],
+  ].filter((x) => x).join(' ');
+})
+
+// TODO: refactor, would be much clearer as a 1-2 liner
+const computedOpts = computed(() => {
+  const optsArr = [];
+  if (props.options) {
+    props.options.forEach((o) => {
+      const optObj = {};
+      let text = '';
+      let val = '';
+      if (typeof o === 'string') {
+        text = o;
+        val = o;
+      } else {
+        const { text: t, value: v } = o;
+        text = t;
+        val = v;
+      }
+      optObj.text = text;
+      optObj.value = val;
+      optsArr.push(optObj);
+    });
+  }
+  return optsArr;
+});
+
+const selectModel = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    emit('update:modelValue', newValue)
+  }
+})
+const style = useCssModule();
+</script>
+
 <template>
   <cdr-label-standalone
-    :for-id="id"
+    :for-id="uniqueId"
     :label="label"
     :hide-label="hideLabel"
     :required="required"
@@ -30,6 +161,7 @@
       </span>
 
       <select
+        :id="uniqueId"
         :class="mapClasses(style,
           baseClass,
           sizeClass,
@@ -39,21 +171,17 @@
           errorClass,
           preIconClass,
         )"
-        :id="id"
         :multiple="multiple"
         :size="multipleSize"
         :disabled="disabled"
         :aria-required="required || null"
 
         :aria-invalid="!!error || null"
-        :aria-errormessage="(!!error && `${id}-error`) || null"
+        :aria-errormessage="(!!error && `${uniqueId}-error`) || null"
         v-bind="$attrs"
         :aria-describedby="describedby || null"
         :value="modelValue"
-        @change="$emit('update:modelValue', multiple
-          ? processMultiple($event.target.options)
-          : $event.target.value)
-        "
+        v-model="selectModel"
       >
         <option
           v-if="prompt"
@@ -84,7 +212,7 @@
       <cdr-form-error
         :error="error"
         :role="errorRole"
-        :id="`${id}-error`"
+        :id="`${uniqueId}-error`"
         v-if="error"
       >
         <template #error>
@@ -94,158 +222,6 @@
     </template>
   </cdr-label-standalone>
 </template>
-
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
-import toArray from 'lodash/toArray';
-import IconCaretDown from '../icon/comps/caret-down';
-import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
-import CdrFormError from '../formError/CdrFormError';
-import sizeProps from '../../props/size';
-import backgroundProps from '../../props/background';
-import mapClasses from '../../utils/mapClasses';
-
-export default defineComponent({
-  name: 'CdrSelect',
-  components: {
-    IconCaretDown,
-    CdrLabelStandalone,
-    CdrFormError,
-  },
-  inheritAttrs: false,
-  props: {
-    /**
-     * `id` for the select that is mapped to the label `for` attribute. If one is not provided, it will be generated.
-    */
-    id: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Label text. This is required for a11y even if hiding the label with `hideLabel`.
-    */
-    label: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Removes the label element but sets the select `aria-label` to `label` text for a11y.
-    */
-    hideLabel: Boolean,
-    /**
-     * Adds an option that is disabled and selected by default to serve as a `placeholder` for the select.
-    */
-    prompt: String,
-    /**
-     * Build options programatically with data. Array of objects [{ text: String, value: String}] to give greater control. Array of strings ['String'] for simpler setup (value and text will be the same).
-    */
-    options: {
-      type: Array,
-    },
-    // Set which background type the select renders on
-    background: backgroundProps,
-    size: sizeProps,
-    // Set error styling
-    error: {
-      type: [Boolean, String],
-      default: false,
-    },
-    /**
-    * Override the error message role, default is `status`.
-    */
-    errorRole: {
-      type: String,
-      required: false,
-      default: 'status',
-    },
-    modelValue: {
-      type: [String, Number, Boolean, Object, Array, Symbol, Function],
-    },
-    disabled: Boolean,
-    required: Boolean,
-    optional: Boolean,
-    multiple: Boolean,
-    multipleSize: Number,
-  },
-  setup(props, ctx) {
-    const baseClass = 'cdr-select';
-
-    const hasHelper = ctx.slots['helper-text'];
-    const hasInfo = ctx.slots.info;
-    const hasInfoAction = ctx.slots['info-action'];
-    const hasPreIcon = ctx.slots['pre-icon'];
-
-
-    const multipleClass = computed(() => props.multiple && 'cdr-select--multiple');
-
-    const promptClass = computed(() => !props.modelValue && 'cdr-select--preicon');
-    const multilineClass = computed(() => props.rows > 1 && 'cdr-select--multiline');
-    const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
-    const errorClass = computed(() => props.error && 'cdr-select--error');
-    const backgroundClass = computed(() => `cdr-select--${props.background}`);
-    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-    const caretDisabledClass = computed(() => props.disabled && 'cdr-select__caret--disabled');
-
-
-    const describedby = computed(() => {
-      return [
-        ctx.slots['helper-text'] ? `${props.id}-helper-text-top` : '',
-        ctx.attrs['aria-describedby'],
-      ].filter((x) => x).join(' ');
-    })
-
-    // TODO: refactor, would be much clearer as a 1-2 liner
-    const computedOpts = computed(() => {
-      const optsArr = [];
-      if (props.options) {
-        props.options.forEach((o) => {
-          const optObj = {};
-          let text = '';
-          let val = '';
-          if (typeof o === 'string') {
-            text = o;
-            val = o;
-          } else {
-            const { text: t, value: v } = o;
-            text = t;
-            val = v;
-          }
-          optObj.text = text;
-          optObj.value = val;
-          optsArr.push(optObj);
-        });
-      }
-      return optsArr;
-    });
-
-    const processMultiple = (options) => toArray(options)
-      .filter((o) => o.selected === true)
-      .map((o) => o.value);
-
-    return {
-      style: useCssModule(),
-      baseClass,
-      computedOpts,
-      hasHelper,
-      hasInfo,
-      hasInfoAction,
-      hasPreIcon,
-
-      describedby,
-      processMultiple,
-      multipleClass,
-      promptClass,
-      multilineClass,
-      preIconClass,
-      errorClass,
-      backgroundClass,
-      sizeClass,
-      caretDisabledClass,
-      mapClasses,
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrSelect.module.scss">
 </style>
