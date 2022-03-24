@@ -43,7 +43,7 @@
             const res = {};
             for (let i = 0; i < value.length; i++) {
                 const item = value[i];
-                const normalized = isString$1(item)
+                const normalized = isString(item)
                     ? parseStringStyle(item)
                     : normalizeStyle(item);
                 if (normalized) {
@@ -54,7 +54,7 @@
             }
             return res;
         }
-        else if (isString$1(value)) {
+        else if (isString(value)) {
             return value;
         }
         else if (isObject$1(value)) {
@@ -75,7 +75,7 @@
     }
     function normalizeClass(value) {
         let res = '';
-        if (isString$1(value)) {
+        if (isString(value)) {
             res = value;
         }
         else if (isArray$1(value)) {
@@ -99,7 +99,7 @@
         if (!props)
             return null;
         let { class: klass, style } = props;
-        if (klass && !isString$1(klass)) {
+        if (klass && !isString(klass)) {
             props.class = normalizeClass(klass);
         }
         if (style) {
@@ -200,7 +200,7 @@
             ? ''
             : isArray$1(val) ||
                 (isObject$1(val) &&
-                    (val.toString === objectToString$1 || !isFunction$1(val.toString)))
+                    (val.toString === objectToString$1 || !isFunction(val.toString)))
                 ? JSON.stringify(val, replacer, 2)
                 : String(val);
     };
@@ -246,18 +246,18 @@
             arr.splice(i, 1);
         }
     };
-    const hasOwnProperty$5 = Object.prototype.hasOwnProperty;
-    const hasOwn = (val, key) => hasOwnProperty$5.call(val, key);
+    const hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+    const hasOwn = (val, key) => hasOwnProperty$1.call(val, key);
     const isArray$1 = Array.isArray;
     const isMap = (val) => toTypeString(val) === '[object Map]';
     const isSet = (val) => toTypeString(val) === '[object Set]';
     const isDate = (val) => val instanceof Date;
-    const isFunction$1 = (val) => typeof val === 'function';
-    const isString$1 = (val) => typeof val === 'string';
+    const isFunction = (val) => typeof val === 'function';
+    const isString = (val) => typeof val === 'string';
     const isSymbol$1 = (val) => typeof val === 'symbol';
     const isObject$1 = (val) => val !== null && typeof val === 'object';
     const isPromise = (val) => {
-        return isObject$1(val) && isFunction$1(val.then) && isFunction$1(val.catch);
+        return isObject$1(val) && isFunction(val.then) && isFunction(val.catch);
     };
     const objectToString$1 = Object.prototype.toString;
     const toTypeString = (value) => objectToString$1.call(value);
@@ -266,7 +266,7 @@
         return toTypeString(value).slice(8, -1);
     };
     const isPlainObject = (val) => toTypeString(val) === '[object Object]';
-    const isIntegerKey = (key) => isString$1(key) &&
+    const isIntegerKey = (key) => isString(key) &&
         key !== 'NaN' &&
         key[0] !== '-' &&
         '' + parseInt(key, 10) === key;
@@ -1345,7 +1345,7 @@
     function computed$1(getterOrOptions, debugOptions, isSSR = false) {
         let getter;
         let setter;
-        const onlyGetter = isFunction$1(getterOrOptions);
+        const onlyGetter = isFunction(getterOrOptions);
         if (onlyGetter) {
             getter = getterOrOptions;
             setter = () => {
@@ -1458,7 +1458,7 @@
     }
     /* istanbul ignore next */
     function formatProp(key, value, raw) {
-        if (isString$1(value)) {
+        if (isString(value)) {
             value = JSON.stringify(value);
             return raw ? value : [`${key}=${value}`];
         }
@@ -1471,7 +1471,7 @@
             value = formatProp(key, toRaw(value.value), true);
             return raw ? value : [`${key}=Ref<`, value, `>`];
         }
-        else if (isFunction$1(value)) {
+        else if (isFunction(value)) {
             return [`${key}=fn${value.name ? `<${value.name}>` : ``}`];
         }
         else {
@@ -1523,7 +1523,7 @@
         return res;
     }
     function callWithAsyncErrorHandling(fn, instance, type, args) {
-        if (isFunction$1(fn)) {
+        if (isFunction(fn)) {
             const res = callWithErrorHandling(fn, instance, type, args);
             if (res && isPromise(res)) {
                 res.catch(err => {
@@ -2025,7 +2025,7 @@
                 }
                 else {
                     const validator = emitsOptions[event];
-                    if (isFunction$1(validator)) {
+                    if (isFunction(validator)) {
                         const isValid = validator(...rawArgs);
                         if (!isValid) {
                             warn$1(`Invalid event arguments: event validation failed for event "${event}".`);
@@ -2095,7 +2095,7 @@
         let normalized = {};
         // apply mixin/extends props
         let hasExtends = false;
-        if (__VUE_OPTIONS_API__ && !isFunction$1(comp)) {
+        if (__VUE_OPTIONS_API__ && !isFunction(comp)) {
             const extendEmits = (raw) => {
                 const normalizedFromExtend = normalizeEmitsOptions(raw, appContext, true);
                 if (normalizedFromExtend) {
@@ -2562,7 +2562,7 @@
                 return provides[key];
             }
             else if (arguments.length > 1) {
-                return treatDefaultAsFactory && isFunction$1(defaultValue)
+                return treatDefaultAsFactory && isFunction(defaultValue)
                     ? defaultValue.call(instance.proxy)
                     : defaultValue;
             }
@@ -2583,7 +2583,7 @@
     const INITIAL_WATCHER_VALUE = {};
     // implementation
     function watch(source, cb, options) {
-        if (!isFunction$1(cb)) {
+        if (!isFunction(cb)) {
             warn$1(`\`watch(fn, options?)\` signature has been moved to a separate API. ` +
                 `Use \`watchEffect(fn, options?)\` instead. \`watch\` now only ` +
                 `supports \`watch(source, cb, options?) signature.`);
@@ -2627,7 +2627,7 @@
                 else if (isReactive(s)) {
                     return traverse(s);
                 }
-                else if (isFunction$1(s)) {
+                else if (isFunction(s)) {
                     return callWithErrorHandling(s, instance, 2 /* WATCH_GETTER */);
                 }
                 else {
@@ -2635,7 +2635,7 @@
                 }
             });
         }
-        else if (isFunction$1(source)) {
+        else if (isFunction(source)) {
             if (cb) {
                 // getter with cb
                 getter = () => callWithErrorHandling(source, instance, 2 /* WATCH_GETTER */);
@@ -2769,13 +2769,13 @@
     // this.$watch
     function instanceWatch(source, value, options) {
         const publicThis = this.proxy;
-        const getter = isString$1(source)
+        const getter = isString(source)
             ? source.includes('.')
                 ? createPathGetter(publicThis, source)
                 : () => publicThis[source]
             : source.bind(publicThis, publicThis);
         let cb;
-        if (isFunction$1(value)) {
+        if (isFunction(value)) {
             cb = value;
         }
         else {
@@ -3148,7 +3148,7 @@
 
     // implementation, close to no-op
     function defineComponent(options) {
-        return isFunction$1(options) ? { setup: options, name: options.name } : options;
+        return isFunction(options) ? { setup: options, name: options.name } : options;
     }
 
     const isAsyncWrapper = (i) => !!i.type.__asyncLoader;
@@ -3313,7 +3313,7 @@
         if (methods) {
             for (const key in methods) {
                 const methodHandler = methods[key];
-                if (isFunction$1(methodHandler)) {
+                if (isFunction(methodHandler)) {
                     // In dev mode, we use the `createRenderContext` function to define
                     // methods to the proxy target, and those are read-only but
                     // reconfigurable, so it needs to be redefined here
@@ -3336,7 +3336,7 @@
             }
         }
         if (dataOptions) {
-            if (!isFunction$1(dataOptions)) {
+            if (!isFunction(dataOptions)) {
                 warn$1(`The data option must be a function. ` +
                     `Plain object usage is no longer supported.`);
             }
@@ -3372,15 +3372,15 @@
         if (computedOptions) {
             for (const key in computedOptions) {
                 const opt = computedOptions[key];
-                const get = isFunction$1(opt)
+                const get = isFunction(opt)
                     ? opt.bind(publicThis, publicThis)
-                    : isFunction$1(opt.get)
+                    : isFunction(opt.get)
                         ? opt.get.bind(publicThis, publicThis)
                         : NOOP;
                 if (get === NOOP) {
                     warn$1(`Computed property "${key}" has no getter.`);
                 }
-                const set = !isFunction$1(opt) && isFunction$1(opt.set)
+                const set = !isFunction(opt) && isFunction(opt.set)
                     ? opt.set.bind(publicThis)
                     : () => {
                             warn$1(`Write operation failed: computed property "${key}" is readonly.`);
@@ -3407,7 +3407,7 @@
             }
         }
         if (provideOptions) {
-            const provides = isFunction$1(provideOptions)
+            const provides = isFunction(provideOptions)
                 ? provideOptions.call(publicThis)
                 : provideOptions;
             Reflect.ownKeys(provides).forEach(key => {
@@ -3521,16 +3521,16 @@
         const getter = key.includes('.')
             ? createPathGetter(publicThis, key)
             : () => publicThis[key];
-        if (isString$1(raw)) {
+        if (isString(raw)) {
             const handler = ctx[raw];
-            if (isFunction$1(handler)) {
+            if (isFunction(handler)) {
                 watch(getter, handler);
             }
             else {
                 warn$1(`Invalid watch handler specified by key "${raw}"`, handler);
             }
         }
-        else if (isFunction$1(raw)) {
+        else if (isFunction(raw)) {
             watch(getter, raw.bind(publicThis));
         }
         else if (isObject$1(raw)) {
@@ -3538,10 +3538,10 @@
                 raw.forEach(r => createWatcher(r, ctx, publicThis, key));
             }
             else {
-                const handler = isFunction$1(raw.handler)
+                const handler = isFunction(raw.handler)
                     ? raw.handler.bind(publicThis)
                     : ctx[raw.handler];
-                if (isFunction$1(handler)) {
+                if (isFunction(handler)) {
                     watch(getter, handler, raw);
                 }
                 else {
@@ -3641,7 +3641,7 @@
             return from;
         }
         return function mergedDataFn() {
-            return (extend)(isFunction$1(to) ? to.call(this, this) : to, isFunction$1(from) ? from.call(this, this) : from);
+            return (extend)(isFunction(to) ? to.call(this, this) : to, isFunction(from) ? from.call(this, this) : from);
         };
     }
     function mergeInject(to, from) {
@@ -3849,7 +3849,7 @@
             // default values
             if (hasDefault && value === undefined) {
                 const defaultValue = opt.default;
-                if (opt.type !== Function && isFunction$1(defaultValue)) {
+                if (opt.type !== Function && isFunction(defaultValue)) {
                     const { propsDefaults } = instance;
                     if (key in propsDefaults) {
                         value = propsDefaults[key];
@@ -3888,7 +3888,7 @@
         const needCastKeys = [];
         // apply mixin/extends props
         let hasExtends = false;
-        if (__VUE_OPTIONS_API__ && !isFunction$1(comp)) {
+        if (__VUE_OPTIONS_API__ && !isFunction(comp)) {
             const extendProps = (raw) => {
                 hasExtends = true;
                 const [props, keys] = normalizePropsOptions(raw, appContext, true);
@@ -3912,7 +3912,7 @@
         }
         if (isArray$1(raw)) {
             for (let i = 0; i < raw.length; i++) {
-                if (!isString$1(raw[i])) {
+                if (!isString(raw[i])) {
                     warn$1(`props must be strings when using array syntax.`, raw[i]);
                 }
                 const normalizedKey = camelize(raw[i]);
@@ -3930,7 +3930,7 @@
                 if (validatePropName(normalizedKey)) {
                     const opt = raw[key];
                     const prop = (normalized[normalizedKey] =
-                        isArray$1(opt) || isFunction$1(opt) ? { type: opt } : opt);
+                        isArray$1(opt) || isFunction(opt) ? { type: opt } : opt);
                     if (prop) {
                         const booleanIndex = getTypeIndex(Boolean, prop.type);
                         const stringIndex = getTypeIndex(String, prop.type);
@@ -3971,7 +3971,7 @@
         if (isArray$1(expectedTypes)) {
             return expectedTypes.findIndex(t => isSameType(t, type));
         }
-        else if (isFunction$1(expectedTypes)) {
+        else if (isFunction(expectedTypes)) {
             return isSameType(expectedTypes, type) ? 0 : -1;
         }
         return -1;
@@ -4129,7 +4129,7 @@
             if (isInternalKey(key))
                 continue;
             const value = rawSlots[key];
-            if (isFunction$1(value)) {
+            if (isFunction(value)) {
                 slots[key] = normalizeSlot$1(key, value, ctx);
             }
             else if (value != null) {
@@ -4256,7 +4256,7 @@
         const bindings = vnode.dirs || (vnode.dirs = []);
         for (let i = 0; i < directives.length; i++) {
             let [dir, value, arg, modifiers = EMPTY_OBJ] = directives[i];
-            if (isFunction$1(dir)) {
+            if (isFunction(dir)) {
                 dir = {
                     mounted: dir,
                     updated: dir
@@ -4351,11 +4351,11 @@
                     if (installedPlugins.has(plugin)) {
                         warn$1(`Plugin has already been applied to target app.`);
                     }
-                    else if (plugin && isFunction$1(plugin.install)) {
+                    else if (plugin && isFunction(plugin.install)) {
                         installedPlugins.add(plugin);
                         plugin.install(app, ...options);
                     }
-                    else if (isFunction$1(plugin)) {
+                    else if (isFunction(plugin)) {
                         installedPlugins.add(plugin);
                         plugin(app, ...options);
                     }
@@ -4496,7 +4496,7 @@
         const setupState = owner.setupState;
         // dynamic ref changed. unset old ref
         if (oldRef != null && oldRef !== ref) {
-            if (isString$1(oldRef)) {
+            if (isString(oldRef)) {
                 refs[oldRef] = null;
                 if (hasOwn(setupState, oldRef)) {
                     setupState[oldRef] = null;
@@ -4506,11 +4506,11 @@
                 oldRef.value = null;
             }
         }
-        if (isFunction$1(ref)) {
+        if (isFunction(ref)) {
             callWithErrorHandling(ref, owner, 12 /* FUNCTION_REF */, [value, refs]);
         }
         else {
-            const _isString = isString$1(ref);
+            const _isString = isString(ref);
             const _isRef = isRef(ref);
             if (_isString || _isRef) {
                 const doSet = () => {
@@ -5966,7 +5966,7 @@
      * @private
      */
     function resolveDynamicComponent(component) {
-        if (isString$1(component)) {
+        if (isString(component)) {
             return resolveAsset(COMPONENTS, component, false) || component;
         }
         else {
@@ -6125,7 +6125,7 @@
     const normalizeKey = ({ key }) => key != null ? key : null;
     const normalizeRef = ({ ref, ref_key, ref_for }) => {
         return (ref != null
-            ? isString$1(ref) || isRef(ref) || isFunction$1(ref)
+            ? isString(ref) || isRef(ref) || isFunction(ref)
                 ? { i: currentRenderingInstance, r: ref, k: ref_key, f: !!ref_for }
                 : ref
             : null);
@@ -6168,7 +6168,7 @@
         else if (children) {
             // compiled element vnode - if children is passed, only possible types are
             // string or Array.
-            vnode.shapeFlag |= isString$1(children)
+            vnode.shapeFlag |= isString(children)
                 ? 8 /* TEXT_CHILDREN */
                 : 16 /* ARRAY_CHILDREN */;
         }
@@ -6221,7 +6221,7 @@
             // for reactive or proxy objects, we need to clone it to enable mutation.
             props = guardReactiveProps(props);
             let { class: klass, style } = props;
-            if (klass && !isString$1(klass)) {
+            if (klass && !isString(klass)) {
                 props.class = normalizeClass(klass);
             }
             if (isObject$1(style)) {
@@ -6234,7 +6234,7 @@
             }
         }
         // encode the vnode type information into a bitmap
-        const shapeFlag = isString$1(type)
+        const shapeFlag = isString(type)
             ? 1 /* ELEMENT */
             : isSuspense(type)
                 ? 128 /* SUSPENSE */
@@ -6242,7 +6242,7 @@
                     ? 64 /* TELEPORT */
                     : isObject$1(type)
                         ? 4 /* STATEFUL_COMPONENT */
-                        : isFunction$1(type)
+                        : isFunction(type)
                             ? 2 /* FUNCTIONAL_COMPONENT */
                             : 0;
         if (shapeFlag & 4 /* STATEFUL_COMPONENT */ && isProxy(type)) {
@@ -6411,7 +6411,7 @@
                 }
             }
         }
-        else if (isFunction$1(children)) {
+        else if (isFunction(children)) {
             children = { default: children, _ctx: currentRenderingInstance };
             type = 32 /* SLOTS_CHILDREN */;
         }
@@ -6473,7 +6473,7 @@
     function renderList(source, renderItem, cache, index) {
         let ret;
         const cached = (cache && cache[index]);
-        if (isArray$1(source) || isString$1(source)) {
+        if (isArray$1(source) || isString(source)) {
             ret = new Array(source.length);
             for (let i = 0, l = source.length; i < l; i++) {
                 ret[i] = renderItem(source[i], i, undefined, cached && cached[i]);
@@ -6721,7 +6721,7 @@
                 }
             }
             else if (currentRenderingInstance &&
-                (!isString$1(key) ||
+                (!isString(key) ||
                     // #1091 avoid internal isRef/isVNode checks on component instance leading
                     // to infinite warning loop
                     key.indexOf('__v') !== 0)) {
@@ -7031,7 +7031,7 @@
         }
     }
     function handleSetupResult(instance, setupResult, isSSR) {
-        if (isFunction$1(setupResult)) {
+        if (isFunction(setupResult)) {
             // setup returned an inline render function
             if (instance.type.__ssrInlineRender) {
                 // when the function's name is `ssrRender` (compiled by SFC inline mode),
@@ -7176,7 +7176,7 @@
     const classifyRE = /(?:^|[-_])(\w)/g;
     const classify = (str) => str.replace(classifyRE, c => c.toUpperCase()).replace(/[-_]/g, '');
     function getComponentName(Component) {
-        return isFunction$1(Component)
+        return isFunction(Component)
             ? Component.displayName || Component.name
             : Component.name;
     }
@@ -7205,7 +7205,7 @@
         return name ? classify(name) : isRoot ? `App` : `Anonymous`;
     }
     function isClassComponent(value) {
-        return isFunction$1(value) && '__vccOpts' in value;
+        return isFunction(value) && '__vccOpts' in value;
     }
 
     const computed = ((getterOrOptions, debugOptions) => {
@@ -7406,7 +7406,7 @@
         }
         function extractKeys(instance, type) {
             const Comp = instance.type;
-            if (isFunction$1(Comp)) {
+            if (isFunction(Comp)) {
                 return;
             }
             const extracted = {};
@@ -7566,12 +7566,12 @@
 
     function patchStyle(el, prev, next) {
         const style = el.style;
-        const isCssString = isString$1(next);
+        const isCssString = isString(next);
         if (next && !isCssString) {
             for (const key in next) {
                 setStyle(style, key, next[key]);
             }
-            if (prev && !isString$1(prev)) {
+            if (prev && !isString(prev)) {
                 for (const key in prev) {
                     if (next[key] == null) {
                         setStyle(style, key, '');
@@ -7875,7 +7875,7 @@
                 return true;
             }
             // or native onclick with function values
-            if (key in el && nativeOnRE.test(key) && isFunction$1(value)) {
+            if (key in el && nativeOnRE.test(key) && isFunction(value)) {
                 return true;
             }
             return false;
@@ -7903,7 +7903,7 @@
             return false;
         }
         // native onclick with string value, must be set as attribute
-        if (nativeOnRE.test(key) && isString$1(value)) {
+        if (nativeOnRE.test(key) && isString(value)) {
             return false;
         }
         return key in el;
@@ -8295,7 +8295,7 @@
             el._assign = getModelAssigner(vnode);
             addEventListener(el, 'change', () => {
                 const modelValue = el._modelValue;
-                const elementValue = getValue$1(el);
+                const elementValue = getValue(el);
                 const checked = el.checked;
                 const assign = el._assign;
                 if (isArray$1(modelValue)) {
@@ -8349,7 +8349,7 @@
             el.checked = looseEqual(value, vnode.props.value);
             el._assign = getModelAssigner(vnode);
             addEventListener(el, 'change', () => {
-                el._assign(getValue$1(el));
+                el._assign(getValue(el));
             });
         },
         beforeUpdate(el, { value, oldValue }, vnode) {
@@ -8367,7 +8367,7 @@
             addEventListener(el, 'change', () => {
                 const selectedVal = Array.prototype.filter
                     .call(el.options, (o) => o.selected)
-                    .map((o) => number ? toNumber$1(getValue$1(o)) : getValue$1(o));
+                    .map((o) => number ? toNumber$1(getValue(o)) : getValue(o));
                 el._assign(el.multiple
                     ? isSetModel
                         ? new Set(selectedVal)
@@ -8397,7 +8397,7 @@
         }
         for (let i = 0, l = el.options.length; i < l; i++) {
             const option = el.options[i];
-            const optionValue = getValue$1(option);
+            const optionValue = getValue(option);
             if (isMultiple) {
                 if (isArray$1(value)) {
                     option.selected = looseIndexOf(value, optionValue) > -1;
@@ -8407,7 +8407,7 @@
                 }
             }
             else {
-                if (looseEqual(getValue$1(option), value)) {
+                if (looseEqual(getValue(option), value)) {
                     if (el.selectedIndex !== i)
                         el.selectedIndex = i;
                     return;
@@ -8419,7 +8419,7 @@
         }
     }
     // retrieve raw value set via :value bindings
-    function getValue$1(el) {
+    function getValue(el) {
         return '_value' in el ? el._value : el.value;
     }
     // retrieve raw value for true-value and false-value set via :true-value or :false-value bindings
@@ -8581,7 +8581,7 @@
             if (!container)
                 return;
             const component = app._component;
-            if (!isFunction$1(component) && !component.render && !component.template) {
+            if (!isFunction(component) && !component.render && !component.template) {
                 // __UNSAFE__
                 // Reason: potential execution of JS expressions in in-DOM template.
                 // The user must make sure the in-DOM template is trusted. If it's
@@ -8640,7 +8640,7 @@
         }
     }
     function normalizeContainer(container) {
-        if (isString$1(container)) {
+        if (isString(container)) {
             const res = document.querySelector(container);
             if (!res) {
                 warn$1(`Failed to mount app: mount target selector "${container}" returned null.`);
@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$12(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$11(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3X, _hoisted_3$O))
     }
 
-    script$4i.render = render$12;
+    script$4i.render = render$11;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -12523,10 +12523,6 @@
 
     var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-    function createCommonjsModule(fn, module) {
-    	return module = { exports: {} }, fn(module, module.exports), module.exports;
-    }
-
     /** Detect free variable `global` from Node.js. */
     var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
 
@@ -12606,17 +12602,17 @@
     var _Symbol = Symbol$1;
 
     /** Used for built-in method references. */
-    var objectProto$6 = Object.prototype;
+    var objectProto$1 = Object.prototype;
 
     /** Used to check objects for own properties. */
-    var hasOwnProperty$4 = objectProto$6.hasOwnProperty;
+    var hasOwnProperty = objectProto$1.hasOwnProperty;
 
     /**
      * Used to resolve the
      * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
      * of values.
      */
-    var nativeObjectToString$1 = objectProto$6.toString;
+    var nativeObjectToString$1 = objectProto$1.toString;
 
     /** Built-in value references. */
     var symToStringTag$1 = _Symbol ? _Symbol.toStringTag : undefined;
@@ -12629,7 +12625,7 @@
      * @returns {string} Returns the raw `toStringTag`.
      */
     function getRawTag(value) {
-      var isOwn = hasOwnProperty$4.call(value, symToStringTag$1),
+      var isOwn = hasOwnProperty.call(value, symToStringTag$1),
           tag = value[symToStringTag$1];
 
       try {
@@ -12651,14 +12647,14 @@
     var _getRawTag = getRawTag;
 
     /** Used for built-in method references. */
-    var objectProto$5 = Object.prototype;
+    var objectProto = Object.prototype;
 
     /**
      * Used to resolve the
      * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
      * of values.
      */
-    var nativeObjectToString = objectProto$5.toString;
+    var nativeObjectToString = objectProto.toString;
 
     /**
      * Converts `value` to a string using `Object.prototype.toString`.
@@ -13302,7 +13298,7 @@
     const _hoisted_3$M = ["aria-controls", "aria-label"];
     const _hoisted_4$J = ["href", "onClick"];
 
-    function render$11(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -13372,7 +13368,7 @@
     const cssModules$u = script$4c.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$4c.render = render$11;
+    script$4c.render = render$10;
     script$4c.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$4b = {
@@ -13643,12 +13639,12 @@
     const _hoisted_1$3T = ["true-value", "false-value", "value"];
 
 
-    const __default__$1 = {
+    const __default__$2 = {
       inheritAttrs: false,
       customOptions: {}
     };
 
-    var script$47 = /*#__PURE__*/Object.assign(__default__$1, {
+    var script$47 = /*#__PURE__*/Object.assign(__default__$2, {
       props: {
       /**
        * Class that is added to the label for custom styles
@@ -20422,12 +20418,12 @@
     const _hoisted_3$K = ["id"];
 
 
-    const __default__ = {
+    const __default__$1 = {
       inheritAttrs: false,
       customOptions: {}
     };
 
-    var script$19 = /*#__PURE__*/Object.assign(__default__, {
+    var script$19 = /*#__PURE__*/Object.assign(__default__$1, {
       props: {
         /**
          * `id` for the input that is mapped to the label `for` attribute.
@@ -21389,1301 +21385,204 @@
 
     script$16.__file = "src/components/modal/CdrModal.vue";
 
-    /**
-     * Copies the values of `source` to `array`.
-     *
-     * @private
-     * @param {Array} source The array to copy values from.
-     * @param {Array} [array=[]] The array to copy values to.
-     * @returns {Array} Returns `array`.
-     */
-    function copyArray(source, array) {
-      var index = -1,
-          length = source.length;
-
-      array || (array = Array(length));
-      while (++index < length) {
-        array[index] = source[index];
-      }
-      return array;
-    }
-
-    var _copyArray = copyArray;
-
-    /** `Object#toString` result references. */
-    var asyncTag = '[object AsyncFunction]',
-        funcTag$1 = '[object Function]',
-        genTag = '[object GeneratorFunction]',
-        proxyTag = '[object Proxy]';
-
-    /**
-     * Checks if `value` is classified as a `Function` object.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a function, else `false`.
-     * @example
-     *
-     * _.isFunction(_);
-     * // => true
-     *
-     * _.isFunction(/abc/);
-     * // => false
-     */
-    function isFunction(value) {
-      if (!isObject_1(value)) {
-        return false;
-      }
-      // The use of `Object#toString` avoids issues with the `typeof` operator
-      // in Safari 9 which returns 'object' for typed arrays and other constructors.
-      var tag = _baseGetTag(value);
-      return tag == funcTag$1 || tag == genTag || tag == asyncTag || tag == proxyTag;
-    }
-
-    var isFunction_1 = isFunction;
-
-    /** Used to detect overreaching core-js shims. */
-    var coreJsData = _root['__core-js_shared__'];
-
-    var _coreJsData = coreJsData;
-
-    /** Used to detect methods masquerading as native. */
-    var maskSrcKey = (function() {
-      var uid = /[^.]+$/.exec(_coreJsData && _coreJsData.keys && _coreJsData.keys.IE_PROTO || '');
-      return uid ? ('Symbol(src)_1.' + uid) : '';
-    }());
-
-    /**
-     * Checks if `func` has its source masked.
-     *
-     * @private
-     * @param {Function} func The function to check.
-     * @returns {boolean} Returns `true` if `func` is masked, else `false`.
-     */
-    function isMasked(func) {
-      return !!maskSrcKey && (maskSrcKey in func);
-    }
-
-    var _isMasked = isMasked;
-
-    /** Used for built-in method references. */
-    var funcProto$1 = Function.prototype;
-
-    /** Used to resolve the decompiled source of functions. */
-    var funcToString$1 = funcProto$1.toString;
-
-    /**
-     * Converts `func` to its source code.
-     *
-     * @private
-     * @param {Function} func The function to convert.
-     * @returns {string} Returns the source code.
-     */
-    function toSource(func) {
-      if (func != null) {
-        try {
-          return funcToString$1.call(func);
-        } catch (e) {}
-        try {
-          return (func + '');
-        } catch (e) {}
-      }
-      return '';
-    }
-
-    var _toSource = toSource;
-
-    /**
-     * Used to match `RegExp`
-     * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
-     */
-    var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-    /** Used to detect host constructors (Safari). */
-    var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-    /** Used for built-in method references. */
-    var funcProto = Function.prototype,
-        objectProto$4 = Object.prototype;
-
-    /** Used to resolve the decompiled source of functions. */
-    var funcToString = funcProto.toString;
-
-    /** Used to check objects for own properties. */
-    var hasOwnProperty$3 = objectProto$4.hasOwnProperty;
-
-    /** Used to detect if a method is native. */
-    var reIsNative = RegExp('^' +
-      funcToString.call(hasOwnProperty$3).replace(reRegExpChar, '\\$&')
-      .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-    );
-
-    /**
-     * The base implementation of `_.isNative` without bad shim checks.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a native function,
-     *  else `false`.
-     */
-    function baseIsNative(value) {
-      if (!isObject_1(value) || _isMasked(value)) {
-        return false;
-      }
-      var pattern = isFunction_1(value) ? reIsNative : reIsHostCtor;
-      return pattern.test(_toSource(value));
-    }
-
-    var _baseIsNative = baseIsNative;
-
-    /**
-     * Gets the value at `key` of `object`.
-     *
-     * @private
-     * @param {Object} [object] The object to query.
-     * @param {string} key The key of the property to get.
-     * @returns {*} Returns the property value.
-     */
-    function getValue(object, key) {
-      return object == null ? undefined : object[key];
-    }
-
-    var _getValue = getValue;
-
-    /**
-     * Gets the native function at `key` of `object`.
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @param {string} key The key of the method to get.
-     * @returns {*} Returns the function if it's native, else `undefined`.
-     */
-    function getNative(object, key) {
-      var value = _getValue(object, key);
-      return _baseIsNative(value) ? value : undefined;
-    }
-
-    var _getNative = getNative;
-
-    /* Built-in method references that are verified to be native. */
-    var DataView = _getNative(_root, 'DataView');
-
-    var _DataView = DataView;
-
-    /* Built-in method references that are verified to be native. */
-    var Map$1 = _getNative(_root, 'Map');
-
-    var _Map = Map$1;
-
-    /* Built-in method references that are verified to be native. */
-    var Promise$1 = _getNative(_root, 'Promise');
-
-    var _Promise = Promise$1;
-
-    /* Built-in method references that are verified to be native. */
-    var Set$1 = _getNative(_root, 'Set');
-
-    var _Set = Set$1;
-
-    /* Built-in method references that are verified to be native. */
-    var WeakMap$1 = _getNative(_root, 'WeakMap');
-
-    var _WeakMap = WeakMap$1;
-
-    /** `Object#toString` result references. */
-    var mapTag$2 = '[object Map]',
-        objectTag$1 = '[object Object]',
-        promiseTag = '[object Promise]',
-        setTag$2 = '[object Set]',
-        weakMapTag$1 = '[object WeakMap]';
-
-    var dataViewTag$1 = '[object DataView]';
-
-    /** Used to detect maps, sets, and weakmaps. */
-    var dataViewCtorString = _toSource(_DataView),
-        mapCtorString = _toSource(_Map),
-        promiseCtorString = _toSource(_Promise),
-        setCtorString = _toSource(_Set),
-        weakMapCtorString = _toSource(_WeakMap);
-
-    /**
-     * Gets the `toStringTag` of `value`.
-     *
-     * @private
-     * @param {*} value The value to query.
-     * @returns {string} Returns the `toStringTag`.
-     */
-    var getTag = _baseGetTag;
-
-    // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-    if ((_DataView && getTag(new _DataView(new ArrayBuffer(1))) != dataViewTag$1) ||
-        (_Map && getTag(new _Map) != mapTag$2) ||
-        (_Promise && getTag(_Promise.resolve()) != promiseTag) ||
-        (_Set && getTag(new _Set) != setTag$2) ||
-        (_WeakMap && getTag(new _WeakMap) != weakMapTag$1)) {
-      getTag = function(value) {
-        var result = _baseGetTag(value),
-            Ctor = result == objectTag$1 ? value.constructor : undefined,
-            ctorString = Ctor ? _toSource(Ctor) : '';
-
-        if (ctorString) {
-          switch (ctorString) {
-            case dataViewCtorString: return dataViewTag$1;
-            case mapCtorString: return mapTag$2;
-            case promiseCtorString: return promiseTag;
-            case setCtorString: return setTag$2;
-            case weakMapCtorString: return weakMapTag$1;
-          }
-        }
-        return result;
-      };
-    }
-
-    var _getTag = getTag;
-
-    /** Used as references for various `Number` constants. */
-    var MAX_SAFE_INTEGER$1 = 9007199254740991;
-
-    /**
-     * Checks if `value` is a valid array-like length.
-     *
-     * **Note:** This method is loosely based on
-     * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
-     * @example
-     *
-     * _.isLength(3);
-     * // => true
-     *
-     * _.isLength(Number.MIN_VALUE);
-     * // => false
-     *
-     * _.isLength(Infinity);
-     * // => false
-     *
-     * _.isLength('3');
-     * // => false
-     */
-    function isLength(value) {
-      return typeof value == 'number' &&
-        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$1;
-    }
-
-    var isLength_1 = isLength;
-
-    /**
-     * Checks if `value` is array-like. A value is considered array-like if it's
-     * not a function and has a `value.length` that's an integer greater than or
-     * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
-     * @example
-     *
-     * _.isArrayLike([1, 2, 3]);
-     * // => true
-     *
-     * _.isArrayLike(document.body.children);
-     * // => true
-     *
-     * _.isArrayLike('abc');
-     * // => true
-     *
-     * _.isArrayLike(_.noop);
-     * // => false
-     */
-    function isArrayLike(value) {
-      return value != null && isLength_1(value.length) && !isFunction_1(value);
-    }
-
-    var isArrayLike_1 = isArrayLike;
-
-    /**
-     * Checks if `value` is classified as an `Array` object.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is an array, else `false`.
-     * @example
-     *
-     * _.isArray([1, 2, 3]);
-     * // => true
-     *
-     * _.isArray(document.body.children);
-     * // => false
-     *
-     * _.isArray('abc');
-     * // => false
-     *
-     * _.isArray(_.noop);
-     * // => false
-     */
-    var isArray = Array.isArray;
-
-    var isArray_1 = isArray;
-
-    /** `Object#toString` result references. */
-    var stringTag$1 = '[object String]';
-
-    /**
-     * Checks if `value` is classified as a `String` primitive or object.
-     *
-     * @static
-     * @since 0.1.0
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a string, else `false`.
-     * @example
-     *
-     * _.isString('abc');
-     * // => true
-     *
-     * _.isString(1);
-     * // => false
-     */
-    function isString(value) {
-      return typeof value == 'string' ||
-        (!isArray_1(value) && isObjectLike_1(value) && _baseGetTag(value) == stringTag$1);
-    }
-
-    var isString_1 = isString;
-
-    /**
-     * Converts `iterator` to an array.
-     *
-     * @private
-     * @param {Object} iterator The iterator to convert.
-     * @returns {Array} Returns the converted array.
-     */
-    function iteratorToArray(iterator) {
-      var data,
-          result = [];
-
-      while (!(data = iterator.next()).done) {
-        result.push(data.value);
-      }
-      return result;
-    }
-
-    var _iteratorToArray = iteratorToArray;
-
-    /**
-     * Converts `map` to its key-value pairs.
-     *
-     * @private
-     * @param {Object} map The map to convert.
-     * @returns {Array} Returns the key-value pairs.
-     */
-    function mapToArray(map) {
-      var index = -1,
-          result = Array(map.size);
-
-      map.forEach(function(value, key) {
-        result[++index] = [key, value];
-      });
-      return result;
-    }
-
-    var _mapToArray = mapToArray;
-
-    /**
-     * Converts `set` to an array of its values.
-     *
-     * @private
-     * @param {Object} set The set to convert.
-     * @returns {Array} Returns the values.
-     */
-    function setToArray(set) {
-      var index = -1,
-          result = Array(set.size);
-
-      set.forEach(function(value) {
-        result[++index] = value;
-      });
-      return result;
-    }
-
-    var _setToArray = setToArray;
-
-    /**
-     * Converts an ASCII `string` to an array.
-     *
-     * @private
-     * @param {string} string The string to convert.
-     * @returns {Array} Returns the converted array.
-     */
-    function asciiToArray(string) {
-      return string.split('');
-    }
-
-    var _asciiToArray = asciiToArray;
-
-    /** Used to compose unicode character classes. */
-    var rsAstralRange$1 = '\\ud800-\\udfff',
-        rsComboMarksRange$1 = '\\u0300-\\u036f',
-        reComboHalfMarksRange$1 = '\\ufe20-\\ufe2f',
-        rsComboSymbolsRange$1 = '\\u20d0-\\u20ff',
-        rsComboRange$1 = rsComboMarksRange$1 + reComboHalfMarksRange$1 + rsComboSymbolsRange$1,
-        rsVarRange$1 = '\\ufe0e\\ufe0f';
-
-    /** Used to compose unicode capture groups. */
-    var rsZWJ$1 = '\\u200d';
-
-    /** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
-    var reHasUnicode = RegExp('[' + rsZWJ$1 + rsAstralRange$1  + rsComboRange$1 + rsVarRange$1 + ']');
-
-    /**
-     * Checks if `string` contains Unicode symbols.
-     *
-     * @private
-     * @param {string} string The string to inspect.
-     * @returns {boolean} Returns `true` if a symbol is found, else `false`.
-     */
-    function hasUnicode(string) {
-      return reHasUnicode.test(string);
-    }
-
-    var _hasUnicode = hasUnicode;
-
-    /** Used to compose unicode character classes. */
-    var rsAstralRange = '\\ud800-\\udfff',
-        rsComboMarksRange = '\\u0300-\\u036f',
-        reComboHalfMarksRange = '\\ufe20-\\ufe2f',
-        rsComboSymbolsRange = '\\u20d0-\\u20ff',
-        rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
-        rsVarRange = '\\ufe0e\\ufe0f';
-
-    /** Used to compose unicode capture groups. */
-    var rsAstral = '[' + rsAstralRange + ']',
-        rsCombo = '[' + rsComboRange + ']',
-        rsFitz = '\\ud83c[\\udffb-\\udfff]',
-        rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
-        rsNonAstral = '[^' + rsAstralRange + ']',
-        rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
-        rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
-        rsZWJ = '\\u200d';
-
-    /** Used to compose unicode regexes. */
-    var reOptMod = rsModifier + '?',
-        rsOptVar = '[' + rsVarRange + ']?',
-        rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
-        rsSeq = rsOptVar + reOptMod + rsOptJoin,
-        rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
-
-    /** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
-    var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
-
-    /**
-     * Converts a Unicode `string` to an array.
-     *
-     * @private
-     * @param {string} string The string to convert.
-     * @returns {Array} Returns the converted array.
-     */
-    function unicodeToArray(string) {
-      return string.match(reUnicode) || [];
-    }
-
-    var _unicodeToArray = unicodeToArray;
-
-    /**
-     * Converts `string` to an array.
-     *
-     * @private
-     * @param {string} string The string to convert.
-     * @returns {Array} Returns the converted array.
-     */
-    function stringToArray(string) {
-      return _hasUnicode(string)
-        ? _unicodeToArray(string)
-        : _asciiToArray(string);
-    }
-
-    var _stringToArray = stringToArray;
-
-    /**
-     * A specialized version of `_.map` for arrays without support for iteratee
-     * shorthands.
-     *
-     * @private
-     * @param {Array} [array] The array to iterate over.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns the new mapped array.
-     */
-    function arrayMap(array, iteratee) {
-      var index = -1,
-          length = array == null ? 0 : array.length,
-          result = Array(length);
-
-      while (++index < length) {
-        result[index] = iteratee(array[index], index, array);
-      }
-      return result;
-    }
-
-    var _arrayMap = arrayMap;
-
-    /**
-     * The base implementation of `_.values` and `_.valuesIn` which creates an
-     * array of `object` property values corresponding to the property names
-     * of `props`.
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @param {Array} props The property names to get values for.
-     * @returns {Object} Returns the array of property values.
-     */
-    function baseValues(object, props) {
-      return _arrayMap(props, function(key) {
-        return object[key];
-      });
-    }
-
-    var _baseValues = baseValues;
-
-    /**
-     * The base implementation of `_.times` without support for iteratee shorthands
-     * or max array length checks.
-     *
-     * @private
-     * @param {number} n The number of times to invoke `iteratee`.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns the array of results.
-     */
-    function baseTimes(n, iteratee) {
-      var index = -1,
-          result = Array(n);
-
-      while (++index < n) {
-        result[index] = iteratee(index);
-      }
-      return result;
-    }
-
-    var _baseTimes = baseTimes;
-
-    /** `Object#toString` result references. */
-    var argsTag$1 = '[object Arguments]';
-
-    /**
-     * The base implementation of `_.isArguments`.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is an `arguments` object,
-     */
-    function baseIsArguments(value) {
-      return isObjectLike_1(value) && _baseGetTag(value) == argsTag$1;
-    }
-
-    var _baseIsArguments = baseIsArguments;
-
-    /** Used for built-in method references. */
-    var objectProto$3 = Object.prototype;
-
-    /** Used to check objects for own properties. */
-    var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
-
-    /** Built-in value references. */
-    var propertyIsEnumerable = objectProto$3.propertyIsEnumerable;
-
-    /**
-     * Checks if `value` is likely an `arguments` object.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is an `arguments` object,
-     *  else `false`.
-     * @example
-     *
-     * _.isArguments(function() { return arguments; }());
-     * // => true
-     *
-     * _.isArguments([1, 2, 3]);
-     * // => false
-     */
-    var isArguments = _baseIsArguments(function() { return arguments; }()) ? _baseIsArguments : function(value) {
-      return isObjectLike_1(value) && hasOwnProperty$2.call(value, 'callee') &&
-        !propertyIsEnumerable.call(value, 'callee');
-    };
-
-    var isArguments_1 = isArguments;
-
-    /**
-     * This method returns `false`.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.13.0
-     * @category Util
-     * @returns {boolean} Returns `false`.
-     * @example
-     *
-     * _.times(2, _.stubFalse);
-     * // => [false, false]
-     */
-    function stubFalse() {
-      return false;
-    }
-
-    var stubFalse_1 = stubFalse;
-
-    var isBuffer_1 = createCommonjsModule(function (module, exports) {
-    /** Detect free variable `exports`. */
-    var freeExports = exports && !exports.nodeType && exports;
-
-    /** Detect free variable `module`. */
-    var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
-
-    /** Detect the popular CommonJS extension `module.exports`. */
-    var moduleExports = freeModule && freeModule.exports === freeExports;
-
-    /** Built-in value references. */
-    var Buffer = moduleExports ? _root.Buffer : undefined;
-
-    /* Built-in method references for those with the same name as other `lodash` methods. */
-    var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
-
-    /**
-     * Checks if `value` is a buffer.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.3.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
-     * @example
-     *
-     * _.isBuffer(new Buffer(2));
-     * // => true
-     *
-     * _.isBuffer(new Uint8Array(2));
-     * // => false
-     */
-    var isBuffer = nativeIsBuffer || stubFalse_1;
-
-    module.exports = isBuffer;
-    });
-
-    /** Used as references for various `Number` constants. */
-    var MAX_SAFE_INTEGER = 9007199254740991;
-
-    /** Used to detect unsigned integer values. */
-    var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-    /**
-     * Checks if `value` is a valid array-like index.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
-     * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
-     */
-    function isIndex(value, length) {
-      var type = typeof value;
-      length = length == null ? MAX_SAFE_INTEGER : length;
-
-      return !!length &&
-        (type == 'number' ||
-          (type != 'symbol' && reIsUint.test(value))) &&
-            (value > -1 && value % 1 == 0 && value < length);
-    }
-
-    var _isIndex = isIndex;
-
-    /** `Object#toString` result references. */
-    var argsTag = '[object Arguments]',
-        arrayTag = '[object Array]',
-        boolTag = '[object Boolean]',
-        dateTag = '[object Date]',
-        errorTag = '[object Error]',
-        funcTag = '[object Function]',
-        mapTag$1 = '[object Map]',
-        numberTag = '[object Number]',
-        objectTag = '[object Object]',
-        regexpTag = '[object RegExp]',
-        setTag$1 = '[object Set]',
-        stringTag = '[object String]',
-        weakMapTag = '[object WeakMap]';
-
-    var arrayBufferTag = '[object ArrayBuffer]',
-        dataViewTag = '[object DataView]',
-        float32Tag = '[object Float32Array]',
-        float64Tag = '[object Float64Array]',
-        int8Tag = '[object Int8Array]',
-        int16Tag = '[object Int16Array]',
-        int32Tag = '[object Int32Array]',
-        uint8Tag = '[object Uint8Array]',
-        uint8ClampedTag = '[object Uint8ClampedArray]',
-        uint16Tag = '[object Uint16Array]',
-        uint32Tag = '[object Uint32Array]';
-
-    /** Used to identify `toStringTag` values of typed arrays. */
-    var typedArrayTags = {};
-    typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
-    typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
-    typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
-    typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
-    typedArrayTags[uint32Tag] = true;
-    typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
-    typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
-    typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
-    typedArrayTags[errorTag] = typedArrayTags[funcTag] =
-    typedArrayTags[mapTag$1] = typedArrayTags[numberTag] =
-    typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
-    typedArrayTags[setTag$1] = typedArrayTags[stringTag] =
-    typedArrayTags[weakMapTag] = false;
-
-    /**
-     * The base implementation of `_.isTypedArray` without Node.js optimizations.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
-     */
-    function baseIsTypedArray(value) {
-      return isObjectLike_1(value) &&
-        isLength_1(value.length) && !!typedArrayTags[_baseGetTag(value)];
-    }
-
-    var _baseIsTypedArray = baseIsTypedArray;
-
-    /**
-     * The base implementation of `_.unary` without support for storing metadata.
-     *
-     * @private
-     * @param {Function} func The function to cap arguments for.
-     * @returns {Function} Returns the new capped function.
-     */
-    function baseUnary(func) {
-      return function(value) {
-        return func(value);
-      };
-    }
-
-    var _baseUnary = baseUnary;
-
-    var _nodeUtil = createCommonjsModule(function (module, exports) {
-    /** Detect free variable `exports`. */
-    var freeExports = exports && !exports.nodeType && exports;
-
-    /** Detect free variable `module`. */
-    var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
-
-    /** Detect the popular CommonJS extension `module.exports`. */
-    var moduleExports = freeModule && freeModule.exports === freeExports;
-
-    /** Detect free variable `process` from Node.js. */
-    var freeProcess = moduleExports && _freeGlobal.process;
-
-    /** Used to access faster Node.js helpers. */
-    var nodeUtil = (function() {
-      try {
-        // Use `util.types` for Node.js 10+.
-        var types = freeModule && freeModule.require && freeModule.require('util').types;
-
-        if (types) {
-          return types;
-        }
-
-        // Legacy `process.binding('util')` for Node.js < 10.
-        return freeProcess && freeProcess.binding && freeProcess.binding('util');
-      } catch (e) {}
-    }());
-
-    module.exports = nodeUtil;
-    });
-
-    /* Node.js helper references. */
-    var nodeIsTypedArray = _nodeUtil && _nodeUtil.isTypedArray;
-
-    /**
-     * Checks if `value` is classified as a typed array.
-     *
-     * @static
-     * @memberOf _
-     * @since 3.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
-     * @example
-     *
-     * _.isTypedArray(new Uint8Array);
-     * // => true
-     *
-     * _.isTypedArray([]);
-     * // => false
-     */
-    var isTypedArray = nodeIsTypedArray ? _baseUnary(nodeIsTypedArray) : _baseIsTypedArray;
-
-    var isTypedArray_1 = isTypedArray;
-
-    /** Used for built-in method references. */
-    var objectProto$2 = Object.prototype;
-
-    /** Used to check objects for own properties. */
-    var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
-
-    /**
-     * Creates an array of the enumerable property names of the array-like `value`.
-     *
-     * @private
-     * @param {*} value The value to query.
-     * @param {boolean} inherited Specify returning inherited property names.
-     * @returns {Array} Returns the array of property names.
-     */
-    function arrayLikeKeys(value, inherited) {
-      var isArr = isArray_1(value),
-          isArg = !isArr && isArguments_1(value),
-          isBuff = !isArr && !isArg && isBuffer_1(value),
-          isType = !isArr && !isArg && !isBuff && isTypedArray_1(value),
-          skipIndexes = isArr || isArg || isBuff || isType,
-          result = skipIndexes ? _baseTimes(value.length, String) : [],
-          length = result.length;
-
-      for (var key in value) {
-        if ((inherited || hasOwnProperty$1.call(value, key)) &&
-            !(skipIndexes && (
-               // Safari 9 has enumerable `arguments.length` in strict mode.
-               key == 'length' ||
-               // Node.js 0.10 has enumerable non-index properties on buffers.
-               (isBuff && (key == 'offset' || key == 'parent')) ||
-               // PhantomJS 2 has enumerable non-index properties on typed arrays.
-               (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
-               // Skip index properties.
-               _isIndex(key, length)
-            ))) {
-          result.push(key);
-        }
-      }
-      return result;
-    }
-
-    var _arrayLikeKeys = arrayLikeKeys;
-
-    /** Used for built-in method references. */
-    var objectProto$1 = Object.prototype;
-
-    /**
-     * Checks if `value` is likely a prototype object.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
-     */
-    function isPrototype(value) {
-      var Ctor = value && value.constructor,
-          proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$1;
-
-      return value === proto;
-    }
-
-    var _isPrototype = isPrototype;
-
-    /**
-     * Creates a unary function that invokes `func` with its argument transformed.
-     *
-     * @private
-     * @param {Function} func The function to wrap.
-     * @param {Function} transform The argument transform.
-     * @returns {Function} Returns the new function.
-     */
-    function overArg(func, transform) {
-      return function(arg) {
-        return func(transform(arg));
-      };
-    }
-
-    var _overArg = overArg;
-
-    /* Built-in method references for those with the same name as other `lodash` methods. */
-    var nativeKeys = _overArg(Object.keys, Object);
-
-    var _nativeKeys = nativeKeys;
-
-    /** Used for built-in method references. */
-    var objectProto = Object.prototype;
-
-    /** Used to check objects for own properties. */
-    var hasOwnProperty = objectProto.hasOwnProperty;
-
-    /**
-     * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property names.
-     */
-    function baseKeys(object) {
-      if (!_isPrototype(object)) {
-        return _nativeKeys(object);
-      }
-      var result = [];
-      for (var key in Object(object)) {
-        if (hasOwnProperty.call(object, key) && key != 'constructor') {
-          result.push(key);
-        }
-      }
-      return result;
-    }
-
-    var _baseKeys = baseKeys;
-
-    /**
-     * Creates an array of the own enumerable property names of `object`.
-     *
-     * **Note:** Non-object values are coerced to objects. See the
-     * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
-     * for more details.
-     *
-     * @static
-     * @since 0.1.0
-     * @memberOf _
-     * @category Object
-     * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property names.
-     * @example
-     *
-     * function Foo() {
-     *   this.a = 1;
-     *   this.b = 2;
-     * }
-     *
-     * Foo.prototype.c = 3;
-     *
-     * _.keys(new Foo);
-     * // => ['a', 'b'] (iteration order is not guaranteed)
-     *
-     * _.keys('hi');
-     * // => ['0', '1']
-     */
-    function keys(object) {
-      return isArrayLike_1(object) ? _arrayLikeKeys(object) : _baseKeys(object);
-    }
-
-    var keys_1 = keys;
-
-    /**
-     * Creates an array of the own enumerable string keyed property values of `object`.
-     *
-     * **Note:** Non-object values are coerced to objects.
-     *
-     * @static
-     * @since 0.1.0
-     * @memberOf _
-     * @category Object
-     * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property values.
-     * @example
-     *
-     * function Foo() {
-     *   this.a = 1;
-     *   this.b = 2;
-     * }
-     *
-     * Foo.prototype.c = 3;
-     *
-     * _.values(new Foo);
-     * // => [1, 2] (iteration order is not guaranteed)
-     *
-     * _.values('hi');
-     * // => ['h', 'i']
-     */
-    function values(object) {
-      return object == null ? [] : _baseValues(object, keys_1(object));
-    }
-
-    var values_1 = values;
-
-    /** `Object#toString` result references. */
-    var mapTag = '[object Map]',
-        setTag = '[object Set]';
-
-    /** Built-in value references. */
-    var symIterator = _Symbol ? _Symbol.iterator : undefined;
-
-    /**
-     * Converts `value` to an array.
-     *
-     * @static
-     * @since 0.1.0
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to convert.
-     * @returns {Array} Returns the converted array.
-     * @example
-     *
-     * _.toArray({ 'a': 1, 'b': 2 });
-     * // => [1, 2]
-     *
-     * _.toArray('abc');
-     * // => ['a', 'b', 'c']
-     *
-     * _.toArray(1);
-     * // => []
-     *
-     * _.toArray(null);
-     * // => []
-     */
-    function toArray(value) {
-      if (!value) {
-        return [];
-      }
-      if (isArrayLike_1(value)) {
-        return isString_1(value) ? _stringToArray(value) : _copyArray(value);
-      }
-      if (symIterator && value[symIterator]) {
-        return _iteratorToArray(value[symIterator]());
-      }
-      var tag = _getTag(value),
-          func = tag == mapTag ? _mapToArray : (tag == setTag ? _setToArray : values_1);
-
-      return func(value);
-    }
-
-    var toArray_1 = toArray;
-
-    var toArray$1 = toArray_1;
-
-    var script$15 = defineComponent({
-      name: 'CdrSelect',
-      components: {
-        IconCaretDown: script$4g,
-        CdrLabelStandalone: script$1a,
-        CdrFormError: script$42,
-      },
-      inheritAttrs: false,
-      props: {
-        /**
-         * `id` for the select that is mapped to the label `for` attribute. If one is not provided, it will be generated.
-        */
-        id: {
-          type: String,
-          required: true,
-        },
-        /**
-         * Label text. This is required for a11y even if hiding the label with `hideLabel`.
-        */
-        label: {
-          type: String,
-          required: true,
-        },
-        /**
-         * Removes the label element but sets the select `aria-label` to `label` text for a11y.
-        */
-        hideLabel: Boolean,
-        /**
-         * Adds an option that is disabled and selected by default to serve as a `placeholder` for the select.
-        */
-        prompt: String,
-        /**
-         * Build options programatically with data. Array of objects [{ text: String, value: String}] to give greater control. Array of strings ['String'] for simpler setup (value and text will be the same).
-        */
-        options: {
-          type: Array,
-        },
-        // Set which background type the select renders on
-        background: backgroundProps,
-        size: sizeProps,
-        // Set error styling
-        error: {
-          type: [Boolean, String],
-          default: false,
-        },
-        /**
-        * Override the error message role, default is `status`.
-        */
-        errorRole: {
-          type: String,
-          required: false,
-          default: 'status',
-        },
-        modelValue: {
-          type: [String, Number, Boolean, Object, Array, Symbol, Function],
-        },
-        disabled: Boolean,
-        required: Boolean,
-        optional: Boolean,
-        multiple: Boolean,
-        multipleSize: Number,
-      },
-      setup(props, ctx) {
-        const baseClass = 'cdr-select';
-
-        const hasHelper = ctx.slots['helper-text'];
-        const hasInfo = ctx.slots.info;
-        const hasInfoAction = ctx.slots['info-action'];
-        const hasPreIcon = ctx.slots['pre-icon'];
-
-
-        const multipleClass = computed(() => props.multiple && 'cdr-select--multiple');
-
-        const promptClass = computed(() => !props.modelValue && 'cdr-select--preicon');
-        const multilineClass = computed(() => props.rows > 1 && 'cdr-select--multiline');
-        const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
-        const errorClass = computed(() => props.error && 'cdr-select--error');
-        const backgroundClass = computed(() => `cdr-select--${props.background}`);
-        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-        const caretDisabledClass = computed(() => props.disabled && 'cdr-select__caret--disabled');
-
-
-        const describedby = computed(() => {
-          return [
-            ctx.slots['helper-text'] ? `${props.id}-helper-text-top` : '',
-            ctx.attrs['aria-describedby'],
-          ].filter((x) => x).join(' ');
-        });
-
-        // TODO: refactor, would be much clearer as a 1-2 liner
-        const computedOpts = computed(() => {
-          const optsArr = [];
-          if (props.options) {
-            props.options.forEach((o) => {
-              const optObj = {};
-              let text = '';
-              let val = '';
-              if (typeof o === 'string') {
-                text = o;
-                val = o;
-              } else {
-                const { text: t, value: v } = o;
-                text = t;
-                val = v;
-              }
-              optObj.text = text;
-              optObj.value = val;
-              optsArr.push(optObj);
-            });
-          }
-          return optsArr;
-        });
-
-        const processMultiple = (options) => toArray$1(options)
-          .filter((o) => o.selected === true)
-          .map((o) => o.value);
-
-        return {
-          style: useCssModule(),
-          baseClass,
-          computedOpts,
-          hasHelper,
-          hasInfo,
-          hasInfoAction,
-          hasPreIcon,
-
-          describedby,
-          processMultiple,
-          multipleClass,
-          promptClass,
-          multilineClass,
-          preIconClass,
-          errorClass,
-          backgroundClass,
-          sizeClass,
-          caretDisabledClass,
-          mapClasses,
-        };
-      },
-    });
-
     const _hoisted_1$Y = ["id", "multiple", "size", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
     const _hoisted_2$Q = ["value"];
 
-    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
-      const _component_icon_caret_down = resolveComponent("icon-caret-down");
-      const _component_cdr_form_error = resolveComponent("cdr-form-error");
-      const _component_cdr_label_standalone = resolveComponent("cdr-label-standalone");
+    const __default__ = {
+      inheritAttrs: false,
+      customOptions: {}
+    };
 
-      return (openBlock(), createBlock(_component_cdr_label_standalone, {
-        "for-id": _ctx.id,
-        label: _ctx.label,
-        "hide-label": _ctx.hideLabel,
-        required: _ctx.required,
-        optional: _ctx.optional,
-        disabled: _ctx.disabled
+    var script$15 = /*#__PURE__*/Object.assign(__default__, {
+      props: {
+      /**
+       * `id` for the select that is mapped to the label `for` attribute. If one is not provided, it will be generated.
+      */
+      id: {
+        type: String,
+      },
+      /**
+       * Label text. This is required for a11y even if hiding the label with `hideLabel`.
+      */
+      label: {
+        type: String,
+        required: true,
+      },
+      /**
+       * Removes the label element but sets the select `aria-label` to `label` text for a11y.
+      */
+      hideLabel: Boolean,
+      /**
+       * Adds an option that is disabled and selected by default to serve as a `placeholder` for the select.
+      */
+      prompt: String,
+      /**
+       * Build options programatically with data. Array of objects [{ text: String, value: String}] to give greater control. Array of strings ['String'] for simpler setup (value and text will be the same).
+      */
+      options: {
+        type: Array,
+      },
+      // Set which background type the select renders on
+      background: backgroundProps,
+      size: sizeProps,
+      // Set error styling
+      error: {
+        type: [Boolean, String],
+        default: false,
+      },
+      /**
+      * Override the error message role, default is `status`.
+      */
+      errorRole: {
+        type: String,
+        required: false,
+        default: 'status',
+      },
+      modelValue: {
+        type: [String, Number, Boolean, Object, Array, Symbol, Function],
+      },
+      disabled: Boolean,
+      required: Boolean,
+      optional: Boolean,
+      multiple: Boolean,
+      multipleSize: Number,
+    },
+      emits: ['update:modelValue'],
+      setup(__props, { emit }) {
+
+    const props = __props;
+
+
+
+    const slots = useSlots();
+    const attrs = useAttrs();
+    const baseClass = 'cdr-select';
+    const hasHelper = slots['helper-text'];
+    const hasInfo = slots.info;
+    const hasInfoAction = slots['info-action'];
+    const hasPreIcon = slots['pre-icon'];
+    const uniqueId = props.id ? props.id : uid();
+
+
+    const multipleClass = computed(() => props.multiple && 'cdr-select--multiple');
+    const promptClass = computed(() => !props.modelValue && 'cdr-select__prompt');
+    computed(() => props.rows > 1 && 'cdr-select--multiline');
+    const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
+    const errorClass = computed(() => props.error && 'cdr-select--error');
+    const backgroundClass = computed(() => `cdr-select--${props.background}`);
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const caretDisabledClass = computed(() => props.disabled && 'cdr-select__caret--disabled');
+
+    const describedby = computed(() => {
+      return [
+        slots['helper-text'] ? `${uniqueId}-helper-text-top` : '',
+        attrs['aria-describedby'],
+      ].filter((x) => x).join(' ');
+    });
+
+    // TODO: refactor, would be much clearer as a 1-2 liner
+    const computedOpts = computed(() => {
+      const optsArr = [];
+      if (props.options) {
+        props.options.forEach((o) => {
+          const optObj = {};
+          let text = '';
+          let val = '';
+          if (typeof o === 'string') {
+            text = o;
+            val = o;
+          } else {
+            const { text: t, value: v } = o;
+            text = t;
+            val = v;
+          }
+          optObj.text = text;
+          optObj.value = val;
+          optsArr.push(optObj);
+        });
+      }
+      return optsArr;
+    });
+
+    const selectModel = computed({
+      get() {
+        return props.modelValue
+      },
+      set(newValue) {
+        emit('update:modelValue', newValue);
+      }
+    });
+    const style = useCssModule();
+
+    return (_ctx, _cache) => {
+      return (openBlock(), createBlock(unref(script$1a), {
+        "for-id": unref(uniqueId),
+        label: __props.label,
+        "hide-label": __props.hideLabel,
+        required: __props.required,
+        optional: __props.optional,
+        disabled: __props.disabled
       }, createSlots({
         default: withCtx(() => [
           createBaseVNode("div", {
-            class: normalizeClass(_ctx.style['cdr-select-wrap'])
+            class: normalizeClass(unref(style)['cdr-select-wrap'])
           }, [
-            (_ctx.hasPreIcon)
+            (unref(hasPreIcon))
               ? (openBlock(), createElementBlock("span", {
                   key: 0,
-                  class: normalizeClass(_ctx.style['cdr-select__pre-icon'])
+                  class: normalizeClass(unref(style)['cdr-select__pre-icon'])
                 }, [
                   renderSlot(_ctx.$slots, "pre-icon")
                 ], 2 /* CLASS */))
               : createCommentVNode("v-if", true),
-            createBaseVNode("select", mergeProps({
-              class: _ctx.mapClasses(_ctx.style,
-              _ctx.baseClass,
-              _ctx.sizeClass,
-              _ctx.promptClass,
-              _ctx.multipleClass,
-              _ctx.backgroundClass,
-              _ctx.errorClass,
-              _ctx.preIconClass,
+            withDirectives(createBaseVNode("select", mergeProps({
+              id: unref(uniqueId),
+              class: unref(mapClasses)(unref(style),
+              baseClass,
+              unref(sizeClass),
+              unref(promptClass),
+              unref(multipleClass),
+              unref(backgroundClass),
+              unref(errorClass),
+              unref(preIconClass),
             ),
-              id: _ctx.id,
-              multiple: _ctx.multiple,
-              size: _ctx.multipleSize,
-              disabled: _ctx.disabled,
-              "aria-required": _ctx.required || null,
-              "aria-invalid": !!_ctx.error || null,
-              "aria-errormessage": (!!_ctx.error && `${_ctx.id}-error`) || null
+              multiple: __props.multiple,
+              size: __props.multipleSize,
+              disabled: __props.disabled,
+              "aria-required": __props.required || null,
+              "aria-invalid": !!__props.error || null,
+              "aria-errormessage": (!!__props.error && `${unref(uniqueId)}-error`) || null
             }, _ctx.$attrs, {
-              "aria-describedby": _ctx.describedby || null,
-              value: _ctx.modelValue,
-              onChange: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', _ctx.multiple
-              ? _ctx.processMultiple($event.target.options)
-              : $event.target.value)
-            ))
+              "aria-describedby": unref(describedby) || null,
+              value: __props.modelValue,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => (isRef(selectModel) ? (selectModel).value = $event : null))
             }), [
-              (_ctx.prompt)
+              (__props.prompt)
                 ? (openBlock(), createElementBlock("option", {
                     key: 0,
-                    class: normalizeClass(_ctx.style['cdr-select__prompt']),
+                    class: normalizeClass(unref(style)['cdr-select__prompt']),
                     value: "",
                     disabled: ""
-                  }, toDisplayString(_ctx.prompt), 3 /* TEXT, CLASS */))
+                  }, toDisplayString(__props.prompt), 3 /* TEXT, CLASS */))
                 : createCommentVNode("v-if", true),
-              (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.computedOpts, (option) => {
+              (openBlock(true), createElementBlock(Fragment, null, renderList(unref(computedOpts), (option) => {
                 return (openBlock(), createElementBlock("option", {
                   key: option.text,
                   value: option.value
                 }, toDisplayString(option.text), 9 /* TEXT, PROPS */, _hoisted_2$Q))
               }), 128 /* KEYED_FRAGMENT */)),
               renderSlot(_ctx.$slots, "default")
-            ], 16 /* FULL_PROPS */, _hoisted_1$Y),
-            createVNode(_component_icon_caret_down, {
-              class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-select__caret', _ctx.caretDisabledClass))
+            ], 16 /* FULL_PROPS */, _hoisted_1$Y), [
+              [vModelSelect, unref(selectModel)]
+            ]),
+            createVNode(unref(script$4g), {
+              class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-select__caret', unref(caretDisabledClass)))
             }, null, 8 /* PROPS */, ["class"])
           ], 2 /* CLASS */)
         ]),
         _: 2 /* DYNAMIC */
       }, [
-        (_ctx.hasHelper)
+        (unref(hasHelper))
           ? {
               name: "helper",
               fn: withCtx(() => [
@@ -22691,7 +21590,7 @@
               ])
             }
           : undefined,
-        (_ctx.hasInfo)
+        (unref(hasInfo))
           ? {
               name: "info",
               fn: withCtx(() => [
@@ -22699,7 +21598,7 @@
               ])
             }
           : undefined,
-        (_ctx.hasInfoAction)
+        (unref(hasInfoAction))
           ? {
               name: "info-action",
               fn: withCtx(() => [
@@ -22707,16 +21606,16 @@
               ])
             }
           : undefined,
-        (_ctx.error)
+        (__props.error)
           ? {
               name: "error",
               fn: withCtx(() => [
-                (_ctx.error)
-                  ? (openBlock(), createBlock(_component_cdr_form_error, {
+                (__props.error)
+                  ? (openBlock(), createBlock(unref(script$42), {
                       key: 0,
-                      error: _ctx.error,
-                      role: _ctx.errorRole,
-                      id: `${_ctx.id}-error`
+                      error: __props.error,
+                      role: __props.errorRole,
+                      id: `${unref(uniqueId)}-error`
                     }, {
                       error: withCtx(() => [
                         renderSlot(_ctx.$slots, "error")
@@ -22729,13 +21628,16 @@
           : undefined
       ]), 1032 /* PROPS, DYNAMIC_SLOTS */, ["for-id", "label", "hide-label", "required", "optional", "disabled"]))
     }
+    }
+
+    });
 
     var style0$c = {"cdr-select":"cdr-select_13-0-0-alpha-3","cdr-select--primary":"cdr-select--primary_13-0-0-alpha-3","cdr-select--secondary":"cdr-select--secondary_13-0-0-alpha-3","cdr-select--error":"cdr-select--error_13-0-0-alpha-3","cdr-select--preicon":"cdr-select--preicon_13-0-0-alpha-3","cdr-select__prompt":"cdr-select__prompt_13-0-0-alpha-3","cdr-select__caret":"cdr-select__caret_13-0-0-alpha-3","cdr-select__caret--disabled":"cdr-select__caret--disabled_13-0-0-alpha-3","cdr-select__pre-icon":"cdr-select__pre-icon_13-0-0-alpha-3","cdr-select--multiple":"cdr-select--multiple_13-0-0-alpha-3","cdr-select--large@xs":"cdr-select--large@xs_13-0-0-alpha-3","cdr-select--large":"cdr-select--large_13-0-0-alpha-3","cdr-select--large@sm":"cdr-select--large@sm_13-0-0-alpha-3","cdr-select--large@md":"cdr-select--large@md_13-0-0-alpha-3","cdr-select--large@lg":"cdr-select--large@lg_13-0-0-alpha-3","cdr-select-wrap":"cdr-select-wrap_13-0-0-alpha-3"};
 
     const cssModules$c = script$15.__cssModules = {};
     cssModules$c["$style"] = style0$c;
 
-    script$15.render = render$10;
+
     script$15.__file = "src/components/select/CdrSelect.vue";
 
     var script$14 = defineComponent({
@@ -25032,8 +23934,8 @@
     const _hoisted_49$2 = /*#__PURE__*/createBaseVNode("li", null, "It includes no extra styling", -1 /* HOISTED */);
     const _hoisted_50$2 = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
     const _hoisted_51$2 = /*#__PURE__*/createBaseVNode("li", null, "to this list because", -1 /* HOISTED */);
-    const _hoisted_52$2 = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
-    const _hoisted_53$2 = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
+    const _hoisted_52$1 = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
+    const _hoisted_53$1 = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
 
     function render$U(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_text = resolveComponent("cdr-text");
@@ -25322,8 +24224,8 @@
                     _hoisted_49$2,
                     _hoisted_50$2,
                     _hoisted_51$2,
-                    _hoisted_52$2,
-                    _hoisted_53$2
+                    _hoisted_52$1,
+                    _hoisted_53$1
                   ]),
                   _: 1 /* STABLE */
                 })
@@ -32609,6 +31511,9 @@
           infoIconModel: '',
           preIconModel: '',
           preIconModel2: '',
+          preIconModelError: true,
+          preIconModel2Error: true,
+          nested:'',
           multiple: ['1', '2'],
           multiple2: ['-1'],
           multiple2Data: ['a', 'b', 'c', 'd'],
@@ -32617,15 +31522,21 @@
       },
       watch: {
         $route(to) {
-          this.setBackground(to.query.background);
+           this.setBackground(to.query.background);
         },
       },
       mounted() {
-        this.setBackground(this.$router.currentRoute.query.background);
+        this.setBackground(this.$route.query.background);
       },
       methods: {
         inputEventHandler(selectedValue, event) {
           console.log('input Event event = ', event, ' selectedValue = ', selectedValue); // eslint-disable-line
+        },
+        validatePreIconModel() {
+          this.preIconModelError = !this.preIconModel.length;
+        },
+        validatePreIconModel2() {
+          this.preIconModel2Error = !this.preIconModel2.length;
         },
         inputChange(selectedValue, event) {
           console.log('change Event event = ', event, ' selectedValue = ', selectedValue); // eslint-disable-line
@@ -32674,39 +31585,39 @@
     const _hoisted_24$2 = /*#__PURE__*/createBaseVNode("option", { value: "REALLY REALLY LONG VALUE REALLY REALLY LONG VALUE" }, " REALLY REALLY LONG VALUE REALLY REALLY LONG VALUE ", -1 /* HOISTED */);
     const _hoisted_25$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
     const _hoisted_26$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_27$2 = /*#__PURE__*/createBaseVNode("template", { slot: "helper-text" }, [
-      /*#__PURE__*/createTextVNode(" This is helper text. ")
-    ], -1 /* HOISTED */);
-    const _hoisted_28$2 = { slot: "info" };
-    const _hoisted_29$2 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
-    const _hoisted_30$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_31$2 = { slot: "info" };
-    const _hoisted_32$2 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
+    const _hoisted_27$2 = /*#__PURE__*/createTextVNode(" This is helper text. ");
+    const _hoisted_28$2 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
+    const _hoisted_29$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_30$2 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
+    const _hoisted_31$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_32$2 = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "Information!", -1 /* HOISTED */);
     const _hoisted_33$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_34$2 = { slot: "info-action" };
-    const _hoisted_35$2 = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "Information!", -1 /* HOISTED */);
+    const _hoisted_34$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_35$2 = /*#__PURE__*/createBaseVNode("span", { id: "statusTest" }, "error message goes here", -1 /* HOISTED */);
     const _hoisted_36$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_37$1 = { slot: "pre-icon" };
+    const _hoisted_37$1 = /*#__PURE__*/createBaseVNode("span", { id: "alertTest" }, "Alert error message goes here", -1 /* HOISTED */);
     const _hoisted_38$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_39$1 = /*#__PURE__*/createBaseVNode("template", { slot: "error" }, [
-      /*#__PURE__*/createBaseVNode("span", { id: "statusTest" }, "error message goes here")
+    const _hoisted_39$1 = /*#__PURE__*/createBaseVNode("optgroup", { label: "bread" }, [
+      /*#__PURE__*/createBaseVNode("option", { value: "rye" }, "rye"),
+      /*#__PURE__*/createBaseVNode("option", { value: "sourdough" }, "sourdough"),
+      /*#__PURE__*/createBaseVNode("option", { value: "wheat" }, "wheat")
     ], -1 /* HOISTED */);
-    const _hoisted_40$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_41$1 = /*#__PURE__*/createBaseVNode("template", { slot: "error" }, [
-      /*#__PURE__*/createBaseVNode("span", { id: "alertTest" }, "Alert error message goes here")
+    const _hoisted_40$1 = /*#__PURE__*/createBaseVNode("optgroup", { label: "toppings" }, [
+      /*#__PURE__*/createBaseVNode("option", { value: "provolone" }, "provolone"),
+      /*#__PURE__*/createBaseVNode("option", { value: "peppers" }, "peppers"),
+      /*#__PURE__*/createBaseVNode("option", { value: "gabagool" }, "gabagool")
     ], -1 /* HOISTED */);
+    const _hoisted_41$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
     const _hoisted_42$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_43$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_44$1 = /*#__PURE__*/createBaseVNode("h3", { class: "stack" }, " Multiple Select with size ", -1 /* HOISTED */);
-    const _hoisted_45$1 = /*#__PURE__*/createBaseVNode("option", { value: "1" }, " 1 ", -1 /* HOISTED */);
-    const _hoisted_46$1 = /*#__PURE__*/createBaseVNode("option", { value: "2" }, " 2 ", -1 /* HOISTED */);
-    const _hoisted_47$1 = /*#__PURE__*/createBaseVNode("option", { value: "3" }, " 3 ", -1 /* HOISTED */);
-    const _hoisted_48$1 = /*#__PURE__*/createBaseVNode("option", { value: "4" }, " 4 ", -1 /* HOISTED */);
-    const _hoisted_49$1 = /*#__PURE__*/createBaseVNode("option", { value: "5" }, " 5 ", -1 /* HOISTED */);
-    const _hoisted_50$1 = /*#__PURE__*/createBaseVNode("option", { value: "6" }, " 6 ", -1 /* HOISTED */);
-    const _hoisted_51$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_52$1 = /*#__PURE__*/createBaseVNode("h3", { class: "stack" }, " Multiple Select ", -1 /* HOISTED */);
-    const _hoisted_53$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_43$1 = /*#__PURE__*/createBaseVNode("h3", { class: "stack" }, " Multiple Select with size ", -1 /* HOISTED */);
+    const _hoisted_44$1 = /*#__PURE__*/createBaseVNode("option", { value: "1" }, " 1 ", -1 /* HOISTED */);
+    const _hoisted_45$1 = /*#__PURE__*/createBaseVNode("option", { value: "2" }, " 2 ", -1 /* HOISTED */);
+    const _hoisted_46$1 = /*#__PURE__*/createBaseVNode("option", { value: "3" }, " 3 ", -1 /* HOISTED */);
+    const _hoisted_47$1 = /*#__PURE__*/createBaseVNode("option", { value: "4" }, " 4 ", -1 /* HOISTED */);
+    const _hoisted_48$1 = /*#__PURE__*/createBaseVNode("option", { value: "5" }, " 5 ", -1 /* HOISTED */);
+    const _hoisted_49$1 = /*#__PURE__*/createBaseVNode("option", { value: "6" }, " 6 ", -1 /* HOISTED */);
+    const _hoisted_50$1 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_51$1 = /*#__PURE__*/createBaseVNode("h3", { class: "stack" }, " Multiple Select ", -1 /* HOISTED */);
 
     function render$b(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_select = resolveComponent("cdr-select");
@@ -32859,19 +31770,19 @@
           options: $data.dynamicData,
           prompt: "Choose One"
         }, {
-          default: withCtx(() => [
-            _hoisted_27$2,
-            createBaseVNode("template", _hoisted_28$2, [
-              createVNode(_component_cdr_link, {
-                href: "#/selects",
-                modifier: "standalone"
-              }, {
-                default: withCtx(() => [
-                  _hoisted_29$2
-                ]),
-                _: 1 /* STABLE */
-              })
-            ])
+          "helper-text": withCtx(() => [
+            _hoisted_27$2
+          ]),
+          info: withCtx(() => [
+            createVNode(_component_cdr_link, {
+              href: "#/selects",
+              modifier: "standalone"
+            }, {
+              default: withCtx(() => [
+                _hoisted_28$2
+              ]),
+              _: 1 /* STABLE */
+            })
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "background", "options"]),
@@ -32881,7 +31792,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_30$2,
+        _hoisted_29$2,
         createCommentVNode(" Info Link Example "),
         createVNode(_component_cdr_select, {
           label: "Example with Info Link",
@@ -32891,18 +31802,16 @@
           options: $data.dynamicData,
           prompt: "Choose One"
         }, {
-          default: withCtx(() => [
-            createBaseVNode("template", _hoisted_31$2, [
-              createVNode(_component_cdr_link, {
-                href: "#/selects",
-                modifier: "standalone"
-              }, {
-                default: withCtx(() => [
-                  _hoisted_32$2
-                ]),
-                _: 1 /* STABLE */
-              })
-            ])
+          info: withCtx(() => [
+            createVNode(_component_cdr_link, {
+              href: "#/selects",
+              modifier: "standalone"
+            }, {
+              default: withCtx(() => [
+                _hoisted_30$2
+              ]),
+              _: 1 /* STABLE */
+            })
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "background", "options"]),
@@ -32912,7 +31821,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_33$2,
+        _hoisted_31$2,
         createCommentVNode(" Info Icon Example "),
         createVNode(_component_cdr_select, {
           label: "Example with Info Icon",
@@ -32922,19 +31831,17 @@
           options: $data.dynamicData,
           prompt: "Choose One"
         }, {
-          default: withCtx(() => [
-            createBaseVNode("template", _hoisted_34$2, [
-              createVNode(_component_cdr_link, {
-                tag: "button",
-                type: "button"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_icon_information_stroke, { "inherit-color": "" }),
-                  _hoisted_35$2
-                ]),
-                _: 1 /* STABLE */
-              })
-            ])
+          "info-action": withCtx(() => [
+            createVNode(_component_cdr_link, {
+              tag: "button",
+              type: "button"
+            }, {
+              default: withCtx(() => [
+                createVNode(_component_icon_information_stroke, { "inherit-color": "" }),
+                _hoisted_32$2
+              ]),
+              _: 1 /* STABLE */
+            })
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "background", "options"]),
@@ -32944,7 +31851,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_36$2,
+        _hoisted_33$2,
         createCommentVNode(" Pre Icon Example "),
         createVNode(_component_cdr_select, {
           label: "Example with Pre Icon",
@@ -32954,10 +31861,8 @@
           options: $data.dynamicData,
           prompt: "Choose One"
         }, {
-          default: withCtx(() => [
-            createBaseVNode("template", _hoisted_37$1, [
-              createVNode(_component_icon_lock_locked_stroke)
-            ])
+          "pre-icon": withCtx(() => [
+            createVNode(_component_icon_lock_locked_stroke)
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "background", "options"]),
@@ -32967,7 +31872,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_38$1,
+        _hoisted_34$2,
         createCommentVNode(" Error Example default "),
         createVNode(_component_cdr_select, {
           label: "Example with status error",
@@ -32977,14 +31882,15 @@
           options: $data.dynamicData,
           "aria-describedby": "statusTest",
           prompt: "Choose One",
-          error: true
+          error: this.preIconModelError,
+          onChange: $options.validatePreIconModel
         }, {
-          default: withCtx(() => [
-            _hoisted_39$1
+          error: withCtx(() => [
+            _hoisted_35$2
           ]),
           _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue", "background", "options"]),
-        _hoisted_40$1,
+        }, 8 /* PROPS */, ["modelValue", "background", "options", "error", "onChange"]),
+        _hoisted_36$2,
         createCommentVNode(" Error Example alert "),
         createVNode(_component_cdr_select, {
           label: "Example with Alert error",
@@ -32995,19 +31901,40 @@
           "error-role": "alert",
           "aria-describedby": "alertTest",
           prompt: "Choose One",
-          error: true
+          error: this.preIconModel2Error,
+          onChange: $options.validatePreIconModel2
         }, {
-          default: withCtx(() => [
-            _hoisted_41$1
+          error: withCtx(() => [
+            _hoisted_37$1
           ]),
           _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue", "background", "options"]),
-        _hoisted_42$1,
+        }, 8 /* PROPS */, ["modelValue", "background", "options", "error", "onChange"]),
+        _hoisted_38$1,
+        createCommentVNode(" Nested Options "),
+        createVNode(_component_cdr_select, {
+          modelValue: $data.nested,
+          "onUpdate:modelValue": _cache[12] || (_cache[12] = $event => (($data.nested) = $event)),
+          background: $data.backgroundColor,
+          label: "Nested Options"
+        }, {
+          default: withCtx(() => [
+            _hoisted_39$1,
+            _hoisted_40$1
+          ]),
+          _: 1 /* STABLE */
+        }, 8 /* PROPS */, ["modelValue", "background"]),
+        createVNode(_component_cdr_text, null, {
+          default: withCtx(() => [
+            createTextVNode("Selected Value: " + toDisplayString($data.nested), 1 /* TEXT */)
+          ]),
+          _: 1 /* STABLE */
+        }),
+        _hoisted_41$1,
         createCommentVNode(" Large Select Example "),
         createVNode(_component_cdr_select, {
           label: "Size = Large",
           modelValue: $data.dynamic,
-          "onUpdate:modelValue": _cache[12] || (_cache[12] = $event => (($data.dynamic) = $event)),
+          "onUpdate:modelValue": _cache[13] || (_cache[13] = $event => (($data.dynamic) = $event)),
           background: $data.backgroundColor,
           size: "large",
           options: $data.dynamicData,
@@ -33019,23 +31946,23 @@
           ]),
           _: 1 /* STABLE */
         }),
+        _hoisted_42$1,
         _hoisted_43$1,
-        _hoisted_44$1,
         createVNode(_component_cdr_select, {
           label: "Multiple Prompt",
           modelValue: $data.multiple,
-          "onUpdate:modelValue": _cache[13] || (_cache[13] = $event => (($data.multiple) = $event)),
+          "onUpdate:modelValue": _cache[14] || (_cache[14] = $event => (($data.multiple) = $event)),
           background: $data.backgroundColor,
           "multiple-size": 6,
           multiple: ""
         }, {
           default: withCtx(() => [
+            _hoisted_44$1,
             _hoisted_45$1,
             _hoisted_46$1,
             _hoisted_47$1,
             _hoisted_48$1,
-            _hoisted_49$1,
-            _hoisted_50$1
+            _hoisted_49$1
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "background"]),
@@ -33045,12 +31972,12 @@
           ]),
           _: 1 /* STABLE */
         }),
+        _hoisted_50$1,
         _hoisted_51$1,
-        _hoisted_52$1,
         createVNode(_component_cdr_select, {
           label: "Multiple Prompt",
           modelValue: $data.multiple2,
-          "onUpdate:modelValue": _cache[14] || (_cache[14] = $event => (($data.multiple2) = $event)),
+          "onUpdate:modelValue": _cache[15] || (_cache[15] = $event => (($data.multiple2) = $event)),
           background: $data.backgroundColor,
           multiple: "",
           options: $data.multiple2Data
@@ -33060,8 +31987,7 @@
             createTextVNode("Selected Values: " + toDisplayString($data.multiple2), 1 /* TEXT */)
           ]),
           _: 1 /* STABLE */
-        }),
-        _hoisted_53$1
+        })
       ]))
     }
 
@@ -35342,6 +34268,151 @@
     }
 
     var _castSlice = castSlice;
+
+    /** Used to compose unicode character classes. */
+    var rsAstralRange$1 = '\\ud800-\\udfff',
+        rsComboMarksRange$1 = '\\u0300-\\u036f',
+        reComboHalfMarksRange$1 = '\\ufe20-\\ufe2f',
+        rsComboSymbolsRange$1 = '\\u20d0-\\u20ff',
+        rsComboRange$1 = rsComboMarksRange$1 + reComboHalfMarksRange$1 + rsComboSymbolsRange$1,
+        rsVarRange$1 = '\\ufe0e\\ufe0f';
+
+    /** Used to compose unicode capture groups. */
+    var rsZWJ$1 = '\\u200d';
+
+    /** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
+    var reHasUnicode = RegExp('[' + rsZWJ$1 + rsAstralRange$1  + rsComboRange$1 + rsVarRange$1 + ']');
+
+    /**
+     * Checks if `string` contains Unicode symbols.
+     *
+     * @private
+     * @param {string} string The string to inspect.
+     * @returns {boolean} Returns `true` if a symbol is found, else `false`.
+     */
+    function hasUnicode(string) {
+      return reHasUnicode.test(string);
+    }
+
+    var _hasUnicode = hasUnicode;
+
+    /**
+     * Converts an ASCII `string` to an array.
+     *
+     * @private
+     * @param {string} string The string to convert.
+     * @returns {Array} Returns the converted array.
+     */
+    function asciiToArray(string) {
+      return string.split('');
+    }
+
+    var _asciiToArray = asciiToArray;
+
+    /** Used to compose unicode character classes. */
+    var rsAstralRange = '\\ud800-\\udfff',
+        rsComboMarksRange = '\\u0300-\\u036f',
+        reComboHalfMarksRange = '\\ufe20-\\ufe2f',
+        rsComboSymbolsRange = '\\u20d0-\\u20ff',
+        rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
+        rsVarRange = '\\ufe0e\\ufe0f';
+
+    /** Used to compose unicode capture groups. */
+    var rsAstral = '[' + rsAstralRange + ']',
+        rsCombo = '[' + rsComboRange + ']',
+        rsFitz = '\\ud83c[\\udffb-\\udfff]',
+        rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
+        rsNonAstral = '[^' + rsAstralRange + ']',
+        rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
+        rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
+        rsZWJ = '\\u200d';
+
+    /** Used to compose unicode regexes. */
+    var reOptMod = rsModifier + '?',
+        rsOptVar = '[' + rsVarRange + ']?',
+        rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
+        rsSeq = rsOptVar + reOptMod + rsOptJoin,
+        rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
+
+    /** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
+    var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
+
+    /**
+     * Converts a Unicode `string` to an array.
+     *
+     * @private
+     * @param {string} string The string to convert.
+     * @returns {Array} Returns the converted array.
+     */
+    function unicodeToArray(string) {
+      return string.match(reUnicode) || [];
+    }
+
+    var _unicodeToArray = unicodeToArray;
+
+    /**
+     * Converts `string` to an array.
+     *
+     * @private
+     * @param {string} string The string to convert.
+     * @returns {Array} Returns the converted array.
+     */
+    function stringToArray(string) {
+      return _hasUnicode(string)
+        ? _unicodeToArray(string)
+        : _asciiToArray(string);
+    }
+
+    var _stringToArray = stringToArray;
+
+    /**
+     * A specialized version of `_.map` for arrays without support for iteratee
+     * shorthands.
+     *
+     * @private
+     * @param {Array} [array] The array to iterate over.
+     * @param {Function} iteratee The function invoked per iteration.
+     * @returns {Array} Returns the new mapped array.
+     */
+    function arrayMap(array, iteratee) {
+      var index = -1,
+          length = array == null ? 0 : array.length,
+          result = Array(length);
+
+      while (++index < length) {
+        result[index] = iteratee(array[index], index, array);
+      }
+      return result;
+    }
+
+    var _arrayMap = arrayMap;
+
+    /**
+     * Checks if `value` is classified as an `Array` object.
+     *
+     * @static
+     * @memberOf _
+     * @since 0.1.0
+     * @category Lang
+     * @param {*} value The value to check.
+     * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+     * @example
+     *
+     * _.isArray([1, 2, 3]);
+     * // => true
+     *
+     * _.isArray(document.body.children);
+     * // => false
+     *
+     * _.isArray('abc');
+     * // => false
+     *
+     * _.isArray(_.noop);
+     * // => false
+     */
+    var isArray = Array.isArray;
+
+    var isArray_1 = isArray;
 
     /** Used as references for various `Number` constants. */
     var INFINITY = 1 / 0;
