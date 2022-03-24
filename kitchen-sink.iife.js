@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$11(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3X, _hoisted_3$O))
     }
 
-    script$4i.render = render$11;
+    script$4i.render = render$10;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -13298,7 +13298,7 @@
     const _hoisted_3$M = ["aria-controls", "aria-label"];
     const _hoisted_4$J = ["href", "onClick"];
 
-    function render$10(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$$(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -13368,7 +13368,7 @@
     const cssModules$u = script$4c.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$4c.render = render$10;
+    script$4c.render = render$$;
     script$4c.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$4b = {
@@ -21831,7 +21831,7 @@
       "aria-hidden": "true"
     };
 
-    function render$$(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$_(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_left = resolveComponent("icon-caret-left");
       const _component_cdr_select = resolveComponent("cdr-select");
       const _component_icon_caret_right = resolveComponent("icon-caret-right");
@@ -21950,7 +21950,7 @@
     const cssModules$b = script$14.__cssModules = {};
     cssModules$b["$style"] = style0$b;
 
-    script$14.render = render$$;
+    script$14.render = render$_;
     script$14.__file = "src/components/pagination/CdrPagination.vue";
 
     function calculatePlacement (triggerRect, popupRect, screenWidth, screenHeight, originalPosition) {
@@ -22180,7 +22180,7 @@
       },
     });
 
-    function render$_(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", {
         ref: "rootEl",
         class: normalizeClass(_ctx.mapClasses(
@@ -22210,7 +22210,7 @@
     const cssModules$a = script$13.__cssModules = {};
     cssModules$a["$style"] = style0$a;
 
-    script$13.render = render$_;
+    script$13.render = render$Z;
     script$13.__file = "src/components/popup/CdrPopup.vue";
 
     var script$12 = defineComponent({
@@ -22318,7 +22318,7 @@
 
     const _hoisted_1$W = { ref: "triggerEl" };
 
-    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_x_sm = resolveComponent("icon-x-sm");
       const _component_cdr_button = resolveComponent("cdr-button");
       const _component_cdr_popup = resolveComponent("cdr-popup");
@@ -22390,7 +22390,7 @@
     const cssModules$9 = script$12.__cssModules = {};
     cssModules$9["$style"] = style0$9;
 
-    script$12.render = render$Z;
+    script$12.render = render$Y;
     script$12.__file = "src/components/popover/CdrPopover.vue";
 
     var script$11 = {
@@ -22527,7 +22527,7 @@
 
     const _hoisted_1$V = ["name", "checked", "value"];
 
-    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_label_wrapper = resolveComponent("cdr-label-wrapper");
 
       return (openBlock(), createBlock(_component_cdr_label_wrapper, {
@@ -22562,7 +22562,7 @@
     const cssModules$7 = script$10.__cssModules = {};
     cssModules$7["$style"] = style0$7;
 
-    script$10.render = render$Y;
+    script$10.render = render$X;
     script$10.__file = "src/components/radio/CdrRadio.vue";
 
     const _hoisted_1$U = { key: 1 };
@@ -22739,88 +22739,82 @@
 
     script$$.__file = "src/components/rating/CdrRating.vue";
 
-    var script$_ = defineComponent({
-      name: 'CdrTable',
+    var script$_ = {
       props: {
-        striped: {
-          type: Boolean,
-          default: false,
-        },
-        border: {
-          type: Boolean,
-          default: true,
-        },
-        fullWidth: {
-          type: [Boolean, String],
-          default: true,
-        },
-        responsive: {
-          type: Boolean,
-          default: true,
-        },
-        hover: {
-          type: Boolean,
-          default: false,
-        },
-        size: {
-          type: String,
-          default: 'medium',
-          validator: (value) => validateProp(
-            value,
-            ['small', 'medium', 'large'],
-          ),
-        },
+      striped: {
+        type: Boolean,
+        default: false,
       },
-      setup(props) {
-        const baseClass = 'cdr-table';
-        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-        const stripedClass = computed(() => props.striped && `${baseClass}--striped`);
-        const hoverClass = computed(() => props.hover && `${baseClass}--hover`);
-        const borderClass = computed(() => props.border && !props.striped
-          && `${baseClass}--border`);
-        const fullWidthClass = computed(() => props.fullWidth
-          && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
-        const wrapperClass = computed(() => props.responsive && `${baseClass}--responsive`);
-
-        return {
-          style: useCssModule(),
-          mapClasses,
-          wrapperClass,
-          baseClass,
-          sizeClass,
-          stripedClass,
-          hoverClass,
-          borderClass,
-          fullWidthClass,
-        };
+      border: {
+        type: Boolean,
+        default: true,
       },
-    });
+      fullWidth: {
+        type: [Boolean, String],
+        default: true,
+      },
+      responsive: {
+        type: Boolean,
+        default: true,
+      },
+      hover: {
+        type: Boolean,
+        default: false,
+      },
+      size: {
+        type: String,
+        default: 'medium',
+        validator: (value) => validateProp(
+          value,
+          ['small', 'medium', 'large'],
+        ),
+      },
+    },
+      setup(__props) {
 
-    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
+    const props = __props;
+
+
+
+    const baseClass = 'cdr-table';
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const stripedClass = computed(() => props.striped && `${baseClass}--striped`);
+    const hoverClass = computed(() => props.hover && `${baseClass}--hover`);
+    const borderClass = computed(() => props.border && !props.striped
+      && `${baseClass}--border`);
+    const fullWidthClass = computed(() => props.fullWidth
+      && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
+    const wrapperClass = computed(() => props.responsive && `${baseClass}--responsive`);
+    const style = useCssModule();
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("div", {
-        class: normalizeClass(_ctx.style[_ctx.wrapperClass])
+        class: normalizeClass(unref(style)[unref(wrapperClass)])
       }, [
         createBaseVNode("table", mergeProps(_ctx.$attrs, {
-          class: _ctx.mapClasses(_ctx.style,
-                             _ctx.baseClass,
-                             _ctx.sizeClass,
-                             _ctx.stripedClass,
-                             _ctx.hoverClass,
-                             _ctx.borderClass,
-                             _ctx.fullWidthClass,
+          class: unref(mapClasses)(unref(style),
+                             baseClass,
+                             unref(sizeClass),
+                             unref(stripedClass),
+                             unref(hoverClass),
+                             unref(borderClass),
+                             unref(fullWidthClass),
           )
         }), [
           renderSlot(_ctx.$slots, "default")
         ], 16 /* FULL_PROPS */)
       ], 2 /* CLASS */))
     }
+    }
+
+    };
 
     var style0$5 = {"cdr-table":"cdr-table_13-0-0-alpha-3","cdr-table--small":"cdr-table--small_13-0-0-alpha-3","cdr-table--medium":"cdr-table--medium_13-0-0-alpha-3","cdr-table--large":"cdr-table--large_13-0-0-alpha-3","cdr-table--striped":"cdr-table--striped_13-0-0-alpha-3","cdr-table--border":"cdr-table--border_13-0-0-alpha-3","cdr-table--full-width":"cdr-table--full-width_13-0-0-alpha-3","cdr-table--responsive":"cdr-table--responsive_13-0-0-alpha-3","cdr-table--hover":"cdr-table--hover_13-0-0-alpha-3","cdr-table--full-width@xs":"cdr-table--full-width@xs_13-0-0-alpha-3","cdr-table--full-width@sm":"cdr-table--full-width@sm_13-0-0-alpha-3","cdr-table--full-width@md":"cdr-table--full-width@md_13-0-0-alpha-3","cdr-table--full-width@lg":"cdr-table--full-width@lg_13-0-0-alpha-3"};
 
     const cssModules$5 = script$_.__cssModules = {};
     cssModules$5["$style"] = style0$5;
 
-    script$_.render = render$X;
+
     script$_.__file = "src/components/table/CdrTable.vue";
 
     var script$Z = defineComponent({
