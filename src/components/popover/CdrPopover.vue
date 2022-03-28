@@ -100,6 +100,9 @@
   const hasTitle = slots.title || props.label;
 
   const openPopover = (e) => {
+    if (isOpen.value === true){
+      return;
+    }
     const { activeElement } = document;
 
     lastActive = activeElement;
