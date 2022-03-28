@@ -55,7 +55,7 @@ const closeTooltip = (e) => {
 };
 const addHandlers = () => {
   const triggerElement = triggerEl.value.children[0];
-  popupElement = popupEl.value?.rootEl;
+  popupElement = popupEl.value?.$el;
   if (triggerElement) {
     triggerElement.addEventListener('mouseover', openTooltip);
     triggerElement.addEventListener('focus', openTooltip);
