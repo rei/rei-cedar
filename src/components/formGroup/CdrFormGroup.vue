@@ -1,9 +1,41 @@
+<script setup>
+import {useCssModule, computed } from 'vue';
+import mapClasses from '../../utils/mapClasses';
+import CdrFormError from '../formError/CdrFormError';
+import uid from '../../utils/uid';
+
+const props = defineProps({
+    id: {
+      type: String,
+    },
+    label: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    // Set error styling
+    error: {
+      type: [Boolean, String],
+      default: false,
+    },
+    required: Boolean,
+    optional: Boolean,
+    disabled: Boolean,
+  })
+
+  const uniqueId = props.id ? props.id : uid();
+  const baseClass = 'cdr-form-group';
+  const errorClass = computed(() => props.error && 'cdr-form-group--error');
+  const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
+  const style = useCssModule();
+</script>
+
 <template>
   <fieldset
     :class="mapClasses(style, baseClass, disabledClass)"
     :disabled="disabled"
     :aria-invalid="!!error"
-    :aria-errormessage="!!error && `${id}-error`"
+    :aria-errormessage="!!error && `${uniqueId}-error`"
   >
     <legend>
       <slot name="label">
@@ -24,7 +56,7 @@
     <cdr-form-error
       :error="error"
       v-if="error"
-      :id="`${id}-error`"
+      :id="`${uniqueId}-error`"
     >
       <template #error>
         <slot name="error" />
@@ -32,36 +64,6 @@
     </cdr-form-error>
   </fieldset>
 </template>
-<script setup>
-import {useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import CdrFormError from '../formError/CdrFormError';
-
-const props = defineProps({
-    id: {
-      type: String,
-      required: true,
-    },
-    label: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    // Set error styling
-    error: {
-      type: [Boolean, String],
-      default: false,
-    },
-    required: Boolean,
-    optional: Boolean,
-    disabled: Boolean,
-  })
-
-  const baseClass = 'cdr-form-group';
-  const errorClass = computed(() => props.error && 'cdr-form-group--error');
-  const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
-  const style = useCssModule();
-</script>
 
 <style lang="scss" module src="./styles/CdrFormGroup.module.scss">
 </style>
