@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrLabelWrapper from 'componentdir/labelWrapper/CdrLabelWrapper';
+import CdrLabelWrapper from 'componentdir/labelWrapper/CdrLabelWrapper.vue';
 import { h } from '@vue/runtime-core';
 
 describe('CdrLabelWrapper', () => {

@@ -1,6 +1,6 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
 import sinon from 'sinon';
-import CdrLink from 'componentdir/link/CdrLink';
+import CdrLink from 'componentdir/link/CdrLink.vue';
 
 describe('CdrLink', () => {
   test('renders correctly', () => {

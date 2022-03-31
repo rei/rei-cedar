@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrChip from 'componentdir/chip/CdrChip';
+import CdrChip from 'componentdir/chip/CdrChip.vue';
 
 describe('CdrChip', () => {
   it('default matches snapshot', () => {

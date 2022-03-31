@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import * as Components from 'srcdir/index';
+import * as Components from 'srcdir/lib';
 import * as Icons from 'componentsdir/icon/index';
 
 export default {

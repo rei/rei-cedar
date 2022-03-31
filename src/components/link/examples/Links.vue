@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import standardLinks from 'componentsdir/link/examples/demo/Standard';
-import resilienceTest from 'componentsdir/link/examples/demo/Resilience';
+import standardLinks from 'componentsdir/link/examples/demo/Standard.vue';
+import resilienceTest from 'componentsdir/link/examples/demo/Resilience.vue';
 
 export default {
   name: 'Lists',

@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { CdrText } from 'srcdir/index';
+import { CdrText } from 'srcdir/lib';
 
 export default {
   name: 'HeadingsDemo',

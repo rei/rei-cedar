@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import * as Components from 'srcdir/index';
+import * as Components from 'srcdir/lib';
 
 export default {
   name: 'BareList',

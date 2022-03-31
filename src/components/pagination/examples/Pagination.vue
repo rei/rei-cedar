@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import * as Components from 'srcdir/index';
+import * as Components from 'srcdir/lib';
 
 import paginationData from 'componentsdir/pagination/examples/data.json';
 

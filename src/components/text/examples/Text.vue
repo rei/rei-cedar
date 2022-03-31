@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import headings from 'componentsdir/text/examples/demo/Headings';
-import paragraphs from 'componentsdir/text/examples/demo/Paragraphs';
+import headings from 'componentsdir/text/examples/demo/Headings.vue';
+import paragraphs from 'componentsdir/text/examples/demo/Paragraphs.vue';
 
 export default {
   name: 'TextExamples',

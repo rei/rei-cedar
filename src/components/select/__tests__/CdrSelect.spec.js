@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrSelect from 'componentdir/select/CdrSelect';
+import CdrSelect from 'componentdir/select/CdrSelect.vue';
 
 describe('cdrSelect', () => {
   it('renders correctly', () => {

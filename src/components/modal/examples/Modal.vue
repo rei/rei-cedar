@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import * as Components from 'srcdir/index';
+import * as Components from 'srcdir/lib';
 import FancyModal from './components/FancyModal.vue'
 import AsyncModal from './components/AsyncModal.vue';
 

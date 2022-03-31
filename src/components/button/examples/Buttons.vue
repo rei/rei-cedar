@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import defaultButtons from 'componentsdir/button/examples/demo/Default';
-import secondaryButtons from 'componentsdir/button/examples/demo/Secondary';
-import ctaButtons from 'componentsdir/button/examples/demo/CTA';
-import iconButtons from 'componentsdir/button/examples/demo/Icons';
-import fullWidth from 'componentsdir/button/examples/demo/FullWidth';
+import defaultButtons from 'componentsdir/button/examples/demo/Default.vue';
+import secondaryButtons from 'componentsdir/button/examples/demo/Secondary.vue';
+import ctaButtons from 'componentsdir/button/examples/demo/CTA.vue';
+import iconButtons from 'componentsdir/button/examples/demo/Icons.vue';
+import fullWidth from 'componentsdir/button/examples/demo/FullWidth.vue';
 
 export default {
   name: 'Buttons',

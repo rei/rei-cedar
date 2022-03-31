@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrList from 'componentdir/list/CdrList';
+import CdrList from 'componentdir/list/CdrList.vue';
 
 describe('CdrList', () => {
   test('renders correctly', () => {

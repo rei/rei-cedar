@@ -195,8 +195,8 @@ import {
   CdrColorBackgroundPrimary,
   CdrColorBackgroundSecondary,
 } from '@rei/cdr-tokens';
-import * as Components from 'srcdir/index';
-import tabsDefault from 'componentsdir/tabs/examples/demo/TabsDefault';
+import * as Components from 'srcdir/lib';
+import tabsDefault from 'componentsdir/tabs/examples/demo/TabsDefault.vue';
 
 export default {
   name: 'TabsExample',

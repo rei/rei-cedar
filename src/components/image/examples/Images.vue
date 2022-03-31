@@ -52,10 +52,10 @@
 </template>
 
 <script>
-import * as Components from 'srcdir/index';
-import ratios from 'componentsdir/image/examples/demos/Ratios';
-import cropping from 'componentsdir/image/examples/demos/Cropping';
-import mods from 'componentsdir/image/examples/demos/Mods';
+import * as Components from 'srcdir/lib';
+import ratios from 'componentsdir/image/examples/demos/Ratios.vue';
+import cropping from 'componentsdir/image/examples/demos/Cropping.vue';
+import mods from 'componentsdir/image/examples/demos/Mods.vue';
 
 export default {
   name: 'Images',

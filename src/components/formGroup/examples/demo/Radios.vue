@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { CdrFormGroup, CdrRadio } from 'srcdir/index';
+import { CdrFormGroup, CdrRadio } from 'srcdir/lib';
 
 export default {
   name: 'ParagraphsDemo',

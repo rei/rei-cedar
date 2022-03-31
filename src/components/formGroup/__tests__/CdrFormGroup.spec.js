@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrFormGroup from 'componentdir/formGroup/CdrFormGroup';
+import CdrFormGroup from 'componentdir/formGroup/CdrFormGroup.vue';
 
 describe('CdrFormGroup', () => {
   test('renders correctly', () => {

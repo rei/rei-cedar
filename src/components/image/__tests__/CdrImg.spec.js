@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrImg from 'componentdir/image/CdrImg';
+import CdrImg from 'componentdir/image/CdrImg.vue';
 import sinon from 'sinon';
 
 describe('CdrImg', () => {
