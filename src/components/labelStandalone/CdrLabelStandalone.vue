@@ -38,6 +38,7 @@ const style = useCssModule();
         {{ label }}{{ required || optional ? '' : '' }}
         <span
           v-if="required"
+          aria-hidden="true"
         >*</span>
 
         <span

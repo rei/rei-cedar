@@ -11,7 +11,7 @@
     >
       <slot name="input" />
       <span :class="style['cdr-label-wrapper__figure']" />
-      <span :class="mapClasses(style, 'cdr-label-wrapper__content', contentClass)">
+      <span :class="[style['cdr-label-wrapper__content'], contentClass]">
         <slot />
       </span>
     </label>

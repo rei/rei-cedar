@@ -49,7 +49,7 @@
   cursor: not-allowed !important;
 
   &:hover, &:focus-within, &:active {
-    background-color: transparent !important;
+    background-color: $cdr-color-background-input-default !important;
   }
 }
 
