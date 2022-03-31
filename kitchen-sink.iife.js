@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$_(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3W, _hoisted_3$O))
     }
 
-    script$4i.render = render$_;
+    script$4i.render = render$Z;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -13298,7 +13298,7 @@
     const _hoisted_3$M = ["aria-controls", "aria-label"];
     const _hoisted_4$J = ["href", "onClick"];
 
-    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("nav", {
         class: normalizeClass(_ctx.style['cdr-breadcrumb']),
         id: _ctx.id,
@@ -13368,7 +13368,7 @@
     const cssModules$u = script$4c.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$4c.render = render$Z;
+    script$4c.render = render$Y;
     script$4c.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$4b = {
@@ -13611,7 +13611,7 @@
             class: normalizeClass(unref(style)['cdr-label-wrapper__figure'])
           }, null, 2 /* CLASS */),
           createBaseVNode("span", {
-            class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-label-wrapper__content', __props.contentClass))
+            class: normalizeClass([unref(style)['cdr-label-wrapper__content'], __props.contentClass])
           }, [
             renderSlot(_ctx.$slots, "default")
           ], 2 /* CLASS */)
@@ -13639,12 +13639,12 @@
     const _hoisted_1$3S = ["true-value", "false-value", "value"];
 
 
-    const __default__$3 = {
+    const __default__$4 = {
       inheritAttrs: false,
       customOptions: {}
     };
 
-    var script$47 = /*#__PURE__*/Object.assign(__default__$3, {
+    var script$47 = /*#__PURE__*/Object.assign(__default__$4, {
       props: {
       /**
        * Class that is added to the label for custom styles
@@ -20302,7 +20302,10 @@
     script$1b.__file = "src/components/image/CdrImg.vue";
 
     const _hoisted_1$_ = ["for"];
-    const _hoisted_2$T = { key: 0 };
+    const _hoisted_2$T = {
+      key: 0,
+      "aria-hidden": "true"
+    };
     const _hoisted_3$L = { key: 0 };
     const _hoisted_4$I = ["id"];
 
@@ -20418,12 +20421,12 @@
     const _hoisted_3$K = ["id"];
 
 
-    const __default__$2 = {
+    const __default__$3 = {
       inheritAttrs: false,
       customOptions: {}
     };
 
-    var script$19 = /*#__PURE__*/Object.assign(__default__$2, {
+    var script$19 = /*#__PURE__*/Object.assign(__default__$3, {
       props: {
         /**
          * `id` for the input that is mapped to the label `for` attribute.
@@ -21388,12 +21391,12 @@
     const _hoisted_1$X = ["id", "multiple", "size", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
     const _hoisted_2$Q = ["value"];
 
-    const __default__$1 = {
+    const __default__$2 = {
       inheritAttrs: false,
       customOptions: {}
     };
 
-    var script$15 = /*#__PURE__*/Object.assign(__default__$1, {
+    var script$15 = /*#__PURE__*/Object.assign(__default__$2, {
       props: {
       /**
        * `id` for the select that is mapped to the label `for` attribute. If one is not provided, it will be generated.
@@ -21831,7 +21834,7 @@
       "aria-hidden": "true"
     };
 
-    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_caret_left = resolveComponent("icon-caret-left");
       const _component_cdr_select = resolveComponent("cdr-select");
       const _component_icon_caret_right = resolveComponent("icon-caret-right");
@@ -21950,7 +21953,7 @@
     const cssModules$b = script$14.__cssModules = {};
     cssModules$b["$style"] = style0$b;
 
-    script$14.render = render$Y;
+    script$14.render = render$X;
     script$14.__file = "src/components/pagination/CdrPagination.vue";
 
     function calculatePlacement (triggerRect, popupRect, screenWidth, screenHeight, originalPosition) {
@@ -22026,12 +22029,12 @@
       };
     }
 
-    const __default__ = {
+    const __default__$1 = {
       inheritAttrs: false,
       customOptions: {}
     };
 
-    var script$13 = /*#__PURE__*/Object.assign(__default__, {
+    var script$13 = /*#__PURE__*/Object.assign(__default__$1, {
       props: {
       opened: {
         type: Boolean,
@@ -22451,12 +22454,15 @@
 
     script$11.__file = "src/components/quote/CdrQuote.vue";
 
-    var script$10 = defineComponent({
-      name: 'CdrRadio',
-      components: {
-        CdrLabelWrapper: script$48,
-      },
-      inheritAttrs: false,
+    const _hoisted_1$V = ["name", "value"];
+
+
+      const __default__ = {
+        inheritAttrs: false,
+        customOptions: {}
+      };
+
+    var script$10 = /*#__PURE__*/Object.assign(__default__, {
       props: {
         /**
          * Class that is added to the label for custom styles
@@ -22500,50 +22506,48 @@
         modelValue: {
           type: [String, Number, Boolean, Object, Array, Symbol, Function],
         },
+    },
+      emits: ['update:modelValue'],
+      setup(__props, { emit }) {
+
+    const props = __props;
+
+
+
+
+    const baseClass = 'cdr-radio';
+    ref(props.modelValue);
+    const radioModel = computed({
+      get() {
+        return props.modelValue
       },
-
-      setup(props) {
-        const baseClass = 'cdr-radio';
-
-
-        const newValue = ref(props.modelValue);
-
-        watch(() => props.value, (val) => {
-          newValue.value = val;
-        });
-
-        return {
-          style: useCssModule(),
-          baseClass,
-          newValue,
-        };
-      },
+      set(newValue) {
+        emit('update:modelValue', newValue);
+      }
     });
+    const style = useCssModule();
 
-    const _hoisted_1$V = ["name", "checked", "value"];
-
-    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
-      const _component_cdr_label_wrapper = resolveComponent("cdr-label-wrapper");
-
-      return (openBlock(), createBlock(_component_cdr_label_wrapper, {
-        class: normalizeClass(_ctx.style[_ctx.baseClass]),
-        size: _ctx.size,
-        modifier: _ctx.modifier,
-        "label-class": _ctx.labelClass,
-        "content-class": _ctx.contentClass,
-        background: _ctx.background,
+    return (_ctx, _cache) => {
+      return (openBlock(), createBlock(unref(script$48), {
+        class: normalizeClass(unref(style)[baseClass]),
+        size: __props.size,
+        modifier: __props.modifier,
+        "label-class": __props.labelClass,
+        "content-class": __props.contentClass,
+        background: __props.background,
         disabled: _ctx.$attrs.disabled
       }, {
         input: withCtx(() => [
-          createBaseVNode("input", mergeProps({
-            class: [_ctx.style['cdr-radio__input'], _ctx.inputClass],
+          withDirectives(createBaseVNode("input", mergeProps({
+            class: [unref(style)['cdr-radio__input'], __props.inputClass],
             type: "radio",
-            name: _ctx.name,
-            checked: _ctx.newValue == _ctx.customValue,
-            value: _ctx.customValue
+            name: __props.name,
+            value: __props.customValue
           }, _ctx.$attrs, {
-            onChange: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.checked && _ctx.customValue, $event)))
-          }), null, 16 /* FULL_PROPS */, _hoisted_1$V)
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => (isRef(radioModel) ? (radioModel).value = $event : null))
+          }), null, 16 /* FULL_PROPS */, _hoisted_1$V), [
+            [vModelRadio, unref(radioModel)]
+          ])
         ]),
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default")
@@ -22551,13 +22555,16 @@
         _: 3 /* FORWARDED */
       }, 8 /* PROPS */, ["class", "size", "modifier", "label-class", "content-class", "background", "disabled"]))
     }
+    }
+
+    });
 
     var style0$7 = {"cdr-radio":"cdr-radio_13-0-0-alpha-3","cdr-label-wrapper__figure":"cdr-label-wrapper__figure_13-0-0-alpha-3","cdr-radio__input":"cdr-radio__input_13-0-0-alpha-3"};
 
     const cssModules$7 = script$10.__cssModules = {};
     cssModules$7["$style"] = style0$7;
 
-    script$10.render = render$X;
+
     script$10.__file = "src/components/radio/CdrRadio.vue";
 
     const _hoisted_1$U = { key: 1 };
@@ -23879,10 +23886,10 @@
     const _hoisted_5$F = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
     const _hoisted_6$C = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
     const _hoisted_7$z = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
-    const _hoisted_8$x = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
-    const _hoisted_9$w = { class: "accordion-group" };
-    const _hoisted_10$s = /*#__PURE__*/createBaseVNode("h3", null, " Default ", -1 /* HOISTED */);
-    const _hoisted_11$r = /*#__PURE__*/createTextVNode(" A short label ");
+    const _hoisted_8$y = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
+    const _hoisted_9$x = { class: "accordion-group" };
+    const _hoisted_10$t = /*#__PURE__*/createBaseVNode("h3", null, " Default ", -1 /* HOISTED */);
+    const _hoisted_11$s = /*#__PURE__*/createTextVNode(" A short label ");
     const _hoisted_12$r = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
     const _hoisted_13$p = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
     const _hoisted_14$p = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
@@ -23902,14 +23909,14 @@
     const _hoisted_28$b = /*#__PURE__*/createTextVNode(" REI.com ");
     const _hoisted_29$8 = /*#__PURE__*/createTextVNode(" adventure projects ");
     const _hoisted_30$7 = /*#__PURE__*/createTextVNode(" stewardship ");
-    const _hoisted_31$7 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
-    const _hoisted_32$6 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
-    const _hoisted_33$6 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
-    const _hoisted_34$6 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
-    const _hoisted_35$6 = /*#__PURE__*/createBaseVNode("h3", null, " No content padding ", -1 /* HOISTED */);
-    const _hoisted_36$6 = /*#__PURE__*/createTextVNode(" This has no padding around content ");
-    const _hoisted_37$4 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
-    const _hoisted_38$3 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
+    const _hoisted_31$6 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_32$5 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
+    const _hoisted_33$5 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
+    const _hoisted_34$5 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
+    const _hoisted_35$5 = /*#__PURE__*/createBaseVNode("h3", null, " No content padding ", -1 /* HOISTED */);
+    const _hoisted_36$5 = /*#__PURE__*/createTextVNode(" This has no padding around content ");
+    const _hoisted_37$3 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
+    const _hoisted_38$2 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
     const _hoisted_39$2 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
     const _hoisted_40$2 = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
     const _hoisted_41$2 = /*#__PURE__*/createBaseVNode("h3", null, " Unwrapped Standalone ", -1 /* HOISTED */);
@@ -23959,15 +23966,15 @@
                   ]),
                   _: 1 /* STABLE */
                 }),
-                _hoisted_8$x
+                _hoisted_8$y
               ]),
               _: 1 /* STABLE */
             })
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["opened"]),
-        createBaseVNode("div", _hoisted_9$w, [
-          _hoisted_10$s,
+        createBaseVNode("div", _hoisted_9$x, [
+          _hoisted_10$t,
           createVNode(_component_cdr_accordion_group, { "data-backstop": "accordion-default" }, {
             default: withCtx(() => [
               createVNode(_component_cdr_accordion, {
@@ -23977,7 +23984,7 @@
                 onAccordionToggle: _cache[1] || (_cache[1] = $event => ($data.accordionDefault = !$data.accordionDefault))
               }, {
                 label: withCtx(() => [
-                  _hoisted_11$r
+                  _hoisted_11$s
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
@@ -24109,14 +24116,14 @@
                 onAccordionToggle: _cache[4] || (_cache[4] = $event => ($data.accordionCompact2 = !$data.accordionCompact2))
               }, {
                 label: withCtx(() => [
-                  _hoisted_31$7
+                  _hoisted_31$6
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_list, { tag: "ol" }, {
                     default: withCtx(() => [
-                      _hoisted_32$6,
-                      _hoisted_33$6,
-                      _hoisted_34$6
+                      _hoisted_32$5,
+                      _hoisted_33$5,
+                      _hoisted_34$5
                     ]),
                     _: 1 /* STABLE */
                   })
@@ -24127,7 +24134,7 @@
             _: 1 /* STABLE */
           })
         ]),
-        _hoisted_35$6,
+        _hoisted_35$5,
         createVNode(_component_cdr_accordion_group, null, {
           default: withCtx(() => [
             createVNode(_component_cdr_accordion, {
@@ -24138,18 +24145,18 @@
               onAccordionToggle: _cache[5] || (_cache[5] = $event => ($data.accordionContentSpacing = !$data.accordionContentSpacing))
             }, {
               label: withCtx(() => [
-                _hoisted_36$6
+                _hoisted_36$5
               ]),
               default: withCtx(() => [
                 createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
                   default: withCtx(() => [
-                    _hoisted_37$4,
+                    _hoisted_37$3,
                     createVNode(_component_cdr_text, {
                       tag: "strong",
                       class: "cdr-text-dev--body-strong-300"
                     }, {
                       default: withCtx(() => [
-                        _hoisted_38$3,
+                        _hoisted_38$2,
                         _hoisted_39$2
                       ]),
                       _: 1 /* STABLE */
@@ -24247,10 +24254,10 @@
     const _hoisted_5$E = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_6$B = /*#__PURE__*/createTextVNode(" Information banner ");
     const _hoisted_7$y = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
-    const _hoisted_8$w = /*#__PURE__*/createTextVNode(" Warning banner ");
-    const _hoisted_9$v = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
-    const _hoisted_10$r = /*#__PURE__*/createTextVNode(" Error banner ");
-    const _hoisted_11$q = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_8$x = /*#__PURE__*/createTextVNode(" Warning banner ");
+    const _hoisted_9$w = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_10$s = /*#__PURE__*/createTextVNode(" Error banner ");
+    const _hoisted_11$r = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_12$q = /*#__PURE__*/createTextVNode(" Success banner ");
     const _hoisted_13$o = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_14$o = /*#__PURE__*/createTextVNode(" Banner with a message body ");
@@ -24310,21 +24317,21 @@
             createVNode(_component_icon_warning_fill, { "inherit-color": "" })
           ]),
           default: withCtx(() => [
-            _hoisted_8$w
+            _hoisted_8$x
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_9$v,
+        _hoisted_9$w,
         createVNode(_component_cdr_banner, { type: "error" }, {
           "icon-left": withCtx(() => [
             createVNode(_component_icon_error_fill, { "inherit-color": "" })
           ]),
           default: withCtx(() => [
-            _hoisted_10$r
+            _hoisted_10$s
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_11$q,
+        _hoisted_11$r,
         createVNode(_component_cdr_banner, { type: "success" }, {
           "icon-left": withCtx(() => [
             createVNode(_component_icon_check_fill, { "inherit-color": "" })
@@ -24526,11 +24533,11 @@
     const _hoisted_5$D = /*#__PURE__*/createBaseVNode("h3", null, " REI.com's Longest Breadcrumb ", -1 /* HOISTED */);
     const _hoisted_6$A = /*#__PURE__*/createBaseVNode("h3", null, " Breadcrumb handle navigate events ", -1 /* HOISTED */);
     const _hoisted_7$x = /*#__PURE__*/createBaseVNode("h3", null, " Scoped Slot ", -1 /* HOISTED */);
-    const _hoisted_8$v = {
+    const _hoisted_8$w = {
       slot: "link",
       "slot-scope": "link"
     };
-    const _hoisted_9$u = ["href"];
+    const _hoisted_9$v = ["href"];
 
     function render$S(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_breadcrumb = resolveComponent("cdr-breadcrumb");
@@ -24559,11 +24566,11 @@
         _hoisted_7$x,
         createVNode(_component_cdr_breadcrumb, { items: $data.reiExampleBreadcrumbItems }, {
           default: withCtx(() => [
-            createBaseVNode("template", _hoisted_8$v, [
+            createBaseVNode("template", _hoisted_8$w, [
               createBaseVNode("a", {
                 class: normalizeClass(_ctx.link.class),
                 href: _ctx.link.href
-              }, toDisplayString(_ctx.link.content), 11 /* TEXT, CLASS, PROPS */, _hoisted_9$u)
+              }, toDisplayString(_ctx.link.content), 11 /* TEXT, CLASS, PROPS */, _hoisted_9$v)
             ])
           ]),
           _: 1 /* STABLE */
@@ -24646,8 +24653,8 @@
     const _hoisted_5$C = /*#__PURE__*/createTextVNode(" Large Link ");
     const _hoisted_6$z = /*#__PURE__*/createTextVNode(" Small Link ");
     const _hoisted_7$w = { class: "inset" };
-    const _hoisted_8$u = /*#__PURE__*/createBaseVNode("h3", null, " Primary Responsive ", -1 /* HOISTED */);
-    const _hoisted_9$t = /*#__PURE__*/createTextVNode(" Responsive ");
+    const _hoisted_8$v = /*#__PURE__*/createBaseVNode("h3", null, " Primary Responsive ", -1 /* HOISTED */);
+    const _hoisted_9$u = /*#__PURE__*/createTextVNode(" Responsive ");
 
     function render$R(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_text = resolveComponent("cdr-text");
@@ -24710,10 +24717,10 @@
           })
         ]),
         createBaseVNode("div", _hoisted_7$w, [
-          _hoisted_8$u,
+          _hoisted_8$v,
           createVNode(_component_cdr_button, { size: "large large@xs medium@sm small@lg" }, {
             default: withCtx(() => [
-              _hoisted_9$t
+              _hoisted_9$u
             ]),
             _: 1 /* STABLE */
           })
@@ -25062,10 +25069,10 @@
     const _hoisted_5$A = /*#__PURE__*/createTextVNode(" Anchor and Icon ");
     const _hoisted_6$x = /*#__PURE__*/createTextVNode(" Medium and Icon ");
     const _hoisted_7$v = /*#__PURE__*/createTextVNode(" Small and Icon ");
-    const _hoisted_8$t = /*#__PURE__*/createTextVNode(" Small (different) Icon ");
-    const _hoisted_9$s = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
-    const _hoisted_10$q = /*#__PURE__*/createTextVNode(" Large and Icon ");
-    const _hoisted_11$p = /*#__PURE__*/createTextVNode(" Anchor and Icon ");
+    const _hoisted_8$u = /*#__PURE__*/createTextVNode(" Small (different) Icon ");
+    const _hoisted_9$t = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_10$r = /*#__PURE__*/createTextVNode(" Large and Icon ");
+    const _hoisted_11$q = /*#__PURE__*/createTextVNode(" Anchor and Icon ");
     const _hoisted_12$p = /*#__PURE__*/createTextVNode(" Medium and Icon ");
     const _hoisted_13$n = /*#__PURE__*/createTextVNode(" Small and Icon ");
     const _hoisted_14$n = /*#__PURE__*/createTextVNode(" Small (different) Icon ");
@@ -25085,15 +25092,15 @@
     const _hoisted_28$a = /*#__PURE__*/createTextVNode(" Full Width Icon Left ");
     const _hoisted_29$7 = /*#__PURE__*/createTextVNode(" Full Width Icon Right ");
     const _hoisted_30$6 = { class: "button-example inset" };
-    const _hoisted_31$6 = {
+    const _hoisted_31$5 = {
       class: "button-text-wrap",
       style: {"max-width":"300px"}
     };
-    const _hoisted_32$5 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the left)! ");
-    const _hoisted_33$5 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the right)! ");
-    const _hoisted_34$5 = { class: "button-example inset" };
-    const _hoisted_35$5 = /*#__PURE__*/createBaseVNode("h3", null, " Icon only button ", -1 /* HOISTED */);
-    const _hoisted_36$5 = { class: "button-example inset dark" };
+    const _hoisted_32$4 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the left)! ");
+    const _hoisted_33$4 = /*#__PURE__*/createTextVNode(" The text of this button will wrap onto multiple lines (with icon on the right)! ");
+    const _hoisted_34$4 = { class: "button-example inset" };
+    const _hoisted_35$4 = /*#__PURE__*/createBaseVNode("h3", null, " Icon only button ", -1 /* HOISTED */);
+    const _hoisted_36$4 = { class: "button-example inset dark" };
 
     function render$O(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_icon_check_lg = resolveComponent("icon-check-lg");
@@ -25142,15 +25149,15 @@
           createVNode(_component_cdr_button, { size: "small" }, {
             default: withCtx(() => [
               createVNode(_component_icon_check_sm, { "inherit-color": "" }),
-              _hoisted_8$t
+              _hoisted_8$u
             ]),
             _: 1 /* STABLE */
           }),
-          _hoisted_9$s,
+          _hoisted_9$t,
           createVNode(_component_cdr_button, { size: "large" }, {
             default: withCtx(() => [
               createVNode(_component_icon_check_lg, { "inherit-color": "" }),
-              _hoisted_10$q
+              _hoisted_10$r
             ]),
             _: 1 /* STABLE */
           }),
@@ -25161,7 +25168,7 @@
           }, {
             default: withCtx(() => [
               createVNode(_component_icon_check_lg, { "inherit-color": "" }),
-              _hoisted_11$p
+              _hoisted_11$q
             ]),
             _: 1 /* STABLE */
           }),
@@ -25313,7 +25320,7 @@
           })
         ]),
         createBaseVNode("div", _hoisted_30$6, [
-          createBaseVNode("div", _hoisted_31$6, [
+          createBaseVNode("div", _hoisted_31$5, [
             createVNode(_component_cdr_button, {
               size: "medium",
               modifier: "secondary"
@@ -25324,7 +25331,7 @@
                   use: "#twitter"
                 }),
                 createCommentVNode(" eslint-disable-next-line "),
-                _hoisted_32$5
+                _hoisted_32$4
               ]),
               _: 1 /* STABLE */
             }),
@@ -25339,14 +25346,14 @@
                   use: "#twitter"
                 }),
                 createCommentVNode(" eslint-disable-next-line "),
-                _hoisted_33$5
+                _hoisted_33$4
               ]),
               _: 1 /* STABLE */
             })
           ])
         ]),
-        createBaseVNode("div", _hoisted_34$5, [
-          _hoisted_35$5,
+        createBaseVNode("div", _hoisted_34$4, [
+          _hoisted_35$4,
           createVNode(_component_cdr_button, {
             "icon-only": true,
             "full-width": true,
@@ -25414,7 +25421,7 @@
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_36$5, [
+        createBaseVNode("div", _hoisted_36$4, [
           createVNode(_component_cdr_button, {
             "icon-only": true,
             "with-background": true,
@@ -25805,10 +25812,10 @@
     const _hoisted_5$x = { "data-backstop": "checkbox-responsive" };
     const _hoisted_6$v = /*#__PURE__*/createTextVNode("responsive");
     const _hoisted_7$u = /*#__PURE__*/createTextVNode("small");
-    const _hoisted_8$s = /*#__PURE__*/createTextVNode("medium");
-    const _hoisted_9$r = /*#__PURE__*/createTextVNode("large");
-    const _hoisted_10$p = /*#__PURE__*/createTextVNode("responsive");
-    const _hoisted_11$o = /*#__PURE__*/createTextVNode("single");
+    const _hoisted_8$t = /*#__PURE__*/createTextVNode("medium");
+    const _hoisted_9$s = /*#__PURE__*/createTextVNode("large");
+    const _hoisted_10$q = /*#__PURE__*/createTextVNode("responsive");
+    const _hoisted_11$p = /*#__PURE__*/createTextVNode("single");
     const _hoisted_12$o = { "data-backstop": "checkbox-checked" };
     const _hoisted_13$m = /*#__PURE__*/createTextVNode("checked");
     const _hoisted_14$m = /*#__PURE__*/createTextVNode("custom true");
@@ -25828,7 +25835,7 @@
     const _hoisted_28$9 = /*#__PURE__*/createTextVNode(" Hidden box ");
     const _hoisted_29$6 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
     const _hoisted_30$5 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
-    const _hoisted_31$5 = /*#__PURE__*/createTextVNode(" Select All ");
+    const _hoisted_31$4 = /*#__PURE__*/createTextVNode(" Select All ");
 
     function render$H(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_checkbox = resolveComponent("cdr-checkbox");
@@ -25896,7 +25903,7 @@
           size: "medium"
         }, {
           default: withCtx(() => [
-            _hoisted_8$s
+            _hoisted_8$t
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -25906,7 +25913,7 @@
           size: "large"
         }, {
           default: withCtx(() => [
-            _hoisted_9$r
+            _hoisted_9$s
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -25916,7 +25923,7 @@
           size: "small@lg medium@sm large@xs"
         }, {
           default: withCtx(() => [
-            _hoisted_10$p
+            _hoisted_10$q
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -25926,7 +25933,7 @@
           onChange: $options.logChange
         }, {
           default: withCtx(() => [
-            _hoisted_11$o
+            _hoisted_11$p
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "onChange"]),
@@ -26118,7 +26125,7 @@
               "aria-controls": "toppings"
             }, {
               default: withCtx(() => [
-                _hoisted_31$5
+                _hoisted_31$4
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "indeterminate", "onChange"]),
@@ -26223,10 +26230,10 @@
     const _hoisted_5$w = /*#__PURE__*/createTextVNode("Hey ");
     const _hoisted_6$u = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
     const _hoisted_7$t = /*#__PURE__*/createBaseVNode("h3", null, "Toggle Chip", -1 /* HOISTED */);
-    const _hoisted_8$r = /*#__PURE__*/createTextVNode(" Toggle ");
-    const _hoisted_9$q = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_10$o = /*#__PURE__*/createBaseVNode("h3", null, "filter chip", -1 /* HOISTED */);
-    const _hoisted_11$n = { style: {"height":"100px"} };
+    const _hoisted_8$s = /*#__PURE__*/createTextVNode(" Toggle ");
+    const _hoisted_9$r = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
+    const _hoisted_10$p = /*#__PURE__*/createBaseVNode("h3", null, "filter chip", -1 /* HOISTED */);
+    const _hoisted_11$o = { style: {"height":"100px"} };
     const _hoisted_12$n = /*#__PURE__*/createTextVNode("tents");
     const _hoisted_13$l = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
     const _hoisted_14$l = /*#__PURE__*/createBaseVNode("h3", null, "chip group", -1 /* HOISTED */);
@@ -26300,13 +26307,13 @@
                   "inherit-color": "",
                   size: "small"
                 })),
-            _hoisted_8$r
+            _hoisted_8$s
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["aria-pressed"]),
-        _hoisted_9$q,
-        _hoisted_10$o,
-        createBaseVNode("div", _hoisted_11$n, [
+        _hoisted_9$r,
+        _hoisted_10$p,
+        createBaseVNode("div", _hoisted_11$o, [
           createVNode(_component_cdr_checkbox, {
             modelValue: $data.tents,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => (($data.tents) = $event)),
@@ -26410,8 +26417,8 @@
     ], -1 /* HOISTED */);
     const _hoisted_6$t = /*#__PURE__*/createBaseVNode("h3", null, "container fluid", -1 /* HOISTED */);
     const _hoisted_7$s = /*#__PURE__*/createBaseVNode("div", { style: {"width":"100%","border":"1px solid black"} }, " container fluid ", -1 /* HOISTED */);
-    const _hoisted_8$q = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
-    const _hoisted_9$p = /*#__PURE__*/createBaseVNode("div", { class: "tokens-container-fluid" }, [
+    const _hoisted_8$r = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_9$q = /*#__PURE__*/createBaseVNode("div", { class: "tokens-container-fluid" }, [
       /*#__PURE__*/createBaseVNode("div", { style: {"width":"100%","border":"1px solid black"} }, " container fluid (mixin) ")
     ], -1 /* HOISTED */);
 
@@ -26436,8 +26443,8 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_8$q,
-        _hoisted_9$p
+        _hoisted_8$r,
+        _hoisted_9$q
       ]))
     }
 
@@ -26480,10 +26487,10 @@
     const _hoisted_5$u = /*#__PURE__*/createTextVNode(" Optional Label Override Example ");
     const _hoisted_6$s = /*#__PURE__*/createTextVNode("A");
     const _hoisted_7$r = /*#__PURE__*/createTextVNode("B");
-    const _hoisted_8$p = /*#__PURE__*/createTextVNode("C");
-    const _hoisted_9$o = /*#__PURE__*/createTextVNode("A");
-    const _hoisted_10$n = /*#__PURE__*/createTextVNode("B");
-    const _hoisted_11$m = /*#__PURE__*/createTextVNode("C");
+    const _hoisted_8$q = /*#__PURE__*/createTextVNode("C");
+    const _hoisted_9$p = /*#__PURE__*/createTextVNode("A");
+    const _hoisted_10$o = /*#__PURE__*/createTextVNode("B");
+    const _hoisted_11$n = /*#__PURE__*/createTextVNode("C");
     const _hoisted_12$m = /*#__PURE__*/createTextVNode("A");
     const _hoisted_13$k = /*#__PURE__*/createTextVNode("B");
     const _hoisted_14$k = /*#__PURE__*/createTextVNode("C");
@@ -26576,7 +26583,7 @@
               "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (($data.exGroup) = $event))
             }, {
               default: withCtx(() => [
-                _hoisted_8$p
+                _hoisted_8$q
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"])
@@ -26595,7 +26602,7 @@
               "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => (($data.exGroup) = $event))
             }, {
               default: withCtx(() => [
-                _hoisted_9$o
+                _hoisted_9$p
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
@@ -26605,7 +26612,7 @@
               "onUpdate:modelValue": _cache[7] || (_cache[7] = $event => (($data.exGroup) = $event))
             }, {
               default: withCtx(() => [
-                _hoisted_10$n
+                _hoisted_10$o
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
@@ -26615,7 +26622,7 @@
               "onUpdate:modelValue": _cache[8] || (_cache[8] = $event => (($data.exGroup) = $event))
             }, {
               default: withCtx(() => [
-                _hoisted_11$m
+                _hoisted_11$n
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"])
@@ -26771,11 +26778,19 @@
       components: {
         CdrFormGroup: script$41,
         CdrRadio: script$10,
+        CdrText: script$X
       },
       data() {
         return {
           ex: '',
+          ex2: '',
+          hasError: true,
         };
+      },
+      methods: {
+        validate() {
+          this.hasError = !this.ex2.length;
+        },
       },
     };
 
@@ -26786,10 +26801,15 @@
     const _hoisted_5$t = /*#__PURE__*/createTextVNode("Casio");
     const _hoisted_6$r = /*#__PURE__*/createTextVNode("Panasonic");
     const _hoisted_7$q = /*#__PURE__*/createTextVNode("Sony");
+    const _hoisted_8$p = /*#__PURE__*/createBaseVNode("span", { id: "errorStatus-radio" }, "You must make a selection!", -1 /* HOISTED */);
+    const _hoisted_9$o = /*#__PURE__*/createTextVNode("Casio");
+    const _hoisted_10$n = /*#__PURE__*/createTextVNode("Panasonic");
+    const _hoisted_11$m = /*#__PURE__*/createTextVNode("Sony");
 
     function render$D(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_radio = resolveComponent("cdr-radio");
       const _component_cdr_form_group = resolveComponent("cdr-form-group");
+      const _component_cdr_text = resolveComponent("cdr-text");
 
       return (openBlock(), createElementBlock("div", _hoisted_1$A, [
         createVNode(_component_cdr_form_group, {
@@ -26833,6 +26853,67 @@
           ]),
           _: 1 /* STABLE */
         }),
+        createVNode(_component_cdr_text, null, {
+          default: withCtx(() => [
+            createTextVNode("Selected Radio: " + toDisplayString($data.ex), 1 /* TEXT */)
+          ]),
+          _: 1 /* STABLE */
+        }),
+        createVNode(_component_cdr_form_group, {
+          label: "What's your favorite required radio?",
+          id: "favorite-required-radio",
+          error: $data.hasError,
+          "aria-describedby": "errorStatus-radio"
+        }, {
+          error: withCtx(() => [
+            _hoisted_8$p
+          ]),
+          default: withCtx(() => [
+            createVNode(_component_cdr_radio, {
+              name: "required-radio",
+              "custom-value": "casio",
+              modelValue: $data.ex2,
+              "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => (($data.ex2) = $event)),
+              onChange: $options.validate
+            }, {
+              default: withCtx(() => [
+                _hoisted_5$t
+              ]),
+              _: 1 /* STABLE */
+            }, 8 /* PROPS */, ["modelValue", "onChange"]),
+            createVNode(_component_cdr_radio, {
+              name: "required-radio",
+              "custom-value": "panasonic",
+              modelValue: $data.ex2,
+              "onUpdate:modelValue": _cache[4] || (_cache[4] = $event => (($data.ex2) = $event)),
+              onChange: $options.validate
+            }, {
+              default: withCtx(() => [
+                _hoisted_6$r
+              ]),
+              _: 1 /* STABLE */
+            }, 8 /* PROPS */, ["modelValue", "onChange"]),
+            createVNode(_component_cdr_radio, {
+              name: "required-radio",
+              "custom-value": "sony",
+              modelValue: $data.ex2,
+              "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (($data.ex2) = $event)),
+              onChange: $options.validate
+            }, {
+              default: withCtx(() => [
+                _hoisted_7$q
+              ]),
+              _: 1 /* STABLE */
+            }, 8 /* PROPS */, ["modelValue", "onChange"])
+          ]),
+          _: 1 /* STABLE */
+        }, 8 /* PROPS */, ["error"]),
+        createVNode(_component_cdr_text, null, {
+          default: withCtx(() => [
+            createTextVNode("Selected Radio: " + toDisplayString($data.ex2), 1 /* TEXT */)
+          ]),
+          _: 1 /* STABLE */
+        }),
         createVNode(_component_cdr_form_group, {
           label: "Disabled Radio Example",
           disabled: true,
@@ -26840,38 +26921,38 @@
         }, {
           default: withCtx(() => [
             createVNode(_component_cdr_radio, {
-              name: "example",
+              name: "example-disabled",
               "custom-value": "casio",
               modelValue: $data.ex,
-              "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => (($data.ex) = $event)),
+              "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => (($data.ex) = $event)),
               disabled: true
             }, {
               default: withCtx(() => [
-                _hoisted_5$t
+                _hoisted_9$o
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
             createVNode(_component_cdr_radio, {
-              name: "example",
+              name: "example-disabled",
               "custom-value": "panasonic",
               modelValue: $data.ex,
-              "onUpdate:modelValue": _cache[4] || (_cache[4] = $event => (($data.ex) = $event)),
+              "onUpdate:modelValue": _cache[7] || (_cache[7] = $event => (($data.ex) = $event)),
               disabled: true
             }, {
               default: withCtx(() => [
-                _hoisted_6$r
+                _hoisted_10$n
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
             createVNode(_component_cdr_radio, {
-              name: "example",
+              name: "example-disabled",
               "custom-value": "sony",
               modelValue: $data.ex,
-              "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (($data.ex) = $event)),
+              "onUpdate:modelValue": _cache[8] || (_cache[8] = $event => (($data.ex) = $event)),
               disabled: true
             }, {
               default: withCtx(() => [
-                _hoisted_7$q
+                _hoisted_11$m
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"])
@@ -28916,13 +28997,13 @@
     const _hoisted_28$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_29$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_30$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_31$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_32$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_33$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_34$4 = /*#__PURE__*/createBaseVNode("h4", null, " Inline compact unordered list ", -1 /* HOISTED */);
-    const _hoisted_35$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_36$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_37$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_31$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_32$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_33$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_34$3 = /*#__PURE__*/createBaseVNode("h4", null, " Inline compact unordered list ", -1 /* HOISTED */);
+    const _hoisted_35$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_36$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_37$2 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
 
     function render$q(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_list = resolveComponent("cdr-list");
@@ -28996,18 +29077,18 @@
             _hoisted_28$6,
             _hoisted_29$4,
             _hoisted_30$4,
-            _hoisted_31$4,
-            _hoisted_32$4,
-            _hoisted_33$4
+            _hoisted_31$3,
+            _hoisted_32$3,
+            _hoisted_33$3
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_34$4,
+        _hoisted_34$3,
         createVNode(_component_cdr_list, { modifier: "inline compact unordered" }, {
           default: withCtx(() => [
-            _hoisted_35$4,
-            _hoisted_36$4,
-            _hoisted_37$3
+            _hoisted_35$3,
+            _hoisted_36$3,
+            _hoisted_37$2
           ]),
           _: 1 /* STABLE */
         })
@@ -30908,54 +30989,46 @@
         return {
           size: '',
           ex1: '',
-          ex1compact: '',
-          ex2: 'b2',
-          ex2compact: 'b2',
-          ex3: 'c1',
-          ex3compact: 'c1',
-          custom: 'customB',
+          ex2: '',
+          ex3: '',
+          custom: 'Selected and disabled',
         };
-      },
+      }
     };
 
-    const _hoisted_1$c = /*#__PURE__*/createBaseVNode("h2", null, " Radios ", -1 /* HOISTED */);
+    const _hoisted_1$c = /*#__PURE__*/createBaseVNode("h2", null, "Radios", -1 /* HOISTED */);
     const _hoisted_2$a = { "data-backstop": "radio-focus" };
-    const _hoisted_3$a = /*#__PURE__*/createBaseVNode("legend", { id: "legend-z" }, " Group A ", -1 /* HOISTED */);
+    const _hoisted_3$a = /*#__PURE__*/createBaseVNode("legend", { id: "legend-size" }, " Radio Button Size Group ", -1 /* HOISTED */);
     const _hoisted_4$a = /*#__PURE__*/createTextVNode("small");
     const _hoisted_5$a = /*#__PURE__*/createTextVNode("medium");
     const _hoisted_6$a = /*#__PURE__*/createTextVNode("large");
     const _hoisted_7$9 = { "data-backstop": "radio-responsive" };
     const _hoisted_8$9 = /*#__PURE__*/createTextVNode("responsive");
     const _hoisted_9$8 = { "data-backstop": "radio-focus" };
-    const _hoisted_10$8 = /*#__PURE__*/createBaseVNode("legend", { id: "legend-x" }, " Group A ", -1 /* HOISTED */);
+    const _hoisted_10$8 = /*#__PURE__*/createBaseVNode("legend", { id: "legend-a" }, "Group A", -1 /* HOISTED */);
     const _hoisted_11$7 = /*#__PURE__*/createTextVNode("A1");
     const _hoisted_12$7 = /*#__PURE__*/createTextVNode("A2");
     const _hoisted_13$6 = /*#__PURE__*/createTextVNode("A3");
     const _hoisted_14$6 = /*#__PURE__*/createTextVNode("A4 (disabled)");
-    const _hoisted_15$6 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_16$6 = /*#__PURE__*/createBaseVNode("legend", { id: "group-a-compact" }, " Group A compact ", -1 /* HOISTED */);
-    const _hoisted_17$5 = /*#__PURE__*/createTextVNode("A1 compact");
-    const _hoisted_18$4 = /*#__PURE__*/createTextVNode("A2 compact");
-    const _hoisted_19$4 = /*#__PURE__*/createTextVNode("A3 compact");
-    const _hoisted_20$4 = /*#__PURE__*/createTextVNode("A4 compact (disabled)");
-    const _hoisted_21$4 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_22$4 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_23$4 = { style: {"max-width":"200px"} };
-    const _hoisted_24$3 = /*#__PURE__*/createBaseVNode("legend", { id: "legend-b" }, " Group A ", -1 /* HOISTED */);
-    const _hoisted_25$3 = /*#__PURE__*/createTextVNode("B1");
-    const _hoisted_26$3 = /*#__PURE__*/createTextVNode("B2");
-    const _hoisted_27$3 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_28$3 = /*#__PURE__*/createBaseVNode("legend", { id: "legend-a" }, " Group A ", -1 /* HOISTED */);
-    const _hoisted_29$3 = /*#__PURE__*/createTextVNode("B1 compact");
-    const _hoisted_30$3 = /*#__PURE__*/createTextVNode("B2 compact");
-    const _hoisted_31$3 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_32$3 = /*#__PURE__*/createTextVNode("C1 (selected + disabled)");
-    const _hoisted_33$3 = /*#__PURE__*/createTextVNode("C1 compact (selected + disabled)");
-    const _hoisted_34$3 = /*#__PURE__*/createTextVNode("Custom A (hide-figure)");
-    const _hoisted_35$3 = /*#__PURE__*/createTextVNode("Custom B");
-    const _hoisted_36$3 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_37$2 = { class: "wrap" };
-    const _hoisted_38$2 = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing ");
+    const _hoisted_15$6 = {
+      style: {"max-width":"200px"},
+      "data-backstop": "radio-focus"
+    };
+    const _hoisted_16$6 = /*#__PURE__*/createBaseVNode("legend", { id: "legend-b" }, "Group B (limited width) ", -1 /* HOISTED */);
+    const _hoisted_17$5 = /*#__PURE__*/createTextVNode("A1");
+    const _hoisted_18$4 = /*#__PURE__*/createTextVNode("A2");
+    const _hoisted_19$4 = /*#__PURE__*/createTextVNode("A3");
+    const _hoisted_20$4 = /*#__PURE__*/createTextVNode("A4 (disabled)");
+    const _hoisted_21$4 = { "data-backstop": "radio-focus" };
+    const _hoisted_22$4 = /*#__PURE__*/createBaseVNode("legend", { id: "custom-legend" }, "Custom Checkbox Formatting", -1 /* HOISTED */);
+    const _hoisted_23$4 = /*#__PURE__*/createTextVNode("C1 (selected + disabled)");
+    const _hoisted_24$3 = /*#__PURE__*/createTextVNode("Custom A (hide-figure) ");
+    const _hoisted_25$3 = /*#__PURE__*/createTextVNode("Custom B (hide figure) ");
+    const _hoisted_26$3 = /*#__PURE__*/createTextVNode("Custom C (hide figure) ");
+    const _hoisted_27$3 = /*#__PURE__*/createTextVNode("Custom D (hide figure no but with no custom formatting) ");
+    const _hoisted_28$3 = /*#__PURE__*/createBaseVNode("div", { "data-backstop": "radio-focus" }, null, -1 /* HOISTED */);
+    const _hoisted_29$3 = { class: "wrap" };
+    const _hoisted_30$3 = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing");
 
     function render$d(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_radio = resolveComponent("cdr-radio");
@@ -30967,57 +31040,79 @@
         createBaseVNode("div", _hoisted_2$a, [
           createBaseVNode("fieldset", null, [
             _hoisted_3$a,
-            createVNode(_component_cdr_radio, {
-              name: "example",
-              "custom-value": "a1",
-              modelValue: $data.size,
-              "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => (($data.size) = $event)),
-              size: "small"
+            createVNode(_component_cdr_list, {
+              "aria-labelledby": "legend-size",
+              role: "radiogroup"
             }, {
               default: withCtx(() => [
-                _hoisted_4$a
-              ]),
-              _: 1 /* STABLE */
-            }, 8 /* PROPS */, ["modelValue"]),
-            createVNode(_component_cdr_radio, {
-              name: "example",
-              "custom-value": "a2",
-              modelValue: $data.size,
-              "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => (($data.size) = $event)),
-              size: "medium"
-            }, {
-              default: withCtx(() => [
-                _hoisted_5$a
-              ]),
-              _: 1 /* STABLE */
-            }, 8 /* PROPS */, ["modelValue"]),
-            createVNode(_component_cdr_radio, {
-              name: "example",
-              "custom-value": {val:'a3'},
-              modelValue: $data.size,
-              "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => (($data.size) = $event)),
-              size: "large"
-            }, {
-              default: withCtx(() => [
-                _hoisted_6$a
-              ]),
-              _: 1 /* STABLE */
-            }, 8 /* PROPS */, ["modelValue"]),
-            createBaseVNode("div", _hoisted_7$9, [
-              createVNode(_component_cdr_radio, {
-                name: "example",
-                "custom-value": "a4",
-                modelValue: $data.size,
-                "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => (($data.size) = $event)),
-                size: "small@lg medium@sm large@xs"
-              }, {
-                default: withCtx(() => [
-                  _hoisted_8$9
+                createBaseVNode("li", null, [
+                  createVNode(_component_cdr_radio, {
+                    name: "size",
+                    "custom-value": "small",
+                    modelValue: $data.size,
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => (($data.size) = $event)),
+                    size: "small"
+                  }, {
+                    default: withCtx(() => [
+                      _hoisted_4$a
+                    ]),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["modelValue"])
                 ]),
-                _: 1 /* STABLE */
-              }, 8 /* PROPS */, ["modelValue"])
-            ])
-          ])
+                createBaseVNode("li", null, [
+                  createVNode(_component_cdr_radio, {
+                    name: "size",
+                    "custom-value": "medium",
+                    modelValue: $data.size,
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => (($data.size) = $event)),
+                    size: "medium"
+                  }, {
+                    default: withCtx(() => [
+                      _hoisted_5$a
+                    ]),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["modelValue"])
+                ]),
+                createBaseVNode("li", null, [
+                  createVNode(_component_cdr_radio, {
+                    name: "size",
+                    "custom-value": "large",
+                    modelValue: $data.size,
+                    "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => (($data.size) = $event)),
+                    size: "large"
+                  }, {
+                    default: withCtx(() => [
+                      _hoisted_6$a
+                    ]),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["modelValue"])
+                ]),
+                createBaseVNode("li", null, [
+                  createBaseVNode("div", _hoisted_7$9, [
+                    createVNode(_component_cdr_radio, {
+                      name: "size",
+                      "custom-value": "responsive",
+                      modelValue: $data.size,
+                      "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => (($data.size) = $event)),
+                      size: "small@lg medium@sm large@xs"
+                    }, {
+                      default: withCtx(() => [
+                        _hoisted_8$9
+                      ]),
+                      _: 1 /* STABLE */
+                    }, 8 /* PROPS */, ["modelValue"])
+                  ])
+                ])
+              ]),
+              _: 1 /* STABLE */
+            })
+          ]),
+          createVNode(_component_cdr_text, null, {
+            default: withCtx(() => [
+              createTextVNode("Size Group Picked: " + toDisplayString($data.size), 1 /* TEXT */)
+            ]),
+            _: 1 /* STABLE */
+          })
         ]),
         createBaseVNode("div", _hoisted_9$8, [
           createBaseVNode("fieldset", null, [
@@ -31092,91 +31187,115 @@
             _: 1 /* STABLE */
           })
         ]),
-        _hoisted_15$6,
-        createBaseVNode("fieldset", null, [
-          _hoisted_16$6,
-          createVNode(_component_cdr_list, {
-            "aria-labelledby": "group-a-compact",
-            role: "radiogroup"
-          }, {
+        createBaseVNode("div", _hoisted_15$6, [
+          createBaseVNode("fieldset", null, [
+            _hoisted_16$6,
+            createVNode(_component_cdr_list, {
+              "aria-labelledby": "legend-b",
+              role: "radiogroup"
+            }, {
+              default: withCtx(() => [
+                createBaseVNode("li", null, [
+                  createVNode(_component_cdr_radio, {
+                    name: "example2",
+                    "custom-value": "a1",
+                    modelValue: $data.ex2,
+                    "onUpdate:modelValue": _cache[8] || (_cache[8] = $event => (($data.ex2) = $event))
+                  }, {
+                    default: withCtx(() => [
+                      _hoisted_17$5
+                    ]),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["modelValue"])
+                ]),
+                createBaseVNode("li", null, [
+                  createVNode(_component_cdr_radio, {
+                    name: "example2",
+                    "custom-value": "a2",
+                    modelValue: $data.ex2,
+                    "onUpdate:modelValue": _cache[9] || (_cache[9] = $event => (($data.ex2) = $event))
+                  }, {
+                    default: withCtx(() => [
+                      _hoisted_18$4
+                    ]),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["modelValue"])
+                ]),
+                createBaseVNode("li", null, [
+                  createVNode(_component_cdr_radio, {
+                    name: "example2",
+                    "custom-value": {val:'a3'},
+                    modelValue: $data.ex2,
+                    "onUpdate:modelValue": _cache[10] || (_cache[10] = $event => (($data.ex2) = $event))
+                  }, {
+                    default: withCtx(() => [
+                      _hoisted_19$4
+                    ]),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["modelValue"])
+                ]),
+                createBaseVNode("li", null, [
+                  createVNode(_component_cdr_radio, {
+                    name: "example2",
+                    "custom-value": "a4",
+                    modelValue: $data.ex2,
+                    "onUpdate:modelValue": _cache[11] || (_cache[11] = $event => (($data.ex2) = $event)),
+                    disabled: ""
+                  }, {
+                    default: withCtx(() => [
+                      _hoisted_20$4
+                    ]),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["modelValue"])
+                ])
+              ]),
+              _: 1 /* STABLE */
+            })
+          ]),
+          createVNode(_component_cdr_text, null, {
             default: withCtx(() => [
-              createBaseVNode("li", null, [
-                createVNode(_component_cdr_radio, {
-                  modifier: "compact",
-                  name: "examplecompact",
-                  "custom-value": "a1",
-                  modelValue: $data.ex1compact,
-                  "onUpdate:modelValue": _cache[8] || (_cache[8] = $event => (($data.ex1compact) = $event))
-                }, {
-                  default: withCtx(() => [
-                    _hoisted_17$5
-                  ]),
-                  _: 1 /* STABLE */
-                }, 8 /* PROPS */, ["modelValue"])
-              ]),
-              createBaseVNode("li", null, [
-                createVNode(_component_cdr_radio, {
-                  modifier: "compact",
-                  name: "examplecompact",
-                  "custom-value": "a2",
-                  modelValue: $data.ex1compact,
-                  "onUpdate:modelValue": _cache[9] || (_cache[9] = $event => (($data.ex1compact) = $event))
-                }, {
-                  default: withCtx(() => [
-                    _hoisted_18$4
-                  ]),
-                  _: 1 /* STABLE */
-                }, 8 /* PROPS */, ["modelValue"])
-              ]),
-              createBaseVNode("li", null, [
-                createVNode(_component_cdr_radio, {
-                  modifier: "compact",
-                  name: "examplecompact",
-                  "custom-value": {val:'a3'},
-                  modelValue: $data.ex1compact,
-                  "onUpdate:modelValue": _cache[10] || (_cache[10] = $event => (($data.ex1compact) = $event))
-                }, {
-                  default: withCtx(() => [
-                    _hoisted_19$4
-                  ]),
-                  _: 1 /* STABLE */
-                }, 8 /* PROPS */, ["modelValue"])
-              ]),
-              createBaseVNode("li", null, [
-                createVNode(_component_cdr_radio, {
-                  modifier: "compact",
-                  name: "examplecompact",
-                  "custom-value": "a4",
-                  modelValue: $data.ex1compact,
-                  "onUpdate:modelValue": _cache[11] || (_cache[11] = $event => (($data.ex1compact) = $event)),
-                  disabled: ""
-                }, {
-                  default: withCtx(() => [
-                    _hoisted_20$4
-                  ]),
-                  _: 1 /* STABLE */
-                }, 8 /* PROPS */, ["modelValue"])
-              ])
+              createTextVNode("Group B: " + toDisplayString($data.ex2), 1 /* TEXT */)
             ]),
             _: 1 /* STABLE */
           })
         ]),
-        createVNode(_component_cdr_text, null, {
-          default: withCtx(() => [
-            createTextVNode("Group A compact Picked: " + toDisplayString($data.ex1compact), 1 /* TEXT */)
-          ]),
-          _: 1 /* STABLE */
-        }),
-        _hoisted_21$4,
-        _hoisted_22$4,
-        createBaseVNode("div", _hoisted_23$4, [
+        createBaseVNode("div", _hoisted_21$4, [
           createBaseVNode("fieldset", null, [
-            _hoisted_24$3,
+            _hoisted_22$4,
             createVNode(_component_cdr_radio, {
-              name: "example2",
-              "custom-value": "b1",
-              modelValue: $data.ex2,
-              "onUpdate:modelValue": _cache[12] || (_cache[12] = $event => (($data.ex2) = $event))
+              name: "custom",
+              "custom-value": "Selected and disabled",
+              modelValue: $data.custom,
+              "onUpdate:modelValue": _cache[12] || (_cache[12] = $event => (($data.custom) = $event)),
+              disabled: ""
+            }, {
+              default: withCtx(() => [
+                _hoisted_23$4
+              ]),
+              _: 1 /* STABLE */
+            }, 8 /* PROPS */, ["modelValue"]),
+            createVNode(_component_cdr_radio, {
+              name: "custom",
+              "custom-value": "customA",
+              modelValue: $data.custom,
+              "onUpdate:modelValue": _cache[13] || (_cache[13] = $event => (($data.custom) = $event)),
+              modifier: "hide-figure",
+              "input-class": "no-box",
+              "content-class": "no-box__content"
+            }, {
+              default: withCtx(() => [
+                _hoisted_24$3
+              ]),
+              _: 1 /* STABLE */
+            }, 8 /* PROPS */, ["modelValue"]),
+            createVNode(_component_cdr_radio, {
+              name: "custom",
+              "custom-value": "customB",
+              modelValue: $data.custom,
+              "onUpdate:modelValue": _cache[14] || (_cache[14] = $event => (($data.custom) = $event)),
+              modifier: "hide-figure",
+              "input-class": "no-box",
+              "content-class": "no-box__content"
             }, {
               default: withCtx(() => [
                 _hoisted_25$3
@@ -31184,120 +31303,49 @@
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
             createVNode(_component_cdr_radio, {
-              name: "example2",
-              "custom-value": "b2",
-              modelValue: $data.ex2,
-              "onUpdate:modelValue": _cache[13] || (_cache[13] = $event => (($data.ex2) = $event))
+              name: "custom",
+              "custom-value": "customC",
+              modelValue: $data.custom,
+              "onUpdate:modelValue": _cache[15] || (_cache[15] = $event => (($data.custom) = $event)),
+              modifier: "hide-figure",
+              "input-class": "no-box",
+              "content-class": "no-box__content"
             }, {
               default: withCtx(() => [
                 _hoisted_26$3
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
-            createVNode(_component_cdr_text, null, {
+            createVNode(_component_cdr_radio, {
+              name: "custom",
+              "custom-value": "customD",
+              modelValue: $data.custom,
+              "onUpdate:modelValue": _cache[16] || (_cache[16] = $event => (($data.custom) = $event)),
+              modifier: "hide-figure"
+            }, {
               default: withCtx(() => [
-                createTextVNode("Group B Picked: " + toDisplayString($data.ex2), 1 /* TEXT */)
+                _hoisted_27$3
               ]),
               _: 1 /* STABLE */
-            })
-          ])
-        ]),
-        _hoisted_27$3,
-        createBaseVNode("fieldset", null, [
-          _hoisted_28$3,
-          createVNode(_component_cdr_radio, {
-            modifier: "compact",
-            name: "example2compact",
-            "custom-value": "b1",
-            modelValue: $data.ex2compact,
-            "onUpdate:modelValue": _cache[14] || (_cache[14] = $event => (($data.ex2compact) = $event))
-          }, {
-            default: withCtx(() => [
-              _hoisted_29$3
-            ]),
-            _: 1 /* STABLE */
-          }, 8 /* PROPS */, ["modelValue"]),
-          createVNode(_component_cdr_radio, {
-            modifier: "compact",
-            name: "example2compact",
-            "custom-value": "b2",
-            modelValue: $data.ex2compact,
-            "onUpdate:modelValue": _cache[15] || (_cache[15] = $event => (($data.ex2compact) = $event))
-          }, {
-            default: withCtx(() => [
-              _hoisted_30$3
-            ]),
-            _: 1 /* STABLE */
-          }, 8 /* PROPS */, ["modelValue"]),
+            }, 8 /* PROPS */, ["modelValue"])
+          ]),
           createVNode(_component_cdr_text, null, {
             default: withCtx(() => [
-              createTextVNode("Group B compact Picked: " + toDisplayString($data.ex2compact), 1 /* TEXT */)
+              createTextVNode("Custom value picked: " + toDisplayString($data.custom), 1 /* TEXT */)
             ]),
             _: 1 /* STABLE */
           })
         ]),
-        _hoisted_31$3,
-        createVNode(_component_cdr_radio, {
-          name: "example3",
-          "custom-value": "c1",
-          modelValue: $data.ex3,
-          "onUpdate:modelValue": _cache[16] || (_cache[16] = $event => (($data.ex3) = $event)),
-          disabled: ""
-        }, {
-          default: withCtx(() => [
-            _hoisted_32$3
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        createVNode(_component_cdr_radio, {
-          modifier: "compact",
-          name: "example3compact",
-          "custom-value": "c1",
-          modelValue: $data.ex3compact,
-          "onUpdate:modelValue": _cache[17] || (_cache[17] = $event => (($data.ex3compact) = $event)),
-          disabled: ""
-        }, {
-          default: withCtx(() => [
-            _hoisted_33$3
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        createVNode(_component_cdr_radio, {
-          name: "custom2",
-          "custom-value": "customA",
-          modelValue: $data.custom,
-          "onUpdate:modelValue": _cache[18] || (_cache[18] = $event => (($data.custom) = $event)),
-          modifier: "hide-figure"
-        }, {
-          default: withCtx(() => [
-            _hoisted_34$3
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        createVNode(_component_cdr_radio, {
-          name: "custom3",
-          "custom-value": "customB",
-          modelValue: $data.custom,
-          "onUpdate:modelValue": _cache[19] || (_cache[19] = $event => (($data.custom) = $event)),
-          modifier: "hide-figure",
-          "input-class": "no-box",
-          "content-class": "no-box__content"
-        }, {
-          default: withCtx(() => [
-            _hoisted_35$3
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["modelValue"]),
-        _hoisted_36$3,
-        createBaseVNode("div", _hoisted_37$2, [
+        _hoisted_28$3,
+        createBaseVNode("div", _hoisted_29$3, [
           createVNode(_component_cdr_radio, {
             name: "custom4",
-            "custom-value": "c2",
+            "custom-value": "c1",
             modelValue: $data.ex3,
-            "onUpdate:modelValue": _cache[20] || (_cache[20] = $event => (($data.ex3) = $event))
+            "onUpdate:modelValue": _cache[17] || (_cache[17] = $event => (($data.ex3) = $event))
           }, {
             default: withCtx(() => [
-              _hoisted_38$2
+              _hoisted_30$3
             ]),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"])
