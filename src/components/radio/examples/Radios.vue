@@ -180,12 +180,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import * as Components from 'srcdir/lib';
 
-=======
-import * as Components from 'srcdir/index';
->>>>>>> c80a253478f664c113b598d66d2455f6337ee44d
 export default {
   name: 'Radios',
   components: Components,
