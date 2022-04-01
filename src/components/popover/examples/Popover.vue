@@ -84,13 +84,15 @@
       @opened="popupHandler"
       @closed="popupHandler"
     >
-      <cdr-button
-        :icon-only="true"
-        aria-label="information"
-        slot="trigger"
-      >
-        <icon-information-fill />
+      <template #trigger>
+        <cdr-button
+          :icon-only="true"
+          aria-label="information"
+        >
+          <icon-information-fill />
       </cdr-button>
+  </template>
+
       <cdr-text>
         Thanks for stopping by. What a lovely day it is today. Please come back again soon.
       </cdr-text>
@@ -161,7 +163,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .popover-override {
 
 }

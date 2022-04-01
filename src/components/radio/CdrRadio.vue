@@ -1,44 +1,18 @@
-<template>
-  <cdr-label-wrapper
-    :class="style[baseClass]"
-    :size="size"
-    :modifier="modifier"
-    :label-class="labelClass"
-    :content-class="contentClass"
-    :background="background"
-    :disabled="$attrs.disabled"
-  >
-    <template #input>
-      <input
-        :class="[style['cdr-radio__input'], inputClass]"
-        type="radio"
-        :name="name"
-        :checked="newValue == customValue"
-        :value="customValue"
-        v-bind="$attrs"
-        @change="$emit('update:modelValue', $event.target.checked && customValue, $event)"
-      >
-    </template>
-    <slot />
-  </cdr-label-wrapper>
-</template>
 <script>
-
-
-import { defineComponent, useCssModule, watch, ref } from 'vue';
+  export default {
+    inheritAttrs: false,
+    customOptions: {}
+  }
+</script>
+<script setup>
+import { useCssModule, computed, ref, defineEmits } from 'vue';
 
 import propValidator from '../../utils/propValidator.js';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
 import sizeProps from '../../props/size.js';
 import backgroundProps from '../../props/background.js';
 
-export default defineComponent({
-  name: 'CdrRadio',
-  components: {
-    CdrLabelWrapper,
-  },
-  inheritAttrs: false,
-  props: {
+const props = defineProps({
     /**
      * Class that is added to the label for custom styles
      */
@@ -81,26 +55,45 @@ export default defineComponent({
     modelValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
     },
+})
+const emit = defineEmits(['update:modelValue']);
+
+const baseClass = 'cdr-radio';
+const newValue = ref(props.modelValue);
+const radioModel = computed({
+  get() {
+    return props.modelValue
   },
-
-  setup(props) {
-    const baseClass = 'cdr-radio';
-
-
-    const newValue = ref(props.modelValue);
-
-    watch(() => props.value, (val) => {
-      newValue.value = val;
-    })
-
-    return {
-      style: useCssModule(),
-      baseClass,
-      newValue,
-    };
-  },
-});
+  set(newValue) {
+    emit('update:modelValue', newValue)
+  }
+})
+const style = useCssModule();
 </script>
+
+<template>
+  <cdr-label-wrapper
+    :class="style[baseClass]"
+    :size="size"
+    :modifier="modifier"
+    :label-class="labelClass"
+    :content-class="contentClass"
+    :background="background"
+    :disabled="$attrs.disabled"
+  >
+    <template #input>
+      <input
+        :class="[style['cdr-radio__input'], inputClass]"
+        type="radio"
+        :name="name"
+        :value="customValue"
+        v-bind="$attrs"
+        v-model="radioModel"
+      >
+    </template>
+    <slot />
+  </cdr-label-wrapper>
+</template>
 
 <style lang="scss" module src="./styles/CdrRadio.module.scss">
 </style>

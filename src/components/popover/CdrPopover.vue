@@ -44,23 +44,16 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, useCssModule, ref, watch, onMounted, nextTick } from 'vue';
-import tabbable from 'tabbable';
-import IconXSm from '../icon/comps/x-sm.vue';
-import CdrButton from '../button/CdrButton.vue';
-import CdrPopup from '../popup/CdrPopup.vue';
-import propValidator from '../../utils/propValidator.js';
-import mapClasses from '../../utils/mapClasses.js';
+<script setup>
+  import { useCssModule, useSlots, defineEmits, ref, watch, onMounted, nextTick } from 'vue';
+  import tabbable from 'tabbable';
+  import IconXSm from '../icon/comps/x-sm.vue';
+  import CdrButton from '../button/CdrButton.vue';
+  import CdrPopup from '../popup/CdrPopup.vue';
+  import propValidator from '../../utils/propValidator.js';
+  import mapClasses from '../../utils/mapClasses.js';
 
-export default defineComponent({
-  name: 'CdrPopover',
-  components: {
-    CdrPopup,
-    CdrButton,
-    IconXSm,
-  },
-  props: {
+  const props = defineProps({
     position: {
       type: String,
       required: false,
@@ -92,69 +85,63 @@ export default defineComponent({
       default: false,
       required: false,
     },
-  },
-  setup(props, ctx) {
-    const isOpen = ref(false);
-    let lastActive
+  })
 
-    const triggerEl = ref(null);
-    const popupEl = ref(null);
+  const slots = useSlots();
+  const emit = defineEmits(['opened', 'closed'])
 
-    const hasTrigger = ctx.slots.trigger;
-    const hasTitle = ctx.slots.title || props.label;
+  const isOpen = ref(false);
+  let lastActive
 
-    const openPopover = (e) => {
-      const { activeElement } = document;
+  const triggerEl = ref(null);
+  const popupEl = ref(null);
 
-      lastActive = activeElement;
-      isOpen.value = true;
-      ctx.emit('opened', e);
-      nextTick(() => {
-        const tabbables = tabbable(popupEl.value);
-        if (tabbables[0]) tabbables[0].focus();
-      });
+  const hasTrigger = slots.trigger;
+  const hasTitle = slots.title || props.label;
+
+  const openPopover = (e) => {
+    if (isOpen.value === true){
+      return;
     }
+    const { activeElement } = document;
 
-    const closePopover = (e) => {
-      isOpen.value = false;
-      ctx.emit('closed', e);
-      if (lastActive) lastActive.focus();
-    }
-
-    const addHandlers = ()  =>{
-      const triggerElement = triggerEl.value.children[0];
-      if (triggerElement) {
-        triggerElement.addEventListener('click', openPopover);
-      }
-    }
-
-    watch(() => props.open, () => {
-      // TODO: if eslint yells about this then eslint must go :)
-      props.open ? openPopover() : closePopover();
+    lastActive = activeElement;
+    isOpen.value = true;
+    emit('opened', e);
+    nextTick(() => {
+      const tabbables = tabbable(popupEl.value.$el);
+      if (tabbables[0]) tabbables[0].focus();
     });
+  }
 
-    onMounted(() => {
-      addHandlers();
+  const closePopover = (e) => {
+    isOpen.value = false;
+    emit('closed', e);
+    if (lastActive) lastActive.focus();
+  }
 
-      const trigger = triggerEl.value.children[0];
-      if (trigger) {
-        trigger.setAttribute('aria-controls', props.id);
-        trigger.setAttribute('aria-haspopup', 'dialog');
-      }
-    });
+  const addHandlers = ()  =>{
+    const triggerElement = triggerEl.value.children[0];
+    if (triggerElement) {
+      triggerElement.addEventListener('click', openPopover);
+    }
+  }
 
-    return {
-      style: useCssModule(),
-      mapClasses,
-      hasTrigger,
-      triggerEl,
-      hasTitle,
-      closePopover,
-      openPopover,
-      isOpen,
-    };
-  },
-});
+  watch(() => props.open, () => {
+    // TODO: if eslint yells about this then eslint must go :)
+    props.open ? openPopover() : closePopover();
+  });
+
+  onMounted(() => {
+    addHandlers();
+
+    const trigger = triggerEl.value.children[0];
+    if (trigger) {
+      trigger.setAttribute('aria-controls', props.id);
+      trigger.setAttribute('aria-haspopup', 'dialog');
+    }
+  });
+  const style = useCssModule();
 </script>
 
 <style lang="scss" module src="./styles/CdrPopover.module.scss">

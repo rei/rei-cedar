@@ -18,7 +18,7 @@ exports[`cdrSelect renders correctly 1`] = `
     <!--v-if-->
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
   >
     
     <div
@@ -26,7 +26,7 @@ exports[`cdrSelect renders correctly 1`] = `
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select--medium cdr-select--preicon cdr-select--primary"
+        class="cdr-select cdr-select--medium cdr-select__prompt cdr-select--primary"
         id="renders"
       >
         <!--v-if-->
@@ -85,7 +85,7 @@ exports[`cdrSelect renders error state correctly 1`] = `
     <!--v-if-->
   </div>
   <div
-    class="cdr-label-standalone__input-wrap cdr-label-standalone__input--spacing"
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
   >
     
     <div
@@ -95,7 +95,7 @@ exports[`cdrSelect renders error state correctly 1`] = `
       <select
         aria-errormessage="renders-error"
         aria-invalid="true"
-        class="cdr-select cdr-select--medium cdr-select--preicon cdr-select--primary cdr-select--error"
+        class="cdr-select cdr-select--medium cdr-select__prompt cdr-select--primary cdr-select--error"
         id="renders"
       >
         <!--v-if-->
@@ -135,7 +135,6 @@ exports[`cdrSelect renders error state correctly 1`] = `
       class="cdr-form-error"
       id="renders-error"
       role="status"
-      tabindex="0"
     >
       <span
         class="cdr-form-error__icon"
