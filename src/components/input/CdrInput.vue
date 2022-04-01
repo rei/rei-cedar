@@ -124,7 +124,7 @@ export default {
 }
 </script>
 <script setup>
-import { useAttrs, useSlots, useCssModule, defineEmits, computed, ref } from 'vue';
+import { useAttrs, useSlots, useCssModule, computed, ref } from 'vue';
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';

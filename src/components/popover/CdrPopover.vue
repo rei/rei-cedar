@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-  import { useCssModule, useSlots, defineEmits, ref, watch, onMounted, nextTick } from 'vue';
+  import { useCssModule, useSlots, ref, watch, onMounted, nextTick } from 'vue';
   import tabbable from 'tabbable';
   import IconXSm from '../icon/comps/x-sm.vue';
   import CdrButton from '../button/CdrButton.vue';

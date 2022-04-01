@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { useAttrs, computed, useCssModule, openBlock, createElementBlock, mergeProps, unref, renderSlot, normalizeProps, createCommentVNode, createBlock, guardReactiveProps, withCtx, createElementVNode, inject, ref, watch, onMounted, normalizeClass, resolveDynamicComponent, toHandlers, createTextVNode, toDisplayString, normalizeStyle, reactive, provide, useSlots, defineComponent, Fragment, renderList, withDirectives, vShow, isRef, vModelCheckbox, createVNode, resolveComponent, createSlots, onUnmounted, nextTick, onBeforeMount, withKeys, withModifiers, onUpdated, Transition } from "vue";
+import { useAttrs, computed, useCssModule, openBlock, createElementBlock, mergeProps, unref, renderSlot, normalizeProps, createCommentVNode, createBlock, guardReactiveProps, withCtx, createElementVNode, inject, ref, watch, onMounted, normalizeClass, resolveDynamicComponent, toHandlers, createTextVNode, toDisplayString, normalizeStyle, reactive, provide, useSlots, defineComponent, Fragment, renderList, withDirectives, vShow, isRef, vModelCheckbox, createVNode, createSlots, vModelText, vModelDynamic, onUnmounted, nextTick, vModelSelect, resolveComponent, vModelRadio, onBeforeMount, withKeys, withModifiers, onUpdated, Transition } from "vue";
 function mapClasses(style, ...classes) {
   return classes.reduce((acc, el) => acc.concat((el || "").split(" ")), []).map((className) => style[className]).filter((x) => x).join(" ");
 }
@@ -112,7 +112,7 @@ const cssModules$y = {
   "$style": style0$y
 };
 var CdrIcon = /* @__PURE__ */ _export_sfc(_sfc_main$3o, [["__cssModules", cssModules$y]]);
-const _hoisted_1$34 = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_1$33 = /* @__PURE__ */ createElementVNode("path", {
   role: "presentation",
   d: "M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
 }, null, -1);
@@ -128,7 +128,7 @@ const _sfc_main$3n = {
       return openBlock(), createBlock(CdrIcon, normalizeProps(guardReactiveProps(props)), {
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default"),
-          _hoisted_1$34
+          _hoisted_1$33
         ]),
         _: 3
       }, 16);
@@ -166,7 +166,7 @@ var style0$x = {
   "cdr-accordion--compact": "cdr-accordion--compact_13-0-0-vite-7",
   "cdr-accordion--focused": "cdr-accordion--focused_13-0-0-vite-7"
 };
-const _hoisted_1$33 = ["id"];
+const _hoisted_1$32 = ["id"];
 const _hoisted_2$8 = ["id"];
 const _hoisted_3$5 = ["aria-hidden", "id"];
 const _sfc_main$3m = {
@@ -306,7 +306,7 @@ const _sfc_main$3m = {
             renderSlot(_ctx.$slots, "default")
           ], 10, _hoisted_3$5)
         ], 6)
-      ], 10, _hoisted_1$33);
+      ], 10, _hoisted_1$32);
     };
   }
 };
@@ -314,108 +314,108 @@ const cssModules$x = {
   "$style": style0$x
 };
 var CdrAccordion = /* @__PURE__ */ _export_sfc(_sfc_main$3m, [["__cssModules", cssModules$x]]);
-function isObject(value) {
+function isObject$3(value) {
   var type = typeof value;
   return value != null && (type == "object" || type == "function");
 }
-var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
-var freeGlobal$1 = freeGlobal;
-var freeSelf = typeof self == "object" && self && self.Object === Object && self;
-var root = freeGlobal$1 || freeSelf || Function("return this")();
-var root$1 = root;
-var now = function() {
-  return root$1.Date.now();
+var freeGlobal$2 = typeof global == "object" && global && global.Object === Object && global;
+var freeGlobal$3 = freeGlobal$2;
+var freeSelf$1 = typeof self == "object" && self && self.Object === Object && self;
+var root$3 = freeGlobal$3 || freeSelf$1 || Function("return this")();
+var root$4 = root$3;
+var now$2 = function() {
+  return root$4.Date.now();
 };
-var now$1 = now;
-var reWhitespace = /\s/;
-function trimmedEndIndex(string) {
+var now$3 = now$2;
+var reWhitespace$1 = /\s/;
+function trimmedEndIndex$2(string) {
   var index = string.length;
-  while (index-- && reWhitespace.test(string.charAt(index))) {
+  while (index-- && reWhitespace$1.test(string.charAt(index))) {
   }
   return index;
 }
-var reTrimStart = /^\s+/;
-function baseTrim(string) {
-  return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, "") : string;
+var reTrimStart$1 = /^\s+/;
+function baseTrim$2(string) {
+  return string ? string.slice(0, trimmedEndIndex$2(string) + 1).replace(reTrimStart$1, "") : string;
 }
-var Symbol$1 = root$1.Symbol;
-var Symbol$2 = Symbol$1;
-var objectProto$6 = Object.prototype;
-var hasOwnProperty$4 = objectProto$6.hasOwnProperty;
-var nativeObjectToString$1 = objectProto$6.toString;
-var symToStringTag$1 = Symbol$2 ? Symbol$2.toStringTag : void 0;
-function getRawTag(value) {
-  var isOwn = hasOwnProperty$4.call(value, symToStringTag$1), tag = value[symToStringTag$1];
+var Symbol$4 = root$4.Symbol;
+var Symbol$5 = Symbol$4;
+var objectProto$3 = Object.prototype;
+var hasOwnProperty$1 = objectProto$3.hasOwnProperty;
+var nativeObjectToString$3 = objectProto$3.toString;
+var symToStringTag$3 = Symbol$5 ? Symbol$5.toStringTag : void 0;
+function getRawTag$2(value) {
+  var isOwn = hasOwnProperty$1.call(value, symToStringTag$3), tag = value[symToStringTag$3];
   try {
-    value[symToStringTag$1] = void 0;
+    value[symToStringTag$3] = void 0;
     var unmasked = true;
   } catch (e) {
   }
-  var result = nativeObjectToString$1.call(value);
+  var result = nativeObjectToString$3.call(value);
   if (unmasked) {
     if (isOwn) {
-      value[symToStringTag$1] = tag;
+      value[symToStringTag$3] = tag;
     } else {
-      delete value[symToStringTag$1];
+      delete value[symToStringTag$3];
     }
   }
   return result;
 }
-var objectProto$5 = Object.prototype;
-var nativeObjectToString = objectProto$5.toString;
-function objectToString(value) {
-  return nativeObjectToString.call(value);
+var objectProto$2 = Object.prototype;
+var nativeObjectToString$2 = objectProto$2.toString;
+function objectToString$2(value) {
+  return nativeObjectToString$2.call(value);
 }
-var nullTag = "[object Null]", undefinedTag = "[object Undefined]";
-var symToStringTag = Symbol$2 ? Symbol$2.toStringTag : void 0;
-function baseGetTag(value) {
+var nullTag$1 = "[object Null]", undefinedTag$1 = "[object Undefined]";
+var symToStringTag$2 = Symbol$5 ? Symbol$5.toStringTag : void 0;
+function baseGetTag$2(value) {
   if (value == null) {
-    return value === void 0 ? undefinedTag : nullTag;
+    return value === void 0 ? undefinedTag$1 : nullTag$1;
   }
-  return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
+  return symToStringTag$2 && symToStringTag$2 in Object(value) ? getRawTag$2(value) : objectToString$2(value);
 }
-function isObjectLike(value) {
+function isObjectLike$2(value) {
   return value != null && typeof value == "object";
 }
-var symbolTag = "[object Symbol]";
-function isSymbol(value) {
-  return typeof value == "symbol" || isObjectLike(value) && baseGetTag(value) == symbolTag;
+var symbolTag$1 = "[object Symbol]";
+function isSymbol$2(value) {
+  return typeof value == "symbol" || isObjectLike$2(value) && baseGetTag$2(value) == symbolTag$1;
 }
-var NAN = 0 / 0;
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-var reIsBinary = /^0b[01]+$/i;
-var reIsOctal = /^0o[0-7]+$/i;
-var freeParseInt = parseInt;
-function toNumber(value) {
+var NAN$1 = 0 / 0;
+var reIsBadHex$1 = /^[-+]0x[0-9a-f]+$/i;
+var reIsBinary$1 = /^0b[01]+$/i;
+var reIsOctal$1 = /^0o[0-7]+$/i;
+var freeParseInt$1 = parseInt;
+function toNumber$2(value) {
   if (typeof value == "number") {
     return value;
   }
-  if (isSymbol(value)) {
-    return NAN;
+  if (isSymbol$2(value)) {
+    return NAN$1;
   }
-  if (isObject(value)) {
+  if (isObject$3(value)) {
     var other = typeof value.valueOf == "function" ? value.valueOf() : value;
-    value = isObject(other) ? other + "" : other;
+    value = isObject$3(other) ? other + "" : other;
   }
   if (typeof value != "string") {
     return value === 0 ? value : +value;
   }
-  value = baseTrim(value);
-  var isBinary = reIsBinary.test(value);
-  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+  value = baseTrim$2(value);
+  var isBinary = reIsBinary$1.test(value);
+  return isBinary || reIsOctal$1.test(value) ? freeParseInt$1(value.slice(2), isBinary ? 2 : 8) : reIsBadHex$1.test(value) ? NAN$1 : +value;
 }
-var FUNC_ERROR_TEXT = "Expected a function";
-var nativeMax = Math.max, nativeMin = Math.min;
-function debounce(func, wait, options) {
+var FUNC_ERROR_TEXT$1 = "Expected a function";
+var nativeMax$1 = Math.max, nativeMin$1 = Math.min;
+function debounce$1(func, wait, options) {
   var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
   if (typeof func != "function") {
-    throw new TypeError(FUNC_ERROR_TEXT);
+    throw new TypeError(FUNC_ERROR_TEXT$1);
   }
-  wait = toNumber(wait) || 0;
-  if (isObject(options)) {
+  wait = toNumber$2(wait) || 0;
+  if (isObject$3(options)) {
     leading = !!options.leading;
     maxing = "maxWait" in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    maxWait = maxing ? nativeMax$1(toNumber$2(options.maxWait) || 0, wait) : maxWait;
     trailing = "trailing" in options ? !!options.trailing : trailing;
   }
   function invokeFunc(time) {
@@ -432,14 +432,14 @@ function debounce(func, wait, options) {
   }
   function remainingWait(time) {
     var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, timeWaiting = wait - timeSinceLastCall;
-    return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
+    return maxing ? nativeMin$1(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
   }
   function shouldInvoke(time) {
     var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
     return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
   }
   function timerExpired() {
-    var time = now$1();
+    var time = now$3();
     if (shouldInvoke(time)) {
       return trailingEdge(time);
     }
@@ -461,10 +461,10 @@ function debounce(func, wait, options) {
     lastArgs = lastCallTime = lastThis = timerId = void 0;
   }
   function flush() {
-    return timerId === void 0 ? result : trailingEdge(now$1());
+    return timerId === void 0 ? result : trailingEdge(now$3());
   }
   function debounced() {
-    var time = now$1(), isInvoking = shouldInvoke(time);
+    var time = now$3(), isInvoking = shouldInvoke(time);
     lastArgs = arguments;
     lastThis = this;
     lastCallTime = time;
@@ -575,7 +575,7 @@ const _sfc_main$3l = {
       accordionButtons.value = accordionGroupEl.value.querySelectorAll(".js-cdr-accordion-button");
       if (typeof props.unwrap === "string") {
         unwrapped.isUnwrapped = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
-        window.addEventListener("resize", debounce(() => {
+        window.addEventListener("resize", debounce$1(() => {
           unwrapped.isUnwrapped = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
         }, 300));
       }
@@ -747,11 +747,11 @@ const _sfc_main$3j = defineComponent({
     };
   }
 });
-const _hoisted_1$32 = ["id"];
+const _hoisted_1$31 = ["id"];
 const _hoisted_2$7 = ["id"];
 const _hoisted_3$4 = ["aria-controls", "aria-label"];
 const _hoisted_4$2 = ["href", "onClick"];
-function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", {
     class: normalizeClass(_ctx.style["cdr-breadcrumb"]),
     id: _ctx.id,
@@ -809,12 +809,12 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
         ]);
       }), 128))
     ], 10, _hoisted_2$7)
-  ], 10, _hoisted_1$32);
+  ], 10, _hoisted_1$31);
 }
 const cssModules$u = {
   "$style": style0$u
 };
-var CdrBreadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$3j, [["render", _sfc_render$b], ["__cssModules", cssModules$u]]);
+var CdrBreadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$3j, [["render", _sfc_render$3], ["__cssModules", cssModules$u]]);
 var style0$t = {
   "cdr-button": "cdr-button_13-0-0-vite-7",
   "cdr-button--has-icon-left": "cdr-button--has-icon-left_13-0-0-vite-7",
@@ -1046,7 +1046,7 @@ const _sfc_main$3f = {
             class: normalizeClass(unref(style)["cdr-label-wrapper__figure"])
           }, null, 2),
           createElementVNode("span", {
-            class: normalizeClass(unref(mapClasses)(unref(style), "cdr-label-wrapper__content", __props.contentClass))
+            class: normalizeClass([unref(style)["cdr-label-wrapper__content"], __props.contentClass])
           }, [
             renderSlot(_ctx.$slots, "default")
           ], 2)
@@ -1091,12 +1091,12 @@ var style0$p = {
   "cdr-checkbox": "cdr-checkbox_13-0-0-vite-7",
   "cdr-checkbox__input": "cdr-checkbox__input_13-0-0-vite-7"
 };
-const _hoisted_1$31 = ["true-value", "false-value", "value"];
-const __default__ = {
+const _hoisted_1$30 = ["true-value", "false-value", "value"];
+const __default__$4 = {
   inheritAttrs: false,
   customOptions: {}
 };
-const _sfc_main$3e = /* @__PURE__ */ Object.assign(__default__, {
+const _sfc_main$3e = /* @__PURE__ */ Object.assign(__default__$4, {
   props: {
     labelClass: String,
     inputClass: String,
@@ -1164,7 +1164,7 @@ const _sfc_main$3e = /* @__PURE__ */ Object.assign(__default__, {
             "false-value": __props.customValue ? null : __props.falseValue,
             value: __props.customValue,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => isRef(checkboxModel) ? checkboxModel.value = $event : null)
-          }), null, 16, _hoisted_1$31), [
+          }), null, 16, _hoisted_1$30), [
             [vIndeterminate, __props.indeterminate],
             [vModelCheckbox, unref(checkboxModel)]
           ])
@@ -1353,7 +1353,7 @@ const cssModules$m = {
   "$style": style0$m
 };
 var CdrContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3b, [["__cssModules", cssModules$m]]);
-const _hoisted_1$30 = /* @__PURE__ */ createElementVNode("g", null, [
+const _hoisted_1$2$ = /* @__PURE__ */ createElementVNode("g", null, [
   /* @__PURE__ */ createElementVNode("path", {
     role: "presentation",
     d: "M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
@@ -1376,7 +1376,7 @@ const _sfc_main$3a = {
       return openBlock(), createBlock(CdrIcon, normalizeProps(guardReactiveProps(props)), {
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default"),
-          _hoisted_1$30
+          _hoisted_1$2$
         ]),
         _: 3
       }, 16);
@@ -1398,8 +1398,7 @@ const _sfc_main$39 = {
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
         class: normalizeClass(unref(style)[baseClass]),
-        role: "status",
-        tabindex: "0"
+        role: "status"
       }, [
         createElementVNode("span", {
           class: normalizeClass(unref(style)[iconClass])
@@ -1420,6 +1419,10 @@ const cssModules$l = {
   "$style": style0$l
 };
 var CdrFormError = /* @__PURE__ */ _export_sfc(_sfc_main$39, [["__cssModules", cssModules$l]]);
+function uid() {
+  const uid2 = Math.floor((1 + Math.random()) * 16777216).toString(16).substring(1);
+  return `cdr-id-${uid2}`;
+}
 var style0$k = {
   "cdr-form-error": "cdr-form-error_13-0-0-vite-7",
   "cdr-form-error__icon": "cdr-form-error__icon_13-0-0-vite-7",
@@ -1430,7 +1433,7 @@ var style0$k = {
   "cdr-form-group__required": "cdr-form-group__required_13-0-0-vite-7",
   "cdr-form-group__wrapper": "cdr-form-group__wrapper_13-0-0-vite-7"
 };
-const _hoisted_1$2$ = ["disabled", "aria-invalid", "aria-errormessage"];
+const _hoisted_1$2_ = ["disabled", "aria-invalid", "aria-errormessage"];
 const _hoisted_2$6 = {
   key: 0,
   "aria-label": "required"
@@ -1438,8 +1441,7 @@ const _hoisted_2$6 = {
 const _sfc_main$38 = {
   props: {
     id: {
-      type: String,
-      required: true
+      type: String
     },
     label: {
       type: String,
@@ -1456,6 +1458,7 @@ const _sfc_main$38 = {
   },
   setup(__props) {
     const props = __props;
+    const uniqueId = props.id ? props.id : uid();
     const baseClass = "cdr-form-group";
     const errorClass = computed(() => props.error && "cdr-form-group--error");
     const disabledClass = computed(() => props.disabled && "cdr-form-group--disabled");
@@ -1465,7 +1468,7 @@ const _sfc_main$38 = {
         class: normalizeClass(unref(mapClasses)(unref(style), baseClass, unref(disabledClass))),
         disabled: __props.disabled,
         "aria-invalid": !!__props.error,
-        "aria-errormessage": !!__props.error && `${__props.id}-error`
+        "aria-errormessage": !!__props.error && `${unref(uniqueId)}-error`
       }, [
         createElementVNode("legend", null, [
           renderSlot(_ctx.$slots, "label", {}, () => [
@@ -1485,14 +1488,14 @@ const _sfc_main$38 = {
         __props.error ? (openBlock(), createBlock(CdrFormError, {
           key: 0,
           error: __props.error,
-          id: `${__props.id}-error`
+          id: `${unref(uniqueId)}-error`
         }, {
           error: withCtx(() => [
             renderSlot(_ctx.$slots, "error")
           ]),
           _: 3
         }, 8, ["error", "id"])) : createCommentVNode("", true)
-      ], 10, _hoisted_1$2$);
+      ], 10, _hoisted_1$2_);
     };
   }
 };
@@ -1566,7 +1569,7 @@ var style0$i = {
   "cdr-image-ratio__cover--crop": "cdr-image-ratio__cover--crop_13-0-0-vite-7",
   "cdr-image-ratio__cover--cover": "cdr-image-ratio__cover--cover_13-0-0-vite-7"
 };
-const _hoisted_1$2_ = ["src", "alt"];
+const _hoisted_1$2Z = ["src", "alt"];
 const _hoisted_2$5 = ["src", "alt"];
 const _sfc_main$36 = {
   props: {
@@ -1646,7 +1649,7 @@ const _sfc_main$36 = {
           class: unref(mapClasses)(unref(style), baseClass, unref(modifierClass), unref(radiusClass), coverWrapperClass, unref(cropClass), unref(coverClass)),
           src: __props.src,
           alt: __props.alt
-        }, _ctx.$attrs), null, 16, _hoisted_1$2_)
+        }, _ctx.$attrs), null, 16, _hoisted_1$2Z)
       ], 6)) : (openBlock(), createElementBlock("img", mergeProps({
         key: 1,
         class: unref(mapClasses)(unref(style), baseClass, unref(modifierClass), unref(radiusClass)),
@@ -1674,8 +1677,14 @@ var style0$h = {
   "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_13-0-0-vite-7",
   "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_13-0-0-vite-7"
 };
-const _sfc_main$35 = defineComponent({
-  name: "CdrLabelStandalone",
+const _hoisted_1$2Y = ["for"];
+const _hoisted_2$4 = {
+  key: 0,
+  "aria-hidden": "true"
+};
+const _hoisted_3$3 = { key: 0 };
+const _hoisted_4$1 = ["id"];
+const _sfc_main$35 = {
   props: {
     forId: {
       type: String,
@@ -1687,89 +1696,74 @@ const _sfc_main$35 = defineComponent({
     optional: Boolean,
     hideLabel: Boolean
   },
-  setup(props, ctx) {
+  setup(__props) {
+    const props = __props;
+    const slots = useSlots();
     const baseClass = "cdr-label-standalone";
-    const hasHelper = ctx.slots.helper;
-    const hasInfo = ctx.slots.info;
-    const hasInfoAction = ctx.slots["info-action"];
+    const hasHelper = slots.helper;
+    const hasInfo = slots.info;
+    const hasInfoAction = slots["info-action"];
     const disabledLabelClass = computed(() => props.disabled && "cdr-label-standalone__label--disabled");
     const srOnlyLabelClass = computed(() => props.hideLabel && "cdr-label-standalone__label--sr-only");
-    const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo) && "cdr-label-standalone__input--spacing");
-    return {
-      style: useCssModule(),
-      mapClasses,
-      hasHelper,
-      hasInfo,
-      hasInfoAction,
-      baseClass,
-      disabledLabelClass,
-      srOnlyLabelClass,
-      inputSpacingClass
+    const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo) && "cdr-label-standalone__input-spacing");
+    const style = useCssModule();
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(unref(style)[baseClass])
+      }, [
+        createElementVNode("div", {
+          class: normalizeClass(unref(style)["cdr-label-standalone__label-wrapper"])
+        }, [
+          createElementVNode("label", {
+            class: normalizeClass(unref(mapClasses)(unref(style), "cdr-label-standalone__label", unref(disabledLabelClass), unref(srOnlyLabelClass))),
+            for: __props.forId
+          }, [
+            createTextVNode(toDisplayString(__props.label) + toDisplayString(__props.required || __props.optional ? "" : "") + " ", 1),
+            __props.required ? (openBlock(), createElementBlock("span", _hoisted_2$4, "*")) : __props.optional ? (openBlock(), createElementBlock("span", {
+              key: 1,
+              class: normalizeClass(unref(style)["cdr-label-standalone__optional"])
+            }, "(optional)", 2)) : createCommentVNode("", true)
+          ], 10, _hoisted_1$2Y),
+          !__props.hideLabel && unref(hasHelper) ? (openBlock(), createElementBlock("br", _hoisted_3$3)) : createCommentVNode("", true),
+          unref(hasHelper) ? (openBlock(), createElementBlock("span", {
+            key: 1,
+            class: normalizeClass(unref(style)["cdr-label-standalone__helper"]),
+            id: `${__props.forId}-helper-text-top`
+          }, [
+            renderSlot(_ctx.$slots, "helper")
+          ], 10, _hoisted_4$1)) : createCommentVNode("", true)
+        ], 2),
+        createElementVNode("div", {
+          class: normalizeClass(unref(mapClasses)(unref(style), "cdr-label-standalone__input-wrap", unref(inputSpacingClass)))
+        }, [
+          renderSlot(_ctx.$slots, "default"),
+          unref(hasInfoAction) ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(unref(style)["cdr-label-standalone__info-action"])
+          }, [
+            renderSlot(_ctx.$slots, "info-action")
+          ], 2)) : createCommentVNode("", true)
+        ], 2),
+        unref(hasInfo) ? (openBlock(), createElementBlock("span", {
+          key: 0,
+          class: normalizeClass(unref(style)["cdr-label-standalone__info"])
+        }, [
+          renderSlot(_ctx.$slots, "info")
+        ], 2)) : createCommentVNode("", true),
+        createElementVNode("div", {
+          class: normalizeClass(unref(style)["cdr-label-standalone__post-content"])
+        }, [
+          renderSlot(_ctx.$slots, "helper-text-bottom"),
+          renderSlot(_ctx.$slots, "error")
+        ], 2)
+      ], 2);
     };
   }
-});
-const _hoisted_1$2Z = ["for"];
-const _hoisted_2$4 = {
-  key: 0,
-  "aria-label": "required"
 };
-const _hoisted_3$3 = { key: 0 };
-const _hoisted_4$1 = ["id"];
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.style[_ctx.baseClass])
-  }, [
-    createElementVNode("div", {
-      class: normalizeClass(_ctx.style["cdr-label-standalone__label-wrapper"])
-    }, [
-      createElementVNode("label", {
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, "cdr-label-standalone__label", _ctx.disabledLabelClass, _ctx.srOnlyLabelClass)),
-        for: _ctx.forId
-      }, [
-        createTextVNode(toDisplayString(_ctx.label) + toDisplayString(_ctx.required || _ctx.optional ? "" : "") + " ", 1),
-        _ctx.required ? (openBlock(), createElementBlock("span", _hoisted_2$4, "*")) : _ctx.optional ? (openBlock(), createElementBlock("span", {
-          key: 1,
-          class: normalizeClass(_ctx.style["cdr-label-standalone__optional"])
-        }, "(optional)", 2)) : createCommentVNode("", true)
-      ], 10, _hoisted_1$2Z),
-      !_ctx.hideLabel && _ctx.hasHelper ? (openBlock(), createElementBlock("br", _hoisted_3$3)) : createCommentVNode("", true),
-      _ctx.hasHelper ? (openBlock(), createElementBlock("span", {
-        key: 1,
-        class: normalizeClass(_ctx.style["cdr-label-standalone__helper"]),
-        id: `${_ctx.forId}-helper-text-top`
-      }, [
-        renderSlot(_ctx.$slots, "helper")
-      ], 10, _hoisted_4$1)) : createCommentVNode("", true)
-    ], 2),
-    createElementVNode("div", {
-      class: normalizeClass(_ctx.mapClasses(_ctx.style, "cdr-label-standalone__input-wrap", _ctx.inputSpacingClass))
-    }, [
-      renderSlot(_ctx.$slots, "default"),
-      _ctx.hasInfoAction ? (openBlock(), createElementBlock("div", {
-        key: 0,
-        class: normalizeClass(_ctx.style["cdr-label-standalone__info-action"])
-      }, [
-        renderSlot(_ctx.$slots, "info-action")
-      ], 2)) : createCommentVNode("", true)
-    ], 2),
-    _ctx.hasInfo ? (openBlock(), createElementBlock("span", {
-      key: 0,
-      class: normalizeClass(_ctx.style["cdr-label-standalone__info"])
-    }, [
-      renderSlot(_ctx.$slots, "info")
-    ], 2)) : createCommentVNode("", true),
-    createElementVNode("div", {
-      class: normalizeClass(_ctx.style["cdr-label-standalone__post-content"])
-    }, [
-      renderSlot(_ctx.$slots, "helper-text-bottom"),
-      renderSlot(_ctx.$slots, "error")
-    ], 2)
-  ], 2);
-}
 const cssModules$h = {
   "$style": style0$h
 };
-var CdrLabelStandalone = /* @__PURE__ */ _export_sfc(_sfc_main$35, [["render", _sfc_render$a], ["__cssModules", cssModules$h]]);
+var CdrLabelStandalone = /* @__PURE__ */ _export_sfc(_sfc_main$35, [["__cssModules", cssModules$h]]);
 var style0$g = {
   "cdr-label-standalone": "cdr-label-standalone_13-0-0-vite-7",
   "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_13-0-0-vite-7",
@@ -1804,17 +1798,17 @@ var style0$g = {
   "cdr-input__helper-text": "cdr-input__helper-text_13-0-0-vite-7",
   "cdr-input-wrap": "cdr-input-wrap_13-0-0-vite-7"
 };
-const _sfc_main$34 = defineComponent({
-  name: "CdrInput",
-  components: {
-    CdrLabelStandalone,
-    CdrFormError
-  },
+const _hoisted_1$2X = ["rows", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby"];
+const _hoisted_2$3 = ["type", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby"];
+const _hoisted_3$2 = ["id"];
+const __default__$3 = {
   inheritAttrs: false,
+  customOptions: {}
+};
+const _sfc_main$34 = /* @__PURE__ */ Object.assign(__default__$3, {
   props: {
     id: {
-      type: String,
-      required: true
+      type: String
     },
     type: {
       type: [String],
@@ -1846,19 +1840,24 @@ const _sfc_main$34 = defineComponent({
     required: Boolean,
     optional: Boolean,
     modelValue: {
-      type: [String, Number]
+      type: [String, Number, Function]
     }
   },
-  setup(props, ctx) {
+  emits: ["update:modelValue"],
+  setup(__props, { emit }) {
+    const props = __props;
     const baseClass = "cdr-input";
     const isFocused = ref(false);
-    const hasHelperTop = ctx.slots["helper-text-top"];
-    const hasHelperBottom = ctx.slots["helper-text-bottom"];
-    const hasPreIcon = ctx.slots["pre-icon"];
-    const hasPostIcon = ctx.slots["post-icon"];
-    const hasPostIcons = hasPostIcon && ctx.slots["post-icon"]().length > 1;
-    const hasInfo = ctx.slots.info;
-    const hasInfoAction = ctx.slots["info-action"];
+    const slots = useSlots();
+    const attrs = useAttrs();
+    const hasHelperTop = slots["helper-text-top"];
+    const hasHelperBottom = slots["helper-text-bottom"];
+    const hasPreIcon = slots["pre-icon"];
+    const hasPostIcon = slots["post-icon"];
+    const hasPostIcons = hasPostIcon && slots["post-icon"]().length > 1;
+    const hasInfo = slots.info;
+    const hasInfoAction = slots["info-action"];
+    const uniqueId = props.id ? props.id : uid();
     const multilineClass = computed(() => props.rows > 1 && "cdr-input--multiline");
     const preIconClass = computed(() => hasPreIcon && "cdr-input--preicon");
     const postIconClass = computed(() => hasPostIcon && "cdr-input--posticon");
@@ -1869,162 +1868,157 @@ const _sfc_main$34 = defineComponent({
     const focusedClass = computed(() => isFocused.value && "cdr-input--focus");
     const describedby = computed(() => {
       return [
-        ctx.slots["helper-text-top"] ? `${props.id}-helper-text-top` : "",
-        ctx.slots["helper-text-bottom"] ? `${props.id}-helper-text-bottom` : "",
-        ctx.attrs["aria-describedby"]
+        slots["helper-text-top"] ? `${uniqueId}-helper-text-top` : "",
+        slots["helper-text-bottom"] ? `${uniqueId}-helper-text-bottom` : "",
+        attrs["aria-describedby"]
       ].filter((x) => x).join(" ");
+    });
+    const attrsWithClassExcluded = computed(() => {
+      let returnObj = {};
+      for (const attr in attrs) {
+        if (attr !== "class") {
+          returnObj[attr] = attrs[attr];
+        }
+      }
+      return returnObj;
     });
     const inputAttrs = computed(() => {
       const isNum = props.numeric || props.type === "number";
       return __spreadValues({
+        id: uniqueId,
         autocorrect: "off",
         spellcheck: "false",
         autocapitalize: "off",
         pattern: isNum && "[0-9]*" || null,
         inputmode: isNum && "numeric" || null,
         novalidate: isNum || null
-      }, ctx.attrs);
+      }, attrsWithClassExcluded.value);
     });
-    return {
-      style: useCssModule(),
-      baseClass,
-      sizeClass,
-      focusedClass,
-      multilineClass,
-      preIconClass,
-      postIconClass,
-      postIconsClass,
-      errorClass,
-      backgroundClass,
-      isFocused,
-      hasHelperTop,
-      hasHelperBottom,
-      hasPreIcon,
-      hasPostIcon,
-      hasInfo,
-      hasInfoAction,
-      inputAttrs,
-      describedby,
-      mapClasses
+    const style = useCssModule();
+    const inputModel = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(newValue) {
+        emit("update:modelValue", newValue);
+      }
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(CdrLabelStandalone, {
+        "for-id": unref(uniqueId),
+        label: __props.label,
+        "hide-label": __props.hideLabel,
+        required: __props.required,
+        optional: __props.optional,
+        disabled: __props.disabled,
+        class: normalizeClass(unref(attrs).class)
+      }, createSlots({
+        default: withCtx(() => [
+          createElementVNode("div", {
+            class: normalizeClass(unref(mapClasses)(unref(style), "cdr-input-wrap", unref(focusedClass)))
+          }, [
+            __props.rows && __props.rows > 1 ? withDirectives((openBlock(), createElementBlock("textarea", mergeProps({
+              key: 0,
+              rows: __props.rows,
+              class: unref(mapClasses)(unref(style), baseClass, unref(multilineClass), unref(preIconClass), unref(postIconClass), unref(postIconsClass), unref(errorClass), unref(backgroundClass), unref(sizeClass)),
+              id: unref(uniqueId),
+              disabled: __props.disabled,
+              "aria-required": __props.required || null,
+              "aria-invalid": !!__props.error || null,
+              "aria-errormessage": !!__props.error && `${unref(uniqueId)}-error` || null
+            }, unref(inputAttrs), {
+              "aria-describedby": unref(describedby) || null,
+              onFocus: _cache[0] || (_cache[0] = ($event) => isFocused.value = true),
+              onBlur: _cache[1] || (_cache[1] = ($event) => isFocused.value = false),
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => isRef(inputModel) ? inputModel.value = $event : null)
+            }), null, 16, _hoisted_1$2X)), [
+              [vModelText, unref(inputModel)]
+            ]) : withDirectives((openBlock(), createElementBlock("input", mergeProps({
+              key: 1,
+              type: __props.type,
+              class: unref(mapClasses)(unref(style), baseClass, unref(preIconClass), unref(postIconClass), unref(postIconsClass), unref(errorClass), unref(backgroundClass), unref(sizeClass)),
+              id: unref(uniqueId),
+              disabled: __props.disabled,
+              "aria-required": __props.required || null,
+              "aria-invalid": !!__props.error || null,
+              "aria-errormessage": !!__props.error && `${unref(uniqueId)}-error` || null
+            }, unref(inputAttrs), {
+              "aria-describedby": unref(describedby) || null,
+              onFocus: _cache[3] || (_cache[3] = ($event) => isFocused.value = true),
+              onBlur: _cache[4] || (_cache[4] = ($event) => isFocused.value = false),
+              "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => isRef(inputModel) ? inputModel.value = $event : null)
+            }), null, 16, _hoisted_2$3)), [
+              [vModelDynamic, unref(inputModel)]
+            ]),
+            unref(hasPreIcon) ? (openBlock(), createElementBlock("span", {
+              key: 2,
+              class: normalizeClass(unref(style)["cdr-input__pre-icon"])
+            }, [
+              renderSlot(_ctx.$slots, "pre-icon")
+            ], 2)) : createCommentVNode("", true),
+            unref(hasPostIcon) ? (openBlock(), createElementBlock("span", {
+              key: 3,
+              class: normalizeClass(unref(style)["cdr-input__post-icon"])
+            }, [
+              renderSlot(_ctx.$slots, "post-icon")
+            ], 2)) : createCommentVNode("", true)
+          ], 2)
+        ]),
+        _: 2
+      }, [
+        unref(hasHelperTop) ? {
+          name: "helper",
+          fn: withCtx(() => [
+            renderSlot(_ctx.$slots, "helper-text-top")
+          ])
+        } : void 0,
+        unref(hasInfo) ? {
+          name: "info",
+          fn: withCtx(() => [
+            renderSlot(_ctx.$slots, "info")
+          ])
+        } : void 0,
+        unref(hasInfoAction) ? {
+          name: "info-action",
+          fn: withCtx(() => [
+            renderSlot(_ctx.$slots, "info-action")
+          ])
+        } : void 0,
+        unref(hasHelperBottom) && !__props.error ? {
+          name: "helper-text-bottom",
+          fn: withCtx(() => [
+            createElementVNode("span", {
+              id: `${__props.id}-helper-text-bottom`,
+              class: normalizeClass(unref(style)["cdr-input__helper-text"])
+            }, [
+              renderSlot(_ctx.$slots, "helper-text-bottom")
+            ], 10, _hoisted_3$2)
+          ])
+        } : void 0,
+        __props.error ? {
+          name: "error",
+          fn: withCtx(() => [
+            __props.error ? (openBlock(), createBlock(CdrFormError, {
+              key: 0,
+              error: __props.error,
+              role: __props.errorRole,
+              id: `${unref(uniqueId)}-error`
+            }, {
+              error: withCtx(() => [
+                renderSlot(_ctx.$slots, "error")
+              ]),
+              _: 3
+            }, 8, ["error", "role", "id"])) : createCommentVNode("", true)
+          ])
+        } : void 0
+      ]), 1032, ["for-id", "label", "hide-label", "required", "optional", "disabled", "class"]);
     };
   }
 });
-const _hoisted_1$2Y = ["rows", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "value", "aria-describedby"];
-const _hoisted_2$3 = ["type", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
-const _hoisted_3$2 = ["id"];
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_cdr_form_error = resolveComponent("cdr-form-error");
-  const _component_cdr_label_standalone = resolveComponent("cdr-label-standalone");
-  return openBlock(), createBlock(_component_cdr_label_standalone, {
-    "for-id": _ctx.id,
-    label: _ctx.label,
-    "hide-label": _ctx.hideLabel,
-    required: _ctx.required,
-    optional: _ctx.optional,
-    disabled: _ctx.disabled
-  }, createSlots({
-    default: withCtx(() => [
-      createElementVNode("div", {
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, "cdr-input-wrap", _ctx.focusedClass))
-      }, [
-        _ctx.rows && _ctx.rows > 1 ? (openBlock(), createElementBlock("textarea", mergeProps({
-          key: 0,
-          rows: _ctx.rows,
-          class: _ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.multilineClass, _ctx.preIconClass, _ctx.postIconClass, _ctx.postIconsClass, _ctx.errorClass, _ctx.backgroundClass, _ctx.sizeClass),
-          id: _ctx.id,
-          disabled: _ctx.disabled,
-          "aria-required": _ctx.required || null,
-          "aria-invalid": !!_ctx.error || null,
-          "aria-errormessage": !!_ctx.error && `${_ctx.id}-error` || null
-        }, _ctx.inputAttrs, {
-          value: _ctx.modelValue,
-          "aria-describedby": _ctx.describedby || null,
-          onInput: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.value)),
-          onFocus: _cache[1] || (_cache[1] = ($event) => _ctx.isFocused = true),
-          onBlur: _cache[2] || (_cache[2] = ($event) => _ctx.isFocused = false)
-        }), null, 16, _hoisted_1$2Y)) : (openBlock(), createElementBlock("input", mergeProps({
-          key: 1,
-          type: _ctx.type,
-          class: _ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.preIconClass, _ctx.postIconClass, _ctx.postIconsClass, _ctx.errorClass, _ctx.backgroundClass, _ctx.sizeClass),
-          id: _ctx.id,
-          disabled: _ctx.disabled,
-          "aria-required": _ctx.required || null,
-          "aria-invalid": !!_ctx.error || null,
-          "aria-errormessage": !!_ctx.error && `${_ctx.id}-error` || null
-        }, _ctx.inputAttrs, {
-          "aria-describedby": _ctx.describedby || null,
-          value: _ctx.modelValue,
-          onInput: _cache[3] || (_cache[3] = ($event) => _ctx.$emit("update:modelValue", $event.target.value)),
-          onFocus: _cache[4] || (_cache[4] = ($event) => _ctx.isFocused = true),
-          onBlur: _cache[5] || (_cache[5] = ($event) => _ctx.isFocused = false)
-        }), null, 16, _hoisted_2$3)),
-        _ctx.hasPreIcon ? (openBlock(), createElementBlock("span", {
-          key: 2,
-          class: normalizeClass(_ctx.style["cdr-input__pre-icon"])
-        }, [
-          renderSlot(_ctx.$slots, "pre-icon")
-        ], 2)) : createCommentVNode("", true),
-        _ctx.hasPostIcon ? (openBlock(), createElementBlock("span", {
-          key: 3,
-          class: normalizeClass(_ctx.style["cdr-input__post-icon"])
-        }, [
-          renderSlot(_ctx.$slots, "post-icon")
-        ], 2)) : createCommentVNode("", true)
-      ], 2)
-    ]),
-    _: 2
-  }, [
-    _ctx.hasHelperTop ? {
-      name: "helper",
-      fn: withCtx(() => [
-        renderSlot(_ctx.$slots, "helper-text-top")
-      ])
-    } : void 0,
-    _ctx.hasInfo ? {
-      name: "info",
-      fn: withCtx(() => [
-        renderSlot(_ctx.$slots, "info")
-      ])
-    } : void 0,
-    _ctx.hasInfoAction ? {
-      name: "info-action",
-      fn: withCtx(() => [
-        renderSlot(_ctx.$slots, "info-action")
-      ])
-    } : void 0,
-    _ctx.hasHelperBottom && !_ctx.error ? {
-      name: "helper-text-bottom",
-      fn: withCtx(() => [
-        createElementVNode("span", {
-          id: `${_ctx.id}-helper-text-bottom`,
-          class: normalizeClass(_ctx.style["cdr-input__helper-text"])
-        }, [
-          renderSlot(_ctx.$slots, "helper-text-bottom")
-        ], 10, _hoisted_3$2)
-      ])
-    } : void 0,
-    _ctx.error ? {
-      name: "error",
-      fn: withCtx(() => [
-        _ctx.error ? (openBlock(), createBlock(_component_cdr_form_error, {
-          key: 0,
-          error: _ctx.error,
-          role: _ctx.errorRole,
-          id: `${_ctx.id}-error`
-        }, {
-          error: withCtx(() => [
-            renderSlot(_ctx.$slots, "error")
-          ]),
-          _: 3
-        }, 8, ["error", "role", "id"])) : createCommentVNode("", true)
-      ])
-    } : void 0
-  ]), 1032, ["for-id", "label", "hide-label", "required", "optional", "disabled"]);
-}
 const cssModules$g = {
   "$style": style0$g
 };
-var CdrInput = /* @__PURE__ */ _export_sfc(_sfc_main$34, [["render", _sfc_render$9], ["__cssModules", cssModules$g]]);
+var CdrInput = /* @__PURE__ */ _export_sfc(_sfc_main$34, [["__cssModules", cssModules$g]]);
 var style0$f = {
   "cdr-link": "cdr-link_13-0-0-vite-7",
   "cdr-link--standalone": "cdr-link--standalone_13-0-0-vite-7",
@@ -2128,6 +2122,7 @@ const cssModules$e = {
   "$style": style0$e
 };
 var CdrList = /* @__PURE__ */ _export_sfc(_sfc_main$32, [["__cssModules", cssModules$e]]);
+var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var candidateSelectors = [
   "input",
   "select",
@@ -2256,8 +2251,8 @@ const transitions = {
 let transitionEvent;
 if (typeof document !== "undefined") {
   const { style } = document.createElement("div");
-  const keys2 = Object.keys(transitions);
-  for (let i = 0, key = keys2[i]; i < keys2.length; i += 1, key = keys2[i]) {
+  const keys = Object.keys(transitions);
+  for (let i = 0, key = keys[i]; i < keys.length; i += 1, key = keys[i]) {
     if (key in style) {
       transitionEvent = transitions[key];
       console.log(transitionEvent, key);
@@ -2279,7 +2274,7 @@ var onTransitionEnd = (element, callback, timeout) => {
     element.removeEventListener(transitionEvent, callback);
   };
 };
-const _hoisted_1$2X = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_1$2W = /* @__PURE__ */ createElementVNode("path", {
   role: "presentation",
   d: "M13.415 12.006l5.295-5.292a1 1 0 00-1.414-1.415L12 10.591 6.71 5.296A1 1 0 005.295 6.71l5.292 5.295-5.295 5.292a1 1 0 101.414 1.414l5.295-5.292 5.292 5.295a1 1 0 001.414-1.414l-5.292-5.294z"
 }, null, -1);
@@ -2295,7 +2290,7 @@ const _sfc_main$31 = {
       return openBlock(), createBlock(CdrIcon, normalizeProps(guardReactiveProps(props)), {
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default"),
-          _hoisted_1$2X
+          _hoisted_1$2W
         ]),
         _: 3
       }, 16);
@@ -2315,7 +2310,7 @@ var style0$d = {
   "cdr-modal__text-content": "cdr-modal__text-content_13-0-0-vite-7",
   "cdr-modal--closed": "cdr-modal--closed_13-0-0-vite-7"
 };
-const _hoisted_1$2W = ["tabIndex"];
+const _hoisted_1$2V = ["tabIndex"];
 const _hoisted_2$2 = ["role", "aria-modal", "aria-label"];
 const _hoisted_3$1 = ["tabIndex"];
 const _sfc_main$30 = {
@@ -2410,7 +2405,7 @@ const _sfc_main$30 = {
       if (nextRef)
         nextRef.focus();
     };
-    const handleResize = debounce(() => {
+    const handleResize = debounce$1(() => {
       measureContent();
     }, 300);
     const handleOpened = () => {
@@ -2541,7 +2536,7 @@ const _sfc_main$30 = {
           }, null, 2),
           createElementVNode("div", {
             tabIndex: __props.opened ? "0" : void 0
-          }, null, 8, _hoisted_1$2W),
+          }, null, 8, _hoisted_1$2V),
           createElementVNode("div", mergeProps({
             ref_key: "modalEl",
             ref: modalEl,
@@ -2608,34 +2603,11 @@ const cssModules$d = {
   "$style": style0$d
 };
 var CdrModal = /* @__PURE__ */ _export_sfc(_sfc_main$30, [["__cssModules", cssModules$d]]);
-const _hoisted_1$2V = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_1$2U = /* @__PURE__ */ createElementVNode("path", {
   role: "presentation",
   d: "M8 12c0 .273.11.521.288.702l5.005 5.005a1 1 0 001.414-1.414L10.415 12l4.295-4.295a1 1 0 00-1.417-1.412l-4.98 4.98A.997.997 0 008 12z"
 }, null, -1);
 const _sfc_main$2$ = {
-  props: {
-    props: {
-      type: Object
-    }
-  },
-  setup(__props) {
-    const props = __props;
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(CdrIcon, normalizeProps(guardReactiveProps(props)), {
-        default: withCtx(() => [
-          renderSlot(_ctx.$slots, "default"),
-          _hoisted_1$2V
-        ]),
-        _: 3
-      }, 16);
-    };
-  }
-};
-const _hoisted_1$2U = /* @__PURE__ */ createElementVNode("path", {
-  role: "presentation",
-  d: "M16 12a.997.997 0 00-.288-.702l-5.005-5.005a1 1 0 00-1.414 1.414L13.585 12 9.29 16.295a1 1 0 001.417 1.412l4.98-4.98A.997.997 0 0016 12z"
-}, null, -1);
-const _sfc_main$2_ = {
   props: {
     props: {
       type: Object
@@ -2654,292 +2626,29 @@ const _sfc_main$2_ = {
     };
   }
 };
-function copyArray(source, array) {
-  var index = -1, length = source.length;
-  array || (array = Array(length));
-  while (++index < length) {
-    array[index] = source[index];
-  }
-  return array;
-}
-var asyncTag = "[object AsyncFunction]", funcTag$1 = "[object Function]", genTag = "[object GeneratorFunction]", proxyTag = "[object Proxy]";
-function isFunction(value) {
-  if (!isObject(value)) {
-    return false;
-  }
-  var tag = baseGetTag(value);
-  return tag == funcTag$1 || tag == genTag || tag == asyncTag || tag == proxyTag;
-}
-var coreJsData = root$1["__core-js_shared__"];
-var coreJsData$1 = coreJsData;
-var maskSrcKey = function() {
-  var uid = /[^.]+$/.exec(coreJsData$1 && coreJsData$1.keys && coreJsData$1.keys.IE_PROTO || "");
-  return uid ? "Symbol(src)_1." + uid : "";
-}();
-function isMasked(func) {
-  return !!maskSrcKey && maskSrcKey in func;
-}
-var funcProto$1 = Function.prototype;
-var funcToString$1 = funcProto$1.toString;
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString$1.call(func);
-    } catch (e) {
+const _hoisted_1$2T = /* @__PURE__ */ createElementVNode("path", {
+  role: "presentation",
+  d: "M16 12a.997.997 0 00-.288-.702l-5.005-5.005a1 1 0 00-1.414 1.414L13.585 12 9.29 16.295a1 1 0 001.417 1.412l4.98-4.98A.997.997 0 0016 12z"
+}, null, -1);
+const _sfc_main$2_ = {
+  props: {
+    props: {
+      type: Object
     }
-    try {
-      return func + "";
-    } catch (e) {
-    }
+  },
+  setup(__props) {
+    const props = __props;
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(CdrIcon, normalizeProps(guardReactiveProps(props)), {
+        default: withCtx(() => [
+          renderSlot(_ctx.$slots, "default"),
+          _hoisted_1$2T
+        ]),
+        _: 3
+      }, 16);
+    };
   }
-  return "";
-}
-var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-var reIsHostCtor = /^\[object .+?Constructor\]$/;
-var funcProto = Function.prototype, objectProto$4 = Object.prototype;
-var funcToString = funcProto.toString;
-var hasOwnProperty$3 = objectProto$4.hasOwnProperty;
-var reIsNative = RegExp("^" + funcToString.call(hasOwnProperty$3).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$");
-function baseIsNative(value) {
-  if (!isObject(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
-}
-function getValue(object, key) {
-  return object == null ? void 0 : object[key];
-}
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : void 0;
-}
-var DataView = getNative(root$1, "DataView");
-var DataView$1 = DataView;
-var Map = getNative(root$1, "Map");
-var Map$1 = Map;
-var Promise$1 = getNative(root$1, "Promise");
-var Promise$2 = Promise$1;
-var Set = getNative(root$1, "Set");
-var Set$1 = Set;
-var WeakMap = getNative(root$1, "WeakMap");
-var WeakMap$1 = WeakMap;
-var mapTag$2 = "[object Map]", objectTag$1 = "[object Object]", promiseTag = "[object Promise]", setTag$2 = "[object Set]", weakMapTag$1 = "[object WeakMap]";
-var dataViewTag$1 = "[object DataView]";
-var dataViewCtorString = toSource(DataView$1), mapCtorString = toSource(Map$1), promiseCtorString = toSource(Promise$2), setCtorString = toSource(Set$1), weakMapCtorString = toSource(WeakMap$1);
-var getTag = baseGetTag;
-if (DataView$1 && getTag(new DataView$1(new ArrayBuffer(1))) != dataViewTag$1 || Map$1 && getTag(new Map$1()) != mapTag$2 || Promise$2 && getTag(Promise$2.resolve()) != promiseTag || Set$1 && getTag(new Set$1()) != setTag$2 || WeakMap$1 && getTag(new WeakMap$1()) != weakMapTag$1) {
-  getTag = function(value) {
-    var result = baseGetTag(value), Ctor = result == objectTag$1 ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
-    if (ctorString) {
-      switch (ctorString) {
-        case dataViewCtorString:
-          return dataViewTag$1;
-        case mapCtorString:
-          return mapTag$2;
-        case promiseCtorString:
-          return promiseTag;
-        case setCtorString:
-          return setTag$2;
-        case weakMapCtorString:
-          return weakMapTag$1;
-      }
-    }
-    return result;
-  };
-}
-var getTag$1 = getTag;
-var MAX_SAFE_INTEGER$1 = 9007199254740991;
-function isLength(value) {
-  return typeof value == "number" && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$1;
-}
-function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction(value);
-}
-var isArray = Array.isArray;
-var isArray$1 = isArray;
-var stringTag$1 = "[object String]";
-function isString(value) {
-  return typeof value == "string" || !isArray$1(value) && isObjectLike(value) && baseGetTag(value) == stringTag$1;
-}
-function iteratorToArray(iterator) {
-  var data, result = [];
-  while (!(data = iterator.next()).done) {
-    result.push(data.value);
-  }
-  return result;
-}
-function mapToArray(map) {
-  var index = -1, result = Array(map.size);
-  map.forEach(function(value, key) {
-    result[++index] = [key, value];
-  });
-  return result;
-}
-function setToArray(set) {
-  var index = -1, result = Array(set.size);
-  set.forEach(function(value) {
-    result[++index] = value;
-  });
-  return result;
-}
-function asciiToArray(string) {
-  return string.split("");
-}
-var rsAstralRange$1 = "\\ud800-\\udfff", rsComboMarksRange$1 = "\\u0300-\\u036f", reComboHalfMarksRange$1 = "\\ufe20-\\ufe2f", rsComboSymbolsRange$1 = "\\u20d0-\\u20ff", rsComboRange$1 = rsComboMarksRange$1 + reComboHalfMarksRange$1 + rsComboSymbolsRange$1, rsVarRange$1 = "\\ufe0e\\ufe0f";
-var rsZWJ$1 = "\\u200d";
-var reHasUnicode = RegExp("[" + rsZWJ$1 + rsAstralRange$1 + rsComboRange$1 + rsVarRange$1 + "]");
-function hasUnicode(string) {
-  return reHasUnicode.test(string);
-}
-var rsAstralRange = "\\ud800-\\udfff", rsComboMarksRange = "\\u0300-\\u036f", reComboHalfMarksRange = "\\ufe20-\\ufe2f", rsComboSymbolsRange = "\\u20d0-\\u20ff", rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange, rsVarRange = "\\ufe0e\\ufe0f";
-var rsAstral = "[" + rsAstralRange + "]", rsCombo = "[" + rsComboRange + "]", rsFitz = "\\ud83c[\\udffb-\\udfff]", rsModifier = "(?:" + rsCombo + "|" + rsFitz + ")", rsNonAstral = "[^" + rsAstralRange + "]", rsRegional = "(?:\\ud83c[\\udde6-\\uddff]){2}", rsSurrPair = "[\\ud800-\\udbff][\\udc00-\\udfff]", rsZWJ = "\\u200d";
-var reOptMod = rsModifier + "?", rsOptVar = "[" + rsVarRange + "]?", rsOptJoin = "(?:" + rsZWJ + "(?:" + [rsNonAstral, rsRegional, rsSurrPair].join("|") + ")" + rsOptVar + reOptMod + ")*", rsSeq = rsOptVar + reOptMod + rsOptJoin, rsSymbol = "(?:" + [rsNonAstral + rsCombo + "?", rsCombo, rsRegional, rsSurrPair, rsAstral].join("|") + ")";
-var reUnicode = RegExp(rsFitz + "(?=" + rsFitz + ")|" + rsSymbol + rsSeq, "g");
-function unicodeToArray(string) {
-  return string.match(reUnicode) || [];
-}
-function stringToArray(string) {
-  return hasUnicode(string) ? unicodeToArray(string) : asciiToArray(string);
-}
-function arrayMap(array, iteratee) {
-  var index = -1, length = array == null ? 0 : array.length, result = Array(length);
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-function baseValues(object, props) {
-  return arrayMap(props, function(key) {
-    return object[key];
-  });
-}
-function baseTimes(n, iteratee) {
-  var index = -1, result = Array(n);
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-var argsTag$1 = "[object Arguments]";
-function baseIsArguments(value) {
-  return isObjectLike(value) && baseGetTag(value) == argsTag$1;
-}
-var objectProto$3 = Object.prototype;
-var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
-var propertyIsEnumerable = objectProto$3.propertyIsEnumerable;
-var isArguments = baseIsArguments(function() {
-  return arguments;
-}()) ? baseIsArguments : function(value) {
-  return isObjectLike(value) && hasOwnProperty$2.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
 };
-var isArguments$1 = isArguments;
-function stubFalse() {
-  return false;
-}
-var freeExports$1 = typeof exports == "object" && exports && !exports.nodeType && exports;
-var freeModule$1 = freeExports$1 && typeof module == "object" && module && !module.nodeType && module;
-var moduleExports$1 = freeModule$1 && freeModule$1.exports === freeExports$1;
-var Buffer2 = moduleExports$1 ? root$1.Buffer : void 0;
-var nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : void 0;
-var isBuffer = nativeIsBuffer || stubFalse;
-var isBuffer$1 = isBuffer;
-var MAX_SAFE_INTEGER = 9007199254740991;
-var reIsUint = /^(?:0|[1-9]\d*)$/;
-function isIndex(value, length) {
-  var type = typeof value;
-  length = length == null ? MAX_SAFE_INTEGER : length;
-  return !!length && (type == "number" || type != "symbol" && reIsUint.test(value)) && (value > -1 && value % 1 == 0 && value < length);
-}
-var argsTag = "[object Arguments]", arrayTag = "[object Array]", boolTag = "[object Boolean]", dateTag = "[object Date]", errorTag = "[object Error]", funcTag = "[object Function]", mapTag$1 = "[object Map]", numberTag = "[object Number]", objectTag = "[object Object]", regexpTag = "[object RegExp]", setTag$1 = "[object Set]", stringTag = "[object String]", weakMapTag = "[object WeakMap]";
-var arrayBufferTag = "[object ArrayBuffer]", dataViewTag = "[object DataView]", float32Tag = "[object Float32Array]", float64Tag = "[object Float64Array]", int8Tag = "[object Int8Array]", int16Tag = "[object Int16Array]", int32Tag = "[object Int32Array]", uint8Tag = "[object Uint8Array]", uint8ClampedTag = "[object Uint8ClampedArray]", uint16Tag = "[object Uint16Array]", uint32Tag = "[object Uint32Array]";
-var typedArrayTags = {};
-typedArrayTags[float32Tag] = typedArrayTags[float64Tag] = typedArrayTags[int8Tag] = typedArrayTags[int16Tag] = typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] = typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] = typedArrayTags[uint32Tag] = true;
-typedArrayTags[argsTag] = typedArrayTags[arrayTag] = typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] = typedArrayTags[dataViewTag] = typedArrayTags[dateTag] = typedArrayTags[errorTag] = typedArrayTags[funcTag] = typedArrayTags[mapTag$1] = typedArrayTags[numberTag] = typedArrayTags[objectTag] = typedArrayTags[regexpTag] = typedArrayTags[setTag$1] = typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
-function baseIsTypedArray(value) {
-  return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
-}
-function baseUnary(func) {
-  return function(value) {
-    return func(value);
-  };
-}
-var freeExports = typeof exports == "object" && exports && !exports.nodeType && exports;
-var freeModule = freeExports && typeof module == "object" && module && !module.nodeType && module;
-var moduleExports = freeModule && freeModule.exports === freeExports;
-var freeProcess = moduleExports && freeGlobal$1.process;
-var nodeUtil = function() {
-  try {
-    var types = freeModule && freeModule.require && freeModule.require("util").types;
-    if (types) {
-      return types;
-    }
-    return freeProcess && freeProcess.binding && freeProcess.binding("util");
-  } catch (e) {
-  }
-}();
-var nodeUtil$1 = nodeUtil;
-var nodeIsTypedArray = nodeUtil$1 && nodeUtil$1.isTypedArray;
-var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-var isTypedArray$1 = isTypedArray;
-var objectProto$2 = Object.prototype;
-var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
-function arrayLikeKeys(value, inherited) {
-  var isArr = isArray$1(value), isArg = !isArr && isArguments$1(value), isBuff = !isArr && !isArg && isBuffer$1(value), isType = !isArr && !isArg && !isBuff && isTypedArray$1(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes(value.length, String) : [], length = result.length;
-  for (var key in value) {
-    if ((inherited || hasOwnProperty$1.call(value, key)) && !(skipIndexes && (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || isIndex(key, length)))) {
-      result.push(key);
-    }
-  }
-  return result;
-}
-var objectProto$1 = Object.prototype;
-function isPrototype(value) {
-  var Ctor = value && value.constructor, proto = typeof Ctor == "function" && Ctor.prototype || objectProto$1;
-  return value === proto;
-}
-function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
-}
-var nativeKeys = overArg(Object.keys, Object);
-var nativeKeys$1 = nativeKeys;
-var objectProto = Object.prototype;
-var hasOwnProperty = objectProto.hasOwnProperty;
-function baseKeys(object) {
-  if (!isPrototype(object)) {
-    return nativeKeys$1(object);
-  }
-  var result = [];
-  for (var key in Object(object)) {
-    if (hasOwnProperty.call(object, key) && key != "constructor") {
-      result.push(key);
-    }
-  }
-  return result;
-}
-function keys(object) {
-  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
-}
-function values(object) {
-  return object == null ? [] : baseValues(object, keys(object));
-}
-var mapTag = "[object Map]", setTag = "[object Set]";
-var symIterator = Symbol$2 ? Symbol$2.iterator : void 0;
-function toArray(value) {
-  if (!value) {
-    return [];
-  }
-  if (isArrayLike(value)) {
-    return isString(value) ? stringToArray(value) : copyArray(value);
-  }
-  if (symIterator && value[symIterator]) {
-    return iteratorToArray(value[symIterator]());
-  }
-  var tag = getTag$1(value), func = tag == mapTag ? mapToArray : tag == setTag ? setToArray : values;
-  return func(value);
-}
 var style0$c = {
   "cdr-icon": "cdr-icon_13-0-0-vite-7",
   "cdr-icon--small": "cdr-icon--small_13-0-0-vite-7",
@@ -2984,18 +2693,16 @@ var style0$c = {
   "cdr-select--large@lg": "cdr-select--large@lg_13-0-0-vite-7",
   "cdr-select-wrap": "cdr-select-wrap_13-0-0-vite-7"
 };
-const _sfc_main$2Z = defineComponent({
-  name: "CdrSelect",
-  components: {
-    IconCaretDown: _sfc_main$3n,
-    CdrLabelStandalone,
-    CdrFormError
-  },
+const _hoisted_1$2S = ["id", "multiple", "size", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
+const _hoisted_2$1 = ["value"];
+const __default__$2 = {
   inheritAttrs: false,
+  customOptions: {}
+};
+const _sfc_main$2Z = /* @__PURE__ */ Object.assign(__default__$2, {
   props: {
     id: {
-      type: String,
-      required: true
+      type: String
     },
     label: {
       type: String,
@@ -3026,15 +2733,20 @@ const _sfc_main$2Z = defineComponent({
     multiple: Boolean,
     multipleSize: Number
   },
-  setup(props, ctx) {
+  emits: ["update:modelValue"],
+  setup(__props, { emit }) {
+    const props = __props;
+    const slots = useSlots();
+    const attrs = useAttrs();
     const baseClass = "cdr-select";
-    const hasHelper = ctx.slots["helper-text"];
-    const hasInfo = ctx.slots.info;
-    const hasInfoAction = ctx.slots["info-action"];
-    const hasPreIcon = ctx.slots["pre-icon"];
+    const hasHelper = slots["helper-text"];
+    const hasInfo = slots.info;
+    const hasInfoAction = slots["info-action"];
+    const hasPreIcon = slots["pre-icon"];
+    const uniqueId = props.id ? props.id : uid();
     const multipleClass = computed(() => props.multiple && "cdr-select--multiple");
-    const promptClass = computed(() => !props.modelValue && "cdr-select--preicon");
-    const multilineClass = computed(() => props.rows > 1 && "cdr-select--multiline");
+    const promptClass = computed(() => !props.modelValue && "cdr-select__prompt");
+    computed(() => props.rows > 1 && "cdr-select--multiline");
     const preIconClass = computed(() => hasPreIcon && "cdr-select--preicon");
     const errorClass = computed(() => props.error && "cdr-select--error");
     const backgroundClass = computed(() => `cdr-select--${props.background}`);
@@ -3042,8 +2754,8 @@ const _sfc_main$2Z = defineComponent({
     const caretDisabledClass = computed(() => props.disabled && "cdr-select__caret--disabled");
     const describedby = computed(() => {
       return [
-        ctx.slots["helper-text"] ? `${props.id}-helper-text-top` : "",
-        ctx.attrs["aria-describedby"]
+        slots["helper-text"] ? `${uniqueId}-helper-text-top` : "",
+        attrs["aria-describedby"]
       ].filter((x) => x).join(" ");
     });
     const computedOpts = computed(() => {
@@ -3068,128 +2780,113 @@ const _sfc_main$2Z = defineComponent({
       }
       return optsArr;
     });
-    const processMultiple = (options) => toArray(options).filter((o) => o.selected === true).map((o) => o.value);
-    return {
-      style: useCssModule(),
-      baseClass,
-      computedOpts,
-      hasHelper,
-      hasInfo,
-      hasInfoAction,
-      hasPreIcon,
-      describedby,
-      processMultiple,
-      multipleClass,
-      promptClass,
-      multilineClass,
-      preIconClass,
-      errorClass,
-      backgroundClass,
-      sizeClass,
-      caretDisabledClass,
-      mapClasses
+    const selectModel = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(newValue) {
+        emit("update:modelValue", newValue);
+      }
+    });
+    const style = useCssModule();
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(CdrLabelStandalone, {
+        "for-id": unref(uniqueId),
+        label: __props.label,
+        "hide-label": __props.hideLabel,
+        required: __props.required,
+        optional: __props.optional,
+        disabled: __props.disabled
+      }, createSlots({
+        default: withCtx(() => [
+          createElementVNode("div", {
+            class: normalizeClass(unref(style)["cdr-select-wrap"])
+          }, [
+            unref(hasPreIcon) ? (openBlock(), createElementBlock("span", {
+              key: 0,
+              class: normalizeClass(unref(style)["cdr-select__pre-icon"])
+            }, [
+              renderSlot(_ctx.$slots, "pre-icon")
+            ], 2)) : createCommentVNode("", true),
+            withDirectives(createElementVNode("select", mergeProps({
+              id: unref(uniqueId),
+              class: unref(mapClasses)(unref(style), baseClass, unref(sizeClass), unref(promptClass), unref(multipleClass), unref(backgroundClass), unref(errorClass), unref(preIconClass)),
+              multiple: __props.multiple,
+              size: __props.multipleSize,
+              disabled: __props.disabled,
+              "aria-required": __props.required || null,
+              "aria-invalid": !!__props.error || null,
+              "aria-errormessage": !!__props.error && `${unref(uniqueId)}-error` || null
+            }, _ctx.$attrs, {
+              "aria-describedby": unref(describedby) || null,
+              value: __props.modelValue,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => isRef(selectModel) ? selectModel.value = $event : null)
+            }), [
+              __props.prompt ? (openBlock(), createElementBlock("option", {
+                key: 0,
+                class: normalizeClass(unref(style)["cdr-select__prompt"]),
+                value: "",
+                disabled: ""
+              }, toDisplayString(__props.prompt), 3)) : createCommentVNode("", true),
+              (openBlock(true), createElementBlock(Fragment, null, renderList(unref(computedOpts), (option) => {
+                return openBlock(), createElementBlock("option", {
+                  key: option.text,
+                  value: option.value
+                }, toDisplayString(option.text), 9, _hoisted_2$1);
+              }), 128)),
+              renderSlot(_ctx.$slots, "default")
+            ], 16, _hoisted_1$2S), [
+              [vModelSelect, unref(selectModel)]
+            ]),
+            createVNode(_sfc_main$3n, {
+              class: normalizeClass(unref(mapClasses)(unref(style), "cdr-select__caret", unref(caretDisabledClass)))
+            }, null, 8, ["class"])
+          ], 2)
+        ]),
+        _: 2
+      }, [
+        unref(hasHelper) ? {
+          name: "helper",
+          fn: withCtx(() => [
+            renderSlot(_ctx.$slots, "helper-text")
+          ])
+        } : void 0,
+        unref(hasInfo) ? {
+          name: "info",
+          fn: withCtx(() => [
+            renderSlot(_ctx.$slots, "info")
+          ])
+        } : void 0,
+        unref(hasInfoAction) ? {
+          name: "info-action",
+          fn: withCtx(() => [
+            renderSlot(_ctx.$slots, "info-action")
+          ])
+        } : void 0,
+        __props.error ? {
+          name: "error",
+          fn: withCtx(() => [
+            __props.error ? (openBlock(), createBlock(CdrFormError, {
+              key: 0,
+              error: __props.error,
+              role: __props.errorRole,
+              id: `${unref(uniqueId)}-error`
+            }, {
+              error: withCtx(() => [
+                renderSlot(_ctx.$slots, "error")
+              ]),
+              _: 3
+            }, 8, ["error", "role", "id"])) : createCommentVNode("", true)
+          ])
+        } : void 0
+      ]), 1032, ["for-id", "label", "hide-label", "required", "optional", "disabled"]);
     };
   }
 });
-const _hoisted_1$2T = ["id", "multiple", "size", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby", "value"];
-const _hoisted_2$1 = ["value"];
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_icon_caret_down = resolveComponent("icon-caret-down");
-  const _component_cdr_form_error = resolveComponent("cdr-form-error");
-  const _component_cdr_label_standalone = resolveComponent("cdr-label-standalone");
-  return openBlock(), createBlock(_component_cdr_label_standalone, {
-    "for-id": _ctx.id,
-    label: _ctx.label,
-    "hide-label": _ctx.hideLabel,
-    required: _ctx.required,
-    optional: _ctx.optional,
-    disabled: _ctx.disabled
-  }, createSlots({
-    default: withCtx(() => [
-      createElementVNode("div", {
-        class: normalizeClass(_ctx.style["cdr-select-wrap"])
-      }, [
-        _ctx.hasPreIcon ? (openBlock(), createElementBlock("span", {
-          key: 0,
-          class: normalizeClass(_ctx.style["cdr-select__pre-icon"])
-        }, [
-          renderSlot(_ctx.$slots, "pre-icon")
-        ], 2)) : createCommentVNode("", true),
-        createElementVNode("select", mergeProps({
-          class: _ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.sizeClass, _ctx.promptClass, _ctx.multipleClass, _ctx.backgroundClass, _ctx.errorClass, _ctx.preIconClass),
-          id: _ctx.id,
-          multiple: _ctx.multiple,
-          size: _ctx.multipleSize,
-          disabled: _ctx.disabled,
-          "aria-required": _ctx.required || null,
-          "aria-invalid": !!_ctx.error || null,
-          "aria-errormessage": !!_ctx.error && `${_ctx.id}-error` || null
-        }, _ctx.$attrs, {
-          "aria-describedby": _ctx.describedby || null,
-          value: _ctx.modelValue,
-          onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", _ctx.multiple ? _ctx.processMultiple($event.target.options) : $event.target.value))
-        }), [
-          _ctx.prompt ? (openBlock(), createElementBlock("option", {
-            key: 0,
-            class: normalizeClass(_ctx.style["cdr-select__prompt"]),
-            value: "",
-            disabled: ""
-          }, toDisplayString(_ctx.prompt), 3)) : createCommentVNode("", true),
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.computedOpts, (option) => {
-            return openBlock(), createElementBlock("option", {
-              key: option.text,
-              value: option.value
-            }, toDisplayString(option.text), 9, _hoisted_2$1);
-          }), 128)),
-          renderSlot(_ctx.$slots, "default")
-        ], 16, _hoisted_1$2T),
-        createVNode(_component_icon_caret_down, {
-          class: normalizeClass(_ctx.mapClasses(_ctx.style, "cdr-select__caret", _ctx.caretDisabledClass))
-        }, null, 8, ["class"])
-      ], 2)
-    ]),
-    _: 2
-  }, [
-    _ctx.hasHelper ? {
-      name: "helper",
-      fn: withCtx(() => [
-        renderSlot(_ctx.$slots, "helper-text")
-      ])
-    } : void 0,
-    _ctx.hasInfo ? {
-      name: "info",
-      fn: withCtx(() => [
-        renderSlot(_ctx.$slots, "info")
-      ])
-    } : void 0,
-    _ctx.hasInfoAction ? {
-      name: "info-action",
-      fn: withCtx(() => [
-        renderSlot(_ctx.$slots, "info-action")
-      ])
-    } : void 0,
-    _ctx.error ? {
-      name: "error",
-      fn: withCtx(() => [
-        _ctx.error ? (openBlock(), createBlock(_component_cdr_form_error, {
-          key: 0,
-          error: _ctx.error,
-          role: _ctx.errorRole,
-          id: `${_ctx.id}-error`
-        }, {
-          error: withCtx(() => [
-            renderSlot(_ctx.$slots, "error")
-          ]),
-          _: 3
-        }, 8, ["error", "role", "id"])) : createCommentVNode("", true)
-      ])
-    } : void 0
-  ]), 1032, ["for-id", "label", "hide-label", "required", "optional", "disabled"]);
-}
 const cssModules$c = {
   "$style": style0$c
 };
-var CdrSelect = /* @__PURE__ */ _export_sfc(_sfc_main$2Z, [["render", _sfc_render$8], ["__cssModules", cssModules$c]]);
+var CdrSelect = /* @__PURE__ */ _export_sfc(_sfc_main$2Z, [["__cssModules", cssModules$c]]);
 var style0$b = {
   "cdr-icon": "cdr-icon_13-0-0-vite-7",
   "cdr-icon--small": "cdr-icon--small_13-0-0-vite-7",
@@ -3375,7 +3072,7 @@ const _sfc_main$2Y = defineComponent({
     };
   }
 });
-const _hoisted_1$2S = ["aria-label"];
+const _hoisted_1$2R = ["aria-label"];
 const _hoisted_2 = { key: 0 };
 const _hoisted_3 = {
   key: 1,
@@ -3387,7 +3084,7 @@ const _hoisted_6 = {
   key: 3,
   "aria-hidden": "true"
 };
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_icon_caret_left = resolveComponent("icon-caret-left");
   const _component_cdr_select = resolveComponent("cdr-select");
   const _component_icon_caret_right = resolveComponent("icon-caret-right");
@@ -3491,13 +3188,13 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
         ], 2)
       ]))
     ], 2)
-  ], 8, _hoisted_1$2S);
+  ], 8, _hoisted_1$2R);
 }
 const cssModules$b = {
   "$style": style0$b
 };
-var CdrPagination = /* @__PURE__ */ _export_sfc(_sfc_main$2Y, [["render", _sfc_render$7], ["__cssModules", cssModules$b]]);
-const _hoisted_1$2R = /* @__PURE__ */ createElementVNode("path", {
+var CdrPagination = /* @__PURE__ */ _export_sfc(_sfc_main$2Y, [["render", _sfc_render$2], ["__cssModules", cssModules$b]]);
+const _hoisted_1$2Q = /* @__PURE__ */ createElementVNode("path", {
   role: "presentation",
   d: "M13.406 12.006l3.297-3.296a1 1 0 10-1.414-1.414l-3.297 3.295-3.285-3.295A1 1 0 107.293 8.71l3.285 3.295-3.285 3.288a1 1 0 001.414 1.415l3.285-3.289 3.297 3.289a1 1 0 001.414-1.415l-3.297-3.287z"
 }, null, -1);
@@ -3513,13 +3210,205 @@ const _sfc_main$2X = {
       return openBlock(), createBlock(CdrIcon, normalizeProps(guardReactiveProps(props)), {
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default"),
-          _hoisted_1$2R
+          _hoisted_1$2Q
         ]),
         _: 3
       }, 16);
     };
   }
 };
+function isObject$2(value) {
+  var type = typeof value;
+  return value != null && (type == "object" || type == "function");
+}
+var isObject_1 = isObject$2;
+var freeGlobal$1 = typeof commonjsGlobal == "object" && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+var _freeGlobal = freeGlobal$1;
+var freeGlobal = _freeGlobal;
+var freeSelf = typeof self == "object" && self && self.Object === Object && self;
+var root$2 = freeGlobal || freeSelf || Function("return this")();
+var _root = root$2;
+var root$1 = _root;
+var now$1 = function() {
+  return root$1.Date.now();
+};
+var now_1 = now$1;
+var reWhitespace = /\s/;
+function trimmedEndIndex$1(string) {
+  var index = string.length;
+  while (index-- && reWhitespace.test(string.charAt(index))) {
+  }
+  return index;
+}
+var _trimmedEndIndex = trimmedEndIndex$1;
+var trimmedEndIndex = _trimmedEndIndex;
+var reTrimStart = /^\s+/;
+function baseTrim$1(string) {
+  return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, "") : string;
+}
+var _baseTrim = baseTrim$1;
+var root = _root;
+var Symbol$3 = root.Symbol;
+var _Symbol = Symbol$3;
+var Symbol$2 = _Symbol;
+var objectProto$1 = Object.prototype;
+var hasOwnProperty = objectProto$1.hasOwnProperty;
+var nativeObjectToString$1 = objectProto$1.toString;
+var symToStringTag$1 = Symbol$2 ? Symbol$2.toStringTag : void 0;
+function getRawTag$1(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag$1), tag = value[symToStringTag$1];
+  try {
+    value[symToStringTag$1] = void 0;
+    var unmasked = true;
+  } catch (e) {
+  }
+  var result = nativeObjectToString$1.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag$1] = tag;
+    } else {
+      delete value[symToStringTag$1];
+    }
+  }
+  return result;
+}
+var _getRawTag = getRawTag$1;
+var objectProto = Object.prototype;
+var nativeObjectToString = objectProto.toString;
+function objectToString$1(value) {
+  return nativeObjectToString.call(value);
+}
+var _objectToString = objectToString$1;
+var Symbol$1 = _Symbol, getRawTag = _getRawTag, objectToString = _objectToString;
+var nullTag = "[object Null]", undefinedTag = "[object Undefined]";
+var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : void 0;
+function baseGetTag$1(value) {
+  if (value == null) {
+    return value === void 0 ? undefinedTag : nullTag;
+  }
+  return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
+}
+var _baseGetTag = baseGetTag$1;
+function isObjectLike$1(value) {
+  return value != null && typeof value == "object";
+}
+var isObjectLike_1 = isObjectLike$1;
+var baseGetTag = _baseGetTag, isObjectLike = isObjectLike_1;
+var symbolTag = "[object Symbol]";
+function isSymbol$1(value) {
+  return typeof value == "symbol" || isObjectLike(value) && baseGetTag(value) == symbolTag;
+}
+var isSymbol_1 = isSymbol$1;
+var baseTrim = _baseTrim, isObject$1 = isObject_1, isSymbol = isSymbol_1;
+var NAN = 0 / 0;
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+var reIsBinary = /^0b[01]+$/i;
+var reIsOctal = /^0o[0-7]+$/i;
+var freeParseInt = parseInt;
+function toNumber$1(value) {
+  if (typeof value == "number") {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject$1(value)) {
+    var other = typeof value.valueOf == "function" ? value.valueOf() : value;
+    value = isObject$1(other) ? other + "" : other;
+  }
+  if (typeof value != "string") {
+    return value === 0 ? value : +value;
+  }
+  value = baseTrim(value);
+  var isBinary = reIsBinary.test(value);
+  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+}
+var toNumber_1 = toNumber$1;
+var isObject = isObject_1, now = now_1, toNumber = toNumber_1;
+var FUNC_ERROR_TEXT = "Expected a function";
+var nativeMax = Math.max, nativeMin = Math.min;
+function debounce(func, wait, options) {
+  var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+  if (typeof func != "function") {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
+    leading = !!options.leading;
+    maxing = "maxWait" in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = "trailing" in options ? !!options.trailing : trailing;
+  }
+  function invokeFunc(time) {
+    var args = lastArgs, thisArg = lastThis;
+    lastArgs = lastThis = void 0;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+  function leadingEdge(time) {
+    lastInvokeTime = time;
+    timerId = setTimeout(timerExpired, wait);
+    return leading ? invokeFunc(time) : result;
+  }
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, timeWaiting = wait - timeSinceLastCall;
+    return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
+  }
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+    return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+  }
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+  function trailingEdge(time) {
+    timerId = void 0;
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = void 0;
+    return result;
+  }
+  function cancel() {
+    if (timerId !== void 0) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = void 0;
+  }
+  function flush() {
+    return timerId === void 0 ? result : trailingEdge(now());
+  }
+  function debounced() {
+    var time = now(), isInvoking = shouldInvoke(time);
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+    if (isInvoking) {
+      if (timerId === void 0) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        clearTimeout(timerId);
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === void 0) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+var debounce_1 = debounce;
 function calculatePlacement(triggerRect, popupRect, screenWidth, screenHeight, originalPosition) {
   const offset = 14;
   const borderSize = 2;
@@ -3597,9 +3486,11 @@ var style0$a = {
   "cdr-popup--corner-top": "cdr-popup--corner-top_13-0-0-vite-7",
   "cdr-popup--corner-bottom": "cdr-popup--corner-bottom_13-0-0-vite-7"
 };
-const _sfc_main$2W = defineComponent({
-  name: "CdrPopup",
+const __default__$1 = {
   inheritAttrs: false,
+  customOptions: {}
+};
+const _sfc_main$2W = /* @__PURE__ */ Object.assign(__default__$1, {
   props: {
     opened: {
       type: Boolean,
@@ -3619,7 +3510,9 @@ const _sfc_main$2W = defineComponent({
       type: String
     }
   },
-  setup(props, ctx) {
+  emits: ["closed"],
+  setup(__props, { emit }) {
+    const props = __props;
     const baseClass = "cdr-popup";
     const pos = ref(props.position);
     const corner = ref(void 0);
@@ -3634,7 +3527,7 @@ const _sfc_main$2W = defineComponent({
     const closedClass = computed(() => closed.value && !exiting.value ? "cdr-popup--closed" : void 0);
     const exitingClass = computed(() => exiting.value ? "cdr-popup--exit" : void 0);
     const closePopup = (e) => {
-      ctx.emit("closed", e);
+      emit("closed", e);
     };
     const handleKeydown = (e) => {
       switch (e.key) {
@@ -3652,7 +3545,7 @@ const _sfc_main$2W = defineComponent({
       });
     };
     const handleResize = () => {
-      debounce(() => {
+      debounce_1(() => {
         measurePopup();
       }, 300);
     };
@@ -3668,16 +3561,18 @@ const _sfc_main$2W = defineComponent({
       });
     };
     const handleOpened = () => {
-      closed.value = false;
       pos.value = props.position;
       corner.value = void 0;
       if (props.autoPosition) {
         nextTick(() => {
           const triggerRect = rootEl.value.parentElement.getBoundingClientRect();
           const { innerHeight, innerWidth } = window;
-          calculatePlacement(triggerRect, popupRect.value, innerWidth, innerHeight, props.position);
+          const calculated = calculatePlacement(triggerRect, popupRect.value, innerWidth, innerHeight, props.position);
+          pos.value = calculated.pos;
+          corner.value = calculated.corner;
         });
       }
+      closed.value = false;
       setTimeout(() => {
         addHandlers();
       }, 1);
@@ -3708,42 +3603,31 @@ const _sfc_main$2W = defineComponent({
       document.removeEventListener("click", handleClick);
       window.removeEventListener("resize", handleResize);
     });
-    return {
-      style: useCssModule(),
-      mapClasses,
-      rootEl,
-      popupEl,
-      baseClass,
-      openClass,
-      exitingClass,
-      positionClass,
-      cornerClass,
-      closedClass,
-      handleClick,
-      handleKeydown
+    const style = useCssModule();
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        ref_key: "rootEl",
+        ref: rootEl,
+        class: normalizeClass(unref(mapClasses)(unref(style), baseClass, unref(openClass), unref(exitingClass), unref(positionClass), unref(cornerClass), unref(closedClass)))
+      }, [
+        createElementVNode("div", mergeProps(_ctx.$attrs, {
+          class: unref(mapClasses)(unref(style), "cdr-popup__content", __props.contentClass),
+          ref_key: "popupEl",
+          ref: popupEl
+        }), [
+          renderSlot(_ctx.$slots, "default")
+        ], 16),
+        createElementVNode("div", {
+          class: normalizeClass(unref(style)["cdr-popup__arrow"])
+        }, null, 2)
+      ], 2);
     };
   }
 });
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
-    ref: "rootEl",
-    class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.openClass, _ctx.exitingClass, _ctx.positionClass, _ctx.cornerClass, _ctx.closedClass))
-  }, [
-    createElementVNode("div", mergeProps(_ctx.$attrs, {
-      class: _ctx.mapClasses(_ctx.style, "cdr-popup__content", _ctx.contentClass),
-      ref: "popupEl"
-    }), [
-      renderSlot(_ctx.$slots, "default")
-    ], 16),
-    createElementVNode("div", {
-      class: normalizeClass(_ctx.style["cdr-popup__arrow"])
-    }, null, 2)
-  ], 2);
-}
 const cssModules$a = {
   "$style": style0$a
 };
-var CdrPopup = /* @__PURE__ */ _export_sfc(_sfc_main$2W, [["render", _sfc_render$6], ["__cssModules", cssModules$a]]);
+var CdrPopup = /* @__PURE__ */ _export_sfc(_sfc_main$2W, [["__cssModules", cssModules$a]]);
 var style0$9 = {
   "cdr-popup": "cdr-popup_13-0-0-vite-7",
   "cdr-popup--open": "cdr-popup--open_13-0-0-vite-7",
@@ -3809,13 +3693,7 @@ var style0$9 = {
   "cdr-popover__content": "cdr-popover__content_13-0-0-vite-7",
   "cdr-popover__close-button": "cdr-popover__close-button_13-0-0-vite-7"
 };
-const _sfc_main$2V = defineComponent({
-  name: "CdrPopover",
-  components: {
-    CdrPopup,
-    CdrButton,
-    IconXSm: _sfc_main$2X
-  },
+const _sfc_main$2V = {
   props: {
     position: {
       type: String,
@@ -3846,27 +3724,33 @@ const _sfc_main$2V = defineComponent({
       required: false
     }
   },
-  setup(props, ctx) {
+  emits: ["opened", "closed"],
+  setup(__props, { emit }) {
+    const props = __props;
+    const slots = useSlots();
     const isOpen = ref(false);
     let lastActive;
     const triggerEl = ref(null);
     const popupEl = ref(null);
-    const hasTrigger = ctx.slots.trigger;
-    const hasTitle = ctx.slots.title || props.label;
+    const hasTrigger = slots.trigger;
+    const hasTitle = slots.title || props.label;
     const openPopover = (e) => {
+      if (isOpen.value === true) {
+        return;
+      }
       const { activeElement } = document;
       lastActive = activeElement;
       isOpen.value = true;
-      ctx.emit("opened", e);
+      emit("opened", e);
       nextTick(() => {
-        const tabbables = tabbable_1(popupEl.value);
+        const tabbables = tabbable_1(popupEl.value.$el);
         if (tabbables[0])
           tabbables[0].focus();
       });
     };
     const closePopover = (e) => {
       isOpen.value = false;
-      ctx.emit("closed", e);
+      emit("closed", e);
       if (lastActive)
         lastActive.focus();
     };
@@ -3887,90 +3771,80 @@ const _sfc_main$2V = defineComponent({
         trigger.setAttribute("aria-haspopup", "dialog");
       }
     });
-    return {
-      style: useCssModule(),
-      mapClasses,
-      hasTrigger,
-      triggerEl,
-      hasTitle,
-      closePopover,
-      openPopover,
-      isOpen
+    const style = useCssModule();
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(unref(mapClasses)(unref(style), "cdr-popover--wrapper", unref(hasTrigger) && "cdr-popover--position"))
+      }, [
+        createElementVNode("div", {
+          ref_key: "triggerEl",
+          ref: triggerEl
+        }, [
+          renderSlot(_ctx.$slots, "trigger")
+        ], 512),
+        createVNode(CdrPopup, {
+          role: "dialog",
+          ref_key: "popupEl",
+          ref: popupEl,
+          onClosed: closePopover,
+          position: __props.position,
+          "auto-position": __props.autoPosition,
+          opened: isOpen.value,
+          "aria-expanded": `${isOpen.value}`,
+          id: __props.id,
+          "content-class": __props.contentClass
+        }, {
+          default: withCtx(() => [
+            createElementVNode("div", {
+              class: normalizeClass(unref(style)["cdr-popover__container"])
+            }, [
+              createElementVNode("div", {
+                class: normalizeClass(unref(style)["cdr-popover__content"])
+              }, [
+                unref(hasTitle) ? (openBlock(), createElementBlock("div", {
+                  key: 0,
+                  class: normalizeClass(unref(style)["cdr-popover__title"])
+                }, [
+                  renderSlot(_ctx.$slots, "title", {}, () => [
+                    createTextVNode(toDisplayString(__props.label), 1)
+                  ])
+                ], 2)) : createCommentVNode("", true),
+                renderSlot(_ctx.$slots, "default")
+              ], 2),
+              createVNode(CdrButton, {
+                class: normalizeClass(unref(style)["cdr-popover__close-button"]),
+                "icon-only": "",
+                onClick: closePopover,
+                "aria-label": "Close",
+                size: "small"
+              }, {
+                default: withCtx(() => [
+                  createVNode(_sfc_main$2X, {
+                    slot: "icon",
+                    "inherit-color": ""
+                  })
+                ]),
+                _: 1
+              }, 8, ["class"])
+            ], 2)
+          ]),
+          _: 3
+        }, 8, ["position", "auto-position", "opened", "aria-expanded", "id", "content-class"])
+      ], 2);
     };
   }
-});
-const _hoisted_1$2Q = { ref: "triggerEl" };
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_icon_x_sm = resolveComponent("icon-x-sm");
-  const _component_cdr_button = resolveComponent("cdr-button");
-  const _component_cdr_popup = resolveComponent("cdr-popup");
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.mapClasses(_ctx.style, "cdr-popover--wrapper", _ctx.hasTrigger && "cdr-popover--position"))
-  }, [
-    createElementVNode("div", _hoisted_1$2Q, [
-      renderSlot(_ctx.$slots, "trigger")
-    ], 512),
-    createVNode(_component_cdr_popup, {
-      role: "dialog",
-      ref: "popupEl",
-      onClosed: _ctx.closePopover,
-      position: _ctx.position,
-      "auto-position": _ctx.autoPosition,
-      opened: _ctx.isOpen,
-      "aria-expanded": `${_ctx.isOpen}`,
-      id: _ctx.id,
-      "content-class": _ctx.contentClass
-    }, {
-      default: withCtx(() => [
-        createElementVNode("div", {
-          class: normalizeClass(_ctx.style["cdr-popover__container"])
-        }, [
-          createElementVNode("div", {
-            class: normalizeClass(_ctx.style["cdr-popover__content"])
-          }, [
-            _ctx.hasTitle ? (openBlock(), createElementBlock("div", {
-              key: 0,
-              class: normalizeClass(_ctx.style["cdr-popover__title"])
-            }, [
-              renderSlot(_ctx.$slots, "title", {}, () => [
-                createTextVNode(toDisplayString(_ctx.label), 1)
-              ])
-            ], 2)) : createCommentVNode("", true),
-            renderSlot(_ctx.$slots, "default")
-          ], 2),
-          createVNode(_component_cdr_button, {
-            class: normalizeClass(_ctx.style["cdr-popover__close-button"]),
-            "icon-only": "",
-            onClick: _ctx.closePopover,
-            "aria-label": "Close",
-            size: "small"
-          }, {
-            default: withCtx(() => [
-              createVNode(_component_icon_x_sm, {
-                slot: "icon",
-                "inherit-color": ""
-              })
-            ]),
-            _: 1
-          }, 8, ["class", "onClick"])
-        ], 2)
-      ]),
-      _: 3
-    }, 8, ["onClosed", "position", "auto-position", "opened", "aria-expanded", "id", "content-class"])
-  ], 2);
-}
+};
 const cssModules$9 = {
   "$style": style0$9
 };
-var CdrPopover = /* @__PURE__ */ _export_sfc(_sfc_main$2V, [["render", _sfc_render$5], ["__cssModules", cssModules$9]]);
+var CdrPopover = /* @__PURE__ */ _export_sfc(_sfc_main$2V, [["__cssModules", cssModules$9]]);
 var style0$8 = {
   "cdr-text": "cdr-text_13-0-0-vite-7",
   "cdr-quote": "cdr-quote_13-0-0-vite-7",
   "cdr-quote__summary": "cdr-quote__summary_13-0-0-vite-7",
   "cdr-quote--pull": "cdr-quote--pull_13-0-0-vite-7"
 };
-const _sfc_main$2U = defineComponent({
-  name: "CdrQuote",
+const _sfc_main$2U = {
   props: {
     tag: {
       type: String,
@@ -3985,42 +3859,38 @@ const _sfc_main$2U = defineComponent({
     summary: String,
     citation: String
   },
-  setup(props) {
+  setup(__props) {
+    const props = __props;
     const baseClass = "cdr-quote";
+    const summaryClass = "cdr-quote__summary";
+    const citationClass = "cdr-quote__citation";
     const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      modifierClass,
-      summaryClass: "cdr-quote__summary",
-      citationClass: "cdr-quote__citation"
+    const style = useCssModule();
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(resolveDynamicComponent(__props.tag), {
+        class: normalizeClass(unref(mapClasses)(unref(style), baseClass, unref(modifierClass)))
+      }, {
+        default: withCtx(() => [
+          __props.summary ? (openBlock(), createElementBlock("p", {
+            key: 0,
+            class: normalizeClass(unref(style)[summaryClass])
+          }, toDisplayString(__props.summary), 3)) : createCommentVNode("", true),
+          renderSlot(_ctx.$slots, "default"),
+          __props.citation ? (openBlock(), createElementBlock("cite", {
+            key: 1,
+            class: normalizeClass(unref(style)[citationClass]),
+            tag: "cite"
+          }, toDisplayString(__props.citation), 3)) : createCommentVNode("", true)
+        ]),
+        _: 3
+      }, 8, ["class"]);
     };
   }
-});
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
-    class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.modifierClass))
-  }, {
-    default: withCtx(() => [
-      _ctx.summary ? (openBlock(), createElementBlock("p", {
-        key: 0,
-        class: normalizeClass(_ctx.style[_ctx.summaryClass])
-      }, toDisplayString(_ctx.summary), 3)) : createCommentVNode("", true),
-      renderSlot(_ctx.$slots, "default"),
-      _ctx.citation ? (openBlock(), createElementBlock("cite", {
-        key: 1,
-        class: normalizeClass(_ctx.style[_ctx.citationClass]),
-        tag: "cite"
-      }, toDisplayString(_ctx.citation), 3)) : createCommentVNode("", true)
-    ]),
-    _: 3
-  }, 8, ["class"]);
-}
+};
 const cssModules$8 = {
   "$style": style0$8
 };
-var CdrQuote = /* @__PURE__ */ _export_sfc(_sfc_main$2U, [["render", _sfc_render$4], ["__cssModules", cssModules$8]]);
+var CdrQuote = /* @__PURE__ */ _export_sfc(_sfc_main$2U, [["__cssModules", cssModules$8]]);
 var style0$7 = {
   "cdr-label-wrapper": "cdr-label-wrapper_13-0-0-vite-7",
   "cdr-label-wrapper__container": "cdr-label-wrapper__container_13-0-0-vite-7",
@@ -4048,12 +3918,12 @@ var style0$7 = {
   "cdr-radio": "cdr-radio_13-0-0-vite-7",
   "cdr-radio__input": "cdr-radio__input_13-0-0-vite-7"
 };
-const _sfc_main$2T = defineComponent({
-  name: "CdrRadio",
-  components: {
-    CdrLabelWrapper
-  },
+const _hoisted_1$2P = ["name", "value"];
+const __default__ = {
   inheritAttrs: false,
+  customOptions: {}
+};
+const _sfc_main$2T = /* @__PURE__ */ Object.assign(__default__, {
   props: {
     labelClass: String,
     inputClass: String,
@@ -4076,52 +3946,54 @@ const _sfc_main$2T = defineComponent({
       type: [String, Number, Boolean, Object, Array, Symbol, Function]
     }
   },
-  setup(props) {
+  emits: ["update:modelValue"],
+  setup(__props, { emit }) {
+    const props = __props;
     const baseClass = "cdr-radio";
-    const newValue = ref(props.modelValue);
-    watch(() => props.value, (val) => {
-      newValue.value = val;
+    ref(props.modelValue);
+    const radioModel = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(newValue) {
+        emit("update:modelValue", newValue);
+      }
     });
-    return {
-      style: useCssModule(),
-      baseClass,
-      newValue
+    const style = useCssModule();
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(CdrLabelWrapper, {
+        class: normalizeClass(unref(style)[baseClass]),
+        size: __props.size,
+        modifier: __props.modifier,
+        "label-class": __props.labelClass,
+        "content-class": __props.contentClass,
+        background: __props.background,
+        disabled: _ctx.$attrs.disabled
+      }, {
+        input: withCtx(() => [
+          withDirectives(createElementVNode("input", mergeProps({
+            class: [unref(style)["cdr-radio__input"], __props.inputClass],
+            type: "radio",
+            name: __props.name,
+            value: __props.customValue
+          }, _ctx.$attrs, {
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => isRef(radioModel) ? radioModel.value = $event : null)
+          }), null, 16, _hoisted_1$2P), [
+            [vModelRadio, unref(radioModel)]
+          ])
+        ]),
+        default: withCtx(() => [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        _: 3
+      }, 8, ["class", "size", "modifier", "label-class", "content-class", "background", "disabled"]);
     };
   }
 });
-const _hoisted_1$2P = ["name", "checked", "value"];
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_cdr_label_wrapper = resolveComponent("cdr-label-wrapper");
-  return openBlock(), createBlock(_component_cdr_label_wrapper, {
-    class: normalizeClass(_ctx.style[_ctx.baseClass]),
-    size: _ctx.size,
-    modifier: _ctx.modifier,
-    "label-class": _ctx.labelClass,
-    "content-class": _ctx.contentClass,
-    background: _ctx.background,
-    disabled: _ctx.$attrs.disabled
-  }, {
-    input: withCtx(() => [
-      createElementVNode("input", mergeProps({
-        class: [_ctx.style["cdr-radio__input"], _ctx.inputClass],
-        type: "radio",
-        name: _ctx.name,
-        checked: _ctx.newValue == _ctx.customValue,
-        value: _ctx.customValue
-      }, _ctx.$attrs, {
-        onChange: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.checked && _ctx.customValue, $event))
-      }), null, 16, _hoisted_1$2P)
-    ]),
-    default: withCtx(() => [
-      renderSlot(_ctx.$slots, "default")
-    ]),
-    _: 3
-  }, 8, ["class", "size", "modifier", "label-class", "content-class", "background", "disabled"]);
-}
 const cssModules$7 = {
   "$style": style0$7
 };
-var CdrRadio = /* @__PURE__ */ _export_sfc(_sfc_main$2T, [["render", _sfc_render$3], ["__cssModules", cssModules$7]]);
+var CdrRadio = /* @__PURE__ */ _export_sfc(_sfc_main$2T, [["__cssModules", cssModules$7]]);
 var style0$6 = {
   "cdr-rating__icon": "cdr-rating__icon_13-0-0-vite-7",
   "cdr-rating__count": "cdr-rating__count_13-0-0-vite-7",
@@ -4279,8 +4151,7 @@ var style0$5 = {
   "cdr-table--full-width@md": "cdr-table--full-width@md_13-0-0-vite-7",
   "cdr-table--full-width@lg": "cdr-table--full-width@lg_13-0-0-vite-7"
 };
-const _sfc_main$2R = defineComponent({
-  name: "CdrTable",
+const _sfc_main$2R = {
   props: {
     striped: {
       type: Boolean,
@@ -4308,7 +4179,8 @@ const _sfc_main$2R = defineComponent({
       validator: (value) => validateProp(value, ["small", "medium", "large"])
     }
   },
-  setup(props) {
+  setup(__props) {
+    const props = __props;
     const baseClass = "cdr-table";
     const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
     const stripedClass = computed(() => props.striped && `${baseClass}--striped`);
@@ -4316,34 +4188,24 @@ const _sfc_main$2R = defineComponent({
     const borderClass = computed(() => props.border && !props.striped && `${baseClass}--border`);
     const fullWidthClass = computed(() => props.fullWidth && buildBooleanClass(baseClass, props.fullWidth, "full-width"));
     const wrapperClass = computed(() => props.responsive && `${baseClass}--responsive`);
-    return {
-      style: useCssModule(),
-      mapClasses,
-      wrapperClass,
-      baseClass,
-      sizeClass,
-      stripedClass,
-      hoverClass,
-      borderClass,
-      fullWidthClass
+    const style = useCssModule();
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(unref(style)[unref(wrapperClass)])
+      }, [
+        createElementVNode("table", mergeProps(_ctx.$attrs, {
+          class: unref(mapClasses)(unref(style), baseClass, unref(sizeClass), unref(stripedClass), unref(hoverClass), unref(borderClass), unref(fullWidthClass))
+        }), [
+          renderSlot(_ctx.$slots, "default")
+        ], 16)
+      ], 2);
     };
   }
-});
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.style[_ctx.wrapperClass])
-  }, [
-    createElementVNode("table", mergeProps(_ctx.$attrs, {
-      class: _ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.sizeClass, _ctx.stripedClass, _ctx.hoverClass, _ctx.borderClass, _ctx.fullWidthClass)
-    }), [
-      renderSlot(_ctx.$slots, "default")
-    ], 16)
-  ], 2);
-}
+};
 const cssModules$5 = {
   "$style": style0$5
 };
-var CdrTable = /* @__PURE__ */ _export_sfc(_sfc_main$2R, [["render", _sfc_render$2], ["__cssModules", cssModules$5]]);
+var CdrTable = /* @__PURE__ */ _export_sfc(_sfc_main$2R, [["__cssModules", cssModules$5]]);
 var style0$4 = {
   "cdr-tab-panel": "cdr-tab-panel_13-0-0-vite-7",
   "cdr-tab-panel-enter-left": "cdr-tab-panel-enter-left_13-0-0-vite-7",
@@ -4559,7 +4421,7 @@ const _sfc_main$2P = defineComponent({
       }
       return -1;
     };
-    const handleClick = debounce(function handleClickCallback(tabClicked) {
+    const handleClick = debounce$1(function handleClickCallback(tabClicked) {
       const newIndex = tabs.value.findIndex((tab) => tabClicked.name === tab.name);
       changeTab(newIndex);
     }, 500, { leading: true, trailing: false });
@@ -4585,13 +4447,13 @@ const _sfc_main$2P = defineComponent({
       updateUnderline();
       cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
     };
-    const rightArrowNav = debounce(function handleRightArrow() {
+    const rightArrowNav = debounce$1(function handleRightArrow() {
       const nextTab = getNextTab(activeTabIndex.value + 1);
       if (nextTab !== -1) {
         changeTab(nextTab);
       }
     }, 300, { leading: true, trailing: false });
-    const leftArrowNav = debounce(function handleLeftArrow() {
+    const leftArrowNav = debounce$1(function handleLeftArrow() {
       const previousTab = getPreviousTab(activeTabIndex.value - 1);
       if (previousTab !== -1) {
         changeTab(previousTab);
@@ -4671,12 +4533,12 @@ const _sfc_main$2P = defineComponent({
           updateUnderline();
         }, 500);
       });
-      window.addEventListener("resize", debounce(() => {
+      window.addEventListener("resize", debounce$1(() => {
         headerWidth.value = getHeaderWidth();
         calculateOverflow();
         updateUnderline();
       }, 500));
-      cdrTabsHeaderEl.value.parentElement.addEventListener("scroll", debounce(() => {
+      cdrTabsHeaderEl.value.parentElement.addEventListener("scroll", debounce$1(() => {
         calculateOverflow();
         updateUnderline();
       }, 50));
@@ -5064,7 +4926,7 @@ const _sfc_main$2M = {
     const addHandlers = () => {
       var _a;
       const triggerElement = triggerEl.value.children[0];
-      popupElement = (_a = popupEl.value) == null ? void 0 : _a.rootEl;
+      popupElement = (_a = popupEl.value) == null ? void 0 : _a.$el;
       if (triggerElement) {
         triggerElement.addEventListener("mouseover", openTooltip);
         triggerElement.addEventListener("focus", openTooltip);

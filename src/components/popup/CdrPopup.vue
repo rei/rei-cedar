@@ -29,7 +29,7 @@ export default {
 </script>
 <script setup>
 import {
- useCssModule, defineEmits, computed, ref, watch, nextTick, onMounted, onUnmounted,
+ useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted,
 } from 'vue';
 import debounce from 'lodash/debounce';
 import propValidator from '../../utils/propValidator.js';

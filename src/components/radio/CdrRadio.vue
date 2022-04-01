@@ -5,7 +5,7 @@
   }
 </script>
 <script setup>
-import { useCssModule, computed, ref, defineEmits } from 'vue';
+import { useCssModule, computed, ref } from 'vue';
 
 import propValidator from '../../utils/propValidator.js';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';

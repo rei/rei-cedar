@@ -47,8 +47,6 @@ fs.outputFile('./dist/style/cedar-full.css', outFile, function(err) {
     console.log(chalk.green(`success! created cedar-full.css`));
   }
 });
-console.log(compiledOutFile);
-
 
 postcss()
   .use(atImport())

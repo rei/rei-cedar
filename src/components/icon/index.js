@@ -71,6 +71,7 @@ export { default as IconExperiencesHiking } from './comps/experiences-hiking.vue
 export { default as IconExperiencesOutdoorBasics } from './comps/experiences-outdoor-basics.vue';
 export { default as IconExperiencesPaddling } from './comps/experiences-paddling.vue';
 export { default as IconExperiencesRentals } from './comps/experiences-rentals.vue';
+export { default as IconExperiencesRunning } from './comps/experiences-running.vue';
 export { default as IconExperiencesSnowsports } from './comps/experiences-snowsports.vue';
 export { default as IconExperiencesTravel } from './comps/experiences-travel.vue';
 export { default as IconExternalLink } from './comps/external-link.vue';

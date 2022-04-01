@@ -45,6 +45,7 @@ export default defineConfig({
       'assetsdir': resolve(__dirname, 'src/assets'),
       'componentsdir': resolve(__dirname, 'src/components'),
       'mixinsdir': resolve(__dirname, 'src/mixins'),
+      '~': resolve(__dirname, 'node_modules')
     }
   },
   plugins: [vue()],
