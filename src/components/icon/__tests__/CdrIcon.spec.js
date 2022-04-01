@@ -1,6 +1,6 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrIcon from 'componentdir/icon/CdrIcon.vue';
-import IconCaretDown from 'componentdir/icon/comps/caret-down.vue'
+import CdrIcon from '../CdrIcon.vue';
+import IconCaretDown from '../comps/caret-down.vue'
 
 describe('CdrIcon', () => {
   test('renders correctly', () => {

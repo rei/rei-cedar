@@ -1,6 +1,6 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrTabs from 'componentdir/tabs/CdrTabs.vue';
-import CdrTabPanel from 'componentdir/tabs/CdrTabPanel.vue';
+import CdrTabs from '../CdrTabs.vue';
+import CdrTabPanel from '../CdrTabPanel.vue';
 import { h } from 'vue';
 
 // Tests use nextTick because of the nextTick in mounted hook of tabs

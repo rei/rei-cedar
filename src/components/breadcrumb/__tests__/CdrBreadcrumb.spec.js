@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrBreadcrumb from 'componentdir/breadcrumb/CdrBreadcrumb.vue';
+import CdrBreadcrumb from '../CdrBreadcrumb.vue';
 
 const itemsA = [
   {

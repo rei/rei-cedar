@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrRadio from 'componentdir/radio/CdrRadio.vue';
+import CdrRadio from '../CdrRadio.vue';
 
 describe('CdrRadio', () => {
   it('renders an input', () => {

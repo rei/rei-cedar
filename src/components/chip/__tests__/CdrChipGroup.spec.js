@@ -1,8 +1,8 @@
 import { h } from 'vue';
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 
-import CdrChipGroup from 'componentdir/chip/CdrChipGroup.vue';
-import CdrChip from 'componentdir/chip/CdrChip.vue';
+import CdrChipGroup from '../CdrChipGroup.vue';
+import CdrChip from '../CdrChip.vue';
 
 
   // const wrapper = mount(h(CdrAccordionGroup, {}, {default: () => [

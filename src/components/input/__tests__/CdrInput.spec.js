@@ -1,8 +1,8 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import sinon from 'sinon';
 import { h } from '@vue/runtime-core';
-import CdrInput from 'componentdir/input/CdrInput.vue';
-import CdrButton from 'componentdir/button/CdrButton.vue';
+import CdrInput from '../CdrInput.vue';
+import CdrButton from '../CdrButton.vue';
 
 describe('CdrInput', () => {
   it('renders correctly', () => {

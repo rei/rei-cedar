@@ -21,7 +21,7 @@ import Dev from './Dev.vue'; //eslint-disable-line
 //   render: (app) => app(Dev),
 // });
 
-import KitchenSink from 'srcdir/dev/KitchenSink';
+import KitchenSink from 'srcdir/dev/KitchenSink.vue';
 import { createApp } from 'vue';
 
 

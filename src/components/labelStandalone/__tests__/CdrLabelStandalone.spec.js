@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrLabelStandalone from 'componentdir/labelStandalone/CdrLabelStandalone.vue';
+import CdrLabelStandalone from '../CdrLabelStandalone.vue';
 
 describe('CdrFormLabelStandalone', () => {
   it('matches snapshot', () => {

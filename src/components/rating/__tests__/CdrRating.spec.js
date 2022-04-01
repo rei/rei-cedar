@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrRating from 'componentdir/rating/CdrRating.vue';
+import CdrRating from '../CdrRating.vue';
 
 describe('CdrRating', () => {
   test('renders correctly', () => {

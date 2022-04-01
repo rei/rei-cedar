@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrPopover from 'componentdir/popover/CdrPopover.vue';
+import CdrPopover from '../CdrPopover.vue';
 
 describe('CdrPopover', () => {
   it('matches snapshot', () => {

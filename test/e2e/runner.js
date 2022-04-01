@@ -6,9 +6,7 @@ const http = require('http');
 const handler = require('serve-handler');
 
 const server = http.createServer((request, response) => {
-  handler(request, response, {
-    public: './public'
-  });
+  handler(request, response);
 });
 
 

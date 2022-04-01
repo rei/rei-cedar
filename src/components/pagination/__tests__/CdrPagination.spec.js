@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrPagination from 'componentdir/pagination/CdrPagination.vue';
+import CdrPagination from '../CdrPagination.vue';
 
 function makePages(total, startingAt = 0) {
   const arg = 'page';

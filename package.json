@@ -5,7 +5,9 @@
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
   "private": false,
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -30,8 +32,8 @@
     "dev": "vite",
     "build": "vite build && npm run build:extractcss && npm run build:icons",
     "preview": "vite preview",
-    "unit": "BABEL_ENV=cjs jest",
-    "e2e": "cross-env NODE_ENV=test rollup -c rollup.config.dev.js && node test/e2e/runner.js",
+    "unit": "vitest",
+    "e2e": "node test/e2e/runner.js",
     "test": "npm-run-all unit e2e",
     "clean": "rm -rf dist",
     "lint": "# npm-run-all lint:js lint:styles",
@@ -56,8 +58,7 @@
     "autoprefixer": "^10.2.5",
     "backstopjs": "^5.3.0",
     "chalk": "^4.1.0",
-    "chromedriver": "^94.0.0",
-    "codecov": "^3.8.1",
+    "chromedriver": "^99.0.0",
     "concat": "^1.0.3",
     "cross-env": "^7.0.3",
     "cross-spawn": "^7.0.3",
@@ -71,10 +72,9 @@
     "eslint-plugin-vue": "^7.9.0",
     "fs-extra": "^10.0.0",
     "glob": "^7.1.6",
+    "happy-dom": "^2.55.0",
     "husky": "^4.3.8",
     "inquirer": "^8.1.0",
-    "jest": "^26.6.3",
-    "jest-css-modules-transform": "^4.2.0",
     "jsdom": "^16.5.3",
     "jsdom-global": "^3.0.2",
     "klaw-sync": "^6.0.0",
@@ -98,8 +98,8 @@
     "stylelint": "^13.13.1",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0",
-    "vite": "^2.8.6",
-    "vue-jest": "^5.0.0-alpha.10",
+    "vite": "^2.9.1",
+    "vitest": "^0.8.1",
     "vue-router": "^4.0.10"
   },
   "engines": {

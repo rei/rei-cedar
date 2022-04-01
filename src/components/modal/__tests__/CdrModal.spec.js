@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrModal from 'componentdir/modal/CdrModal.vue';
+import CdrModal from '../CdrModal.vue';
 
 describe('CdrModal.vue', () => {
   it('default open', async () => {

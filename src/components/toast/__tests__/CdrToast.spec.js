@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrToast from 'componentdir/toast/CdrToast.vue';
+import CdrToast from '../CdrToast.vue';
 
 describe('CdrToast', () => {
   let wrapper;

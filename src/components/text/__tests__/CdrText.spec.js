@@ -1,6 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import { h } from 'vue';
-import CdrText from 'componentdir/text/CdrText.vue';
+import CdrText from '../CdrText.vue';
 
 describe('CdrText', () => {
   test('renders correctly', () => {

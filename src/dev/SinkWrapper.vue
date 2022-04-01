@@ -19,7 +19,7 @@
 
 <script>
 
-// import { CdrRadio } from 'srcdir/index';
+// import { CdrRadio } from 'srcdir/lib';
 import upperFirst from 'lodash-es/upperFirst';
 
 export default {
