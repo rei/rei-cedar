@@ -139,25 +139,25 @@ describe('CdrBreadcrumb', () => {
   });
 
   // TODO: focus logic seems to not be working here?
-  xit('applies focus to first breadcrumb on ellipsis click', async (done) => {
-    const elem = document.createElement('div')
-    if (document.body) {
-      document.body.appendChild(elem)
-    }
-    const wrapper = mount(CdrBreadcrumb, {
-      propsData: {
-        id: 'bc-test',
-        items: itemsA
-      },
-      attachTo: elem, // enables focus testing
-    });
-    wrapper.find('.cdr-breadcrumb__ellipses').trigger('click');
-    await wrapper.vm.$nextTick();
-    return setTimeout(function() {
-      expect(document.activeElement.textContent).toBe(itemsA[0].item.name);
-      wrapper.destroy();
-      done();
-    }, 1500)
-  });
+  // xit('applies focus to first breadcrumb on ellipsis click', async (done) => {
+  //   const elem = document.createElement('div')
+  //   if (document.body) {
+  //     document.body.appendChild(elem)
+  //   }
+  //   const wrapper = mount(CdrBreadcrumb, {
+  //     propsData: {
+  //       id: 'bc-test',
+  //       items: itemsA
+  //     },
+  //     attachTo: elem, // enables focus testing
+  //   });
+  //   wrapper.find('.cdr-breadcrumb__ellipses').trigger('click');
+  //   await wrapper.vm.$nextTick();
+  //   return setTimeout(function() {
+  //     expect(document.activeElement.textContent).toBe(itemsA[0].item.name);
+  //     wrapper.destroy();
+  //     done();
+  //   }, 1500)
+  // });
 
 });

@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from 'vite'
-import { configDefaults } from 'vitest/config';
+//import { configDefaults } from 'vitest/config';
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
 const packageJson = require('./package.json');
@@ -33,11 +33,14 @@ export default defineConfig({
       }   
     },
   },
-  test: {
-    globals: true,
-    exclude: [...configDefaults.exclude, '**/test/e2e', '**/templates/__tests__'],
-    environment: 'happy-dom'
-  },
+  // test: {
+  //   globals: true,
+  //   exclude: [...configDefaults.exclude, '**/test/e2e', '**/templates/__tests__'],
+  //   environment: 'jsdom',
+  //   coverage: {
+  //     reporter: ['text', 'json', 'html'],
+  //   },
+  // },
   resolve: {
     alias: {
       'srcdir': resolve(__dirname, 'src'),

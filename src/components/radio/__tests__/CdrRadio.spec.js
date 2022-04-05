@@ -112,16 +112,16 @@ describe('CdrRadio', () => {
 // For example, a consumer could bind ID/Key strings to the radio and use them to look up the associated object in their code rather than binding arbitrary objects
 // <cdr-radio v-model="foo">
 // const options = {foo: {test: 'b', arr: [1,2,3]}}, etc.
-  xit('evaluates complex group checked state correctly', () => {
-    const wrapper = mount(CdrRadio, {
-      propsData: {
-        customValue: {test: 'B', arr: [1,2,3]},
-        name: 'testName',
-        modelValue: {test: 'B', arr: [1,2,3]},
-      },
-    });
-    expect(wrapper.find('input').element.checked).toBe(true);
-  });
+  // xit('evaluates complex group checked state correctly', () => {
+  //   const wrapper = mount(CdrRadio, {
+  //     propsData: {
+  //       customValue: {test: 'B', arr: [1,2,3]},
+  //       name: 'testName',
+  //       modelValue: {test: 'B', arr: [1,2,3]},
+  //     },
+  //   });
+  //   expect(wrapper.find('input').element.checked).toBe(true);
+  // });
 
   it('emits a change event with correct value', () => {
     const wrapper = mount(CdrRadio, {

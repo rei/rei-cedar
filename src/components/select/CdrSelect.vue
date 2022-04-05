@@ -32,7 +32,10 @@ const props = defineProps({
   /**
    * Removes the label element but sets the select `aria-label` to `label` text for a11y.
   */
-  hideLabel: Boolean,
+  hideLabel: {
+    type: Boolean,
+    default: false,
+  },
   /**
    * Adds an option that is disabled and selected by default to serve as a `placeholder` for the select.
   */
@@ -80,7 +83,6 @@ const uniqueId = props.id ? props.id : uid();
 
 const multipleClass = computed(() => props.multiple && 'cdr-select--multiple');
 const promptClass = computed(() => !props.modelValue && 'cdr-select__prompt');
-const multilineClass = computed(() => props.rows > 1 && 'cdr-select--multiline');
 const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
 const errorClass = computed(() => props.error && 'cdr-select--error');
 const backgroundClass = computed(() => `cdr-select--${props.background}`);

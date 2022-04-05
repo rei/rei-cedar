@@ -13,32 +13,32 @@ describe('CdrTabs', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    xit('mounts with cdr-tab-panel children', async (done) => {
+    // xit('mounts with cdr-tab-panel children', async (done) => {
 
-      const wrapper = mount(h(CdrTabs, { activeTab: 1 }, {default: () => [
-        h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
-        h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', disabled: true, 'aria-labelledby': 'tab-2'}),
-      ]}));
+    //   const wrapper = mount(h(CdrTabs, { activeTab: 1 }, {default: () => [
+    //     h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
+    //     h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', disabled: true, 'aria-labelledby': 'tab-2'}),
+    //   ]}));
 
-      const spyGetHeaderWidth = spyOn(wrapper.vm, 'getHeaderWidth');
-      const spyCalculateOverflow = spyOn(wrapper.vm, 'calculateOverflow');
-      const spyUpdateUnderline = spyOn(wrapper.vm, 'updateUnderline');
+    //   const spyGetHeaderWidth = vi.spyOn(wrapper.vm, 'getHeaderWidth');
+    //   const spyCalculateOverflow = vi.spyOn(wrapper.vm, 'calculateOverflow');
+    //   const spyUpdateUnderline = vi.spyOn(wrapper.vm, 'updateUnderline');
 
-      await wrapper.vm.$nextTick();
+    //   await wrapper.vm.$nextTick();
 
-      // expect(wrapper.element).toMatchSnapshot();
+    //   // expect(wrapper.element).toMatchSnapshot();
 
-      expect(wrapper.vm.tabs.length).toBe(2);
-      expect(wrapper.findAll('button').length).toBe(2);
-      expect(wrapper.vm.activeTabIndex).toBe(0);
-      setTimeout(() => { // for debounce
-        expect(spyGetHeaderWidth).toHaveBeenCalled();
-        expect(spyCalculateOverflow).toHaveBeenCalled();
-        expect(spyUpdateUnderline).toHaveBeenCalled();
-        // wrapper.destroy();
-        done();
-      }, 600);
-    });
+    //   expect(wrapper.vm.tabs.length).toBe(2);
+    //   expect(wrapper.findAll('button').length).toBe(2);
+    //   expect(wrapper.vm.activeTabIndex).toBe(0);
+    //   setTimeout(() => { // for debounce
+    //     expect(spyGetHeaderWidth).toHaveBeenCalled();
+    //     expect(spyCalculateOverflow).toHaveBeenCalled();
+    //     expect(spyUpdateUnderline).toHaveBeenCalled();
+    //     // wrapper.destroy();
+    //     done();
+    //   }, 600);
+    // });
   });
 
   describe('event listeners', () => {
@@ -53,8 +53,8 @@ describe('CdrTabs', () => {
         h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
       ]}), { attachTo: elem });
 
-      const spyCalculateOverflow = spyOn(wrapper.vm, 'calculateOverflow');
-      const spyUpdateUnderline = spyOn(wrapper.vm, 'updateUnderline');
+      const spyCalculateOverflow = vi.spyOn(wrapper.vm, 'calculateOverflow');
+      const spyUpdateUnderline = vi.spyOn(wrapper.vm, 'updateUnderline');
 
       wrapper.find('.cdr-tabs__header-container').element.dispatchEvent(new Event('scroll'));
       await wrapper.vm.$nextTick();
@@ -78,9 +78,9 @@ describe('CdrTabs', () => {
         h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
       ]}), { attachTo: elem });
 
-      const spyCalculateOverflow = spyOn(wrapper.vm, 'calculateOverflow');
-      const spyUpdateUnderline = spyOn(wrapper.vm, 'updateUnderline');
-      const spyGetHeaderWidth = spyOn(wrapper.vm, 'getHeaderWidth');
+      const spyCalculateOverflow = vi.spyOn(wrapper.vm, 'calculateOverflow');
+      const spyUpdateUnderline = vi.spyOn(wrapper.vm, 'updateUnderline');
+      const spyGetHeaderWidth = vi.spyOn(wrapper.vm, 'getHeaderWidth');
       window.dispatchEvent(new Event('resize'));
       await wrapper.vm.$nextTick();
 
@@ -152,37 +152,37 @@ describe('CdrTabs', () => {
     expect(wrapper.vm.activeTabIndex).toBe(1);
   });
 
-  xit('handles left arrow key', async () => {
-    const wrapper = mount(h(CdrTabs, {}, {default: () => [
-      h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
-      h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
-    ]}));
+  // xit('handles left arrow key', async () => {
+  //   const wrapper = mount(h(CdrTabs, {}, {default: () => [
+  //     h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
+  //     h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
+  //   ]}));
 
-    // wrapper.setData({ activeTabIndex: 1 });
-    await wrapper.vm.$nextTick();
-    // Trigger left arrow keyup event
-    wrapper.findAll('div')[1].trigger('keyup.left');
-    await wrapper.vm.$nextTick();
-    expect(wrapper.vm.activeTabIndex).toBe(0);
-  });
+  //   // wrapper.setData({ activeTabIndex: 1 });
+  //   await wrapper.vm.$nextTick();
+  //   // Trigger left arrow keyup event
+  //   wrapper.findAll('div')[1].trigger('keyup.left');
+  //   await wrapper.vm.$nextTick();
+  //   expect(wrapper.vm.activeTabIndex).toBe(0);
+  // });
 
   describe('overflow classes', () => {
-    xit('adds gradient-left class', async () => {
-      const elem = document.createElement('div')
-      if (document.body) {
-        document.body.appendChild(elem)
-      }
-      const wrapper = mount(h(CdrTabs, {}, {default: () => [
-        h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
-        h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
-      ]}), { attachTo: elem });
+    // xit('adds gradient-left class', async () => {
+    //   const elem = document.createElement('div')
+    //   if (document.body) {
+    //     document.body.appendChild(elem)
+    //   }
+    //   const wrapper = mount(h(CdrTabs, {}, {default: () => [
+    //     h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
+    //     h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
+    //   ]}), { attachTo: elem });
 
-      await wrapper.vm.$nextTick();
-      // wrapper.setData({ overflowLeft: true });
-      await wrapper.vm.$nextTick();
-      expect(wrapper.find('.cdr-tabs__gradient--left.cdr-tabs__gradient--active').exists()).toBe(true);
-      // wrapper.destroy();
-    });
+    //   await wrapper.vm.$nextTick();
+    //   // wrapper.setData({ overflowLeft: true });
+    //   await wrapper.vm.$nextTick();
+    //   expect(wrapper.find('.cdr-tabs__gradient--left.cdr-tabs__gradient--active').exists()).toBe(true);
+    //   // wrapper.destroy();
+    // });
 
     it('adds gradient-right class', async () => {
       const elem = document.createElement('div')
@@ -220,40 +220,40 @@ describe('CdrTabs', () => {
     expect(wrapper.find('.cdr-tabs__header').attributes()['role']).toBe('tablist');
   });
 
-  xit('handleDownArrowNav', async () => {
-    const elem = document.createElement('div')
-    if (document.body) {
-      document.body.appendChild(elem)
-    }
-    const wrapper = mount(h(CdrTabs, {}, {default: () => [
-      h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
-      h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
-    ]}), { attachTo: elem });
+  // xit('handleDownArrowNav', async () => {
+  //   const elem = document.createElement('div')
+  //   if (document.body) {
+  //     document.body.appendChild(elem)
+  //   }
+  //   const wrapper = mount(h(CdrTabs, {}, {default: () => [
+  //     h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
+  //     h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
+  //   ]}), { attachTo: elem });
 
-    await wrapper.vm.$nextTick();
-    wrapper.vm.handleDownArrowNav();
-    await wrapper.vm.$nextTick();
-    // WHAT IN THE HECK
-    expect(wrapper.vm.$el.lastElementChild.children[wrapper.vm.activeTabIndex]).toBe(document.activeElement);
-    // wrapper.destroy();
-  });
+  //   await wrapper.vm.$nextTick();
+  //   wrapper.vm.handleDownArrowNav();
+  //   await wrapper.vm.$nextTick();
+  //   // WHAT IN THE HECK
+  //   expect(wrapper.vm.$el.lastElementChild.children[wrapper.vm.activeTabIndex]).toBe(document.activeElement);
+  //   // wrapper.destroy();
+  // });
 
-  xit('setFocusToActiveTabHeader', async () => {
-    const elem = document.createElement('div')
-    if (document.body) {
-      document.body.appendChild(elem)
-    }
-    const wrapper = mount(h(CdrTabs, {}, {default: () => [
-      h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
-      h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
-    ]}), { attachTo: elem });
+  // xit('setFocusToActiveTabHeader', async () => {
+  //   const elem = document.createElement('div')
+  //   if (document.body) {
+  //     document.body.appendChild(elem)
+  //   }
+  //   const wrapper = mount(h(CdrTabs, {}, {default: () => [
+  //     h(CdrTabPanel, {id: 'tab-panel-1', name: 'tab1', 'aria-labelledby': 'tab-1'}),
+  //     h(CdrTabPanel, {id: 'tab-panel-2', name: 'tab2', 'aria-labelledby': 'tab-2'}),
+  //   ]}), { attachTo: elem });
 
-    await wrapper.vm.$nextTick();
-    wrapper.vm.setFocusToActiveTabHeader();
-    await wrapper.vm.$nextTick();
-    expect(wrapper.find('.cdr-tabs__header').children[wrapper.vm.activeTabIndex]).toBe(document.activeElement);
-    // wrapper.destroy();
-  });
+  //   await wrapper.vm.$nextTick();
+  //   wrapper.vm.setFocusToActiveTabHeader();
+  //   await wrapper.vm.$nextTick();
+  //   expect(wrapper.find('.cdr-tabs__header').children[wrapper.vm.activeTabIndex]).toBe(document.activeElement);
+  //   // wrapper.destroy();
+  // });
 
   it('scrollbar is hidden properly', async () => {
     const elem = document.createElement('div')
