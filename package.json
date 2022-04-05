@@ -32,7 +32,7 @@
     "dev": "vite",
     "build": "vite build && npm run build:extractcss && npm run build:icons",
     "preview": "vite preview",
-    "unit": "vitest",
+    "unit": "vitest run",
     "coverage": "vitest run --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm-run-all unit e2e",
