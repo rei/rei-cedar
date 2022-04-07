@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3W, _hoisted_3$O))
     }
 
-    script$4i.render = render$Z;
+    script$4i.render = render$Y;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -13228,147 +13228,155 @@
 
     script$4d.__file = "src/components/banner/CdrBanner.vue";
 
-    var script$4c = defineComponent({
-      name: 'CdrBreadcrumb',
-      props: {
-        items: {
-          type: Array,
-          default: () => [],
-          validator: (value) => {
-            if (value.length && value.length > 0) {
-              for (let i = 0; i < value.length; i += 1) {
-                if (!(typeof value[i].item === 'object')) {
-                  console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
-                  return false;
-                }
-                if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
-                  console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
-                  return false;
-                }
-              }
-            }
-            return true;
-          },
-        },
-        /**
-         * Flag to track container width threshold exceeded
-         */
-        truncationEnabled: {
-          type: Boolean,
-          default: true,
-        },
-        id: {
-          type: String,
-          required: true,
-        },
-      },
-      setup(props) {
-        const truncate = ref(props.truncationEnabled && props.items.length > 2);
-
-        watch(() => props.items, () => {
-          truncate.value = props.truncationEnabled && props.items.length > 2;
-        });
-
-        const itemListEl = ref(null);
-        const handleEllipsisClick = () => {
-          truncate.value = false;
-          setTimeout(() => {
-            // TODO: ref does not seem to update children here?
-            console.log(itemListEl.value.querySelector('.cdr-breadcrumb__item'));
-            itemListEl.value.querySelector('.cdr-breadcrumb__item').focus();
-          }, 1000);
-        };
-        const ellipsisLabel = computed(() => {
-          const s = (props.items.length - 2) > 1 ? 's' : '';
-          return `show ${props.items.length - 2} more navigation level${s}`;
-        });
-
-        return {
-          style: useCssModule(),
-          truncate,
-          handleEllipsisClick,
-          itemListEl,
-          ellipsisLabel,
-        };
-      },
-    });
+    /**
+     * Quickly generates a unique id string.
+     */
+    function uid() {
+      const uid = Math.floor((1 + Math.random()) * 0x1000000).toString(16).substring(1);
+      return "cdr-id-".concat(uid);
+    }
 
     const _hoisted_1$3T = ["id"];
     const _hoisted_2$W = ["id"];
     const _hoisted_3$M = ["aria-controls", "aria-label"];
     const _hoisted_4$J = ["href", "onClick"];
 
-    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+
+    var script$4c = {
+      props: {
+      items: {
+        type: Array,
+        default: () => [],
+        validator: (value) => {
+          if (value.length && value.length > 0) {
+            for (let i = 0; i < value.length; i += 1) {
+              if (!(typeof value[i].item === 'object')) {
+                console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
+                return false;
+              }
+              if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
+                console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
+                return false;
+              }
+            }
+          }
+          return true;
+        },
+      },
+      /**
+       * Flag to track container width threshold exceeded
+       */
+      truncationEnabled: {
+        type: Boolean,
+        default: true,
+      },
+      id: {
+        type: String,
+      },
+    },
+      setup(__props) {
+
+    const props = __props;
+
+          // <!-- TODO: remove scoped slot vue-router-ish support? just use emit/prevent pattern? -->
+
+
+    const uniqueId = props.id ? props.id : uid();
+    const truncate = ref(props.truncationEnabled && props.items.length > 2);
+    const itemListEl = ref(null);
+    const ellipsisLabel = computed(() => {
+      const s = (props.items.length - 2) > 1 ? 's' : '';
+      return `show ${props.items.length - 2} more navigation level${s}`;
+    });
+
+    const handleEllipsisClick = () => {
+      truncate.value = false;
+      nextTick(() => {
+        itemListEl.value.querySelector('li a').focus();
+      });
+    };
+
+    const style = useCssModule();
+
+    watch(() => props.items, () => {
+      truncate.value = props.truncationEnabled && props.items.length > 2;
+    });
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("nav", {
-        class: normalizeClass(_ctx.style['cdr-breadcrumb']),
-        id: _ctx.id,
+        class: normalizeClass(unref(style)['cdr-breadcrumb']),
+        id: unref(uniqueId),
         "aria-label": "breadcrumbs"
       }, [
         createBaseVNode("ol", {
-          id: `${_ctx.id}List`,
-          class: normalizeClass(_ctx.style['cdr-breadcrumb__list']),
-          ref: "itemListEl"
+          id: `${unref(uniqueId)}List`,
+          class: normalizeClass(unref(style)['cdr-breadcrumb__list']),
+          ref_key: "itemListEl",
+          ref: itemListEl
         }, [
-          (_ctx.truncate)
+          (truncate.value)
             ? (openBlock(), createElementBlock("li", {
                 key: 0,
-                class: normalizeClass(_ctx.style['cdr-breadcrumb__item'])
+                class: normalizeClass(unref(style)['cdr-breadcrumb__item'])
               }, [
                 createBaseVNode("button", {
-                  onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.handleEllipsisClick && _ctx.handleEllipsisClick(...args))),
+                  onClick: handleEllipsisClick,
                   "aria-expanded": "false",
-                  class: normalizeClass(_ctx.style['cdr-breadcrumb__ellipses']),
-                  "aria-controls": `${_ctx.id}List`,
-                  "aria-label": _ctx.ellipsisLabel
+                  class: normalizeClass(unref(style)['cdr-breadcrumb__ellipses']),
+                  "aria-controls": `${unref(uniqueId)}List`,
+                  "aria-label": unref(ellipsisLabel)
                 }, [
                   createBaseVNode("span", {
-                    class: normalizeClass(_ctx.style['cdr-breadcrumb__ellipses-icon']),
+                    class: normalizeClass(unref(style)['cdr-breadcrumb__ellipses-icon']),
                     "aria-hidden": "true"
                   }, " . . . ", 2 /* CLASS */)
                 ], 10 /* CLASS, PROPS */, _hoisted_3$M),
                 createBaseVNode("span", {
-                  class: normalizeClass(_ctx.style['cdr-breadcrumb__delimiter']),
+                  class: normalizeClass(unref(style)['cdr-breadcrumb__delimiter']),
                   "aria-hidden": "true"
                 }, " / ", 2 /* CLASS */)
               ], 2 /* CLASS */))
             : createCommentVNode("v-if", true),
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (breadcrumb, index) => {
+          (openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (breadcrumb, index) => {
             return withDirectives((openBlock(), createElementBlock("li", {
-              class: normalizeClass(_ctx.style['cdr-breadcrumb__item']),
+              class: normalizeClass(unref(style)['cdr-breadcrumb__item']),
               key: breadcrumb.item.id || breadcrumb.item.name.replace(/ /g, '-').toLowerCase()
             }, [
               renderSlot(_ctx.$slots, "link", {
-                class: normalizeClass(_ctx.style['cdr-breadcrumb__link']),
+                class: normalizeClass(unref(style)['cdr-breadcrumb__link']),
                 href: breadcrumb.item.url,
                 content: breadcrumb.item.name
               }, () => [
                 createBaseVNode("a", {
-                  class: normalizeClass(_ctx.style['cdr-breadcrumb__link']),
+                  class: normalizeClass(unref(style)['cdr-breadcrumb__link']),
                   href: breadcrumb.item.url,
                   onClick: $event => (_ctx.$emit('navigate', breadcrumb, _ctx.e))
                 }, toDisplayString(breadcrumb.item.name), 11 /* TEXT, CLASS, PROPS */, _hoisted_4$J)
               ]),
-              (index < _ctx.items.length - 1)
+              (index < __props.items.length - 1)
                 ? (openBlock(), createElementBlock("span", {
                     key: 0,
-                    class: normalizeClass(_ctx.style['cdr-breadcrumb__delimiter']),
+                    class: normalizeClass(unref(style)['cdr-breadcrumb__delimiter']),
                     "aria-hidden": "true"
                   }, " / ", 2 /* CLASS */))
                 : createCommentVNode("v-if", true)
             ], 2 /* CLASS */)), [
-              [vShow, !_ctx.truncate || (index >= _ctx.items.length - 2)]
+              [vShow, !truncate.value || (index >= __props.items.length - 2)]
             ])
           }), 128 /* KEYED_FRAGMENT */))
         ], 10 /* CLASS, PROPS */, _hoisted_2$W)
       ], 10 /* CLASS, PROPS */, _hoisted_1$3T))
     }
+    }
+
+    };
 
     var style0$u = {"cdr-breadcrumb":"cdr-breadcrumb_13-0-0-alpha-3","cdr-breadcrumb__list":"cdr-breadcrumb__list_13-0-0-alpha-3","cdr-breadcrumb__item":"cdr-breadcrumb__item_13-0-0-alpha-3","cdr-breadcrumb__link":"cdr-breadcrumb__link_13-0-0-alpha-3","cdr-breadcrumb__delimiter":"cdr-breadcrumb__delimiter_13-0-0-alpha-3","cdr-breadcrumb__ellipses":"cdr-breadcrumb__ellipses_13-0-0-alpha-3","cdr-breadcrumb__ellipses-icon":"cdr-breadcrumb__ellipses-icon_13-0-0-alpha-3"};
 
     const cssModules$u = script$4c.__cssModules = {};
     cssModules$u["$style"] = style0$u;
 
-    script$4c.render = render$Y;
+
     script$4c.__file = "src/components/breadcrumb/CdrBreadcrumb.vue";
 
     var script$4b = {
@@ -14053,14 +14061,6 @@
 
 
     script$42.__file = "src/components/formError/CdrFormError.vue";
-
-    /**
-     * Quickly generates a unique id string.
-     */
-    function uid() {
-      const uid = Math.floor((1 + Math.random()) * 0x1000000).toString(16).substring(1);
-      return "cdr-id-".concat(uid);
-    }
 
     const _hoisted_1$3Q = ["disabled", "aria-invalid", "aria-errormessage"];
     const _hoisted_2$V = {
@@ -23887,7 +23887,7 @@
     const _hoisted_6$C = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
     const _hoisted_7$z = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
     const _hoisted_8$y = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
-    const _hoisted_9$x = { class: "accordion-group" };
+    const _hoisted_9$w = { class: "accordion-group" };
     const _hoisted_10$t = /*#__PURE__*/createBaseVNode("h3", null, " Default ", -1 /* HOISTED */);
     const _hoisted_11$s = /*#__PURE__*/createTextVNode(" A short label ");
     const _hoisted_12$r = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
@@ -23973,7 +23973,7 @@
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["opened"]),
-        createBaseVNode("div", _hoisted_9$x, [
+        createBaseVNode("div", _hoisted_9$w, [
           _hoisted_10$t,
           createVNode(_component_cdr_accordion_group, { "data-backstop": "accordion-default" }, {
             default: withCtx(() => [
@@ -24255,7 +24255,7 @@
     const _hoisted_6$B = /*#__PURE__*/createTextVNode(" Information banner ");
     const _hoisted_7$y = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_8$x = /*#__PURE__*/createTextVNode(" Warning banner ");
-    const _hoisted_9$w = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_9$v = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_10$s = /*#__PURE__*/createTextVNode(" Error banner ");
     const _hoisted_11$r = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_12$q = /*#__PURE__*/createTextVNode(" Success banner ");
@@ -24321,7 +24321,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_9$w,
+        _hoisted_9$v,
         createVNode(_component_cdr_banner, { type: "error" }, {
           "icon-left": withCtx(() => [
             createVNode(_component_icon_error_fill, { "inherit-color": "" })
@@ -24533,11 +24533,7 @@
     const _hoisted_5$D = /*#__PURE__*/createBaseVNode("h3", null, " REI.com's Longest Breadcrumb ", -1 /* HOISTED */);
     const _hoisted_6$A = /*#__PURE__*/createBaseVNode("h3", null, " Breadcrumb handle navigate events ", -1 /* HOISTED */);
     const _hoisted_7$x = /*#__PURE__*/createBaseVNode("h3", null, " Scoped Slot ", -1 /* HOISTED */);
-    const _hoisted_8$w = {
-      slot: "link",
-      "slot-scope": "link"
-    };
-    const _hoisted_9$v = ["href"];
+    const _hoisted_8$w = ["href"];
 
     function render$S(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_breadcrumb = resolveComponent("cdr-breadcrumb");
@@ -24565,13 +24561,11 @@
         }, null, 8 /* PROPS */, ["items", "onNavigate"]),
         _hoisted_7$x,
         createVNode(_component_cdr_breadcrumb, { items: $data.reiExampleBreadcrumbItems }, {
-          default: withCtx(() => [
-            createBaseVNode("template", _hoisted_8$w, [
-              createBaseVNode("a", {
-                class: normalizeClass(_ctx.link.class),
-                href: _ctx.link.href
-              }, toDisplayString(_ctx.link.content), 11 /* TEXT, CLASS, PROPS */, _hoisted_9$v)
-            ])
+          link: withCtx((link) => [
+            createBaseVNode("a", {
+              class: normalizeClass(link.class),
+              href: link.href
+            }, toDisplayString(link.content), 11 /* TEXT, CLASS, PROPS */, _hoisted_8$w)
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["items"])
