@@ -3,8 +3,8 @@
 import { useCssModule, computed, ref, watch, nextTick, onMounted } from 'vue';
 import mapClasses from '../../utils/mapClasses.js';
 import propValidator from '../../utils/propValidator.js';
-import IconCaretLeft from '../icon/comps/caret-left.js';
-import IconCaretRight from '../icon/comps/caret-right.js';
+import IconCaretLeft from '../icon/comps/caret-left.vue';
+import IconCaretRight from '../icon/comps/caret-right.vue';
 import CdrSelect from '../select/CdrSelect.vue';
 import uid from '../../utils/uid.js';
 
