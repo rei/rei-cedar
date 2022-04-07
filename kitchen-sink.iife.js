@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3W, _hoisted_3$O))
     }
 
-    script$4i.render = render$Y;
+    script$4i.render = render$X;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -21643,18 +21643,29 @@
 
     script$15.__file = "src/components/select/CdrSelect.vue";
 
-    var script$14 = defineComponent({
-      name: 'CdrPagination',
-      components: {
-        IconCaretLeft: script$3z,
-        IconCaretRight: script$3y,
-        CdrSelect: script$15,
-      },
+    const _hoisted_1$W = ["aria-label"];
+    const _hoisted_2$P = { key: 0 };
+    const _hoisted_3$I = /*#__PURE__*/createTextVNode(" Prev ");
+    const _hoisted_4$H = {
+      key: 1,
+      "aria-hidden": "true"
+    };
+    const _hoisted_5$G = /*#__PURE__*/createTextVNode(" Prev ");
+    const _hoisted_6$D = ["value"];
+    const _hoisted_7$A = { key: 2 };
+    const _hoisted_8$z = /*#__PURE__*/createTextVNode(" Next ");
+    const _hoisted_9$x = {
+      key: 3,
+      "aria-hidden": "true"
+    };
+    const _hoisted_10$u = /*#__PURE__*/createTextVNode(" Next ");
+
+
+    var script$14 = {
       props: {
         // NOTE pagination now requires an ID
         id: {
           type: String,
-          required: true,
         },
         /**
          * Total number of pages. Sometimes the total number of pages is different than total page data
@@ -21703,243 +21714,225 @@
           type: Number,
         },
       },
-      setup(props, ctx) {
-        const currentIdx = ref(0);
+      emits: ['update:modelValue', 'navigate'],
+      setup(__props, { emit }) {
 
-        const innerValue = computed({
-          get: () => props.modelValue,
-          set: val => {
-            setCurrentIdx(val);
-            ctx.emit('update:modelValue', val);
-          }
-        });
+    const props = __props;
 
-        const setCurrentIdx = (page) => {
-          currentIdx.value = props.pages.map((x) => x.page).indexOf(page);
-        };
 
-        const navigate = (pageNum, e) => {
-          // TODO: provide option to just emit without navigating to support vue-router?
-          // Dont do anything if clicking the current active page
-          if (pageNum === innerValue.value) {
-            e.preventDefault();
-            return;
-          }
-          innerValue.value = pageNum;
-          ctx.emit('navigate', pageNum, currentUrl.value, e);
+      
+      const uniqueId = props.id ? props.id : uid();
+      const currentIdx = ref(0);
+      const linkRefs = ref([]);
+      const innerValue = computed({
+        get: () => props.modelValue,
+        set: val => {
+          setCurrentIdx(val);
+          emit('update:modelValue', val);
+        }
+      });
 
-          // TODO: is this still necessary?
-          nextTick(() => {
-            // Done in a nextTick() to ensure rendering complete
-            try {
-              // Emulate native link click page reloading behaviour by blurring the
-              // paginator and returning focus to the document
-              const target = e.currentTarget || e.target;
-              target.blur();
-            } catch (err) {
-              // eslint-disable-next-line no-console
-              console.error(err);
-            }
-          });
-        };
-        const select = (page, e) => {
+      const setCurrentIdx = (page) => {
+        currentIdx.value = props.pages.map((x) => x.page).indexOf(page);
+      };
+
+      const navigate = (pageNum, e) => {
+        // TODO: provide option to just emit without navigating to support vue-router?
+        // Dont do anything if clicking the current active page
+        const paginationLinkIsVisible = e.target.offsetWidth > 0 && e.target.offsetHeight > 0;
+        if (pageNum === innerValue.value && paginationLinkIsVisible) {
           e.preventDefault();
-          console.log('IMPLEMENT ME!', page);
-          // TODO: add page links to refs array? better way to do this???
-          // $refs[`page-link-${page}-${componentID}`].click();
-        };
-
-        const currentUrl = computed(() => props.pages[currentIdx.value].url);
-        const ariaLabel = computed(() => props.forLabel || 'Pagination');
-
-        const prevPageData = computed(() => props.pages[currentIdx.value - 1]);
-        const nextPageData = computed(() => props.pages[currentIdx.value + 1]);
-
-
-        const paginationData = computed(() => {
-          const total = props.pages.length;
-          const current = innerValue.value;
-          const delta = 1;
-          let range = [];
-          let over5 = true;
-          let over5remain = true;
-
-          if (total <= 7) {
-            // all pages
-            return props.pages;
+          return;
+        }
+        innerValue.value = pageNum;
+        emit('navigate', pageNum, currentUrl.value, e);
+        // TODO: is this still necessary?
+        nextTick(() => {
+          // Done in a nextTick() to ensure rendering complete
+          try {
+            // Emulate native link click page reloading behaviour by blurring the
+            // paginator and returning focus to the document
+            const target = e.currentTarget || e.target;
+            target.blur();
+          } catch (err) {
+            // eslint-disable-next-line no-console
+            console.error(err);
           }
-
-          if (current < 5) {
-          // if first 5 pages
-            over5 = false;
-            // [2-5]
-            range = props.pages.slice(1, 5);
-          } else if (total - current < 4) {
-          // if last 5 pages
-            over5remain = false;
-            range = props.pages.slice(-5, -1);
-          } else {
-          // else in between
-            for (
-              let i = Math.max(2, current - delta);
-              i <= Math.min(total - 1, current + delta);
-              i += 1
-            ) {
-              range.push(props.pages[i - 1]);
-            }
-          }
-
-          if ((current - delta > 2) && over5) {
-            range.unshift('&hellip;');
-          }
-          if ((current + delta < total - 1) && over5remain) {
-            range.push('&hellip;');
-          }
-
-          range.unshift(props.pages[0]);
-          range.push(props.pages[total - 1]);
-
-          return range;
         });
+      };
 
-        onMounted(() => setCurrentIdx(innerValue.value));
+      const select = (e) =>{
+        const linkToClick = linkRefs.value.find(link => 
+          link?.innerHTML === e.target.value
+        );
+        linkToClick.click();
+      };
 
-        watch(() => props.pages, () => setCurrentIdx(innerValue.value));
+      const currentUrl = computed(() => props.pages[currentIdx.value].url);
+      const ariaLabel = computed(() => props.forLabel || 'Pagination');
+      const prevPageData = computed(() => props.pages[currentIdx.value - 1]);
+      const nextPageData = computed(() => props.pages[currentIdx.value + 1]);
 
-        return {
-          style: useCssModule(),
-          innerValue,
-          currentIdx,
-          ariaLabel,
-          prevPageData,
-          nextPageData,
-          paginationData,
-          select,
-          navigate,
-          mapClasses,
-        };
-      },
-    });
+      const paginationData = computed(() => {
+        const total = props.pages.length;
+        const current = innerValue.value;
+        const delta = 1;
+        let range = [];
+        let over5 = true;
+        let over5remain = true;
 
-    const _hoisted_1$W = ["aria-label"];
-    const _hoisted_2$P = { key: 0 };
-    const _hoisted_3$I = {
-      key: 1,
-      "aria-hidden": "true"
-    };
-    const _hoisted_4$H = ["value"];
-    const _hoisted_5$G = { key: 2 };
-    const _hoisted_6$D = {
-      key: 3,
-      "aria-hidden": "true"
-    };
+        if (total <= 7) {
+          // all pages
+          return props.pages;
+        }
 
-    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
-      const _component_icon_caret_left = resolveComponent("icon-caret-left");
-      const _component_cdr_select = resolveComponent("cdr-select");
-      const _component_icon_caret_right = resolveComponent("icon-caret-right");
+        if (current < 5) {
+        // if first 5 pages
+          over5 = false;
+          // [2-5]
+          range = props.pages.slice(1, 5);
+        } else if (total - current < 4) {
+        // if last 5 pages
+          over5remain = false;
+          range = props.pages.slice(-5, -1);
+        } else {
+        // else in between
+          for (
+            let i = Math.max(2, current - delta);
+            i <= Math.min(total - 1, current + delta);
+            i += 1
+          ) {
+            range.push(props.pages[i - 1]);
+          }
+        }
 
-      return (openBlock(), createElementBlock("nav", { "aria-label": _ctx.ariaLabel }, [
+        if ((current - delta > 2) && over5) {
+          range.unshift('&hellip;');
+        }
+        if ((current + delta < total - 1) && over5remain) {
+          range.push('&hellip;');
+        }
+
+        range.unshift(props.pages[0]);
+        range.push(props.pages[total - 1]);
+
+        return range;
+      });
+
+      const style = useCssModule();
+
+      onMounted(() => setCurrentIdx(innerValue.value));
+      watch(() => props.pages, () => setCurrentIdx(innerValue.value));
+
+    return (_ctx, _cache) => {
+      return (openBlock(), createElementBlock("nav", { "aria-label": unref(ariaLabel) }, [
         createBaseVNode("ol", {
-          class: normalizeClass(_ctx.style['cdr-pagination'])
+          class: normalizeClass(unref(style)['cdr-pagination'])
         }, [
-          (_ctx.innerValue > _ctx.pages[0].page)
+          (unref(innerValue) > __props.pages[0].page)
             ? (openBlock(), createElementBlock("li", _hoisted_2$P, [
-                (openBlock(), createBlock(resolveDynamicComponent(_ctx.linkTag), {
+                (openBlock(), createBlock(resolveDynamicComponent(__props.linkTag), {
                   "aria-label": "Go to previous page",
-                  href: (_ctx.linkTag === 'a' && _ctx.prevPageData && _ctx.prevPageData.url) || undefined,
-                  class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-pagination__link', 'cdr-pagination__prev')),
-                  onClick: _cache[0] || (_cache[0] = (e) => _ctx.navigate(_ctx.prevPageData.page, e))
+                  href: (__props.linkTag === 'a' && unref(prevPageData) && unref(prevPageData).url) || undefined,
+                  class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-pagination__link', 'cdr-pagination__prev')),
+                  onClick: _cache[0] || (_cache[0] = (e) => navigate(unref(prevPageData).page, e))
                 }, {
                   default: withCtx(() => [
-                    createVNode(_component_icon_caret_left, {
-                      class: normalizeClass(_ctx.style['cdr-pagination_caret--prev'])
-                    }, null, 8 /* PROPS */, ["class"])
+                    createVNode(unref(script$3z), {
+                      class: normalizeClass(unref(style)['cdr-pagination_caret--prev'])
+                    }, null, 8 /* PROPS */, ["class"]),
+                    _hoisted_3$I
                   ]),
                   _: 1 /* STABLE */
                 }, 8 /* PROPS */, ["href", "class"]))
               ]))
-            : (openBlock(), createElementBlock("li", _hoisted_3$I, [
+            : (openBlock(), createElementBlock("li", _hoisted_4$H, [
                 createBaseVNode("span", {
                   "aria-disabled": "true",
-                  class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-pagination__link', 'cdr-pagination__prev', 'cdr-pagination__link--disabled'))
+                  class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-pagination__link', 'cdr-pagination__prev', 'cdr-pagination__link--disabled'))
                 }, [
-                  createVNode(_component_icon_caret_left, {
-                    class: normalizeClass(_ctx.style['cdr-pagination_caret--prev']),
+                  createVNode(unref(script$3z), {
+                    class: normalizeClass(unref(style)['cdr-pagination_caret--prev']),
                     "inherit-color": ""
-                  }, null, 8 /* PROPS */, ["class"])
+                  }, null, 8 /* PROPS */, ["class"]),
+                  _hoisted_5$G
                 ], 2 /* CLASS */)
               ])),
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.paginationData, (n) => {
+          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(paginationData), (n, i) => {
             return (openBlock(), createElementBlock("li", {
-              key: `pagination-${_ctx.id}-li-${n.page}`,
-              class: normalizeClass(_ctx.style['cdr-pagination__li--links'])
+              key: `pagination-${unref(uniqueId)}-li-${n.page}`,
+              class: normalizeClass(unref(style)['cdr-pagination__li--links'])
             }, [
               (n.page)
-                ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.linkTag), {
+                ? (openBlock(), createBlock(resolveDynamicComponent(__props.linkTag), {
                     key: 0,
-                    class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-pagination__link', n.page === _ctx.innerValue && 'cdr-pagination__link--current')),
-                    "aria-label": n.page === _ctx.innerValue ? `Current page, page ${n.page}` : `Go to page ${n.page}`,
-                    "aria-current": n.page === _ctx.innerValue ? 'page' : null,
-                    href: (_ctx.linkTag === 'a' && n.url) || undefined,
-                    onClick: (e) => _ctx.navigate(n.page, e)
+                    id: `pagination-${unref(uniqueId)}-link-${n.page}`,
+                    class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-pagination__link', n.page === unref(innerValue) && 'cdr-pagination__link--current')),
+                    "aria-label": n.page === unref(innerValue) ? `Current page, page ${n.page}` : `Go to page ${n.page}`,
+                    "aria-current": n.page === unref(innerValue) ? 'page' : null,
+                    href: (__props.linkTag === 'a' && n.url) || undefined,
+                    ref_for: true,
+                    ref: el => { linkRefs.value[i] = el; },
+                    onClick: (e) => navigate(n.page, e)
                   }, {
                     default: withCtx(() => [
                       createTextVNode(toDisplayString(n.page), 1 /* TEXT */)
                     ]),
                     _: 2 /* DYNAMIC */
-                  }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class", "aria-label", "aria-current", "href", "onClick"]))
+                  }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["id", "class", "aria-label", "aria-current", "href", "onClick"]))
                 : (openBlock(), createElementBlock("span", {
                     key: 1,
-                    class: normalizeClass(_ctx.style['cdr-pagination__ellipse'])
+                    class: normalizeClass(unref(style)['cdr-pagination__ellipse'])
                   }, " … ", 2 /* CLASS */))
             ], 2 /* CLASS */))
           }), 128 /* KEYED_FRAGMENT */)),
           createBaseVNode("li", {
-            class: normalizeClass(_ctx.style['cdr-pagination__li--select'])
+            class: normalizeClass(unref(style)['cdr-pagination__li--select'])
           }, [
-            createVNode(_component_cdr_select, {
-              id: `pagination-select-${_ctx.id}`,
-              modelValue: _ctx.innerValue,
-              "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => ((_ctx.innerValue) = $event)),
+            createVNode(unref(script$15), {
+              id: `pagination-select-${unref(uniqueId)}`,
+              modelValue: unref(innerValue),
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => (isRef(innerValue) ? (innerValue).value = $event : null)),
               label: "Navigate to page",
               "hide-label": "",
-              onChange: _ctx.select
+              onChange: _cache[2] || (_cache[2] = withModifiers((e) => select(e), ["prevent"]))
             }, {
               default: withCtx(() => [
-                (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.paginationData.filter(n => n.page), (page) => {
+                (openBlock(true), createElementBlock(Fragment, null, renderList(unref(paginationData).filter(n => n.page), (page) => {
                   return (openBlock(), createElementBlock("option", {
-                    key: `pagination-${_ctx.id}-select-${page.page}`,
+                    key: `pagination-${unref(uniqueId)}-select-${page.page}`,
                     value: page.page
-                  }, " Page " + toDisplayString(page.page) + toDisplayString(_ctx.totalPages === null ? '' : ` of ${_ctx.totalPages}`), 9 /* TEXT, PROPS */, _hoisted_4$H))
+                  }, " Page " + toDisplayString(page.page) + toDisplayString(__props.totalPages === null ? '' : ` of ${__props.totalPages}`), 9 /* TEXT, PROPS */, _hoisted_6$D))
                 }), 128 /* KEYED_FRAGMENT */))
               ]),
               _: 1 /* STABLE */
-            }, 8 /* PROPS */, ["id", "modelValue", "onChange"])
+            }, 8 /* PROPS */, ["id", "modelValue"])
           ], 2 /* CLASS */),
-          (_ctx.innerValue < _ctx.pages[_ctx.pages.length - 1].page)
-            ? (openBlock(), createElementBlock("li", _hoisted_5$G, [
-                (openBlock(), createBlock(resolveDynamicComponent(_ctx.linkTag), {
+          (unref(innerValue) < __props.pages[__props.pages.length - 1].page)
+            ? (openBlock(), createElementBlock("li", _hoisted_7$A, [
+                (openBlock(), createBlock(resolveDynamicComponent(__props.linkTag), {
                   "aria-label": "Go to next page",
-                  href: (_ctx.linkTag === 'a' && _ctx.nextPageData && _ctx.nextPageData.url) || undefined,
-                  class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-pagination__link', 'cdr-pagination__next')),
-                  onClick: _cache[2] || (_cache[2] = (e) => _ctx.navigate(_ctx.nextPageData.page, e))
+                  href: (__props.linkTag === 'a' && unref(nextPageData) && unref(nextPageData).url) || undefined,
+                  class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-pagination__link', 'cdr-pagination__next')),
+                  onClick: _cache[3] || (_cache[3] = (e) => navigate(unref(nextPageData).page, e))
                 }, {
                   default: withCtx(() => [
-                    createVNode(_component_icon_caret_right, {
-                      class: normalizeClass(_ctx.style['cdr-pagination_caret--next'])
+                    _hoisted_8$z,
+                    createVNode(unref(script$3y), {
+                      class: normalizeClass(unref(style)['cdr-pagination_caret--next'])
                     }, null, 8 /* PROPS */, ["class"])
                   ]),
                   _: 1 /* STABLE */
                 }, 8 /* PROPS */, ["href", "class"]))
               ]))
-            : (openBlock(), createElementBlock("li", _hoisted_6$D, [
+            : (openBlock(), createElementBlock("li", _hoisted_9$x, [
                 createBaseVNode("span", {
                   "aria-disabled": "true",
-                  class: normalizeClass(_ctx.mapClasses(_ctx.style, 'cdr-pagination__link', 'cdr-pagination__next', 'cdr-pagination__link--disabled'))
+                  class: normalizeClass(unref(mapClasses)(unref(style), 'cdr-pagination__link', 'cdr-pagination__next', 'cdr-pagination__link--disabled'))
                 }, [
-                  createVNode(_component_icon_caret_right, {
-                    class: normalizeClass(_ctx.style['cdr-pagination_caret--next']),
+                  _hoisted_10$u,
+                  createVNode(unref(script$3y), {
+                    class: normalizeClass(unref(style)['cdr-pagination_caret--next']),
                     "inherit-color": ""
                   }, null, 8 /* PROPS */, ["class"])
                 ], 2 /* CLASS */)
@@ -21947,13 +21940,16 @@
         ], 2 /* CLASS */)
       ], 8 /* PROPS */, _hoisted_1$W))
     }
+    }
+
+    };
 
     var style0$b = {"cdr-pagination":"cdr-pagination_13-0-0-alpha-3","cdr-pagination__li--links":"cdr-pagination__li--links_13-0-0-alpha-3","cdr-pagination__li--select":"cdr-pagination__li--select_13-0-0-alpha-3","cdr-pagination__link":"cdr-pagination__link_13-0-0-alpha-3","cdr-pagination__link--current":"cdr-pagination__link--current_13-0-0-alpha-3","cdr-pagination__link--disabled":"cdr-pagination__link--disabled_13-0-0-alpha-3","cdr-pagination__ellipse":"cdr-pagination__ellipse_13-0-0-alpha-3","cdr-pagination__prev":"cdr-pagination__prev_13-0-0-alpha-3","cdr-pagination__next":"cdr-pagination__next_13-0-0-alpha-3","cdr-pagination__caret--prev":"cdr-pagination__caret--prev_13-0-0-alpha-3","cdr-pagination__caret--next":"cdr-pagination__caret--next_13-0-0-alpha-3"};
 
     const cssModules$b = script$14.__cssModules = {};
     cssModules$b["$style"] = style0$b;
 
-    script$14.render = render$X;
+
     script$14.__file = "src/components/pagination/CdrPagination.vue";
 
     function calculatePlacement (triggerRect, popupRect, screenWidth, screenHeight, originalPosition) {
@@ -23893,9 +23889,9 @@
     const _hoisted_12$r = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
     const _hoisted_13$p = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
     const _hoisted_14$p = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
-    const _hoisted_15$o = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
-    const _hoisted_16$o = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
-    const _hoisted_17$m = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
+    const _hoisted_15$n = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum fermentum tortor posuere fermentum. Sed interdum vel urna at tempor. Nullam vel sapien odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce venenatis ex ut ultricies tincidunt. Suspendisse potenti. Sed ut euismod mi, sit amet porta augue. Proin dictum laoreet blandit. Nulla tempus tellus id ligula sodales ultrices. Proin lacus diam, ornare at libero nec, eleifend vulputate mi. Praesent vestibulum accumsan erat id dapibus. Suspendisse ut laoreet nunc, et tempor eros. Etiam vel commodo velit. Proin egestas fringilla elit et lacinia. Praesent et vehicula massa. Fusce ac purus neque. ");
+    const _hoisted_16$n = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_17$l = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
     const _hoisted_18$k = /*#__PURE__*/createBaseVNode("li", null, "It includes no extra styling", -1 /* HOISTED */);
     const _hoisted_19$j = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
     const _hoisted_20$f = /*#__PURE__*/createBaseVNode("li", null, "to this list because", -1 /* HOISTED */);
@@ -24000,7 +23996,7 @@
                         ]),
                         _: 1 /* STABLE */
                       }),
-                      _hoisted_15$o
+                      _hoisted_15$n
                     ]),
                     _: 1 /* STABLE */
                   })
@@ -24014,12 +24010,12 @@
                 onAccordionToggle: _cache[2] || (_cache[2] = $event => ($data.accordionDefault2 = !$data.accordionDefault2))
               }, {
                 label: withCtx(() => [
-                  _hoisted_16$o
+                  _hoisted_16$n
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_list, { modifier: "unordered" }, {
                     default: withCtx(() => [
-                      _hoisted_17$m,
+                      _hoisted_17$l,
                       _hoisted_18$k,
                       _hoisted_19$j,
                       _hoisted_20$f,
@@ -24261,9 +24257,9 @@
     const _hoisted_12$q = /*#__PURE__*/createTextVNode(" Success banner ");
     const _hoisted_13$o = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_14$o = /*#__PURE__*/createTextVNode(" Banner with a message body ");
-    const _hoisted_15$n = /*#__PURE__*/createTextVNode(" This is some extra information about the message. ");
-    const _hoisted_16$n = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
-    const _hoisted_17$l = /*#__PURE__*/createTextVNode(" This is a banner with an icon-right slot, typically used to close the banner. ");
+    const _hoisted_15$m = /*#__PURE__*/createTextVNode(" This is some extra information about the message. ");
+    const _hoisted_16$m = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_17$k = /*#__PURE__*/createTextVNode(" This is a banner with an icon-right slot, typically used to close the banner. ");
     const _hoisted_18$j = /*#__PURE__*/createTextVNode(" Your parent template should handle the close action. ");
     const _hoisted_19$i = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_20$e = /*#__PURE__*/createTextVNode(" Banner with info-action slot ");
@@ -24347,14 +24343,14 @@
             createVNode(_component_icon_warning_fill, { "inherit-color": "" })
           ]),
           "message-body": withCtx(() => [
-            _hoisted_15$n
+            _hoisted_15$m
           ]),
           default: withCtx(() => [
             _hoisted_14$o
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_16$n,
+        _hoisted_16$m,
         createVNode(_component_cdr_banner, { type: "success" }, {
           "icon-left": withCtx(() => [
             createVNode(_component_icon_check_fill)
@@ -24374,7 +24370,7 @@
             _hoisted_18$j
           ]),
           default: withCtx(() => [
-            _hoisted_17$l
+            _hoisted_17$k
           ]),
           _: 1 /* STABLE */
         }),
@@ -25070,9 +25066,9 @@
     const _hoisted_12$p = /*#__PURE__*/createTextVNode(" Medium and Icon ");
     const _hoisted_13$n = /*#__PURE__*/createTextVNode(" Small and Icon ");
     const _hoisted_14$n = /*#__PURE__*/createTextVNode(" Small (different) Icon ");
-    const _hoisted_15$m = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
-    const _hoisted_16$m = /*#__PURE__*/createTextVNode(" Large and left Icon ");
-    const _hoisted_17$k = /*#__PURE__*/createTextVNode(" Large and right Icon ");
+    const _hoisted_15$l = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
+    const _hoisted_16$l = /*#__PURE__*/createTextVNode(" Large and left Icon ");
+    const _hoisted_17$j = /*#__PURE__*/createTextVNode(" Large and right Icon ");
     const _hoisted_18$i = { class: "button-example inset" };
     const _hoisted_19$h = /*#__PURE__*/createBaseVNode("h3", null, " Using a sprite ", -1 /* HOISTED */);
     const _hoisted_20$d = /*#__PURE__*/createTextVNode(" Button and Icon ");
@@ -25190,18 +25186,18 @@
             ]),
             _: 1 /* STABLE */
           }),
-          _hoisted_15$m,
+          _hoisted_15$l,
           createVNode(_component_cdr_button, { size: "large" }, {
             default: withCtx(() => [
               createVNode(_component_icon_check_lg, { "inherit-color": "" }),
-              _hoisted_16$m
+              _hoisted_16$l
             ]),
             _: 1 /* STABLE */
           }),
           createVNode(_component_cdr_button, { size: "large" }, {
             default: withCtx(() => [
               createVNode(_component_icon_check_lg, { "inherit-color": "" }),
-              _hoisted_17$k
+              _hoisted_17$j
             ]),
             _: 1 /* STABLE */
           })
@@ -25813,9 +25809,9 @@
     const _hoisted_12$o = { "data-backstop": "checkbox-checked" };
     const _hoisted_13$m = /*#__PURE__*/createTextVNode("checked");
     const _hoisted_14$m = /*#__PURE__*/createTextVNode("custom true");
-    const _hoisted_15$l = /*#__PURE__*/createTextVNode("A");
-    const _hoisted_16$l = /*#__PURE__*/createTextVNode("B");
-    const _hoisted_17$j = /*#__PURE__*/createTextVNode("C");
+    const _hoisted_15$k = /*#__PURE__*/createTextVNode("A");
+    const _hoisted_16$k = /*#__PURE__*/createTextVNode("B");
+    const _hoisted_17$i = /*#__PURE__*/createTextVNode("C");
     const _hoisted_18$h = /*#__PURE__*/createTextVNode("D");
     const _hoisted_19$g = /*#__PURE__*/createTextVNode("E");
     const _hoisted_20$c = /*#__PURE__*/createTextVNode("F");
@@ -25978,7 +25974,7 @@
           "onUpdate:modelValue": _cache[11] || (_cache[11] = $event => (($data.exGroup) = $event))
         }, {
           default: withCtx(() => [
-            _hoisted_15$l
+            _hoisted_15$k
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -25988,7 +25984,7 @@
           "onUpdate:modelValue": _cache[12] || (_cache[12] = $event => (($data.exGroup) = $event))
         }, {
           default: withCtx(() => [
-            _hoisted_16$l
+            _hoisted_16$k
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -25998,7 +25994,7 @@
           "onUpdate:modelValue": _cache[13] || (_cache[13] = $event => (($data.exGroup) = $event))
         }, {
           default: withCtx(() => [
-            _hoisted_17$j
+            _hoisted_17$i
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
@@ -26231,9 +26227,9 @@
     const _hoisted_12$n = /*#__PURE__*/createTextVNode("tents");
     const _hoisted_13$l = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
     const _hoisted_14$l = /*#__PURE__*/createBaseVNode("h3", null, "chip group", -1 /* HOISTED */);
-    const _hoisted_15$k = /*#__PURE__*/createBaseVNode("h4", null, "Radio Chip single selection", -1 /* HOISTED */);
-    const _hoisted_16$k = /*#__PURE__*/createBaseVNode("h4", null, "Checkbox Chip multi selection", -1 /* HOISTED */);
-    const _hoisted_17$i = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
+    const _hoisted_15$j = /*#__PURE__*/createBaseVNode("h4", null, "Radio Chip single selection", -1 /* HOISTED */);
+    const _hoisted_16$j = /*#__PURE__*/createBaseVNode("h4", null, "Checkbox Chip multi selection", -1 /* HOISTED */);
+    const _hoisted_17$h = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
     const _hoisted_18$g = /*#__PURE__*/createBaseVNode("h2", null, "disabled chip", -1 /* HOISTED */);
     const _hoisted_19$f = /*#__PURE__*/createTextVNode(" Default ");
 
@@ -26340,7 +26336,7 @@
         ]),
         _hoisted_13$l,
         _hoisted_14$l,
-        _hoisted_15$k,
+        _hoisted_15$j,
         createVNode(_component_cdr_chip_group, { label: "Pick One Month" }, {
           default: withCtx(() => [
             (openBlock(true), createElementBlock(Fragment, null, renderList($data.months, (month, i) => {
@@ -26361,7 +26357,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_16$k,
+        _hoisted_16$j,
         createVNode(_component_cdr_chip_group, { label: "Pick As Many Months As You Like" }, {
           default: withCtx(() => [
             (openBlock(true), createElementBlock(Fragment, null, renderList($data.months, (month, i) => {
@@ -26381,7 +26377,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_17$i,
+        _hoisted_17$h,
         _hoisted_18$g,
         createVNode(_component_cdr_chip, { disabled: "" }, {
           default: withCtx(() => [
@@ -26488,9 +26484,9 @@
     const _hoisted_12$m = /*#__PURE__*/createTextVNode("A");
     const _hoisted_13$k = /*#__PURE__*/createTextVNode("B");
     const _hoisted_14$k = /*#__PURE__*/createTextVNode("C");
-    const _hoisted_15$j = /*#__PURE__*/createBaseVNode("span", { id: "errorStatus" }, "You must make a selection!", -1 /* HOISTED */);
-    const _hoisted_16$j = /*#__PURE__*/createTextVNode("A");
-    const _hoisted_17$h = /*#__PURE__*/createTextVNode("B");
+    const _hoisted_15$i = /*#__PURE__*/createBaseVNode("span", { id: "errorStatus" }, "You must make a selection!", -1 /* HOISTED */);
+    const _hoisted_16$i = /*#__PURE__*/createTextVNode("A");
+    const _hoisted_17$g = /*#__PURE__*/createTextVNode("B");
     const _hoisted_18$f = /*#__PURE__*/createTextVNode("C");
     const _hoisted_19$e = /*#__PURE__*/createBaseVNode("span", { id: "errorAlert" }, "You must make a selection within two minutes!", -1 /* HOISTED */);
     const _hoisted_20$b = /*#__PURE__*/createTextVNode("A");
@@ -26631,7 +26627,7 @@
           id: "favorite-required-letter"
         }, {
           error: withCtx(() => [
-            _hoisted_15$j
+            _hoisted_15$i
           ]),
           default: withCtx(() => [
             createVNode(_component_cdr_checkbox, {
@@ -26689,7 +26685,7 @@
               onChange: $options.validateAlert
             }, {
               default: withCtx(() => [
-                _hoisted_16$j
+                _hoisted_16$i
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "onChange"]),
@@ -26700,7 +26696,7 @@
               onChange: $options.validateAlert
             }, {
               default: withCtx(() => [
-                _hoisted_17$h
+                _hoisted_17$g
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "onChange"]),
@@ -27202,9 +27198,9 @@
     const _hoisted_12$l = { class: "center" };
     const _hoisted_13$j = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
     const _hoisted_14$j = /*#__PURE__*/createBaseVNode("h4", null, " Container with pink fill color ", -1 /* HOISTED */);
-    const _hoisted_15$i = { class: "inherit-container" };
-    const _hoisted_16$i = /*#__PURE__*/createBaseVNode("span", null, "Icon with inherit-color", -1 /* HOISTED */);
-    const _hoisted_17$g = /*#__PURE__*/createBaseVNode("span", null, "Icon WITHOUT inherit-color", -1 /* HOISTED */);
+    const _hoisted_15$h = { class: "inherit-container" };
+    const _hoisted_16$h = /*#__PURE__*/createBaseVNode("span", null, "Icon with inherit-color", -1 /* HOISTED */);
+    const _hoisted_17$f = /*#__PURE__*/createBaseVNode("span", null, "Icon WITHOUT inherit-color", -1 /* HOISTED */);
     const _hoisted_18$e = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
 
     function render$z(_ctx, _cache, $props, $setup, $data, $options) {
@@ -27298,18 +27294,18 @@
         }),
         _hoisted_13$j,
         _hoisted_14$j,
-        createBaseVNode("div", _hoisted_15$i, [
+        createBaseVNode("div", _hoisted_15$h, [
           createVNode(_component_cdr_grid, { style: {"grid-template-columns":"1fr 1fr"} }, {
             default: withCtx(() => [
               createBaseVNode("div", null, [
-                _hoisted_16$i,
+                _hoisted_16$h,
                 createVNode(_component_cdr_icon, {
                   use: "#account-profile",
                   "inherit-color": ""
                 })
               ]),
               createBaseVNode("div", null, [
-                _hoisted_17$g,
+                _hoisted_17$f,
                 createVNode(_component_cdr_icon, { use: "#account-profile" })
               ])
             ]),
@@ -27572,9 +27568,9 @@
     const _hoisted_12$j = /*#__PURE__*/createTextVNode(" top, x-center ");
     const _hoisted_13$h = /*#__PURE__*/createTextVNode(" top, right ");
     const _hoisted_14$h = /*#__PURE__*/createTextVNode(" y-center, left ");
-    const _hoisted_15$h = /*#__PURE__*/createTextVNode(" y-center, x-center ");
-    const _hoisted_16$h = /*#__PURE__*/createTextVNode(" y-center, right ");
-    const _hoisted_17$f = /*#__PURE__*/createTextVNode(" bottom, left ");
+    const _hoisted_15$g = /*#__PURE__*/createTextVNode(" y-center, x-center ");
+    const _hoisted_16$g = /*#__PURE__*/createTextVNode(" y-center, right ");
+    const _hoisted_17$e = /*#__PURE__*/createTextVNode(" bottom, left ");
     const _hoisted_18$d = /*#__PURE__*/createTextVNode(" bottom, x-center ");
     const _hoisted_19$d = /*#__PURE__*/createTextVNode(" bottom, right ");
 
@@ -27760,7 +27756,7 @@
             createBaseVNode("div", null, [
               createVNode(_component_cdr_text, { class: "cdr-text-dev--subheading-sans-300" }, {
                 default: withCtx(() => [
-                  _hoisted_15$h
+                  _hoisted_15$g
                 ]),
                 _: 1 /* STABLE */
               }),
@@ -27774,7 +27770,7 @@
             createBaseVNode("div", null, [
               createVNode(_component_cdr_text, { class: "cdr-text-dev--subheading-sans-300" }, {
                 default: withCtx(() => [
-                  _hoisted_16$h
+                  _hoisted_16$g
                 ]),
                 _: 1 /* STABLE */
               }),
@@ -27788,7 +27784,7 @@
             createBaseVNode("div", null, [
               createVNode(_component_cdr_text, { class: "cdr-text-dev--subheading-sans-300" }, {
                 default: withCtx(() => [
-                  _hoisted_17$f
+                  _hoisted_17$e
                 ]),
                 _: 1 /* STABLE */
               }),
@@ -28098,9 +28094,9 @@
     const _hoisted_12$i = /*#__PURE__*/createBaseVNode("span", { id: "bottomHelp" }, "Hey im below the input!", -1 /* HOISTED */);
     const _hoisted_13$g = /*#__PURE__*/createTextVNode(" Hey im also on top of the input! ");
     const _hoisted_14$g = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "I trigger some sort of action!", -1 /* HOISTED */);
-    const _hoisted_15$g = /*#__PURE__*/createTextVNode(" I put the input into an error state! ");
-    const _hoisted_16$g = /*#__PURE__*/createTextVNode(" Hey What's Up? ");
-    const _hoisted_17$e = { class: "demo-input" };
+    const _hoisted_15$f = /*#__PURE__*/createTextVNode(" I put the input into an error state! ");
+    const _hoisted_16$f = /*#__PURE__*/createTextVNode(" Hey What's Up? ");
+    const _hoisted_17$d = { class: "demo-input" };
     const _hoisted_18$c = { class: "demo-input" };
     const _hoisted_19$c = { class: "demo-input" };
     const _hoisted_20$a = { class: "demo-input" };
@@ -28428,7 +28424,7 @@
                 })
               ]),
               default: withCtx(() => [
-                _hoisted_15$g
+                _hoisted_15$f
               ]),
               _: 1 /* STABLE */
             }),
@@ -28449,7 +28445,7 @@
                 })
               ]),
               default: withCtx(() => [
-                _hoisted_16$g
+                _hoisted_16$f
               ]),
               _: 1 /* STABLE */
             })
@@ -28475,7 +28471,7 @@
           label: "Master input that overwrites all other inputs on this page",
           background: $data.backgroundColor
         }, null, 8 /* PROPS */, ["modelValue", "onInput", "background"]),
-        createBaseVNode("div", _hoisted_17$e, " Default Input Value = " + toDisplayString($data.defaultModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_17$d, " Default Input Value = " + toDisplayString($data.defaultModel), 1 /* TEXT */),
         createBaseVNode("div", _hoisted_18$c, " Required Input Value = " + toDisplayString($data.requiredModel), 1 /* TEXT */),
         createBaseVNode("div", _hoisted_19$c, " Optional Input Value = " + toDisplayString($data.optionalModel), 1 /* TEXT */),
         createBaseVNode("div", _hoisted_20$a, " Hidden Input Value = " + toDisplayString($data.hiddenModel), 1 /* TEXT */),
@@ -28526,9 +28522,9 @@
     const _hoisted_12$h = /*#__PURE__*/createTextVNode(" REI.com ");
     const _hoisted_13$f = /*#__PURE__*/createBaseVNode("h3", null, "Links, with icon", -1 /* HOISTED */);
     const _hoisted_14$f = /*#__PURE__*/createTextVNode(" Icon on the left ");
-    const _hoisted_15$f = /*#__PURE__*/createTextVNode(" Icon on the right ");
-    const _hoisted_16$f = /*#__PURE__*/createTextVNode(" Icons on both sides ");
-    const _hoisted_17$d = /*#__PURE__*/createBaseVNode("h3", null, "Links, with inherited color", -1 /* HOISTED */);
+    const _hoisted_15$e = /*#__PURE__*/createTextVNode(" Icon on the right ");
+    const _hoisted_16$e = /*#__PURE__*/createTextVNode(" Icons on both sides ");
+    const _hoisted_17$c = /*#__PURE__*/createBaseVNode("h3", null, "Links, with inherited color", -1 /* HOISTED */);
     const _hoisted_18$b = { style: {"color":"darkgreen","fill":"darkgreen"} };
     const _hoisted_19$b = /*#__PURE__*/createTextVNode(" inherit-color plain example ");
     const _hoisted_20$9 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
@@ -28613,7 +28609,7 @@
               createBaseVNode("li", null, [
                 createVNode(_component_cdr_link, { href: "#baz" }, {
                   default: withCtx(() => [
-                    _hoisted_15$f,
+                    _hoisted_15$e,
                     createVNode(_component_cdr_icon, {
                       "inherit-color": "",
                       use: "#download",
@@ -28631,7 +28627,7 @@
                       use: "#twitter",
                       modifier: "inherit-color"
                     }),
-                    _hoisted_16$f,
+                    _hoisted_16$e,
                     createVNode(_component_cdr_icon, {
                       "inherit-color": "",
                       use: "#external-link",
@@ -28644,7 +28640,7 @@
             ]),
             _: 1 /* STABLE */
           }),
-          _hoisted_17$d,
+          _hoisted_17$c,
           createBaseVNode("div", _hoisted_18$b, [
             createVNode(_component_cdr_link, {
               "inherit-color": "",
@@ -28730,8 +28726,8 @@
     const _hoisted_12$g = /*#__PURE__*/createTextVNode(" sit amet, ");
     const _hoisted_13$e = /*#__PURE__*/createTextVNode(" text element wrapping link with nested icon ");
     const _hoisted_14$e = /*#__PURE__*/createTextVNode(" Icon on the left ");
-    const _hoisted_15$e = /*#__PURE__*/createTextVNode(" Icon on the right ");
-    const _hoisted_16$e = /*#__PURE__*/createTextVNode(" Icons on both sides ");
+    const _hoisted_15$d = /*#__PURE__*/createTextVNode(" Icon on the right ");
+    const _hoisted_16$d = /*#__PURE__*/createTextVNode(" Icons on both sides ");
 
     function render$s(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_link = resolveComponent("cdr-link");
@@ -28869,7 +28865,7 @@
                       class: normalizeClass(`cdr-text-dev--utility-sans-strong-${u1}`)
                     }, {
                       default: withCtx(() => [
-                        _hoisted_15$e
+                        _hoisted_15$d
                       ]),
                       _: 2 /* DYNAMIC */
                     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class"]),
@@ -28899,7 +28895,7 @@
                       class: normalizeClass(`cdr-text-dev--utility-sans-strong-${u1}`)
                     }, {
                       default: withCtx(() => [
-                        _hoisted_16$e
+                        _hoisted_16$d
                       ]),
                       _: 2 /* DYNAMIC */
                     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class"]),
@@ -28975,9 +28971,9 @@
     const _hoisted_12$f = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_13$d = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_14$d = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_15$d = /*#__PURE__*/createBaseVNode("h4", null, " Inline unordered list ", -1 /* HOISTED */);
-    const _hoisted_16$d = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_17$c = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_15$c = /*#__PURE__*/createBaseVNode("h4", null, " Inline unordered list ", -1 /* HOISTED */);
+    const _hoisted_16$c = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_17$b = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_18$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_19$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_20$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
@@ -29048,11 +29044,11 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_15$d,
+        _hoisted_15$c,
         createVNode(_component_cdr_list, { modifier: "inline unordered" }, {
           default: withCtx(() => [
-            _hoisted_16$d,
-            _hoisted_17$c,
+            _hoisted_16$c,
+            _hoisted_17$b,
             _hoisted_18$a
           ]),
           _: 1 /* STABLE */
@@ -29118,9 +29114,9 @@
     const _hoisted_12$e = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_13$c = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
     const _hoisted_14$c = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_15$c = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_16$c = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_17$b = /*#__PURE__*/createBaseVNode("h4", null, " Typography validation - text wrapping list ", -1 /* HOISTED */);
+    const _hoisted_15$b = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_16$b = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_17$a = /*#__PURE__*/createBaseVNode("h4", null, " Typography validation - text wrapping list ", -1 /* HOISTED */);
     const _hoisted_18$9 = /*#__PURE__*/createBaseVNode("li", null, "body--300", -1 /* HOISTED */);
     const _hoisted_19$9 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
     const _hoisted_20$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
@@ -29195,16 +29191,16 @@
               }, {
                 default: withCtx(() => [
                   _hoisted_14$c,
-                  _hoisted_15$c
+                  _hoisted_15$b
                 ]),
                 _: 1 /* STABLE */
               })
             ]),
-            _hoisted_16$c
+            _hoisted_16$b
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_17$b,
+        _hoisted_17$a,
         createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
           default: withCtx(() => [
             createVNode(_component_cdr_list, {
@@ -29284,9 +29280,9 @@
     const _hoisted_12$d = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_13$b = /*#__PURE__*/createBaseVNode("h4", null, " Compact bare list ", -1 /* HOISTED */);
     const _hoisted_14$b = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_15$b = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
-    const _hoisted_16$b = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_17$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_15$a = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
+    const _hoisted_16$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_17$9 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_18$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_19$8 = /*#__PURE__*/createBaseVNode("h4", null, " Inline bare list ", -1 /* HOISTED */);
     const _hoisted_20$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
@@ -29351,11 +29347,11 @@
           default: withCtx(() => [
             _hoisted_14$b,
             createBaseVNode("li", null, [
-              _hoisted_15$b,
+              _hoisted_15$a,
               createVNode(_component_cdr_list, null, {
                 default: withCtx(() => [
-                  _hoisted_16$b,
-                  _hoisted_17$a
+                  _hoisted_16$a,
+                  _hoisted_17$9
                 ]),
                 _: 1 /* STABLE */
               })
@@ -29415,9 +29411,9 @@
     const _hoisted_12$c = /*#__PURE__*/createTextVNode(" sit amet, ");
     const _hoisted_13$a = /*#__PURE__*/createTextVNode(" consectetur adipiscing elit, sed do eiusmodList ordered ");
     const _hoisted_14$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_15$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_16$a = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_17$9 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
+    const _hoisted_15$9 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_16$9 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_17$8 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
     const _hoisted_18$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_19$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_20$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
@@ -29481,12 +29477,12 @@
                     createVNode(_component_cdr_list, null, {
                       default: withCtx(() => [
                         _hoisted_14$a,
-                        _hoisted_15$a
+                        _hoisted_15$9
                       ]),
                       _: 1 /* STABLE */
                     })
                   ]),
-                  _hoisted_16$a
+                  _hoisted_16$9
                 ]),
                 _: 2 /* DYNAMIC */
               }, 1024 /* DYNAMIC_SLOTS */)
@@ -29508,7 +29504,7 @@
                   default: withCtx(() => [
                     createBaseVNode("li", null, "utility-sans " + toDisplayString(utility) + " in list " + toDisplayString(l1), 1 /* TEXT */),
                     createBaseVNode("li", null, [
-                      _hoisted_17$9,
+                      _hoisted_17$8,
                       createVNode(_component_cdr_list, null, {
                         default: withCtx(() => [
                           _hoisted_18$7,
@@ -29935,9 +29931,9 @@
     const _hoisted_12$a = /*#__PURE__*/createTextVNode("Launch modal ");
     const _hoisted_13$9 = /*#__PURE__*/createBaseVNode("h3", { class: "stack" }, " Content Options ", -1 /* HOISTED */);
     const _hoisted_14$9 = /*#__PURE__*/createTextVNode(" Overflow Content ");
-    const _hoisted_15$9 = /*#__PURE__*/createTextVNode(" Override Content ");
-    const _hoisted_16$9 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_17$8 = /*#__PURE__*/createBaseVNode("h2", null, "Advanced Modal Usage", -1 /* HOISTED */);
+    const _hoisted_15$8 = /*#__PURE__*/createTextVNode(" Override Content ");
+    const _hoisted_16$8 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
+    const _hoisted_17$7 = /*#__PURE__*/createBaseVNode("h2", null, "Advanced Modal Usage", -1 /* HOISTED */);
     const _hoisted_18$6 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_19$6 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
 
@@ -30061,12 +30057,12 @@
           "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => (($data.override) = $event))
         }, {
           default: withCtx(() => [
-            _hoisted_15$9
+            _hoisted_15$8
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        _hoisted_16$9,
-        _hoisted_17$8,
+        _hoisted_16$8,
+        _hoisted_17$7,
         _hoisted_18$6,
         createVNode(_component_fancy_modal),
         _hoisted_19$6,
@@ -30446,15 +30442,12 @@
     const _hoisted_6$c = /*#__PURE__*/createBaseVNode("p", null, "intra-page pagination using buttons", -1 /* HOISTED */);
     const _hoisted_7$b = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
     const _hoisted_8$b = /*#__PURE__*/createBaseVNode("p", null, "Using vue router programatically", -1 /* HOISTED */);
-    const _hoisted_9$a = ["onClick"];
-    const _hoisted_10$a = ["onClick"];
-    const _hoisted_11$9 = ["onClick"];
-    const _hoisted_12$9 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_13$8 = /*#__PURE__*/createBaseVNode("p", null, "Previous/Next only (known total)", -1 /* HOISTED */);
-    const _hoisted_14$8 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_15$8 = /*#__PURE__*/createBaseVNode("p", null, "Previous/Next only (unknown total)", -1 /* HOISTED */);
-    const _hoisted_16$8 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
-    const _hoisted_17$7 = /*#__PURE__*/createBaseVNode("p", null, "Only 5 pages provided", -1 /* HOISTED */);
+    const _hoisted_9$a = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
+    const _hoisted_10$a = /*#__PURE__*/createBaseVNode("p", null, "Previous/Next only (known total)", -1 /* HOISTED */);
+    const _hoisted_11$9 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
+    const _hoisted_12$9 = /*#__PURE__*/createBaseVNode("p", null, "Previous/Next only (unknown total)", -1 /* HOISTED */);
+    const _hoisted_13$8 = /*#__PURE__*/createBaseVNode("hr", null, null, -1 /* HOISTED */);
+    const _hoisted_14$8 = /*#__PURE__*/createBaseVNode("p", null, "Only 5 pages provided", -1 /* HOISTED */);
 
     function render$i(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_pagination = resolveComponent("cdr-pagination");
@@ -30500,61 +30493,28 @@
           "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => (($data.ex1Page) = $event)),
           onNavigate: $options.updateRoute
         }, null, 8 /* PROPS */, ["pages", "modelValue", "onNavigate"]),
-        createVNode(_component_cdr_pagination, {
-          pages: $options.makePages(20, null),
-          "total-pages": 20,
-          modelValue: $data.paraPage,
-          "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => (($data.paraPage) = $event))
-        }, {
-          prevLink: withCtx((prevLink) => [
-            createBaseVNode("p", mergeProps(prevLink.attrs, {
-              onClick: prevLink.click
-            }), [
-              (openBlock(), createBlock(resolveDynamicComponent(prevLink.iconComponent), {
-                class: normalizeClass(prevLink.iconClass)
-              }, null, 8 /* PROPS */, ["class"])),
-              createTextVNode(" " + toDisplayString(prevLink.content), 1 /* TEXT */)
-            ], 16 /* FULL_PROPS */, _hoisted_9$a)
-          ]),
-          link: withCtx((link) => [
-            createBaseVNode("p", mergeProps(link.attrs, {
-              onClick: link.click
-            }), toDisplayString(link.page), 17 /* TEXT, FULL_PROPS */, _hoisted_10$a)
-          ]),
-          nextLink: withCtx((nextLink) => [
-            createBaseVNode("p", mergeProps(nextLink.attrs, {
-              onClick: nextLink.click
-            }), [
-              createTextVNode(toDisplayString(nextLink.content) + " ", 1 /* TEXT */),
-              (openBlock(), createBlock(resolveDynamicComponent(nextLink.iconComponent), {
-                class: normalizeClass(nextLink.iconClass)
-              }, null, 8 /* PROPS */, ["class"]))
-            ], 16 /* FULL_PROPS */, _hoisted_11$9)
-          ]),
-          _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["pages", "modelValue"]),
-        _hoisted_12$9,
-        _hoisted_13$8,
+        _hoisted_9$a,
+        _hoisted_10$a,
         createVNode(_component_cdr_pagination, {
           pages: $options.makePages($options.ex2KnownPages, '/#/pagination?ex2-known-page', $data.ex2PageKnown - 2),
           "total-pages": 10,
           modelValue: $data.ex2PageKnown,
-          "onUpdate:modelValue": _cache[4] || (_cache[4] = $event => (($data.ex2PageKnown) = $event))
+          "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => (($data.ex2PageKnown) = $event))
         }, null, 8 /* PROPS */, ["pages", "modelValue"]),
-        _hoisted_14$8,
-        _hoisted_15$8,
+        _hoisted_11$9,
+        _hoisted_12$9,
         createVNode(_component_cdr_pagination, {
           pages: $options.makePages($options.ex2UnknownPages, '/#/pagination?ex2-unknown-page', $data.ex2PageUnknown - 2),
           modelValue: $data.ex2PageUnknown,
-          "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (($data.ex2PageUnknown) = $event))
+          "onUpdate:modelValue": _cache[4] || (_cache[4] = $event => (($data.ex2PageUnknown) = $event))
         }, null, 8 /* PROPS */, ["pages", "modelValue"]),
-        _hoisted_16$8,
-        _hoisted_17$7,
+        _hoisted_13$8,
+        _hoisted_14$8,
         createVNode(_component_cdr_pagination, {
           pages: $options.makePages(5, '/#/pagination?ex3-page'),
           "total-pages": 5,
           modelValue: $data.ex3Page,
-          "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => (($data.ex3Page) = $event))
+          "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (($data.ex3Page) = $event))
         }, null, 8 /* PROPS */, ["pages", "modelValue"])
       ]))
     }
