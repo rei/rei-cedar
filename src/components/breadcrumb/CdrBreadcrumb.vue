@@ -1,11 +1,70 @@
+<script setup>
+      // <!-- TODO: remove scoped slot vue-router-ish support? just use emit/prevent pattern? -->
+import { useCssModule, computed, ref, watch, nextTick } from 'vue';
+import uid from '../../utils/uid';
+
+const props = defineProps({
+  items: {
+    type: Array,
+    default: () => [],
+    validator: (value) => {
+      if (value.length && value.length > 0) {
+        for (let i = 0; i < value.length; i += 1) {
+          if (!(typeof value[i].item === 'object')) {
+            console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
+            return false;
+          }
+          if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
+            console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
+            return false;
+          }
+        }
+      }
+      return true;
+    },
+  },
+  /**
+   * Flag to track container width threshold exceeded
+   */
+  truncationEnabled: {
+    type: Boolean,
+    default: true,
+  },
+  id: {
+    type: String,
+  },
+});
+
+const uniqueId = props.id ? props.id : uid();
+const truncate = ref(props.truncationEnabled && props.items.length > 2);
+const itemListEl = ref(null);
+const ellipsisLabel = computed(() => {
+  const s = (props.items.length - 2) > 1 ? 's' : '';
+  return `show ${props.items.length - 2} more navigation level${s}`;
+});
+
+const handleEllipsisClick = () => {
+  truncate.value = false;
+  nextTick(() => {
+    itemListEl.value.querySelector('li a').focus();
+  })
+};
+
+const style = useCssModule();
+
+watch(() => props.items, () => {
+  truncate.value = props.truncationEnabled && props.items.length > 2;
+});
+</script>
+
 <template>
   <nav
     :class="style['cdr-breadcrumb']"
-    :id="id"
+    :id="uniqueId"
     aria-label="breadcrumbs"
   >
     <ol
-      :id="`${id}List`"
+      :id="`${uniqueId}List`"
       :class="style['cdr-breadcrumb__list']"
       ref="itemListEl"
     >
@@ -17,7 +76,7 @@
           @click="handleEllipsisClick"
           aria-expanded="false"
           :class="style['cdr-breadcrumb__ellipses']"
-          :aria-controls="`${id}List`"
+          :aria-controls="`${uniqueId}List`"
           :aria-label="ellipsisLabel"
         >
           <span
@@ -67,77 +126,6 @@
     </ol>
   </nav>
 </template>
-<script>
-      // <!-- TODO: remove scoped slot vue-router-ish support? just use emit/prevent pattern? -->
-import {
-  defineComponent, useCssModule, computed, ref, watch,
-} from 'vue';
-
-export default defineComponent({
-  name: 'CdrBreadcrumb',
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-      validator: (value) => {
-        if (value.length && value.length > 0) {
-          for (let i = 0; i < value.length; i += 1) {
-            if (!(typeof value[i].item === 'object')) {
-              console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
-              return false;
-            }
-            if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
-              console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
-              return false;
-            }
-          }
-        }
-        return true;
-      },
-    },
-    /**
-     * Flag to track container width threshold exceeded
-     */
-    truncationEnabled: {
-      type: Boolean,
-      default: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-  },
-  setup(props) {
-    const truncate = ref(props.truncationEnabled && props.items.length > 2);
-
-    watch(() => props.items, () => {
-      truncate.value = props.truncationEnabled && props.items.length > 2;
-    });
-
-    const itemListEl = ref(null);
-    const handleEllipsisClick = () => {
-      truncate.value = false;
-      setTimeout(() => {
-        // TODO: ref does not seem to update children here?
-        console.log(itemListEl.value.querySelector('.cdr-breadcrumb__item'))
-        itemListEl.value.querySelector('.cdr-breadcrumb__item').focus();
-      }, 1000);
-    };
-    const ellipsisLabel = computed(() => {
-      const s = (props.items.length - 2) > 1 ? 's' : '';
-      return `show ${props.items.length - 2} more navigation level${s}`;
-    });
-
-    return {
-      style: useCssModule(),
-      truncate,
-      handleEllipsisClick,
-      itemListEl,
-      ellipsisLabel,
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrBreadcrumb.module.scss">
 </style>
