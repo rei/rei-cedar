@@ -30,6 +30,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
           
           <!--v-if-->
         </svg>
+         Prev 
       </span>
     </li>
     
@@ -40,6 +41,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
         aria-current="page"
         aria-label="Current page, page 1"
         class="cdr-pagination__link cdr-pagination__link--current"
+        id="pagination-test-link-1"
       >
         1
       </button>
@@ -50,6 +52,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
       <button
         aria-label="Go to page 2"
         class="cdr-pagination__link"
+        id="pagination-test-link-2"
       >
         2
       </button>
@@ -60,6 +63,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
       <button
         aria-label="Go to page 3"
         class="cdr-pagination__link"
+        id="pagination-test-link-3"
       >
         3
       </button>
@@ -70,6 +74,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
       <button
         aria-label="Go to page 4"
         class="cdr-pagination__link"
+        id="pagination-test-link-4"
       >
         4
       </button>
@@ -80,6 +85,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
       <button
         aria-label="Go to page 5"
         class="cdr-pagination__link"
+        id="pagination-test-link-5"
       >
         5
       </button>
@@ -99,6 +105,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
       <button
         aria-label="Go to page 20"
         class="cdr-pagination__link"
+        id="pagination-test-link-20"
       >
         20
       </button>
@@ -209,6 +216,7 @@ exports[`CdrPagination > renders button pagination correctly 1`] = `
         aria-label="Go to next page"
         class="cdr-pagination__link cdr-pagination__next"
       >
+         Next 
         <svg
           aria-hidden="true"
           class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"
@@ -261,6 +269,7 @@ exports[`CdrPagination > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
+         Prev 
       </span>
     </li>
     
@@ -272,6 +281,7 @@ exports[`CdrPagination > renders correctly 1`] = `
         aria-label="Current page, page 1"
         class="cdr-pagination__link cdr-pagination__link--current"
         href="?page=1"
+        id="pagination-test-link-1"
       >
         1
       </a>
@@ -283,6 +293,7 @@ exports[`CdrPagination > renders correctly 1`] = `
         aria-label="Go to page 2"
         class="cdr-pagination__link"
         href="?page=2"
+        id="pagination-test-link-2"
       >
         2
       </a>
@@ -294,6 +305,7 @@ exports[`CdrPagination > renders correctly 1`] = `
         aria-label="Go to page 3"
         class="cdr-pagination__link"
         href="?page=3"
+        id="pagination-test-link-3"
       >
         3
       </a>
@@ -305,6 +317,7 @@ exports[`CdrPagination > renders correctly 1`] = `
         aria-label="Go to page 4"
         class="cdr-pagination__link"
         href="?page=4"
+        id="pagination-test-link-4"
       >
         4
       </a>
@@ -316,6 +329,7 @@ exports[`CdrPagination > renders correctly 1`] = `
         aria-label="Go to page 5"
         class="cdr-pagination__link"
         href="?page=5"
+        id="pagination-test-link-5"
       >
         5
       </a>
@@ -336,6 +350,7 @@ exports[`CdrPagination > renders correctly 1`] = `
         aria-label="Go to page 20"
         class="cdr-pagination__link"
         href="?page=20"
+        id="pagination-test-link-20"
       >
         20
       </a>
@@ -447,6 +462,7 @@ exports[`CdrPagination > renders correctly 1`] = `
         class="cdr-pagination__link cdr-pagination__next"
         href="?page=2"
       >
+         Next 
         <svg
           aria-hidden="true"
           class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"

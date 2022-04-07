@@ -281,20 +281,40 @@ describe('CdrPagination', () => {
     expect(wrapper.emitted().navigate[5][0]).toBe(2);
     expect(wrapper.emitted().navigate[5][1]).toBe('?page=2');
     expect(wrapper.emitted().navigate[5][2] instanceof Event).toBeTruthy();
+    
     // Do nothing when clicking current page link
+    const originalOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype,'offsetHeight');
+    const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
+    
+    //Ensure link is visible
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 10,
+    });
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { 
+      configurable: true, value: 10 
+    });
     link2.trigger('click'); // 2 -> 2
     await wrapper.vm.$nextTick();
     expect(wrapper.emitted().navigate[6]).toBeUndefined();
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+    await wrapper.vm.$nextTick();
 
-    // TODO: implement select behavior
-    // use select
-    // let options = wrapper.find('option');
-    // console.log(options)
-    // options[2].setSelected(); // 2 -> 3
-    // await wrapper.vm.$nextTick();
-    // expect(wrapper.emitted().navigate[6][0]).toBe(3);
-    // expect(wrapper.emitted().navigate[6][1]).toBe('?page=3');
-    // expect(wrapper.emitted().navigate[6][2] instanceof Event).toBeTruthy();
+    //The event should be emitted when the link is not visible (simulated click after making a selection)
+    link2.trigger('click'); // 2 -> 2
+    await wrapper.vm.$nextTick();
+    expect(wrapper.emitted().navigate[6][0]).toBe(2);
+    expect(wrapper.emitted().navigate[6][1]).toBe('?page=2');
+    expect(wrapper.emitted().navigate[6][2] instanceof Event).toBeTruthy();
+
+    //Options select
+    const options = wrapper.findAll('option')
+    await options[2].setSelected();  // 2 -> 3
+    await wrapper.vm.$nextTick();
+    expect(wrapper.emitted().navigate[7][0]).toBe(3);
+    expect(wrapper.emitted().navigate[7][1]).toBe('?page=3');
+    expect(wrapper.emitted().navigate[7][2] instanceof Event).toBeTruthy();
   });
 
   it('adds "of x" when a total is provided', async () => {

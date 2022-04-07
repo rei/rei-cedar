@@ -42,45 +42,6 @@
       @navigate="updateRoute"
     />
 
-    <cdr-pagination
-      :pages="makePages(20, null)"
-      :total-pages="20"
-      v-model="paraPage"
-    >
-      <template #prevLink="prevLink">
-        <p
-          v-bind="prevLink.attrs"
-          @click="prevLink.click"
-        >
-          <component
-            :is="prevLink.iconComponent"
-            :class="prevLink.iconClass"
-          />
-          {{ prevLink.content }}
-        </p>
-      </template>
-      <template #link="link">
-        <p
-          v-bind="link.attrs"
-          @click="link.click"
-        >
-          {{ link.page }}
-        </p>
-      </template>
-      <template #nextLink="nextLink">
-        <p
-          v-bind="nextLink.attrs"
-          @click="nextLink.click"
-        >
-          {{ nextLink.content }}
-          <component
-            :is="nextLink.iconComponent"
-            :class="nextLink.iconClass"
-          />
-        </p>
-      </template>
-    </cdr-pagination>
-
     <hr>
 
     <p>Previous/Next only (known total)</p>

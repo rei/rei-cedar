@@ -42,10 +42,7 @@
       Scoped Slot
     </h3>
     <cdr-breadcrumb :items="reiExampleBreadcrumbItems">
-      <template
-        slot="link"
-        slot-scope="link"
-      >
+      <template #link="link">
         <a
           :class="link.class"
           :href="link.href"
