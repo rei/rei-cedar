@@ -1,6 +1,6 @@
 
 <script setup>
-import { useCssModule, defineEmits, computed, ref, watch, nextTick, onMounted } from 'vue';
+import { useCssModule, computed, ref, watch, nextTick, onMounted } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 import IconCaretLeft from '../icon/comps/caret-left';
