@@ -4,7 +4,7 @@ import CdrTabPanel from 'componentdir/tabs/CdrTabPanel';
 // import Vue from 'vue';
 
 
-describe('CdrTabPanel', () => {
+xdescribe('CdrTabPanel', () => {
   it('renders tab', () => {
     const wrapper = mount(CdrTabPanel, {
       propsData: {
