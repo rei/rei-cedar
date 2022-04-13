@@ -1,121 +1,33 @@
 <template>
-  <div
-    :aria-hidden="!active"
-    :aria-labelledby="ariaLabelledby"
-    :class="mapClasses(
-      style, baseClass, modifierClass, animationDirection && `cdr-tab-panel-${animationDirection}`
-    )"
-    :hidden="hidden"
-    :id="id"
+  <section
+    v-show="isActive"
     tabindex="0"
+    :aria-visible="isActive ? true : false"
     role="tabpanel"
-    @keydown.up.prevent="handleUpArrowNav"
-    @animationend="animationEnd"
-    :key="name"
+    :class="style['cdr-tab-panel']"
+    :id="panelId"
+    :aria-labelledby="name"
   >
-    <slot />
-  </div>
+    <slot></slot>
+  </section>
 </template>
-<script>
-import {
-  defineComponent, useCssModule, computed, ref, inject, onBeforeMount,
-} from 'vue';
 
-// TODO: PUT MODIFIER HERE!
-import { buildClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
-import mapClasses from '../../utils/mapClasses';
+<script setup>
+import { computed, defineProps, inject, useCssModule } from 'vue';
+import kebabCase from 'lodash/kebabCase';
 
-export default defineComponent({
-  name: 'CdrTabPanel',
-  props: {
-    /**
-     * Required string value that shows up on tab header
-     */
-    name: {
-      type: String,
-      required: true,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    ariaLabelledby: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    modifier: {
-      type: String,
-      default: '',
-      validator: (value) => propValidator(value, ['centered', 'compact', 'full-width', 'no-border', '']),
-    },
-  },
+const props = defineProps({
+  name: String,
+})
+const selectedTabName = inject("selectedTabName");
 
-  setup(props, ctx) {
-    const baseClass = 'cdr-tab-panel';
-    const active = ref(false);
-    const hidden = ref(true);
-    const animationDirection = ref(null);
-
-    const modifierClass = computed(() => buildClass(baseClass, props.modifier));
-
-    const setActive = (state) => {
-      // TODO: provide/inject current active tab index or something?
-      if (state) hidden.value = false;
-      active.value = state;
-      ctx.emit('tab-change', state, props.id);
-    };
-    const setAnimationDirection = (direction) => {
-      // TODO Use provide/inject here?
-      // console.log(direction, 'YOOOOOO')
-      animationDirection.value = direction;
-    };
-    const handleUpArrowNav = () => {
-      // YOU WAHT NOW?!?!?!
-      // TODO: emit event for tabPanel to deal with????
-      ctx.emit('tab-arrow-up');
-      // $parent.setFocusToActiveTabHeader();
-    };
-    const animationEnd = (event) => {
-      if (event.animationName.split('-')[0] === 'exit') {
-        hidden.value = true;
-        animationDirection.value = null;
-      }
-    };
-
-    const tabs = inject('tabs');
-
-    onBeforeMount(() => {
-      tabs.value.push({
-        name: props.name,
-        id: props.id,
-        disabled: props.disabled,
-        ariaLabelledby: props.ariaLabelledby,
-        setActive,
-        setAnimationDirection,
-      });
-    });
-
-    return {
-      style: useCssModule(),
-      modifierClass,
-      animationDirection,
-      baseClass,
-      mapClasses,
-      animationEnd,
-      active,
-      hidden,
-      handleUpArrowNav,
-      setActive,
-      setAnimationDirection,
-    };
-  },
-});
-
+const isActive = computed(() => {
+  return props.name === selectedTabName.value;
+})
+const panelId = computed(() => {
+  return `${kebabCase(props.name)}-panel`
+})
+const style = useCssModule();
 </script>
 
 <style lang="scss" module src="./styles/CdrTabPanel.module.scss">

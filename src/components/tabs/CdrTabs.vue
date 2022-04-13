@@ -1,89 +1,47 @@
 <template>
   <div
     :class="mapClasses(style, baseClass, modifierClass, sizeClass)"
-    ref="containerEl"
     :style="{ height }"
   >
-    <div
-      :class="style['cdr-tabs__gradient-container']"
-      @keyup.right="rightArrowNav"
-      @keyup.left="leftArrowNav"
-      @keydown.down.prevent="handleDownArrowNav"
-    >
-      <div
-        :class="mapClasses(
-          style,
-          'cdr-tabs__gradient',
-          'cdr-tabs__gradient--left',
-          overflowLeft ? 'cdr-tabs__gradient--active' : ''
-        )"
-        :style="gradientLeftStyle"
-      />
-      <nav
-        :class="style['cdr-tabs__header-container']"
+    <ul :class="style['cdr-tabs__header-container']" role="tablist">
+      <li v-for="(tab, index) in tabs" 
+        :key="tab.name" role="presentation"
+        :class="style['cdr-tabs__header']" 
       >
-        <div
-          :class="style['cdr-tabs__header']"
-          role="tablist"
-          ref="cdrTabsHeaderEl"
-        >
-
-          <button
-            v-for="(tab, i) in tabs"
-            role="tab"
-            :aria-selected="tab.disabled ? '' : activeTabIndex === i"
-            :aria-controls="tab.disabled ? '' : tab.id"
-            :id="tab.disabled ? '' : tab.ariaLabelledby"
-            :key="tab.id"
-            :class="mapClasses(
+        <button
+          :ref="el => { tabElements[index] = el }"
+          :id="getTabId(tab.name)"
+          :disabled="tab.disabled"
+          :aria-disabled="tab.disabled"
+          :aria-selected="(selectedIndex === index && !tab.disabled) ? true : false"
+          :tabIndex="(selectedIndex === index && !tab.disabled) ? 0 : -1"
+          :class="mapClasses(
               style,
-              (activeTabIndex === i && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
+              (selectedIndex === index && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
               'cdr-tabs__header-item',
               tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
             )"
-            :tabIndex="(activeTabIndex === i && !tab.disabled) ? 0 : -1"
-            @click.prevent="(e) => tab.disabled ? null : handleClick(tab, e)"
-          >
-            {{ tab.name }}
-          </button>
-        </div>
-      </nav>
-      <div
-        :class="mapClasses(
-          style,
-          'cdr-tabs__gradient',
-          'cdr-tabs__gradient--right',
-          overflowRight ? 'cdr-tabs__gradient--active' : '',
-        )"
-        :style="gradientRightStyle"
-      />
-      <div
-        :class="style['cdr-tabs__underline']"
-        :style="underlineStyle"
-      />
-    </div>
-    <div
-      :class="style['cdr-tabs__content-container']"
-      ref="slotWrapperEl"
-    >
-      <slot />
-    </div>
+          role="tab"
+          @click.prevent="selectTab(index)"
+          @keyup.right="selectTabNext"
+          @keyup.left="selectTabPrev"
+        >{{ tab.name }}</button>
+      </li>
+    </ul>
+    <slot></slot>
   </div>
 </template>
-<script>
-import {
-  defineComponent, useCssModule, computed, ref, onMounted, provide, nextTick,
-} from 'vue';
-import debounce from 'lodash/debounce';
+
+<script setup>
+import { ref, provide, useSlots, onMounted, nextTick, computed, useCssModule } from 'vue';
+import kebabCase from 'lodash/kebabCase';
+import mapClasses from '../../utils/mapClasses';
+import { buildClass } from '../../utils/buildClass';
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
-import mapClasses from '../../utils/mapClasses';
-import { buildClass } from '../../utils/buildClass';
 
-export default defineComponent({
-  name: 'CdrTabs',
-  props: {
+const props = defineProps({
     height: {
       type: String,
       default: '240px',
@@ -97,269 +55,84 @@ export default defineComponent({
     backgroundColor: {
       type: String,
       default: CdrColorBackgroundPrimary,
-    },
-  },
-  setup(props, ctx) {
-    const tabs = ref([]);
-    provide('tabs', tabs);
+    }
+})
 
-    const underlineOffsetX = ref(0);
-    const underlineWidth = ref(0);
-    // const underlineScrollX = ref(0); // ????
-    const activeTabIndex = ref(0);
-    const headerWidth = ref(0);
-    const headerOverflow = ref(false);
-    const overflowLeft = ref(false);
-    const overflowRight = ref(false);
-    const animationInProgress = false;
+const slots = useSlots()
+const tabs = ref(slots.default().map((tab) => ({ name: tab.props.name, disabled: tab.props.disabled })));
+const selectedTabName = ref(null);
+const selectedIndex = ref(null);
+const tabElements = ref([]);
+const baseClass = 'cdr-tabs';
 
-    const containerEl = ref(null);
-    const slotWrapperEl = ref(null);
-    const cdrTabsHeaderEl = ref(null);
+const modifierClass = computed(() => buildClass('cdr-tabs', props.modifier));
+const sizeClass = computed(() => props.size && buildClass('cdr-tabs', props.size));
 
-    const baseClass = 'cdr-tabs';
-    const modifierClass = computed(() => buildClass('cdr-tabs', props.modifier));
-    const sizeClass = computed(() => props.size && buildClass('cdr-tabs', props.size));
+provide("selectedTabName", selectedTabName);
 
-    const underlineStyle = computed(() => ({
-      transform: `translateX(${underlineOffsetX.value}px)`,
-      width: `${underlineWidth.value}px`,
-    }));
-    const gradientLeftStyle = computed(() => {
-      const gradient = `linear-gradient(to left, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
-      return {
-        background: gradient,
-      };
-    });
-    const gradientRightStyle = computed(() => {
-      const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
-      return {
-        background: gradient,
-      };
-    });
+const getTabId = (name) => {
+  return `${kebabCase(name)}-tab`
+}
 
-    // TODO: i feel it in my heart that these 2 function can be 1-liners
-    const getNextTab = (startIndex) => {
-      for (let i = startIndex; i < tabs.value.length; i += 1) {
-        if (!tabs.value[i].disabled) {
-          return i;
-        }
-      }
+const selectTabNext = () => {
+  const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
+  if (isLastTab) {
+    return;
+  }
 
-      if (startIndex !== 0) {
-        for (let k = 0; k < startIndex; k += 1) {
-          if (!tabs.value[k].disabled) {
-            return k;
-          }
-        }
-      }
+  let nextIndex = selectedIndex.value + 1;
+  if(tabElements.value[nextIndex].disabled) {
+      nextIndex +=1
+  }
 
-      return -1;
-    };
+  const nextIndexExists = (nextIndex <= tabElements.value.length - 1);
+  if (!nextIndexExists){
+      return;
+  }
 
-    const getPreviousTab = (startIndex) => {
-      for (let i = startIndex; i > -1; i -= 1) {
-        if (!tabs.value[i].disabled) {
-          return i;
-        }
-      }
+  selectTab(nextIndex);
+}
 
-      if (startIndex !== tabs.value.length - 1) {
-        for (let k = tabs.value.length - 1; k > startIndex; k -= 1) {
-          if (!tabs.value[k].disabled) {
-            return k;
-          }
-        }
-      }
+const selectTabPrev = () => {
+  const isFirstTab = (selectedIndex.value <= 0);
+  if (isFirstTab) {
+    return;
+  }
 
-      return -1;
-    };
+  let prevIndex = selectedIndex.value - 1;
+  if(tabElements.value[prevIndex].disabled) {
+      prevIndex -=1
+  }
 
-    const handleClick = debounce((tabClicked) => {
-      // TODO: render index in buttons to bind this event, no need to find index????
-      const newIndex = tabs.value.findIndex((tab) => tabClicked.name === tab.name);
-      changeTab(newIndex);
-    }, 500, { leading: true, trailing: false });
+  const previousIndexExists = (prevIndex >= 0);
+  if (!previousIndexExists){
+      return;
+  }
+  selectTab(prevIndex)
+}
 
-    const changeTab = (newIndex) => {
-      const oldIndex = activeTabIndex.value;
+const selectTab = async (index) => {
+  const tabToSelect = tabElements.value[index];  
+  selectedTabName.value = tabs.value[index].name;
+  selectedIndex.value = index;
+  await nextTick();
+  tabToSelect.focus();
+}
 
-      hideScrollBar();
-      if (newIndex > oldIndex) {
-        tabs.value[oldIndex].setAnimationDirection('exit-left');
-        tabs.value[oldIndex].setActive(false);
-        setTimeout(() => {
-          tabs.value[newIndex].setActive(true);
-          tabs.value[newIndex].setAnimationDirection('enter-right');
-        }, 200);
-      } else {
-        tabs.value[oldIndex].setAnimationDirection('exit-right');
-        tabs.value[oldIndex].setActive(false);
-        setTimeout(() => {
-          tabs.value[newIndex].setActive(true);
-          tabs.value[newIndex].setAnimationDirection('enter-left');
-        }, 200);
-      }
-      activeTabIndex.value = newIndex;
-      updateUnderline();
-      cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
-    };
-    const rightArrowNav = debounce(() => {
-      const nextTab = getNextTab(activeTabIndex.value + 1);
-      if (nextTab !== -1) {
-        changeTab(nextTab);
-      }
-    }, 300, { leading: true, trailing: false });
+onMounted(() => {
+  setInitialTabStates();
+})
 
-    const leftArrowNav = debounce(() => {
-      const previousTab = getPreviousTab(activeTabIndex.value - 1);
-      if (previousTab !== -1) {
-        changeTab(previousTab);
-      }
-    }, 300, { leading: true, trailing: false });
+const setInitialTabStates = () => {
+tabElements.value.forEach((tab, index) =>{
+    if(!tab.disabled && selectedIndex.value === null){
+        selectedIndex.value = index;
+        selectedTabName.value = tabs.value[index].name;
+    }
+ })
+}
 
-    const calculateOverflow = () => {
-      let containerWidth = 0;
-      if (containerEl.value) {
-        containerWidth = containerEl.value.offsetWidth;
-      }
-      headerOverflow.value = headerWidth.value > containerWidth;
-      if (headerOverflow.value) {
-        // Get Scroll Position
-        const scrollX = cdrTabsHeaderEl.value.parentElement.scrollLeft;
-        overflowLeft.value = scrollX > 1;
-        overflowRight.value = (scrollX + 1) < (headerWidth.value - containerWidth);
-      } else {
-        overflowLeft.value = false;
-        overflowRight.value = false;
-      }
-    };
-    const updateUnderline = () => {
-      const elements = Array.from(cdrTabsHeaderEl.value.children); // TODO: cache this? probably?
-      if (elements.length > 0) {
-        const activeTab = elements[activeTabIndex.value];
-        const activeRect = activeTab.getBoundingClientRect();
-        const parentRect = cdrTabsHeaderEl.value.getBoundingClientRect();
-        const offset = activeRect.x - parentRect.x;
-
-        underlineOffsetX.value = offset
-          - cdrTabsHeaderEl.value.parentElement.scrollLeft;
-        underlineWidth.value = activeRect.width;
-
-        // shrink/hide the underline if it scrolls outside the container
-        if (underlineOffsetX.value + underlineWidth.value >= parentRect.width) {
-          underlineWidth.value = Math.max(0, parentRect.width - underlineOffsetX.value);
-          underlineOffsetX.value = Math.min(underlineOffsetX.value, parentRect.width);
-        } else if (underlineOffsetX.value < 0) {
-          underlineWidth.value = Math.max(0, underlineWidth.value + underlineOffsetX.value);
-          underlineOffsetX.value = 0;
-        }
-      }
-    };
-    // TODO: what?
-    const handleDownArrowNav = () => {
-      if (!animationInProgress) {
-        // TODO: u wot m8
-        // cdrTabsHeaderEl.value.
-        // $el.lastElementChild.children[activeTabIndex].focus();
-      }
-    };
-    // TODO: listen for events emitted from tabs???
-    const setFocusToActiveTabHeader = () => {
-      cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
-    };
-    const getHeaderWidth = () => {
-      let headerElements = [];
-      if (cdrTabsHeaderEl.value) {
-        headerElements = Array.from(cdrTabsHeaderEl.value.children);
-      }
-      let totalWidth = 0;
-      headerElements.forEach((element, i) => {
-        // account for margin-left on header elements
-        if (i > 0) {
-          totalWidth += props.size === 'small' ? Number(CdrSpaceHalfX) : Number(CdrSpaceOneX);
-        }
-        totalWidth += element.offsetWidth || 0;
-      });
-      return totalWidth;
-    };
-    const hideScrollBar = () => {
-      const containerRef = containerEl.value.style;
-      const slotRef = slotWrapperEl.value.style;
-      window.addEventListener('transitionend', () => {
-        containerRef.setProperty('overflow-x', 'unset');
-        slotRef.setProperty('overflow-y', 'unset');
-      }, { once: true });
-      containerRef.setProperty('overflow-x', 'hidden');
-      slotRef.setProperty('overflow-y', 'hidden');
-    };
-
-    onMounted(() => {
-      activeTabIndex.value = getNextTab(props.activeTab);
-
-      if (tabs.value[activeTabIndex.value] && tabs.value[activeTabIndex.value].setActive) {
-        tabs.value[activeTabIndex.value].setActive(true);
-      }
-
-      nextTick(() => {
-        headerWidth.value = getHeaderWidth();
-        calculateOverflow();
-        setTimeout(() => {
-          updateUnderline();
-        }, 500);
-      });
-      // Check for header overflow on window resize for gradient behavior.
-      window.addEventListener('resize', debounce(() => {
-        headerWidth.value = getHeaderWidth();
-        calculateOverflow();
-        updateUnderline();
-      }, 500));
-      // Check for header overflow on widow resize for gradient behavior.
-      cdrTabsHeaderEl.value.parentElement.addEventListener('scroll', debounce(() => {
-        calculateOverflow();
-        updateUnderline();
-      }, 50));
-    });
-
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      modifierClass,
-      sizeClass,
-      tabs,
-
-      // containerHeight, // ????
-      overflowLeft,
-      overflowRight,
-
-      rightArrowNav,
-      leftArrowNav,
-      handleDownArrowNav,
-      handleClick,
-
-      cdrTabsHeaderEl,
-      slotWrapperEl,
-      containerEl,
-
-      underlineStyle,
-      gradientLeftStyle,
-      gradientRightStyle,
-
-      getHeaderWidth,
-      calculateOverflow,
-      updateUnderline,
-      hideScrollBar,
-      changeTab,
-      getNextTab,
-      getPreviousTab,
-
-      activeTabIndex,
-      setFocusToActiveTabHeader,
-      headerOverflow,
-    };
-  },
-});
+const style = useCssModule();
 </script>
 
 <style lang="scss" module src="./styles/CdrTabs.module.scss">
