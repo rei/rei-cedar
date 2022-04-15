@@ -32,6 +32,7 @@ const unwrapped = reactive({
   isUnwrapped: !!props.unwrap,
 });
 provide('unwrap', unwrapped);
+provide('grouped', true);
 
 const nextIdx = computed(() => {
   const idx = currentIdx.value + 1;
@@ -92,6 +93,7 @@ onMounted(() => {
     ref="accordionGroupEl"
     @focusin="focusin"
     @keydown="handleKeyDown"
+    parent="accordionGroup"
   >
     <slot />
   </ul>

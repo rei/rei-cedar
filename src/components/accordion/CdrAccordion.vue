@@ -54,7 +54,9 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['accordion-toggle']);
-const unwrap = inject('unwrap');
+const unwrap = inject('unwrap') ? true : false;
+const isGrouped = inject('unwrap') ? 'li' : 'div';
+console.log(isGrouped);
 const style = useCssModule();
 const accordionContentEl = ref(null);
 const focused = ref(false);
@@ -67,7 +69,6 @@ const baseClass = 'cdr-accordion';
 const iconClass = 'cdr-accordion__icon';
 const containerClass = 'cdr-accordion__content-container';
 const contentClass = 'cdr-accordion__content';
-
 const isUnwrapped = computed(() => unwrap && unwrap.isUnwrapped);
 const headingContent = computed(() => (isUnwrapped.value
   ? 'div'
@@ -140,7 +141,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <li
+  <component
+    :is="isGrouped"
     :class="!isUnwrapped
       ? mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass, noSpacingClass)
       : null"
@@ -164,7 +166,7 @@ onMounted(() => {
           :id="`${id}-label`"
         >
           <slot name="label">
-            {{label}}
+            {{ label }}
           </slot>
         </span>
         <icon-caret-down
@@ -187,7 +189,7 @@ onMounted(() => {
         <slot />
       </div>
     </div>
-  </li>
+  </component>
 </template>
 
 <style lang="scss" module src="./styles/CdrAccordion.module.scss">
