@@ -1,6 +1,7 @@
 <template>
   <div
     :class="mapClasses(style, baseClass, modifierClass, sizeClass)"
+    ref="containerEl"
     :style="{ height }"
   >
     <div
@@ -61,6 +62,7 @@
 <script setup>
 import { ref, provide, useSlots, onMounted, nextTick, computed, useCssModule } from 'vue';
 import kebabCase from 'lodash/kebabCase';
+import debounce from 'lodash/debounce';
 import mapClasses from '../../utils/mapClasses';
 import { buildClass } from '../../utils/buildClass';
 import {
@@ -91,8 +93,11 @@ const baseClass = 'cdr-tabs';
 const tabs = ref(slottedTabs.map((tab) => ({ name: tab.props.name, disabled: tab.props.disabled })));
 const selectedTabName = ref(null);
 const selectedIndex = ref(null);
+const headerOverflow = ref(false);
+const headerWidth = ref(0);
 const tabElements = ref([]);
 const tablist = ref(null);
+const containerEl = ref(null);
 const overflowLeft = ref(false);
 const overflowRight = ref(false);
 const underlineOffsetX = ref(0);
@@ -117,6 +122,39 @@ const gradientRightStyle = computed(() => {
     };
 });
 
+ const calculateOverflow = () => {
+    let containerWidth = 0;
+    if (containerEl.value) {
+        containerWidth = containerEl.value.offsetWidth;
+    }
+    headerOverflow.value = headerWidth.value > containerWidth;
+    if (headerOverflow.value) {
+        // Get Scroll Position
+        const scrollX = tablist.value.scrollLeft;
+        overflowLeft.value = scrollX > 1;
+        overflowRight.value = (scrollX + 1) < (headerWidth.value - containerWidth);
+    } else {
+        overflowLeft.value = false;
+        overflowRight.value = false;
+    }
+};
+
+const getHeaderWidth = () => {
+    let headerElements = [];
+    if (tablist.value) {
+    headerElements = Array.from(tablist.value.children);
+    }
+    let totalWidth = 0;
+    headerElements.forEach((element, i) => {
+    // account for margin-left on header elements
+    if (i > 0) {
+        totalWidth += props.size === 'small' ? Number(CdrSpaceHalfX) : Number(CdrSpaceOneX);
+    }
+    totalWidth += element.offsetWidth || 0;
+    });
+    return totalWidth;
+};
+
 const updateUnderline = () => {
     if (tabElements.value.length > 0) {
     const activeTab = tabElements.value[selectedIndex.value];
@@ -125,7 +163,7 @@ const updateUnderline = () => {
     const offset = activeRect.x - parentRect.x;
 
     underlineOffsetX.value = offset
-        - tablist.value.parentElement.scrollLeft;
+        - tablist.value.scrollLeft;
     underlineWidth.value = activeRect.width;
 
     // shrink/hide the underline if it scrolls outside the container
@@ -192,14 +230,24 @@ const selectTab = async (index) => {
 }
 
 onMounted(() => {
-  setInitialTabStates();
-  setTimeout(()=>{
-    updateUnderline();
-  }, 250);
+    setInitialTabStates();
+    headerWidth.value = getHeaderWidth();
+    calculateOverflow();
+    setTimeout(()=>{
+        updateUnderline();
+    }, 250);
+    window.addEventListener('resize', debounce(() => {
+        headerWidth.value = getHeaderWidth();
+        calculateOverflow();
+        updateUnderline();
+    }, 250));
+    tablist.value.addEventListener('scroll', debounce(() => {
+        calculateOverflow();
+        updateUnderline();
+    }, 50));
 })
 
 const setInitialTabStates = () => {
-    console.log(tabElements.value)
     tabElements.value.forEach((tab, index) =>{
         if(!tab.disabled && selectedIndex.value === null){
             selectedIndex.value = index;

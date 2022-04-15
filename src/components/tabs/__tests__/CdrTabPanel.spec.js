@@ -4,19 +4,12 @@ import CdrTabPanel from 'componentdir/tabs/CdrTabPanel';
 // import Vue from 'vue';
 
 
-xdescribe('CdrTabPanel', () => {
+describe('CdrTabPanel', () => {
   it('renders tab', () => {
     const wrapper = mount(CdrTabPanel, {
       propsData: {
         name: 'test',
-        id: 'tab1',
-        ariaLabelledby: 'tab1',
       },
-      global: {
-        provide: {
-          tabs: {value: []}
-        }
-      }
     });
     expect(wrapper.element).toMatchSnapshot();
   });
@@ -25,101 +18,41 @@ xdescribe('CdrTabPanel', () => {
     const wrapper = mount(CdrTabPanel, {
       propsData: {
         name: 'test',
-        id: 'tab1',
-        ariaLabelledby: 'tab1',
       },
-      global: {
-        provide: {
-          tabs: {value: []}
-        }
-      }
     });
-    expect(wrapper.vm.active).toBe(false);
+    expect(wrapper.vm.isActive).toBe(false);
   });
 
-  it('is active when set', async () => {
+  it('is active when the selectedTabName is the same as the tabPanel name', async () => {
     const wrapper = mount(CdrTabPanel, {
       propsData: {
         name: 'test',
-        id: 'tab1',
-        ariaLabelledby: 'tab1',
       },
       global: {
         provide: {
-          tabs: {value: []}
+          selectedTabName: {value: 'test'}
         }
       }
     });
-    wrapper.vm.setActive(true);
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.vm.active).toBe(true);
+    expect(wrapper.vm.isActive).toBe(true);
   });
 
-  it('set animation direction functions correctly', async () => {
+  it('is NOT active when the selectedTabName is not the same as the tabPanel name', async () => {
     const wrapper = mount(CdrTabPanel, {
       propsData: {
         name: 'test',
-        id: 'tab1',
-        ariaLabelledby: 'tab1',
       },
       global: {
         provide: {
-          tabs: {value: []}
+          selectedTabName: {value: 'nameofsomedifferentab'}
         }
       }
     });
-    wrapper.vm.setActive(true);
     await wrapper.vm.$nextTick();
 
-    wrapper.vm.setAnimationDirection('flyLeft');
-    await wrapper.vm.$nextTick();
-    expect(wrapper.vm.animationDirection).toBe('flyLeft');
+    expect(wrapper.vm.isActive).toBe(false);
   });
 
-  it('updates state after animationend', async () => {
-    const wrapper = mount(CdrTabPanel, {
-      propsData: {
-        name: 'test',
-        id: 'tab1',
-        ariaLabelledby: 'tab1',
-      },
-      global: {
-        provide: {
-          tabs: {value: []}
-        }
-      }
-    });
-    wrapper.vm.setActive(true);
-    wrapper.vm.setAnimationDirection('exit-left');
-    await wrapper.vm.$nextTick();
-    expect(wrapper.vm.hidden).toBe(false);
-    expect(wrapper.vm.animationDirection).toBe('exit-left');
-    wrapper.trigger('animationend', {
-      animationName: 'exit-left'
-    });
-    await wrapper.vm.$nextTick();
-    expect(wrapper.vm.hidden).toBe(true);
-    expect(wrapper.vm.animationDirection).toBe(null);
-  });
-
-  it('handleUpArrowNav', async (done) => {
-    const wrapper = mount(CdrTabPanel, {
-      propsData: {
-        name: 'test',
-        id: 'tab1',
-        ariaLabelledby: 'tab1',
-      },
-      global: {
-        provide: {
-          tabs: {value: []}
-        }
-      }
-    });
-
-    wrapper.trigger('keydown', {key: 'up'});
-    await wrapper.vm.$nextTick();
-    expect(wrapper.emitted('tab-arrow-up')).toBeTruthy();
-    done();
-  })
 });

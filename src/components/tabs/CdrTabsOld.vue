@@ -6,9 +6,6 @@
   >
     <div
       :class="style['cdr-tabs__gradient-container']"
-      @keyup.right="rightArrowNav"
-      @keyup.left="leftArrowNav"
-      @keydown.down.prevent="handleDownArrowNav"
     >
       <div
         :class="mapClasses(

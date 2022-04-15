@@ -22,7 +22,7 @@ const props = defineProps({
 const selectedTabName = inject("selectedTabName");
 
 const isActive = computed(() => {
-  return props.name === selectedTabName.value;
+  return props.name === selectedTabName?.value;
 })
 const panelId = computed(() => {
   return `${kebabCase(props.name)}-panel`
