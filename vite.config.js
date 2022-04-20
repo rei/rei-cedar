@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from 'vite'
-//import { configDefaults } from 'vitest/config';
+import nightwatchPlugin from 'vite-plugin-nightwatch'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
 const packageJson = require('./package.json');
@@ -33,14 +33,6 @@ export default defineConfig({
       }   
     },
   },
-  // test: {
-  //   globals: true,
-  //   exclude: [...configDefaults.exclude, '**/test/e2e', '**/templates/__tests__'],
-  //   environment: 'jsdom',
-  //   coverage: {
-  //     reporter: ['text', 'json', 'html'],
-  //   },
-  // },
   resolve: {
     alias: {
       'srcdir': resolve(__dirname, 'src'),
@@ -51,5 +43,11 @@ export default defineConfig({
       '~': resolve(__dirname, 'node_modules')
     }
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    nightwatchPlugin({
+      componentType: 'vue',
+      renderPage: './index.html',
+    }),
+  ],
 })

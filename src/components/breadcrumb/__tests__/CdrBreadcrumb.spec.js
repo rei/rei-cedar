@@ -117,27 +117,6 @@ describe('CdrBreadcrumb', () => {
     expect(wrapper.find('.cdr-breadcrumb__ellipses').exists()).toBe(true);
   });
 
-  it('breadcrumb link can be overridden with link slot', () => {
-    const wrapper = mount(CdrBreadcrumb, {
-      propsData: {
-        id: 'bc-test',
-        items: [
-          {
-            item: {
-              url: 'http://rei.com',
-              name: 'Scoped',
-            },
-          },
-        ],
-      },
-      slots: {
-        // TODO: use h() to resolve `[Vue warn]: Property undefined was accessed during render but is not defined on instance.` ?
-        link: '<template v-slot:default="link"><p>{{link.href}} TEST {{link.content}} {{link.class}}</p></template>'
-      }
-    });
-    expect(wrapper.text()).toBe('http://rei.com TEST Scoped cdr-breadcrumb__link');
-  });
-
   // TODO: focus logic seems to not be working here?
   // xit('applies focus to first breadcrumb on ellipsis click', async (done) => {
   //   const elem = document.createElement('div')
