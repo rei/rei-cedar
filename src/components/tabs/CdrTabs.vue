@@ -47,7 +47,7 @@ const underlineWidth = ref(0);
 provide("selectedTabName", selectedTabName);
 
 //Computed
-const modifierClass = computed(() => modifyClassName('cdr-tabs', props.modifier));
+const modifierClass = computed(() => props.modifier && modifyClassName('cdr-tabs', props.modifier));
 const sizeClass = computed(() => props.size && modifyClassName('cdr-tabs', props.size));
 const underlineStyle = computed(() => ({
     transform: `translateX(${underlineOffsetX.value}px)`,

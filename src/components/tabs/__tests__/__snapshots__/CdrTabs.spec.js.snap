@@ -2,7 +2,7 @@
 
 exports[`CdrTabs mounted mounts tabs 1`] = `
 <div
-  class="cdr-tabs cdr-tabs--undefined"
+  class="cdr-tabs"
   style="height: 240px;"
 >
   <div
