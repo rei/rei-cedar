@@ -230,7 +230,7 @@ const style = useCssModule();
           :ref="el => { tabElements[index] = el }"
           :id="getTabId(tab.name)"
           :disabled="tab.disabled"
-          :aria-selected="checkIfActive(index, tab) ? true : false"
+          :aria-selected="checkIfActive(index, tab)"
           :tabIndex="checkIfActive(index, tab) ? 0 : -1"
           :class="mapClasses(
               style,
