@@ -1,63 +1,3 @@
-<template>
-  <div
-    :class="mapClasses(style, baseClass, modifierClass, sizeClass)"
-    ref="containerEl"
-    :style="{ height }"
-  >
-    <div
-      :class="style['cdr-tabs__gradient-container']"
-    >
-      <div
-        :class="mapClasses(
-          style,
-          'cdr-tabs__gradient',
-          'cdr-tabs__gradient--left',
-          overflowLeft ? 'cdr-tabs__gradient--active' : ''
-        )"
-        :style="gradientLeftStyle"
-      />
-    <ul :class="style['cdr-tabs__header-container']" role="tablist" ref="tablist">
-      <li v-for="(tab, index) in tabs" 
-        :key="tab.name" role="presentation"
-        :class="style['cdr-tabs__header']" 
-      >
-        <button
-          :ref="el => { tabElements[index] = el }"
-          :id="getTabId(tab.name)"
-          :disabled="tab.disabled"
-          :aria-disabled="tab.disabled"
-          :aria-selected="(selectedIndex === index && !tab.disabled) ? true : false"
-          :tabIndex="(selectedIndex === index && !tab.disabled) ? 0 : -1"
-          :class="mapClasses(
-              style,
-              (selectedIndex === index && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
-              'cdr-tabs__header-item',
-              tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
-            )"
-          role="tab"
-          @click.prevent="selectTab(index)"
-          @keyup.right="selectTabNext"
-          @keyup.left="selectTabPrev"
-        >{{ tab.name }}</button>
-      </li>
-    </ul>
-    <div
-        :class="mapClasses(
-          style,
-          'cdr-tabs__gradient',
-          'cdr-tabs__gradient--right',
-          overflowRight ? 'cdr-tabs__gradient--active' : '',
-        )"
-        :style="gradientRightStyle"
-      />
-      <div
-        :class="style['cdr-tabs__underline']"
-        :style="underlineStyle"
-      />
-    </div>
-    <slot></slot>
-  </div>
-</template>
 
 <script setup>
 import { ref, provide, useSlots, onMounted, nextTick, computed, useCssModule } from 'vue';
@@ -87,9 +27,10 @@ const props = defineProps({
 })
 
 const slots = useSlots();
-const slottedTabs = slots.default()[0].children.length ? slots.default()[0].children : slots.default();
+const slottedTabs = slots.default()[0].children?.length ? slots.default()[0].children : slots.default();
 const baseClass = 'cdr-tabs';
 
+//Refs
 const tabs = ref(slottedTabs.map((tab) => ({ name: tab.props.name, disabled: tab.props.disabled })));
 const selectedTabName = ref(null);
 const selectedIndex = ref(null);
@@ -103,6 +44,9 @@ const overflowRight = ref(false);
 const underlineOffsetX = ref(0);
 const underlineWidth = ref(0);
 
+provide("selectedTabName", selectedTabName);
+
+//Computed
 const modifierClass = computed(() => buildClass('cdr-tabs', props.modifier));
 const sizeClass = computed(() => props.size && buildClass('cdr-tabs', props.size));
 const underlineStyle = computed(() => ({
@@ -176,8 +120,6 @@ const updateUnderline = () => {
     }
     }
 };
-
-provide("selectedTabName", selectedTabName);
 
 const getTabId = (name) => {
   return `${kebabCase(name)}-tab`
@@ -258,6 +200,67 @@ const setInitialTabStates = () => {
 
 const style = useCssModule();
 </script>
+
+<template>
+  <div
+    :class="mapClasses(style, baseClass, modifierClass, sizeClass)"
+    ref="containerEl"
+    :style="{ height }"
+  >
+    <div
+      :class="style['cdr-tabs__gradient-container']"
+    >
+      <div
+        :class="mapClasses(
+          style,
+          'cdr-tabs__gradient',
+          'cdr-tabs__gradient--left',
+          overflowLeft ? 'cdr-tabs__gradient--active' : ''
+        )"
+        :style="gradientLeftStyle"
+      />
+    <ul :class="style['cdr-tabs__header-container']" role="tablist" ref="tablist">
+      <li v-for="(tab, index) in tabs" 
+        :key="tab.name" role="presentation"
+        :class="style['cdr-tabs__header']" 
+      >
+        <button
+          :ref="el => { tabElements[index] = el }"
+          :id="getTabId(tab.name)"
+          :disabled="tab.disabled"
+          :aria-disabled="tab.disabled"
+          :aria-selected="(selectedIndex === index && !tab.disabled) ? true : false"
+          :tabIndex="(selectedIndex === index && !tab.disabled) ? 0 : -1"
+          :class="mapClasses(
+              style,
+              (selectedIndex === index && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
+              'cdr-tabs__header-item',
+              tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
+            )"
+          role="tab"
+          @click.prevent="selectTab(index)"
+          @keyup.right="selectTabNext"
+          @keyup.left="selectTabPrev"
+        >{{ tab.name }}</button>
+      </li>
+    </ul>
+    <div
+        :class="mapClasses(
+          style,
+          'cdr-tabs__gradient',
+          'cdr-tabs__gradient--right',
+          overflowRight ? 'cdr-tabs__gradient--active' : '',
+        )"
+        :style="gradientRightStyle"
+      />
+      <div
+        :class="style['cdr-tabs__underline']"
+        :style="underlineStyle"
+      />
+    </div>
+    <slot></slot>
+  </div>
+</template>
 
 <style lang="scss" module src="./styles/CdrTabs.module.scss">
 </style>
