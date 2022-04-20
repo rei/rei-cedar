@@ -65,7 +65,9 @@ const gradientRightStyle = computed(() => {
     background: gradient,
     };
 });
-
+const checkIfActive = (index, tab) =>{
+  return (selectedIndex.value === index && !tab.disabled)
+}
  const calculateOverflow = () => {
     let containerWidth = 0;
     if (containerEl.value) {
@@ -228,12 +230,11 @@ const style = useCssModule();
           :ref="el => { tabElements[index] = el }"
           :id="getTabId(tab.name)"
           :disabled="tab.disabled"
-          :aria-disabled="tab.disabled"
-          :aria-selected="(selectedIndex === index && !tab.disabled) ? true : false"
-          :tabIndex="(selectedIndex === index && !tab.disabled) ? 0 : -1"
+          :aria-selected="checkIfActive(index, tab) ? true : false"
+          :tabIndex="checkIfActive(index, tab) ? 0 : -1"
           :class="mapClasses(
               style,
-              (selectedIndex === index && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
+              checkIfActive(index, tab) ? 'cdr-tabs__header-item-active' : '',
               'cdr-tabs__header-item',
               tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
             )"
