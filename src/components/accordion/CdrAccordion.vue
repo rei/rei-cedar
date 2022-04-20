@@ -54,9 +54,8 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['accordion-toggle']);
-const unwrap = inject('unwrap') ? true : false;
+const unwrap = inject('unwrap');
 const isGrouped = inject('unwrap') ? 'li' : 'div';
-console.log(isGrouped);
 const style = useCssModule();
 const accordionContentEl = ref(null);
 const focused = ref(false);

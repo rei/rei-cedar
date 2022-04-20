@@ -93,7 +93,6 @@ onMounted(() => {
     ref="accordionGroupEl"
     @focusin="focusin"
     @keydown="handleKeyDown"
-    parent="accordionGroup"
   >
     <slot />
   </ul>
