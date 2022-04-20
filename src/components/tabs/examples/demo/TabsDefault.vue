@@ -5,11 +5,13 @@
       height="500px"
       data-backstop="tab-default"
       :background-color="backgroundColor"
+
     >
       <cdr-tab-panel
         name="Details"
         aria-labelledby="tab-default-defails"
         id="tab-panel-default-details"
+        
       >
         <cdr-text
           tag="h3"
@@ -43,7 +45,7 @@
         <cdr-table
           modifier="compact borderless"
         >
-          <template slot="tbody">
+          <template #tbody>
             <tr>
               <th>Best Use</th>
               <td>Hiking, Travel</td>
@@ -92,8 +94,7 @@
       <cdr-tab-panel
         name="Q&A"
         aria-labelledby="tab-default-Q&A"
-        id="tab-panel-default-Q&A"
-      >
+        id="tab-panel-default-Q&A"      >
         <cdr-text
           tag="h3"
           class="cdr-text-dev--heading-serif-400 tab-title"
@@ -107,7 +108,7 @@
           @accordion-toggle="accordion1 = !accordion1"
           level="4"
         >
-          <template slot="label">
+          <template #label>
             A short label
           </template>
           <cdr-text
@@ -128,7 +129,7 @@
           @accordion-toggle="accordion2 = !accordion2"
           level="4"
         >
-          <template slot="label">
+          <template #label>
             Label with multiple words, so many words in fact that this content may wrap to several lines
           </template>
           <cdr-list modifier="unordered">
