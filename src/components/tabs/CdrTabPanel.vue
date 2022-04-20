@@ -1,5 +1,5 @@
 <script setup>
-  import { computed, defineProps, inject, useCssModule } from 'vue';
+  import { computed, inject, useCssModule } from 'vue';
   import kebabCase from 'lodash/kebabCase';
 
   const props = defineProps({
