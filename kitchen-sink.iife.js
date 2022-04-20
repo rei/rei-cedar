@@ -12089,11 +12089,11 @@
       _hoisted_2$Y
     ];
 
-    function render$X(_ctx, _cache, $props, $setup, $data, $options) {
+    function render$V(_ctx, _cache, $props, $setup, $data, $options) {
       return (openBlock(), createElementBlock("div", _hoisted_1$3W, _hoisted_3$O))
     }
 
-    script$4i.render = render$X;
+    script$4i.render = render$V;
     script$4i.__file = "src/dev/App.vue";
 
     function mapClasses(style) {
@@ -22815,125 +22815,503 @@
 
     script$_.__file = "src/components/table/CdrTable.vue";
 
-    var script$Z = defineComponent({
-      name: 'CdrTabPanel',
-      props: {
-        /**
-         * Required string value that shows up on tab header
-         */
-        name: {
-          type: String,
-          required: true,
-        },
-        disabled: {
-          type: Boolean,
-          default: false,
-        },
-        ariaLabelledby: {
-          type: String,
-          required: true,
-        },
-        id: {
-          type: String,
-          required: true,
-        },
-        modifier: {
-          type: String,
-          default: '',
-          validator: (value) => validateProp(value, ['centered', 'compact', 'full-width', 'no-border', '']),
-        },
-      },
+    /**
+     * A specialized version of `_.reduce` for arrays without support for
+     * iteratee shorthands.
+     *
+     * @private
+     * @param {Array} [array] The array to iterate over.
+     * @param {Function} iteratee The function invoked per iteration.
+     * @param {*} [accumulator] The initial value.
+     * @param {boolean} [initAccum] Specify using the first element of `array` as
+     *  the initial value.
+     * @returns {*} Returns the accumulated value.
+     */
+    function arrayReduce(array, iteratee, accumulator, initAccum) {
+      var index = -1,
+          length = array == null ? 0 : array.length;
 
-      setup(props, ctx) {
-        const baseClass = 'cdr-tab-panel';
-        const active = ref(false);
-        const hidden = ref(true);
-        const animationDirection = ref(null);
+      if (initAccum && length) {
+        accumulator = array[++index];
+      }
+      while (++index < length) {
+        accumulator = iteratee(accumulator, array[index], index, array);
+      }
+      return accumulator;
+    }
 
-        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+    var _arrayReduce = arrayReduce;
 
-        const setActive = (state) => {
-          // TODO: provide/inject current active tab index or something?
-          if (state) hidden.value = false;
-          active.value = state;
-          ctx.emit('tab-change', state, props.id);
-        };
-        const setAnimationDirection = (direction) => {
-          // TODO Use provide/inject here?
-          // console.log(direction, 'YOOOOOO')
-          animationDirection.value = direction;
-        };
-        const handleUpArrowNav = () => {
-          // YOU WAHT NOW?!?!?!
-          // TODO: emit event for tabPanel to deal with????
-          ctx.emit('tab-arrow-up');
-          // $parent.setFocusToActiveTabHeader();
-        };
-        const animationEnd = (event) => {
-          if (event.animationName.split('-')[0] === 'exit') {
-            hidden.value = true;
-            animationDirection.value = null;
-          }
-        };
+    /**
+     * The base implementation of `_.propertyOf` without support for deep paths.
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @returns {Function} Returns the new accessor function.
+     */
+    function basePropertyOf(object) {
+      return function(key) {
+        return object == null ? undefined : object[key];
+      };
+    }
 
-        const tabs = inject('tabs');
+    var _basePropertyOf = basePropertyOf;
 
-        onBeforeMount(() => {
-          tabs.value.push({
-            name: props.name,
-            id: props.id,
-            disabled: props.disabled,
-            ariaLabelledby: props.ariaLabelledby,
-            setActive,
-            setAnimationDirection,
-          });
-        });
+    /** Used to map Latin Unicode letters to basic Latin letters. */
+    var deburredLetters = {
+      // Latin-1 Supplement block.
+      '\xc0': 'A',  '\xc1': 'A', '\xc2': 'A', '\xc3': 'A', '\xc4': 'A', '\xc5': 'A',
+      '\xe0': 'a',  '\xe1': 'a', '\xe2': 'a', '\xe3': 'a', '\xe4': 'a', '\xe5': 'a',
+      '\xc7': 'C',  '\xe7': 'c',
+      '\xd0': 'D',  '\xf0': 'd',
+      '\xc8': 'E',  '\xc9': 'E', '\xca': 'E', '\xcb': 'E',
+      '\xe8': 'e',  '\xe9': 'e', '\xea': 'e', '\xeb': 'e',
+      '\xcc': 'I',  '\xcd': 'I', '\xce': 'I', '\xcf': 'I',
+      '\xec': 'i',  '\xed': 'i', '\xee': 'i', '\xef': 'i',
+      '\xd1': 'N',  '\xf1': 'n',
+      '\xd2': 'O',  '\xd3': 'O', '\xd4': 'O', '\xd5': 'O', '\xd6': 'O', '\xd8': 'O',
+      '\xf2': 'o',  '\xf3': 'o', '\xf4': 'o', '\xf5': 'o', '\xf6': 'o', '\xf8': 'o',
+      '\xd9': 'U',  '\xda': 'U', '\xdb': 'U', '\xdc': 'U',
+      '\xf9': 'u',  '\xfa': 'u', '\xfb': 'u', '\xfc': 'u',
+      '\xdd': 'Y',  '\xfd': 'y', '\xff': 'y',
+      '\xc6': 'Ae', '\xe6': 'ae',
+      '\xde': 'Th', '\xfe': 'th',
+      '\xdf': 'ss',
+      // Latin Extended-A block.
+      '\u0100': 'A',  '\u0102': 'A', '\u0104': 'A',
+      '\u0101': 'a',  '\u0103': 'a', '\u0105': 'a',
+      '\u0106': 'C',  '\u0108': 'C', '\u010a': 'C', '\u010c': 'C',
+      '\u0107': 'c',  '\u0109': 'c', '\u010b': 'c', '\u010d': 'c',
+      '\u010e': 'D',  '\u0110': 'D', '\u010f': 'd', '\u0111': 'd',
+      '\u0112': 'E',  '\u0114': 'E', '\u0116': 'E', '\u0118': 'E', '\u011a': 'E',
+      '\u0113': 'e',  '\u0115': 'e', '\u0117': 'e', '\u0119': 'e', '\u011b': 'e',
+      '\u011c': 'G',  '\u011e': 'G', '\u0120': 'G', '\u0122': 'G',
+      '\u011d': 'g',  '\u011f': 'g', '\u0121': 'g', '\u0123': 'g',
+      '\u0124': 'H',  '\u0126': 'H', '\u0125': 'h', '\u0127': 'h',
+      '\u0128': 'I',  '\u012a': 'I', '\u012c': 'I', '\u012e': 'I', '\u0130': 'I',
+      '\u0129': 'i',  '\u012b': 'i', '\u012d': 'i', '\u012f': 'i', '\u0131': 'i',
+      '\u0134': 'J',  '\u0135': 'j',
+      '\u0136': 'K',  '\u0137': 'k', '\u0138': 'k',
+      '\u0139': 'L',  '\u013b': 'L', '\u013d': 'L', '\u013f': 'L', '\u0141': 'L',
+      '\u013a': 'l',  '\u013c': 'l', '\u013e': 'l', '\u0140': 'l', '\u0142': 'l',
+      '\u0143': 'N',  '\u0145': 'N', '\u0147': 'N', '\u014a': 'N',
+      '\u0144': 'n',  '\u0146': 'n', '\u0148': 'n', '\u014b': 'n',
+      '\u014c': 'O',  '\u014e': 'O', '\u0150': 'O',
+      '\u014d': 'o',  '\u014f': 'o', '\u0151': 'o',
+      '\u0154': 'R',  '\u0156': 'R', '\u0158': 'R',
+      '\u0155': 'r',  '\u0157': 'r', '\u0159': 'r',
+      '\u015a': 'S',  '\u015c': 'S', '\u015e': 'S', '\u0160': 'S',
+      '\u015b': 's',  '\u015d': 's', '\u015f': 's', '\u0161': 's',
+      '\u0162': 'T',  '\u0164': 'T', '\u0166': 'T',
+      '\u0163': 't',  '\u0165': 't', '\u0167': 't',
+      '\u0168': 'U',  '\u016a': 'U', '\u016c': 'U', '\u016e': 'U', '\u0170': 'U', '\u0172': 'U',
+      '\u0169': 'u',  '\u016b': 'u', '\u016d': 'u', '\u016f': 'u', '\u0171': 'u', '\u0173': 'u',
+      '\u0174': 'W',  '\u0175': 'w',
+      '\u0176': 'Y',  '\u0177': 'y', '\u0178': 'Y',
+      '\u0179': 'Z',  '\u017b': 'Z', '\u017d': 'Z',
+      '\u017a': 'z',  '\u017c': 'z', '\u017e': 'z',
+      '\u0132': 'IJ', '\u0133': 'ij',
+      '\u0152': 'Oe', '\u0153': 'oe',
+      '\u0149': "'n", '\u017f': 's'
+    };
 
-        return {
-          style: useCssModule(),
-          modifierClass,
-          animationDirection,
-          baseClass,
-          mapClasses,
-          animationEnd,
-          active,
-          hidden,
-          handleUpArrowNav,
-          setActive,
-          setAnimationDirection,
-        };
-      },
+    /**
+     * Used by `_.deburr` to convert Latin-1 Supplement and Latin Extended-A
+     * letters to basic Latin letters.
+     *
+     * @private
+     * @param {string} letter The matched letter to deburr.
+     * @returns {string} Returns the deburred letter.
+     */
+    var deburrLetter = _basePropertyOf(deburredLetters);
+
+    var _deburrLetter = deburrLetter;
+
+    /**
+     * A specialized version of `_.map` for arrays without support for iteratee
+     * shorthands.
+     *
+     * @private
+     * @param {Array} [array] The array to iterate over.
+     * @param {Function} iteratee The function invoked per iteration.
+     * @returns {Array} Returns the new mapped array.
+     */
+    function arrayMap(array, iteratee) {
+      var index = -1,
+          length = array == null ? 0 : array.length,
+          result = Array(length);
+
+      while (++index < length) {
+        result[index] = iteratee(array[index], index, array);
+      }
+      return result;
+    }
+
+    var _arrayMap = arrayMap;
+
+    /**
+     * Checks if `value` is classified as an `Array` object.
+     *
+     * @static
+     * @memberOf _
+     * @since 0.1.0
+     * @category Lang
+     * @param {*} value The value to check.
+     * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+     * @example
+     *
+     * _.isArray([1, 2, 3]);
+     * // => true
+     *
+     * _.isArray(document.body.children);
+     * // => false
+     *
+     * _.isArray('abc');
+     * // => false
+     *
+     * _.isArray(_.noop);
+     * // => false
+     */
+    var isArray = Array.isArray;
+
+    var isArray_1 = isArray;
+
+    /** Used as references for various `Number` constants. */
+    var INFINITY = 1 / 0;
+
+    /** Used to convert symbols to primitives and strings. */
+    var symbolProto = _Symbol ? _Symbol.prototype : undefined,
+        symbolToString = symbolProto ? symbolProto.toString : undefined;
+
+    /**
+     * The base implementation of `_.toString` which doesn't convert nullish
+     * values to empty strings.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {string} Returns the string.
+     */
+    function baseToString(value) {
+      // Exit early for strings to avoid a performance hit in some environments.
+      if (typeof value == 'string') {
+        return value;
+      }
+      if (isArray_1(value)) {
+        // Recursively convert values (susceptible to call stack limits).
+        return _arrayMap(value, baseToString) + '';
+      }
+      if (isSymbol_1(value)) {
+        return symbolToString ? symbolToString.call(value) : '';
+      }
+      var result = (value + '');
+      return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+    }
+
+    var _baseToString = baseToString;
+
+    /**
+     * Converts `value` to a string. An empty string is returned for `null`
+     * and `undefined` values. The sign of `-0` is preserved.
+     *
+     * @static
+     * @memberOf _
+     * @since 4.0.0
+     * @category Lang
+     * @param {*} value The value to convert.
+     * @returns {string} Returns the converted string.
+     * @example
+     *
+     * _.toString(null);
+     * // => ''
+     *
+     * _.toString(-0);
+     * // => '-0'
+     *
+     * _.toString([1, 2, 3]);
+     * // => '1,2,3'
+     */
+    function toString(value) {
+      return value == null ? '' : _baseToString(value);
+    }
+
+    var toString_1 = toString;
+
+    /** Used to match Latin Unicode letters (excluding mathematical operators). */
+    var reLatin = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;
+
+    /** Used to compose unicode character classes. */
+    var rsComboMarksRange$3 = '\\u0300-\\u036f',
+        reComboHalfMarksRange$3 = '\\ufe20-\\ufe2f',
+        rsComboSymbolsRange$3 = '\\u20d0-\\u20ff',
+        rsComboRange$3 = rsComboMarksRange$3 + reComboHalfMarksRange$3 + rsComboSymbolsRange$3;
+
+    /** Used to compose unicode capture groups. */
+    var rsCombo$2 = '[' + rsComboRange$3 + ']';
+
+    /**
+     * Used to match [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) and
+     * [combining diacritical marks for symbols](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks_for_Symbols).
+     */
+    var reComboMark = RegExp(rsCombo$2, 'g');
+
+    /**
+     * Deburrs `string` by converting
+     * [Latin-1 Supplement](https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)#Character_table)
+     * and [Latin Extended-A](https://en.wikipedia.org/wiki/Latin_Extended-A)
+     * letters to basic Latin letters and removing
+     * [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks).
+     *
+     * @static
+     * @memberOf _
+     * @since 3.0.0
+     * @category String
+     * @param {string} [string=''] The string to deburr.
+     * @returns {string} Returns the deburred string.
+     * @example
+     *
+     * _.deburr('déjà vu');
+     * // => 'deja vu'
+     */
+    function deburr(string) {
+      string = toString_1(string);
+      return string && string.replace(reLatin, _deburrLetter).replace(reComboMark, '');
+    }
+
+    var deburr_1 = deburr;
+
+    /** Used to match words composed of alphanumeric characters. */
+    var reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
+
+    /**
+     * Splits an ASCII `string` into an array of its words.
+     *
+     * @private
+     * @param {string} The string to inspect.
+     * @returns {Array} Returns the words of `string`.
+     */
+    function asciiWords(string) {
+      return string.match(reAsciiWord) || [];
+    }
+
+    var _asciiWords = asciiWords;
+
+    /** Used to detect strings that need a more robust regexp to match words. */
+    var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+
+    /**
+     * Checks if `string` contains a word composed of Unicode symbols.
+     *
+     * @private
+     * @param {string} string The string to inspect.
+     * @returns {boolean} Returns `true` if a word is found, else `false`.
+     */
+    function hasUnicodeWord(string) {
+      return reHasUnicodeWord.test(string);
+    }
+
+    var _hasUnicodeWord = hasUnicodeWord;
+
+    /** Used to compose unicode character classes. */
+    var rsAstralRange$2 = '\\ud800-\\udfff',
+        rsComboMarksRange$2 = '\\u0300-\\u036f',
+        reComboHalfMarksRange$2 = '\\ufe20-\\ufe2f',
+        rsComboSymbolsRange$2 = '\\u20d0-\\u20ff',
+        rsComboRange$2 = rsComboMarksRange$2 + reComboHalfMarksRange$2 + rsComboSymbolsRange$2,
+        rsDingbatRange = '\\u2700-\\u27bf',
+        rsLowerRange = 'a-z\\xdf-\\xf6\\xf8-\\xff',
+        rsMathOpRange = '\\xac\\xb1\\xd7\\xf7',
+        rsNonCharRange = '\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf',
+        rsPunctuationRange = '\\u2000-\\u206f',
+        rsSpaceRange = ' \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000',
+        rsUpperRange = 'A-Z\\xc0-\\xd6\\xd8-\\xde',
+        rsVarRange$2 = '\\ufe0e\\ufe0f',
+        rsBreakRange = rsMathOpRange + rsNonCharRange + rsPunctuationRange + rsSpaceRange;
+
+    /** Used to compose unicode capture groups. */
+    var rsApos$1 = "['\u2019]",
+        rsBreak = '[' + rsBreakRange + ']',
+        rsCombo$1 = '[' + rsComboRange$2 + ']',
+        rsDigits = '\\d+',
+        rsDingbat = '[' + rsDingbatRange + ']',
+        rsLower = '[' + rsLowerRange + ']',
+        rsMisc = '[^' + rsAstralRange$2 + rsBreakRange + rsDigits + rsDingbatRange + rsLowerRange + rsUpperRange + ']',
+        rsFitz$1 = '\\ud83c[\\udffb-\\udfff]',
+        rsModifier$1 = '(?:' + rsCombo$1 + '|' + rsFitz$1 + ')',
+        rsNonAstral$1 = '[^' + rsAstralRange$2 + ']',
+        rsRegional$1 = '(?:\\ud83c[\\udde6-\\uddff]){2}',
+        rsSurrPair$1 = '[\\ud800-\\udbff][\\udc00-\\udfff]',
+        rsUpper = '[' + rsUpperRange + ']',
+        rsZWJ$2 = '\\u200d';
+
+    /** Used to compose unicode regexes. */
+    var rsMiscLower = '(?:' + rsLower + '|' + rsMisc + ')',
+        rsMiscUpper = '(?:' + rsUpper + '|' + rsMisc + ')',
+        rsOptContrLower = '(?:' + rsApos$1 + '(?:d|ll|m|re|s|t|ve))?',
+        rsOptContrUpper = '(?:' + rsApos$1 + '(?:D|LL|M|RE|S|T|VE))?',
+        reOptMod$1 = rsModifier$1 + '?',
+        rsOptVar$1 = '[' + rsVarRange$2 + ']?',
+        rsOptJoin$1 = '(?:' + rsZWJ$2 + '(?:' + [rsNonAstral$1, rsRegional$1, rsSurrPair$1].join('|') + ')' + rsOptVar$1 + reOptMod$1 + ')*',
+        rsOrdLower = '\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])',
+        rsOrdUpper = '\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])',
+        rsSeq$1 = rsOptVar$1 + reOptMod$1 + rsOptJoin$1,
+        rsEmoji = '(?:' + [rsDingbat, rsRegional$1, rsSurrPair$1].join('|') + ')' + rsSeq$1;
+
+    /** Used to match complex or compound words. */
+    var reUnicodeWord = RegExp([
+      rsUpper + '?' + rsLower + '+' + rsOptContrLower + '(?=' + [rsBreak, rsUpper, '$'].join('|') + ')',
+      rsMiscUpper + '+' + rsOptContrUpper + '(?=' + [rsBreak, rsUpper + rsMiscLower, '$'].join('|') + ')',
+      rsUpper + '?' + rsMiscLower + '+' + rsOptContrLower,
+      rsUpper + '+' + rsOptContrUpper,
+      rsOrdUpper,
+      rsOrdLower,
+      rsDigits,
+      rsEmoji
+    ].join('|'), 'g');
+
+    /**
+     * Splits a Unicode `string` into an array of its words.
+     *
+     * @private
+     * @param {string} The string to inspect.
+     * @returns {Array} Returns the words of `string`.
+     */
+    function unicodeWords(string) {
+      return string.match(reUnicodeWord) || [];
+    }
+
+    var _unicodeWords = unicodeWords;
+
+    /**
+     * Splits `string` into an array of its words.
+     *
+     * @static
+     * @memberOf _
+     * @since 3.0.0
+     * @category String
+     * @param {string} [string=''] The string to inspect.
+     * @param {RegExp|string} [pattern] The pattern to match words.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @returns {Array} Returns the words of `string`.
+     * @example
+     *
+     * _.words('fred, barney, & pebbles');
+     * // => ['fred', 'barney', 'pebbles']
+     *
+     * _.words('fred, barney, & pebbles', /[^, ]+/g);
+     * // => ['fred', 'barney', '&', 'pebbles']
+     */
+    function words(string, pattern, guard) {
+      string = toString_1(string);
+      pattern = guard ? undefined : pattern;
+
+      if (pattern === undefined) {
+        return _hasUnicodeWord(string) ? _unicodeWords(string) : _asciiWords(string);
+      }
+      return string.match(pattern) || [];
+    }
+
+    var words_1 = words;
+
+    /** Used to compose unicode capture groups. */
+    var rsApos = "['\u2019]";
+
+    /** Used to match apostrophes. */
+    var reApos = RegExp(rsApos, 'g');
+
+    /**
+     * Creates a function like `_.camelCase`.
+     *
+     * @private
+     * @param {Function} callback The function to combine each word.
+     * @returns {Function} Returns the new compounder function.
+     */
+    function createCompounder(callback) {
+      return function(string) {
+        return _arrayReduce(words_1(deburr_1(string).replace(reApos, '')), callback, '');
+      };
+    }
+
+    var _createCompounder = createCompounder;
+
+    /**
+     * Converts `string` to
+     * [kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
+     *
+     * @static
+     * @memberOf _
+     * @since 3.0.0
+     * @category String
+     * @param {string} [string=''] The string to convert.
+     * @returns {string} Returns the kebab cased string.
+     * @example
+     *
+     * _.kebabCase('Foo Bar');
+     * // => 'foo-bar'
+     *
+     * _.kebabCase('fooBar');
+     * // => 'foo-bar'
+     *
+     * _.kebabCase('__FOO_BAR__');
+     * // => 'foo-bar'
+     */
+    var kebabCase = _createCompounder(function(result, word, index) {
+      return result + (index ? '-' : '') + word.toLowerCase();
     });
 
-    const _hoisted_1$T = ["aria-hidden", "aria-labelledby", "hidden", "id"];
+    var kebabCase_1 = kebabCase;
 
-    function render$W(_ctx, _cache, $props, $setup, $data, $options) {
-      return (openBlock(), createElementBlock("div", {
-        "aria-hidden": !_ctx.active,
-        "aria-labelledby": _ctx.ariaLabelledby,
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.modifierClass, _ctx.animationDirection && `cdr-tab-panel-${_ctx.animationDirection}`)),
-        hidden: _ctx.hidden,
-        id: _ctx.id,
+    const _hoisted_1$T = ["aria-visible", "id", "aria-labelledby"];
+
+      
+    var script$Z = {
+      props: {
+        name: String,
+      },
+      setup(__props) {
+
+    const props = __props;
+
+      
+      const selectedTabName = inject("selectedTabName");
+
+      const isActive = computed(() => {
+        return props.name === selectedTabName?.value;
+      });
+      const panelId = computed(() => {
+        return `${kebabCase_1(props.name)}-panel`
+      });
+      const style = useCssModule();
+
+    return (_ctx, _cache) => {
+      return withDirectives((openBlock(), createElementBlock("section", {
         tabindex: "0",
+        "aria-visible": unref(isActive),
         role: "tabpanel",
-        onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers((...args) => (_ctx.handleUpArrowNav && _ctx.handleUpArrowNav(...args)), ["prevent"]), ["up"])),
-        onAnimationend: _cache[1] || (_cache[1] = (...args) => (_ctx.animationEnd && _ctx.animationEnd(...args))),
-        key: _ctx.name
+        class: normalizeClass(unref(style)['cdr-tab-panel']),
+        id: unref(panelId),
+        "aria-labelledby": __props.name
       }, [
         renderSlot(_ctx.$slots, "default")
-      ], 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$T))
+      ], 10 /* CLASS, PROPS */, _hoisted_1$T)), [
+        [vShow, unref(isActive)]
+      ])
     }
+    }
+
+    };
 
     var style0$4 = {"cdr-tab-panel":"cdr-tab-panel_13-0-0-alpha-3","cdr-tab-panel-enter-left":"cdr-tab-panel-enter-left_13-0-0-alpha-3","cdr-tab-panel-enter-right":"cdr-tab-panel-enter-right_13-0-0-alpha-3","cdr-tab-panel-exit-left":"cdr-tab-panel-exit-left_13-0-0-alpha-3","cdr-tab-panel-exit-right":"cdr-tab-panel-exit-right_13-0-0-alpha-3"};
 
     const cssModules$4 = script$Z.__cssModules = {};
     cssModules$4["$style"] = style0$4;
 
-    script$Z.render = render$W;
+
     script$Z.__file = "src/components/tabs/CdrTabPanel.vue";
 
-    var script$Y = defineComponent({
-      name: 'CdrTabs',
+    const _hoisted_1$S = ["id", "disabled", "aria-selected", "tabIndex", "onClick", "onKeyup"];
+
+
+    var script$Y = {
       props: {
         height: {
           type: String,
@@ -22948,348 +23326,271 @@
         backgroundColor: {
           type: String,
           default: CdrColorBackgroundPrimary,
-        },
-      },
-      setup(props, ctx) {
+        }
+    },
+      setup(__props) {
 
-        const tabs = ref([]);
-        provide('tabs', tabs);
-
-        const underlineOffsetX = ref(0);
-        const underlineWidth = ref(0);
-        // const underlineScrollX = ref(0); // ????
-        const activeTabIndex = ref(0);
-        const headerWidth = ref(0);
-        const headerOverflow = ref(false);
-        const overflowLeft = ref(false);
-        const overflowRight = ref(false);
+    const props = __props;
 
 
-        const containerEl = ref(null);
-        const slotWrapperEl = ref(null);
-        const cdrTabsHeaderEl = ref(null);
 
-        const baseClass = 'cdr-tabs';
-        const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
-        const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const slots = useSlots();
+    const slottedTabs = slots.default()[0].children?.length ? slots.default()[0].children : slots.default();
+    const baseClass = 'cdr-tabs';
 
-        const underlineStyle = computed(() => {
-          return {
-            transform: `translateX(${underlineOffsetX.value}px)`,
-            width: `${underlineWidth.value}px`,
-          };
-        });
-        const gradientLeftStyle = computed(() => {
-          const gradient = `linear-gradient(to left, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
-          return {
-            background: gradient,
-          };
-        });
-        const gradientRightStyle = computed(() => {
-          const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
-          return {
-            background: gradient,
-          };
-        });
+    //Refs
+    const tabs = ref(slottedTabs.map((tab) => ({ name: tab.props.name, disabled: tab.props.disabled })));
+    const selectedTabName = ref(null);
+    const selectedIndex = ref(null);
+    const headerOverflow = ref(false);
+    const headerWidth = ref(0);
+    const tabElements = ref([]);
+    const tablist = ref(null);
+    const containerEl = ref(null);
+    const overflowLeft = ref(false);
+    const overflowRight = ref(false);
+    const underlineOffsetX = ref(0);
+    const underlineWidth = ref(0);
 
-    // TODO: i feel it in my heart that these 2 function can be 1-liners
-        const getNextTab = (startIndex) => {
-          for (let i = startIndex; i < tabs.value.length; i += 1) {
-            if (!tabs.value[i].disabled) {
-              return i;
-            }
-          }
+    provide("selectedTabName", selectedTabName);
 
-          if (startIndex !== 0) {
-            for (let k = 0; k < startIndex; k += 1) {
-              if (!tabs.value[k].disabled) {
-                return k;
-              }
-            }
-          }
-
-          return -1;
+    //Computed
+    const modifierClass = computed(() => props.modifier && modifyClassName('cdr-tabs', props.modifier));
+    const sizeClass = computed(() => props.size && modifyClassName('cdr-tabs', props.size));
+    const underlineStyle = computed(() => ({
+        transform: `translateX(${underlineOffsetX.value}px)`,
+        width: `${underlineWidth.value}px`,
+    }));
+    const gradientLeftStyle = computed(() => {
+        const gradient = `linear-gradient(to left, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
+        return {
+        background: gradient,
         };
-
-        const getPreviousTab = (startIndex) => {
-          for (let i = startIndex; i > -1; i -= 1) {
-            if (!tabs.value[i].disabled) {
-              return i;
-            }
-          }
-
-          if (startIndex !== tabs.value.length - 1) {
-            for (let k = tabs.value.length - 1; k > startIndex; k -= 1) {
-              if (!tabs.value[k].disabled) {
-                return k;
-              }
-            }
-          }
-
-          return -1;
+    });
+    const gradientRightStyle = computed(() => {
+        const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
+        return {
+        background: gradient,
         };
-
-        const handleClick = debounce$1(function handleClickCallback(tabClicked) {
-          // TODO: render index in buttons to bind this event, no need to find index????
-          const newIndex = tabs.value.findIndex((tab) => tabClicked.name === tab.name);
-          changeTab(newIndex);
-        }, 500, { leading: true, trailing: false });
-
-        const changeTab = (newIndex) => {
-          const oldIndex = activeTabIndex.value;
-
-          hideScrollBar();
-          if (newIndex > oldIndex) {
-            tabs.value[oldIndex].setAnimationDirection('exit-left');
-            tabs.value[oldIndex].setActive(false);
-            setTimeout(() => {
-              tabs.value[newIndex].setActive(true);
-              tabs.value[newIndex].setAnimationDirection('enter-right');
-            }, 200);
-          } else {
-            tabs.value[oldIndex].setAnimationDirection('exit-right');
-            tabs.value[oldIndex].setActive(false);
-            setTimeout(() => {
-              tabs.value[newIndex].setActive(true);
-              tabs.value[newIndex].setAnimationDirection('enter-left');
-            }, 200);
-          }
-          activeTabIndex.value = newIndex;
-          updateUnderline();
-          cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
-        };
-        const rightArrowNav = debounce$1(function handleRightArrow() {
-          const nextTab = getNextTab(activeTabIndex.value + 1);
-          if (nextTab !== -1) {
-            changeTab(nextTab);
-          }
-        }, 300, { leading: true, trailing: false });
-
-        const leftArrowNav = debounce$1(function handleLeftArrow() {
-          const previousTab = getPreviousTab(activeTabIndex.value - 1);
-          if (previousTab !== -1) {
-            changeTab(previousTab);
-          }
-        }, 300, { leading: true, trailing: false });
-
-        const calculateOverflow = () => {
-          let containerWidth = 0;
-          if (containerEl.value) {
+    });
+    const checkIfActive = (index, tab) =>{
+      return (selectedIndex.value === index && !tab.disabled)
+    };
+     const calculateOverflow = () => {
+        let containerWidth = 0;
+        if (containerEl.value) {
             containerWidth = containerEl.value.offsetWidth;
-          }
-          headerOverflow.value = headerWidth.value > containerWidth;
-          if (headerOverflow.value) {
+        }
+        headerOverflow.value = headerWidth.value > containerWidth;
+        if (headerOverflow.value) {
             // Get Scroll Position
-            const scrollX = cdrTabsHeaderEl.value.parentElement.scrollLeft;
+            const scrollX = tablist.value.scrollLeft;
             overflowLeft.value = scrollX > 1;
             overflowRight.value = (scrollX + 1) < (headerWidth.value - containerWidth);
-          } else {
+        } else {
             overflowLeft.value = false;
             overflowRight.value = false;
-          }
-        };
-        const updateUnderline = () => {
-          const elements = Array.from(cdrTabsHeaderEl.value.children); // TODO: cache this? probably?
-          if (elements.length > 0) {
-            const activeTab = elements[activeTabIndex.value];
-            const activeRect = activeTab.getBoundingClientRect();
-            const parentRect = cdrTabsHeaderEl.value.getBoundingClientRect();
-            const offset = activeRect.x - parentRect.x;
+        }
+    };
 
-            underlineOffsetX.value = offset
-              - cdrTabsHeaderEl.value.parentElement.scrollLeft;
-            underlineWidth.value = activeRect.width;
-
-            // shrink/hide the underline if it scrolls outside the container
-            if (underlineOffsetX.value + underlineWidth.value >= parentRect.width) {
-              underlineWidth.value = Math.max(0, parentRect.width - underlineOffsetX.value);
-              underlineOffsetX.value = Math.min(underlineOffsetX.value, parentRect.width);
-            } else if (underlineOffsetX.value < 0) {
-              underlineWidth.value = Math.max(0, underlineWidth.value + underlineOffsetX.value);
-              underlineOffsetX.value = 0;
-            }
-          }
-        };
-        // TODO: what?
-        const handleDownArrowNav = () => {
-        };
-        // TODO: listen for events emitted from tabs???
-        const setFocusToActiveTabHeader = () => {
-          cdrTabsHeaderEl.value.children[activeTabIndex.value].focus();
-        };
-        const getHeaderWidth = () => {
-          let headerElements = [];
-          if (cdrTabsHeaderEl.value) {
-            headerElements = Array.from(cdrTabsHeaderEl.value.children);
-          }
-          let totalWidth = 0;
-          headerElements.forEach((element, i) => {
-            // account for margin-left on header elements
-            if (i > 0) {
-              totalWidth += props.size === 'small' ? Number(CdrSpaceHalfX) : Number(CdrSpaceOneX);
-            }
-            totalWidth += element.offsetWidth || 0;
-          });
-          return totalWidth;
-        };
-        const hideScrollBar = () => {
-          const containerRef = containerEl.value.style;
-          const slotRef = slotWrapperEl.value.style;
-          window.addEventListener('transitionend', () => {
-            containerRef.setProperty('overflow-x', 'unset');
-            slotRef.setProperty('overflow-y', 'unset');
-          }, { once: true });
-          containerRef.setProperty('overflow-x', 'hidden');
-          slotRef.setProperty('overflow-y', 'hidden');
-        };
-
-        onMounted(() => {
-
-          activeTabIndex.value = getNextTab(props.activeTab);
-
-          if (tabs.value[activeTabIndex.value] && tabs.value[activeTabIndex.value].setActive) {
-            tabs.value[activeTabIndex.value].setActive(true);
-          }
-
-          nextTick(() => {
-            headerWidth.value = getHeaderWidth();
-            calculateOverflow();
-            setTimeout(() => {
-              updateUnderline();
-            }, 500);
-          });
-          // Check for header overflow on window resize for gradient behavior.
-          window.addEventListener('resize', debounce$1(() => {
-            headerWidth.value = getHeaderWidth();
-            calculateOverflow();
-            updateUnderline();
-          }, 500));
-          // Check for header overflow on widow resize for gradient behavior.
-          cdrTabsHeaderEl.value.parentElement.addEventListener('scroll', debounce$1(() => {
-            calculateOverflow();
-            updateUnderline();
-          }, 50));
+    const getHeaderWidth = () => {
+        let headerElements = [];
+        if (tablist.value) {
+        headerElements = Array.from(tablist.value.children);
+        }
+        let totalWidth = 0;
+        headerElements.forEach((element, i) => {
+        // account for margin-left on header elements
+        if (i > 0) {
+            totalWidth += props.size === 'small' ? Number(CdrSpaceHalfX) : Number(CdrSpaceOneX);
+        }
+        totalWidth += element.offsetWidth || 0;
         });
+        return totalWidth;
+    };
 
-        return {
-          style: useCssModule(),
-          mapClasses,
-          baseClass,
-          modifierClass,
-          sizeClass,
-          tabs,
+    const updateUnderline = () => {
+        if (tabElements.value.length > 0) {
+        const activeTab = tabElements.value[selectedIndex.value];
+        const activeRect = activeTab.getBoundingClientRect();
+        const parentRect = tablist.value.getBoundingClientRect();
+        const offset = activeRect.x - parentRect.x;
 
-          // containerHeight, // ????
-          overflowLeft,
-          overflowRight,
+        underlineOffsetX.value = offset
+            - tablist.value.scrollLeft;
+        underlineWidth.value = activeRect.width;
 
-          rightArrowNav,
-          leftArrowNav,
-          handleDownArrowNav,
-          handleClick,
+        // shrink/hide the underline if it scrolls outside the container
+        if (underlineOffsetX.value + underlineWidth.value >= parentRect.width) {
+            underlineWidth.value = Math.max(0, parentRect.width - underlineOffsetX.value);
+            underlineOffsetX.value = Math.min(underlineOffsetX.value, parentRect.width);
+        } else if (underlineOffsetX.value < 0) {
+            underlineWidth.value = Math.max(0, underlineWidth.value + underlineOffsetX.value);
+            underlineOffsetX.value = 0;
+        }
+        }
+    };
 
-          cdrTabsHeaderEl,
-          slotWrapperEl,
-          containerEl,
+    const getTabId = (name) => {
+      return `${kebabCase_1(name)}-tab`
+    };
 
-          underlineStyle,
-          gradientLeftStyle,
-          gradientRightStyle,
+    const selectTabNext = () => {
+      const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
+      if (isLastTab) {
+        return;
+      }
 
+      let nextIndex = selectedIndex.value + 1;
+      if(tabElements.value[nextIndex].disabled) {
+          nextIndex +=1;
+      }
 
-          getHeaderWidth,
-          calculateOverflow,
-          updateUnderline,
-          hideScrollBar,
-          changeTab,
-          getNextTab,
-          getPreviousTab,
+      const nextIndexExists = (nextIndex <= tabElements.value.length - 1);
+      if (!nextIndexExists){
+          return;
+      }
 
-          activeTabIndex,
-          setFocusToActiveTabHeader,
-          headerOverflow,
-        };
-      },
+      selectTab(nextIndex);
+    };
+
+    const selectTabPrev = () => {
+      const isFirstTab = (selectedIndex.value <= 0);
+      if (isFirstTab) {
+        return;
+      }
+
+      let prevIndex = selectedIndex.value - 1;
+      if(tabElements.value[prevIndex].disabled) {
+          prevIndex -=1;
+      }
+
+      const previousIndexExists = (prevIndex >= 0);
+      if (!previousIndexExists){
+          return;
+      }
+      selectTab(prevIndex);
+    };
+
+    const selectTab = async (index) => {
+      const tabToSelect = tabElements.value[index];  
+      selectedTabName.value = tabs.value[index].name;
+      selectedIndex.value = index;
+      await nextTick();
+      tabToSelect.focus();
+      updateUnderline();
+    };
+
+    onMounted(() => {
+        setInitialTabStates();
+        headerWidth.value = getHeaderWidth();
+        calculateOverflow();
+        setTimeout(()=>{
+            updateUnderline();
+        }, 250);
+        window.addEventListener('resize', debounce$1(() => {
+            headerWidth.value = getHeaderWidth();
+            calculateOverflow();
+            updateUnderline();
+        }, 250));
+        tablist.value.addEventListener('scroll', debounce$1(() => {
+            calculateOverflow();
+            updateUnderline();
+        }, 50));
     });
 
-    const _hoisted_1$S = ["aria-selected", "aria-controls", "id", "tabIndex", "onClick"];
+    const setInitialTabStates = () => {
+        tabElements.value.forEach((tab, index) =>{
+            if(!tab.disabled && selectedIndex.value === null){
+                selectedIndex.value = index;
+                selectedTabName.value = tabs.value[index].name;
+            }
+        });
+    };
 
-    function render$V(_ctx, _cache, $props, $setup, $data, $options) {
+    const style = useCssModule();
+
+    return (_ctx, _cache) => {
       return (openBlock(), createElementBlock("div", {
-        class: normalizeClass(_ctx.mapClasses(_ctx.style, _ctx.baseClass, _ctx.modifierClass, _ctx.sizeClass)),
-        ref: "containerEl",
-        style: normalizeStyle({ height: _ctx.height })
+        class: normalizeClass(unref(mapClasses)(unref(style), baseClass, unref(modifierClass), unref(sizeClass))),
+        ref_key: "containerEl",
+        ref: containerEl,
+        style: normalizeStyle({ height: __props.height })
       }, [
         createBaseVNode("div", {
-          class: normalizeClass(_ctx.style['cdr-tabs__gradient-container']),
-          onKeyup: [
-            _cache[0] || (_cache[0] = withKeys((...args) => (_ctx.rightArrowNav && _ctx.rightArrowNav(...args)), ["right"])),
-            _cache[1] || (_cache[1] = withKeys((...args) => (_ctx.leftArrowNav && _ctx.leftArrowNav(...args)), ["left"]))
-          ],
-          onKeydown: _cache[2] || (_cache[2] = withKeys(withModifiers((...args) => (_ctx.handleDownArrowNav && _ctx.handleDownArrowNav(...args)), ["prevent"]), ["down"]))
+          class: normalizeClass(unref(style)['cdr-tabs__gradient-container'])
         }, [
           createBaseVNode("div", {
-            class: normalizeClass(_ctx.mapClasses(_ctx.style,
-            'cdr-tabs__gradient',
-            'cdr-tabs__gradient--left',
-              _ctx.overflowLeft ? 'cdr-tabs__gradient--active' : ''
+            class: normalizeClass(unref(mapClasses)(
+              unref(style),
+              'cdr-tabs__gradient',
+              'cdr-tabs__gradient--left',
+              overflowLeft.value ? 'cdr-tabs__gradient--active' : ''
             )),
-            style: normalizeStyle(_ctx.gradientLeftStyle)
+            style: normalizeStyle(unref(gradientLeftStyle))
           }, null, 6 /* CLASS, STYLE */),
-          createBaseVNode("nav", {
-            class: normalizeClass(_ctx.style['cdr-tabs__header-container'])
+          createBaseVNode("ul", {
+            class: normalizeClass(unref(style)['cdr-tabs__header-container']),
+            role: "tablist",
+            ref_key: "tablist",
+            ref: tablist
           }, [
-            createBaseVNode("div", {
-              class: normalizeClass(_ctx.style['cdr-tabs__header']),
-              role: "tablist",
-              ref: "cdrTabsHeaderEl"
-            }, [
-              (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.tabs, (tab, i) => {
-                return (openBlock(), createElementBlock("button", {
-                  role: "tab",
-                  "aria-selected": tab.disabled ? '' : _ctx.activeTabIndex === i,
-                  "aria-controls": tab.disabled ? '' : tab.id,
-                  id: tab.disabled ? '' : tab.ariaLabelledby,
-                  key: tab.id,
-                  class: normalizeClass(_ctx.mapClasses(_ctx.style,
-                  (_ctx.activeTabIndex === i && !tab.disabled) ? 'cdr-tabs__header-item-active' : '',
+            (openBlock(true), createElementBlock(Fragment, null, renderList(tabs.value, (tab, index) => {
+              return (openBlock(), createElementBlock("li", {
+                key: tab.name,
+                role: "presentation",
+                class: normalizeClass(unref(style)['cdr-tabs__header'])
+              }, [
+                createBaseVNode("button", {
+                  ref_for: true,
+                  ref: el => { tabElements.value[index] = el; },
+                  id: getTabId(tab.name),
+                  disabled: tab.disabled,
+                  "aria-selected": checkIfActive(index, tab),
+                  tabIndex: checkIfActive(index, tab) ? 0 : -1,
+                  class: normalizeClass(unref(mapClasses)(
+                  unref(style),
+                  checkIfActive(index, tab) ? 'cdr-tabs__header-item-active' : '',
                   'cdr-tabs__header-item',
                   tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
                 )),
-                  tabIndex: (_ctx.activeTabIndex === i && !tab.disabled) ? 0 : -1,
-                  onClick: withModifiers((e) => tab.disabled ? null : _ctx.handleClick(tab, e), ["prevent"])
-                }, toDisplayString(tab.name), 11 /* TEXT, CLASS, PROPS */, _hoisted_1$S))
-              }), 128 /* KEYED_FRAGMENT */))
-            ], 2 /* CLASS */)
+                  role: "tab",
+                  onClick: withModifiers($event => (selectTab(index)), ["prevent"]),
+                  onKeyup: [
+                    withKeys(selectTabNext, ["right"]),
+                    withKeys(selectTabPrev, ["left"])
+                  ]
+                }, toDisplayString(tab.name), 43 /* TEXT, CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$S)
+              ], 2 /* CLASS */))
+            }), 128 /* KEYED_FRAGMENT */))
           ], 2 /* CLASS */),
           createBaseVNode("div", {
-            class: normalizeClass(_ctx.mapClasses(_ctx.style,
-            'cdr-tabs__gradient',
-            'cdr-tabs__gradient--right',
-            _ctx.overflowRight ? 'cdr-tabs__gradient--active' : '',
-          )),
-            style: normalizeStyle(_ctx.gradientRightStyle)
+            class: normalizeClass(unref(mapClasses)(
+              unref(style),
+              'cdr-tabs__gradient',
+              'cdr-tabs__gradient--right',
+              overflowRight.value ? 'cdr-tabs__gradient--active' : '',
+            )),
+            style: normalizeStyle(unref(gradientRightStyle))
           }, null, 6 /* CLASS, STYLE */),
           createBaseVNode("div", {
-            class: normalizeClass(_ctx.style['cdr-tabs__underline']),
-            style: normalizeStyle(_ctx.underlineStyle)
+            class: normalizeClass(unref(style)['cdr-tabs__underline']),
+            style: normalizeStyle(unref(underlineStyle))
           }, null, 6 /* CLASS, STYLE */)
-        ], 34 /* CLASS, HYDRATE_EVENTS */),
-        createBaseVNode("div", {
-          class: normalizeClass(_ctx.style['cdr-tabs__content-container']),
-          ref: "slotWrapperEl"
-        }, [
-          renderSlot(_ctx.$slots, "default")
-        ], 2 /* CLASS */)
+        ], 2 /* CLASS */),
+        renderSlot(_ctx.$slots, "default")
       ], 6 /* CLASS, STYLE */))
     }
+    }
 
-    var style0$3 = {"cdr-tabs":"cdr-tabs_13-0-0-alpha-3","cdr-tabs__header-container":"cdr-tabs__header-container_13-0-0-alpha-3","cdr-tabs__gradient-container":"cdr-tabs__gradient-container_13-0-0-alpha-3","cdr-tabs__gradient":"cdr-tabs__gradient_13-0-0-alpha-3","cdr-tabs__gradient--left":"cdr-tabs__gradient--left_13-0-0-alpha-3","cdr-tabs__gradient--right":"cdr-tabs__gradient--right_13-0-0-alpha-3","cdr-tabs__gradient--active":"cdr-tabs__gradient--active_13-0-0-alpha-3","cdr-tabs__header":"cdr-tabs__header_13-0-0-alpha-3","cdr-tabs__header-item":"cdr-tabs__header-item_13-0-0-alpha-3","cdr-tabs__header-item-active":"cdr-tabs__header-item-active_13-0-0-alpha-3","cdr-tabs__header-item--disabled":"cdr-tabs__header-item--disabled_13-0-0-alpha-3","cdr-tabs__underline":"cdr-tabs__underline_13-0-0-alpha-3","cdr-tabs__content-container":"cdr-tabs__content-container_13-0-0-alpha-3","fade-enter-active":"fade-enter-active_13-0-0-alpha-3","fade-leave-active":"fade-leave-active_13-0-0-alpha-3","fade-enter":"fade-enter_13-0-0-alpha-3","fade-leave-to":"fade-leave-to_13-0-0-alpha-3","cdr-tabs--compact":"cdr-tabs--compact_13-0-0-alpha-3","cdr-tabs__header-item-label":"cdr-tabs__header-item-label_13-0-0-alpha-3","cdr-tabs--small":"cdr-tabs--small_13-0-0-alpha-3","cdr-tabs--no-border":"cdr-tabs--no-border_13-0-0-alpha-3","cdr-tabs--full-width":"cdr-tabs--full-width_13-0-0-alpha-3","cdr-tabs--centered":"cdr-tabs--centered_13-0-0-alpha-3"};
+    };
+
+    var style0$3 = {"cdr-tabs":"cdr-tabs_13-0-0-alpha-3","cdr-tabs__header-container":"cdr-tabs__header-container_13-0-0-alpha-3","cdr-tabs__header":"cdr-tabs__header_13-0-0-alpha-3","cdr-tabs__header-item":"cdr-tabs__header-item_13-0-0-alpha-3","cdr-tabs__header-item-active":"cdr-tabs__header-item-active_13-0-0-alpha-3","cdr-tabs__header-item--disabled":"cdr-tabs__header-item--disabled_13-0-0-alpha-3","cdr-tabs__gradient-container":"cdr-tabs__gradient-container_13-0-0-alpha-3","cdr-tabs__gradient":"cdr-tabs__gradient_13-0-0-alpha-3","cdr-tabs__gradient--left":"cdr-tabs__gradient--left_13-0-0-alpha-3","cdr-tabs__gradient--right":"cdr-tabs__gradient--right_13-0-0-alpha-3","cdr-tabs__gradient--active":"cdr-tabs__gradient--active_13-0-0-alpha-3","cdr-tabs__underline":"cdr-tabs__underline_13-0-0-alpha-3","cdr-tabs__content-container":"cdr-tabs__content-container_13-0-0-alpha-3","fade-enter-active":"fade-enter-active_13-0-0-alpha-3","fade-leave-active":"fade-leave-active_13-0-0-alpha-3","fade-enter":"fade-enter_13-0-0-alpha-3","fade-leave-to":"fade-leave-to_13-0-0-alpha-3","cdr-tabs--compact":"cdr-tabs--compact_13-0-0-alpha-3","cdr-tabs__header-item-label":"cdr-tabs__header-item-label_13-0-0-alpha-3","cdr-tabs--small":"cdr-tabs--small_13-0-0-alpha-3","cdr-tabs--no-border":"cdr-tabs--no-border_13-0-0-alpha-3","cdr-tabs--full-width":"cdr-tabs--full-width_13-0-0-alpha-3","cdr-tabs--centered":"cdr-tabs--centered_13-0-0-alpha-3"};
 
     const cssModules$3 = script$Y.__cssModules = {};
     cssModules$3["$style"] = style0$3;
 
-    script$Y.render = render$V;
+
     script$Y.__file = "src/components/tabs/CdrTabs.vue";
 
     var script$X = {
@@ -23898,14 +24199,14 @@
     const _hoisted_21$f = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
     const _hoisted_22$e = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
     const _hoisted_23$d = { class: "accordion-group" };
-    const _hoisted_24$c = /*#__PURE__*/createBaseVNode("h3", null, " Border-Aligned and data driven ", -1 /* HOISTED */);
-    const _hoisted_25$c = { class: "accordion-group" };
-    const _hoisted_26$c = /*#__PURE__*/createBaseVNode("h3", null, " Compact ", -1 /* HOISTED */);
-    const _hoisted_27$b = /*#__PURE__*/createTextVNode(" compact ");
-    const _hoisted_28$b = /*#__PURE__*/createTextVNode(" REI.com ");
-    const _hoisted_29$8 = /*#__PURE__*/createTextVNode(" adventure projects ");
-    const _hoisted_30$7 = /*#__PURE__*/createTextVNode(" stewardship ");
-    const _hoisted_31$6 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_24$d = /*#__PURE__*/createBaseVNode("h3", null, " Border-Aligned and data driven ", -1 /* HOISTED */);
+    const _hoisted_25$d = { class: "accordion-group" };
+    const _hoisted_26$d = /*#__PURE__*/createBaseVNode("h3", null, " Compact ", -1 /* HOISTED */);
+    const _hoisted_27$c = /*#__PURE__*/createTextVNode(" compact ");
+    const _hoisted_28$c = /*#__PURE__*/createTextVNode(" REI.com ");
+    const _hoisted_29$9 = /*#__PURE__*/createTextVNode(" adventure projects ");
+    const _hoisted_30$8 = /*#__PURE__*/createTextVNode(" stewardship ");
+    const _hoisted_31$7 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
     const _hoisted_32$5 = /*#__PURE__*/createBaseVNode("li", null, "Item one", -1 /* HOISTED */);
     const _hoisted_33$5 = /*#__PURE__*/createBaseVNode("li", null, "Item two", -1 /* HOISTED */);
     const _hoisted_34$5 = /*#__PURE__*/createBaseVNode("li", null, "Hopefully right font size", -1 /* HOISTED */);
@@ -24032,7 +24333,7 @@
           })
         ]),
         createBaseVNode("div", _hoisted_23$d, [
-          _hoisted_24$c,
+          _hoisted_24$d,
           createVNode(_component_cdr_accordion_group, { "data-backstop": "accordion-border-aligned" }, {
             default: withCtx(() => [
               (openBlock(true), createElementBlock(Fragment, null, renderList($data.grouped, (item, index) => {
@@ -24057,8 +24358,8 @@
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_25$c, [
-          _hoisted_26$c,
+        createBaseVNode("div", _hoisted_25$d, [
+          _hoisted_26$d,
           createVNode(_component_cdr_accordion_group, { "data-backstop": "accordion-compact" }, {
             default: withCtx(() => [
               createVNode(_component_cdr_accordion, {
@@ -24069,7 +24370,7 @@
                 onAccordionToggle: _cache[3] || (_cache[3] = $event => ($data.accordionCompact = !$data.accordionCompact))
               }, {
                 label: withCtx(() => [
-                  _hoisted_27$b
+                  _hoisted_27$c
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_list, { modifier: "unordered" }, {
@@ -24077,7 +24378,7 @@
                       createBaseVNode("li", null, [
                         createVNode(_component_cdr_link, { href: "https://www.rei.com/" }, {
                           default: withCtx(() => [
-                            _hoisted_28$b
+                            _hoisted_28$c
                           ]),
                           _: 1 /* STABLE */
                         })
@@ -24085,7 +24386,7 @@
                       createBaseVNode("li", null, [
                         createVNode(_component_cdr_link, { href: "https://www.rei.com/h/adventure-projects" }, {
                           default: withCtx(() => [
-                            _hoisted_29$8
+                            _hoisted_29$9
                           ]),
                           _: 1 /* STABLE */
                         })
@@ -24093,7 +24394,7 @@
                       createBaseVNode("li", null, [
                         createVNode(_component_cdr_link, { href: "https://www.rei.com/stewardship" }, {
                           default: withCtx(() => [
-                            _hoisted_30$7
+                            _hoisted_30$8
                           ]),
                           _: 1 /* STABLE */
                         })
@@ -24112,7 +24413,7 @@
                 onAccordionToggle: _cache[4] || (_cache[4] = $event => ($data.accordionCompact2 = !$data.accordionCompact2))
               }, {
                 label: withCtx(() => [
-                  _hoisted_31$6
+                  _hoisted_31$7
                 ]),
                 default: withCtx(() => [
                   createVNode(_component_cdr_list, { tag: "ol" }, {
@@ -25075,14 +25376,14 @@
     const _hoisted_21$d = /*#__PURE__*/createTextVNode(" Button and Icon ");
     const _hoisted_22$d = /*#__PURE__*/createTextVNode(" Twitter ");
     const _hoisted_23$c = /*#__PURE__*/createTextVNode(" Instagram ");
-    const _hoisted_24$b = { class: "button-example inset" };
-    const _hoisted_25$b = /*#__PURE__*/createTextVNode(" Responsive Left ");
-    const _hoisted_26$b = /*#__PURE__*/createTextVNode(" Responsive Right ");
-    const _hoisted_27$a = { class: "button-example inset" };
-    const _hoisted_28$a = /*#__PURE__*/createTextVNode(" Full Width Icon Left ");
-    const _hoisted_29$7 = /*#__PURE__*/createTextVNode(" Full Width Icon Right ");
-    const _hoisted_30$6 = { class: "button-example inset" };
-    const _hoisted_31$5 = {
+    const _hoisted_24$c = { class: "button-example inset" };
+    const _hoisted_25$c = /*#__PURE__*/createTextVNode(" Responsive Left ");
+    const _hoisted_26$c = /*#__PURE__*/createTextVNode(" Responsive Right ");
+    const _hoisted_27$b = { class: "button-example inset" };
+    const _hoisted_28$b = /*#__PURE__*/createTextVNode(" Full Width Icon Left ");
+    const _hoisted_29$8 = /*#__PURE__*/createTextVNode(" Full Width Icon Right ");
+    const _hoisted_30$7 = { class: "button-example inset" };
+    const _hoisted_31$6 = {
       class: "button-text-wrap",
       style: {"max-width":"300px"}
     };
@@ -25258,20 +25559,20 @@
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_24$b, [
+        createBaseVNode("div", _hoisted_24$c, [
           createVNode(_component_cdr_button, { size: "large large@xs medium@sm small@lg" }, {
             default: withCtx(() => [
               createVNode(_component_cdr_icon, {
                 use: "#clock",
                 "inherit-color": ""
               }),
-              _hoisted_25$b
+              _hoisted_25$c
             ]),
             _: 1 /* STABLE */
           }),
           createVNode(_component_cdr_button, { size: "large large@xs medium@sm small@lg" }, {
             default: withCtx(() => [
-              _hoisted_26$b,
+              _hoisted_26$c,
               createVNode(_component_cdr_icon, {
                 use: "#clock",
                 "inherit-color": ""
@@ -25280,7 +25581,7 @@
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_27$a, [
+        createBaseVNode("div", _hoisted_27$b, [
           createVNode(_component_cdr_button, {
             size: "large",
             "full-width": true
@@ -25290,7 +25591,7 @@
                 use: "#clock",
                 "inherit-color": ""
               }),
-              _hoisted_28$a
+              _hoisted_28$b
             ]),
             _: 1 /* STABLE */
           }),
@@ -25304,13 +25605,13 @@
                 use: "#clock",
                 "inherit-color": ""
               }),
-              _hoisted_29$7
+              _hoisted_29$8
             ]),
             _: 1 /* STABLE */
           })
         ]),
-        createBaseVNode("div", _hoisted_30$6, [
-          createBaseVNode("div", _hoisted_31$5, [
+        createBaseVNode("div", _hoisted_30$7, [
+          createBaseVNode("div", _hoisted_31$6, [
             createVNode(_component_cdr_button, {
               size: "medium",
               modifier: "secondary"
@@ -25818,14 +26119,14 @@
     const _hoisted_21$c = /*#__PURE__*/createTextVNode("Note: Arrays currently can't be nested in an array of values. The value becomes stringified. This appears to be a bug in Vue. Try toggling the \"F\" checkbox to see the current effect of nesting an array value");
     const _hoisted_22$c = /*#__PURE__*/createTextVNode(" disabled checkbox ");
     const _hoisted_23$b = /*#__PURE__*/createTextVNode("disabled and checked checkbox");
-    const _hoisted_24$a = { class: "wrap" };
-    const _hoisted_25$a = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing ");
-    const _hoisted_26$a = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
-    const _hoisted_27$9 = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
-    const _hoisted_28$9 = /*#__PURE__*/createTextVNode(" Hidden box ");
-    const _hoisted_29$6 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
-    const _hoisted_30$5 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
-    const _hoisted_31$4 = /*#__PURE__*/createTextVNode(" Select All ");
+    const _hoisted_24$b = { class: "wrap" };
+    const _hoisted_25$b = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing ");
+    const _hoisted_26$b = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
+    const _hoisted_27$a = /*#__PURE__*/createTextVNode("indeterminate (not functional)");
+    const _hoisted_28$a = /*#__PURE__*/createTextVNode(" Hidden box ");
+    const _hoisted_29$7 = /*#__PURE__*/createTextVNode("Hidden box + custom checked state ");
+    const _hoisted_30$6 = /*#__PURE__*/createBaseVNode("h3", null, " Checkbox group with indeterminate state: ", -1 /* HOISTED */);
+    const _hoisted_31$5 = /*#__PURE__*/createTextVNode(" Select All ");
 
     function render$H(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_checkbox = resolveComponent("cdr-checkbox");
@@ -26056,21 +26357,21 @@
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        createBaseVNode("div", _hoisted_24$a, [
+        createBaseVNode("div", _hoisted_24$b, [
           createVNode(_component_cdr_checkbox, {
             name: "complex1",
             modelValue: $data.complex1,
             "onUpdate:modelValue": _cache[18] || (_cache[18] = $event => (($data.complex1) = $event))
           }, {
             default: withCtx(() => [
-              _hoisted_25$a
+              _hoisted_25$b
             ]),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"])
         ]),
         createVNode(_component_cdr_checkbox, { indeterminate: "" }, {
           default: withCtx(() => [
-            _hoisted_26$a
+            _hoisted_26$b
           ]),
           _: 1 /* STABLE */
         }),
@@ -26079,13 +26380,13 @@
           disabled: ""
         }, {
           default: withCtx(() => [
-            _hoisted_27$9
+            _hoisted_27$a
           ]),
           _: 1 /* STABLE */
         }),
         createVNode(_component_cdr_checkbox, { modifier: "hide-figure" }, {
           default: withCtx(() => [
-            _hoisted_28$9
+            _hoisted_28$a
           ]),
           _: 1 /* STABLE */
         }),
@@ -26097,11 +26398,11 @@
           "content-class": "no-box__content"
         }, {
           default: withCtx(() => [
-            _hoisted_29$6
+            _hoisted_29$7
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue"]),
-        _hoisted_30$5,
+        _hoisted_30$6,
         createVNode(_component_cdr_form_group, {
           id: "toppings-form",
           label: "Choose your toppings"
@@ -26115,7 +26416,7 @@
               "aria-controls": "toppings"
             }, {
               default: withCtx(() => [
-                _hoisted_31$4
+                _hoisted_31$5
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue", "indeterminate", "onChange"]),
@@ -28103,11 +28404,11 @@
     const _hoisted_21$a = { class: "demo-input" };
     const _hoisted_22$a = { class: "demo-input" };
     const _hoisted_23$a = { class: "demo-input" };
-    const _hoisted_24$9 = { class: "demo-input" };
-    const _hoisted_25$9 = { class: "demo-input" };
-    const _hoisted_26$9 = { class: "demo-input" };
-    const _hoisted_27$8 = { class: "demo-input" };
-    const _hoisted_28$8 = { class: "demo-input" };
+    const _hoisted_24$a = { class: "demo-input" };
+    const _hoisted_25$a = { class: "demo-input" };
+    const _hoisted_26$a = { class: "demo-input" };
+    const _hoisted_27$9 = { class: "demo-input" };
+    const _hoisted_28$9 = { class: "demo-input" };
 
     function render$u(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_input = resolveComponent("cdr-input");
@@ -28478,11 +28779,11 @@
         createBaseVNode("div", _hoisted_21$a, " Disabled Input Value = " + toDisplayString($data.disabledModel), 1 /* TEXT */),
         createBaseVNode("div", _hoisted_22$a, " With Icons Input Value = " + toDisplayString($data.requiredWithIcons), 1 /* TEXT */),
         createBaseVNode("div", _hoisted_23$a, " Form With Buttons Value = " + toDisplayString($data.formWithButtons), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_24$9, " Helper/Validation Input Value = " + toDisplayString($data.helperValidationModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_25$9, " Multi Row Input Value = " + toDisplayString($data.multiRowModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_26$9, " Size Inputs Value = " + toDisplayString($data.sizeModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_27$8, " Mega Input Value = " + toDisplayString($data.megaModel), 1 /* TEXT */),
-        createBaseVNode("div", _hoisted_28$8, " Master Inputs Value = " + toDisplayString($data.masterModel), 1 /* TEXT */)
+        createBaseVNode("div", _hoisted_24$a, " Helper/Validation Input Value = " + toDisplayString($data.helperValidationModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_25$a, " Multi Row Input Value = " + toDisplayString($data.multiRowModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_26$a, " Size Inputs Value = " + toDisplayString($data.sizeModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_27$9, " Mega Input Value = " + toDisplayString($data.megaModel), 1 /* TEXT */),
+        createBaseVNode("div", _hoisted_28$9, " Master Inputs Value = " + toDisplayString($data.masterModel), 1 /* TEXT */)
       ]))
     }
 
@@ -28531,12 +28832,12 @@
     const _hoisted_21$9 = /*#__PURE__*/createTextVNode(" cdr-link icon inherit ");
     const _hoisted_22$9 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
     const _hoisted_23$9 = /*#__PURE__*/createBaseVNode("br", null, null, -1 /* HOISTED */);
-    const _hoisted_24$8 = /*#__PURE__*/createBaseVNode("h3", null, "Button Links", -1 /* HOISTED */);
-    const _hoisted_25$8 = /*#__PURE__*/createBaseVNode("h4", null, "Link using a <button> element inline", -1 /* HOISTED */);
-    const _hoisted_26$8 = { class: "anchor-example stack" };
-    const _hoisted_27$7 = /*#__PURE__*/createTextVNode(" hey there ");
-    const _hoisted_28$7 = /*#__PURE__*/createTextVNode("I'm a button!");
-    const _hoisted_29$5 = /*#__PURE__*/createTextVNode(" wow! ");
+    const _hoisted_24$9 = /*#__PURE__*/createBaseVNode("h3", null, "Button Links", -1 /* HOISTED */);
+    const _hoisted_25$9 = /*#__PURE__*/createBaseVNode("h4", null, "Link using a <button> element inline", -1 /* HOISTED */);
+    const _hoisted_26$9 = { class: "anchor-example stack" };
+    const _hoisted_27$8 = /*#__PURE__*/createTextVNode(" hey there ");
+    const _hoisted_28$8 = /*#__PURE__*/createTextVNode("I'm a button!");
+    const _hoisted_29$6 = /*#__PURE__*/createTextVNode(" wow! ");
 
     function render$t(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_link = resolveComponent("cdr-link");
@@ -28669,21 +28970,21 @@
           ]),
           _hoisted_22$9,
           _hoisted_23$9,
-          _hoisted_24$8,
-          _hoisted_25$8,
-          createBaseVNode("div", _hoisted_26$8, [
-            _hoisted_27$7,
+          _hoisted_24$9,
+          _hoisted_25$9,
+          createBaseVNode("div", _hoisted_26$9, [
+            _hoisted_27$8,
             createVNode(_component_cdr_link, {
               tag: "button",
               "data-backstop": "cdr-link--button",
               onClick: $options.clicked
             }, {
               default: withCtx(() => [
-                _hoisted_28$7
+                _hoisted_28$8
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["onClick"]),
-            _hoisted_29$5
+            _hoisted_29$6
           ])
         ])
       ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))
@@ -28980,14 +29281,14 @@
     const _hoisted_21$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_22$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_23$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_24$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_25$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_26$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_27$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_28$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_29$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_30$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_31$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_24$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_25$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_26$8 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_27$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_28$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_29$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_30$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_31$4 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_32$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_33$3 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_34$3 = /*#__PURE__*/createBaseVNode("h4", null, " Inline compact unordered list ", -1 /* HOISTED */);
@@ -29060,14 +29361,14 @@
             _hoisted_21$8,
             _hoisted_22$8,
             _hoisted_23$8,
-            _hoisted_24$7,
-            _hoisted_25$7,
-            _hoisted_26$7,
-            _hoisted_27$6,
-            _hoisted_28$6,
-            _hoisted_29$4,
-            _hoisted_30$4,
-            _hoisted_31$3,
+            _hoisted_24$8,
+            _hoisted_25$8,
+            _hoisted_26$8,
+            _hoisted_27$7,
+            _hoisted_28$7,
+            _hoisted_29$5,
+            _hoisted_30$5,
+            _hoisted_31$4,
             _hoisted_32$3,
             _hoisted_33$3
           ]),
@@ -29123,11 +29424,11 @@
     const _hoisted_21$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_22$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_23$7 = /*#__PURE__*/createTextVNode(" an ordered list nested in a text style will alter the entire list including decorations ");
-    const _hoisted_24$6 = /*#__PURE__*/createBaseVNode("li", null, "body-500", -1 /* HOISTED */);
-    const _hoisted_25$6 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
-    const _hoisted_26$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_27$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_28$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_24$7 = /*#__PURE__*/createBaseVNode("li", null, "body-500", -1 /* HOISTED */);
+    const _hoisted_25$7 = /*#__PURE__*/createTextVNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered ");
+    const _hoisted_26$7 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_27$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_28$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
 
     function render$p(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_list = resolveComponent("cdr-list");
@@ -29237,18 +29538,18 @@
               modifier: "ordered"
             }, {
               default: withCtx(() => [
-                _hoisted_24$6,
+                _hoisted_24$7,
                 createBaseVNode("li", null, [
-                  _hoisted_25$6,
+                  _hoisted_25$7,
                   createVNode(_component_cdr_list, null, {
                     default: withCtx(() => [
-                      _hoisted_26$6,
-                      _hoisted_27$5
+                      _hoisted_26$7,
+                      _hoisted_27$6
                     ]),
                     _: 1 /* STABLE */
                   })
                 ]),
-                _hoisted_28$5
+                _hoisted_28$6
               ]),
               _: 1 /* STABLE */
             })
@@ -29289,9 +29590,9 @@
     const _hoisted_21$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_22$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
     const _hoisted_23$6 = /*#__PURE__*/createBaseVNode("h4", null, " Inline compact bare list ", -1 /* HOISTED */);
-    const _hoisted_24$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_25$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
-    const _hoisted_26$5 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_24$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_25$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
+    const _hoisted_26$6 = /*#__PURE__*/createBaseVNode("li", null, "List item text", -1 /* HOISTED */);
 
     function render$o(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_list = resolveComponent("cdr-list");
@@ -29372,9 +29673,9 @@
         _hoisted_23$6,
         createVNode(_component_cdr_list, { modifier: "inline compact" }, {
           default: withCtx(() => [
-            _hoisted_24$5,
-            _hoisted_25$5,
-            _hoisted_26$5
+            _hoisted_24$6,
+            _hoisted_25$6,
+            _hoisted_26$6
           ]),
           _: 1 /* STABLE */
         })
@@ -29420,11 +29721,11 @@
     const _hoisted_21$5 = /*#__PURE__*/createTextVNode(" text ");
     const _hoisted_22$5 = /*#__PURE__*/createTextVNode(" random text ");
     const _hoisted_23$5 = /*#__PURE__*/createTextVNode(" text ");
-    const _hoisted_24$4 = /*#__PURE__*/createTextVNode(" NON Cedar list ");
-    const _hoisted_25$4 = { class: "stack" };
-    const _hoisted_26$4 = /*#__PURE__*/createTextVNode(" random text ");
-    const _hoisted_27$4 = /*#__PURE__*/createTextVNode(" text ");
-    const _hoisted_28$4 = /*#__PURE__*/createTextVNode(" random text ");
+    const _hoisted_24$5 = /*#__PURE__*/createTextVNode(" NON Cedar list ");
+    const _hoisted_25$5 = { class: "stack" };
+    const _hoisted_26$5 = /*#__PURE__*/createTextVNode(" random text ");
+    const _hoisted_27$5 = /*#__PURE__*/createTextVNode(" text ");
+    const _hoisted_28$5 = /*#__PURE__*/createTextVNode(" random text ");
 
     function render$n(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_list = resolveComponent("cdr-list");
@@ -29608,11 +29909,11 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_24$4,
-        createBaseVNode("ul", _hoisted_25$4, [
+        _hoisted_24$5,
+        createBaseVNode("ul", _hoisted_25$5, [
           (openBlock(true), createElementBlock(Fragment, null, renderList($data.utilities, (utility) => {
             return (openBlock(), createElementBlock("li", { key: utility }, [
-              _hoisted_26$4,
+              _hoisted_26$5,
               createVNode(_component_cdr_text, {
                 tag: "span",
                 class: normalizeClass(`cdr-text-dev--utility-sans-${utility}`)
@@ -29625,11 +29926,11 @@
             ]))
           }), 128 /* KEYED_FRAGMENT */)),
           createBaseVNode("li", null, [
-            _hoisted_27$4,
+            _hoisted_27$5,
             createBaseVNode("ul", null, [
               (openBlock(true), createElementBlock(Fragment, null, renderList($data.utilities, (utility) => {
                 return (openBlock(), createElementBlock("li", { key: utility }, [
-                  _hoisted_28$4,
+                  _hoisted_28$5,
                   createVNode(_component_cdr_text, {
                     tag: "span",
                     class: normalizeClass(`cdr-text-dev--utility-sans-${utility}`)
@@ -30976,13 +31277,13 @@
     const _hoisted_21$4 = { "data-backstop": "radio-focus" };
     const _hoisted_22$4 = /*#__PURE__*/createBaseVNode("legend", { id: "custom-legend" }, "Custom Checkbox Formatting", -1 /* HOISTED */);
     const _hoisted_23$4 = /*#__PURE__*/createTextVNode("C1 (selected + disabled)");
-    const _hoisted_24$3 = /*#__PURE__*/createTextVNode("Custom A (hide-figure) ");
-    const _hoisted_25$3 = /*#__PURE__*/createTextVNode("Custom B (hide figure) ");
-    const _hoisted_26$3 = /*#__PURE__*/createTextVNode("Custom C (hide figure) ");
-    const _hoisted_27$3 = /*#__PURE__*/createTextVNode("Custom D (hide figure no but with no custom formatting) ");
-    const _hoisted_28$3 = /*#__PURE__*/createBaseVNode("div", { "data-backstop": "radio-focus" }, null, -1 /* HOISTED */);
-    const _hoisted_29$3 = { class: "wrap" };
-    const _hoisted_30$3 = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing");
+    const _hoisted_24$4 = /*#__PURE__*/createTextVNode("Custom A (hide-figure) ");
+    const _hoisted_25$4 = /*#__PURE__*/createTextVNode("Custom B (hide figure) ");
+    const _hoisted_26$4 = /*#__PURE__*/createTextVNode("Custom C (hide figure) ");
+    const _hoisted_27$4 = /*#__PURE__*/createTextVNode("Custom D (hide figure no but with no custom formatting) ");
+    const _hoisted_28$4 = /*#__PURE__*/createBaseVNode("div", { "data-backstop": "radio-focus" }, null, -1 /* HOISTED */);
+    const _hoisted_29$4 = { class: "wrap" };
+    const _hoisted_30$4 = /*#__PURE__*/createTextVNode("A longer label text to make things wrap for testing");
 
     function render$d(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_radio = resolveComponent("cdr-radio");
@@ -31238,7 +31539,7 @@
               "content-class": "no-box__content"
             }, {
               default: withCtx(() => [
-                _hoisted_24$3
+                _hoisted_24$4
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
@@ -31252,7 +31553,7 @@
               "content-class": "no-box__content"
             }, {
               default: withCtx(() => [
-                _hoisted_25$3
+                _hoisted_25$4
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
@@ -31266,7 +31567,7 @@
               "content-class": "no-box__content"
             }, {
               default: withCtx(() => [
-                _hoisted_26$3
+                _hoisted_26$4
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"]),
@@ -31278,7 +31579,7 @@
               modifier: "hide-figure"
             }, {
               default: withCtx(() => [
-                _hoisted_27$3
+                _hoisted_27$4
               ]),
               _: 1 /* STABLE */
             }, 8 /* PROPS */, ["modelValue"])
@@ -31290,8 +31591,8 @@
             _: 1 /* STABLE */
           })
         ]),
-        _hoisted_28$3,
-        createBaseVNode("div", _hoisted_29$3, [
+        _hoisted_28$4,
+        createBaseVNode("div", _hoisted_29$4, [
           createVNode(_component_cdr_radio, {
             name: "custom4",
             "custom-value": "c1",
@@ -31299,7 +31600,7 @@
             "onUpdate:modelValue": _cache[17] || (_cache[17] = $event => (($data.ex3) = $event))
           }, {
             default: withCtx(() => [
-              _hoisted_30$3
+              _hoisted_30$4
             ]),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"])
@@ -31574,14 +31875,14 @@
     const _hoisted_21$3 = /*#__PURE__*/createBaseVNode("option", { value: "1" }, " 1 ", -1 /* HOISTED */);
     const _hoisted_22$3 = /*#__PURE__*/createBaseVNode("option", { value: "2" }, " 2 ", -1 /* HOISTED */);
     const _hoisted_23$3 = /*#__PURE__*/createBaseVNode("option", { value: "3" }, " 3 ", -1 /* HOISTED */);
-    const _hoisted_24$2 = /*#__PURE__*/createBaseVNode("option", { value: "REALLY REALLY LONG VALUE REALLY REALLY LONG VALUE" }, " REALLY REALLY LONG VALUE REALLY REALLY LONG VALUE ", -1 /* HOISTED */);
-    const _hoisted_25$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_26$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_27$2 = /*#__PURE__*/createTextVNode(" This is helper text. ");
-    const _hoisted_28$2 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
-    const _hoisted_29$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
-    const _hoisted_30$2 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
-    const _hoisted_31$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_24$3 = /*#__PURE__*/createBaseVNode("option", { value: "REALLY REALLY LONG VALUE REALLY REALLY LONG VALUE" }, " REALLY REALLY LONG VALUE REALLY REALLY LONG VALUE ", -1 /* HOISTED */);
+    const _hoisted_25$3 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_26$3 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_27$3 = /*#__PURE__*/createTextVNode(" This is helper text. ");
+    const _hoisted_28$3 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
+    const _hoisted_29$3 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
+    const _hoisted_30$3 = /*#__PURE__*/createTextVNode(" Info Link/Icon ");
+    const _hoisted_31$3 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
     const _hoisted_32$2 = /*#__PURE__*/createBaseVNode("span", { class: "sr-only" }, "Information!", -1 /* HOISTED */);
     const _hoisted_33$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
     const _hoisted_34$2 = /*#__PURE__*/createBaseVNode("hr", { class: "icon-hr" }, null, -1 /* HOISTED */);
@@ -31726,7 +32027,7 @@
             _hoisted_21$3,
             _hoisted_22$3,
             _hoisted_23$3,
-            _hoisted_24$2
+            _hoisted_24$3
           ]),
           _: 1 /* STABLE */
         }, 8 /* PROPS */, ["modelValue", "background"]),
@@ -31736,7 +32037,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_25$2,
+        _hoisted_25$3,
         createCommentVNode(" Dynamic Data Example "),
         createVNode(_component_cdr_select, {
           label: "Dynamic",
@@ -31752,7 +32053,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_26$2,
+        _hoisted_26$3,
         createCommentVNode(" Helper Text Example "),
         createVNode(_component_cdr_select, {
           label: "Example with Helper Text",
@@ -31763,7 +32064,7 @@
           prompt: "Choose One"
         }, {
           "helper-text": withCtx(() => [
-            _hoisted_27$2
+            _hoisted_27$3
           ]),
           info: withCtx(() => [
             createVNode(_component_cdr_link, {
@@ -31771,7 +32072,7 @@
               modifier: "standalone"
             }, {
               default: withCtx(() => [
-                _hoisted_28$2
+                _hoisted_28$3
               ]),
               _: 1 /* STABLE */
             })
@@ -31784,7 +32085,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_29$2,
+        _hoisted_29$3,
         createCommentVNode(" Info Link Example "),
         createVNode(_component_cdr_select, {
           label: "Example with Info Link",
@@ -31800,7 +32101,7 @@
               modifier: "standalone"
             }, {
               default: withCtx(() => [
-                _hoisted_30$2
+                _hoisted_30$3
               ]),
               _: 1 /* STABLE */
             })
@@ -31813,7 +32114,7 @@
           ]),
           _: 1 /* STABLE */
         }),
-        _hoisted_31$2,
+        _hoisted_31$3,
         createCommentVNode(" Info Icon Example "),
         createVNode(_component_cdr_select, {
           label: "Example with Info Icon",
@@ -32128,7 +32429,7 @@
         /*#__PURE__*/createBaseVNode("th", null, "Test head")
       ])
     ], -1 /* HOISTED */);
-    const _hoisted_24$1 = /*#__PURE__*/createBaseVNode("tbody", null, [
+    const _hoisted_24$2 = /*#__PURE__*/createBaseVNode("tbody", null, [
       /*#__PURE__*/createBaseVNode("tr", null, [
         /*#__PURE__*/createBaseVNode("td", null, "Test content"),
         /*#__PURE__*/createBaseVNode("td", null, "Test content")
@@ -32142,27 +32443,8 @@
         /*#__PURE__*/createBaseVNode("td", null, "Test content")
       ])
     ], -1 /* HOISTED */);
-    const _hoisted_25$1 = /*#__PURE__*/createBaseVNode("p", null, "Table without head", -1 /* HOISTED */);
-    const _hoisted_26$1 = /*#__PURE__*/createBaseVNode("tbody", null, [
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
-        /*#__PURE__*/createBaseVNode("td", null, "Test content")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
-        /*#__PURE__*/createBaseVNode("td", null, "Test content")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
-        /*#__PURE__*/createBaseVNode("td", null, "Test content")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
-        /*#__PURE__*/createBaseVNode("td", null, "Test content")
-      ])
-    ], -1 /* HOISTED */);
-    const _hoisted_27$1 = /*#__PURE__*/createBaseVNode("p", null, "Striped", -1 /* HOISTED */);
-    const _hoisted_28$1 = /*#__PURE__*/createBaseVNode("tbody", null, [
+    const _hoisted_25$2 = /*#__PURE__*/createBaseVNode("p", null, "Table without head", -1 /* HOISTED */);
+    const _hoisted_26$2 = /*#__PURE__*/createBaseVNode("tbody", null, [
       /*#__PURE__*/createBaseVNode("tr", null, [
         /*#__PURE__*/createBaseVNode("td", null, "Test content"),
         /*#__PURE__*/createBaseVNode("td", null, "Test content")
@@ -32180,8 +32462,8 @@
         /*#__PURE__*/createBaseVNode("td", null, "Test content")
       ])
     ], -1 /* HOISTED */);
-    const _hoisted_29$1 = /*#__PURE__*/createBaseVNode("p", null, "No border", -1 /* HOISTED */);
-    const _hoisted_30$1 = /*#__PURE__*/createBaseVNode("tbody", null, [
+    const _hoisted_27$2 = /*#__PURE__*/createBaseVNode("p", null, "Striped", -1 /* HOISTED */);
+    const _hoisted_28$2 = /*#__PURE__*/createBaseVNode("tbody", null, [
       /*#__PURE__*/createBaseVNode("tr", null, [
         /*#__PURE__*/createBaseVNode("td", null, "Test content"),
         /*#__PURE__*/createBaseVNode("td", null, "Test content")
@@ -32199,7 +32481,26 @@
         /*#__PURE__*/createBaseVNode("td", null, "Test content")
       ])
     ], -1 /* HOISTED */);
-    const _hoisted_31$1 = /*#__PURE__*/createBaseVNode("p", null, "Table with caption", -1 /* HOISTED */);
+    const _hoisted_29$2 = /*#__PURE__*/createBaseVNode("p", null, "No border", -1 /* HOISTED */);
+    const _hoisted_30$2 = /*#__PURE__*/createBaseVNode("tbody", null, [
+      /*#__PURE__*/createBaseVNode("tr", null, [
+        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
+        /*#__PURE__*/createBaseVNode("td", null, "Test content")
+      ]),
+      /*#__PURE__*/createBaseVNode("tr", null, [
+        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
+        /*#__PURE__*/createBaseVNode("td", null, "Test content")
+      ]),
+      /*#__PURE__*/createBaseVNode("tr", null, [
+        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
+        /*#__PURE__*/createBaseVNode("td", null, "Test content")
+      ]),
+      /*#__PURE__*/createBaseVNode("tr", null, [
+        /*#__PURE__*/createBaseVNode("td", null, "Test content"),
+        /*#__PURE__*/createBaseVNode("td", null, "Test content")
+      ])
+    ], -1 /* HOISTED */);
+    const _hoisted_31$2 = /*#__PURE__*/createBaseVNode("p", null, "Table with caption", -1 /* HOISTED */);
     const _hoisted_32$1 = /*#__PURE__*/createBaseVNode("caption", null, "I'm the caption", -1 /* HOISTED */);
     const _hoisted_33$1 = /*#__PURE__*/createBaseVNode("thead", null, [
       /*#__PURE__*/createBaseVNode("tr", null, [
@@ -32509,33 +32810,33 @@
             createVNode(_component_cdr_table, { "full-width": "@sm @lg" }, {
               default: withCtx(() => [
                 _hoisted_23$2,
-                _hoisted_24$1
+                _hoisted_24$2
               ]),
               _: 1 /* STABLE */
             })
           ]),
-          _hoisted_25$1,
+          _hoisted_25$2,
           createVNode(_component_cdr_table, null, {
             default: withCtx(() => [
-              _hoisted_26$1
+              _hoisted_26$2
             ]),
             _: 1 /* STABLE */
           }),
-          _hoisted_27$1,
+          _hoisted_27$2,
           createVNode(_component_cdr_table, { striped: "" }, {
             default: withCtx(() => [
-              _hoisted_28$1
+              _hoisted_28$2
             ]),
             _: 1 /* STABLE */
           }),
-          _hoisted_29$1,
+          _hoisted_29$2,
           createVNode(_component_cdr_table, { border: false }, {
             default: withCtx(() => [
-              _hoisted_30$1
+              _hoisted_30$2
             ]),
             _: 1 /* STABLE */
           }),
-          _hoisted_31$1,
+          _hoisted_31$2,
           createVNode(_component_cdr_table, null, {
             default: withCtx(() => [
               _hoisted_32$1,
@@ -32640,61 +32941,55 @@
     const _hoisted_7$5 = /*#__PURE__*/createBaseVNode("li", null, "Mesh-covered back panel has slotted foam for ventilation and breathability", -1 /* HOISTED */);
     const _hoisted_8$5 = /*#__PURE__*/createBaseVNode("li", null, "Attaches to a variety of compatible Osprey packs (sold separately)", -1 /* HOISTED */);
     const _hoisted_9$5 = /*#__PURE__*/createTextVNode(" Specs ");
-    const _hoisted_10$5 = /*#__PURE__*/createBaseVNode("template", { slot: "tbody" }, [
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Best Use"),
-        /*#__PURE__*/createBaseVNode("td", null, "Hiking, Travel")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Bag Style"),
-        /*#__PURE__*/createBaseVNode("td", null, "Backpack")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Frame Type"),
-        /*#__PURE__*/createBaseVNode("td", null, "Frameless")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Gear Capacity (cu. in.)"),
-        /*#__PURE__*/createBaseVNode("td", null, "1,220 cubic inches")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Weight"),
-        /*#__PURE__*/createBaseVNode("td", null, "1 lb. 3.8 oz")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Pack ACcess"),
-        /*#__PURE__*/createBaseVNode("td", null, "2 + main compartments")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Hipbelt"),
-        /*#__PURE__*/createBaseVNode("td", null, "Yes")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Dimensions"),
-        /*#__PURE__*/createBaseVNode("td", null, "18 x 10 x 9 inches")
-      ]),
-      /*#__PURE__*/createBaseVNode("tr", null, [
-        /*#__PURE__*/createBaseVNode("th", null, "Gender"),
-        /*#__PURE__*/createBaseVNode("td", null, "Unisex")
-      ])
+    const _hoisted_10$5 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Best Use"),
+      /*#__PURE__*/createBaseVNode("td", null, "Hiking, Travel")
     ], -1 /* HOISTED */);
-    const _hoisted_11$4 = /*#__PURE__*/createTextVNode(" Q&A ");
-    const _hoisted_12$4 = /*#__PURE__*/createBaseVNode("template", { slot: "label" }, [
-      /*#__PURE__*/createTextVNode(" A short label ")
+    const _hoisted_11$4 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Bag Style"),
+      /*#__PURE__*/createBaseVNode("td", null, "Backpack")
     ], -1 /* HOISTED */);
-    const _hoisted_13$3 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
-    const _hoisted_14$3 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
-    const _hoisted_15$3 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
-    const _hoisted_16$3 = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor ");
-    const _hoisted_17$2 = /*#__PURE__*/createBaseVNode("template", { slot: "label" }, [
-      /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ")
+    const _hoisted_12$4 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Frame Type"),
+      /*#__PURE__*/createBaseVNode("td", null, "Frameless")
     ], -1 /* HOISTED */);
-    const _hoisted_18$1 = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
-    const _hoisted_19$1 = /*#__PURE__*/createBaseVNode("li", null, "It includes no extra styling", -1 /* HOISTED */);
-    const _hoisted_20$1 = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
-    const _hoisted_21$1 = /*#__PURE__*/createBaseVNode("li", null, "to this list because", -1 /* HOISTED */);
-    const _hoisted_22$1 = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
-    const _hoisted_23$1 = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
+    const _hoisted_13$3 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Gear Capacity (cu. in.)"),
+      /*#__PURE__*/createBaseVNode("td", null, "1,220 cubic inches")
+    ], -1 /* HOISTED */);
+    const _hoisted_14$3 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Weight"),
+      /*#__PURE__*/createBaseVNode("td", null, "1 lb. 3.8 oz")
+    ], -1 /* HOISTED */);
+    const _hoisted_15$3 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Pack ACcess"),
+      /*#__PURE__*/createBaseVNode("td", null, "2 + main compartments")
+    ], -1 /* HOISTED */);
+    const _hoisted_16$3 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Hipbelt"),
+      /*#__PURE__*/createBaseVNode("td", null, "Yes")
+    ], -1 /* HOISTED */);
+    const _hoisted_17$2 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Dimensions"),
+      /*#__PURE__*/createBaseVNode("td", null, "18 x 10 x 9 inches")
+    ], -1 /* HOISTED */);
+    const _hoisted_18$1 = /*#__PURE__*/createBaseVNode("tr", null, [
+      /*#__PURE__*/createBaseVNode("th", null, "Gender"),
+      /*#__PURE__*/createBaseVNode("td", null, "Unisex")
+    ], -1 /* HOISTED */);
+    const _hoisted_19$1 = /*#__PURE__*/createTextVNode(" Q&A ");
+    const _hoisted_20$1 = /*#__PURE__*/createTextVNode(" A short label ");
+    const _hoisted_21$1 = /*#__PURE__*/createTextVNode(" This is some text. It's in a ");
+    const _hoisted_22$1 = /*#__PURE__*/createTextVNode("cdr-text paragraph with a modifier of ");
+    const _hoisted_23$1 = /*#__PURE__*/createBaseVNode("code", null, "body-300", -1 /* HOISTED */);
+    const _hoisted_24$1 = /*#__PURE__*/createTextVNode(" element as thats how you assign the correct font and line-height for text dislpay on REI. does not include margin or add space to the container. Lorem ipsum dolor ");
+    const _hoisted_25$1 = /*#__PURE__*/createTextVNode(" Label with multiple words, so many words in fact that this content may wrap to several lines ");
+    const _hoisted_26$1 = /*#__PURE__*/createBaseVNode("li", null, "This is a cdr-list item inside an accordion.", -1 /* HOISTED */);
+    const _hoisted_27$1 = /*#__PURE__*/createBaseVNode("li", null, "It includes no extra styling", -1 /* HOISTED */);
+    const _hoisted_28$1 = /*#__PURE__*/createBaseVNode("li", null, "I'm adding a bunch of items", -1 /* HOISTED */);
+    const _hoisted_29$1 = /*#__PURE__*/createBaseVNode("li", null, "to this list because", -1 /* HOISTED */);
+    const _hoisted_30$1 = /*#__PURE__*/createBaseVNode("li", null, "I want to see what it's like", -1 /* HOISTED */);
+    const _hoisted_31$1 = /*#__PURE__*/createBaseVNode("li", null, "when animated!", -1 /* HOISTED */);
 
     function render$9(_ctx, _cache, $props, $setup, $data, $options) {
       const _component_cdr_text = resolveComponent("cdr-text");
@@ -32758,8 +33053,16 @@
                     _: 1 /* STABLE */
                   }),
                   createVNode(_component_cdr_table, { modifier: "compact borderless" }, {
-                    default: withCtx(() => [
-                      _hoisted_10$5
+                    tbody: withCtx(() => [
+                      _hoisted_10$5,
+                      _hoisted_11$4,
+                      _hoisted_12$4,
+                      _hoisted_13$3,
+                      _hoisted_14$3,
+                      _hoisted_15$3,
+                      _hoisted_16$3,
+                      _hoisted_17$2,
+                      _hoisted_18$1
                     ]),
                     _: 1 /* STABLE */
                   })
@@ -32783,7 +33086,7 @@
                     class: "cdr-text-dev--heading-serif-400 tab-title"
                   }, {
                     default: withCtx(() => [
-                      _hoisted_11$4
+                      _hoisted_19$1
                     ]),
                     _: 1 /* STABLE */
                   }),
@@ -32793,22 +33096,24 @@
                     onAccordionToggle: _cache[0] || (_cache[0] = $event => ($data.accordion1 = !$data.accordion1)),
                     level: "4"
                   }, {
+                    label: withCtx(() => [
+                      _hoisted_20$1
+                    ]),
                     default: withCtx(() => [
-                      _hoisted_12$4,
                       createVNode(_component_cdr_text, { class: "cdr-text-dev--body-300" }, {
                         default: withCtx(() => [
-                          _hoisted_13$3,
+                          _hoisted_21$1,
                           createVNode(_component_cdr_text, {
                             tag: "strong",
                             class: "cdr-text-dev--body-strong-300"
                           }, {
                             default: withCtx(() => [
-                              _hoisted_14$3,
-                              _hoisted_15$3
+                              _hoisted_22$1,
+                              _hoisted_23$1
                             ]),
                             _: 1 /* STABLE */
                           }),
-                          _hoisted_16$3
+                          _hoisted_24$1
                         ]),
                         _: 1 /* STABLE */
                       })
@@ -32821,16 +33126,18 @@
                     onAccordionToggle: _cache[1] || (_cache[1] = $event => ($data.accordion2 = !$data.accordion2)),
                     level: "4"
                   }, {
+                    label: withCtx(() => [
+                      _hoisted_25$1
+                    ]),
                     default: withCtx(() => [
-                      _hoisted_17$2,
                       createVNode(_component_cdr_list, { modifier: "unordered" }, {
                         default: withCtx(() => [
-                          _hoisted_18$1,
-                          _hoisted_19$1,
-                          _hoisted_20$1,
-                          _hoisted_21$1,
-                          _hoisted_22$1,
-                          _hoisted_23$1
+                          _hoisted_26$1,
+                          _hoisted_27$1,
+                          _hoisted_28$1,
+                          _hoisted_29$1,
+                          _hoisted_30$1,
+                          _hoisted_31$1
                         ]),
                         _: 1 /* STABLE */
                       })
@@ -34356,115 +34663,6 @@
     }
 
     var _stringToArray = stringToArray;
-
-    /**
-     * A specialized version of `_.map` for arrays without support for iteratee
-     * shorthands.
-     *
-     * @private
-     * @param {Array} [array] The array to iterate over.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns the new mapped array.
-     */
-    function arrayMap(array, iteratee) {
-      var index = -1,
-          length = array == null ? 0 : array.length,
-          result = Array(length);
-
-      while (++index < length) {
-        result[index] = iteratee(array[index], index, array);
-      }
-      return result;
-    }
-
-    var _arrayMap = arrayMap;
-
-    /**
-     * Checks if `value` is classified as an `Array` object.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is an array, else `false`.
-     * @example
-     *
-     * _.isArray([1, 2, 3]);
-     * // => true
-     *
-     * _.isArray(document.body.children);
-     * // => false
-     *
-     * _.isArray('abc');
-     * // => false
-     *
-     * _.isArray(_.noop);
-     * // => false
-     */
-    var isArray = Array.isArray;
-
-    var isArray_1 = isArray;
-
-    /** Used as references for various `Number` constants. */
-    var INFINITY = 1 / 0;
-
-    /** Used to convert symbols to primitives and strings. */
-    var symbolProto = _Symbol ? _Symbol.prototype : undefined,
-        symbolToString = symbolProto ? symbolProto.toString : undefined;
-
-    /**
-     * The base implementation of `_.toString` which doesn't convert nullish
-     * values to empty strings.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {string} Returns the string.
-     */
-    function baseToString(value) {
-      // Exit early for strings to avoid a performance hit in some environments.
-      if (typeof value == 'string') {
-        return value;
-      }
-      if (isArray_1(value)) {
-        // Recursively convert values (susceptible to call stack limits).
-        return _arrayMap(value, baseToString) + '';
-      }
-      if (isSymbol_1(value)) {
-        return symbolToString ? symbolToString.call(value) : '';
-      }
-      var result = (value + '');
-      return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
-    }
-
-    var _baseToString = baseToString;
-
-    /**
-     * Converts `value` to a string. An empty string is returned for `null`
-     * and `undefined` values. The sign of `-0` is preserved.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to convert.
-     * @returns {string} Returns the converted string.
-     * @example
-     *
-     * _.toString(null);
-     * // => ''
-     *
-     * _.toString(-0);
-     * // => '-0'
-     *
-     * _.toString([1, 2, 3]);
-     * // => '1,2,3'
-     */
-    function toString(value) {
-      return value == null ? '' : _baseToString(value);
-    }
-
-    var toString_1 = toString;
 
     /**
      * Creates a function like `_.lowerFirst`.
