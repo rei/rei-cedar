@@ -49,7 +49,6 @@ exports[`CdrTabs mounted mounts tabs 1`] = `
         role="presentation"
       >
         <button
-          aria-disabled="true"
           aria-selected="false"
           class="cdr-tabs__header-item cdr-tabs__header-item--disabled"
           disabled=""
