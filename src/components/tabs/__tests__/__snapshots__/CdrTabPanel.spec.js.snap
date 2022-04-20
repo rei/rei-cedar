@@ -16,16 +16,16 @@ exports[`CdrTabPanel > renders tab 1`] = `
 `;
 
 exports[`CdrTabPanel renders tab 1`] = `
-<div
-  aria-hidden="true"
-  aria-labelledby="tab1"
+<section
+  aria-labelledby="test"
+  aria-visible="false"
   class="cdr-tab-panel"
-  hidden=""
-  id="tab1"
+  id="test-panel"
   role="tabpanel"
+  style="display: none;"
   tabindex="0"
 >
   
   
-</div>
+</section>
 `;

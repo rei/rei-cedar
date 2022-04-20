@@ -11,30 +11,146 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     <div
       class="cdr-tabs__gradient cdr-tabs__gradient--left"
     />
-    <nav
+    <ul
       class="cdr-tabs__header-container"
+      role="tablist"
     >
-      <div
+      
+      <li
         class="cdr-tabs__header"
-        role="tablist"
+        role="presentation"
       >
+<<<<<<< HEAD
         
         
       </div>
     </nav>
     <div
       class="cdr-tabs__gradient cdr-tabs__gradient--right"
+=======
+        <button
+          aria-selected="true"
+          class="cdr-tabs__header-item-active cdr-tabs__header-item"
+          id="tab-1-tab"
+          role="tab"
+          tabindex="0"
+        >
+          tab1
+        </button>
+      </li>
+      <li
+        class="cdr-tabs__header"
+        role="presentation"
+      >
+        <button
+          aria-selected="false"
+          class="cdr-tabs__header-item"
+          id="tab-2-tab"
+          role="tab"
+          tabindex="-1"
+        >
+          tab2
+        </button>
+      </li>
+      <li
+        class="cdr-tabs__header"
+        role="presentation"
+      >
+        <button
+          aria-selected="false"
+          class="cdr-tabs__header-item cdr-tabs__header-item--disabled"
+          disabled=""
+          id="tab-3-tab"
+          role="tab"
+          tabindex="-1"
+        >
+          tab3
+        </button>
+      </li>
+      <li
+        class="cdr-tabs__header"
+        role="presentation"
+      >
+        <button
+          aria-selected="false"
+          class="cdr-tabs__header-item"
+          id="tab-4-tab"
+          role="tab"
+          tabindex="-1"
+        >
+          tab4
+        </button>
+      </li>
+      
+    </ul>
+    <div
+      class="cdr-tabs__gradient cdr-tabs__gradient--right cdr-tabs__gradient--active"
+>>>>>>> 554495f57f18e552036f769bba175da80c4c5ecf
     />
     <div
       class="cdr-tabs__underline"
       style="transform: translateX(0px); width: 0px;"
     />
   </div>
+<<<<<<< HEAD
   <div
     class="cdr-tabs__content-container"
   >
     
     
   </div>
+=======
+  
+  <section
+    aria-labelledby="tab1"
+    aria-visible="true"
+    class="cdr-tab-panel"
+    id="tab-1-panel"
+    role="tabpanel"
+    style=""
+    tabindex="0"
+  >
+    
+    
+  </section>
+  <section
+    aria-labelledby="tab2"
+    aria-visible="false"
+    class="cdr-tab-panel"
+    id="tab-2-panel"
+    role="tabpanel"
+    style="display: none;"
+    tabindex="0"
+  >
+    
+    
+  </section>
+  <section
+    aria-labelledby="tab3"
+    aria-visible="false"
+    class="cdr-tab-panel"
+    disabled="true"
+    id="tab-3-panel"
+    role="tabpanel"
+    style="display: none;"
+    tabindex="0"
+  >
+    
+    
+  </section>
+  <section
+    aria-labelledby="tab4"
+    aria-visible="false"
+    class="cdr-tab-panel"
+    id="tab-4-panel"
+    role="tabpanel"
+    style="display: none;"
+    tabindex="0"
+  >
+    
+    
+  </section>
+  
+>>>>>>> 554495f57f18e552036f769bba175da80c4c5ecf
 </div>
 `;
