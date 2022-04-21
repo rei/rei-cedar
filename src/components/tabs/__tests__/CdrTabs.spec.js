@@ -10,7 +10,7 @@ describe('CdrTabs', () => {
     wrapper = mount(CdrTabs, {
       slots: {
         default: [
-          h(CdrTabPanel, {name: 'tab1'}), 
+          h(CdrTabPanel, {name: 'tab1', 'aria-labelledby': 'tab-small-one',}), 
           h(CdrTabPanel, {name: 'tab2'}),
           h(CdrTabPanel, {name: 'tab3', disabled: true}),
           h(CdrTabPanel, {name: 'tab4'})
@@ -129,8 +129,7 @@ describe('CdrTabs', () => {
   });
 
   it('accessibility', async () => {
-    const tab1 = wrapper.find('#tab-1-tab');
-
+    const tab1 = wrapper.find('#tab-small-one');
     //TODO: Separate describe block for accessibility with single it blocks for each of these expect statements
     expect(tab1.attributes()['aria-selected']).toBe('true');
     expect(tab1.attributes()['role']).toBe('tab');

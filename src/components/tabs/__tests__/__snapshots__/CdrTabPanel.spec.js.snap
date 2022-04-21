@@ -2,8 +2,8 @@
 
 exports[`CdrTabPanel > renders tab 1`] = `
 <section
+  aria-hidden="true"
   aria-labelledby="test"
-  aria-visible="false"
   class="cdr-tab-panel"
   id="test-panel"
   role="tabpanel"

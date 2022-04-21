@@ -9,7 +9,7 @@
     >
       <cdr-tab-panel
         name="Details"
-        aria-labelledby="tab-default-defails"
+        aria-labelledby="tab-default-details"
         id="tab-panel-default-details"
         
       >

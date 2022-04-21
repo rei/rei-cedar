@@ -1,6 +1,5 @@
 <script setup>
 import { ref, provide, useSlots, onMounted, nextTick, computed, useCssModule } from 'vue';
-import kebabCase from 'lodash/kebabCase';
 import debounce from 'lodash/debounce';
 import mapClasses from '../../utils/mapClasses.js';
 import { modifyClassName } from '../../utils/buildClass.js';
@@ -26,11 +25,17 @@ const props = defineProps({
 })
 
 const slots = useSlots();
-const slottedTabs = slots.default()[0].children?.length ? slots.default()[0].children : slots.default();
+const slottedTabs = slots.default()[0].children?.length
+  ? slots.default()[0].children
+  : slots.default();
 const baseClass = 'cdr-tabs';
 
 //Refs
-const tabs = ref(slottedTabs.map((tab) => ({ name: tab.props.name, disabled: tab.props.disabled })));
+const tabs = ref(slottedTabs.map((tab) => ({ 
+  name: tab.props.name,
+  disabled: tab.props.disabled,
+  id: tab.props['aria-labelledby'] 
+})));
 const selectedTabName = ref(null);
 const selectedIndex = ref(null);
 const headerOverflow = ref(false);
@@ -64,8 +69,8 @@ const gradientRightStyle = computed(() => {
     background: gradient,
     };
 });
-const checkIfActive = (index, tab) =>{
-  return (selectedIndex.value === index && !tab.disabled)
+const checkIfActive = (index, tab) => {
+  return (selectedIndex.value === index && !tab.disabled);
 }
  const calculateOverflow = () => {
     let containerWidth = 0;
@@ -121,10 +126,6 @@ const updateUnderline = () => {
     }
     }
 };
-
-const getTabId = (name) => {
-  return `${kebabCase(name)}-tab`
-}
 
 const selectTabNext = () => {
   const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
@@ -222,12 +223,13 @@ const style = useCssModule();
       />
     <ul :class="style['cdr-tabs__header-container']" role="tablist" ref="tablist">
       <li v-for="(tab, index) in tabs" 
-        :key="tab.name" role="presentation"
+        :key="`${tab.name}-${index}`"
+        role="presentation"
         :class="style['cdr-tabs__header']" 
       >
         <button
           :ref="el => { tabElements[index] = el }"
-          :id="getTabId(tab.name)"
+          :id="tab.id"
           :disabled="tab.disabled"
           :aria-selected="checkIfActive(index, tab)"
           :tabIndex="checkIfActive(index, tab) ? 0 : -1"
