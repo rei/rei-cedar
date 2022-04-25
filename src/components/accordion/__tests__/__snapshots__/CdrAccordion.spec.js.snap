@@ -59,7 +59,7 @@ exports[`CdrAccordion > renders correctly 1`] = `
 `;
 
 exports[`CdrAccordion > renders correctly unwrapped 1`] = `
-<li
+<div
   class=""
   id="test-accordion"
 >
@@ -94,5 +94,5 @@ exports[`CdrAccordion > renders correctly unwrapped 1`] = `
       
     </div>
   </div>
-</li>
+</div>
 `;
