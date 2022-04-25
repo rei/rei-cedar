@@ -1,8 +1,8 @@
 <script setup>
 import { useCssModule, useSlots, ref, onMounted, watch } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import CdrPopup from '../popup/CdrPopup';
-import propValidator from '../../utils/propValidator';
+import mapClasses from '../../utils/mapClasses.js';
+import CdrPopup from '../popup/CdrPopup.vue';
+import propValidator from '../../utils/propValidator.js';
 
 const props = defineProps({
   position: {

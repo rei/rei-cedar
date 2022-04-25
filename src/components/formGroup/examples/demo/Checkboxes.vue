@@ -139,7 +139,7 @@
 </template>
 
 <script>
-import { CdrFormGroup, CdrCheckbox, CdrText } from 'srcdir/index';
+import { CdrFormGroup, CdrCheckbox, CdrText } from 'srcdir/lib';
 
 export default {
   name: 'ParagraphsDemo',

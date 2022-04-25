@@ -2,9 +2,9 @@
 import {
   useCssModule, computed, ref, reactive, onMounted, provide,
 } from 'vue';
-import debounce from 'lodash/debounce';
-import propValidator from '../../utils/propValidator';
-import getCurrentBreakpoint from '../../mixins/breakpoints';
+import debounce from 'lodash-es/debounce';
+import propValidator from '../../utils/propValidator.js';
+import getCurrentBreakpoint from '../../mixins/breakpoints.js';
 
 const props = defineProps({
   unwrap: {
@@ -32,6 +32,7 @@ const unwrapped = reactive({
   isUnwrapped: !!props.unwrap,
 });
 provide('unwrap', unwrapped);
+provide('grouped', true);
 
 const nextIdx = computed(() => {
   const idx = currentIdx.value + 1;

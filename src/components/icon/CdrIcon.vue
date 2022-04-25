@@ -13,9 +13,9 @@
 <script setup>
 import { useCssModule, useAttrs, computed } from 'vue';
 
-import mapClasses from '../../utils/mapClasses';
-import { responsiveModifyClass } from '../..//utils/buildClass';
-import propValidator from '../../utils/propValidator';
+import mapClasses from '../../utils/mapClasses.js';
+import { responsiveModifyClass } from '../..//utils/buildClass.js';
+import propValidator from '../../utils/propValidator.js';
 
 const attrs = useAttrs();
 const props = defineProps({

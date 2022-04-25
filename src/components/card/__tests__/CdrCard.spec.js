@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrCard from 'componentdir/card/CdrCard';
+import CdrCard from '../CdrCard.vue';
 
 describe('CdrCard', () => {
   test('renders correctly', () => {

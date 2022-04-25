@@ -1,8 +1,8 @@
 <script setup>
 import {useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import CdrFormError from '../formError/CdrFormError';
-import uid from '../../utils/uid';
+import mapClasses from '../../utils/mapClasses.js';
+import CdrFormError from '../formError/CdrFormError.vue';
+import uid from '../../utils/uid.js';
 
 const props = defineProps({
     id: {

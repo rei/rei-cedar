@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import checkboxes from 'componentsdir/formGroup/examples/demo/Checkboxes';
-import radios from 'componentsdir/formGroup/examples/demo/Radios';
-import multi from 'componentsdir/formGroup/examples/demo/Multi';
+import checkboxes from 'componentsdir/formGroup/examples/demo/Checkboxes.vue';
+import radios from 'componentsdir/formGroup/examples/demo/Radios.vue';
+import multi from 'componentsdir/formGroup/examples/demo/Multi.vue';
 
 export default {
   name: 'FormGroup',

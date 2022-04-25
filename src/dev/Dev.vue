@@ -2,9 +2,9 @@
 
 import fullSprite from '@rei/cedar-icons/dist/all-icons.svg';
 import SinkWrapper from './SinkWrapper.vue'; // eslint-disable-line
-import { CdrLink } from '../index';
-import cedarcss from '../css/main.scss';
-import routes from './router';
+import { CdrLink } from '../lib.js';
+import cedarcss from '../styles/main.scss';
+import routes from './router.js';
 
 
 export default {

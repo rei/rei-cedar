@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { CdrButton } from 'srcdir/index';
+import { CdrButton } from 'srcdir/lib';
 
 export default {
   name: 'FullWidth',

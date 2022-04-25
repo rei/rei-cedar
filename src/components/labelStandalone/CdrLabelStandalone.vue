@@ -1,6 +1,6 @@
 <script setup>
-import { defineProps, useSlots, useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
+import { useSlots, useCssModule, computed } from 'vue';
+import mapClasses from '../../utils/mapClasses.js';
 
 const props = defineProps({
   forId: {

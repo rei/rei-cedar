@@ -1,14 +1,14 @@
 <script setup>
-import debounce from 'lodash/debounce';
+import debounce from 'lodash-es/debounce';
 import tabbable from 'tabbable';
 import { useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, useAttrs } from 'vue';
 import {
   CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
-import onTransitionEnd from './onTransitionEnd';
-import CdrButton from '../button/CdrButton';
-import IconXLg from '../icon/comps/x-lg';
-import mapClasses from '../../utils/mapClasses';
+import onTransitionEnd from './onTransitionEnd.js';
+import CdrButton from '../button/CdrButton.vue';
+import IconXLg from '../icon/comps/x-lg.vue';
+import mapClasses from '../../utils/mapClasses.js';
 
 const props = defineProps({
   opened: {

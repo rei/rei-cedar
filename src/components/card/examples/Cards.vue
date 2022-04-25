@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import simpleCard from 'componentsdir/card/examples/demo/simpleCard';
-import complexCard from 'componentsdir/card/examples/demo/complexCard';
+import simpleCard from 'componentsdir/card/examples/demo/simpleCard.vue';
+import complexCard from 'componentsdir/card/examples/demo/complexCard.vue';
 
 export default {
   name: 'Cards',

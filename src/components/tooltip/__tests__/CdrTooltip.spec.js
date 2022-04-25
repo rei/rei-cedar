@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrTooltip from 'componentdir/tooltip/CdrTooltip';
+import CdrTooltip from '../CdrTooltip.vue';
 
 describe('CdrTooltip', () => {
   it('matches snapshot', () => {

@@ -1,7 +1,7 @@
 <script setup>
       // <!-- TODO: remove scoped slot vue-router-ish support? just use emit/prevent pattern? -->
 import { useCssModule, computed, ref, watch, nextTick } from 'vue';
-import uid from '../../utils/uid';
+import uid from '../../utils/uid.js';
 
 const props = defineProps({
   items: {

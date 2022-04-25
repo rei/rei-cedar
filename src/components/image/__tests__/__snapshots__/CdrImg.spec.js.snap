@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`CdrImg renders correctly 1`] = `
+exports[`CdrImg > renders correctly 1`] = `
 <img
   alt="test alt"
   class="cdr-image"
@@ -8,7 +8,7 @@ exports[`CdrImg renders correctly 1`] = `
 />
 `;
 
-exports[`CdrImg renders crop/ratio correctly 1`] = `
+exports[`CdrImg > renders crop/ratio correctly 1`] = `
 <div
   class="cdr-image-ratio"
   style="--ratio: 100%;"

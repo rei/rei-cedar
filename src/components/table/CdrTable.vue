@@ -1,9 +1,9 @@
 <script setup>
 import { useCssModule, computed } from 'vue';
 
-import mapClasses from '../../utils/mapClasses';
-import { buildBooleanClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
+import mapClasses from '../../utils/mapClasses.js';
+import { buildBooleanClass } from '../../utils/buildClass.js';
+import propValidator from '../../utils/propValidator.js';
 
 const props = defineProps({
   striped: {

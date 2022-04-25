@@ -1,9 +1,9 @@
-import App from 'srcdir/dev/App';
+import App from 'srcdir/dev/App.vue';
 import Examples from 'componentsdir/examples';
 
-import KitchenSink from 'srcdir/dev/KitchenSink';
-// import e2e1 from 'srcdir/dev/e2e1';
-// import e2e2 from 'srcdir/dev/e2e2';
+import KitchenSink from 'srcdir/dev/KitchenSink.vue';
+import e2e1 from 'srcdir/dev/e2e1.vue';
+import e2e2 from 'srcdir/dev/e2e2.vue';
 
 // // Extra paths for backstop.
 // //  These are smaller sections of larger demo pages to make screenshotting more reliable
@@ -61,9 +61,9 @@ const routes = [
   // { path: '/survey-form', component: SurveyForm },
   // { path: '/payment-form', component: PaymentForm },
 
-  // // Nightwatch test targets
-  // { path: '/e2e-1', component: e2e1 },
-  // { path: '/e2e-2', component: e2e2 },
+  // Nightwatch test targets
+  { path: '/e2e-1', component: e2e1 },
+  { path: '/e2e-2', component: e2e2 },
 ];
 
 export default routes;

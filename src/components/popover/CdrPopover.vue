@@ -45,13 +45,13 @@
 </template>
 
 <script setup>
-  import { useCssModule, useSlots, defineEmits, ref, watch, onMounted, nextTick } from 'vue';
+  import { useCssModule, useSlots, ref, watch, onMounted, nextTick } from 'vue';
   import tabbable from 'tabbable';
-  import IconXSm from '../icon/comps/x-sm';
-  import CdrButton from '../button/CdrButton';
-  import CdrPopup from '../popup/CdrPopup';
-  import propValidator from '../../utils/propValidator';
-  import mapClasses from '../../utils/mapClasses';
+  import IconXSm from '../icon/comps/x-sm.vue';
+  import CdrButton from '../button/CdrButton.vue';
+  import CdrPopup from '../popup/CdrPopup.vue';
+  import propValidator from '../../utils/propValidator.js';
+  import mapClasses from '../../utils/mapClasses.js';
 
   const props = defineProps({
     position: {

@@ -41,7 +41,7 @@
 <script>
 import {
   CdrFormGroup, CdrCheckbox, CdrInput, CdrSelect,
-} from 'srcdir/index';
+} from 'srcdir/lib';
 
 export default {
   name: 'ParagraphsDemo',

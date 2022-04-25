@@ -38,7 +38,7 @@ Object.keys(iconData).forEach(function (name) {
 </cdr-icon>
 </template>
 <script setup>
-  import CdrIcon from '../CdrIcon';
+  import CdrIcon from '../CdrIcon.vue';
   const props = defineProps({
     props: {
       type: Object,
@@ -51,7 +51,7 @@ Object.keys(iconData).forEach(function (name) {
   fs.outputFileSync(`${outFile}`, component);
 
   // add file to 'index'
-  indexArr.push(`export { default as Icon${pascalName} } from './comps/${name}';`);
+  indexArr.push(`export { default as Icon${pascalName} } from './comps/${name}.vue';`);
 
 })
 

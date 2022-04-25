@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrCheckbox from 'componentdir/checkbox/CdrCheckbox';
+import CdrCheckbox from '../CdrCheckbox.vue';
 
 describe('CdrCheckbox', () => {
   test('renders correctly', () => {

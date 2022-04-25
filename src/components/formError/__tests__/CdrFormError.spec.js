@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrFormError from 'componentdir/formError/CdrFormError';
+import CdrFormError from '../CdrFormError.vue';
 
 describe('CdrFormError', () => {
   it('matches snapshot', () => {

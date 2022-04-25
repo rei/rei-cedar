@@ -124,14 +124,14 @@ export default {
 }
 </script>
 <script setup>
-import { useAttrs, useSlots, useCssModule, defineEmits, computed, ref } from 'vue';
+import { useAttrs, useSlots, useCssModule, computed, ref } from 'vue';
 import propValidator from '../../utils/propValidator';
-import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone';
-import CdrFormError from '../formError/CdrFormError';
-import sizeProps from '../../props/size';
-import backgroundProps from '../../props/background';
-import mapClasses from '../../utils/mapClasses';
-import uid from '../../utils/uid';
+import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
+import CdrFormError from '../formError/CdrFormError.vue';
+import sizeProps from '../../props/size.js';
+import backgroundProps from '../../props/background.js';
+import mapClasses from '../../utils/mapClasses.js';
+import uid from '../../utils/uid.js';
 
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({

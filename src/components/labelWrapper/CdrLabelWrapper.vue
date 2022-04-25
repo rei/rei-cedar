@@ -19,9 +19,9 @@
 </template>
 <script setup>
   import { useCssModule, computed } from 'vue';
-  import { responsiveModifyClass } from '../../utils/buildClass';
-  import backgroundProps from '../../props/background';
-  import mapClasses from '../../utils/mapClasses';
+  import { responsiveModifyClass } from '../../utils/buildClass.js';
+  import backgroundProps from '../../props/background.js';
+  import mapClasses from '../../utils/mapClasses.js';
 
   const props = defineProps({
       labelClass: String,

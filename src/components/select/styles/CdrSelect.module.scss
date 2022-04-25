@@ -1,8 +1,11 @@
-@import '../../../css/settings/index.scss';
+@import '../../../styles/settings/index.scss';
 @import './vars/CdrSelect.vars.scss';
-@import url('@rei/cedar/dist/style/cdr-icon.css');
-@import url('@rei/cedar/dist/style/cdr-label-standalone.css');
-@import url('@rei/cedar/dist/style/cdr-form-error.css');
+// @import url('@rei/cedar/dist/style/cdr-icon.css');
+// @import url('@rei/cedar/dist/style/cdr-label-standalone.css');
+// @import url('@rei/cedar/dist/style/cdr-form-error.css');
+@import '../../icon/styles/CdrIcon.module.scss';
+@import '../../labelStandalone/styles/CdrLabelStandalone.module.scss';
+@import '../../formError/styles/CdrFormError.module.scss';
 /* ==========================================================================
   # CdrSelect
 

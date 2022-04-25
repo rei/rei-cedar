@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`CdrTabPanel renders tab 1`] = `
+exports[`CdrTabPanel > renders tab 1`] = `
 <section
+  aria-hidden="true"
   aria-labelledby="test"
-  aria-visible="false"
   class="cdr-tab-panel"
   id="test-panel"
   role="tabpanel"

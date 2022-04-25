@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`cdrSelect renders correctly 1`] = `
+exports[`CdrSelect > renders correctly 1`] = `
 <div
   class="cdr-label-standalone"
 >
@@ -26,7 +26,7 @@ exports[`cdrSelect renders correctly 1`] = `
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select--medium cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--primary"
         id="renders"
       >
         <!--v-if-->
@@ -37,7 +37,7 @@ exports[`cdrSelect renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="cdr-icon cdr-icon--medium cdr-select__caret"
+        class="cdr-icon cdr-select__caret"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -67,7 +67,7 @@ exports[`cdrSelect renders correctly 1`] = `
 </div>
 `;
 
-exports[`cdrSelect renders error state correctly 1`] = `
+exports[`CdrSelect > renders error state correctly 1`] = `
 <div
   class="cdr-label-standalone"
 >
@@ -95,7 +95,7 @@ exports[`cdrSelect renders error state correctly 1`] = `
       <select
         aria-errormessage="renders-error"
         aria-invalid="true"
-        class="cdr-select cdr-select--medium cdr-select__prompt cdr-select--primary cdr-select--error"
+        class="cdr-select cdr-select__prompt cdr-select--primary cdr-select--error"
         id="renders"
       >
         <!--v-if-->
@@ -106,7 +106,7 @@ exports[`cdrSelect renders error state correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="cdr-icon cdr-icon--medium cdr-select__caret"
+        class="cdr-icon cdr-select__caret"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >

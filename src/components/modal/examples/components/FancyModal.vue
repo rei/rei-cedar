@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import * as Components from 'srcdir/index';
+import * as Components from 'srcdir/lib';
 import MembershipIcon from '../../../icon/comps/membership.vue';
 
 export default {

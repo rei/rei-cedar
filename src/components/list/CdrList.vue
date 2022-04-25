@@ -1,7 +1,7 @@
 <script setup>
 import { useCssModule, computed } from 'vue';
 
-import propValidator from '../../utils/propValidator';
+import propValidator from '../../utils/propValidator.js';
 
 const props = defineProps({
   /**

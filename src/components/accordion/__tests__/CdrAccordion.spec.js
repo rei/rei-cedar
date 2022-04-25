@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrAccordion from 'componentdir/accordion/CdrAccordion';
+import CdrAccordion from '../CdrAccordion.vue';
 
 const propsData = {
   id: 'test',

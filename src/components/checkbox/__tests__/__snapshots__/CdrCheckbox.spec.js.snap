@@ -1,4 +1,36 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`CdrCheckbox > renders correctly 1`] = `
+<div
+  class="cdr-label-wrapper__container cdr-checkbox"
+>
+  <label
+    class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--medium custom-label-class"
+  >
+    
+    <input
+      class="cdr-checkbox__input"
+      false-value="false"
+      true-value="true"
+      type="checkbox"
+      value="false"
+    />
+    
+    <span
+      class="cdr-label-wrapper__figure"
+    />
+    <span
+      class="cdr-label-wrapper__content"
+    >
+      
+      
+      Label Test
+      
+      
+    </span>
+  </label>
+</div>
+`;
 
 exports[`CdrCheckbox renders correctly 1`] = `
 <div

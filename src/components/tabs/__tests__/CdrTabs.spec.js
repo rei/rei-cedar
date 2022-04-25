@@ -1,6 +1,6 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrTabs from 'componentdir/tabs/CdrTabs';
-import CdrTabPanel from 'componentdir/tabs/CdrTabPanel';
+import CdrTabs from '../CdrTabs.vue';
+import CdrTabPanel from '../CdrTabPanel.vue';
 import { h } from 'vue';
 // Tests use nextTick because of the nextTick in mounted hook of tabs
 
@@ -10,7 +10,7 @@ describe('CdrTabs', () => {
     wrapper = mount(CdrTabs, {
       slots: {
         default: [
-          h(CdrTabPanel, {name: 'tab1'}), 
+          h(CdrTabPanel, {name: 'tab1', 'aria-labelledby': 'tab-small-one',}), 
           h(CdrTabPanel, {name: 'tab2'}),
           h(CdrTabPanel, {name: 'tab3', disabled: true}),
           h(CdrTabPanel, {name: 'tab4'})
@@ -24,10 +24,10 @@ describe('CdrTabs', () => {
     });
 
     it('mounts with cdr-tab-panel children', async () => {
-      const spyCalculateOverflow = spyOn(wrapper.vm, 'calculateOverflow');
-      const spyUpdateUnderline = spyOn(wrapper.vm, 'updateUnderline');
+      const spyCalculateOverflow = vi.spyOn(wrapper.vm, 'calculateOverflow');
+      const spyUpdateUnderline = vi.spyOn(wrapper.vm, 'updateUnderline');
 
-      await wrapper.vm.$nextTick();
+    //   await wrapper.vm.$nextTick();
 
       expect(wrapper.vm.tabs.length).toBe(4);
       expect(wrapper.findAll('button').length).toBe(4);
@@ -41,8 +41,8 @@ describe('CdrTabs', () => {
 
   describe('event listeners', () => {
     it('handles scroll event', async () => {
-      const spyCalculateOverflow = spyOn(wrapper.vm, 'calculateOverflow');
-      const spyUpdateUnderline = spyOn(wrapper.vm, 'updateUnderline');
+      const spyCalculateOverflow = vi.spyOn(wrapper.vm, 'calculateOverflow');
+      const spyUpdateUnderline = vi.spyOn(wrapper.vm, 'updateUnderline');
 
       wrapper.find('.cdr-tabs__header-container').element.dispatchEvent(new Event('scroll'));
       await wrapper.vm.$nextTick();
@@ -55,9 +55,9 @@ describe('CdrTabs', () => {
     });
 
     it('handles resize event', async () => {
-      const spyCalculateOverflow = spyOn(wrapper.vm, 'calculateOverflow');
-      const spyUpdateUnderline = spyOn(wrapper.vm, 'updateUnderline');
-      const spyGetHeaderWidth = spyOn(wrapper.vm, 'getHeaderWidth');
+      const spyCalculateOverflow = vi.spyOn(wrapper.vm, 'calculateOverflow');
+      const spyUpdateUnderline = vi.spyOn(wrapper.vm, 'updateUnderline');
+      const spyGetHeaderWidth = vi.spyOn(wrapper.vm, 'getHeaderWidth');
       window.dispatchEvent(new Event('resize'));
       await wrapper.vm.$nextTick();
 
@@ -129,8 +129,7 @@ describe('CdrTabs', () => {
   });
 
   it('accessibility', async () => {
-    const tab1 = wrapper.find('#tab-1-tab');
-
+    const tab1 = wrapper.find('#tab-small-one');
     //TODO: Separate describe block for accessibility with single it blocks for each of these expect statements
     expect(tab1.attributes()['aria-selected']).toBe('true');
     expect(tab1.attributes()['role']).toBe('tab');

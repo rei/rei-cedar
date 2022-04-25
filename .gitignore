@@ -32,6 +32,7 @@ jsconfig.json
 # Folders to ignore
 node_modules
 dist-docs
+dist
 
 # Test results
 .nyc_output

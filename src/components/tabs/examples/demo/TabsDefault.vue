@@ -9,7 +9,7 @@
     >
       <cdr-tab-panel
         name="Details"
-        aria-labelledby="tab-default-defails"
+        aria-labelledby="tab-default-details"
         id="tab-panel-default-details"
         
       >
@@ -147,7 +147,7 @@
 </template>
 
 <script>
-import * as Components from 'srcdir/index';
+import * as Components from 'srcdir/lib';
 
 export default {
   name: 'TabsDefault',

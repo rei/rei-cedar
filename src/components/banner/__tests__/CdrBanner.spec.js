@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrBanner from 'componentdir/banner/CdrBanner';
+import CdrBanner from '../CdrBanner.vue';
 
 describe('CdrBanner', () => {
   it('renders correctly', () => {

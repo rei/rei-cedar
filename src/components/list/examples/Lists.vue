@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import unorderedList from 'componentsdir/list/examples/demo/Unordered';
-import orderedList from 'componentsdir/list/examples/demo/Ordered';
-import bareList from 'componentsdir/list/examples/demo/Bare';
-import resilienceTest from 'componentsdir/list/examples/demo/Resilience';
+import unorderedList from 'componentsdir/list/examples/demo/Unordered.vue';
+import orderedList from 'componentsdir/list/examples/demo/Ordered.vue';
+import bareList from 'componentsdir/list/examples/demo/Bare.vue';
+import resilienceTest from 'componentsdir/list/examples/demo/Resilience.vue';
 
 export default {
   name: 'Lists',

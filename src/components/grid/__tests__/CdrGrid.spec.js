@@ -1,6 +1,6 @@
 import { h } from 'vue'
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrGrid from 'componentdir/grid/CdrGrid';
+import CdrGrid from '../CdrGrid.vue';
 
 
 describe('CdrGrid', () => {

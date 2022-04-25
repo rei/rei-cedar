@@ -31,10 +31,10 @@ export default {
 </script>
 <script setup>
 import { useCssModule, computed } from 'vue';
-import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper';
-import sizeProps from '../../props/size';
-import propValidator from '../../utils/propValidator';
-import backgroundProps from '../../props/background';
+import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
+import sizeProps from '../../props/size.js';
+import propValidator from '../../utils/propValidator.js';
+import backgroundProps from '../../props/background.js';
 
 const props = defineProps({
   /**

@@ -29,12 +29,12 @@ export default {
 </script>
 <script setup>
 import {
- useCssModule, defineEmits, computed, ref, watch, nextTick, onMounted, onUnmounted,
+ useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted,
 } from 'vue';
 import debounce from 'lodash/debounce';
-import propValidator from '../../utils/propValidator';
-import calculatePlacement from './calculatePlacement';
-import mapClasses from '../../utils/mapClasses';
+import propValidator from '../../utils/propValidator.js';
+import calculatePlacement from './calculatePlacement.js';
+import mapClasses from '../../utils/mapClasses.js';
 const props = defineProps({
   opened: {
     type: Boolean,

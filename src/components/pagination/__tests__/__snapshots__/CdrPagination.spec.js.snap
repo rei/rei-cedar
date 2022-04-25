@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`CdrPagination renders button pagination correctly 1`] = `
+exports[`CdrPagination > renders button pagination correctly 1`] = `
 <nav
   aria-label="Pagination"
 >
@@ -239,7 +239,7 @@ exports[`CdrPagination renders button pagination correctly 1`] = `
 </nav>
 `;
 
-exports[`CdrPagination renders correctly 1`] = `
+exports[`CdrPagination > renders correctly 1`] = `
 <nav
   aria-label="Pagination"
 >

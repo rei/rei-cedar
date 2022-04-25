@@ -20,7 +20,7 @@
   <section
     v-show="isActive"
     tabindex="0"
-    :aria-visible="isActive"
+    :aria-hidden="!isActive"
     role="tabpanel"
     :class="style['cdr-tab-panel']"
     :id="panelId"

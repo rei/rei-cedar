@@ -1,12 +1,12 @@
 
 <script setup>
 import { useCssModule, computed, ref, watch, nextTick, onMounted } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import propValidator from '../../utils/propValidator';
-import IconCaretLeft from '../icon/comps/caret-left';
-import IconCaretRight from '../icon/comps/caret-right';
-import CdrSelect from '../select/CdrSelect';
-import uid from '../../utils/uid';
+import mapClasses from '../../utils/mapClasses.js';
+import propValidator from '../../utils/propValidator.js';
+import IconCaretLeft from '../icon/comps/caret-left.vue';
+import IconCaretRight from '../icon/comps/caret-right.vue';
+import CdrSelect from '../select/CdrSelect.vue';
+import uid from '../../utils/uid.js';
 
 const props = defineProps({
     // NOTE pagination now requires an ID

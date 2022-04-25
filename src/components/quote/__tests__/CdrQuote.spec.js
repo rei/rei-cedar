@@ -1,5 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrQuote from 'componentdir/quote/CdrQuote';
+import CdrQuote from '../CdrQuote.vue';
 
 describe('CdrQuote', () => {
   it('renders correctly', () => {

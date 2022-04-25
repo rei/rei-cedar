@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`CdrFormGroup renders correctly 1`] = `
+exports[`CdrFormGroup > renders correctly 1`] = `
 <fieldset
   aria-errormessage="false"
   aria-invalid="false"
@@ -24,7 +24,7 @@ exports[`CdrFormGroup renders correctly 1`] = `
 </fieldset>
 `;
 
-exports[`CdrFormGroup renders error state correctly 1`] = `
+exports[`CdrFormGroup > renders error state correctly 1`] = `
 <fieldset
   aria-errormessage="renders-error"
   aria-invalid="true"

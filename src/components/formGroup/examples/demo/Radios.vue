@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { CdrFormGroup, CdrRadio, CdrText } from 'srcdir/index';
+import { CdrFormGroup, CdrRadio, CdrText } from 'srcdir/lib';
 
 export default {
   name: 'ParagraphsDemo',

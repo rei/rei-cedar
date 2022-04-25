@@ -3,7 +3,7 @@
     :class="backgroundClass"
   >
     Toggle background color:
-    <!-- <cdr-radio
+    <cdr-radio
       v-for="bg in backgrounds"
       :custom-value="bg"
       :key="bg"
@@ -12,20 +12,20 @@
       class="background-toggle"
     >
       {{ capitalize(bg) }}
-    </cdr-radio> -->
+    </cdr-radio>
     <slot />
   </div>
 </template>
 
 <script>
 
-// import { CdrRadio } from 'srcdir/index';
-import upperFirst from 'lodash/upperFirst';
+import { CdrRadio } from 'srcdir/lib';
+import upperFirst from 'lodash-es/upperFirst';
 
 export default {
   name: 'SinkWrapper',
   components: {
-    // CdrRadio,
+    CdrRadio,
   },
   data() {
     return {

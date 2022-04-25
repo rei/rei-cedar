@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`CdrAccordion renders correctly 1`] = `
-<li
+exports[`CdrAccordion > renders correctly 1`] = `
+<div
   class="cdr-accordion"
   id="test-accordion"
 >
@@ -12,7 +12,7 @@ exports[`CdrAccordion renders correctly 1`] = `
       aria-controls="test-collapsible"
       aria-expanded="false"
       aria-pressed="false"
-      class="js-cdr-accordion-button"
+      class="cdr-accordion__button js-cdr-accordion-button"
       id="test"
     >
       <span
@@ -55,11 +55,11 @@ exports[`CdrAccordion renders correctly 1`] = `
       
     </div>
   </div>
-</li>
+</div>
 `;
 
-exports[`CdrAccordion renders correctly unwrapped 1`] = `
-<li
+exports[`CdrAccordion > renders correctly unwrapped 1`] = `
+<div
   class=""
   id="test-accordion"
 >
@@ -94,5 +94,5 @@ exports[`CdrAccordion renders correctly unwrapped 1`] = `
       
     </div>
   </div>
-</li>
+</div>
 `;
