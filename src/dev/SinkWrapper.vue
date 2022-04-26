@@ -19,14 +19,13 @@
 
 <script>
 
-import { CdrRadio, CdrFormGroup } from 'srcdir/lib';
+import { CdrRadio } from 'srcdir/lib';
 import upperFirst from 'lodash-es/upperFirst';
 
 export default {
   name: 'SinkWrapper',
   components: {
     CdrRadio,
-    CdrFormGroup,
   },
   data() {
     return {
