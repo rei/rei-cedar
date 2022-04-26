@@ -1,0 +1,129 @@
+{
+  "name": "@rei/cedar",
+  "version": "13.0.0-beta.0",
+  "description": "REI Cedar Component Library",
+  "homepage": "https://rei.github.io/rei-cedar/",
+  "license": "MIT",
+  "private": false,
+  "sideEffects": [
+    "*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "REI Software Engineering",
+  "main": "./dist/cedar.umd.js",
+  "module": "./dist/cedar.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/cedar.es.js",
+      "require": "./dist/cedar.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rei/rei-cedar.git"
+  },
+  "scripts": {
+    "prepublishOnly": "npm-run-all lint build",
+    "dev": "vite",
+    "build": "vite build && npm run build:extractcss && npm run build:icons",
+    "preview": "vite preview",
+    "unit": "vitest run",
+    "watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "e2e": "nightwatch --config test/e2e/nightwatch.conf.js",
+    "test": "npm-run-all unit e2e",
+    "clean": "rm -rf dist",
+    "lint": "# npm-run-all lint:js lint:styles",
+    "lint:js": "eslint --ext .js,.vue src",
+    "lint:styles": "stylelint src/**/*.scss",
+    "prepush": "npm-run-all lint unit",
+    "reference": "backstop reference --configPath=backstop.js",
+    "compare": "backstop test --configPath=backstop.js",
+    "approve": "backstop approve --configPath=backstop.js",
+    "create": "node generator.js",
+    "prerelease": "npm-publish-prerelease",
+    "build:extractcss": "node build/extract-css.js",
+    "build:variables": "node build/component-variables-transfer.js",
+    "build:icons": "node src/components/icon/build/generate.js"
+  },
+  "devDependencies": {
+    "@rei/cdr-tokens": "^10.0.3",
+    "@rei/cedar-icons": "^2.5.0",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@vue/compiler-sfc": "^3.2.23",
+    "@vue/test-utils": "^2.0.0-rc.19",
+    "autoprefixer": "^10.2.5",
+    "backstopjs": "^5.3.0",
+    "c8": "^7.11.0",
+    "chalk": "^4.1.0",
+    "chromedriver": "^99.0.0",
+    "concat": "^1.0.3",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-tree-shaking": "^1.8.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "fs-extra": "^10.0.0",
+    "glob": "^7.1.6",
+    "husky": "^4.3.8",
+    "inquirer": "^8.1.0",
+    "jsdom": "^16.5.3",
+    "jsdom-global": "^3.0.2",
+    "klaw-sync": "^6.0.0",
+    "nightwatch": "^2.1.0",
+    "nightwatch-axe": "^0.1.5",
+    "node-sass": "^6.0.0",
+    "node-sass-package-importer": "^5.3.2",
+    "npm-publish-prerelease": "^1.0.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.0",
+    "postcss-calc": "^8.0.0",
+    "postcss-import": "^14.0.2",
+    "postcss-inline-svg": "^5.0.0",
+    "postcss-load-config": "^3.0.1",
+    "postcss-modules": "^4.0.0",
+    "postcss-pxtorem": "^6.0.0",
+    "postcss-scss": "^3.0.0",
+    "sass": "^1.32.11",
+    "sinon": "^11.1.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.19.0",
+    "vite": "^2.9.1",
+    "vite-plugin-nightwatch": "^0.2.12",
+    "vitest": "^0.8.1",
+    "vue-router": "^4.0.10"
+  },
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run prepush"
+    }
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "tabbable": "^4.0.0",
+    "vue": "^3.2.23"
+  },
+  "peerDependencies": {
+    "@vue/compiler-sfc": "^3.2.23",
+    "vue": "^3.2.23"
+  }
+}

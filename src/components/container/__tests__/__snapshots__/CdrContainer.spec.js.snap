@@ -1,0 +1,21 @@
+// Vitest Snapshot v1
+
+exports[`CdrContainer > matches snapshot 1`] = `
+<div
+  class="cdr-container cdr-container--static"
+>
+  
+  foo
+  
+</div>
+`;
+
+exports[`CdrContainer matches snapshot 1`] = `
+<div
+  class="cdr-container cdr-container--static"
+>
+  
+  foo
+  
+</div>
+`;

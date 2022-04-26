@@ -1,0 +1,6 @@
+@import '../../../styles/settings/index.scss';
+
+.cdr-text {
+  @include cdr-text-default;
+  margin: 0;
+}

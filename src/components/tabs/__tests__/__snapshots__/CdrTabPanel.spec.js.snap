@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`CdrTabPanel > renders tab 1`] = `
+<section
+  aria-hidden="true"
+  aria-labelledby="test"
+  class="cdr-tab-panel"
+  id="test-panel"
+  role="tabpanel"
+  style="display: none;"
+  tabindex="0"
+>
+  
+  
+</section>
+`;

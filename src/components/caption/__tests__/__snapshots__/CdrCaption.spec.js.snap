@@ -1,0 +1,35 @@
+// Vitest Snapshot v1
+
+exports[`CdrCaption > renders correctly 1`] = `
+<div
+  class="cdr-caption"
+>
+  <p
+    class="cdr-caption__summary"
+  >
+    This is a summary
+  </p>
+  <cite
+    class="cdr-caption__cite"
+  >
+    This is a credit
+  </cite>
+</div>
+`;
+
+exports[`CdrCaption renders correctly 1`] = `
+<div
+  class="cdr-caption"
+>
+  <p
+    class="cdr-caption__summary"
+  >
+    This is a summary
+  </p>
+  <cite
+    class="cdr-caption__cite"
+  >
+    This is a credit
+  </cite>
+</div>
+`;

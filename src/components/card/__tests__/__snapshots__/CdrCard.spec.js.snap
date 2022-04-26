@@ -1,0 +1,19 @@
+// Vitest Snapshot v1
+
+exports[`CdrCard > renders correctly 1`] = `
+<article
+  class="cdr-card"
+>
+  
+  
+</article>
+`;
+
+exports[`CdrCard renders correctly 1`] = `
+<article
+  class="cdr-card"
+>
+  
+  
+</article>
+`;

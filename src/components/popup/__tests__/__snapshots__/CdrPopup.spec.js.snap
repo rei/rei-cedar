@@ -1,0 +1,33 @@
+// Vitest Snapshot v1
+
+exports[`CdrPopup > matches snapshot 1`] = `
+<div
+  class="cdr-popup cdr-popup--closed"
+>
+  <div
+    class="cdr-popup__content"
+  >
+    
+    
+  </div>
+  <div
+    class="cdr-popup__arrow"
+  />
+</div>
+`;
+
+exports[`CdrPopup matches snapshot 1`] = `
+<div
+  class="cdr-popup cdr-popup--closed"
+>
+  <div
+    class="cdr-popup__content"
+  >
+    
+    
+  </div>
+  <div
+    class="cdr-popup__arrow"
+  />
+</div>
+`;

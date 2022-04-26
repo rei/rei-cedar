@@ -1,0 +1,89 @@
+// Vitest Snapshot v1
+
+exports[`CdrChip > default matches snapshot 1`] = `
+<button
+  class="cdr-chip"
+>
+  <!--v-if-->
+  <!--v-if-->
+  <span
+    class="cdr-chip__content"
+  >
+    
+    tortilla chip
+    
+  </span>
+</button>
+`;
+
+exports[`CdrChip > renders icon slots 1`] = `
+<button
+  class="cdr-chip"
+>
+  <span
+    class="cdr-chip__icon-left"
+  >
+    
+    🌮
+    
+  </span>
+  <span
+    class="cdr-chip__icon-right"
+  >
+    
+    🍔
+    
+  </span>
+  <span
+    class="cdr-chip__content"
+  >
+    
+    tortilla chip
+    
+  </span>
+</button>
+`;
+
+exports[`CdrChip default matches snapshot 1`] = `
+<button
+  class="cdr-chip"
+>
+  <!--v-if-->
+  <!--v-if-->
+  <span
+    class="cdr-chip__content"
+  >
+    
+    tortilla chip
+    
+  </span>
+</button>
+`;
+
+exports[`CdrChip renders icon slots 1`] = `
+<button
+  class="cdr-chip"
+>
+  <span
+    class="cdr-chip__icon-left"
+  >
+    
+    🌮
+    
+  </span>
+  <span
+    class="cdr-chip__icon-right"
+  >
+    
+    🍔
+    
+  </span>
+  <span
+    class="cdr-chip__content"
+  >
+    
+    tortilla chip
+    
+  </span>
+</button>
+`;

@@ -1,0 +1,37 @@
+// Vitest Snapshot v1
+
+exports[`CdrList > renders an ol 1`] = `
+<ol
+  class="cdr-list"
+>
+  
+  
+</ol>
+`;
+
+exports[`CdrList > renders correctly 1`] = `
+<ul
+  class="cdr-list"
+>
+  
+  
+</ul>
+`;
+
+exports[`CdrList renders an ol 1`] = `
+<ol
+  class="cdr-list"
+>
+  
+  
+</ol>
+`;
+
+exports[`CdrList renders correctly 1`] = `
+<ul
+  class="cdr-list"
+>
+  
+  
+</ul>
+`;

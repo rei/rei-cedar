@@ -1,0 +1,135 @@
+// Vitest Snapshot v1
+
+exports[`CdrTabs > mounted > mounts tabs 1`] = `
+<div
+  class="cdr-tabs"
+  style="height: 240px;"
+>
+  <div
+    class="cdr-tabs__gradient-container"
+  >
+    <div
+      class="cdr-tabs__gradient cdr-tabs__gradient--left"
+    />
+    <ul
+      class="cdr-tabs__header-container"
+      role="tablist"
+    >
+      
+      <li
+        class="cdr-tabs__header"
+        role="presentation"
+      >
+        <button
+          aria-selected="true"
+          class="cdr-tabs__header-item-active cdr-tabs__header-item"
+          id="tab-small-one"
+          role="tab"
+          tabindex="0"
+        >
+          tab1
+        </button>
+      </li>
+      <li
+        class="cdr-tabs__header"
+        role="presentation"
+      >
+        <button
+          aria-selected="false"
+          class="cdr-tabs__header-item"
+          role="tab"
+          tabindex="-1"
+        >
+          tab2
+        </button>
+      </li>
+      <li
+        class="cdr-tabs__header"
+        role="presentation"
+      >
+        <button
+          aria-selected="false"
+          class="cdr-tabs__header-item cdr-tabs__header-item--disabled"
+          disabled=""
+          role="tab"
+          tabindex="-1"
+        >
+          tab3
+        </button>
+      </li>
+      <li
+        class="cdr-tabs__header"
+        role="presentation"
+      >
+        <button
+          aria-selected="false"
+          class="cdr-tabs__header-item"
+          role="tab"
+          tabindex="-1"
+        >
+          tab4
+        </button>
+      </li>
+      
+    </ul>
+    <div
+      class="cdr-tabs__gradient cdr-tabs__gradient--right cdr-tabs__gradient--active"
+    />
+    <div
+      class="cdr-tabs__underline"
+      style="transform: translateX(0px); width: 0px;"
+    />
+  </div>
+  
+  <section
+    aria-hidden="false"
+    aria-labelledby="tab-small-one"
+    class="cdr-tab-panel"
+    id="tab-1-panel"
+    role="tabpanel"
+    style=""
+    tabindex="0"
+  >
+    
+    
+  </section>
+  <section
+    aria-hidden="true"
+    aria-labelledby="tab2"
+    class="cdr-tab-panel"
+    id="tab-2-panel"
+    role="tabpanel"
+    style="display: none;"
+    tabindex="0"
+  >
+    
+    
+  </section>
+  <section
+    aria-hidden="true"
+    aria-labelledby="tab3"
+    class="cdr-tab-panel"
+    disabled="true"
+    id="tab-3-panel"
+    role="tabpanel"
+    style="display: none;"
+    tabindex="0"
+  >
+    
+    
+  </section>
+  <section
+    aria-hidden="true"
+    aria-labelledby="tab4"
+    class="cdr-tab-panel"
+    id="tab-4-panel"
+    role="tabpanel"
+    style="display: none;"
+    tabindex="0"
+  >
+    
+    
+  </section>
+  
+</div>
+`;
