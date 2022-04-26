@@ -19,13 +19,14 @@
 
 <script>
 
-import { CdrRadio } from 'srcdir/lib';
+import { CdrRadio, CdrFormGroup } from 'srcdir/lib';
 import upperFirst from 'lodash-es/upperFirst';
 
 export default {
   name: 'SinkWrapper',
   components: {
     CdrRadio,
+    CdrFormGroup,
   },
   data() {
     return {
@@ -45,7 +46,7 @@ export default {
   watch: {
     background() {
       this.$router.replace({
-        path: this.$router.currentRoute.path,
+        path: this.$route.path,
         query: {
           background: this.background,
         },
