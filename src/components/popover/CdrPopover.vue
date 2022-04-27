@@ -108,10 +108,10 @@
     lastActive = activeElement;
     isOpen.value = true;
     emit('opened', e);
-    nextTick(() => {
+    setTimeout(()=>{
       const tabbables = tabbable(popupEl.value.$el);
       if (tabbables[0]) tabbables[0].focus();
-    });
+    }, 50)
   }
 
   const closePopover = (e) => {
