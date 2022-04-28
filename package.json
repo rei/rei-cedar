@@ -18,7 +18,8 @@
     ".": {
       "import": "./dist/cedar.es.js",
       "require": "./dist/cedar.umd.js"
-    }
+    },
+    "./dist/": "./dist/"
   },
   "files": [
     "dist"
