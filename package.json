@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.0.0-beta.0",
+  "version": "13.0.0-beta.1",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -18,7 +18,8 @@
     ".": {
       "import": "./dist/cedar.es.js",
       "require": "./dist/cedar.umd.js"
-    }
+    },
+    "./dist/": "./dist/"
   },
   "files": [
     "dist"
