@@ -75,6 +75,7 @@ exports[`CdrInput > renders error state correctly 1`] = `
       class="cdr-input-wrap"
     >
       <input
+        aria-describedby="renders-error"
         aria-errormessage="renders-error"
         aria-invalid="true"
         autocapitalize="off"
