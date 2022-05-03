@@ -381,6 +381,7 @@ export default {
     },
   },
   mounted() {
+    this.validate();
     this.setBackground(this.$route.query.background);
   },
   methods: {
