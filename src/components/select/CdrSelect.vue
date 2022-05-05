@@ -60,7 +60,6 @@ const props = defineProps({
   errorRole: {
     type: String,
     required: false,
-    default: '',
   },
   modelValue: {
     type: [String, Number, Boolean, Object, Array, Symbol, Function],
