@@ -31,7 +31,7 @@
   "scripts": {
     "prepublishOnly": "npm-run-all lint build",
     "dev": "vite",
-    "build": "vite build && npm run build:icons && npm run build:extractcss",
+    "build": "vite build && npm run build:extractcss && npm run build:icons",
     "preview": "vite preview",
     "unit": "vitest run",
     "watch": "vitest",

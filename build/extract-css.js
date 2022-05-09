@@ -24,12 +24,12 @@ const components = glob.sync('./src/components/**/styles/*.scss')
 
 components.forEach(buildCss);
 
-const compiledOutFile = [{outPath: './dist/reset.css'}]
+const compiledOutFile = [{outPath: './public/reset.css'}]
   .concat(components)
   .map(createCompiledImport)
   .join('\n');
 
-const outFile = [{outPath: './dist/reset.css'}]
+const outFile = [{outPath: './public/reset.css'}]
   .concat(components)
   .map(createImport)
   .join('\n');
@@ -43,7 +43,7 @@ fs.outputFile('./dist/style/cedar-full.css', outFile, function(err) {
 postcss()
   .use(atImport())
   .process(compiledOutFile, {
-    from: undefined
+    from: undefined,
   })
   .then((result) => {
     fs.outputFile('./dist/cedar-compiled.css', result.css, function(err) {
