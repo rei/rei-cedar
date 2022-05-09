@@ -1,7 +1,6 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from 'vite'
-import nightwatchPlugin from 'vite-plugin-nightwatch'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
 const packageJson = require('./package.json');
@@ -46,9 +45,5 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    nightwatchPlugin({
-      componentType: 'vue',
-      renderPage: './index.html',
-    }),
   ],
 })
