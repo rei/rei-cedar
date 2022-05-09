@@ -10,11 +10,6 @@ const postcssModules = require('postcss-modules');
 const _ = require('lodash');
 const packageJson = require('../package.json')
 
-const env = process.env.NODE_ENV;
-console.log('env', env);
-// const viteEnv = import.meta.env.MODE;
-// console.log('vite-env', viteEnv);
-
 const components = glob.sync('./src/components/**/styles/*.scss')
   .map((path) => {
     const componentName = path.split('/styles/')[1];
