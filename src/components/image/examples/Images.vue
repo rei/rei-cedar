@@ -37,15 +37,15 @@
       </h3>
       <cdr-img
         alt="ratio standard"
-        src="http://placehold.it/200x200"
+        src="/src/dev/static/cedar-200x200.jpg"
       />
       <cdr-img
         alt="standard landscape"
-        src="http://placehold.it/350x150"
+        src="/src/dev/static/cedar-350x150.jpg"
       />
       <cdr-img
         alt="standard portrait"
-        src="http://placehold.it/150x350"
+        src="/src/dev/static/cedar-150x350.jpg"
       />
     </div>
   </div>

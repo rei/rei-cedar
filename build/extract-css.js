@@ -10,8 +10,6 @@ const postcssModules = require('postcss-modules');
 const _ = require('lodash');
 const packageJson = require('../package.json')
 
-const env = process.env.NODE_ENV;
-
 const components = glob.sync('./src/components/**/styles/*.scss')
   .map((path) => {
     const componentName = path.split('/styles/')[1];
@@ -25,7 +23,6 @@ const components = glob.sync('./src/components/**/styles/*.scss')
 );
 
 components.forEach(buildCss);
-
 const compiledOutFile = [{outPath: './dist/reset.css'}]
   .concat(components)
   .map(createCompiledImport)
@@ -45,7 +42,7 @@ fs.outputFile('./dist/style/cedar-full.css', outFile, function(err) {
 postcss()
   .use(atImport())
   .process(compiledOutFile, {
-    from: undefined
+    from: undefined,
   })
   .then((result) => {
     fs.outputFile('./dist/cedar-compiled.css', result.css, function(err) {

@@ -14,13 +14,13 @@
           modifier="responsive"
           loading="lazy"
           alt="ratio responsive"
-          src="http://placehold.it/200x200"
+          src="/src/dev/static/cedar-200x200.jpg"
         />
         <cdr-img
           class="cdr-img-test"
           modifier="responsive"
           alt="standard responsive"
-          src="http://placehold.it/200x200"
+          src="/src/dev/static/cedar-200x200.jpg"
         />
       </div>
       <div>
@@ -32,19 +32,19 @@
           ratio="4-3"
           radius="rounded"
           alt="ratio rounded"
-          src="http://placehold.it/200x200"
+          src="/src/dev/static/cedar-200x200.jpg"
         />
         <cdr-img
           class="cdr-img-test"
           radius="rounded"
           alt="landscape rounded"
-          src="http://placehold.it/350x150"
+          src="/src/dev/static/cedar-350x150.jpg"
         />
         <cdr-img
           class="cdr-img-test"
           radius="rounded"
           alt="square rounded"
-          src="http://placehold.it/200x200"
+          src="/src/dev/static/cedar-200x200.jpg"
         />
       </div>
       <div>
@@ -56,19 +56,19 @@
           ratio="4-3"
           radius="circle"
           alt="ratio circle"
-          src="http://placehold.it/200x200"
+          src="/src/dev/static/cedar-200x200.jpg"
         />
         <cdr-img
           class="cdr-img-test"
           radius="circle"
           alt="landscape circle"
-          src="http://placehold.it/350x150"
+          src="/src/dev/static/cedar-350x150.jpg"
         />
         <cdr-img
           class="cdr-img-test"
           radius-="circle"
           alt="square circle"
-          src="http://placehold.it/200x200"
+          src="/src/dev/static/cedar-200x200.jpg"
         />
       </div>
     </cdr-grid>

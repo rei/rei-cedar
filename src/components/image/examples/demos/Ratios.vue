@@ -8,7 +8,7 @@
         class="cdr-img-test"
         ratio="square"
         alt="ratio square"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -22,7 +22,7 @@
         cover
         alt="ratio auto"
         style="min-height: 100px"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
 
@@ -38,7 +38,7 @@
           cover
           alt="ratio auto"
           style="width: 100%; height: 100%;"
-          src="http://placehold.it/300x100"
+          src="/src/dev/static/cedar-300x100.jpg"
         />
       </div>
     </div>
@@ -54,7 +54,7 @@
           crop="center"
           cover
           alt="ratio auto"
-          src="http://placehold.it/300x100"
+          src="/src/dev/static/cedar-300x100.jpg"
         />
         <div style="height: 100px">
           content goes here
@@ -69,7 +69,7 @@
         class="cdr-img-test"
         ratio="1-2"
         alt="ratio 1-2"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -80,7 +80,7 @@
         class="cdr-img-test"
         ratio="2-3"
         alt="ratio 2-3"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -91,7 +91,7 @@
         class="cdr-img-test"
         ratio="3-4"
         alt="ratio 3-4"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -102,7 +102,7 @@
         class="cdr-img-test"
         ratio="9-16"
         alt="ratio 9-16"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -113,7 +113,7 @@
         class="cdr-img-test"
         ratio="2-1"
         alt="ratio 2-1"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -124,7 +124,7 @@
         class="cdr-img-test"
         ratio="3-2"
         alt="ratio 3-2"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -135,7 +135,7 @@
         class="cdr-img-test"
         ratio="4-3"
         alt="ratio 4-3"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
     <div>
@@ -146,7 +146,7 @@
         class="cdr-img-test"
         ratio="16-9"
         alt="ratio 16-9"
-        src="http://placehold.it/300x100"
+        src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
   </cdr-grid>
