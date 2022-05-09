@@ -7,7 +7,7 @@ const packageJson = require('./package.json');
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  //base: '/rei-cedar-next/',
+  base: '/rei-cedar-next/',
   build: {
     lib: {
       entry: resolve(__dirname, '/src/lib.js'),
