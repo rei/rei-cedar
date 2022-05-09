@@ -6,7 +6,7 @@ describe('CdrImg', () => {
   it('renders correctly', () => {
     const wrapper = mount(CdrImg, {
       propsData: {
-        src: 'http://via.placeholder.com/350x150',
+        src: '/src/dev/static/cedar-350x150.jpg',
         alt: 'test alt',
       }
     });
@@ -20,7 +20,7 @@ describe('CdrImg', () => {
         cover: true,
         crop: "left",
         alt: "crop left",
-        src: "http://placehold.it/1920x1080",
+        src: "/src/dev/static/cedar-1920x1080.jpg",
       }
     });
     expect(wrapper.element).toMatchSnapshot();
@@ -29,7 +29,7 @@ describe('CdrImg', () => {
   it('sets the alt attr correctly', () => {
     const wrapper = shallowMount(CdrImg, {
       propsData: {
-        src: 'http://via.placeholder.com/350x150',
+        src: '/src/dev/static/cedar-350x150.jpg',
         alt: 'test alt',
       }
     });
@@ -39,7 +39,7 @@ describe('CdrImg', () => {
   it('sets the alt attr correctly in a media frame', () => {
     const wrapper = shallowMount(CdrImg, {
       propsData: {
-        src: 'http://via.placeholder.com/350x150',
+        src: '/src/dev/static/cedar-350x150.jpg',
         ratio: 'square',
         alt: 'test alt',
       }
@@ -50,7 +50,7 @@ describe('CdrImg', () => {
   it('passes arbitrary HTML attrs through to image', () => {
     const wrapper = mount(CdrImg, {
       propsData: {
-        src: 'http://via.placeholder.com/350x150',
+        src: '/src/dev/static/cedar-350x150.jpg',
         loading: 'lazy',
         ratio: 'square'
       }

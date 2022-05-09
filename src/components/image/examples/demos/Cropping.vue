@@ -13,7 +13,7 @@
           cover
           crop="left"
           alt="crop left"
-          src="http://placehold.it/1920x1080"
+          src="/src/dev/static/cedar-1920x1080.jpg"
         />
       </div>
       <div>
@@ -25,7 +25,7 @@
           cover
           crop="center"
           alt="crop x-center"
-          src="http://placehold.it/1920x1080"
+          src="/src/dev/static/cedar-1920x1080.jpg"
         />
       </div>
       <div>
@@ -37,7 +37,7 @@
           cover
           crop="right"
           alt="crop right"
-          src="http://placehold.it/1920x1080"
+          src="/src/dev/static/cedar-1920x1080.jpg"
         />
       </div>
     </cdr-grid>
@@ -57,7 +57,7 @@
           cover
           crop="top"
           alt="crop top"
-          src="http://placehold.it/1080x1920"
+          src="/src/dev/static/cedar-1080x1920.jpg"
         />
       </div>
       <div>
@@ -69,7 +69,7 @@
           cover
           crop="center"
           alt="crop y-center"
-          src="http://placehold.it/1080x1920"
+          src="/src/dev/static/cedar-1080x1920.jpg"
         />
       </div>
       <div>
@@ -81,7 +81,7 @@
           cover
           crop="bottom"
           alt="crop bottom"
-          src="http://placehold.it/1080x1920"
+          src="/src/dev/static/cedar-1080x1920.jpg"
         />
       </div>
     </cdr-grid>
