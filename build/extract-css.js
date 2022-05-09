@@ -10,6 +10,12 @@ const postcssModules = require('postcss-modules');
 const _ = require('lodash');
 const packageJson = require('../package.json')
 
+buildCss({
+  srcPath: './public/reset.css',
+  outPath: './dist/style/reset.css',
+  scopeClasses: false,
+});
+
 const components = glob.sync('./src/components/**/styles/*.scss')
   .map((path) => {
     const componentName = path.split('/styles/')[1];
@@ -23,13 +29,12 @@ const components = glob.sync('./src/components/**/styles/*.scss')
 );
 
 components.forEach(buildCss);
-console.log('cwd', process.cwd())
-const compiledOutFile = [{outPath: './public/reset.css'}]
+const compiledOutFile = [{outPath: './dist/style/reset.css'}]
   .concat(components)
   .map(createCompiledImport)
   .join('\n');
 
-const outFile = [{outPath: './public/reset.css'}]
+const outFile = [{outPath: './dist/style/reset.css'}]
   .concat(components)
   .map(createImport)
   .join('\n');
