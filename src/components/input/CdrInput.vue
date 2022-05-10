@@ -223,11 +223,17 @@ const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
 const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
 
 const describedby = computed(() => {
-  return [
+  const helperText = [
     slots['helper-text-top'] ? `${uniqueId}-helper-text-top` : '',
     slots['helper-text-bottom'] ? `${uniqueId}-helper-text-bottom` : '',
     attrs['aria-describedby'],
   ].filter((x) => x).join(' ');
+
+  if(props.error) {
+    return `${uniqueId}-error`
+  }
+
+  return helperText;
 })
 
 const attrsWithClassExcluded = computed(()=>{
