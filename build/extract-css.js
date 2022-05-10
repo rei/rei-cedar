@@ -23,12 +23,12 @@ const components = glob.sync('./src/components/**/styles/*.scss')
 );
 
 components.forEach(buildCss);
-const compiledOutFile = [{outPath: './dist/reset.css'}]
+const compiledOutFile = [{outPath: './public/reset.css'}]
   .concat(components)
   .map(createCompiledImport)
   .join('\n');
 
-const outFile = [{outPath: './dist/reset.css'}]
+const outFile = [{outPath: './public/reset.css'}]
   .concat(components)
   .map(createImport)
   .join('\n');
