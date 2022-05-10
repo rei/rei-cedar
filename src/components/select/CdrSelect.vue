@@ -60,7 +60,6 @@ const props = defineProps({
   errorRole: {
     type: String,
     required: false,
-    default: 'status',
   },
   modelValue: {
     type: [String, Number, Boolean, Object, Array, Symbol, Function],
@@ -90,10 +89,16 @@ const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
 const caretDisabledClass = computed(() => props.disabled && 'cdr-select__caret--disabled');
 
 const describedby = computed(() => {
-  return [
+  const helperText =  [
     slots['helper-text'] ? `${uniqueId}-helper-text-top` : '',
     attrs['aria-describedby'],
   ].filter((x) => x).join(' ');
+
+  if(props.error) {
+    return `${uniqueId}-error`;
+  }
+
+  return helperText;
 })
 
 // TODO: refactor, would be much clearer as a 1-2 liner
