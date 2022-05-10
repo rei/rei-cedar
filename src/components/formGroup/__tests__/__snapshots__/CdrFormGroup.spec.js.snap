@@ -2,6 +2,7 @@
 
 exports[`CdrFormGroup > renders correctly 1`] = `
 <fieldset
+  aria-describedby="false"
   aria-errormessage="false"
   aria-invalid="false"
   class="cdr-form-group"
@@ -26,6 +27,7 @@ exports[`CdrFormGroup > renders correctly 1`] = `
 
 exports[`CdrFormGroup > renders error state correctly 1`] = `
 <fieldset
+  aria-describedby="renders-error"
   aria-errormessage="renders-error"
   aria-invalid="true"
   class="cdr-form-group"
