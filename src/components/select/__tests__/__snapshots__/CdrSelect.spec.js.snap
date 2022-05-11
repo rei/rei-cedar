@@ -93,6 +93,7 @@ exports[`CdrSelect > renders error state correctly 1`] = `
     >
       <!--v-if-->
       <select
+        aria-describedby="renders-error"
         aria-errormessage="renders-error"
         aria-invalid="true"
         class="cdr-select cdr-select__prompt cdr-select--primary cdr-select--error"
@@ -134,7 +135,6 @@ exports[`CdrSelect > renders error state correctly 1`] = `
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"

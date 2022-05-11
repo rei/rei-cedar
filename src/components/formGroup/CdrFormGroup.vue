@@ -36,6 +36,7 @@ const props = defineProps({
     :disabled="disabled"
     :aria-invalid="!!error"
     :aria-errormessage="!!error && `${uniqueId}-error`"
+    :aria-describedby="!!error && `${uniqueId}-error`"
   >
     <legend>
       <slot name="label">

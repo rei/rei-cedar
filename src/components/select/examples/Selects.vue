@@ -154,7 +154,34 @@
     </cdr-select>
     <cdr-text>Selected Value: {{ helperTextModel }}</cdr-text>
     <hr class="icon-hr">
+    
+    <cdr-select
+      label="Example with Helper Text and error"
+      v-model="helperTextWithErrorModel"
+      :background="backgroundColor"
+      :options="dynamicData"
+      prompt="Choose One"
+      :error="this.helperTextError"
+      @change="validateHelperTextWithErrorModel"
+    >
+      <template #helper-text>
+        Choosing 'b' will result in an error
+      </template>
 
+      <template #info>
+        <cdr-link
+          href="#/selects"
+          modifier="standalone"
+        >
+          Info Link/Icon
+        </cdr-link>
+      </template>
+      <template #error>
+        <span id="headerErrorTest">Oh no! You chose B!</span>
+      </template>
+    </cdr-select>
+    <cdr-text>Selected Value: {{ helperTextWithErrorModel }}</cdr-text>
+    <hr class="icon-hr">
     <!-- Info Link Example -->
     <cdr-select
       label="Example with Info Link"
@@ -352,6 +379,8 @@ export default {
       dynamic: '',
       dynamicData: [{ value: 'a', text: 'a' }, { value: 'b', text: 'b' }],
       helperTextModel: '',
+      helperTextError: false,
+      helperTextWithErrorModel:'',
       infoLinkModel: '',
       infoIconModel: '',
       preIconModel: '',
@@ -377,7 +406,11 @@ export default {
     inputEventHandler(selectedValue, event) {
       console.log('input Event event = ', event, ' selectedValue = ', selectedValue); // eslint-disable-line
     },
+    validateHelperTextWithErrorModel() {
+      this.helperTextError = this.helperTextWithErrorModel == 'b';
+    },
     validatePreIconModel() {
+      console.log(this.helperTextWithErrorModel)
       this.preIconModelError = !this.preIconModel.length;
     },
     validatePreIconModel2() {
