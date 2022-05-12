@@ -8,12 +8,3 @@ exports[`CdrCard > renders correctly 1`] = `
   
 </article>
 `;
-
-exports[`CdrCard renders correctly 1`] = `
-<article
-  class="cdr-card"
->
-  
-  
-</article>
-`;
