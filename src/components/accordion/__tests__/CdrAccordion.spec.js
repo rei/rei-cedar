@@ -13,7 +13,7 @@ const baseComponentPattern = {
 }
 
 describe('CdrAccordion', () => {
-  describe('when mounted', () => {
+  describe('component snapshot when wrapped', () => {
     let wrapper;
 
     beforeEach(() => {
@@ -25,7 +25,7 @@ describe('CdrAccordion', () => {
     });
   })
 
-  describe('when unwrapped', () => {
+  describe('component snapshot when unwrapped', () => {
     let wrapper;
 
     beforeEach(() => {
@@ -48,7 +48,7 @@ describe('CdrAccordion', () => {
     });
   })
 
-  describe('when shallow mounted', () => {
+  describe('component unit tests', () => {
     let wrapper;
     let button;
     let contentArea;
@@ -112,8 +112,11 @@ describe('CdrAccordion', () => {
         wrapper.setProps({ opened: true }); // fake the opening logic
         //TODO: e2e test where clicks work as expected. These could be visual regression tests where we check the visual appearance of the open state
       })
-      it('updates maxHeight on prop update', () => {
-        expect(wrapper.vm.maxHeight).toBe(0); //TODO: Investigate. Shouldn't this value be above zero? --Kenji
+      it('updates maxHeight on prop update', (done) => {
+        setTimeout(()=>{
+          expect(wrapper.vm.maxHeight).toBe('none');
+          done();
+        }, 500)
       });
       it('emits an "accordion-toggle" event', async () => {
         expect(wrapper.emitted('accordion-toggle'));
