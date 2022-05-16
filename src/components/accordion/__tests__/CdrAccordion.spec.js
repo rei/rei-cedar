@@ -1,212 +1,158 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrAccordion from '../CdrAccordion.vue';
 
-const propsData = {
-  id: 'test',
-  label: 'A label',
-  level: '2',
-  compact: false,
-  borderAligned: false,
-};
+const baseComponentPattern = {
+  propsData: {
+    id: 'test',
+    level: '2',
+  },
+  slots: {
+    default: 'This is some slot text.',
+    label: 'label',
+  },
+}
 
 describe('CdrAccordion', () => {
-  it('renders correctly', () => {
-    const wrapper = mount(CdrAccordion, {
-      propsData: {
-        id: 'test',
-        level: '2',
-      },
-      slots: {
-        default: 'This is some slot text.',
-        label: 'label'
-      },
-    });
-    expect(wrapper.element).toMatchSnapshot()
-  });
+  describe('when mounted', () => {
+    let wrapper;
 
-  it('renders correctly unwrapped', async () => {
-    const wrapper = mount(CdrAccordion, {
-      propsData: {
-        id: 'test',
-        level: '2',
-      },
-      slots: {
-        default: 'This is some slot text.',
-        label: 'label'
-      },
-      global: {
-        provide: {
-          unwrap: {
-            isUnwrapped: {
-              value: true
-            }
-          }
-        }
-      }
+    beforeEach(() => {
+      wrapper = mount(CdrAccordion, { ...baseComponentPattern });
     });
-    await wrapper.vm.$nextTick();
-    expect(wrapper.element).toMatchSnapshot()
-  });
 
-  // TODO add more checks here
-  it('meets a11y requirements', async () => {
-    const wrapper = shallowMount(CdrAccordion, {
-      propsData: {
-        id: 'test',
-        level: '2',
-      },
-      slots: {
-        default: 'This is some slot text.',
-        label: 'label',
-      },
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot()
     });
-    const button = wrapper.find('#test');
-    const contentArea = wrapper.find('.cdr-accordion__content');
-    expect(button.classes()).toContain('js-cdr-accordion-button');
-    // closed state
-    expect(button.attributes('aria-expanded')).toBe('false');
-    expect(button.attributes('aria-controls')).toBe(`${wrapper.vm.id}-collapsible`);
-
-    // opened state
-    button.trigger('click');
-    wrapper.setProps({ opened: true }); // fake the opening logic
-    await wrapper.vm.$nextTick();
-    expect(button.attributes('aria-expanded')).toBe('true');
-    expect(contentArea.attributes('aria-hidden')).toBe('false');
   })
 
-  describe('accordion data setup', () => {
-    it('sets maxHeight when starting closed', () => {
-      const wrapper = shallowMount(CdrAccordion, {
-        propsData: {
-          id: 'test',
-          level: '2',
-          opened: false,
-        },
-        slots: {
-          default: 'This is some slot text.',
-          label: 'label',
-        },
+  describe('when unwrapped', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      const unwrappedComponent = {
+        ...baseComponentPattern,
+        global: {
+          provide: {
+            unwrap: {
+              isUnwrapped: {
+                value: true
+              }
+            }
+          },
+        }
+      }
+      wrapper = mount(CdrAccordion, unwrappedComponent);
+    });
+    it('renders correctly', async () => {
+      expect(wrapper.element).toMatchSnapshot()
+    });
+  })
+
+  describe('when shallow mounted', () => {
+    let wrapper;
+    let button;
+    let contentArea;
+    beforeEach(() => {
+      wrapper = shallowMount(CdrAccordion, { ...baseComponentPattern });
+      button = wrapper.find('#test');
+      contentArea = wrapper.find('.cdr-accordion__content');
+    })
+    describe('when the accordion is closed', () => {
+      it('sets maxHeight to be 0', () => {
+        expect(wrapper.vm.maxHeight).toBe(0);
       });
 
-      expect(wrapper.vm.maxHeight).toBe(0);
-    });
-
-    it('maxHeight is adjusted in created when starting open', () => {
-      const wrapper = shallowMount(CdrAccordion, {
-        propsData: {
-          id: 'test',
-          level: '2',
-          opened: true,
-        },
-        slots: {
-          default: 'This is some slot text.',
-          label: 'label',
-        },
+      it('sets the "isOpenClass" computed prop to "cdr-accordion--closed" ', async () => {
+        expect(wrapper.vm.isOpenClass).toEqual('cdr-accordion--closed');
       });
+      describe('when an accordion button receives focus', () => {
+        beforeEach(() => {
+          button.trigger('focus');
+        })
+        it('should be focused', ()=>{
+          expect(wrapper.vm.focused).toBeTruthy();
+        })
+        it('should have the proper focus class', ()=>{
+          expect(wrapper.classes()).toContain('cdr-accordion--focused');
+        })
+        describe('when an accordion button receives focus', () => {
+          beforeEach(() => {
+            button.trigger('blur');
+          });
+          it('should NOT be focused', ()=>{
+            expect(wrapper.vm.focused).toBeFalsy();
+          })
+          it('should NOT have the proper focus class', ()=>{
+            expect(wrapper.classes()).not.toContain('cdr-accordion--focused');
+          })
+        });
+      })
+      describe('a11y requirements', () => {
+        it('contains the "js-cdr-accordion-button" class', () => {
+          expect(button.classes()).toContain('js-cdr-accordion-button');
+        });
 
-      expect(wrapper.vm.maxHeight).toBe('none');
-    });
-  });
+        it('has the expected "aria-expanded" value', () => {
+          expect(button.attributes('aria-expanded')).toBe('false');
+        });
 
-  describe('toggling accordion', () => {
-    it('updates emits an event onClick', async () => {
-      const wrapper = shallowMount(CdrAccordion, {
-        propsData: {
-          id: 'test',
-          level: '2',
-        },
-        slots: {
-          default: 'This is some slot text.',
-          label: 'label',
-        },
+        it('has the expected "aria-hidden" value for the content area', () => {
+          expect(contentArea.attributes('aria-hidden')).toBe('true');
+        });
+
+        it('has the expected "aria-controls: value', () => {
+          expect(button.attributes('aria-controls')).toBe(`${wrapper.vm.id}-collapsible`);
+        });
+      })
+    })
+
+    describe('when the accordion is open', () => {
+      beforeEach(async() => {
+        button.trigger('click');
+        wrapper.setProps({ opened: true }); // fake the opening logic
+        //TODO: e2e test where clicks work as expected. These could be visual regression tests where we check the visual appearance of the open state
+      })
+      it('updates maxHeight on prop update', () => {
+        expect(wrapper.vm.maxHeight).toBe(0); //TODO: Investigate. Shouldn't this value be above zero? --Kenji
       });
-
-      wrapper.find('button').trigger('click');
-      await wrapper.vm.$nextTick();
-      expect(wrapper.emitted('accordion-toggle'));
-    });
-
-    it('updates maxHeight on prop update', async () => {
-      const wrapper = shallowMount(CdrAccordion, {
-        propsData: {
-          id: 'test',
-          level: '2',
-          opened: true,
-        },
-        slots: {
-          default: 'This is some slot text.',
-          label: 'label',
-        },
+      it('emits an "accordion-toggle" event', async () => {
+        expect(wrapper.emitted('accordion-toggle'));
       });
+      describe('a11y requirements', () => {
+        it('has the expected "aria-expanded" value', () => {
+          expect(button.attributes('aria-expanded')).toBe('true');
+        });
 
-      wrapper.setProps({ opened: false });
-      await wrapper.vm.$nextTick();
-      expect(wrapper.vm.maxHeight).toBe('0px');
-    });
-  });
+        it('has the expected "aria-hidden" value for the content area', () => {
+          expect(contentArea.attributes('aria-hidden')).toBe('false');
+        });
+      })
+    })
+    describe('when contentSpacing is set to false', () => {
+      beforeEach(() =>{
+        wrapper.setProps({
+          contentSpacing: false,
+        });
+      })
+      it('applies the  "cdr-accordion--no-spacing" class', ()=>{
+        expect(wrapper.classes()).toContain('cdr-accordion--no-spacing');
 
-  it('isOpenClass computed prop', () => {
-    const wrapper = shallowMount(CdrAccordion, {
-      propsData: {
-        id: 'test',
-        level: '2',
-        opened: false,
-      },
-      slots: {
-        default: 'This is some slot text.',
-        label: 'label',
-      },
-    });
+      })
+    })
 
-    expect(wrapper.vm.isOpenClass).toEqual('cdr-accordion--closed');
-  });
-
-  it('focused style', async () => {
-    const wrapper = shallowMount(CdrAccordion, {
-      propsData: propsData,
-      slots: {
-        default: 'This is some slot text.',
-        label: 'label',
-      },
-    });
-    wrapper.find('button').trigger('focus');
-    await wrapper.vm.$nextTick();
-    expect(wrapper.vm.focused).toBeTruthy();
-    expect(wrapper.classes()).toContain('cdr-accordion--focused');
-    wrapper.find('button').trigger('blur');
-    await wrapper.vm.$nextTick();
-    expect(wrapper.vm.focused).toBeFalsy();
-  });
-  it('no-spacing style', async () => {
-    const wrapper = shallowMount(CdrAccordion, {
-      propsData: {
-        id: 'test',
-        level: '2',
-        contentSpacing: false,
-      },
-      slots: {
-        default: 'This is some slot text.',
-        label: 'label',
-      },
-    });
-    expect(wrapper.classes()).toContain('cdr-accordion--no-spacing');
-  });
-  it('style class checks prop values', () => {
-    const wrapper = shallowMount(CdrAccordion, {
-      propsData: {
-        id: 'test',
-        level: '2',
-        compact: true,
-        borderAligned: true,
-      },
-      slots: {
-        default: 'This is some slot text.',
-        label: 'label',
-      },
-    });
-
-    expect(wrapper.classes()).toContain('cdr-accordion--compact');
-    expect(wrapper.classes()).toContain('cdr-accordion--border-aligned');
-  });
+    describe('when compact and borderAligned props are true', () => {
+      beforeEach(() =>{
+        wrapper.setProps({
+          compact: true,
+          borderAligned: true,
+        });
+      })
+      it('applies the "compact" class', ()=>{
+        expect(wrapper.classes()).toContain('cdr-accordion--compact');
+      });
+      it('applies the "border-aligned" class', ()=>{
+        expect(wrapper.classes()).toContain('cdr-accordion--border-aligned');
+      });
+    })
+  })
 });

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`CdrAccordion > renders correctly 1`] = `
+exports[`CdrAccordion > when mounted > renders correctly 1`] = `
 <div
   class="cdr-accordion"
   id="test-accordion"
@@ -58,7 +58,7 @@ exports[`CdrAccordion > renders correctly 1`] = `
 </div>
 `;
 
-exports[`CdrAccordion > renders correctly unwrapped 1`] = `
+exports[`CdrAccordion > when unwrapped > renders correctly 1`] = `
 <div
   class=""
   id="test-accordion"
