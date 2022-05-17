@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`CdrAccordionGroup > renders correctly 1`] = `
+exports[`CdrAccordionGroup > when mounted > renders correctly 1`] = `
 <ul
   class="cdr-accordion-group"
 >
@@ -117,7 +117,7 @@ exports[`CdrAccordionGroup > renders correctly 1`] = `
 </ul>
 `;
 
-exports[`CdrAccordionGroup > renders correctly unwrapped 1`] = `
+exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
 <ul
   class="cdr-accordion-group"
 >
@@ -186,6 +186,41 @@ exports[`CdrAccordionGroup > renders correctly unwrapped 1`] = `
       <div
         class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
         id="tab2-collapsible"
+      >
+        
+        
+      </div>
+    </div>
+  </li>
+  <li
+    class=""
+    id="tab3-accordion"
+  >
+    <h2
+      class="cdr-accordion__header--unwrapped"
+    >
+      <div
+        class="js-cdr-accordion-button"
+        id="tab3"
+      >
+        <span
+          class="cdr-accordion__label"
+          id="tab3-label"
+        >
+          
+          label3
+          
+        </span>
+        <!--v-if-->
+      </div>
+    </h2>
+    <div
+      class="cdr-accordion__content-container cdr-accordion--open cdr-accordion--unwrap"
+      style="max-height: none;"
+    >
+      <div
+        class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
+        id="tab3-collapsible"
       >
         
         
