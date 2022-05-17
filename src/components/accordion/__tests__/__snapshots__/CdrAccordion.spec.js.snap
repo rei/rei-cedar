@@ -1,6 +1,45 @@
 // Vitest Snapshot v1
 
-exports[`CdrAccordion > renders correctly 1`] = `
+exports[`CdrAccordion > component snapshot when unwrapped > renders correctly 1`] = `
+<div
+  class=""
+  id="test-accordion"
+>
+  <h2
+    class="cdr-accordion__header--unwrapped"
+  >
+    <div
+      class="js-cdr-accordion-button"
+      id="test"
+    >
+      <span
+        class="cdr-accordion__label"
+        id="test-label"
+      >
+        
+        label
+        
+      </span>
+      <!--v-if-->
+    </div>
+  </h2>
+  <div
+    class="cdr-accordion__content-container cdr-accordion--open cdr-accordion--unwrap"
+    style="max-height: none;"
+  >
+    <div
+      class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
+      id="test-collapsible"
+    >
+      
+      This is some slot text.
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CdrAccordion > component snapshot when wrapped > renders correctly 1`] = `
 <div
   class="cdr-accordion"
   id="test-accordion"
@@ -48,45 +87,6 @@ exports[`CdrAccordion > renders correctly 1`] = `
     <div
       aria-hidden="true"
       class="cdr-accordion__content cdr-accordion--closed"
-      id="test-collapsible"
-    >
-      
-      This is some slot text.
-      
-    </div>
-  </div>
-</div>
-`;
-
-exports[`CdrAccordion > renders correctly unwrapped 1`] = `
-<div
-  class=""
-  id="test-accordion"
->
-  <h2
-    class="cdr-accordion__header--unwrapped"
-  >
-    <div
-      class="js-cdr-accordion-button"
-      id="test"
-    >
-      <span
-        class="cdr-accordion__label"
-        id="test-label"
-      >
-        
-        label
-        
-      </span>
-      <!--v-if-->
-    </div>
-  </h2>
-  <div
-    class="cdr-accordion__content-container cdr-accordion--open cdr-accordion--unwrap"
-    style="max-height: none;"
-  >
-    <div
-      class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
       id="test-collapsible"
     >
       
