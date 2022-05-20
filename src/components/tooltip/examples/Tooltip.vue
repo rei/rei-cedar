@@ -71,11 +71,8 @@
           tooltip
         </cdr-button>
       </template>
-
-      <div>
         Hello! This tooltip contains important information about the web site you are visiting!
         We're using the internet right now!
-      </div>
     </cdr-tooltip>
 
     <hr>
@@ -102,10 +99,8 @@
         @opened="tooltipHandler"
         @closed="tooltipHandler"
       >
-        <div>
-          Hello! This tooltip contains important information about the web site you are visiting!
-          We're using the internet right now!
-        </div>
+        Hello! This tooltip contains important information about the web site you are visiting!
+        We're using the internet right now!
       </cdr-tooltip>
 
     </div>
