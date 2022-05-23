@@ -61,7 +61,8 @@ describe('CdrBreadcrumb', () => {
         propsData: {
           id: 'bc-test',
           items: itemsA
-        }
+        },
+        attachTo: document.body
       })
       ellipse = wrapper.find('.cdr-breadcrumb__ellipses');
     })
@@ -103,6 +104,10 @@ describe('CdrBreadcrumb', () => {
       it('is no longer truncated', () => {
         expect(wrapper.find('.cdr-breadcrumb__ellipses').exists()).toBeFalsy();
       });
+
+      it('applies focus to first breadcrumb on ellipsis click', ()=>{
+        expect(document.activeElement.textContent).toBe('Longer Breadcrumb List Step 1')
+      })
     })
   });
 
@@ -128,29 +133,3 @@ describe('CdrBreadcrumb', () => {
     });
   })
 });
-
-
-//The active element is <body> after a click. This may be an issue with the test environment. We may need document.activeElement tests to be e2e tests --Kenji
-
-  // TODO: focus logic seems to not be working here?
-  // xit('applies focus to first breadcrumb on ellipsis click', async (done) => {
-  //   const elem = document.createElement('div')
-  //   if (document.body) {
-  //     document.body.appendChild(elem)
-  //   }
-  //   const wrapper = mount(CdrBreadcrumb, {
-  //     propsData: {
-  //       id: 'bc-test',
-  //       items: itemsA
-
-  //     },
-  //     attachTo: elem, // enables focus testing
-  //   });
-  //   wrapper.find('.cdr-breadcrumb__ellipses').trigger('click');
-  //   await wrapper.vm.$nextTick();
-  //   return setTimeout(function() {
-  //     expect(document.activeElement.textContent).toBe(itemsA
-  //     wrapper.destroy();
-  //     done();
-  //   }, 1500)
-  // });
