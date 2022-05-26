@@ -125,6 +125,9 @@
     "vue": "^3.2.23"
   },
   "peerDependencies": {
-    "vue": "^3.2.23"
+    "vue": "^3.2.23",
+    "core-js": "^3.22.7",
+    "lodash-es": "^4.17.21",
+    "tabbable": "^4.0.0"
   }
 }

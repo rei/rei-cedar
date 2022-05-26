@@ -2,7 +2,7 @@ import { babel } from '@rollup/plugin-babel';
 import browserTargets from './browserTargets.mjs';
 
 export default {
-  external: ['vue', /core-js/],
+  external: ['vue', 'core-js', 'lodash-es', 'tabbable'],
   output: {
     globals: {
       vue: 'Vue'
@@ -14,7 +14,7 @@ export default {
       babelHelpers: 'bundled',
       babelrc: false,
       extensions: ['.js', '.mjs', '.vue'],
-      targets: browserTargets, // supported browsers.
+      targets: browserTargets,
       presets: [
         [
           '@babel/preset-env',
