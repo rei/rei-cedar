@@ -1,5 +1,5 @@
 import { babel } from '@rollup/plugin-babel';
-import browserTargets from './supportedBrowers.mjs';
+import browserTargets from './browserTargets.mjs';
 
 export default {
   external: ['vue', /core-js/],
