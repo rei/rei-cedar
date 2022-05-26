@@ -3,6 +3,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
+import options from './rollupOptions.mjs';
 const packageJson = require('./package.json');
 
 // https://vitejs.dev/config/
@@ -13,14 +14,7 @@ export default defineConfig({
       entry: resolve(__dirname, '/src/lib.js'),
       name: 'cedar',
     },
-    rollupOptions: {
-      external: ['vue'],
-      output: {
-        globals: {
-          vue: 'Vue'
-        }
-      }
-    }
+    rollupOptions: options,
   },
   css: {
     modules: {

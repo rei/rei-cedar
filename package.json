@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.0.0-beta.3",
+  "version": "13.0.0-beta.4",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -53,8 +53,10 @@
     "build:icons": "node src/components/icon/build/generate.js"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.18.2",
     "@rei/cdr-tokens": "^10.0.3",
     "@rei/cedar-icons": "^2.5.0",
+    "@rollup/plugin-babel": "^5.3.1",
     "@vitejs/plugin-vue": "^2.2.4",
     "@vue/test-utils": "^2.0.0-rc.19",
     "autoprefixer": "^10.2.5",
@@ -98,7 +100,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0",
-    "vite": "^2.9.1",
+    "vite": "^2.9.9",
     "vitest": "^0.8.1",
     "vue-router": "^4.0.10"
   },
@@ -117,11 +119,15 @@
     }
   },
   "dependencies": {
+    "core-js": "^3.22.7",
     "lodash-es": "^4.17.21",
     "tabbable": "^4.0.0",
     "vue": "^3.2.23"
   },
   "peerDependencies": {
-    "vue": "^3.2.23"
+    "vue": "^3.2.23",
+    "core-js": "^3.22.7",
+    "lodash-es": "^4.17.21",
+    "tabbable": "^4.0.0"
   }
 }
