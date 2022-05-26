@@ -2,7 +2,7 @@ import { babel } from '@rollup/plugin-babel';
 import browserTargets from './browserTargets.mjs';
 
 export default {
-  external: ['vue', 'core-js', 'lodash-es', 'tabbable'],
+  external: ['vue', 'core-js', 'lodash-es', 'tabbable'], // Externalize peerDependencies
   output: {
     globals: {
       vue: 'Vue'
