@@ -53,7 +53,7 @@ describe('CdrPopover', () => {
     expect(wrapper.find('#popover-trigger').attributes('aria-controls')).toBe('popover-test');
   });
 
-  it('sets aria expanded on popup', async (done) => {
+  it('sets aria expanded on popup', async () => new Promise(done => {
     const wrapper = mount(CdrPopover, {
       propsData: {
         id: 'popover-test',
@@ -68,7 +68,7 @@ describe('CdrPopover', () => {
       expect(wrapper.find('#popover-test').attributes('aria-expanded')).toBe('true');
       done();
     });
-  });
+  }));
 
   it('binds contentClass to content', () => {
     const wrapper = mount(CdrPopover, {
