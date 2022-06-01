@@ -99,7 +99,7 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0",
     "vite": "^2.9.1",
-    "vitest": "^0.8.1",
+    "vitest": "^0.12.9",
     "vue-router": "^4.0.10"
   },
   "engines": {
