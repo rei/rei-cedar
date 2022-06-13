@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`CdrModal.vue > default open 1`] = `
+exports[`CdrModal.vue > default open > renders correctly 1`] = `
 <div
   class="cdr-modal"
 >
@@ -73,7 +73,7 @@ exports[`CdrModal.vue > default open 1`] = `
             <div
               class="cdr-modal__text-content"
               role="document"
-              style="max-height: -80px; padding-right: 0px;"
+              style="max-height: 688px; padding-right: 0px;"
               tabindex="0"
             >
               
