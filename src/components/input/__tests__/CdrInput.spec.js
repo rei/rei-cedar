@@ -40,38 +40,7 @@ describe('CdrInput', () => {
       input.setValue('foo');
       expect(wrapper.emitted()['update:modelValue'][0][0]).toBe('foo');
     });
-
-    describe('when value is set to "bar"', () => {
-      beforeEach(() => {
-        // NOTE - can't use v-model directly here, targeting the `data` prop instead
-        wrapper.setProps({ modelValue: 'bar' })
-      });
-
-      it('updating v-model data updates the input value', async () => {
-        await wrapper.vm.$nextTick();
-        expect(input.element.value).toBe('bar');
-      });
-
-    });
-
-    //The below test doesn't work. The result is always ''. Commented out and kept for reference.
-    //The test above is a new one that assumes setting modelValue was the original intent of this test
-
-    // it('updating v-model data updates the input', async () => {
-    //   const wrapper = mount(CdrInput, {
-    //     propsData: {
-    //       id: 'test',
-    //       label: 'test',
-    //       value: 'bar'
-    //     },
-    //   });
-    //   const input = wrapper.find('.cdr-input');
-    //   wrapper.setProps({ value: '' });
-    //   await wrapper.vm.$nextTick();
-    //   expect(input.element.value).toBe('');
-    // });
-
-
+    
     describe('with prop type of "number"', () => {
       beforeEach(() => {
         wrapper.setProps({ type: 'number' })
