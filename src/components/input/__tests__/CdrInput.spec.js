@@ -17,7 +17,7 @@ describe('CdrInput', () => {
     let input;
     beforeEach(() => {
       wrapper = mount(CdrInput, { ...baseComponentPattern });
-      input = wrapper.find('.cdr-input');
+      input = wrapper.find('input');
     });
 
     it('renders correctly', () => {
