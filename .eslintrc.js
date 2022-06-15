@@ -7,8 +7,8 @@ function resolve(dir) {
 
 module.exports = {
   root: true,
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'vue-eslint-parser',
     sourceType: 'module',
   },
   env: {
@@ -20,7 +20,7 @@ module.exports = {
     // "plugin:vue-a11y/base", // currently errors out on form labels
   ],
   plugins: [
-    'vue'
+    'vue',
   ],
   // check if imports actually resolve
   settings: {
@@ -35,7 +35,7 @@ module.exports = {
           ['compositionsdir', resolve('src/compositions')],
           ['mixinsdir', resolve('src/mixins')],
         ],
-        extensions: ['.vue', '.json', '.js']
+        extensions: ['.vue', '.json', '.js'],
       },
     },
   },
@@ -49,7 +49,7 @@ module.exports = {
     }],
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['test/unit/index.js']
+      optionalDependencies: ['test/unit/index.js'],
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
@@ -57,10 +57,10 @@ module.exports = {
     'vue/attributes-order': 0,
     'vue/no-multiple-template-root': 0,
     'max-len': ['error', {
-      'code': 100,
-      'ignoreComments': true,
-      'ignoreTrailingComments': true
+      code: 100,
+      ignoreComments: true,
+      ignoreTrailingComments: true,
     }],
-    'vue/multiline-html-element-content-newline': 0
-  }
-}
+    'vue/multiline-html-element-content-newline': 0,
+  },
+};
