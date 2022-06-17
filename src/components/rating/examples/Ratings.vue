@@ -109,7 +109,7 @@
       compact
     />
     <cdr-rating
-      rating="2.8"
+      rating="1.9"
       count="100"
       href="https://www.rei.com"
     />
@@ -127,7 +127,7 @@
       compact
     />
     <cdr-rating
-      rating="3.2"
+      rating="3"
       count="100"
       href="https://www.rei.com"
       size="small"
