@@ -109,7 +109,7 @@
       compact
     />
     <cdr-rating
-      rating="1.9"
+      rating="2.8"
       count="100"
       href="https://www.rei.com"
     />
@@ -127,24 +127,24 @@
       compact
     />
     <cdr-rating
-      rating="3"
+      rating="3.2"
       count="100"
       href="https://www.rei.com"
       size="small"
     />
 
     <!-- Responsive Size -->
-    <h3>
+    <cdr-text>
       Responsive Growing
-    </h3>
+    </cdr-text>
     <cdr-rating
       rating="2"
       count="9"
       size="small@xs medium@md large@lg"
     />
-    <h3>
+    <cdr-text>
       Responsive Inverse
-    </h3>
+    </cdr-text>
     <cdr-rating
       rating="3"
       count="100"
