@@ -113,7 +113,7 @@ const srText = computed(() => {
         aria-hidden="true"
       />
       <span
-        v-if="remainder"
+        v-if="remainder !== '00'"
         :class="mapClasses(style, 'cdr-rating__icon', `cdr-rating__${remainder}`)"
         aria-hidden="true"
       />
