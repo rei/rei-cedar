@@ -270,8 +270,7 @@ describe('CdrPagination', () => {
     });
 
     it('selecting an option triggers the expected event', async () => {
-      const options = wrapper.findAll('option')
-      console.log(options);
+      const options = wrapper.findAll('option');
       await options[0].setSelected();  // 5 -> 3
       await wrapper.vm.$nextTick();
       expect(wrapper.emitted().navigate[0][0]).toBe(1);
