@@ -45,4 +45,30 @@ describe('CdrModal.vue', () => {
       expect(wrapper.emitted().closed.length).toBe(2);
     });
   });
+
+
+  describe('', ()=>{
+    let wrapper;
+    let elem;
+    beforeEach(()=>{
+      elem = document.createElement('div')
+      if (document.body) {
+        document.body.appendChild(elem)
+      }
+      wrapper = mount(CdrModal, {
+        propsData: {
+          opened: false,
+          label: "Label is the modal title"
+        },
+        slots: {
+          default: 'Sticky content',
+        },
+        attachTo: elem,
+      });
+    });
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+  });
 });
