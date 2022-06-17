@@ -47,7 +47,7 @@ describe('CdrModal.vue', () => {
   });
 
 
-  describe('', ()=>{
+  describe('default closed', ()=>{
     let wrapper;
     let elem;
     beforeEach(()=>{
