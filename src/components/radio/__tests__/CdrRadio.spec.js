@@ -2,24 +2,28 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrRadio from '../CdrRadio.vue';
 
 describe('CdrRadio', () => {
-  it('renders an input', () => {
-    const wrapper = mount(CdrRadio, {
-      propsData: {
-        customValue: 'A',
-        name: 'testName',
-      }
+  describe('with customValue and name prop', ()=>{
+    let wrapper;
+    beforeEach(()=>{
+      wrapper = mount(CdrRadio, {
+        propsData: {
+          customValue: 'A',
+          name: 'testName',
+        }
+      });
     });
-    expect(wrapper.element).toMatchSnapshot();
-  });
 
-  it('is type radio', () => {
-    const wrapper = mount(CdrRadio, {
-      propsData: {
-        customValue: 'A',
-        name: 'testName',
-      }
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
     });
-    expect(wrapper.find('input').attributes('type')).toBe('radio');
+
+    it('is type radio', () => {
+      expect(wrapper.find('input').attributes('type')).toBe('radio');
+    });
+
+    it('sets name attribute correctly', () => {
+      expect(wrapper.find('input').attributes('name')).toBe('testName');
+    });
   });
 
   it('adds a custom label class correctly', () => {
@@ -62,16 +66,6 @@ describe('CdrRadio', () => {
       },
     });
     expect(wrapper.find('.custom-content-class').exists()).toBe(true);
-  });
-
-  it('sets name attribute correctly', () => {
-    const wrapper = mount(CdrRadio, {
-      propsData: {
-        customValue: 'A',
-        name: 'testName',
-      }
-    });
-    expect(wrapper.find('input').attributes('name')).toBe('testName');
   });
 
   it('evaluates simple not checked state correctly', () => {
