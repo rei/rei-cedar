@@ -25,6 +25,7 @@ import tables from 'componentsdir/table/examples/Table.vue';
 import tabs from 'componentsdir/tabs/examples/Tabs.vue';
 import texts from 'componentsdir/text/examples/Text.vue';
 import toast from 'componentsdir/toast/examples/Toast.vue';
+import toggleSwitch from 'componentsdir/toggleSwitch/examples/ToggleSwitch.vue'
 import tooltip from 'componentsdir/tooltip/examples/Tooltip.vue';
 
 export default {
@@ -55,5 +56,6 @@ export default {
   tabs,
   texts,
   toast,
+  toggleSwitch,
   tooltip,
 };

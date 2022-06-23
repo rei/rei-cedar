@@ -1,0 +1,96 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrToggleSwitch.vars.scss';
+
+.cdr-toggle-switch {
+  @include cdr-toggle-switch-base-mixin;
+  display: flex;
+  &__label {
+    margin: 0 4px;
+  }
+  &__button {
+    position: relative;
+    overflow: hidden;
+    margin: 0 4px;
+    padding: 0;
+    border: 1px solid $cdr-color-border-secondary;
+    border-radius: 14px;
+    gap: 8px;
+    width: 43px;
+    height: 22px;
+    background-color: $cdr-color-background-secondary;
+
+    &:focus {
+      border: 1px solid $cdr-color-border-secondary;
+      outline: 1px solid $cdr-color-border-secondary;
+    }
+
+    &:hover:not(:focus) {
+      border: 1px solid $cdr-color-text-button-secondary-hover;
+      .cdr-toggle-switch__button-icon {
+        fill: $cdr-color-text-button-secondary-hover;
+      }
+      .cdr-toggle-switch__slider {
+        &::before {
+          border: 1px solid $cdr-color-text-button-secondary-hover;
+        }
+      }
+    }
+
+    &[aria-checked="true"] {
+      background-color: $cdr-color-text-button-secondary;
+      border: none;
+      
+      &:focus {
+        border: 1px solid $cdr-color-border-secondary;
+        outline: 1px solid $cdr-color-border-secondary;
+      }
+      &:hover:not(:focus) {
+        border: 1px solid $cdr-color-border-secondary;
+        .cdr-toggle-switch__button-icon {
+          fill: #DCD6CB;
+        }
+      }
+      .cdr-toggle-switch__button-icon {
+        fill: #DCD6CB;
+      }
+
+      .cdr-toggle-switch__slider {
+        &::before {
+          left: 22px;
+          border: 1px solid $cdr-color-border-secondary;
+        }
+      }
+    }
+  }
+
+  &__button-icon {
+    height: 17px;
+    width: 17px;
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+
+    &::before {
+      position: absolute;
+      content: "";
+      border: 1px solid $cdr-color-border-secondary;
+      border-radius: 14px;
+      height: 14px;
+      width: 14px;
+      top: 3px;
+      left: 3px;
+      bottom: 4px;
+      background-color: #DCD6CB;
+      -webkit-transition: left 0.4s, right 0.4s;
+      transition: left 0.4s, right 0.4s;
+    }
+  }
+}

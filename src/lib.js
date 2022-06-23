@@ -29,6 +29,7 @@ export { default as CdrTabPanel } from './components/tabs/CdrTabPanel.vue';
 export { default as CdrTabs } from './components/tabs/CdrTabs.vue';
 export { default as CdrText } from './components/text/CdrText.vue';
 export { default as CdrToast } from './components/toast/CdrToast.vue';
+export { default as CdrToggleSwitch } from './components/toggleSwitch/CdrToggleSwitch.vue'
 export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
 export * from './components/icon/index.js';
 
