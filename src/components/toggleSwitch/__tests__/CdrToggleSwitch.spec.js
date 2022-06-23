@@ -1,5 +1,5 @@
 import { shallowMount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrToggleSwitch from 'componentdir/toggleSwitch/CdrToggleSwitch';
+import CdrToggleSwitch from '../CdrToggleSwitch.vue';
 
 describe('CdrToggleSwitch', () => {
   it('matches snapshot', () => {

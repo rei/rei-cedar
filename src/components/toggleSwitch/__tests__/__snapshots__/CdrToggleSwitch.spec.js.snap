@@ -1,0 +1,30 @@
+// Vitest Snapshot v1
+
+exports[`CdrToggleSwitch > matches snapshot 1`] = `
+<div
+  class="cdr-toggle-switch"
+>
+  <span
+    class="cdr-toggle-switch__label"
+  />
+  <button
+    aria-checked="false"
+    class="cdr-toggle-switch__button"
+    role="switch"
+  >
+    <span>
+      <icon-check-sm-stub
+        class="cdr-toggle-switch__button-icon"
+      />
+    </span>
+    <span>
+      <icon-x-sm-stub
+        class="cdr-toggle-switch__button-icon"
+      />
+    </span>
+    <div
+      class="cdr-toggle-switch__slider"
+    />
+  </button>
+</div>
+`;
