@@ -14,7 +14,7 @@
       <cdr-switch id="foo-789" size="large" :full-width="true" :checked="kronkLever" @switch="kronkLever = !kronkLever">
         Pull the Lever Kronk! (Large: Full Width)
       </cdr-switch>
-      <cdr-switch id="foo-123" :checked="kronkLever" @switch="kronkLever = !kronkLever">
+      <cdr-switch id="foo-101112" :checked="kronkLever" @switch="kronkLever = !kronkLever">
         <cdr-text class="custom-text-style">Pull the lever with custom text styling</cdr-text>
       </cdr-switch>
       <img class="kronk" :style="{ maxHeight: kronkLever ? '500px' : 0 }"
