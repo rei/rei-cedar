@@ -1,0 +1,15 @@
+@mixin cdr-switch-base-mixin() {
+
+}
+
+@mixin cdr-switch-button-medium-mixin() {
+    width: 42px;
+    height: 23px;
+    border-radius: 14px;
+}
+
+@mixin cdr-switch-button-large-mixin() {
+    width: 60px;
+    height: 31px;
+    border-radius: 16px;
+}

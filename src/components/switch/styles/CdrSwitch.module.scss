@@ -1,0 +1,212 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrSwitch.vars.scss';
+
+.cdr-switch {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    margin: 0 $cdr-space-quarter-x;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid $cdr-color-border-secondary;
+    background-color: $cdr-color-background-switch-default-rest;
+
+    .cdr-switch__button-icon {
+      fill: $cdr-color-icon-default;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px $cdr-color-border-secondary;
+      outline: none;
+      background-color: $cdr-color-background-switch-default-focus;
+
+      .cdr-switch__button-icon {
+        fill: $cdr-color-icon-default;
+      }
+
+      .cdr-switch__handle {
+        &::before {
+          background-color: $cdr-color-background-switch-handle-default-focus;
+        }
+      }
+    }
+
+    &:hover:not(:focus) {
+      border: 1px solid $cdr-color-border-switch-default-hover;
+      background-color: $cdr-color-background-switch-default-hover;
+
+      .cdr-switch__button-icon {
+        fill: $cdr-color-icon-emphasis;
+      }
+
+      .cdr-switch__handle {
+        &::before {
+          border: 1px solid $cdr-color-border-switch-default-hover;
+        }
+      }
+    }
+
+    &[aria-checked="true"] {
+      border: none;
+      background-color: $cdr-color-background-switch-selected-default-rest;
+
+      .cdr-switch__button-icon {
+        fill: $cdr-color-icon-switch-selected-default-rest;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 2px $cdr-color-border-secondary;
+        background-color: $cdr-color-background-switch-selected-default-focus;
+        outline: none;
+
+        .cdr-switch__handle {
+          &::before {
+            border: 1px solid $cdr-color-border-switch-handle-default-focus;
+            background-color: $cdr-color-background-switch-handle-selected-default-focus;
+          }
+        }
+
+        .cdr-switch__button-icon {
+          fill: $cdr-color-icon-switch-selected-default-focus;
+        }
+      }
+
+      .cdr-switch__handle {
+        &::before {
+          border: none;
+          background-color: $cdr-color-background-switch-handle-selected-default-rest;
+        }
+      }
+
+      &:hover:not(:focus) {
+        border: 1px solid $cdr-color-border-secondary;
+        background-color: $cdr-color-background-switch-selected-default-hover;
+
+        .cdr-switch__button-icon {
+          fill: $cdr-color-icon-switch-selected-default-hover;
+        }
+
+        .cdr-switch__handle {
+          &::before {
+            border: 1px solid $cdr-color-border-switch-handle-default-hover;
+          }
+        }
+      }
+    }
+  }
+
+  &__label {
+    margin: 0 $cdr-space-quarter-x;
+    @include cdr-text-utility-sans-300;
+  }
+
+  &__handle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: $cdr-duration-3-x $cdr-timing-function-ease-out;
+    transition: $cdr-duration-3-x $cdr-timing-function-ease-out;
+
+    &::before {
+      position: absolute;
+      content: "";
+      border: 1px solid $cdr-color-border-secondary;
+      background-color: $cdr-color-background-switch-handle-default-rest;
+      -webkit-transition: left $cdr-duration-3-x $cdr-timing-function-ease-out, right $cdr-duration-3-x $cdr-timing-function-ease-out;
+      transition: left $cdr-duration-3-x $cdr-timing-function-ease-out, right $cdr-duration-3-x $cdr-timing-function-ease-out;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &--large {
+    .cdr-switch {
+      &__button {
+        @include cdr-switch-button-large-mixin;
+
+        &[aria-checked="true"] {
+          .cdr-switch__handle {
+            &::before {
+              left: 32px;
+              top: 4px;
+            }
+          }
+
+          &:hover:not(:focus) {
+            .cdr-switch__handle {
+              &::before {
+                top: 3px;
+              }
+            }
+          }
+        }
+      }
+
+      &__button-icon {
+        height: 24px;
+        width: 24px;
+      }
+
+      &__handle {
+        &::before {
+          border-radius: 14px;
+          height: 23px;
+          width: 23px;
+          top: 3px;
+          left: 3px;
+        }
+      }
+    }
+  }
+
+  &--medium {
+    .cdr-switch {
+      &__button {
+        @include cdr-switch-button-medium-mixin;
+
+        &[aria-checked="true"] {
+          .cdr-switch__handle {
+            &::before {
+              left: 22px;
+              width: 15px;
+              height: 15px;
+              top: 4px;
+            }
+          }
+
+          &:hover:not(:focus) {
+            .cdr-switch__handle {
+              &::before {
+                left: 22px;
+                top: 3px;
+              }
+            }
+          }
+        }
+      }
+
+      &__button-icon {
+        height: 15px;
+        width: 15px;
+      }
+
+      &__handle {
+        &::before {
+          border-radius: 14px;
+          height: 15px;
+          width: 15px;
+          top: 3px;
+          left: 3px;
+        }
+      }
+    }
+  }
+}
