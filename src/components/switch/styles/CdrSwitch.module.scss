@@ -1,5 +1,4 @@
 @import '../../../styles/settings/index.scss';
-@import './vars/CdrSwitch.vars.scss';
 
 .cdr-switch {
   display: flex;
@@ -10,7 +9,7 @@
     padding: 0;
     position: relative;
     overflow: hidden;
-    border: 1px solid $cdr-color-border-secondary;
+    border: 0.1rem solid $cdr-color-border-secondary;
     background-color: $cdr-color-background-switch-default-rest;
 
     .cdr-switch__button-icon {
@@ -18,7 +17,7 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px $cdr-color-border-secondary;
+      box-shadow: 0 0 0 0.2rem $cdr-color-border-secondary;
       outline: none;
       background-color: $cdr-color-background-switch-default-focus;
 
@@ -34,7 +33,7 @@
     }
 
     &:hover:not(:focus) {
-      border: 1px solid $cdr-color-border-switch-default-hover;
+      border: 0.1rem solid $cdr-color-border-switch-default-hover;
       background-color: $cdr-color-background-switch-default-hover;
 
       .cdr-switch__button-icon {
@@ -43,7 +42,7 @@
 
       .cdr-switch__handle {
         &::before {
-          border: 1px solid $cdr-color-border-switch-default-hover;
+          border: 0.1rem solid $cdr-color-border-switch-default-hover;
         }
       }
     }
@@ -57,13 +56,13 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 2px $cdr-color-border-secondary;
+        box-shadow: 0 0 0 0.2rem $cdr-color-border-secondary;
         background-color: $cdr-color-background-switch-selected-default-focus;
         outline: none;
 
         .cdr-switch__handle {
           &::before {
-            border: 1px solid $cdr-color-border-switch-handle-default-focus;
+            border: 0.1rem solid $cdr-color-border-switch-handle-default-focus;
             background-color: $cdr-color-background-switch-handle-selected-default-focus;
           }
         }
@@ -81,7 +80,7 @@
       }
 
       &:hover:not(:focus) {
-        border: 1px solid $cdr-color-border-secondary;
+        border: 0.1rem solid $cdr-color-border-secondary;
         background-color: $cdr-color-background-switch-selected-default-hover;
 
         .cdr-switch__button-icon {
@@ -90,7 +89,7 @@
 
         .cdr-switch__handle {
           &::before {
-            border: 1px solid $cdr-color-border-switch-handle-default-hover;
+            border: 0.1rem solid $cdr-color-border-switch-handle-default-hover;
           }
         }
       }
@@ -115,7 +114,7 @@
     &::before {
       position: absolute;
       content: "";
-      border: 1px solid $cdr-color-border-secondary;
+      border: 0.1rem solid $cdr-color-border-secondary;
       background-color: $cdr-color-background-switch-handle-default-rest;
       -webkit-transition: left $cdr-duration-3-x $cdr-timing-function-ease-out, right $cdr-duration-3-x $cdr-timing-function-ease-out;
       transition: left $cdr-duration-3-x $cdr-timing-function-ease-out, right $cdr-duration-3-x $cdr-timing-function-ease-out;
@@ -130,20 +129,22 @@
   &--large {
     .cdr-switch {
       &__button {
-        @include cdr-switch-button-large-mixin;
+        width: 6.0rem;
+        height: 3.1rem;
+        border-radius: 1.6rem;
 
         &[aria-checked="true"] {
           .cdr-switch__handle {
             &::before {
-              left: 32px;
-              top: 4px;
+              left: 3.2rem;
+              top: 0.4rem;
             }
           }
 
           &:hover:not(:focus) {
             .cdr-switch__handle {
               &::before {
-                top: 3px;
+                top: 0.3rem;
               }
             }
           }
@@ -151,17 +152,17 @@
       }
 
       &__button-icon {
-        height: 24px;
-        width: 24px;
+        height: 2.4rem;
+        width: 2.4rem;
       }
 
       &__handle {
         &::before {
-          border-radius: 14px;
-          height: 23px;
-          width: 23px;
-          top: 3px;
-          left: 3px;
+          border-radius: 1.4rem;
+          height: 2.3rem;
+          width: 2.3rem;
+          top: 0.3rem;
+          left: 0.3rem;
         }
       }
     }
@@ -170,23 +171,25 @@
   &--medium {
     .cdr-switch {
       &__button {
-        @include cdr-switch-button-medium-mixin;
+        width: 4.2rem;
+        height: 2.3rem;
+        border-radius: 1.4rem;
 
         &[aria-checked="true"] {
           .cdr-switch__handle {
             &::before {
-              left: 22px;
-              width: 15px;
-              height: 15px;
-              top: 4px;
+              left: 2.2rem;
+              width: 1.5rem;
+              height: 1.5rem;
+              top: .4rem;
             }
           }
 
           &:hover:not(:focus) {
             .cdr-switch__handle {
               &::before {
-                left: 22px;
-                top: 3px;
+                left: 2.2rem;
+                top: .3rem;
               }
             }
           }
@@ -194,17 +197,17 @@
       }
 
       &__button-icon {
-        height: 15px;
-        width: 15px;
+        height: 1.5rem;
+        width: 1.5rem;
       }
 
       &__handle {
         &::before {
-          border-radius: 14px;
-          height: 15px;
-          width: 15px;
-          top: 3px;
-          left: 3px;
+          border-radius: 1.4rem;
+          height: 1.5rem;
+          width: 1.5rem;
+          top: .3rem;
+          left: .3rem;
         }
       }
     }
