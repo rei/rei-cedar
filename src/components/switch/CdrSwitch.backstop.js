@@ -3,4 +3,3 @@ module.exports = [{
     label: 'Switch',
     responsive: true,
   }];
-  
