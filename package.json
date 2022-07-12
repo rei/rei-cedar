@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
-    "@rei/cdr-tokens": "^10.1.0-beta.0",
+    "@rei/cdr-tokens": "^10.1.0",
     "@rei/cedar-icons": "^2.5.0",
     "@rollup/plugin-babel": "^5.3.1",
     "@vitejs/plugin-vue": "^2.2.4",
@@ -125,9 +125,9 @@
     "vue": "^3.2.23"
   },
   "peerDependencies": {
-    "vue": "^3.2.23",
     "core-js": "^3.22.7",
     "lodash-es": "^4.17.21",
-    "tabbable": "^4.0.0"
+    "tabbable": "^4.0.0",
+    "vue": "^3.2.23"
   }
 }
