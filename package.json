@@ -63,7 +63,7 @@
     "backstopjs": "^5.3.0",
     "c8": "^7.11.0",
     "chalk": "^4.1.0",
-    "chromedriver": "^101.0.0",
+    "chromedriver": "^102.0.0",
     "concat": "^1.0.3",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
