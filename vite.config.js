@@ -16,6 +16,9 @@ export default defineConfig({
     },
     rollupOptions: options,
   },
+  server: {
+    port: 3000,
+  },
   css: {
     modules: {
       generateScopedName: (name) => {
