@@ -8,7 +8,7 @@
     <div :id="id" :class="style['cdr-switch__label']">
       <slot />
     </div>
-    <button @click="onClick" :class="style['cdr-switch__button']" role="switch" :aria-checked="checked"
+    <button @click="onClick(modelValue)" :class="style['cdr-switch__button']" role="switch" :aria-checked="modelValue"
       :aria-labelledby="id">
       <icon-check-sm :class="style['cdr-switch__button-icon']" />
       <icon-x-sm :class="style['cdr-switch__button-icon']" />
@@ -25,7 +25,7 @@ import IconCheckSm from '../icon/comps/check-sm.vue';
 import IconXSm from '../icon/comps/x-sm.vue';
 import mapClasses from '../../utils/mapClasses.js';
 
-const emit = defineEmits(['switch'])
+const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
   id: {
@@ -44,15 +44,13 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  checked: {
+  modelValue: {
     type: Boolean,
-    default: false
+    required: true
   }
 })
-//Safari focus state
-
-const onClick = (e) => {
-  emit('switch', e);
+const onClick = (modelValue) => {
+  emit('update:modelValue', !modelValue);
 }
 const style = useCssModule();
 const baseClass = 'cdr-switch';

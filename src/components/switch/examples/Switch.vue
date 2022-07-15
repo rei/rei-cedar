@@ -2,19 +2,19 @@
   <div>
     <h2>Toggle Switch</h2>
     <cdr-grid class="switch-grid">
-      <cdr-switch id="foo-123" :checked="kronkLever" @switch="kronkLever = !kronkLever">
+      <cdr-switch id="foo-123" v-model="kronkLever">
         Pull the Lever Kronk! (Medium)
       </cdr-switch>
-      <cdr-switch id="foo-345" :checked="kronkLever" :full-width="true" @switch="kronkLever = !kronkLever">
+      <cdr-switch id="foo-345" v-model="kronkLever" :full-width="true">
         <cdr-text>Pull the Lever Kronk! (Medium: Full Width)</cdr-text>
       </cdr-switch>
-      <cdr-switch id="foo-678" size="large" :checked="kronkLever" @switch="kronkLever = !kronkLever">
+      <cdr-switch id="foo-678" v-model="kronkLever" size="large">
         <cdr-text>Pull the Lever Kronk! (Large)</cdr-text>
       </cdr-switch>
-      <cdr-switch id="foo-789" size="large" :full-width="true" :checked="kronkLever" @switch="kronkLever = !kronkLever">
+      <cdr-switch id="foo-789" v-model="kronkLever" size="large" :full-width="true">
         Pull the Lever Kronk! (Large: Full Width)
       </cdr-switch>
-      <cdr-switch id="foo-101112" :checked="kronkLever" @switch="kronkLever = !kronkLever">
+      <cdr-switch id="foo-101112" v-model="kronkLever">
         <cdr-text class="custom-text-style">Pull the lever with custom text styling</cdr-text>
       </cdr-switch>
       <img class="kronk" :style="{ maxHeight: kronkLever ? '500px' : 0 }"

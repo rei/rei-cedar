@@ -3,16 +3,19 @@ import CdrSwitch from '../CdrSwitch.vue';
 
 describe('CdrSwitch', () => {
   let wrapper;
-  beforeEach(()=>{
+
+  beforeEach(() => {
     wrapper = mount(CdrSwitch, {
       props: {
         id: 'id-123',
+        modelValue: false
       },
       slots: {
         default: ' <span class="custom-text-style">Pull the lever Kronk!</span>'
       }
     });
   })
+
   it('matches snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
@@ -29,16 +32,16 @@ describe('CdrSwitch', () => {
     expect(wrapper.find('button').attributes('aria-labelledby')).toBe('id-123');
   });
 
-  describe('when the "checked" property is set to true', ()=>{
-    beforeEach(()=>{
-      wrapper.setProps({ checked: true})
+  describe('when the "checked" property is set to true', () => {
+    beforeEach(async () => {
+      wrapper.setProps({ modelValue: true })
     });
 
     it('matches snapshot', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
-    
-    it('has an "aria-checked" value of "false"', () => {
+
+    it('has an "aria-checked" value of "true"', () => {
       expect(wrapper.find('button').attributes('aria-checked')).toBe('true');
     });
   })
