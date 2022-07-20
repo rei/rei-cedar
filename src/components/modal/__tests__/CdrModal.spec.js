@@ -2,109 +2,122 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrModal from '../CdrModal.vue';
 
 describe('CdrModal.vue', () => {
-  it('default open', async () => {
-    const elem = document.createElement('div')
-    if (document.body) {
-      document.body.appendChild(elem)
-    }
-    const wrapper = mount(CdrModal, {
-      propsData: {
-        opened: true,
-        label: "Label is the modal title"
-      },
-      slots: {
-        default: 'Sticky content',
-      },
-      attachTo: elem,
+  describe('default open', ()=>{
+    let wrapper;
+    let elem;
+    beforeEach(()=>{
+      elem = document.createElement('div')
+      if (document.body) {
+        document.body.appendChild(elem)
+      }
+      wrapper = mount(CdrModal, {
+        propsData: {
+          opened: true,
+          label: "Label is the modal title"
+        },
+        slots: {
+          default: 'Sticky content',
+        },
+        attachTo: elem,
+      });
     });
 
-    await wrapper.vm.$nextTick();
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
 
-    expect(wrapper.element).toMatchSnapshot();
-  });
+    it('contains the "cdr-modal__noscroll" class', () => {
+      expect(document.documentElement.classList.contains('cdr-modal__noscroll')).toBe(true);
+    });
+
+    it('handleKeyDown', async () => {
+      wrapper.trigger('keydown', {
+        key: 'a'
+      });
+      await wrapper.vm.$nextTick();
   
-  it('handleKeyDown', async () => {
-    const elem = document.createElement('div')
-    if (document.body) {
-      document.body.appendChild(elem)
-    }
-    const wrapper = mount(CdrModal, {
-      propsData: {
-        opened: true,
-        label: "Label is the modal title"
-      },
-      slots: {
-        default: 'Main content',
-      },
-      attachTo: elem,
+      wrapper.trigger('keydown', {
+        key: 'Esc',
+      });
+      await wrapper.vm.$nextTick();
+  
+      wrapper.trigger('keydown', {
+        key: 'Escape',
+      });
+      await wrapper.vm.$nextTick();
+  
+      expect(wrapper.emitted().closed.length).toBe(2);
     });
 
-    wrapper.trigger('keydown', {
-      key: 'a'
-    });
-    await wrapper.vm.$nextTick();
+    describe('after removeNoScroll has been called', ()=>{
+      beforeEach(()=>{
+        wrapper.vm.removeNoScroll();
+      });
 
-    wrapper.trigger('keydown', {
-      key: 'Esc',
-    });
-    await wrapper.vm.$nextTick();
+      it('renders correctly', () => {
+        expect(wrapper.element).toMatchSnapshot();
+      });
 
-    wrapper.trigger('keydown', {
-      key: 'Escape',
+      it('does NOT contain the "cdr-modal__noscroll" class', () => {
+        expect(document.documentElement.classList.contains('cdr-modal__noscroll')).toBeFalsy();
+        expect(document.body.classList.contains('cdr-modal__noscroll')).toBeFalsy();
+      });
     });
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.emitted().closed.length).toBe(2);
   });
 
-  // it('fullscreen snapshot', async () => {
-  //   const elem = document.createElement('div')
-  //   if (document.body) {
-  //     document.body.appendChild(elem)
-  //   }
-  //   const wrapper = mount(CdrModal, {
-  //     propsData: {
-  //       opened: true,
-  //       label: "Label is the modal title"
-  //     },
-  //     data() {
-  //       return {
-  //         fullscreen: true,
-  //       };
-  //     },
-  //     slots: {
-  //       scrollingContentSlot: 'Main content',
-  //     },
-  //     attachTo: elem,
-  //   });
 
+  describe('default closed', ()=>{
+    let wrapper;
+    let elem;
+    beforeEach(()=>{
+      elem = document.createElement('div')
+      if (document.body) {
+        document.body.appendChild(elem)
+      }
+      wrapper = mount(CdrModal, {
+        propsData: {
+          opened: false,
+          label: "Label is the modal title"
+        },
+        slots: {
+          default: 'Sticky content',
+        },
+        attachTo: elem,
+      });
+    });
 
-  //   await wrapper.vm.$nextTick();
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+  });
 
-  //   expect(wrapper.element).toMatchSnapshot();
-  // });
+  describe('fullscreen snapshot', ()=>{
+    let wrapper;
+    let elem;
+    beforeEach(()=>{
+      elem = document.createElement('div')
+      if (document.body) {
+        document.body.appendChild(elem)
+      }
+      wrapper = mount(CdrModal, {
+        propsData: {
+          opened: true,
+          label: "Label is the modal title"
+        },
+        data() {
+          return {
+            fullscreen: true,
+          };
+        },
+        slots: {
+          scrollingContentSlot: 'Main content',
+        },
+        attachTo: elem,
+      });
+    });
 
-  // it('removeNoScroll', async () => {
-  //   const elem = document.createElement('div')
-  //   if (document.body) {
-  //     document.body.appendChild(elem)
-  //   }
-  //   const wrapper = mount(CdrModal, {
-  //     propsData: {
-  //       opened: true,
-  //       label: "My Modal Label",
-  //     },
-  //     slots: {
-  //       scrollingContentSlot: 'Main content',
-  //     },
-  //     attachTo: elem,
-  //   });
-  //   const { documentElement, body } = document;
-  //   expect(documentElement.classList.contains('cdr-modal__noscroll')).toBe(true);
-  //   wrapper.vm.removeNoScroll();
-
-  //   expect(documentElement.classList.contains('cdr-modal__noscroll')).toBeFalsy();
-  //   expect(body.classList.contains('cdr-modal__noscroll')).toBeFalsy();
-
-  // });
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+  });
 });
