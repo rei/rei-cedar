@@ -88,13 +88,13 @@ describe('CdrToggleButton', () => {
         secondButton.trigger('keyup.right');
       });
 
-      it('the second button has a tabindex of 0', ()=>{
-        expect(secondButton.attributes('tabindex')).toBe('0');
-      })
-
-      // it('the third button has a tabindex of 0', ()=>{
-      //   expect(thirdButton.attributes('tabindex')).toBe('0');
+      // it('the second button has a tabindex of 0', ()=>{
+      //   expect(secondButton.attributes('tabindex')).toBe('0');
       // })
+
+      it('the third button has a tabindex of 0', ()=>{
+        expect(thirdButton.attributes('tabindex')).toBe('0');
+      })
 
     })
 
