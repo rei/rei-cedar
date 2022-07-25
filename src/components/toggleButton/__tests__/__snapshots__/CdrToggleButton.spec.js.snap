@@ -1,0 +1,142 @@
+// Vitest Snapshot v1
+
+exports[`CdrToggleButton > component snapshot > matches snapshot 1`] = `
+<ul
+  aria-label="things-foo"
+  class="segmented-control"
+  role="radiogroup"
+>
+  
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      role="radio"
+      tabindex="0"
+    >
+      thing-1
+    </button>
+  </li>
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      role="radio"
+      tabindex="-1"
+    >
+      thing-2
+    </button>
+  </li>
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      role="radio"
+      tabindex="-1"
+    >
+      thing-3
+    </button>
+  </li>
+  
+</ul>
+`;
+
+exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
+<ul
+  aria-label="things-foo"
+  class="segmented-control"
+  role="radiogroup"
+>
+  
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      role="radio"
+      tabindex="0"
+    >
+      thing-1
+    </button>
+  </li>
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      role="radio"
+      tabindex="-1"
+    >
+      thing-2
+    </button>
+  </li>
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      role="radio"
+      tabindex="-1"
+    >
+      thing-3
+    </button>
+  </li>
+  
+</ul>
+`;
+
+exports[`CdrToggleButton > component snapshot > when clicking on an unchecked button > matches snapshot 1`] = `
+<ul
+  aria-label="things-foo"
+  class="segmented-control"
+  role="radiogroup"
+>
+  
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      role="radio"
+      tabindex="-1"
+    >
+      thing-1
+    </button>
+  </li>
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      role="radio"
+      tabindex="0"
+    >
+      thing-2
+    </button>
+  </li>
+  <li
+    class="segmented-control__item"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      role="radio"
+      tabindex="-1"
+    >
+      thing-3
+    </button>
+  </li>
+  
+</ul>
+`;
