@@ -5,11 +5,11 @@
     fullWidthClass,
     sizeClass
   )">
-    <div :id="id" :class="style['cdr-switch__label']">
+    <div :id="uniqueId" :class="style['cdr-switch__label']">
       <slot />
     </div>
     <button @click="onClick(modelValue)" :class="style['cdr-switch__button']" role="switch" :aria-checked="modelValue"
-      :aria-labelledby="id">
+      :aria-labelledby="uniqueId">
       <icon-check-sm :class="style['cdr-switch__button-icon']" />
       <icon-x-sm :class="style['cdr-switch__button-icon']" />
       <div :class="style['cdr-switch__handle']"></div>
@@ -24,13 +24,13 @@ import { buildBooleanClass } from '../../utils/buildClass.js';
 import IconCheckSm from '../icon/comps/check-sm.vue';
 import IconXSm from '../icon/comps/x-sm.vue';
 import mapClasses from '../../utils/mapClasses.js';
+import uid from '../../utils/uid.js';
 
 const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
   id: {
     type: String,
-    required: true,
   },
   size: {
     type: String,
@@ -49,6 +49,8 @@ const props = defineProps({
     required: true
   }
 })
+
+const uniqueId = props.id ? props.id : uid();
 const onClick = (modelValue) => {
   emit('update:modelValue', !modelValue);
 }

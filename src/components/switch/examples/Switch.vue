@@ -11,7 +11,7 @@
       <cdr-switch id="extrawide" v-model="extraWide" size="large">
         <cdr-text>Extra wide switch containers (Large)</cdr-text>
       </cdr-switch>
-      <cdr-switch id="foo-789" v-model="happiness" size="large" :full-width="true">
+      <cdr-switch v-model="happiness" size="large" :full-width="true">
         Happiness <span v-show="happiness">🙂🙂🙂🙂🙂🙂🙂</span> (Large: Full Width)
       </cdr-switch>
       <cdr-switch id="customtext" v-model="customTextStyle">
