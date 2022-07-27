@@ -6,7 +6,7 @@ const vite = require('./vite.js');
 
 const startViteServer = function() {
   return vite.start({
-    configFile: './vite.config.js',
+    configFile: './vite.config.mjs',
   });
 }
 

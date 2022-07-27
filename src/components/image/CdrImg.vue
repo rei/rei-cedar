@@ -31,6 +31,12 @@
     v-bind="$attrs"
   >
 </template>
+<script>
+// use normal <script> to declare options
+export default {
+  inheritAttrs: false
+}
+</script>
 <script setup>
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses.js';
