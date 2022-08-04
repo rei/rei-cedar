@@ -1,6 +1,10 @@
 <template>
   <div>
-    <cdr-toggle-button :items="items"/>
+    <cdr-toggle-group>
+      <cdr-toggle-button custom-value="thing-1">Thing 1</cdr-toggle-button>
+      <cdr-toggle-button custom-value="thing-2">Thing 2</cdr-toggle-button>
+      <cdr-toggle-button custom-value="thing-3">Thing 3</cdr-toggle-button>
+    </cdr-toggle-group>
   </div>
 </template>
 

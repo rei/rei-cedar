@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
+import { CdrToggleGroup } from '../../../lib.js';
+import { h } from 'vue';
 import CdrToggleButton from '../CdrToggleButton.vue';
 
 describe('CdrToggleButton', () => {
@@ -9,9 +11,13 @@ describe('CdrToggleButton', () => {
   let thirdButton;
   describe('component snapshot', () => {
     beforeEach(()=>{
-      wrapper = mount(CdrToggleButton, {
-        propsData: {
-          items: ['thing-1', 'thing-2', 'thing-3']
+      wrapper = mount(CdrToggleGroup, {
+        slots: {
+          default: [
+            h(CdrToggleButton, {'custom-value': 'thing-1'}), 
+            h(CdrToggleButton, {'custom-value': 'thing-2'}),
+            h(CdrToggleButton, {'custom-value': 'thing-3'}),
+          ],
         },
         attachTo: document.body
       });
@@ -56,10 +62,6 @@ describe('CdrToggleButton', () => {
       it('the second button is focused', ()=> {
         expect(document.activeElement).toBe(secondButton.wrapperElement);
       })
-
-      it('the second button has a tabindex of 0', ()=> {
-        expect(secondButton.attributes('tabindex')).toBe('0');
-      })
     })
 
     describe('when hitting the right arrow key', ()=>{
@@ -76,27 +78,7 @@ describe('CdrToggleButton', () => {
       it('the second button is focused', ()=> {
         expect(document.activeElement).toBe(secondButton.wrapperElement);
       })
-
-      it('the second button has a tabindex of 0', ()=> {
-        expect(secondButton.attributes('tabindex')).toBe('0');
-      })
     });
-
-    describe('when the second button is selected and the right arrow key has been hit', ()=>{
-      beforeEach(()=>{
-        secondButton.trigger('click');
-        secondButton.trigger('keyup.right');
-      });
-
-      // it('the second button has a tabindex of 0', ()=>{
-      //   expect(secondButton.attributes('tabindex')).toBe('0');
-      // })
-
-      it('the third button has a tabindex of 0', ()=>{
-        expect(thirdButton.attributes('tabindex')).toBe('0');
-      })
-
-    })
 
     //Test for when the third button is selected and you're hitting right
 
