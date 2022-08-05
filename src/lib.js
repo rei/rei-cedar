@@ -31,6 +31,7 @@ export { default as CdrText } from './components/text/CdrText.vue';
 export { default as CdrToast } from './components/toast/CdrToast.vue';
 export { default as CdrToggleButton } from './components/toggleButton/CdrToggleButton.vue';
 export { default as CdrToggleGroup } from './components/toggleButton/CdrToggleGroup.vue';
+export { default as CdrSwitch } from './components/switch/CdrSwitch.vue'
 export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
 export * from './components/icon/index.js';
 

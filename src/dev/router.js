@@ -49,6 +49,7 @@ const routes = [
   { path: '/texts', name: 'Texts', component: Examples.texts },
   { path: '/toast', name: 'Toast', component: Examples.toast },
   { path: '/toggleButton', name: 'ToggleButton', component: Examples.toggleButton },
+  { path: '/switch', name: 'Switch', component: Examples.cdrSwitch },
   { path: '/tooltip', name: 'Tooltip', component: Examples.tooltip },
 
   // // Backstop test targets
