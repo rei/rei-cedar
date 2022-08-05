@@ -1,12 +1,22 @@
 <script setup>
-import { ref, onMounted, provide, useSlots, useCssModule } from 'vue';
+import { ref, watch, onMounted, provide, useCssModule } from 'vue';
 
-const slots = useSlots();
-const slottedToggleButtons = slots.default()[0].children?.length
-    ? slots.default()[0]
-    : slots.default();
 const radiogroup = ref(null);
-const selectedToggleValue = ref(slottedToggleButtons[0].props['custom-value']);
+
+const emit = defineEmits(['update:modelValue'])
+
+const props = defineProps({
+  modelValue: {
+    type: String,
+    required: true
+  }
+})
+
+const selectedToggleValue = ref(props.modelValue);
+
+watch(() => props.modelValue, (value) => {
+    selectedToggleValue.value = value;
+});
 
 provide("selectedToggleValue", selectedToggleValue);
 
@@ -17,6 +27,7 @@ onMounted(() => {
 
 const selectToggleButton = (e) => {
     selectedToggleValue.value = e.target.value;
+    emit('update:modelValue', e.target.value);
     e.target.focus();
 }
 
