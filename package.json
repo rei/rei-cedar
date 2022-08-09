@@ -13,10 +13,10 @@
   },
   "author": "REI Software Engineering",
   "main": "./dist/cedar.umd.js",
-  "module": "./dist/cedar.es.js",
+  "module": "./dist/cedar.mjs",
   "exports": {
     ".": {
-      "import": "./dist/cedar.es.js",
+      "import": "./dist/cedar.mjs",
       "require": "./dist/cedar.umd.js"
     },
     "./dist/": "./dist/"
