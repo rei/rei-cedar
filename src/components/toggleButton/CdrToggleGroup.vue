@@ -98,7 +98,6 @@ const style = useCssModule();
         @click.prevent="selectToggleButton" 
         @keyup.right.prevent="focusNext"
         @keyup.left.prevent="focusPrev" 
-        aria-label="things-food"
     >
         <slot></slot>
     </ul>

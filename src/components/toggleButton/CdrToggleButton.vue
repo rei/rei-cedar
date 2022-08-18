@@ -19,6 +19,7 @@
         <button role="radio"
             :class="style['cdr-toggle-button__item']"
             :value="toggleValue"
+            :aria-label="toggleValue"
             :aria-checked="isActive ? 'true' : 'false'"
             :tabindex="isActive ? 0 : -1"
         >
