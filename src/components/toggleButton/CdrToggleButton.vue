@@ -1,26 +1,29 @@
 <script setup>
-    import { inject, computed, useCssModule } from 'vue';
+    import { inject, computed, useCssModule, useSlots } from 'vue';
 
     const props = defineProps({
-        customValue: String,
+        toggleValue: [String, Number, Boolean, Object, Array],
     });
+
+    const emit = defineEmits(['select'])
+
     const selectedToggleValue = inject('selectedToggleValue');
     const isActive = computed(() => {
-        return props.customValue === selectedToggleValue.value;
+        return props.toggleValue === selectedToggleValue.value;
     })
-
     const style = useCssModule();
 </script>
 
 <template>
-    <li role="presentation" :class="style['segmented-control__item']">
+    <li role="presentation" :class="style['cdr-toggle-button__container']">
         <button role="radio"
-            :class="style['cdr-toggle-button__button']"
-            :value="customValue"
+            :class="style['cdr-toggle-button__item']"
+            :value="toggleValue"
             :aria-checked="isActive ? 'true' : 'false'"
             :tabindex="isActive ? 0 : -1"
         >
-            <slot></slot>
+            <slot>{{toggleValue}}</slot>
+
         </button>
     </li>
 </template>

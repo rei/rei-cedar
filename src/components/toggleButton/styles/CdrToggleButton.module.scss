@@ -2,51 +2,64 @@
 @import './vars/CdrToggleButton.vars.scss';
 
 .cdr-toggle-button {
-  @include cdr-toggle-button-base-mixin;
-}
+  &__item {
+    @include cdr-toggle-button-base-text-mixin-medium;
+    display: flex;
+    justify-content: center;
+    gap: .3rem;
+    border: .2rem solid transparent;
+    color: $cdr-color-text-toggle-button-default-rest;
+    background-color: $cdr-color-background-toggle-button-default-rest;
 
-.segmented-control {
-  display: table;
-  width: 100%;
-  margin: 2em 0;
-  padding: 0;
-}
+    &:focus {
+      outline: none;
+      padding: 0.7rem 1.3rem;
+      border-radius: .3rem;
+      border: .3rem solid $cdr-color-border-toggle-button-default-focus;
+      background-color: $cdr-color-background-toggle-button-default-focus;
+    }
 
-.segmented-control__item {
-  position: relative;
-  display: table-cell;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
+    svg {
+      fill: $cdr-color-icon-default;
+    }
 
-.segmented-control__input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
-}
+    &[aria-checked="true"] {
+      background-color: $cdr-color-background-toggle-button-default-selected-rest;
+      padding: 0.8rem 1.4rem;
+      border: .2rem solid $cdr-color-border-toggle-button-default-selected-rest;
+      border-radius: .2rem;
+      font-weight: 500;
+      margin: 0;
 
-.segmented-control__label {
-  display: block;
-  margin: 0 -1px -1px 0; /* -1px margin removes double-thickness borders between items */
-  padding: 1em .25em;
+      svg {
+        fill: $cdr-color-icon-emphasis;
+      }
 
-  border: 1px solid #ddd;
+      &:focus {
+        padding: 0.7rem 1.3rem;
+        border: .3rem solid $cdr-color-border-toggle-button-default-selected-focus;
+        border-radius: .2rem;
+      }
 
-  font: 14px/1.5 sans-serif; 
-  text-align: center;  
+      &:hover {
+        background-color: $cdr-color-background-toggle-button-default-selected-hover;
+      }
+    }
 
-  cursor: pointer;
-}
+    &:hover {
+      background-color: $cdr-color-background-toggle-button-default-hover;
+      padding: 0.7rem 1.3rem;
+      border-radius: 0.2rem;
 
-.segmented-control__label:hover {
-  background: #fafafa;
-}
+      &:focus {
+        border: .3rem solid $cdr-color-border-toggle-button-default-selected-focus;
+        padding: 0.7rem 1.3rem;
+      }
+    }
+  }
 
-.segmented-control__input:checked + .segmented-control__label {
-  background: #eee;
-  color: #333; 
+  &__container {
+    display: inline-block;
+    list-style-type: none;
+  }
 }

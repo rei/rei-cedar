@@ -17,9 +17,9 @@ describe('CdrToggleButton', () => {
         },
         slots: {
           default: [
-            h(CdrToggleButton, { 'custom-value': 'thing-1' }),
-            h(CdrToggleButton, { 'custom-value': 'thing-2' }),
-            h(CdrToggleButton, { 'custom-value': 'thing-3' }),
+            h(CdrToggleButton, { 'toggle-value': 'thing-1' }),
+            h(CdrToggleButton, { 'toggle-value': 'thing-2' }),
+            h(CdrToggleButton, { 'toggle-value': 'thing-3' }),
           ],
         },
         attachTo: document.body
@@ -53,6 +53,34 @@ describe('CdrToggleButton', () => {
     it('the aria-checked value of the second button is false', () => {
       expect(secondButton.attributes('aria-checked')).toBe('false');
     });
+
+    describe('adding the full-width prop', ()=>{
+      beforeEach(()=>{
+        wrapper.setProps({ 'full-width': true})
+      })
+
+      it('matches the snapshot', () => {
+        expect(wrapper.element).toMatchSnapshot();
+      });
+
+      it('has the expected full width class', () => {
+        expect(wrapper.classes()).to.contain('cdr-toggle-group--full-width')
+      });
+    })
+
+    describe('adding the large prop', ()=>{
+      beforeEach(()=>{
+        wrapper.setProps({ size: 'large'})
+      })
+
+      it('matches the snapshot', () => {
+        expect(wrapper.element).toMatchSnapshot();
+      });
+      
+      it('has the expected full width class', () => {
+        expect(wrapper.classes()).to.contain('cdr-toggle-group--large')
+      });
+    })
 
     describe('changing the model value', () => {
       beforeEach(async()=>{
@@ -130,4 +158,32 @@ describe('CdrToggleButton', () => {
       })
     });
   })
+  // describe('component snapshot with custom values', ()=>{
+  //   beforeEach(() => {
+  //     wrapper = mount(CdrToggleGroup, {
+  //       props: {
+  //         modelValue: 'fruits'
+  //       },
+  //       slots: {
+  //         default: [
+  //           h(CdrToggleButton, { 'toggle-value': 'fruits', 'custom-value': ["banana", "grapes", "watermelons"] }),
+  //           h(CdrToggleButton, { 'toggle-value': 'nofruits', 'custom-value': [] }),
+  //         ],
+  //       },
+  //       attachTo: document.body
+  //     });
+  //     firstButton = wrapper.findAll('button')[0];
+  //     secondButton = wrapper.findAll('button')[1];
+  //   })
+
+  //   it('matches the snapshot', () => {
+  //     expect(wrapper.element).toMatchSnapshot();
+  //   });
+
+  //   it('the button has the expected value', () => {
+  //     expect(firstButton.element.value).toContain("banana");
+  //     expect(firstButton.element.value).toContain("grapes");
+  //     expect(firstButton.element.value).toContain("watermelons");
+  //   });
+  // })
 });

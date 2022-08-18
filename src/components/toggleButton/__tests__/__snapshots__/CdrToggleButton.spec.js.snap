@@ -1,54 +1,175 @@
 // Vitest Snapshot v1
 
-exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
+exports[`CdrToggleButton > component snapshot > adding the full-width prop > matches the snapshot 1`] = `
 <ul
-  aria-label="things-foo"
-  class="segmented-control"
+  aria-label="things-food"
+  class="cdr-toggle-group cdr-toggle-group--full-width cdr-toggle-group--medium"
   role="radiogroup"
 >
   
   <li
-    class="segmented-control__item"
+    class="cdr-toggle-button__container"
     role="presentation"
   >
     <button
       aria-checked="true"
-      class="cdr-toggle-button__button"
+      class="cdr-toggle-button__item"
       role="radio"
       tabindex="0"
       value="thing-1"
     >
       
+      thing-1
       
     </button>
   </li>
   <li
-    class="segmented-control__item"
+    class="cdr-toggle-button__container"
     role="presentation"
   >
     <button
       aria-checked="false"
-      class="cdr-toggle-button__button"
+      class="cdr-toggle-button__item"
       role="radio"
       tabindex="-1"
       value="thing-2"
     >
       
+      thing-2
       
     </button>
   </li>
   <li
-    class="segmented-control__item"
+    class="cdr-toggle-button__container"
     role="presentation"
   >
     <button
       aria-checked="false"
-      class="cdr-toggle-button__button"
+      class="cdr-toggle-button__item"
       role="radio"
       tabindex="-1"
       value="thing-3"
     >
       
+      thing-3
+      
+    </button>
+  </li>
+  
+</ul>
+`;
+
+exports[`CdrToggleButton > component snapshot > adding the large prop > matches the snapshot 1`] = `
+<ul
+  aria-label="things-food"
+  class="cdr-toggle-group cdr-toggle-group--large"
+  role="radiogroup"
+>
+  
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="0"
+      value="thing-1"
+    >
+      
+      thing-1
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-2"
+    >
+      
+      thing-2
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-3"
+    >
+      
+      thing-3
+      
+    </button>
+  </li>
+  
+</ul>
+`;
+
+exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
+<ul
+  aria-label="things-food"
+  class="cdr-toggle-group cdr-toggle-group--medium"
+  role="radiogroup"
+>
+  
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="0"
+      value="thing-1"
+    >
+      
+      thing-1
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-2"
+    >
+      
+      thing-2
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-3"
+    >
+      
+      thing-3
       
     </button>
   </li>
@@ -58,53 +179,99 @@ exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
 
 exports[`CdrToggleButton > component snapshot > when clicking on an unchecked button > matches snapshot 1`] = `
 <ul
-  aria-label="things-foo"
-  class="segmented-control"
+  aria-label="things-food"
+  class="cdr-toggle-group cdr-toggle-group--medium"
   role="radiogroup"
 >
   
   <li
-    class="segmented-control__item"
+    class="cdr-toggle-button__container"
     role="presentation"
   >
     <button
       aria-checked="false"
-      class="cdr-toggle-button__button"
+      class="cdr-toggle-button__item"
       role="radio"
       tabindex="-1"
       value="thing-1"
     >
       
+      thing-1
       
     </button>
   </li>
   <li
-    class="segmented-control__item"
+    class="cdr-toggle-button__container"
     role="presentation"
   >
     <button
       aria-checked="true"
-      class="cdr-toggle-button__button"
+      class="cdr-toggle-button__item"
       role="radio"
       tabindex="0"
       value="thing-2"
     >
       
+      thing-2
       
     </button>
   </li>
   <li
-    class="segmented-control__item"
+    class="cdr-toggle-button__container"
     role="presentation"
   >
     <button
       aria-checked="false"
-      class="cdr-toggle-button__button"
+      class="cdr-toggle-button__item"
       role="radio"
       tabindex="-1"
       value="thing-3"
     >
       
+      thing-3
+      
+    </button>
+  </li>
+  
+</ul>
+`;
+
+exports[`CdrToggleButton > component snapshot with custom values > matches the snapshot 1`] = `
+<ul
+  aria-label="things-food"
+  class="cdr-toggle-group cdr-toggle-group--medium"
+  role="radiogroup"
+>
+  
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="banana,grapes,watermelons"
+    >
+      
+      fruits
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value=""
+    >
+      
+      nofruits
       
     </button>
   </li>

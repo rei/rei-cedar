@@ -1,14 +1,29 @@
 <script setup>
-import { ref, watch, onMounted, provide, useCssModule } from 'vue';
+import { ref, watch, onMounted, provide, computed, useCssModule } from 'vue';
+import mapClasses from '../../utils/mapClasses.js';
+import { buildBooleanClass } from '../../utils/buildClass.js';
+import propValidator from '../../utils/propValidator.js';
 
-const radiogroup = ref(null);
+const toggleGroup = ref(null);
 
 const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
   modelValue: {
-    type: String,
+    type: [String, Number, Boolean, Object, Array],
     required: true
+  },
+  fullWidth: {
+    type: Boolean,
+    default: false
+  },
+  size: {
+    type: String,
+    default: 'medium',
+    validator: (value) => propValidator(
+      value,
+      ['medium', 'large'],
+    ),
   }
 })
 
@@ -22,13 +37,18 @@ provide("selectedToggleValue", selectedToggleValue);
 
 let toggleButtonElements;
 onMounted(() => {
-    toggleButtonElements = Array.from(radiogroup.value.querySelectorAll('button'));
+    //Investigate better way. Class name or data attribute
+    toggleButtonElements = Array.from(toggleGroup.value.querySelectorAll('button'));
 })
 
 const selectToggleButton = (e) => {
-    selectedToggleValue.value = e.target.value;
-    emit('update:modelValue', e.target.value);
-    e.target.focus();
+    if (!e.target.closest('button')) {
+        return;
+    }
+    let button = e.target.closest('button');
+    selectedToggleValue.value = button.value;
+    emit('update:modelValue', button.value);
+    button.focus();
 }
 
 const focusNext = (e) => {
@@ -57,18 +77,28 @@ const focusPrev = (e) => {
     nextButton.focus();
 }
 
+const baseClass = 'cdr-toggle-group';
+const sizeClass = computed(() => props.size ? `cdr-toggle-group--${props.size}` : "cdr-toggle-group--medium")
+const fullWidthClass = computed(() => props.fullWidth
+  && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
+
 const style = useCssModule();
 </script>
 
 <template>
     <ul 
-        ref="radiogroup"
+        ref="toggleGroup"
         role="radiogroup" 
-        :class="style['segmented-control']" 
+        :class="mapClasses(
+            style,
+            baseClass,
+            fullWidthClass,
+            sizeClass,
+        )"
         @click.prevent="selectToggleButton" 
-        @keyup.right="focusNext"
-        @keyup.left="focusPrev" 
-        aria-label="things-foo"
+        @keyup.right.prevent="focusNext"
+        @keyup.left.prevent="focusPrev" 
+        aria-label="things-food"
     >
         <slot></slot>
     </ul>
