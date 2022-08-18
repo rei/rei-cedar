@@ -2,7 +2,7 @@
   <div
     v-if="ratio"
     :style="ratioObject"
-    :class="style[ratioClass]"
+    :class="[style[ratioClass], containerClass]"
   >
     <img
       :style="cropObject"
@@ -85,6 +85,10 @@ const props = defineProps({
   cover: {
     type: Boolean,
   },
+    /**
+   * Adds a custom class to the cdr-img__ratio container div
+   */
+  containerClass: String,
   /**
    * Sets a border radius to an element {square, top, right, bottom, left}
    */
