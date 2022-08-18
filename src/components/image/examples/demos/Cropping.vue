@@ -211,7 +211,7 @@ export default {
   components: Components,
   data() {
     return {
-      testImage: 'test-image.png',
+      testImage: '/src/dev/static/cedar-1920x1080.jpg',
     };
   },
 };

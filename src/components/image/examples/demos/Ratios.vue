@@ -5,7 +5,7 @@
         Square
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-container-class="cdr-img-test"
         ratio="square"
         alt="ratio square"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -16,12 +16,11 @@
         Auto (min-height)
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test auto"
         ratio="auto"
         crop="center"
         cover
         alt="ratio auto"
-        style="min-height: 100px"
         src="/src/dev/static/cedar-300x100.jpg"
       />
     </div>
@@ -32,12 +31,11 @@
       </cdr-text>
       <div style="width: 100%; height: 100%">
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test auto-fill"
           ratio="auto"
           crop="center"
           cover
           alt="ratio auto"
-          style="width: 100%; height: 100%;"
           src="/src/dev/static/cedar-300x100.jpg"
         />
       </div>
@@ -49,7 +47,7 @@
       </cdr-text>
       <cdr-grid style="grid-template-columns: 1fr 2fr">
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           ratio="auto"
           crop="center"
           cover
@@ -66,7 +64,7 @@
         1-2
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="1-2"
         alt="ratio 1-2"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -77,7 +75,7 @@
         2-3
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="2-3"
         alt="ratio 2-3"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -88,7 +86,7 @@
         3-4
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="3-4"
         alt="ratio 3-4"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -99,7 +97,7 @@
         9-16
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="9-16"
         alt="ratio 9-16"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -110,7 +108,7 @@
         2-1
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="2-1"
         alt="ratio 2-1"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -121,7 +119,7 @@
         3-2
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="3-2"
         alt="ratio 3-2"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -132,7 +130,7 @@
         4-3
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="4-3"
         alt="ratio 4-3"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -143,7 +141,7 @@
         16-9
       </cdr-text>
       <cdr-img
-        class="cdr-img-test"
+        container-class="cdr-img-test"
         ratio="16-9"
         alt="ratio 16-9"
         src="/src/dev/static/cedar-300x100.jpg"
@@ -164,5 +162,11 @@ export default {
 <style>
   .cdr-img-test {
     background-color: lightblue;
+  }
+  .auto {
+    min-height: 100px
+  }
+  .auto-fill {
+    width: 100%; height: 100%;
   }
 </style>
