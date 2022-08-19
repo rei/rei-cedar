@@ -1,22 +1,28 @@
 <template>
   <component
-    :is="props.tag"
+    :is="tag"
     :class="style['cdr-text']"
   >
     <slot />
   </component>
 </template>
 
-<script setup>
-import { useCssModule } from 'vue';
-
-const props = defineProps({
-  tag: {
-    type: String,
-    default: 'p',
+<script>
+import { useCssModule, defineComponent } from 'vue';
+export default defineComponent({
+  name: 'CdrText',
+  props: {
+    tag: {
+      type: String,
+      default: 'p',
+    },
   },
+  setup() {
+    return {
+      style: useCssModule(),
+    }
+  }
 });
-const style = useCssModule();
 </script>
 
 <style lang="scss" module src="./styles/CdrText.module.scss">
