@@ -10,7 +10,8 @@
     border: .2rem solid transparent;
     color: $cdr-color-text-toggle-button-default-rest;
     background-color: $cdr-color-background-toggle-button-default-rest;
-
+    width: 100%;
+    
     &:focus {
       outline: none;
       padding: 0.7rem 1.3rem;

@@ -13,9 +13,8 @@ const props = defineProps({
     type: [String, Number, Boolean, Object, Array],
     required: true
   },
-  fullWidth: {
-    type: Boolean,
-    default: false
+  maxWidth: {
+    type: String,
   },
   size: {
     type: String,
@@ -88,11 +87,11 @@ const style = useCssModule();
 <template>
     <ul 
         ref="toggleGroup"
-        role="radiogroup" 
+        role="radiogroup"
+        :style="{ maxWidth: maxWidth ? maxWidth: 'none' }"
         :class="mapClasses(
             style,
             baseClass,
-            fullWidthClass,
             sizeClass,
         )"
         @click.prevent="selectToggleButton" 

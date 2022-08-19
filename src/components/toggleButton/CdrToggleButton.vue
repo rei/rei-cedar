@@ -2,10 +2,11 @@
     import { inject, computed, useCssModule, useSlots } from 'vue';
 
     const props = defineProps({
-        toggleValue: [String, Number, Boolean, Object, Array],
+        toggleValue: {
+            type: String,
+            required: true,
+        }
     });
-
-    const emit = defineEmits(['select'])
 
     const selectedToggleValue = inject('selectedToggleValue');
     const isActive = computed(() => {

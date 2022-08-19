@@ -8,29 +8,20 @@
         padding: 0 .2rem 0 0;
     }
 
-    &--full-width {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-
-        .cdr-toggle-button__container {
-            flex-grow: 1;
-        }
-
-        .cdr-toggle-button__item {
-            width: 100%;
-        }
-    }
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
 
     &--medium {
         .cdr-toggle-button__item {
             gap: .6rem;
             padding: .8rem 1.4rem;
             margin: 0.1rem;
+
             &:focus {
                 padding: 0.7rem 1.3rem;
                 margin: .1rem;
-              }
+            }
         }
 
         .cdr-toggle-button__container {
@@ -47,7 +38,7 @@
             &:focus {
                 padding: 1.1rem 1.3rem;
                 margin: .1rem;
-              }
+            }
         }
 
         .cdr-toggle-button__container {

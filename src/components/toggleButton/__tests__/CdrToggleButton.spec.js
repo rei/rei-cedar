@@ -54,17 +54,13 @@ describe('CdrToggleButton', () => {
       expect(secondButton.attributes('aria-checked')).toBe('false');
     });
 
-    describe('adding the full-width prop', ()=>{
+    describe('adding a maxWidth prop', ()=>{
       beforeEach(()=>{
-        wrapper.setProps({ 'full-width': true})
+        wrapper.setProps({ 'max-width': '10rem'})
       })
 
       it('matches the snapshot', () => {
         expect(wrapper.element).toMatchSnapshot();
-      });
-
-      it('has the expected full width class', () => {
-        expect(wrapper.classes()).to.contain('cdr-toggle-group--full-width')
       });
     })
 
@@ -75,10 +71,6 @@ describe('CdrToggleButton', () => {
 
       it('matches the snapshot', () => {
         expect(wrapper.element).toMatchSnapshot();
-      });
-      
-      it('has the expected full width class', () => {
-        expect(wrapper.classes()).to.contain('cdr-toggle-group--large')
       });
     })
 
