@@ -6,7 +6,11 @@
     <slot />
   </component>
 </template>
-
+<script>
+export default {
+  name: 'CdrText',
+}
+</script>
 <script setup>
 import { useCssModule } from 'vue';
 
