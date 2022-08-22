@@ -12,6 +12,7 @@
     color: $cdr-color-text-toggle-button-default-rest;
     background-color: $cdr-color-background-toggle-button-default-rest;
     width: 100%;
+    height: 100%;
     
     &:focus {
       outline: none;
@@ -61,7 +62,6 @@
   }
 
   &__container {
-    display: inline-block;
     list-style-type: none;
   }
 }
