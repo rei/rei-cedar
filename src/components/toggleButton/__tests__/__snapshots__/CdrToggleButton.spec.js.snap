@@ -1,135 +1,9 @@
 // Vitest Snapshot v1
 
-exports[`CdrToggleButton > component snapshot > adding a maxWidth prop > matches the snapshot 1`] = `
-<ul
-  class="cdr-toggle-group cdr-toggle-group--medium"
-  role="radiogroup"
-  style="max-width: 10rem;"
->
-  
-  <li
-    class="cdr-toggle-button__container"
-    role="presentation"
-  >
-    <button
-      aria-checked="true"
-      aria-label="thing-1"
-      class="cdr-toggle-button__item"
-      role="radio"
-      tabindex="0"
-      value="thing-1"
-    >
-      
-      thing-1
-      
-    </button>
-  </li>
-  <li
-    class="cdr-toggle-button__container"
-    role="presentation"
-  >
-    <button
-      aria-checked="false"
-      aria-label="thing-2"
-      class="cdr-toggle-button__item"
-      role="radio"
-      tabindex="-1"
-      value="thing-2"
-    >
-      
-      thing-2
-      
-    </button>
-  </li>
-  <li
-    class="cdr-toggle-button__container"
-    role="presentation"
-  >
-    <button
-      aria-checked="false"
-      aria-label="thing-3"
-      class="cdr-toggle-button__item"
-      role="radio"
-      tabindex="-1"
-      value="thing-3"
-    >
-      
-      thing-3
-      
-    </button>
-  </li>
-  
-</ul>
-`;
-
-exports[`CdrToggleButton > component snapshot > adding the full-width prop > matches the snapshot 1`] = `
-<ul
-  class="cdr-toggle-group cdr-toggle-group--medium"
-  full-width="true"
-  role="radiogroup"
-  style="max-width: none;"
->
-  
-  <li
-    class="cdr-toggle-button__container"
-    role="presentation"
-  >
-    <button
-      aria-checked="true"
-      aria-label="thing-1"
-      class="cdr-toggle-button__item"
-      role="radio"
-      tabindex="0"
-      value="thing-1"
-    >
-      
-      thing-1
-      
-    </button>
-  </li>
-  <li
-    class="cdr-toggle-button__container"
-    role="presentation"
-  >
-    <button
-      aria-checked="false"
-      aria-label="thing-2"
-      class="cdr-toggle-button__item"
-      role="radio"
-      tabindex="-1"
-      value="thing-2"
-    >
-      
-      thing-2
-      
-    </button>
-  </li>
-  <li
-    class="cdr-toggle-button__container"
-    role="presentation"
-  >
-    <button
-      aria-checked="false"
-      aria-label="thing-3"
-      class="cdr-toggle-button__item"
-      role="radio"
-      tabindex="-1"
-      value="thing-3"
-    >
-      
-      thing-3
-      
-    </button>
-  </li>
-  
-</ul>
-`;
-
 exports[`CdrToggleButton > component snapshot > adding the large prop > matches the snapshot 1`] = `
 <ul
   class="cdr-toggle-group cdr-toggle-group--large"
   role="radiogroup"
-  style="max-width: none;"
 >
   
   <li
@@ -191,7 +65,6 @@ exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
 <ul
   class="cdr-toggle-group cdr-toggle-group--medium"
   role="radiogroup"
-  style="max-width: none;"
 >
   
   <li
@@ -253,7 +126,6 @@ exports[`CdrToggleButton > component snapshot > when clicking on an unchecked bu
 <ul
   class="cdr-toggle-group cdr-toggle-group--medium"
   role="radiogroup"
-  style="max-width: none;"
 >
   
   <li
