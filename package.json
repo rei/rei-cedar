@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
-    "@rei/cdr-tokens": "^10.2.0-beta.0",
+    "@rei/cdr-tokens": "^10.2.0-beta.1",
     "@rei/cedar-icons": "^2.5.0",
     "@rollup/plugin-babel": "^5.3.1",
     "@vitejs/plugin-vue": "^3.0.0",
