@@ -13,9 +13,6 @@ const props = defineProps({
     type: [String, Number, Boolean, Object, Array],
     required: true
   },
-  maxWidth: {
-    type: String,
-  },
   size: {
     type: String,
     default: 'medium',
@@ -88,7 +85,7 @@ const style = useCssModule();
     <ul 
         ref="toggleGroup"
         role="radiogroup"
-        :style="{ maxWidth: maxWidth ? maxWidth: 'none' }"
+        v-bind="$attrs"
         :class="mapClasses(
             style,
             baseClass,

@@ -54,16 +54,6 @@ describe('CdrToggleButton', () => {
       expect(secondButton.attributes('aria-checked')).toBe('false');
     });
 
-    describe('adding a maxWidth prop', ()=>{
-      beforeEach(()=>{
-        wrapper.setProps({ 'max-width': '10rem'})
-      })
-
-      it('matches the snapshot', () => {
-        expect(wrapper.element).toMatchSnapshot();
-      });
-    })
-
     describe('adding the large prop', ()=>{
       beforeEach(()=>{
         wrapper.setProps({ size: 'large'})

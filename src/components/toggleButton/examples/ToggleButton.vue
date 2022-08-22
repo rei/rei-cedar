@@ -1,19 +1,19 @@
 <template>
   <div style="width: 550px">
-    <h3>With a maxWidth Property</h3>
+    <h3>With max-width inline styles added</h3>
 
-    <cdr-toggle-group v-model="units" maxWidth="13.5rem">
+    <cdr-toggle-group v-model="units" style="max-width: 13.5rem">
       <cdr-toggle-button toggleValue="centimeters">cm</cdr-toggle-button>
       <cdr-toggle-button toggleValue="inches">in</cdr-toggle-button>
     </cdr-toggle-group>
 
-    <cdr-toggle-group v-model="dimensions" maxWidth="29rem">
+    <cdr-toggle-group v-model="dimensions" style="max-width: 29rem">
       <cdr-toggle-button toggleValue="Width">Width</cdr-toggle-button>
       <cdr-toggle-button toggleValue="Height">Height</cdr-toggle-button>
       <cdr-toggle-button toggleValue="Length">Length</cdr-toggle-button>
     </cdr-toggle-group>
 
-    <cdr-toggle-group v-model="showhide" maxWidth="23rem">
+    <cdr-toggle-group v-model="showhide" style="max-width: 23rem">
       <cdr-toggle-button toggleValue="show">
         <icon-eye-show />show
       </cdr-toggle-button>
@@ -22,7 +22,7 @@
       </cdr-toggle-button>
     </cdr-toggle-group>
 
-    <cdr-toggle-group v-model="showhide" maxWidth="13rem">
+    <cdr-toggle-group v-model="showhide" style="max-width: 13rem">
       <cdr-toggle-button toggleValue="show">
         <icon-eye-show />
       </cdr-toggle-button>
@@ -33,7 +33,7 @@
   </div>
 
   <div style="width: 550px">
-    <h3>No maxWidth (expands to size of container)</h3>
+    <h3>No max-width styling (expands to size of container)</h3>
 
     <cdr-toggle-group v-model="units">
       <cdr-toggle-button toggleValue="centimeters"></cdr-toggle-button>
@@ -65,7 +65,7 @@
     </cdr-toggle-group>
   </div>
   <div style="width: 550px">
-    <h3>Large Size and no maxWidth</h3>
+    <h3>Large Size and no max-width styling</h3>
 
     <cdr-toggle-group size="large" v-model="units">
       <cdr-toggle-button toggleValue="centimeters">cm</cdr-toggle-button>
