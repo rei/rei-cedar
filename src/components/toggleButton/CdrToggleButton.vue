@@ -1,18 +1,26 @@
-<script setup>
-    import { inject, computed, useCssModule, useSlots } from 'vue';
+<script>
+import { useCssModule, defineComponent } from 'vue';
 
-    const props = defineProps({
+export default defineComponent({
+    name: 'CdrToggleButton',
+    props: {
         toggleValue: {
             type: String,
             required: true,
         }
-    });
-
-    const selectedToggleValue = inject('selectedToggleValue');
-    const isActive = computed(() => {
-        return props.toggleValue === selectedToggleValue.value;
-    })
-    const style = useCssModule();
+    },
+    computed: {
+        isActive() {
+            return this.toggleValue === this.selectedToggleValue.value;
+        }
+    },
+    inject: ['selectedToggleValue'],
+    setup() {
+        return {
+            style: useCssModule()
+        }
+    }
+})
 </script>
 
 <template>

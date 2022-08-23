@@ -40,13 +40,13 @@
       <cdr-toggle-button toggleValue="inches"></cdr-toggle-button>
     </cdr-toggle-group>
 
-    <cdr-toggle-group :full-width="true" v-model="dimensions">
+    <cdr-toggle-group v-model="dimensions">
       <cdr-toggle-button toggleValue="Width">Width</cdr-toggle-button>
       <cdr-toggle-button toggleValue="Height">Height</cdr-toggle-button>
       <cdr-toggle-button toggleValue="Length">Length</cdr-toggle-button>
     </cdr-toggle-group>
 
-    <cdr-toggle-group :full-width="true" v-model="showhide">
+    <cdr-toggle-group v-model="showhide">
       <cdr-toggle-button toggleValue="show">
         <icon-eye-show />show
       </cdr-toggle-button>
@@ -55,7 +55,7 @@
       </cdr-toggle-button>
     </cdr-toggle-group>
 
-    <cdr-toggle-group :full-width="true" v-model="showhide">
+    <cdr-toggle-group v-model="showhide">
       <cdr-toggle-button toggleValue="show">
         <icon-eye-show />
       </cdr-toggle-button>
