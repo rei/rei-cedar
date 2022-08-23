@@ -5,7 +5,7 @@
         <div>
           <cdr-img
             alt="card test image"
-            src="test-image.png"
+            src="/src/dev/static/test-image.png"
             modifier="responsive"
           />
         </div>
