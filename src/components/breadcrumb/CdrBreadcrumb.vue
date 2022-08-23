@@ -1,6 +1,6 @@
 <script >
 import {
-  defineComponent, useCssModule, computed, ref, watch, nextTick 
+  defineComponent, useCssModule, computed, ref, watch, nextTick,
 } from 'vue';
 import uid from '../../utils/uid';
 
