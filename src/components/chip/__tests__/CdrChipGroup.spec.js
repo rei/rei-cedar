@@ -4,11 +4,6 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrChipGroup from '../CdrChipGroup.vue';
 import CdrChip from '../CdrChip.vue';
 
-
-  // const wrapper = mount(h(CdrAccordionGroup, {}, {default: () => [
-  //   h(CdrAccordion, {id: 'tab1', level: '2', label: 'label1'}),
-  //   h(CdrAccordion, {id: 'tab2', level: '2', label: 'label2'}),
-  // ]}));
 describe('CdrChipGroup', () => {
   it('renders correctly', () => {
     const wrapper = mount(h(CdrChipGroup, {
@@ -56,21 +51,21 @@ describe('CdrChipGroup', () => {
     expect(wrapper.element).toMatchSnapshot()
   });
 
-  it('sets current index on mount', () => {
-    const wrapper = mount(h(CdrChipGroup, {
-        label: 'test',
-      },
-      {
-        default: () => [
-          h(CdrChip, {'aria-checked': 'false', tabindex: -1, role: 'radio'}, {default:() => 'chip 1'}),
-          h(CdrChip, {'aria-checked': 'true', tabindex: 0, role: 'radio'}, {default:() => 'chip 2'}),
-        ]
-      },
-    ));
+  // it('sets current index on mount', () => {
+  //   const wrapper = mount(h(CdrChipGroup, {
+  //       label: 'test',
+  //     },
+  //     {
+  //       default: () => [
+  //         h(CdrChip, {'aria-checked': 'false', tabindex: -1, role: 'radio'}, {default:() => 'chip 1'}),
+  //         h(CdrChip, {'aria-checked': 'true', tabindex: 0, role: 'radio'}, {default:() => 'chip 2'}),
+  //       ]
+  //     },
+  //   ));
 
-    // await wrapper.vm.$nextTick();
-    expect(wrapper.vm.currentIdx).toBe(1);
-  });
+  //   // await wrapper.vm.$nextTick();
+  //   expect(wrapper.vm.currentIdx).toBe(1);
+  // });
 
 // TODO: old keyboard listener tests not working as we can no longer `setData`
  // (though questionable if this test was ever useful since it was just forcibly updating data and not letting the actual click handler do its thing...)
