@@ -1,86 +1,108 @@
-<script setup>
-import { useCssModule, useSlots, ref, onMounted, watch } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
+<script>
+import {
+  useCssModule, defineComponent, ref, onMounted, watch,
+} from 'vue';
+import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
-import propValidator from '../../utils/propValidator.js';
+import propValidator from '../../utils/propValidator';
 
-const props = defineProps({
-  position: {
-    type: String,
-    required: false,
-    default: 'top',
-    validator: (value) => propValidator(
-      value,
-      ['top', 'bottom', 'left', 'right'],
-    ),
+export default defineComponent({
+  name: 'CdrTooltip',
+  components: {
+    CdrPopup,
   },
-  autoPosition: {
-    type: Boolean,
-    default: true,
+  props: {
+    position: {
+      type: String,
+      required: false,
+      default: 'top',
+      validator: (value) => propValidator(
+        value,
+        ['top', 'bottom', 'left', 'right'],
+      ),
+    },
+    autoPosition: {
+      type: Boolean,
+      default: true,
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    contentClass: {
+      type: String,
+      required: false,
+    },
+    open: {
+      type: Boolean,
+      default: false,
+    },
   },
-  id: {
-    type: String,
-    required: true,
+  setup(props, ctx) {
+    const style = useCssModule();
+    const isOpen = ref(false);
+    let timeout;
+    let popupElement;
+    const popupEl = ref(null);
+    const triggerEl = ref(null);
+    const hasTrigger = ctx.slots.trigger;
+
+    const openTooltip = (e) => {
+      if (timeout) clearTimeout(timeout);
+      isOpen.value = true;
+      ctx.emit('opened', e);
+    };
+    const closeTooltip = (e) => {
+      timeout = setTimeout(() => {
+        isOpen.value = false;
+        ctx.emit('closed', e);
+      }, 250);
+    };
+    const addHandlers = () => {
+      const triggerElement = triggerEl.value.children[0];
+      popupElement = popupEl.value?.$el;
+      if (triggerElement) {
+        triggerElement.addEventListener('mouseover', openTooltip);
+        triggerElement.addEventListener('focus', openTooltip);
+
+        triggerElement.addEventListener('mouseleave', closeTooltip);
+        triggerElement.addEventListener('blur', closeTooltip);
+
+        popupElement.addEventListener('mouseover', openTooltip);
+        popupElement.addEventListener('mouseleave', closeTooltip);
+      }
+    };
+
+    watch(() => props.open, () => (props.open ? openTooltip() : closeTooltip()));
+
+    onMounted(() => {
+      addHandlers();
+      const trigger = triggerEl.value.children[0];
+      if (trigger) trigger.setAttribute('aria-describedby', props.id);
+    });
+
+    return {
+      style,
+      isOpen,
+      popupElement,
+      popupEl,
+      triggerEl,
+      hasTrigger,
+      openTooltip,
+      closeTooltip,
+      addHandlers,
+      mapClasses,
+    };
   },
-  contentClass: {
-    type: String,
-    required: false,
-  },
-  open: {
-    type: Boolean,
-    default: false,
-  },
-});
-const slots = useSlots();
-const emit = defineEmits(['opened', 'closed']);
-const style = useCssModule();
-
-const isOpen = ref(false);
-let timeout;
-let popupElement;
-const popupEl = ref(null);
-const triggerEl = ref(null);
-const hasTrigger = slots['trigger'];
-
-const openTooltip = (e) => {
-  if (timeout) clearTimeout(timeout);
-  isOpen.value = true;
-  emit('opened', e);
-};
-const closeTooltip = (e) => {
-  timeout = setTimeout(() => {
-    isOpen.value = false;
-    emit('closed', e);
-  }, 250);
-};
-const addHandlers = () => {
-  const triggerElement = triggerEl.value.children[0];
-  popupElement = popupEl.value?.$el;
-  if (triggerElement) {
-    triggerElement.addEventListener('mouseover', openTooltip);
-    triggerElement.addEventListener('focus', openTooltip);
-
-    triggerElement.addEventListener('mouseleave', closeTooltip);
-    triggerElement.addEventListener('blur', closeTooltip);
-
-    popupElement.addEventListener('mouseover', openTooltip);
-    popupElement.addEventListener('mouseleave', closeTooltip);
-  }
-};
-
-watch(() => props.open, () => (props.open ? openTooltip() : closeTooltip()));
-
-onMounted(() => {
-  addHandlers();
-  const trigger = triggerEl.value.children[0];
-  if (trigger) trigger.setAttribute('aria-describedby', props.id);
 });
 </script>
 
 <template>
-  <div :class="mapClasses(
-    style, 'cdr-tooltip--wrapper', hasTrigger && 'cdr-tooltip--position'
-  )">
+  <div
+    :class="mapClasses(
+      style, 'cdr-tooltip--wrapper', hasTrigger && 'cdr-tooltip--position'
+    )"
+  >
     <div ref="triggerEl">
       <slot name="trigger" />
     </div>

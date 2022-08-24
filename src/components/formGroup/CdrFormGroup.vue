@@ -1,10 +1,15 @@
-<script setup>
-import {useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
+<script>
+import { defineComponent, useCssModule, computed } from 'vue';
+import mapClasses from '../../utils/mapClasses';
 import CdrFormError from '../formError/CdrFormError.vue';
-import uid from '../../utils/uid.js';
+import uid from '../../utils/uid';
 
-const props = defineProps({
+export default defineComponent({
+  name: 'CdrFormGroup',
+  components: {
+    CdrFormError,
+  },
+  props: {
     id: {
       type: String,
     },
@@ -21,13 +26,23 @@ const props = defineProps({
     required: Boolean,
     optional: Boolean,
     disabled: Boolean,
-  })
+  },
 
-  const uniqueId = props.id ? props.id : uid();
-  const baseClass = 'cdr-form-group';
-  const errorClass = computed(() => props.error && 'cdr-form-group--error');
-  const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
-  const style = useCssModule();
+  setup(props) {
+    const uniqueId = props.id ? props.id : uid();
+    const baseClass = 'cdr-form-group';
+    const errorClass = computed(() => props.error && 'cdr-form-group--error');
+    const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
+    return {
+      style: useCssModule(),
+      uniqueId,
+      baseClass,
+      errorClass,
+      disabledClass,
+      mapClasses,
+    };
+  },
+});
 </script>
 
 <template>

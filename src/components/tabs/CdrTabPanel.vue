@@ -1,19 +1,28 @@
-<script setup>
-  import { computed, inject, useCssModule } from 'vue';
-  import kebabCase from 'lodash/kebabCase';
+<script>
+import {
+  computed, defineComponent, inject, useCssModule,
+} from 'vue';
+import kebabCase from 'lodash-es/kebabCase';
 
-  const props = defineProps({
+export default defineComponent({
+  name: 'CdrTabPanel',
+  props: {
     name: String,
-  })
-  const selectedTabName = inject("selectedTabName");
+  },
+  setup(props) {
+    const selectedTabName = inject('selectedTabName');
 
-  const isActive = computed(() => {
-    return props.name === selectedTabName?.value;
-  })
-  const panelId = computed(() => {
-    return `${kebabCase(props.name)}-panel`
-  })
-  const style = useCssModule();
+    const isActive = computed(() => props.name === selectedTabName?.value);
+    const panelId = computed(() => `${kebabCase(props.name)}-panel`);
+    const style = useCssModule();
+    return {
+      selectedTabName,
+      isActive,
+      panelId,
+      style,
+    };
+  },
+});
 </script>
 
 <template>
@@ -26,7 +35,7 @@
     :id="panelId"
     :aria-labelledby="name"
   >
-    <slot></slot>
+    <slot />
   </section>
 </template>
 
