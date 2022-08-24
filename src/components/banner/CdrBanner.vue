@@ -1,4 +1,46 @@
-/* eslint-disable no-unused-vars */
+<script>
+import {
+  defineComponent, useCssModule, computed,
+} from 'vue';
+import propValidator from '../../utils/propValidator';
+
+export default defineComponent({
+  name: 'CdrBanner',
+  props: {
+    type: {
+      type: String,
+      validator: (value) => propValidator(
+        value,
+        ['info', 'warning', 'success', 'error', 'default'],
+      ),
+      default: 'default',
+    },
+  },
+
+  setup(props, ctx) {
+    const baseClass = 'cdr-banner';
+    const typeClass = computed(() => `${baseClass}--${props.type}`);
+    const prominenceClass = computed(() => (ctx.slots['message-body']
+      ? `${baseClass}__wrapper--prominence`
+      : undefined));
+    const hasIconLeft = ctx.slots['icon-left'];
+    const hasIconRight = ctx.slots['icon-right'];
+    const hasMessageBody = ctx.slots['message-body'];
+    const hasInfoAction = ctx.slots['info-action'];
+    return {
+      style: useCssModule(),
+      baseClass,
+      typeClass,
+      prominenceClass,
+      hasIconLeft,
+      hasIconRight,
+      hasMessageBody,
+      hasInfoAction,
+    };
+  },
+});
+</script>
+
 <template>
   <div :class="[style[baseClass], style[typeClass]]">
     <div :class="[style['cdr-banner__wrapper'], style[prominenceClass]]">
@@ -34,36 +76,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import {
-  useCssModule, computed, useSlots,
-} from 'vue';
-import propValidator from '../../utils/propValidator.js';
-
-const slots = useSlots();
-const props = defineProps({
-  type: {
-    type: String,
-    validator: (value) => propValidator(
-      value,
-      ['info', 'warning', 'success', 'error', 'default'],
-    ),
-    default: 'default',
-  },
-});
-const baseClass = 'cdr-banner';
-const style = useCssModule();
-const typeClass = computed(() => `${baseClass}--${props.type}`);
-const prominenceClass = computed(() => (slots['message-body']
-  ? `${baseClass}__wrapper--prominence`
-  : undefined));
-const hasIconLeft = slots['icon-left'];
-const hasIconRight = slots['icon-right'];
-const hasMessageBody = slots['message-body'];
-const hasInfoAction = slots['info-action'];
-
-</script>
 
 <style lang="scss" module src="./styles/CdrBanner.module.scss">
 </style>

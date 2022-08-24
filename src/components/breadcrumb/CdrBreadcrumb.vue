@@ -1,59 +1,72 @@
-<script setup>
-      // <!-- TODO: remove scoped slot vue-router-ish support? just use emit/prevent pattern? -->
-import { useCssModule, computed, ref, watch, nextTick } from 'vue';
-import uid from '../../utils/uid.js';
+<script >
+import {
+  defineComponent, useCssModule, computed, ref, watch, nextTick,
+} from 'vue';
+import uid from '../../utils/uid';
 
-const props = defineProps({
-  items: {
-    type: Array,
-    default: () => [],
-    validator: (value) => {
-      if (value.length && value.length > 0) {
-        for (let i = 0; i < value.length; i += 1) {
-          if (!(typeof value[i].item === 'object')) {
-            console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
-            return false;
-          }
-          if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
-            console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
-            return false;
+export default defineComponent({
+  name: 'CdrBreadcrumb',
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+      validator: (value) => {
+        if (value.length && value.length > 0) {
+          for (let i = 0; i < value.length; i += 1) {
+            if (!(typeof value[i].item === 'object')) {
+              console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
+              return false;
+            }
+            if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
+              console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
+              return false;
+            }
           }
         }
-      }
-      return true;
+        return true;
+      },
     },
-  },
-  /**
+    /**
    * Flag to track container width threshold exceeded
    */
-  truncationEnabled: {
-    type: Boolean,
-    default: true,
+    truncationEnabled: {
+      type: Boolean,
+      default: true,
+    },
+    id: {
+      type: String,
+    },
   },
-  id: {
-    type: String,
+
+  setup(props) {
+    const uniqueId = props.id ? props.id : uid();
+    const truncate = ref(props.truncationEnabled && props.items.length > 2);
+    const itemListEl = ref(null);
+    const ellipsisLabel = computed(() => {
+      const s = (props.items.length - 2) > 1 ? 's' : '';
+      return `show ${props.items.length - 2} more navigation level${s}`;
+    });
+
+    const handleEllipsisClick = () => {
+      truncate.value = false;
+      nextTick(() => {
+        itemListEl.value.querySelector('li a').focus();
+      });
+    };
+
+    watch(() => props.items, () => {
+      truncate.value = props.truncationEnabled && props.items.length > 2;
+    });
+
+    return {
+      style: useCssModule(),
+      uniqueId,
+      truncate,
+      itemListEl,
+      ellipsisLabel,
+      handleEllipsisClick,
+    };
   },
-});
-
-const uniqueId = props.id ? props.id : uid();
-const truncate = ref(props.truncationEnabled && props.items.length > 2);
-const itemListEl = ref(null);
-const ellipsisLabel = computed(() => {
-  const s = (props.items.length - 2) > 1 ? 's' : '';
-  return `show ${props.items.length - 2} more navigation level${s}`;
-});
-
-const handleEllipsisClick = () => {
-  truncate.value = false;
-  nextTick(() => {
-    itemListEl.value.querySelector('li a').focus();
-  })
-};
-
-const style = useCssModule();
-
-watch(() => props.items, () => {
-  truncate.value = props.truncationEnabled && props.items.length > 2;
 });
 </script>
 

@@ -5,14 +5,14 @@
     </h2>
     <div data-backstop="input-target">
       <cdr-input
-        class="demo-input"
+        label-class="demo-input"
         v-model="defaultModel"
         label="Default"
         :background="backgroundColor"
       />
 
       <cdr-input
-        class="demo-input"
+        label-class="demo-input"
         v-model="requiredModel"
         label="Required"
         required
@@ -20,7 +20,7 @@
       />
 
       <cdr-input
-        class="demo-input"
+        label-class="demo-input"
         v-model="optionalModel"
         label="Optional"
         optional
@@ -29,7 +29,7 @@
     </div>
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="hiddenModel"
       label="This has no label"
       hide-label
@@ -37,7 +37,7 @@
     />
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="disabledModel"
       label="Disabled Input"
       data-backstop="input-disabled"
@@ -46,35 +46,35 @@
     />
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="sizeModel"
       label="Large Input"
       size="large"
       :background="backgroundColor"
     />
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="sizeModel"
       label="Large@xs Input"
       size="large@xs"
       :background="backgroundColor"
     />
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="sizeModel"
       label="Large@sm Input"
       size="large@sm"
       :background="backgroundColor"
     />
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="sizeModel"
       label="Large@md Input"
       size="large@md"
       :background="backgroundColor"
     />
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="sizeModel"
       label="Large@lg Input"
       size="large@lg"
@@ -82,7 +82,7 @@
     />
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="requiredWithIcons"
       id="required-with-icon"
       label="Required with Icon"
@@ -116,7 +116,7 @@
 
     <form>
       <cdr-input
-        class="demo-input"
+        label-class="demo-input"
         v-model="formWithButtons"
         id="form-example"
         label="Form with Two Buttons"
@@ -135,14 +135,14 @@
             class="cdr-input__button"
             id="input-tooltip"
           >
-          <template #trigger>
-            <cdr-button
-              :icon-only="true"
-              aria-label="navigate"
-            >
-              <icon-map />
-            </cdr-button>
-          </template>
+            <template #trigger>
+              <cdr-button
+                :icon-only="true"
+                aria-label="navigate"
+              >
+                <icon-map />
+              </cdr-button>
+            </template>
             hey where am i?
           </cdr-tooltip>
           <cdr-button
@@ -157,7 +157,7 @@
     </form>
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="helperValidationModel"
       :error="helperValidationError"
       @blur="validate"
@@ -183,7 +183,7 @@
     </cdr-input>
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="helperValidationModel"
       :error="errorFromProps"
       @blur="validate"
@@ -205,7 +205,7 @@
     </cdr-input>
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       v-model="helperValidationModel"
       :error="errorFromProps"
       @blur="validate"
@@ -223,7 +223,7 @@
     </cdr-input>
 
     <cdr-input
-      class="demo-input"
+      label-class="demo-input"
       :required="true"
       v-model="megaModel"
       :error="megaErr"
@@ -262,31 +262,31 @@
           class="cdr-input__button"
           id="mega-tooltip"
         >
-        <template #trigger>
-          <cdr-button
-            :icon-only="true"
-            @click="megaErr = 'you have five minutes to fix this'"
-            size="large"
-            aria-label="Click me to cause an error"
-          >
-            <icon-x-stroke />
-          </cdr-button>
-        </template>
+          <template #trigger>
+            <cdr-button
+              :icon-only="true"
+              @click="megaErr = 'you have five minutes to fix this'"
+              size="large"
+              aria-label="Click me to cause an error"
+            >
+              <icon-x-stroke />
+            </cdr-button>
+          </template>
           I put the input into an error state!
         </cdr-tooltip>
         <cdr-popover
           class="cdr-input__button"
           id="mega-popover"
         >
-        <template #trigger>
-          <cdr-button
-            :icon-only="true"
-            size="large"
-            aria-label="Hello"
-          >
-            <icon-information-stroke />
-          </cdr-button>
-        </template>
+          <template #trigger>
+            <cdr-button
+              :icon-only="true"
+              size="large"
+              aria-label="Hello"
+            >
+              <icon-information-stroke />
+            </cdr-button>
+          </template>
           Hey What's Up?
         </cdr-popover>
       </template>
@@ -377,7 +377,7 @@ export default {
   },
   watch: {
     $route(to) {
-       this.setBackground(to.query.background);
+      this.setBackground(to.query.background);
     },
   },
   mounted() {

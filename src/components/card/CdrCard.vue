@@ -1,15 +1,22 @@
-<script setup>
-import { useCssModule } from 'vue';
+<script>
+import { defineComponent, useCssModule } from 'vue';
 
-defineProps({
+export default defineComponent({
+  name: 'CdrCard',
+  props: {
     tag: {
       type: String,
       default: 'article',
-    }
-});
+    },
+  },
 
-const baseClass = 'cdr-card';
-const style = useCssModule();
+  setup() {
+    return {
+      style: useCssModule(),
+      baseClass: 'cdr-card',
+    };
+  },
+});
 </script>
 
 <template>
