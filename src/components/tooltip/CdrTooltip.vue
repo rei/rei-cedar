@@ -1,5 +1,5 @@
 <script>
-import { useCssModule, defineComponent, defineEmits, useSlots, ref, onMounted, watch } from 'vue';
+import { useCssModule, defineComponent, useSlots, ref, onMounted, watch } from 'vue';
 import mapClasses from '../../utils/mapClasses.js';
 import CdrPopup from '../popup/CdrPopup.vue';
 import propValidator from '../../utils/propValidator.js';
