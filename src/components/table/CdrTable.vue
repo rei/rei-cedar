@@ -1,51 +1,65 @@
-<script setup>
-import { useCssModule, computed } from 'vue';
-
+<script>
+import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses.js';
 import { buildBooleanClass } from '../../utils/buildClass.js';
 import propValidator from '../../utils/propValidator.js';
 
-const props = defineProps({
-  striped: {
-    type: Boolean,
-    default: false,
+export default defineComponent({
+  name: 'CdrTable',
+  props: {
+    striped: {
+      type: Boolean,
+      default: false,
+    },
+    border: {
+      type: Boolean,
+      default: true,
+    },
+    fullWidth: {
+      type: [Boolean, String],
+      default: true,
+    },
+    responsive: {
+      type: Boolean,
+      default: true,
+    },
+    hover: {
+      type: Boolean,
+      default: false,
+    },
+    size: {
+      type: String,
+      default: 'medium',
+      validator: (value) => propValidator(
+        value,
+        ['small', 'medium', 'large'],
+      ),
+    },
   },
-  border: {
-    type: Boolean,
-    default: true,
+  setup(props) {
+    const baseClass = 'cdr-table';
+    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
+    const stripedClass = computed(() => props.striped && `${baseClass}--striped`);
+    const hoverClass = computed(() => props.hover && `${baseClass}--hover`);
+    const borderClass = computed(() => props.border && !props.striped
+      && `${baseClass}--border`);
+    const fullWidthClass = computed(() => props.fullWidth
+      && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
+    const wrapperClass = computed(() => props.responsive && `${baseClass}--responsive`);
+    const style = useCssModule();
+    return {
+      mapClasses,
+      baseClass,
+      sizeClass,
+      stripedClass,
+      hoverClass,
+      borderClass,
+      fullWidthClass,
+      wrapperClass,
+      style
+    }
   },
-  fullWidth: {
-    type: [Boolean, String],
-    default: true,
-  },
-  responsive: {
-    type: Boolean,
-    default: true,
-  },
-  hover: {
-    type: Boolean,
-    default: false,
-  },
-  size: {
-    type: String,
-    default: 'medium',
-    validator: (value) => propValidator(
-      value,
-      ['small', 'medium', 'large'],
-    ),
-  },
-});
-
-const baseClass = 'cdr-table';
-const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-const stripedClass = computed(() => props.striped && `${baseClass}--striped`);
-const hoverClass = computed(() => props.hover && `${baseClass}--hover`);
-const borderClass = computed(() => props.border && !props.striped
-  && `${baseClass}--border`);
-const fullWidthClass = computed(() => props.fullWidth
-  && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
-const wrapperClass = computed(() => props.responsive && `${baseClass}--responsive`);
-const style = useCssModule();
+})
 </script>
 
 <template>
