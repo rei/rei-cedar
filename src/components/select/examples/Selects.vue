@@ -154,14 +154,14 @@
     </cdr-select>
     <cdr-text>Selected Value: {{ helperTextModel }}</cdr-text>
     <hr class="icon-hr">
-    
+
     <cdr-select
       label="Example with Helper Text and error"
       v-model="helperTextWithErrorModel"
       :background="backgroundColor"
       :options="dynamicData"
       prompt="Choose One"
-      :error="this.helperTextError"
+      :error="helperTextError"
       @change="validateHelperTextWithErrorModel"
     >
       <template #helper-text>
@@ -250,7 +250,7 @@
       aria-describedby="statusTest"
 
       prompt="Choose One"
-      :error="this.preIconModelError"
+      :error="preIconModelError"
       @change="validatePreIconModel"
     >
       <template #error>
@@ -269,7 +269,7 @@
       aria-describedby="alertTest"
 
       prompt="Choose One"
-      :error="this.preIconModel2Error"
+      :error="preIconModel2Error"
       @change="validatePreIconModel2"
     >
       <template #error>
@@ -285,14 +285,26 @@
       label="Nested Options"
     >
       <optgroup label="bread">
-        <option value="rye">rye</option>
-        <option value="sourdough">sourdough</option>
-        <option value="wheat">wheat</option>
+        <option value="rye">
+          rye
+        </option>
+        <option value="sourdough">
+          sourdough
+        </option>
+        <option value="wheat">
+          wheat
+        </option>
       </optgroup>
       <optgroup label="toppings">
-        <option value="provolone">provolone</option>
-        <option value="peppers">peppers</option>
-        <option value="gabagool">gabagool</option>
+        <option value="provolone">
+          provolone
+        </option>
+        <option value="peppers">
+          peppers
+        </option>
+        <option value="gabagool">
+          gabagool
+        </option>
       </optgroup>
     </cdr-select>
     <cdr-text>Selected Value: {{ nested }}</cdr-text>
@@ -380,14 +392,14 @@ export default {
       dynamicData: [{ value: 'a', text: 'a' }, { value: 'b', text: 'b' }],
       helperTextModel: '',
       helperTextError: false,
-      helperTextWithErrorModel:'',
+      helperTextWithErrorModel: '',
       infoLinkModel: '',
       infoIconModel: '',
       preIconModel: '',
       preIconModel2: '',
       preIconModelError: true,
       preIconModel2Error: true,
-      nested:'',
+      nested: '',
       multiple: ['1', '2'],
       multiple2: ['-1'],
       multiple2Data: ['a', 'b', 'c', 'd'],
@@ -396,7 +408,7 @@ export default {
   },
   watch: {
     $route(to) {
-       this.setBackground(to.query.background);
+      this.setBackground(to.query.background);
     },
   },
   mounted() {
@@ -410,7 +422,7 @@ export default {
       this.helperTextError = this.helperTextWithErrorModel == 'b';
     },
     validatePreIconModel() {
-      console.log(this.helperTextWithErrorModel)
+      console.log(this.helperTextWithErrorModel);
       this.preIconModelError = !this.preIconModel.length;
     },
     validatePreIconModel2() {

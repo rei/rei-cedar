@@ -16,7 +16,6 @@ export default defineComponent({
     // NOTE pagination now requires an ID
     id: {
       type: String,
-      default: uid(),
     },
     /**
      * Total number of pages. Sometimes the total number of pages is different than total page data
@@ -69,6 +68,7 @@ export default defineComponent({
   setup(props, ctx) {
     const currentIdx = ref(0);
     const linkRefs = ref([]);
+    const uniqueId = props.id ? props.id : uid();
     const setCurrentIdx = (page) => {
       currentIdx.value = props.pages.map((x) => x.page).indexOf(page);
     };
@@ -165,6 +165,7 @@ export default defineComponent({
     return {
       style: useCssModule(),
       mapClasses,
+      uniqueId,
       linkRefs,
       navigate,
       select,
@@ -216,14 +217,14 @@ export default defineComponent({
 
       <li
         v-for="(n, i) in paginationData"
-        :key="`pagination-${id}-li-${n.page}`"
+        :key="`pagination-${uniqueId}-li-${n.page}`"
         :class="style['cdr-pagination__li--links']"
       >
 
         <component
           v-if="n.page"
           :is="linkTag"
-          :id="`pagination-${id}-link-${n.page}`"
+          :id="`pagination-${uniqueId}-link-${n.page}`"
           :class="mapClasses(style, 'cdr-pagination__link', n.page === innerValue
             && 'cdr-pagination__link--current')"
           :aria-label="n.page === innerValue
@@ -246,7 +247,7 @@ export default defineComponent({
 
       <li :class="style['cdr-pagination__li--select']">
         <cdr-select
-          :id="`pagination-select-${id}`"
+          :id="`pagination-select-${uniqueId}`"
           v-model="innerValue"
           label="Navigate to page"
           hide-label
@@ -254,7 +255,7 @@ export default defineComponent({
         >
           <option
             v-for="page in paginationData.filter(n => n.page)"
-            :key="`pagination-${id}-select-${page.page}`"
+            :key="`pagination-${uniqueId}-select-${page.page}`"
             :value="page.page"
           >
             Page {{ page.page }}{{ totalPages === null ? '' : ` of ${totalPages}` }}

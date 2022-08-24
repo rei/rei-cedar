@@ -22,7 +22,6 @@ export default defineComponent({
     */
     id: {
       type: String,
-      default: uid(),
     },
     /**
      * Label text. This is required for a11y even if hiding the label with `hideLabel`.
@@ -79,6 +78,7 @@ export default defineComponent({
     const hasInfo = ctx.slots.info;
     const hasInfoAction = ctx.slots['info-action'];
     const hasPreIcon = ctx.slots['pre-icon'];
+    const uniqueId = props.id ? props.id : uid();
 
     const multipleClass = computed(() => props.multiple && 'cdr-select--multiple');
     const promptClass = computed(() => !props.modelValue && 'cdr-select__prompt');
@@ -142,6 +142,7 @@ export default defineComponent({
       hasInfo,
       hasInfoAction,
       hasPreIcon,
+      uniqueId,
       multipleClass,
       promptClass,
       preIconClass,
@@ -160,7 +161,7 @@ export default defineComponent({
 
 <template>
   <cdr-label-standalone
-    :for-id="id"
+    :for-id="uniqueId"
     :label="label"
     :hide-label="hideLabel"
     :required="required"
@@ -190,7 +191,7 @@ export default defineComponent({
       </span>
 
       <select
-        :id="id"
+        :id="uniqueId"
         :class="mapClasses(style,
                            baseClass,
                            sizeClass,
@@ -206,7 +207,7 @@ export default defineComponent({
         :aria-required="required || null"
 
         :aria-invalid="!!error || null"
-        :aria-errormessage="(!!error && `${id}-error`) || null"
+        :aria-errormessage="(!!error && `${uniqueId}-error`) || null"
         v-bind="$attrs"
         :aria-describedby="describedby || null"
         :value="modelValue"
@@ -247,7 +248,7 @@ export default defineComponent({
       <cdr-form-error
         :error="error"
         :role="errorRole"
-        :id="`${id}-error`"
+        :id="`${uniqueId}-error`"
         v-if="error"
       >
         <template #error>
