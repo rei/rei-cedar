@@ -1,5 +1,5 @@
-<script setup>
-import { ref, provide, useSlots, onMounted, nextTick, computed, useCssModule } from 'vue';
+<script>
+import { defineComponent, ref, provide, onMounted, nextTick, computed, useCssModule } from 'vue';
 import debounce from 'lodash/debounce';
 import mapClasses from '../../utils/mapClasses.js';
 import { modifyClassName } from '../../utils/buildClass.js';
@@ -7,7 +7,9 @@ import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
 
-const props = defineProps({
+export default defineComponent({
+  name: 'CdrTabs',
+  props: {
     height: {
       type: String,
       default: '240px',
@@ -22,185 +24,217 @@ const props = defineProps({
       type: String,
       default: CdrColorBackgroundPrimary,
     }
-})
+  },
+  setup(props, ctx) {
+    const slottedTabs = ctx.slots.default()[0].children?.length
+      ? ctx.slots.default()[0].children
+      : ctx.slots.default();
+    const baseClass = 'cdr-tabs';
 
-const slots = useSlots();
-const slottedTabs = slots.default()[0].children?.length
-  ? slots.default()[0].children
-  : slots.default();
-const baseClass = 'cdr-tabs';
+    //Refs
+    const tabs = ref(slottedTabs.map((tab) => ({
+      name: tab.props.name,
+      disabled: tab.props.disabled,
+      id: tab.props['aria-labelledby']
+    })));
+    const selectedTabName = ref(null);
+    const selectedIndex = ref(null);
+    const headerOverflow = ref(false);
+    const headerWidth = ref(0);
+    const tabElements = ref([]);
+    const tablist = ref(null);
+    const containerEl = ref(null);
+    const overflowLeft = ref(false);
+    const overflowRight = ref(false);
+    const underlineOffsetX = ref(0);
+    const underlineWidth = ref(0);
 
-//Refs
-const tabs = ref(slottedTabs.map((tab) => ({ 
-  name: tab.props.name,
-  disabled: tab.props.disabled,
-  id: tab.props['aria-labelledby'] 
-})));
-const selectedTabName = ref(null);
-const selectedIndex = ref(null);
-const headerOverflow = ref(false);
-const headerWidth = ref(0);
-const tabElements = ref([]);
-const tablist = ref(null);
-const containerEl = ref(null);
-const overflowLeft = ref(false);
-const overflowRight = ref(false);
-const underlineOffsetX = ref(0);
-const underlineWidth = ref(0);
+    provide("selectedTabName", selectedTabName);
 
-provide("selectedTabName", selectedTabName);
-
-//Computed
-const modifierClass = computed(() => props.modifier && modifyClassName('cdr-tabs', props.modifier));
-const sizeClass = computed(() => props.size && modifyClassName('cdr-tabs', props.size));
-const underlineStyle = computed(() => ({
-    transform: `translateX(${underlineOffsetX.value}px)`,
-    width: `${underlineWidth.value}px`,
-}));
-const gradientLeftStyle = computed(() => {
-    const gradient = `linear-gradient(to left, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
-    return {
-    background: gradient,
-    };
-});
-const gradientRightStyle = computed(() => {
-    const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
-    return {
-    background: gradient,
-    };
-});
-const checkIfActive = (index, tab) => {
-  return (selectedIndex.value === index && !tab.disabled);
-}
- const calculateOverflow = () => {
-    let containerWidth = 0;
-    if (containerEl.value) {
-        containerWidth = containerEl.value.offsetWidth;
+    //Computed
+    const modifierClass = computed(() => props.modifier && modifyClassName('cdr-tabs', props.modifier));
+    const sizeClass = computed(() => props.size && modifyClassName('cdr-tabs', props.size));
+    const underlineStyle = computed(() => ({
+      transform: `translateX(${underlineOffsetX.value}px)`,
+      width: `${underlineWidth.value}px`,
+    }));
+    const gradientLeftStyle = computed(() => {
+      const gradient = `linear-gradient(to left, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
+      return {
+        background: gradient,
+      };
+    });
+    const gradientRightStyle = computed(() => {
+      const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
+      return {
+        background: gradient,
+      };
+    });
+    const checkIfActive = (index, tab) => {
+      return (selectedIndex.value === index && !tab.disabled);
     }
-    headerOverflow.value = headerWidth.value > containerWidth;
-    if (headerOverflow.value) {
+    const calculateOverflow = () => {
+      let containerWidth = 0;
+      if (containerEl.value) {
+        containerWidth = containerEl.value.offsetWidth;
+      }
+      headerOverflow.value = headerWidth.value > containerWidth;
+      if (headerOverflow.value) {
         // Get Scroll Position
         const scrollX = tablist.value.scrollLeft;
         overflowLeft.value = scrollX > 1;
         overflowRight.value = (scrollX + 1) < (headerWidth.value - containerWidth);
-    } else {
+      } else {
         overflowLeft.value = false;
         overflowRight.value = false;
+      }
+    };
+
+    const getHeaderWidth = () => {
+      let headerElements = [];
+      if (tablist.value) {
+        headerElements = Array.from(tablist.value.children);
+      }
+      let totalWidth = 0;
+      headerElements.forEach((element, i) => {
+        // account for margin-left on header elements
+        if (i > 0) {
+          totalWidth += props.size === 'small' ? Number(CdrSpaceHalfX) : Number(CdrSpaceOneX);
+        }
+        totalWidth += element.offsetWidth || 0;
+      });
+      return totalWidth;
+    };
+
+    const updateUnderline = () => {
+      if (tabElements.value.length > 0) {
+        const activeTab = tabElements.value[selectedIndex.value];
+        const activeRect = activeTab.getBoundingClientRect();
+        const parentRect = tablist.value.getBoundingClientRect();
+        const offset = activeRect.x - parentRect.x;
+
+        underlineOffsetX.value = offset
+          - tablist.value.scrollLeft;
+        underlineWidth.value = activeRect.width;
+
+        // shrink/hide the underline if it scrolls outside the container
+        if (underlineOffsetX.value + underlineWidth.value >= parentRect.width) {
+          underlineWidth.value = Math.max(0, parentRect.width - underlineOffsetX.value);
+          underlineOffsetX.value = Math.min(underlineOffsetX.value, parentRect.width);
+        } else if (underlineOffsetX.value < 0) {
+          underlineWidth.value = Math.max(0, underlineWidth.value + underlineOffsetX.value);
+          underlineOffsetX.value = 0;
+        }
+      }
+    };
+
+    const selectTabNext = () => {
+      const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
+      if (isLastTab) {
+        return;
+      }
+
+      let nextIndex = selectedIndex.value + 1;
+      if (tabElements.value[nextIndex].disabled) {
+        nextIndex += 1
+      }
+
+      const nextIndexExists = (nextIndex <= tabElements.value.length - 1);
+      if (!nextIndexExists) {
+        return;
+      }
+
+      selectTab(nextIndex);
     }
-};
 
-const getHeaderWidth = () => {
-    let headerElements = [];
-    if (tablist.value) {
-    headerElements = Array.from(tablist.value.children);
+    const selectTabPrev = () => {
+      const isFirstTab = (selectedIndex.value <= 0);
+      if (isFirstTab) {
+        return;
+      }
+
+      let prevIndex = selectedIndex.value - 1;
+      if (tabElements.value[prevIndex].disabled) {
+        prevIndex -= 1
+      }
+
+      const previousIndexExists = (prevIndex >= 0);
+      if (!previousIndexExists) {
+        return;
+      }
+      selectTab(prevIndex)
     }
-    let totalWidth = 0;
-    headerElements.forEach((element, i) => {
-    // account for margin-left on header elements
-    if (i > 0) {
-        totalWidth += props.size === 'small' ? Number(CdrSpaceHalfX) : Number(CdrSpaceOneX);
+
+    const selectTab = async (index) => {
+      const tabToSelect = tabElements.value[index];
+      selectedTabName.value = tabs.value[index].name;
+      selectedIndex.value = index;
+      await nextTick();
+      tabToSelect.focus();
+      updateUnderline();
     }
-    totalWidth += element.offsetWidth || 0;
-    });
-    return totalWidth;
-};
 
-const updateUnderline = () => {
-    if (tabElements.value.length > 0) {
-    const activeTab = tabElements.value[selectedIndex.value];
-    const activeRect = activeTab.getBoundingClientRect();
-    const parentRect = tablist.value.getBoundingClientRect();
-    const offset = activeRect.x - parentRect.x;
-
-    underlineOffsetX.value = offset
-        - tablist.value.scrollLeft;
-    underlineWidth.value = activeRect.width;
-
-    // shrink/hide the underline if it scrolls outside the container
-    if (underlineOffsetX.value + underlineWidth.value >= parentRect.width) {
-        underlineWidth.value = Math.max(0, parentRect.width - underlineOffsetX.value);
-        underlineOffsetX.value = Math.min(underlineOffsetX.value, parentRect.width);
-    } else if (underlineOffsetX.value < 0) {
-        underlineWidth.value = Math.max(0, underlineWidth.value + underlineOffsetX.value);
-        underlineOffsetX.value = 0;
-    }
-    }
-};
-
-const selectTabNext = () => {
-  const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
-  if (isLastTab) {
-    return;
-  }
-
-  let nextIndex = selectedIndex.value + 1;
-  if(tabElements.value[nextIndex].disabled) {
-      nextIndex +=1
-  }
-
-  const nextIndexExists = (nextIndex <= tabElements.value.length - 1);
-  if (!nextIndexExists){
-      return;
-  }
-
-  selectTab(nextIndex);
-}
-
-const selectTabPrev = () => {
-  const isFirstTab = (selectedIndex.value <= 0);
-  if (isFirstTab) {
-    return;
-  }
-
-  let prevIndex = selectedIndex.value - 1;
-  if(tabElements.value[prevIndex].disabled) {
-      prevIndex -=1
-  }
-
-  const previousIndexExists = (prevIndex >= 0);
-  if (!previousIndexExists){
-      return;
-  }
-  selectTab(prevIndex)
-}
-
-const selectTab = async (index) => {
-  const tabToSelect = tabElements.value[index];  
-  selectedTabName.value = tabs.value[index].name;
-  selectedIndex.value = index;
-  await nextTick();
-  tabToSelect.focus();
-  updateUnderline();
-}
-
-onMounted(() => {
-    setInitialTabStates();
-    headerWidth.value = getHeaderWidth();
-    calculateOverflow();
-    setTimeout(()=>{
+    onMounted(() => {
+      setInitialTabStates();
+      headerWidth.value = getHeaderWidth();
+      calculateOverflow();
+      setTimeout(() => {
         updateUnderline();
-    }, 250);
-    window.addEventListener('resize', debounce(() => {
+      }, 250);
+      window.addEventListener('resize', debounce(() => {
         headerWidth.value = getHeaderWidth();
         calculateOverflow();
         updateUnderline();
-    }, 250));
-    tablist.value.addEventListener('scroll', debounce(() => {
+      }, 250));
+      tablist.value.addEventListener('scroll', debounce(() => {
         calculateOverflow();
         updateUnderline();
-    }, 50));
-})
-
-const setInitialTabStates = () => {
-    tabElements.value.forEach((tab, index) =>{
-        if(!tab.disabled && selectedIndex.value === null){
-            selectedIndex.value = index;
-            selectedTabName.value = tabs.value[index].name;
-        }
+      }, 50));
     })
-}
 
-const style = useCssModule();
+    const setInitialTabStates = () => {
+      tabElements.value.forEach((tab, index) => {
+        if (!tab.disabled && selectedIndex.value === null) {
+          selectedIndex.value = index;
+          selectedTabName.value = tabs.value[index].name;
+        }
+      })
+    }
+
+    const style = useCssModule();
+    return {
+      slottedTabs,
+      baseClass,
+      tabs,
+      selectedTabName,
+      selectedIndex,
+      headerOverflow,
+      headerWidth,
+      tabElements,
+      tablist,
+      containerEl,
+      overflowLeft,
+      overflowRight,
+      underlineOffsetX,
+      underlineWidth,
+      mapClasses,
+      modifierClass,
+      sizeClass,
+      underlineStyle,
+      gradientLeftStyle,
+      gradientRightStyle,
+      checkIfActive,
+      calculateOverflow,
+      getHeaderWidth,
+      updateUnderline,
+      selectTabNext,
+      selectTabPrev,
+      selectTab,
+      setInitialTabStates,
+      style
+    }
+  }
+})
 </script>
 
 <template>
