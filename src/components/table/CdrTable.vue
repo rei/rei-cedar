@@ -1,8 +1,8 @@
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
-import { buildBooleanClass } from '../../utils/buildClass.js';
-import propValidator from '../../utils/propValidator.js';
+import mapClasses from '../../utils/mapClasses';
+import { buildBooleanClass } from '../../utils/buildClass';
+import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
   name: 'CdrTable',
@@ -56,10 +56,10 @@ export default defineComponent({
       borderClass,
       fullWidthClass,
       wrapperClass,
-      style
-    }
+      style,
+    };
   },
-})
+});
 </script>
 
 <template>

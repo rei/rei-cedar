@@ -51,6 +51,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {
       optionalDependencies: ['test/unit/index.js'],
     }],
+    'no-use-before-define': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'vue/require-default-prop': 0,
@@ -62,5 +63,5 @@ module.exports = {
       ignoreTrailingComments: true,
     }],
     'vue/multiline-html-element-content-newline': 0,
-  }
-}
+  },
+};

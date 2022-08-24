@@ -3,26 +3,26 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
-import sizeProps from '../../props/size.js';
-import backgroundProps from '../../props/background.js';
-import mapClasses from '../../utils/mapClasses.js';
-import uid from '../../utils/uid.js';
+import sizeProps from '../../props/size';
+import backgroundProps from '../../props/background';
+import mapClasses from '../../utils/mapClasses';
+import uid from '../../utils/uid';
 
 export default defineComponent({
   name: 'CdrSelect',
-  inheritAttrs: false,
   components: {
     IconCaretDown,
     CdrLabelStandalone,
-    CdrFormError
+    CdrFormError,
   },
+  inheritAttrs: false,
   props: {
     /**
      * `id` for the select that is mapped to the label `for` attribute. If one is not provided, it will be generated.
     */
     id: {
       type: String,
-      default: uid()
+      default: uid(),
     },
     /**
      * Label text. This is required for a11y even if hiding the label with `hideLabel`.
@@ -80,7 +80,6 @@ export default defineComponent({
     const hasInfoAction = ctx.slots['info-action'];
     const hasPreIcon = ctx.slots['pre-icon'];
 
-
     const multipleClass = computed(() => props.multiple && 'cdr-select--multiple');
     const promptClass = computed(() => !props.modelValue && 'cdr-select__prompt');
     const preIconClass = computed(() => hasPreIcon && 'cdr-select--preicon');
@@ -100,7 +99,7 @@ export default defineComponent({
       }
 
       return helperText;
-    })
+    });
 
     // TODO: refactor, would be much clearer as a 1-2 liner
     const computedOpts = computed(() => {
@@ -128,12 +127,12 @@ export default defineComponent({
 
     const selectModel = computed({
       get() {
-        return props.modelValue
+        return props.modelValue;
       },
       set(newValue) {
-        ctx.emit('update:modelValue', newValue)
-      }
-    })
+        ctx.emit('update:modelValue', newValue);
+      },
+    });
     const style = useCssModule();
 
     return {
@@ -153,10 +152,10 @@ export default defineComponent({
       describedby,
       computedOpts,
       selectModel,
-      style
-    }
-  }
-})
+      style,
+    };
+  },
+});
 </script>
 
 <template>
@@ -193,13 +192,13 @@ export default defineComponent({
       <select
         :id="id"
         :class="mapClasses(style,
-          baseClass,
-          sizeClass,
-          promptClass,
-          multipleClass,
-          backgroundClass,
-          errorClass,
-          preIconClass,
+                           baseClass,
+                           sizeClass,
+                           promptClass,
+                           multipleClass,
+                           backgroundClass,
+                           errorClass,
+                           preIconClass,
         )"
         :multiple="multiple"
         :size="multipleSize"
@@ -234,11 +233,17 @@ export default defineComponent({
       <icon-caret-down :class="mapClasses(style, 'cdr-select__caret', caretDisabledClass)" />
     </div>
 
-    <template #info-action v-if="hasInfoAction">
+    <template
+      #info-action
+      v-if="hasInfoAction"
+    >
       <slot name="info-action" />
     </template>
 
-    <template #error v-if="error">
+    <template
+      #error
+      v-if="error"
+    >
       <cdr-form-error
         :error="error"
         :role="errorRole"

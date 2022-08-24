@@ -135,14 +135,14 @@
             class="cdr-input__button"
             id="input-tooltip"
           >
-          <template #trigger>
-            <cdr-button
-              :icon-only="true"
-              aria-label="navigate"
-            >
-              <icon-map />
-            </cdr-button>
-          </template>
+            <template #trigger>
+              <cdr-button
+                :icon-only="true"
+                aria-label="navigate"
+              >
+                <icon-map />
+              </cdr-button>
+            </template>
             hey where am i?
           </cdr-tooltip>
           <cdr-button
@@ -262,31 +262,31 @@
           class="cdr-input__button"
           id="mega-tooltip"
         >
-        <template #trigger>
-          <cdr-button
-            :icon-only="true"
-            @click="megaErr = 'you have five minutes to fix this'"
-            size="large"
-            aria-label="Click me to cause an error"
-          >
-            <icon-x-stroke />
-          </cdr-button>
-        </template>
+          <template #trigger>
+            <cdr-button
+              :icon-only="true"
+              @click="megaErr = 'you have five minutes to fix this'"
+              size="large"
+              aria-label="Click me to cause an error"
+            >
+              <icon-x-stroke />
+            </cdr-button>
+          </template>
           I put the input into an error state!
         </cdr-tooltip>
         <cdr-popover
           class="cdr-input__button"
           id="mega-popover"
         >
-        <template #trigger>
-          <cdr-button
-            :icon-only="true"
-            size="large"
-            aria-label="Hello"
-          >
-            <icon-information-stroke />
-          </cdr-button>
-        </template>
+          <template #trigger>
+            <cdr-button
+              :icon-only="true"
+              size="large"
+              aria-label="Hello"
+            >
+              <icon-information-stroke />
+            </cdr-button>
+          </template>
           Hey What's Up?
         </cdr-popover>
       </template>
@@ -377,7 +377,7 @@ export default {
   },
   watch: {
     $route(to) {
-       this.setBackground(to.query.background);
+      this.setBackground(to.query.background);
     },
   },
   mounted() {

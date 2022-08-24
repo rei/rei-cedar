@@ -2,7 +2,7 @@
 import {
   useCssModule, defineComponent, computed, ref, watch, onUpdated,
 } from 'vue';
-import propValidator from '../../utils/propValidator.js';
+import propValidator from '../../utils/propValidator';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 
@@ -10,7 +10,7 @@ export default defineComponent({
   name: 'CdrToast',
   components: {
     IconXSm,
-    CdrButton
+    CdrButton,
   },
   props: {
     type: {
@@ -108,27 +108,45 @@ export default defineComponent({
       closeToastWithDelay,
       addHandlers,
       removeHandlers,
-    }
-  }
-})
+    };
+  },
+});
 </script>
 
 <template>
-  <transition :enter-from-class="style['cdr-toast__transition--toast-enter-from']"
+  <transition
+    :enter-from-class="style['cdr-toast__transition--toast-enter-from']"
     :enter-active-class="style['cdr-toast__transition--toast-enter-active']"
     :leave-to-class="style['cdr-toast__transition--toast-leave-to']"
-    :leave-active-class="style['cdr-toast__transition--toast-leave-active']">
-    <div v-if="opened" :class="[style[baseClass], style[typeClass]]" role="status" ref="toastEl">
+    :leave-active-class="style['cdr-toast__transition--toast-leave-active']"
+  >
+    <div
+      v-if="opened"
+      :class="[style[baseClass], style[typeClass]]"
+      role="status"
+      ref="toastEl"
+    >
       <div :class="[style['cdr-toast__main']]">
-        <div v-if="hasIconLeft" :class="[style['cdr-toast__icon-left']]">
+        <div
+          v-if="hasIconLeft"
+          :class="[style['cdr-toast__icon-left']]"
+        >
           <slot name="icon-left" />
         </div>
         <span :class="[style['cdr-toast__message']]">
           <slot name="default" />
         </span>
-        <cdr-button :class="[style['cdr-toast__close-button']]" icon-only @click="closeToast" aria-label="Close"
-          size="small">
-          <icon-x-sm slot="icon" inherit-color />
+        <cdr-button
+          :class="[style['cdr-toast__close-button']]"
+          icon-only
+          @click="closeToast"
+          aria-label="Close"
+          size="small"
+        >
+          <icon-x-sm
+            slot="icon"
+            inherit-color
+          />
         </cdr-button>
       </div>
     </div>

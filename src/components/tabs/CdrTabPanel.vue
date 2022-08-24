@@ -1,6 +1,8 @@
 <script>
-import { computed, defineComponent, inject, useCssModule } from 'vue';
-import kebabCase from 'lodash/kebabCase';
+import {
+  computed, defineComponent, inject, useCssModule,
+} from 'vue';
+import kebabCase from 'lodash-es/kebabCase';
 
 export default defineComponent({
   name: 'CdrTabPanel',
@@ -8,23 +10,19 @@ export default defineComponent({
     name: String,
   },
   setup(props) {
-    const selectedTabName = inject("selectedTabName");
+    const selectedTabName = inject('selectedTabName');
 
-    const isActive = computed(() => {
-      return props.name === selectedTabName?.value;
-    })
-    const panelId = computed(() => {
-      return `${kebabCase(props.name)}-panel`
-    })
+    const isActive = computed(() => props.name === selectedTabName?.value);
+    const panelId = computed(() => `${kebabCase(props.name)}-panel`);
     const style = useCssModule();
     return {
       selectedTabName,
       isActive,
       panelId,
-      style
-    }
-  }
-})
+      style,
+    };
+  },
+});
 </script>
 
 <template>
@@ -37,7 +35,7 @@ export default defineComponent({
     :id="panelId"
     :aria-labelledby="name"
   >
-    <slot></slot>
+    <slot />
   </section>
 </template>
 

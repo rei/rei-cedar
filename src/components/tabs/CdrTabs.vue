@@ -1,11 +1,13 @@
 <script>
-import { defineComponent, ref, provide, onMounted, nextTick, computed, useCssModule } from 'vue';
-import debounce from 'lodash/debounce';
-import mapClasses from '../../utils/mapClasses.js';
-import { modifyClassName } from '../../utils/buildClass.js';
+import {
+  defineComponent, ref, provide, onMounted, nextTick, computed, useCssModule,
+} from 'vue';
+import debounce from 'lodash-es/debounce';
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
+import mapClasses from '../../utils/mapClasses';
+import { modifyClassName } from '../../utils/buildClass';
 
 export default defineComponent({
   name: 'CdrTabs',
@@ -23,7 +25,7 @@ export default defineComponent({
     backgroundColor: {
       type: String,
       default: CdrColorBackgroundPrimary,
-    }
+    },
   },
   setup(props, ctx) {
     const slottedTabs = ctx.slots.default()[0].children?.length
@@ -31,11 +33,11 @@ export default defineComponent({
       : ctx.slots.default();
     const baseClass = 'cdr-tabs';
 
-    //Refs
+    // Refs
     const tabs = ref(slottedTabs.map((tab) => ({
       name: tab.props.name,
       disabled: tab.props.disabled,
-      id: tab.props['aria-labelledby']
+      id: tab.props['aria-labelledby'],
     })));
     const selectedTabName = ref(null);
     const selectedIndex = ref(null);
@@ -49,10 +51,11 @@ export default defineComponent({
     const underlineOffsetX = ref(0);
     const underlineWidth = ref(0);
 
-    provide("selectedTabName", selectedTabName);
+    provide('selectedTabName', selectedTabName);
 
-    //Computed
-    const modifierClass = computed(() => props.modifier && modifyClassName('cdr-tabs', props.modifier));
+    // Computed
+    const modifierClass = computed(() => props.modifier
+      && modifyClassName('cdr-tabs', props.modifier));
     const sizeClass = computed(() => props.size && modifyClassName('cdr-tabs', props.size));
     const underlineStyle = computed(() => ({
       transform: `translateX(${underlineOffsetX.value}px)`,
@@ -65,14 +68,13 @@ export default defineComponent({
       };
     });
     const gradientRightStyle = computed(() => {
-      const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
+      const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0),
+        ${props.backgroundColor})`;
       return {
         background: gradient,
       };
     });
-    const checkIfActive = (index, tab) => {
-      return (selectedIndex.value === index && !tab.disabled);
-    }
+    const checkIfActive = (index, tab) => (selectedIndex.value === index && !tab.disabled);
     const calculateOverflow = () => {
       let containerWidth = 0;
       if (containerEl.value) {
@@ -127,6 +129,14 @@ export default defineComponent({
         }
       }
     };
+    const selectTab = async (index) => {
+      const tabToSelect = tabElements.value[index];
+      selectedTabName.value = tabs.value[index].name;
+      selectedIndex.value = index;
+      await nextTick();
+      tabToSelect.focus();
+      updateUnderline();
+    };
 
     const selectTabNext = () => {
       const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
@@ -136,7 +146,7 @@ export default defineComponent({
 
       let nextIndex = selectedIndex.value + 1;
       if (tabElements.value[nextIndex].disabled) {
-        nextIndex += 1
+        nextIndex += 1;
       }
 
       const nextIndexExists = (nextIndex <= tabElements.value.length - 1);
@@ -145,7 +155,7 @@ export default defineComponent({
       }
 
       selectTab(nextIndex);
-    }
+    };
 
     const selectTabPrev = () => {
       const isFirstTab = (selectedIndex.value <= 0);
@@ -155,24 +165,24 @@ export default defineComponent({
 
       let prevIndex = selectedIndex.value - 1;
       if (tabElements.value[prevIndex].disabled) {
-        prevIndex -= 1
+        prevIndex -= 1;
       }
 
       const previousIndexExists = (prevIndex >= 0);
       if (!previousIndexExists) {
         return;
       }
-      selectTab(prevIndex)
-    }
+      selectTab(prevIndex);
+    };
 
-    const selectTab = async (index) => {
-      const tabToSelect = tabElements.value[index];
-      selectedTabName.value = tabs.value[index].name;
-      selectedIndex.value = index;
-      await nextTick();
-      tabToSelect.focus();
-      updateUnderline();
-    }
+    const setInitialTabStates = () => {
+      tabElements.value.forEach((tab, index) => {
+        if (!tab.disabled && selectedIndex.value === null) {
+          selectedIndex.value = index;
+          selectedTabName.value = tabs.value[index].name;
+        }
+      });
+    };
 
     onMounted(() => {
       setInitialTabStates();
@@ -190,16 +200,7 @@ export default defineComponent({
         calculateOverflow();
         updateUnderline();
       }, 50));
-    })
-
-    const setInitialTabStates = () => {
-      tabElements.value.forEach((tab, index) => {
-        if (!tab.disabled && selectedIndex.value === null) {
-          selectedIndex.value = index;
-          selectedTabName.value = tabs.value[index].name;
-        }
-      })
-    }
+    });
 
     const style = useCssModule();
     return {
@@ -231,10 +232,10 @@ export default defineComponent({
       selectTabPrev,
       selectTab,
       setInitialTabStates,
-      style
-    }
-  }
-})
+      style,
+    };
+  },
+});
 </script>
 
 <template>
@@ -255,32 +256,37 @@ export default defineComponent({
         )"
         :style="gradientLeftStyle"
       />
-    <ul :class="style['cdr-tabs__header-container']" role="tablist" ref="tablist">
-      <li v-for="(tab, index) in tabs" 
-        :key="`${tab.name}-${index}`"
-        role="presentation"
-        :class="style['cdr-tabs__header']" 
+      <ul
+        :class="style['cdr-tabs__header-container']"
+        role="tablist"
+        ref="tablist"
       >
-        <button
-          :ref="el => { tabElements[index] = el }"
-          :id="tab.id"
-          :disabled="tab.disabled"
-          :aria-selected="checkIfActive(index, tab)"
-          :tabIndex="checkIfActive(index, tab) ? 0 : -1"
-          :class="mapClasses(
+        <li
+          v-for="(tab, index) in tabs"
+          :key="`${tab.name}-${index}`"
+          role="presentation"
+          :class="style['cdr-tabs__header']"
+        >
+          <button
+            :ref="el => { tabElements[index] = el }"
+            :id="tab.id"
+            :disabled="tab.disabled"
+            :aria-selected="checkIfActive(index, tab)"
+            :tabIndex="checkIfActive(index, tab) ? 0 : -1"
+            :class="mapClasses(
               style,
               checkIfActive(index, tab) ? 'cdr-tabs__header-item-active' : '',
               'cdr-tabs__header-item',
               tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
             )"
-          role="tab"
-          @click.prevent="selectTab(index)"
-          @keyup.right="selectTabNext"
-          @keyup.left="selectTabPrev"
-        >{{ tab.name }}</button>
-      </li>
-    </ul>
-    <div
+            role="tab"
+            @click.prevent="selectTab(index)"
+            @keyup.right="selectTabNext"
+            @keyup.left="selectTabPrev"
+          >{{ tab.name }}</button>
+        </li>
+      </ul>
+      <div
         :class="mapClasses(
           style,
           'cdr-tabs__gradient',
@@ -294,7 +300,7 @@ export default defineComponent({
         :style="underlineStyle"
       />
     </div>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

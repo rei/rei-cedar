@@ -1,6 +1,6 @@
 <script>
 import {
-  defineComponent, useCssModule, computed, ref,
+  defineComponent, useCssModule, computed,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';

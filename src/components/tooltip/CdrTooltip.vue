@@ -1,8 +1,11 @@
 <script>
-import { useCssModule, defineComponent, useSlots, ref, onMounted, watch } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
+import {
+  useCssModule, defineComponent, ref, onMounted, watch,
+} from 'vue';
+import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
-import propValidator from '../../utils/propValidator.js';
+import propValidator from '../../utils/propValidator';
+
 export default defineComponent({
   name: 'CdrTooltip',
   components: {
@@ -42,7 +45,7 @@ export default defineComponent({
     let popupElement;
     const popupEl = ref(null);
     const triggerEl = ref(null);
-    const hasTrigger = ctx.slots['trigger'];
+    const hasTrigger = ctx.slots.trigger;
 
     const openTooltip = (e) => {
       if (timeout) clearTimeout(timeout);
@@ -88,16 +91,18 @@ export default defineComponent({
       openTooltip,
       closeTooltip,
       addHandlers,
-      mapClasses
-    }
-  }
-})
+      mapClasses,
+    };
+  },
+});
 </script>
 
 <template>
-  <div :class="mapClasses(
-    style, 'cdr-tooltip--wrapper', hasTrigger && 'cdr-tooltip--position'
-  )">
+  <div
+    :class="mapClasses(
+      style, 'cdr-tooltip--wrapper', hasTrigger && 'cdr-tooltip--position'
+    )"
+  >
     <div ref="triggerEl">
       <slot name="trigger" />
     </div>
