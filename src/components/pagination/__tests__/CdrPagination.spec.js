@@ -232,7 +232,6 @@ describe('CdrPagination', () => {
         pages: makePages(20),
         modelValue: 5,
       },
-      // TODO: uhhh what?
       attrs: {
         'onUpdate:modelValue': async (newVal) => { // simulate v-model update
           wrapper.setProps({ modelValue: newVal });
