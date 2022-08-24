@@ -1,12 +1,13 @@
 <script>
 import {
-  useCssModule, defineComponent, computed, useSlots, ref, watch, onUpdated,
+  useCssModule, defineComponent, computed, ref, watch, onUpdated,
 } from 'vue';
 import propValidator from '../../utils/propValidator.js';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 
 export default defineComponent({
+  name: 'CdrToast',
   components: {
     IconXSm,
     CdrButton
@@ -34,10 +35,9 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    const slots = useSlots();
     const baseClass = 'cdr-toast';
     const style = useCssModule();
-    const hasIconLeft = slots['icon-left'];
+    const hasIconLeft = ctx.slots['icon-left'];
     const opened = ref(null);
     const toastEl = ref(null);
     let timeout;
@@ -95,7 +95,6 @@ export default defineComponent({
     });
 
     return {
-      slots,
       baseClass,
       style,
       hasIconLeft,

@@ -36,15 +36,13 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    const slots = useSlots();
     const style = useCssModule();
-
     const isOpen = ref(false);
     let timeout;
     let popupElement;
     const popupEl = ref(null);
     const triggerEl = ref(null);
-    const hasTrigger = slots['trigger'];
+    const hasTrigger = ctx.slots['trigger'];
 
     const openTooltip = (e) => {
       if (timeout) clearTimeout(timeout);
@@ -81,7 +79,6 @@ export default defineComponent({
     });
 
     return {
-      slots,
       style,
       isOpen,
       popupElement,
