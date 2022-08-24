@@ -5,7 +5,7 @@ import CdrPopup from '../popup/CdrPopup.vue';
 import propValidator from '../../utils/propValidator.js';
 export default defineComponent({
   name: 'CdrTooltip',
-        components: {
+  components: {
     CdrPopup,
   },
   props: {
@@ -37,7 +37,6 @@ export default defineComponent({
   },
   setup(props, ctx) {
     const slots = useSlots();
-    //const emit = defineEmits(['opened', 'closed']);
     const style = useCssModule();
 
     const isOpen = ref(false);
@@ -96,52 +95,6 @@ export default defineComponent({
     }
   }
 })
-
-
-// const slots = useSlots();
-// const emit = defineEmits(['opened', 'closed']);
-// const style = useCssModule();
-
-// const isOpen = ref(false);
-// let timeout;
-// let popupElement;
-// const popupEl = ref(null);
-// const triggerEl = ref(null);
-// const hasTrigger = slots['trigger'];
-
-// const openTooltip = (e) => {
-//   if (timeout) clearTimeout(timeout);
-//   isOpen.value = true;
-//   emit('opened', e);
-// };
-// const closeTooltip = (e) => {
-//   timeout = setTimeout(() => {
-//     isOpen.value = false;
-//     emit('closed', e);
-//   }, 250);
-// };
-// const addHandlers = () => {
-//   const triggerElement = triggerEl.value.children[0];
-//   popupElement = popupEl.value?.$el;
-//   if (triggerElement) {
-//     triggerElement.addEventListener('mouseover', openTooltip);
-//     triggerElement.addEventListener('focus', openTooltip);
-
-//     triggerElement.addEventListener('mouseleave', closeTooltip);
-//     triggerElement.addEventListener('blur', closeTooltip);
-
-//     popupElement.addEventListener('mouseover', openTooltip);
-//     popupElement.addEventListener('mouseleave', closeTooltip);
-//   }
-// };
-
-// watch(() => props.open, () => (props.open ? openTooltip() : closeTooltip()));
-
-// onMounted(() => {
-//   addHandlers();
-//   const trigger = triggerEl.value.children[0];
-//   if (trigger) trigger.setAttribute('aria-describedby', props.id);
-// });
 </script>
 
 <template>
