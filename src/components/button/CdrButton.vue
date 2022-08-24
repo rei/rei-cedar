@@ -102,12 +102,12 @@ export default defineComponent({
                        iconOnlyClass,
                        iconLeftClass,
                        iconRightClass,
-                       iconOnlyClass,
                        withBackgroundClass,
     )"
     :type="buttonType"
   >
     <slot name="icon-left" />
+    <slot name="icon" />
     <slot />
     <slot name="icon-right" />
   </component>
