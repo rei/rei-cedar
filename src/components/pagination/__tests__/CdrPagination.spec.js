@@ -194,6 +194,8 @@ describe('CdrPagination', () => {
       });
       disabledPrev = wrapper.find('li');
     });
+      disabledPrev = wrapper.find('li');
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -224,6 +226,9 @@ describe('CdrPagination', () => {
           modelValue: 10,
         },
       });
+      allLinks = wrapper.findAll('li');
+      disabledNext = allLinks[allLinks.length - 1];
+    });
       allLinks = wrapper.findAll('li');
       disabledNext = allLinks[allLinks.length - 1];
     });

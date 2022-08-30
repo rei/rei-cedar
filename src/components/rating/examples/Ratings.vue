@@ -134,17 +134,17 @@
     />
 
     <!-- Responsive Size -->
-    <h3>
+    <cdr-text>
       Responsive Growing
-    </h3>
+    </cdr-text>
     <cdr-rating
       rating="2"
       count="9"
       size="small@xs medium@md large@lg"
     />
-    <h3>
+    <cdr-text>
       Responsive Inverse
-    </h3>
+    </cdr-text>
     <cdr-rating
       rating="3"
       count="100"

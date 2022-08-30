@@ -31,6 +31,8 @@ exports[`CdrToast > matches snapshot 1`] = `
         
         
         
+        
+        
         <svg
           aria-hidden="true"
           class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"

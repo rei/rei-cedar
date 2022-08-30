@@ -1,23 +1,26 @@
-<script setup>
+<script>
+import { defineComponent, useCssModule } from 'vue';
 
-import { 
-  useCssModule
-} from 'vue';
-
-const props = defineProps({
-  summary: {
-    type: String,
+export default defineComponent({
+  name: 'CdrCaption',
+  props: {
+    summary: {
+      type: String,
+    },
+    credit: {
+      type: String,
+    },
   },
-  credit: {
-    type: String,
+
+  setup() {
+    return {
+      style: useCssModule(),
+      baseClass: 'cdr-caption',
+      summaryClass: 'cdr-caption__summary',
+      citeClass: 'cdr-caption__cite',
+    };
   },
 });
-
-const baseClass = 'cdr-caption';
-const style = useCssModule();
-const summaryClass = 'cdr-caption__summary';
-const citeClass = 'cdr-caption__cite';
-
 </script>
 
 <template>

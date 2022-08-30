@@ -28,24 +28,30 @@ Object.keys(iconData).forEach(function (name) {
   const { innerHTML } = fragment;
 
 
-// TODO: .VUE3-ify!
+
   // create vue component
   const component = `
-<template>
-<cdr-icon v-bind="props">
-  <slot/>
-  ${innerHTML.trim()}
-</cdr-icon>
-</template>
-<script setup>
-  import CdrIcon from '../CdrIcon.vue';
-  const props = defineProps({
-    props: {
-      type: Object,
-    },
-  })
-</script>
-`;
+    <script>
+      import { defineComponent } from 'vue';
+      import CdrIcon from '../CdrIcon.vue';
+
+      export default defineComponent({
+        name: '${pascalName}',
+        components: { CdrIcon },
+        props: {
+          props: {
+            type: Object,
+          }
+        },
+      });
+    </script>
+    <template>
+    <cdr-icon v-bind="props">
+      <slot/>
+      ${innerHTML.trim()}
+    </cdr-icon>
+    </template>
+  `;
 
   // write component file
   fs.outputFileSync(`${outFile}`, component);

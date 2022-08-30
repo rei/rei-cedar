@@ -1,9 +1,11 @@
-<script setup>
-import { useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
-import propValidator from '../../utils/propValidator.js';
+<script>
+import { defineComponent, useCssModule, computed } from 'vue';
+import mapClasses from '../../utils/mapClasses';
+import propValidator from '../../utils/propValidator';
 
-const props = defineProps({
+export default defineComponent({
+  name: 'CdrLink',
+  props: {
     tag: {
       type: String,
       default: 'a',
@@ -25,20 +27,30 @@ const props = defineProps({
     target: String,
     /** @ignore */
     rel: String,
-});
-const baseClass = 'cdr-link';
-const style = useCssModule();
+  },
 
-const computedHref = computed(() => (props.tag === 'a' ? props.href : null));
-const computedRel = computed(() => {
-  if (props.target === '_blank') {
-    return props.rel || 'noopener noreferrer';
-  }
-  return props.rel;
+  setup(props) {
+    const baseClass = 'cdr-link';
+    const computedHref = computed(() => (props.tag === 'a' ? props.href : null));
+    const computedRel = computed(() => {
+      if (props.target === '_blank') {
+        return props.rel || 'noopener noreferrer';
+      }
+      return props.rel;
+    });
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+    const inheritColorClass = computed(() => props.inheritColor && 'cdr-link--inherit-color');
+    return {
+      style: useCssModule(),
+      baseClass,
+      computedHref,
+      computedRel,
+      modifierClass,
+      inheritColorClass,
+      mapClasses,
+    };
+  },
 });
-
-const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
-const inheritColorClass = computed(() => props.inheritColor && 'cdr-link--inherit-color');
 </script>
 
 <template>

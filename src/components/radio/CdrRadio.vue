@@ -1,18 +1,18 @@
 <script>
-  export default {
-    inheritAttrs: false,
-    customOptions: {}
-  }
-</script>
-<script setup>
-import { useCssModule, computed, ref } from 'vue';
-
-import propValidator from '../../utils/propValidator.js';
+import {
+  defineComponent, useCssModule, computed,
+} from 'vue';
+import propValidator from '../../utils/propValidator';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
-import sizeProps from '../../props/size.js';
-import backgroundProps from '../../props/background.js';
+import sizeProps from '../../props/size';
+import backgroundProps from '../../props/background';
 
-const props = defineProps({
+export default defineComponent({
+  name: 'CdrRadio',
+  components: { CdrLabelWrapper },
+  inheritAttrs: false,
+  customOptions: {},
+  props: {
     /**
      * Class that is added to the label for custom styles
      */
@@ -55,20 +55,27 @@ const props = defineProps({
     modelValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
     },
-})
-const emit = defineEmits(['update:modelValue']);
-
-const baseClass = 'cdr-radio';
-const newValue = ref(props.modelValue);
-const radioModel = computed({
-  get() {
-    return props.modelValue
   },
-  set(newValue) {
-    emit('update:modelValue', newValue)
-  }
-})
-const style = useCssModule();
+
+  setup(props, ctx) {
+    const baseClass = 'cdr-radio';
+    const radioModel = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(newValue) {
+        ctx.emit('update:modelValue', newValue);
+      },
+    });
+    return {
+      style: useCssModule(),
+      baseClass,
+      radioModel,
+    };
+  },
+
+});
+
 </script>
 
 <template>
