@@ -42,7 +42,6 @@ exports[`CdrImg > image with auto ratio > renders correctly 1`] = `
 exports[`CdrImg > when arbitrary HTML attrs are passed > renders correctly 1`] = `
 <div
   class="cdr-image-ratio"
-  loading="lazy"
   style="--ratio: 100%;"
 >
   <img

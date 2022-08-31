@@ -11,6 +11,8 @@ exports[`CdrButton > component unit tests > default component with no configurat
   
   
   
+  
+  
 </button>
 `;
 
@@ -20,6 +22,8 @@ exports[`CdrButton > component unit tests > when "el" is set to "a" > renders co
   el="a"
   type="button"
 >
+  
+  
   
   
   
@@ -40,6 +44,8 @@ exports[`CdrButton > component unit tests > when "iconOnly" and "withBackground"
   
   
   
+  
+  
 </button>
 `;
 
@@ -48,6 +54,8 @@ exports[`CdrButton > component unit tests > when "iconOnly" is set to true and s
   class="cdr-button cdr-button--primary cdr-button--icon-only-large cdr-button--icon-only"
   type="button"
 >
+  
+  
   
   
   
@@ -68,6 +76,8 @@ exports[`CdrButton > component unit tests > with a function passed to the onClic
   
   
   
+  
+  
 </button>
 `;
 
@@ -78,6 +88,8 @@ exports[`CdrButton > component unit tests > with an icon-left slot > renders cor
 >
   
   <div />
+  
+  
   
   
   
@@ -94,6 +106,8 @@ exports[`CdrButton > component unit tests > with an icon-left slot > renders cor
   class="cdr-button cdr-button--primary cdr-button--medium cdr-button--has-icon-right"
   type="button"
 >
+  
+  
   
   
   
@@ -118,6 +132,8 @@ exports[`CdrButton > component unit tests > with prop "type" set to "reset" > re
   
   
   
+  
+  
 </button>
 `;
 
@@ -125,6 +141,8 @@ exports[`CdrButton > component unit tests > with tag prop set to "a" > renders c
 <a
   class="cdr-button cdr-button--primary cdr-button--medium"
 >
+  
+  
   
   
   

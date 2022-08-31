@@ -49,20 +49,20 @@ describe('CdrModal.vue', () => {
       expect(wrapper.emitted().closed.length).toBe(2);
     });
 
-    describe('after removeNoScroll has been called', ()=>{
-      beforeEach(()=>{
-        wrapper.vm.removeNoScroll();
-      });
+    // describe('after removeNoScroll has been called', ()=>{
+    //   beforeEach(()=>{
+    //     wrapper.vm.removeNoScroll();
+    //   });
 
-      it('renders correctly', () => {
-        expect(wrapper.element).toMatchSnapshot();
-      });
+    //   it('renders correctly', () => {
+    //     expect(wrapper.element).toMatchSnapshot();
+    //   });
 
-      it('does NOT contain the "cdr-modal__noscroll" class', () => {
-        expect(document.documentElement.classList.contains('cdr-modal__noscroll')).toBeFalsy();
-        expect(document.body.classList.contains('cdr-modal__noscroll')).toBeFalsy();
-      });
-    });
+    //   it('does NOT contain the "cdr-modal__noscroll" class', () => {
+    //     expect(document.documentElement.classList.contains('cdr-modal__noscroll')).toBeFalsy();
+    //     expect(document.body.classList.contains('cdr-modal__noscroll')).toBeFalsy();
+    //   });
+    // });
   });
 
 

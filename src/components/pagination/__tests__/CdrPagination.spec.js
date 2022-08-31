@@ -156,9 +156,9 @@ describe('CdrPagination', () => {
   });
 
 
-  describe('when the active page is in the middle', ()=>{
+  describe('when the active page is in the middle', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrPagination, {
         propsData: {
           id: 'test',
@@ -181,10 +181,10 @@ describe('CdrPagination', () => {
     });
   });
 
-  describe('when at first page', ()=>{
+  describe('when at first page', () => {
     let wrapper;
     let disabledPrev;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrPagination, {
         propsData: {
           id: 'test',
@@ -192,8 +192,6 @@ describe('CdrPagination', () => {
           modelValue: 1,
         },
       });
-      disabledPrev = wrapper.find('li');
-    });
       disabledPrev = wrapper.find('li');
     });
 
@@ -214,11 +212,11 @@ describe('CdrPagination', () => {
     });
   });
 
-  describe('when on the last page', ()=>{
+  describe('when on the last page', () => {
     let wrapper;
     let allLinks;
     let disabledNext;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrPagination, {
         propsData: {
           id: 'test',
@@ -226,9 +224,6 @@ describe('CdrPagination', () => {
           modelValue: 10,
         },
       });
-      allLinks = wrapper.findAll('li');
-      disabledNext = allLinks[allLinks.length - 1];
-    });
       allLinks = wrapper.findAll('li');
       disabledNext = allLinks[allLinks.length - 1];
     });
@@ -317,7 +312,7 @@ describe('CdrPagination', () => {
       let link = wrapper.findAll('ol > li > a')[1];
       link.trigger('click'); // 5 -> 1
       await wrapper.vm.$nextTick();
-    
+
       expect(wrapper.emitted().navigate[0][0]).toBe(1);
       expect(wrapper.emitted().navigate[0][1]).toBe('?page=1');
       expect(wrapper.emitted().navigate[0][2] instanceof Event).toBeTruthy();
@@ -334,10 +329,10 @@ describe('CdrPagination', () => {
       let option = wrapper.find('option');
       expect(option.text()).toBe('Page 1');
     });
-    
-    describe('when totalPage prop is set', ()=>{
+
+    describe('when totalPage prop is set', () => {
       let option;
-      beforeEach(()=>{
+      beforeEach(() => {
         wrapper.setProps({ totalPages: 20 });
         option = wrapper.find('option');
       });
@@ -345,44 +340,44 @@ describe('CdrPagination', () => {
       it('adds page "of x" text to the option', async () => {
         expect(option.text()).toBe('Page 1 of 20');
       });
-    });
-    
-    describe('when current link is visible', () => {
-      let link;
-      let originalOffsetHeight;
-      let originalOffsetWidth;
-      beforeEach(() => {
-        //TODO: This setup seems strange. How would this ever happen? -- Kenji
-        originalOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
-        originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
-        //Ensure link is visible
-        Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
-          configurable: true,
-          value: 10,
-        });
-        Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
-          configurable: true, value: 10
-        });
-        link = wrapper.findAll('ol > li > a')[1];
-      });
 
-      afterEach(()=>{
-        Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
-        Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
-      })
+      describe('when current link is visible', () => {
+        let link;
+        let originalOffsetHeight;
+        let originalOffsetWidth;
+        beforeEach(() => {
+          //TODO: This setup seems strange. How would this ever happen? -- Kenji
+          originalOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+          originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
+          //Ensure link is visible
+          Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+            configurable: true,
+            value: 10,
+          });
+          Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+            configurable: true, value: 10
+          });
+          link = wrapper.findAll('ol > li > a')[1];
+        });
 
-      it('clicking the active link does not emit a new event', async () => {
-        link.trigger('click'); // 5 -> 1
-        await wrapper.vm.$nextTick();
-  
-        expect(wrapper.emitted().navigate[0][0]).toBe(1);
-        expect(wrapper.emitted().navigate[0][1]).toBe('?page=1');
-        expect(wrapper.emitted().navigate[0][2] instanceof Event).toBeTruthy();
-  
-        link.trigger('click'); // 5 -> 1
-        await wrapper.vm.$nextTick();
-  
-        expect(wrapper.emitted().navigate[1]).toBe(undefined);
+        afterEach(() => {
+          Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
+          Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+        })
+
+        it('clicking the active link does not emit a new event', async () => {
+          link.trigger('click'); // 5 -> 1
+          await wrapper.vm.$nextTick();
+
+          expect(wrapper.emitted().navigate[0][0]).toBe(1);
+          expect(wrapper.emitted().navigate[0][1]).toBe('?page=1');
+          expect(wrapper.emitted().navigate[0][2] instanceof Event).toBeTruthy();
+
+          link.trigger('click'); // 5 -> 1
+          await wrapper.vm.$nextTick();
+
+          expect(wrapper.emitted().navigate[1]).toBe(undefined);
+        });
       });
     });
   });
