@@ -1,15 +1,15 @@
 // Vitest Snapshot v1
 
-exports[`CdrRadio > renders an input 1`] = `
+exports[`CdrRadio > with custom classes > renders correctly 1`] = `
 <div
   class="cdr-label-wrapper__container cdr-radio"
 >
   <label
-    class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--medium"
+    class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--medium custom-label-class"
   >
     
     <input
-      class="cdr-radio__input"
+      class="cdr-radio__input custom-input-class"
       name="testName"
       type="radio"
       value="A"
@@ -19,8 +19,11 @@ exports[`CdrRadio > renders an input 1`] = `
       class="cdr-label-wrapper__figure"
     />
     <span
-      class="cdr-label-wrapper__content"
+      class="cdr-label-wrapper__content custom-content-class"
     >
+      
+      
+      Label Test
       
       
     </span>
