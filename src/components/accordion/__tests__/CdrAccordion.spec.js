@@ -59,7 +59,7 @@ describe('CdrAccordion', () => {
     })
     describe('when the accordion is closed', () => {
       it('sets maxHeight to be 0', () => {
-        expect(wrapper.vm.maxHeight).toBe(0);
+        expect(wrapper.vm.maxHeight).toBe('0');
       });
 
       it('sets the "isOpenClass" computed prop to "cdr-accordion--closed" ', async () => {

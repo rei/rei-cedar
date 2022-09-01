@@ -73,10 +73,6 @@ $accordion-border: 1px solid $cdr-color-border-primary;
     .cdr-tabs--open {
       transition-duration: $cdr-duration-3-x;
     }
-
-    &.cdr-accordion--closed {
-      max-height: 0;
-    }
   }
 
   &__content {
