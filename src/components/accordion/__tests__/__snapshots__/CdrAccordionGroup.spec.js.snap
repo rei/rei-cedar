@@ -47,7 +47,7 @@ exports[`CdrAccordionGroup > component snapshot when mounted > renders correctly
     </h2>
     <div
       class="cdr-accordion__content-container cdr-accordion--closed"
-      style="max-height: 0;"
+      style="max-height: 0px;"
     >
       <div
         aria-hidden="true"
@@ -101,7 +101,7 @@ exports[`CdrAccordionGroup > component snapshot when mounted > renders correctly
     </h2>
     <div
       class="cdr-accordion__content-container cdr-accordion--closed"
-      style="max-height: 0;"
+      style="max-height: 0px;"
     >
       <div
         aria-hidden="true"
