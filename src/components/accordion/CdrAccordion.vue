@@ -123,14 +123,14 @@ export default defineComponent({
       }));
     maxHeight.value = '0';
     watch(() => props.opened, (opened) => {
-      maxHeight.value = !opened ? `${accordionContentEl.value.clientHeight}px` : '0';
+      maxHeight.value = !opened ? `${accordionContentEl.value.clientHeight}px` : '0px';
       // nextTick is not sufficient here, must wait for CSS to re-paint
       setTimeout(() => {
         // on next frame, set maxHeight to new value
-        maxHeight.value = opened ? `${accordionContentEl.value.clientHeight}px` : '0';
+        maxHeight.value = opened ? `${accordionContentEl.value.clientHeight}px` : '0px';
         setTimeout(() => {
           // after animation is complete, remove max-height so content can reflow
-          maxHeight.value = opened ? 'none' : '0';
+          maxHeight.value = opened ? 'none' : '0px';
         }, 350); // cdr-duration-3x + 50ms
       }, 50);
     });
