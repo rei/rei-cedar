@@ -121,6 +121,7 @@ export default defineComponent({
         focus: onFocus,
         blur: onBlur,
       }));
+    maxHeight.value = 0;
     watch(() => props.opened, (opened) => {
       maxHeight.value = !opened ? `${accordionContentEl.value.clientHeight}px` : 0;
       // nextTick is not sufficient here, must wait for CSS to re-paint
