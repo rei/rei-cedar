@@ -1,16 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`CdrText > renders as h1 correctly 1`] = `
-<h1
-  class="cdr-text"
->
-  
-  header
-  
-</h1>
-`;
-
-exports[`CdrText > renders correctly 1`] = `
+exports[`CdrText > default configuration > renders correctly 1`] = `
 <p
   class="cdr-text"
 >
@@ -18,4 +8,14 @@ exports[`CdrText > renders correctly 1`] = `
   paragraph
   
 </p>
+`;
+
+exports[`CdrText > with h1 set > renders correctly 1`] = `
+<h1
+  class="cdr-text"
+>
+  
+  header
+  
+</h1>
 `;
