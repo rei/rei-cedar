@@ -7,8 +7,8 @@ function resolve(dir) {
 
 module.exports = {
   root: true,
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint',
     sourceType: 'module',
   },
   env: {
@@ -20,7 +20,7 @@ module.exports = {
     // "plugin:vue-a11y/base", // currently errors out on form labels
   ],
   plugins: [
-    'vue'
+    'vue',
   ],
   // check if imports actually resolve
   settings: {
@@ -35,32 +35,33 @@ module.exports = {
           ['compositionsdir', resolve('src/compositions')],
           ['mixinsdir', resolve('src/mixins')],
         ],
-        extensions: ['.vue', '.json', '.js']
+        extensions: ['.vue', '.json', '.js'],
       },
     },
   },
   // add custom rules or overrides here
   rules: {
-    // don't require .vue extension when importing
+    // require .vue extension when importing for vite
     'import/extensions': ['error', 'always', {
       js: 'never',
-      vue: 'never',
+      vue: 'always',
       ts: 'never',
     }],
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['test/unit/index.js']
+      optionalDependencies: ['test/unit/index.js'],
     }],
+    'no-use-before-define': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'vue/require-default-prop': 0,
     'vue/attributes-order': 0,
     'vue/no-multiple-template-root': 0,
     'max-len': ['error', {
-      'code': 100,
-      'ignoreComments': true,
-      'ignoreTrailingComments': true
+      code: 100,
+      ignoreComments: true,
+      ignoreTrailingComments: true,
     }],
-    'vue/multiline-html-element-content-newline': 0
-  }
-}
+    'vue/multiline-html-element-content-newline': 0,
+  },
+};

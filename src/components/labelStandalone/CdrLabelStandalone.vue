@@ -1,38 +1,58 @@
-<script setup>
-import { useSlots, useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
+<script>
+import {
+  defineComponent, useCssModule, computed,
+} from 'vue';
+import mapClasses from '../../utils/mapClasses';
 
-const props = defineProps({
-  forId: {
-    type: String,
-    required: true,
+export default defineComponent({
+  name: 'CdrLabelStandalone',
+  props: {
+    forId: {
+      type: String,
+      required: true,
+    },
+    label: String,
+    disabled: Boolean,
+    required: Boolean,
+    optional: Boolean,
+    hideLabel: Boolean,
   },
-  label: String,
-  disabled: Boolean,
-  required: Boolean,
-  optional: Boolean,
-  hideLabel: Boolean,
-})
-const slots = useSlots();
-const baseClass = 'cdr-label-standalone';
-const hasHelper = slots.helper;
-const hasInfo = slots.info;
-const hasInfoAction = slots['info-action'];
-const disabledLabelClass = computed(() => props.disabled
-  && 'cdr-label-standalone__label--disabled');
-const srOnlyLabelClass = computed(() => props.hideLabel
-  && 'cdr-label-standalone__label--sr-only');
-const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
-  && 'cdr-label-standalone__input-spacing');
-const style = useCssModule();
 
+  setup(props, ctx) {
+    const baseClass = 'cdr-label-standalone';
+    const hasHelper = ctx.slots.helper;
+    const hasInfo = ctx.slots.info;
+    const hasInfoAction = ctx.slots['info-action'];
+    const disabledLabelClass = computed(() => props.disabled
+  && 'cdr-label-standalone__label--disabled');
+    const srOnlyLabelClass = computed(() => props.hideLabel
+  && 'cdr-label-standalone__label--sr-only');
+    const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
+  && 'cdr-label-standalone__input-spacing');
+
+    return {
+      style: useCssModule(),
+      mapClasses,
+      baseClass,
+      hasHelper,
+      hasInfo,
+      hasInfoAction,
+      disabledLabelClass,
+      srOnlyLabelClass,
+      inputSpacingClass,
+    };
+  },
+});
 </script>
 
 <template>
   <div :class="style[baseClass]">
     <div :class="style['cdr-label-standalone__label-wrapper']">
       <label
-        :class="mapClasses(style, 'cdr-label-standalone__label', disabledLabelClass, srOnlyLabelClass)"
+        :class="mapClasses(style,
+                           'cdr-label-standalone__label',
+                           disabledLabelClass,
+                           srOnlyLabelClass)"
         :for="forId"
       >
         {{ label }}{{ required || optional ? '' : '' }}
@@ -56,7 +76,11 @@ const style = useCssModule();
         <slot name="helper" />
       </span>
     </div>
-    <div :class="mapClasses(style, 'cdr-label-standalone__input-wrap', inputSpacingClass)">
+    <div
+      :class="mapClasses(style,
+                         'cdr-label-standalone__input-wrap',
+                         inputSpacingClass)"
+    >
       <slot />
       <div
         v-if="hasInfoAction"
@@ -74,8 +98,8 @@ const style = useCssModule();
     </span>
 
     <div :class="style['cdr-label-standalone__post-content']">
-      <slot name="helper-text-bottom"/>
-      <slot name="error"/>
+      <slot name="helper-text-bottom" />
+      <slot name="error" />
     </div>
   </div>
 </template>

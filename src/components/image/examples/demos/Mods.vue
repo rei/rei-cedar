@@ -9,7 +9,7 @@
           Responsive
         </cdr-text>
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           ratio="4-3"
           modifier="responsive"
           loading="lazy"
@@ -17,7 +17,7 @@
           src="/src/dev/static/cedar-200x200.jpg"
         />
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           modifier="responsive"
           alt="standard responsive"
           src="/src/dev/static/cedar-200x200.jpg"
@@ -28,20 +28,20 @@
           Rounded
         </cdr-text>
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           ratio="4-3"
           radius="rounded"
           alt="ratio rounded"
           src="/src/dev/static/cedar-200x200.jpg"
         />
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           radius="rounded"
           alt="landscape rounded"
           src="/src/dev/static/cedar-350x150.jpg"
         />
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           radius="rounded"
           alt="square rounded"
           src="/src/dev/static/cedar-200x200.jpg"
@@ -52,20 +52,20 @@
           circle
         </cdr-text>
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           ratio="4-3"
           radius="circle"
           alt="ratio circle"
           src="/src/dev/static/cedar-200x200.jpg"
         />
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           radius="circle"
           alt="landscape circle"
           src="/src/dev/static/cedar-350x150.jpg"
         />
         <cdr-img
-          class="cdr-img-test"
+          container-class="cdr-img-test"
           radius-="circle"
           alt="square circle"
           src="/src/dev/static/cedar-200x200.jpg"

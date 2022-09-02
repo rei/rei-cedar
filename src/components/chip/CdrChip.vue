@@ -1,11 +1,15 @@
-<script setup>
-import { useCssModule, useSlots } from 'vue';
+<script>
+import { defineComponent, useCssModule } from 'vue';
 
-const slots = useSlots();
-const baseClass = 'cdr-chip';
-const style = useCssModule();
-const hasIconLeft = slots['icon-left'];
-const hasIconRight = slots['icon-right'];
+export default defineComponent({
+  name: 'CdrChip',
+  setup() {
+    return {
+      style: useCssModule(),
+      baseClass: 'cdr-chip',
+    };
+  },
+});
 </script>
 
 <template>
@@ -13,13 +17,13 @@ const hasIconRight = slots['icon-right'];
     :class="style[baseClass]"
   >
     <span
-      v-if="hasIconLeft"
+      v-if="$slots['icon-left']"
       :class="style['cdr-chip__icon-left']"
     >
       <slot name="icon-left" />
     </span>
     <span
-      v-if="hasIconRight"
+      v-if="$slots['icon-right']"
       :class="style['cdr-chip__icon-right']"
     >
       <slot name="icon-right" />

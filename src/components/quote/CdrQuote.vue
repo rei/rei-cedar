@@ -1,9 +1,11 @@
-<script setup>
-import { useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
-import propValidator from '../../utils/propValidator.js';
+<script>
+import { defineComponent, useCssModule, computed } from 'vue';
+import mapClasses from '../../utils/mapClasses';
+import propValidator from '../../utils/propValidator';
 
-const props = defineProps({
+export default defineComponent({
+  name: 'CdrQuote',
+  props: {
     tag: {
       type: String,
       default: 'blockquote',
@@ -18,12 +20,22 @@ const props = defineProps({
     summary: String,
     /** Caption credit text */
     citation: String,
-})
-const baseClass = 'cdr-quote';
-const summaryClass = 'cdr-quote__summary';
-const citationClass = 'cdr-quote__citation';
-const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
-const style = useCssModule();
+  },
+  setup(props) {
+    const baseClass = 'cdr-quote';
+    const summaryClass = 'cdr-quote__summary';
+    const citationClass = 'cdr-quote__citation';
+    const modifierClass = computed(() => props.modifier && `${baseClass}--${props.modifier}`);
+    return {
+      style: useCssModule(),
+      mapClasses,
+      baseClass,
+      summaryClass,
+      citationClass,
+      modifierClass,
+    };
+  },
+});
 </script>
 
 <template>
