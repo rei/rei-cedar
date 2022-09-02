@@ -140,32 +140,4 @@ describe('CdrToggleButton', () => {
       })
     });
   })
-  // describe('component snapshot with custom values', ()=>{
-  //   beforeEach(() => {
-  //     wrapper = mount(CdrToggleGroup, {
-  //       props: {
-  //         modelValue: 'fruits'
-  //       },
-  //       slots: {
-  //         default: [
-  //           h(CdrToggleButton, { 'toggle-value': 'fruits', 'custom-value': ["banana", "grapes", "watermelons"] }),
-  //           h(CdrToggleButton, { 'toggle-value': 'nofruits', 'custom-value': [] }),
-  //         ],
-  //       },
-  //       attachTo: document.body
-  //     });
-  //     firstButton = wrapper.findAll('button')[0];
-  //     secondButton = wrapper.findAll('button')[1];
-  //   })
-
-  //   it('matches the snapshot', () => {
-  //     expect(wrapper.element).toMatchSnapshot();
-  //   });
-
-  //   it('the button has the expected value', () => {
-  //     expect(firstButton.element.value).toContain("banana");
-  //     expect(firstButton.element.value).toContain("grapes");
-  //     expect(firstButton.element.value).toContain("watermelons");
-  //   });
-  // })
 });
