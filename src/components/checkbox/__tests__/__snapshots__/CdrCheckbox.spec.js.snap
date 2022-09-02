@@ -124,3 +124,36 @@ exports[`CdrCheckbox > with a custom label class > renders correctly 1`] = `
   </label>
 </div>
 `;
+
+exports[`CdrCheckbox > with an indeterminate prop > renders correctly 1`] = `
+<div
+  class="cdr-label-wrapper__container cdr-checkbox"
+>
+  <label
+    class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--medium"
+  >
+    
+    <input
+      class="cdr-checkbox__input"
+      false-value="false"
+      indeterminate="true"
+      true-value="true"
+      type="checkbox"
+      value="false"
+    />
+    
+    <span
+      class="cdr-label-wrapper__figure"
+    />
+    <span
+      class="cdr-label-wrapper__content"
+    >
+      
+      
+      Label Test
+      
+      
+    </span>
+  </label>
+</div>
+`;

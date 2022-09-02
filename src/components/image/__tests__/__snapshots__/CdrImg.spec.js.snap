@@ -53,14 +53,28 @@ exports[`CdrImg > when arbitrary HTML attrs are passed > renders correctly 1`] =
 </div>
 `;
 
-exports[`CdrImg > when crop and ratio is set > renders correctly 1`] = `
+exports[`CdrImg > when crop and ratio and radius and responsive is set > renders correctly 1`] = `
 <div
   class="cdr-image-ratio"
   style="--ratio: 100%;"
 >
   <img
     alt="crop left"
-    class="cdr-image cdr-image-ratio__cover cdr-image-ratio__cover--crop cdr-image-ratio__cover--cover"
+    class="cdr-image cdr-image--responsive cdr-image--rounded cdr-image-ratio__cover cdr-image-ratio__cover--crop cdr-image-ratio__cover--cover"
+    src="/src/dev/static/cedar-1920x1080.jpg"
+    style="object-position: left;"
+  />
+</div>
+`;
+
+exports[`CdrImg > when crop and ratio and radius is set > renders correctly 1`] = `
+<div
+  class="cdr-image-ratio"
+  style="--ratio: 100%;"
+>
+  <img
+    alt="crop left"
+    class="cdr-image cdr-image--responsive cdr-image--rounded cdr-image-ratio__cover cdr-image-ratio__cover--crop cdr-image-ratio__cover--cover"
     src="/src/dev/static/cedar-1920x1080.jpg"
     style="object-position: left;"
   />

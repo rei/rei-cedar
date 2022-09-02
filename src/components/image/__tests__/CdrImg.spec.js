@@ -23,12 +23,14 @@ describe('CdrImg', () => {
     });
   })
 
-  describe('when crop and ratio is set', () => {
+  describe('when crop and ratio and radius and responsive is set', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrImg, {
         propsData: {
           ratio: "square",
+          radius: "rounded",
+          modifier: "responsive",
           cover: true,
           crop: "left",
           alt: "crop left",
