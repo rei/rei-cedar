@@ -1,110 +1,117 @@
 <script>
-import { ref, watch, onMounted, provide, computed, defineComponent, useCssModule } from 'vue';
-import mapClasses from '../../utils/mapClasses.js';
-import propValidator from '../../utils/propValidator.js';
+import {
+  ref, watch, onMounted, provide, computed, defineComponent, useCssModule,
+} from 'vue';
+import mapClasses from '../../utils/mapClasses';
+import propValidator from '../../utils/propValidator';
 
 export default defineComponent({
-    name: 'CdrToggleGroup',
-    props: {
-        modelValue: {
-            type: [String, Number, Boolean, Object, Array],
-            required: true
-        },
-        size: {
-            type: String,
-            default: 'medium',
-            validator: (value) => propValidator(
-                value,
-                ['medium', 'large'],
-            ),
-        }
+  name: 'CdrToggleGroup',
+  props: {
+    modelValue: {
+      type: [String, Number, Boolean, Object, Array],
+      required: true,
     },
-    setup(props, ctx) {
-        const toggleGroup = ref(null);
-        
-        const selectedToggleValue = ref(props.modelValue);
-        provide('selectedToggleValue', selectedToggleValue);
-        
-        const sizeClass = computed(() => props.size ? `cdr-toggle-group--${props.size}` : "cdr-toggle-group--medium");
+    size: {
+      type: String,
+      default: 'medium',
+      validator: (value) => propValidator(
+        value,
+        ['medium', 'large'],
+      ),
+    },
+  },
+  setup(props, ctx) {
+    const toggleGroup = ref(null);
 
-        let toggleButtonElements;
-        
-        onMounted(() => {
-            toggleButtonElements = Array.from(toggleGroup.value.querySelectorAll('button'));
-        });
+    const selectedToggleValue = ref(props.modelValue);
+    provide('selectedToggleValue', selectedToggleValue);
 
-        watch(() => props.modelValue, (value) => {
-            selectedToggleValue.value = value;
-        });
-        
-        const selectToggleButton = (e) => {
-            if (!e.target.closest('button')) {
-                return;
-            }
-            let button = e.target.closest('button');
-            selectedToggleValue.value = button.value;
-            ctx.emit('update:modelValue', button.value);
-            button.focus();
-        }
+    const sizeClass = computed(() => (props.size
+      ? `cdr-toggle-group--${props.size}`
+      : 'cdr-toggle-group--medium'));
 
-        const focusNext = (e) => {
-            const currentButton = e.target;
-            const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
-            const isLastButton = (currentButtonIndex === toggleButtonElements.length - 1);
+    let toggleButtonElements;
 
-            if (isLastButton) {
-                return;
-            }
+    onMounted(() => {
+      toggleButtonElements = Array.from(toggleGroup.value.querySelectorAll('button'));
+    });
 
-            const nextButton = toggleButtonElements[currentButtonIndex + 1];
-            nextButton.focus();
-        }
+    watch(() => props.modelValue, (value) => {
+      selectedToggleValue.value = value;
+    });
 
-        const focusPrev = (e) => {
-            const currentButton = e.target;
-            const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
-            const isFirstButton = (currentButtonIndex === 0);
+    const selectToggleButton = (e) => {
+      if (!e.target.closest('button')) {
+        return;
+      }
+      const button = e.target.closest('button');
+      selectedToggleValue.value = button.value;
+      ctx.emit('update:modelValue', button.value);
+      button.focus();
+    };
 
-            if (isFirstButton) {
-                return;
-            }
+    const focusNext = (e) => {
+      const currentButton = e.target;
+      const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
+      const isLastButton = (currentButtonIndex === toggleButtonElements.length - 1);
 
-            const nextButton = toggleButtonElements[currentButtonIndex - 1];
-            nextButton.focus();
-        }
-        
-        const baseClass = 'cdr-toggle-group';
-        const style = useCssModule();
+      if (isLastButton) {
+        return;
+      }
 
-        return {
-            toggleGroup,
-            selectedToggleValue,
-            toggleButtonElements,
-            selectToggleButton,
-            focusNext,
-            focusPrev,
-            sizeClass,
-            baseClass,
-            mapClasses,
-            style,
-        }
-    }
-})
+      const nextButton = toggleButtonElements[currentButtonIndex + 1];
+      nextButton.focus();
+    };
+
+    const focusPrev = (e) => {
+      const currentButton = e.target;
+      const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
+      const isFirstButton = (currentButtonIndex === 0);
+
+      if (isFirstButton) {
+        return;
+      }
+
+      const nextButton = toggleButtonElements[currentButtonIndex - 1];
+      nextButton.focus();
+    };
+
+    const baseClass = 'cdr-toggle-group';
+    const style = useCssModule();
+
+    return {
+      toggleGroup,
+      selectedToggleValue,
+      toggleButtonElements,
+      selectToggleButton,
+      focusNext,
+      focusPrev,
+      sizeClass,
+      baseClass,
+      mapClasses,
+      style,
+    };
+  },
+});
 </script>
 
 <template>
-    <ul ref="toggleGroup" role="radiogroup" v-bind="$attrs" 
+  <ul
+    ref="toggleGroup"
+    role="radiogroup"
+    v-bind="$attrs"
     :class="mapClasses(
-        style,
-        baseClass,
-        sizeClass,
-    )" 
-        @click.prevent="selectToggleButton" 
-        @keyup.right.prevent="focusNext" 
-        @keyup.left.prevent="focusPrev"
-    >
-        <slot></slot>
-    </ul>
+      style,
+      baseClass,
+      sizeClass,
+    )"
+    @click.prevent="selectToggleButton"
+    @keyup.right.prevent="focusNext"
+    @keyup.left.prevent="focusPrev"
+  >
+    <slot />
+  </ul>
 </template>
 
 <style lang="scss" module src="./styles/CdrToggleGroup.module.scss">

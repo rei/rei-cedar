@@ -1,41 +1,44 @@
 <script>
-import { useCssModule, defineComponent } from 'vue';
+import {
+  useCssModule, computed, defineComponent, inject,
+} from 'vue';
 
 export default defineComponent({
-    name: 'CdrToggleButton',
-    props: {
-        toggleValue: {
-            type: String,
-            required: true,
-        }
+  name: 'CdrToggleButton',
+  props: {
+    toggleValue: {
+      type: String,
+      required: true,
     },
-    computed: {
-        isActive() {
-            return this.toggleValue === this.selectedToggleValue.value;
-        }
-    },
-    inject: ['selectedToggleValue'],
-    setup() {
-        return {
-            style: useCssModule()
-        }
-    }
-})
+  },
+  setup(props) {
+    const selectedToggle = inject('selectedToggleValue');
+    const isActive = computed(() => props.toggleValue === selectedToggle);
+    return {
+      style: useCssModule(),
+      isActive,
+    };
+  },
+});
 </script>
 
 <template>
-    <li role="presentation" :class="style['cdr-toggle-button__container']">
-        <button role="radio"
-            :class="style['cdr-toggle-button__item']"
-            :value="toggleValue"
-            :aria-label="toggleValue"
-            :aria-checked="isActive ? 'true' : 'false'"
-            :tabindex="isActive ? 0 : -1"
-        >
-            <slot>{{toggleValue}}</slot>
+  <li
+    role="presentation"
+    :class="style['cdr-toggle-button__container']"
+  >
+    <button
+      role="radio"
+      :class="style['cdr-toggle-button__item']"
+      :value="toggleValue"
+      :aria-label="toggleValue"
+      :aria-checked="isActive ? 'true' : 'false'"
+      :tabindex="isActive ? 0 : -1"
+    >
+      <slot>{{ toggleValue }}</slot>
 
-        </button>
-    </li>
+    </button>
+  </li>
 </template>
 
 <style lang="scss" module src="./styles/CdrToggleButton.module.scss">
