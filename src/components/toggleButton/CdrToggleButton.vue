@@ -13,7 +13,7 @@ export default defineComponent({
   },
   setup(props) {
     const selectedToggle = inject('selectedToggleValue');
-    const isActive = computed(() => props.toggleValue === selectedToggle);
+    const isActive = computed(() => props.toggleValue === selectedToggle.value);
     return {
       style: useCssModule(),
       isActive,
