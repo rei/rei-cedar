@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`CdrChipGroup > renders correctly 1`] = `
+exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
 <fieldset
   class="cdr-chip-group"
 >
@@ -52,7 +52,59 @@ exports[`CdrChipGroup > renders correctly 1`] = `
 </fieldset>
 `;
 
-exports[`CdrChipGroup > renders correctly with label visible 1`] = `
+exports[`CdrChipGroup > when current index is set > renders correctly 1`] = `
+<fieldset
+  class="cdr-chip-group"
+>
+  <legend
+    class="cdr-chip-group__legend--hidden"
+  >
+    
+    test
+    
+  </legend>
+  <div
+    class="cdr-chip-group__content"
+  >
+    
+    <button
+      aria-checked="false"
+      class="cdr-chip"
+      role="radio"
+      tabindex="-1"
+    >
+      <!--v-if-->
+      <!--v-if-->
+      <span
+        class="cdr-chip__content"
+      >
+        
+        chip 1
+        
+      </span>
+    </button>
+    <button
+      aria-checked="true"
+      class="cdr-chip"
+      role="radio"
+      tabindex="0"
+    >
+      <!--v-if-->
+      <!--v-if-->
+      <span
+        class="cdr-chip__content"
+      >
+        
+        chip 2
+        
+      </span>
+    </button>
+    
+  </div>
+</fieldset>
+`;
+
+exports[`CdrChipGroup > when label is visible > renders correctly 1`] = `
 <fieldset
   class="cdr-chip-group"
 >
@@ -104,7 +156,7 @@ exports[`CdrChipGroup > renders correctly with label visible 1`] = `
 </fieldset>
 `;
 
-exports[`CdrChipGroup > renders label slot 1`] = `
+exports[`CdrChipGroup > with label slot > renders correctly 1`] = `
 <fieldset
   class="cdr-chip-group"
 >

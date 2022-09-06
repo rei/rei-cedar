@@ -1,23 +1,90 @@
 // Vitest Snapshot v1
 
-exports[`CdrImg > renders correctly 1`] = `
-<img
-  alt="test alt"
-  class="cdr-image"
-  src="/src/dev/static/cedar-350x150.jpg"
-/>
+exports[`CdrImg > a media frame > renders correctly 1`] = `
+<div
+  class="cdr-image-ratio"
+  style="--ratio: 100%;"
+>
+  <img
+    alt="test alt"
+    class="cdr-image cdr-image-ratio__cover"
+    src="/src/dev/static/cedar-350x150.jpg"
+  />
+</div>
 `;
 
-exports[`CdrImg > renders crop/ratio correctly 1`] = `
+exports[`CdrImg > image with 3-2 ratio > renders correctly 1`] = `
+<div
+  class="cdr-image-ratio"
+  style="--ratio: 66.66666666666666%;"
+>
+  <img
+    alt=""
+    class="cdr-image cdr-image-ratio__cover"
+    src="localhost:8000/nothing-to-see-here.png"
+  />
+</div>
+`;
+
+exports[`CdrImg > image with auto ratio > renders correctly 1`] = `
+<div
+  class="cdr-image-ratio"
+  style="--ratio: 0;"
+>
+  <img
+    alt=""
+    class="cdr-image cdr-image-ratio__cover"
+    src="localhost:8000/nothing-to-see-here.png"
+  />
+</div>
+`;
+
+exports[`CdrImg > when arbitrary HTML attrs are passed > renders correctly 1`] = `
+<div
+  class="cdr-image-ratio"
+  style="--ratio: 100%;"
+>
+  <img
+    alt=""
+    class="cdr-image cdr-image-ratio__cover"
+    loading="lazy"
+    src="/src/dev/static/cedar-350x150.jpg"
+  />
+</div>
+`;
+
+exports[`CdrImg > when crop and ratio and radius and responsive is set > renders correctly 1`] = `
 <div
   class="cdr-image-ratio"
   style="--ratio: 100%;"
 >
   <img
     alt="crop left"
-    class="cdr-image cdr-image-ratio__cover cdr-image-ratio__cover--crop cdr-image-ratio__cover--cover"
+    class="cdr-image cdr-image--responsive cdr-image--rounded cdr-image-ratio__cover cdr-image-ratio__cover--crop cdr-image-ratio__cover--cover"
     src="/src/dev/static/cedar-1920x1080.jpg"
     style="object-position: left;"
   />
 </div>
+`;
+
+exports[`CdrImg > when crop and ratio and radius is set > renders correctly 1`] = `
+<div
+  class="cdr-image-ratio"
+  style="--ratio: 100%;"
+>
+  <img
+    alt="crop left"
+    class="cdr-image cdr-image--responsive cdr-image--rounded cdr-image-ratio__cover cdr-image-ratio__cover--crop cdr-image-ratio__cover--cover"
+    src="/src/dev/static/cedar-1920x1080.jpg"
+    style="object-position: left;"
+  />
+</div>
+`;
+
+exports[`CdrImg > with just the alt text set > renders correctly 1`] = `
+<img
+  alt="test alt"
+  class="cdr-image"
+  src="/src/dev/static/cedar-350x150.jpg"
+/>
 `;

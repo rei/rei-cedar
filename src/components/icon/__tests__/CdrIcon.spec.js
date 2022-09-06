@@ -3,76 +3,150 @@ import CdrIcon from '../CdrIcon.vue';
 import IconCaretDown from '../comps/caret-down.vue'
 
 describe('CdrIcon', () => {
-  test('renders correctly', () => {
-    const wrapper = mount(CdrIcon);
-    expect(wrapper.element).toMatchSnapshot();
-  });
-
-  test('renders correctly for single icon component', () => {
-    const wrapper = mount(IconCaretDown);
-    expect(wrapper.element).toMatchSnapshot();
-  });
-
-  it('adds inherit color class correctly', () => {
-    const wrapper = shallowMount(CdrIcon, {
-      propsData: {
-        inheritColor: true,
-      },
+  describe('default configuration', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mount(CdrIcon);
     });
-    expect(wrapper.classes()).toContain('cdr-icon--inherit-color');
-  });
 
-  it('sets aria-hidden by default', () => {
-    const wrapper = shallowMount(CdrIcon);
-    expect(wrapper.attributes()['aria-hidden']).toBe('true');
-  });
-
-  it('does not set aria-hidden if passed aria-label', () => {
-    const wrapper = shallowMount(CdrIcon, {
-      attrs: {
-        'aria-label': 'foo'
-      }
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
     });
-    expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
-  });
 
-  it('does not set aria-hidden if passed aria-labelledby', () => {
-    const wrapper = shallowMount(CdrIcon, {
-      attrs: {
-        'aria-labelledby': 'foo'
-      }
+    it('sets aria-hidden by default', () => {
+      expect(wrapper.attributes()['aria-hidden']).toBe('true');
     });
-    expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
-  });
+  })
 
-  it('passes through props for single icon components', () => {
-    const wrapper = mount(IconCaretDown, {
-      attrs: {
-        'aria-labelledby': 'foo'
-      }
+  describe('single icon component', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mount(IconCaretDown);
     });
-    expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
-    expect(wrapper.attributes()['aria-labelledby']).toBe('foo');
-  });
 
-  it('adds size class correctly', () => {
-    const wrapper = shallowMount(CdrIcon, {
-      propsData: {
-        size: 'small large@lg',
-      },
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
     });
-    expect(wrapper.classes()).toContain('cdr-icon--small');
-    expect(wrapper.classes()).toContain('cdr-icon--large@lg');
-  });
+  })
 
-  it('single icon component passes size prop through to CdrIcon', () => {
-    const wrapper = mount(IconCaretDown, {
-      propsData: {
-        size: 'small',
-      },
+  describe('with the inheritColor prop set to true', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallowMount(CdrIcon, {
+        propsData: {
+          inheritColor: true,
+        },
+      });
     });
-    expect(wrapper.find('.cdr-icon--small').exists()).toBe(true);
-  });
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it('adds inherit color class correctly', () => {
+      expect(wrapper.classes()).toContain('cdr-icon--inherit-color');
+    });
+  })
+
+  describe('when an aria-label attribute has been passed', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallowMount(CdrIcon, {
+        attrs: {
+          'aria-label': 'foo'
+        }
+      });
+    });
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it('does not set aria-hidden', () => {
+      expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
+    });
+  })
+
+  describe('when an aria-labelledby attribute has been passed', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallowMount(CdrIcon, {
+        attrs: {
+          'aria-labelledby': 'foo'
+        }
+      });
+    });
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it('does not set aria-hidden', () => {
+      expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
+    });
+  })
+
+  describe('when a single icon component has been passed aria-labelledby', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mount(IconCaretDown, {
+        attrs: {
+          'aria-labelledby': 'foo'
+        }
+      });
+    });
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it('does not set aria-hidden', () => {
+      expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
+    });
+
+    it('sets aria-labelledby', () => {
+      expect(wrapper.attributes()['aria-labelledby']).toBe('foo');
+    });
+  })
+
+  describe('when size props are passed to the component', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallowMount(CdrIcon, {
+        propsData: {
+          size: 'small large@lg',
+        },
+      });
+    });
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it('adds size classes correctly', () => {
+      expect(wrapper.classes()).toContain('cdr-icon--small');
+      expect(wrapper.classes()).toContain('cdr-icon--large@lg');
+    });
+  })
+
+  describe('when size props are passed to the single icon component', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mount(IconCaretDown, {
+        propsData: {
+          size: 'small',
+        },
+      });
+    });
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it('size prop is passed through to CdrIcon', () => {
+      expect(wrapper.find('.cdr-icon--small').exists()).toBe(true);
+    });
+  })
 
   // TODO: is this even possible anymore? Depends on vnode stuff
   // it('accepts full SVG in slot', () => {

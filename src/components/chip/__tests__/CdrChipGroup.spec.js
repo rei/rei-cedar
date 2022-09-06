@@ -4,74 +4,100 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrChipGroup from '../CdrChipGroup.vue';
 import CdrChip from '../CdrChip.vue';
 
+
+// const wrapper = mount(h(CdrAccordionGroup, {}, {default: () => [
+//   h(CdrAccordion, {id: 'tab1', level: '2', label: 'label1'}),
+//   h(CdrAccordion, {id: 'tab2', level: '2', label: 'label2'}),
+// ]}));
 describe('CdrChipGroup', () => {
-  it('renders correctly', () => {
-    const wrapper = mount(h(CdrChipGroup, {
+  let wrapper;
+  describe('default configuration', () => {
+    beforeEach(() => {
+      wrapper = mount(h(CdrChipGroup, {
         label: 'test',
       },
-      {
-        default: () => [
-          h(CdrChip, {'aria-checked': true, tabindex: 0, role: 'radio'}, {default:() => 'chip 1'}),
-          h(CdrChip, {'aria-checked': false, tabindex: -1, role: 'radio'}, {default:() => 'chip 2'}),
-        ]
-      },
-    ));
-    expect(wrapper.element).toMatchSnapshot()
+        {
+          default: () => [
+            h(CdrChip, { 'aria-checked': true, tabindex: 0, role: 'radio' }, { default: () => 'chip 1' }),
+            h(CdrChip, { 'aria-checked': false, tabindex: -1, role: 'radio' }, { default: () => 'chip 2' }),
+          ]
+        },
+      ));
+    })
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
   });
 
-  it('renders correctly with label visible', () => {
-    const wrapper = mount(h(CdrChipGroup, {
-        label: 'test',
-        hideLabel: false,
-      },
-      {
-        default: () => [
-          h(CdrChip, {'aria-checked': true, tabindex: 0, role: 'radio'}, {default:() => 'chip 1'}),
-          h(CdrChip, {'aria-checked': false, tabindex: -1, role: 'radio'}, {default:() => 'chip 2'}),
-        ]
-      },
-    ));
-    expect(wrapper.element).toMatchSnapshot()
-  });
-
-  it('renders label slot', () => {
-    const wrapper = mount(h(CdrChipGroup, {
+  describe('when label is visible', ()=>{
+    beforeEach(() => {
+      wrapper = mount(h(CdrChipGroup, {
         label: 'test',
         hideLabel: false,
       },
-      {
-        default: () => [
-          h(CdrChip, {'aria-checked': true, tabindex: 0, role: 'radio'}, {default:() => 'chip 1'}),
-          h(CdrChip, {'aria-checked': false, tabindex: -1, role: 'radio'}, {default:() => 'chip 2'}),
-        ],
-        label: 'hey im overriding here!!!',
-      },
-    ));
+        {
+          default: () => [
+            h(CdrChip, { 'aria-checked': true, tabindex: 0, role: 'radio' }, { default: () => 'chip 1' }),
+            h(CdrChip, { 'aria-checked': false, tabindex: -1, role: 'radio' }, { default: () => 'chip 2' }),
+          ]
+        },
+      ));
+    })
 
-    expect(wrapper.element).toMatchSnapshot()
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
   });
 
-  // it('sets current index on mount', () => {
-  //   const wrapper = mount(h(CdrChipGroup, {
-  //       label: 'test',
-  //     },
-  //     {
-  //       default: () => [
-  //         h(CdrChip, {'aria-checked': 'false', tabindex: -1, role: 'radio'}, {default:() => 'chip 1'}),
-  //         h(CdrChip, {'aria-checked': 'true', tabindex: 0, role: 'radio'}, {default:() => 'chip 2'}),
-  //       ]
-  //     },
-  //   ));
+  describe('with label slot', ()=>{
+    beforeEach(() => {
+      wrapper = mount(h(CdrChipGroup, {
+        label: 'test',
+        hideLabel: false,
+      },
+        {
+          default: () => [
+            h(CdrChip, { 'aria-checked': true, tabindex: 0, role: 'radio' }, { default: () => 'chip 1' }),
+            h(CdrChip, { 'aria-checked': false, tabindex: -1, role: 'radio' }, { default: () => 'chip 2' }),
+          ],
+          label: 'hey im overriding here!!!',
+        },
+      ));
+    })
 
-  //   // await wrapper.vm.$nextTick();
-  //   expect(wrapper.vm.currentIdx).toBe(1);
-  // });
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });  
+  });
 
-// TODO: old keyboard listener tests not working as we can no longer `setData`
- // (though questionable if this test was ever useful since it was just forcibly updating data and not letting the actual click handler do its thing...)
-// Should refactor CdrChipGroup so that the keyboard handling logic is separate from the "chip focusing" logic
-// That way there can be 1 unit tests that validates that keyboard events are processed properly (maybe it returns the new currentIdx?)
-// and then another test can validate the "focusing a chip" logic.
+  describe('when current index is set', ()=>{
+    beforeEach(() => {
+      wrapper = mount(h(CdrChipGroup, {
+        label: 'test',
+      },
+        {
+          default: () => [
+            h(CdrChip, { 'aria-checked': 'false', tabindex: -1, role: 'radio' }, { default: () => 'chip 1' }),
+            h(CdrChip, { 'aria-checked': 'true', tabindex: 0, role: 'radio' }, { default: () => 'chip 2' }),
+          ]
+        },
+      ));
+    })
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });  
+
+    // it('has the expected index', () => {
+    //   expect(wrapper.vm.currentIdx).toBe(1);
+    // });  
+  });
+
+  // TODO: old keyboard listener tests not working as we can no longer `setData`
+  // (though questionable if this test was ever useful since it was just forcibly updating data and not letting the actual click handler do its thing...)
+  // Should refactor CdrChipGroup so that the keyboard handling logic is separate from the "chip focusing" logic
+  // That way there can be 1 unit tests that validates that keyboard events are processed properly (maybe it returns the new currentIdx?)
+  // and then another test can validate the "focusing a chip" logic.
   // xit('has correct a11y', async () => {
   //   const elem = document.createElement('div')
   //   if (document.body) {

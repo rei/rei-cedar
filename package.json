@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.0.0-next.5",
+  "version": "13.0.0-next.6",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -101,7 +101,7 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0",
     "vite": "^3.0.0",
-    "vitest": "^0.8.1",
+    "vitest": "^0.18.0",
     "vue-router": "^4.0.10"
   },
   "engines": {

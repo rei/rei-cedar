@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`CdrTooltip > matches snapshot 1`] = `
+exports[`CdrTooltip > default component settings > matches snapshot 1`] = `
 <div
   class="cdr-tooltip--wrapper cdr-tooltip--position"
 >
