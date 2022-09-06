@@ -1,0 +1,67 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrToggleButton.vars.scss';
+
+.cdr-toggle-button {
+  &__item {
+    @include cdr-toggle-button-base-text-mixin-medium;
+    display: flex;
+    justify-content: center;
+    gap: .3rem;
+    border: .2rem solid transparent;
+    border-radius: .3rem;
+    color: $cdr-color-text-toggle-button-default-rest;
+    background-color: $cdr-color-background-toggle-button-default-rest;
+    width: 100%;
+    height: 100%;
+    
+    &:focus {
+      outline: none;
+      padding: 0.7rem 1.3rem;
+      border-radius: .3rem;
+      border: .3rem solid $cdr-color-border-toggle-button-default-focus;
+      background-color: $cdr-color-background-toggle-button-default-focus;
+    }
+
+    svg {
+      fill: $cdr-color-icon-default;
+    }
+
+    &[aria-checked="true"] {
+      background-color: $cdr-color-background-toggle-button-default-selected-rest;
+      padding: 0.8rem 1.4rem;
+      border: .2rem solid $cdr-color-border-toggle-button-default-selected-rest;
+      border-radius: .2rem;
+      font-weight: 500;
+      margin: 0;
+
+      svg {
+        fill: $cdr-color-icon-emphasis;
+      }
+
+      &:focus {
+        padding: 0.7rem 1.3rem;
+        border: .3rem solid $cdr-color-border-toggle-button-default-selected-focus;
+        border-radius: .2rem;
+      }
+
+      &:hover {
+        background-color: $cdr-color-background-toggle-button-default-selected-hover;
+      }
+    }
+
+    &:hover {
+      background-color: $cdr-color-background-toggle-button-default-hover;
+      padding: 0.7rem 1.3rem;
+      border-radius: 0.2rem;
+
+      &:focus {
+        border: .3rem solid $cdr-color-border-toggle-button-default-selected-focus;
+        padding: 0.7rem 1.3rem;
+      }
+    }
+  }
+
+  &__container {
+    list-style-type: none;
+  }
+}

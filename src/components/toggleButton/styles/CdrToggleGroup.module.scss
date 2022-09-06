@@ -1,0 +1,48 @@
+@import '../../../styles/settings/index.scss';
+
+.cdr-toggle-group {
+    border: .1rem solid $cdr-color-border-primary;
+    border-radius: .4rem;
+    background-color: $cdr-color-background-toggle-group-default-rest;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    align-items: center;
+    padding-inline-start: unset;
+    padding: .3rem;
+
+    >li:not(:last-of-type) {
+        padding: 0 .2rem 0 0;
+    }
+
+    &--medium {
+        .cdr-toggle-button__item {
+            gap: .6rem;
+            padding: .8rem 1.4rem;
+
+            &:focus {
+                padding: 0.7rem 1.3rem;
+            }
+        }
+
+        .cdr-toggle-button__container {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &--large {
+        .cdr-toggle-button__item {
+            padding: 1.2rem 1.4rem;
+
+            &:focus {
+                padding: 1.1rem 1.3rem;
+            }
+        }
+
+        .cdr-toggle-button__container {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}

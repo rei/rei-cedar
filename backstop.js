@@ -11,7 +11,7 @@ const scenarioDefaults = {
 };
 
 // TODO: use breakpoint tokens for viewport widths
-const responsiveViewports =[
+const responsiveViewports = [
   {
     label: 'xs',
     width: 760,
@@ -36,13 +36,13 @@ const responsiveViewports =[
 
 // functions for creating scenarios
 function createScenario(def) {
-  const finalScenario = Object.assign({}, scenarioDefaults, def);
+  const finalScenario = { ...scenarioDefaults, ...def };
   finalScenario.url = `${finalScenario.url}?backstop=true`;
   scenariosArr.push(finalScenario);
 }
 
 function splitScenario(def, type = '', selectorsArr, extraOptions = {}) {
-  const scenario = Object.assign({}, extraOptions, def);
+  const scenario = { ...extraOptions, ...def };
   selectorsArr.forEach((s, idx) => {
     scenario.label = `${def.label} ${type}${idx}`;
     scenario[`${type}Selector`] = s.target ? s.target : s;
