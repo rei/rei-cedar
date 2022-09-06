@@ -264,7 +264,7 @@ export default defineComponent({
       v-if="hasHelperBottom && !error"
     >
       <span
-        :id="`${unqiueId}-helper-text-bottom`"
+        :id="`${uniqueId}-helper-text-bottom`"
         :class="style['cdr-input__helper-text']"
       >
         <slot name="helper-text-bottom" />

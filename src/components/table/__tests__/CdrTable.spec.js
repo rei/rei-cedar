@@ -22,53 +22,75 @@ const basicContent = { template:
 }
 
 describe('CdrTable.vue', () => {
-  it('renders correctly', () => {
-    const wrapper = mount(CdrTable, {
-      slots: {
-        default: h(basicContent),
-      }
-    });
-    expect(wrapper.element).toMatchSnapshot();
-  });
+  describe('with basic content', ()=>{
+    let wrapper;
+    beforeEach(()=>{
+      wrapper = mount(CdrTable, {
+        slots: {
+          default: basicContent,
+        }
+      });
+    })
 
-  it('places attrs on table element', () => {
-    const wrapper = mount(CdrTable, {
-      slots: {
-        default: basicContent,
-      },
-      attrs: {
-        'aria-label': 'test table'
-      }
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
     });
 
-    expect(wrapper.find('table').attributes('aria-label')).toBe('test table')
-  });
+    describe('with xs prop provided', ()=>{
+      beforeEach(()=>{
+        wrapper.setProps({fullWidth: '@xs'})
+      })
 
-  it('is not bordered when striped', () => {
-    const wrapper = mount(CdrTable, {
-      propsData: {
+      it('renders correctly', () => {
+        expect(wrapper.element).toMatchSnapshot();
+      });
+      
+      it('has a correct responsive class', () => {
+        expect(wrapper.find('table').classes()).toContain('cdr-table--full-width@xs');
+      });
+    })
+
+    describe('border and striped set to true', ()=>{
+      beforeEach(()=>{
+        wrapper.setProps({
         border: true,
         striped: true,
-      },
-      slots: {
-        default: basicContent,
-      }
+      })
+      })
+
+      it('renders correctly', () => {
+        expect(wrapper.element).toMatchSnapshot();
+      });
+      
+      it('has a correct striped class', () => {
+        expect(wrapper.find('table').classes()).toContain('cdr-table--striped');
+      });
+
+      it('does not have a border class', () => {
+        expect(wrapper.find('table').classes()).not.toContain('cdr-table--border');
+      });
+    })
+  })
+
+  describe('with the aria-label attr set', ()=>{
+    let wrapper;
+    beforeEach(()=>{
+      wrapper = mount(CdrTable, {
+        slots: {
+          default: basicContent,
+        },
+        attrs: {
+          'aria-label': 'test table'
+        }
+      });
+    })
+
+    it('renders correctly', () => {
+      expect(wrapper.element).toMatchSnapshot();
     });
 
-    expect(wrapper.find('table').classes()).toContain('cdr-table--striped');
-    expect(wrapper.find('table').classes()).not.toContain('cdr-table--border');
-  });
-
-  it('has a correct responsive class', () => {
-    const wrapper = mount(CdrTable, {
-      propsData: {
-        fullWidth: '@xs',
-      },
-      slots: {
-        default: basicContent,
-      }
+    it('places attrs on table element', () => {
+      expect(wrapper.find('table').attributes('aria-label')).toBe('test table')
     });
-
-    expect(wrapper.find('table').classes()).toContain('cdr-table--full-width@xs');
-  });
+  })
 });

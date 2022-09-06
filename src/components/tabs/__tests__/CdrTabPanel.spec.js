@@ -1,55 +1,57 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrTabPanel from '../CdrTabPanel.vue';
 
+function mountTabPanel(selectedTabName) {
+  return mount(CdrTabPanel, {
+    propsData: { name: 'test' },
+    global: {
+      provide: {
+        ...selectedTabName
+      }
+    }
+  });
+}
+
 describe('CdrTabPanel', () => {
-  it('renders tab', () => {
-    const wrapper = mount(CdrTabPanel, {
-      propsData: {
-        name: 'test',
-      },
+  describe('default config', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mountTabPanel()
+    })
+    it('renders as expected', () => {
+      expect(wrapper.element).toMatchSnapshot();
     });
-    expect(wrapper.element).toMatchSnapshot();
-  });
 
-  it('is not active by default', () => {
-    const wrapper = mount(CdrTabPanel, {
-      propsData: {
-        name: 'test',
-      },
+    it('is not active by default', () => {
+      expect(wrapper.vm.isActive).toBe(false);
     });
-    expect(wrapper.vm.isActive).toBe(false);
-  });
+  })
 
-  it('is active when the selectedTabName is the same as the tabPanel name', async () => {
-    const wrapper = mount(CdrTabPanel, {
-      propsData: {
-        name: 'test',
-      },
-      global: {
-        provide: {
-          selectedTabName: {value: 'test'}
-        }
-      }
+  describe('when the selectedTabName is the same as the tabPanel name', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mountTabPanel({ selectedTabName: { value: 'test' } })
+    })
+    it('renders as expected', () => {
+      expect(wrapper.element).toMatchSnapshot();
     });
-    await wrapper.vm.$nextTick();
 
-    expect(wrapper.vm.isActive).toBe(true);
-  });
-
-  it('is NOT active when the selectedTabName is not the same as the tabPanel name', async () => {
-    const wrapper = mount(CdrTabPanel, {
-      propsData: {
-        name: 'test',
-      },
-      global: {
-        provide: {
-          selectedTabName: {value: 'nameofsomedifferentab'}
-        }
-      }
+    it('is active', () => {
+      expect(wrapper.vm.isActive).toBe(true);
     });
-    await wrapper.vm.$nextTick();
+  })
 
-    expect(wrapper.vm.isActive).toBe(false);
-  });
+  describe('when the selectedTabName is NOT the same as the tabPanel name', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mountTabPanel({ selectedTabName: { value: 'nameofsomedifferentab' } })
+    })
+    it('renders as expected', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
 
+    it('is not active', () => {
+      expect(wrapper.vm.isActive).toBe(false);
+    });
+  })
 });
