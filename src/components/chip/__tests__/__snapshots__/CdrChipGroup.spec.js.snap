@@ -47,6 +47,22 @@ exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
         
       </span>
     </button>
+    <button
+      aria-checked="false"
+      class="cdr-chip"
+      role="radio"
+      tabindex="-1"
+    >
+      <!--v-if-->
+      <!--v-if-->
+      <span
+        class="cdr-chip__content"
+      >
+        
+        chip 3
+        
+      </span>
+    </button>
     
   </div>
 </fieldset>
