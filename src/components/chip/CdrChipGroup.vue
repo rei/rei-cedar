@@ -20,23 +20,23 @@ export default defineComponent({
     const baseClass = 'cdr-chip-group';
     const chipsEl = ref(null);
 
-    let chips = [];
+    let chips = ref([]);
     const currentIdx = ref(0);
 
     const nextIdx = computed(() => {
-      const idx = currentIdx + 1;
-      return idx >= chips.length ? 0 : idx;
+      const idx = currentIdx.value + 1;
+      return idx >= chips.value.length ? 0 : idx;
     });
     const prevIdx = computed(() => {
-      const idx = currentIdx - 1;
-      return idx <= -1 ? (chips.length - 1) : idx;
+      const idx = currentIdx.value - 1;
+      return idx <= -1 ? (chips.value.length - 1) : idx;
     });
     const legendClass = computed(() => (props.hideLabel
       ? 'cdr-chip-group__legend--hidden'
       : 'cdr-chip-group__legend'));
 
     onMounted(() => {
-      chips = Array.prototype.filter.call(chipsEl.value.children,
+      chips.value = Array.prototype.filter.call(chipsEl.value.children,
         (chip) => !(chip.getAttribute('disabled') || chip.getAttribute('aria-disabled')));
       currentIdx.value = Array.prototype.findIndex.call(chips,
         (chip) => chip.getAttribute('aria-checked') === 'true');
@@ -50,28 +50,28 @@ export default defineComponent({
       switch (key) {
         case 'Home':
           e.preventDefault();
-          chips[0].focus();
+          chips.value[0].focus();
           break;
         case 'End':
           e.preventDefault();
-          chips[chips.length - 1].focus();
+          chips.value[chips.value.length - 1].focus();
           break;
         case 'ArrowDown':
         case 'Down':
           e.preventDefault();
-          chips[nextIdx.value].focus();
+          chips.value[nextIdx.value].focus();
           break;
         case 'ArrowUp':
         case 'Up':
           e.preventDefault();
-          chips[prevIdx.value].focus();
+          chips.value[prevIdx.value].focus();
           break;
         default: break;
       }
     };
     const handleFocusIn = (e) => {
       // find out which, if any, button is focused
-      currentIdx.value = Array.prototype.indexOf.call(chips, e.target);
+      currentIdx.value = Array.prototype.indexOf.call(chips.value, e.target);
     };
     return {
       style: useCssModule(),
