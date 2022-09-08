@@ -28,6 +28,7 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "icon-left message close-button";
+    min-height: 3.2rem;
   }
 
   &__icon-left {
