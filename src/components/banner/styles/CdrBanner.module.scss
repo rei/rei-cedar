@@ -15,10 +15,11 @@
     }
   }
   &__main {
-    grid-area: main;
     display: grid;
+    grid-area: main;
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "icon-left message icon-right";
+    min-height: 3.2rem;
   }
   &__icon-left {
     grid-area: icon-left;
