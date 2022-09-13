@@ -1,8 +1,8 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrToast from '../CdrToast.vue';
-function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+import sinon from 'sinon';
+import { beforeAll } from 'vitest';
+
 describe('CdrToast', () => {
   let wrapper;
   beforeEach(() => {
@@ -27,13 +27,14 @@ describe('CdrToast', () => {
     wrapper.find('button').trigger('click');
     expect(spyCloseToast).toBeCalled();
   });
-  //To Do: This one is still not working correctly
-  // it('closes after 5 seconds', async () => {
-  //   vi.useFakeTimers();
-  //   const spyCloseToastWithDelay = vi.spyOn(wrapper.vm, 'closeToastWithDelay');
-  //   wrapper.setProps({ open: true });
-  //   vi.advanceTimersByTime(5500),
-  //   await wrapper.vm.$nextTick();
-  //   expect(spyCloseToastWithDelay).toBeCalled();
-  // });
+
+  it('emits close event after 5 seconds', async () => {
+    expect(wrapper.emitted()['closed']).not.toBeDefined();
+    vi.useFakeTimers();
+    wrapper.setProps({ open: true });
+    await wrapper.vm.$nextTick();
+    vi.advanceTimersByTime(5500);
+    expect(wrapper.emitted()['closed']).toBeDefined();
+    vi.useRealTimers();
+  });
 });
