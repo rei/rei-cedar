@@ -316,12 +316,14 @@ export default defineComponent({
                   :class="style['cdr-modal__header']"
                   ref="headerEl"
                 >
-                  <slot
-                    name="title"
-                    v-if="showTitle"
-                  >
-                    <h1>{{ label }}</h1>
-                  </slot>
+                  <div :class="style['cdr-modal__title']">
+                    <slot
+                      name="title"
+                      v-if="showTitle"
+                    >
+                      <h1>{{ label }}</h1>
+                    </slot>
+                  </div>
                   <cdr-button
                     :class="style['cdr-modal__close-button']"
                     icon-only
