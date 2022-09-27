@@ -79,13 +79,13 @@ $modal-animation-duration: 150ms;
   &__header {
     display: flex;
     padding-bottom: $cdr-space-one-x;
-    flex: auto;
     justify-content: space-between;
+  }
+  &__title {
+    flex: auto;
     @include cdr-text-heading-serif-600;
   }
   &__close-button {
-    align-self: flex-start;
-    border: 1px solid $cdr-color-icon-default;
     flex: none;
     margin-left: $cdr-space-half-x;
     padding: 7px;
