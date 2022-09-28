@@ -2,10 +2,6 @@
 [![codecov](https://codecov.io/gh/rei/rei-cedar/branch/master/graph/badge.svg)](https://codecov.io/gh/rei/rei-cedar)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-## Work In Progress
-
-This project tracks the migration of [@rei/cedar](https://github.com/rei/rei-cedar) to Vue 3. The library is currently in release candidate testing and will eventually be renamed to `@rei/cedar`
-
 
 Welcome to REI's style framework! The overall goals of this project are to provide a common scaffolding for UI elements,
 and a set of themes that build on this scaffolding. We started this project in 2015 as a fork of
@@ -13,7 +9,7 @@ and a set of themes that build on this scaffolding. We started this project in 2
 The project has evolved into what it is today, and will continue to grow to fit our expanding needs. Feel free to watch
 the Cedar grow and learn from what we are doing, or jump in and provide some recommendations.
 
-### Migration Status
+### Vue 3 Migration Status
 
 Cedar has been fully migrated to Vue 3 using the composition API and is using [vite](https://vitejs.dev/) for its build system. Additionally, [vitest](https://vitest.dev/) is now being used as our testing framework.
 
