@@ -20,7 +20,7 @@ export default defineComponent({
     const baseClass = 'cdr-chip-group';
     const chipsEl = ref(null);
 
-    let chips = ref([]);
+    const chips = ref([]);
     const currentIdx = ref(0);
 
     const nextIdx = computed(() => {
@@ -37,7 +37,7 @@ export default defineComponent({
 
     onMounted(() => {
       chips.value = Array.prototype.filter.call(chipsEl.value.children,
-        (chip) => !(chip.getAttribute('disabled') || chip.getAttribute('aria-disabled')));
+        (chip) => !(chip.getAttribute('disabled')  === '' || chip.getAttribute('aria-disabled')));
       currentIdx.value = Array.prototype.findIndex.call(chips,
         (chip) => chip.getAttribute('aria-checked') === 'true');
     });
