@@ -29,7 +29,7 @@ exports[`CdrCheckbox > default configuration > renders correctly 1`] = `
 </div>
 `;
 
-exports[`CdrCheckbox > with a custom content class > renders correctly 1`] = `
+exports[`CdrCheckbox > using the default slot for label > with a custom content class > renders correctly 1`] = `
 <div
   class="cdr-label-wrapper__container cdr-checkbox"
 >
@@ -61,7 +61,7 @@ exports[`CdrCheckbox > with a custom content class > renders correctly 1`] = `
 </div>
 `;
 
-exports[`CdrCheckbox > with a custom input class > renders correctly 1`] = `
+exports[`CdrCheckbox > using the default slot for label > with a custom input class > renders correctly 1`] = `
 <div
   class="cdr-label-wrapper__container cdr-checkbox"
 >
@@ -93,7 +93,7 @@ exports[`CdrCheckbox > with a custom input class > renders correctly 1`] = `
 </div>
 `;
 
-exports[`CdrCheckbox > with a custom label class > renders correctly 1`] = `
+exports[`CdrCheckbox > using the default slot for label > with a custom label class > renders correctly 1`] = `
 <div
   class="cdr-label-wrapper__container cdr-checkbox"
 >
@@ -125,7 +125,7 @@ exports[`CdrCheckbox > with a custom label class > renders correctly 1`] = `
 </div>
 `;
 
-exports[`CdrCheckbox > with an indeterminate prop > renders correctly 1`] = `
+exports[`CdrCheckbox > using the default slot for label > with an indeterminate prop > renders correctly 1`] = `
 <div
   class="cdr-label-wrapper__container cdr-checkbox"
 >
@@ -136,7 +136,6 @@ exports[`CdrCheckbox > with an indeterminate prop > renders correctly 1`] = `
     <input
       class="cdr-checkbox__input"
       false-value="false"
-      indeterminate="true"
       true-value="true"
       type="checkbox"
       value="false"

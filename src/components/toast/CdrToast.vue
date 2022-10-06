@@ -35,7 +35,7 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    const baseClass = 'cdr-toast';
+    const baseClass = 'cdr-toast'
     const style = useCssModule();
     const hasIconLeft = ctx.slots['icon-left'];
     const opened = ref(null);

@@ -10,7 +10,7 @@ exports[`CdrContainer > using the default slot > renders correctly 1`] = `
 </div>
 `;
 
-exports[`CdrContainer > with "fluid" modifier > renders correctly 1`] = `
+exports[`CdrContainer > using the default slot > with "fluid" modifier > renders correctly 1`] = `
 <div
   class="cdr-container cdr-container--fluid"
 >
