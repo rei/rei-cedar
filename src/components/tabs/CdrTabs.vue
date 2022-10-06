@@ -5,7 +5,7 @@ import {
 import debounce from 'lodash-es/debounce';
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
-} from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
+} from '@rei/cdr-tokens/dist/js/cdr-tokens.mjs';
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
 

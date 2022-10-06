@@ -6,7 +6,7 @@ import {
 } from 'vue';
 import {
   CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
-} from '@rei/cdr-tokens/dist/js/cdr-tokens.esm';
+} from '@rei/cdr-tokens/dist/js/cdr-tokens.mjs';
 import onTransitionEnd from './onTransitionEnd';
 import CdrButton from '../button/CdrButton.vue';
 import IconXLg from '../icon/comps/x-lg.vue';
