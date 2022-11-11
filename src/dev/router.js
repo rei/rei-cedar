@@ -44,6 +44,7 @@ const routes = [
   { path: '/radios', name: 'Radios', component: Examples.radio },
   { path: '/ratings', name: 'Ratings', component: Examples.rating },
   { path: '/selects', name: 'Selects', component: Examples.selects },
+  { path: '/skeleton', name: 'Skeleton', component: Examples.skeleton },
   { path: '/tables', name: 'Tables', component: Examples.tables },
   { path: '/tabs', name: 'Tabs', component: Examples.tabs },
   { path: '/texts', name: 'Texts', component: Examples.texts },

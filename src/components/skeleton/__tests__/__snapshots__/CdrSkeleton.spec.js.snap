@@ -1,0 +1,18 @@
+// Vitest Snapshot v1
+
+exports[`CdrSkeleton > component snapshot > matches the snapshot 1`] = `
+<div
+  aria-busy="true"
+  aria-live="polite"
+  class="cdr-skeleton"
+>
+  
+  <div
+    class="cdr-skeleton-bone cdr-skeleton-bone--heading cdr-skeleton-bone__shimmer"
+  />
+  <div
+    class="cdr-skeleton-bone cdr-skeleton-bone--text cdr-skeleton-bone__shimmer"
+  />
+  
+</div>
+`;

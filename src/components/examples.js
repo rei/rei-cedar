@@ -21,6 +21,7 @@ import quote from 'componentsdir/quote/examples/Quote.vue';
 import radio from 'componentsdir/radio/examples/Radios.vue';
 import rating from 'componentsdir/rating/examples/Ratings.vue';
 import selects from 'componentsdir/select/examples/Selects.vue';
+import skeleton from 'componentsdir/skeleton/examples/Skeleton.vue';
 import tables from 'componentsdir/table/examples/Table.vue';
 import tabs from 'componentsdir/tabs/examples/Tabs.vue';
 import texts from 'componentsdir/text/examples/Text.vue';
@@ -53,6 +54,7 @@ export default {
   radio,
   rating,
   selects,
+  skeleton,
   tables,
   tabs,
   texts,

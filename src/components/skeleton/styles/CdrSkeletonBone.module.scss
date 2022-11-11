@@ -1,0 +1,57 @@
+@use "sass:math";
+
+@import '../../../styles/settings/_index.scss';
+@import './vars/CdrSkeleton.vars.scss';
+
+.cdr-skeleton-bone {
+  @include cdr-skeleton-bone-mixin;
+  &__shimmer {
+    @include cdr-skeleton-shimmer-mixin;
+  }
+  &--line {
+    block-size: 1.6rem;
+    margin: $cdr-space-quarter-x 0;
+    &:nth-child(1) {
+      width: 100%;
+    }
+    &:nth-child(2) {
+      width: 55%;
+    }
+    &:nth-child(3) {
+      width: 85%;
+    }
+    &:nth-child(4) {
+      width: 65%;
+    }
+    &:nth-child(5) {
+      width: 35%;
+    }
+  }
+  &--heading {
+    block-size: 3.2rem;
+  }
+  &--rectangle {
+    overflow: hidden;
+    padding-top: 75%;
+  }
+  &--square {
+    overflow: hidden;
+    padding-top: 100%;
+  }
+  &--circle {
+    overflow: hidden;
+    border-radius: $cdr-radius-round;
+  }
+  &--button {
+    flex: none;
+    block-size: 3.8rem;
+    inline-size: 15rem;
+    border-radius: $cdr-radius-softer;
+  }
+  &--icon {
+    flex: none;
+    block-size: 2.4rem;
+    inline-size: 2.4rem;
+    border-radius: $cdr-radius-round;
+  }
+}
