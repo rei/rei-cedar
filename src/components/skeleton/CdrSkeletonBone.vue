@@ -1,6 +1,6 @@
 <script>
 import {
-  defineComponent, useCssModule, computed, inject, watchEffect,
+  defineComponent, useCssModule, computed, inject,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
@@ -17,9 +17,7 @@ export default defineComponent({
         [
           'default',
           'heading',
-          'icon',
           'line',
-          'button',
           'rectangle',
           'square',
         ],

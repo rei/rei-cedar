@@ -40,14 +40,6 @@ export default {
       <CdrSkeletonBone type="line" />
       <CdrSkeletonBone type="line" />
     </CdrSkeleton>
-    <h3>button</h3>
-    <CdrSkeleton :motion="motionToggle">
-      <CdrSkeletonBone type="button" />
-    </CdrSkeleton>
-    <h3>icon</h3>
-    <CdrSkeleton :motion="motionToggle">
-      <CdrSkeletonBone type="icon" />
-    </CdrSkeleton>
     <h3>rectangle (4:3 image)</h3>
     <CdrSkeleton :motion="motionToggle">
       <CdrSkeletonBone type="rectangle" />

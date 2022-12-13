@@ -1,5 +1,3 @@
-@use "sass:math";
-
 @import '../../../styles/settings/_index.scss';
 @import './vars/CdrSkeleton.vars.scss';
 
@@ -37,21 +35,5 @@
   &--square {
     overflow: hidden;
     padding-top: 100%;
-  }
-  &--circle {
-    overflow: hidden;
-    border-radius: $cdr-radius-round;
-  }
-  &--button {
-    flex: none;
-    block-size: 3.8rem;
-    inline-size: 15rem;
-    border-radius: $cdr-radius-softer;
-  }
-  &--icon {
-    flex: none;
-    block-size: 2.4rem;
-    inline-size: 2.4rem;
-    border-radius: $cdr-radius-round;
   }
 }
