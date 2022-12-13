@@ -129,14 +129,7 @@ export default defineComponent({
         ...ctx.attrs,
       };
     });
-    const inputModel = computed({
-      get() {
-        return props.modelValue;
-      },
-      set(newValue) {
-        ctx.emit('update:modelValue', newValue);
-      },
-    });
+
     return {
       style: useCssModule(),
       baseClass,
@@ -158,7 +151,6 @@ export default defineComponent({
       focusedClass,
       describedby,
       inputAttrs,
-      inputModel,
       mapClasses,
     };
   },
@@ -212,7 +204,7 @@ export default defineComponent({
         :aria-describedby="describedby || null"
         @focus="isFocused = true"
         @blur="isFocused = false"
-        v-model="inputModel"
+        @input="$emit('update:modelValue', $event.target.value)"
       />
       <input
         v-else
@@ -235,7 +227,7 @@ export default defineComponent({
         :aria-describedby="describedby || null"
         @focus="isFocused = true"
         @blur="isFocused = false"
-        v-model="inputModel"
+        @input="$emit('update:modelValue', $event.target.value)"
       >
       <span
         v-if="hasPreIcon"
