@@ -1,4 +1,6 @@
-export default function (triggerRect, popupRect, screenWidth, screenHeight, originalPosition) {
+export default function calculatePlacement(
+  triggerRect, popupRect, screenWidth, screenHeight, originalPosition,
+) {
   const offset = 14; // 10px for arrow 4px for spacing
   const borderSize = 2; // need to include border for corner calculations
   const triggerCenterY = triggerRect.top + (triggerRect.height / 2);

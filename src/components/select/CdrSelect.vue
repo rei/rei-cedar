@@ -71,6 +71,7 @@ export default defineComponent({
     multiple: Boolean,
     multipleSize: Number,
   },
+  emits: ['update:modelValue'],
   customOptions: {},
   setup(props, ctx) {
     const baseClass = 'cdr-select';
@@ -101,7 +102,6 @@ export default defineComponent({
       return helperText;
     });
 
-    // TODO: refactor, would be much clearer as a 1-2 liner
     const computedOpts = computed(() => {
       const optsArr = [];
       if (props.options) {

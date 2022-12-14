@@ -1,13 +1,11 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import routes from './router';
-import Dev from './Dev.vue'; //eslint-disable-line
-
+import { createRouter, createWebHashHistory } from 'vue-router';
 import { createApp } from 'vue';
-
+import routes from './router';
+import DevPage from './DevPage.vue'; //eslint-disable-line
 
 const router = createRouter({
-    routes,
-    history: createWebHashHistory(),
+  routes,
+  history: createWebHashHistory(),
 });
 
-  createApp(Dev).use(router).mount('#main');
+createApp(DevPage).use(router).mount('#main');

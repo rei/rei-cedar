@@ -37,7 +37,7 @@ export default defineComponent({
 
     onMounted(() => {
       chips.value = Array.prototype.filter.call(chipsEl.value.children,
-        (chip) => !(chip.getAttribute('disabled')  === '' || chip.getAttribute('aria-disabled')));
+        (chip) => !(chip.getAttribute('disabled') === '' || chip.getAttribute('aria-disabled')));
       currentIdx.value = Array.prototype.findIndex.call(chips,
         (chip) => chip.getAttribute('aria-checked') === 'true');
     });

@@ -52,6 +52,7 @@ export default defineComponent({
       default: 300,
     },
   },
+  emits: ['closed'],
 
   setup(props, ctx) {
     const baseClass = 'cdr-modal';

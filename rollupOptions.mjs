@@ -5,11 +5,11 @@ export default {
   external: ['vue', 'core-js', 'lodash-es', 'tabbable'], // Externalize peerDependencies
   output: {
     globals: {
-      vue: 'Vue'
-    }
+      vue: 'Vue',
+    },
   },
   plugins: [
-      babel({
+    babel({
       exclude: ['node_modules/**'],
       babelHelpers: 'bundled',
       babelrc: false,
@@ -29,6 +29,6 @@ export default {
           },
         ],
       ],
-    })
-  ]
-}
+    }),
+  ],
+};
