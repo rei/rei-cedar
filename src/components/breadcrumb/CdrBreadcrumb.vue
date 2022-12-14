@@ -1,4 +1,4 @@
-<script >
+<script>
 import {
   defineComponent, useCssModule, computed, ref, watch, nextTick,
 } from 'vue';
@@ -37,6 +37,7 @@ export default defineComponent({
       type: String,
     },
   },
+  emits: ['navigate'],
 
   setup(props) {
     const uniqueId = props.id ? props.id : uid();

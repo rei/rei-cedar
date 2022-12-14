@@ -36,10 +36,14 @@ export default defineComponent({
       : 'cdr-chip-group__legend'));
 
     onMounted(() => {
-      chips.value = Array.prototype.filter.call(chipsEl.value.children,
-        (chip) => !(chip.getAttribute('disabled')  === '' || chip.getAttribute('aria-disabled')));
-      currentIdx.value = Array.prototype.findIndex.call(chips,
-        (chip) => chip.getAttribute('aria-checked') === 'true');
+      chips.value = Array.prototype.filter.call(
+        chipsEl.value.children,
+        (chip) => !(chip.getAttribute('disabled') === '' || chip.getAttribute('aria-disabled')),
+      );
+      currentIdx.value = Array.prototype.findIndex.call(
+        chips,
+        (chip) => chip.getAttribute('aria-checked') === 'true',
+      );
     });
 
     const handleKeyDown = (e) => {

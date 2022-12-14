@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
-import { fileURLToPath, URL } from "url";
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'url';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import options from './rollupOptions.mjs';
 
 const version = process.env.npm_package_version;
@@ -21,9 +21,7 @@ export default defineConfig({
   },
   css: {
     modules: {
-      generateScopedName: (name) => {
-        return `${name}_${version.replace(/\./g, '-')}`;
-      }   
+      generateScopedName: (name) => `${name}_${version.replace(/\./g, '-')}`,
     },
   },
   resolve: {
@@ -32,10 +30,10 @@ export default defineConfig({
       cssdir: fileURLToPath(new URL('./src/css', import.meta.url)),
       componentsdir: fileURLToPath(new URL('./src/components', import.meta.url)),
       mixinsdir: fileURLToPath(new URL('./src/mixins', import.meta.url)),
-      '~': fileURLToPath(new URL('./node_modules', import.meta.url))
-    }
+      '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
+    },
   },
   plugins: [
     vue(),
   ],
-})
+});
