@@ -16,16 +16,12 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
-    'plugin:vue/recommended',
-    // "plugin:vue-a11y/base", // currently errors out on form labels
-  ],
-  plugins: [
-    'vue',
+    'plugin:vue/vue3-recommended',
   ],
   // check if imports actually resolve
   settings: {
     'import/resolver': {
-      // matches aliases from build/rollup-plugins.js
+      // matches aliases from vite.config.js
       alias: {
         map: [
           ['srcdir', resolve('src')],
