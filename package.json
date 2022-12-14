@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.2.0-beta.0",
+  "version": "13.2.0-beta.1",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -68,7 +68,7 @@
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.29.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.1",
