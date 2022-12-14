@@ -1,7 +1,15 @@
 // Vitest Snapshot v1
 
 exports[`CdrToast > matches snapshot 1`] = `
-<transition-stub>
+<transition-stub
+  appear="false"
+  css="true"
+  enteractiveclass="cdr-toast__transition--toast-enter-active"
+  enterfromclass="cdr-toast__transition--toast-enter-from"
+  leaveactiveclass="cdr-toast__transition--toast-leave-active"
+  leavetoclass="cdr-toast__transition--toast-leave-to"
+  persisted="false"
+>
   <div
     class="cdr-toast cdr-toast--default"
     role="status"
