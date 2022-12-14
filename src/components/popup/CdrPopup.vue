@@ -111,10 +111,13 @@ export default defineComponent({
         nextTick(() => {
           const triggerRect = rootEl.value.parentElement.getBoundingClientRect();
           const { innerHeight, innerWidth } = window;
-          const calculated = calculatePlacement(triggerRect,
+          const calculated = calculatePlacement(
+            triggerRect,
             popupRect.value,
-            innerWidth, innerHeight,
-            props.position);
+            innerWidth,
+            innerHeight,
+            props.position,
+          );
           pos.value = calculated.pos;
           corner.value = calculated.corner;
         });

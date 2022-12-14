@@ -40,7 +40,7 @@
     "test": "npm-run-all unit e2e",
     "clean": "rm -rf dist",
     "lint": "npm-run-all lint:js lint:styles",
-    "lint:js": "eslint --ext .js --ext .vue --ext .mjs src/",
+    "lint:js": "eslint src --ext .js,.vue",
     "lint:styles": "stylelint src/**/*.scss",
     "prepush": "npm-run-all lint unit",
     "reference": "backstop reference --configPath=backstop.js",

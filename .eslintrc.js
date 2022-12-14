@@ -14,10 +14,7 @@ module.exports = {
   env: {
     browser: true,
   },
-  extends: [
-    'airbnb-base',
-    'plugin:vue/vue3-recommended',
-  ],
+  extends: ['airbnb-base', 'plugin:vue/vue3-recommended'],
   // check if imports actually resolve
   settings: {
     'import/resolver': {
