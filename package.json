@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.2.0-beta.2",
+  "version": "13.2.0-beta.3",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
-    "@rei/cdr-tokens": "^11.0.0",
+    "@rei/cdr-tokens": "^11.0.1",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@vitejs/plugin-vue": "^4.0.0",
