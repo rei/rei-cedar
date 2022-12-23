@@ -23,6 +23,7 @@ const SUPPORTED_COMPONENTS = [
   'CdrLink.vars.scss',
   'CdrInput.vars.scss',
   'CdrSelect.vars.scss',
+  'CdrSkeleton.vars.scss',
   'CdrList.vars.scss',
   'CdrTable.vars.scss'
 ];

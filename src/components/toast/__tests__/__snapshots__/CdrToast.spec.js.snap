@@ -1,7 +1,15 @@
 // Vitest Snapshot v1
 
 exports[`CdrToast > matches snapshot 1`] = `
-<transition-stub>
+<transition-stub
+  appear="false"
+  css="true"
+  enteractiveclass="cdr-toast__transition--toast-enter-active"
+  enterfromclass="cdr-toast__transition--toast-enter-from"
+  leaveactiveclass="cdr-toast__transition--toast-leave-active"
+  leavetoclass="cdr-toast__transition--toast-leave-to"
+  persisted="false"
+>
   <div
     class="cdr-toast cdr-toast--default"
     role="status"
@@ -33,10 +41,10 @@ exports[`CdrToast > matches snapshot 1`] = `
         
         
         
+        
         <svg
           aria-hidden="true"
           class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
-          slot="icon"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -50,6 +58,7 @@ exports[`CdrToast > matches snapshot 1`] = `
           
           <!--v-if-->
         </svg>
+        
         
         
         

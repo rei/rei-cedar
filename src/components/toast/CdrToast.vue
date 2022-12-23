@@ -34,8 +34,9 @@ export default defineComponent({
       default: 5000,
     },
   },
+  emits: ['open', 'closed'],
   setup(props, ctx) {
-    const baseClass = 'cdr-toast'
+    const baseClass = 'cdr-toast';
     const style = useCssModule();
     const hasIconLeft = ctx.slots['icon-left'];
     const opened = ref(null);
@@ -143,10 +144,12 @@ export default defineComponent({
           aria-label="Close"
           size="small"
         >
-          <icon-x-sm
-            slot="icon"
-            inherit-color
-          />
+          <slot name="icon">
+            <icon-x-sm
+              inherit-color
+            />
+          </slot>
+
         </cdr-button>
       </div>
     </div>

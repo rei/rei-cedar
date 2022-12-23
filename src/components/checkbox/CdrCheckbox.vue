@@ -73,6 +73,7 @@ export default defineComponent({
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
     },
   },
+  emits: ['update:modelValue'],
 
   setup(props, ctx) {
     const baseClass = 'cdr-checkbox';

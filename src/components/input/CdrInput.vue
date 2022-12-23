@@ -81,6 +81,8 @@ export default defineComponent({
     // Adds a custom class to the cdr-lable-standalone wrapping div
     labelClass: String,
   },
+  emits: ['update:modelValue'],
+
   setup(props, ctx) {
     const baseClass = 'cdr-input';
     const isFocused = ref(false);

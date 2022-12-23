@@ -34,6 +34,7 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ['update:modelValue'],
   setup(props, ctx) {
     const style = useCssModule();
     const uniqueId = props.id ? props.id : uid();

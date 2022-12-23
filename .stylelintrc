@@ -9,7 +9,7 @@
         "stylelint-scss"
     ],
     "rules": {
-        "at-rule-blacklist": ["debug"],
+        "at-rule-disallowed-list": ["debug"],
         "no-empty-source": null,
         "no-descending-specificity": null,
         "selector-pseudo-class-no-unknown": [true, {
