@@ -21,6 +21,7 @@ export default defineComponent({
       ),
     },
   },
+  emits: ['update:modelValue'],
   setup(props, ctx) {
     const toggleGroup = ref(null);
 

@@ -38,6 +38,7 @@ export default defineComponent({
       default: false,
     },
   },
+  emits: ['opened', 'closed'],
   setup(props, ctx) {
     const style = useCssModule();
     const isOpen = ref(false);

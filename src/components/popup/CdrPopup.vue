@@ -33,6 +33,7 @@ export default defineComponent({
       type: String,
     },
   },
+  emits: ['closed'],
 
   setup(props, ctx) {
     const baseClass = 'cdr-popup';
@@ -110,10 +111,13 @@ export default defineComponent({
         nextTick(() => {
           const triggerRect = rootEl.value.parentElement.getBoundingClientRect();
           const { innerHeight, innerWidth } = window;
-          const calculated = calculatePlacement(triggerRect,
+          const calculated = calculatePlacement(
+            triggerRect,
             popupRect.value,
-            innerWidth, innerHeight,
-            props.position);
+            innerWidth,
+            innerHeight,
+            props.position,
+          );
           pos.value = calculated.pos;
           corner.value = calculated.corner;
         });
@@ -139,8 +143,6 @@ export default defineComponent({
     // eslint-disable-next-line no-return-assign
     watch(() => props.position, () => pos.value = props.position);
     watch(() => props.opened, () => {
-    // if (!!newValue === !!oldValue) return;
-    // TODO: watch doesnt run unless it changes???? might need to use `watch`
       if (props.opened) {
         handleOpened();
       } else {

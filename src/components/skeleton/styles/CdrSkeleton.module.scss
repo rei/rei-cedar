@@ -1,0 +1,6 @@
+@import '../../../styles/settings/_index.scss';
+@import './vars/CdrSkeleton.vars.scss';
+
+.cdr-skeleton {
+  @include cdr-skeleton-base-mixin;
+}

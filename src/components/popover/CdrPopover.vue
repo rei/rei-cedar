@@ -45,6 +45,7 @@ export default defineComponent({
       required: false,
     },
   },
+  emits: ['opened', 'closed'],
 
   setup(props, ctx) {
     const isOpen = ref(false);
@@ -154,10 +155,11 @@ export default defineComponent({
           aria-label="Close"
           size="small"
         >
-          <icon-x-sm
-            slot="icon"
-            inherit-color
-          />
+          <slot name="icon">
+            <icon-x-sm
+              inherit-color
+            />
+          </slot>
         </cdr-button>
       </div>
     </cdr-popup>
