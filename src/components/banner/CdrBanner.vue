@@ -7,6 +7,11 @@ import propValidator from '../../utils/propValidator';
 export default defineComponent({
   name: 'CdrBanner',
   props: {
+    /**
+     * Sets the banner style.
+     * @demoSelectMultiple false
+     * @values info, warning, success, error, default
+   */
     type: {
       type: String,
       validator: (value) => propValidator(

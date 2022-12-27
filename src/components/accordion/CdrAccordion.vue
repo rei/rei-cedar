@@ -14,6 +14,7 @@ export default defineComponent({
   props: {
     /**
      * The unique id of an accordion.
+     * @demoIgnore true
      */
     id: {
       type: String,
@@ -21,6 +22,7 @@ export default defineComponent({
     },
     /**
      * Toggle this value to open/close the accordion.
+     * @demoIgnore true
      */
     opened: {
       type: Boolean,
@@ -42,6 +44,8 @@ export default defineComponent({
     },
     /**
      * Sets the heading level
+     * @demoSelectMultiple false
+     * @values 1, 2, 3, 4, 5, 6
      */
     level: {
       type: [String, Number],
@@ -54,6 +58,9 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @demoIgnore true
+     */
     label: {
       type: String,
     },
