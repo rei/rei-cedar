@@ -7,6 +7,9 @@ import uid from '../../utils/uid';
 export default defineComponent({
   name: 'CdrBreadcrumb',
   props: {
+    /**
+     * @demoIgnore true
+     */
     items: {
       type: Array,
       default: () => [],
@@ -33,6 +36,9 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @demoIgnore true
+     */
     id: {
       type: String,
     },

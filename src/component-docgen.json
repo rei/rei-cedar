@@ -1,61 +1,93 @@
 {
-  "CdrBreadcrumb": {
-    "displayName": "CdrBreadcrumb",
+  "CdrButton": {
+    "displayName": "CdrButton",
     "exportName": "default",
     "description": "",
     "tags": {},
     "props": [
       {
-        "name": "items",
+        "name": "tag",
         "type": {
-          "name": "array"
+          "name": "string"
         },
         "defaultValue": {
           "func": false,
-          "value": []
+          "value": "'button'"
         }
       },
       {
-        "name": "truncationEnabled",
-        "description": "Flag to track container width threshold exceeded",
+        "name": "type",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'button'"
+        }
+      },
+      {
+        "name": "modifier",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'primary'"
+        }
+      },
+      {
+        "name": "size",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'medium'"
+        }
+      },
+      {
+        "name": "fullWidth",
+        "type": {
+          "name": "string|boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": false
+        }
+      },
+      {
+        "name": "iconOnly",
         "type": {
           "name": "boolean"
         },
         "defaultValue": {
           "func": false,
-          "value": true
+          "value": false
         }
       },
       {
-        "name": "id",
+        "name": "withBackground",
         "type": {
-          "name": "string"
+          "name": "boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": false
         }
-      }
-    ],
-    "events": [
-      {
-        "name": "navigate"
       }
     ],
     "slots": [
       {
-        "name": "link",
-        "scoped": true,
-        "bindings": [
-          {
-            "name": "class",
-            "title": "binding"
-          },
-          {
-            "name": "href",
-            "title": "binding"
-          },
-          {
-            "name": "content",
-            "title": "binding"
-          }
-        ]
+        "name": "icon-left"
+      },
+      {
+        "name": "icon"
+      },
+      {
+        "name": "default"
+      },
+      {
+        "name": "icon-right"
       }
     ]
   },
@@ -148,15 +180,14 @@
       }
     ]
   },
-  "CdrAccordion": {
-    "displayName": "CdrAccordion",
+  "CdrBreadcrumb": {
+    "displayName": "CdrBreadcrumb",
     "exportName": "default",
     "description": "",
     "tags": {},
     "props": [
       {
-        "name": "id",
-        "description": "The unique id of an accordion.",
+        "name": "items",
         "tags": {
           "demoIgnore": [
             {
@@ -166,78 +197,16 @@
           ]
         },
         "type": {
-          "name": "string"
-        },
-        "required": true
-      },
-      {
-        "name": "opened",
-        "description": "Toggle this value to open/close the accordion.",
-        "tags": {
-          "demoIgnore": [
-            {
-              "description": "true",
-              "title": "demoIgnore"
-            }
-          ]
-        },
-        "type": {
-          "name": "boolean"
+          "name": "array"
         },
         "defaultValue": {
           "func": false,
-          "value": false
+          "value": []
         }
       },
       {
-        "name": "compact",
-        "description": "Sets a compact style.",
-        "type": {
-          "name": "boolean"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": false
-        }
-      },
-      {
-        "name": "borderAligned",
-        "description": "Sets a border-aligned style.",
-        "type": {
-          "name": "boolean"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": false
-        }
-      },
-      {
-        "name": "level",
-        "description": "Sets the heading level",
-        "tags": {
-          "demoSelectMultiple": [
-            {
-              "description": "false",
-              "title": "demoSelectMultiple"
-            }
-          ]
-        },
-        "values": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6"
-        ],
-        "type": {
-          "name": "string|number"
-        },
-        "required": true
-      },
-      {
-        "name": "contentSpacing",
-        "description": "Toggles content spacing (padding)",
+        "name": "truncationEnabled",
+        "description": "Flag to track container width threshold exceeded",
         "type": {
           "name": "boolean"
         },
@@ -247,7 +216,7 @@
         }
       },
       {
-        "name": "label",
+        "name": "id",
         "tags": {
           "demoIgnore": [
             {
@@ -261,12 +230,29 @@
         }
       }
     ],
+    "events": [
+      {
+        "name": "navigate"
+      }
+    ],
     "slots": [
       {
-        "name": "label"
-      },
-      {
-        "name": "default"
+        "name": "link",
+        "scoped": true,
+        "bindings": [
+          {
+            "name": "class",
+            "title": "binding"
+          },
+          {
+            "name": "href",
+            "title": "binding"
+          },
+          {
+            "name": "content",
+            "title": "binding"
+          }
+        ]
       }
     ]
   },
@@ -290,6 +276,29 @@
       }
     ]
   },
+  "CdrCard": {
+    "displayName": "CdrCard",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "tag",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'article'"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "default"
+      }
+    ]
+  },
   "CdrChip": {
     "displayName": "CdrChip",
     "exportName": "default",
@@ -304,6 +313,156 @@
       },
       {
         "name": "default"
+      }
+    ]
+  },
+  "CdrChipGroup": {
+    "displayName": "CdrChipGroup",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "label",
+        "type": {
+          "name": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "hideLabel",
+        "type": {
+          "name": "boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": true
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "label"
+      },
+      {
+        "name": "default"
+      }
+    ]
+  },
+  "CdrFormError": {
+    "displayName": "CdrFormError",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "error",
+        "type": {
+          "name": "boolean|string"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "error"
+      }
+    ]
+  },
+  "CdrContainer": {
+    "displayName": "CdrContainer",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "tag",
+        "description": "Any valid HTML tag",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'div'"
+        }
+      },
+      {
+        "name": "modifier",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'static'"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "default"
+      }
+    ]
+  },
+  "CdrFormGroup": {
+    "displayName": "CdrFormGroup",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "id",
+        "type": {
+          "name": "string"
+        }
+      },
+      {
+        "name": "label",
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "defaultValue": {
+          "func": false,
+          "value": "''"
+        }
+      },
+      {
+        "name": "error",
+        "type": {
+          "name": "boolean|string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": false
+        }
+      },
+      {
+        "name": "required",
+        "type": {
+          "name": "boolean"
+        }
+      },
+      {
+        "name": "optional",
+        "type": {
+          "name": "boolean"
+        }
+      },
+      {
+        "name": "disabled",
+        "type": {
+          "name": "boolean"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "label"
+      },
+      {
+        "name": "default"
+      },
+      {
+        "name": "error"
       }
     ]
   },
@@ -417,137 +576,6 @@
       }
     ]
   },
-  "CdrChipGroup": {
-    "displayName": "CdrChipGroup",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "label",
-        "type": {
-          "name": "string"
-        },
-        "required": true
-      },
-      {
-        "name": "hideLabel",
-        "type": {
-          "name": "boolean"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": true
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "label"
-      },
-      {
-        "name": "default"
-      }
-    ]
-  },
-  "CdrContainer": {
-    "displayName": "CdrContainer",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "tag",
-        "description": "Any valid HTML tag",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'div'"
-        }
-      },
-      {
-        "name": "modifier",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'static'"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "default"
-      }
-    ]
-  },
-  "CdrFormGroup": {
-    "displayName": "CdrFormGroup",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "id",
-        "type": {
-          "name": "string"
-        }
-      },
-      {
-        "name": "label",
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "defaultValue": {
-          "func": false,
-          "value": "''"
-        }
-      },
-      {
-        "name": "error",
-        "type": {
-          "name": "boolean|string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": false
-        }
-      },
-      {
-        "name": "required",
-        "type": {
-          "name": "boolean"
-        }
-      },
-      {
-        "name": "optional",
-        "type": {
-          "name": "boolean"
-        }
-      },
-      {
-        "name": "disabled",
-        "type": {
-          "name": "boolean"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "label"
-      },
-      {
-        "name": "default"
-      },
-      {
-        "name": "error"
-      }
-    ]
-  },
   "CdrGrid": {
     "displayName": "CdrGrid",
     "exportName": "default",
@@ -579,25 +607,6 @@
     "slots": [
       {
         "name": "default"
-      }
-    ]
-  },
-  "CdrFormError": {
-    "displayName": "CdrFormError",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "error",
-        "type": {
-          "name": "boolean|string"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "error"
       }
     ]
   },
@@ -821,260 +830,6 @@
     "slots": [
       {
         "name": "input"
-      },
-      {
-        "name": "default"
-      }
-    ]
-  },
-  "CdrList": {
-    "displayName": "CdrList",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "tag",
-        "description": "Tag accepts a user defined element and expects either: 'ul' = Unordered List or 'ol' = Ordered List.",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'ul'"
-        }
-      },
-      {
-        "name": "modifier",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "''"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "default"
-      }
-    ]
-  },
-  "CdrCard": {
-    "displayName": "CdrCard",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "tag",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'article'"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "default"
-      }
-    ]
-  },
-  "CdrButton": {
-    "displayName": "CdrButton",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "tag",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'button'"
-        }
-      },
-      {
-        "name": "type",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'button'"
-        }
-      },
-      {
-        "name": "modifier",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'primary'"
-        }
-      },
-      {
-        "name": "size",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'medium'"
-        }
-      },
-      {
-        "name": "fullWidth",
-        "type": {
-          "name": "string|boolean"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": false
-        }
-      },
-      {
-        "name": "iconOnly",
-        "type": {
-          "name": "boolean"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": false
-        }
-      },
-      {
-        "name": "withBackground",
-        "type": {
-          "name": "boolean"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": false
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "icon-left"
-      },
-      {
-        "name": "icon"
-      },
-      {
-        "name": "default"
-      },
-      {
-        "name": "icon-right"
-      }
-    ]
-  },
-  "CdrModal": {
-    "displayName": "CdrModal",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "opened",
-        "type": {
-          "name": "boolean"
-        },
-        "required": true
-      },
-      {
-        "name": "label",
-        "type": {
-          "name": "string"
-        },
-        "required": true
-      },
-      {
-        "name": "showTitle",
-        "type": {
-          "name": "boolean"
-        },
-        "required": false,
-        "defaultValue": {
-          "func": false,
-          "value": true
-        }
-      },
-      {
-        "name": "ariaDescribedby",
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "defaultValue": {
-          "func": false,
-          "value": "null"
-        }
-      },
-      {
-        "name": "role",
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "defaultValue": {
-          "func": false,
-          "value": "'dialog'"
-        }
-      },
-      {
-        "name": "id",
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "defaultValue": {
-          "func": false,
-          "value": "null"
-        }
-      },
-      {
-        "name": "overlayClass",
-        "type": {
-          "name": "string"
-        }
-      },
-      {
-        "name": "wrapperClass",
-        "type": {
-          "name": "string"
-        }
-      },
-      {
-        "name": "contentClass",
-        "type": {
-          "name": "string"
-        }
-      },
-      {
-        "name": "animationDuration",
-        "type": {
-          "name": "number"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "300"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "modal"
-      },
-      {
-        "name": "title"
       },
       {
         "name": "default"
@@ -1356,53 +1111,6 @@
       }
     ]
   },
-  "CdrQuote": {
-    "displayName": "CdrQuote",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "tag",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'blockquote'"
-        }
-      },
-      {
-        "name": "modifier",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "''"
-        }
-      },
-      {
-        "name": "summary",
-        "description": "Caption summary text",
-        "type": {
-          "name": "string"
-        }
-      },
-      {
-        "name": "citation",
-        "description": "Caption credit text",
-        "type": {
-          "name": "string"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "default"
-      }
-    ]
-  },
   "CdrInput": {
     "displayName": "CdrInput",
     "exportName": "default",
@@ -1550,6 +1258,53 @@
       },
       {
         "name": "error"
+      }
+    ]
+  },
+  "CdrQuote": {
+    "displayName": "CdrQuote",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "tag",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'blockquote'"
+        }
+      },
+      {
+        "name": "modifier",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "''"
+        }
+      },
+      {
+        "name": "summary",
+        "description": "Caption summary text",
+        "type": {
+          "name": "string"
+        }
+      },
+      {
+        "name": "citation",
+        "description": "Caption credit text",
+        "type": {
+          "name": "string"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "default"
       }
     ]
   },
@@ -1747,87 +1502,6 @@
       }
     ]
   },
-  "CdrLink": {
-    "displayName": "CdrLink",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "tag",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'a'"
-        }
-      },
-      {
-        "name": "href",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'#'"
-        }
-      },
-      {
-        "name": "inheritColor",
-        "type": {
-          "name": "boolean"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": false
-        }
-      },
-      {
-        "name": "modifier",
-        "type": {
-          "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "''"
-        }
-      },
-      {
-        "name": "target",
-        "tags": {
-          "ignore": [
-            {
-              "description": true,
-              "title": "ignore"
-            }
-          ]
-        },
-        "type": {
-          "name": "string"
-        }
-      },
-      {
-        "name": "rel",
-        "tags": {
-          "ignore": [
-            {
-              "description": true,
-              "title": "ignore"
-            }
-          ]
-        },
-        "type": {
-          "name": "string"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "default"
-      }
-    ]
-  },
   "CdrSwitch": {
     "displayName": "CdrSwitch",
     "exportName": "default",
@@ -1947,6 +1621,25 @@
       }
     ]
   },
+  "CdrTabPanel": {
+    "displayName": "CdrTabPanel",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "name",
+        "type": {
+          "name": "string"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "default"
+      }
+    ]
+  },
   "CdrTabs": {
     "displayName": "CdrTabs",
     "exportName": "default",
@@ -1993,6 +1686,29 @@
         "defaultValue": {
           "func": false,
           "value": "CdrColorBackgroundPrimary"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "default"
+      }
+    ]
+  },
+  "CdrText": {
+    "displayName": "CdrText",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "tag",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'p'"
         }
       }
     ],
@@ -2058,6 +1774,40 @@
       }
     ]
   },
+  "CdrList": {
+    "displayName": "CdrList",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "tag",
+        "description": "Tag accepts a user defined element and expects either: 'ul' = Unordered List or 'ol' = Ordered List.",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'ul'"
+        }
+      },
+      {
+        "name": "modifier",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "''"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "default"
+      }
+    ]
+  },
   "CdrToggleButton": {
     "displayName": "CdrToggleButton",
     "exportName": "default",
@@ -2078,20 +1828,217 @@
       }
     ]
   },
-  "CdrTabPanel": {
-    "displayName": "CdrTabPanel",
+  "CdrToggleGroup": {
+    "displayName": "CdrToggleGroup",
     "exportName": "default",
     "description": "",
     "tags": {},
     "props": [
       {
-        "name": "name",
+        "name": "modelValue",
+        "type": {
+          "name": "string|number|boolean|object|array"
+        },
+        "required": true
+      },
+      {
+        "name": "size",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'medium'"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "default"
+      }
+    ]
+  },
+  "CdrLink": {
+    "displayName": "CdrLink",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "tag",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'a'"
+        }
+      },
+      {
+        "name": "href",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "'#'"
+        }
+      },
+      {
+        "name": "inheritColor",
+        "type": {
+          "name": "boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": false
+        }
+      },
+      {
+        "name": "modifier",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "''"
+        }
+      },
+      {
+        "name": "target",
+        "tags": {
+          "ignore": [
+            {
+              "description": true,
+              "title": "ignore"
+            }
+          ]
+        },
+        "type": {
+          "name": "string"
+        }
+      },
+      {
+        "name": "rel",
+        "tags": {
+          "ignore": [
+            {
+              "description": true,
+              "title": "ignore"
+            }
+          ]
+        },
         "type": {
           "name": "string"
         }
       }
     ],
     "slots": [
+      {
+        "name": "default"
+      }
+    ]
+  },
+  "CdrModal": {
+    "displayName": "CdrModal",
+    "exportName": "default",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "opened",
+        "type": {
+          "name": "boolean"
+        },
+        "required": true
+      },
+      {
+        "name": "label",
+        "type": {
+          "name": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "showTitle",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": {
+          "func": false,
+          "value": true
+        }
+      },
+      {
+        "name": "ariaDescribedby",
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "defaultValue": {
+          "func": false,
+          "value": "null"
+        }
+      },
+      {
+        "name": "role",
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "defaultValue": {
+          "func": false,
+          "value": "'dialog'"
+        }
+      },
+      {
+        "name": "id",
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "defaultValue": {
+          "func": false,
+          "value": "null"
+        }
+      },
+      {
+        "name": "overlayClass",
+        "type": {
+          "name": "string"
+        }
+      },
+      {
+        "name": "wrapperClass",
+        "type": {
+          "name": "string"
+        }
+      },
+      {
+        "name": "contentClass",
+        "type": {
+          "name": "string"
+        }
+      },
+      {
+        "name": "animationDuration",
+        "type": {
+          "name": "number"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "300"
+        }
+      }
+    ],
+    "slots": [
+      {
+        "name": "modal"
+      },
+      {
+        "name": "title"
+      },
       {
         "name": "default"
       }
@@ -2158,54 +2105,123 @@
       }
     ]
   },
-  "CdrText": {
-    "displayName": "CdrText",
+  "CdrAccordion": {
+    "displayName": "CdrAccordion",
     "exportName": "default",
     "description": "",
     "tags": {},
     "props": [
       {
-        "name": "tag",
+        "name": "id",
+        "description": "The unique id of an accordion.",
+        "tags": {
+          "demoIgnore": [
+            {
+              "description": "true",
+              "title": "demoIgnore"
+            }
+          ]
+        },
         "type": {
           "name": "string"
-        },
-        "defaultValue": {
-          "func": false,
-          "value": "'p'"
-        }
-      }
-    ],
-    "slots": [
-      {
-        "name": "default"
-      }
-    ]
-  },
-  "CdrToggleGroup": {
-    "displayName": "CdrToggleGroup",
-    "exportName": "default",
-    "description": "",
-    "tags": {},
-    "props": [
-      {
-        "name": "modelValue",
-        "type": {
-          "name": "string|number|boolean|object|array"
         },
         "required": true
       },
       {
-        "name": "size",
+        "name": "opened",
+        "description": "Toggle this value to open/close the accordion.",
+        "tags": {
+          "demoIgnore": [
+            {
+              "description": "true",
+              "title": "demoIgnore"
+            }
+          ]
+        },
         "type": {
-          "name": "string"
+          "name": "boolean"
         },
         "defaultValue": {
           "func": false,
-          "value": "'medium'"
+          "value": false
+        }
+      },
+      {
+        "name": "compact",
+        "description": "Sets a compact style.",
+        "type": {
+          "name": "boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": false
+        }
+      },
+      {
+        "name": "borderAligned",
+        "description": "Sets a border-aligned style.",
+        "type": {
+          "name": "boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": false
+        }
+      },
+      {
+        "name": "level",
+        "description": "Sets the heading level",
+        "tags": {
+          "demoSelectMultiple": [
+            {
+              "description": "false",
+              "title": "demoSelectMultiple"
+            }
+          ]
+        },
+        "values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "type": {
+          "name": "string|number"
+        },
+        "required": true
+      },
+      {
+        "name": "contentSpacing",
+        "description": "Toggles content spacing (padding)",
+        "type": {
+          "name": "boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": true
+        }
+      },
+      {
+        "name": "label",
+        "tags": {
+          "demoIgnore": [
+            {
+              "description": "true",
+              "title": "demoIgnore"
+            }
+          ]
+        },
+        "type": {
+          "name": "string"
         }
       }
     ],
     "slots": [
+      {
+        "name": "label"
+      },
       {
         "name": "default"
       }

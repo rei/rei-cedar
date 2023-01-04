@@ -1,0 +1,51 @@
+{
+  "checkboxes": [],
+  "checkboxGroups": [],
+  "radioGroups": [
+    {
+      "name": "type",
+      "description": "Sets the banner style.",
+      "values": [
+        "info",
+        "warning",
+        "success",
+        "error",
+        "default"
+      ],
+      "type": {
+        "name": "string"
+      },
+      "defaultValue": "'default'",
+      "demoSelectMultiple": "false",
+      "componentName": "CdrBanner",
+      "propName": "type",
+      "radioButtons": [
+        {
+          "propName": "type",
+          "label": "info",
+          "customValue": "info"
+        },
+        {
+          "propName": "type",
+          "label": "warning",
+          "customValue": "warning"
+        },
+        {
+          "propName": "type",
+          "label": "success",
+          "customValue": "success"
+        },
+        {
+          "propName": "type",
+          "label": "error",
+          "customValue": "error"
+        },
+        {
+          "propName": "type",
+          "label": "default",
+          "customValue": "default"
+        }
+      ]
+    }
+  ]
+}
