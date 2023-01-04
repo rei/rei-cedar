@@ -65,6 +65,7 @@ export default defineComponent({
       type: String,
     },
   },
+  emits: ['accordion-toggle'],
 
   setup(props, ctx) {
     const unwrap = inject('unwrap', false);

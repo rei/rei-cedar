@@ -2,10 +2,8 @@
 
 import fullSprite from '@rei/cedar-icons/dist/all-icons.svg';
 import SinkWrapper from './SinkWrapper.vue'; // eslint-disable-line
-import { CdrLink } from '../lib.js';
-import cedarcss from '../styles/main.scss';
-import routes from './router.js';
-
+import { CdrLink } from '../lib';
+import routes from './router';
 
 export default {
   components: {
@@ -15,13 +13,12 @@ export default {
   data() {
     return {
       routes,
-      cedarcss,
       fullSprite,
     };
   },
   computed: {
     isBackstop() {
-      return false; //this.$router.currentRoute.query.backstop;
+      return false; // this.$router.currentRoute.query.backstop;
     },
   },
   watch: {
@@ -34,7 +31,7 @@ export default {
       const focusTarget = (to.hash)
         ? this.$refs.focusTarget
         : this.$refs.focusWrapper;
-      // Make focustarget programmatically focussable
+      // Make focustarget programmatically focusable
       focusTarget.setAttribute('tabindex', '-1');
       // Focus element
       focusTarget.focus();
@@ -103,6 +100,7 @@ export default {
 </template>
 
 <style lang="scss">
+@import "../styles/main.scss";
 @import "node_modules/@rei/cdr-tokens/dist/scss/cdr-tokens.scss";
 .stack {
   margin-top: $cdr-space-one-x;

@@ -24,6 +24,8 @@ export { default as CdrQuote } from './components/quote/CdrQuote.vue';
 export { default as CdrRadio } from './components/radio/CdrRadio.vue';
 export { default as CdrRating } from './components/rating/CdrRating.vue';
 export { default as CdrSelect } from './components/select/CdrSelect.vue';
+export { default as CdrSkeleton } from './components/skeleton/CdrSkeleton.vue';
+export { default as CdrSkeletonBone } from './components/skeleton/CdrSkeletonBone.vue';
 export { default as CdrTable } from './components/table/CdrTable.vue';
 export { default as CdrTabPanel } from './components/tabs/CdrTabPanel.vue';
 export { default as CdrTabs } from './components/tabs/CdrTabs.vue';

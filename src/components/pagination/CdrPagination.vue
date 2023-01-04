@@ -64,6 +64,7 @@ export default defineComponent({
       type: Number,
     },
   },
+  emits: ['update:modelValue', 'navigate'],
 
   setup(props, ctx) {
     const currentIdx = ref(0);
