@@ -1,6 +1,6 @@
 <script>
 import {
-  computed, defineComponent, inject, useCssModule,
+  computed, defineComponent, inject, useCssModule, watch,
 } from 'vue';
 import kebabCase from 'lodash-es/kebabCase';
 
@@ -9,12 +9,17 @@ export default defineComponent({
   props: {
     name: String,
   },
-  setup(props) {
+  emits: ['tab-change'],
+  setup(props, ctx) {
     const selectedTabName = inject('selectedTabName');
-
     const isActive = computed(() => props.name === selectedTabName?.value);
     const panelId = computed(() => `${kebabCase(props.name)}-panel`);
     const style = useCssModule();
+
+    watch(isActive, (state) => {
+      ctx.emit('tab-change', state, panelId.value);
+    });
+
     return {
       selectedTabName,
       isActive,
