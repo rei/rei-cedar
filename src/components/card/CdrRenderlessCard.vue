@@ -13,9 +13,9 @@
  * @method registerCustomEvent - Registers a custom event.
  */
 
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   name: 'CdrRenderlessCard',
   props: {
     cdrCardData: {
@@ -32,81 +32,38 @@ export default {
     },
   },
   emits: ['cdr-card-clicked'],
-  /**
-   * setup()
-   *
-   * Sets up the component by creating reactive props from passed in cdrCardData and setting isLinked and customEvents.
-   */
   setup(props) {
     const reactiveProps = {};
 
-    // Create reactive props from the passed in cdrCardData
     Object.keys(props.cdrCardData).forEach((key) => {
       reactiveProps[key] = ref(props.cdrCardData[key]);
     });
-    // Set isLinked based on the passed in cdrCardIsLinked prop
-    const isLinked = ref(props.cdrCardIsLinked);
 
-    // Create an empty object to store custom events
+    const isLinked = ref(props.cdrCardIsLinked);
     const customEvents = ref({});
+    const events = [
+      { name: 'handleFocus', callback: () => {} },
+      { name: 'handleHover', callback: () => {} },
+      { name: 'handleActive', callback: () => {} },
+      { name: 'handleClick', callback: () => { this.$emit('cdr-card-clicked'); } },
+    ];
 
     return {
       ...reactiveProps,
       isLinked,
       customEvents,
+      events,
     };
   },
   methods: {
-    /**
-     * registerEvent()
-     *
-     * Registers a custom event.
-     */
-    registerEvent: (name, callback) => {
+    registerCustomEvent(name, callback) {
       this.customEvents.value[name] = callback;
     },
-    /**
-     * handleFocus()
-     *
-     * Handles focus event.
-     */
-    handleFocus: () => {
-      // Focus event code
-    },
-    /**
-     * handleHover()
-     *
-     * Handles hover event.
-     */
-    handleHover: () => {
-      // Hover event code
-    },
-    /**
-     * handleActive()
-     *
-     * Handles active event.
-     */
-    handleActive: () => {
-      // Active event code
-    },
-    /**
-     * handleClick()
-     *
-     * Handles click event.
-     */
-    handleClick: () => {
-      this.$emit('cdr-card-clicked');
-    },
-    /**
-     * handleCustomEvent()
-     *
-     * Handles custom event.
-     */
-    handleCustomEvent: (name) => {
+    handleCustomEvent(name) {
       if (this.customEvents.value[name]) {
         this.customEvents.value[name]();
       }
     },
   },
-};
+});
 </script>
