@@ -16,6 +16,14 @@
   }
 }
 
+@mixin cdr-card--static-base-mixin() {
+  background-color: $cdr-color-background-primary;
+  color: $cdr-color-text-primary;
+  width: 100%;
+  overflow: hidden;
+}
+
+
 @mixin cdr-card-link-mixin() {
   position: static;
   color: $cdr-color-text-primary !important;

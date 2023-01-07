@@ -1,19 +1,19 @@
 <template>
   <div>
-    <a href="rei.com">
-      <cdr-card
-        class="card-example"
-      >
-        <cdr-link
-          href="#bar"
-          class="cdr-card__link"
-        >A simple card</cdr-link>
-      </cdr-card>
-    </a>
+    <cdr-card
+      tag="div"
+      class="card-example" 
+      :cdr-card-is-linked="false"
+    >
+      <cdr-link
+        href="#foo"
+      >A simple card</cdr-link>
+    </cdr-card>
   </div>
-</template>
 
+</template>
 <script>
+
 import * as Components from 'srcdir/lib';
 
 export default {

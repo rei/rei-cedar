@@ -2,6 +2,11 @@
 @import './vars/CdrCard.vars.scss';
 .cdr-card {
   @include cdr-card-base-mixin;
+
+}
+.cdr-card--static {
+  @include cdr-card--static-base-mixin;
+
 }
 
 :global(.cdr-card__link) {
