@@ -11,7 +11,6 @@ export default defineComponent({
    * Defines gutter size. Also accepts responsive values with `@breakpoint`: "none@md"
    * @demoSelectMultiple false
    * @values none, small, medium, large
-   * 
    */
     gutter: {
       type: String,

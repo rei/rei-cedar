@@ -69,12 +69,11 @@ export default defineComponent({
         'circle',
         'rounded'].indexOf(value) >= 0) || false,
     },
-
-      /**
-   * Modifies the style variant for this component.
-   * @demoSelectMultiple false
-   * @values responsive
-   */
+    /**
+     * Modifies the style variant for this component.
+     * @demoSelectMultiple false
+     * @values responsive
+     */
     modifier: {
       type: String,
       default: '',
