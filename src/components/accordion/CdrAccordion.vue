@@ -44,8 +44,7 @@ export default defineComponent({
     },
     /**
      * Sets the heading level
-     * @demoSelectMultiple false
-     * @values 1, 2, 3, 4, 5, 6
+     * @demoIgnore true
      */
     level: {
       type: [String, Number],

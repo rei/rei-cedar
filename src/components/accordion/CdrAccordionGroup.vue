@@ -11,8 +11,6 @@ export default defineComponent({
   props: {
     /**
      * A prop that will present accordion content as unwrapped. All content is expanded at the provided breakpoints.
-     * @demoSelectMultiple true
-     * @values @xs, @sm, @md, @lg
      */
     unwrap: {
       type: [String, Boolean],

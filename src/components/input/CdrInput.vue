@@ -26,6 +26,8 @@ export default defineComponent({
      *  'type' attribute for the input as defined by w3c.
      *  Only supporting text|email|number|password|search|url.
      *  The increment/decrement webkit psuedo element is hidden for number.
+     *  @demoSelectMultiple false
+     *  @values text, email, number, password, search, url, tel
     */
     type: {
       type: [String],
@@ -57,6 +59,11 @@ export default defineComponent({
     rows: Number,
     // Set which background type the input renders on
     background: backgroundProps,
+    /**
+     * Sets the input field size
+    * @demoSelectMultiple false
+    * @values medium, large
+   */
     size: sizeProps,
 
     /**
@@ -131,7 +138,14 @@ export default defineComponent({
         ...ctx.attrs,
       };
     });
-
+    const inputModel = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(newValue) {
+        ctx.emit('update:modelValue', newValue);
+      },
+    });
     return {
       style: useCssModule(),
       baseClass,
@@ -153,6 +167,7 @@ export default defineComponent({
       focusedClass,
       describedby,
       inputAttrs,
+      inputModel,
       mapClasses,
     };
   },
@@ -206,7 +221,7 @@ export default defineComponent({
         :aria-describedby="describedby || null"
         @focus="isFocused = true"
         @blur="isFocused = false"
-        @input="$emit('update:modelValue', $event.target.value)"
+        v-model="inputModel"
       />
       <input
         v-else
@@ -229,7 +244,7 @@ export default defineComponent({
         :aria-describedby="describedby || null"
         @focus="isFocused = true"
         @blur="isFocused = false"
-        @input="$emit('update:modelValue', $event.target.value)"
+        v-model="inputModel"
       >
       <span
         v-if="hasPreIcon"

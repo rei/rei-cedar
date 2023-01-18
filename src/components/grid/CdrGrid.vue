@@ -8,9 +8,10 @@ export default defineComponent({
   name: 'CdrGrid',
   props: {
     /**
-   * Defines gutter size.
-   * Possible values: {none, small, medium, large}.
-   * Also accepts responsive values with `@breakpoint`: "none@md"
+   * Defines gutter size. Also accepts responsive values with `@breakpoint`: "none@md"
+   * @demoSelectMultiple false
+   * @values none, small, medium, large
+   * 
    */
     gutter: {
       type: String,

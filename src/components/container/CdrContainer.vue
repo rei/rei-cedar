@@ -11,6 +11,11 @@ export default defineComponent({
       type: String,
       default: 'div',
     },
+    /**
+     * Controls whether container is static or fluid width.
+     * @demoSelectMultiple false
+     * @values static, fluid
+   */
     modifier: {
       type: String,
       default: 'static',

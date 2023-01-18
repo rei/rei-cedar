@@ -4,9 +4,17 @@ import { defineComponent, useCssModule } from 'vue';
 export default defineComponent({
   name: 'CdrCaption',
   props: {
+    /**
+     * Sets the string content for the description body of the caption.
+     * @demoIgnore true
+     */
     summary: {
       type: String,
     },
+    /**
+     * Sets the string content for attribution.
+     * @demoIgnore true
+     */
     credit: {
       type: String,
     },

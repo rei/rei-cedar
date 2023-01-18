@@ -61,6 +61,10 @@ export default defineComponent({
     customValue: [String, Number, Boolean, Object, Array, Symbol, Function],
     // Set which background type the input renders on
     background: backgroundProps,
+  /**
+   * @demoSelectMultiple false
+   * @values small, medium, large
+  */
     size: sizeProps,
 
     modifier: {

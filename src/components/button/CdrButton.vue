@@ -9,21 +9,37 @@ import propValidator from '../../utils/propValidator';
 export default defineComponent({
   name: 'CdrButton',
   props: {
+    /**
+     * @demoIgnore true
+     */
     tag: {
       type: String,
       default: 'button',
       validator: (value) => propValidator(value, ['button', 'a']),
     },
+    /**
+     * @demoIgnore true
+     */
     type: {
       type: String,
       default: 'button',
       validator: (value) => propValidator(value, ['button', 'submit', 'reset']),
     },
+    /**
+     * Modifies the style variant for this component
+     * @demoSelectMultiple false
+     * @values primary, secondary, sale, dark, link
+     */
     modifier: {
       type: String,
       default: 'primary',
       validator: (value) => propValidator(value, ['primary', 'secondary', 'sale', 'dark', 'link']),
     },
+    /**
+     * Sets the button size
+     * @demoSelectMultiple false
+     * @values small, medium, large
+     */
     size: {
       type: String,
       default: 'medium',
@@ -32,6 +48,9 @@ export default defineComponent({
         ['small', 'medium', 'large'],
       ),
     },
+    /**
+     * Sets button width to 100%
+     */
     fullWidth: {
       type: [String, Boolean],
       default: false,
