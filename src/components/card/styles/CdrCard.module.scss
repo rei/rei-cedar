@@ -1,14 +1,42 @@
 @import '../../../styles/settings/index.scss';
-@import './vars/CdrCard.vars.scss';
+
+
+// cdr-card.scss
+@import './themes/theme.scss';
+
+
 .cdr-card {
-  @include cdr-card-base-mixin;
-
+  @include cdr-card-behavior;
+  @include cdr-card-shape;
+  @include cdr-card-color;
 }
-.cdr-card--static {
-  @include cdr-card--static-base-mixin;
 
+@each $palette in available-palettes() {
+  .cdr-card--#{$palette} {
+    @include cdr-card-behavior($palette);
+    @include cdr-card-shape($palette);
+    @include cdr-card-color($palette);
+  }
 }
 
 :global(.cdr-card__link) {
-  @include cdr-card-link-mixin;
+  @include cdr-card-behavior;
+  text-decoration: none !important;
+
+  &:hover {
+    text-decoration: underline !important;
+    color: cdr-color('cdr-card-text-color-link-hover') !important;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: cdr-value('cdr-card-width-100');
+    z-index: 1;
+    height: cdr-value('cdr-card-height-100');
+    left: 0;
+    top: 0;
+    background-color: transparent;
+  }
 }

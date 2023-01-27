@@ -1,48 +1,68 @@
+@import '../themes/CdrCard.color.scss';
+@import '../themes/CdrCard.prominence.scss';
+@import '../themes/CdrCard.radius.scss';
+@import '../themes/CdrCard.shape.scss';
+@import '../themes/CdrCard.spacing.scss';
+@import '../themes/CdrCard.typography.scss';
+
+
+$value-map: (
+  'cdr-card-width-100': 100%,
+  'cdr-card-height-100': 100%,
+  // other value variables
+);
+
+@function cdr-value($name) {
+  @return map-get($value-map, $name);
+}
+
 @mixin cdr-card-base-mixin() {
+  @include cdr-card-color-mixin;
+  @include cdr-card-shape-mixin;
+  @include cdr-card-prominence-mixin;
+  @include cdr-card-spacing-mixin;
+  @include cdr-card-typography-mixin;
   position: relative;
-  background-color: $cdr-color-background-primary;
-  border-radius: $cdr-radius-softer;
-  box-shadow: $cdr-prominence-raised;
-  color: $cdr-color-text-primary;
-  width: 100%;
-  transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
+  width: cdr-value('cdr-card-width-100');
+  transition: box-shadow cdr-value('cdr-card-duration-2-x') $cdr-timing-function-ease;
   cursor: pointer;
   overflow: hidden;
 
   &:active, &:hover {
-    box-shadow: $cdr-prominence-floating;
-    transform: translateY(-$cdr-space-eighth-x);
-    transition: $cdr-duration-2-x;
+    @include cdr-card-prominence('cdr-card-box-shadow-hover');
+    transform: cdr-shape('cdr-card-transform-default');
+    transition: cdr-value('cdr-card-duration-2-x');
   }
 }
 
 @mixin cdr-card--static-base-mixin() {
-  background-color: $cdr-color-background-primary;
-  color: $cdr-color-text-primary;
-  width: 100%;
+  @include cdr-card-color-mixin;
+  @include cdr-card-shape-mixin;
+  @include cdr-card-spacing-mixin;
+  @include cdr-card-typography-mixin;
+  width: cdr-value('cdr-card-width-100');
   overflow: hidden;
 }
 
-
 @mixin cdr-card-link-mixin() {
+  @include cdr-card-color-mixin;
+  @include cdr-card-typography-mixin;
   position: static;
-  color: $cdr-color-text-primary !important;
   text-decoration: none !important;
 
   &:hover {
     text-decoration: underline !important;
-    color: $cdr-color-text-link-hover !important;
   }
 
   &::before {
     content: "";
     display: block;
     position: absolute;
-    width: 100%;
+    width: cdr-value('cdr-card-width-100');
     z-index: 1;
-    height: 100%;
+    height: cdr-value('cdr-card-height-100');
     left: 0;
     top: 0;
-    background-color: transparent;
+    background-color: cdr-color('cdr-card-background-color-transparent');
   }
 }

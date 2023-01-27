@@ -1,8 +1,10 @@
 <template>
-  <div data-backstop="simple-card">
+  <div data-backstop="cards">
     <simple-card />
     <hr>
-    <complex-card />
+    <div v-for="palette in availablePalettes">
+      <complex-card :palette="palette" @cdr-card-clicked="handleCardClick"/>
+    </div>
   </div>
 </template>
 
@@ -16,5 +18,14 @@ export default {
     simpleCard,
     complexCard,
   },
+  computed: {
+    availablePalettes() {
+        return ['default', 'dark'] 
+    },
+    cardClass() {
+        return `cdr-card cdr-card--${this.palette}`;
+    }
+  }
 };
 </script>
+
