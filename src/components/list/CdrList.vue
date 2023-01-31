@@ -13,6 +13,11 @@ export default defineComponent({
       default: 'ul',
       validator: (value) => propValidator(value, ['ul', 'ol']),
     },
+    /**
+     * Modifies the style variant for this component
+     * @demoSelectMultiple true
+     * @values ordered, unordered, compact, inline
+     */
     modifier: {
       type: String,
       default: '',

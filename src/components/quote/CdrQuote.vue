@@ -11,6 +11,10 @@ export default defineComponent({
       default: 'blockquote',
       validator: (value) => propValidator(value, ['blockquote', 'aside', 'q', 'div']),
     },
+    /**
+     * @demoSelectMultiple true
+     * @values pull
+     */
     modifier: {
       type: String,
       default: '',

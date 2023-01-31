@@ -35,6 +35,11 @@ export default defineComponent({
     href: {
       type: String,
     },
+    /**
+     * Sets the rating size.
+     * @demoSelectMultiple false
+     * @values small, medium, large
+    */
     size: {
       type: String,
       default: 'medium',

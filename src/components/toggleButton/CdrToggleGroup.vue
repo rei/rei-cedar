@@ -12,6 +12,10 @@ export default defineComponent({
       type: [String, Number, Boolean, Object, Array],
       required: true,
     },
+    /**
+     * @demoSelectMultiple false
+     * @values medium, large
+    */
     size: {
       type: String,
       default: 'medium',

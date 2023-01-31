@@ -32,13 +32,21 @@ export default defineComponent({
       type: String,
       required: true,
     },
-
+    /**
+     * Modifies the style variants for this component
+     * @demoSelectMultiple true
+     * @values hide-figure
+    */
     modifier: {
       type: String,
       default: '',
       validator: (value) => propValidator(value, ['', 'hide-figure']),
     },
-
+    /**
+     * Sets the radio size; values can target responsive breakpoints
+     * @demoSelectMultiple false
+     * @values small, medium, large
+    */
     size: sizeProps,
 
     // Set which background type the input renders on

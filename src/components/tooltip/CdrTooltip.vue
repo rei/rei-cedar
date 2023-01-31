@@ -12,6 +12,10 @@ export default defineComponent({
     CdrPopup,
   },
   props: {
+    /**
+     * @demoSelectMultiple false
+     * @values top, bottom, left, right
+    */
     position: {
       type: String,
       required: false,

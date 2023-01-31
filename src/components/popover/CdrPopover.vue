@@ -13,6 +13,10 @@ export default defineComponent({
   name: 'CdrPopover',
   components: { IconXSm, CdrButton, CdrPopup },
   props: {
+    /**
+     * @demoSelectMultiple false
+     * @values top, bottom, left, right
+     */
     position: {
       type: String,
       required: false,
@@ -39,6 +43,9 @@ export default defineComponent({
       type: String,
       required: false,
     },
+    /**
+     * @demoIgnore true
+     */
     open: {
       type: Boolean,
       default: false,

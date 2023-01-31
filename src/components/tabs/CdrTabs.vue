@@ -21,6 +21,10 @@ export default defineComponent({
       default: 0,
     },
     modifier: String,
+    /**
+     * @demoSelectMultiple true
+     * @values small
+    */
     size: String,
     backgroundColor: {
       type: String,

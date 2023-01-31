@@ -17,6 +17,10 @@ export default defineComponent({
     id: {
       type: String,
     },
+    /**
+     * @demoSelectMultiple false
+     * @values medium, large
+    */
     size: {
       type: String,
       default: 'medium',
@@ -29,6 +33,9 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @demoIgnore true
+    */    
     modelValue: {
       type: Boolean,
       required: true,

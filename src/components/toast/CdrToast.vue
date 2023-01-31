@@ -13,6 +13,11 @@ export default defineComponent({
     CdrButton,
   },
   props: {
+    /**
+     * Sets the toast style.
+     * @demoSelectMultiple false
+     * @values info, success, warning, error, default
+    */
     type: {
       type: String,
       validator: (value) => propValidator(
@@ -21,6 +26,9 @@ export default defineComponent({
       ),
       default: 'default',
     },
+    /**
+     * @demoIgnore true
+    */
     open: {
       type: Boolean,
       default: false,

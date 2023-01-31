@@ -16,6 +16,9 @@ export default defineComponent({
   name: 'CdrModal',
   components: { CdrButton, IconXLg },
   props: {
+    /**
+     * @demoIgnore true
+     */
     opened: {
       type: Boolean,
       required: true,
