@@ -35,7 +35,7 @@ export default defineComponent({
     },
     /**
      * @demoIgnore true
-    */    
+    */
     modelValue: {
       type: Boolean,
       required: true,
