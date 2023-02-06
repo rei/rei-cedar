@@ -92,10 +92,6 @@ $modal-animation-duration: 150ms;
     position: relative;
     top: -2px;
     right: -4px;
-
-    &:hover, &:focus {
-      border: 1px solid $cdr-color-icon-default;
-    }
   }
 
   &__text-content {
