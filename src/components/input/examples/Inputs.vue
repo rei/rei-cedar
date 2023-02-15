@@ -203,7 +203,14 @@
         </cdr-link>
       </template>
     </cdr-input>
-
+    <cdr-input
+        label-class="demo-input"
+        v-model="dateModel"
+        label="Date"
+        :background="backgroundColor"
+        type="date"
+        min="2023-01-01"
+      />
     <cdr-input
       label-class="demo-input"
       v-model="helperValidationModel"
@@ -329,6 +336,9 @@
       Form With Buttons Value = {{ formWithButtons }}
     </div>
     <div class="demo-input">
+      Date Input Value = {{ dateModel }}
+    </div>
+    <div class="demo-input">
       Helper/Validation Input Value = {{ helperValidationModel }}
     </div>
     <div class="demo-input">
@@ -361,6 +371,7 @@ export default {
       requiredModel: '',
       optionalModel: '',
       hiddenModel: '',
+      dateModel: '',
       disabledModel: '',
       errorFromProps: 'this error is from props and will appear if no slotted template is provided',
       helperValidationModel: '',
@@ -401,6 +412,7 @@ export default {
       this.multiRowModel = this.masterModel;
       this.sizeModel = this.masterModel;
       this.megaModel = this.masterModel;
+      this.dateModel = this.masterModel;
     },
     setBackground(background) {
       switch (background) {
