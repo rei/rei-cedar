@@ -34,7 +34,7 @@ export default defineComponent({
       default: 'text',
       validator: (value) => propValidator(
         value,
-        ['text', 'email', 'number', 'password', 'search', 'url', 'tel'],
+        ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date'],
       ),
     },
     /**
