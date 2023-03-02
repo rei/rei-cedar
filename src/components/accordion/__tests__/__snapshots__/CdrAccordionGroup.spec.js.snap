@@ -4,6 +4,7 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
 <ul
   class="cdr-accordion-group"
 >
+  <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
   
   <li
     class=""
@@ -12,6 +13,10 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
     <h2
       class="cdr-accordion__header--unwrapped"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <div
         class="js-cdr-accordion-button"
         id="tab1"
@@ -20,6 +25,7 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
           class="cdr-accordion__label"
           id="tab1-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label1
           
@@ -35,6 +41,7 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
         class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
         id="tab1-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -47,6 +54,10 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
     <h2
       class="cdr-accordion__header--unwrapped"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <div
         class="js-cdr-accordion-button"
         id="tab2"
@@ -55,6 +66,7 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
           class="cdr-accordion__label"
           id="tab2-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label2
           
@@ -70,6 +82,7 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
         class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
         id="tab2-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -82,6 +95,10 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
     <h2
       class="cdr-accordion__header--unwrapped"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <div
         class="js-cdr-accordion-button"
         id="tab3"
@@ -90,6 +107,7 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
           class="cdr-accordion__label"
           id="tab3-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label3
           
@@ -105,6 +123,7 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
         class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
         id="tab3-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -118,6 +137,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
 <ul
   class="cdr-accordion-group"
 >
+  <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
   
   <li
     class="cdr-accordion cdr-accordion--focused"
@@ -126,6 +146,10 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
     <h2
       class="cdr-accordion__header"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <button
         aria-controls="tab1-collapsible"
         aria-expanded="false"
@@ -137,6 +161,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
           class="cdr-accordion__label"
           id="tab1-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label1
           
@@ -168,6 +193,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
         class="cdr-accordion__content cdr-accordion--closed"
         id="tab1-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -180,6 +206,10 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
     <h2
       class="cdr-accordion__header"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <button
         aria-controls="tab2-collapsible"
         aria-expanded="false"
@@ -191,6 +221,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
           class="cdr-accordion__label"
           id="tab2-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label2
           
@@ -222,6 +253,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
         class="cdr-accordion__content cdr-accordion--closed"
         id="tab2-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -234,6 +266,10 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
     <h2
       class="cdr-accordion__header"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <button
         aria-controls="tab3-collapsible"
         aria-expanded="false"
@@ -245,6 +281,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
           class="cdr-accordion__label"
           id="tab3-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label3
           
@@ -276,6 +313,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
         class="cdr-accordion__content cdr-accordion--closed"
         id="tab3-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -289,6 +327,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
 <ul
   class="cdr-accordion-group"
 >
+  <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
   
   <li
     class=""
@@ -297,6 +336,10 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
     <h2
       class="cdr-accordion__header--unwrapped"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <div
         class="js-cdr-accordion-button"
         id="tab1"
@@ -305,6 +348,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
           class="cdr-accordion__label"
           id="tab1-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label1
           
@@ -320,6 +364,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
         class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
         id="tab1-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -332,6 +377,10 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
     <h2
       class="cdr-accordion__header--unwrapped"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <div
         class="js-cdr-accordion-button"
         id="tab2"
@@ -340,6 +389,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
           class="cdr-accordion__label"
           id="tab2-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label2
           
@@ -355,6 +405,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
         class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
         id="tab2-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
@@ -367,6 +418,10 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
     <h2
       class="cdr-accordion__header--unwrapped"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <div
         class="js-cdr-accordion-button"
         id="tab3"
@@ -375,6 +430,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
           class="cdr-accordion__label"
           id="tab3-label"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           
           label3
           
@@ -390,6 +446,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
         class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
         id="tab3-collapsible"
       >
+        <!-- @slot CdrAccordion content -->
         
         
       </div>
