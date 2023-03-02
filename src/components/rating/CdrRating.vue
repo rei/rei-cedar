@@ -7,7 +7,7 @@ export default defineComponent({
   name: 'CdrRating',
   props: {
     /**
-     * Rating value (out of 5)
+     * Sets the rating values between 0 and 5.
      */
     rating: {
       required: true,
@@ -15,7 +15,7 @@ export default defineComponent({
       default: 0,
     },
     /**
-     * Total number of ratings
+     * Sets the total number of ratings
      */
     count: {
       required: false,
@@ -30,7 +30,7 @@ export default defineComponent({
       default: false,
     },
     /**
-     * Allows the ratings to act as a link
+     * Sets the rating component (icons and text) to display inline and wraps them in an anchor tag so they can act as link.
      */
     href: {
       type: String,

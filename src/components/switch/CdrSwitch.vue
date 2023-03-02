@@ -14,10 +14,14 @@ export default defineComponent({
     IconXSm,
   },
   props: {
+    /**
+     * Sets a custom ID for the switch. If this value is not set, it will be auto-generated.
+    */
     id: {
       type: String,
     },
     /**
+     * Sets the size of the switch
      * @demoSelectMultiple false
      * @values medium, large
     */
@@ -29,6 +33,9 @@ export default defineComponent({
         ['medium', 'large'],
       ),
     },
+    /**
+     * Sets the label and switch to expand to the full width of its container with `space-between`
+     */
     fullWidth: {
       type: Boolean,
       default: false,
@@ -41,7 +48,13 @@ export default defineComponent({
       required: true,
     },
   },
-  emits: ['update:modelValue'],
+  emits: {
+    /**
+     * Event emitted by v-model on switch
+     * @param modelValue
+     */
+    'update:modelValue': null,
+  },
   setup(props, ctx) {
     const style = useCssModule();
     const uniqueId = props.id ? props.id : uid();
@@ -81,6 +94,7 @@ export default defineComponent({
       :id="uniqueId"
       :class="style['cdr-switch__label']"
     >
+      <!-- @slot The label for the switch -->
       <slot />
     </div>
     <button

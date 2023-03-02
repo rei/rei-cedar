@@ -6,6 +6,12 @@ import {
 export default defineComponent({
   name: 'CdrSkeleton',
   props: {
+    /**
+     * Toggle animation on/off.
+     * When `true`, animated gradient will be used while loading.
+     * When `false` a static background color will be used.
+     * Automatically disabled if `prefers-reduced-motion` is set by user.
+     */
     motion: { type: Boolean, default: true },
   },
   setup(props) {
@@ -26,6 +32,7 @@ export default defineComponent({
     aria-live="polite"
     aria-busy="true"
   >
+    <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
     <slot />
   </div>
 </template>

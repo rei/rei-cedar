@@ -7,28 +7,35 @@ import propValidator from '../../utils/propValidator';
 export default defineComponent({
   name: 'CdrTable',
   props: {
+    /** Sets row colors to alternate between darker and lighter backgrounds.
+     * Striping will not apply when `border` is true
+     */
     striped: {
       type: Boolean,
       default: false,
     },
+    /** Adds borders between rows. Will disable `striped` if both are true */
     border: {
       type: Boolean,
       default: true,
     },
+    /** Sets the width to 100%. Also accepts space separated strings for breakpoints that it should be full width: { '@xs' | '@sm' | '@md' | '@lg' } */
     fullWidth: {
       type: [Boolean, String],
       default: true,
     },
+    /** Makes the table scroll horizontally when it would overflow its container */
     responsive: {
       type: Boolean,
       default: true,
     },
+    /** Adds a darker background on row hover */
     hover: {
       type: Boolean,
       default: false,
     },
     /**
-     * Sets the rating size.
+     * Sets the table size (cell padding); values can target responsive breakpoints. Example `small@lg`.
      * @demoSelectMultiple false
      * @values small, medium, large
     */
@@ -80,6 +87,7 @@ export default defineComponent({
                          fullWidthClass,
       )"
     >
+      <!-- @slot CdrTable content (Valid table elements <th>, <tbody>, <tr>, <td>, etc.) -->
       <slot />
     </table>
   </div>

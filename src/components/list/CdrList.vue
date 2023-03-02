@@ -6,7 +6,8 @@ export default defineComponent({
   name: 'CdrList',
   props: {
     /**
-     * Tag accepts a user defined element and expects either: 'ul' = Unordered List or 'ol' = Ordered List.
+     * Sets list type and HTML element as "unordered" or "ordered"
+     * @values ul, ol
      */
     tag: {
       type: String,
@@ -46,6 +47,7 @@ export default defineComponent({
     :is="tag"
     :class="[style[baseClass], modifierClasses]"
   >
+    <!-- @slot CdrList content (list-items) -->
     <slot />
   </component>
 </template>

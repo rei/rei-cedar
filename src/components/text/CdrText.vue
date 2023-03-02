@@ -4,6 +4,7 @@ import { useCssModule, defineComponent } from 'vue';
 export default defineComponent({
   name: 'CdrText',
   props: {
+    /** Sets the HTML tag (p, span, h1, h2, etc) */
     tag: {
       type: String,
       default: 'p',
@@ -22,6 +23,7 @@ export default defineComponent({
     :is="tag"
     :class="style['cdr-text']"
   >
+    <!-- @slot CdrText content -->
     <slot />
   </component>
 </template>

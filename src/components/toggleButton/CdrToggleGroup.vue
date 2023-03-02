@@ -8,11 +8,13 @@ import propValidator from '../../utils/propValidator';
 export default defineComponent({
   name: 'CdrToggleGroup',
   props: {
+    /** @ignore */
     modelValue: {
       type: [String, Number, Boolean, Object, Array],
       required: true,
     },
     /**
+     * Sets toggle button size
      * @demoSelectMultiple false
      * @values medium, large
     */
@@ -25,7 +27,13 @@ export default defineComponent({
       ),
     },
   },
-  emits: ['update:modelValue'],
+  emits: {
+    /**
+     * Event emitted by v-model
+     * @param modelValue
+     */
+    'update:modelValue': null,
+  },
   setup(props, ctx) {
     const toggleGroup = ref(null);
 
@@ -115,6 +123,7 @@ export default defineComponent({
     @keyup.right.prevent="focusNext"
     @keyup.left.prevent="focusPrev"
   >
+    <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
     <slot />
   </ul>
 </template>

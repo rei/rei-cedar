@@ -20,6 +20,7 @@ export default defineComponent({
       ),
       default: 'medium@xs medium@sm large@md large@lg',
     },
+    /** Sets the HTML tag for the grid element */
     tag: {
       type: String,
       default: 'div',
@@ -46,6 +47,7 @@ export default defineComponent({
     :is="tag"
     :class="mapClasses(style, baseClass, gutterClass)"
   >
+    <!-- @slot CdrGrid content (grid child elements) -->
     <slot />
   </component>
 </template>

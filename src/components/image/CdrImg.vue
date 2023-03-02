@@ -8,15 +8,15 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     /**
-   * Required. Image source url.
-   */
+     * Image source url.
+     */
     src: {
       type: String,
       required: true,
     },
     /**
-   * Required. Image alt text.
-   */
+     * Image alt text. Defaults to an empty string
+     */
     alt: {
       type: String,
       default: '',

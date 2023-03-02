@@ -9,6 +9,7 @@ export default defineComponent({
   name: 'CdrSkeletonBone',
   props: {
   /**
+   * Sets the type of content placeholder
    * @demoSelectMultiple false
    * @values default, heading, line, rectangle, square
   */

@@ -4,6 +4,9 @@ import { defineComponent, useCssModule } from 'vue';
 export default defineComponent({
   name: 'CdrCard',
   props: {
+    /**
+     * Sets valid HTML container element tag.
+     */
     tag: {
       type: String,
       default: 'article',
@@ -24,6 +27,7 @@ export default defineComponent({
     :is="tag"
     :class="style[baseClass]"
   >
+    <!-- @slot CdrCard content -->
     <slot />
   </component>
 </template>

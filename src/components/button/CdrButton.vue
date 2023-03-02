@@ -10,7 +10,9 @@ export default defineComponent({
   name: 'CdrButton',
   props: {
     /**
+     * Renders CdrButton as a <button> or <a> element. When using the value of <a>, this element renders as an anchor link.
      * @demoIgnore true
+     * @values button, a
      */
     tag: {
       type: String,
@@ -18,7 +20,9 @@ export default defineComponent({
       validator: (value) => propValidator(value, ['button', 'a']),
     },
     /**
+     * Sets the button type
      * @demoIgnore true
+     * @values button, submit, reset
      */
     type: {
       type: String,
@@ -36,7 +40,7 @@ export default defineComponent({
       validator: (value) => propValidator(value, ['primary', 'secondary', 'sale', 'dark', 'link']),
     },
     /**
-     * Sets the button size
+     * Sets the button size; values can target responsive breakpoints. Example: `large@sm`.
      * @demoSelectMultiple false
      * @values small, medium, large
      */
@@ -49,7 +53,7 @@ export default defineComponent({
       ),
     },
     /**
-     * Sets button width to 100%
+     * Sets button width to 100%. Setting this value to true will set the button width to 100% of the parent container. Use the 'fullWidth' prop with the 'size' prop to control top and bottom padding.
      */
     fullWidth: {
       type: [String, Boolean],
@@ -65,10 +69,16 @@ export default defineComponent({
         return typeof value === 'boolean';
       },
     },
+    /**
+     * Renders an 'icon-only' button. When this value is true, it will override the size and 'responsiveSize' props. Can be used in conjunction with 'with-background'
+     */
     iconOnly: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Renders an 'icon-only' button with a background color and border. Must be used in conjunction with the 'iconOnly' prop.
+     */
     withBackground: {
       type: Boolean,
       default: false,
@@ -125,9 +135,13 @@ export default defineComponent({
     )"
     :type="buttonType"
   >
+    <!-- @slot Icon to the left of text content -->
     <slot name="icon-left" />
+    <!-- @slot Icon for icon-only button -->
     <slot name="icon" />
+    <!-- @slot Readable text of the button. Leave empty if icon-only -->
     <slot />
+    <!-- @slot Icon to the right of text content -->
     <slot name="icon-right" />
   </component>
 </template>

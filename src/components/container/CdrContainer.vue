@@ -6,7 +6,7 @@ import mapClasses from '../../utils/mapClasses';
 export default defineComponent({
   name: 'CdrContainer',
   props: {
-    /** Any valid HTML tag */
+    /** Sets the HTML tag for the container element */
     tag: {
       type: String,
       default: 'div',
@@ -47,6 +47,7 @@ export default defineComponent({
     :is="tag"
     :class="mapClasses(style, baseClass, modifierClass)"
   >
+    <!-- @slot CdrContainer content  -->
     <slot />
   </component>
 </template>

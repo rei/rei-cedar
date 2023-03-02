@@ -8,6 +8,7 @@ export default defineComponent({
   name: 'CdrBreadcrumb',
   props: {
     /**
+     * Sets the array of a breadcrumb object containing a 'url' and 'name' property.
      * @demoIgnore true
      */
     items: {
@@ -30,20 +31,26 @@ export default defineComponent({
       },
     },
     /**
-   * Flag to track container width threshold exceeded
-   */
+     * Controls the ability to truncate the entire breadcrumb path. If this value is false, truncation will no longer occur.
+     */
     truncationEnabled: {
       type: Boolean,
       default: true,
     },
     /**
+     * Define a custom ID for the `<nav>` element. Randomly generated if no ID provided.
      * @demoIgnore true
      */
     id: {
       type: String,
     },
   },
-  emits: ['navigate'],
+  emits: {
+    /**
+     * Emits when a breadcrumb item is clicked. `e.preventDefault()` may be used to override the default link navigation.
+     */
+    navigate: null,
+  },
 
   setup(props) {
     const uniqueId = props.id ? props.id : uid();

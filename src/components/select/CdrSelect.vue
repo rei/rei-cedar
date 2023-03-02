@@ -18,21 +18,23 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     /**
-     * `id` for the select that is mapped to the label `for` attribute. If one is not provided, it will be generated.
+     * Custom ID that is mapped to the label ‘for’ attribute. If this value is not set, it will be auto-generated.
     */
     id: {
       type: String,
     },
     /**
-     * Label text. This is required for a11y even if hiding the label with `hideLabel`.
+     * Sets the text value for the select label.
+     * Required for accessibility compliance. Use ‘hideLabel’ to
+     * visually hide the label but keep it available to screenreaders.
     */
     label: {
       type: String,
       required: true,
     },
     /**
-     * Removes the label element but sets the select `aria-label` to `label` text for a11y.
-    */
+     * Visually hides the label element, but leaves it available to screen readers for accessibility compliance.
+     */
     hideLabel: {
       type: Boolean,
       default: false,
@@ -42,36 +44,61 @@ export default defineComponent({
     */
     prompt: String,
     /**
-     * Build options programatically with data. Array of objects [{ text: String, value: String}] to give greater control. Array of strings ['String'] for simpler setup (value and text will be the same).
+     * Build options programmatically with data.
+     * Provide an array of objects [{ text: String, value: String}] for greater control
+     * or provide an array of strings ['String'] for simpler setup (value and text will be the same).
     */
     options: {
       type: Array,
     },
-    // Set which background type the select renders on
+    /**
+     * Sets the background color the radio button is rendered on
+     * @values primary, secondary
+     */
     background: backgroundProps,
+    /**
+     * Sets the component's size; values can target responsive breakpoints. Example `small@lg`
+     * @demoSelectMultiple false
+     * @values small, medium, large
+    */
     size: sizeProps,
-    // Set error styling
+    /** Sets the select to an error state, displays the `error` slot if one is present. */
     error: {
       type: [Boolean, String],
       default: false,
     },
     /**
-    * Override the error message role, default is `status`.
+    * Sets the `role` attribute for the embedded error state messaging.
     */
     errorRole: {
       type: String,
-      required: false,
+      default: 'status',
     },
+    /** @ignore */
     modelValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
     },
+    /** Disables the input and sets appropriate styling */
     disabled: Boolean,
+    /** Sets aria-required on the input field and displays an asterisk next to the select label */
     required: Boolean,
+    /** Displays '(optional)' text next to the select label. */
     optional: Boolean,
+    /** Turns CdrSelect into a multi-select element. */
     multiple: Boolean,
+    /** Sets the height of the CdrSelect when using the multiple option.
+     * This number corresponds to the number of select options that will be visible without scrolling.
+     */
     multipleSize: Number,
   },
-  emits: ['update:modelValue'],
+  emits: {
+    /**
+     * Event emitted by v-model on the radio's <input> element
+     * @param modelValue
+     */
+    'update:modelValue': null,
+  },
+
   customOptions: {},
   setup(props, ctx) {
     const baseClass = 'cdr-select';
@@ -172,21 +199,23 @@ export default defineComponent({
       #helper
       v-if="hasHelper"
     >
+      <!-- @slot Helper text above the select field -->
       <slot name="helper-text" />
     </template>
     <template
       #info
       v-if="hasInfo"
     >
+      <!-- @slot Link or icon to the right above the select field.  -->
       <slot name="info" />
     </template>
 
-    <!-- default slot -->
     <div :class="style['cdr-select-wrap']">
       <span
         v-if="hasPreIcon"
         :class="style['cdr-select__pre-icon']"
       >
+        <!-- @slot Icon preceding text within the select field -->
         <slot name="pre-icon" />
       </span>
 
@@ -228,6 +257,7 @@ export default defineComponent({
         >
           {{ option.text }}
         </option>
+        <!-- @slot CdrSelect content (<option> tags). Leave empty if using the `options` prop. -->
         <slot />
       </select>
 
@@ -238,6 +268,7 @@ export default defineComponent({
       #info-action
       v-if="hasInfoAction"
     >
+      <!-- @slot Action-wrapped icon to the right of the select field -->
       <slot name="info-action" />
     </template>
 
@@ -252,6 +283,7 @@ export default defineComponent({
         v-if="error"
       >
         <template #error>
+          <!-- @slot Error messaging text that is displayed when the `error` prop is true. -->
           <slot name="error" />
         </template>
       </cdr-form-error>
