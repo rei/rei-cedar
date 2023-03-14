@@ -87,6 +87,7 @@ $modal-animation-duration: 150ms;
   }
   &__close-button {
     flex: none;
+    align-self: center;
     margin-left: $cdr-space-half-x;
     padding: 7px;
     position: relative;
