@@ -38,9 +38,6 @@ export default defineComponent({
   setup(props, ctx) {
     const style = useCssModule();
     const uniqueId = props.id ? props.id : uid();
-    const onClick = (modelValue) => {
-      ctx.emit('update:modelValue', !modelValue);
-    };
     const baseClass = 'cdr-switch';
     const sizeClass = computed(() => (props.size
       ? `cdr-switch--${props.size}`
@@ -48,11 +45,20 @@ export default defineComponent({
     const fullWidthClass = computed(() => props.fullWidth
       && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
 
+    const value = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(newValue) {
+        ctx.emit('update:modelValue', newValue);
+      },
+    });
+
     return {
       style,
       mapClasses,
       uniqueId,
-      onClick,
+      value,
       baseClass,
       sizeClass,
       fullWidthClass,
@@ -76,17 +82,30 @@ export default defineComponent({
     >
       <slot />
     </div>
-    <button
-      @click="onClick(modelValue)"
+    <label
       :class="style['cdr-switch__button']"
       role="switch"
       :aria-checked="modelValue"
       :aria-labelledby="uniqueId"
     >
-      <icon-check-sm :class="style['cdr-switch__button-icon']" />
-      <icon-x-sm :class="style['cdr-switch__button-icon']" />
-      <div :class="style['cdr-switch__handle']" />
-    </button>
+      <input
+        v-show="false"
+        type="checkbox"
+        v-model="value"
+      >
+      <icon-check-sm
+        :class="style['cdr-switch__button-icon']"
+        aria-hidden="true"
+      />
+      <icon-x-sm
+        :class="style['cdr-switch__button-icon']"
+        aria-hidden="true"
+      />
+      <div
+        :class="style['cdr-switch__handle']"
+        aria-hidden="true"
+      />
+    </label>
   </div>
 </template>
 

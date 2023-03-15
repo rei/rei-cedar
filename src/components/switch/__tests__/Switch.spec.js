@@ -3,7 +3,7 @@ import CdrSwitch from '../CdrSwitch.vue';
 
 describe('CdrSwitch', () => {
   let wrapper;
-  let button;
+  let label;
   beforeEach(() => {
     wrapper = mount(CdrSwitch, {
       props: {
@@ -15,7 +15,7 @@ describe('CdrSwitch', () => {
         default: ' <span class="custom-text-style">Pull the lever Kronk!</span>'
       }
     });
-    button = wrapper.find('button');
+    label = wrapper.find('label');
   })
 
   it('matches snapshot', () => {
@@ -23,20 +23,20 @@ describe('CdrSwitch', () => {
   });
 
   it('has a role of "switch"', () => {
-    expect(button.attributes('role')).toBe('switch');
+    expect(label.attributes('role')).toBe('switch');
   });
 
   it('has an "aria-checked" value of "false"', () => {
-    expect(button.attributes('aria-checked')).toBe('false');
+    expect(label.attributes('aria-checked')).toBe('false');
   });
 
   it('the aria-labelledby attribute references the correct id', () => {
-    expect(button.attributes('aria-labelledby')).toBe('id-123');
+    expect(label.attributes('aria-labelledby')).toBe('id-123');
   });
 
   describe('after a click', () => {
     beforeEach(async () => {
-      await button.trigger('click');
+      await label.trigger('click');
     });
 
     it('emits the expected value', () => {
@@ -54,12 +54,12 @@ describe('CdrSwitch', () => {
     });
 
     it('has an "aria-checked" value of "true"', () => {
-      expect(wrapper.find('button').attributes('aria-checked')).toBe('true');
+      expect(wrapper.find('label').attributes('aria-checked')).toBe('true');
     });
 
     describe('after a click', () => {
       beforeEach(async () => {
-        await button.trigger('click')
+        await label.trigger('click')
       });
 
       it('emits the expected value', () => {

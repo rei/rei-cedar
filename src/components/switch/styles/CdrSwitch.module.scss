@@ -5,6 +5,9 @@
   align-items: center;
 
   &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 $cdr-space-quarter-x;
     padding: 0;
     position: relative;
