@@ -85,7 +85,7 @@ export default defineComponent({
     <label
       :class="style['cdr-switch__button']"
       role="switch"
-      tabindex="1"
+      tabindex="0"
       @keyup.space="() => value = !value"
       :aria-checked="modelValue"
       :aria-labelledby="uniqueId"
