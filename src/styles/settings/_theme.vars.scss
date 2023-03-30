@@ -188,6 +188,12 @@
 
     --secondary-text-primary: var(--cdr-color-background-secondary);
     --secondary-surface-primary: var(--cdr-color-text-secondary);
+
+    [data-layer="cdr-primary"] {
+        //primary button
+        --cdr-color-background-button-primary-rest: red;
+        --cdr-color-text-button-primary: blue;
+    }
   }
 }
 
