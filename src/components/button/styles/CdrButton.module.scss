@@ -4,8 +4,6 @@
 
 
 .cdr-button {
-
-
 background-color: var(--button-background);
 box-shadow: inset 0 0 0 1px var(--button-box-shadow);
 color: var(--button-text);
@@ -50,42 +48,42 @@ fill: var(--button-fill);
   /* Modifier style variants
     ========================================================================== */
   &--primary {
-    --button-background: var(--cdr-foundation-value-color-background-button-primary-rest);
-    --button-background-hover: var(--cdr-foundation-value-color-background-button-primary-hover);
-    --button-background-active: var(--cdr-foundation-value-color-background-button-primary-active);
-    --button-background-disabled: var(--cdr-foundation-value-color-background-button-default-disabled);
-    --button-box-shadow: var(--cdr-foundation-value-color-border-button-primary-rest);
-    --button-box-shadow-hover: var(--cdr-foundation-value-color-border-button-primary-hover);
-    --button-box-shadow-active: var(--cdr-foundation-value-color-border-button-primary-active);
-    --button-box-shadow-inset-active: var(--cdr-foundation-value-color-border-button-primary-active-inset);
-    --button-box-shadow-disabled: var(--cdr-foundation-value-color-border-button-default-disabled);
-    --button-text: var(--cdr-foundation-value-color-text-button-primary);
-    --button-text-hover: var(--cdr-foundation-value-color-text-button-primary-hover);
-    --button-text-active: var(--cdr-foundation-value-color-text-button-primary-active);
-    --button-text-disabled: var(--cdr-foundation-value-color-text-button-primary-disabled);
-    --button-fill: var(--cdr-foundation-value-color-text-button-primary);
-    --button-fill-hover: var(--cdr-foundation-value-color-text-button-primary-hover);
-    --button-fill-active: var(--cdr-foundation-value-color-text-button-primary-active);
-    --button-fill-disabled: var(--cdr-foundation-value-color-text-button-primary-disabled);
+    --button-background: var(--cdr-color-background-button-primary-rest);
+    --button-background-hover: var(--cdr-color-background-button-primary-hover);
+    --button-background-active: var(--cdr-color-background-button-primary-active);
+    --button-background-disabled: var(--cdr-color-background-button-default-disabled);
+    --button-box-shadow: var(--cdr-color-border-button-primary-rest);
+    --button-box-shadow-hover: var(--cdr-color-border-button-primary-hover);
+    --button-box-shadow-active: var(--cdr-color-border-button-primary-active);
+    --button-box-shadow-inset-active: var(--cdr-color-border-button-primary-active-inset);
+    --button-box-shadow-disabled: var(--cdr-color-border-button-default-disabled);
+    --button-text: var(--cdr-color-text-button-primary);
+    --button-text-hover: var(--cdr-color-text-button-primary-hover);
+    --button-text-active: var(--cdr-color-text-button-primary-active);
+    --button-text-disabled: var(--cdr-color-text-button-primary-disabled);
+    --button-fill: var(--cdr-color-text-button-primary);
+    --button-fill-hover: var(--cdr-color-text-button-primary-hover);
+    --button-fill-active: var(--cdr-color-text-button-primary-active);
+    --button-fill-disabled: var(--cdr-color-text-button-primary-disabled);
   }
 
   &--secondary {
-    --button-background: var(--cdr-foundation-value-color-background-button-secondary-rest);
-    --button-background-hover: var(--cdr-foundation-value-color-background-button-secondary-hover);
-    --button-background-active: var(--cdr-foundation-value-color-background-button-secondary-active);
-    --button-background-disabled: var(--cdr-foundation-value-color-background-button-secondary-disabled);
-    --button-box-shadow: var(--cdr-foundation-value-color-border-button-secondary-rest);
-    --button-box-shadow-hover: var(--cdr-foundation-value-color-border-button-secondary-hover);
-    --button-box-shadow-active: var(--cdr-foundation-value-color-border-button-secondary-active);
-    --button-box-shadow-inset-active: var(--cdr-foundation-value-color-border-button-secondary-active-inset);
-    --button-text: var(--cdr-foundation-value-color-text-button-secondary);
-    --button-text-hover: var(--cdr-foundation-value-color-text-button-secondary-hover);
-    --button-text-active: var(--cdr-foundation-value-color-text-button-secondary-active);
-    --button-text-disabled: var(--cdr-foundation-value-color-text-button-secondary-disabled);
-    --button-fill: var(--cdr-foundation-value-color-icon-default);
-    --button-fill-hover: var(--cdr-foundation-value-color-text-button-secondary-hover);
-    --button-fill-active: var(--cdr-foundation-value-color-text-button-secondary-active);
-    --button-fill-disabled: var(--cdr-foundation-value-color-text-button-secondary-disabled);
+    --button-background: var(--cdr-color-background-button-secondary-rest);
+    --button-background-hover: var(--cdr-color-background-button-secondary-hover);
+    --button-background-active: var(--cdr-color-background-button-secondary-active);
+    --button-background-disabled: var(--cdr-color-background-button-secondary-disabled);
+    --button-box-shadow: var(--cdr-color-border-button-secondary-rest);
+    --button-box-shadow-hover: var(--cdr-color-border-button-secondary-hover);
+    --button-box-shadow-active: var(--cdr-color-border-button-secondary-active);
+    --button-box-shadow-inset-active: var(--cdr-color-border-button-secondary-active-inset);
+    --button-text: var(--cdr-color-text-button-secondary);
+    --button-text-hover: var(--cdr-color-text-button-secondary-hover);
+    --button-text-active: var(--cdr-color-text-button-secondary-active);
+    --button-text-disabled: var(--cdr-color-text-button-secondary-disabled);
+    --button-fill: var(--cdr-color-icon-default);
+    --button-fill-hover: var(--cdr-color-text-button-secondary-hover);
+    --button-fill-active: var(--cdr-color-text-button-secondary-active);
+    --button-fill-disabled: var(--cdr-color-text-button-secondary-disabled);
   }
 
 

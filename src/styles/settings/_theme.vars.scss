@@ -71,7 +71,7 @@
     --cdr-color-text-button-secondary-active: #{$cdr-color-text-button-secondary-active};
     --cdr-color-text-button-secondary-disabled: #{$cdr-color-text-button-secondary-disabled};
     
-    /*///////////////////////////////////////////////////////////////////////////////
+   /*///////////////////////////////////////////////////////////////////////////////
     /-------------------------
     / UIProperties
     /-------------------------
@@ -97,7 +97,7 @@
     / UIObjects
     /-----------------------------------------
     /// DESCRIPTION: A UIObject results from the pairing of a UIP to a UIF
-    /// once paired they remain a cuplet in constant association 
+    /// once paired they remain a coupling in constant association 
     /// 
     /// this allows us to change the value provided to the markup or css property in a contextual manner 
     /// 
@@ -114,7 +114,7 @@
     /// "--cdr-color-text-button-secondary" remain paired to their UIPs .cdr-button--secondary { --button-background & --button-text }
     /// 
     /// Also note that as the UIP's are a consistent set of variables we can reduce the amount of actual css property delivered for something like a button variant color
-    /// and instead just pass the UIP's a new UIF in the context of their new context
+    /// and instead, just pass the UIP's a new UIF in the context of their new context
     /// so 
     ///  &--primary {
     ///     --button-background: var(--cdr-color-background-button-primary-rest);
@@ -139,9 +139,19 @@
     ///   --text-primary: var(--secondary-text-primary);
     /// }
     /// 
+    /// 
+    /// a more consistent approach is seen in button 
+    /// UIP mapped to css property
+    /// UIF default value is paired to UIP
+    /// palette variant UIF is passed to generic UIF from the context of the palette data-layer
+    /// results in UIP not needing to be updated or retouched per new palette
+    /// results in us being able to add new palettes without having to add anything to the component
+    /// results in teams being to create unique palettes
+    /// results in more maintainable component styles 
     /// -------------------------------------------------------------------------------------------
     ///
     ///////////////////////////////////////////////////////////////////////////////*/
+
 
    
     --text-emphasis:  var(--cdr-color-text-emphasis);
