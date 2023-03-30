@@ -54,6 +54,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    data: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 
   setup(props, ctx) {
@@ -105,6 +109,7 @@ export default defineComponent({
                        withBackgroundClass,
     )"
     :type="buttonType"
+    v-bind="data?.attrs"
   >
     <slot name="icon-left" />
     <slot name="icon" />

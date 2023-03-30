@@ -25,7 +25,9 @@
         {{ button.label }}
       </cdr-button>
     </div>
+
     <div
+      data-layer="cdr-brand"
       class="inset"
       data-backstop="cdr-button--anchor"
     >
@@ -41,6 +43,8 @@
       </cdr-button>
 
       <cdr-button
+      data-layer="cdr-secondary"
+      modifier="secondary"
         tag="a"
         href="https://rei.com"
         size="small"

@@ -50,6 +50,7 @@
   fill: inherit;
 }
 
+
 @mixin cdr-button-dark-mixin() {
   background-color: $cdr-color-background-button-dark-rest;
   box-shadow: inset 0 0 0 1px $cdr-color-border-button-dark-rest;

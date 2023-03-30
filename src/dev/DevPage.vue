@@ -102,6 +102,7 @@ export default {
 <style lang="scss">
 @import "../styles/main.scss";
 @import "node_modules/@rei/cdr-tokens/dist/scss/cdr-tokens.scss";
+
 .stack {
   margin-top: $cdr-space-one-x;
 }
@@ -131,19 +132,6 @@ export default {
 .nav {
   padding: $cdr-space-quarter-x;
   display:inline-flex;
-}
-
-.background-primary {
-  background-color: $cdr-color-background-primary;
-
-}
-
-.background-secondary {
-  background-color: $cdr-color-background-secondary;
-}
-
-.background-brand {
-  background-color: $cdr-color-background-brand-spruce;
 }
 
 // NOTE: type examples in this file are for testing and development purposes only

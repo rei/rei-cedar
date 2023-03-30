@@ -1,0 +1,218 @@
+
+
+:root {
+    /*///////////////////////////////////////////////////////////////////////////////
+    /-------------------------
+    / UIFoundation Tokens
+    /-------------------------
+    //DESCRIPTION: assigned and named via style dictionary.
+    //PURPOSE: these variables provide the 'Constant' values of our design foundations 
+    /
+    // Expectation:
+    //// 1) the UIFoundation tokens follow the token naming convention but map a value to a css custom property 
+    //// 2) There is a one-to-one relationship of UIF's to existing tokens
+    //// 3) Meaning that these are tokens but we are consuming a css custom prop file rather than a sass file
+    /
+    // USAGE: 
+    /// 1) UIF tokens are used as the values of UIProperties
+    ///    example:  --text-emphasis:  var(--cdr-color-text-emphasis);
+    ///  2) UIF's are allowed to reset the value of other UIF's already coupled to an UIP
+    ///     example: --cdr-color-text-button-primary: var(--cdr-brand-color-text-button-primary);
+    ///     In this example the primary buttons color is being reassigned the value appropriate for the brand palette UI layer.
+    ///     --cdr-color-text-button-primary is the name assigned to the button variant "primary" button text color Alias property
+    ///     --button-text: var(--cdr-color-text-button-primary);
+    ///     reassigning the value rather than the variable allows us to scope the change to a specific palette
+    ///     [data-layer="cdr-brand"] {
+    ///       --cdr-color-background-button-secondary-rest: var(--cdr-brand-color-background-button-secondary-rest);
+    ///       --cdr-color-text-button-secondary: var(--cdr-brand-color-text-button-secondary);
+    ///      }
+    ///      OR to a specific MODE
+    ///       @media(prefers-color-scheme: dark) {
+    ///         :root {
+    ///         --text-primary: var(--cdr-color-text-inverse);
+    ///         }
+    ///       }
+    ///
+    ///////////////////////////////////////////////////////////////////////////////*/
+
+   
+    --cdr-color-text-emphasis: #{$cdr-color-text-emphasis};
+    --cdr-color-text-primary: #{$cdr-color-text-primary};
+    --cdr-color-text-secondary: #{$cdr-color-text-secondary};
+    --cdr-color-background-primary: #{$cdr-color-background-primary};
+    --cdr-color-background-secondary: #{$cdr-color-background-secondary};
+    --cdr-color-background-brand: #{$cdr-color-background-brand-spruce};
+    --cdr-color-text-inverse: #{$cdr-color-text-inverse};
+
+    //For each component: 
+    --cdr-color-text-button-primary: #f9f8f6;
+    --cdr-color-text-button-primary-hover: #1f513f;
+    --cdr-color-text-button-primary-active: #f9f8f6;
+    --cdr-color-text-button-primary-disabled: #ffffff;
+    --cdr-color-background-button-primary-rest: #1f513f;
+    --cdr-color-background-button-primary-active: #1f513f;
+    --cdr-color-background-button-primary-hover: #f4f2ed;
+    --cdr-color-background-button-primary-icon-alt-hover: #f9f8f6;
+    --cdr-color-border-button-primary-rest: #1f513f;
+    --cdr-color-border-button-primary-active: #1f513f;
+    --cdr-color-border-button-primary-active-inset: #f4f2ed;
+    --cdr-color-border-button-primary-hover: #1f513f;
+    
+    --cdr-color-background-button-secondary-rest: #{$cdr-color-background-button-secondary-rest};
+    --cdr-color-background-button-secondary-hover: #{$cdr-color-background-button-secondary-hover};
+    --cdr-color-background-button-secondary-active: #{$cdr-color-background-button-secondary-active};
+    --cdr-color-background-button-secondary-disabled: #{$cdr-color-background-button-secondary-disabled};
+    --cdr-color-border-button-secondary-rest: #{$cdr-color-border-button-secondary-rest};
+    --cdr-color-border-button-secondary-hover: #{$cdr-color-border-button-secondary-hover};
+    --cdr-color-border-button-secondary-active: #{$cdr-color-border-button-secondary-active};
+    --cdr-color-border-button-secondary-active-inset: #($cdr-color-border-button-secondary-active-inset);
+    --cdr-color-text-button-secondary: #{$cdr-color-text-button-secondary};
+    --cdr-color-text-button-secondary-hover: #{$cdr-color-text-button-secondary-hover};
+    --cdr-color-text-button-secondary-active: #{$cdr-color-text-button-secondary-active};
+    --cdr-color-text-button-secondary-disabled: #{$cdr-color-text-button-secondary-disabled};
+    
+    /*///////////////////////////////////////////////////////////////////////////////
+    /-------------------------
+    / UIProperties
+    /-------------------------
+    //DESCRIPTION: Like UIFoundations UIProperties ARE GLOABALLY available to cedar and to our users’ applications
+    /// css custom properties add a nested property value pair to our css
+    /// UIPs are the property names associated to our UIF values.
+    /// example:
+    /// in a static file we have a flat property value pair.
+    /// .class {
+    ///   property: $value;
+    /// }
+    /// 
+    /// moving forward we add a nested property value
+    /// .class {
+    /// property: {UIP: UIF};
+    /// }
+    / 
+    //PURPOSE: these variables bind a usable name to a unique aspect of a page or components structure 
+    /// example: .cdr-button--primary {background-color: var(--button-background);}
+    /// These variables are semantic to their application rather than to their design foundation
+    /// 
+    /-----------------------------------------
+    / UIObjects
+    /-----------------------------------------
+    /// DESCRIPTION: A UIObject results from the pairing of a UIP to a UIF
+    /// once paired they remain a cuplet in constant association 
+    /// 
+    /// this allows us to change the value provided to the markup or css property in a contextual manner 
+    /// 
+    /// Example: you want to change the color of the primary button when its used in the brand palette
+    /// rather than bloating the button component with all possible palette we can alter the globally available 
+    /// UIF from the global palette declaration
+    /// [data-layer="cdr-brand"] {
+    ///       // contextual changes to UIFoundations 
+    ///       --cdr-color-background-button-secondary-rest: var(--cdr-brand-color-background-button-secondary-rest);
+    ///       --cdr-color-text-button-secondary: var(--cdr-brand-color-text-button-secondary);
+    ///      }
+    /// 
+    /// note that the properties in this case "--cdr-color-background-button-secondary-rest" and 
+    /// "--cdr-color-text-button-secondary" remain paired to their UIPs .cdr-button--secondary { --button-background & --button-text }
+    /// 
+    /// Also note that as the UIP's are a consistent set of variables we can reduce the amount of actual css property delivered for something like a button variant color
+    /// and instead just pass the UIP's a new UIF in the context of their new context
+    /// so 
+    ///  &--primary {
+    ///     --button-background: var(--cdr-color-background-button-primary-rest);
+    /// }
+    ///  &--secondary {
+    ///     --button-background: var(--cdr-color-background-button-secondary-rest);
+    /// }
+    /// allows this 
+    /// .cdr-button {
+    ///    background-color: var(--button-background);
+    /// }
+    /// 
+    /// 
+    /// Caution :: what do we think here? explore a bit more into outcomes and bloat
+    /// while it may be tempting to remap a UIP to a different UIF rather than providing a new mapping to the original UIF
+    /// I fear this will cause an increased chanse of style collistion and bloat
+    /// example:
+    /// :root {
+    ///     --text-primary: var(--cdr-color-text-primary);
+    /// }
+    /// [data-layer="cdr-secondary"] {
+    ///   --text-primary: var(--secondary-text-primary);
+    /// }
+    /// 
+    /// -------------------------------------------------------------------------------------------
+    ///
+    ///////////////////////////////////////////////////////////////////////////////*/
+
+   
+    --text-emphasis:  var(--cdr-color-text-emphasis);
+    --text-primary: var(--cdr-color-text-primary);
+    --text-secondary: var(--cdr-color-text-secondary);
+    --surface-primary: var(--cdr-color-background-primary);
+
+
+
+       
+      
+        // layer tokens mock up -- this should really just use the root option values
+        //fake update to have secondary use the secondary button styles in the brand palette
+        --cdr-brand-color-text-button-primary: #4e4d49;
+        --cdr-brand-color-background-button-primary-rest: #f9f8f6;
+        //fake update to have secondary use the dark button styles in the brand palette
+        --cdr-brand-color-text-button-secondary: #f9f8f6;
+        --cdr-brand-color-background-button-secondary-rest: #4e4d49;
+
+
+    --secondary-text-primary: #{$cdr-color-text-primary};
+    --secondary-surface-primary: var(--cdr-color-background-secondary);
+
+}
+
+  //Modes assign new values to ALIAS TOKENS
+@media(prefers-color-scheme: dark) {
+    :root {
+    /// this is wrong we and should only be updating the values of UIF's in a new context and not UIP's 
+    /// UIP's should be applied consistantly accross the pages 
+    /// --cdr-color-text-primary: var(--cdr-color-text-inverse)
+    --text-primary: var(--cdr-color-text-inverse);
+    --surface-primary: var(--cdr-color-text-primary);
+
+    --secondary-text-primary: var(--cdr-color-background-secondary);
+    --secondary-surface-primary: var(--cdr-color-text-secondary);
+  }
+}
+
+//Alias tokens are applied to properties
+body{
+    color: var(--text-primary);
+    background-color: var(--surface-primary);
+    }
+    
+// layers
+[data-layer]{
+  //root values -- will be set to the root element this attribute is assined to
+  color: var(--text-primary);
+  background-color: var(--surface-primary);
+}
+  
+  
+[data-layer="cdr-secondary"] {
+    --text-primary: var(--secondary-text-primary);
+    --surface-primary: var(--secondary-surface-primary);
+}
+  
+  [data-layer="cdr-brand"] {
+    
+    --text-primary: #{$cdr-color-text-inverse};
+    --surface-primary: #{$cdr-color-background-brand-spruce};
+
+    //reasign component values
+
+    //primary button
+    --cdr-color-background-button-primary-rest: var(--cdr-brand-color-background-button-primary-rest);
+    --cdr-color-text-button-primary: var(--cdr-brand-color-text-button-primary);
+    //secondary button
+    --cdr-color-background-button-secondary-rest: var(--cdr-brand-color-background-button-secondary-rest);
+    --cdr-color-text-button-secondary: var(--cdr-brand-color-text-button-secondary);
+    
+  }
+

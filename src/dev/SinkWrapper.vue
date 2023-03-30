@@ -1,24 +1,21 @@
 <template>
-  <div
-    :class="backgroundClass"
-  >
-    Toggle background color:
+  <div :data-layer="'cdr-' + cdrLayer">
+    Toggle layer color:
     <cdr-radio
-      v-for="bg in backgrounds"
-      :custom-value="bg"
-      :key="bg"
-      name="background"
-      v-model="background"
-      class="background-toggle"
+      v-for="layer in layers"
+      :custom-value="layer"
+      :key="layer"
+      name="layer"
+      v-model="cdrLayer"
+      class="layer-toggle"
     >
-      {{ capitalize(bg) }}
+      {{ capitalize(layer) }}
     </cdr-radio>
     <slot />
   </div>
 </template>
 
 <script>
-
 import { CdrRadio } from 'srcdir/lib';
 import upperFirst from 'lodash-es/upperFirst';
 
@@ -29,25 +26,21 @@ export default {
   },
   data() {
     return {
-      background: this.$route.query.background || 'primary',
-      backgrounds: [
-        'primary', 'secondary',
-        //  'success', 'info', 'warning', 'error',
-        'brand',
-      ],
+      cdrLayer: this.$route.query.cdrLayer || 'primary',
+      layers: ['primary', 'secondary', 'brand'],
     };
   },
   computed: {
     backgroundClass() {
-      return `background-${this.background}`;
+      return `cdr-layer-${this.cdrLayer}`;
     },
   },
   watch: {
-    background() {
+    cdrLayer() {
       this.$router.replace({
         path: this.$route.path,
         query: {
-          background: this.background,
+          cdrLayer: this.cdrLayer,
         },
       });
     },
@@ -61,9 +54,8 @@ export default {
 </script>
 
 <style>
-.background-toggle {
+.layer-toggle {
   display: inline-block;
   margin: 0 8px;
 }
-
 </style>
