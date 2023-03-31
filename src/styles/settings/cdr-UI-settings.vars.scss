@@ -1,0 +1,80 @@
+$cdr-UI-settings: (
+  cdr-layer--primary: (
+    cdr-button: (
+      primary: (
+        "button-background": "--cdr-color-background-button-primary-rest",
+        "button-background-hover": "--cdr-color-background-button-primary-hover",
+        "button-background-active": "--cdr-color-background-button-primary-active",
+        "button-background-disabled": "--cdr-color-background-button-default-disabled",
+        "button-box-shadow": "--cdr-color-border-button-primary-rest",
+        "button-box-shadow-hover": "--cdr-color-border-button-primary-hover",
+        "button-box-shadow-active": "--cdr-color-border-button-primary-active",
+        "button-box-shadow-inset-active": "--cdr-color-border-button-primary-active-inset",
+        "button-box-shadow-disabled": "--cdr-color-border-button-default-disabled",
+        "button-text": "--cdr-color-text-button-primary",
+        "button-text-hover": "--cdr-color-text-button-primary-hover",
+        "button-text-active": "--cdr-color-text-button-primary-active",
+        "button-text-disabled": "--cdr-color-text-button-primary-disabled",
+        "button-fill": "--cdr-color-text-button-primary",
+        "button-fill-hover": "--cdr-color-text-button-primary-hover",
+        "button-fill-active": "--cdr-color-text-button-primary-active",
+        "button-fill-disabled": "--cdr-color-text-button-primary-disabled"
+      ),
+      secondary: (
+        "button-background": "--cdr-color-background-button-secondary-rest",
+        "button-background-hover": "--cdr-color-background-button-secondary-hover",
+        "button-background-active": "--cdr-color-background-button-secondary-active",
+        "button-background-disabled": "--cdr-color-background-button-default-disabled",
+        "button-box-shadow": "--cdr-color-border-button-secondary-rest",
+        "button-box-shadow-hover": "--cdr-color-border-button-secondary-hover",
+        "button-box-shadow-active": "--cdr-color-border-button-secondary-active",
+        "button-box-shadow-inset-active": "--cdr-color-border-button-secondary-active-inset",
+        "button-box-shadow-disabled": "--cdr-color-border-button-default-disabled",
+        "button-text": "--cdr-color-text-button-secondary",
+        "button-text-hover": "--cdr-color-text-button-secondary-hover",
+        "button-text-active": "--cdr-color-text-button-secondary-active",
+        "button-text-disabled": "--cdr-color-text-button-secondary-disabled",
+        "button-fill": "--cdr-color-text-button-secondary",
+        "button-fill-hover": "--cdr-color-text-button-secondary-hover",
+        "button-fill-active": "--cdr-color-text-button-secondary-active",
+        "button-fill-disabled": "--cdr-color-text-button-secondary-disabled"
+      ),
+    ),
+  ),
+  cdr-layer--secondary: (
+    cdr-button: (
+      primary: (
+      "cdr-color-background-button-primary-rest": "--cdr-secondary-color-background-button-primary-rest",
+      "cdr-color-background-button-primary-hover": "--cdr-secondary-color-background-button-primary-hover",
+      "cdr-color-background-button-primary-active": "--cdr-secondary-color-background-button-primary-active",
+      "cdr-color-background-button-default-disabled": "--cdr-secondary-color-background-button-default-disabled",
+      "cdr-color-border-button-primary-rest": "--cdr-secondary-color-border-button-primary-rest",
+      "cdr-color-border-button-primary-hover": "--cdr-secondary-color-border-button-primary-hover",
+      "cdr-color-border-button-primary-active": "--cdr-secondary-color-border-button-primary-active",
+      "cdr-color-border-button-primary-active-inset": "--cdr-secondary-color-border-button-primary-active-inset",
+      "cdr-color-border-button-default-disabled": "--cdr-secondary-color-border-button-default-disabled",
+      "cdr-color-text-button-primary": "--cdr-secondary-color-text-button-primary",
+      "cdr-color-text-button-primary-hover": "--cdr-secondary-color-text-button-primary-hover",
+      "cdr-color-text-button-primary-active": "--cdr-secondary-color-text-button-primary-active",
+      "cdr-color-text-button-primary-disabled": "--cdr-secondary-color-text-button-primary-disabled",
+    ),
+   ),
+  ),
+);
+
+// cdr UIObject map
+// accepts up to 3 arguments: component, variant (optional), palette (optional)
+// example: @include cdr-UIO('cdr-button');
+// example: @include cdr-UIO('cdr-button', 'primary');
+// example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--primary');
+@mixin cdr-UIO($component: 'cdr-button', $variant: null, $palette: 'cdr-layer--primary') {
+    $variant-map: null;
+    @if $variant {
+      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component, $variant);
+    } @else {
+      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component);
+    }
+    @each $property, $value in $variant-map {
+      --#{$property}: var(#{$value});
+    }
+  }

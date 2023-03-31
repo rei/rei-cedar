@@ -1,6 +1,7 @@
 $cdr-warn: false;
 @import "../../../node_modules/@rei/cdr-tokens/dist/scss/cdr-tokens.scss";
 @import "./theme.vars";
+@import "./cdr-UI-settings.vars";
 @import "./_alignment.vars";
 @import "./_options.vars";
 @import "./_visibility.vars";

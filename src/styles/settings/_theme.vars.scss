@@ -1,4 +1,4 @@
-
+@import "./cdr-UI-settings.vars.scss";
 
 :root {
     /*///////////////////////////////////////////////////////////////////////////////
@@ -57,6 +57,21 @@
     --cdr-color-border-button-primary-active: #1f513f;
     --cdr-color-border-button-primary-active-inset: #f4f2ed;
     --cdr-color-border-button-primary-hover: #1f513f;
+    --cdr-secondary-color-background-button-primary-rest: #{$cdr-color-background-button-dark-rest};
+    --cdr-secondary-color-background-button-primary-hover: #{$cdr-color-background-button-dark-hover};
+    --cdr-secondary-color-background-button-primary-active: #{$cdr-color-background-button-dark-active};
+    --cdr-secondary-color-background-button-default-disabled: #{$cdr-color-background-button-secondary-disabled};
+    --cdr-secondary-color-border-button-primary-rest: #{$cdr-color-border-button-dark-rest};
+    --cdr-secondary-color-border-button-primary-hover: #{$cdr-color-border-button-dark-hover};
+    --cdr-secondary-color-border-button-primary-active: #{$cdr-color-border-button-dark-active};
+    --cdr-secondary-color-border-button-primary-active-inset: #($cdr-color-border-button-dark-active-inset);
+    --cdr-secondary-color-border-button-default-disabled: #{$cdr-color-background-button-default-disabled};
+    --cdr-secondary-color-text-button-primary: #{$cdr-color-text-button-dark};
+    --cdr-secondary-color-text-button-primary-hover: #{$cdr-color-text-button-dark-hover};
+    --cdr-secondary-color-text-button-primary-active: #{$cdr-color-text-button-dark-active};
+    --cdr-secondary-color-text-button-primary-disabled: #{$cdr-color-text-button-secondary-disabled};
+
+
     
     --cdr-color-background-button-secondary-rest: #{$cdr-color-background-button-secondary-rest};
     --cdr-color-background-button-secondary-hover: #{$cdr-color-background-button-secondary-hover};
@@ -209,11 +224,27 @@ body{
   color: var(--text-primary);
   background-color: var(--surface-primary);
 }
-  
+  // cdr UIObject map
+// accepts up to 3 arguments: component, variant (optional), palette (optional)
+// example: @include cdr-UIO('cdr-button');
+// example: @include cdr-UIO('cdr-button', 'primary');
+// example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--primary');
+@mixin cdr-UIO($component: 'cdr-button', $variant: null, $palette: 'cdr-layer--primary') {
+    $variant-map: null;
+    @if $variant {
+      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component, $variant);
+    } @else {
+      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component);
+    }
+    @each $property, $value in $variant-map {
+      --#{$property}: var(#{$value});
+    }
+  }
   
 [data-layer="cdr-secondary"] {
     --text-primary: var(--secondary-text-primary);
     --surface-primary: var(--secondary-surface-primary);
+    @include cdr-UIO( 'cdr-button', 'primary', 'cdr-layer--secondary');
 }
   
   [data-layer="cdr-brand"] {
