@@ -1,6 +1,7 @@
 <script>
 import { useCssModule, defineComponent } from 'vue';
 
+/** Text container used for any text element such as paragraphs, headings, and lists */
 export default defineComponent({
   name: 'CdrText',
   props: {

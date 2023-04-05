@@ -3,6 +3,7 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
+/** Provides base margins and responsive layout logic for pages */
 export default defineComponent({
   name: 'CdrContainer',
   props: {

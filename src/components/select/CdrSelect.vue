@@ -8,6 +8,7 @@ import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
 
+/** Allows the selection of one or more options from a dropdown list */
 export default defineComponent({
   name: 'CdrSelect',
   components: {

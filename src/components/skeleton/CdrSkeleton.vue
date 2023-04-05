@@ -3,6 +3,7 @@ import {
   defineComponent, useCssModule, provide, toRef,
 } from 'vue';
 
+/** Visually communicates content is in the process of loading */
 export default defineComponent({
   name: 'CdrSkeleton',
   props: {

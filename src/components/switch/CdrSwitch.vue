@@ -7,6 +7,7 @@ import IconXSm from '../icon/comps/x-sm.vue';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
 
+/** Permits selection from two opposing options */
 export default defineComponent({
   name: 'CdrSwitch',
   components: {

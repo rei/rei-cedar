@@ -4,6 +4,7 @@ import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
+/** Simple wrapper for working with CSS grid */
 export default defineComponent({
   name: 'CdrGrid',
   props: {

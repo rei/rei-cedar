@@ -1,6 +1,7 @@
 <script>
 import { defineComponent, useCssModule } from 'vue';
 
+/** Allows people to make selections, filter content, or trigger actions */
 export default defineComponent({
   name: 'CdrChip',
   setup() {

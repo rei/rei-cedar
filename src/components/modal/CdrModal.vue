@@ -12,6 +12,7 @@ import CdrButton from '../button/CdrButton.vue';
 import IconXLg from '../icon/comps/x-lg.vue';
 import mapClasses from '../../utils/mapClasses';
 
+/** Disruptive, action-blocking overlays used to display important information */
 export default defineComponent({
   name: 'CdrModal',
   components: { CdrButton, IconXLg },

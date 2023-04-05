@@ -4,6 +4,7 @@ import {
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 
+/** Provides contextual feedback messages for typical user actions */
 export default defineComponent({
   name: 'CdrBanner',
   props: {

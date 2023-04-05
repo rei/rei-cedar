@@ -3,6 +3,7 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
+/** Short excerpt used to emphasize content or break up a large body of text */
 export default defineComponent({
   name: 'CdrQuote',
   props: {

@@ -9,6 +9,7 @@ import IconCaretRight from '../icon/comps/caret-right.vue';
 import CdrSelect from '../select/CdrSelect.vue';
 import uid from '../../utils/uid';
 
+/** Allows people to navigate to the next or previous page within an experience */
 export default defineComponent({
   name: 'CdrPagination',
   components: { IconCaretLeft, IconCaretRight, CdrSelect },

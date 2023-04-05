@@ -3,6 +3,7 @@ import {
   useCssModule, computed, defineComponent, inject,
 } from 'vue';
 
+/** Permits switching two or more options on and off */
 export default defineComponent({
   name: 'CdrToggleButton',
   props: {

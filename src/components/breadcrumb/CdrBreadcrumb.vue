@@ -4,6 +4,7 @@ import {
 } from 'vue';
 import uid from '../../utils/uid';
 
+/** Navigation used to reveal a page's location within the site hierarchy */
 export default defineComponent({
   name: 'CdrBreadcrumb',
   props: {

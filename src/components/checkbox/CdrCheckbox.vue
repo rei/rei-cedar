@@ -5,6 +5,7 @@ import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
 import backgroundProps from '../../props/background';
 
+/** Allows selecting one or more items from a list */
 export default defineComponent({
   name: 'CdrCheckbox',
   components: { CdrLabelWrapper },

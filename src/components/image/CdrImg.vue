@@ -3,6 +3,7 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
+/** Media for capturing attention and communicating messages */
 export default defineComponent({
   name: 'CdrImg',
   inheritAttrs: false,

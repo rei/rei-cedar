@@ -10,6 +10,7 @@ import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
 
+/** Allows for data entry, editing, and search */
 export default defineComponent({
   name: 'CdrInput',
   components: { CdrLabelStandalone, CdrFormError },

@@ -1,6 +1,7 @@
 <script>
 import { defineComponent, useCssModule } from 'vue';
 
+/** Provides context and credit for an asset such as an image, video, or chart */
 export default defineComponent({
   name: 'CdrCaption',
   props: {

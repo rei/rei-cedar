@@ -4,6 +4,7 @@ import mapClasses from '../../utils/mapClasses';
 import { buildBooleanClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
+/** Organizes structured data for users to easily scan, compare, and analyze */
 export default defineComponent({
   name: 'CdrTable',
   props: {

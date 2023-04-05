@@ -9,6 +9,7 @@ import CdrPopup from '../popup/CdrPopup.vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
+/** Small overlay used to display contextual information */
 export default defineComponent({
   name: 'CdrPopover',
   components: { IconXSm, CdrButton, CdrPopup },

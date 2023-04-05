@@ -6,6 +6,7 @@ import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
 import propValidator from '../../utils/propValidator';
 
+/** Floating label used to clarify interface actions */
 export default defineComponent({
   name: 'CdrTooltip',
   components: {

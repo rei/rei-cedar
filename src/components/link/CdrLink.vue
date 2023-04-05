@@ -3,6 +3,7 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
+/** Clickable text elements used for navigating to other pages or sections */
 export default defineComponent({
   name: 'CdrLink',
   props: {

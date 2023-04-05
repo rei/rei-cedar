@@ -6,6 +6,7 @@ import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
+/** Communicates meaning through graphics representing simple and complex ideas */
 export default defineComponent({
   name: 'CdrIcon',
   props: {

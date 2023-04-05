@@ -2,6 +2,7 @@
 import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 
+/** Groups related content items together either vertically or horizontally */
 export default defineComponent({
   name: 'CdrList',
   props: {

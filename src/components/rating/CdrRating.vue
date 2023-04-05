@@ -3,6 +3,7 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
+/** Provides insight into user opinions for products, experiences, and more */
 export default defineComponent({
   name: 'CdrRating',
   props: {

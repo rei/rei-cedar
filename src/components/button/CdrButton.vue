@@ -6,6 +6,7 @@ import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass, buildBooleanClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
+/** Initiates an action, such as completing a task or submitting information */
 export default defineComponent({
   name: 'CdrButton',
   props: {

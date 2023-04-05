@@ -5,7 +5,7 @@ import {
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import { modifyClassName } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
-
+/** Vertically-stacked list that allows users to expand and collapse additional content */
 export default defineComponent({
   name: 'CdrAccordion',
   components: {

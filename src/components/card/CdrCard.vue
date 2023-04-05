@@ -1,6 +1,7 @@
 <script>
 import { defineComponent, useCssModule } from 'vue';
 
+/** Related, interactive containers linking to a single subject or destination */
 export default defineComponent({
   name: 'CdrCard',
   props: {

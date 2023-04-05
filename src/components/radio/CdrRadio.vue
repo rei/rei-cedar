@@ -7,6 +7,7 @@ import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
 import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
 
+/** Permits the selection of only one option from a list of two or more */
 export default defineComponent({
   name: 'CdrRadio',
   components: { CdrLabelWrapper },

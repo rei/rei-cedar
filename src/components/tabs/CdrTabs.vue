@@ -9,6 +9,7 @@ import {
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
 
+/** Organizes related content into groups for people to navigate between */
 export default defineComponent({
   name: 'CdrTabs',
   props: {
