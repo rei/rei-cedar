@@ -71,6 +71,8 @@
     <fancy-modal />
     <br />
     <async-modal />
+    <br />
+    <long-modal />
   </div>
 </template>
 
@@ -78,13 +80,15 @@
 import * as Components from 'srcdir/lib';
 import FancyModal from './components/FancyModal.vue'
 import AsyncModal from './components/AsyncModal.vue';
+import LongModal from './components/LongModal.vue';
 
 export default {
   name: 'Modal',
   components: {
     ...Components,
     FancyModal,
-    AsyncModal
+    AsyncModal,
+    LongModal,
 },
   data() {
     return {
