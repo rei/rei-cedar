@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const glob = require('glob');
 
 const DEST_REPO_NAME = 'rei-cedar-component-variables';
-const DEST_PATH = 'dist/scss';
+const DEST_PATH = 'dist/rei-dot-com/scss';
 const SUPPORTED_COMPONENTS = [
   /* global vars */
   'options.vars.scss',

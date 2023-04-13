@@ -3,7 +3,6 @@ import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import options from './rollupOptions.mjs';
-
 const version = process.env.npm_package_version;
 
 // https://vitejs.dev/config/

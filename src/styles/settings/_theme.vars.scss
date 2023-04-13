@@ -36,56 +36,6 @@
     ///////////////////////////////////////////////////////////////////////////////*/
 
    
-    --cdr-color-text-emphasis: #{$cdr-color-text-emphasis};
-    --cdr-color-text-primary: #{$cdr-color-text-primary};
-    --cdr-color-text-secondary: #{$cdr-color-text-secondary};
-    --cdr-color-background-primary: #{$cdr-color-background-primary};
-    --cdr-color-background-secondary: #{$cdr-color-background-secondary};
-    --cdr-color-background-brand: #{$cdr-color-background-brand-spruce};
-    --cdr-color-text-inverse: #{$cdr-color-text-inverse};
-
-    //For each component: 
-    --cdr-color-text-button-primary: #f9f8f6;
-    --cdr-color-text-button-primary-hover: #1f513f;
-    --cdr-color-text-button-primary-active: #f9f8f6;
-    --cdr-color-text-button-primary-disabled: #ffffff;
-    --cdr-color-background-button-primary-rest: #1f513f;
-    --cdr-color-background-button-primary-active: #1f513f;
-    --cdr-color-background-button-primary-hover: #f4f2ed;
-    --cdr-color-background-button-primary-icon-alt-hover: #f9f8f6;
-    --cdr-color-border-button-primary-rest: #1f513f;
-    --cdr-color-border-button-primary-active: #1f513f;
-    --cdr-color-border-button-primary-active-inset: #f4f2ed;
-    --cdr-color-border-button-primary-hover: #1f513f;
-    --cdr-secondary-color-background-button-primary-rest: #{$cdr-color-background-button-dark-rest};
-    --cdr-secondary-color-background-button-primary-hover: #{$cdr-color-background-button-dark-hover};
-    --cdr-secondary-color-background-button-primary-active: #{$cdr-color-background-button-dark-active};
-    --cdr-secondary-color-background-button-default-disabled: #{$cdr-color-background-button-secondary-disabled};
-    --cdr-secondary-color-border-button-primary-rest: #{$cdr-color-border-button-dark-rest};
-    --cdr-secondary-color-border-button-primary-hover: #{$cdr-color-border-button-dark-hover};
-    --cdr-secondary-color-border-button-primary-active: #{$cdr-color-border-button-dark-active};
-    --cdr-secondary-color-border-button-primary-active-inset: #($cdr-color-border-button-dark-active-inset);
-    --cdr-secondary-color-border-button-default-disabled: #{$cdr-color-background-button-default-disabled};
-    --cdr-secondary-color-text-button-primary: #{$cdr-color-text-button-dark};
-    --cdr-secondary-color-text-button-primary-hover: #{$cdr-color-text-button-dark-hover};
-    --cdr-secondary-color-text-button-primary-active: #{$cdr-color-text-button-dark-active};
-    --cdr-secondary-color-text-button-primary-disabled: #{$cdr-color-text-button-secondary-disabled};
-
-
-    
-    --cdr-color-background-button-secondary-rest: #{$cdr-color-background-button-secondary-rest};
-    --cdr-color-background-button-secondary-hover: #{$cdr-color-background-button-secondary-hover};
-    --cdr-color-background-button-secondary-active: #{$cdr-color-background-button-secondary-active};
-    --cdr-color-background-button-secondary-disabled: #{$cdr-color-background-button-secondary-disabled};
-    --cdr-color-border-button-secondary-rest: #{$cdr-color-border-button-secondary-rest};
-    --cdr-color-border-button-secondary-hover: #{$cdr-color-border-button-secondary-hover};
-    --cdr-color-border-button-secondary-active: #{$cdr-color-border-button-secondary-active};
-    --cdr-color-border-button-secondary-active-inset: #($cdr-color-border-button-secondary-active-inset);
-    --cdr-color-text-button-secondary: #{$cdr-color-text-button-secondary};
-    --cdr-color-text-button-secondary-hover: #{$cdr-color-text-button-secondary-hover};
-    --cdr-color-text-button-secondary-active: #{$cdr-color-text-button-secondary-active};
-    --cdr-color-text-button-secondary-disabled: #{$cdr-color-text-button-secondary-disabled};
-    
    /*///////////////////////////////////////////////////////////////////////////////
     /-------------------------
     / UIProperties
@@ -230,16 +180,19 @@ body{
 // example: @include cdr-UIO('cdr-button', 'primary');
 // example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--primary');
 @mixin cdr-UIO($component: 'cdr-button', $variant: null, $palette: 'cdr-layer--primary') {
-    $variant-map: null;
-    @if $variant {
-      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component, $variant);
-    } @else {
-      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component);
-    }
-    @each $property, $value in $variant-map {
-      --#{$property}: var(#{$value});
-    }
+  $variant-map: null;
+  @if $variant {
+    $component-map: map-get($cdr-UI-settings, $palette);
+    $nested-map: map-get($component-map, $component);
+    $variant-map: map-get($nested-map, $variant);
+  } @else {
+    $component-map: map-get($cdr-UI-settings, $palette);
+    $variant-map: map-get($component-map, $component);
   }
+  @each $property, $value in $variant-map {
+    --#{$property}: var(#{$value});
+  }
+}
   
 [data-layer="cdr-secondary"] {
     --text-primary: var(--secondary-text-primary);

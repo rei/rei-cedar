@@ -1,8 +1,12 @@
 const process = require('process');
+const path = require('path');
 
 module.exports = {
   syntax: 'postcss-scss',
   plugins: {
+    'postcss-jit-props': {
+      files: [path.resolve('node_modules/@rei/cdr-tokens/dist/rei-dot-com/css/cdr-tokens.css')],
+    },
     'postcss-calc': { mediaQueries: true },
     'postcss-pxtorem': {
       // change

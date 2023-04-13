@@ -68,13 +68,16 @@ $cdr-UI-settings: (
 // example: @include cdr-UIO('cdr-button', 'primary');
 // example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--primary');
 @mixin cdr-UIO($component: 'cdr-button', $variant: null, $palette: 'cdr-layer--primary') {
-    $variant-map: null;
-    @if $variant {
-      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component, $variant);
-    } @else {
-      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component);
-    }
-    @each $property, $value in $variant-map {
-      --#{$property}: var(#{$value});
-    }
+  $variant-map: null;
+  @if $variant {
+    $component-map: map-get($cdr-UI-settings, $palette);
+    $nested-map: map-get($component-map, $component);
+    $variant-map: map-get($nested-map, $variant);
+  } @else {
+    $component-map: map-get($cdr-UI-settings, $palette);
+    $variant-map: map-get($component-map, $component);
   }
+  @each $property, $value in $variant-map {
+    --#{$property}: var(#{$value});
+  }
+}

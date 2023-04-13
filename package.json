@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
-    "@rei/cdr-tokens": "^11.0.1",
+    "@rei/cdr-tokens": "^12.0.0-alpha.3",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@vitejs/plugin-vue": "^4.0.0",
@@ -91,6 +91,7 @@
     "postcss-calc": "^8.0.0",
     "postcss-import": "^14.0.2",
     "postcss-inline-svg": "^5.0.0",
+    "postcss-jit-props": "^1.0.13",
     "postcss-load-config": "^3.0.1",
     "postcss-modules": "^4.0.0",
     "postcss-pxtorem": "^6.0.0",
