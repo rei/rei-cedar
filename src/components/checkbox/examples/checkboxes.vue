@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="examples">
     <h2>
       Checkboxes
     </h2>
@@ -135,7 +135,6 @@
         Select All
       </cdr-checkbox>
       <cdr-list
-        role="group"
         id="toppings"
         aria-label="Individual toppings"
       >
