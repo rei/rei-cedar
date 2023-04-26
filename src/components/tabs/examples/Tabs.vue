@@ -20,7 +20,7 @@
         <cdr-tab-panel
           v-for="tab in tabs.slice(0, 5)"
           :key="tab"
-          :name="tab"
+          :name="`${tab}-small`"
           :id="'tab-panel-small-' + tab"
           :aria-labelledby="'tab-small-' + tab"
         >
@@ -46,7 +46,7 @@
         <cdr-tab-panel
           v-for="tab in tabs"
           :key="tab"
-          :name="tab"
+          :name="`${tab}-full-width`"
           :id="'tab-panel-full-width-' + tab"
           :aria-labelledby="'tab-full-width-' + tab"
         >
@@ -72,7 +72,7 @@
         <cdr-tab-panel
           v-for="tab in tabs"
           :key="tab"
-          :name="tab"
+          :name="`${tab}-no-border`"
           :id="'tab-panel-no-border-' + tab"
           :aria-labelledby="'tab-no-border-' + tab"
         >
@@ -139,7 +139,7 @@
         <cdr-tab-panel
           v-for="tab in tabs"
           :key="tab"
-          :name="tab"
+          :name="`${tab}-centered`"
           :id="'tab-panel-centered-' + tab"
           :aria-labelledby="'tab-centered-' + tab"
         >

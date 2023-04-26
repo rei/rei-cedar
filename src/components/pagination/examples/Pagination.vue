@@ -10,6 +10,7 @@
       :pages="pages"
       :total-pages="10"
       data-backstop="pagination-default"
+      for-label="normal"
       @navigate="preventNavigate"
     />
 
@@ -38,6 +39,7 @@
     <cdr-pagination
       :pages="makePages(20, null)"
       :total-pages="20"
+      for-label="router"
       v-model="ex1Page"
       @navigate="updateRoute"
     />
@@ -49,6 +51,7 @@
     <cdr-pagination
       :pages="makePages(ex2KnownPages, '/#/pagination?ex2-known-page', ex2PageKnown - 2)"
       :total-pages="10"
+      for-label="prev"
       v-model="ex2PageKnown"
     />
 
@@ -58,6 +61,7 @@
     <cdr-pagination
       :pages="makePages(ex2UnknownPages, '/#/pagination?ex2-unknown-page', ex2PageUnknown - 2)"
       v-model="ex2PageUnknown"
+      for-label="next"
     />
 
     <hr>
@@ -67,6 +71,7 @@
       :pages="makePages(5, '/#/pagination?ex3-page')"
       :total-pages="5"
       v-model="ex3Page"
+      for-label="limit"
     />
 
   </div>
