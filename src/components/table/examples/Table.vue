@@ -379,7 +379,7 @@
       </cdr-table>
     </div>
 
-    <div data-backstop="horizontal-tables">
+    <!-- <div data-backstop="horizontal-tables">
 
       <p>Horizontal table</p>
       <cdr-table>
@@ -519,7 +519,7 @@
           <td>conent</td>
         </tr>
       </cdr-table>
-    </div>
+    </div> -->
   </div>
 </template>
 
