@@ -6,32 +6,25 @@
         <legend id="legend-size">
           Radio Button Size Group
         </legend>        
-        <cdr-list aria-labelledby="legend-size" role="radiogroup">
-          <li>
+        <div aria-labelledby="legend-size" role="radiogroup">
             <cdr-radio
               name="size"
               custom-value="small"
               v-model="size"
               size="small"
             >small</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="size"
               custom-value="medium"
               v-model="size"
               size="medium"
             >medium</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="size"
               custom-value="large"
               v-model="size"
               size="large"
             >large</cdr-radio>
-          </li>
-        <li>
         <div data-backstop="radio-responsive">
           <cdr-radio
             name="size"
@@ -40,83 +33,66 @@
             size="small@lg medium@sm large@xs"
           >responsive</cdr-radio>
         </div>
-        </li>
-        </cdr-list>
+        </div>
       </fieldset>
       <cdr-text>Size Group Picked: {{ size }}</cdr-text>
     </div>
     <div data-backstop="radio-focus">
       <fieldset>
         <legend id="legend-a">Group A</legend>
-        <cdr-list aria-labelledby="legend-a" role="radiogroup">
-          <li>
+        <div aria-labelledby="legend-a" role="radiogroup">
             <cdr-radio
               id="test1"
               name="example"
               custom-value="a1"
               v-model="ex1"
             >A1</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="example"
               custom-value="a2"
               v-model="ex1"
             >A2</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="example"
               :custom-value="{val:'a3'}"
               v-model="ex1"
             >A3</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="example"
               custom-value="a4"
               v-model="ex1"
               disabled
             >A4 (disabled)</cdr-radio>
-          </li>
-        </cdr-list>
+        </div>
       </fieldset>
       <cdr-text>Group A Picked: {{ ex1 }}</cdr-text>
     </div>
     <div style="max-width: 200px;" data-backstop="radio-focus">
       <fieldset>
         <legend id="legend-b">Group B (limited width) </legend>
-        <cdr-list aria-labelledby="legend-b" role="radiogroup">
-          <li>
+        <div aria-labelledby="legend-b" role="radiogroup">
             <cdr-radio
               name="example2"
               custom-value="a1"
               v-model="ex2"
             >A1</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="example2"
               custom-value="a2"
               v-model="ex2"
             >A2</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="example2"
               :custom-value="{val:'a3'}"
               v-model="ex2"
             >A3</cdr-radio>
-          </li>
-          <li>
             <cdr-radio
               name="example2"
               custom-value="a4"
               v-model="ex2"
               disabled
             >A4 (disabled)</cdr-radio>
-          </li>
-        </cdr-list>
+        </div>
       </fieldset>
       <cdr-text>Group B: {{ ex2 }}</cdr-text>
     </div>
