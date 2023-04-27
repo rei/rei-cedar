@@ -2,8 +2,9 @@
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-// import path from 'path';
 import options from './rollupOptions.mjs';
+
+options.output.preserveModules = false;
 
 const version = process.env.npm_package_version;
 
@@ -11,14 +12,11 @@ const version = process.env.npm_package_version;
 export default defineConfig({
   base: '/rei-cedar-next/',
   build: {
+    emptyOutDir: false,
     lib: {
       entry: './src/lib.js',
-      formats: ['es'],
-      // fileName: (format, entryName) => {
-      //   const { base } = path.parse(entryName);
-      //   return `${base}.mjs`;
-      // },
-      fileName: '[name]',
+      formats: ['umd'],
+      name: 'cedar',
     },
     rollupOptions: options,
   },

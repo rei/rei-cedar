@@ -2,11 +2,15 @@ import { babel } from '@rollup/plugin-babel';
 import browserTargets from './browserTargets.mjs';
 
 export default {
-  external: ['vue', 'core-js', 'lodash-es', 'tabbable'], // Externalize peerDependencies
+  // external: ['vue', 'core-js', 'lodash-es', 'tabbable'], // Externalize peerDependencies
+  external: (id) => ['vue', 'core-js', 'lodash-es', 'tabbable'].some(
+    (dep) => dep === id || id.startsWith(`${dep}/`),
+  ),
   output: {
     globals: {
       vue: 'Vue',
     },
+    preserveModules: true,
   },
   plugins: [
     babel({
@@ -21,7 +25,8 @@ export default {
           {
             modules: false, // don't convert ESM modules, as that breaks tree shaking
             targets: browserTargets, // polyfill based on supported browsers
-            corejs: { // use corejs@3 for polyfills
+            corejs: {
+              // use corejs@3 for polyfills
               version: '3.26', // see https://github.com/zloirock/core-js#babelpreset-env
             },
             useBuiltIns: 'usage', // polyfill based on usage in source code.

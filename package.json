@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.3.1",
+  "version": "13.3.2",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -13,10 +13,10 @@
   },
   "author": "REI Software Engineering",
   "main": "./dist/cedar.umd.js",
-  "module": "./dist/cedar.mjs",
+  "module": "./dist/src/lib.mjs",
   "exports": {
     ".": {
-      "import": "./dist/cedar.mjs",
+      "import": "./dist/src/lib.mjs",
       "require": "./dist/cedar.umd.js"
     },
     "./dist/": "./dist/"
@@ -32,6 +32,7 @@
     "prepublishOnly": "npm-run-all lint build",
     "dev": "vite",
     "build": "vite build && npm run build:extractcss && npm run build:icons",
+    "build:umd": "vite build --config vite.umd.config.mjs",
     "preview": "vite preview",
     "unit": "vitest run",
     "watch": "vitest",
@@ -119,15 +120,11 @@
     }
   },
   "dependencies": {
-    "core-js": "^3.22.7",
     "lodash-es": "^4.17.21",
-    "tabbable": "^4.0.0",
-    "vue": "^3.2.23"
+    "tabbable": "^4.0.0"
   },
   "peerDependencies": {
     "core-js": "^3.22.7",
-    "lodash-es": "^4.17.21",
-    "tabbable": "^4.0.0",
     "vue": "^3.2.23"
   }
 }
