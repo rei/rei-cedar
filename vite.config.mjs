@@ -14,10 +14,6 @@ export default defineConfig({
     lib: {
       entry: './src/lib.js',
       formats: ['es'],
-      // fileName: (format, entryName) => {
-      //   const { base } = path.parse(entryName);
-      //   return `${base}.mjs`;
-      // },
       fileName: '[name]',
     },
     rollupOptions: options,
