@@ -11,40 +11,40 @@ const iconComponentsObj = {};
 console.log("Building docgen file...");
 
 await Promise.all(componentFiles.map(async (filePath) => {
-    await createDocgenObj(filePath, componentObj);
+  await createDocgenObj(filePath, componentObj);
 }));
 
 await Promise.all(iconFiles.map(async (filePath) => {
-    await createDocgenObj(filePath, iconComponentsObj);
+  await createDocgenObj(filePath, iconComponentsObj);
 }))
 
 async function createDocgenObj(filePath, docgenObj) {
-    let parsedComponentFile = await parse(filePath);
-    docgenObj[parsedComponentFile.displayName] = parsedComponentFile;
+  let parsedComponentFile = await parse(filePath);
+  docgenObj[parsedComponentFile.displayName] = parsedComponentFile;
 
-    _.forIn(docgenObj, (component) => {
-        component.props?.forEach((prop) => {
-            if (_.has(prop, 'defaultValue.value')) {
-                if (prop.defaultValue.value === 'false') {
-                    prop.defaultValue.value = false;
-                }
-                if (prop.defaultValue.value === 'true') {
-                    prop.defaultValue.value = true;
-                }
-                if (prop.defaultValue.value === '[]') {
-                    prop.defaultValue.value = [];
-                }
-                prop.defaultValue.value = trimApostrophes(prop.defaultValue.value);
-            }
-        });
-    });
+  _.forIn(docgenObj, (component) => {
+      component.props?.forEach((prop) => {
+        if (_.has(prop, 'defaultValue.value')) {
+          if (prop.defaultValue.value === 'false') {
+            prop.defaultValue.value = false;
+          }
+          if (prop.defaultValue.value === 'true') {
+            prop.defaultValue.value = true;
+          }
+          if (prop.defaultValue.value === '[]') {
+            prop.defaultValue.value = [];
+          }
+            prop.defaultValue.value = trimApostrophes(prop.defaultValue.value);
+          }
+      });
+  });
 }
 
 function trimApostrophes(str) {
-    if (str && str[0] === "'" && str[-1] === "'") {
-        return str.slice(1, -1);
-    }
-    return str;
+  if (str && str[0] === "'" && str[-1] === "'") {
+    return str.slice(1, -1);
+  }
+  return str;
 }
 //Move to dist folder
 fs.writeJsonSync('./dist/component-docgen.json', componentObj, { spaces: 2 });
