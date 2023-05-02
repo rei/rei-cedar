@@ -9,10 +9,16 @@ import CdrPopup from '../popup/CdrPopup.vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
+/** Small overlay used to display contextual information */
 export default defineComponent({
   name: 'CdrPopover',
   components: { IconXSm, CdrButton, CdrPopup },
   props: {
+    /**
+     * Sets the position where the popover will render relative to the trigger element.
+     * @demoSelectMultiple false
+     * @values top, bottom, left, right
+     */
     position: {
       type: String,
       required: false,
@@ -22,30 +28,47 @@ export default defineComponent({
         ['top', 'bottom', 'left', 'right'],
       ),
     },
+    /**
+     * If set to `true`, popover will attempt to dynamically set it's position to
+     * ensure it renders within the visible browser window.
+     * If `false` the popover will always render in the provided `position`.
+     */
     autoPosition: {
       type: Boolean,
       required: false,
       default: true,
     },
+    /** Sets the title for the popover content. Can also be provided via the `title` slot. */
     label: {
       type: String,
       required: false,
     },
+    /** ID for the popover element, required for accessibility */
     id: {
       type: String,
       required: true,
     },
+    /** Add custom class to the popover content wrapper. Allows for overriding size, styling, etc. */
     contentClass: {
       type: String,
       required: false,
     },
+    /**
+     * Used to programmatically control the popover state. Does not need to be set if you are using the `trigger` slot.
+     * @demoIgnore true
+     */
     open: {
       type: Boolean,
       default: false,
       required: false,
     },
   },
-  emits: ['opened', 'closed'],
+  emits: {
+    /** Emits when popover is opened */
+    opened: null,
+    /** Emits when popover is closed */
+    closed: null,
+  },
 
   setup(props, ctx) {
     const isOpen = ref(false);
@@ -123,6 +146,9 @@ export default defineComponent({
     )"
   >
     <div ref="triggerEl">
+      <!-- @slot  Slot for the element that triggers the popover.
+        Element should be a button and must be the first and only child of this slot.
+        Event handlers are bound to this element automatically.-->
       <slot name="trigger" />
     </div>
     <cdr-popup
@@ -142,6 +168,7 @@ export default defineComponent({
             v-if="hasTitle"
             :class="style['cdr-popover__title']"
           >
+            <!-- @slot Sets the title for the popover. Can also be set with `label` prop -->
             <slot name="title">
               {{ label }}
             </slot>
@@ -159,6 +186,7 @@ export default defineComponent({
             <icon-x-sm
               inherit-color
             />
+            <!-- CdrPopover content -->
           </slot>
         </cdr-button>
       </div>

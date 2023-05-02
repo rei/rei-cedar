@@ -9,6 +9,10 @@ import getCurrentBreakpoint from '../../mixins/breakpoints';
 export default defineComponent({
   name: 'CdrAccordionGroup',
   props: {
+    /**
+     * A prop that will present accordion content as unwrapped. All content is expanded at the provided breakpoints.
+     * @values @xs, @sm, @md, @lg, true
+     */
     unwrap: {
       type: [String, Boolean],
       default: false,
@@ -105,6 +109,7 @@ export default defineComponent({
     @focusin="focusin"
     @keydown="handleKeyDown"
   >
+    <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
     <slot />
   </ul>
 </template>

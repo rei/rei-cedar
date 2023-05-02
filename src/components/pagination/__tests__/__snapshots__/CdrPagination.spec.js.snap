@@ -151,6 +151,7 @@ exports[`CdrPagination > pagination component with 20 pages > renders correctly 
               <!--v-if-->
               
               
+              <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
               
               
               <option
@@ -397,6 +398,7 @@ exports[`CdrPagination > pagination component with 20 pages > with "forLabel" pr
               <!--v-if-->
               
               
+              <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
               
               
               <option
@@ -637,6 +639,7 @@ exports[`CdrPagination > pagination component with 20 pages > with button pagina
               <!--v-if-->
               
               
+              <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
               
               
               <option
@@ -825,6 +828,7 @@ exports[`CdrPagination > when at first page > renders correctly 1`] = `
               <!--v-if-->
               
               
+              <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
               
               
               <option
@@ -993,6 +997,7 @@ exports[`CdrPagination > when on the last page > renders correctly 1`] = `
               <!--v-if-->
               
               
+              <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
               
               
               <option
@@ -1174,6 +1179,7 @@ exports[`CdrPagination > when the active page is in the middle > renders correct
               <!--v-if-->
               
               
+              <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
               
               
               <option
@@ -1384,6 +1390,7 @@ exports[`CdrPagination > with 5 pages > renders correctly 1`] = `
               <!--v-if-->
               
               
+              <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
               
               
               <option

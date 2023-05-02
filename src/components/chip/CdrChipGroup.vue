@@ -6,10 +6,16 @@ import {
 export default defineComponent({
   name: 'CdrChipGroup',
   props: {
+    /**
+     * Sets a label that describes the chip group and what it is selecting. By default this label is visually hidden and only made available to screen readers.
+     */
     label: {
       type: String,
       required: true,
     },
+    /**
+     * Visually hides the chip group label but makes it accessible to screen readers.
+     */
     hideLabel: {
       type: Boolean,
       default: true,
@@ -97,6 +103,7 @@ export default defineComponent({
     @keydown="handleKeyDown"
   >
     <legend :class="style[legendClass]">
+      <!-- @slot Override CdrChip label content with a custom element -->
       <slot name="label">
         {{ label }}
       </slot>
@@ -105,6 +112,7 @@ export default defineComponent({
       ref="chipsEl"
       :class="style['cdr-chip-group__content']"
     >
+      <!-- @slot CdrChipGroup content (CdrChip components) -->
       <slot />
     </div>
   </fieldset>

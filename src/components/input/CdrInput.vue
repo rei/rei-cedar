@@ -10,6 +10,7 @@ import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
 
+/** Allows for data entry, editing, and search */
 export default defineComponent({
   name: 'CdrInput',
   components: { CdrLabelStandalone, CdrFormError },
@@ -17,15 +18,17 @@ export default defineComponent({
   customOptions: {},
   props: {
     /**
-     * `id` for the input that is mapped to the label `for` attribute.
+     * Custom ID that is mapped to the label ‘for’ attribute. If this value is not set, it will be randomly generated.
     */
     id: {
       type: String,
     },
     /**
      *  'type' attribute for the input as defined by w3c.
-     *  Only supporting text|email|number|password|search|url.
+     *  Only supporting text|email|number|password|search|url|date.
      *  The increment/decrement webkit psuedo element is hidden for number.
+     *  @demoSelectMultiple false
+     *  @values text, email, number, password, search, url, tel, date
     */
     type: {
       type: [String],
@@ -36,13 +39,15 @@ export default defineComponent({
       ),
     },
     /**
-     * Label text. This is required for a11y even if hiding the label with `hideLabel`.
+     * Sets the text value for the input label. Required for a11y compliance. Use ‘hideLabel’ if the label display is not desired. Required.
     */
     label: {
       type: String,
       required: true,
     },
-    // sets default attrs for inputs that should use a numeric keyboard but are not strictly "numbers" (security code, CC number, postal code)
+    /**
+     * Sets default attributes for an input that should launch a numeric keyboard but is not strictly a 'number' (credit card, security code, postal code, etc.). Should be used in conjunction with the default text type input. An `input` listener can be used to fully restrict input values to numerical characters only
+     */
     numeric: {
       type: Boolean,
       default: false,
@@ -52,36 +57,60 @@ export default defineComponent({
     */
     hideLabel: Boolean,
     /**
-     * Number of rows for input.  Converts component to text-area if rows greater than 1.
+     * Number of rows for input. Converts component to text-area if rows greater than 1.
     */
     rows: Number,
-    // Set which background type the input renders on
+    /**
+     * Sets the background color the input is rendered on
+     * @values primary, secondary
+     */
     background: backgroundProps,
+    /**
+     * Sets the input field size
+    * @demoSelectMultiple false
+    * @values medium, large
+   */
     size: sizeProps,
 
     /**
-     * Override the error message role, default is `status`.
+     * Sets the `role` attribute for the embedded error state messaging.
      */
     errorRole: {
       type: String,
       required: false,
       default: 'status',
     },
-    // Set error styling
+    /** Sets the input to an error state, displays the `error` slot if one is present. */
     error: {
       type: [Boolean, String],
       default: false,
     },
+    /**
+     * Sets the disabled state for the input field and label styling. Also, restricts user input.
+     */
     disabled: Boolean,
+    /**
+     * Sets aria-required on the input field and displays an asterisk next to the input label.
+     */
     required: Boolean,
+    /**
+     * Displays '(optional)' text next to the input label.
+     */
     optional: Boolean,
+    /** @ignore */
     modelValue: {
       type: [String, Number, Function],
     },
-    // Adds a custom class to the cdr-lable-standalone wrapping div
+    /** Adds a custom class to the cdr-label-standalone wrapping div */
     labelClass: String,
   },
-  emits: ['update:modelValue'],
+  emits: {
+    /**
+     * Event emitted by v-model on the <input> element
+     * @param modelValue
+     */
+    'update:modelValue': null,
+  },
 
   setup(props, ctx) {
     const baseClass = 'cdr-input';
@@ -181,16 +210,17 @@ export default defineComponent({
       #helper
       v-if="hasHelperTop"
     >
+      <!-- @slot Helper text above the input field -->
       <slot name="helper-text-top" />
     </template>
     <template
       #info
       v-if="hasInfo"
     >
+      <!-- @slot Link or icon to the right above the input field.  -->
       <slot name="info" />
     </template>
 
-    <!-- default input slot -->
     <div :class="mapClasses(style, 'cdr-input-wrap', focusedClass)">
       <textarea
         v-if="rows && rows > 1"
@@ -243,6 +273,7 @@ export default defineComponent({
         v-if="hasPreIcon"
         :class="style['cdr-input__pre-icon']"
       >
+        <!-- @slot Icon preceding text within the input field -->
         <slot name="pre-icon" />
       </span>
 
@@ -250,6 +281,7 @@ export default defineComponent({
         v-if="hasPostIcon"
         :class="style['cdr-input__post-icon']"
       >
+        <!-- @slot Icon after text within the input field -->
         <slot name="post-icon" />
       </span>
     </div>
@@ -258,6 +290,7 @@ export default defineComponent({
       #info-action
       v-if="hasInfoAction"
     >
+      <!-- @slot Action-wrapped icon within the input field (precedes post-icon) -->
       <slot name="info-action" />
     </template>
 
@@ -269,6 +302,7 @@ export default defineComponent({
         :id="`${uniqueId}-helper-text-bottom`"
         :class="style['cdr-input__helper-text']"
       >
+        <!-- @slot Helper text below the input field -->
         <slot name="helper-text-bottom" />
       </span>
     </template>
@@ -284,6 +318,7 @@ export default defineComponent({
         v-if="error"
       >
         <template #error>
+          <!-- @slot Error messaging text that is displayed when the `error` prop is true. -->
           <slot name="error" />
         </template>
       </cdr-form-error>

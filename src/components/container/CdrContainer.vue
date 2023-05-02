@@ -3,14 +3,20 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
+/** Provides base margins and responsive layout logic for pages */
 export default defineComponent({
   name: 'CdrContainer',
   props: {
-    /** Any valid HTML tag */
+    /** Sets the HTML tag for the container element */
     tag: {
       type: String,
       default: 'div',
     },
+    /**
+     * Controls whether container is static or fluid width.
+     * @demoSelectMultiple false
+     * @values static, fluid
+   */
     modifier: {
       type: String,
       default: 'static',
@@ -42,6 +48,7 @@ export default defineComponent({
     :is="tag"
     :class="mapClasses(style, baseClass, modifierClass)"
   >
+    <!-- @slot CdrContainer content  -->
     <slot />
   </component>
 </template>

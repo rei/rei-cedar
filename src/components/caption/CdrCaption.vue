@@ -1,12 +1,21 @@
 <script>
 import { defineComponent, useCssModule } from 'vue';
 
+/** Provides context and credit for an asset such as an image, video, or chart */
 export default defineComponent({
   name: 'CdrCaption',
   props: {
+    /**
+     * Sets the string content for the description body of the caption.
+     * @demoIgnore true
+     */
     summary: {
       type: String,
     },
+    /**
+     * Sets the string content for attribution.
+     * @demoIgnore true
+     */
     credit: {
       type: String,
     },

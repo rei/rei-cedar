@@ -5,7 +5,7 @@ import {
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import { modifyClassName } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
-
+/** Vertically-stacked list that allows users to expand and collapse additional content */
 export default defineComponent({
   name: 'CdrAccordion',
   components: {
@@ -14,6 +14,7 @@ export default defineComponent({
   props: {
     /**
      * The unique id of an accordion.
+     * @demoIgnore true
      */
     id: {
       type: String,
@@ -21,6 +22,7 @@ export default defineComponent({
     },
     /**
      * Toggle this value to open/close the accordion.
+     * @demoIgnore true
      */
     opened: {
       type: Boolean,
@@ -42,6 +44,7 @@ export default defineComponent({
     },
     /**
      * Sets the heading level
+     * @demoIgnore true
      */
     level: {
       type: [String, Number],
@@ -54,11 +57,20 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * Sets the readable text on CdrAccordion button (also can be slotted)
+     * @demoIgnore true
+     */
     label: {
       type: String,
     },
   },
-  emits: ['accordion-toggle'],
+  emits: {
+    /**
+    * Emits on accordion open/close
+    */
+    'accordion-toggle': null,
+  },
 
   setup(props, ctx) {
     const unwrap = inject('unwrap', false);
@@ -183,6 +195,10 @@ export default defineComponent({
       :is="headingTag"
       :class="style[headingClass]"
     >
+      <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
       <component
         :is="headingContent"
         :class="headingContentStyle"
@@ -196,6 +212,7 @@ export default defineComponent({
           :class="style[labelClass]"
           :id="`${id}-label`"
         >
+          <!-- @slot  Sets the readable text on the CdrAccordion button -->
           <slot name="label">
             {{ label }}
           </slot>
@@ -217,6 +234,7 @@ export default defineComponent({
         :id="`${id}-collapsible`"
         ref="accordionContentEl"
       >
+        <!-- @slot CdrAccordion content -->
         <slot />
       </div>
     </div>
