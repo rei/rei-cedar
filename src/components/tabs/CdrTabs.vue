@@ -2,7 +2,7 @@
 import {
   defineComponent, ref, provide, onMounted, nextTick, computed, useCssModule,
 } from 'vue';
-import debounce from 'lodash-es/debounce';
+import { debounce } from 'lodash-es';
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
 } from '@rei/cdr-tokens/dist/js/cdr-tokens.mjs';
