@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.4.1",
+  "version": "13.4.2",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -31,7 +31,8 @@
   "scripts": {
     "prepublishOnly": "npm-run-all lint build",
     "dev": "vite",
-    "build": "vite build && npm run build:extractcss && npm run build:icons",
+    "build": "vite build && npm run build:umd && npm run build:extractcss && npm run build:icons",
+    "build:umd": "vite build --config vite.umd.config.mjs",
     "preview": "vite preview",
     "unit": "vitest run",
     "watch": "vitest",
