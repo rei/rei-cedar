@@ -194,7 +194,7 @@ export default defineComponent({
   >
     <div
       v-bind="$attrs"
-      :class="mapClasses(style, 'cdr-popup__content', contentClass)"
+      :class="[style['cdr-popup__content'], contentClass]"
       ref="popupEl"
     >
       <slot />
