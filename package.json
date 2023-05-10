@@ -31,7 +31,7 @@
   "scripts": {
     "prepublishOnly": "npm-run-all lint build",
     "dev": "vite",
-    "build": "vite build && npm run build:umd && npm run build:extractcss && npm run build:icons",
+    "build": "vite build && npm run build:umd && npm run build:extractcss && npm run build:icons && npm run build:docgen",
     "build:umd": "vite build --config vite.umd.config.mjs",
     "preview": "vite preview",
     "unit": "vitest run",
