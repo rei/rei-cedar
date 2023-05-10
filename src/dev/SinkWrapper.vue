@@ -20,7 +20,7 @@
 <script>
 
 import { CdrRadio } from 'srcdir/lib';
-import upperFirst from 'lodash-es/upperFirst';
+import { upperFirst } from 'lodash-es';
 
 export default {
   name: 'SinkWrapper',

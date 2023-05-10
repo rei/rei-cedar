@@ -18,6 +18,13 @@ export default defineComponent({
         }
         el.removeAttribute('indeterminate');
       },
+      updated(el, binding) {
+        if (binding.value) {
+          el.setAttribute('indeterminate', binding.value);
+          return;
+        }
+        el.removeAttribute('indeterminate');
+      },
     },
   },
   inheritAttrs: false,

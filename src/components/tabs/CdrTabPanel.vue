@@ -2,7 +2,7 @@
 import {
   computed, defineComponent, inject, useCssModule, watch,
 } from 'vue';
-import kebabCase from 'lodash-es/kebabCase';
+import { kebabCase } from 'lodash-es';
 
 export default defineComponent({
   name: 'CdrTabPanel',

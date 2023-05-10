@@ -1,5 +1,5 @@
 <script>
-import debounce from 'lodash-es/debounce';
+import { debounce } from 'lodash-es';
 import tabbable from 'tabbable';
 import {
   useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, defineComponent,

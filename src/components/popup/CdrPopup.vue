@@ -2,7 +2,7 @@
 import {
   defineComponent, useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted,
 } from 'vue';
-import debounce from 'lodash-es/debounce';
+import { debounce } from 'lodash-es';
 import propValidator from '../../utils/propValidator';
 import calculatePlacement from './calculatePlacement';
 import mapClasses from '../../utils/mapClasses';
@@ -194,7 +194,7 @@ export default defineComponent({
   >
     <div
       v-bind="$attrs"
-      :class="mapClasses(style, 'cdr-popup__content', contentClass)"
+      :class="[style['cdr-popup__content'], contentClass]"
       ref="popupEl"
     >
       <slot />
