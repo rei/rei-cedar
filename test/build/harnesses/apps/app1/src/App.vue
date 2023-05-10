@@ -1,12 +1,14 @@
 <template>
   <div>
     <CdrButton></CdrButton>
+    <CdrContainer></CdrContainer>
+    <CdrCard></CdrCard>
   </div>
 </template>
 
 <script setup>
 
-import { CdrButton } from '../../../../../../dist-test/src/lib.mjs';
+import { CdrButton, CdrContainer, CdrCard } from '../../../../../../dist-test/src/lib.mjs';
 
 </script>
 

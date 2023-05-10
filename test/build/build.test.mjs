@@ -32,6 +32,12 @@ describe('Library Build ', () => {
     });
 
     expect(appBundles.output[0].code).to.include('CdrButton');
-    expect(appBundles.output[0].code).to.not.include('CdrCard');
+    expect(appBundles.output[0].code).to.include('CdrContainer');
+    expect(appBundles.output[0].code).to.include('CdrCard');
+
+
+    expect(appBundles.output[0].code).to.not.include('CdrGrid');
+    expect(appBundles.output[0].code).to.not.include('CdrList');
+    expect(appBundles.output[0].code).to.not.include('Breadcrumb');
   });
 });
