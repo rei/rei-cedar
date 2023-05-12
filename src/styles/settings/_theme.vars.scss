@@ -209,10 +209,9 @@ body{
     @include cdr-UIO( 'cdr-button', 'primary', 'cdr-layer--secondary');
 }
   
-  [data-layer="cdr-brand"] {
-    
-    --text-primary: #{$cdr-color-text-inverse};
-    --surface-primary: #{$cdr-color-background-brand-spruce};
+  [data-layer="cdr-sandstone"] {
+    --text-primary: var(--cdr-sandstone-text-default)
+    --surface-primary: var(--cdr-sandstone-background-default);
 
     //reasign component values
 

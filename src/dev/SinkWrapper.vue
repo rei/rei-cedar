@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       cdrLayer: this.$route.query.cdrLayer || 'primary',
-      layers: ['primary', 'secondary', 'brand'],
+      layers: ['avalanche', 'sandstone', 'midnight', 'obsidian'],
     };
   },
   computed: {
