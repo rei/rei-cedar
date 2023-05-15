@@ -4,6 +4,7 @@ exports[`CdrText > default configuration > renders correctly 1`] = `
 <p
   class="cdr-text"
 >
+  <!-- @slot CdrText content -->
   
   paragraph
   
@@ -14,6 +15,7 @@ exports[`CdrText > with h1 set > renders correctly 1`] = `
 <h1
   class="cdr-text"
 >
+  <!-- @slot CdrText content -->
   
   header
   

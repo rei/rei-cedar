@@ -3,22 +3,32 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
+/** Short excerpt used to emphasize content or break up a large body of text */
 export default defineComponent({
   name: 'CdrQuote',
   props: {
+    /**
+     * Sets the semantic HTML element for the quote.
+     * @values blockquote, aside, q, div
+     */
     tag: {
       type: String,
       default: 'blockquote',
       validator: (value) => propValidator(value, ['blockquote', 'aside', 'q', 'div']),
     },
+    /**
+     * Modifies the style variant for the quote
+     * @demoSelectMultiple true
+     * @values pull
+     */
     modifier: {
       type: String,
       default: '',
       validator: (value) => propValidator(value, ['', 'pull']),
     },
-    /** Caption summary text */
+    /** Sets the quote body text. */
     summary: String,
-    /** Caption credit text */
+    /** Sets the quote attribution text. */
     citation: String,
   },
   setup(props) {

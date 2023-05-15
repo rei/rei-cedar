@@ -5,6 +5,7 @@ import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
 import backgroundProps from '../../props/background';
 
+/** Allows selecting one or more items from a list */
 export default defineComponent({
   name: 'CdrCheckbox',
   components: { CdrLabelWrapper },
@@ -30,46 +31,57 @@ export default defineComponent({
   customOptions: {},
   props: {
     /**
-   * Class that is added to the label for custom styles
-   */
+     * Passes a CSS class to the label for custom styles
+     */
     labelClass: String,
     /**
-   * Class that is added to the input for custom styles
-   */
+     * Passes a CSS class to the input for custom styles
+     */
     inputClass: String,
     /**
-   * Class that is added to the slot wrapper for custom styles
-   */
+     * Passes a CSS class to the slot wrapper for custom styles
+     */
     contentClass: String,
     /**
-   * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
-  */
+     * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
+     */
     indeterminate: {
       type: [Boolean, String],
       default: false,
     },
     /**
-   * The value when checked.
-  */
+     * The value when checked.
+     */
     trueValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
       default: true,
     },
     /**
-   * The value when unchecked.
-  */
+     * The value when unchecked.
+     */
     falseValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
       default: false,
     },
     /**
-   * The value when used in a checkbox group. Replaces `trueValue` and `falseValue`.
-  */
+     * The value when used in a checkbox group. Replaces `trueValue` and `falseValue`.
+     */
     customValue: [String, Number, Boolean, Object, Array, Symbol, Function],
-    // Set which background type the input renders on
+    /**
+     * Sets the background color the input is rendered on
+     * @values primary, secondary
+     */
     background: backgroundProps,
+    /**
+     * @demoSelectMultiple false
+     * @values small, medium, large
+    */
     size: sizeProps,
-
+    /**
+     * Use `hide-figure` to hide the checkbox, which leaves the text label as the clickable element.
+     * Add appropriate custom styles to convey selected and unselected states.
+     * @values hide-figure
+     */
     modifier: {
       type: String,
       default: '',
@@ -80,7 +92,13 @@ export default defineComponent({
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
     },
   },
-  emits: ['update:modelValue'],
+  emits: {
+    /**
+     * Event emitted by v-model on the <input> element
+     * @param modelValue
+     */
+    'update:modelValue': null,
+  },
 
   setup(props, ctx) {
     const baseClass = 'cdr-checkbox';
@@ -125,6 +143,7 @@ export default defineComponent({
         v-model="checkboxModel"
       >
     </template>
+    <!-- @slot Readable text for the label element -->
     <slot />
   </cdr-label-wrapper>
 </template>

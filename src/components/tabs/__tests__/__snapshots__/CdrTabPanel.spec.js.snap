@@ -10,6 +10,7 @@ exports[`CdrTabPanel > default config > renders as expected 1`] = `
   style="display: none;"
   tabindex="0"
 >
+  <!-- @slot CdrTabPanel content -->
   
   
 </section>
@@ -25,6 +26,7 @@ exports[`CdrTabPanel > when the selectedTabName is NOT the same as the tabPanel 
   style="display: none;"
   tabindex="0"
 >
+  <!-- @slot CdrTabPanel content -->
   
   
 </section>
@@ -39,6 +41,7 @@ exports[`CdrTabPanel > when the selectedTabName is the same as the tabPanel name
   role="tabpanel"
   tabindex="0"
 >
+  <!-- @slot CdrTabPanel content -->
   
   
 </section>

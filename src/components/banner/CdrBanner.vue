@@ -4,9 +4,15 @@ import {
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 
+/** Provides contextual feedback messages for typical user actions */
 export default defineComponent({
   name: 'CdrBanner',
   props: {
+    /**
+     * Sets the banner style.
+     * @demoSelectMultiple false
+     * @values info, warning, success, error, default
+   */
     type: {
       type: String,
       validator: (value) => propValidator(
@@ -49,15 +55,18 @@ export default defineComponent({
           v-if="hasIconLeft"
           :class="[style['cdr-banner__icon-left']]"
         >
+          <!-- @slot Icon matching banner type -->
           <slot name="icon-left" />
         </div>
         <span :class="[style['cdr-banner__message']]">
+          <!-- @slot Primary message content -->
           <slot />
         </span>
         <div
           v-if="hasIconRight"
           :class="[style['cdr-banner__icon-right']]"
         >
+          <!-- @slot Additional icon -->
           <slot name="icon-right" />
         </div>
       </div>
@@ -65,6 +74,7 @@ export default defineComponent({
         v-if="hasMessageBody"
         :class="[style['cdr-banner__message-body']]"
       >
+        <!-- @slot Additional content about the message -->
         <slot name="message-body" />
       </div>
     </div>
@@ -72,6 +82,7 @@ export default defineComponent({
       v-if="hasInfoAction"
       :class="[style['cdr-banner__info-action']]"
     >
+      <!-- @slot Action-wrapped icon -->
       <slot name="info-action" />
     </div>
   </div>

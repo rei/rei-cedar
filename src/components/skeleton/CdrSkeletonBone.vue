@@ -8,6 +8,11 @@ import mapClasses from '../../utils/mapClasses';
 export default defineComponent({
   name: 'CdrSkeletonBone',
   props: {
+  /**
+   * Sets the type of content placeholder
+   * @demoSelectMultiple false
+   * @values default, heading, line, rectangle, square
+  */
     type: {
       type: String,
       required: false,

@@ -12,48 +12,75 @@ import CdrButton from '../button/CdrButton.vue';
 import IconXLg from '../icon/comps/x-lg.vue';
 import mapClasses from '../../utils/mapClasses';
 
+/** Disruptive, action-blocking overlays used to display important information */
 export default defineComponent({
   name: 'CdrModal',
   components: { CdrButton, IconXLg },
   props: {
+    /**
+     * Toggles the state of the modal
+     * @demoIgnore true
+     */
     opened: {
       type: Boolean,
       required: true,
     },
+    /**
+     * Sets `aria-label` and modal title text. Can also use title slot to set title.
+     */
     label: {
       type: String,
       required: true,
     },
+    /**
+     * Toggles the modal title text, which comes from `label` prop or `title` slot.
+     */
     showTitle: {
       type: Boolean,
       required: false,
       default: true,
     },
+    /**
+     * Text for aria-describedby attribute. Applied to modal content element
+     */
     ariaDescribedby: {
       type: String,
       required: false,
       default: null,
     },
+    /**
+     * Sets the `role` attribute on the modal content element
+     * @values dialog, alertDialog
+     */
     role: {
       type: String,
       required: false,
       default: 'dialog',
     },
+    /**
+     * Sets unique `id` for modal
+     */
     id: {
       type: String,
       required: false,
       default: null,
     },
+    /** Adds custom class to the `cdr-modal__overlay` div */
     overlayClass: String,
+    /** Adds custom class to the `cdr-modal__outerWrap` div */
     wrapperClass: String,
+    /** Adds custom class to the `cdr-modal__innerWrap` div */
     contentClass: String,
+    /** Sets duration for modal's close animation */
     animationDuration: {
       type: Number,
       default: 300,
     },
   },
-  emits: ['closed'],
-
+  emits: {
+    /** Fires when modal is closed */
+    closed: null,
+  },
   setup(props, ctx) {
     const baseClass = 'cdr-modal';
     let unsubscribe;
@@ -293,7 +320,7 @@ export default defineComponent({
         :class="[style['cdr-modal__overlay'], overlayClass]"
       />
       <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
-           content outside the modal is not properly obscurred when opened using certain readers.
+           content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
       <div :tabIndex="opened ? '0' : undefined" />
@@ -306,6 +333,9 @@ export default defineComponent({
         :aria-label="label"
         v-bind="dialogAttrs"
       >
+        <!-- @slot Use to override the entire CdrModal content container.
+          You must provide an explicit way to close the modal
+          to meet UX and accessibility standards  -->
         <slot name="modal">
           <div
             :class="[style['cdr-modal__innerWrap'], contentClass]"
@@ -318,11 +348,13 @@ export default defineComponent({
                   ref="headerEl"
                 >
                   <div :class="style['cdr-modal__title']">
+                    <!-- @slot Use to override the default title -->
                     <slot
                       name="title"
                       v-if="showTitle"
                     >
                       <h1>{{ label }}</h1>
+                      <!-- @slot CdrModal content -->
                     </slot>
                   </div>
                   <cdr-button

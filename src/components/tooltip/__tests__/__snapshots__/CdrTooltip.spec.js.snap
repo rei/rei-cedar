@@ -5,6 +5,9 @@ exports[`CdrTooltip > default component settings > matches snapshot 1`] = `
   class="cdr-tooltip--wrapper cdr-tooltip--position"
 >
   <div>
+    <!-- @slot  Slot for the element that triggers the tooltip.
+        Element should be a button and must be the first and only child of this slot.
+        Event handlers are bound to this element automatically.-->
     
     <button
       aria-describedby="tooltip-test"
@@ -21,6 +24,7 @@ exports[`CdrTooltip > default component settings > matches snapshot 1`] = `
       role="tooltip"
     >
       
+      <!-- @slot CdrTooltip content -->
       
       tooltip content
       
