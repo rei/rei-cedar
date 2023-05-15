@@ -4,6 +4,7 @@ exports[`CdrContainer > using the default slot > renders correctly 1`] = `
 <div
   class="cdr-container cdr-container--static"
 >
+  <!-- @slot CdrContainer content  -->
   
   foo
   
@@ -14,6 +15,7 @@ exports[`CdrContainer > using the default slot > with "fluid" modifier > renders
 <div
   class="cdr-container cdr-container--fluid"
 >
+  <!-- @slot CdrContainer content  -->
   
   foo
   

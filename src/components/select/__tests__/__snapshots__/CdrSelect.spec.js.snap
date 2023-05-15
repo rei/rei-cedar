@@ -33,6 +33,7 @@ exports[`CdrSelect > default configuration with a name attribute > renders corre
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -101,6 +102,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a hide-l
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -175,6 +177,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a prompt
         </option>
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -248,6 +251,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -317,6 +321,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -388,6 +393,7 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -421,6 +427,7 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
     <div
       class="cdr-form-error"
       id="renders-error"
+      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -492,6 +499,7 @@ exports[`CdrSelect > using the error slot > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -560,6 +568,7 @@ exports[`CdrSelect > with "autofocus" set to true > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -628,6 +637,7 @@ exports[`CdrSelect > with "disabled" set to true > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -683,6 +693,7 @@ exports[`CdrSelect > with aria-describedby and id provided > renders correctly 1
       id="aria-test-helper-text-top"
     >
       
+      <!-- @slot Helper text above the select field -->
       
       extremely helpful
       
@@ -705,6 +716,7 @@ exports[`CdrSelect > with aria-describedby and id provided > renders correctly 1
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -760,6 +772,7 @@ exports[`CdrSelect > with helper text slot > renders correctly 1`] = `
       id="aria-test-helper-text-top"
     >
       
+      <!-- @slot Helper text above the select field -->
       
       yee haw
       
@@ -782,6 +795,7 @@ exports[`CdrSelect > with helper text slot > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -849,6 +863,7 @@ exports[`CdrSelect > with info action slot > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -874,6 +889,7 @@ exports[`CdrSelect > with info action slot > renders correctly 1`] = `
       class="cdr-label-standalone__info-action"
     >
       
+      <!-- @slot Action-wrapped icon to the right of the select field -->
       
       🤠
       
@@ -924,6 +940,7 @@ exports[`CdrSelect > with info slot > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -951,6 +968,7 @@ exports[`CdrSelect > with info slot > renders correctly 1`] = `
     class="cdr-label-standalone__info"
   >
     
+    <!-- @slot Link or icon to the right above the select field.  -->
     
     howdy
     
@@ -999,6 +1017,7 @@ exports[`CdrSelect > with no attr or helper slots > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>
@@ -1061,6 +1080,7 @@ exports[`CdrSelect > with pre-icon slot > renders correctly 1`] = `
       <span
         class="cdr-select__pre-icon"
       >
+        <!-- @slot Icon preceding text within the select field -->
         
         🤠
         
@@ -1072,6 +1092,7 @@ exports[`CdrSelect > with pre-icon slot > renders correctly 1`] = `
         <!--v-if-->
         
         
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
         
         
       </select>

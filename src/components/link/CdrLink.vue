@@ -3,21 +3,36 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
+/** Clickable text elements used for navigating to other pages or sections */
 export default defineComponent({
   name: 'CdrLink',
   props: {
+    /**
+     * Sets valid HTML element tag
+     * @values a, button
+     */
     tag: {
       type: String,
       default: 'a',
     },
+    /**
+     * Sets value for anchors href property. Requires tag prop value to be `a`.
+     */
     href: {
       type: String,
       default: '#',
     },
+    /**
+     * Sets color and fill
+     */
     inheritColor: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Modifies the style variant for this component.
+     * @values standalone
+     */
     modifier: {
       type: String,
       default: '',
@@ -61,6 +76,7 @@ export default defineComponent({
     :rel="computedRel"
     :href="computedHref"
   >
+    <!-- @slot Readable text of the link  -->
     <slot />
   </component>
 </template>

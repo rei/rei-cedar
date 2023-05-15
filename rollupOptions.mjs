@@ -2,7 +2,7 @@ import { babel } from '@rollup/plugin-babel';
 import browserTargets from './browserTargets.mjs';
 
 export default {
-  // external: ['vue', 'core-js', 'lodash-es', 'tabbable'], // Externalize peerDependencies
+  // Externalize peerDependencies
   external: (id) => ['vue', 'core-js', 'lodash-es', 'tabbable'].some(
     (dep) => dep === id || id.startsWith(`${dep}/`),
   ),

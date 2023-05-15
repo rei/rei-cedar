@@ -9,19 +9,40 @@ import {
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
 
+/** Organizes related content into groups for people to navigate between */
 export default defineComponent({
   name: 'CdrTabs',
   props: {
+    /**
+     * Sets height of the tabs container element.
+     * Passing a `px` value will render tabs with a static height,
+     * passing `auto` will render tabs with variable height based on content size.
+     */
     height: {
       type: String,
       default: '240px',
     },
+    /** Sets the index of the tab that should be active on initial page load. Note that this property is zero-indexed. */
     activeTab: {
       type: Number,
       default: 0,
     },
+    /**
+     * Modifies the style variants for this component
+     * @values centered, compact, full-width, no-border
+     */
     modifier: String,
+    /**
+     * Use `small` to reduce spacing around the tabs for a denser visual design
+     * @demoSelectMultiple true
+     * @values small
+    */
     size: String,
+    /**
+     * Sets the background color of the tab.
+     * For CdrTabs that are rendered on non-primary backgrounds.
+     * Pass the background-color into the component to ensure that the scrolling gradients render correctly.
+     */
     backgroundColor: {
       type: String,
       default: CdrColorBackgroundPrimary,
@@ -300,6 +321,7 @@ export default defineComponent({
         :style="underlineStyle"
       />
     </div>
+    <!-- @slot CdrTabs content (CdrTabPanel components) -->
     <slot />
   </div>
 </template>

@@ -844,6 +844,7 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
         </svg>
       </span>
       
+      <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
       
       whoops
       
@@ -935,6 +936,7 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
         </svg>
       </span>
       
+      <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
       
       whoops
       
@@ -981,17 +983,22 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
       <span
         class="cdr-input__post-icon"
       >
+        <!-- @slot Icon after text within the input field -->
         
         <button
           class="cdr-button cdr-button--primary cdr-button--medium"
           type="button"
         >
+          <!-- @slot Icon to the left of text content -->
           
           
+          <!-- @slot Icon for icon-only button -->
           
           
+          <!-- @slot Readable text of the button. Leave empty if icon-only -->
           
           
+          <!-- @slot Icon to the right of text content -->
           
           
         </button>
@@ -999,12 +1006,16 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
           class="cdr-button cdr-button--primary cdr-button--medium"
           type="button"
         >
+          <!-- @slot Icon to the left of text content -->
           
           
+          <!-- @slot Icon for icon-only button -->
           
           
+          <!-- @slot Readable text of the button. Leave empty if icon-only -->
           
           
+          <!-- @slot Icon to the right of text content -->
           
           
         </button>
@@ -1074,6 +1085,7 @@ exports[`CdrInput > with "helper-text-bottom" slot > renders correctly 1`] = `
       class="cdr-input__helper-text"
       id="renders-helper-text-bottom"
     >
+      <!-- @slot Helper text below the input field -->
       
       very helpful
       
@@ -1121,6 +1133,7 @@ exports[`CdrInput > with a post-icon slot > renders correctly 1`] = `
       <span
         class="cdr-input__post-icon"
       >
+        <!-- @slot Icon after text within the input field -->
         
         😎
         
@@ -1176,6 +1189,7 @@ exports[`CdrInput > with a pre-icon slot > renders correctly 1`] = `
       <span
         class="cdr-input__pre-icon"
       >
+        <!-- @slot Icon preceding text within the input field -->
         
         🤠
         
@@ -1217,6 +1231,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > ren
       id="aria-test-helper-text-top"
     >
       
+      <!-- @slot Helper text above the input field -->
       
       extremely helpful
       
@@ -1254,6 +1269,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > ren
       class="cdr-input__helper-text"
       id="aria-test-helper-text-bottom"
     >
+      <!-- @slot Helper text below the input field -->
       
       very helpful
       
@@ -1285,6 +1301,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and a
       id="aria-test-helper-text-top"
     >
       
+      <!-- @slot Helper text above the input field -->
       
       extremely helpful
       
@@ -1322,6 +1339,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and a
       class="cdr-input__helper-text"
       id="aria-test-helper-text-bottom"
     >
+      <!-- @slot Helper text below the input field -->
       
       very helpful
       
@@ -1373,6 +1391,7 @@ exports[`CdrInput > with info action slot > renders correctly 1`] = `
       class="cdr-label-standalone__info-action"
     >
       
+      <!-- @slot Action-wrapped icon within the input field (precedes post-icon) -->
       
       🤠
       

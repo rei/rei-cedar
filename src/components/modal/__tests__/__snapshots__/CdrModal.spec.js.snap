@@ -12,7 +12,7 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
       class="cdr-modal__overlay"
     />
     <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
-           content outside the modal is not properly obscurred when opened using certain readers.
+           content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
     <div />
@@ -23,6 +23,9 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
       role="dialog"
       tabindex="-1"
     >
+      <!-- @slot Use to override the entire CdrModal content container.
+          You must provide an explicit way to close the modal
+          to meet UX and accessibility standards  -->
       
       <div
         class="cdr-modal__innerWrap"
@@ -38,10 +41,12 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
               <div
                 class="cdr-modal__title"
               >
+                <!-- @slot Use to override the default title -->
                 
                 <h1>
                   Label is the modal title
                 </h1>
+                <!-- @slot CdrModal content -->
                 
               </div>
               <button
@@ -49,8 +54,10 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
                 class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
                 type="button"
               >
+                <!-- @slot Icon to the left of text content -->
                 
                 
+                <!-- @slot Icon for icon-only button -->
                 
                 <svg
                   aria-hidden="true"
@@ -69,8 +76,10 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
                   <!--v-if-->
                 </svg>
                 
+                <!-- @slot Readable text of the button. Leave empty if icon-only -->
                 
                 
+                <!-- @slot Icon to the right of text content -->
                 
                 
               </button>
@@ -107,7 +116,7 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
       class="cdr-modal__overlay"
     />
     <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
-           content outside the modal is not properly obscurred when opened using certain readers.
+           content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
     <div
@@ -120,6 +129,9 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
       role="dialog"
       tabindex="-1"
     >
+      <!-- @slot Use to override the entire CdrModal content container.
+          You must provide an explicit way to close the modal
+          to meet UX and accessibility standards  -->
       
       <div
         class="cdr-modal__innerWrap"
@@ -134,10 +146,12 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
               <div
                 class="cdr-modal__title"
               >
+                <!-- @slot Use to override the default title -->
                 
                 <h1>
                   Label is the modal title
                 </h1>
+                <!-- @slot CdrModal content -->
                 
               </div>
               <button
@@ -145,8 +159,10 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
                 class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
                 type="button"
               >
+                <!-- @slot Icon to the left of text content -->
                 
                 
+                <!-- @slot Icon for icon-only button -->
                 
                 <svg
                   aria-hidden="true"
@@ -165,8 +181,10 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
                   <!--v-if-->
                 </svg>
                 
+                <!-- @slot Readable text of the button. Leave empty if icon-only -->
                 
                 
+                <!-- @slot Icon to the right of text content -->
                 
                 
               </button>
@@ -205,7 +223,7 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
       class="cdr-modal__overlay"
     />
     <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
-           content outside the modal is not properly obscurred when opened using certain readers.
+           content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
     <div
@@ -218,6 +236,9 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
       role="dialog"
       tabindex="-1"
     >
+      <!-- @slot Use to override the entire CdrModal content container.
+          You must provide an explicit way to close the modal
+          to meet UX and accessibility standards  -->
       
       <div
         class="cdr-modal__innerWrap"
@@ -232,10 +253,12 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
               <div
                 class="cdr-modal__title"
               >
+                <!-- @slot Use to override the default title -->
                 
                 <h1>
                   Label is the modal title
                 </h1>
+                <!-- @slot CdrModal content -->
                 
               </div>
               <button
@@ -243,8 +266,10 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
                 class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
                 type="button"
               >
+                <!-- @slot Icon to the left of text content -->
                 
                 
+                <!-- @slot Icon for icon-only button -->
                 
                 <svg
                   aria-hidden="true"
@@ -263,8 +288,10 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
                   <!--v-if-->
                 </svg>
                 
+                <!-- @slot Readable text of the button. Leave empty if icon-only -->
                 
                 
+                <!-- @slot Icon to the right of text content -->
                 
                 
               </button>

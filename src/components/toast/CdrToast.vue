@@ -6,6 +6,7 @@ import propValidator from '../../utils/propValidator';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 
+/** Non-modal dialog used to communicate the status of a task or process */
 export default defineComponent({
   name: 'CdrToast',
   components: {
@@ -13,6 +14,11 @@ export default defineComponent({
     CdrButton,
   },
   props: {
+    /**
+     * Sets the toast type.
+     * @demoSelectMultiple false
+     * @values info, success, warning, error, default
+    */
     type: {
       type: String,
       validator: (value) => propValidator(
@@ -21,20 +27,32 @@ export default defineComponent({
       ),
       default: 'default',
     },
+    /**
+     * Used to programmatically control the toast open/close state.
+     * @demoIgnore true
+    */
     open: {
       type: Boolean,
       default: false,
     },
+    /** Set to `false` to disable automatic closing after the `dismissDelay`. */
     autoDismiss: {
       type: Boolean,
       default: true,
     },
+    /** Sets the interval (in milliseconds) before the toast automatically closes. */
     dismissDelay: {
       type: Number,
       default: 5000,
     },
   },
-  emits: ['open', 'closed'],
+  emits: {
+    /** Emits when toast opens */
+    open: null,
+    /** Emits when toast closes */
+    closed: null,
+  },
+
   setup(props, ctx) {
     const baseClass = 'cdr-toast';
     const style = useCssModule();
@@ -132,9 +150,11 @@ export default defineComponent({
           v-if="hasIconLeft"
           :class="[style['cdr-toast__icon-left']]"
         >
+          <!-- @slot Icon matching toast messaging type -->
           <slot name="icon-left" />
         </div>
         <span :class="[style['cdr-toast__message']]">
+          <!-- @slot CdrToast content -->
           <slot name="default" />
         </span>
         <cdr-button
@@ -149,7 +169,6 @@ export default defineComponent({
               inherit-color
             />
           </slot>
-
         </cdr-button>
       </div>
     </div>
