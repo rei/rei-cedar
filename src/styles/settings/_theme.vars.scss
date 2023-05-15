@@ -120,9 +120,9 @@
 
    
     --text-emphasis:  var(--cdr-color-text-emphasis);
-    --text-primary: var(--cdr-color-text-primary);
-    --text-secondary: var(--cdr-color-text-secondary);
-    --surface-primary: var(--cdr-color-background-primary);
+    --text: var(--cdr-color-text-primary);
+    --text-subdued: var(--cdr-color-text-secondary);
+    --background-primary: var(--cdr-color-background-primary);
 
 
 
@@ -148,8 +148,8 @@
     /// this is wrong we and should only be updating the values of UIF's in a new context and not UIP's 
     /// UIP's should be applied consistantly accross the pages 
     /// --cdr-color-text-primary: var(--cdr-color-text-inverse)
-    --text-primary: var(--cdr-color-text-inverse);
-    --surface-primary: var(--cdr-color-text-primary);
+    --text: var(--cdr-color-text-inverse);
+    --surface: var(--cdr-color-text-primary);
 
     --secondary-text-primary: var(--cdr-color-background-secondary);
     --secondary-surface-primary: var(--cdr-color-text-secondary);
@@ -164,24 +164,23 @@
 
 //Alias tokens are applied to properties
 body{
-    color: var(--text-primary);
-    background-color: var(--surface-primary);
-    }
+    color: var(--text);
+    background-color: var(--background);
+ }
     
 // layers
 [data-layer]{
   //root values -- will be set to the root element this attribute is assined to
-  color: var(--text-primary);
-  background-color: var(--surface-primary);
+  color: var(--text);
+  background-color: var(--background);
 }
   // cdr UIObject map
 // accepts up to 3 arguments: component, variant (optional), palette (optional)
 // example: @include cdr-UIO('cdr-button');
 // example: @include cdr-UIO('cdr-button', 'primary');
 // example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--primary');
-@mixin cdr-UIO($component: null, $variant: 'default', $state: 'default', $palette: 'cdr-palette--default') {
+@mixin cdr-UIO($component: null, $variant: 'default', $palette: 'cdr-palette--default') {
   $variant-map: null;
-  $state-map: null;
 
   @if $variant {
     $component-map: map-get($cdr-UI-settings, $palette);
@@ -192,13 +191,7 @@ body{
     $variant-map: map-get($component-map, $component);
   }
 
-  @if $state {
-    $state-map: map-get($variant-map, $state);
-  } @else {
-    $state-map: $variant-map;
-  }
-
-  @each $property, $value in $state-map {
+  @each $property, $value in $variant-map {
     --#{$property}: var(#{$value});
   }
 }
@@ -206,21 +199,24 @@ body{
 [data-layer="cdr-secondary"] {
     --text-primary: var(--secondary-text-primary);
     --surface-primary: var(--secondary-surface-primary);
-    @include cdr-UIO( 'cdr-button', 'primary', 'cdr-layer--secondary');
+    //@include cdr-UIO( 'cdr-button', 'primary', 'cdr-layer--secondary');
 }
   
   [data-layer="cdr-sandstone"] {
-    --text-primary: var(--cdr-sandstone-text-default)
-    --surface-primary: var(--cdr-sandstone-background-default);
+    @include cdr-UIO( 'cdr-text', 'default', 'cdr-palette--sandstone');
+    @include cdr-UIO( 'cdr-border', 'default', 'cdr-palette--sandstone');
+    @include cdr-UIO( 'cdr-background', 'default', 'cdr-palette--sandstone');
+  }
 
-    //reasign component values
+  [data-layer="cdr-midnight"] {
+    @include cdr-UIO( 'cdr-text', 'default', 'cdr-palette--midnight');
+    @include cdr-UIO( 'cdr-border', 'default', 'cdr-palette--midnight');
+    @include cdr-UIO( 'cdr-background', 'default', 'cdr-palette--midnight');
+  }
 
-    //primary button
-    --cdr-color-background-button-primary-rest: var(--cdr-brand-color-background-button-primary-rest);
-    --cdr-color-text-button-primary: var(--cdr-brand-color-text-button-primary);
-    //secondary button
-    --cdr-color-background-button-secondary-rest: var(--cdr-brand-color-background-button-secondary-rest);
-    --cdr-color-text-button-secondary: var(--cdr-brand-color-text-button-secondary);
-    
+  [data-layer="cdr-obsidian"] {
+    @include cdr-UIO( 'cdr-text', 'default', 'cdr-palette--obsidian');
+    @include cdr-UIO( 'cdr-border', 'default', 'cdr-palette--obsidian');
+    @include cdr-UIO( 'cdr-background', 'default', 'cdr-palette--obsidian');
   }
 

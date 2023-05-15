@@ -4,7 +4,7 @@
 //@import url('@rei/cedar/dist/style/cdr-accordion-group.css');
 @import './CdrAccordionGroup.module.scss';
 
-$accordion-border: 1px solid $cdr-color-border-primary;
+$accordion-border: 1px solid var(--border);
 
 .cdr-accordion {
   border-top: $accordion-border;
@@ -20,9 +20,9 @@ $accordion-border: 1px solid $cdr-color-border-primary;
   &__button {
     @include cdr-text-utility-sans-strong-300;
 
-    background-color: transparent;
+    background-color: var(--background);
     border: none;
-    color: $cdr-color-text-primary;
+    color: var(--text);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -34,7 +34,7 @@ $accordion-border: 1px solid $cdr-color-border-primary;
 
     &:hover,
     &:focus {
-      background-color: $cdr-color-background-accordion-hover;
+      background-color: var(--background-highlight);
     }
   }
 
@@ -78,8 +78,8 @@ $accordion-border: 1px solid $cdr-color-border-primary;
   &__content {
     @include cdr-text-body-300;
 
-    background-color: transparent;
-    color: $cdr-color-text-primary;
+    background-color:  var(--background);
+    color:  var(--text);
     padding: $cdr-space-half-x $cdr-space-one-x $cdr-space-one-x;
     transition: opacity $cdr-duration-1-x linear;
     opacity: 0;
