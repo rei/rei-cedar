@@ -173,8 +173,53 @@
     --text-primary: var(--cdr-color-text-primary);
     --text-secondary: var(--cdr-color-text-secondary);
     --surface-primary: var(--cdr-color-background-primary);
-
-
+    
+    --spacing-inset-one-x: 1.6rem;
+    --spacing-eighth-x: var(--cdr-space-eighth-x);
+    --spacing-quarter-x: var(--cdr-space-quarter-x);
+    --spacing-half-x: var(--cdr-space-half-x);
+    --spacing-three-quarter-x: var(--cdr-space-three-quarter-x);
+    --spacing-one-x: var(--cdr-space-one-x);
+    --spacing-one-and-a-half-x: var(--cdr-space-one-and-a-half-x);
+    --spacing-two-x: var(--cdr-space-two-x);
+    --spacing-three-x: var(--cdr-space-three-x);
+    --spacing-four-x: var(--cdr-space-four-x);
+    --spacing-inset-eighth-x-squish-top-bottom: var(--cdr-space-inset-eighth-x-squish-top-bottom);
+    --spacing-inset-eighth-x-squish-left-right: var(--cdr-space-inset-eighth-x-squish-left-right);
+    --spacing-inset-eighth-x-stretch-top-bottom: var(--cdr-space-inset-eighth-x-stretch-top-bottom);
+    --spacing-inset-eighth-x-stretch-left-right: var(--cdr-space-inset-eighth-x-stretch-left-right);
+    --spacing-inset-quarter-x-squish-top-bottom: var(--cdr-space-inset-quarter-x-squish-top-bottom);
+    --spacing-inset-quarter-x-squish-left-right: var(--cdr-space-inset-quarter-x-squish-left-right);
+    --spacing-inset-quarter-x-stretch-top-bottom: var(--cdr-space-inset-quarter-x-stretch-top-bottom);
+    --spacing-inset-quarter-x-stretch-left-right: var(--cdr-space-inset-quarter-x-stretch-left-right);
+    --spacing-inset-half-x-squish-top-bottom: var(--cdr-space-inset-half-x-squish-top-bottom);
+    --spacing-inset-half-x-squish-left-right: var(--cdr-space-inset-half-x-squish-left-right);
+    --spacing-inset-half-x-stretch-top-bottom: var(--cdr-space-inset-half-x-stretch-top-bottom);
+    --spacing-inset-half-x-stretch-left-right: var(--cdr-space-inset-half-x-stretch-left-right);
+    --spacing-inset-three-quarter-x-squish-top-bottom: var(--cdr-space-inset-three-quarter-x-squish-top-bottom);
+    --spacing-inset-three-quarter-x-squish-left-right: var(--cdr-space-inset-three-quarter-x-squish-left-right);
+    --spacing-inset-three-quarter-x-stretch-top-bottom: var(--cdr-space-inset-three-quarter-x-stretch-top-bottom);
+    --spacing-inset-three-quarter-x-stretch-left-right: var(--cdr-space-inset-three-quarter-x-stretch-left-right);
+    --spacing-inset-one-x-squish-top-bottom: var(--cdr-space-inset-one-x-squish-top-bottom);
+    --spacing-inset-one-x-squish-left-right: var(--cdr-space-inset-one-x-squish-left-right);
+    --spacing-inset-one-x-stretch-top-bottom: var(--cdr-space-inset-one-x-stretch-top-bottom);
+    --spacing-inset-one-x-stretch-left-right: var(--cdr-space-inset-one-x-stretch-left-right);
+    --spacing-inset-one-and-a-half-x-squish-top-bottom: var(--cdr-space-inset-one-and-a-half-x-squish-top-bottom);
+    --spacing-inset-one-and-a-half-x-squish-left-right: var(--cdr-space-inset-one-and-a-half-x-squish-left-right);
+    --spacing-inset-one-and-a-half-x-stretch-top-bottom: var(--cdr-space-inset-one-and-a-half-x-stretch-top-bottom);
+    --spacing-inset-one-and-a-half-x-stretch-left-right: var(--cdr-space-inset-one-and-a-half-x-stretch-left-right);
+    --spacing-inset-two-x-squish-top-bottom: var(--cdr-space-inset-two-x-squish-top-bottom);
+    --spacing-inset-two-x-squish-left-right: var(--cdr-space-inset-two-x-squish-left-right);
+    --spacing-inset-two-x-stretch-top-bottom: var(--cdr-space-inset-two-x-stretch-top-bottom);
+    --spacing-inset-two-x-stretch-left-right: var(--cdr-space-inset-two-x-stretch-left-right);
+    --spacing-inset-three-x-squish-top-bottom: var(--cdr-space-inset-three-x-squish-top-bottom);
+    --spacing-inset-three-x-squish-left-right: var(--cdr-space-inset-three-x-squish-left-right);
+    --spacing-inset-three-x-stretch-top-bottom: var(--cdr-space-inset-three-x-stretch-top-bottom);
+    --spacing-inset-three-x-stretch-left-right: var(--cdr-space-inset-three-x-stretch-left-right);
+    --spacing-inset-four-x-squish-top-bottom: var(--cdr-space-inset-four-x-squish-top-bottom);
+    --spacing-inset-four-x-squish-left-right: var(--cdr-space-inset-four-x-squish-left-right);
+    --spacing-inset-four-x-stretch-top-bottom: var(--cdr-space-inset-four-x-stretch-top-bottom);
+    --spacing-inset-four-x-stretch-left-right: var(--cdr-space-inset-four-x-stretch-left-right);
 
        
       
@@ -204,7 +249,7 @@
     --secondary-text-primary: var(--cdr-color-background-secondary);
     --secondary-surface-primary: var(--cdr-color-text-secondary);
 
-    [data-layer="cdr-primary"] {
+    [data-layer="cdr-avalanche"] {
         //primary button
         --cdr-color-background-button-primary-rest: red;
         --cdr-color-text-button-primary: blue;
@@ -224,33 +269,17 @@ body{
   color: var(--text-primary);
   background-color: var(--surface-primary);
 }
-  // cdr UIObject map
-// accepts up to 3 arguments: component, variant (optional), palette (optional)
-// example: @include cdr-UIO('cdr-button');
-// example: @include cdr-UIO('cdr-button', 'primary');
-// example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--primary');
-@mixin cdr-UIO($component: 'cdr-button', $variant: null, $palette: 'cdr-layer--primary') {
-    $variant-map: null;
-    @if $variant {
-      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component, $variant);
-    } @else {
-      $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component);
-    }
-    @each $property, $value in $variant-map {
-      --#{$property}: var(#{$value});
-    }
-  }
   
-[data-layer="cdr-secondary"] {
+[data-layer="cdr-sandstone"] {
     --text-primary: var(--secondary-text-primary);
     --surface-primary: var(--secondary-surface-primary);
-    @include cdr-UIO( 'cdr-button', 'primary', 'cdr-layer--secondary');
+    @include cdr-UIO( 'cdr-button', 'primary', 'cdr-layer--sandstone');
 }
   
-  [data-layer="cdr-brand"] {
+  [data-layer="cdr-midnight"] {
     
     --text-primary: #{$cdr-color-text-inverse};
-    --surface-primary: #{$cdr-color-background-brand-spruce};
+    --surface-primary: #3C3B38;
 
     //reasign component values
 
@@ -263,3 +292,7 @@ body{
     
   }
 
+  [data-layer="cdr-obsidian"] {
+    --text-primary: #{$cdr-color-text-inverse};
+    --surface-primary: #20201D;
+  }

@@ -284,26 +284,26 @@
       :background="backgroundColor"
       label="Nested Options"
     >
-      <optgroup label="bread">
-        <option value="rye">
-          rye
+      <optgroup label="Size">
+        <option value="12">
+          12 oz
         </option>
-        <option value="sourdough">
-          sourdough
+        <option value="16">
+          16 oz
         </option>
-        <option value="wheat">
-          wheat
+        <option value="20">
+          20 oz
         </option>
       </optgroup>
-      <optgroup label="toppings">
-        <option value="provolone">
-          provolone
+      <optgroup label="Color">
+        <option value="orange">
+          Orange
         </option>
-        <option value="peppers">
-          peppers
+        <option value="blue">
+          Blue
         </option>
-        <option value="gabagool">
-          gabagool
+        <option value="green">
+          Green
         </option>
       </optgroup>
     </cdr-select>

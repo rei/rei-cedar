@@ -1,5 +1,5 @@
 $cdr-UI-settings: (
-  cdr-layer--primary: (
+  cdr-layer--avalanche: (
     cdr-button: (
       primary: (
         "button-background": "--cdr-color-background-button-primary-rest",
@@ -41,7 +41,7 @@ $cdr-UI-settings: (
       ),
     ),
   ),
-  cdr-layer--secondary: (
+  cdr-layer--sandstone: (
     cdr-button: (
       primary: (
       "cdr-color-background-button-primary-rest": "--cdr-secondary-color-background-button-primary-rest",
@@ -66,8 +66,8 @@ $cdr-UI-settings: (
 // accepts up to 3 arguments: component, variant (optional), palette (optional)
 // example: @include cdr-UIO('cdr-button');
 // example: @include cdr-UIO('cdr-button', 'primary');
-// example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--primary');
-@mixin cdr-UIO($component: 'cdr-button', $variant: null, $palette: 'cdr-layer--primary') {
+// example: @include cdr-UIO('cdr-button', 'primary', 'cdr-layer--avalanche');
+@mixin cdr-UIO($component: 'cdr-button', $variant: null, $palette: 'cdr-layer--avalanche') {
     $variant-map: null;
     @if $variant {
       $variant-map: map-get(map-get($cdr-UI-settings, $palette), $component, $variant);

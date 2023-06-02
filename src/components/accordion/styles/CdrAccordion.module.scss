@@ -4,11 +4,41 @@
 //@import url('@rei/cedar/dist/style/cdr-accordion-group.css');
 @import './CdrAccordionGroup.module.scss';
 
-$accordion-border: 1px solid $cdr-color-border-primary;
+[data-layer="cdr-sandstone"] .cdr-accordion{
+  --accordion-palette-button-active: #FFFFFF;
+  --accordion-palette-button-active-text: #4B4A48;
+  --accordion-border-color: #CBC5B7;
+  --accordion-text: #3B3A38;
+}
+
+[data-layer="midnight"] .cdr-accordion {
+  --accordion-palette-button-active: #20201D;
+  --accordion-palette-button-active-text: #EAE7DF;
+  --accordion-border-color: #827C72;
+  --accordion-text: #F1EEE9;
+}
+
+[data-layer="obsidian"] .cdr-accordion {
+  --accordion-palette-button-active: #3C3B38;
+  --accordion-palette-button-active-text: #F1EEE9;
+  --accordion-border-color: #827C72;
+  --accordion-text: #EAE7DF;
+}
 
 .cdr-accordion {
-  border-top: $accordion-border;
-  border-bottom: $accordion-border;
+--accordion-text: var(--text-primary);
+--accordion-border: 1px solid #{$cdr-color-border-primary};
+--accordion-border-color: #{$cdr-color-border-primary};
+--accordion-button-padding: var(--spacing-inset-one-x);
+--accordion-button-active: var( --accordion-palette-button-active ,#F6F4F0);
+--accordion-button-active-text: #3B3A38;
+
+
+
+  border-top: var(--accordion-border);
+  border-top-color: var(--accordion-border-color);
+  border-bottom: var(--accordion-border);
+  border-bottom-color: var(--accordion-border-color);
   position: relative;
   z-index: 1;
   list-style: none;
@@ -22,11 +52,11 @@ $accordion-border: 1px solid $cdr-color-border-primary;
 
     background-color: transparent;
     border: none;
-    color: $cdr-color-text-primary;
+    color: var(--accordion-text);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    padding: $cdr-space-inset-one-x;
+    padding: var(--accordion-button-padding);
     position: relative;
     text-align: left;
     width: 100%;
@@ -34,7 +64,8 @@ $accordion-border: 1px solid $cdr-color-border-primary;
 
     &:hover,
     &:focus {
-      background-color: $cdr-color-background-accordion-hover;
+      color: var(--accordion-button-active-text);
+      background-color: var(--accordion-button-active);
     }
   }
 
@@ -79,7 +110,7 @@ $accordion-border: 1px solid $cdr-color-border-primary;
     @include cdr-text-body-300;
 
     background-color: transparent;
-    color: $cdr-color-text-primary;
+    color: var(--accordion-text);
     padding: $cdr-space-half-x $cdr-space-one-x $cdr-space-one-x;
     transition: opacity $cdr-duration-1-x linear;
     opacity: 0;
