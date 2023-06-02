@@ -9,6 +9,7 @@ exports[`CdrChip > default matches snapshot 1`] = `
   <span
     class="cdr-chip__content"
   >
+    <!-- @slot Primary CdrChip content -->
     
     tortilla chip
     
@@ -23,6 +24,7 @@ exports[`CdrChip > renders icon slots 1`] = `
   <span
     class="cdr-chip__icon-left"
   >
+    <!-- @slot Icon to the left of the content -->
     
     🌮
     
@@ -30,6 +32,7 @@ exports[`CdrChip > renders icon slots 1`] = `
   <span
     class="cdr-chip__icon-right"
   >
+    <!-- @slot Icon to the right of the content -->
     
     🍔
     
@@ -37,6 +40,7 @@ exports[`CdrChip > renders icon slots 1`] = `
   <span
     class="cdr-chip__content"
   >
+    <!-- @slot Primary CdrChip content -->
     
     tortilla chip
     

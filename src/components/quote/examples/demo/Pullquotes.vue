@@ -11,6 +11,7 @@
       <cdr-quote
         tag="aside"
         modifier="pull"
+        aria-label="quote-1"
         summary="Aside Pullquote Summary: Nested in body paragraph.
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
       At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
@@ -45,6 +46,7 @@
     <cdr-quote
       tag="aside"
       modifier="pull"
+      aria-label="quote-2"
       summary="Aside Pullquote Summary:
       Wrapped by to default paragraphs
       Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -6,12 +6,18 @@ import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
 import propValidator from '../../utils/propValidator';
 
+/** Floating label used to clarify interface actions */
 export default defineComponent({
   name: 'CdrTooltip',
   components: {
     CdrPopup,
   },
   props: {
+    /**
+     * Sets the position where the tooltip will render relative to the trigger element.
+     * @demoSelectMultiple false
+     * @values top, bottom, left, right
+     */
     position: {
       type: String,
       required: false,
@@ -21,24 +27,40 @@ export default defineComponent({
         ['top', 'bottom', 'left', 'right'],
       ),
     },
+    /**
+     * If set to `true`, tooltip will attempt to dynamically set it's position to
+     * ensure it renders within the visible browser window.
+     * If `false` the tooltip will always render in the provided `position`.
+     */
     autoPosition: {
       type: Boolean,
       default: true,
     },
+    /** ID for the tooltip element, required for accessibility */
     id: {
       type: String,
       required: true,
     },
+    /** Add custom class to the tooltip content wrapper. Allows for overriding size, styling, etc. */
     contentClass: {
       type: String,
       required: false,
     },
+    /**
+     * Used to programmatically control the tooltip state. Does not need to be set if you are using the `trigger` slot.
+     * @demoIgnore true
+     */
     open: {
       type: Boolean,
       default: false,
     },
   },
-  emits: ['opened', 'closed'],
+  emits: {
+    /** Emits when tooltip is opened */
+    opened: null,
+    /** Emits when tooltip is closed */
+    closed: null,
+  },
   setup(props, ctx) {
     const style = useCssModule();
     const isOpen = ref(false);
@@ -105,6 +127,9 @@ export default defineComponent({
     )"
   >
     <div ref="triggerEl">
+      <!-- @slot  Slot for the element that triggers the tooltip.
+        Element should be a button and must be the first and only child of this slot.
+        Event handlers are bound to this element automatically.-->
       <slot name="trigger" />
     </div>
     <cdr-popup
@@ -117,6 +142,7 @@ export default defineComponent({
       :id="id"
       @closed="closeTooltip"
     >
+      <!-- @slot CdrTooltip content -->
       <slot />
     </cdr-popup>
   </div>

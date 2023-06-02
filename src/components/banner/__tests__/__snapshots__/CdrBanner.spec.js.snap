@@ -13,6 +13,7 @@ exports[`CdrBanner > with icon-left slot > renders correctly 1`] = `
       <div
         class="cdr-banner__icon-left"
       >
+        <!-- @slot Icon matching banner type -->
         
         <div />
         
@@ -20,6 +21,7 @@ exports[`CdrBanner > with icon-left slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
+        <!-- @slot Primary message content -->
         
         hey im a banner
         
@@ -46,6 +48,7 @@ exports[`CdrBanner > with icon-right slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
+        <!-- @slot Primary message content -->
         
         hey im a banner
         
@@ -53,6 +56,7 @@ exports[`CdrBanner > with icon-right slot > renders correctly 1`] = `
       <div
         class="cdr-banner__icon-right"
       >
+        <!-- @slot Additional icon -->
         
         <div />
         
@@ -78,6 +82,7 @@ exports[`CdrBanner > with info-action slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
+        <!-- @slot Primary message content -->
         
         hey im a banner
         
@@ -89,6 +94,7 @@ exports[`CdrBanner > with info-action slot > renders correctly 1`] = `
   <div
     class="cdr-banner__info-action"
   >
+    <!-- @slot Action-wrapped icon -->
     
     <div />
     
@@ -110,6 +116,7 @@ exports[`CdrBanner > with just the default slot > with "type" prop set to "info"
       <span
         class="cdr-banner__message"
       >
+        <!-- @slot Primary message content -->
         
         hey im a banner
         
@@ -136,6 +143,7 @@ exports[`CdrBanner > with message-body slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
+        <!-- @slot Primary message content -->
         
         hey im a banner
         
@@ -145,6 +153,7 @@ exports[`CdrBanner > with message-body slot > renders correctly 1`] = `
     <div
       class="cdr-banner__message-body"
     >
+      <!-- @slot Additional content about the message -->
       
       and I am some extra information
       

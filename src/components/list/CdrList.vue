@@ -2,17 +2,24 @@
 import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 
+/** Groups related content items together either vertically or horizontally */
 export default defineComponent({
   name: 'CdrList',
   props: {
     /**
-     * Tag accepts a user defined element and expects either: 'ul' = Unordered List or 'ol' = Ordered List.
+     * Sets list type and HTML element as "unordered" or "ordered"
+     * @values ul, ol
      */
     tag: {
       type: String,
       default: 'ul',
       validator: (value) => propValidator(value, ['ul', 'ol']),
     },
+    /**
+     * Modifies the style variant for this component
+     * @demoSelectMultiple true
+     * @values ordered, unordered, compact, inline
+     */
     modifier: {
       type: String,
       default: '',
@@ -41,6 +48,7 @@ export default defineComponent({
     :is="tag"
     :class="[style[baseClass], modifierClasses]"
   >
+    <!-- @slot CdrList content (list-items) -->
     <slot />
   </component>
 </template>

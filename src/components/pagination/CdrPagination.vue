@@ -9,24 +9,30 @@ import IconCaretRight from '../icon/comps/caret-right.vue';
 import CdrSelect from '../select/CdrSelect.vue';
 import uid from '../../utils/uid';
 
+/** Allows people to navigate to the next or previous page within an experience */
 export default defineComponent({
   name: 'CdrPagination',
   components: { IconCaretLeft, IconCaretRight, CdrSelect },
   props: {
-    // NOTE pagination now requires an ID
+    /**
+     * Define a custom slug for the generated breadcrumb item IDs. Slug is randomly generated if no ID provided.
+     * @demoIgnore true
+     */
     id: {
       type: String,
     },
     /**
-     * Total number of pages. Sometimes the total number of pages is different than total page data
-     * and this prop allows for that.
+     * Sets the total number of pages for displaying "Page x of <totalPages>".
+     * Sometimes the total number of pages is different than total page data objects in the pages array.
+     * For example, if only the next and previous pages are provided.
      */
     totalPages: {
       type: Number,
       default: null,
     },
     /**
-     * Array of objects. Objects have structure of { page: Number, url: String }
+     * Array of objects containing pagination data.
+     * Objects must have structure of `{ page: number, url: string }`
      */
     pages: {
       type: Array,
@@ -47,6 +53,10 @@ export default defineComponent({
         return result;
       },
     },
+    /**
+     * Sets which tag type is used to render pagination elements
+     * @values a, button
+     */
     linkTag: {
       type: String,
       default: 'a',
@@ -55,6 +65,13 @@ export default defineComponent({
         ['a', 'button'],
       ),
     },
+    /**
+     * Used to customize the aria-label for the root pagination element.
+     * For page-level pagination (i.e, pagination that updates the entire page content and changes the URL)
+     * this property should be omitted.
+     * For intra-page navigation this property should describe the element being paginated, for example:
+     * `Pagination for sub-content`
+     */
     forLabel: {
       type: String,
       default: '',
@@ -64,7 +81,20 @@ export default defineComponent({
       type: Number,
     },
   },
-  emits: ['update:modelValue', 'navigate'],
+  emits: {
+    /**
+     * Event emitted by v-model on the select <input> element to indicate current page.
+     * Only used on small devices
+     * @param modelValue
+     */
+    'update:modelValue': null,
+    /**
+     * $emit event fired when page changes based on user interaction by clicking a link
+     * or selecting an option from the select on mobile.
+     * `event.preventDefault()` can be used to override the default link navigation behavior.
+     */
+    navigate: null,
+  },
 
   setup(props, ctx) {
     const currentIdx = ref(0);

@@ -6,17 +6,18 @@ import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
+/** Communicates meaning through graphics representing simple and complex ideas */
 export default defineComponent({
   name: 'CdrIcon',
   props: {
     /**
-  * The href attribute passed to the use element. Will be prefixed with # automatically
-  */
+     * Only on CdrIcon. Sets the href attribute for use with SVG symbol sprite (see @rei/cedar-icons).
+     */
     use: String,
     /**
-  * Sets icon fill to "inherit" so as to use parent/ancestor fill color.
-  */
-    inheritColor: Boolean,
+     * Sets icon fill to "inherit" so as to use parent/ancestor fill color.
+     */
+    inheritColor: { type: Boolean, default: false },
     size: {
       type: String,
       default: 'medium',

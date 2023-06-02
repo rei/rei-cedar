@@ -13,13 +13,10 @@ const startViteServer = function() {
 let viteServer;
 
 module.exports = {
+  plugins: ['nightwatch-axe-verbose'],
   src_folders: ['test/e2e/specs'],
   output_folder: 'test/e2e/reports',
   custom_assertions_path: ['test/e2e/custom-assertions'],
-  custom_commands_path: [
-    './node_modules/nightwatch-axe/src/commands',
-  ],
-
   test_settings: {
     default: {
       silent: true,

@@ -7,6 +7,7 @@ import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
 import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
 
+/** Permits the selection of only one option from a list of two or more */
 export default defineComponent({
   name: 'CdrRadio',
   components: { CdrLabelWrapper },
@@ -14,38 +15,49 @@ export default defineComponent({
   customOptions: {},
   props: {
     /**
-     * Class that is added to the label for custom styles
+     * Adds CSS class to the label for custom styles.
      */
     labelClass: String,
     /**
-     * Class that is added to the input for custom styles
+     * Adds CSS class to the input for custom styles.
      */
     inputClass: String,
     /**
-     * Class that is added to the slot wrapper for custom styles
+     * Adds CSS class to the slot wrapper for custom styles.
      */
     contentClass: String,
     /**
-     * Sets the name of the radio. Required.
+     * Sets the name of the radio button.
     */
     name: {
       type: String,
       required: true,
     },
-
+    /**
+     * Modifies the style variants for this component
+     * @demoSelectMultiple true
+     * @values hide-figure
+    */
     modifier: {
       type: String,
       default: '',
       validator: (value) => propValidator(value, ['', 'hide-figure']),
     },
-
+    /**
+     * Sets the radio size; values can target responsive breakpoints. Example `small@lg`
+     * @demoSelectMultiple false
+     * @values small, medium, large
+    */
     size: sizeProps,
 
-    // Set which background type the input renders on
+    /**
+     * Sets the background color the radio button is rendered on
+     * @values primary, secondary
+     */
     background: backgroundProps,
 
     /**
-     * Sets the value of the radio. Required.
+     * Sets the value of the radio.
     */
     customValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
@@ -56,7 +68,13 @@ export default defineComponent({
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
     },
   },
-  emits: ['update:modelValue'],
+  emits: {
+    /**
+     * Event emitted by v-model on the radio's <input> element
+     * @param modelValue
+     */
+    'update:modelValue': null,
+  },
 
   setup(props, ctx) {
     const baseClass = 'cdr-radio';

@@ -136,6 +136,7 @@ exports[`CdrCheckbox > using the default slot for label > with an indeterminate 
     <input
       class="cdr-checkbox__input"
       false-value="false"
+      indeterminate="true"
       true-value="true"
       type="checkbox"
       value="false"

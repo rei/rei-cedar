@@ -5,6 +5,7 @@ exports[`CdrToggleButton > component snapshot > adding the large prop > matches 
   class="cdr-toggle-group cdr-toggle-group--large"
   role="radiogroup"
 >
+  <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
   
   <li
     class="cdr-toggle-button__container"
@@ -18,6 +19,7 @@ exports[`CdrToggleButton > component snapshot > adding the large prop > matches 
       tabindex="0"
       value="thing-1"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-1
       
@@ -35,6 +37,7 @@ exports[`CdrToggleButton > component snapshot > adding the large prop > matches 
       tabindex="-1"
       value="thing-2"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-2
       
@@ -52,6 +55,7 @@ exports[`CdrToggleButton > component snapshot > adding the large prop > matches 
       tabindex="-1"
       value="thing-3"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-3
       
@@ -66,6 +70,7 @@ exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
   class="cdr-toggle-group cdr-toggle-group--medium"
   role="radiogroup"
 >
+  <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
   
   <li
     class="cdr-toggle-button__container"
@@ -79,6 +84,7 @@ exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
       tabindex="0"
       value="thing-1"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-1
       
@@ -96,6 +102,7 @@ exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
       tabindex="-1"
       value="thing-2"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-2
       
@@ -113,6 +120,7 @@ exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
       tabindex="-1"
       value="thing-3"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-3
       
@@ -127,6 +135,7 @@ exports[`CdrToggleButton > component snapshot > when clicking on an unchecked bu
   class="cdr-toggle-group cdr-toggle-group--medium"
   role="radiogroup"
 >
+  <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
   
   <li
     class="cdr-toggle-button__container"
@@ -140,6 +149,7 @@ exports[`CdrToggleButton > component snapshot > when clicking on an unchecked bu
       tabindex="-1"
       value="thing-1"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-1
       
@@ -157,6 +167,7 @@ exports[`CdrToggleButton > component snapshot > when clicking on an unchecked bu
       tabindex="0"
       value="thing-2"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-2
       
@@ -174,6 +185,7 @@ exports[`CdrToggleButton > component snapshot > when clicking on an unchecked bu
       tabindex="-1"
       value="thing-3"
     >
+      <!-- @slot CdrToggleButton label content -->
       
       thing-3
       

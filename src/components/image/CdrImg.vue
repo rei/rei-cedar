@@ -3,26 +3,29 @@ import { defineComponent, useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 
+/** Media for capturing attention and communicating messages */
 export default defineComponent({
   name: 'CdrImg',
   inheritAttrs: false,
   props: {
     /**
-   * Required. Image source url.
-   */
+     * Image source url.
+     */
     src: {
       type: String,
       required: true,
     },
     /**
-   * Required. Image alt text.
-   */
+     * Image alt text. Defaults to an empty string
+     */
     alt: {
       type: String,
       default: '',
     },
     /**
-   * Aspect ratio of the media container. {auto, square, 1-2, 2-3, 3-4, 9-16, 2-1, 3-2, 4-3, 16-9}
+     * Aspect ratio of the media container
+    * @demoSelectMultiple false
+    * @values auto, square, 1-2, 2-3, 3-4, 9-16, 2-1, 3-2, 4-3, 16-9
    */
     ratio: {
       type: String,
@@ -40,6 +43,8 @@ export default defineComponent({
     },
     /**
    * Requires a `ratio`. Area to crop the image overflow to. {left, center, right} {top, center, bottom}
+   * @demoSelectMultiple false
+   * @values left, x-center, right, top, y-center, bottom
    */
     crop: {
       type: String,
@@ -56,6 +61,8 @@ export default defineComponent({
     containerClass: String,
     /**
    * Sets a border radius to an element {square, top, right, bottom, left}
+   * @demoSelectMultiple false
+   * @values circle, rounded
    */
     radius: {
       type: String,
@@ -63,7 +70,11 @@ export default defineComponent({
         'circle',
         'rounded'].indexOf(value) >= 0) || false,
     },
-
+    /**
+     * Modifies the style variant for this component.
+     * @demoSelectMultiple false
+     * @values responsive
+     */
     modifier: {
       type: String,
       default: '',

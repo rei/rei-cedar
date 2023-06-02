@@ -8,6 +8,10 @@ exports[`CdrAccordion > component snapshot when unwrapped > renders correctly 1`
   <h2
     class="cdr-accordion__header--unwrapped"
   >
+    <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
     <div
       class="js-cdr-accordion-button"
       id="test"
@@ -16,6 +20,7 @@ exports[`CdrAccordion > component snapshot when unwrapped > renders correctly 1`
         class="cdr-accordion__label"
         id="test-label"
       >
+        <!-- @slot  Sets the readable text on the CdrAccordion button -->
         
         label
         
@@ -31,6 +36,7 @@ exports[`CdrAccordion > component snapshot when unwrapped > renders correctly 1`
       class="cdr-accordion__content cdr-accordion--open cdr-accordion--unwrap"
       id="test-collapsible"
     >
+      <!-- @slot CdrAccordion content -->
       
       This is some slot text.
       
@@ -47,6 +53,10 @@ exports[`CdrAccordion > component snapshot when wrapped > renders correctly 1`] 
   <h2
     class="cdr-accordion__header"
   >
+    <!--
+        Triggered on accordion open/close
+        @event accordion-toggle
+      -->
     <button
       aria-controls="test-collapsible"
       aria-expanded="false"
@@ -58,6 +68,7 @@ exports[`CdrAccordion > component snapshot when wrapped > renders correctly 1`] 
         class="cdr-accordion__label"
         id="test-label"
       >
+        <!-- @slot  Sets the readable text on the CdrAccordion button -->
         
         label
         
@@ -89,6 +100,7 @@ exports[`CdrAccordion > component snapshot when wrapped > renders correctly 1`] 
       class="cdr-accordion__content cdr-accordion--closed"
       id="test-collapsible"
     >
+      <!-- @slot CdrAccordion content -->
       
       This is some slot text.
       

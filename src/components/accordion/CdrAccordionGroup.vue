@@ -2,13 +2,17 @@
 import {
   defineComponent, useCssModule, computed, ref, reactive, onMounted, provide,
 } from 'vue';
-import debounce from 'lodash-es/debounce';
+import { debounce } from 'lodash-es';
 import propValidator from '../../utils/propValidator';
 import getCurrentBreakpoint from '../../mixins/breakpoints';
 
 export default defineComponent({
   name: 'CdrAccordionGroup',
   props: {
+    /**
+     * A prop that will present accordion content as unwrapped. All content is expanded at the provided breakpoints.
+     * @values @xs, @sm, @md, @lg, true
+     */
     unwrap: {
       type: [String, Boolean],
       default: false,
@@ -105,6 +109,7 @@ export default defineComponent({
     @focusin="focusin"
     @keydown="handleKeyDown"
   >
+    <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
     <slot />
   </ul>
 </template>

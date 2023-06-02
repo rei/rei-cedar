@@ -20,6 +20,7 @@ exports[`CdrToast > matches snapshot 1`] = `
       <div
         class="cdr-toast__icon-left"
       >
+        <!-- @slot Icon matching toast messaging type -->
         
         <div />
         
@@ -27,6 +28,7 @@ exports[`CdrToast > matches snapshot 1`] = `
       <span
         class="cdr-toast__message"
       >
+        <!-- @slot CdrToast content -->
         
         toast content
         
@@ -36,10 +38,13 @@ exports[`CdrToast > matches snapshot 1`] = `
         class="cdr-button cdr-button--primary cdr-button--icon-only-small cdr-button--icon-only cdr-toast__close-button"
         type="button"
       >
+        <!-- @slot Icon to the left of text content -->
         
         
+        <!-- @slot Icon for icon-only button -->
         
         
+        <!-- @slot Readable text of the button. Leave empty if icon-only -->
         
         
         <svg
@@ -60,6 +65,7 @@ exports[`CdrToast > matches snapshot 1`] = `
         </svg>
         
         
+        <!-- @slot Icon to the right of text content -->
         
         
       </button>

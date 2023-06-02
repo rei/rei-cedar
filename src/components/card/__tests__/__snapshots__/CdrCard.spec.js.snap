@@ -4,6 +4,7 @@ exports[`CdrCard > renders correctly 1`] = `
 <article
   class="cdr-card"
 >
+  <!-- @slot CdrCard content -->
   
   
 </article>

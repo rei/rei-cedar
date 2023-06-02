@@ -9,6 +9,8 @@
     <cdr-breadcrumb
       :items="averageBreadcrumbItems"
       data-backstop="breadcrumbs-ellipsis"
+      aria-label="two-item-breadcrumb"
+      id="two-item-breadcrumb"
     />
     <h3>
       Two-Item Breadcrumb
@@ -16,18 +18,24 @@
     <cdr-breadcrumb
       :items="shortBreadcrumbItems"
       data-backstop="breadcrumbs-default"
+      aria-label="three-item-breadcrumb"
+      id="three-item-breadcrumb"
     />
     <h3>
       Three-Item Breadcrumb
     </h3>
     <cdr-breadcrumb
       :items="superLongBreadcrumbItems"
+      aria-label="longest-breadcrumb"
+      id="longest-breadcrumb"
     />
     <h3>
       REI.com's Longest Breadcrumb
     </h3>
     <cdr-breadcrumb
       :items="reiExampleBreadcrumbItems"
+      aria-label="rei-example-breadcrumb"
+      id="rei-example-breadcrumb"
     />
 
     <h3>
@@ -36,6 +44,8 @@
     <cdr-breadcrumb
       :items="shortBreadcrumbItems"
       data-backstop="breadcrumbs-default"
+      id="hand-click-breadcrumb"
+      label="hand-click-breadcrumb"
       @navigate="handleClick"
     />
   </div>

@@ -80,16 +80,18 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
       style="transform: translateX(0px); width: 0px;"
     />
   </div>
+  <!-- @slot CdrTabs content (CdrTabPanel components) -->
   
   <section
     aria-hidden="false"
-    aria-labelledby="tab-small-one"
+    aria-labelledby="tab1"
     class="cdr-tab-panel"
     id="tab-1-panel"
     role="tabpanel"
     style=""
     tabindex="0"
   >
+    <!-- @slot CdrTabPanel content -->
     
     
   </section>
@@ -102,6 +104,7 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     style="display: none;"
     tabindex="0"
   >
+    <!-- @slot CdrTabPanel content -->
     
     
   </section>
@@ -115,6 +118,7 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     style="display: none;"
     tabindex="0"
   >
+    <!-- @slot CdrTabPanel content -->
     
     
   </section>
@@ -127,6 +131,7 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     style="display: none;"
     tabindex="0"
   >
+    <!-- @slot CdrTabPanel content -->
     
     
   </section>

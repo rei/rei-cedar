@@ -5,6 +5,7 @@ exports[`CdrLink > basic link component > renders correctly 1`] = `
   class="cdr-link"
   href="#"
 >
+  <!-- @slot Readable text of the link  -->
   
   
 </a>
@@ -14,6 +15,7 @@ exports[`CdrLink > basic link component > when tag has been set to button > rend
 <button
   class="cdr-link"
 >
+  <!-- @slot Readable text of the link  -->
   
   
 </button>
@@ -25,6 +27,7 @@ exports[`CdrLink > basic link component > when target prop is set > renders corr
   href="#"
   target="_self"
 >
+  <!-- @slot Readable text of the link  -->
   
   
 </a>
@@ -34,6 +37,7 @@ exports[`CdrLink > basic link component > when the tag has been set to button > 
 <button
   class="cdr-link"
 >
+  <!-- @slot Readable text of the link  -->
   
   
 </button>
@@ -46,6 +50,7 @@ exports[`CdrLink > basic link component > when the target prop has been set to "
   rel="noopener noreferrer"
   target="_blank"
 >
+  <!-- @slot Readable text of the link  -->
   
   
 </a>
@@ -56,6 +61,7 @@ exports[`CdrLink > basic link component > with href prop set > renders correctly
   class="cdr-link"
   href="www.rei.com"
 >
+  <!-- @slot Readable text of the link  -->
   
   
 </a>
@@ -67,6 +73,7 @@ exports[`CdrLink > basic link component > with rel prop set to "nofollow" > rend
   href="#"
   rel="nofollow"
 >
+  <!-- @slot Readable text of the link  -->
   
   
 </a>

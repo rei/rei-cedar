@@ -4,6 +4,7 @@ import mapClasses from '../../utils/mapClasses';
 import CdrFormError from '../formError/CdrFormError.vue';
 import uid from '../../utils/uid';
 
+/** Groups related input elements together */
 export default defineComponent({
   name: 'CdrFormGroup',
   components: {

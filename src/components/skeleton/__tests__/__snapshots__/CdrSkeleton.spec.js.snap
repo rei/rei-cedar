@@ -6,6 +6,7 @@ exports[`CdrSkeleton > component snapshot > matches the snapshot 1`] = `
   aria-live="polite"
   class="cdr-skeleton"
 >
+  <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
   
   <div
     class="cdr-skeleton-bone cdr-skeleton-bone--heading cdr-skeleton-bone__shimmer"
