@@ -7,8 +7,7 @@ import options from './rollupOptions.mjs';
 
 const version = process.env.npm_package_version;
 
-// https://vitejs.dev/config/
-export default defineConfig({
+export const config = {
   base: '/rei-cedar-next/',
   build: {
     lib: {
@@ -38,4 +37,8 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-});
+};
+
+
+// https://vitejs.dev/config/
+export default defineConfig(config);
