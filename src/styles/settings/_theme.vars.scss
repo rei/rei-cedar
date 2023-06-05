@@ -119,15 +119,13 @@
 
 
    
-    --text-emphasis:  var(--cdr-color-text-emphasis);
-    --text: var(--cdr-color-text-primary);
-    --text-subdued: var(--cdr-color-text-secondary);
-    --background-primary: var(--cdr-color-background-primary);
+    --cdr-color-text-emphasis:  var(--cdr-color-text-emphasis);
+    --cdr-color-text: var(--cdr-color-text-primary);
+    --cdr-color-text-subdued: var(--cdr-color-text-secondary);
+    --cdr-color-border: var(--cdr-color-border-primary);
+    --cdr-color-border-strong: var(--cdr-color-border-secondary);
+    --cdr-color-background-primary: var(--cdr-color-background-primary);
 
-
-
-       
-      
         // layer tokens mock up -- this should really just use the root option values
         //fake update to have secondary use the secondary button styles in the brand palette
         --cdr-brand-color-text-button-primary: #4e4d49;
@@ -143,24 +141,24 @@
 }
 
   //Modes assign new values to ALIAS TOKENS
-@media(prefers-color-scheme: dark) {
-    :root {
-    /// this is wrong we and should only be updating the values of UIF's in a new context and not UIP's 
-    /// UIP's should be applied consistantly accross the pages 
-    /// --cdr-color-text-primary: var(--cdr-color-text-inverse)
-    --text: var(--cdr-color-text-inverse);
-    --surface: var(--cdr-color-text-primary);
+// @media(prefers-color-scheme: dark) {
+//     :root {
+//     /// this is wrong we and should only be updating the values of UIF's in a new context and not UIP's 
+//     /// UIP's should be applied consistantly accross the pages 
+//     /// --cdr-color-text-primary: var(--cdr-color-text-inverse)
+//     --text: var(--cdr-color-text-inverse);
+//     --surface: var(--cdr-color-text-primary);
 
-    --secondary-text-primary: var(--cdr-color-background-secondary);
-    --secondary-surface-primary: var(--cdr-color-text-secondary);
+//     --secondary-text-primary: var(--cdr-color-background-secondary);
+//     --secondary-surface-primary: var(--cdr-color-text-secondary);
 
-    [data-layer="cdr-primary"] {
-        //primary button
-        --cdr-color-background-button-primary-rest: red;
-        --cdr-color-text-button-primary: blue;
-    }
-  }
-}
+//     [data-layer="cdr-primary"] {
+//         //primary button
+//         --cdr-color-background-button-primary-rest: red;
+//         --cdr-color-text-button-primary: blue;
+//     }
+//   }
+// }
 
 //Alias tokens are applied to properties
 body{
@@ -170,11 +168,12 @@ body{
     
 // layers
 [data-layer]{
-  //root values -- will be set to the root element this attribute is assined to
+  //root values -- will be set to the root element this attribute is assigned to
   color: var(--text);
   background-color: var(--background);
 }
-  // cdr UIObject map
+
+// cdr UIObject map
 // accepts up to 3 arguments: component, variant (optional), palette (optional)
 // example: @include cdr-UIO('cdr-button');
 // example: @include cdr-UIO('cdr-button', 'primary');
@@ -201,22 +200,31 @@ body{
     --surface-primary: var(--secondary-surface-primary);
     //@include cdr-UIO( 'cdr-button', 'primary', 'cdr-layer--secondary');
 }
+
+@mixin applyBasePalette($palette) {
+  @include cdr-UIO( 'cdr-text', 'default', $palette);
+  @include cdr-UIO( 'cdr-border', 'default', $palette);
+  @include cdr-UIO( 'cdr-background', 'default', $palette);
+}
   
-  [data-layer="cdr-sandstone"] {
-    @include cdr-UIO( 'cdr-text', 'default', 'cdr-palette--sandstone');
-    @include cdr-UIO( 'cdr-border', 'default', 'cdr-palette--sandstone');
-    @include cdr-UIO( 'cdr-background', 'default', 'cdr-palette--sandstone');
-  }
+[data-layer="cdr-sandstone"] {
+  @include applyBasePalette('cdr-palette--sandstone');
+}
 
-  [data-layer="cdr-midnight"] {
-    @include cdr-UIO( 'cdr-text', 'default', 'cdr-palette--midnight');
-    @include cdr-UIO( 'cdr-border', 'default', 'cdr-palette--midnight');
-    @include cdr-UIO( 'cdr-background', 'default', 'cdr-palette--midnight');
-  }
+[data-layer="cdr-fiesta"] {
+  @include applyBasePalette('cdr-palette--sandstone');
+  --cdr-color-text: #872E8C;
+  --cdr-color-text-subdued: #b87cbb;
+  --cdr-color-text-emphasis: #07A499;
+  --cdr-color-background: #D7D52A;
+  --cdr-color-border: 	#ef4836;
+  --cdr-color-background-highlight: #87d37c;
+}
 
-  [data-layer="cdr-obsidian"] {
-    @include cdr-UIO( 'cdr-text', 'default', 'cdr-palette--obsidian');
-    @include cdr-UIO( 'cdr-border', 'default', 'cdr-palette--obsidian');
-    @include cdr-UIO( 'cdr-background', 'default', 'cdr-palette--obsidian');
-  }
+[data-layer="cdr-midnight"] {
+  @include applyBasePalette('cdr-palette--midnight');
+}
 
+[data-layer="cdr-obsidian"] {
+  @include applyBasePalette('cdr-palette--obsidian');
+}

@@ -4,11 +4,10 @@
 //@import url('@rei/cedar/dist/style/cdr-accordion-group.css');
 @import './CdrAccordionGroup.module.scss';
 
-$accordion-border: 1px solid var(--border);
-
 .cdr-accordion {
-  border-top: $accordion-border;
-  border-bottom: $accordion-border;
+  --cdr-accordion-border: 1px solid var(--cdr-accordion-border-color, var(--cdr-color-border)); //DOC: Documentation comment here
+  border-top: var(--cdr-accordion-border);
+  border-bottom: var(--cdr-accordion-border);
   position: relative;
   z-index: 1;
   list-style: none;
@@ -19,10 +18,9 @@ $accordion-border: 1px solid var(--border);
 
   &__button {
     @include cdr-text-utility-sans-strong-300;
-
-    background-color: var(--background);
+    background-color: var(--cdr-accordion-button-background, var(--cdr-color-background));
     border: none;
-    color: var(--text);
+    color: var(--cdr-accordion-text, var(--cdr-color-text));
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -34,7 +32,7 @@ $accordion-border: 1px solid var(--border);
 
     &:hover,
     &:focus {
-      background-color: var(--background-highlight);
+      background-color: var(--cdr-accordion-background-highlight, var(--cdr-color-background-highlight));
     }
   }
 
@@ -78,8 +76,8 @@ $accordion-border: 1px solid var(--border);
   &__content {
     @include cdr-text-body-300;
 
-    background-color:  var(--background);
-    color:  var(--text);
+    background-color:  var(--cdr-accordion-content-background-color, var(--cdr-color-background));
+    color: var(--cdr-accordion-content-text-color, var(--cdr-color-text));
     padding: $cdr-space-half-x $cdr-space-one-x $cdr-space-one-x;
     transition: opacity $cdr-duration-1-x linear;
     opacity: 0;
