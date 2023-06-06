@@ -1,26 +1,22 @@
-<script>
-import { defineComponent, useCssModule } from 'vue';
-
+<script setup lang="ts">
+import { useCssModule } from 'vue';
 /** Related, interactive containers linking to a single subject or destination */
-export default defineComponent({
-  name: 'CdrCard',
-  props: {
-    /**
-     * Sets valid HTML container element tag.
-     */
-    tag: {
-      type: String,
-      default: 'article',
-    },
-  },
 
-  setup() {
-    return {
-      style: useCssModule(),
-      baseClass: 'cdr-card',
-    };
+defineOptions({
+  name: 'CdrCard',
+});
+
+defineProps({
+  /** Sets valid HTML container element tag. */
+  tag: {
+    type: String,
+    default: 'article',
   },
 });
+
+const style = useCssModule();
+const baseClass = 'cdr-card';
+
 </script>
 
 <template>
