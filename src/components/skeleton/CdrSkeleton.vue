@@ -1,30 +1,28 @@
-<script>
-import {
-  defineComponent, useCssModule, provide, toRef,
-} from 'vue';
+<script setup lang="ts">
+import { useCssModule, provide, toRef } from 'vue';
+import { motionKey } from './symbols';
 
 /** Visually communicates content is in the process of loading */
-export default defineComponent({
+defineOptions({
   name: 'CdrSkeleton',
-  props: {
-    /**
+});
+
+const props = defineProps({
+  /**
      * Toggle animation on/off.
      * When `true`, animated gradient will be used while loading.
      * When `false` a static background color will be used.
      * Automatically disabled if `prefers-reduced-motion` is set by user.
-     */
-    motion: { type: Boolean, default: true },
-  },
-  setup(props) {
-    const baseClass = 'cdr-skeleton';
-    const motionSetting = toRef(props, 'motion');
-    provide('motionToggle', motionSetting);
-    return {
-      baseClass,
-      style: useCssModule(),
-    };
-  },
+  */
+  motion: { type: Boolean, default: true },
 });
+
+const baseClass = 'cdr-skeleton';
+const style = useCssModule();
+
+const motionSetting = toRef(props, 'motion');
+provide(motionKey, motionSetting);
+
 </script>
 
 <template>

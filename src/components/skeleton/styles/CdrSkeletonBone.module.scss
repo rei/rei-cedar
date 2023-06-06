@@ -9,6 +9,7 @@
   &--line {
     block-size: 1.6rem;
     margin: $cdr-space-quarter-x 0;
+    flex: none;
     &:nth-child(1) {
       width: 100%;
     }
@@ -27,6 +28,7 @@
   }
   &--heading {
     block-size: 3.2rem;
+    flex: none;
   }
   &--rectangle {
     overflow: hidden;
