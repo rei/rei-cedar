@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "13.5.1",
+  "version": "13.5.2",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -65,7 +65,7 @@
     "backstopjs": "^5.3.0",
     "c8": "^7.11.0",
     "chalk": "^4.1.0",
-    "chromedriver": "^112.0.0",
+    "chromedriver": "^113.0.0",
     "concat": "^1.0.3",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
