@@ -49,7 +49,9 @@ export default defineComponent({
   emits: {
     /**
      * Emits when a breadcrumb item is clicked. `e.preventDefault()` may be used to override the default link navigation.
+     * @param breadcrumb The breadcrumb data object
      */
+
     navigate: null,
   },
 
@@ -137,7 +139,7 @@ export default defineComponent({
           <a
             :class="style['cdr-breadcrumb__link']"
             :href="breadcrumb.item.url"
-            @click="$emit('navigate', breadcrumb, e)"
+            @click="(e) => $emit('navigate', breadcrumb, e)"
           >
             {{ breadcrumb.item.name }}
           </a>
