@@ -20,7 +20,7 @@ function runA11yTests(browser, path, target) {
     .end();
 }
 
-module.exports = {
+export default {
   '@tags': ['accessibility'],
   'Page Is Accessible: Primary Background, Part 1':function (browser) {
     runA11yTests(browser, 'e2e-1?background=primary', '#kitchen-sink-1');

@@ -1,4 +1,4 @@
-const glob = require('glob');
+import glob from 'glob';
 
 const scenariosArr = [];
 let defs = [];
@@ -81,7 +81,7 @@ defs.forEach((def) => {
   createScenario(currDef);
 });
 
-module.exports = {
+export default {
   id: 'cedar',
   viewports: [
     {

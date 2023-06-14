@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     url: 'http://localhost:3000/#/tables',
     label: 'Table responsive width',

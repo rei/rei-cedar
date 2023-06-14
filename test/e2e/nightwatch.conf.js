@@ -12,7 +12,7 @@ const startViteServer = function() {
 
 let viteServer;
 
-module.exports = {
+export default {
   plugins: ['nightwatch-axe-verbose'],
   src_folders: ['test/e2e/specs'],
   output_folder: 'test/e2e/reports',

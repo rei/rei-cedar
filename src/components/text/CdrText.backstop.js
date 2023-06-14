@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   url: 'http://localhost:3000/#/texts',
   label: 'Text',
   selectors: [
