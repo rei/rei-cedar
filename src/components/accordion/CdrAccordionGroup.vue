@@ -35,7 +35,7 @@ const style = useCssModule();
 const baseClass = 'cdr-accordion-group';
 const currentIdx = ref(0);
 const accordionButtons = ref<NodeListOf<HTMLElement>>();
-const accordionGroupEl = ref<HTMLInputElement | null>(null);
+const accordionGroupEl = ref<HTMLUListElement | null>(null);
 const unwrapped = ref(!!props.unwrap);
 provide(unwrappedKey, unwrapped);
 provide(groupedKey, true);
