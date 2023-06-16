@@ -6,12 +6,12 @@ const _ = require('lodash');
 const { JSDOM } = require('jsdom');
 const iconData = require('@rei/cedar-icons');
 
-function resolve(dir) {
+function resolve(dir: string) {
   return path.join(__dirname, '..', dir);
 }
 
 // indexArr builds the 'index' index.js file
-const indexArr = [];
+const indexArr: string[] = [];
 
 Object.keys(iconData).forEach(function (name) {
   const pascalName = _.upperFirst(_.camelCase(name));
@@ -22,8 +22,8 @@ Object.keys(iconData).forEach(function (name) {
   const fragment = JSDOM.fragment(content).firstChild;
 
   // Strip the title element from the svg fragment
-  fragment.querySelectorAll('title').forEach((el) => {
-    el.parentNode.removeChild(el);
+  fragment.querySelectorAll('title').forEach((el: Node) => {
+    el.parentNode?.removeChild(el);
   });
   const { innerHTML } = fragment;
 
@@ -31,26 +31,25 @@ Object.keys(iconData).forEach(function (name) {
 
   // create vue component
   const component = `
-    <script>
-      import { defineComponent } from 'vue';
-      import CdrIcon from '../CdrIcon.vue';
+  <script setup lang="ts">
+  import CdrIcon from '../CdrIcon.vue';
 
-      export default defineComponent({
-        name: '${pascalName}',
-        components: { CdrIcon },
-        props: {
-          props: {
-            type: Object,
-          }
-        },
-      });
-    </script>
-    <template>
+  defineOptions({
+    name: '${pascalName}',
+  });
+  
+  defineProps({
+    props: {
+      type: Object,
+    }
+  });
+  </script>
+  <template>
     <cdr-icon v-bind="props">
       <slot/>
       ${innerHTML.trim()}
     </cdr-icon>
-    </template>
+  </template>
   `;
 
   // write component file
