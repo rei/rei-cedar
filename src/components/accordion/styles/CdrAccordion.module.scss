@@ -4,11 +4,11 @@
 //@import url('@rei/cedar/dist/style/cdr-accordion-group.css');
 @import './CdrAccordionGroup.module.scss';
 
-$accordion-border: 1px solid $cdr-color-border-primary;
-
 .cdr-accordion {
-  border-top: $accordion-border;
-  border-bottom: $accordion-border;
+  //ITEM_DOC: Defines the accordion border color.
+  --cdr-accordion-border: 1px solid var(--cdr-accordion-border-color, var(--cdr-color-border-primary));
+  border-top: var(--cdr-accordion-border);
+  border-bottom: var(--cdr-accordion-border);
   position: relative;
   z-index: 1;
   list-style: none;
@@ -19,10 +19,11 @@ $accordion-border: 1px solid $cdr-color-border-primary;
 
   &__button {
     @include cdr-text-utility-sans-strong-300;
-
-    background-color: transparent;
+    //ITEM_DOC: The background color of an accordion header button
+    background-color: var(--cdr-accordion-button-background-color, transparent);
     border: none;
-    color: $cdr-color-text-primary;
+    //ITEM_DOC: The text color of an accordion header button
+    color: var(--cdr-accordion-button-color, var(--cdr-color-text-primary));
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -34,7 +35,8 @@ $accordion-border: 1px solid $cdr-color-border-primary;
 
     &:hover,
     &:focus {
-      background-color: $cdr-color-background-accordion-hover;
+      //ITEM_DOC: The background color of an accordion header button on focus and hover
+      background-color: var(--cdr-accordion-button-background-color-hover, var(--cdr-color-background-accordion-hover));
     }
   }
 
@@ -56,7 +58,8 @@ $accordion-border: 1px solid $cdr-color-border-primary;
 
   &__icon {
     margin-left: $cdr-space-one-x;
-    fill: $cdr-color-icon-default;
+    //ITEM_DOC: The fill color of icons on an accordion. This is used for the caret which changes orientation when the accordion collapses and expands.
+    fill: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default));
     transition: transform $cdr-duration-3-x $cdr-timing-function-ease-out;
 
     &.cdr-accordion--open {
@@ -77,9 +80,10 @@ $accordion-border: 1px solid $cdr-color-border-primary;
 
   &__content {
     @include cdr-text-body-300;
-
-    background-color: transparent;
-    color: $cdr-color-text-primary;
+    //ITEM_DOC: The background color of accordion content
+    background-color:  var(--cdr-accordion-content-background-color, transparent);
+    //ITEM_DOC: The text color of accordion content
+    color: var(--cdr-accordion-content-text-color, var(--cdr-color-text-primary));
     padding: $cdr-space-half-x $cdr-space-one-x $cdr-space-one-x;
     transition: opacity $cdr-duration-1-x linear;
     opacity: 0;

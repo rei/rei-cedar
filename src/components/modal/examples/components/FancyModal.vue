@@ -87,7 +87,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "node_modules/@rei/cdr-tokens/dist/scss/cdr-tokens.scss";
+@import "node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
 .membership-acquisition-imodal {
   // class to override cedar default class to allow background content more visible to user
   &--overlay-lighter {

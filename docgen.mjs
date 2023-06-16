@@ -1,7 +1,9 @@
 import { parse } from 'vue-docgen-api'
 import fs from 'fs-extra'
 import glob from 'glob';
-import _ from 'lodash-es'
+import _ from 'lodash-es';
+import path from 'path';
+import parseSCSS from './docgen-scss.mjs';
 
 const componentFiles = glob.sync("./src/components/*/*.vue");
 const iconFiles = glob.sync("./src/components/icon/comps/*.vue");
@@ -46,6 +48,25 @@ function trimApostrophes(str) {
     }
     return str;
 }
+
+const components = Object.keys(componentObj); // Replace with your actual component names
+
+
+// Iterate over components
+for (const component in componentObj) {
+    // Prepare the expected SCSS file path
+    const vueFilePath = componentObj[component].sourceFiles[0]; // assuming only one source file per component
+    const componentDir = path.dirname(vueFilePath);
+    const scssFileName = `${component}.module.scss`;
+    const scssFilePath = path.join(componentDir, 'styles', scssFileName);
+
+    const parsedSCSS = await parseSCSS(scssFilePath);
+    if (parsedSCSS.length > 0){
+      componentObj[component].UIProperties = parsedSCSS;
+    }
+
+  }
+
 //Move to dist folder
 fs.writeJsonSync('./dist/component-docgen.json', componentObj, { spaces: 2 });
 fs.writeJsonSync('./dist/icon-component-docgen.json', iconComponentsObj, { spaces: 2 });
