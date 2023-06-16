@@ -1,6 +1,6 @@
-import process from 'process';
+const process = require('process');
 
-export default {
+module.exports = {
   syntax: 'postcss-scss',
   plugins: {
     'postcss-calc': { mediaQueries: true },
