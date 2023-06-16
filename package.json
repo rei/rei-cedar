@@ -98,6 +98,7 @@
     "postcss-pxtorem": "^6.0.0",
     "postcss-scss": "^3.0.0",
     "sass": "^1.32.11",
+    "sassdoc": "^2.7.4",
     "sinon": "^11.1.0",
     "stylelint": "^13.13.1",
     "stylelint-config-recommended-scss": "^4.2.0",

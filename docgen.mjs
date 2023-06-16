@@ -3,8 +3,8 @@ import fs from 'fs-extra'
 import glob from 'glob';
 import _ from 'lodash-es';
 import path from 'path';
-import postcss from 'postcss';
 import scss from 'postcss-scss';
+import parseSCSS from './docgen-scss.mjs';
 
 const componentFiles = glob.sync("./src/components/*/*.vue");
 const iconFiles = glob.sync("./src/components/icon/comps/*.vue");
@@ -112,23 +112,10 @@ for (const component in componentObj) {
     const scssFileName = `${component}.module.scss`;
     const scssFilePath = path.join(componentDir, 'styles', scssFileName);
 
-    const scssData = await fs.readFile(scssFilePath, 'utf8');
-    
-    // Read and parse SCSS file
-
-    const root = scss.parse(scssData);
-    const uiProperties = [];
-
-    root.walkDecls(decl => {
-        // Include all properties that are CSS variables or use CSS variables
-        if (decl.prop.startsWith('--') || decl.value.includes('var(--')) {
-          const propertyDetails = extractPropertyDetails(decl);
-          uiProperties.push(propertyDetails);
-        }
-      });
-    console.log(uiProperties);
-
-    componentObj[component].UIProperties = uiProperties;
+    const parsedSCSS = await parseSCSS(scssFilePath);
+    if (parsedSCSS.simpleProperties.length > 0 || parsedSCSS.compositeProperties.length > 0){
+      componentObj[component].UIProperties = parsedSCSS;
+    }
 
   }
 

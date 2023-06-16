@@ -119,7 +119,7 @@
 
 
    
-    --cdr-color-text-emphasis:  var(--cdr-color-text-emphasis);
+    --cdr-color-text-emphasis:  var(--cdr-core-text-emphasis);
     --cdr-color-text: var(--cdr-color-text-primary);
     --cdr-color-text-subdued: var(--cdr-color-text-secondary);
     --cdr-color-border: var(--cdr-color-border-primary);
@@ -216,7 +216,7 @@ body{
   --cdr-color-text: #872E8C;
   --cdr-color-text-subdued: #b87cbb;
   --cdr-color-text-emphasis: #07A499;
-  --cdr-color-background: #D7D52A;
+  --cdr-accordion-button-background-color: #D7D52A;
   --cdr-color-border: 	#ef4836;
   --cdr-color-background-highlight: #87d37c;
 }
