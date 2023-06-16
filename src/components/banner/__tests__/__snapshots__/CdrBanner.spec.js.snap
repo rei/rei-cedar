@@ -5,7 +5,7 @@ exports[`CdrBanner > with icon-left slot > renders correctly 1`] = `
   class="cdr-banner cdr-banner--default"
 >
   <div
-    class="cdr-banner__wrapper undefined"
+    class="cdr-banner__wrapper"
   >
     <div
       class="cdr-banner__main"
@@ -39,7 +39,7 @@ exports[`CdrBanner > with icon-right slot > renders correctly 1`] = `
   class="cdr-banner cdr-banner--default"
 >
   <div
-    class="cdr-banner__wrapper undefined"
+    class="cdr-banner__wrapper"
   >
     <div
       class="cdr-banner__main"
@@ -73,7 +73,7 @@ exports[`CdrBanner > with info-action slot > renders correctly 1`] = `
   class="cdr-banner cdr-banner--default"
 >
   <div
-    class="cdr-banner__wrapper undefined"
+    class="cdr-banner__wrapper"
   >
     <div
       class="cdr-banner__main"
@@ -107,7 +107,7 @@ exports[`CdrBanner > with just the default slot > with "type" prop set to "info"
   class="cdr-banner cdr-banner--info"
 >
   <div
-    class="cdr-banner__wrapper undefined"
+    class="cdr-banner__wrapper"
   >
     <div
       class="cdr-banner__main"

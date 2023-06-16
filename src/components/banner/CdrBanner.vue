@@ -1,50 +1,40 @@
-<script>
-import {
-  defineComponent, useCssModule, computed,
-} from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed, useSlots } from 'vue';
 import propValidator from '../../utils/propValidator';
 
 /** Provides contextual feedback messages for typical user actions */
-export default defineComponent({
-  name: 'CdrBanner',
-  props: {
-    /**
-     * Sets the banner style.
-     * @demoSelectMultiple false
-     * @values info, warning, success, error, default
-   */
-    type: {
-      type: String,
-      validator: (value) => propValidator(
-        value,
-        ['info', 'warning', 'success', 'error', 'default'],
-      ),
-      default: 'default',
-    },
-  },
 
-  setup(props, ctx) {
-    const baseClass = 'cdr-banner';
-    const typeClass = computed(() => `${baseClass}--${props.type}`);
-    const prominenceClass = computed(() => (ctx.slots['message-body']
-      ? `${baseClass}__wrapper--prominence`
-      : undefined));
-    const hasIconLeft = ctx.slots['icon-left'];
-    const hasIconRight = ctx.slots['icon-right'];
-    const hasMessageBody = ctx.slots['message-body'];
-    const hasInfoAction = ctx.slots['info-action'];
-    return {
-      style: useCssModule(),
-      baseClass,
-      typeClass,
-      prominenceClass,
-      hasIconLeft,
-      hasIconRight,
-      hasMessageBody,
-      hasInfoAction,
-    };
+defineOptions({
+  name: 'CdrBanner',
+});
+
+const props = defineProps({
+  /**
+   * Sets the banner style.
+   * @demoSelectMultiple false
+   * @values info, warning, success, error, default
+ */
+  type: {
+    type: String,
+    validator: (value) => propValidator(
+      value,
+      ['info', 'warning', 'success', 'error', 'default'],
+    ),
+    default: 'default',
   },
 });
+
+const slots = useSlots();
+const style = useCssModule();
+const baseClass = 'cdr-banner';
+const typeClass = computed(() => `${baseClass}--${props.type}`);
+const prominenceClass = computed(() => (slots['message-body']
+  ? `${baseClass}__wrapper--prominence`
+  : ''));
+const hasIconLeft = slots['icon-left'];
+const hasIconRight = slots['icon-right'];
+const hasMessageBody = slots['message-body'];
+const hasInfoAction = slots['info-action'];
 </script>
 
 <template>
