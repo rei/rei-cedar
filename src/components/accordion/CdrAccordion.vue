@@ -77,7 +77,7 @@ const emits = defineEmits({
 
 const style = useCssModule();
 const unwrap = inject(unwrappedKey, ref(false));
-const isGrouped = inject(groupedKey, ref(false)) ? 'li' : 'div';
+const isGrouped = inject(groupedKey, false) ? 'li' : 'div';
 const accordionContentEl = ref<HTMLInputElement | null>(null);
 const focused = ref(false);
 const maxHeight = ref(props.opened

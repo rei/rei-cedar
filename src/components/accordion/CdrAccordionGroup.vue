@@ -38,7 +38,7 @@ const accordionButtons = ref<NodeListOf<HTMLElement>>();
 const accordionGroupEl = ref<HTMLInputElement | null>(null);
 const unwrapped = ref(!!props.unwrap);
 provide(unwrappedKey, unwrapped);
-provide(groupedKey, ref(true));
+provide(groupedKey, true);
 const getAccordionButtonArray = computed(() => {
   if (accordionButtons.value) {
     return [...accordionButtons.value];

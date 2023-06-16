@@ -40,7 +40,7 @@ const sizeClass = computed(() => props.size
 const dataObj: SVGAttributes = {
   xmlns: 'http://www.w3.org/2000/svg',
   viewBox: '0 0 24 24',
-  'aria-hidden': 'false',
+  'aria-hidden': undefined,
 };
 if (hideSr) dataObj['aria-hidden'] = 'true';
 const hrefAttrs = {
