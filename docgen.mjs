@@ -57,15 +57,20 @@ for (const component in componentObj) {
     // Prepare the expected SCSS file path
     const vueFilePath = componentObj[component].sourceFiles[0]; // assuming only one source file per component
     const componentDir = path.dirname(vueFilePath);
-    const scssFileName = `${component}.module.scss`;
-    const scssFilePath = path.join(componentDir, 'styles', scssFileName);
+    const scssFileName = `${component}.*.scss`;
+    const scssFilePathPattern = path.join(componentDir, 'styles', '**', scssFileName);
 
-    const parsedSCSS = await parseSCSS(scssFilePath);
-    if (parsedSCSS.length > 0){
-      componentObj[component].UIProperties = parsedSCSS;
+    // Use glob to find matching files
+    const matchingFiles = glob.sync(scssFilePathPattern);
+    
+    // Iterate over the matching files
+    for (const matchingFile of matchingFiles) {
+        const parsedSCSS = await parseSCSS(matchingFile);
+        if (parsedSCSS.length > 0){
+            componentObj[component].UIProperties = parsedSCSS;
+        }
     }
-
-  }
+}
 
 //Move to dist folder
 fs.writeJsonSync('./dist/component-docgen.json', componentObj, { spaces: 2 });

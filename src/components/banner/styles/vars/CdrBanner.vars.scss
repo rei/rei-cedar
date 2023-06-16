@@ -4,37 +4,48 @@ $left-border: 0.4rem solid;
   position: relative;
   @include cdr-text-utility-sans-200;
 }
+
 @mixin cdr-banner-default-mixin() {
-  background-color: $cdr-color-background-message-default-01;
+  //ITEM_DOC: Defines the default banner background color.
+  background-color: var(--cdr-banner-default-background-color, --cdr-color-background-message-default-01);
   outline: thin solid;
-  outline-color: $cdr-color-border-message-default-02;
+  //ITEM_DOC: Defines the default banner outline color.
+  outline-color: var(--cdr-banner-default-outline-color, --cdr-color-border-message-default-02);
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-info-mixin() {
-  background-color:  $cdr-color-background-message-info-01;
+  //ITEM_DOC: Defines the info banner background color.
+  background-color: var(--cdr-banner-info-background-color, --cdr-color-background-message-info-01);
   outline: thin solid;
-  outline-color: $cdr-color-border-message-info-02;
+  //ITEM_DOC: Defines the info banner outline color.
+  outline-color: var(--cdr-banner-info-outline-color, --cdr-color-border-message-info-02);
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-success-mixin() {
-  background-color:  $cdr-color-background-message-success-01;
+  //ITEM_DOC: Defines the success banner background color.
+  background-color: var(--cdr-banner-success-background-color, --cdr-color-background-message-success-01);
   outline: thin solid;
-  outline-color: $cdr-color-border-message-success-02;
+  //ITEM_DOC: Defines the success banner outline color.
+  outline-color: var(--cdr-banner-success-outline-color, --cdr-color-border-message-success-02);
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-warning-mixin() {
-  background-color:  $cdr-color-background-message-warning-01;
+  //ITEM_DOC: Defines the warning banner background color.
+  background-color: var(--cdr-banner-warning-background-color, --cdr-color-background-message-warning-01);
   outline: thin solid;
-  outline-color: $cdr-color-border-message-warning-02;
+  //ITEM_DOC: Defines the warning banner outline color.
+  outline-color: var(--cdr-banner-warning-outline-color, --cdr-color-border-message-warning-02);
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-error-mixin() {
-  background-color:  $cdr-color-background-message-error-01;
+  //ITEM_DOC: Defines the error banner background color.
+  background-color: var(--cdr-banner-error-background-color, --cdr-color-background-message-error-01);
   outline: thin solid;
-  outline-color: $cdr-color-border-message-error-02;
+  //ITEM_DOC: Defines the error banner outline color.
+  outline-color: var(--cdr-banner-error-outline-color, --cdr-color-border-message-error-02);
   outline-offset: -1px;
 }
