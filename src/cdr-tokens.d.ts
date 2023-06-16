@@ -1,0 +1,1 @@
+declare module '@rei/cdr-tokens/dist/js/cdr-tokens.mjs';

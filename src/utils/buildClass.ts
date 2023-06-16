@@ -3,7 +3,7 @@
 /**
  * Returns a modified base class
  */
-const modifyClassName = (base, modifier) => `${base}--${modifier}`;
+const modifyClassName = (base: string, modifier: string) => `${base}--${modifier}`;
 
 /**
  *
@@ -25,8 +25,8 @@ const modifyClassName = (base, modifier) => `${base}--${modifier}`;
  * This takes that and returns classes of "cdr-table--full-width@sm cdr-table--full-width@lg"
  */
 
-// TODO: I think I want to swap the order of modifer and prop args here, currently passing an empty string for modifier half the time.
-const responsiveModifyClass = (base, modifier, prop) => {
+// TODO: I think I want to swap the order of modifier and prop args here, currently passing an empty string for modifier half the time.
+const responsiveModifyClass = (base: string, modifier: string, prop: string|boolean) => {
   if (typeof prop === 'string') {
     return prop.split(' ')
       .map((bp) => modifyClassName(base, `${modifier}${bp}`))
@@ -35,7 +35,7 @@ const responsiveModifyClass = (base, modifier, prop) => {
   return modifyClassName(base, modifier);
 };
 // TODO: combine these?
-const buildBooleanClass = (baseClass, prop, name) => {
+const buildBooleanClass = (baseClass: string, prop: string|boolean, name: string) => {
   if (typeof prop === 'boolean') {
     return prop && modifyClassName(baseClass, name);
   }
