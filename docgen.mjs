@@ -57,17 +57,23 @@ for (const component in componentObj) {
     // Prepare the expected SCSS file path
     const vueFilePath = componentObj[component].sourceFiles[0]; // assuming only one source file per component
     const componentDir = path.dirname(vueFilePath);
-    const scssFileName = `${component}.*.scss`;
-    const scssFilePathPattern = path.join(componentDir, 'styles', '**', scssFileName);
+    const scssFilePathPattern = path.join(componentDir, 'styles', '**', `${component}.*.scss`);
 
     // Use glob to find matching files
     const matchingFiles = glob.sync(scssFilePathPattern);
-    
+
     // Iterate over the matching files
     for (const matchingFile of matchingFiles) {
         const parsedSCSS = await parseSCSS(matchingFile);
         if (parsedSCSS.length > 0){
-            componentObj[component].UIProperties = parsedSCSS;
+            // Check if UIProperties already exists for this component
+            if(componentObj[component].UIProperties) {
+                // If it does, concatenate the new parsed SCSS with the existing ones
+                componentObj[component].UIProperties = componentObj[component].UIProperties.concat(parsedSCSS);
+            } else {
+                // If it doesn't, assign the parsed SCSS to UIProperties
+                componentObj[component].UIProperties = parsedSCSS;
+            }
         }
     }
 }
