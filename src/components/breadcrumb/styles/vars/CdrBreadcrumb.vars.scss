@@ -1,5 +1,6 @@
 @mixin cdr-breadcrumb-item-mixin() {
-  color: $cdr-color-text-secondary;
+  //ITEM_DOC: Defines the breadcrumb item color.
+  color: var(--cdr-breadcrumb-item-color, var(--cdr-color-text-secondary));
 }
 
 @mixin cdr-breadcrumb-item-linked-mixin() {
@@ -8,7 +9,8 @@
   &:hover,
   &:active,
   &:focus {
-    color: $cdr-color-text-link-hover;
+    //ITEM_DOC: Defines the breadcrumb item linked hover, active and focus color.
+    color: var(--cdr-breadcrumb-item-linked-highlight-color, var(--cdr-color-text-link-hover));
     text-decoration: underline;
   }
 }
