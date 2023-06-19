@@ -74,25 +74,25 @@ defineEmits({
 });
 const style = useCssModule();
 const uniqueId = props.id ? props.id : uid();
-    const truncate = ref(props.truncationEnabled && props.items.length > 2);
-    const itemListEl = ref<HTMLAnchorElement | null>(null);
-    const firstAnchorEl = ref<HTMLAnchorElement | null | undefined>(null);
-    const ellipsisLabel = computed(() => {
-      const s = (props.items.length - 2) > 1 ? 's' : '';
-      return `show ${props.items.length - 2} more navigation level${s}`;
-    });
+const truncate = ref(props.truncationEnabled && props.items.length > 2);
+const itemListEl = ref<HTMLAnchorElement | null>(null);
+const firstAnchorEl = ref<HTMLAnchorElement | null | undefined>(null);
+const ellipsisLabel = computed(() => {
+  const s = (props.items.length - 2) > 1 ? 's' : '';
+  return `show ${props.items.length - 2} more navigation level${s}`;
+});
 
-    const handleEllipsisClick = () => {
-      truncate.value = false;
-      nextTick(() => {
-        firstAnchorEl.value = itemListEl.value?.querySelector('li a');
-        firstAnchorEl.value?.focus();
-      });
-    };
+const handleEllipsisClick = () => {
+  truncate.value = false;
+  nextTick(() => {
+    firstAnchorEl.value = itemListEl.value?.querySelector('li a');
+    firstAnchorEl.value?.focus();
+  });
+};
 
-    watch(() => props.items, () => {
-      truncate.value = props.truncationEnabled && props.items.length > 2;
-    });
+watch(() => props.items, () => {
+  truncate.value = props.truncationEnabled && props.items.length > 2;
+});
 </script>
 
 <template>
