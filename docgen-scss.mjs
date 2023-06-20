@@ -2,41 +2,34 @@ import fs from 'fs-extra';
 import postcss from 'postcss-scss';
 
 function extractCssVariables(rule, prevNode) {
-  const varAssignmentMatches = rule.value.match(/(--[\w-]+):\s*([^;]+)/);
-  const varUsageMatches = rule.value.match(/var\((--[\w-]+),\s*(.*?)\)/);
-  const varInPropMatches = rule.value.match(/(--[\w-]+)/);
+  const varUsageMatches = rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)\)/g);
 
-  let name, defaultValue;
+  let cssProperties = [];
 
-  if (varAssignmentMatches) {
-    name = varAssignmentMatches[1];
-    defaultValue = varAssignmentMatches[2];
-  } else if (varUsageMatches) {
-    name = varUsageMatches[1];
-    defaultValue = varUsageMatches[2].replace('var(', '');
-  } else if (varInPropMatches) {
-    name = varInPropMatches[0];
-    defaultValue = null;
-  } else {
-    return null;
-  }
+  for (const match of varUsageMatches) {
+    const name = match[1];
+    const defaultValue = match[2].replace('var(', '');
 
-  let description = null;
+    let description = null;
 
-  if (prevNode && prevNode.type === 'comment') {
-    const commentParts = prevNode.text.split('//');
-    for (const part of commentParts) {
-      if (part.startsWith('ITEM_DOC:')) {
-        description = part.split('ITEM_DOC:')[1].trim();
+    if (prevNode && prevNode.type === 'comment') {
+      const commentParts = prevNode.text.split('//');
+      for (const part of commentParts) {
+        if (part.startsWith('ITEM_DOC:')) {
+          description = part.split('ITEM_DOC:')[1].trim();
+          break;
+        }
       }
     }
+
+    cssProperties.push({
+      name,
+      defaultValue,
+      description,
+    });
   }
 
-  return {
-    name,
-    defaultValue,
-    description,
-  };
+  return cssProperties.length > 0 ? cssProperties : null;
 }
 
 async function parseSCSS(filePath) {
@@ -50,6 +43,10 @@ async function parseSCSS(filePath) {
 
     root.walk((node) => {
       if (node.type === 'decl') {
+        // Handle multiline CSS properties
+        const singleLineValue = node.value.replace(/\s+/g, ' ');
+        node.value = singleLineValue;
+
         const cssProperties = extractCssVariables(node, prevNode);
         if (cssProperties) {
           properties = properties.concat(cssProperties);
