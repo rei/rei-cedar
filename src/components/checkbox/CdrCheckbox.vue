@@ -1,39 +1,23 @@
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed } from 'vue';
+import type { Directive } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
 import backgroundProps from '../../props/background';
 
 /** Allows selecting one or more items from a list */
-export default defineComponent({
+defineOptions({
   name: 'CdrCheckbox',
-  components: { CdrLabelWrapper },
-  directives: {
-    indeterminate: {
-      mounted(el, binding) {
-        if (binding.value) {
-          el.setAttribute('indeterminate', binding.value);
-          return;
-        }
-        el.removeAttribute('indeterminate');
-      },
-      updated(el, binding) {
-        if (binding.value) {
-          el.setAttribute('indeterminate', binding.value);
-          return;
-        }
-        el.removeAttribute('indeterminate');
-      },
-    },
-  },
   inheritAttrs: false,
   customOptions: {},
-  props: {
-    /**
+});
+
+const props = defineProps({
+/**
      * Passes a CSS class to the label for custom styles
      */
-    labelClass: String,
+     labelClass: String,
     /**
      * Passes a CSS class to the input for custom styles
      */
@@ -90,35 +74,44 @@ export default defineComponent({
     /** @ignore */
     modelValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
-    },
-  },
-  emits: {
-    /**
+    },  
+});
+const emits = defineEmits({
+      /**
      * Event emitted by v-model on the <input> element
      * @param modelValue
      */
-    'update:modelValue': null,
+     'update:modelValue': null,
+});
+
+const vIndeterminate: Directive<HTMLElement> = {
+  mounted(el, binding) {
+    if (binding.value) {
+      el.setAttribute('indeterminate', binding.value);
+      return;
+    }
+    el.removeAttribute('indeterminate');
   },
+  updated(el, binding) {
+    if (binding.value) {
+      el.setAttribute('indeterminate', binding.value);
+      return;
+    }
+    el.removeAttribute('indeterminate');
+  },
+};
+const style = useCssModule();
+const baseClass = 'cdr-checkbox';
 
-  setup(props, ctx) {
-    const baseClass = 'cdr-checkbox';
-
-    const checkboxModel = computed({
-      get() {
-        return props.modelValue;
-      },
-      set(newValue) {
-        ctx.emit('update:modelValue', newValue);
-      },
-    });
-
-    return {
-      style: useCssModule(),
-      baseClass,
-      checkboxModel,
-    };
+const checkboxModel = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(newValue) {
+    emits('update:modelValue', newValue);
   },
 });
+
 </script>
 
 <template>
