@@ -1,10 +1,10 @@
 @mixin cdr-card-base-mixin() {
   position: relative;
-  //ITEM_DOC: Defines the background color of a cdr-card-base.
+  //ITEM_DOC: Defines the base background color of a cdr-card.
   background-color: var(--cdr-card-base-background-color, var(--cdr-color-background-primary));
   border-radius: $cdr-radius-softer;
   box-shadow: $cdr-prominence-raised;
-  //ITEM_DOC: Defines the text color of a cdr-card-base.
+  //ITEM_DOC: Defines the base text color of a cdr-card.
   color: var(--cdr-card-base-color, var(--cdr-color-text-primary));
   width: 100%;
   transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
@@ -20,13 +20,13 @@
 
 @mixin cdr-card-link-mixin() {
   position: static;
-  //ITEM_DOC: Defines the text color of a cdr-card-link.
+  //ITEM_DOC: Defines the link text color of a cdr-card.
   color: var(--cdr-card-link-color, var(--cdr-color-text-primary)) !important;
   text-decoration: none !important;
 
   &:hover {
     text-decoration: underline !important;
-    //ITEM_DOC: Defines the hover text color of a cdr-card-link.
+    //ITEM_DOC: Defines the link hover text color of a cdr-card.
     color: var(--cdr-card-link-hover-color, var(--cdr-color-text-link-hover)) !important;
   }
 
