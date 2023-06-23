@@ -1,10 +1,13 @@
 @mixin cdr-form-error-base-mixin() {
   @include cdr-text-utility-sans-300;
-  color: $cdr-color-text-input-error;
-  fill: $cdr-color-text-input-error;
+  //ITEM_DOC: Defines the text color of a cdr-form-error.
+  color: var(--cdr-form-error-text-color, var(--cdr-color-text-input-error));
+  //ITEM_DOC: Defines the fill color of a cdr-form-error.
+  fill: var(--cdr-form-error-fill-color, var(--cdr-color-text-input-error));
   margin-top: $cdr-space-quarter-x;
 }
 
 @mixin cdr-form-error-icon-mixin() {
-  margin-right: $cdr-space-quarter-x;
+  //ITEM_DOC: Defines the right margin of a cdr-form-error-icon.
+  margin-right: var(--cdr-form-error-icon-margin-right, var(--cdr-space-quarter-x));
 }
