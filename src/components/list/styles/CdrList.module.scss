@@ -92,7 +92,8 @@
 
         &::before {
           content: '\2022';
-          color: $cdr-color-text-secondary;
+          // ITEM_DOC: Defines the color of the unordered inline list item prefix.
+          color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary));
           display: block;
           position: absolute;
           top: 50%;
@@ -106,8 +107,7 @@
         }
       }
 
-      /* inline - unordered - compact
-      ---------- */
+      /* inline - unordered - compact */
       &.cdr-list--compact {
         & > li + li {
           padding-left: 1em;
