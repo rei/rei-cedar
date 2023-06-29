@@ -2,30 +2,33 @@ import fs from 'fs-extra';
 import postcss from 'postcss-scss';
 
 function extractCssVariables(rule, prevNode) {
-  const varUsageMatches = rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)\)/g);
+  const varUsageMatches = Array.from(rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)\)/g));
 
   let cssProperties = [];
 
-  for (const match of varUsageMatches) {
-    const name = match[1];
-    const defaultValue = match[2].replace('var(', '');
+  if (prevNode && prevNode.type === 'comment') {
+    const commentParts = prevNode.text.split('ITEM_DOC:').slice(1);
 
-    let description = null;
+    varUsageMatches.forEach((match, index) => {
+      const name = match[1];
+      let defaultValue = match[2].replace('var(', '');
 
-    if (prevNode && prevNode.type === 'comment') {
-      const commentParts = prevNode.text.split('//');
-      for (const part of commentParts) {
-        if (part.startsWith('ITEM_DOC:')) {
-          description = part.split('ITEM_DOC:')[1].trim();
-          break;
-        }
+      // If the defaultValue starts with rgba( and doesn't have a closing parenthesis, add one
+      if (defaultValue.startsWith('rgba(') && !defaultValue.endsWith(')')) {
+        defaultValue += ')';
       }
-    }
 
-    cssProperties.push({
-      name,
-      defaultValue,
-      description,
+      // Get description and remove any trailing '//'
+      let description = commentParts[index] ? commentParts[index].trim() : null;
+      if (description && description.endsWith('//')) {
+        description = description.slice(0, -2).trim();
+      }
+
+      cssProperties.push({
+        name,
+        defaultValue,
+        description,
+      });
     });
   }
 
