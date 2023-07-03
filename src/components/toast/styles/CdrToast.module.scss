@@ -63,7 +63,8 @@
     & svg {
       height: 2.2rem;
       width: 2.2rem;
-      fill: $cdr-color-text-emphasis!important;
+      // ITEM_DOC: Sets the fill color of the cdr-toast close button icon.
+      fill: var(--cdr-toast-close-button-fill, var(--cdr-color-text-emphasis)) !important;
     }
   }
 
@@ -71,9 +72,11 @@
     & .cdr-toast__main {
       @include cdr-toast-default-mixin;
       & .cdr-toast__icon-left {
-          background-color: $cdr-color-background-message-default-02;
+          // ITEM_DOC: Sets the default background color of the cdr-toast icon-left.
+          background-color: var(--cdr-toast-icon-left-background-color-default, var(--cdr-color-background-message-default-02));
           svg {
-            fill: $cdr-color-icon-message-default;
+            // ITEM_DOC: Sets the default fill color of the cdr-toast icon-left.
+            fill: var(--cdr-toast-icon-left-fill-default, var(--cdr-color-icon-message-default));
           }
         }
       }
@@ -84,51 +87,63 @@
     & .cdr-toast__main {
       @include cdr-toast-info-mixin;
       & .cdr-toast__icon-left {
-        background-color: $cdr-color-background-message-info-02;
+        // ITEM_DOC: Sets the info background color of the cdr-toast icon-left.
+        background-color: var(--cdr-toast-icon-left-background-color-info, var(--cdr-color-background-message-info-02));
         svg {
-          fill: $cdr-color-icon-message-info;
+          // ITEM_DOC: Sets the info fill color of the cdr-toast icon-left.
+          fill: var(--cdr-toast-icon-left-fill-info, var(--cdr-color-icon-message-info));
         }
       }
     }
-    border-left-color: $cdr-color-border-message-info-01;
+    // ITEM_DOC: Sets the info border-left color of the cdr-toast.
+    border-left-color: var(--cdr-toast-border-left-color-info, var(--cdr-color-border-message-info-01));
   }
 
   &--warning {
     & .cdr-toast__main {
       @include cdr-toast-warning-mixin;
       & .cdr-toast__icon-left {
-        background-color: $cdr-color-background-message-warning-02;
+        // ITEM_DOC: Sets the warning background color of the cdr-toast icon-left.
+        background-color: var(--cdr-toast-icon-left-background-color-warning, var(--cdr-color-background-message-warning-02));
         svg {
-          fill: $cdr-color-icon-message-warning;
+          // ITEM_DOC: Sets the warning fill color of the cdr-toast icon-left.
+          fill: var(--cdr-toast-icon-left-fill-warning, var(--cdr-color-icon-message-warning));
         }
       }
     }
-    border-left-color: $cdr-color-border-message-warning-01;
+    // ITEM_DOC: Sets the warning border-left color of the cdr-toast.
+    border-left-color: var(--cdr-toast-border-left-color-warning, var(--cdr-color-border-message-warning-01));
   }
 
   &--success {
     & .cdr-toast__main {
       @include cdr-toast-success-mixin;
       & .cdr-toast__icon-left {
-        background-color: $cdr-color-background-message-success-02;
+        // ITEM_DOC: Sets the success background color of the cdr-toast icon-left.
+        background-color: var(--cdr-toast-icon-left-background-color-success, var(--cdr-color-background-message-success-02));
         svg {
-          fill: $cdr-color-icon-message-success;
+          // ITEM_DOC: Sets the success fill color of the cdr-toast icon-left.
+          fill: var(--cdr-toast-icon-left-fill-success, var(--cdr-color-icon-message-success));
         }
       }
     }
-    border-left-color: $cdr-color-border-message-success-01;
+    // ITEM_DOC: Sets the success border-left color of the cdr-toast.
+    border-left-color: var(--cdr-toast-border-left-color-success, var(--cdr-color-border-message-success-01));
   }
 
   &--error {
     & .cdr-toast__main {
       @include cdr-toast-error-mixin;
       & .cdr-toast__icon-left {
-        background-color: $cdr-color-background-message-error-02;
+        // ITEM_DOC: Sets the error background color of the cdr-toast icon-left.
+        background-color: var(--cdr-toast-icon-left-background-color-error, var(--cdr-color-background-message-error-02));
         svg {
-          fill: $cdr-color-icon-message-error;
+          // ITEM_DOC: Sets the error fill color of the cdr-toast icon-left.
+          fill: var(--cdr-toast-icon-left-fill-error, var(--cdr-color-icon-message-error));
         }
       }
     }
-    border-left-color: $cdr-color-border-message-error-01;
+    // ITEM_DOC: Sets the error border-left color of the cdr-toast.
+    border-left-color: var(--cdr-toast-border-left-color-error, var(--cdr-color-border-message-error-01));
   }
 }
