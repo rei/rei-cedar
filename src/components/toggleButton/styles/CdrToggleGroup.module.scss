@@ -1,9 +1,11 @@
 @import '../../../styles/settings/index.scss';
 
 .cdr-toggle-group {
-    border: .1rem solid $cdr-color-border-primary;
+    // ITEM_DOC: Sets the border color of the cdr-toggle-group.
+    border: .1rem solid var(--cdr-toggle-group-border-color, var(--cdr-color-border-primary));
     border-radius: .4rem;
-    background-color: $cdr-color-background-toggle-group-default-rest;
+    // ITEM_DOC: Sets the default rest background color of the cdr-toggle-group.
+    background-color: var(--cdr-toggle-group-background-color-default-rest, var(--cdr-color-background-toggle-group-default-rest));
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
