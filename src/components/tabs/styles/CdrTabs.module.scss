@@ -43,7 +43,8 @@
     overflow-x: auto;
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid $cdr-color-border-tab-keyline-rest;
+    // ITEM_DOC: Sets the keyline color of the cdr-tabs header container.
+    border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest));
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     &::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
@@ -69,7 +70,8 @@
     flex-grow: 1;
     background-color: transparent;
     display: block;
-    color: $cdr-color-text-tab-rest;
+    // ITEM_DOC: Sets the text color in a tab.
+    color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest));
     font-weight: 300;
     text-decoration: none;
     padding: $cdr-space-inset-half-x-stretch;
@@ -77,7 +79,8 @@
     outline-offset: -3px;
 
     &-active {
-      color: $cdr-color-text-tab-active;
+      // ITEM_DOC: Sets the text color of an active tab.
+      color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active));
       font-weight: 500;
     }
 
@@ -95,18 +98,20 @@
     &:hover,
     &:focus {
       text-decoration: none;
-      color: $cdr-color-text-tab-hover;
+      // ITEM_DOC: Sets the text color of a tab on active, focus, or hover.
+      color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover));
     }
 
     &--disabled {
       border: none;
       background-color: transparent;
-      color: $cdr-color-text-tab-disabled;
+      // ITEM_DOC: Sets the text color of a disabled tab.
+      color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled));
 
       &:active,
       &:hover,
       &:focus {
-        color: $cdr-color-text-tab-disabled;
+        color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled));
         cursor: not-allowed;
       }
     }
@@ -149,8 +154,8 @@
     margin-top: -$cdr-space-quarter-x;
     box-sizing: border-box;
     border: none;
-
-    background-color: $cdr-color-border-tab-keyline-active;
+    // ITEM_DOC: Sets the background color of the cdr-tabs keyline.
+    background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active));
     transition: $cdr-duration-4-x $cdr-timing-function-ease-out;
   }
 
@@ -193,26 +198,8 @@
   &--no-border {
     .cdr-tabs__header,
     .cdr-tabs__header-container {
-      border-bottom: 1px solid transparent;
-    }
-  }
-
-  /* Full Width
-    ========== */
-  &--full-width {
-    .cdr-tabs__header {
-      flex-grow: 1;
-    }
-  }
-
-  /* Centered
-    ========== */
-  &--centered {
-    .cdr-tabs__header:first-of-type {
-      margin-left: auto;
-    }
-    .cdr-tabs__header:last-of-type {
-      margin-right: auto;
+      // ITEM_DOC: Sets the border color of the cdr-tabs with no-border modifier.
+      border-bottom: 1px solid var(--cdr-tabs-no-border-border-color, transparent);
     }
   }
 }
