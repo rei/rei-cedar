@@ -1,5 +1,6 @@
 <script>
 import { defineComponent, useCssModule, computed } from 'vue';
+import { isEqual } from 'lodash-es';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
@@ -109,13 +110,33 @@ export default defineComponent({
       },
       set(newValue) {
         ctx.emit('update:modelValue', newValue);
+        console.log('Setting model value:', newValue);
       },
+    });
+
+    const svgState = computed(() => {
+      console.log('Checkbox Model:', checkboxModel.value);
+      if (Array.isArray(checkboxModel.value)) {
+        return checkboxModel.value.some(item =>
+      isEqual(item, props.customValue) // lodash's _.isEqual method performs a deep comparison
+    );
+      }
+      if (checkboxModel.value === props.trueValue) {
+        return true;
+      }
+
+      if (checkboxModel.value === props.falseValue) {
+        return false;
+      }
+
+      return checkboxModel;
     });
 
     return {
       style: useCssModule(),
       baseClass,
       checkboxModel,
+      svgState,
     };
   },
 });
@@ -132,16 +153,22 @@ export default defineComponent({
     :disabled="$attrs.disabled"
   >
     <template #input>
-      <input
-        :class="[style['cdr-checkbox__input'], inputClass]"
-        type="checkbox"
-        v-bind="$attrs"
-        :true-value="customValue ? null : trueValue"
-        :false-value="customValue ? null : falseValue"
-        :value="customValue"
-        v-indeterminate="indeterminate"
-        v-model="checkboxModel"
-      >
+      <div :class="style['cdr-checkbox__svg-checkbox']">
+        <div :class="[style['cdr-checkbox__checkbox-box'], svgState ? style['checked'] : '']"></div>
+        <svg v-show="svgState" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -4 30 35">
+          <path role="presentation" d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3 11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"/>
+        </svg>
+        <input
+          :class="[style['cdr-checkbox__input'], inputClass]"
+          type="checkbox"
+          v-bind="$attrs"
+          :true-value="customValue ? null : trueValue"
+          :false-value="customValue ? null : falseValue"
+          :value="customValue"
+          v-indeterminate="indeterminate"
+          v-model.lazy="checkboxModel"
+        >
+      </div>
     </template>
     <!-- @slot Readable text for the label element -->
     <slot />

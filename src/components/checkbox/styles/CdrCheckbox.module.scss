@@ -97,4 +97,52 @@
   &__input:focus:checked ~ .cdr-label-wrapper__figure {
     @include cdr-form-figure-checkbox-checked-focus-mixin;
   }
+
+  &__svg-checkbox {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  // &__svg-checkbox input[type="checkbox"] {
+  //   position: absolute;
+  //   opacity: 0;
+  //   height: 0;
+  //   width: 0;
+  // }
+  
+  &__checkbox-box {
+    top: 0.3rem;
+    width: $cdr-form-figure-size-medium;
+    height: $cdr-form-figure-size-medium;
+    &::after {
+      width: calc(#{$cdr-form-figure-size-medium} / 4);
+      height: calc(#{$cdr-form-figure-size-medium} / 4);
+    }
+  
+    position: absolute;
+    left: 0.4rem;
+    border-radius: $cdr-radius-softer;
+    //ITEM_DOC: Defines the background color of a form figure.
+    background-color: var(--cdr-form-figure-background-color, var(--cdr-color-background-input-default));
+    //ITEM_DOC: Defines the box shadow color of a form figure.
+    box-shadow: 0 0 0 1px var(--cdr-form-figure-box-shadow-color, var(--cdr-color-border-input-default));
+    transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
+
+    &.checked {
+      @include cdr-form-figure-checkbox-checked-mixin;
+      &+svg {
+        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected));
+      }
+    }
+  }
+  
+  &__svg-checkbox svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
 }

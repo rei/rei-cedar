@@ -1,13 +1,13 @@
 
 
 @mixin cdr-form-figure-checkbox-checked-mixin() {
-  $foo: var(--cdr-color-icon-checkbox-default-selected);
   //ITEM_DOC: Defines the box-shadow color of a checked cdr-checkbox.
   box-shadow: inset 0 0 0 1px var(--cdr-form-figure-checkbox-box-shadow-checked, var(--cdr-color-border-input-default-selected));
   //ITEM_DOC: Defines the background color of a checked cdr-checkbox.
-  background-color: var(--cdr-form-figure-checkbox-background-checked, var(--cdr-color-background-input-default-selected));
+  background-color: var(--cdr-form-figure-checkbox-background-color-checked, var(--cdr-color-background-input-default-selected));
   //ITEM_DOC: Defines the fill color of the svg in a checked cdr-checkbox.
-  background-image: svg-load('node_modules/@rei/cedar-icons/dist/icons/check-lg.svg', fill="#{$cdr-color-icon-checkbox-default-selected}");
+  //background-image: svg-load('node_modules/@rei/cedar-icons/dist/icons/check-lg.svg', fill="#{$cdr-color-icon-checkbox-default-selected}");
+  fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected));
   background-repeat: no-repeat;
 }
 
@@ -24,7 +24,8 @@
   box-shadow: inset 0 0 0 1px var(--cdr-form-figure-checkbox-checked-box-shadow-hover, var(--cdr-color-border-input-default-selected-hover)), 0 0 0 1px var(--cdr-form-figure-checkbox-checked-hover-box-shadow, var(--cdr-color-border-input-default-selected-hover));
   //ITEM_DOC: Defines the background color of a checked and hovered cdr-checkbox.
   background-color: var(--cdr-form-figure-checkbox-checked-background-hover, var(--cdr-color-background-input-default-selected-hover));
-  background-image: svg-load('node_modules/@rei/cedar-icons/dist/icons/check-lg.svg', fill="#{$cdr-color-icon-checkbox-default-selected-hover}");
+  //background-image: svg-load('node_modules/@rei/cedar-icons/dist/icons/check-lg.svg', fill="#{$cdr-color-icon-checkbox-default-selected-hover}");
+  fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover));
 }
 
 @mixin cdr-form-figure-checkbox-disabled-mixin() {
