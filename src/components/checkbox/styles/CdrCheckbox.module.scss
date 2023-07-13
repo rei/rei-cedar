@@ -26,8 +26,11 @@
     }
   }
   &:hover {
-    .cdr-label-wrapper__figure {
+    .cdr-label-wrapper__figure, .cdr-checkbox__checkbox-box {
       @include cdr-form-figure-checkbox-hover-mixin;
+      &.checked {
+        @include cdr-form-figure-checkbox-checked-hover-mixin;
+      }
     }
 
     .cdr-checkbox__input {
@@ -36,6 +39,7 @@
       &:checked ~ .cdr-label-wrapper__figure {
         @include cdr-form-figure-checkbox-checked-hover-mixin;
       }
+
 
       /* Hover + Indeterminate
       ========== */

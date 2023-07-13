@@ -110,16 +110,15 @@ export default defineComponent({
       },
       set(newValue) {
         ctx.emit('update:modelValue', newValue);
-        console.log('Setting model value:', newValue);
       },
     });
 
     const svgState = computed(() => {
-      console.log('Checkbox Model:', checkboxModel.value);
+      if (checkboxModel.value === props.falseValue) {
+        return false;
+      }
       if (Array.isArray(checkboxModel.value)) {
-        return checkboxModel.value.some(item =>
-      isEqual(item, props.customValue) // lodash's _.isEqual method performs a deep comparison
-    );
+        return checkboxModel.value.some((item) => isEqual(item, props.customValue));
       }
       if (checkboxModel.value === props.trueValue) {
         return true;
@@ -154,10 +153,6 @@ export default defineComponent({
   >
     <template #input>
       <div :class="style['cdr-checkbox__svg-checkbox']">
-        <div :class="[style['cdr-checkbox__checkbox-box'], svgState ? style['checked'] : '']"></div>
-        <svg v-show="svgState" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -4 30 35">
-          <path role="presentation" d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3 11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"/>
-        </svg>
         <input
           :class="[style['cdr-checkbox__input'], inputClass]"
           type="checkbox"
@@ -168,6 +163,11 @@ export default defineComponent({
           v-indeterminate="indeterminate"
           v-model.lazy="checkboxModel"
         >
+        <!-- <div :class="[style['cdr-checkbox__checkbox-box'], svgState ? style['checked'] : '']"></div> -->
+        <svg v-show="svgState" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -4 30 35">
+          <path role="presentation" d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3 11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"/>
+        </svg>
+        <svg v-show="indeterminate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.8 24 24"><path role="presentation" d="M6 11h12a1 1 0 010 2H6a1 1 0 010-2z"/></svg>
       </div>
     </template>
     <!-- @slot Readable text for the label element -->

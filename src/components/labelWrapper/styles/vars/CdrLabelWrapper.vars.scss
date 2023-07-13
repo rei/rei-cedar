@@ -103,7 +103,7 @@
   width: $cdr-form-figure-size-large;
   height: $cdr-form-figure-size-large;
 
-  &::after {
+  &::after, .cdr-checkbox__checkbox-box {
     width: calc(#{$cdr-form-figure-size-large} / 4);
     height: calc(#{$cdr-form-figure-size-large} / 4);
   }
@@ -154,6 +154,17 @@
 
     & > .cdr-label-wrapper__figure {
       @include cdr-label-wrapper-figure-large-mixin;
+    }
+
+    .cdr-checkbox__checkbox-box {
+      width: 2rem;
+      height: 2rem;
+    }
+    .cdr-checkbox__svg-checkbox svg {
+      width: 3rem;
+      height: 3rem;
+      left: -0.1rem;
+      top: -0.1rem;
     }
   }
 }
