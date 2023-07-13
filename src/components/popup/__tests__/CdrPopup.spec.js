@@ -1,6 +1,6 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrPopup from '../CdrPopup.vue';
-import calculatePlacement from '../calculatePlacement.js';
+import calculatePlacement from '../calculatePlacement';
 
 describe('CdrPopup', () => {
   it('matches snapshot', () => {

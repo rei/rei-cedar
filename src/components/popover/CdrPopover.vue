@@ -1,6 +1,6 @@
-<script>
+<script setup lang="ts">
 import {
-  defineComponent, useCssModule, ref, watch, onMounted,
+  useCssModule, ref, watch, onMounted, useSlots
 } from 'vue';
 import tabbable from 'tabbable';
 import IconXSm from '../icon/comps/x-sm.vue';
@@ -10,77 +10,80 @@ import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
 /** Small overlay used to display contextual information */
-export default defineComponent({
-  name: 'CdrPopover',
-  components: { IconXSm, CdrButton, CdrPopup },
-  props: {
-    /**
-     * Sets the position where the popover will render relative to the trigger element.
-     * @demoSelectMultiple false
-     * @values top, bottom, left, right
-     */
-    position: {
-      type: String,
-      required: false,
-      default: 'top',
-      validator: (value) => propValidator(
-        value,
-        ['top', 'bottom', 'left', 'right'],
-      ),
-    },
-    /**
-     * If set to `true`, popover will attempt to dynamically set it's position to
-     * ensure it renders within the visible browser window.
-     * If `false` the popover will always render in the provided `position`.
-     */
-    autoPosition: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    /** Sets the title for the popover content. Can also be provided via the `title` slot. */
-    label: {
-      type: String,
-      required: false,
-    },
-    /** ID for the popover element, required for accessibility */
-    id: {
-      type: String,
-      required: true,
-    },
-    /** Add custom class to the popover content wrapper. Allows for overriding size, styling, etc. */
-    contentClass: {
-      type: String,
-      required: false,
-    },
-    /**
-     * Used to programmatically control the popover state. Does not need to be set if you are using the `trigger` slot.
-     * @demoIgnore true
-     */
-    open: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-  },
-  emits: {
-    /** Emits when popover is opened */
-    opened: null,
-    /** Emits when popover is closed */
-    closed: null,
-  },
+defineOptions({
+  name: 'CdrPopover'
+});
 
-  setup(props, ctx) {
-    const isOpen = ref(false);
-    let lastActive;
+const props = defineProps({
+  /**
+   * Sets the position where the popover will render relative to the trigger element.
+   * @demoSelectMultiple false
+   * @values top, bottom, left, right
+   */
+    position: {
+    type: String,
+    required: false,
+    default: 'top',
+    validator: (value) => propValidator(
+      value,
+      ['top', 'bottom', 'left', 'right'],
+    ),
+  },
+  /**
+   * If set to `true`, popover will attempt to dynamically set it's position to
+   * ensure it renders within the visible browser window.
+   * If `false` the popover will always render in the provided `position`.
+   */
+  autoPosition: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  /** Sets the title for the popover content. Can also be provided via the `title` slot. */
+  label: {
+    type: String,
+    required: false,
+  },
+  /** ID for the popover element, required for accessibility */
+  id: {
+    type: String,
+    required: true,
+  },
+  /** Add custom class to the popover content wrapper. Allows for overriding size, styling, etc. */
+  contentClass: {
+    type: String,
+    required: false,
+  },
+  /**
+   * Used to programmatically control the popover state. Does not need to be set if you are using the `trigger` slot.
+   * @demoIgnore true
+   */
+  open: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+});
+
+const emits = defineEmits({
+  /** Emits when popover is opened */
+  opened: null,
+  /** Emits when popover is closed */
+  closed: null, 
+});
+const slots = useSlots();
+const style = useCssModule();
+
+const isOpen = ref(false);
+    let lastActive: HTMLElement | null;
 
     const triggerEl = ref(null);
     const popupEl = ref(null);
 
-    const hasTrigger = ctx.slots.trigger;
-    const hasTitle = ctx.slots.title || props.label;
+    const hasTrigger = slots.trigger;
+    const hasTitle = slots.title || props.label;
 
-    const openPopover = (e) => {
+    const openPopover = (e?: Event) => {
       if (isOpen.value === true) {
         return;
       }
@@ -88,16 +91,16 @@ export default defineComponent({
 
       lastActive = activeElement;
       isOpen.value = true;
-      ctx.emit('opened', e);
+      emits('opened', e);
       setTimeout(() => {
         const tabbables = tabbable(popupEl.value.$el);
         if (tabbables[0]) tabbables[0].focus();
       }, 50);
     };
 
-    const closePopover = (e) => {
+    const closePopover = (e?: Event) => {
       isOpen.value = false;
-      ctx.emit('closed', e);
+      emits('closed', e);
       if (lastActive) lastActive.focus();
     };
 
@@ -122,19 +125,7 @@ export default defineComponent({
         trigger.setAttribute('aria-haspopup', 'dialog');
       }
     });
-    return {
-      style: useCssModule(),
-      mapClasses,
-      hasTrigger,
-      triggerEl,
-      popupEl,
-      closePopover,
-      openPopover,
-      isOpen,
-      hasTitle,
-    };
-  },
-});
+
 </script>
 
 <template>
@@ -142,7 +133,7 @@ export default defineComponent({
     :class="mapClasses(
       style,
       'cdr-popover--wrapper',
-      hasTrigger && 'cdr-popover--position',
+      hasTrigger ? 'cdr-popover--position' : '',
     )"
   >
     <div ref="triggerEl">

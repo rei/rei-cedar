@@ -1,9 +1,9 @@
 export default function calculatePlacement(
-  triggerRect,
-  popupRect,
-  screenWidth,
-  screenHeight,
-  originalPosition,
+  triggerRect: DOMRect,
+  popupRect: DOMRect,
+  screenWidth: number,
+  screenHeight: number,
+  originalPosition: string,
 ) {
   const offset = 14; // 10px for arrow 4px for spacing
   const borderSize = 2; // need to include border for corner calculations

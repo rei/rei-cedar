@@ -35,7 +35,7 @@ const style = useCssModule();
 const typeClass = computed(() => `${baseClass}--${props.type}`);
 
 const motionToggle = inject(motionKey, ref(true));
-const motionClass = computed(() => (motionToggle.value ? `${baseClass}__shimmer` : null));
+const motionClass = computed(() => (motionToggle.value ? `${baseClass}__shimmer` : ''));
 
 </script>
 

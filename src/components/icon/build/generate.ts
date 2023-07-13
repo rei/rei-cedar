@@ -10,7 +10,7 @@ function resolve(dir: string) {
   return path.join(__dirname, '..', dir);
 }
 
-// indexArr builds the 'index' index.js file
+// indexArr builds the 'index' index.ts file
 const indexArr: string[] = [];
 
 Object.keys(iconData).forEach(function (name) {
@@ -62,8 +62,8 @@ Object.keys(iconData).forEach(function (name) {
 
 // output the 'index' file
 fs.outputFileSync(
-  resolve('index.js'),
-  `// file created by generate.js
+  resolve('index.ts'),
+  `// file created by generate.ts
 /* eslint-disable */
 ${indexArr.join('\n')}`,
 );

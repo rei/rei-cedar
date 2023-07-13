@@ -1,5 +1,5 @@
-<script>
-import { useCssModule, computed, defineComponent } from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import { buildBooleanClass } from '../../utils/buildClass';
 import IconCheckSm from '../icon/comps/check-sm.vue';
@@ -8,78 +8,67 @@ import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
 
 /** Permits selection from two opposing options */
-export default defineComponent({
+defineOptions({
   name: 'CdrSwitch',
-  components: {
-    IconCheckSm,
-    IconXSm,
-  },
-  props: {
-    /**
-     * Sets a custom ID for the switch. If this value is not set, it will be auto-generated.
-    */
-    id: {
-      type: String,
-    },
-    /**
-     * Sets the size of the switch
-     * @demoSelectMultiple false
-     * @values medium, large
-    */
-    size: {
-      type: String,
-      default: 'medium',
-      validator: (value) => propValidator(
-        value,
-        ['medium', 'large'],
-      ),
-    },
-    /**
-     * Sets the label and switch to expand to the full width of its container with `space-between`
-     */
-    fullWidth: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * @demoIgnore true
-    */
-    modelValue: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  emits: {
-    /**
-     * Event emitted by v-model on switch
-     * @param modelValue
-     */
-    'update:modelValue': null,
-  },
-  setup(props, ctx) {
-    const style = useCssModule();
-    const uniqueId = props.id ? props.id : uid();
-    const onClick = (modelValue) => {
-      ctx.emit('update:modelValue', !modelValue);
-    };
-    const baseClass = 'cdr-switch';
-    const sizeClass = computed(() => (props.size
-      ? `cdr-switch--${props.size}`
-      : 'cdr-switch--medium'));
-    const fullWidthClass = computed(() => props.fullWidth
-      && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
+});
 
-    return {
-      style,
-      mapClasses,
-      uniqueId,
-      onClick,
-      baseClass,
-      sizeClass,
-      fullWidthClass,
-    };
+const props = defineProps({
+  /**
+   * Sets a custom ID for the switch. If this value is not set, it will be auto-generated.
+  */
+  id: {
+    type: String,
+  },
+  /**
+   * Sets the size of the switch
+   * @demoSelectMultiple false
+   * @values medium, large
+  */
+  size: {
+    type: String,
+    default: 'medium',
+    validator: (value) => propValidator(
+      value,
+      ['medium', 'large'],
+    ),
+  },
+  /**
+   * Sets the label and switch to expand to the full width of its container with `space-between`
+   */
+  fullWidth: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * @demoIgnore true
+  */
+  modelValue: {
+    type: Boolean,
+    required: true,
   },
 });
+
+const emits = defineEmits({
+  /**
+   * Event emitted by v-model on switch
+   * @param modelValue
+   */
+    'update:modelValue': null,
+});
+
+const style = useCssModule();
+const uniqueId = props.id ? props.id : uid();
+const onClick = (modelValue: boolean) => {
+  emits('update:modelValue', !modelValue);
+};
+const baseClass = 'cdr-switch';
+const sizeClass = computed(() => (props.size
+  ? `cdr-switch--${props.size}`
+  : 'cdr-switch--medium'));
+const fullWidthClass = computed(() => props.fullWidth
+  ? buildBooleanClass(baseClass, props.fullWidth, 'full-width')
+  : ''
+);
 </script>
 
 <template>

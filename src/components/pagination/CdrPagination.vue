@@ -1,7 +1,8 @@
-<script>
+<script setup lang="ts">
 import {
-  defineComponent, useCssModule, computed, ref, watch, nextTick, onMounted,
+  useCssModule, computed, ref, watch, nextTick, onMounted,
 } from 'vue';
+import type { PropType } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 import IconCaretLeft from '../icon/comps/caret-left.vue';
@@ -10,205 +11,195 @@ import CdrSelect from '../select/CdrSelect.vue';
 import uid from '../../utils/uid';
 
 /** Allows people to navigate to the next or previous page within an experience */
-export default defineComponent({
-  name: 'CdrPagination',
-  components: { IconCaretLeft, IconCaretRight, CdrSelect },
-  props: {
-    /**
-     * Define a custom slug for the generated breadcrumb item IDs. Slug is randomly generated if no ID provided.
-     * @demoIgnore true
-     */
+defineOptions({
+  name: 'CdrPagination'
+});
+
+interface paginationItem {
+  page: number,
+  url: string,
+}
+const props = defineProps({
+  /**
+   * Define a custom slug for the generated pagination item IDs. Slug is randomly generated if no ID provided.
+   * @demoIgnore true
+   */
     id: {
-      type: String,
-    },
-    /**
-     * Sets the total number of pages for displaying "Page x of <totalPages>".
-     * Sometimes the total number of pages is different than total page data objects in the pages array.
-     * For example, if only the next and previous pages are provided.
-     */
-    totalPages: {
-      type: Number,
-      default: null,
-    },
-    /**
-     * Array of objects containing pagination data.
-     * Objects must have structure of `{ page: number, url: string }`
-     */
-    pages: {
-      type: Array,
-      required: true,
-      validator: (value) => {
-        const result = value.every((obj) => {
-          if (!Object.prototype.hasOwnProperty.call(obj, 'page')
-          || typeof obj.page !== 'number') {
-            console.error('Property "page" is missing or is not a number', obj); // eslint-disable-line
-            return false;
-          } if (!Object.prototype.hasOwnProperty.call(obj, 'url')
-          || typeof obj.url !== 'string') {
-            console.error('Property "url" is missing or is not a string', obj); // eslint-disable-line
-            return false;
-          }
-          return true;
-        });
-        return result;
-      },
-    },
-    /**
-     * Sets which tag type is used to render pagination elements
-     * @values a, button
-     */
-    linkTag: {
-      type: String,
-      default: 'a',
-      validator: (value) => propValidator(
-        value,
-        ['a', 'button'],
-      ),
-    },
-    /**
-     * Used to customize the aria-label for the root pagination element.
-     * For page-level pagination (i.e, pagination that updates the entire page content and changes the URL)
-     * this property should be omitted.
-     * For intra-page navigation this property should describe the element being paginated, for example:
-     * `Pagination for sub-content`
-     */
-    forLabel: {
-      type: String,
-      default: '',
-    },
-    /** @ignore used for binding v-model, represents the current page */
-    modelValue: {
-      type: Number,
-    },
+    type: String,
   },
-  emits: {
-    /**
-     * Event emitted by v-model on the select <input> element to indicate current page.
-     * Only used on small devices
-     * @param modelValue
-     */
-    'update:modelValue': null,
-    /**
-     * $emit event fired when page changes based on user interaction by clicking a link
-     * or selecting an option from the select on mobile.
-     * `event.preventDefault()` can be used to override the default link navigation behavior.
-     */
-    navigate: null,
+  /**
+   * Sets the total number of pages for displaying "Page x of <totalPages>".
+   * Sometimes the total number of pages is different than total page data objects in the pages array.
+   * For example, if only the next and previous pages are provided.
+   */
+  totalPages: {
+    type: Number,
+    default: null,
   },
-
-  setup(props, ctx) {
-    const currentIdx = ref(0);
-    const linkRefs = ref([]);
-    const uniqueId = props.id ? props.id : uid();
-    const setCurrentIdx = (page) => {
-      currentIdx.value = props.pages.map((x) => x.page).indexOf(page);
-    };
-    const innerValue = computed({
-      get: () => props.modelValue,
-      set: (val) => {
-        setCurrentIdx(val);
-        ctx.emit('update:modelValue', val);
-      },
-    });
-
-    const currentUrl = computed(() => props.pages[currentIdx.value].url);
-
-    const navigate = (pageNum, e) => {
-    // Dont do anything if clicking the current active page
-      const paginationLinkIsVisible = e.target.offsetWidth > 0 && e.target.offsetHeight > 0;
-      if (pageNum === innerValue.value && paginationLinkIsVisible) {
-        e.preventDefault();
-        return;
-      }
-      innerValue.value = pageNum;
-      ctx.emit('navigate', pageNum, currentUrl.value, e);
-      nextTick(() => {
-      // Done in a nextTick() to ensure rendering complete
-        try {
-        // Emulate native link click page reloading behaviour by blurring the
-        // paginator and returning focus to the document
-          const target = e.currentTarget || e.target;
-          target.blur();
-        } catch (err) {
-        // eslint-disable-next-line no-console
-          console.error(err);
+  /**
+   * Array of objects containing pagination data.
+   * Objects must have structure of `{ page: number, url: string }`
+   */
+  pages: {
+    type: Array as PropType<paginationItem[]>,
+    required: true,
+    validator: (value: paginationItem[]) => {
+      const result = value.every((obj) => {
+        if (!Object.prototype.hasOwnProperty.call(obj, 'page')
+        || typeof obj.page !== 'number') {
+          console.error('Property "page" is missing or is not a number', obj); // eslint-disable-line
+          return false;
+        } if (!Object.prototype.hasOwnProperty.call(obj, 'url')
+        || typeof obj.url !== 'string') {
+          console.error('Property "url" is missing or is not a string', obj); // eslint-disable-line
+          return false;
         }
+        return true;
       });
-    };
-
-    const select = (e) => {
-      const linkToClick = linkRefs.value.find((link) => link?.innerHTML === e.target.value);
-      linkToClick.click();
-    };
-
-    const ariaLabel = computed(() => props.forLabel || 'Pagination');
-    const prevPageData = computed(() => props.pages[currentIdx.value - 1]);
-    const nextPageData = computed(() => props.pages[currentIdx.value + 1]);
-
-    const paginationData = computed(() => {
-      const total = props.pages.length;
-      const current = innerValue.value;
-      const delta = 1;
-      let range = [];
-      let over5 = true;
-      let over5remain = true;
-
-      if (total <= 7) {
-      // all pages
-        return props.pages;
-      }
-
-      if (current < 5) {
-        // if first 5 pages
-        over5 = false;
-        // [2-5]
-        range = props.pages.slice(1, 5);
-      } else if (total - current < 4) {
-        // if last 5 pages
-        over5remain = false;
-        range = props.pages.slice(-5, -1);
-      } else {
-        // else in between
-        for (
-          let i = Math.max(2, current - delta);
-          i <= Math.min(total - 1, current + delta);
-          i += 1
-        ) {
-          range.push(props.pages[i - 1]);
-        }
-      }
-
-      if ((current - delta > 2) && over5) {
-        range.unshift('&hellip;');
-      }
-      if ((current + delta < total - 1) && over5remain) {
-        range.push('&hellip;');
-      }
-
-      range.unshift(props.pages[0]);
-      range.push(props.pages[total - 1]);
-
-      return range;
-    });
-
-    onMounted(() => setCurrentIdx(innerValue.value));
-    watch(() => props.pages, () => setCurrentIdx(innerValue.value));
-    return {
-      style: useCssModule(),
-      mapClasses,
-      uniqueId,
-      linkRefs,
-      navigate,
-      select,
-      ariaLabel,
-      prevPageData,
-      nextPageData,
-      paginationData,
-      innerValue,
-      currentIdx,
-    };
+      return result;
+    },
+  },
+  /**
+   * Sets which tag type is used to render pagination elements
+   * @values a, button
+   */
+  linkTag: {
+    type: String,
+    default: 'a',
+    validator: (value) => propValidator(
+      value,
+      ['a', 'button'],
+    ),
+  },
+  /**
+   * Used to customize the aria-label for the root pagination element.
+   * For page-level pagination (i.e, pagination that updates the entire page content and changes the URL)
+   * this property should be omitted.
+   * For intra-page navigation this property should describe the element being paginated, for example:
+   * `Pagination for sub-content`
+   */
+  forLabel: {
+    type: String,
+    default: '',
+  },
+  /** @ignore used for binding v-model, represents the current page */
+  modelValue: {
+    type: Number,
   },
 });
+
+const emits = defineEmits({
+  /**
+   * Event emitted by v-model on the select <input> element to indicate current page.
+   * Only used on small devices
+   * @param modelValue
+   */
+    'update:modelValue': null,
+  /**
+   * $emit event fired when page changes based on user interaction by clicking a link
+   * or selecting an option from the select on mobile.
+   * `event.preventDefault()` can be used to override the default link navigation behavior.
+   */
+  navigate: null,  
+});
+
+const style = useCssModule();
+const currentIdx = ref(0);
+const linkRefs = ref([]);
+const uniqueId = props.id ? props.id : uid();
+const setCurrentIdx = (page) => {
+  currentIdx.value = props.pages.map((x) => x.page).indexOf(page);
+};
+const innerValue = computed({
+  get: () => props.modelValue,
+  set: (val) => {
+    setCurrentIdx(val);
+    emits('update:modelValue', val);
+  },
+});
+
+const currentUrl = computed(() => props.pages[currentIdx.value].url);
+
+const navigate = (pageNum, e) => {
+// Dont do anything if clicking the current active page
+  const paginationLinkIsVisible = e.target.offsetWidth > 0 && e.target.offsetHeight > 0;
+  if (pageNum === innerValue.value && paginationLinkIsVisible) {
+    e.preventDefault();
+    return;
+  }
+  innerValue.value = pageNum;
+  emits('navigate', pageNum, currentUrl.value, e);
+  nextTick(() => {
+  // Done in a nextTick() to ensure rendering complete
+    try {
+    // Emulate native link click page reloading behaviour by blurring the
+    // paginator and returning focus to the document
+      const target = e.currentTarget || e.target;
+      target.blur();
+    } catch (err) {
+    // eslint-disable-next-line no-console
+      console.error(err);
+    }
+  });
+};
+
+const select = (e) => {
+  const linkToClick = linkRefs.value.find((link) => link?.innerHTML === e.target.value);
+  linkToClick.click();
+};
+
+const ariaLabel = computed(() => props.forLabel || 'Pagination');
+const prevPageData = computed(() => props.pages[currentIdx.value - 1]);
+const nextPageData = computed(() => props.pages[currentIdx.value + 1]);
+
+const paginationData = computed(() => {
+  const total = props.pages.length;
+  const current = innerValue.value;
+  const delta = 1;
+  let range = [];
+  let over5 = true;
+  let over5remain = true;
+
+  if (total <= 7) {
+  // all pages
+    return props.pages;
+  }
+
+  if (current < 5) {
+    // if first 5 pages
+    over5 = false;
+    // [2-5]
+    range = props.pages.slice(1, 5);
+  } else if (total - current < 4) {
+    // if last 5 pages
+    over5remain = false;
+    range = props.pages.slice(-5, -1);
+  } else {
+    // else in between
+    for (
+      let i = Math.max(2, current - delta);
+      i <= Math.min(total - 1, current + delta);
+      i += 1
+    ) {
+      range.push(props.pages[i - 1]);
+    }
+  }
+
+  if ((current - delta > 2) && over5) {
+    range.unshift('&hellip;');
+  }
+  if ((current + delta < total - 1) && over5remain) {
+    range.push('&hellip;');
+  }
+
+  range.unshift(props.pages[0]);
+  range.push(props.pages[total - 1]);
+
+  return range;
+});
+
+onMounted(() => setCurrentIdx(innerValue.value));
+watch(() => props.pages, () => setCurrentIdx(innerValue.value));
 
 </script>
 

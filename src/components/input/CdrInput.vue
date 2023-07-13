@@ -1,6 +1,6 @@
-<script>
+<script setup lang="ts">
 import {
-  defineComponent, useCssModule, computed, ref,
+  useCssModule, computed, ref, useSlots, useAttrs
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
@@ -11,189 +11,172 @@ import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
 
 /** Allows for data entry, editing, and search */
-export default defineComponent({
+defineOptions({
   name: 'CdrInput',
-  components: { CdrLabelStandalone, CdrFormError },
   inheritAttrs: false,
   customOptions: {},
-  props: {
-    /**
-     * Custom ID that is mapped to the label ‘for’ attribute. If this value is not set, it will be randomly generated.
-    */
-    id: {
-      type: String,
-    },
-    /**
-     *  'type' attribute for the input as defined by w3c.
-     *  Only supporting text|email|number|password|search|url|date.
-     *  The increment/decrement webkit psuedo element is hidden for number.
-     *  @demoSelectMultiple false
-     *  @values text, email, number, password, search, url, tel, date
-    */
-    type: {
-      type: [String],
-      default: 'text',
-      validator: (value) => propValidator(
-        value,
-        ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date'],
-      ),
-    },
-    /**
-     * Sets the text value for the input label. Required for a11y compliance. Use ‘hideLabel’ if the label display is not desired. Required.
-    */
-    label: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Sets default attributes for an input that should launch a numeric keyboard but is not strictly a 'number' (credit card, security code, postal code, etc.). Should be used in conjunction with the default text type input. An `input` listener can be used to fully restrict input values to numerical characters only
-     */
-    numeric: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Removes the label element but sets the input `aria-label` to `label` text for a11y.
-    */
-    hideLabel: Boolean,
-    /**
-     * Number of rows for input. Converts component to text-area if rows greater than 1.
-    */
-    rows: Number,
-    /**
-     * Sets the background color the input is rendered on
-     * @values primary, secondary
-     */
-    background: backgroundProps,
-    /**
-     * Sets the input field size
-    * @demoSelectMultiple false
-    * @values medium, large
-   */
-    size: sizeProps,
+});
 
-    /**
-     * Sets the `role` attribute for the embedded error state messaging.
-     */
-    errorRole: {
-      type: String,
-      required: false,
-      default: 'status',
-    },
-    /** Sets the input to an error state, displays the `error` slot if one is present. */
-    error: {
-      type: [Boolean, String],
-      default: false,
-    },
-    /**
-     * Sets the disabled state for the input field and label styling. Also, restricts user input.
-     */
-    disabled: Boolean,
-    /**
-     * Sets aria-required on the input field and displays an asterisk next to the input label.
-     */
-    required: Boolean,
-    /**
-     * Displays '(optional)' text next to the input label.
-     */
-    optional: Boolean,
-    /** @ignore */
-    modelValue: {
-      type: [String, Number, Function],
-    },
-    /** Adds a custom class to the cdr-label-standalone wrapping div */
-    labelClass: String,
+const props = defineProps({
+  /**
+   * Custom ID that is mapped to the label ‘for’ attribute. If this value is not set, it will be randomly generated.
+   */
+  id: {
+    type: String,
   },
-  emits: {
-    /**
+  /**
+   *  'type' attribute for the input as defined by w3c.
+   *  Only supporting text|email|number|password|search|url|date.
+   *  The increment/decrement webkit psuedo element is hidden for number.
+   *  @demoSelectMultiple false
+   *  @values text, email, number, password, search, url, tel, date
+  */
+  type: {
+    type: [String],
+    default: 'text',
+    validator: (value) => propValidator(
+      value,
+      ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date'],
+    ),
+  },
+  /**
+   * Sets the text value for the input label. Required for a11y compliance. Use ‘hideLabel’ if the label display is not desired. Required.
+  */
+  label: {
+    type: String,
+    required: true,
+  },
+  /**
+   * Sets default attributes for an input that should launch a numeric keyboard but is not strictly a 'number' (credit card, security code, postal code, etc.). Should be used in conjunction with the default text type input. An `input` listener can be used to fully restrict input values to numerical characters only
+   */
+  numeric: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Removes the label element but sets the input `aria-label` to `label` text for a11y.
+  */
+  hideLabel: Boolean,
+  /**
+   * Number of rows for input. Converts component to text-area if rows greater than 1.
+  */
+  rows: {
+    type: Number,
+    default: 1,
+  },
+  /**
+   * Sets the background color the input is rendered on
+   * @values primary, secondary
+   */
+  background: backgroundProps,
+  /**
+   * Sets the input field size
+  * @demoSelectMultiple false
+  * @values medium, large
+  */
+  size: sizeProps,
+
+  /**
+   * Sets the `role` attribute for the embedded error state messaging.
+   */
+  errorRole: {
+    type: String,
+    required: false,
+    default: 'status',
+  },
+  /** Sets the input to an error state, displays the `error` slot if one is present. */
+  error: {
+    type: [Boolean, String],
+    default: false,
+  },
+  /**
+   * Sets the disabled state for the input field and label styling. Also, restricts user input.
+   */
+  disabled: Boolean,
+  /**
+   * Sets aria-required on the input field and displays an asterisk next to the input label.
+   */
+  required: Boolean,
+  /**
+   * Displays '(optional)' text next to the input label.
+   */
+  optional: Boolean,
+  /** @ignore */
+  modelValue: {
+    type: [String, Number, Function],
+  },
+  /** Adds a custom class to the cdr-label-standalone wrapping div */
+  labelClass: String,
+});
+
+const emits = defineEmits({
+      /**
      * Event emitted by v-model on the <input> element
      * @param modelValue
      */
-    'update:modelValue': null,
+     'update:modelValue': null,
+});
+
+const slots = useSlots();
+const attrs = useAttrs();
+const style = useCssModule();
+
+const baseClass = 'cdr-input';
+const isFocused = ref(false);
+const hasHelperTop = slots['helper-text-top'];
+const hasHelperBottom = slots['helper-text-bottom'];
+const hasPreIcon = slots['pre-icon'];
+const hasPostIcon = slots['post-icon'];
+const hasPostIcons = slots['post-icon'] ? slots['post-icon']().length > 1 : false;
+const hasInfo = slots.info;
+const hasInfoAction = slots['info-action'];
+
+const uniqueId = props.id ? props.id : uid();
+const multilineClass = computed(() => props.rows > 1 ? 'cdr-input--multiline' : '');
+const preIconClass = computed(() => hasPreIcon ? 'cdr-input--preicon' : '');
+const postIconClass = computed(() => hasPostIcon ? 'cdr-input--posticon' : '');
+const postIconsClass = computed(() => hasPostIcons ? 'cdr-input--posticons' : '');
+const errorClass = computed(() => props.error ? 'cdr-input--error' : '');
+const backgroundClass = computed(() => `cdr-input--${props.background}`);
+const sizeClass = computed(() => props.size ? `${baseClass}--${props.size}` : '');
+const focusedClass = computed(() => isFocused.value ? 'cdr-input--focus': '');
+
+const describedby = computed(() => {
+  const helperText = [
+    slots['helper-text-top'] ? `${uniqueId}-helper-text-top` : '',
+    slots['helper-text-bottom'] ? `${uniqueId}-helper-text-bottom` : '',
+    attrs['aria-describedby'],
+  ].filter((x) => x).join(' ');
+
+  if (props.error) {
+    return `${uniqueId}-error`;
+  }
+
+  return helperText;
+});
+
+const inputAttrs = computed(() => {
+  const isNum = props.numeric || props.type === 'number';
+  return {
+    id: uniqueId,
+    autocorrect: 'off',
+    spellcheck: 'false',
+    autocapitalize: 'off',
+    pattern: (isNum && '[0-9]*') || null,
+    inputmode: (isNum && 'numeric') || null,
+    novalidate: isNum || null,
+    ...attrs,
+  };
+});
+const inputModel = computed({
+  get() {
+    return props.modelValue;
   },
-
-  setup(props, ctx) {
-    const baseClass = 'cdr-input';
-    const isFocused = ref(false);
-    const hasHelperTop = ctx.slots['helper-text-top'];
-    const hasHelperBottom = ctx.slots['helper-text-bottom'];
-    const hasPreIcon = ctx.slots['pre-icon'];
-    const hasPostIcon = ctx.slots['post-icon'];
-    const hasPostIcons = hasPostIcon && ctx.slots['post-icon']().length > 1;
-    const hasInfo = ctx.slots.info;
-    const hasInfoAction = ctx.slots['info-action'];
-
-    const uniqueId = props.id ? props.id : uid();
-    const multilineClass = computed(() => props.rows > 1 && 'cdr-input--multiline');
-    const preIconClass = computed(() => hasPreIcon && 'cdr-input--preicon');
-    const postIconClass = computed(() => hasPostIcon && 'cdr-input--posticon');
-    const postIconsClass = computed(() => hasPostIcons && 'cdr-input--posticons');
-    const errorClass = computed(() => props.error && 'cdr-input--error');
-    const backgroundClass = computed(() => `cdr-input--${props.background}`);
-    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-    const focusedClass = computed(() => isFocused.value && 'cdr-input--focus');
-
-    const describedby = computed(() => {
-      const helperText = [
-        ctx.slots['helper-text-top'] ? `${uniqueId}-helper-text-top` : '',
-        ctx.slots['helper-text-bottom'] ? `${uniqueId}-helper-text-bottom` : '',
-        ctx.attrs['aria-describedby'],
-      ].filter((x) => x).join(' ');
-
-      if (props.error) {
-        return `${uniqueId}-error`;
-      }
-
-      return helperText;
-    });
-
-    const inputAttrs = computed(() => {
-      const isNum = props.numeric || props.type === 'number';
-      return {
-        id: uniqueId,
-        autocorrect: 'off',
-        spellcheck: 'false',
-        autocapitalize: 'off',
-        pattern: (isNum && '[0-9]*') || null,
-        inputmode: (isNum && 'numeric') || null,
-        novalidate: isNum || null,
-        ...ctx.attrs,
-      };
-    });
-    const inputModel = computed({
-      get() {
-        return props.modelValue;
-      },
-      set(newValue) {
-        ctx.emit('update:modelValue', newValue);
-      },
-    });
-    return {
-      style: useCssModule(),
-      baseClass,
-      isFocused,
-      hasHelperTop,
-      hasHelperBottom,
-      hasPreIcon,
-      hasPostIcon,
-      hasInfo,
-      hasInfoAction,
-      uniqueId,
-      multilineClass,
-      preIconClass,
-      postIconClass,
-      postIconsClass,
-      errorClass,
-      backgroundClass,
-      sizeClass,
-      focusedClass,
-      describedby,
-      inputAttrs,
-      inputModel,
-      mapClasses,
-    };
+  set(newValue) {
+    emits('update:modelValue', newValue);
   },
 });
+
 </script>
 
 <template>
@@ -237,11 +220,11 @@ export default defineComponent({
         )"
         :id="uniqueId"
         :disabled="disabled"
-        :aria-required="required || null"
-        :aria-invalid="!!error || null"
-        :aria-errormessage="(!!error && `${uniqueId}-error`) || null"
+        :aria-required="required || undefined"
+        :aria-invalid="!!error || undefined"
+        :aria-errormessage="(!!error && `${uniqueId}-error`) || undefined"
         v-bind="inputAttrs"
-        :aria-describedby="describedby || null"
+        :aria-describedby="describedby || undefined"
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"
@@ -260,11 +243,11 @@ export default defineComponent({
         )"
         :id="uniqueId"
         :disabled="disabled"
-        :aria-required="required || null"
-        :aria-invalid="!!error || null"
-        :aria-errormessage="(!!error && `${uniqueId}-error`) || null"
+        :aria-required="required || undefined"
+        :aria-invalid="!!error || undefined"
+        :aria-errormessage="(!!error && `${uniqueId}-error`) || undefined"
         v-bind="inputAttrs"
-        :aria-describedby="describedby || null"
+        :aria-describedby="describedby || undefined"
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"

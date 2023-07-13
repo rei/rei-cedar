@@ -1,22 +1,20 @@
-<script>
-import { useCssModule, defineComponent } from 'vue';
+<script setup lang="ts">
+import { useCssModule } from 'vue';
 
 /** Text container used for any text element such as paragraphs, headings, and lists */
-export default defineComponent({
+defineOptions({
   name: 'CdrText',
-  props: {
+});
+
+defineProps({
     /** Sets the HTML tag (p, span, h1, h2, etc) */
     tag: {
       type: String,
       default: 'p',
     },
-  },
-  setup() {
-    return {
-      style: useCssModule(),
-    };
-  },
 });
+
+const style = useCssModule();
 </script>
 
 <template>

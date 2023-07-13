@@ -1,8 +1,8 @@
-<script>
-import { debounce } from 'lodash-es';
+<script setup lang="ts">
+import { debounce } from '../../utils/debounce'
 import tabbable from 'tabbable';
 import {
-  useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, defineComponent,
+  useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, defineComponent, useAttrs,
 } from 'vue';
 import {
   CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
@@ -13,94 +13,102 @@ import IconXLg from '../icon/comps/x-lg.vue';
 import mapClasses from '../../utils/mapClasses';
 
 /** Disruptive, action-blocking overlays used to display important information */
-export default defineComponent({
-  name: 'CdrModal',
-  components: { CdrButton, IconXLg },
-  props: {
-    /**
-     * Toggles the state of the modal
-     * @demoIgnore true
-     */
+defineOptions({
+  name: 'CdrModal'
+});
+const props = defineProps({
+  /**
+   * Toggles the state of the modal
+   * @demoIgnore true
+   */
     opened: {
-      type: Boolean,
-      required: true,
-    },
-    /**
-     * Sets `aria-label` and modal title text. Can also use title slot to set title.
-     */
-    label: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Toggles the modal title text, which comes from `label` prop or `title` slot.
-     */
-    showTitle: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    /**
-     * Text for aria-describedby attribute. Applied to modal content element
-     */
-    ariaDescribedby: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    /**
-     * Sets the `role` attribute on the modal content element
-     * @values dialog, alertDialog
-     */
-    role: {
-      type: String,
-      required: false,
-      default: 'dialog',
-    },
-    /**
-     * Sets unique `id` for modal
-     */
-    id: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    /** Adds custom class to the `cdr-modal__overlay` div */
-    overlayClass: String,
-    /** Adds custom class to the `cdr-modal__outerWrap` div */
-    wrapperClass: String,
-    /** Adds custom class to the `cdr-modal__innerWrap` div */
-    contentClass: String,
-    /** Sets duration for modal's close animation */
-    animationDuration: {
-      type: Number,
-      default: 300,
-    },
+    type: Boolean,
+    required: true,
   },
-  emits: {
-    /** Fires when modal is closed */
-    closed: null,
+  /**
+   * Sets `aria-label` and modal title text. Can also use title slot to set title.
+   */
+  label: {
+    type: String,
+    required: true,
   },
-  setup(props, ctx) {
-    const baseClass = 'cdr-modal';
+  /**
+   * Toggles the modal title text, which comes from `label` prop or `title` slot.
+   */
+  showTitle: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  /**
+   * Text for aria-describedby attribute. Applied to modal content element
+   */
+  ariaDescribedby: {
+    type: String,
+    required: false,
+    default: null,
+  },
+  /**
+   * Sets the `role` attribute on the modal content element
+   * @values dialog, alertDialog
+   */
+  role: {
+    type: String,
+    required: false,
+    default: 'dialog',
+  },
+  /**
+   * Sets unique `id` for modal
+   */
+  id: {
+    type: String,
+    required: false,
+    default: null,
+  },
+  /** Adds custom class to the `cdr-modal__overlay` div */
+  overlayClass: String,
+  /** Adds custom class to the `cdr-modal__outerWrap` div */
+  wrapperClass: String,
+  /** Adds custom class to the `cdr-modal__innerWrap` div */
+  contentClass: String,
+  /** Sets duration for modal's close animation */
+  animationDuration: {
+    type: Number,
+    default: 300,
+  },
+});
+
+const emits = defineEmits({
+  /** Fires when modal is closed */
+  closed: null,  
+});
+
+const attrs = useAttrs();
+const style = useCssModule();
+
+const baseClass = 'cdr-modal';
     let unsubscribe;
     let lastActive;
     const modalClosed = ref(!props.opened);
     const isOpening = ref(false);
 
-    const offset = ref(null);
-    const headerHeight = ref(0);
-    const totalHeight = ref(0);
-    const scrollHeight = ref(0);
-    const offsetHeight = ref(0);
-    const offsetWidth = ref(0);
-    const clientWidth = ref(0);
+    interface offsetValues {
+      x: number,
+      y: number,
+    } 
+    const offset = ref<offsetValues | undefined>(undefined);
+    const headerHeight = ref<number | undefined>(0);
+    const totalHeight = ref<number | undefined>(0);
+    const scrollHeight = ref<number | undefined>(0);
+    const offsetHeight = ref<number | undefined>(0);
+    const offsetWidth = ref<number | undefined>(0);
+    const clientWidth = ref<number | undefined>(0);
     const fullscreen = ref(false);
 
-    const modalEl = ref(null);
-    const wrapperEl = ref(null);
-    const contentEl = ref(null);
-    const headerEl = ref(null);
+    const modalEl = ref<HTMLInputElement | null>(null);
+    const wrapperEl = ref<HTMLInputElement | null>(null);
+    const contentEl = ref<HTMLInputElement | null>(null);
+    const headerEl = ref<HTMLInputElement | null>(null);
 
     const measureContent = () => {
       nextTick(() => {
@@ -114,8 +122,8 @@ export default defineComponent({
       });
     };
 
-    const onClick = (e) => {
-      ctx.emit('closed', e);
+    const onClick = (e?: Event) => {
+      emits('closed', e);
     };
 
     const handleKeyDown = ({ key }) => {
@@ -127,9 +135,9 @@ export default defineComponent({
         default: break;
       }
     };
-    const handleFocus = (e) => {
+    const handleFocus = (e: Event) => {
       const { documentElement } = document;
-      if (modalEl.value.contains(e.target) || !documentElement) return;
+      if (modalEl.value?.contains(e.target) || !documentElement) return;
 
       const tabbables = tabbable(documentElement);
       const these = tabbable(modalEl.value);
@@ -229,7 +237,7 @@ export default defineComponent({
           // handle scroll-behavior: smooth
           if (documentElement) documentElement.style.scrollBehavior = 'auto';
           // restore previous scroll position
-          window.scrollTo(offset.value.x, offset.value.y);
+          window.scrollTo(offset.value.x, offset.value?.y);
           if (documentElement) documentElement.style.scrollBehavior = '';
 
           if (lastActive) lastActive.focus();
@@ -239,7 +247,7 @@ export default defineComponent({
     };
 
     const dialogAttrs = computed(() => ({
-      ...ctx.attrs,
+      ...attrs,
       'aria-describedby': props.ariaDescribedby,
       'aria-modal': 'true',
       id: props.id,
@@ -285,24 +293,7 @@ export default defineComponent({
     onUnmounted(() => {
       window.removeEventListener('resize', handleResize);
     });
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      modalClosed,
-      modalEl,
-      wrapperEl,
-      contentEl,
-      headerEl,
-      scrollMaxHeight,
-      scrollPadding,
-      onClick,
-      dialogAttrs,
 
-    };
-  },
-
-});
 
 </script>
 
