@@ -178,7 +178,6 @@ onMounted(() => {
         :id="id"
         v-on="listeners"
         :aria-expanded="!unwrap ? `${opened}` : null"
-        :aria-pressed="!unwrap ? `${opened}` : null"
         :aria-controls="!unwrap ? `${id}-collapsible` : null"
       >
         <span
