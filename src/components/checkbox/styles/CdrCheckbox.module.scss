@@ -48,6 +48,7 @@
       border-radius: $cdr-radius-soft;
     }
   }
+  
   &:hover {
     .cdr-label-wrapper__figure {
       @include cdr-form-figure-checkbox-hover-mixin;
