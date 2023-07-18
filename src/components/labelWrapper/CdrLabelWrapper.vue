@@ -44,8 +44,8 @@ export default defineComponent({
       ).concat(` ${labelClass || ''}`)"
     >
       <slot name="input" />
-      <slot name="figure" />
-      <!-- <span :class="style['cdr-label-wrapper__figure']" /> -->
+      <span :class="style['cdr-label-wrapper__figure']" />
+      <slot name="svgs" />
       <span :class="[style['cdr-label-wrapper__content'], contentClass]">
         <slot />
       </span>
