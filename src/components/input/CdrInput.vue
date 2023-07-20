@@ -2,6 +2,7 @@
 import {
   useCssModule, computed, ref, useSlots, useAttrs
 } from 'vue';
+import type { InputHTMLAttributes } from 'vue'
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
@@ -34,7 +35,7 @@ const props = defineProps({
   type: {
     type: [String],
     default: 'text',
-    validator: (value) => propValidator(
+    validator: (value: string) => propValidator(
       value,
       ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date'],
     ),
@@ -103,7 +104,7 @@ const props = defineProps({
   optional: Boolean,
   /** @ignore */
   modelValue: {
-    type: [String, Number, Function],
+    type: [String, Number],
   },
   /** Adds a custom class to the cdr-label-standalone wrapping div */
   labelClass: String,
@@ -155,16 +156,18 @@ const describedby = computed(() => {
   return helperText;
 });
 
-const inputAttrs = computed(() => {
+// Defining an interface for the inputAttrs object because Vue doesn't correctly infer inputmode type
+interface inputAttrsObject extends InputHTMLAttributes {
+  id: string,
+}
+
+const inputAttrs = computed<inputAttrsObject>(() => {
   const isNum = props.numeric || props.type === 'number';
   return {
     id: uniqueId,
-    autocorrect: 'off',
-    spellcheck: 'false',
-    autocapitalize: 'off',
-    pattern: (isNum && '[0-9]*') || null,
-    inputmode: (isNum && 'numeric') || null,
-    novalidate: isNum || null,
+    autocomplete: 'off',
+    pattern: isNum ? '[0-9]*' : undefined,
+    inputmode: isNum ? 'numeric' : undefined,
     ...attrs,
   };
 });
@@ -223,8 +226,8 @@ const inputModel = computed({
         :aria-required="required || undefined"
         :aria-invalid="!!error || undefined"
         :aria-errormessage="(!!error && `${uniqueId}-error`) || undefined"
-        v-bind="inputAttrs"
         :aria-describedby="describedby || undefined"
+        v-bind="$attrs"
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"
@@ -241,7 +244,6 @@ const inputModel = computed({
                            backgroundClass,
                            sizeClass,
         )"
-        :id="uniqueId"
         :disabled="disabled"
         :aria-required="required || undefined"
         :aria-invalid="!!error || undefined"
