@@ -25,7 +25,10 @@ const props = defineProps({
   modifier: {
     type: String,
     default: '',
-    validator: (value: string) => propValidator(value, ['', 'ordered', 'unordered', 'compact', 'inline']),
+    validator: (value: string) => propValidator(
+      value,
+      ['', 'ordered', 'unordered', 'compact', 'inline']
+    ),
   },
 });
 
