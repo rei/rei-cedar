@@ -21,7 +21,7 @@ const props = defineProps({
     type: String,
     required: false,
     default: 'top',
-    validator: (value) => propValidator(
+    validator: (value: string) => propValidator(
       value,
       ['top', 'bottom', 'left', 'right'],
     ),

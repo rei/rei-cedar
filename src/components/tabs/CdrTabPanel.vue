@@ -1,43 +1,38 @@
-<script>
+<script setup lang="ts">
 import {
-  computed, defineComponent, inject, useCssModule, watch,
+  computed, ref, inject, useCssModule, watch,
 } from 'vue';
-import { kebabCase } from 'lodash-es';
+import kebabCase from '../../utils/kebabCase';
+import { selectedTabKey } from './symbols';
 
-export default defineComponent({
+defineOptions({
   name: 'CdrTabPanel',
-  props: {
-    /** Sets reference identifier for tab content. This property is required and is necessary for accessibility. Must be unique for each tabPanel, and cannot be the same as the `aria-labelledby` property. */
-    id: String,
-    /** Sets tab display name. Required and must be unique for each tab. If `id` is not provided, this value will be used as the reference identifier. */
-    name: String,
-    /** Sets reference identifier for tab header. This property is required and is necessary for accessibility. Must be unique for each tabPanel, and cannot be the same as the `id` property. */
-    ariaLabelledby: String,
-  },
-  emits: {
-    /**
-     * Emits when active tab is changed
-     * @params state, panelId
-     */
+});
+
+const props = defineProps({
+  /** Sets reference identifier for tab content. This property is required and is necessary for accessibility. Must be unique for each tabPanel, and cannot be the same as the `aria-labelledby` property. */
+  id: String,
+  /** Sets tab display name. Required and must be unique for each tab. If `id` is not provided, this value will be used as the reference identifier. */
+  name: String,
+  /** Sets reference identifier for tab header. This property is required and is necessary for accessibility. Must be unique for each tabPanel, and cannot be the same as the `id` property. */
+  ariaLabelledby: String,
+});
+
+const emits = defineEmits({
+  /**
+   * Emits when active tab is changed
+   * @params state, panelId
+   */
     'tab-change': null,
-  },
-  setup(props, ctx) {
-    const selectedTabName = inject('selectedTabName');
-    const isActive = computed(() => props.name === selectedTabName?.value);
-    const panelId = computed(() => `${kebabCase(props.name)}-panel`);
-    const style = useCssModule();
+});
 
-    watch(isActive, (state) => {
-      ctx.emit('tab-change', state, panelId.value);
-    });
+const style = useCssModule();
+const selectedTabName = inject(selectedTabKey, ref(null));
+const isActive = computed(() => props.name === selectedTabName?.value);
+const panelId = computed(() => props.name ? `${kebabCase(props.name)}-panel` : undefined);
 
-    return {
-      selectedTabName,
-      isActive,
-      panelId,
-      style,
-    };
-  },
+watch(isActive, (state) => {
+  emits('tab-change', state, panelId.value);
 });
 </script>
 

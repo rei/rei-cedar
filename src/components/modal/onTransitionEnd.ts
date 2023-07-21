@@ -6,21 +6,22 @@ const transitions = {
   OTransition: 'oTransitionEnd otransitionend',
 };
 
-let transitionEvent;
+let transitionEvent: string;
 if (typeof document !== 'undefined') {
   const { style } = document.createElement('div');
   const keys = Object.keys(transitions);
   for (let i = 0, key = keys[i]; i < keys.length; i += 1, key = keys[i]) {
     if (key in style) {
-      transitionEvent = transitions[key];
+      transitionEvent = transitions[key as keyof typeof transitions];
       break;
     }
   }
 }
 
-export default (element, callback, timeout) => {
+export default (element: HTMLDivElement | null, callback: () => void, timeout: number) => {
+  if (!element) return;
   element.addEventListener(transitionEvent, callback);
-  let timeoutId;
+  let timeoutId: ReturnType<typeof setTimeout>;
   if (timeout) {
     timeoutId = setTimeout(
       () => {

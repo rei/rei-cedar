@@ -4,7 +4,7 @@
  * @param {Array} validArr -- Array of values that are considered "valid"
  * @param {Boolean} responsive -- Enables validation of validArr values with '@sm', '@md', '@lg' added to them
  */
-function validateProp(propValue, validArr, responsive = true) {
+function validateProp(propValue: string, validArr: string[], responsive = true) {
   const strArr = propValue.split(' ');
   return strArr.every((mod) => {
     const modValid = validArr.some((validStr) => {

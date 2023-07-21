@@ -33,6 +33,8 @@ const props = defineProps({
       type: [Boolean, String],
       default: false,
     },
+    /** Disables the checkbox */
+    disabled: Boolean,
     /**
      * The value when checked.
      */
@@ -69,7 +71,7 @@ const props = defineProps({
     modifier: {
       type: String,
       default: '',
-      validator: (value) => propValidator(value, ['', 'hide-figure']),
+      validator: (value: string) => propValidator(value, ['', 'hide-figure']),
     },
     /** @ignore */
     modelValue: {
@@ -122,7 +124,7 @@ const checkboxModel = computed({
     :label-class="labelClass"
     :content-class="contentClass"
     :background="background"
-    :disabled="$attrs.disabled"
+    :disabled="disabled"
   >
     <template #input>
       <input

@@ -1,19 +1,29 @@
 export default function calculatePlacement(
-  triggerRect: DOMRect,
-  popupRect: DOMRect,
+  triggerRect: DOMRect | undefined,
+  popupRect: DOMRect | undefined,
   screenWidth: number,
   screenHeight: number,
   originalPosition: string,
 ) {
+  let pos;
+  let corner;
+
+  // Check if vue fails to hydrate template refs
+  if (!triggerRect || !popupRect) {
+    return {
+      pos: 'center',
+      corner: undefined
+    }
+  }
+
   const offset = 14; // 10px for arrow 4px for spacing
   const borderSize = 2; // need to include border for corner calculations
   const triggerCenterY = triggerRect.top + (triggerRect.height / 2);
   const triggerCenterX = triggerRect.left + (triggerRect.width / 2);
-
-  let pos;
-  let corner;
-
-  const dirs = {
+  interface Dirs {
+    [key: string]: number
+  }
+  const dirs: Dirs = {
     top: triggerRect.top - popupRect.height - offset,
     bottom: screenHeight - triggerRect.bottom - popupRect.height - offset,
     left: triggerRect.left - popupRect.width - offset,
@@ -34,7 +44,7 @@ export default function calculatePlacement(
     right: 'left',
   };
 
-  const inverse = invert[originalPosition];
+  const inverse = invert[originalPosition as keyof typeof invert];
   const validDirs = Object.keys(dirs).filter((dir) => dirs[dir] > 0);
   const sortedDirs = Object.keys(dirs).sort((a, b) => {
     if (dirs[a] > dirs[b]) {

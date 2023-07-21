@@ -19,7 +19,7 @@ const props = defineProps({
   */
   type: {
     type: String,
-    validator: (value) => propValidator(
+    validator: (value: string) => propValidator(
       value,
       ['info', 'warning', 'success', 'error', 'default'],
     ),

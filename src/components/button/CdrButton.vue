@@ -19,7 +19,7 @@ const props = defineProps({
      tag: {
       type: String,
       default: 'button',
-      validator: (value) => propValidator(value, ['button', 'a']),
+      validator: (value: string) => propValidator(value, ['button', 'a']),
     },
     /**
      * Sets the button type
@@ -29,7 +29,7 @@ const props = defineProps({
     type: {
       type: String,
       default: 'button',
-      validator: (value) => propValidator(value, ['button', 'submit', 'reset']),
+      validator: (value: string) => propValidator(value, ['button', 'submit', 'reset']),
     },
     /**
      * Modifies the style variant for this component
@@ -39,7 +39,9 @@ const props = defineProps({
     modifier: {
       type: String,
       default: 'primary',
-      validator: (value) => propValidator(value, ['primary', 'secondary', 'sale', 'dark', 'link']),
+      validator: (value: string) => propValidator(
+        value, ['primary', 'secondary', 'sale', 'dark', 'link']
+        ),
     },
     /**
      * Sets the button size; values can target responsive breakpoints. Example: `large@sm`.
@@ -49,7 +51,7 @@ const props = defineProps({
     size: {
       type: String,
       default: 'medium',
-      validator: (value) => propValidator(
+      validator: (value: string) => propValidator(
         value,
         ['small', 'medium', 'large'],
       ),
@@ -60,7 +62,7 @@ const props = defineProps({
     fullWidth: {
       type: [String, Boolean],
       default: false,
-      validator: (value) => {
+      validator: (value: string) => {
         if (typeof value === 'string') {
           return propValidator(
             value,

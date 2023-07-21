@@ -17,7 +17,7 @@ const props = defineProps({
    */
    gutter: {
     type: String,
-    validator: (value) => propValidator(
+    validator: (value: string) => propValidator(
       value,
       ['none', 'small', 'medium', 'large'],
     ),

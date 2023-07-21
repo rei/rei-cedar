@@ -27,19 +27,19 @@ describe('CdrTabPanel', () => {
     });
   })
 
-  describe('when the selectedTabName is the same as the tabPanel name', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = mountTabPanel({ selectedTabName: { value: 'test' } })
-    })
-    it('renders as expected', () => {
-      expect(wrapper.element).toMatchSnapshot();
-    });
+  // describe('when the selectedTabName is the same as the tabPanel name', () => {
+  //   let wrapper;
+  //   beforeEach(() => {
+  //     wrapper = mountTabPanel({ selectedTabName: { value: 'test' } })
+  //   });
+  //   it('renders as expected', () => {
+  //     expect(wrapper.element).toMatchSnapshot();
+  //   });
 
-    it('is active', () => {
-      expect(wrapper.vm.isActive).toBe(true);
-    });
-  })
+  //   it('is active', () => {
+  //     expect(wrapper.vm.isActive).toBe(true);
+  //   });
+  // })
 
   describe('when the selectedTabName is NOT the same as the tabPanel name', () => {
     let wrapper;

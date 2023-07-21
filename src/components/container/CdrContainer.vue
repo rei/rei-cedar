@@ -22,7 +22,7 @@ const props = defineProps({
   modifier: {
     type: String,
     default: 'static',
-    validator: (value) => propValidator(
+    validator: (value: string) => propValidator(
       value,
       ['static', 'fluid'],
       false,

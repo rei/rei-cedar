@@ -21,7 +21,7 @@ const props = defineProps({
   size: {
     type: String,
     default: 'medium',
-    validator: (value) => propValidator(
+    validator: (value: string) => propValidator(
       value,
       ['small', 'medium', 'large'],
     ),

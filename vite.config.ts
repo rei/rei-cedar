@@ -9,10 +9,10 @@ const version = process.env.npm_package_version;
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/rei-cedar-next/',
+  base: '/rei-cedar/',
   build: {
     lib: {
-      entry: './src/lib.js',
+      entry: './src/lib.ts',
       formats: ['es'],
       fileName: '[name]',
     },

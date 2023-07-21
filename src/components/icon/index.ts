@@ -1,4 +1,4 @@
-// file created by generate.js
+// file created by generate.ts
 /* eslint-disable */
 export { default as IconAccountProfileFill } from './comps/account-profile-fill.vue';
 export { default as IconAccountProfile } from './comps/account-profile.vue';

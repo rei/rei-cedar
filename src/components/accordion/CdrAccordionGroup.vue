@@ -19,7 +19,7 @@ const props = defineProps({
     unwrap: {
       type: [String, Boolean],
       default: false,
-      validator: (value) => {
+      validator: (value: string) => {
         if (typeof value === 'string') {
           return propValidator(
             value,
@@ -90,7 +90,7 @@ onMounted(() => {
   if (typeof props.unwrap === 'string') {
     unwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
     window.addEventListener('resize', debounce(() => {
-      unwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
+      unwrapped.value = (props.unwrap as string).indexOf(getCurrentBreakpoint()) !== -1;
     }, 300));
   }
 });

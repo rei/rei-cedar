@@ -16,7 +16,7 @@ const props = defineProps({
     tag: {
     type: String,
     default: 'blockquote',
-    validator: (value) => propValidator(value, ['blockquote', 'aside', 'q', 'div']),
+    validator: (value: string) => propValidator(value, ['blockquote', 'aside', 'q', 'div']),
   },
   /**
    * Modifies the style variant for the quote
@@ -26,7 +26,7 @@ const props = defineProps({
   modifier: {
     type: String,
     default: '',
-    validator: (value) => propValidator(value, ['', 'pull']),
+    validator: (value: string) => propValidator(value, ['', 'pull']),
   },
   /** Sets the quote body text. */
   summary: String,

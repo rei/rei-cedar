@@ -81,7 +81,7 @@ const props = defineProps({
   modifier: {
     type: String,
     default: '',
-    validator: (value) => propValidator(value, ['', 'responsive']),
+    validator: (value: string) => propValidator(value, ['', 'responsive']),
   },
 });
 const style = useCssModule();

@@ -42,7 +42,7 @@ const props = defineProps({
   modifier: {
     type: String,
     default: '',
-    validator: (value) => propValidator(value, ['', 'hide-figure']),
+    validator: (value: string) => propValidator(value, ['', 'hide-figure']),
   },
   /**
    * Sets the radio size; values can target responsive breakpoints. Example `small@lg`

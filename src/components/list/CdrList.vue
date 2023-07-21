@@ -15,7 +15,7 @@ const props = defineProps({
     tag: {
     type: String,
     default: 'ul',
-    validator: (value) => propValidator(value, ['ul', 'ol']),
+    validator: (value: string) => propValidator(value, ['ul', 'ol']),
   },
   /**
    * Modifies the style variant for this component
@@ -25,7 +25,7 @@ const props = defineProps({
   modifier: {
     type: String,
     default: '',
-    validator: (value) => propValidator(value, ['', 'ordered', 'unordered', 'compact', 'inline']),
+    validator: (value: string) => propValidator(value, ['', 'ordered', 'unordered', 'compact', 'inline']),
   },
 });
 

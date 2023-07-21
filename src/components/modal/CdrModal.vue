@@ -2,7 +2,7 @@
 import { debounce } from '../../utils/debounce'
 import tabbable from 'tabbable';
 import {
-  useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, defineComponent, useAttrs,
+  useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, useAttrs,
 } from 'vue';
 import {
   CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
@@ -87,219 +87,220 @@ const attrs = useAttrs();
 const style = useCssModule();
 
 const baseClass = 'cdr-modal';
-    let unsubscribe;
-    let lastActive;
-    const modalClosed = ref(!props.opened);
-    const isOpening = ref(false);
+let unsubscribe: (() => void) | undefined;
+let lastActive: Element | null;
+const modalClosed = ref(!props.opened);
+const isOpening = ref(false);
 
-    interface offsetValues {
-      x: number,
-      y: number,
-    } 
-    const offset = ref<offsetValues | undefined>(undefined);
-    const headerHeight = ref<number | undefined>(0);
-    const totalHeight = ref<number | undefined>(0);
-    const scrollHeight = ref<number | undefined>(0);
-    const offsetHeight = ref<number | undefined>(0);
-    const offsetWidth = ref<number | undefined>(0);
-    const clientWidth = ref<number | undefined>(0);
-    const fullscreen = ref(false);
+interface offsetValues {
+  x: number | undefined,
+  y: number | undefined,
+} 
+const offset = ref<offsetValues>({ x: undefined, y: undefined});
+const headerHeight = ref(0);
+const totalHeight = ref(0);
+const scrollHeight = ref(0);
+const offsetHeight = ref(0);
+const offsetWidth = ref(0);
+const clientWidth = ref(0);
+const fullscreen = ref(false);
 
-    const modalEl = ref<HTMLInputElement | null>(null);
-    const wrapperEl = ref<HTMLInputElement | null>(null);
-    const contentEl = ref<HTMLInputElement | null>(null);
-    const headerEl = ref<HTMLInputElement | null>(null);
+const modalEl = ref<HTMLDivElement | Element | null>(null);
+const wrapperEl = ref<HTMLDivElement | null>(null);
+const contentEl = ref<HTMLDivElement | null>(null);
+const headerEl = ref<HTMLDivElement | null>(null);
 
-    const measureContent = () => {
-      nextTick(() => {
-        totalHeight.value = window.innerHeight;
-        fullscreen.value = window.innerWidth < CdrBreakpointSm;
-        headerHeight.value = headerEl.value?.offsetHeight;
-        scrollHeight.value = contentEl.value?.scrollHeight;
-        offsetHeight.value = contentEl.value?.offsetHeight;
-        offsetWidth.value = contentEl.value?.offsetWidth;
-        clientWidth.value = contentEl.value?.clientWidth;
-      });
-    };
+const measureContent = () => {
+  nextTick(() => {
+    totalHeight.value = window.innerHeight;
+    fullscreen.value = window.innerWidth < CdrBreakpointSm;
+    headerHeight.value = headerEl.value?.offsetHeight || 0;
+    scrollHeight.value = contentEl.value?.scrollHeight || 0;
+    offsetHeight.value = contentEl.value?.offsetHeight || 0;
+    offsetWidth.value = contentEl.value?.offsetWidth || 0;
+    clientWidth.value = contentEl.value?.clientWidth || 0;
+  });
+};
 
-    const onClick = (e?: Event) => {
-      emits('closed', e);
-    };
+const onClick = (e?: Event) => {
+  emits('closed', e);
+};
 
-    const handleKeyDown = ({ key }) => {
-      switch (key) {
-        case 'Escape':
-        case 'Esc':
-          onClick();
-          break;
-        default: break;
-      }
-    };
-    const handleFocus = (e: Event) => {
-      const { documentElement } = document;
-      if (modalEl.value?.contains(e.target) || !documentElement) return;
+const handleKeyDown = ({ key }: { key: string}) => {
+  switch (key) {
+    case 'Escape':
+    case 'Esc':
+      onClick();
+      break;
+    default: break;
+  }
+};
+const handleFocus = (e: Event) => {
+  const { documentElement } = document;
+  if (modalEl.value?.contains(e.target as HTMLElement) || !documentElement) return;
 
-      const tabbables = tabbable(documentElement);
-      const these = tabbable(modalEl.value);
-      const nextIx = tabbables.indexOf(e.target);
-      const firstModalIx = tabbables.indexOf(these[0]);
-      const nextRef = nextIx < firstModalIx ? these[these.length - 1] : these[0];
-      if (nextRef) nextRef.focus();
-    };
+  const tabbables = tabbable(documentElement);
+  const these = tabbable(modalEl.value as Element);
+  const nextIx = tabbables.indexOf(e.target as HTMLElement);
+  const firstModalIx = tabbables.indexOf(these[0]);
+  const nextRef = nextIx < firstModalIx ? these[these.length - 1] : these[0];
+  if (nextRef) nextRef.focus();
+};
 
-    const handleResize = debounce(() => {
+const handleResize = debounce(() => {
+  measureContent();
+}, 300);
+
+const addNoScroll = () => {
+  const { documentElement, body } = document;
+  offset.value = {
+    x: window.scrollX
+  || (documentElement || {}).scrollLeft
+  || (body || {}).scrollLeft
+  || 0,
+    y: window.scrollY
+  || (documentElement || {}).scrollTop
+  || (body || {}).scrollTop
+  || 0,
+  };
+
+  if (documentElement) {
+    documentElement.classList.add('cdr-modal__noscroll');
+    // keep current scroll position manually
+    documentElement.style.top = `-${offset.value.y}px`;
+    documentElement.style.left = `-${offset.value.x}px`;
+  }
+
+  if (body) {
+    body.classList.add('cdr-modal__noscroll');
+  }
+};
+
+const removeNoScroll = () => {
+  const { documentElement, body } = document;
+
+  if (body) {
+    body.classList.remove('cdr-modal__noscroll');
+  }
+
+  if (documentElement) {
+    documentElement.classList.remove('cdr-modal__noscroll');
+    documentElement.style.top = '';
+    documentElement.style.left = '';
+  }
+};
+
+const addHandlers = () => {
+  document.addEventListener('focusin', handleFocus, true);
+  document.addEventListener('keydown', handleKeyDown);
+};
+
+const handleOpened = () => {
+  const { activeElement } = document;
+  addNoScroll();
+  isOpening.value = true;
+  modalClosed.value = false;
+  lastActive = activeElement;
+
+  nextTick(() => {
+    if (modalEl.value) (modalEl.value as HTMLDivElement).focus(); // wrapped in if so testing error isn't thrown
+    measureContent();
+    addHandlers();
+
+    setTimeout(() => {
+      // for some reason Safari scrolls the wrapper down a bit?
+      // doesn't work without setTimeout for some unknown reason
+      if (wrapperEl.value) wrapperEl.value.scrollTop = 0;
+
+      // there is a race condition for measuring overflow when modal defaults to open,
+      // this seems to cover that
       measureContent();
-    }, 300);
-
-    const addNoScroll = () => {
-      const { documentElement, body } = document;
-      offset.value = {
-        x: window.scrollX
-      || (documentElement || {}).scrollLeft
-      || (body || {}).scrollLeft
-      || 0,
-        y: window.scrollY
-      || (documentElement || {}).scrollTop
-      || (body || {}).scrollTop
-      || 0,
-      };
-
-      if (documentElement) {
-        documentElement.classList.add('cdr-modal__noscroll');
-        // keep current scroll position manually
-        documentElement.style.top = `-${offset.value.y}px`;
-        documentElement.style.left = `-${offset.value.x}px`;
-      }
-
-      if (body) {
-        body.classList.add('cdr-modal__noscroll');
-      }
-    };
-
-    const removeNoScroll = () => {
-      const { documentElement, body } = document;
-
-      if (body) {
-        body.classList.remove('cdr-modal__noscroll');
-      }
-
-      if (documentElement) {
-        documentElement.classList.remove('cdr-modal__noscroll');
-        documentElement.style.top = '';
-        documentElement.style.left = '';
-      }
-    };
-
-    const addHandlers = () => {
-      document.addEventListener('focusin', handleFocus, true);
-      document.addEventListener('keydown', handleKeyDown);
-    };
-
-    const handleOpened = () => {
-      const { activeElement } = document;
-      addNoScroll();
-      isOpening.value = true;
-      modalClosed.value = false;
-      lastActive = activeElement;
-
-      nextTick(() => {
-        if (modalEl.value) modalEl.value.focus(); // wrapped in if so testing error isn't thrown
-        measureContent();
-        addHandlers();
-
-        setTimeout(() => {
-          // for some reason Safari scrolls the wrapper down a bit?
-          // doesn't work without setTimeout for some unknown reason
-          if (wrapperEl.value) wrapperEl.value.scrollTop = 0;
-
-          // there is a race condition for measuring overflow when modal defaults to open,
-          // this seems to cover that
-          measureContent();
-        });
-      });
-    };
-
-    const handleClosed = () => {
-      const { documentElement } = document;
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('focusin', handleFocus, true);
-      isOpening.value = false;
-
-      unsubscribe = onTransitionEnd(
-        wrapperEl.value,
-        () => {
-          if (isOpening.value) return;
-          unsubscribe();
-          removeNoScroll();
-          unsubscribe = null;
-          modalClosed.value = true;
-
-          // handle scroll-behavior: smooth
-          if (documentElement) documentElement.style.scrollBehavior = 'auto';
-          // restore previous scroll position
-          window.scrollTo(offset.value.x, offset.value?.y);
-          if (documentElement) documentElement.style.scrollBehavior = '';
-
-          if (lastActive) lastActive.focus();
-        },
-        props.animationDuration + 16,
-      );
-    };
-
-    const dialogAttrs = computed(() => ({
-      ...attrs,
-      'aria-describedby': props.ariaDescribedby,
-      'aria-modal': 'true',
-      id: props.id,
-    }));
-    const verticalSpace = computed(() => {
-      // contentWrap vertical padding
-      const fullscreenSpace = Number(CdrSpaceTwoX);
-      const windowedSpace = Number(CdrSpaceTwoX) + Number(CdrSpaceOneX);
-
-      return fullscreen.value
-        ? fullscreenSpace
-        : windowedSpace + fullscreenSpace;
-      // fullscreen, here, would account for outerWrap padding, which is the same CdrSpaceTwoX
     });
+  });
+};
+
+const handleClosed = () => {
+  const { documentElement } = document;
+  document.removeEventListener('keydown', handleKeyDown);
+  document.removeEventListener('focusin', handleFocus, true);
+  isOpening.value = false;
+
+  unsubscribe = onTransitionEnd(
+    wrapperEl.value,
+    () => {
+      if (isOpening.value) return;
+      if (unsubscribe) unsubscribe();
+      removeNoScroll();
+      // unsubscribe = null;
+      modalClosed.value = true;
+
+      // handle scroll-behavior: smooth
+      if (documentElement) documentElement.style.scrollBehavior = 'auto';
+      // restore previous scroll position
+      if (offset.value.x !== undefined && offset.value.y !== undefined) {
+        window.scrollTo(offset.value.x, offset.value.y);
+      }
+      if (documentElement) documentElement.style.scrollBehavior = '';
+
+      if (lastActive) (lastActive as HTMLElement).focus();
+    },
+    props.animationDuration + 16,
+  );
+};
+
+const dialogAttrs = computed(() => ({
+  ...attrs,
+  'aria-describedby': props.ariaDescribedby,
+  id: props.id,
+}));
+const verticalSpace = computed(() => {
+  // contentWrap vertical padding
+  const fullscreenSpace = Number(CdrSpaceTwoX);
+  const windowedSpace = Number(CdrSpaceTwoX) + Number(CdrSpaceOneX);
+
+  return fullscreen.value
+    ? fullscreenSpace
+    : windowedSpace + fullscreenSpace;
+  // fullscreen, here, would account for outerWrap padding, which is the same CdrSpaceTwoX
+});
     const scrollMaxHeight = computed(() => totalHeight.value
     - headerHeight.value
     - verticalSpace.value);
 
-    const scrollPadding = computed(() => {
-      const isScrolling = scrollHeight.value > offsetHeight.value;
-      const hasScrollbar = offsetWidth.value - clientWidth.value > 0;
-      if (isScrolling && hasScrollbar) {
-        return 4;
-      } if (isScrolling) {
-        return 12;
-      }
-      return 0;
-    });
+const scrollPadding = computed(() => {
+  const isScrolling = scrollHeight.value > offsetHeight.value;
+  const hasScrollbar = offsetWidth.value - clientWidth.value > 0;
+  if (isScrolling && hasScrollbar) {
+    return 4;
+  } if (isScrolling) {
+    return 12;
+  }
+  return 0;
+});
 
-    watch(() => props.opened, (newValue, oldValue) => {
-      if (!!newValue === !!oldValue) return;
-      // eslint-disable-next-line no-unused-expressions
-      newValue ? handleOpened() : handleClosed();
-    });
+watch(() => props.opened, (newValue, oldValue) => {
+  if (!!newValue === !!oldValue) return;
+  // eslint-disable-next-line no-unused-expressions
+  newValue ? handleOpened() : handleClosed();
+});
 
-    onMounted(() => {
-      if (props.opened) {
-        handleOpened();
-      }
-      window.addEventListener('resize', handleResize);
-    });
+onMounted(() => {
+  if (props.opened) {
+    handleOpened();
+  }
+  window.addEventListener('resize', handleResize);
+});
 
-    onUnmounted(() => {
-      window.removeEventListener('resize', handleResize);
-    });
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+});
 
 
 </script>
 
 <template>
   <div
-    :class="mapClasses(style, baseClass, !opened && 'cdr-modal--closed')"
+    :class="mapClasses(style, baseClass, !opened ? 'cdr-modal--closed' : '')"
     ref="wrapperEl"
   >
     <div

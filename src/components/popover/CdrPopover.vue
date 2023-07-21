@@ -24,7 +24,7 @@ const props = defineProps({
     type: String,
     required: false,
     default: 'top',
-    validator: (value) => propValidator(
+    validator: (value: string) => propValidator(
       value,
       ['top', 'bottom', 'left', 'right'],
     ),
@@ -75,56 +75,56 @@ const slots = useSlots();
 const style = useCssModule();
 
 const isOpen = ref(false);
-    let lastActive: HTMLElement | null;
+let lastActive: Element | null;
 
-    const triggerEl = ref(null);
-    const popupEl = ref(null);
+const triggerEl = ref<HTMLDivElement | null>(null);
+const popupEl = ref<InstanceType<typeof CdrPopup> | null>(null);
 
-    const hasTrigger = slots.trigger;
-    const hasTitle = slots.title || props.label;
+const hasTrigger = slots.trigger;
+const hasTitle = slots.title || props.label;
 
-    const openPopover = (e?: Event) => {
-      if (isOpen.value === true) {
-        return;
-      }
-      const { activeElement } = document;
+const openPopover = (e?: Event) => {
+  if (isOpen.value === true) {
+    return;
+  }
+  const { activeElement } = document;
 
-      lastActive = activeElement;
-      isOpen.value = true;
-      emits('opened', e);
-      setTimeout(() => {
-        const tabbables = tabbable(popupEl.value.$el);
-        if (tabbables[0]) tabbables[0].focus();
-      }, 50);
-    };
+  lastActive = activeElement;
+  isOpen.value = true;
+  emits('opened', e);
+  setTimeout(() => {
+    const tabbables = tabbable(popupEl.value?.$el);
+    if (tabbables[0]) tabbables[0].focus();
+  }, 50);
+};
 
-    const closePopover = (e?: Event) => {
-      isOpen.value = false;
-      emits('closed', e);
-      if (lastActive) lastActive.focus();
-    };
+const closePopover = (e?: Event) => {
+  isOpen.value = false;
+  emits('closed', e);
+  if (lastActive) (lastActive as HTMLElement).focus();
+};
 
-    const addHandlers = () => {
-      const triggerElement = triggerEl.value.children[0];
-      if (triggerElement) {
-        triggerElement.addEventListener('click', openPopover);
-      }
-    };
+const addHandlers = () => {
+  const triggerElement = triggerEl.value?.children[0];
+  if (triggerElement) {
+    triggerElement.addEventListener('click', openPopover);
+  }
+};
 
-    watch(() => props.open, () => {
-      // eslint-disable-next-line no-unused-expressions
-      props.open ? openPopover() : closePopover();
-    });
+watch(() => props.open, () => {
+  // eslint-disable-next-line no-unused-expressions
+  props.open ? openPopover() : closePopover();
+});
 
-    onMounted(() => {
-      addHandlers();
+onMounted(() => {
+  addHandlers();
 
-      const trigger = triggerEl.value.children[0];
-      if (trigger) {
-        trigger.setAttribute('aria-controls', props.id);
-        trigger.setAttribute('aria-haspopup', 'dialog');
-      }
-    });
+  const trigger = triggerEl.value?.children[0];
+  if (trigger) {
+    trigger.setAttribute('aria-controls', props.id);
+    trigger.setAttribute('aria-haspopup', 'dialog');
+  }
+});
 
 </script>
 

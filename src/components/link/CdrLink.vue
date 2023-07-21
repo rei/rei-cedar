@@ -38,7 +38,7 @@ const props = defineProps({
   modifier: {
     type: String,
     default: '',
-    validator: (value) => propValidator(value, ['', 'standalone']),
+    validator: (value: string) => propValidator(value, ['', 'standalone']),
   },
   /** @ignore */
   target: String,
