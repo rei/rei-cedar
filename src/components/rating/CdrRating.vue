@@ -2,10 +2,19 @@
 import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
+import CdrStar100 from './star-components/CdrStar100.vue';
+import CdrStar75 from './star-components/CdrStar75.vue';
+import CdrStar50 from './star-components/CdrStar50.vue';
+import CdrStar25 from './star-components/CdrStar25.vue';
+import CdrStar00 from './star-components/CdrStar00.vue';
+import CdrStarNull from './star-components/CdrStarNull.vue';
 
 /** Provides insight into user opinions for products, experiences, and more */
 export default defineComponent({
   name: 'CdrRating',
+  components: {
+    CdrStar100, CdrStar75, CdrStar50, CdrStar25, CdrStar00, CdrStarNull,
+  },
   props: {
     /**
      * Sets the rating values between 0 and 5.
@@ -54,9 +63,7 @@ export default defineComponent({
     const baseClass = 'cdr-rating';
     const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
     const linkedClass = computed(() => props.href && `${baseClass}--linked`);
-    const emptyClass = computed(() => ((props.rounded > 0 || props.count > 0)
-      ? 'cdr-rating__placeholder'
-      : 'cdr-rating__placeholder--no-reviews'));
+    const hasReviews = computed(() => ((props.rounded > 0 || props.count > 0)));
     const tag = computed(() => (props.href ? 'a' : 'div'));
 
     const displayRating = computed(() => (Math.round(props.rating * 10) / 10).toFixed(1));
@@ -106,7 +113,7 @@ export default defineComponent({
       baseClass,
       sizeClass,
       linkedClass,
-      emptyClass,
+      hasReviews,
       empties,
       formattedCount,
       srText,
@@ -132,24 +139,23 @@ export default defineComponent({
   >
     <div :class="style['cdr-rating__ratings']">
 
-      <span
+      <CdrStar100
         v-for="star in Array(whole).keys()"
-        :class="mapClasses(style, 'cdr-rating__icon', 'cdr-rating__100')"
+        :size="size"
         :key="`rating-whole-${star}`"
         aria-hidden="true"
       />
-      <span
+      <component
         v-if="remainder !== '00'"
-        :class="mapClasses(style, 'cdr-rating__icon', `cdr-rating__${remainder}`)"
+        :is="'CdrStar' + remainder"
+        :size="size"
         aria-hidden="true"
       />
 
-      <span
+      <component
         v-for="empty in Array(empties).keys()"
-        :class="mapClasses(style,
-                           'cdr-rating__icon',
-                           emptyClass,
-        )"
+        :is="(hasReviews) ? 'CdrStar00' : 'CdrStarNull'"
+        :size="size"
         :key="`rating-empty-${empty}`"
         aria-hidden="true"
       />

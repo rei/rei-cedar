@@ -173,6 +173,94 @@ $filled-star: '\2605';
     }
   }
 
+  &__star {
+    width: $cdr-icon-size;
+    height: $cdr-icon-size;
+    
+    &--small {
+      width: $cdr-icon-size-sm;
+      height: $cdr-icon-size-sm;
+    }
+    &--medium {
+      width: $cdr-icon-size;
+      height: $cdr-icon-size;
+    }
+    &--large {
+      width: $cdr-icon-size-lg;
+      height: $cdr-icon-size-lg;
+    }
+
+    @include cdr-xs-mq-only {
+      &--small\@xs {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@xs {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@xs {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+
+    @include cdr-sm-mq-only {
+      &--small\@sm {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@sm {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@sm {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+
+    @include cdr-md-mq-only {
+      &--small\@md {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@md {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@md {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+    @include cdr-lg-mq-only {
+      &--small\@lg {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@lg {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@lg {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+
+  }
+ 
+
+
   /* Large
     ========== */
 
