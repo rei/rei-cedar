@@ -46,7 +46,7 @@
     grid-area: message-body;
     //ITEM_DOC: Defines the message body background color.
     background-color: var(--cdr-banner-message-body-background-color, var(--cdr-color-background-primary));
-    padding: var(--cdr-space-half-x);
+    padding: $cdr-space-half-x;
   }
   &__icon-right {
     display: inherit;

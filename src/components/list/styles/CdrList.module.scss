@@ -107,7 +107,8 @@
         }
       }
 
-      /* inline - unordered - compact */
+      /* inline - unordered - compact
+      ---------- */
       &.cdr-list--compact {
         & > li + li {
           padding-left: 1em;

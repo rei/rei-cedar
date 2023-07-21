@@ -9,28 +9,112 @@ exports[`CdrRating > with an href > renders correctly 1`] = `
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__25"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1699 17.7643L11.9684 17.6359L11.767 17.7643L6.37604 21.1984L7.81014
+      14.6842L7.85664 14.473L7.69707 14.3269L2.8482 9.88945L9.21728 9.31204L9.44592
+      9.29131L9.53144 9.07825L11.9684 3.00672L14.4055 9.07825L14.491 9.29131L14.7196
+      9.31204L21.0887 9.88945L16.2398 14.3269L16.0803 14.473L16.1268 14.6842L17.5608
+      21.1984L12.1699 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M3.64532 10.1547L9.30735 9.65746V18.9355L6.87779 20.5068L8.2268 14.3511L3.64532 10.1547Z"
+        fill="#FFD280"
+      />
+      <path
+        d="M9.60486 8.97247L9.60551 19.1315"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M9.44125 9.79321L4.01843 10.2804L8.40374 14.2981L7.11705 20.1342L9.78234 18.4339"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1702 17.7643L11.9688 17.6359L11.7673 17.7643L6.37635 21.1984L7.81044
+        14.6842L7.85695 14.473L7.69738 14.3269L2.8485 9.88945L9.21759 9.31204L9.44623
+        9.29131L9.53174 9.07825L11.9688 3.00672L14.4058 9.07825L14.4913 9.29131L14.7199
+        9.31204L21.089 9.88945L16.2401 14.3269L16.0806 14.473L16.1271 14.6842L17.5612
+        21.1984L12.1702 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+    </svg>
     
   </div>
   <span
@@ -66,28 +150,120 @@ exports[`CdrRating > with an href > with a count of 0 > renders correctly 1`] = 
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__25"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1699 17.7643L11.9684 17.6359L11.767 17.7643L6.37604 21.1984L7.81014
+      14.6842L7.85664 14.473L7.69707 14.3269L2.8482 9.88945L9.21728 9.31204L9.44592
+      9.29131L9.53144 9.07825L11.9684 3.00672L14.4055 9.07825L14.491 9.29131L14.7196
+      9.31204L21.0887 9.88945L16.2398 14.3269L16.0803 14.473L16.1268 14.6842L17.5608
+      21.1984L12.1699 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M3.64532 10.1547L9.30735 9.65746V18.9355L6.87779 20.5068L8.2268 14.3511L3.64532 10.1547Z"
+        fill="#FFD280"
+      />
+      <path
+        d="M9.60486 8.97247L9.60551 19.1315"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M9.44125 9.79321L4.01843 10.2804L8.40374 14.2981L7.11705 20.1342L9.78234 18.4339"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder--no-reviews"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <path
+          d="M7.186 19.635L12 16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12
+        4.041l-2.179 5.41-5.645.51 4.284 3.907z"
+          fill="#F9F8F6"
+          fill-rule="nonzero"
+        />
+        <path
+          d="M5.69 21.769l1.669-7.552-5.535-5.048 7.298-.66L12 1.364l2.878 7.147
+        7.298.659-5.535 5.048 1.669 7.552L12 17.763l-6.31 4.006zm1.496-2.134L12
+        16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12 4.04 9.821
+        9.45l-5.645.51 4.284 3.907-1.274 5.767z"
+          fill="#928B80"
+        />
+      </g>
+    </svg>
     
   </div>
   <span
@@ -123,29 +299,99 @@ exports[`CdrRating > with an href > with a whole number rating > renders correct
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
     <!--v-if-->
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1702 17.7643L11.9688 17.6359L11.7673 17.7643L6.37635 21.1984L7.81044
+        14.6842L7.85695 14.473L7.69738 14.3269L2.8485 9.88945L9.21759 9.31204L9.44623
+        9.29131L9.53174 9.07825L11.9688 3.00672L14.4058 9.07825L14.4913 9.29131L14.7199
+        9.31204L21.089 9.88945L16.2401 14.3269L16.0806 14.473L16.1271 14.6842L17.5612
+        21.1984L12.1702 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1702 17.7643L11.9688 17.6359L11.7673 17.7643L6.37635 21.1984L7.81044
+        14.6842L7.85695 14.473L7.69738 14.3269L2.8485 9.88945L9.21759 9.31204L9.44623
+        9.29131L9.53174 9.07825L11.9688 3.00672L14.4058 9.07825L14.4913 9.29131L14.7199
+        9.31204L21.089 9.88945L16.2401 14.3269L16.0806 14.473L16.1271 14.6842L17.5612
+        21.1984L12.1702 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+    </svg>
     
   </div>
   <span
@@ -181,28 +427,112 @@ exports[`CdrRating > with an href > with decimal rating and count 1 > renders co
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__50"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1699 17.7643L11.9684 17.6359L11.767 17.7643L6.37604 21.1984L7.81014
+      14.6842L7.85664 14.473L7.69707 14.3269L2.8482 9.88945L9.21728 9.31204L9.44592
+      9.29131L9.53144 9.07825L11.9684 3.00672L14.4055 9.07825L14.491 9.29131L14.7196
+      9.31204L21.0887 9.88945L16.2398 14.3269L16.0803 14.473L16.1268 14.6842L17.5608
+      21.1984L12.1699 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M3.64532 10.1547L9.30735 9.65746V18.9355L6.87779 20.5068L8.2268 14.3511L3.64532 10.1547Z"
+        fill="#FFD280"
+      />
+      <path
+        d="M9.60486 8.97247L9.60551 19.1315"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M9.44125 9.79321L4.01843 10.2804L8.40374 14.2981L7.11705 20.1342L9.78234 18.4339"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1702 17.7643L11.9688 17.6359L11.7673 17.7643L6.37635 21.1984L7.81044
+        14.6842L7.85695 14.473L7.69738 14.3269L2.8485 9.88945L9.21759 9.31204L9.44623
+        9.29131L9.53174 9.07825L11.9688 3.00672L14.4058 9.07825L14.4913 9.29131L14.7199
+        9.31204L21.089 9.88945L16.2401 14.3269L16.0806 14.473L16.1271 14.6842L17.5612
+        21.1984L12.1702 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+    </svg>
     
   </div>
   <span
@@ -238,28 +568,112 @@ exports[`CdrRating > with an href > with string input > renders correctly 1`] = 
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__50"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1699 17.7643L11.9684 17.6359L11.767 17.7643L6.37604 21.1984L7.81014
+      14.6842L7.85664 14.473L7.69707 14.3269L2.8482 9.88945L9.21728 9.31204L9.44592
+      9.29131L9.53144 9.07825L11.9684 3.00672L14.4055 9.07825L14.491 9.29131L14.7196
+      9.31204L21.0887 9.88945L16.2398 14.3269L16.0803 14.473L16.1268 14.6842L17.5608
+      21.1984L12.1699 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M3.64532 10.1547L9.30735 9.65746V18.9355L6.87779 20.5068L8.2268 14.3511L3.64532 10.1547Z"
+        fill="#FFD280"
+      />
+      <path
+        d="M9.60486 8.97247L9.60551 19.1315"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+      <path
+        d="M9.44125 9.79321L4.01843 10.2804L8.40374 14.2981L7.11705 20.1342L9.78234 18.4339"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1702 17.7643L11.9688 17.6359L11.7673 17.7643L6.37635 21.1984L7.81044
+        14.6842L7.85695 14.473L7.69738 14.3269L2.8485 9.88945L9.21759 9.31204L9.44623
+        9.29131L9.53174 9.07825L11.9688 3.00672L14.4058 9.07825L14.4913 9.29131L14.7199
+        9.31204L21.089 9.88945L16.2401 14.3269L16.0806 14.473L16.1271 14.6842L17.5612
+        21.1984L12.1702 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+    </svg>
     
   </div>
   <span
@@ -294,29 +708,115 @@ exports[`CdrRating > without an href > renders correctly 1`] = `
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
     <!--v-if-->
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder--no-reviews"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <path
+          d="M7.186 19.635L12 16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12
+        4.041l-2.179 5.41-5.645.51 4.284 3.907z"
+          fill="#F9F8F6"
+          fill-rule="nonzero"
+        />
+        <path
+          d="M5.69 21.769l1.669-7.552-5.535-5.048 7.298-.66L12 1.364l2.878 7.147
+        7.298.659-5.535 5.048 1.669 7.552L12 17.763l-6.31 4.006zm1.496-2.134L12
+        16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12 4.04 9.821
+        9.45l-5.645.51 4.284 3.907-1.274 5.767z"
+          fill="#928B80"
+        />
+      </g>
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder--no-reviews"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <path
+          d="M7.186 19.635L12 16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12
+        4.041l-2.179 5.41-5.645.51 4.284 3.907z"
+          fill="#F9F8F6"
+          fill-rule="nonzero"
+        />
+        <path
+          d="M5.69 21.769l1.669-7.552-5.535-5.048 7.298-.66L12 1.364l2.878 7.147
+        7.298.659-5.535 5.048 1.669 7.552L12 17.763l-6.31 4.006zm1.496-2.134L12
+        16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12 4.04 9.821
+        9.45l-5.645.51 4.284 3.907-1.274 5.767z"
+          fill="#928B80"
+        />
+      </g>
+    </svg>
     
   </div>
   <!--v-if-->
@@ -336,29 +836,115 @@ exports[`CdrRating > without an href > with a count of 0 > renders correctly 1`]
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
     <!--v-if-->
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder--no-reviews"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <path
+          d="M7.186 19.635L12 16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12
+        4.041l-2.179 5.41-5.645.51 4.284 3.907z"
+          fill="#F9F8F6"
+          fill-rule="nonzero"
+        />
+        <path
+          d="M5.69 21.769l1.669-7.552-5.535-5.048 7.298-.66L12 1.364l2.878 7.147
+        7.298.659-5.535 5.048 1.669 7.552L12 17.763l-6.31 4.006zm1.496-2.134L12
+        16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12 4.04 9.821
+        9.45l-5.645.51 4.284 3.907-1.274 5.767z"
+          fill="#928B80"
+        />
+      </g>
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder--no-reviews"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <path
+          d="M7.186 19.635L12 16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12
+        4.041l-2.179 5.41-5.645.51 4.284 3.907z"
+          fill="#F9F8F6"
+          fill-rule="nonzero"
+        />
+        <path
+          d="M5.69 21.769l1.669-7.552-5.535-5.048 7.298-.66L12 1.364l2.878 7.147
+        7.298.659-5.535 5.048 1.669 7.552L12 17.763l-6.31 4.006zm1.496-2.134L12
+        16.579l4.814 3.056-1.274-5.767 4.284-3.907-5.645-.51L12 4.04 9.821
+        9.45l-5.645.51 4.284 3.907-1.274 5.767z"
+          fill="#928B80"
+        />
+      </g>
+    </svg>
     
   </div>
   <span
@@ -389,29 +975,99 @@ exports[`CdrRating > without an href > with a count of 100 > renders correctly 1
     class="cdr-rating__ratings"
   >
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__100"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4389 17.3426L11.9688 17.0431L11.4986 17.3426L7.12363 20.1295L8.29875
+      14.7917L8.40726 14.2988L8.03494 13.9581L4.02151 10.2852L9.26273 9.80999L9.79622
+      9.76163L9.99576 9.2645L11.9688 4.34901L13.9417 9.2645L14.1413 9.76163L14.6748
+      9.80999L19.916 10.2852L15.9026 13.9581L15.5302 14.2988L15.6388 14.7917L16.8139
+      20.1295L12.4389 17.3426Z"
+        fill="#FFD280"
+        stroke="#BD7B2D"
+        stroke-width="1.75"
+      />
+    </svg>
     
     <!--v-if-->
     
-    <span
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder"
-    />
-    <span
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1702 17.7643L11.9688 17.6359L11.7673 17.7643L6.37635 21.1984L7.81044
+        14.6842L7.85695 14.473L7.69738 14.3269L2.8485 9.88945L9.21759 9.31204L9.44623
+        9.29131L9.53174 9.07825L11.9688 3.00672L14.4058 9.07825L14.4913 9.29131L14.7199
+        9.31204L21.089 9.88945L16.2401 14.3269L16.0806 14.473L16.1271 14.6842L17.5612
+        21.1984L12.1702 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+    </svg>
+    <svg
       aria-hidden="true"
-      class="cdr-rating__icon cdr-rating__placeholder"
-    />
+      class="cdr-rating__star cdr-rating__star--medium"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.1702 17.7643L11.9688 17.6359L11.7673 17.7643L6.37635 21.1984L7.81044
+        14.6842L7.85695 14.473L7.69738 14.3269L2.8485 9.88945L9.21759 9.31204L9.44623
+        9.29131L9.53174 9.07825L11.9688 3.00672L14.4058 9.07825L14.4913 9.29131L14.7199
+        9.31204L21.089 9.88945L16.2401 14.3269L16.0806 14.473L16.1271 14.6842L17.5612
+        21.1984L12.1702 17.7643Z"
+        fill="#F9F8F6"
+        stroke="#BD7B2D"
+        stroke-width="0.75"
+      />
+    </svg>
     
   </div>
   <span
