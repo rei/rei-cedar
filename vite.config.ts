@@ -2,7 +2,7 @@
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-// import path from 'path';
+import dts from 'vite-plugin-dts'
 import options from './rollupOptions.mjs';
 
 const version = process.env.npm_package_version;
@@ -37,5 +37,6 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    dts(),
   ],
 });

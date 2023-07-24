@@ -105,6 +105,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "vite": "^4.0.1",
+    "vite-plugin-dts": "^3.3.1",
     "vitest": "^0.18.0",
     "vue-docgen": "^0.0.3",
     "vue-docgen-cli": "^4.56.1",
