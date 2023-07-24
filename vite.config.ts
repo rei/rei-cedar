@@ -13,7 +13,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/lib.ts',
-      formats: ['es'],
+      name: 'cedar',
+      // formats: ['es'],
       fileName: '[name]',
     },
     rollupOptions: options,
