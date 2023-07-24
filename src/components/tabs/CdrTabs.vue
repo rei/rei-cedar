@@ -125,11 +125,10 @@ const calculateOverflow = () => {
   headerOverflow.value = headerWidth.value > containerWidth;
   if (headerOverflow.value) {
     // Get Scroll Position
-    const scrollX = tablist.value?.scrollLeft;
-    if (scrollX) {
-      overflowLeft.value = scrollX > 1;
-      overflowRight.value = (scrollX + 1) < (headerWidth.value - containerWidth);
-    }
+    const scrollX = tablist.value?.scrollLeft ?? 0;
+    overflowLeft.value = scrollX > 1;
+    overflowRight.value = (scrollX + 1) < (headerWidth.value - containerWidth);
+    
   } else {
     overflowLeft.value = false;
     overflowRight.value = false;
@@ -182,12 +181,13 @@ const selectTab = async (index: number) => {
 };
 
 const selectTabNext = () => {
+
   const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
   if (isLastTab) {
     return;
   }
 
-  let nextIndex = selectedIndex.value ? selectedIndex.value + 1 : 0;
+  let nextIndex = selectedIndex.value! + 1;
   if (tabElements.value[nextIndex].disabled) {
     nextIndex += 1;
   }
@@ -206,7 +206,7 @@ const selectTabPrev = () => {
     return;
   }
 
-  let prevIndex = selectedIndex.value ? selectedIndex.value - 1 : 0;
+  let prevIndex = selectedIndex.value! - 1;
   if (tabElements.value[prevIndex].disabled) {
     prevIndex -= 1;
   }
@@ -222,7 +222,6 @@ const setInitialTabStates = () => {
   tabElements.value.forEach((tab, index) => {
     if (!tab.disabled && selectedIndex.value === null) {
       selectedIndex.value = index;
-      console.log('hey', index, tabs.value[index].name)
       selectedTabName.value = tabs.value[index].name;
     }
   });

@@ -18,11 +18,28 @@ exports[`CdrTabPanel > default config > renders as expected 1`] = `
 
 exports[`CdrTabPanel > when the selectedTabName is NOT the same as the tabPanel name > renders as expected 1`] = `
 <section
-  aria-hidden="false"
+  aria-hidden="true"
   aria-labelledby="test"
   class="cdr-tab-panel"
   id="test-panel"
   role="tabpanel"
+  style="display: none;"
+  tabindex="0"
+>
+  <!-- @slot CdrTabPanel content -->
+  
+  
+</section>
+`;
+
+exports[`CdrTabPanel > when the selectedTabName is the same as the tabPanel name > renders as expected 1`] = `
+<section
+  aria-hidden="true"
+  aria-labelledby="test"
+  class="cdr-tab-panel"
+  id="test-panel"
+  role="tabpanel"
+  style="display: none;"
   tabindex="0"
 >
   <!-- @slot CdrTabPanel content -->
