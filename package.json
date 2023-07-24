@@ -14,8 +14,10 @@
   "author": "REI Software Engineering",
   "main": "./dist/cedar.umd.js",
   "module": "./dist/src/lib.mjs",
+  "types": "./dist/lib.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/lib.d.ts",
       "import": "./dist/src/lib.mjs",
       "require": "./dist/cedar.umd.js"
     },

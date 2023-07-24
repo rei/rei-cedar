@@ -10,7 +10,7 @@ export default {
     globals: {
       vue: 'Vue',
     },
-    preserveModules: false,
+    preserveModules: true,
   },
   plugins: [
     babel({
