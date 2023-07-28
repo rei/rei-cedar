@@ -6,13 +6,13 @@ const vite = require('./vite.js');
 
 const startViteServer = function() {
   return vite.start({
-    configFile: './vite.config.mjs',
+    configFile: './vite.config.ts',
   });
 }
 
 let viteServer;
 
-export default {
+module.exports = {
   plugins: ['nightwatch-axe-verbose'],
   src_folders: ['test/e2e/specs'],
   output_folder: 'test/e2e/reports',
