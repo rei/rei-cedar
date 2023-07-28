@@ -36,7 +36,7 @@ const props = defineProps({
   /** Adds optional label to the form group. */
   optional: Boolean,
   /** Renders form group in a disabled state. */
-  disabled: Boolean,
+  disabled: { type: Boolean, default: undefined },
 });
 
 const uniqueId = props.id ? props.id : uid();

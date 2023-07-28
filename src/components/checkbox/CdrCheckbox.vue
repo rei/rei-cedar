@@ -129,6 +129,7 @@ const checkboxModel = computed({
     <template #input>
       <input
         :class="[style['cdr-checkbox__input'], inputClass]"
+        :disabled="disabled"
         type="checkbox"
         v-bind="$attrs"
         :true-value="customValue ? null : trueValue"

@@ -1,12 +1,15 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrTabPanel from '../CdrTabPanel.vue';
+import { selectedTabKey } from '../symbols';
 
 function mountTabPanel(selectedTabName) {
   return mount(CdrTabPanel, {
     propsData: { name: 'test' },
     global: {
       provide: {
-        ...selectedTabName
+        [selectedTabKey]: {
+          ...selectedTabName
+        } 
       }
     }
   });
