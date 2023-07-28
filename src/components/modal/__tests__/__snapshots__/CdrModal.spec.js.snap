@@ -18,7 +18,7 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
     <div />
     <div
       aria-label="Label is the modal title"
-      aria-modal="false"
+      aria-modal="true"
       class="cdr-modal__contentWrap cdr-modal__dialog"
       role="dialog"
       tabindex="-1"

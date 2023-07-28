@@ -321,7 +321,7 @@ onUnmounted(() => {
         :class="mapClasses(style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
         tabIndex="-1"
         :role="role"
-        :aria-modal="!!opened"
+        aria-modal="true"
         :aria-label="label"
         v-bind="dialogAttrs"
       >
