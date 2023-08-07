@@ -70,12 +70,6 @@ describe('CdrAccordionGroup', () => {
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot()
     });
-
-    describe('a11y requirements', () => {
-      it('accordion groups are organized into unordered lists', () => {
-        expect(wrapper.element.tagName).toBe('UL');
-      })
-    });
   });
 
   describe('with string value for unwrapped prop', ()=>{

@@ -60,7 +60,6 @@ exports[`CdrAccordion > component snapshot when wrapped > renders correctly 1`] 
     <button
       aria-controls="test-collapsible"
       aria-expanded="false"
-      aria-pressed="false"
       class="cdr-accordion__button js-cdr-accordion-button"
       id="test"
     >

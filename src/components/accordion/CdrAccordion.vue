@@ -74,7 +74,6 @@ export default defineComponent({
 
   setup(props, ctx) {
     const unwrap = inject('unwrap', false);
-    const isGrouped = inject('grouped', false) ? 'li' : 'div';
     const style = useCssModule();
     const accordionContentEl = ref(null);
     const focused = ref(false);
@@ -158,7 +157,6 @@ export default defineComponent({
       headingClass,
       headingContent,
       headingContentStyle,
-      isGrouped,
       unwrap,
       accordionContentEl,
       focused,
@@ -184,8 +182,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <component
-    :is="isGrouped"
+  <div
     :class="!isUnwrapped
       ? mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass, noSpacingClass)
       : null"
@@ -205,7 +202,6 @@ export default defineComponent({
         :id="id"
         v-on="listeners"
         :aria-expanded="!isUnwrapped ? `${opened}` : null"
-        :aria-pressed="!isUnwrapped ? `${opened}` : null"
         :aria-controls="!isUnwrapped ? `${id}-collapsible` : null"
       >
         <span
@@ -238,7 +234,7 @@ export default defineComponent({
         <slot />
       </div>
     </div>
-  </component>
+  </div>
 </template>
 
 <style lang="scss" module src="./styles/CdrAccordion.module.scss">
