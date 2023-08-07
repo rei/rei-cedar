@@ -205,7 +205,6 @@ export default defineComponent({
         :id="id"
         v-on="listeners"
         :aria-expanded="!isUnwrapped ? `${opened}` : null"
-        :aria-pressed="!isUnwrapped ? `${opened}` : null"
         :aria-controls="!isUnwrapped ? `${id}-collapsible` : null"
       >
         <span
