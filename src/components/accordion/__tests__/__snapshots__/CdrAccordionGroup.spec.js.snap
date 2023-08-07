@@ -1,12 +1,12 @@
 // Vitest Snapshot v1
 
 exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
-<ul
+<div
   class="cdr-accordion-group"
 >
   <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
   
-  <li
+  <div
     class=""
     id="tab1-accordion"
   >
@@ -46,8 +46,8 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
         
       </div>
     </div>
-  </li>
-  <li
+  </div>
+  <div
     class=""
     id="tab2-accordion"
   >
@@ -87,8 +87,8 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
         
       </div>
     </div>
-  </li>
-  <li
+  </div>
+  <div
     class=""
     id="tab3-accordion"
   >
@@ -128,18 +128,18 @@ exports[`CdrAccordionGroup > when unwrapped > renders correctly 1`] = `
         
       </div>
     </div>
-  </li>
+  </div>
   
-</ul>
+</div>
 `;
 
 exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
-<ul
+<div
   class="cdr-accordion-group"
 >
   <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
   
-  <li
+  <div
     class="cdr-accordion cdr-accordion--focused"
     id="tab1-accordion"
   >
@@ -197,8 +197,8 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
         
       </div>
     </div>
-  </li>
-  <li
+  </div>
+  <div
     class="cdr-accordion"
     id="tab2-accordion"
   >
@@ -256,8 +256,8 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
         
       </div>
     </div>
-  </li>
-  <li
+  </div>
+  <div
     class="cdr-accordion"
     id="tab3-accordion"
   >
@@ -315,18 +315,18 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
         
       </div>
     </div>
-  </li>
+  </div>
   
-</ul>
+</div>
 `;
 
 exports[`CdrAccordionGroup > with string value for unwrapped prop > renders correctly 1`] = `
-<ul
+<div
   class="cdr-accordion-group"
 >
   <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
   
-  <li
+  <div
     class=""
     id="tab1-accordion"
   >
@@ -366,8 +366,8 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
         
       </div>
     </div>
-  </li>
-  <li
+  </div>
+  <div
     class=""
     id="tab2-accordion"
   >
@@ -407,8 +407,8 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
         
       </div>
     </div>
-  </li>
-  <li
+  </div>
+  <div
     class=""
     id="tab3-accordion"
   >
@@ -448,7 +448,7 @@ exports[`CdrAccordionGroup > with string value for unwrapped prop > renders corr
         
       </div>
     </div>
-  </li>
+  </div>
   
-</ul>
+</div>
 `;

@@ -38,7 +38,6 @@ export default defineComponent({
       isUnwrapped: !!props.unwrap,
     });
     provide('unwrap', unwrapped);
-    provide('grouped', true);
 
     const nextIdx = computed(() => {
       const idx = currentIdx.value + 1;
@@ -103,7 +102,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul
+  <div
     :class="style[baseClass]"
     ref="accordionGroupEl"
     @focusin="focusin"
@@ -111,7 +110,7 @@ export default defineComponent({
   >
     <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
     <slot />
-  </ul>
+  </div>
 </template>
 
 <style lang="scss" module src="./styles/CdrAccordionGroup.module.scss">
