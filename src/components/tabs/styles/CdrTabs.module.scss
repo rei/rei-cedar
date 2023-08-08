@@ -202,4 +202,23 @@
       border-bottom: 1px solid var(--cdr-tabs-no-border-border-color, transparent);
     }
   }
+
+  /* Full Width
+  ========== */
+  &--full-width {
+    .cdr-tabs__header {
+      flex-grow: 1;
+    }
+  }
+  
+  /* Centered
+    ========== */
+  &--centered {
+    .cdr-tabs__header:first-of-type {
+      margin-left: auto;
+    }
+    .cdr-tabs__header:last-of-type {
+      margin-right: auto;
+    }
+  }
 }
