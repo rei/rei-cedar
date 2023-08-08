@@ -89,13 +89,13 @@ $filled-star: '\2605';
         &:active,
         &:focus {
           // ITEM_DOC: Sets the hover text color of cdr-rating count.
-          color: var(--cdr-rating-count-hover-color, --cdr-color-text-rating-hover);
+          color: var(--cdr-rating-count-hover-color, var(--cdr-color-text-rating-hover));
           text-decoration: underline;
         }
     
         & > .cdr-rating__number {
           // ITEM_DOC: Sets the color of the rating text separator.
-          border-right: 1px solid var(--cdr-rating-text-rating-separator, --cdr-color-text-rating-separator);
+          border-right: 1px solid var(--cdr-rating-text-rating-separator, var(--cdr-color-text-rating-separator));
           padding: 0 0.6rem;
           margin-right: 0.6rem;
         }
