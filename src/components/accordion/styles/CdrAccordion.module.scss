@@ -5,7 +5,7 @@
 @import './CdrAccordionGroup.module.scss';
 
 .cdr-accordion {
-  //ITEM_DOC: Defines the accordion border color.
+  //ITEM_DOC: Accordion border color
   --cdr-accordion-border: 1px solid var(--cdr-accordion-border-color, var(--cdr-color-border-primary));
   border-top: var(--cdr-accordion-border);
   border-bottom: var(--cdr-accordion-border);
@@ -58,7 +58,7 @@
 
   &__icon {
     margin-left: $cdr-space-one-x;
-    //ITEM_DOC: The fill color of icons on an accordion. This is used for the caret which changes orientation when the accordion collapses and expands.
+    //ITEM_DOC: The fill color of icons on an accordion. This is used for the caret which changes orientation when the accordion collapses and expands
     fill: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default));
     transition: transform $cdr-duration-3-x $cdr-timing-function-ease-out;
 

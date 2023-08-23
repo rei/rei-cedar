@@ -31,9 +31,9 @@
     background-color: transparent;
     border: none;
     padding: 0;
-    //ITEM_DOC: Defines the text color of a cdr-pagination link.
+    //ITEM_DOC: Text color of a cdr-pagination link
     color: var(--cdr-pagination-link-text-color, var(--cdr-color-text-primary));
-    //ITEM_DOC: Defines the fill color of a cdr-pagination link.
+    //ITEM_DOC: Fill color of a cdr-pagination link
     fill: var(--cdr-pagination-link-fill-color, var(--cdr-color-text-primary));
     display: block;
     padding: $cdr-space-inset-three-quarter-x-squish;
@@ -43,7 +43,7 @@
     &:hover,
     &:focus,
     &:active {
-      //ITEM_DOC: Defines the background color of a cdr-pagination link on hover/focus/active.
+      //ITEM_DOC: Background color of a cdr-pagination link on hover/focus/active
       background-color: var(--cdr-pagination-link-background-color-interaction, var(--cdr-color-background-pagination-hover));
       cursor: pointer;
     }
@@ -59,7 +59,7 @@
         transform: translateX(-50%);
         height: 2px;
         width: 80%;
-        //ITEM_DOC: Defines the background color of the keyline for the current cdr-pagination link.
+        //ITEM_DOC: Background color of the keyline for the current cdr-pagination link
         background-color: var(--cdr-pagination-link-current-background-color-keyline, var(--cdr-color-background-pagination-keyline));
       }
 
@@ -71,16 +71,16 @@
     }
 
     &#{&}--disabled {
-      //ITEM_DOC: Defines the text color of a disabled cdr-pagination link.
+      //ITEM_DOC: Text color of a disabled cdr-pagination link
       color: var(--cdr-pagination-link-text-color-disabled, var(--cdr-color-text-disabled));
-      //ITEM_DOC: Defines the fill color of a disabled cdr-pagination link.
+      //ITEM_DOC: Fill color of a disabled cdr-pagination link
       fill: var(--cdr-pagination-link-fill-color-disabled, var(--cdr-color-text-disabled));
       cursor: not-allowed;
 
       &:hover,
       &:focus,
       &:active {
-        //ITEM_DOC: Defines the text color of a disabled cdr-pagination link on hover/focus/active.
+        //ITEM_DOC: Text color of a disabled cdr-pagination link on hover/focus/active
         color: var(--cdr-pagination-link-text-color-interactive-disabled, var(--cdr-color-text-disabled));
         background-color: transparent;
       }

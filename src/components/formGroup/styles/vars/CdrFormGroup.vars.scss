@@ -16,24 +16,24 @@
 }
 
 @mixin cdr-form-group-error-mixin() {
-  //ITEM_DOC: Defines the box-shadow color of a cdr-form-group-error.
+  //ITEM_DOC: Box-shadow color of a cdr-form-group-error
   box-shadow: inset 0 0 0 1px var(--cdr-form-group-error-box-shadow, var(--cdr-color-border-input-error));
-  //ITEM_DOC: Defines the background color of a cdr-form-group-error.
+  //ITEM_DOC: Background color of a cdr-form-group-error
   background-color: var(--cdr-form-group-error-background-color, var(--cdr-color-background-input-error));
   &:hover {
-    //ITEM_DOC: Defines the background color of a cdr-form-group-error on hover.
+    //ITEM_DOC: Background color of a cdr-form-group-error on hover
     background-color: var(--cdr-form-group-error-background-hover, transparent);
   }
 }
 
 @mixin cdr-form-group-optional-mixin() {
-  //ITEM_DOC: Defines the text color of a cdr-form-group-optional.
+  //ITEM_DOC: Text color of a cdr-form-group-optional
   color: var(--cdr-form-group-optional-text-color, var(--cdr-color-text-input-optional));
 }
 
 @mixin cdr-form-group-disabled-mixin() {
   cursor: not-allowed;
-  //ITEM_DOC: Defines the text color of a cdr-form-group-disabled.
+  //ITEM_DOC: Text color of a cdr-form-group-disabled
   color: var(--cdr-form-group-disabled-text-color, var(--cdr-color-text-disabled));
 }
 

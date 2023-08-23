@@ -6,7 +6,7 @@
   flex: 0 0 auto;
   width: $cdr-icon-size;
   height: $cdr-icon-size;
-  //ITEM_DOC: Defines the fill color of an icon.
+  //ITEM_DOC: Fill color of an icon
   fill: var(--cdr-icon-fill-default, var(--cdr-color-icon-default));
 
   &--small {

@@ -26,7 +26,7 @@
     }
     & ~ .cdr-checkbox__svg-box {
       svg {
-        //ITEM_DOC: Defines the fill color of the checkbox check icon when checked.
+        //ITEM_DOC: Fill color of the checkbox check icon when checked
         fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected));
       }
     }
@@ -62,7 +62,7 @@
       }
 
       &:checked ~ .cdr-checkbox__svg-box svg {
-        //ITEM_DOC: Defines the fill color of the checkbox check icon when checked and hovered.
+        //ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
         fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover));
       }
 
@@ -129,7 +129,7 @@
 
    .cdr-checkbox__svg-box {
       svg {
-        //ITEM_DOC: Defines the fill color of the checkbox check icon when active.
+        //ITEM_DOC: Fill color of the checkbox check icon when active
         fill: var(--cdr-form-figure-checkbox-fill-active , var(--cdr-color-icon-checkbox-default-selected-active))
       }
     }

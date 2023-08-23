@@ -13,7 +13,7 @@
 
   margin: 0;
   
-  //ITEM_DOC: Defines the text color of a cdr-caption-summary.
+  //ITEM_DOC: Text color of a cdr-caption-summary
   color: var(--cdr-caption-summary-color, var(--cdr-color-text-primary));
 
   & + cite {
@@ -29,7 +29,7 @@
   letter-spacing: 0.16px;
   line-height: 1.8rem;
 
-  //ITEM_DOC: Defines the text color of a cdr-caption-cite.
+  //ITEM_DOC: Text color of a cdr-caption-cite
   color: var(--cdr-caption-cite-color, var(--cdr-color-text-secondary));
   font-style: normal;
 }

@@ -56,7 +56,7 @@
   }
 
   &__caret {
-    // ITEM_DOC: Defines the color of the cdr-select caret.
+    //ITEM_DOC: Color of the cdr-select caret
     fill: var(--cdr-select-caret-fill, var(--cdr-color-text-primary));
     position: absolute;
     top: 50%;
@@ -65,7 +65,7 @@
     pointer-events: none;
 
     &--disabled {
-      // ITEM_DOC: Defines the color of  a disabled cdr-select caret.
+      //ITEM_DOC: Color of  a disabled cdr-select caret
       fill: var(--cdr-select-caret-fill-disabled, var(--cdr-color-icon-disabled));
     }
 }

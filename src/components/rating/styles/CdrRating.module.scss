@@ -88,13 +88,13 @@ $filled-star: '\2605';
         &:hover,
         &:active,
         &:focus {
-          // ITEM_DOC: Sets the hover text color of cdr-rating count.
+          //ITEM_DOC: Sets the hover text color of cdr-rating count
           color: var(--cdr-rating-count-hover-color, var(--cdr-color-text-rating-hover));
           text-decoration: underline;
         }
     
         & > .cdr-rating__number {
-          // ITEM_DOC: Sets the color of the rating text separator.
+          //ITEM_DOC: Sets the color of the rating text separator
           border-right: 1px solid var(--cdr-rating-text-rating-separator, var(--cdr-color-text-rating-separator));
           padding: 0 0.6rem;
           margin-right: 0.6rem;
@@ -107,36 +107,36 @@ $filled-star: '\2605';
     height: $cdr-icon-size;
 
     &--null-fill {
-      // ITEM_DOC: Sets the fill color of a null star.
+      //ITEM_DOC: Sets the fill color of a null star
       fill: var(--cdr-rating-star-null-fill-color, #F9F8F6);
     }
   
     &--null-outline {
-      // ITEM_DOC: Sets the outline color of a null star.
+      //ITEM_DOC: Sets the outline color of a null star
       fill: var(--cdr-rating-star-null-outline-color, #928B80);
     }
   
     &--partial-fill {
-      // ITEM_DOC: Sets the fill color of a partially filled star.
+      //ITEM_DOC: Sets the fill color of a partially filled star
       fill: var(--cdr-rating-star-partial-fill-color, #FFD280);
     }
   
     &--partial-stroke {
-      // ITEM_DOC: Sets the stroke color of a partially filled star.
+      //ITEM_DOC: Sets the stroke color of a partially filled star
       stroke: var(--cdr-rating-star-partial-stroke-color, #BD7B2D);
     }
 
     &--filled {
-      // ITEM_DOC: Sets the fill color of a filled star.
+      //ITEM_DOC: Sets the fill color of a filled star
       fill: var(--cdr-rating-star-filled-fill-color, #FFD280);
-      // ITEM_DOC: Sets the stroke color of a filled star.
+      //ITEM_DOC: Sets the stroke color of a filled star
       stroke: var(--cdr-rating-star-filled-stroke-color, #BD7B2D);
     }
   
     &--empty {
-      // ITEM_DOC: Sets the fill color of an empty star.
+      //ITEM_DOC: Sets the fill color of an empty star
       fill: var(--cdr-rating-star-empty-fill-color, #F9F8F6);
-      // ITEM_DOC: Sets the stroke color of an empty star.
+      //ITEM_DOC: Sets the stroke color of an empty star
       stroke: var(--cdr-rating-star-empty-stroke-color, #BD7B2D);
     }
     

@@ -11,16 +11,16 @@ $timing-function: $cdr-timing-function-ease-out;
   }
 }
 @mixin cdr-toast-default-mixin() {
-  // ITEM_DOC: Sets the default background color of the cdr-toast.
+  //ITEM_DOC: Sets the default background color of the cdr-toast
   background-color: var(--cdr-toast-background-color-default, var(--cdr-color-background-message-default-01));
   outline: thin solid;
-  // ITEM_DOC: Sets the default outline color of the cdr-toast.
+  //ITEM_DOC: Sets the default outline color of the cdr-toast
   outline-color: var(--cdr-toast-outline-color-default, var(--cdr-color-border-message-default-02));
   outline-offset: -1px;
 }
 
 @mixin cdr-toast-info-mixin() {
-  // ITEM_DOC: Sets the info background color of the cdr-toast.
+  //ITEM_DOC: Sets the info background color of the cdr-toast
   background-color:  var(--cdr-toast-background-color-info, var(--cdr-color-background-message-info-01));
   outline: thin solid;
   outline-color: $cdr-color-border-message-info-02;
@@ -28,28 +28,28 @@ $timing-function: $cdr-timing-function-ease-out;
 }
 
 @mixin cdr-toast-success-mixin() {
-  // ITEM_DOC: Sets the success background color of the cdr-toast.
+  //ITEM_DOC: Sets the success background color of the cdr-toast
   background-color:  var(--cdr-toast-background-color-success, var(--cdr-color-background-message-success-01));
   outline: thin solid;
-  // ITEM_DOC: Sets the success outline color of the cdr-toast.
+  //ITEM_DOC: Sets the success outline color of the cdr-toast
   outline-color: var(--cdr-toast-outline-color-success, var(--cdr-color-border-message-success-02));
   outline-offset: -1px;
 }
 
 @mixin cdr-toast-warning-mixin() {
-  // ITEM_DOC: Sets the warning background color of the cdr-toast.
+  //ITEM_DOC: Sets the warning background color of the cdr-toast
   background-color:  var(--cdr-toast-background-color-warning, var(--cdr-color-background-message-warning-01));
   outline: thin solid;
-  // ITEM_DOC: Sets the warning outline color of the cdr-toast.
+  //ITEM_DOC: Sets the warning outline color of the cdr-toast
   outline-color: var(--cdr-toast-outline-color-warning, var(--cdr-color-border-message-warning-02));
   outline-offset: -1px;
 }
 
 @mixin cdr-toast-error-mixin() {
-  // ITEM_DOC: Sets the error background color of the cdr-toast.
+  //ITEM_DOC: Sets the error background color of the cdr-toast
   background-color:  var(--cdr-toast-background-color-error, var(--cdr-color-background-message-error-01));
   outline: thin solid;
-  // ITEM_DOC: Sets the error outline color of the cdr-toast.
+  //ITEM_DOC: Sets the error outline color of the cdr-toast
   outline-color: var(--cdr-toast-outline-color-error, var(--cdr-color-border-message-error-02));
   outline-offset: -1px;
 }
