@@ -44,7 +44,7 @@
     &::before {
       content: '\2013';
       position: absolute;
-      //ITEM_DOC: Color of the nested ordered list item prefix
+      //ITEM_DOC: Color of the nested ordered cdr-list item prefix
       color: var(--cdr-list-ordered-nested-prefix-color, var(--cdr-color-text-secondary));
       left: 0;
     }
@@ -60,7 +60,7 @@
     position: relative;
     margin-left: -1em;
     padding-right: $cdr-space-half-x;
-    //ITEM_DOC: Color of the unordered list item prefix
+    //ITEM_DOC: Color of the unordered cdr-list item prefix
     color: var(--cdr-list-unordered-prefix-color, var(--cdr-color-text-secondary));
   }
 }
@@ -75,7 +75,7 @@
       position: relative;
       margin-left: -1em;
       padding-right: $cdr-space-half-x;
-      //ITEM_DOC: Color of the nested unordered list item prefix
+      //ITEM_DOC: Color of the nested unordered cdr-list item prefix
       color: var(--cdr-list-unordered-nested-prefix-color, var(--cdr-color-text-secondary));
     }
   }

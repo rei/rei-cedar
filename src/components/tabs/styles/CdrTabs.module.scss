@@ -43,7 +43,7 @@
     overflow-x: auto;
     margin: 0;
     padding: 0;
-    //ITEM_DOC: Sets the keyline color of the cdr-tabs header container
+    //ITEM_DOC: Keyline color of the cdr-tabs header container
     border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest));
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -70,7 +70,7 @@
     flex-grow: 1;
     background-color: transparent;
     display: block;
-    //ITEM_DOC: Sets the text color in a tab
+    //ITEM_DOC: Text color in a tab
     color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest));
     font-weight: 300;
     text-decoration: none;
@@ -79,7 +79,7 @@
     outline-offset: -3px;
 
     &-active {
-      //ITEM_DOC: Sets the text color of an active tab
+      //ITEM_DOC: Text color of an active tab
       color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active));
       font-weight: 500;
     }
@@ -98,14 +98,14 @@
     &:hover,
     &:focus {
       text-decoration: none;
-      //ITEM_DOC: Sets the text color of a tab on active, focus, or hover
+      //ITEM_DOC: Text color of a tab on active, focus, or hover
       color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover));
     }
 
     &--disabled {
       border: none;
       background-color: transparent;
-      //ITEM_DOC: Sets the text color of a disabled tab
+      //ITEM_DOC: Text color of a disabled tab
       color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled));
 
       &:active,
@@ -154,7 +154,7 @@
     margin-top: -$cdr-space-quarter-x;
     box-sizing: border-box;
     border: none;
-    //ITEM_DOC: Sets the background color of the cdr-tabs keyline
+    //ITEM_DOC: Background color of the cdr-tabs keyline
     background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active));
     transition: $cdr-duration-4-x $cdr-timing-function-ease-out;
   }
@@ -198,7 +198,7 @@
   &--no-border {
     .cdr-tabs__header,
     .cdr-tabs__header-container {
-      //ITEM_DOC: Sets the border color of the cdr-tabs with no-border modifier
+      //ITEM_DOC: Border color of the cdr-tabs with no-border modifier
       border-bottom: 1px solid var(--cdr-tabs-no-border-border-color, transparent);
     }
   }

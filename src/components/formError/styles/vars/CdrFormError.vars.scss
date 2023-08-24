@@ -8,6 +8,5 @@
 }
 
 @mixin cdr-form-error-icon-mixin() {
-  //ITEM_DOC: Right margin of a cdr-form-error-icon
-  margin-right: var(--cdr-form-error-icon-margin-right, var(--cdr-space-quarter-x));
+  margin-right: $cdr-space-quarter-x;
 }

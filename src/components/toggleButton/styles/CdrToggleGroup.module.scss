@@ -1,10 +1,10 @@
 @import '../../../styles/settings/index.scss';
 
 .cdr-toggle-group {
-    //ITEM_DOC: Sets the border color of the cdr-toggle-group
+    //ITEM_DOC: Border color of the cdr-toggle-group
     border: .1rem solid var(--cdr-toggle-group-border-color, var(--cdr-color-border-primary));
     border-radius: .4rem;
-    //ITEM_DOC: Sets the default background color of the cdr-toggle-group
+    //ITEM_DOC: Default background color of the cdr-toggle-group
     background-color: var(--cdr-toggle-group-background-color-default-rest, var(--cdr-color-background-toggle-group-default-rest));
     display: grid;
     grid-auto-columns: 1fr;

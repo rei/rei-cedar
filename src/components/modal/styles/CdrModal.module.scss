@@ -20,7 +20,7 @@ $modal-animation-duration: 150ms;
   z-index: 1000;
 
   &__overlay {
-    //ITEM_DOC: Sets the background color of the modal overlay
+    //ITEM_DOC: Background color of the modal overlay
     background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay));
     backdrop-filter: blur($cdr-space-one-x);
     bottom: 0;
@@ -43,7 +43,7 @@ $modal-animation-duration: 150ms;
 
   &__contentWrap {
     align-items: flex-start;
-    //ITEM_DOC: Sets the background color of the content wrap
+    //ITEM_DOC: Background color of the content wrap
     background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary));
     display: flex;
     flex-direction: column;

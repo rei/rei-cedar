@@ -6,46 +6,46 @@ $left-border: 0.4rem solid;
 }
 
 @mixin cdr-banner-default-mixin() {
-  //ITEM_DOC: Default banner background color
+  //ITEM_DOC: Background color for a default cdr-banner
   background-color: var(--cdr-banner-default-background-color, var(--cdr-color-background-message-default-01));
   outline: thin solid;
-  //ITEM_DOC: Default banner outline color
+  //ITEM_DOC: Outline color for a default cdr-banner
   outline-color: var(--cdr-banner-default-outline-color, var(--cdr-color-border-message-default-02));
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-info-mixin() {
-  //ITEM_DOC: Info banner background color
+  //ITEM_DOC: Background color for an info cdr-banner
   background-color: var(--cdr-banner-info-background-color, var(--cdr-color-background-message-info-01));
   outline: thin solid;
-  //ITEM_DOC: Info banner outline color
+  //ITEM_DOC: Outline color for an info cdr-banner
   outline-color: var(--cdr-banner-info-outline-color, var(--cdr-color-border-message-info-02));
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-success-mixin() {
-  //ITEM_DOC: Success banner background color
+  //ITEM_DOC: Background color for a success cdr-banner
   background-color: var(--cdr-banner-success-background-color, var(--cdr-color-background-message-success-01));
   outline: thin solid;
-  //ITEM_DOC: Success banner outline color
+  //ITEM_DOC: Outline color for a success cdr-banner
   outline-color: var(--cdr-banner-success-outline-color, var(--cdr-color-border-message-success-02));
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-warning-mixin() {
-  //ITEM_DOC: Warning banner background color
+  //ITEM_DOC: Background color for a warning cdr-banner
   background-color: var(--cdr-banner-warning-background-color, var(--cdr-color-background-message-warning-01));
   outline: thin solid;
-  //ITEM_DOC: Warning banner outline color
+  //ITEM_DOC: Outline color for a warning cdr-banner
   outline-color: var(--cdr-banner-warning-outline-color, var(--cdr-color-border-message-warning-02));
   outline-offset: -1px;
 }
 
 @mixin cdr-banner-error-mixin() {
-  //ITEM_DOC: Error banner background color
+  //ITEM_DOC: Background color for an error cdr-banner
   background-color: var(--cdr-banner-error-background-color, var(--cdr-color-background-message-error-01));
   outline: thin solid;
-  //ITEM_DOC: Error banner outline color
+  //ITEM_DOC: Outline color for an error cdr-banner
   outline-color: var(--cdr-banner-error-outline-color, var(--cdr-color-border-message-error-02));
   outline-offset: -1px;
 }

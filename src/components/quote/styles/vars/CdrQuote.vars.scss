@@ -32,7 +32,7 @@
 
 @mixin cdr-quote-pull-container() {
   border-style: solid;
-  //ITEM_DOC: Border color of a cdr-quote-pull-container
+  //ITEM_DOC: Border color of a cdr-quote pull container
   border-color: var(--cdr-quote-pull-container-border-color, var(--cdr-color-border-primary));
 
   @include cdr-xs-mq {
