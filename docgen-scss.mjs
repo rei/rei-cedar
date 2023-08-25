@@ -4,13 +4,20 @@ import postcss from 'postcss-scss';
 function extractCssVariables(rule, prevNode) {
   const varUsageMatches = Array.from(rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)\)/g));
 
-  let cssProperties = [];
+  const cssProperties = [];
+  const uniqueNames = new Set(); // Track unique CSS variable names
 
   if (prevNode && prevNode.type === 'comment') {
     const commentParts = prevNode.text.split('ITEM_DOC:').slice(1);
 
     varUsageMatches.forEach((match, index) => {
       const name = match[1];
+      if (uniqueNames.has(name)) {
+        // If name already exists, skip this iteration
+        return;
+      }
+      uniqueNames.add(name); // Add name to the set
+
       let defaultValue = match[2].replace('var(', '');
 
       // If the defaultValue starts with rgba( and doesn't have a closing parenthesis, add one
