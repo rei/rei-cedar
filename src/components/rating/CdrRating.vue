@@ -2,12 +2,12 @@
 import { defineComponent, useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
-import CdrStar100 from './star-components/CdrStar100.vue';
-import CdrStar75 from './star-components/CdrStar75.vue';
-import CdrStar50 from './star-components/CdrStar50.vue';
-import CdrStar25 from './star-components/CdrStar25.vue';
-import CdrStar00 from './star-components/CdrStar00.vue';
-import CdrStarNull from './star-components/CdrStarNull.vue';
+import CdrStar100 from './components/CdrStar100.vue';
+import CdrStar75 from './components/CdrStar75.vue';
+import CdrStar50 from './components/CdrStar50.vue';
+import CdrStar25 from './components/CdrStar25.vue';
+import CdrStar00 from './components/CdrStar00.vue';
+import CdrStarNull from './components/CdrStarNull.vue';
 
 /** Provides insight into user opinions for products, experiences, and more */
 export default defineComponent({
@@ -147,7 +147,7 @@ export default defineComponent({
       />
       <component
         v-if="remainder !== '00'"
-        :is="'CdrStar' + remainder"
+        :is="`CdrStar${remainder}`"
         :size="size"
         aria-hidden="true"
       />
