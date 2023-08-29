@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import mapClasses from '../../../utils/mapClasses';
+import validateProp from "../../../utils/propValidator";
+import { useStar } from '../composables/useStar';
+
+const props = defineProps({
+  size: {
+      type: String,
+      default: 'medium',
+      validator: (value: string) => validateProp(
+        value,
+        ['small', 'medium', 'large'],
+      ),
+    },
+})
+const { style, sizeClass } = useStar(props.size);
+</script>
+
 <template>
   <svg
     :class="mapClasses(style,'cdr-rating__star', sizeClass)"
@@ -24,33 +42,6 @@
       />
     </g>    </svg>
 </template>
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
-import propValidator from '../../../utils/propValidator';
-import mapClasses from '../../../utils/mapClasses';
 
-export default defineComponent({
-  name: 'CdrStarNull',
-  props: {
-    size: {
-      type: String,
-      default: 'medium',
-      validator: (value) => propValidator(
-        value,
-        ['small', 'medium', 'large'],
-      ),
-    },
-  },
-  setup(props) {
-    const baseClass = 'cdr-rating';
-    const sizeClass = computed(() => props.size && `${baseClass}__star--${props.size}`);
-    return {
-      style: useCssModule(),
-      mapClasses,
-      sizeClass,
-    };
-  },
-});
-</script>
 <style lang="scss" module src="../styles/CdrRating.module.scss">
 </style>

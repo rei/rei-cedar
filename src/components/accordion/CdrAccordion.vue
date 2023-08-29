@@ -5,7 +5,7 @@ import {
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import { modifyClassName } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
-import { unwrappedKey, groupedKey } from './symbols';
+import { unwrappedKey } from './symbols';
 
 /** Vertically-stacked list that allows users to expand and collapse additional content */
 
@@ -68,58 +68,15 @@ const props = defineProps({
   },
 });
 
-<<<<<<< HEAD
-  setup(props, ctx) {
-    const unwrap = inject('unwrap', false);
-    const style = useCssModule();
-    const accordionContentEl = ref(null);
-    const focused = ref(false);
-    const maxHeight = ref(props.opened
-      ? 'none'
-      : '0px');
-    const headingTag = `h${props.level}`;
-    const labelClass = 'cdr-accordion__label';
-    const baseClass = 'cdr-accordion';
-    const iconClass = 'cdr-accordion__icon';
-    const containerClass = 'cdr-accordion__content-container';
-    const contentClass = 'cdr-accordion__content';
-    const isUnwrapped = computed(() => unwrap && unwrap.isUnwrapped);
-    const headingContent = computed(() => (isUnwrapped.value
-      ? 'div'
-      : 'button'));
-    const headingContentStyle = computed(() => (isUnwrapped.value
-      ? 'js-cdr-accordion-button'
-      : [style['cdr-accordion__button'], 'js-cdr-accordion-button']));
-    const headingClass = computed(() => (isUnwrapped.value
-      ? 'cdr-accordion__header--unwrapped'
-      : 'cdr-accordion__header'));
-    const compactClass = computed(() => (props.compact
-      ? modifyClassName(baseClass, 'compact')
-      : ''));
-    const borderAlignedClass = computed(() => (props.borderAligned
-      ? modifyClassName(baseClass, 'border-aligned')
-      : ''));
-    const focusedClass = computed(() => (focused.value
-      ? modifyClassName(baseClass, 'focused')
-      : null));
-    const unwrapClass = computed(() => (isUnwrapped.value
-      ? modifyClassName(baseClass, 'unwrap')
-      : null));
-    const noSpacingClass = computed(() => (!props.contentSpacing
-      ? modifyClassName(baseClass, 'no-spacing')
-      : null));
-=======
 const emits = defineEmits({
   /**
   * Emits on accordion open/close
   */
   'accordion-toggle': null,
 });
->>>>>>> feat/typescript
 
 const style = useCssModule();
 const unwrap = inject(unwrappedKey, ref(false));
-const isGrouped = inject(groupedKey, false) ? 'li' : 'div';
 const accordionContentEl = ref<HTMLInputElement | null>(null);
 const focused = ref(false);
 const maxHeight = ref(props.opened
@@ -170,39 +127,6 @@ const onBlur = () => {
   focused.value = false;
 };
 
-<<<<<<< HEAD
-    onMounted(() => {
-      if (props.opened && accordionContentEl.value) {
-        maxHeight.value = 'none';
-      }
-    });
-    return {
-      style: useCssModule(),
-      headingTag,
-      headingClass,
-      headingContent,
-      headingContentStyle,
-      unwrap,
-      accordionContentEl,
-      focused,
-      maxHeight,
-      baseClass,
-      labelClass,
-      compactClass,
-      borderAlignedClass,
-      focusedClass,
-      iconClass,
-      containerClass,
-      isOpenClass,
-      contentClass,
-      noSpacingClass,
-      listeners,
-      unwrapClass,
-      isUnwrapped,
-      mapClasses,
-    };
-  },
-=======
 const listeners = computed(() => (unwrap.value
   ? {}
   : {
@@ -227,20 +151,13 @@ onMounted(() => {
   if (props.opened && accordionContentEl.value) {
     maxHeight.value = 'none';
   }
->>>>>>> feat/typescript
 });
 
 </script>
 
 <template>
-<<<<<<< HEAD
   <div
-    :class="!isUnwrapped
-=======
-  <component
-    :is="isGrouped"
     :class="!unwrap
->>>>>>> feat/typescript
       ? mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass, noSpacingClass)
       : null"
     :id="`${id}-accordion`"
@@ -258,13 +175,8 @@ onMounted(() => {
         :class="headingContentStyle"
         :id="id"
         v-on="listeners"
-<<<<<<< HEAD
-        :aria-expanded="!isUnwrapped ? `${opened}` : null"
-        :aria-controls="!isUnwrapped ? `${id}-collapsible` : null"
-=======
         :aria-expanded="!unwrap ? `${opened}` : null"
         :aria-controls="!unwrap ? `${id}-collapsible` : null"
->>>>>>> feat/typescript
       >
         <span
           :class="style[labelClass]"
