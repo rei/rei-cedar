@@ -5,7 +5,7 @@ import {
 import { debounce } from '../../utils/debounce';
 import propValidator from '../../utils/propValidator';
 import getCurrentBreakpoint from '../../mixins/breakpoints';
-import { unwrappedKey, groupedKey } from './symbols';
+import { unwrappedKey } from './symbols';
 
 defineOptions({
   name: 'CdrAccordionGroup',
@@ -38,7 +38,6 @@ const accordionButtons = ref<NodeListOf<HTMLElement>>();
 const accordionGroupEl = ref<HTMLUListElement | null>(null);
 const unwrapped = ref(!!props.unwrap);
 provide(unwrappedKey, unwrapped);
-provide(groupedKey, true);
 const getAccordionButtonArray = computed(() => {
   if (accordionButtons.value) {
     return [...accordionButtons.value];
@@ -98,7 +97,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <ul
+  <div
     :class="style[baseClass]"
     ref="accordionGroupEl"
     @focusin="focusin"
@@ -106,7 +105,7 @@ onMounted(() => {
   >
     <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
     <slot />
-  </ul>
+  </div>
 </template>
 
 <style lang="scss" module src="./styles/CdrAccordionGroup.module.scss">
