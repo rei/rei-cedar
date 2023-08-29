@@ -1,16 +1,13 @@
-<script>
-import { defineComponent, useCssModule } from 'vue';
+<script setup lang="ts">
+import { useCssModule } from 'vue';
 
 /** Allows people to make selections, filter content, or trigger actions */
-export default defineComponent({
+defineOptions({
   name: 'CdrChip',
-  setup() {
-    return {
-      style: useCssModule(),
-      baseClass: 'cdr-chip',
-    };
-  },
 });
+
+const style = useCssModule();
+const baseClass = 'cdr-chip';
 </script>
 
 <template>

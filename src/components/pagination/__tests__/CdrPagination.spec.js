@@ -17,7 +17,7 @@ function makePages(total, startingAt = 0) {
 
 function getPageNumArray(input) {
   return input.map((x) => {
-    return x === '&hellip;' ? '...' : x.page;
+    return x.ellip ? '...' : x.page;
   });
 }
 

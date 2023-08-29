@@ -1,181 +1,170 @@
-<script>
+<script setup lang="ts">
 import {
-  defineComponent, useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted,
+  useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted,
 } from 'vue';
-import { debounce } from 'lodash-es';
+import { debounce } from '../../utils/debounce';
 import propValidator from '../../utils/propValidator';
 import calculatePlacement from './calculatePlacement';
 import mapClasses from '../../utils/mapClasses';
 
-export default defineComponent({
+/** An internal helper component used by Popover and Tooltip */
+defineOptions({
   name: 'CdrPopup',
   inheritAttrs: false,
   customOptions: {},
-  props: {
-    opened: {
-      type: Boolean,
-      default: false,
-    },
-    position: {
-      type: String,
-      required: false,
-      default: 'top',
-      validator: (value) => propValidator(
-        value,
-        ['top', 'bottom', 'left', 'right'],
-      ),
-    },
-    autoPosition: {
-      type: Boolean,
-      default: true,
-    },
-    contentClass: {
-      type: String,
-    },
+});
+
+const props = defineProps({
+  opened: {
+    type: Boolean,
+    default: false,
   },
-  emits: ['closed'],
-
-  setup(props, ctx) {
-    const baseClass = 'cdr-popup';
-
-    const pos = ref(props.position);
-    const corner = ref(undefined);
-    const exiting = ref(false);
-    const popupRect = ref(undefined);
-    const closed = ref(!props.opened);
-    const popupEl = ref(null);
-    const rootEl = ref(null);
-
-    const positionClass = computed(() => (props.opened || exiting.value
-      ? `cdr-popup--${pos.value}`
-      : undefined));
-    const cornerClass = computed(() => (corner.value
-      ? `cdr-popup--corner-${corner.value}`
-      : undefined));
-    const openClass = computed(() => (props.opened
-      ? 'cdr-popup--open'
-      : undefined));
-    const closedClass = computed(() => (closed.value && !exiting.value
-      ? 'cdr-popup--closed'
-      : undefined));
-    const exitingClass = computed(() => (exiting.value
-      ? 'cdr-popup--exit'
-      : undefined));
-
-    const closePopup = (e) => {
-      ctx.emit('closed', e);
-    };
-
-    const handleKeydown = (e) => {
-      switch (e.key) {
-        case 'Escape':
-        case 'Esc':
-          closePopup(e);
-          break;
-        default: break;
-      }
-    };
-
-    const handleClick = (e) => {
-      nextTick(() => {
-        if (e.target !== popupEl.value && !popupEl.value.contains(e.target)) {
-          closePopup(e);
-        }
-      });
-    };
-
-    const measurePopup = () => {
-      closed.value = false;
-      nextTick(() => {
-        popupRect.value = popupEl.value.getBoundingClientRect();
-        closed.value = true;
-      });
-    };
-
-    const handleResize = () => {
-      debounce(() => {
-        measurePopup();
-      }, 300);
-    };
-
-    const addHandlers = () => {
-      document.addEventListener('keydown', handleKeydown);
-      document.addEventListener('click', handleClick);
-    };
-
-    const handleOpened = () => {
-      pos.value = props.position;
-      corner.value = undefined;
-
-      if (props.autoPosition) {
-        nextTick(() => {
-          const triggerRect = rootEl.value.parentElement.getBoundingClientRect();
-          const { innerHeight, innerWidth } = window;
-          const calculated = calculatePlacement(
-            triggerRect,
-            popupRect.value,
-            innerWidth,
-            innerHeight,
-            props.position,
-          );
-          pos.value = calculated.pos;
-          corner.value = calculated.corner;
-        });
-      }
-
-      closed.value = false;
-
-      setTimeout(() => {
-        addHandlers();
-      }, 1);
-    };
-
-    const handleClosed = () => {
-      closed.value = true;
-      document.removeEventListener('keydown', handleKeydown);
-      document.removeEventListener('click', handleClick);
-      exiting.value = true;
-      setTimeout(() => {
-        exiting.value = false;
-      }, 200); // $cdr-duration-2;
-    };
-
-    // eslint-disable-next-line no-return-assign
-    watch(() => props.position, () => pos.value = props.position);
-    watch(() => props.opened, () => {
-      if (props.opened) {
-        handleOpened();
-      } else {
-        handleClosed();
-      }
-    });
-
-    onMounted(() => {
-      measurePopup();
-      window.addEventListener('resize', handleResize);
-    });
-    onUnmounted(() => {
-      document.removeEventListener('keydown', handleKeydown);
-      document.removeEventListener('click', handleClick);
-      window.removeEventListener('resize', handleResize);
-    });
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      positionClass,
-      cornerClass,
-      openClass,
-      closedClass,
-      exitingClass,
-      closePopup,
-      handleClick,
-      handleKeydown,
-      handleResize,
-      popupEl,
-      rootEl,
-    };
+  position: {
+    type: String,
+    required: false,
+    default: 'top',
+    validator: (value: string) => propValidator(
+      value,
+      ['top', 'bottom', 'left', 'right'],
+    ),
   },
+  autoPosition: {
+    type: Boolean,
+    default: true,
+  },
+  contentClass: {
+    type: String,
+  },
+});
+
+const emits = defineEmits({
+  closed: null,
+});
+
+const style = useCssModule();
+
+const baseClass = 'cdr-popup';
+
+const pos = ref(props.position);
+const corner = ref<string | undefined>(undefined);
+const exiting = ref(false);
+const popupRect = ref<DOMRect | undefined>(undefined);
+const closed = ref(!props.opened);
+const popupEl = ref<HTMLDivElement | null>(null);
+const rootEl = ref<HTMLDivElement | null>(null);
+
+const positionClass = computed(() => (props.opened || exiting.value
+  ? `cdr-popup--${pos.value}`
+  : ''));
+const cornerClass = computed(() => (corner.value
+  ? `cdr-popup--corner-${corner.value}`
+  : ''));
+const openClass = computed(() => (props.opened
+  ? 'cdr-popup--open'
+  : ''));
+const closedClass = computed(() => (closed.value && !exiting.value
+  ? 'cdr-popup--closed'
+  : ''));
+const exitingClass = computed(() => (exiting.value
+  ? 'cdr-popup--exit'
+  : ''));
+
+const closePopup = (e: Event) => {
+  emits('closed', e);
+};
+
+const handleKeydown = (e: KeyboardEvent) => {
+  switch (e.key) {
+    case 'Escape':
+    case 'Esc':
+      closePopup(e);
+      break;
+    default: break;
+  }
+};
+
+const handleClick = (e: MouseEvent) => {
+  nextTick(() => {
+    if (e.target !== popupEl.value && !popupEl.value?.contains(e.target as Node)) {
+      closePopup(e);
+    }
+  });
+};
+
+const measurePopup = () => {
+  closed.value = false;
+  nextTick(() => {
+    popupRect.value = popupEl.value?.getBoundingClientRect();
+    closed.value = true;
+  });
+};
+
+const handleResize = () => {
+  debounce(() => {
+    measurePopup();
+  }, 300);
+};
+
+const addHandlers = () => {
+  document.addEventListener('keydown', handleKeydown);
+  document.addEventListener('click', handleClick);
+};
+
+const handleOpened = () => {
+  pos.value = props.position;
+  corner.value = undefined;
+
+  if (props.autoPosition) {
+    nextTick(() => {
+      const triggerRect = rootEl.value?.parentElement?.getBoundingClientRect();
+      const { innerHeight, innerWidth } = window;
+      const calculated = calculatePlacement(
+        triggerRect,
+        popupRect.value,
+        innerWidth,
+        innerHeight,
+        props.position,
+      );
+      pos.value = calculated.pos;
+      corner.value = calculated.corner;
+    });
+  }
+
+  closed.value = false;
+
+  setTimeout(() => {
+    addHandlers();
+  }, 1);
+};
+
+const handleClosed = () => {
+  closed.value = true;
+  document.removeEventListener('keydown', handleKeydown);
+  document.removeEventListener('click', handleClick);
+  exiting.value = true;
+  setTimeout(() => {
+    exiting.value = false;
+  }, 200); // $cdr-duration-2;
+};
+
+// eslint-disable-next-line no-return-assign
+watch(() => props.position, () => pos.value = props.position);
+watch(() => props.opened, () => {
+  if (props.opened) {
+    handleOpened();
+  } else {
+    handleClosed();
+  }
+});
+
+onMounted(() => {
+  measurePopup();
+  window.addEventListener('resize', handleResize);
+});
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleKeydown);
+  document.removeEventListener('click', handleClick);
+  window.removeEventListener('resize', handleResize);
 });
 
 </script>

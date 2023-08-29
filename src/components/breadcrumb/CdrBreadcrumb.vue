@@ -1,21 +1,39 @@
-<script>
+<script setup lang="ts">
 import {
-  defineComponent, useCssModule, computed, ref, watch, nextTick,
+  useCssModule, computed, ref, watch, nextTick,
 } from 'vue';
+import type { PropType } from 'vue';
 import uid from '../../utils/uid';
 
 /** Navigation used to reveal a page's location within the site hierarchy */
-export default defineComponent({
+defineOptions({
   name: 'CdrBreadcrumb',
-  props: {
-    /**
+});
+
+/**
+ * Breadcrumb data object
+ * 
+ * @interface breadcrumbItem
+ * @url {string} The url for the breadcrumb link
+ * @name {string} The display name for breadcrumb link
+ * @id {string} Optional id
+ */
+interface breadcrumbItem {
+  item: {
+    url: string,
+    name: string,
+    id?: string,
+  }
+}
+const props = defineProps({
+   /**
      * Sets the array of a breadcrumb object containing a 'url' and 'name' property.
      * @demoIgnore true
      */
-    items: {
-      type: Array,
+     items: {
+      type: Array as PropType<breadcrumbItem[]>,
       default: () => [],
-      validator: (value) => {
+      validator: (value: breadcrumbItem[]) => {
         if (value.length && value.length > 0) {
           for (let i = 0; i < value.length; i += 1) {
             if (!(typeof value[i].item === 'object')) {
@@ -45,45 +63,35 @@ export default defineComponent({
     id: {
       type: String,
     },
-  },
-  emits: {
-    /**
+});
+defineEmits({
+      /**
      * Emits when a breadcrumb item is clicked. `e.preventDefault()` may be used to override the default link navigation.
      * @param breadcrumb The breadcrumb data object
      */
 
-    navigate: null,
-  },
+     navigate: null,
+});
+const style = useCssModule();
+const uniqueId = props.id ? props.id : uid();
+const truncate = ref(props.truncationEnabled && props.items.length > 2);
+const itemListEl = ref<HTMLAnchorElement | null>(null);
+const firstAnchorEl = ref<HTMLAnchorElement | null | undefined>(null);
+const ellipsisLabel = computed(() => {
+  const s = (props.items.length - 2) > 1 ? 's' : '';
+  return `show ${props.items.length - 2} more navigation level${s}`;
+});
 
-  setup(props) {
-    const uniqueId = props.id ? props.id : uid();
-    const truncate = ref(props.truncationEnabled && props.items.length > 2);
-    const itemListEl = ref(null);
-    const ellipsisLabel = computed(() => {
-      const s = (props.items.length - 2) > 1 ? 's' : '';
-      return `show ${props.items.length - 2} more navigation level${s}`;
-    });
+const handleEllipsisClick = () => {
+  truncate.value = false;
+  nextTick(() => {
+    firstAnchorEl.value = itemListEl.value?.querySelector('li a');
+    firstAnchorEl.value?.focus();
+  });
+};
 
-    const handleEllipsisClick = () => {
-      truncate.value = false;
-      nextTick(() => {
-        itemListEl.value.querySelector('li a').focus();
-      });
-    };
-
-    watch(() => props.items, () => {
-      truncate.value = props.truncationEnabled && props.items.length > 2;
-    });
-
-    return {
-      style: useCssModule(),
-      uniqueId,
-      truncate,
-      itemListEl,
-      ellipsisLabel,
-      handleEllipsisClick,
-    };
-  },
+watch(() => props.items, () => {
+  truncate.value = props.truncationEnabled && props.items.length > 2;
 });
 </script>
 

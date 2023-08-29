@@ -1,35 +1,33 @@
-<script>
-import { defineComponent, useCssModule } from 'vue';
+<script setup lang="ts">
+import { useCssModule } from 'vue';
 
 /** Provides context and credit for an asset such as an image, video, or chart */
-export default defineComponent({
+defineOptions({
   name: 'CdrCaption',
-  props: {
-    /**
-     * Sets the string content for the description body of the caption.
-     * @demoIgnore true
-     */
-    summary: {
-      type: String,
-    },
-    /**
-     * Sets the string content for attribution.
-     * @demoIgnore true
-     */
-    credit: {
-      type: String,
-    },
-  },
+});
 
-  setup() {
-    return {
-      style: useCssModule(),
-      baseClass: 'cdr-caption',
-      summaryClass: 'cdr-caption__summary',
-      citeClass: 'cdr-caption__cite',
-    };
+defineProps({
+  /**
+   * Sets the string content for the description body of the caption.
+   * @demoIgnore true
+   */
+  summary: {
+    type: String,
+  },
+  /**
+   * Sets the string content for attribution.
+   * @demoIgnore true
+   */
+  credit: {
+    type: String,
   },
 });
+
+const style = useCssModule();
+const baseClass = 'cdr-caption';
+const summaryClass = 'cdr-caption__summary';
+const citeClass = 'cdr-caption__cite';
+
 </script>
 
 <template>

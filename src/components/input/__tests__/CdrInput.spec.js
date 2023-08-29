@@ -107,7 +107,6 @@ describe('CdrInput', () => {
       });
 
       it('sets the expected attributes', () => {
-        expect(wrapper.find('input').attributes('novalidate')).toBe('');
         expect(wrapper.find('input').attributes('pattern')).toBe('[0-9]*');
         expect(wrapper.find('input').attributes('inputmode')).toBe('numeric');
         expect(wrapper.find('input').attributes('type')).toBe('number');
@@ -127,7 +126,6 @@ describe('CdrInput', () => {
       });
 
       it('sets the expected attributes', () => {
-        expect(wrapper.find('input').attributes('novalidate')).toBe('');
         expect(wrapper.find('input').attributes('pattern')).toBe('[0-9]*');
         expect(wrapper.find('input').attributes('inputmode')).toBe('numeric');
         expect(wrapper.find('input').attributes('type')).toBe('text');

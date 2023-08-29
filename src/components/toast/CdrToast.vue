@@ -1,135 +1,118 @@
-<script>
+<script setup lang="ts">
 import {
-  useCssModule, defineComponent, computed, ref, watch, onUpdated,
+  useCssModule, computed, ref, watch, onUpdated, useSlots,
 } from 'vue';
 import propValidator from '../../utils/propValidator';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 
 /** Non-modal dialog used to communicate the status of a task or process */
-export default defineComponent({
+defineOptions({
   name: 'CdrToast',
-  components: {
-    IconXSm,
-    CdrButton,
+});
+
+const props = defineProps({
+  /**
+   * Sets the toast type.
+   * @demoSelectMultiple false
+   * @values info, success, warning, error, default
+  */
+  type: {
+    type: String,
+    validator: (value: string) => propValidator(
+      value,
+      ['info', 'warning', 'success', 'error', 'default'],
+    ),
+    default: 'default',
   },
-  props: {
-    /**
-     * Sets the toast type.
-     * @demoSelectMultiple false
-     * @values info, success, warning, error, default
-    */
-    type: {
-      type: String,
-      validator: (value) => propValidator(
-        value,
-        ['info', 'warning', 'success', 'error', 'default'],
-      ),
-      default: 'default',
-    },
-    /**
-     * Used to programmatically control the toast open/close state.
-     * @demoIgnore true
-    */
-    open: {
-      type: Boolean,
-      default: false,
-    },
-    /** Set to `false` to disable automatic closing after the `dismissDelay`. */
-    autoDismiss: {
-      type: Boolean,
-      default: true,
-    },
-    /** Sets the interval (in milliseconds) before the toast automatically closes. */
-    dismissDelay: {
-      type: Number,
-      default: 5000,
-    },
+  /**
+   * Used to programmatically control the toast open/close state.
+   * @demoIgnore true
+  */
+  open: {
+    type: Boolean,
+    default: false,
   },
-  emits: {
-    /** Emits when toast opens */
-    open: null,
-    /** Emits when toast closes */
-    closed: null,
+  /** Set to `false` to disable automatic closing after the `dismissDelay`. */
+  autoDismiss: {
+    type: Boolean,
+    default: true,
   },
-
-  setup(props, ctx) {
-    const baseClass = 'cdr-toast';
-    const style = useCssModule();
-    const hasIconLeft = ctx.slots['icon-left'];
-    const opened = ref(null);
-    const toastEl = ref(null);
-    let timeout;
-    let toastElement;
-
-    const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
-
-    const openToast = (e) => {
-      if (timeout) {
-        clearTimeout(timeout);
-      } else {
-        ctx.emit('open', e);
-      }
-      opened.value = true;
-      if (props.autoDismiss && !e) {
-        closeToastWithDelay();
-      }
-    };
-
-    const closeToast = (e) => {
-      removeHandlers();
-      opened.value = false;
-      ctx.emit('closed', e);
-    };
-
-    const closeToastWithDelay = (e) => {
-      timeout = setTimeout(() => {
-        removeHandlers();
-        opened.value = false;
-        ctx.emit('closed', e);
-      }, props.dismissDelay);
-    };
-
-    const addHandlers = () => {
-      toastElement = toastEl.value;
-      if (toastElement) {
-        toastElement.addEventListener('mouseover', openToast);
-        toastElement.addEventListener('mouseleave', closeToastWithDelay);
-      }
-    };
-
-    const removeHandlers = () => {
-      if (toastElement) {
-        toastElement.removeEventListener('mouseover', openToast);
-        toastElement.removeEventListener('mouseleave', closeToastWithDelay);
-      }
-    };
-
-    watch(() => props.open, () => {
-      if (props.open) openToast();
-    });
-
-    onUpdated(() => {
-      if (props.autoDismiss) addHandlers();
-    });
-
-    return {
-      baseClass,
-      style,
-      hasIconLeft,
-      opened,
-      toastEl,
-      timeout,
-      toastElement,
-      typeClass,
-      openToast,
-      closeToast,
-      closeToastWithDelay,
-      addHandlers,
-      removeHandlers,
-    };
+  /** Sets the interval (in milliseconds) before the toast automatically closes. */
+  dismissDelay: {
+    type: Number,
+    default: 5000,
   },
 });
+
+const emits = defineEmits({
+  /** Emits when toast opens */
+  open: null,
+  /** Emits when toast closes */
+  closed: null,
+});
+
+const style = useCssModule();
+const slots = useSlots();
+
+const baseClass = 'cdr-toast';
+const hasIconLeft = slots['icon-left'];
+const opened = ref(false);
+const toastEl = ref<HTMLDivElement | null>(null);
+let timeout: ReturnType<typeof setTimeout>;
+let toastElement: HTMLDivElement | null;
+
+const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
+
+const openToast = (e?: Event) => {
+  if (timeout) {
+    clearTimeout(timeout);
+  } else {
+    emits('open', e);
+  }
+  opened.value = true;
+  if (props.autoDismiss && !e) {
+    closeToastWithDelay();
+  }
+};
+
+const closeToast = (e?: Event) => {
+  removeHandlers();
+  opened.value = false;
+  emits('closed', e);
+};
+
+const closeToastWithDelay = (e?: Event) => {
+  timeout = setTimeout(() => {
+    removeHandlers();
+    opened.value = false;
+    emits('closed', e);
+  }, props.dismissDelay);
+};
+
+const addHandlers = () => {
+  toastElement = toastEl.value;
+  if (toastElement) {
+    toastElement.addEventListener('mouseover', openToast);
+    toastElement.addEventListener('mouseleave', closeToastWithDelay);
+  }
+};
+
+const removeHandlers = () => {
+  if (toastElement) {
+    toastElement.removeEventListener('mouseover', openToast);
+    toastElement.removeEventListener('mouseleave', closeToastWithDelay);
+  }
+};
+
+watch(() => props.open, () => {
+  if (props.open) openToast();
+});
+
+onUpdated(() => {
+  if (props.autoDismiss) addHandlers();
+});
+
 </script>
 
 <template>

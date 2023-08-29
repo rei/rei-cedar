@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
-import { CdrToggleGroup } from '../../../lib.js';
+import CdrToggleGroup from '../CdrToggleGroup.vue';
 import { h } from 'vue';
 import CdrToggleButton from '../CdrToggleButton.vue';
 

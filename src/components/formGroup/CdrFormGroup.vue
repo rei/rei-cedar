@@ -1,49 +1,50 @@
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import CdrFormError from '../formError/CdrFormError.vue';
 import uid from '../../utils/uid';
 
 /** Groups related input elements together */
-export default defineComponent({
+defineOptions({
   name: 'CdrFormGroup',
-  components: {
-    CdrFormError,
-  },
-  props: {
-    id: {
-      type: String,
-    },
-    label: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    // Set error styling
-    error: {
-      type: [Boolean, String],
-      default: false,
-    },
-    required: Boolean,
-    optional: Boolean,
-    disabled: Boolean,
-  },
-
-  setup(props) {
-    const uniqueId = props.id ? props.id : uid();
-    const baseClass = 'cdr-form-group';
-    const errorClass = computed(() => props.error && 'cdr-form-group--error');
-    const disabledClass = computed(() => props.disabled && 'cdr-form-group--disabled');
-    return {
-      style: useCssModule(),
-      uniqueId,
-      baseClass,
-      errorClass,
-      disabledClass,
-      mapClasses,
-    };
-  },
 });
+
+const props = defineProps({
+  /**
+   * Custom ID that is mapped to the form error. If this value is not set, it will be randomly generated.
+   * @demoIgnore true
+   */
+  id: String,
+  /**
+   * Sets the label/legend for the form group. Applies default text styles to this label.
+   * To override that default text style or apply other customization, use the `label` slot.
+   * @demoIgnore true
+   */
+  label: {
+    type: String,
+    default: '',
+  },
+  /**
+   * Sets the form group to an error state, displays the `error` slot if one is present.
+   */
+  error: {
+    type: [Boolean, String],
+    default: false,
+  },
+  /** Adds required label to the form group. */
+  required: Boolean,
+  /** Adds optional label to the form group. */
+  optional: Boolean,
+  /** Renders form group in a disabled state. */
+  disabled: { type: Boolean, default: undefined },
+});
+
+const uniqueId = props.id ? props.id : uid();
+const style = useCssModule();
+const baseClass = 'cdr-form-group';
+const errorClass = computed(() => props.error ? 'cdr-form-group--error' : '');
+const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled' : '');
+
 </script>
 
 <template>
@@ -51,10 +52,11 @@ export default defineComponent({
     :class="mapClasses(style, baseClass, disabledClass)"
     :disabled="disabled"
     :aria-invalid="!!error"
-    :aria-errormessage="!!error && `${uniqueId}-error`"
-    :aria-describedby="!!error && `${uniqueId}-error`"
+    :aria-errormessage="!!error ? `${uniqueId}-error` : undefined"
+    :aria-describedby="!!error ? `${uniqueId}-error` : undefined"
   >
     <legend>
+      <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
       <slot name="label">
         {{ label }}
       </slot>
@@ -68,6 +70,7 @@ export default defineComponent({
       > (optional)</span>
     </legend>
     <div :class="mapClasses(style, 'cdr-form-group__wrapper', errorClass)">
+      <!-- @slot CdrFormGroup content (form elements) -->
       <slot />
     </div>
     <cdr-form-error
@@ -75,6 +78,7 @@ export default defineComponent({
       v-if="error"
       :id="`${uniqueId}-error`"
     >
+      <!-- @slot Error messaging template content that is displayed when `error` prop is true  -->
       <template #error>
         <slot name="error" />
       </template>

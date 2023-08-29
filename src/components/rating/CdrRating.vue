@@ -1,122 +1,108 @@
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
 /** Provides insight into user opinions for products, experiences, and more */
-export default defineComponent({
+defineOptions({
   name: 'CdrRating',
-  props: {
-    /**
-     * Sets the rating values between 0 and 5.
-     */
+});
+
+const props = defineProps({
+  /**
+   * Sets the rating values between 0 and 5.
+   */
     rating: {
-      required: true,
-      type: [String, Number],
-      default: 0,
-    },
-    /**
-     * Sets the total number of ratings
-     */
-    count: {
-      required: false,
-      type: [String, Number],
-      default: null,
-    },
-    /**
-     * Hides the word 'reviews' if true
-     */
-    compact: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Sets the rating component (icons and text) to display inline and wraps them in an anchor tag so they can act as link.
-     */
-    href: {
-      type: String,
-    },
-    /**
-     * Sets the rating size.
-     * @demoSelectMultiple false
-     * @values small, medium, large
-    */
-    size: {
-      type: String,
-      default: 'medium',
-      validator: (value) => propValidator(
-        value,
-        ['small', 'medium', 'large'],
-      ),
-    },
+    required: true,
+    type: [String, Number],
+    default: 0,
   },
-  setup(props) {
-    const baseClass = 'cdr-rating';
-    const sizeClass = computed(() => props.size && `${baseClass}--${props.size}`);
-    const linkedClass = computed(() => props.href && `${baseClass}--linked`);
-    const emptyClass = computed(() => ((props.rounded > 0 || props.count > 0)
-      ? 'cdr-rating__placeholder'
-      : 'cdr-rating__placeholder--no-reviews'));
-    const tag = computed(() => (props.href ? 'a' : 'div'));
-
-    const displayRating = computed(() => (Math.round(props.rating * 10) / 10).toFixed(1));
-
-    const rounded = computed(() => Math.round(props.rating * 4) / 4);
-
-    const whole = computed(() => Math.floor(rounded.value));
-
-    const remainder = computed(() => rounded.value.toFixed(2).split('.')[1]);
-
-    const empties = computed(() => 5 - whole.value - (remainder.value > 0 ? 1 : 0));
-
-    const formattedCount = computed(() => (props.compact ? `(${props.count})` : `${props.count}`));
-
-    const srText = computed(() => {
-      // linked
-      if (props.href) {
-        // no reviews
-        if (props.count === 0 || props.count === '0') {
-          return 'No reviews yet; be the first!';
-        }
-        // no count
-        if (props.count === null) {
-          return `View the reviews with an average rating of ${displayRating.value} out of 5 stars`;
-        }
-        // default
-        return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`; // eslint-disable-line max-len
-      }
-
-      // non-linked
-      // no reviews
-      if (props.count === 0 || props.count === '0') {
-        return '0 reviews';
-      }
-      // no count
-      if (props.count === null) {
-        return `Rated ${displayRating.value} out of 5 stars`;
-      }
-      // default
-      // eslint-disable-next-line
-      return `${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
-    });
-
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      sizeClass,
-      linkedClass,
-      emptyClass,
-      empties,
-      formattedCount,
-      srText,
-      tag,
-      displayRating,
-      whole,
-      remainder,
-      rounded,
-    };
+  /**
+   * Sets the total number of ratings
+   */
+  count: {
+    required: false,
+    type: [String, Number],
+    default: null,
   },
+  /**
+   * Hides the word 'reviews' if true
+   */
+  compact: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Sets the rating component (icons and text) to display inline and wraps them in an anchor tag so they can act as link.
+   */
+  href: {
+    type: String,
+  },
+  /**
+   * Sets the rating size.
+   * @demoSelectMultiple false
+   * @values small, medium, large
+  */
+  size: {
+    type: String,
+    default: 'medium',
+    validator: (value: string) => propValidator(
+      value,
+      ['small', 'medium', 'large'],
+    ),
+  },
+});
+
+const style = useCssModule();
+const baseClass = 'cdr-rating';
+const ratingToNumber = computed(() => Number(props.rating));
+const countToNumber = computed(() => Number(props.count));
+const sizeClass = computed(() => props.size ? `${baseClass}--${props.size}` : '');
+const linkedClass = computed(() => props.href ? `${baseClass}--linked` : '');
+const emptyClass = computed(() => (countToNumber.value > 0
+  ? 'cdr-rating__placeholder'
+  : 'cdr-rating__placeholder--no-reviews'));
+const tag = computed(() => (props.href ? 'a' : 'div'));
+
+const displayRating = computed(() => (Math.round(ratingToNumber.value * 10) / 10).toFixed(1));
+
+const rounded = computed(() => Math.round(ratingToNumber.value * 4) / 4);
+
+const whole = computed(() => Math.floor(rounded.value));
+
+const remainder = computed(() => rounded.value.toFixed(2).split('.')[1]);
+
+const empties = computed(() => 5 - whole.value - (+remainder.value > 0 ? 1 : 0));
+
+const formattedCount = computed(() => (props.compact ? `(${props.count})` : `${props.count}`));
+
+const srText = computed(() => {
+  // linked
+  if (props.href) {
+    // no reviews
+    if (props.count === 0 || props.count === '0') {
+      return 'No reviews yet; be the first!';
+    }
+    // no count
+    if (props.count === null) {
+      return `View the reviews with an average rating of ${displayRating.value} out of 5 stars`;
+    }
+    // default
+    return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`; // eslint-disable-line max-len
+  }
+
+  // non-linked
+  // no reviews
+  if (props.count === 0 || props.count === '0') {
+    return '0 reviews';
+  }
+  // no count
+  if (props.count === null) {
+    return `Rated ${displayRating.value} out of 5 stars`;
+  }
+  // default
+  // eslint-disable-next-line
+  return `${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
 });
 </script>
 
