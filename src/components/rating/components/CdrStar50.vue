@@ -14,8 +14,8 @@ const props = defineProps({
     },
 })
 const { style, sizeClass } = useStar(props.size);
-
 </script>
+
 <template>
   <svg
     :class="mapClasses(style, 'cdr-rating__star', sizeClass)"
