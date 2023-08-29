@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "node_modules/@rei/cdr-tokens/dist/scss/cdr-tokens.scss";
+@import "node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
 
 .tokens-container {
   @include cdr-container;

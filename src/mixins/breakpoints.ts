@@ -2,7 +2,7 @@ import {
   CdrBreakpointSm,
   CdrBreakpointMd,
   CdrBreakpointLg,
-} from '@rei/cdr-tokens/dist/js/cdr-tokens.mjs';
+} from '@rei/cdr-tokens/dist/rei-dot-com/js/cdr-tokens.mjs';
 
 export default function getCurrentBreakpoint() {
   const screenWidth = (window && window.innerWidth) || 0;

@@ -4,42 +4,6 @@ $rating-color: #2b6692;
 $empty-star: '\2606';
 $filled-star: '\2605';
 
-@mixin star-icon($url) {
-  &::after {
-    content: '';
-    background-image: svg-load('#{$url}');
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@mixin star-fallback($star, $trim: false) {
-  $width: auto;
-  $translatex: -50%;
-  $left: 50%;
-  @if $trim {
-    $width: calc(1em * #{$trim});
-    $translatex: calc(-50% - (0.5em * (1 - #{$trim})));
-  }
-
-  &::before {
-    content: $star;
-    display: block;
-    position: absolute;
-    left: $left;
-    top: 50%;
-    transform: translate($translatex, -50%);
-    font-size: 0.5em;
-    color: #BD7B2D;
-    width: $width;
-    overflow: hidden;
-  }
-}
-
 @mixin cdr-rating-small() {
   & .cdr-rating__icon {
     width: $cdr-icon-size-sm;
@@ -110,68 +74,155 @@ $filled-star: '\2605';
     @include cdr-display-sr-only;
   }
 
-  /* Placeholder
-    ========== */
-
-  &__placeholder {
-    @include star-icon('public/svg/star-0.svg');
-    @include star-fallback($empty-star);
-
-    &--no-reviews {
-      @include star-icon('public/svg/star-null.svg');
-      @include star-fallback($empty-star);
-    }
-  }
-
-  /* Stars
-    ========== */
-
-  &__100 {
-    @include star-icon('public/svg/star-100.svg');
-    @include star-fallback($filled-star);
-  }
-
-  &__75 {
-    @include star-icon('public/svg/star-75.svg');
-    @include star-fallback($filled-star, .75);
-  }
-
-  &__50 {
-    @include star-icon('public/svg/star-50.svg');
-    @include star-fallback($filled-star, .5);
-  }
-
-  &__25 {
-    @include star-icon('public/svg/star-25.svg');
-    @include star-fallback($filled-star, .33);
-  }
-
-
   /* Modifiers
     ========================================================================== */
 
   /* Linked
     ========== */
 
-  &--linked {
-    display: inline-flex;
-    text-decoration: none;
-
-    & .cdr-rating__count {
-      &:hover,
-      &:active,
-      &:focus {
-        color: $cdr-color-text-rating-hover;
-        text-decoration: underline;
-      }
-
-      & > .cdr-rating__number {
-        border-right: 1px solid $cdr-color-text-rating-separator;
-        padding: 0 0.6rem;
-        margin-right: 0.6rem;
+    &--linked {
+      display: inline-flex;
+      text-decoration: none;
+    
+      & .cdr-rating__count {
+        &:hover,
+        &:active,
+        &:focus {
+          //ITEM_DOC: Hover text color of cdr-rating count
+          color: var(--cdr-rating-count-hover-color, var(--cdr-color-text-rating-hover));
+          text-decoration: underline;
+        }
+    
+        & > .cdr-rating__number {
+          //ITEM_DOC: Color of the rating text separator
+          border-right: 1px solid var(--cdr-rating-text-rating-separator, var(--cdr-color-text-rating-separator));
+          padding: 0 0.6rem;
+          margin-right: 0.6rem;
+        }
       }
     }
+
+  &__star {
+    width: $cdr-icon-size;
+    height: $cdr-icon-size;
+
+    &--null-fill {
+      //ITEM_DOC: Fill color of a null star
+      fill: var(--cdr-rating-star-null-fill-color, #F9F8F6);
+    }
+  
+    &--null-outline {
+      //ITEM_DOC: Outline color of a null star
+      fill: var(--cdr-rating-star-null-outline-color, #928B80);
+    }
+  
+    &--partial-fill {
+      //ITEM_DOC: Fill color of a partially filled star
+      fill: var(--cdr-rating-star-partial-fill-color, #FFD280);
+    }
+  
+    &--partial-stroke {
+      //ITEM_DOC: Stroke color of a partially filled star
+      stroke: var(--cdr-rating-star-partial-stroke-color, #BD7B2D);
+    }
+
+    &--filled {
+      //ITEM_DOC: Fill color of a filled star
+      fill: var(--cdr-rating-star-filled-fill-color, #FFD280);
+      //ITEM_DOC: Stroke color of a filled star
+      stroke: var(--cdr-rating-star-filled-stroke-color, #BD7B2D);
+    }
+  
+    &--empty {
+      //ITEM_DOC: Fill color of an empty star
+      fill: var(--cdr-rating-star-empty-fill-color, #F9F8F6);
+      //ITEM_DOC: Stroke color of an empty star
+      stroke: var(--cdr-rating-star-empty-stroke-color, #BD7B2D);
+    }
+    
+    &--small {
+      width: $cdr-icon-size-sm;
+      height: $cdr-icon-size-sm;
+    }
+    &--medium {
+      width: $cdr-icon-size;
+      height: $cdr-icon-size;
+    }
+    &--large {
+      width: $cdr-icon-size-lg;
+      height: $cdr-icon-size-lg;
+    }
+
+    @include cdr-xs-mq-only {
+      &--small\@xs {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@xs {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@xs {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+
+    @include cdr-sm-mq-only {
+      &--small\@sm {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@sm {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@sm {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+
+    @include cdr-md-mq-only {
+      &--small\@md {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@md {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@md {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+    @include cdr-lg-mq-only {
+      &--small\@lg {
+        width: $cdr-icon-size-sm;
+        height: $cdr-icon-size-sm;
+      }
+  
+      &--medium\@lg {
+        width: $cdr-icon-size;
+        height: $cdr-icon-size;
+      }
+  
+      &--large\@lg {
+        width: $cdr-icon-size-lg;
+        height: $cdr-icon-size-lg;
+      }
+    }
+
   }
+ 
+
 
   /* Large
     ========== */

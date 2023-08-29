@@ -54,7 +54,8 @@
     /* Ellipses Icon
     ========== */
     .cdr-breadcrumb__ellipses-icon {
-      color: $cdr-color-text-secondary;
+      //ITEM_DOC: Ellipses icon color
+      color: var(--cdr-breadcrumb-ellipses-icon-color, var(--cdr-color-text-secondary));
       border-bottom: 1px solid transparent;
       fill: inherit;
     }
@@ -63,7 +64,8 @@
     &:active,
     &:focus {
       .cdr-breadcrumb__ellipses-icon {
-        color: $cdr-color-text-link-hover;
+        //ITEM_DOC: Ellipses icon hover, active and focus color
+        color: var(--cdr-breadcrumb-ellipses-icon-highlight-color, var(--cdr-color-text-link-hover));
         text-decoration: underline;
       }
     }

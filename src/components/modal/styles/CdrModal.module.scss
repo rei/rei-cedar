@@ -5,9 +5,6 @@ $modal-animation-duration: 150ms;
 .cdr-modal {
   @supports (-webkit-touch-callout: none) {
     & * {
-      /* Safari iOS hack: force hardware acceleration on all elements inside modal
-           otherwise content that is offscreen will flicker/disappear when scrolling
-       Issue has to do with scrolling inside a position: fixed or relative container */
       will-change: transform;
     }
   }
@@ -23,7 +20,8 @@ $modal-animation-duration: 150ms;
   z-index: 1000;
 
   &__overlay {
-    background-color: $cdr-color-background-modal-overlay;
+    //ITEM_DOC: Background color of the modal overlay
+    background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay));
     backdrop-filter: blur($cdr-space-one-x);
     bottom: 0;
     left: 0;
@@ -45,7 +43,8 @@ $modal-animation-duration: 150ms;
 
   &__contentWrap {
     align-items: flex-start;
-    background-color: $cdr-color-background-primary;
+    //ITEM_DOC: Background color of the content wrap
+    background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary));
     display: flex;
     flex-direction: column;
     margin: auto;

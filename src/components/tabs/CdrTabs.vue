@@ -6,7 +6,7 @@ import type { ComponentInternalInstance } from 'vue';
 import { debounce } from '../../utils/debounce'
 import {
   CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
-} from '@rei/cdr-tokens/dist/js/cdr-tokens.mjs';
+} from '@rei/cdr-tokens/dist/rei-dot-com/js/cdr-tokens.mjs';
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
 import { selectedTabKey } from './symbols';

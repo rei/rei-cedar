@@ -38,6 +38,7 @@ const disabledClass = computed(() => props.disabled ? `${baseClass}--disabled` :
     >
       <slot name="input" />
       <span :class="style['cdr-label-wrapper__figure']" />
+      <slot name="svgs" />
       <span :class="[style['cdr-label-wrapper__content'], contentClass]">
         <slot />
       </span>
