@@ -141,7 +141,10 @@ const checkboxModel = computed({
     </template>
     <template #svgs>
       <div :class="style['cdr-checkbox__svg-box']">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
           <path
             role="presentation"
             d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3
