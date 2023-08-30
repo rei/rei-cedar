@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
-    "@rei/cdr-tokens": "^12.0.0-alpha.9",
+    "@rei/cdr-tokens": "12.0.0-alpha.12",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@types/tabbable": "^3.1.2",
