@@ -113,7 +113,7 @@ const headerEl = ref<HTMLDivElement | null>(null);
 const measureContent = () => {
   nextTick(() => {
     totalHeight.value = window.innerHeight;
-    fullscreen.value = window.innerWidth < CdrBreakpointSm;
+    fullscreen.value = window.innerWidth < +CdrBreakpointSm;
     headerHeight.value = headerEl.value?.offsetHeight || 0;
     scrollHeight.value = contentEl.value?.scrollHeight || 0;
     offsetHeight.value = contentEl.value?.offsetHeight || 0;
