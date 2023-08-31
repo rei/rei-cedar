@@ -93,7 +93,7 @@
         &::before {
           content: '\2022';
           //ITEM_DOC: Color of the unordered inline list item prefix
-          color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary));
+          color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
           display: block;
           position: absolute;
           top: 50%;

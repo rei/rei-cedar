@@ -21,7 +21,7 @@ $modal-animation-duration: 150ms;
 
   &__overlay {
     //ITEM_DOC: Background color of the modal overlay
-    background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay));
+    background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay, #{$cdr-color-background-modal-overlay}));
     backdrop-filter: blur($cdr-space-one-x);
     bottom: 0;
     left: 0;
@@ -44,7 +44,7 @@ $modal-animation-duration: 150ms;
   &__contentWrap {
     align-items: flex-start;
     //ITEM_DOC: Background color of the content wrap
-    background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary));
+    background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
     display: flex;
     flex-direction: column;
     margin: auto;

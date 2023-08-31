@@ -1,6 +1,6 @@
 @mixin cdr-breadcrumb-item-mixin() {
   //ITEM_DOC: Breadcrumb item color
-  color: var(--cdr-breadcrumb-item-color, var(--cdr-color-text-secondary));
+  color: var(--cdr-breadcrumb-item-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
 }
 
 @mixin cdr-breadcrumb-item-linked-mixin() {
@@ -10,7 +10,7 @@
   &:active,
   &:focus {
     //ITEM_DOC: Breadcrumb item linked hover, active and focus color
-    color: var(--cdr-breadcrumb-item-linked-highlight-color, var(--cdr-color-text-link-hover));
+    color: var(--cdr-breadcrumb-item-linked-highlight-color, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover}));
     text-decoration: underline;
   }
 }

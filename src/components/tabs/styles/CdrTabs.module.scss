@@ -44,7 +44,7 @@
     margin: 0;
     padding: 0;
     //ITEM_DOC: Keyline color of the cdr-tabs header container
-    border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest));
+    border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest, #{$cdr-color-border-tab-keyline-rest}));
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     &::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
@@ -71,7 +71,7 @@
     background-color: transparent;
     display: block;
     //ITEM_DOC: Text color in a tab
-    color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest));
+    color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest, #{$cdr-color-text-tab-rest}));
     font-weight: 300;
     text-decoration: none;
     padding: $cdr-space-inset-half-x-stretch;
@@ -80,7 +80,7 @@
 
     &-active {
       //ITEM_DOC: Text color of an active tab
-      color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active));
+      color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active, #{$cdr-color-text-tab-active}));
       font-weight: 500;
     }
 
@@ -99,19 +99,19 @@
     &:focus {
       text-decoration: none;
       //ITEM_DOC: Text color of a tab on active, focus, or hover
-      color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover));
+      color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover, #{$cdr-color-text-tab-hover}));
     }
 
     &--disabled {
       border: none;
       background-color: transparent;
       //ITEM_DOC: Text color of a disabled tab
-      color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled));
+      color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{$cdr-color-text-tab-disabled}));
 
       &:active,
       &:hover,
       &:focus {
-        color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled));
+        color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{$cdr-color-text-tab-disabled}));
         cursor: not-allowed;
       }
     }
@@ -155,7 +155,7 @@
     box-sizing: border-box;
     border: none;
     //ITEM_DOC: Background color of the cdr-tabs keyline
-    background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active));
+    background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active, #{$cdr-color-border-tab-keyline-active}));
     transition: $cdr-duration-4-x $cdr-timing-function-ease-out;
   }
 

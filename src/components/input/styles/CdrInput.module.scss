@@ -15,7 +15,7 @@
     &::before {
       content: '';
       //ITEM_DOC: Background color of the cdr-button label
-      background-color: var(--cdr-input-label-background-color, var(--cdr-color-border-input-default));
+      background-color: var(--cdr-input-label-background-color, var(--cdr-color-border-input-default, #{$cdr-color-border-input-default}));
       position: absolute;
       left: -1px;
       width: 1px;
@@ -30,15 +30,15 @@
   &:focus,
   &:focus-within {
     //ITEM_DOC: Background color of the cdr-input label in hover, active, focus, and focus-within states
-    background-color: var(--cdr-input-label-background-interaction, var(--cdr-color-background-input-default-active));
+    background-color: var(--cdr-input-label-background-interaction, var(--cdr-color-background-input-default-active, #{$cdr-color-background-input-default-active}));
     //ITEM_DOC: Box-shadow color of the cdr-input label in hover, active, focus, and focus-within states
-    box-shadow: inset 0 0 0 2px var(--cdr-input-label-box-shadow-interaction, var(--cdr-color-border-input-default-focus));
+    box-shadow: inset 0 0 0 2px var(--cdr-input-label-box-shadow-interaction, var(--cdr-color-border-input-default-focus, #{$cdr-color-border-input-default-focus}));
     outline: none;
     //ITEM_DOC: Fill color of the cdr-input label in hover, active, focus, and focus-within states
-    fill: var(--cdr-input-label-fill-interaction, var(--cdr-color-text-primary));
+    fill: var(--cdr-input-label-fill-interaction, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
     svg {
       box-shadow: none;
-      fill: var(--cdr-input-label-svg-fill-interaction, var(--cdr-color-text-primary)) !important;
+      fill: var(--cdr-input-label-svg-fill-interaction, var(--cdr-color-text-primary, #{$cdr-color-text-primary})) !important;
     }
 
     &::before {
@@ -65,7 +65,7 @@
   &--focus {
     svg {
       //ITEM_DOC: Fill color of the cdr-input SVG when the parent is focused
-      fill: var(--cdr-input-svg-fill-focus, var(--cdr-color-text-primary)) !important;
+      fill: var(--cdr-input-svg-fill-focus, var(--cdr-color-text-primary, #{$cdr-color-text-primary})) !important;
     }
   }
 
@@ -176,5 +176,5 @@
     position: relative;
     flex-grow: 1;
     //ITEM_DOC: Fill color of the cdr-input wrapper
-    fill: var(--cdr-input-wrap-fill, var(--cdr-color-icon-default));
+    fill: var(--cdr-input-wrap-fill, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
   }  

@@ -57,7 +57,7 @@
 
   &__caret {
     //ITEM_DOC: Color of the cdr-select caret
-    fill: var(--cdr-select-caret-fill, var(--cdr-color-text-primary));
+    fill: var(--cdr-select-caret-fill, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
     position: absolute;
     top: 50%;
     right: $cdr-space-half-x;
@@ -66,7 +66,7 @@
 
     &--disabled {
       //ITEM_DOC: Color of  a disabled cdr-select caret
-      fill: var(--cdr-select-caret-fill-disabled, var(--cdr-color-icon-disabled));
+      fill: var(--cdr-select-caret-fill-disabled, var(--cdr-color-icon-disabled, #{$cdr-color-icon-disabled}));
     }
 }
 

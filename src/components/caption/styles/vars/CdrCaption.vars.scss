@@ -14,7 +14,7 @@
   margin: 0;
   
   //ITEM_DOC: Text color of a cdr-caption
-  color: var(--cdr-caption-summary-color, var(--cdr-color-text-primary));
+  color: var(--cdr-caption-summary-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
 
   & + cite {
     display: inline-block;
@@ -30,6 +30,6 @@
   line-height: 1.8rem;
 
   //ITEM_DOC: Text color of a cdr-caption
-  color: var(--cdr-caption-cite-color, var(--cdr-color-text-secondary));
+  color: var(--cdr-caption-cite-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
   font-style: normal;
 }
