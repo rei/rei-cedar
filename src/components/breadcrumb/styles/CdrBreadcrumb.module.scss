@@ -55,7 +55,7 @@
     ========== */
     .cdr-breadcrumb__ellipses-icon {
       //ITEM_DOC: Ellipses icon color
-      color: var(--cdr-breadcrumb-ellipses-icon-color, var(--cdr-color-text-secondary));
+      color: var(--cdr-breadcrumb-ellipses-icon-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
       border-bottom: 1px solid transparent;
       fill: inherit;
     }
@@ -65,7 +65,7 @@
     &:focus {
       .cdr-breadcrumb__ellipses-icon {
         //ITEM_DOC: Ellipses icon hover, active and focus color
-        color: var(--cdr-breadcrumb-ellipses-icon-highlight-color, var(--cdr-color-text-link-hover));
+        color: var(--cdr-breadcrumb-ellipses-icon-highlight-color, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover}));
         text-decoration: underline;
       }
     }

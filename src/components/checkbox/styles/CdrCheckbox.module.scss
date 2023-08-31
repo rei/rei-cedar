@@ -27,7 +27,7 @@
     & ~ .cdr-checkbox__svg-box {
       svg {
         //ITEM_DOC: Fill color of the checkbox check icon when checked
-        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected));
+        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected, #{$cdr-color-icon-checkbox-default-selected}));
       }
     }
   } 
@@ -63,7 +63,7 @@
 
       &:checked ~ .cdr-checkbox__svg-box svg {
         //ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
-        fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover));
+        fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover, #{$cdr-color-icon-checkbox-default-selected-hover}));
       }
 
       /* Hover + Indeterminate

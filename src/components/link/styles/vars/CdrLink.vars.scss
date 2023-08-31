@@ -7,9 +7,9 @@
   border: 0;
   margin: 0;
   //ITEM_DOC: Color of the link text
-  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest));
+  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
   //ITEM_DOC: Color of the link fill
-  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest));
+  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
   cursor: pointer;
   display: inline-flex;
   outline: none;
@@ -20,12 +20,12 @@
   &:active,
   &:focus {
     //ITEM_DOC: Color of the link text when active or focused
-    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active));
+    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active, #{$cdr-color-text-link-active}));
   }
 
   &:hover {
     //ITEM_DOC: Color of the link text when hovered
-    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover));
+    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover}));
     text-decoration: none;
   }
 
