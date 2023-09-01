@@ -255,7 +255,6 @@
   &:focus {
     //ITEM_DOC: Link variant of cdr-button's outline
     outline: var(--cdr-button-link-outline, var(--default-outline, #{$default-outline}));
-    //ITEM_DOC: Link variant of cdr-button's outline color
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
   }
