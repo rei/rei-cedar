@@ -152,8 +152,8 @@ const getHeaderWidth = () => {
 };
 
 const updateUnderline = () => {
-  if (tabElements.value.length > 0 && selectedIndex.value) {
-    const activeTab = tabElements.value[selectedIndex.value];
+  if (tabElements.value.length > 0) {
+    const activeTab = tabElements.value[selectedIndex.value || 0];
     const activeRect = (activeTab as HTMLElement).getBoundingClientRect();
     const parentRect = tablist.value?.getBoundingClientRect();
     const offset = parentRect ? activeRect.x - parentRect.x : 0;
@@ -187,7 +187,7 @@ const selectTabNext = () => {
     return;
   }
 
-  let nextIndex = selectedIndex.value! + 1;
+  let nextIndex = (selectedIndex.value || 0) + 1;
   if (tabElements.value[nextIndex].disabled) {
     nextIndex += 1;
   }
@@ -206,7 +206,7 @@ const selectTabPrev = () => {
     return;
   }
 
-  let prevIndex = selectedIndex.value! - 1;
+  let prevIndex = (selectedIndex.value || 0) - 1;
   if (tabElements.value[prevIndex].disabled) {
     prevIndex -= 1;
   }
