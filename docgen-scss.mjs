@@ -2,7 +2,9 @@ import fs from 'fs-extra';
 import postcss from 'postcss-scss';
 
 function extractCssVariables(rule, prevNode) {
-  const varUsageMatches = Array.from(rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)\)/g));
+  const varUsageMatches = Array.from(
+    rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)(?:, #\{\$[\w-]+\})?\)/g),
+  );
 
   const cssProperties = [];
   const uniqueNames = new Set(); // Track unique CSS variable names
