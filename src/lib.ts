@@ -15,6 +15,7 @@ export { default as CdrGrid } from './components/grid/CdrGrid.vue';
 export { default as CdrIcon } from './components/icon/CdrIcon.vue';
 export { default as CdrImg } from './components/image/CdrImg.vue';
 export { default as CdrInput } from './components/input/CdrInput.vue';
+export { default as CdrLead } from './components/lead/CdrLead.vue';
 export { default as CdrLink } from './components/link/CdrLink.vue';
 export { default as CdrList } from './components/list/CdrList.vue';
 export { default as CdrModal } from './components/modal/CdrModal.vue';

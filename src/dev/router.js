@@ -35,6 +35,7 @@ const routes = [
   { path: '/icons', name: 'Icons', component: Examples.icon },
   { path: '/images', name: 'Images', component: Examples.images },
   { path: '/inputs', name: 'Input', component: Examples.inputs },
+  { path: '/lead', name: 'Lead', component: Examples.lead },
   { path: '/links', name: 'Links', component: Examples.links },
   { path: '/lists', name: 'Lists', component: Examples.list },
   { path: '/modals', name: 'Modals', component: Examples.modal },
