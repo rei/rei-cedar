@@ -69,7 +69,6 @@ async function parseSCSS(filePath) {
 
     properties = properties.filter((property) => !!property.defaultValue);
 
-    console.log(properties);
     return properties;
   } catch (err) {
     console.error(`Error reading file: ${err}`);
