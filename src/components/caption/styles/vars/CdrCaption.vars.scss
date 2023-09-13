@@ -12,7 +12,9 @@
   line-height: 2.2rem;
 
   margin: 0;
-  color: $cdr-color-text-primary;
+  
+  //ITEM_DOC: Text color of a cdr-caption
+  color: var(--cdr-caption-summary-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
 
   & + cite {
     display: inline-block;
@@ -27,6 +29,7 @@
   letter-spacing: 0.16px;
   line-height: 1.8rem;
 
-  color: $cdr-color-text-secondary;
+  //ITEM_DOC: Text color of a cdr-caption
+  color: var(--cdr-caption-cite-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
   font-style: normal;
 }

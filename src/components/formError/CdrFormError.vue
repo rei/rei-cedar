@@ -1,3 +1,20 @@
+
+<script setup lang="ts">
+import { useCssModule } from 'vue';
+import IconErrorStroke from '../icon/comps/error-stroke.vue';
+
+defineOptions({
+  name: 'CdrFormError',
+});
+
+defineProps({
+  error: [Boolean, String],
+});
+const style = useCssModule();
+const baseClass = 'cdr-form-error';
+const iconClass = 'cdr-form-error__icon';
+</script>
+
 <template>
   <div
     :class="style[baseClass]"
@@ -14,27 +31,6 @@
     </slot>
   </div>
 </template>
-
-<script>
-import { defineComponent, useCssModule } from 'vue';
-import IconErrorStroke from '../icon/comps/error-stroke.vue';
-
-export default defineComponent({
-  name: 'CdrFormError',
-  components: { IconErrorStroke },
-  props: {
-    error: [Boolean, String],
-  },
-
-  setup() {
-    return {
-      style: useCssModule(),
-      baseClass: 'cdr-form-error',
-      iconClass: 'cdr-form-error__icon',
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/CdrFormError.module.scss">
 </style>

@@ -3,8 +3,10 @@
   padding: $cdr-space-half-x;
   padding-left: calc(#{$cdr-form-figure-size-medium} + #{$cdr-space-one-x});
   padding-right: $cdr-space-three-quarter-x;
-  color: $cdr-color-text-input-label;
-  background-color: $cdr-color-background-input-default;
+  //ITEM_DOC: Text color of a label wrapper
+  color: var(--cdr-label-wrapper-text-color, var(--cdr-color-text-input-label, #{$cdr-color-text-input-label}));
+  //ITEM_DOC: Background color of a label wrapper
+  background-color: var(--cdr-label-wrapper-background-color, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
   border-radius: $cdr-radius-softer;
   width: 100%;
   display: inline-block;
@@ -13,43 +15,52 @@
 
 @mixin cdr-label-wrapper-primary-mixin() {
   &:hover {
-    background-color: $cdr-color-background-label-default-hover;
+    //ITEM_DOC: Background color of a primary label wrapper when hovered
+    background-color: var(--cdr-label-wrapper-primary-background-color-hover, var(--cdr-color-background-label-default-hover, #{$cdr-color-background-label-default-hover}));
     cursor: pointer;
   }
 
   &:focus-within {
-    background-color: $cdr-color-background-label-default-focus;
-    box-shadow: inset 0 0 0 2px $cdr-color-border-label-default-focus;
+    //ITEM_DOC: Background color of a primary label wrapper when it has focus within
+    background-color: var(--cdr-label-wrapper-primary-background-color-focus, var(--cdr-color-background-label-default-focus, #{$cdr-color-background-label-default-focus}));
+    //ITEM_DOC: Box shadow color of a primary label wrapper when it has focus within
+    box-shadow: inset 0 0 0 2px var(--cdr-label-wrapper-primary-focus-box-shadow-color, var(--cdr-color-border-label-default-focus, #{$cdr-color-border-label-default-focus}));
   }
 
   &:active {
-    background-color: $cdr-color-background-label-default-active;
+    //ITEM_DOC: Background color of a primary label wrapper when active
+    background-color: var(--cdr-label-wrapper-primary-background-color-active, var(--cdr-color-background-label-default-active, #{$cdr-color-background-label-default-active}));
   }
-
 }
 
 @mixin cdr-label-wrapper-secondary-mixin() {
-  background-color: $cdr-color-background-input-default;
+  //ITEM_DOC: Background color of a secondary label wrapper
+  background-color: var(--cdr-label-wrapper-secondary-background-color, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
   &:hover {
-    background-color: $cdr-color-background-label-secondary-hover;
+    //ITEM_DOC: Background color of a secondary label wrapper when hovered
+    background-color: var(--cdr-label-wrapper-secondary-background-color-hover, var(--cdr-color-background-label-secondary-hover, #{$cdr-color-background-label-secondary-hover}));
     cursor: pointer;
   }
 
   &:focus-within {
-    background-color: $cdr-color-background-label-secondary-focus;
+    //ITEM_DOC: Background color of a secondary label wrapper when it has focus within
+    background-color: var(--cdr-label-wrapper-secondary-background-color-focus, var(--cdr-color-background-label-secondary-focus, #{$cdr-color-background-label-secondary-focus}));
   }
 
   &:active {
-    background-color: $cdr-color-background-label-secondary-active;
+    //ITEM_DOC: Background color of a secondary label wrapper when active
+    background-color: var(--cdr-label-wrapper-secondary-background-color-active, var(--cdr-color-background-label-secondary-active, #{$cdr-color-background-label-secondary-active}));
   }
 }
 
 @mixin cdr-label-wrapper-disabled-mixin() {
-  color: $cdr-color-text-input-disabled !important;
+  //ITEM_DOC: Text color of a disabled label wrapper
+  color: var(--cdr-label-wrapper-text-color-disabled, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled})) !important;
   cursor: not-allowed !important;
 
   &:hover, &:focus-within, &:active {
-    background-color: $cdr-color-background-input-default !important;
+    //ITEM_DOC: Background color of a disabled label wrapper
+    background-color: var(--cdr-label-wrapper-background-color-disabled, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default})) !important;
   }
 }
 
@@ -92,7 +103,7 @@
   width: $cdr-form-figure-size-large;
   height: $cdr-form-figure-size-large;
 
-  &::after {
+  &::after, .cdr-checkbox__checkbox-box {
     width: calc(#{$cdr-form-figure-size-large} / 4);
     height: calc(#{$cdr-form-figure-size-large} / 4);
   }
@@ -110,11 +121,12 @@
   position: absolute;
   left: $cdr-space-half-x;
   border-radius: $cdr-radius-softer;
-  background-color: $cdr-color-background-input-default;
-  box-shadow: 0 0 0 1px $cdr-color-border-input-default;
+  //ITEM_DOC: Background color of a form figure
+  background-color: var(--cdr-form-figure-background-color, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
+  //ITEM_DOC: Box shadow color of a form figure
+  box-shadow: 0 0 0 1px var(--cdr-form-figure-box-shadow-color, var(--cdr-color-border-input-default, #{$cdr-color-border-input-default}));
   transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
 };
-
 
 @mixin label-wrapper-small-mixin($breakpoint: '') {
   &--small#{$breakpoint} {
@@ -142,6 +154,17 @@
 
     & > .cdr-label-wrapper__figure {
       @include cdr-label-wrapper-figure-large-mixin;
+    }
+
+    .cdr-checkbox__checkbox-box {
+      width: 2rem;
+      height: 2rem;
+    }
+    .cdr-checkbox__svg-box svg {
+      width: 2rem;
+      height: 2rem;
+      left: 0rem;
+      top: -1.7rem;
     }
   }
 }

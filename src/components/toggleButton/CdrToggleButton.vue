@@ -1,29 +1,26 @@
-<script>
-import {
-  useCssModule, computed, defineComponent, inject,
-} from 'vue';
+<script setup lang="ts">
+import { useCssModule, ref, computed, inject } from 'vue';
+import { selectedToggleKey } from './symbols';
 
 /** Permits switching two or more options on and off */
-export default defineComponent({
+defineOptions({
   name: 'CdrToggleButton',
-  props: {
-    /**
-     * Sets the value and aria-label for the toggle button. Display can be overridden using default slot
-     */
+});
+
+const props = defineProps({
+  /**
+   * Sets the value and aria-label for the toggle button. Display can be overridden using default slot
+   */
     toggleValue: {
-      type: String,
-      required: true,
-    },
-  },
-  setup(props) {
-    const selectedToggle = inject('selectedToggleValue');
-    const isActive = computed(() => props.toggleValue === selectedToggle.value);
-    return {
-      style: useCssModule(),
-      isActive,
-    };
+    type: String,
+    required: true,
   },
 });
+
+const style = useCssModule();
+const selectedToggle = inject(selectedToggleKey, ref(''));
+const isActive = computed(() => props.toggleValue === selectedToggle.value);
+
 </script>
 
 <template>

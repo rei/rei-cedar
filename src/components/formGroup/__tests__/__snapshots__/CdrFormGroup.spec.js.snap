@@ -2,13 +2,12 @@
 
 exports[`CdrFormGroup > disabled form group > renders correctly 1`] = `
 <fieldset
-  aria-describedby="false"
-  aria-errormessage="false"
   aria-invalid="false"
   class="cdr-form-group cdr-form-group--disabled"
   disabled=""
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     
     
@@ -18,6 +17,7 @@ exports[`CdrFormGroup > disabled form group > renders correctly 1`] = `
   <div
     class="cdr-form-group__wrapper"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     
   </div>
@@ -33,6 +33,7 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     
     
@@ -42,6 +43,7 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
   <div
     class="cdr-form-group__wrapper cdr-form-group--error"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     
   </div>
@@ -94,6 +96,7 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     hey
     
@@ -103,6 +106,7 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
   <div
     class="cdr-form-group__wrapper cdr-form-group--error"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     form elements!
     
@@ -150,12 +154,11 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
 
 exports[`CdrFormGroup > form group with label and default slot > renders correctly 1`] = `
 <fieldset
-  aria-describedby="false"
-  aria-errormessage="false"
   aria-invalid="false"
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     hey
     
@@ -165,6 +168,7 @@ exports[`CdrFormGroup > form group with label and default slot > renders correct
   <div
     class="cdr-form-group__wrapper"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     form elements!
     
@@ -175,12 +179,11 @@ exports[`CdrFormGroup > form group with label and default slot > renders correct
 
 exports[`CdrFormGroup > form group with optional state > renders correctly 1`] = `
 <fieldset
-  aria-describedby="false"
-  aria-errormessage="false"
   aria-invalid="false"
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     hey
     
@@ -194,6 +197,7 @@ exports[`CdrFormGroup > form group with optional state > renders correctly 1`] =
   <div
     class="cdr-form-group__wrapper"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     form elements!
     
@@ -204,12 +208,11 @@ exports[`CdrFormGroup > form group with optional state > renders correctly 1`] =
 
 exports[`CdrFormGroup > form group with required and optional state > renders correctly 1`] = `
 <fieldset
-  aria-describedby="false"
-  aria-errormessage="false"
   aria-invalid="false"
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     hey
     
@@ -223,6 +226,7 @@ exports[`CdrFormGroup > form group with required and optional state > renders co
   <div
     class="cdr-form-group__wrapper"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     form elements!
     
@@ -233,12 +237,11 @@ exports[`CdrFormGroup > form group with required and optional state > renders co
 
 exports[`CdrFormGroup > form group with required state > renders correctly 1`] = `
 <fieldset
-  aria-describedby="false"
-  aria-errormessage="false"
   aria-invalid="false"
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     hey
     
@@ -252,6 +255,7 @@ exports[`CdrFormGroup > form group with required state > renders correctly 1`] =
   <div
     class="cdr-form-group__wrapper"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     form elements!
     
@@ -262,12 +266,11 @@ exports[`CdrFormGroup > form group with required state > renders correctly 1`] =
 
 exports[`CdrFormGroup > when error state is inactive > renders correctly 1`] = `
 <fieldset
-  aria-describedby="false"
-  aria-errormessage="false"
   aria-invalid="false"
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     
     
@@ -277,6 +280,7 @@ exports[`CdrFormGroup > when error state is inactive > renders correctly 1`] = `
   <div
     class="cdr-form-group__wrapper"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     
   </div>
@@ -292,6 +296,7 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
   class="cdr-form-group"
 >
   <legend>
+    <!-- @slot Overrides CdrFormGroup label/legend. Should be a text element -->
     
     
     
@@ -301,6 +306,7 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
   <div
     class="cdr-form-group__wrapper cdr-form-group--error"
   >
+    <!-- @slot CdrFormGroup content (form elements) -->
     
     
   </div>

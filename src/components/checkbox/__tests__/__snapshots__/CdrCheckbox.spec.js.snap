@@ -19,6 +19,22 @@ exports[`CdrCheckbox > default configuration > renders correctly 1`] = `
     <span
       class="cdr-label-wrapper__figure"
     />
+    
+    <div
+      class="cdr-checkbox__svg-box"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3
+            11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"
+          role="presentation"
+        />
+      </svg>
+    </div>
+    
     <span
       class="cdr-label-wrapper__content"
     >
@@ -48,6 +64,22 @@ exports[`CdrCheckbox > using the default slot for label > with a custom content 
     <span
       class="cdr-label-wrapper__figure"
     />
+    
+    <div
+      class="cdr-checkbox__svg-box"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3
+            11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"
+          role="presentation"
+        />
+      </svg>
+    </div>
+    
     <span
       class="cdr-label-wrapper__content custom-content-class"
     >
@@ -80,6 +112,22 @@ exports[`CdrCheckbox > using the default slot for label > with a custom input cl
     <span
       class="cdr-label-wrapper__figure"
     />
+    
+    <div
+      class="cdr-checkbox__svg-box"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3
+            11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"
+          role="presentation"
+        />
+      </svg>
+    </div>
+    
     <span
       class="cdr-label-wrapper__content"
     >
@@ -112,6 +160,22 @@ exports[`CdrCheckbox > using the default slot for label > with a custom label cl
     <span
       class="cdr-label-wrapper__figure"
     />
+    
+    <div
+      class="cdr-checkbox__svg-box"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3
+            11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"
+          role="presentation"
+        />
+      </svg>
+    </div>
+    
     <span
       class="cdr-label-wrapper__content"
     >
@@ -145,6 +209,22 @@ exports[`CdrCheckbox > using the default slot for label > with an indeterminate 
     <span
       class="cdr-label-wrapper__figure"
     />
+    
+    <div
+      class="cdr-checkbox__svg-box"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3
+            11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"
+          role="presentation"
+        />
+      </svg>
+    </div>
+    
     <span
       class="cdr-label-wrapper__content"
     >

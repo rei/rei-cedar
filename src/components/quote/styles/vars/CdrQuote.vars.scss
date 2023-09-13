@@ -4,7 +4,8 @@
   line-height: 1;
   & cite {
     @include cdr-text-utility-sans-100;
-    color: $cdr-color-text-secondary;
+    //ITEM_DOC: Text color of a cdr-quote citation
+    color: var(--cdr-quote-cite-text-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
     display: block;
   }
 }
@@ -15,7 +16,8 @@
   font-size: 24px;
   line-height: 36px;
   letter-spacing: -.08rem;
-  color: $cdr-color-text-primary;
+  //ITEM_DOC: Text color of cdr-quote content
+  color: var(--cdr-quote-content-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
   margin: 0;
 
   @include cdr-xs-mq-only {
@@ -30,7 +32,8 @@
 
 @mixin cdr-quote-pull-container() {
   border-style: solid;
-  border-color: $cdr-color-border-primary;
+  //ITEM_DOC: Border color of a cdr-quote pull container
+  border-color: var(--cdr-quote-pull-container-border-color, var(--cdr-color-border-primary, #{$cdr-color-border-primary}));
 
   @include cdr-xs-mq {
     border-width: 0 0 1px 0;

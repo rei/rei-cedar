@@ -1,5 +1,6 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrAccordion from '../CdrAccordion.vue';
+import { unwrappedKey } from '../symbols';
 
 const baseComponentPattern = {
   propsData: {
@@ -33,10 +34,8 @@ describe('CdrAccordion', () => {
         ...baseComponentPattern,
         global: {
           provide: {
-            unwrap: {
-              isUnwrapped: {
-                value: true
-              }
+            [unwrappedKey]: {
+              value: true
             }
           },
         }

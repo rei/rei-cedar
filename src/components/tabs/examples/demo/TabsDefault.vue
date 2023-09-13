@@ -45,44 +45,42 @@
         <cdr-table
           modifier="compact borderless"
         >
-          <template #tbody>
-            <tr>
-              <th>Best Use</th>
-              <td>Hiking, Travel</td>
-            </tr>
-            <tr>
-              <th>Bag Style</th>
-              <td>Backpack</td>
-            </tr>
-            <tr>
-              <th>Frame Type</th>
-              <td>Frameless</td>
-            </tr>
-            <tr>
-              <th>Gear Capacity (cu. in.)</th>
-              <td>1,220 cubic inches</td>
-            </tr>
-            <tr>
-              <th>Weight</th>
-              <td>1 lb. 3.8 oz</td>
-            </tr>
-            <tr>
-              <th>Pack ACcess</th>
-              <td>2 + main compartments</td>
-            </tr>
-            <tr>
-              <th>Hipbelt</th>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <th>Dimensions</th>
-              <td>18 x 10 x 9 inches</td>
-            </tr>
-            <tr>
-              <th>Gender</th>
-              <td>Unisex</td>
-            </tr>
-          </template>
+          <tr>
+            <th>Best Use</th>
+            <td>Hiking, Travel</td>
+          </tr>
+          <tr>
+            <th>Bag Style</th>
+            <td>Backpack</td>
+          </tr>
+          <tr>
+            <th>Frame Type</th>
+            <td>Frameless</td>
+          </tr>
+          <tr>
+            <th>Gear Capacity (cu. in.)</th>
+            <td>1,220 cubic inches</td>
+          </tr>
+          <tr>
+            <th>Weight</th>
+            <td>1 lb. 3.8 oz</td>
+          </tr>
+          <tr>
+            <th>Pack ACcess</th>
+            <td>2 + main compartments</td>
+          </tr>
+          <tr>
+            <th>Hipbelt</th>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <th>Dimensions</th>
+            <td>18 x 10 x 9 inches</td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td>Unisex</td>
+          </tr>
         </cdr-table>
       </cdr-tab-panel>
       <cdr-tab-panel

@@ -9,8 +9,10 @@
     gap: .3rem;
     border: .2rem solid transparent;
     border-radius: .3rem;
-    color: $cdr-color-text-toggle-button-default-rest;
-    background-color: $cdr-color-background-toggle-button-default-rest;
+    //ITEM_DOC: Default text color of the cdr-toggle-button
+    color: var(--cdr-toggle-button-color-default-rest, var(--cdr-color-text-toggle-button-default-rest, #{$cdr-color-text-toggle-button-default-rest}));
+    //ITEM_DOC: Default background color of the cdr-toggle-button
+    background-color: var(--cdr-toggle-button-background-color-default-rest, var(--cdr-color-background-toggle-button-default-rest, #{$cdr-color-background-toggle-button-default-rest}));
     width: 100%;
     height: 100%;
     
@@ -18,44 +20,54 @@
       outline: none;
       padding: 0.7rem 1.3rem;
       border-radius: .3rem;
-      border: .3rem solid $cdr-color-border-toggle-button-default-focus;
-      background-color: $cdr-color-background-toggle-button-default-focus;
+      //ITEM_DOC: Focus border color of the cdr-toggle-button
+      border: .3rem solid var(--cdr-toggle-button-border-color-default-focus, var(--cdr-color-border-toggle-button-default-focus, #{$cdr-color-border-toggle-button-default-focus}));
+      //ITEM_DOC: Focus background color of the cdr-toggle-button
+      background-color: var(--cdr-toggle-button-background-color-default-focus, var(--cdr-color-background-toggle-button-default-focus, #{$cdr-color-background-toggle-button-default-focus}));
     }
 
     svg {
-      fill: $cdr-color-icon-default;
+      //ITEM_DOC: Default fill color of the cdr-toggle-button's svg
+      fill: var(--cdr-toggle-button-icon-fill-default, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
     }
 
     &[aria-checked="true"] {
-      background-color: $cdr-color-background-toggle-button-default-selected-rest;
+      //ITEM_DOC: Selected background color of the cdr-toggle-button at rest
+      background-color: var(--cdr-toggle-button-background-color-default-selected-rest, var(--cdr-color-background-toggle-button-default-selected-rest, #{$cdr-color-background-toggle-button-default-selected-rest}));
       padding: 0.8rem 1.4rem;
-      border: .2rem solid $cdr-color-border-toggle-button-default-selected-rest;
+      //ITEM_DOC: Selected border color of the cdr-toggle-button at rest
+      border: .2rem solid var(--cdr-toggle-button-border-color-default-selected-rest, var(--cdr-color-border-toggle-button-default-selected-rest, #{$cdr-color-border-toggle-button-default-selected-rest}));
       border-radius: .2rem;
       font-weight: 500;
       margin: 0;
 
       svg {
-        fill: $cdr-color-icon-emphasis;
+        //ITEM_DOC: Selected fill color of the cdr-toggle-button's svg at rest
+        fill: var(--cdr-toggle-button-icon-fill-selected-rest, var(--cdr-color-icon-emphasis, #{$cdr-color-icon-emphasis}));
       }
 
       &:focus {
         padding: 0.7rem 1.3rem;
-        border: .3rem solid $cdr-color-border-toggle-button-default-selected-focus;
+        //ITEM_DOC: Selected border color of the cdr-toggle-button on focus
+        border: .3rem solid var(--cdr-toggle-button-border-color-default-selected-focus, var(--cdr-color-border-toggle-button-default-selected-focus, #{$cdr-color-border-toggle-button-default-selected-focus}));
         border-radius: .2rem;
       }
 
       &:hover {
-        background-color: $cdr-color-background-toggle-button-default-selected-hover;
+        //ITEM_DOC: Selected background color of the cdr-toggle-button on hover
+        background-color: var(--cdr-toggle-button-background-color-default-selected-hover, var(--cdr-color-background-toggle-button-default-selected-hover, #{$cdr-color-background-toggle-button-default-selected-hover}));
       }
     }
 
     &:hover {
-      background-color: $cdr-color-background-toggle-button-default-hover;
+      //ITEM_DOC: Background color of the cdr-toggle-button on hover
+      background-color: var(--cdr-toggle-button-background-color-default-hover, var(--cdr-color-background-toggle-button-default-hover, #{$cdr-color-background-toggle-button-default-hover}));
       padding: 0.7rem 1.3rem;
       border-radius: 0.2rem;
 
       &:focus {
-        border: .3rem solid $cdr-color-border-toggle-button-default-selected-focus;
+        //ITEM_DOC: Hover border color of the cdr-toggle-button on focus
+        border: .3rem solid var(--cdr-toggle-button-border-color-hover-focus, var(--cdr-color-border-toggle-button-default-selected-focus, #{$cdr-color-border-toggle-button-default-selected-focus}));
         padding: 0.7rem 1.3rem;
       }
     }

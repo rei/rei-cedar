@@ -101,7 +101,8 @@ export default {
 
 <style lang="scss">
 @import "../styles/main.scss";
-@import "node_modules/@rei/cdr-tokens/dist/scss/cdr-tokens.scss";
+@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@import "@rei/cdr-tokens/dist/rei-dot-com/css/cdr-tokens.css";
 .stack {
   margin-top: $cdr-space-one-x;
 }

@@ -18,6 +18,8 @@ exports[`CdrRadio > with custom classes > renders correctly 1`] = `
     <span
       class="cdr-label-wrapper__figure"
     />
+    
+    
     <span
       class="cdr-label-wrapper__content custom-content-class"
     >
@@ -49,6 +51,8 @@ exports[`CdrRadio > with customValue and name prop > renders correctly 1`] = `
     <span
       class="cdr-label-wrapper__figure"
     />
+    
+    
     <span
       class="cdr-label-wrapper__content"
     >

@@ -1,9 +1,11 @@
 @mixin cdr-card-base-mixin() {
   position: relative;
-  background-color: $cdr-color-background-primary;
+  //ITEM_DOC: Background color of a cdr-card
+  background-color: var(--cdr-card-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
   border-radius: $cdr-radius-softer;
   box-shadow: $cdr-prominence-raised;
-  color: $cdr-color-text-primary;
+  //ITEM_DOC: Text color of a cdr-card
+  color: var(--cdr-card-base-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
   width: 100%;
   transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
   cursor: pointer;
@@ -18,12 +20,14 @@
 
 @mixin cdr-card-link-mixin() {
   position: static;
-  color: $cdr-color-text-primary !important;
+  //ITEM_DOC: Link text color of a cdr-card
+  color: var(--cdr-card-link-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary})) !important;
   text-decoration: none !important;
 
   &:hover {
     text-decoration: underline !important;
-    color: $cdr-color-text-link-hover !important;
+    //ITEM_DOC: Link hover text color of a cdr-card
+    color: var(--cdr-card-link-hover-color, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover})) !important;
   }
 
   &::before {
