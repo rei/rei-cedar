@@ -1,15 +1,17 @@
-<script>
+<script setup lang="ts">
 import {
-  defineComponent, useCssModule, computed, ref, onMounted,
+  useCssModule, computed, ref, onMounted,
 } from 'vue';
 
-export default defineComponent({
+defineOptions({
   name: 'CdrChipGroup',
-  props: {
-    /**
+});
+
+const props = defineProps({
+ /**
      * Sets a label that describes the chip group and what it is selecting. By default this label is visually hidden and only made available to screen readers.
      */
-    label: {
+     label: {
       type: String,
       required: true,
     },
@@ -20,79 +22,68 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-  },
+});
 
-  setup(props) {
-    const baseClass = 'cdr-chip-group';
-    const chipsEl = ref(null);
+const style = useCssModule();
+const baseClass = 'cdr-chip-group';
+const chipsEl = ref<HTMLElement | null>(null);
+const chips = ref<HTMLElement[]>([]);
+const currentIdx = ref(0);
+const nextIdx = computed(() => {
+  const idx = currentIdx.value + 1;
+  return idx >= chips.value.length ? 0 : idx;
+});
+const prevIdx = computed(() => {
+  const idx = currentIdx.value - 1;
+  return idx <= -1 ? (chips.value.length - 1) : idx;
+});
+const legendClass = computed(() => (props.hideLabel
+  ? 'cdr-chip-group__legend--hidden'
+  : 'cdr-chip-group__legend'
+));
 
-    const chips = ref([]);
-    const currentIdx = ref(0);
+onMounted(() => {
+  chips.value = Array.prototype.filter.call(
+    chipsEl.value?.children,
+    (chip) => !(chip.getAttribute('disabled') === '' || chip.getAttribute('aria-disabled')),
+  );
+  currentIdx.value = Array.prototype.findIndex.call(
+    chips,
+    (chip) => chip.getAttribute('aria-checked') === 'true',
+  );
+});
 
-    const nextIdx = computed(() => {
-      const idx = currentIdx.value + 1;
-      return idx >= chips.value.length ? 0 : idx;
-    });
-    const prevIdx = computed(() => {
-      const idx = currentIdx.value - 1;
-      return idx <= -1 ? (chips.value.length - 1) : idx;
-    });
-    const legendClass = computed(() => (props.hideLabel
-      ? 'cdr-chip-group__legend--hidden'
-      : 'cdr-chip-group__legend'));
+const handleKeyDown = (e: KeyboardEvent) => {
+  // something besides the button is focused
+  if (currentIdx.value === -1) return;
 
-    onMounted(() => {
-      chips.value = Array.prototype.filter.call(
-        chipsEl.value.children,
-        (chip) => !(chip.getAttribute('disabled') === '' || chip.getAttribute('aria-disabled')),
-      );
-      currentIdx.value = Array.prototype.findIndex.call(
-        chips,
-        (chip) => chip.getAttribute('aria-checked') === 'true',
-      );
-    });
-
-    const handleKeyDown = (e) => {
-      // something besides the button is focused
-      if (currentIdx.value === -1) return;
-
-      const { key } = e;
-      switch (key) {
-        case 'Home':
-          e.preventDefault();
-          chips.value[0].focus();
-          break;
-        case 'End':
-          e.preventDefault();
-          chips.value[chips.value.length - 1].focus();
-          break;
-        case 'ArrowDown':
-        case 'Down':
-          e.preventDefault();
-          chips.value[nextIdx.value].focus();
-          break;
-        case 'ArrowUp':
-        case 'Up':
-          e.preventDefault();
-          chips.value[prevIdx.value].focus();
-          break;
-        default: break;
-      }
-    };
-    const handleFocusIn = (e) => {
+  const { key } = e;
+  switch (key) {
+    case 'Home':
+      e.preventDefault();
+      chips.value[0].focus();
+      break;
+    case 'End':
+      e.preventDefault();
+      chips.value[chips.value.length - 1].focus();
+      break;
+    case 'ArrowDown':
+    case 'Down':
+      e.preventDefault();
+      chips.value[nextIdx.value].focus();
+      break;
+    case 'ArrowUp':
+    case 'Up':
+      e.preventDefault();
+      chips.value[prevIdx.value].focus();
+      break;
+    default: break;
+  }
+};
+    const handleFocusIn = (e: Event) => {
       // find out which, if any, button is focused
       currentIdx.value = Array.prototype.indexOf.call(chips.value, e.target);
     };
-    return {
-      style: useCssModule(),
-      baseClass,
-      chipsEl,
-      legendClass,
-      handleKeyDown,
-      handleFocusIn,
-    };
-  },
-});
 
 </script>
 

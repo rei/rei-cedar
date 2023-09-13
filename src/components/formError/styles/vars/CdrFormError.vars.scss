@@ -1,7 +1,9 @@
 @mixin cdr-form-error-base-mixin() {
   @include cdr-text-utility-sans-300;
-  color: $cdr-color-text-input-error;
-  fill: $cdr-color-text-input-error;
+  //ITEM_DOC: Text color of a cdr-form-error
+  color: var(--cdr-form-error-text-color, var(--cdr-color-text-input-error, #{$cdr-color-text-input-error}));
+  //ITEM_DOC: Fill color of a cdr-form-error
+  fill: var(--cdr-form-error-fill-color, var(--cdr-color-text-input-error, #{$cdr-color-text-input-error}));
   margin-top: $cdr-space-quarter-x;
 }
 

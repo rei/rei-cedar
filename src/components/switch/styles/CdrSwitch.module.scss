@@ -9,87 +9,110 @@
     padding: 0;
     position: relative;
     overflow: hidden;
-    border: 0.1rem solid $cdr-color-border-secondary;
-    background-color: $cdr-color-background-switch-default-rest;
+    //ITEM_DOC: Border of the cdr-switch button
+    border: 0.1rem solid var(--cdr-switch-border-color, var(--cdr-color-border-secondary, #{$cdr-color-border-secondary}));
+    //ITEM_DOC: Background color of the cdr-switch button
+    background-color: var(--cdr-switch-background-color, var(--cdr-color-background-switch-default-rest, #{$cdr-color-background-switch-default-rest}));
 
     .cdr-switch__button-icon {
-      fill: $cdr-color-icon-default;
+      //ITEM_DOC: Fill of the cdr-switch x and check icons
+      fill: var(--cdr-switch-icon-fill, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2rem $cdr-color-border-secondary;
+      //ITEM_DOC: Box-shadow of the cdr-switch button on focus
+      box-shadow: 0 0 0 0.2rem var(--cdr-switch-box-shadow-color-focus, var(--cdr-color-border-secondary, #{$cdr-color-border-secondary}));
       outline: none;
-      background-color: $cdr-color-background-switch-default-focus;
+      //ITEM_DOC: Background color of the cdr-switch button on focus
+      background-color: var(--cdr-switch-background-color-focus, var(--cdr-color-background-switch-default-focus, #{$cdr-color-background-switch-default-focus}));
 
       .cdr-switch__button-icon {
-        fill: $cdr-color-icon-default;
+        //ITEM_DOC: Fill of the cdr-switch x and check icons on focus
+        fill: var(--cdr-switch-icon-fill-focus, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
       }
 
       .cdr-switch__handle {
         &::before {
-          background-color: $cdr-color-background-switch-handle-default-focus;
+          //ITEM_DOC: Background color of the cdr-switch handle before on focus
+          background-color: var(--cdr-switch-handle-background-color-focus, var(--cdr-color-background-switch-handle-default-focus, #{$cdr-color-background-switch-handle-default-focus}));
         }
       }
     }
 
     &:hover:not(:focus) {
-      border: 0.1rem solid $cdr-color-border-switch-default-hover;
-      background-color: $cdr-color-background-switch-default-hover;
+      //ITEM_DOC: Border of the cdr-switch button on hover when not in focus
+      border: 0.1rem solid var(--cdr-switch-hover-border-color, var(--cdr-color-border-switch-default-hover, #{$cdr-color-border-switch-default-hover}));
+      //ITEM_DOC: Background color of the cdr-switch button on hover when not in focus
+      background-color: var(--cdr-switch-background-color-hover, var(--cdr-color-background-switch-default-hover, #{$cdr-color-background-switch-default-hover}));
 
       .cdr-switch__button-icon {
-        fill: $cdr-color-icon-emphasis;
+        //ITEM_DOC: Fill of the cdr-switch x and check icons on hover when not in focus
+        fill: var(--cdr-switch-icon-fill-hover, var(--cdr-color-icon-emphasis, #{$cdr-color-icon-emphasis}));
       }
 
       .cdr-switch__handle {
         &::before {
-          border: 0.1rem solid $cdr-color-border-switch-default-hover;
+          //ITEM_DOC: Border of the cdr-switch handle on hover when not in focus
+          border: 0.1rem solid var(--cdr-switch-handle-border-color-hover, var(--cdr-color-border-switch-default-hover, #{$cdr-color-border-switch-default-hover}));
         }
       }
     }
 
     &[aria-checked="true"] {
       border: none;
-      background-color: $cdr-color-background-switch-selected-default-rest;
+      //ITEM_DOC: Background color of the cdr-switch button when it is checked
+      background-color: var(--cdr-switch-background-color-checked, var(--cdr-color-background-switch-selected-default-rest, #{$cdr-color-background-switch-selected-default-rest}));
 
       .cdr-switch__button-icon {
-        fill: $cdr-color-icon-switch-selected-default-rest;
+        //ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked
+        fill: var(--cdr-switch-icon-fill-checked, var(--cdr-color-icon-switch-selected-default-rest, #{$cdr-color-icon-switch-selected-default-rest}));
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.2rem $cdr-color-border-secondary;
-        background-color: $cdr-color-background-switch-selected-default-focus;
+        //ITEM_DOC: Box-shadow of the cdr-switch button when it is checked and in focus
+        box-shadow: 0 0 0 0.2rem var(--cdr-switch-box-shadow-color-checked-focus, var(--cdr-color-border-secondary, #{$cdr-color-border-secondary}));
+        //ITEM_DOC: Background color of the cdr-switch button when it is checked and in focus
+        background-color: var(--cdr-switch-background-color-checked-focus, var(--cdr-color-background-switch-selected-default-focus, #{$cdr-color-background-switch-selected-default-focus}));
         outline: none;
 
         .cdr-switch__handle {
           &::before {
-            border: 0.1rem solid $cdr-color-border-switch-handle-default-focus;
-            background-color: $cdr-color-background-switch-handle-selected-default-focus;
+            //ITEM_DOC: Border of the cdr-switch handle when it is checked and in focus
+            border: 0.1rem solid var(--cdr-switch-handle-border-color-checked-focus, var(--cdr-color-border-switch-handle-default-focus, #{$cdr-color-border-switch-handle-default-focus}));
+            //ITEM_DOC: Background color of the cdr-switch handle when it is checked and in focus
+            background-color: var(--cdr-switch-handle-background-color-checked-focus, var(--cdr-color-background-switch-handle-selected-default-focus, #{$cdr-color-background-switch-handle-selected-default-focus}));
           }
         }
 
         .cdr-switch__button-icon {
-          fill: $cdr-color-icon-switch-selected-default-focus;
+          //ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked and in focus
+          fill: var(--cdr-switch-icon-fill-checked-focus, var(--cdr-color-icon-switch-selected-default-focus, #{$cdr-color-icon-switch-selected-default-focus}));
         }
       }
 
       .cdr-switch__handle {
         &::before {
           border: none;
-          background-color: $cdr-color-background-switch-handle-selected-default-rest;
+          //ITEM_DOC: Background color of the cdr-switch handle when it is checked
+          background-color: var(--cdr-switch-handle-background-color-checked, var(--cdr-color-background-switch-handle-selected-default-rest, #{$cdr-color-background-switch-handle-selected-default-rest}));
         }
       }
 
       &:hover:not(:focus) {
-        border: 0.1rem solid $cdr-color-border-secondary;
-        background-color: $cdr-color-background-switch-selected-default-hover;
+        //ITEM_DOC: Border of the cdr-switch button when it is checked and on hover but not in focus
+        border: 0.1rem solid var(--cdr-switch-border-color-checked-hover, var(--cdr-color-border-secondary, #{$cdr-color-border-secondary}));
+        //ITEM_DOC: Background color of the cdr-switch button when it is checked and on hover but not in focus
+        background-color: var(--cdr-switch-background-color-checked-hover, var(--cdr-color-background-switch-selected-default-hover, #{$cdr-color-background-switch-selected-default-hover}));
 
         .cdr-switch__button-icon {
-          fill: $cdr-color-icon-switch-selected-default-hover;
+          //ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked and on hover but not in focus
+          fill: var(--cdr-switch-icon-fill-checked-hover, var(--cdr-color-icon-switch-selected-default-hover, #{$cdr-color-icon-switch-selected-default-hover}));
         }
 
         .cdr-switch__handle {
           &::before {
-            border: 0.1rem solid $cdr-color-border-switch-handle-default-hover;
+            //ITEM_DOC: Border of the cdr-switch handle when it is checked and on hover but not in focus
+            border: 0.1rem solid var(--cdr-switch-handle-border-color-checked-hover, var(--cdr-color-border-switch-handle-default-hover, #{$cdr-color-border-switch-handle-default-hover}));
           }
         }
       }
@@ -114,12 +137,15 @@
     &::before {
       position: absolute;
       content: "";
-      border: 0.1rem solid $cdr-color-border-secondary;
-      background-color: $cdr-color-background-switch-handle-default-rest;
+      //ITEM_DOC: Border color of the cdr-switch handle
+      border: 0.1rem solid var(--cdr-switch-handle-border, var(--cdr-color-border-secondary, #{$cdr-color-border-secondary}));
+      //ITEM_DOC: Background color of the cdr-switch handle
+      background-color: var(--cdr-switch-handle-background-color-rest, var(--cdr-color-background-switch-handle-default-rest, #{$cdr-color-background-switch-handle-default-rest}));
       -webkit-transition: left $cdr-duration-3-x $cdr-timing-function-ease-out, right $cdr-duration-3-x $cdr-timing-function-ease-out;
       transition: left $cdr-duration-3-x $cdr-timing-function-ease-out, right $cdr-duration-3-x $cdr-timing-function-ease-out;
     }
   }
+
 
   &--full-width {
     width: 100%;

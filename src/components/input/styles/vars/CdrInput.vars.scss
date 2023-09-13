@@ -1,12 +1,16 @@
 @mixin cdr-input-base-mixin() {
   @include cdr-text-utility-sans-300;
   font-weight: 500;
-  color: $cdr-color-text-input-default;
+  //ITEM_DOC: Text color of a cdr-input by default
+  color: var(--cdr-input-text-color-default, var(--cdr-color-text-input-default, #{$cdr-color-text-input-default}));
   border: 0;
-  background-color: $cdr-color-background-input-default;
-  box-shadow: inset 0 0 0 1px $cdr-color-border-input-default;
+  //ITEM_DOC: Background color of a cdr-input by default
+  background-color: var(--cdr-input-background-color-default, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
+  //ITEM_DOC: Box-shadow color of a cdr-input by default
+  box-shadow: inset 0 0 0 1px var(--cdr-input-box-shadow-default, var(--cdr-color-border-input-default, #{$cdr-color-border-input-default}));
   border-radius: $cdr-radius-softer;
-  fill: $cdr-color-icon-default;
+  //ITEM_DOC: Fill color of an icon in a cdr-input
+  fill: var(--cdr-input-icon-fill, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
   border-radius: $cdr-radius-softer;
   padding: $cdr-space-inset-half-x;
   height: $cdr-form-input-height-default;
@@ -14,9 +18,7 @@
   width: 100%;
   overflow: visible;
   margin: 0;
-
-  /* Prevent iOS from altering border and box-shadow */
-  -webkit-appearance: none;
+  -webkit-appearance: none!important;
 
   &[type=number]::-webkit-inner-spin-button,
   &[type=number]::-webkit-outer-spin-button {
@@ -28,52 +30,57 @@
   &:active,
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 0 2px $cdr-color-border-input-default-focus, $cdr-prominence-raised;
+    //ITEM_DOC: Box shadow of a focused or active cdr-input
+    box-shadow: inset 0 0 0 2px var(--cdr-input-box-shadow-focus, var(--cdr-color-border-input-default-focus, #{$cdr-color-border-input-default-focus})), $cdr-prominence-raised;
   }
-
   &::placeholder {
     @include cdr-text-utility-sans-300;
-
-    color: $cdr-color-text-input-placeholder;
+    color: var(--cdr-input-placeholder-text-color, var(--cdr-color-text-input-placeholder, #{$cdr-color-text-input-placeholder}));
   }
 
   &[disabled] {
-    background-color: $cdr-color-background-input-default-disabled;
-    color: $cdr-color-text-input-disabled;
-    box-shadow: inset 0 0 0 1px $cdr-color-border-input-default-disabled;
-
+    //ITEM_DOC: Background color of a disabled cdr-input
+    background-color: var(--cdr-input-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled}));
+    //ITEM_DOC: Text color of a disabled cdr-input
+    color: var(--cdr-input-text-color-disabled, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled}));
+    //ITEM_DOC: Box-shadow color of a disabled cdr-input
+    box-shadow: inset 0 0 0 1px var(--cdr-input-box-shadow-disabled, var(--cdr-color-border-input-default-disabled, #{$cdr-color-border-input-default-disabled}));
     &:hover {
-      box-shadow: inset 0 0 0 1px $cdr-color-border-input-default-disabled;
+      box-shadow: inset 0 0 0 1px var(--cdr-input-box-shadow-disabled-hover, var(--cdr-color-border-input-default-disabled, #{$cdr-color-border-input-default-disabled}));
       cursor: not-allowed;
     }
-
     &::placeholder {
-      color: $cdr-color-text-input-disabled;
+      color: var(--cdr-input-placeholder-text-color-disabled, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled}));
     }
   }
 }
 
 @mixin cdr-input-primary-mixin() {
-  background-color: $cdr-color-background-input-default;
+  //ITEM_DOC: Background color of a default cdr-input
+  background-color: var(--cdr-input-background-color-default, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
   &:active,
   &:focus {
-    background-color: $cdr-color-background-input-default-active;
+    //ITEM_DOC: Background color of a default cdr-input in active or focus state
+    background-color: var(--cdr-input-background-color-default-focus, var(--cdr-color-background-input-default-active, #{$cdr-color-background-input-default-active}));
   }
 }
 
 @mixin cdr-input-secondary-mixin() {
-  background-color: $cdr-color-background-input-secondary;
+  //ITEM_DOC: Background color of a secondary cdr-input
+  background-color: var(--cdr-input-background-color-secondary, var(--cdr-color-background-input-secondary, #{$cdr-color-background-input-secondary}));
   &:active,
   &:focus {
-    background-color: $cdr-color-background-input-secondary-active;
+    //ITEM_DOC: Background color of a secondary cdr-input in active or focus state
+    background-color: var(--cdr-input-background-color-secondary-active, var(--cdr-color-background-input-secondary-active, #{$cdr-color-background-input-secondary-active}));
   }
 }
 
 @mixin cdr-input-error-mixin() {
-  background-color: $cdr-color-background-input-error;
-  box-shadow: inset 0 0 0 1px $cdr-color-border-input-error;
+  //ITEM_DOC: Background color of a cdr-input in error state
+  background-color: var(--cdr-input-error-background-color, var(--cdr-color-background-input-error, #{$cdr-color-background-input-error}));
+  //ITEM_DOC: Box-shadow color of a cdr-input in error state
+  box-shadow: inset 0 0 0 1px var(--cdr-input-error-box-shadow, var(--cdr-color-border-input-error, #{$cdr-color-border-input-error}));
 }
-
 
 @mixin cdr-input-large-mixin() {
   @include cdr-text-utility-sans-400;
@@ -87,5 +94,6 @@
 
 @mixin cdr-input-helper-text-mixin() {
   @include cdr-text-utility-sans-200;
-  color: $cdr-color-text-input-help;
+  //ITEM_DOC: Text color of a cdr-input's helper text
+  color: var(--cdr-input-helper-text-color, var(--cdr-color-text-input-help, #{$cdr-color-text-input-help}));
 }

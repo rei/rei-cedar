@@ -1,39 +1,23 @@
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed } from 'vue';
+import type { Directive } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
 import backgroundProps from '../../props/background';
 
 /** Allows selecting one or more items from a list */
-export default defineComponent({
+defineOptions({
   name: 'CdrCheckbox',
-  components: { CdrLabelWrapper },
-  directives: {
-    indeterminate: {
-      mounted(el, binding) {
-        if (binding.value) {
-          el.setAttribute('indeterminate', binding.value);
-          return;
-        }
-        el.removeAttribute('indeterminate');
-      },
-      updated(el, binding) {
-        if (binding.value) {
-          el.setAttribute('indeterminate', binding.value);
-          return;
-        }
-        el.removeAttribute('indeterminate');
-      },
-    },
-  },
   inheritAttrs: false,
   customOptions: {},
-  props: {
-    /**
+});
+
+const props = defineProps({
+/**
      * Passes a CSS class to the label for custom styles
      */
-    labelClass: String,
+     labelClass: String,
     /**
      * Passes a CSS class to the input for custom styles
      */
@@ -49,6 +33,8 @@ export default defineComponent({
       type: [Boolean, String],
       default: false,
     },
+    /** Disables the checkbox */
+    disabled: Boolean,
     /**
      * The value when checked.
      */
@@ -85,40 +71,49 @@ export default defineComponent({
     modifier: {
       type: String,
       default: '',
-      validator: (value) => propValidator(value, ['', 'hide-figure']),
+      validator: (value: string) => propValidator(value, ['', 'hide-figure']),
     },
     /** @ignore */
     modelValue: {
       type: [String, Number, Boolean, Object, Array, Symbol, Function],
-    },
-  },
-  emits: {
-    /**
+    },  
+});
+const emits = defineEmits({
+      /**
      * Event emitted by v-model on the <input> element
      * @param modelValue
      */
-    'update:modelValue': null,
+     'update:modelValue': null,
+});
+
+const vIndeterminate: Directive<HTMLElement> = {
+  mounted(el, binding) {
+    if (binding.value) {
+      el.setAttribute('indeterminate', binding.value);
+      return;
+    }
+    el.removeAttribute('indeterminate');
   },
+  updated(el, binding) {
+    if (binding.value) {
+      el.setAttribute('indeterminate', binding.value);
+      return;
+    }
+    el.removeAttribute('indeterminate');
+  },
+};
+const style = useCssModule();
+const baseClass = 'cdr-checkbox';
 
-  setup(props, ctx) {
-    const baseClass = 'cdr-checkbox';
-
-    const checkboxModel = computed({
-      get() {
-        return props.modelValue;
-      },
-      set(newValue) {
-        ctx.emit('update:modelValue', newValue);
-      },
-    });
-
-    return {
-      style: useCssModule(),
-      baseClass,
-      checkboxModel,
-    };
+const checkboxModel = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(newValue) {
+    emits('update:modelValue', newValue);
   },
 });
+
 </script>
 
 <template>
@@ -129,19 +124,34 @@ export default defineComponent({
     :label-class="labelClass"
     :content-class="contentClass"
     :background="background"
-    :disabled="$attrs.disabled"
+    :disabled="disabled"
   >
     <template #input>
       <input
         :class="[style['cdr-checkbox__input'], inputClass]"
+        :disabled="disabled"
         type="checkbox"
         v-bind="$attrs"
         :true-value="customValue ? null : trueValue"
         :false-value="customValue ? null : falseValue"
         :value="customValue"
         v-indeterminate="indeterminate"
-        v-model="checkboxModel"
+        v-model.lazy="checkboxModel"
       >
+    </template>
+    <template #svgs>
+      <div :class="style['cdr-checkbox__svg-box']">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            role="presentation"
+            d="M9.673 18.669h.001L19.766 6.644a1 1 0 10-1.532-1.286l-9.3
+            11.085-3.169-3.776a1 1 0 10-1.532 1.286l3.875 4.618a.999.999 0 001.565.099z"
+          />
+        </svg>
+      </div>
     </template>
     <!-- @slot Readable text for the label element -->
     <slot />

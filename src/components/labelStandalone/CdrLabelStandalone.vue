@@ -1,13 +1,13 @@
-<script>
-import {
-  defineComponent, useCssModule, computed,
-} from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed, useSlots } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 
-export default defineComponent({
+defineOptions({
   name: 'CdrLabelStandalone',
-  props: {
-    forId: {
+});
+
+const props = defineProps({
+  forId: {
       type: String,
       required: true,
     },
@@ -16,33 +16,24 @@ export default defineComponent({
     required: Boolean,
     optional: Boolean,
     hideLabel: Boolean,
-  },
-
-  setup(props, ctx) {
-    const baseClass = 'cdr-label-standalone';
-    const hasHelper = ctx.slots.helper;
-    const hasInfo = ctx.slots.info;
-    const hasInfoAction = ctx.slots['info-action'];
-    const disabledLabelClass = computed(() => props.disabled
-  && 'cdr-label-standalone__label--disabled');
-    const srOnlyLabelClass = computed(() => props.hideLabel
-  && 'cdr-label-standalone__label--sr-only');
-    const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
-  && 'cdr-label-standalone__input-spacing');
-
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      hasHelper,
-      hasInfo,
-      hasInfoAction,
-      disabledLabelClass,
-      srOnlyLabelClass,
-      inputSpacingClass,
-    };
-  },
 });
+const slots = useSlots();
+const style = useCssModule();
+
+const baseClass = 'cdr-label-standalone';
+const hasHelper = slots.helper;
+const hasInfo = slots.info;
+const hasInfoAction = slots['info-action'];
+const disabledLabelClass = computed(() => props.disabled
+  ? 'cdr-label-standalone__label--disabled'
+  : '');
+const srOnlyLabelClass = computed(() => props.hideLabel
+  ? 'cdr-label-standalone__label--sr-only'
+  : '');
+const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasInfo)
+  ? 'cdr-label-standalone__input-spacing'
+  : '');
+
 </script>
 
 <template>

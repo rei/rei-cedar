@@ -16,21 +16,27 @@
 }
 
 @mixin cdr-form-group-error-mixin() {
-  box-shadow: inset 0 0 0 1px $cdr-color-border-input-error;
-  background-color: $cdr-color-background-input-error;
+  //ITEM_DOC: Box-shadow color of a cdr-form-group error
+  box-shadow: inset 0 0 0 1px var(--cdr-form-group-error-box-shadow, var(--cdr-color-border-input-error, #{$cdr-color-border-input-error}));
+  //ITEM_DOC: Background color of a cdr-form-group error
+  background-color: var(--cdr-form-group-error-background-color, var(--cdr-color-background-input-error, #{$cdr-color-background-input-error}));
   &:hover {
-    background-color: transparent;
+    //ITEM_DOC: Background color of a cdr-form-group error on hover
+    background-color: var(--cdr-form-group-error-background-hover, transparent);
   }
 }
 
 @mixin cdr-form-group-optional-mixin() {
-  color: $cdr-color-text-input-optional;
+  //ITEM_DOC: Text color of an optional cdr-form-group
+  color: var(--cdr-form-group-optional-text-color, var(--cdr-color-text-input-optional, #{$cdr-color-text-input-optional}));
 }
 
 @mixin cdr-form-group-disabled-mixin() {
   cursor: not-allowed;
-  color: $cdr-color-text-disabled;
+  //ITEM_DOC: Text color of a disabled cdr-form-group
+  color: var(--cdr-form-group-disabled-text-color, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
 }
+
 
 @mixin cdr-form-group-content-mixin() {
   border-radius: $cdr-radius-softer;

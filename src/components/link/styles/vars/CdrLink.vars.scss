@@ -6,8 +6,10 @@
   background-color: transparent;
   border: 0;
   margin: 0;
-  color: $cdr-color-text-link-rest;
-  fill: $cdr-color-text-link-rest;
+  //ITEM_DOC: Color of the link text
+  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
+  //ITEM_DOC: Color of the link fill
+  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
   cursor: pointer;
   display: inline-flex;
   outline: none;
@@ -17,11 +19,13 @@
 
   &:active,
   &:focus {
-    color: $cdr-color-text-link-active;
+    //ITEM_DOC: Color of the link text when active or focused
+    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active, #{$cdr-color-text-link-active}));
   }
 
   &:hover {
-    color: $cdr-color-text-link-hover;
+    //ITEM_DOC: Color of the link text when hovered
+    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover}));
     text-decoration: none;
   }
 
@@ -30,7 +34,6 @@
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
   }
-
 }
 
 @mixin cdr-link-inherit-color-mixin() {

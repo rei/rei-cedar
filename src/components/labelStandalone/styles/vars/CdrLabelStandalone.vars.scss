@@ -1,20 +1,24 @@
 @mixin cdr-label-standalone-label-mixin() {
   @include cdr-text-utility-sans-200;
-  color: $cdr-color-text-input-label;
+  //ITEM_DOC: Text color of a standalone label
+  color: var(--cdr-label-standalone-text-color, var(--cdr-color-text-input-label, #{$cdr-color-text-input-label}));
   margin: 0;
 }
 
 @mixin cdr-label-standalone-disabled-mixin() {
-  color:  $cdr-color-text-input-disabled;
+  //ITEM_DOC: Text color of a standalone label when disabled
+  color: var(--cdr-label-standalone-disabled-text-color, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled}));
 }
 
 @mixin cdr-label-standalone-optional-mixin() {
-  color: $cdr-color-text-input-optional;
+  //ITEM_DOC: Text color of a standalone label when optional
+  color: var(--cdr-label-standalone-optional-text-color, var(--cdr-color-text-input-optional, #{$cdr-color-text-input-optional}));
 }
 
 @mixin cdr-label-standalone-helper-mixin() {
   @include cdr-text-utility-sans-200;
-  color: $cdr-color-text-input-help;
+  //ITEM_DOC: Text color of a standalone helper label
+  color: var(--cdr-label-standalone-helper-text-color, var(--cdr-color-text-input-help, #{$cdr-color-text-input-help}));
   margin-top: $cdr-space-eighth-x;
 }
 

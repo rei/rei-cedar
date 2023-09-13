@@ -34,7 +34,7 @@ describe('CdrAccordionGroup', () => {
         expect(buttons[2].element).toBe(document.activeElement);
       });
 
-      it('hittin ArrowDown focuses on the expected element', async () => {
+      it('hitting ArrowDown focuses on the expected element', async () => {
         buttons[2].element.focus();
         wrapper.trigger('keydown', { key: 'ArrowDown' });
         await wrapper.vm.$nextTick();

@@ -1,24 +1,25 @@
-<script>
-import {
-  defineComponent, useCssModule, computed,
-} from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed, useSlots } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass, buildBooleanClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
 /** Initiates an action, such as completing a task or submitting information */
-export default defineComponent({
+
+defineOptions({
   name: 'CdrButton',
-  props: {
-    /**
+});
+
+const props = defineProps({
+  /**
      * Renders CdrButton as a <button> or <a> element. When using the value of <a>, this element renders as an anchor link.
      * @demoIgnore true
      * @values button, a
      */
-    tag: {
+     tag: {
       type: String,
       default: 'button',
-      validator: (value) => propValidator(value, ['button', 'a']),
+      validator: (value: string) => propValidator(value, ['button', 'a']),
     },
     /**
      * Sets the button type
@@ -28,7 +29,7 @@ export default defineComponent({
     type: {
       type: String,
       default: 'button',
-      validator: (value) => propValidator(value, ['button', 'submit', 'reset']),
+      validator: (value: string) => propValidator(value, ['button', 'submit', 'reset']),
     },
     /**
      * Modifies the style variant for this component
@@ -38,7 +39,9 @@ export default defineComponent({
     modifier: {
       type: String,
       default: 'primary',
-      validator: (value) => propValidator(value, ['primary', 'secondary', 'sale', 'dark', 'link']),
+      validator: (value: string) => propValidator(
+        value, ['primary', 'secondary', 'sale', 'dark', 'link']
+        ),
     },
     /**
      * Sets the button size; values can target responsive breakpoints. Example: `large@sm`.
@@ -48,7 +51,7 @@ export default defineComponent({
     size: {
       type: String,
       default: 'medium',
-      validator: (value) => propValidator(
+      validator: (value: string) => propValidator(
         value,
         ['small', 'medium', 'large'],
       ),
@@ -59,7 +62,7 @@ export default defineComponent({
     fullWidth: {
       type: [String, Boolean],
       default: false,
-      validator: (value) => {
+      validator: (value: string) => {
         if (typeof value === 'string') {
           return propValidator(
             value,
@@ -84,40 +87,31 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-  },
-
-  setup(props, ctx) {
-    const baseClass = 'cdr-button';
-    const buttonType = computed(() => (props.tag === 'button' ? props.type : null));
-    const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
-    const fullWidthClass = computed(() => !props.iconOnly && props.fullWidth
-      && buildBooleanClass(baseClass, props.fullWidth, 'full-width'));
-    const sizeClass = computed(() => (!props.iconOnly
-      ? responsiveModifyClass(baseClass, '', props.size)
-      : `cdr-button--icon-only-${props.size}`));
-    const iconLeftClass = computed(() => ctx.slots['icon-left'] && ctx.slots.default
-      && `${baseClass}--has-icon-left`);
-    const iconRightClass = computed(() => ctx.slots['icon-right'] && ctx.slots.default
-      && `${baseClass}--has-icon-right`);
-    const iconOnlyClass = computed(() => props.iconOnly && `${baseClass}--icon-only`);
-    const withBackgroundClass = computed(() => props.iconOnly
-      && props.withBackground && `${baseClass}--with-background`);
-
-    return {
-      style: useCssModule(),
-      mapClasses,
-      baseClass,
-      buttonType,
-      modifierClass,
-      fullWidthClass,
-      sizeClass,
-      iconLeftClass,
-      iconRightClass,
-      iconOnlyClass,
-      withBackgroundClass,
-    };
-  },
 });
+const slots = useSlots();
+
+const style = useCssModule();
+const baseClass = 'cdr-button';
+const buttonType = computed(() => (props.tag === 'button' ? props.type : null));
+const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
+const fullWidthClass = computed(() => !props.iconOnly && props.fullWidth
+  ? buildBooleanClass(baseClass, props.fullWidth, 'full-width')
+  : '');
+const sizeClass = computed(() => (!props.iconOnly
+  ? responsiveModifyClass(baseClass, '', props.size)
+  : `cdr-button--icon-only-${props.size}`));
+const iconLeftClass = computed(() => slots['icon-left'] && slots.default
+  ? `${baseClass}--has-icon-left`
+  : '');
+const iconRightClass = computed(() => slots['icon-right'] && slots.default
+  ? `${baseClass}--has-icon-right`
+  : '');
+const iconOnlyClass = computed(() => props.iconOnly
+? `${baseClass}--icon-only`
+: '');
+const withBackgroundClass = computed(() => props.iconOnly && props.withBackground
+  ? `${baseClass}--with-background`
+  : '');
 
 </script>
 

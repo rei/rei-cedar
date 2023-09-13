@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "parser": "@typescript-eslint/parser"
+  },
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "plugin:vue/strongly-recommended",
+    "eslint:recommended",
+    "@vue/typescript/recommended"
+  ],
+  "rules": {
+    "no-use-before-define": 0,
+    "vue/require-default-prop": 0,
+    "vue/attributes-order": 0,
+    "vue/no-multiple-template-root": 0,
+    "max-len": ["error", {
+      "code": 100,
+      "ignoreComments": true,
+      "ignoreTrailingComments": true
+    }],
+    "vue/multiline-html-element-content-newline": 0
+  }
+}

@@ -1,46 +1,38 @@
-<script>
-import { defineComponent, useCssModule, computed } from 'vue';
+<script setup lang="ts">
+import { useCssModule, computed } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
 /** Provides base margins and responsive layout logic for pages */
-export default defineComponent({
+defineOptions({
   name: 'CdrContainer',
-  props: {
-    /** Sets the HTML tag for the container element */
-    tag: {
-      type: String,
-      default: 'div',
-    },
-    /**
-     * Controls whether container is static or fluid width.
-     * @demoSelectMultiple false
-     * @values static, fluid
-   */
-    modifier: {
-      type: String,
-      default: 'static',
-      validator: (value) => propValidator(
-        value,
-        ['static', 'fluid'],
-        false,
-      ),
-    },
+});
+
+const props = defineProps({
+  /** Sets the HTML tag for the container element */
+  tag: {
+    type: String,
+    default: 'div',
   },
-
-  setup(props) {
-    const baseClass = 'cdr-container';
-    const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
-
-    return {
-      style: useCssModule(),
-      baseClass,
-      modifierClass,
-      mapClasses,
-    };
+  /**
+   * Controls whether container is static or fluid width.
+   * @demoSelectMultiple false
+   * @values static, fluid
+ */
+  modifier: {
+    type: String,
+    default: 'static',
+    validator: (value: string) => propValidator(
+      value,
+      ['static', 'fluid'],
+      false,
+    ),
   },
 });
 
+const style = useCssModule();
+const baseClass = 'cdr-container';
+const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
 </script>
 
 <template>

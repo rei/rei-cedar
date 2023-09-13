@@ -50,6 +50,9 @@
     & > .cdr-label-wrapper__figure {
       display: none;
     }
+    & > .cdr-checkbox__svg-box svg {
+      fill: transparent !important;
+    }
   }
 
 

@@ -7,7 +7,7 @@ module.exports.start = async (opts = {}) => {
     root: './',
     base: '/',
     mode: 'development',
-    configFile: '../../vite.config.js',
+    configFile: '../../vite.config.ts',
     logLevel: 'info',
     clearScreen: false
   }, opts);
