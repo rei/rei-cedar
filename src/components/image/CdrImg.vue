@@ -31,7 +31,7 @@ const props = defineProps({
   */
   ratio: {
     type: String,
-    default: '',
+    default: undefined,
     validator: (value: string) => ([
       'auto',
       'square',
@@ -98,8 +98,10 @@ const ratioObject = computed(() => {
   } else if (props.ratio === 'auto') {
     ratioPct = '0';
   } else {
-    const [x, y] = props.ratio.split('-');
-    ratioPct = `${(+y / +x) * 100}%`;
+    if (props.ratio) {
+      const [x, y] = props.ratio.split('-');
+      ratioPct = `${(+y / +x) * 100}%`;
+    }
   }
   return { '--ratio': ratioPct };
 });
