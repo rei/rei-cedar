@@ -37,6 +37,8 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    dts(),
+    dts({
+      insertTypesEntry: true,
+    }),
   ],
 });
