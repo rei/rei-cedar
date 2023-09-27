@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import {
-  useCssModule, computed, ref, watch, nextTick,
+  useCssModule, computed, ref, watch, nextTick, PropType
 } from 'vue';
-import type { PropType } from 'vue';
 import uid from '../../utils/uid';
 
 /** Navigation used to reveal a page's location within the site hierarchy */
