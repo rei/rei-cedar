@@ -2,6 +2,7 @@
 import {
   useCssModule, computed, ref, watch, nextTick, PropType
 } from 'vue';
+import { breadcrumbItem } from './interfaces';
 import uid from '../../utils/uid';
 
 /** Navigation used to reveal a page's location within the site hierarchy */
@@ -9,21 +10,6 @@ defineOptions({
   name: 'CdrBreadcrumb',
 });
 
-/**
- * Breadcrumb data object
- * 
- * @interface breadcrumbItem
- * @url {string} The url for the breadcrumb link
- * @name {string} The display name for breadcrumb link
- * @id {string} Optional id
- */
-interface breadcrumbItem {
-  item: {
-    url: string,
-    name: string,
-    id?: string,
-  }
-}
 const props = defineProps({
    /**
      * Sets the array of a breadcrumb object containing a 'url' and 'name' property.
