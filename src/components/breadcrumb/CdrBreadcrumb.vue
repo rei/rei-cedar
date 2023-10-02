@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {
-  useCssModule, computed, ref, watch, nextTick, PropType
+  useCssModule, computed, ref, watch, nextTick
 } from 'vue';
+import type { PropType } from 'vue';
 import { breadcrumbItem } from '../../types/interfaces';
 import uid from '../../utils/uid';
 
