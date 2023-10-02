@@ -2,7 +2,7 @@
 import {
   useCssModule, computed, ref, watch, nextTick, PropType
 } from 'vue';
-import { breadcrumbItem } from './interfaces';
+import { breadcrumbItem } from '../../types/interfaces';
 import uid from '../../utils/uid';
 
 /** Navigation used to reveal a page's location within the site hierarchy */
