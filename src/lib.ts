@@ -37,3 +37,7 @@ export { default as CdrSwitch } from './components/switch/CdrSwitch.vue'
 export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
 export * from './components/icon/index.js';
 
+/** Type exports */
+export { type breadcrumbItem } from './types/interfaces'
+
+
