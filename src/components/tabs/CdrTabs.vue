@@ -9,7 +9,7 @@ import {
 } from '@rei/cdr-tokens/dist/rei-dot-com/js/cdr-tokens.mjs';
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
-import { selectedTabKey } from './symbols';
+import { selectedTabKey } from '../../types/symbols';
 
 /** Organizes related content into groups for people to navigate between */
 defineOptions({

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {
-  useCssModule, computed, ref, watch, nextTick, onMounted,
+  useCssModule, computed, ref, watch, nextTick, onMounted, type PropType
 } from 'vue';
-import type { PropType } from 'vue';
+import { paginationItem } from '../../types/interfaces';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 import IconCaretLeft from '../icon/comps/caret-left.vue';
@@ -15,11 +15,6 @@ defineOptions({
   name: 'CdrPagination'
 });
 
-interface paginationItem {
-  page: number,
-  url: string,
-  ellip?: boolean
-}
 const props = defineProps({
   /**
    * Define a custom slug for the generated pagination item IDs. Slug is randomly generated if no ID provided.

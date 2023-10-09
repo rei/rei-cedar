@@ -1,4 +1,4 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/_index.scss';
 @import './vars/CdrCard.vars.scss';
 .cdr-card {
   @include cdr-card-base-mixin;

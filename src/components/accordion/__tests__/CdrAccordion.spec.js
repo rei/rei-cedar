@@ -1,6 +1,6 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrAccordion from '../CdrAccordion.vue';
-import { unwrappedKey } from '../symbols';
+import { unwrappedKey } from '../../../types/symbols';
 
 const baseComponentPattern = {
   propsData: {

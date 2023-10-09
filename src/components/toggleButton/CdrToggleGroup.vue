@@ -4,7 +4,7 @@ import {
 } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
-import { selectedToggleKey } from './symbols';
+import { selectedToggleKey } from '../../types/symbols';
 
 defineOptions({
   name: 'CdrToggleGroup',

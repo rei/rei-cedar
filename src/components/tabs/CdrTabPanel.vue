@@ -3,7 +3,7 @@ import {
   computed, ref, inject, useCssModule, watch,
 } from 'vue';
 import kebabCase from '../../utils/kebabCase';
-import { selectedTabKey } from './symbols';
+import { selectedTabKey } from '../../types/symbols';
 
 defineOptions({
   name: 'CdrTabPanel',

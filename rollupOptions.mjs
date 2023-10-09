@@ -17,7 +17,7 @@ export default {
       exclude: ['node_modules/**'],
       babelHelpers: 'bundled',
       babelrc: false,
-      extensions: ['.js', '.mjs', '.vue'],
+      extensions: ['.js', '.ts', '.mjs', '.vue'],
       targets: browserTargets,
       presets: [
         [

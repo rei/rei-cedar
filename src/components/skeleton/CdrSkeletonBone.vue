@@ -2,7 +2,7 @@
 import { useCssModule, computed, inject, ref } from 'vue';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
-import { motionKey } from './symbols';
+import { motionKey } from '../../types/symbols';
 
 defineOptions({
   name: 'CdrSkeletonBone',
