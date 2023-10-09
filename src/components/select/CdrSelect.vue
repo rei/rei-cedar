@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCssModule, computed, useSlots, useAttrs } from 'vue';
-import type { PropType } from 'vue';
+import { useCssModule, computed, useSlots, useAttrs, type PropType } from 'vue';
+import { selectOption } from '../../types/interfaces';
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
@@ -16,10 +16,6 @@ defineOptions({
   customOptions: {}
 });
 
-interface selectOption {
-  text: string,
-  value: string,
-}
 
 const props = defineProps({
   /**

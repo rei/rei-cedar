@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, ref, computed, inject } from 'vue';
-import { selectedToggleKey } from './symbols';
+import { selectedToggleKey } from '../../types/symbols';
 
 /** Permits switching two or more options on and off */
 defineOptions({
