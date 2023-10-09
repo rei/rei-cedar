@@ -5,7 +5,7 @@ import {
 import { debounce } from '../../utils/debounce';
 import propValidator from '../../utils/propValidator';
 import getCurrentBreakpoint from '../../mixins/breakpoints';
-import { unwrappedKey } from './symbols';
+import { unwrappedKey } from '../../types/symbols'; 
 
 defineOptions({
   name: 'CdrAccordionGroup',

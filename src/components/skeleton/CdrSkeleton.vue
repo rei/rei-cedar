@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, provide, toRef } from 'vue';
-import { motionKey } from './symbols';
+import { motionKey } from '../../types/symbols';
 
 /** Visually communicates content is in the process of loading */
 defineOptions({
