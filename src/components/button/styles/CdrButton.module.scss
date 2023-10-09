@@ -1,4 +1,4 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/_index.scss';
 @import './vars/CdrButton.vars.scss';
 .cdr-button {
   @include cdr-button-base-mixin;
