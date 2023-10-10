@@ -10,7 +10,7 @@ function runA11yTests(browser, path, target) {
       reporter: 'v2',
       runOnly: {
         type: 'tag',
-        values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'],
+        values: ['wcag2a', 'wcag2aa', 'wcag22a', 'wcag22aa', 'best-practice'],
       },
       rules: {
         'aria-allowed-attr': { enabled: false },
