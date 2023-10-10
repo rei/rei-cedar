@@ -26,11 +26,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 /** normalize line-height for consistent testing because links inherit it */
 
 .link-examples {
   line-height: 1;
+  // & a {
+  //   margin: 1rem;
+  // }
 }
 
 </style>
