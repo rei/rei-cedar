@@ -1,6 +1,5 @@
 <script>
 
-import fullSprite from '@rei/cedar-icons/dist/all-icons.svg';
 import SinkWrapper from './SinkWrapper.vue'; // eslint-disable-line
 import { CdrLink } from '../lib';
 import routes from './router';
@@ -13,7 +12,10 @@ export default {
   data() {
     return {
       routes,
-      fullSprite,
+      // eslint-disable-next-line max-len
+      fullSprite: '<svg xmlns="http://www.w3.org/2000/svg"><defs/><symbol id="arrow-up" viewBox="0 0 24 24"><path role="presentation" d="M13 7.415l3.295 3.295a1 1 0 001.412-1.417l-4.98-4.98a.997.997 0 00-1.429-.025L6.293 9.293a1 1 0 001.414 1.414L11 7.414V19a1 1 0 002 0V7.415z"/></symbol><symbol id="arrow-down" viewBox="0 0 24 24"><path role="presentation" d="M11 16.585L7.705 13.29a1 1 0 00-1.412 1.417l4.98 4.98a.997.997 0 001.429.025l5.005-5.005a1 1 0 00-1.414-1.414L13 16.586V5a1 1 0 00-2 0v11.585z"/></symbol></svg>',
+
+
     };
   },
   computed: {

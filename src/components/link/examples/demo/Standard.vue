@@ -55,7 +55,7 @@
         <cdr-link href="#baz">
           <cdr-icon
             inherit-color
-            use="#mail"
+            use="#arrow-up"
             modifier="inherit-color"
           />
           Icon on the left
@@ -66,7 +66,7 @@
           Icon on the right
           <cdr-icon
             inherit-color
-            use="#download"
+            use="#arrow-up"
             modifier="inherit-color"
           />
         </cdr-link>
@@ -75,13 +75,13 @@
         <cdr-link href="#baz">
           <cdr-icon
             inherit-color
-            use="#twitter"
+            use="#arrow-up"
             modifier="inherit-color"
           />
           Icons on both sides
           <cdr-icon
             inherit-color
-            use="#external-link"
+            use="#arrow-up"
             modifier="inherit-color"
           />
         </cdr-link>
@@ -103,7 +103,7 @@
       >
         <cdr-icon
           inherit-color
-          use="#mail"
+          use="#arrow-up"
           modifier="inherit-color"
         />
         cdr-link icon inherit
