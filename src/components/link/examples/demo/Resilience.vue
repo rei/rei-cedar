@@ -83,7 +83,7 @@
       <cdr-link href="#foo">
         <cdr-icon
           inherit-color
-          use="#mail"
+          use="#arrow-up"
           modifier="inherit-color"
         />
         text element wrapping link with nested icon
@@ -99,7 +99,7 @@
         <cdr-link href="#foo">
           <cdr-icon
             inherit-color
-            use="#mail"
+            use="#arrow-up"
             modifier="inherit-color"
           />
           <cdr-text
@@ -124,7 +124,7 @@
           </cdr-text>
           <cdr-icon
             inherit-color
-            use="#download"
+            use="#arrow-up"
             modifier="inherit-color"
           />
         </cdr-link>
@@ -137,7 +137,7 @@
         <cdr-link href="#foo">
           <cdr-icon
             inherit-color
-            use="#twitter"
+            use="#arrow-up"
             modifier="inherit-color"
           />
           <cdr-text
@@ -148,7 +148,7 @@
           </cdr-text>
           <cdr-icon
             inherit-color
-            use="#external-link"
+            use="#arrow-up"
             modifier="inherit-color"
           />
         </cdr-link>
@@ -180,5 +180,7 @@ export default {
 </script>
 
 <style>
-
+p {
+  margin: 1rem 0!important;
+}
 </style>
