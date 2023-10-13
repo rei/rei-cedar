@@ -1,0 +1,16 @@
+@import '../../../styles/settings/_index.scss';
+
+.cdr-heading-subheading-block {
+  padding: $cdr-space-three-x $cdr-space-two-x $cdr-space-two-x;
+  @include cdr-md-mq-down {
+    padding: $cdr-space-three-x $cdr-space-one-and-a-half-x $cdr-space-two-x;
+  }
+  &__heading {
+    margin: 0 0 $cdr-space-one-x 0;
+    max-width: 40ch;
+  }
+  &__subheading {
+    margin: 0;
+    max-width: 60ch;
+  }
+}
