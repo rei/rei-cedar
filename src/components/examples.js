@@ -12,6 +12,7 @@ import grid from 'componentsdir/grid/examples/Grid.vue';
 import icon from 'componentsdir/icon/examples/Icons.vue';
 import images from 'componentsdir/image/examples/Images.vue';
 import inputs from 'componentsdir/input/examples/Inputs.vue';
+import lead from 'componentsdir/lead/examples/Lead.vue';
 import links from 'componentsdir/link/examples/Links.vue';
 import list from 'componentsdir/list/examples/Lists.vue';
 import modal from 'componentsdir/modal/examples/Modal.vue';
@@ -45,6 +46,7 @@ export default {
   icon,
   images,
   inputs,
+  lead,
   links,
   list,
   modal,

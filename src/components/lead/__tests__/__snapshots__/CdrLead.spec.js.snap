@@ -1,0 +1,55 @@
+// Vitest Snapshot v1
+
+exports[`CdrLead > matches snapshot 1`] = `
+<div
+  class="cdr-lead"
+>
+  <div
+    class="cdr-lead__top"
+  />
+  <!--v-if-->
+  <div
+    class="cdr-lead__lower"
+  >
+    <header
+      class="cdr-lead__copy-block"
+    >
+      <h1
+        class="cdr-lead__copy-block--heading"
+        tag="h1"
+      />
+      <p
+        class="cdr-lead__copy-block--subheading"
+        role="doc-subtitle"
+      />
+    </header>
+  </div>
+</div>
+`;
+
+exports[`CdrLead > renders correctly when presented with correct data 1`] = `
+<div
+  class="cdr-lead"
+>
+  <div
+    class="cdr-lead__top"
+  />
+  <!--v-if-->
+  <div
+    class="cdr-lead__lower"
+  >
+    <header
+      class="cdr-lead__copy-block"
+    >
+      <h1
+        class="cdr-lead__copy-block--heading"
+        tag="h1"
+      />
+      <p
+        class="cdr-lead__copy-block--subheading"
+        role="doc-subtitle"
+      />
+    </header>
+  </div>
+</div>
+`;
