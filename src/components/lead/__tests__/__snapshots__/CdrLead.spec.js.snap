@@ -1,32 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`CdrLead > matches snapshot 1`] = `
-<div
-  class="cdr-lead"
->
-  <div
-    class="cdr-lead__top"
-  />
-  <!--v-if-->
-  <div
-    class="cdr-lead__lower"
-  >
-    <header
-      class="cdr-lead__copy-block"
-    >
-      <h1
-        class="cdr-lead__copy-block--heading"
-        tag="h1"
-      />
-      <p
-        class="cdr-lead__copy-block--subheading"
-        role="doc-subtitle"
-      />
-    </header>
-  </div>
-</div>
-`;
-
 exports[`CdrLead > renders correctly when presented with correct data 1`] = `
 <div
   class="cdr-lead"
@@ -39,16 +12,32 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
     class="cdr-lead__lower"
   >
     <header
-      class="cdr-lead__copy-block"
+      class="cdr-heading-subheading-block"
     >
       <h1
-        class="cdr-lead__copy-block--heading"
-        tag="h1"
-      />
+        class="cdr-text cdr-heading-display-4 cdr-heading-subheading-block__heading"
+      >
+        <!-- @slot CdrText content -->
+        
+        
+        
+         
+        
+        
+        
+      </h1>
       <p
-        class="cdr-lead__copy-block--subheading"
-        role="doc-subtitle"
-      />
+        class="cdr-text cdr-subheading-sans cdr-heading-subheading-block__subheading"
+      >
+        <!-- @slot CdrText content -->
+        
+        
+        
+        
+        
+        
+        
+      </p>
     </header>
   </div>
 </div>
