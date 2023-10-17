@@ -23,11 +23,11 @@ const style = useCssModule();
   --cdr-type-scale-4: clamp(3.91rem, 2.64cqw + 3.06rem, 6.31rem);
   --cdr-type-scale-5: clamp(4.88rem, 3.88cqw + 3.64rem, 8.42rem);
 
-  --cdr-line-height-scale: 1.07
+  --cdr-heading-display-line-height-scale: 1.07
 }
 .cdr-heading-display-5 {
   @include cdr-text-heading-display-1600;
   font-size: var(--cdr-type-scale-5);
-  line-height: calc(var(--cdr-type-scale-5) * var(--cdr-line-height-scale));
+  line-height: calc(var(--cdr-type-scale-5) * var(--cdr-heading-display-line-height-scale));
 }
 </style>  

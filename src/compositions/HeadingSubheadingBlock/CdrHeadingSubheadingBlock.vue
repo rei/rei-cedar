@@ -1,21 +1,28 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import PresentHeadingDisplay4 from '../../components/text/presets/PresetHeadingDisplay4.vue'
-import PresentSubheadingSans from '../../components/text/presets/PresetSubheadingSans.vue'
+import PresetHeadingDisplay4 from '../../components/text/presets/PresetHeadingDisplay4.vue';
+import PresetSubheadingSans from '../../components/text/presets/PresetSubheadingSans.vue';
+
+defineProps({
+  headingTag: { type: String, default: 'h1' },
+});
 
 const baseClass = 'cdr-heading-subheading-block'
 const style = useCssModule();
 </script>
 
 <template>
-  <div :class="style[baseClass]">
-    <PresentHeadingDisplay4 :class="style[`${baseClass}__heading`]">
+  <header :class="style[baseClass]">
+    <PresetHeadingDisplay4
+      :tag="headingTag"
+      :class="style[`${baseClass}__heading`]"
+    >
       <slot />
-    </PresentHeadingDisplay4>
-    <PresentSubheadingSans :class="style[`${baseClass}__subheading`]">
+    </PresetHeadingDisplay4>
+    <PresetSubheadingSans :class="style[`${baseClass}__subheading`]">
       <slot name="subheading" />
-    </PresentSubheadingSans>
-  </div>
+    </PresetSubheadingSans>
+  </header>
 
 </template>
 

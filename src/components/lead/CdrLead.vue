@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { CdrImg } from '../../lib';
+import { CdrImg, CdrHeadingSubheadingBlock } from '../../lib';
+
 
 defineOptions({
   name: 'CdrLead'
@@ -32,7 +33,7 @@ const baseClass = 'cdr-lead'
       />
     </div>
     <div :class="style[`${baseClass}__lower`]">
-      <header :class="style[`${baseClass}__copy-block`]">
+      <!-- <header :class="style[`${baseClass}__copy-block`]">
         <h1
           :class="style[`${baseClass}__copy-block--heading`]"
           tag="h1"
@@ -45,7 +46,13 @@ const baseClass = 'cdr-lead'
         >
           {{ subheading }}
         </p>
-      </header>
+      </header> -->
+      <CdrHeadingSubheadingBlock>
+        {{ heading }}
+        <template #subheading>
+          {{ subheading }}
+        </template>
+      </CdrHeadingSubheadingBlock>
     </div>
   </div>
 </template>

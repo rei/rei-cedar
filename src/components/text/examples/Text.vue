@@ -5,13 +5,12 @@
 </template>
 
 <script>
-import { CdrHeadingDisplay5, CdrSubheadingSans } from '../presets/textPresets';
+import { CdrHeadingDisplay5 } from '../presets/textPresets';
 
 export default {
   name: 'TextExamples',
   components: {
    CdrHeadingDisplay5,
-   CdrSubheadingSans,
   },
 };
 </script>

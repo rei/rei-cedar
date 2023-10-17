@@ -2,7 +2,7 @@
 import { useCssModule } from 'vue';
 import CdrText from '../CdrText.vue'
 
-const baseClass = 'cdr-subheading-sans';
+const baseClass = 'cdr-utility-sans';
 const style = useCssModule();
 </script>
 
@@ -16,9 +16,9 @@ const style = useCssModule();
 @import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
 @import "../../../../public/cdr-fluid-type.css";
 
-.cdr-subheading-sans {
-  @include cdr-text-subheading-sans-500;
+.cdr-utility-sans {
+  @include cdr-text-utility-sans-500;
   font-size: var(--cdr-type-scale-0);
-  line-height: calc(var(--cdr-type-scale-1) * var(--cdr-subheading-sans-line-height-scale));
+  line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-sans-line-height-scale));
 }
 </style>  
