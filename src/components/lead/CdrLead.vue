@@ -33,20 +33,6 @@ const baseClass = 'cdr-lead'
       />
     </div>
     <div :class="style[`${baseClass}__lower`]">
-      <!-- <header :class="style[`${baseClass}__copy-block`]">
-        <h1
-          :class="style[`${baseClass}__copy-block--heading`]"
-          tag="h1"
-        >
-          {{ heading }}
-        </h1>
-        <p
-          :class="style[`${baseClass}__copy-block--subheading`]"  
-          role="doc-subtitle"
-        >
-          {{ subheading }}
-        </p>
-      </header> -->
       <CdrHeadingSubheadingBlock>
         {{ heading }}
         <template #subheading>
