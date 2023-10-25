@@ -2,10 +2,19 @@
 import { debounce } from '../../utils/debounce'
 import tabbable from 'tabbable';
 import {
-  useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, useAttrs,
+  useCssModule,
+  computed,
+  ref,
+  watch,
+  onMounted,
+  nextTick,
+  onUnmounted,
+  useAttrs,
 } from 'vue';
 import {
-  CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
+  CdrBreakpointSm,
+  CdrSpaceOneX,
+  CdrSpaceTwoX,
 } from '@rei/cdr-tokens/dist/rei-dot-com/js/cdr-tokens.mjs';
 import onTransitionEnd from './onTransitionEnd';
 import CdrButton from '../button/CdrButton.vue';
@@ -16,12 +25,13 @@ import mapClasses from '../../utils/mapClasses';
 defineOptions({
   name: 'CdrModal'
 });
+
 const props = defineProps({
   /**
    * Toggles the state of the modal
    * @demoIgnore true
    */
-    opened: {
+  opened: {
     type: Boolean,
     required: true,
   },
@@ -80,7 +90,7 @@ const props = defineProps({
 
 const emits = defineEmits({
   /** Fires when modal is closed */
-  closed: null,  
+  closed: null,
 });
 
 const attrs = useAttrs();
@@ -92,11 +102,11 @@ let lastActive: Element | null;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
 
-interface offsetValues {
+interface OffsetValues {
   x: number | undefined,
   y: number | undefined,
-} 
-const offset = ref<offsetValues>({ x: undefined, y: undefined});
+}
+const offset = ref<OffsetValues>({ x: undefined, y: undefined });
 const headerHeight = ref(0);
 const totalHeight = ref(0);
 const scrollHeight = ref(0);
@@ -126,7 +136,7 @@ const onClick = (e?: Event) => {
   emits('closed', e);
 };
 
-const handleKeyDown = ({ key }: { key: string}) => {
+const handleKeyDown = ({ key }: { key: string }) => {
   switch (key) {
     case 'Escape':
     case 'Esc':
@@ -135,6 +145,7 @@ const handleKeyDown = ({ key }: { key: string}) => {
     default: break;
   }
 };
+
 const handleFocus = (e: Event) => {
   const { documentElement } = document;
   if (modalEl.value?.contains(e.target as HTMLElement) || !documentElement) return;
@@ -155,13 +166,13 @@ const addNoScroll = () => {
   const { documentElement, body } = document;
   offset.value = {
     x: window.scrollX
-  || (documentElement || {}).scrollLeft
-  || (body || {}).scrollLeft
-  || 0,
+      || (documentElement || {}).scrollLeft
+      || (body || {}).scrollLeft
+      || 0,
     y: window.scrollY
-  || (documentElement || {}).scrollTop
-  || (body || {}).scrollTop
-  || 0,
+      || (documentElement || {}).scrollTop
+      || (body || {}).scrollTop
+      || 0,
   };
 
   if (documentElement) {
@@ -190,6 +201,62 @@ const removeNoScroll = () => {
   }
 };
 
+const backgroundContentNodes: Array<HTMLElement> = [];
+let backgroundNodesDiscovered = false;
+
+/**
+ * findBackgroundContentNodes
+ * When modal opens for the first time, find the content that should
+ * be hidden when it opens, and store it in an array
+ */
+const findBackgroundContentNodes = () => {
+  // initial selector is complex, breaking it down
+  const notSelectors = [
+    'body > *',
+    ':not(script)',
+    ':not(style)',
+    ':not([data-is-modal])',
+    ':not([aria-hidden=true])',
+  ]
+  const contentBodyChildren: NodeListOf<HTMLElement> =
+    document.querySelectorAll(notSelectors.join(''));
+
+  // for the remaining, check if they should be hidden
+  contentBodyChildren.forEach((el) => {
+    if (getComputedStyle(el).getPropertyValue('display') !== 'none') {
+      // TODO - temp to be sure we tagged right
+      el.setAttribute('data-modal-hide', '');
+      backgroundContentNodes.push(el);
+    }
+  });
+  backgroundNodesDiscovered = true;
+}
+
+/**
+ * hideModalBackgroundContent
+ * Hide elements tagged onBeforeMount from screen readers
+ */
+const hideModalBackgroundContent = () => {
+  // only run the expensive DOM scraping once
+  if (!backgroundNodesDiscovered) {
+    findBackgroundContentNodes();
+  }
+  backgroundContentNodes.forEach((el) => {
+    el.setAttribute('aria-hidden', 'true');
+  });
+};
+
+/**
+ * showModalBackgroundContent
+ * reveal elements tagged onBeforeMount to screen readers
+ */
+const showModalBackgroundContent = () => {
+  backgroundContentNodes.forEach((el) => {
+    el.removeAttribute('aria-hidden');
+  });
+};
+
+
 const addHandlers = () => {
   document.addEventListener('focusin', handleFocus, true);
   document.addEventListener('keydown', handleKeyDown);
@@ -201,6 +268,7 @@ const handleOpened = () => {
   isOpening.value = true;
   modalClosed.value = false;
   lastActive = activeElement;
+  hideModalBackgroundContent();
 
   nextTick(() => {
     if (modalEl.value) (modalEl.value as HTMLDivElement).focus(); // wrapped in if so testing error isn't thrown
@@ -220,10 +288,12 @@ const handleOpened = () => {
 };
 
 const handleClosed = () => {
+  showModalBackgroundContent();
   const { documentElement } = document;
   document.removeEventListener('keydown', handleKeyDown);
   document.removeEventListener('focusin', handleFocus, true);
   isOpening.value = false;
+
 
   unsubscribe = onTransitionEnd(
     wrapperEl.value,
@@ -231,7 +301,6 @@ const handleClosed = () => {
       if (isOpening.value) return;
       if (unsubscribe) unsubscribe();
       removeNoScroll();
-      // unsubscribe = null;
       modalClosed.value = true;
 
       // handle scroll-behavior: smooth
@@ -253,6 +322,7 @@ const dialogAttrs = computed(() => ({
   'aria-describedby': props.ariaDescribedby,
   id: props.id,
 }));
+
 const verticalSpace = computed(() => {
   // contentWrap vertical padding
   const fullscreenSpace = Number(CdrSpaceTwoX);
@@ -263,20 +333,27 @@ const verticalSpace = computed(() => {
     : windowedSpace + fullscreenSpace;
   // fullscreen, here, would account for outerWrap padding, which is the same CdrSpaceTwoX
 });
-    const scrollMaxHeight = computed(() => totalHeight.value
-    - headerHeight.value
-    - verticalSpace.value);
+
+const scrollMaxHeight = computed(() => totalHeight.value
+  - headerHeight.value
+  - verticalSpace.value);
 
 const scrollPadding = computed(() => {
   const isScrolling = scrollHeight.value > offsetHeight.value;
   const hasScrollbar = offsetWidth.value - clientWidth.value > 0;
   if (isScrolling && hasScrollbar) {
     return 4;
-  } if (isScrolling) {
+  }
+  if (isScrolling) {
     return 12;
   }
   return 0;
 });
+
+const textContentStyle = computed(() => ({
+  maxHeight: `${scrollMaxHeight.value}px`,
+  paddingRight: `${scrollPadding.value}px`,
+}));
 
 watch(() => props.opened, (newValue, oldValue) => {
   if (!!newValue === !!oldValue) return;
@@ -295,92 +372,91 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
 
-
 </script>
 
 <template>
-  <div
-    :class="mapClasses(style, baseClass, !opened ? 'cdr-modal--closed' : '')"
-    ref="wrapperEl"
-  >
+  <Teleport to="body">
     <div
-      :class="[style['cdr-modal__outerWrap'], wrapperClass]"
+      :class="mapClasses(style, baseClass, !opened ? 'cdr-modal--closed' : '')"
+      ref="wrapperEl"
+      data-is-modal
     >
-      <div
-        aria-hidden="true"
-        @click="onClick"
-        :class="[style['cdr-modal__overlay'], overlayClass]"
-      />
-      <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
+      <div :class="[style['cdr-modal__outerWrap'], wrapperClass]">
+        <div
+          aria-hidden="true"
+          @click="onClick"
+          :class="[style['cdr-modal__overlay'], overlayClass]"
+        />
+        <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
            content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
-      <div :tabIndex="opened ? '0' : undefined" />
-      <div
-        ref="modalEl"
-        :class="mapClasses(style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
-        tabIndex="-1"
-        :role="role"
-        aria-modal="true"
-        :aria-label="label"
-        v-bind="dialogAttrs"
-      >
-        <!-- @slot Use to override the entire CdrModal content container.
+        <div :tabIndex="opened ? '0' : undefined" />
+        <div
+          ref="modalEl"
+          :class="mapClasses(style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
+          tabIndex="-1"
+          :role="role"
+          aria-modal="true"
+          :aria-label="label"
+          v-bind="dialogAttrs"
+        >
+          <!-- @slot Use to override the entire CdrModal content container.
           You must provide an explicit way to close the modal
           to meet UX and accessibility standards  -->
-        <slot name="modal">
-          <div
-            :class="[style['cdr-modal__innerWrap'], contentClass]"
-            :style="modalClosed ? {display: 'none'} : undefined"
-          >
-            <section>
-              <div :class="style['cdr-modal__content']">
-                <div
-                  :class="style['cdr-modal__header']"
-                  ref="headerEl"
-                >
-                  <div :class="style['cdr-modal__title']">
-                    <!-- @slot Use to override the default title -->
-                    <slot
-                      name="title"
-                      v-if="showTitle"
-                    >
-                      <h1>{{ label }}</h1>
-                      <!-- @slot CdrModal content -->
-                    </slot>
-                  </div>
-                  <cdr-button
-                    :class="style['cdr-modal__close-button']"
-                    icon-only
-                    :with-background="true"
-                    @click="onClick"
-                    aria-label="Close"
+          <slot name="modal">
+            <div
+              :class="[style['cdr-modal__innerWrap'], contentClass]"
+              :style="modalClosed ? { display: 'none' } : undefined"
+            >
+              <section>
+                <div :class="style['cdr-modal__content']">
+                  <div
+                    :class="style['cdr-modal__header']"
+                    ref="headerEl"
                   >
-                    <template #icon>
-                      <icon-x-lg inherit-color />
-                    </template>
-                  </cdr-button>
-                </div>
+                    <div :class="style['cdr-modal__title']">
+                      <!-- @slot Use to override the default title -->
+                      <slot
+                        name="title"
+                        v-if="showTitle"
+                      >
+                        <h1>{{ label }}</h1>
+                        <!-- @slot CdrModal content -->
+                      </slot>
+                    </div>
+                    <cdr-button
+                      :class="style['cdr-modal__close-button']"
+                      icon-only
+                      :with-background="true"
+                      @click="onClick"
+                      aria-label="Close"
+                    >
+                      <template #icon>
+                        <icon-x-lg inherit-color />
+                      </template>
+                    </cdr-button>
+                  </div>
 
-                <div
-                  :class="style['cdr-modal__text-content']"
-                  :style="{ maxHeight: `${scrollMaxHeight}px`, paddingRight: `${scrollPadding}px`}"
-                  role="document"
-                  ref="contentEl"
-                  tabindex="0"
-                >
-                  <slot />
+                  <div
+                    :class="style['cdr-modal__text-content']"
+                    :style="textContentStyle"
+                    role="document"
+                    ref="contentEl"
+                    tabindex="0"
+                  >
+                    <slot />
+                  </div>
                 </div>
-              </div>
-            </section>
-          </div>
+              </section>
+            </div>
 
-        </slot>
+          </slot>
+        </div>
+        <div :tabIndex="opened ? '0' : undefined" />
       </div>
-      <div :tabIndex="opened ? '0' : undefined" />
     </div>
-  </div>
-
+  </Teleport>
 </template>
 
 <style lang="scss" module src="./styles/CdrModal.module.scss">

@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>rei-cedar</title>
-    <meta name="description" content="Welcome to the REI Digital Design System presentation framework. A home for modular components based on our evolving design patterns.">
-    <meta name="author" content="REI">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="cdr-fonts.css">
-    <link rel="stylesheet" href="reset.css">
-    <!-- <link rel="stylesheet" href="./dist/cedar-compiled.css"> -->
-  </head>
-  <body>
-    <div id="main"></div>
-    <script type="module" src="./src/dev/index.js"></script>
-  </body>
+
+<head>
+  <title>rei-cedar</title>
+  <meta
+    name="description"
+    content="Welcome to the REI Digital Design System presentation framework. A home for modular components based on our evolving design patterns."
+  >
+  <meta
+    name="author"
+    content="REI"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width"
+  >
+  <link
+    rel="stylesheet"
+    href="cdr-fonts.css"
+  >
+  <link
+    rel="stylesheet"
+    href="reset.css"
+  >
+  <!-- <link rel="stylesheet" href="./dist/cedar-compiled.css"> -->
+</head>
+
+<body>
+  <div id="main"></div>
+  <!-- TODO: cover in unit tests, remove this -->
+  <!-- start: testing modal content show/hide -->
+  <div
+    aria-hidden="true"
+    style="opacity: 0;"
+  >something already aria-hidden</div>
+  <div hidden>something display: none;</div>
+  <div style="opacity: 0;">another div of outside content, not aria-hidden</div>
+  <!-- end: testing modal content show/hide -->
+  <script
+    type="module"
+    src="./src/dev/index.js"
+  ></script>
+</body>
+
 </html>

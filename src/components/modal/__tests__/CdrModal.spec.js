@@ -1,9 +1,14 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrModal from '../CdrModal.vue';
+import { config } from '@vue/test-utils'
+
+config.global.stubs['Teleport'] = true;
+// TODO update unit tests
 
 describe('CdrModal.vue', () => {
   describe('default open', ()=>{
     let wrapper;
+    let parentWrapper;
     let elem;
     beforeEach(()=>{
       elem = document.createElement('div')
@@ -35,17 +40,17 @@ describe('CdrModal.vue', () => {
         key: 'a'
       });
       await wrapper.vm.$nextTick();
-  
+
       wrapper.trigger('keydown', {
         key: 'Esc',
       });
       await wrapper.vm.$nextTick();
-  
+
       wrapper.trigger('keydown', {
         key: 'Escape',
       });
       await wrapper.vm.$nextTick();
-  
+
       expect(wrapper.emitted().closed.length).toBe(2);
     });
 
