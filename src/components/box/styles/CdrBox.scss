@@ -1,0 +1,6 @@
+@import '../../../styles/settings/_index.scss';
+@import './vars/CdrBox.vars.scss';
+
+.cdr-box {
+  @include cdr-box-base-mixin;
+}

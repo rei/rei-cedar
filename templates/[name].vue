@@ -1,23 +1,19 @@
+<script setup lang="ts">
+import { useCssModule } from 'vue';
+
+defineOptions({
+  name: '{NAME-FULLNAME}',
+});
+
+const baseClass = '{NAME-TAGNAME}';
+const style = useCssModule();
+</script>
+
 <template>
   <div :class="style[baseClass]">
     <slot />
   </div>
 </template>
-
-<script>
-import { defineComponent, useCssModule } from 'vue';
-
-export default defineComponent({
-  name: '{NAME-FULLNAME}',
-  setup(props) {
-    const baseClass = '{NAME-TAGNAME}';
-    return {
-      baseClass,
-      style: useCssModule(),
-    };
-  },
-});
-</script>
 
 <style lang="scss" module src="./styles/{NAME-FULLNAME}.scss">
 </style>
