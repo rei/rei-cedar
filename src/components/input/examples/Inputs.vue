@@ -211,6 +211,14 @@
         type="date"
         min="2023-01-01"
       />
+      <cdr-input
+        label-class="demo-input"
+        v-model="dateTimeModel"
+        label="Datetime-local"
+        :background="backgroundColor"
+        type="datetime-local"
+        min="2023-01-01"
+      />
     <cdr-input
       label-class="demo-input"
       v-model="helperValidationModel"
@@ -372,6 +380,7 @@ export default {
       optionalModel: '',
       hiddenModel: '',
       dateModel: '',
+      dateTimeModel: '',
       disabledModel: '',
       errorFromProps: 'this error is from props and will appear if no slotted template is provided',
       helperValidationModel: '',
@@ -413,6 +422,7 @@ export default {
       this.sizeModel = this.masterModel;
       this.megaModel = this.masterModel;
       this.dateModel = this.masterModel;
+      this.dateTimeModel = this.masterModel;
     },
     setBackground(background) {
       switch (background) {

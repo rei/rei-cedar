@@ -27,17 +27,17 @@ const props = defineProps({
   },
   /**
    *  'type' attribute for the input as defined by w3c.
-   *  Only supporting text|email|number|password|search|url|date.
+   *  Only supporting text|email|number|password|search|url|date|datetime-local.
    *  The increment/decrement webkit psuedo element is hidden for number.
    *  @demoSelectMultiple false
-   *  @values text, email, number, password, search, url, tel, date
+   *  @values text, email, number, password, search, url, tel, date, datetime-local
   */
   type: {
     type: [String],
     default: 'text',
     validator: (value: string) => propValidator(
       value,
-      ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date'],
+      ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date', 'datetime-local'],
     ),
   },
   /**
