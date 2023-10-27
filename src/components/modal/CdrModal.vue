@@ -102,11 +102,11 @@ let lastActive: Element | null;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
 
-interface OffsetValues {
+interface offsetValues {
   x: number | undefined,
   y: number | undefined,
 }
-const offset = ref<OffsetValues>({ x: undefined, y: undefined });
+const offset = ref<offsetValues>({ x: undefined, y: undefined });
 const headerHeight = ref(0);
 const totalHeight = ref(0);
 const scrollHeight = ref(0);
