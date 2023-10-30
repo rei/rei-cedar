@@ -29,6 +29,7 @@
     "url": "https://github.com/rei/rei-cedar.git"
   },
   "scripts": {
+    "prepare": "npm run build",
     "prepublishOnly": "npm-run-all lint build",
     "dev": "vite",
     "build": "vite build && npm run build:umd && npm run build:extractcss && npm run build:icons && npm run build:docgen",
