@@ -92,7 +92,7 @@ export default {
 },
   data() {
     return {
-      opened: this.$route.name === 'Modals',
+      opened: false,
       overflowContent: false,
       override: false,
     };

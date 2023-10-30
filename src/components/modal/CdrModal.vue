@@ -186,26 +186,27 @@ export default defineComponent({
     let backgroundNodesDiscovered = false;
 
     /**
- * findBackgroundContentNodes
- * When modal opens for the first time, find the content that should
- * be hidden when it opens, and store it in an array
- */
+     * findBackgroundContentNodes
+     * When modal opens for the first time, find the content that should
+     * be hidden when it opens, and store it in an array
+     */
     const findBackgroundContentNodes = () => {
       // initial selector is complex, breaking it down
       const notSelectors = [
         'body > *',
         ':not(script)',
         ':not(style)',
-        ':not([data-is-modal])',
-        ':not([aria-hidden=true])',
+        // moving this to script for retro version, tests fail on it for some reason
+        // ':not([aria-hidden=true])',
       ];
       const contentBodyChildren = document.querySelectorAll(notSelectors.join(''));
 
       // for the remaining, check if they should be hidden
       contentBodyChildren.forEach((el) => {
-        if (getComputedStyle(el).getPropertyValue('display') !== 'none') {
-          // TODO - temp to be sure we tagged right
-          el.setAttribute('data-modal-hide', '');
+        const shouldAddEl = el !== wrapperEl.value
+          && getComputedStyle(el).getPropertyValue('display') !== 'none'
+          && el.getAttribute('aria-hidden') !== 'true';
+        if (shouldAddEl) {
           backgroundContentNodes.push(el);
         }
       });
@@ -213,11 +214,11 @@ export default defineComponent({
     };
 
     /**
- * hideModalBackgroundContent
- * Hide elements tagged onBeforeMount from screen readers
- */
+     * hideModalBackgroundContent
+     * Hide elements tagged onBeforeMount from screen readers
+     */
     const hideModalBackgroundContent = () => {
-      // only run the expensive DOM scraping once
+      // only run the expensive DOM scraping onc
       if (!backgroundNodesDiscovered) {
         findBackgroundContentNodes();
       }
@@ -227,9 +228,9 @@ export default defineComponent({
     };
 
     /**
- * showModalBackgroundContent
- * reveal elements tagged onBeforeMount to screen readers
- */
+     * showModalBackgroundContent
+     * reveal elements tagged onBeforeMount to screen readers
+     */
     const showModalBackgroundContent = () => {
       backgroundContentNodes.forEach((el) => {
         el.removeAttribute('aria-hidden');
