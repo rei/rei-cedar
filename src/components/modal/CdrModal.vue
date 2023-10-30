@@ -182,6 +182,60 @@ export default defineComponent({
       }
     };
 
+    const backgroundContentNodes = [];
+    let backgroundNodesDiscovered = false;
+
+    /**
+ * findBackgroundContentNodes
+ * When modal opens for the first time, find the content that should
+ * be hidden when it opens, and store it in an array
+ */
+    const findBackgroundContentNodes = () => {
+      // initial selector is complex, breaking it down
+      const notSelectors = [
+        'body > *',
+        ':not(script)',
+        ':not(style)',
+        ':not([data-is-modal])',
+        ':not([aria-hidden=true])',
+      ];
+      const contentBodyChildren = document.querySelectorAll(notSelectors.join(''));
+
+      // for the remaining, check if they should be hidden
+      contentBodyChildren.forEach((el) => {
+        if (getComputedStyle(el).getPropertyValue('display') !== 'none') {
+          // TODO - temp to be sure we tagged right
+          el.setAttribute('data-modal-hide', '');
+          backgroundContentNodes.push(el);
+        }
+      });
+      backgroundNodesDiscovered = true;
+    };
+
+    /**
+ * hideModalBackgroundContent
+ * Hide elements tagged onBeforeMount from screen readers
+ */
+    const hideModalBackgroundContent = () => {
+      // only run the expensive DOM scraping once
+      if (!backgroundNodesDiscovered) {
+        findBackgroundContentNodes();
+      }
+      backgroundContentNodes.forEach((el) => {
+        el.setAttribute('aria-hidden', 'true');
+      });
+    };
+
+    /**
+ * showModalBackgroundContent
+ * reveal elements tagged onBeforeMount to screen readers
+ */
+    const showModalBackgroundContent = () => {
+      backgroundContentNodes.forEach((el) => {
+        el.removeAttribute('aria-hidden');
+      });
+    };
+
     const addHandlers = () => {
       document.addEventListener('focusin', handleFocus, true);
       document.addEventListener('keydown', handleKeyDown);
@@ -193,6 +247,7 @@ export default defineComponent({
       isOpening.value = true;
       modalClosed.value = false;
       lastActive = activeElement;
+      hideModalBackgroundContent();
 
       nextTick(() => {
         if (modalEl.value) modalEl.value.focus(); // wrapped in if so testing error isn't thrown
@@ -212,6 +267,7 @@ export default defineComponent({
     };
 
     const handleClosed = () => {
+      showModalBackgroundContent();
       const { documentElement } = document;
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('focusin', handleFocus, true);
@@ -307,88 +363,90 @@ export default defineComponent({
 </script>
 
 <template>
-  <div
-    :class="mapClasses(style, baseClass, !opened && 'cdr-modal--closed')"
-    ref="wrapperEl"
-  >
+  <Teleport to="body">
     <div
-      :class="[style['cdr-modal__outerWrap'], wrapperClass]"
+      :class="mapClasses(style, baseClass, !opened && 'cdr-modal--closed')"
+      ref="wrapperEl"
     >
       <div
-        aria-hidden="true"
-        @click="onClick"
-        :class="[style['cdr-modal__overlay'], overlayClass]"
-      />
-      <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
+        :class="[style['cdr-modal__outerWrap'], wrapperClass]"
+      >
+        <div
+          aria-hidden="true"
+          @click="onClick"
+          :class="[style['cdr-modal__overlay'], overlayClass]"
+        />
+        <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
            content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
-      <div :tabIndex="opened ? '0' : undefined" />
-      <div
-        ref="modalEl"
-        :class="mapClasses(style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
-        tabIndex="-1"
-        :role="role"
-        :aria-modal="!!opened"
-        :aria-label="label"
-        v-bind="dialogAttrs"
-      >
-        <!-- @slot Use to override the entire CdrModal content container.
+        <div :tabIndex="opened ? '0' : undefined" />
+        <div
+          ref="modalEl"
+          :class="mapClasses(style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
+          tabIndex="-1"
+          :role="role"
+          :aria-modal="!!opened"
+          :aria-label="label"
+          v-bind="dialogAttrs"
+        >
+          <!-- @slot Use to override the entire CdrModal content container.
           You must provide an explicit way to close the modal
           to meet UX and accessibility standards  -->
-        <slot name="modal">
-          <div
-            :class="[style['cdr-modal__innerWrap'], contentClass]"
-            :style="modalClosed ? {display: 'none'} : undefined"
-          >
-            <section>
-              <div :class="style['cdr-modal__content']">
-                <div
-                  :class="style['cdr-modal__header']"
-                  ref="headerEl"
-                >
-                  <div :class="style['cdr-modal__title']">
-                    <!-- @slot Use to override the default title -->
-                    <slot
-                      name="title"
-                      v-if="showTitle"
-                    >
-                      <h1>{{ label }}</h1>
-                      <!-- @slot CdrModal content -->
-                    </slot>
-                  </div>
-                  <cdr-button
-                    :class="style['cdr-modal__close-button']"
-                    icon-only
-                    :with-background="true"
-                    @click="onClick"
-                    aria-label="Close"
+          <slot name="modal">
+            <div
+              :class="[style['cdr-modal__innerWrap'], contentClass]"
+              :style="modalClosed ? {display: 'none'} : undefined"
+            >
+              <section>
+                <div :class="style['cdr-modal__content']">
+                  <div
+                    :class="style['cdr-modal__header']"
+                    ref="headerEl"
                   >
-                    <template #icon>
-                      <icon-x-lg inherit-color />
-                    </template>
-                  </cdr-button>
-                </div>
+                    <div :class="style['cdr-modal__title']">
+                      <!-- @slot Use to override the default title -->
+                      <slot
+                        name="title"
+                        v-if="showTitle"
+                      >
+                        <h1>{{ label }}</h1>
+                      <!-- @slot CdrModal content -->
+                      </slot>
+                    </div>
+                    <cdr-button
+                      :class="style['cdr-modal__close-button']"
+                      icon-only
+                      :with-background="true"
+                      @click="onClick"
+                      aria-label="Close"
+                    >
+                      <template #icon>
+                        <icon-x-lg inherit-color />
+                      </template>
+                    </cdr-button>
+                  </div>
 
-                <div
-                  :class="style['cdr-modal__text-content']"
-                  :style="{ maxHeight: `${scrollMaxHeight}px`, paddingRight: `${scrollPadding}px`}"
-                  role="document"
-                  ref="contentEl"
-                  tabindex="0"
-                >
-                  <slot />
+                  <div
+                    :class="style['cdr-modal__text-content']"
+                    :style="{ maxHeight: `${scrollMaxHeight}px`,
+                              paddingRight: `${scrollPadding}px`}"
+                    role="document"
+                    ref="contentEl"
+                    tabindex="0"
+                  >
+                    <slot />
+                  </div>
                 </div>
-              </div>
-            </section>
-          </div>
+              </section>
+            </div>
 
-        </slot>
+          </slot>
+        </div>
+        <div :tabIndex="opened ? '0' : undefined" />
       </div>
-      <div :tabIndex="opened ? '0' : undefined" />
     </div>
-  </div>
-
+  </Teleport>
 </template>
 
 <style lang="scss" module src="./styles/CdrModal.module.scss">

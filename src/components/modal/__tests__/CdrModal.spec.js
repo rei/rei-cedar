@@ -1,10 +1,14 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrModal from '../CdrModal.vue';
+import { config } from '@vue/test-utils'
+
+config.global.stubs['Teleport'] = true;
+// TODO update unit tests
 
 describe('CdrModal.vue', () => {
   describe('default open', ()=>{
     let wrapper;
-    let elem;
+   let elem;
     beforeEach(()=>{
       elem = document.createElement('div')
       if (document.body) {
