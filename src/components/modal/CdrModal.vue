@@ -16,6 +16,7 @@ import mapClasses from '../../utils/mapClasses';
 export default defineComponent({
   name: 'CdrModal',
   components: { CdrButton, IconXLg },
+  inheritAttrs: false,
   props: {
     /**
      * Toggles the state of the modal
