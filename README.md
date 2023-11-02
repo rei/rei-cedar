@@ -55,6 +55,9 @@ Runs both unit and e2e/accesibility tests.
 
 ### Visual Regression Testing
 
+> [!NOTE]
+> this has been temporarily disabled due to Vue3 compatibility issues.
+
 Check [backstop](https://github.com/garris/BackstopJS) for general configuration questions.
 
 Our visual regressions audits can be performed against all patterns documented within the project's component proving grounds. To do so, follow the steps below:

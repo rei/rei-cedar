@@ -17,7 +17,7 @@ $modal-animation-duration: 150ms;
   right: 0;
   top: 0;
   visibility: visible;
-  z-index: 1000;
+  z-index: 9999;
 
   &__overlay {
     //ITEM_DOC: Background color of the modal overlay

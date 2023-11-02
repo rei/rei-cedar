@@ -5,18 +5,20 @@
     </h2>
 
     <cdr-modal
-      label="label text is title or aria"
       :opened="opened"
       @closed="closed"
       wrapper-class="wrapper-test-class"
       overlay-class="overlay-test-class"
       data-backstop="modal"
       role="dialog"
+      data-ui="hamburger-modal"
+      aria-labelledby="some-heading"
     >
       <template #title>
         <cdr-text
           tag="h2"
           class="cdr-text-dev--heading-serif-600 modal-title"
+          id="some-heading"
         >
           Terms & Conditions
         </cdr-text>
@@ -92,7 +94,7 @@ export default {
 },
   data() {
     return {
-      opened: this.$route.name === 'Modals',
+      opened: false,
       overflowContent: false,
       override: false,
     };
