@@ -1,14 +1,13 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrModal from '../CdrModal.vue';
-import { config } from '@vue/test-utils'
+// import { config } from '@vue/test-utils'
 
-config.global.stubs['Teleport'] = true;
-// TODO update unit tests
+// config.global.stubs['Teleport'] = true;
+// // TODO update unit tests
 
 describe('CdrModal.vue', () => {
   describe('default open', ()=>{
     let wrapper;
-    let parentWrapper;
     let elem;
     beforeEach(()=>{
       elem = document.createElement('div')
@@ -16,6 +15,7 @@ describe('CdrModal.vue', () => {
         document.body.appendChild(elem)
       }
       wrapper = mount(CdrModal, {
+        global: {stubs: { teleport: true } },
         propsData: {
           opened: true,
           label: "Label is the modal title"
