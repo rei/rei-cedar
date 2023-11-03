@@ -2,10 +2,19 @@
 import { debounce } from '../../utils/debounce'
 import tabbable from 'tabbable';
 import {
-  useCssModule, computed, ref, watch, onMounted, nextTick, onUnmounted, useAttrs,
+  useCssModule,
+  computed,
+  ref,
+  watch,
+  onMounted,
+  nextTick,
+  onUnmounted,
+  useAttrs,
 } from 'vue';
 import {
-  CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX,
+  CdrBreakpointSm,
+  CdrSpaceOneX,
+  CdrSpaceTwoX,
 } from '@rei/cdr-tokens/dist/rei-dot-com/js/cdr-tokens.mjs';
 import onTransitionEnd from './onTransitionEnd';
 import CdrButton from '../button/CdrButton.vue';
@@ -14,14 +23,16 @@ import mapClasses from '../../utils/mapClasses';
 
 /** Disruptive, action-blocking overlays used to display important information */
 defineOptions({
-  name: 'CdrModal'
+  name: 'CdrModal',
+  inheritAttrs: false,
 });
+
 const props = defineProps({
   /**
    * Toggles the state of the modal
    * @demoIgnore true
    */
-    opened: {
+  opened: {
     type: Boolean,
     required: true,
   },
@@ -78,10 +89,8 @@ const props = defineProps({
   },
 });
 
-const emits = defineEmits({
-  /** Fires when modal is closed */
-  closed: null,  
-});
+/** Fires when modal is closed */
+const emits = defineEmits({ closed: null });
 
 const attrs = useAttrs();
 const style = useCssModule();
@@ -95,8 +104,8 @@ const isOpening = ref(false);
 interface offsetValues {
   x: number | undefined,
   y: number | undefined,
-} 
-const offset = ref<offsetValues>({ x: undefined, y: undefined});
+}
+const offset = ref<offsetValues>({ x: undefined, y: undefined });
 const headerHeight = ref(0);
 const totalHeight = ref(0);
 const scrollHeight = ref(0);
@@ -126,7 +135,7 @@ const onClick = (e?: Event) => {
   emits('closed', e);
 };
 
-const handleKeyDown = ({ key }: { key: string}) => {
+const handleKeyDown = ({ key }: { key: string }) => {
   switch (key) {
     case 'Escape':
     case 'Esc':
@@ -155,13 +164,13 @@ const addNoScroll = () => {
   const { documentElement, body } = document;
   offset.value = {
     x: window.scrollX
-  || (documentElement || {}).scrollLeft
-  || (body || {}).scrollLeft
-  || 0,
+      || (documentElement || {}).scrollLeft
+      || (body || {}).scrollLeft
+      || 0,
     y: window.scrollY
-  || (documentElement || {}).scrollTop
-  || (body || {}).scrollTop
-  || 0,
+      || (documentElement || {}).scrollTop
+      || (body || {}).scrollTop
+      || 0,
   };
 
   if (documentElement) {
@@ -203,7 +212,8 @@ const handleOpened = () => {
   lastActive = activeElement;
 
   nextTick(() => {
-    if (modalEl.value) (modalEl.value as HTMLDivElement).focus(); // wrapped in if so testing error isn't thrown
+    // wrapped in if so testing error isn't thrown
+    if (modalEl.value) (modalEl.value as HTMLDivElement).focus();
     measureContent();
     addHandlers();
 
@@ -253,6 +263,7 @@ const dialogAttrs = computed(() => ({
   'aria-describedby': props.ariaDescribedby,
   id: props.id,
 }));
+
 const verticalSpace = computed(() => {
   // contentWrap vertical padding
   const fullscreenSpace = Number(CdrSpaceTwoX);
@@ -263,9 +274,10 @@ const verticalSpace = computed(() => {
     : windowedSpace + fullscreenSpace;
   // fullscreen, here, would account for outerWrap padding, which is the same CdrSpaceTwoX
 });
-    const scrollMaxHeight = computed(() => totalHeight.value
-    - headerHeight.value
-    - verticalSpace.value);
+
+const scrollMaxHeight = computed(() => totalHeight.value
+  - headerHeight.value
+  - verticalSpace.value);
 
 const scrollPadding = computed(() => {
   const isScrolling = scrollHeight.value > offsetHeight.value;
@@ -277,6 +289,11 @@ const scrollPadding = computed(() => {
   }
   return 0;
 });
+
+const textContentStyle = computed(() => ({
+  maxHeight: `${scrollMaxHeight.value}px`,
+  paddingRight: `${scrollPadding.value}px`,
+}));
 
 watch(() => props.opened, (newValue, oldValue) => {
   if (!!newValue === !!oldValue) return;
@@ -294,8 +311,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
-
-
 </script>
 
 <template>
@@ -303,9 +318,7 @@ onUnmounted(() => {
     :class="mapClasses(style, baseClass, !opened ? 'cdr-modal--closed' : '')"
     ref="wrapperEl"
   >
-    <div
-      :class="[style['cdr-modal__outerWrap'], wrapperClass]"
-    >
+    <div :class="[style['cdr-modal__outerWrap'], wrapperClass]">
       <div
         aria-hidden="true"
         @click="onClick"
@@ -331,7 +344,7 @@ onUnmounted(() => {
         <slot name="modal">
           <div
             :class="[style['cdr-modal__innerWrap'], contentClass]"
-            :style="modalClosed ? {display: 'none'} : undefined"
+            :style="modalClosed ? { display: 'none' } : undefined"
           >
             <section>
               <div :class="style['cdr-modal__content']">
@@ -364,7 +377,7 @@ onUnmounted(() => {
 
                 <div
                   :class="style['cdr-modal__text-content']"
-                  :style="{ maxHeight: `${scrollMaxHeight}px`, paddingRight: `${scrollPadding}px`}"
+                  :style="textContentStyle"
                   role="document"
                   ref="contentEl"
                   tabindex="0"
@@ -380,7 +393,6 @@ onUnmounted(() => {
       <div :tabIndex="opened ? '0' : undefined" />
     </div>
   </div>
-
 </template>
 
 <style lang="scss" module src="./styles/CdrModal.module.scss">
