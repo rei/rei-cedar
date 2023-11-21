@@ -1,6 +1,0 @@
-@mixin cdr-box-base-mixin() {
-  background-color: var(--cdr-box-default-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
-  border-radius: var(--cdr-box-default-radius, var(--cdr-radius-sharp, #{$cdr-radius-sharp}));
-  box-shadow: var(--cdr-box-default-prominence, var(--cdr-prominence-flat, #{$cdr-prominence-flat}));
-  container: cdr-box / inline-size;
-}
