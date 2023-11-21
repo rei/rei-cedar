@@ -1,0 +1,16 @@
+@import '../../../styles/settings/_index.scss';
+@import '../../../styles/fluid.css';
+
+.cdr-abstract {
+  @include cdr-text-subheading-sans-500;
+  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+  margin: 0;
+  font-size: var(--cdr-type-scale-1);
+  line-height: calc(var(--cdr-type-scale-1) * var(--cdr-subheading-sans-line-height-ratio));
+
+  @container (max-width: 720px) {
+    @include cdr-text-body-500;
+    font-size: var(--cdr-type-scale-0);
+    line-height: calc(var(--cdr-type-scale-0) * var(--cdr-body-line-height-ratio));
+  }
+}
