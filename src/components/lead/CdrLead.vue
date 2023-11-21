@@ -33,15 +33,17 @@ const baseClass = 'cdr-lead'
       />
     </div>
     <div :class="style[`${baseClass}__lower`]">
-      <CdrHeadingSubheadingBlock>
-        {{ heading }}
-        <template #subheading>
-          {{ subheading }}
-        </template>
-      </CdrHeadingSubheadingBlock>
+      <slot name="content">
+        <CdrHeadingSubheadingBlock :class="style[`${baseClass}__copy-block`]">
+          {{ heading }}
+          <template #subheading>
+            {{ subheading }}
+          </template>
+        </CdrHeadingSubheadingBlock>
+      </slot>
     </div>
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrLead.scss">
+<style lang="scss" module src="./styles/CdrLead.module.scss">
 </style>

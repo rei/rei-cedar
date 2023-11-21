@@ -9,18 +9,27 @@
       </CdrToggleButton>
     </CdrToggleGroup>
     <h2>Static lead</h2>
+
     <CdrLead
       :class="`theme-${palettes}`"
       img-src="src/dev/static/lead-static.jpg"
       heading="Camp with no reservations."
       subheading="We have the know-how to equip you to camp in the middle of nowhere."
     />
+
     <h2>Static lead w/out image</h2>
     <CdrLead
       :class="`theme-${palettes}`"
       heading="Camp with no reservations."
       subheading="We have the know-how to equip you to camp in the middle of nowhere."
     />
+
+    <!-- Theorhetical -->
+    <CdrLead>
+      <template #content>
+        <CdrComposer :schema="leadContent" />
+      </template>
+    </CdrLead>
   </div>
 </template>
 

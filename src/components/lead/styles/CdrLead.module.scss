@@ -33,27 +33,5 @@
     @include cdr-md-mq-down {
       padding: $cdr-space-three-x $cdr-space-one-and-a-half-x $cdr-space-two-x;
     }
-    &--heading {
-      margin: 0 0 $cdr-space-one-x 0;
-      max-width: 40ch;
-      @include cdr-text-heading-display-1200;
-      @include cdr-lg-mq-down {
-        @include cdr-text-heading-display-1100;
-      }
-      @include cdr-md-mq-down {
-        @include cdr-text-heading-display-1000;
-      }
-      @include cdr-sm-mq-down {
-        @include cdr-text-heading-display-900;
-      }
-    }
-    &--subheading {
-      margin: 0;
-      max-width: 60ch;
-      @include cdr-text-utility-sans-500;
-      @include cdr-sm-mq-down {
-        @include cdr-text-utility-sans-400;
-      }
-    }
   }
 }

@@ -14,18 +14,10 @@
             class="cdr-card__link"
             href="#foo"
           >
-          <CdrHeadingSubheadingBlock heading-tag="h3">
-            Fluid heading
-            <template #subheading>
-              Fluid subheading goes here
-            </template>
-          </CdrHeadingSubheadingBlock>
+          <CdrTitle>
+            Fluid title component
+          </CdrTitle>
           </cdr-link>
-          <cdr-rating
-            rating="4.2"
-            count="12"
-            size="small"
-          />
           <cdr-text class="cdr-text-dev--body-300">
             Card content
           </cdr-text>
@@ -47,7 +39,6 @@ export default {
 <style>
 .card-example {
   container-type: inline-size;
-  max-width: 250px;
-  width: 250px;
+  width: 100%;
 }
 </style>

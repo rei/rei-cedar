@@ -15,5 +15,5 @@ const style = useCssModule();
   </div>
 </template>
 
-<style lang="scss" module src="./styles/{NAME-FULLNAME}.scss">
+<style lang="scss" module src="./styles/{NAME-FULLNAME}.module.scss">
 </style>

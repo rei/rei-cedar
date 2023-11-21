@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import PresetHeadingDisplay4 from '../../components/text/presets/PresetHeadingDisplay4.vue';
-import PresetSubheadingSans from '../../components/text/presets/PresetSubheadingSans.vue';
+import { CdrHeadingDisplay, CdrSubheadingSans } from '../../lib';
 
 defineProps({
   headingTag: { type: String, default: 'h1' },
@@ -13,15 +12,16 @@ const style = useCssModule();
 
 <template>
   <header :class="style[baseClass]">
-    <PresetHeadingDisplay4
+    <CdrHeadingDisplay
       :tag="headingTag"
+      scale="4"
       :class="style[`${baseClass}__heading`]"
     >
       <slot />
-    </PresetHeadingDisplay4>
-    <PresetSubheadingSans :class="style[`${baseClass}__subheading`]">
+    </CdrHeadingDisplay>
+    <CdrSubheadingSans :class="style[`${baseClass}__subheading`]">
       <slot name="subheading" />
-    </PresetSubheadingSans>
+    </CdrSubheadingSans>
   </header>
 
 </template>
