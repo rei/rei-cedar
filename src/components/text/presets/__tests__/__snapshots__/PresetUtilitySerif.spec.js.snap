@@ -1,0 +1,43 @@
+// Vitest Snapshot v1
+
+exports[`PresetUtilitySerif > default configuration > renders correctly 1`] = `
+<p
+  class="cdr-text cdr-utility-serif"
+  style="--cdr-utility-serif-font-size: var(--cdr-type-scale-1); --cdr-utility-serif-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-serif-line-height-ratio)); --cdr-utility-serif-font-weight: 400;"
+>
+  <!-- @slot CdrText content -->
+  
+  
+  paragraph
+  
+  
+</p>
+`;
+
+exports[`PresetUtilitySerif > passing a scale > renders correctly 1`] = `
+<p
+  class="cdr-text cdr-utility-serif"
+  style="--cdr-utility-serif-font-size: var(--cdr-type-scale--1); --cdr-utility-serif-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-serif-line-height-ratio)); --cdr-utility-serif-font-weight: 400;"
+>
+  <!-- @slot CdrText content -->
+  
+  
+  paragraph
+  
+  
+</p>
+`;
+
+exports[`PresetUtilitySerif > setting to strong variant > renders correctly 1`] = `
+<p
+  class="cdr-text cdr-utility-serif"
+  style="--cdr-utility-serif-font-size: var(--cdr-type-scale-1); --cdr-utility-serif-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-serif-line-height-ratio)); --cdr-utility-serif-font-weight: 600;"
+>
+  <!-- @slot CdrText content -->
+  
+  
+  paragraph
+  
+  
+</p>
+`;

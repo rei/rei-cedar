@@ -1,16 +1,19 @@
 <template>
   <div>
-    <CdrHeadingDisplay5 tag="h1">All the small things</CdrHeadingDisplay5>
+    <headings />
+    <paragraphs data-backstop="paragraphs" />
   </div>
 </template>
 
 <script>
-import { CdrHeadingDisplay5 } from '../presets/textPresets';
+import headings from 'componentsdir/text/examples/demo/Headings.vue';
+import paragraphs from 'componentsdir/text/examples/demo/Paragraphs.vue';
 
 export default {
   name: 'TextExamples',
   components: {
-   CdrHeadingDisplay5,
+    headings,
+    paragraphs,
   },
 };
 </script>

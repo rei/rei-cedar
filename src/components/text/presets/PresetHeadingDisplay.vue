@@ -1,0 +1,52 @@
+<script setup lang="ts">
+import { useCssModule, computed, type PropType } from 'vue';
+import CdrText from '../CdrText.vue';
+
+defineOptions({
+  name: 'CdrHeadingDisplay',
+});
+
+type scaleValue = '2'|'3'|'4'|'5'|'6'|'7';
+
+const props = defineProps({
+  /** 
+    * Sets the type scale
+    * @type scaleValue
+    * @values '2', '3', '4', '5', '6', '7'
+   */
+  scale: { type: String as PropType<scaleValue>, default: '7' }
+});
+
+const typeProperties = computed(() => {
+  return {
+    '--cdr-heading-display-font-size': `var(--cdr-type-scale-${props.scale})`,
+    '--cdr-heading-display-line-height': 
+      `calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-heading-display-line-height-ratio))`
+  }
+});
+
+const baseClass = 'cdr-heading-display';
+const style = useCssModule();
+</script>
+
+<template>
+  <CdrText
+    :class="style[baseClass]"
+    :style="typeProperties"
+  >
+    <slot />
+  </CdrText>
+
+
+</template>
+
+<style module lang="scss">
+@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@import "../../../styles/fluid.css";
+
+.cdr-heading-display {
+  @include cdr-text-heading-display-1600;
+  font-size: var(--cdr-heading-display-font-size);
+  line-height: var(--cdr-heading-display-line-height);
+}
+</style>  
