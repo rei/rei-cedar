@@ -11,11 +11,13 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
   <div
     class="cdr-lead__lower"
   >
+    
     <header
-      class="cdr-heading-subheading-block"
+      class="cdr-heading-subheading-block cdr-lead__copy-block"
     >
       <h1
-        class="cdr-text cdr-heading-display-4 cdr-heading-subheading-block__heading"
+        class="cdr-text cdr-heading-display cdr-heading-subheading-block__heading"
+        style="--cdr-heading-display-font-size: var(--cdr-type-scale-4); --cdr-heading-display-line-height: calc(var(--cdr-type-scale-4) * var(--cdr-heading-display-line-height-ratio));"
       >
         <!-- @slot CdrText content -->
         
@@ -28,6 +30,7 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
       </h1>
       <p
         class="cdr-text cdr-subheading-sans cdr-heading-subheading-block__subheading"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale-1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-subheading-sans-line-height-ratio));"
       >
         <!-- @slot CdrText content -->
         
@@ -39,6 +42,7 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
         
       </p>
     </header>
+    
   </div>
 </div>
 `;
