@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { CdrImg, CdrHeadingSubheadingBlock } from '../../lib';
+import { CdrImg } from '../../lib';
+import CdrHeadingSubheadingBlock from './CdrHeadingSubheadingBlock.vue';
 
-
+/** Static presentation used for page leads */
 defineOptions({
   name: 'CdrLead'
 });
@@ -10,8 +11,11 @@ defineOptions({
 defineProps({
   /** Sets the lead's image source  */
   imgSrc: { type: String, default: undefined },
+  /** Sets the lead's image alt  */
   imgAlt: { type: String, default: '' },
+  /** Sets the lead's heading  */
   heading: { type: String, default: undefined },
+  /** Sets the lead's subheading  */
   subheading: { type: String, default: undefined }
 });
 
@@ -33,6 +37,7 @@ const baseClass = 'cdr-lead'
       />
     </div>
     <div :class="style[`${baseClass}__lower`]">
+      <!-- @slot Override content section -->
       <slot name="content">
         <CdrHeadingSubheadingBlock :class="style[`${baseClass}__copy-block`]">
           {{ heading }}
