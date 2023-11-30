@@ -1,0 +1,37 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrLead.vars.scss';
+
+.cdr-lead {
+  @include cdr-lead-base-mixin;
+  &__top {
+    height: 4.8rem;
+    //ITEM_DOC: Lead background color
+    background-color: var(--cdr-lead-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
+  }
+  &__image-container {
+    @include cdr-lead-spacing-mixin;
+    background: linear-gradient(
+      var(--cdr-lead-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 0 74%,
+      transparent 26% 100%);
+
+  }
+  &__image {
+    aspect-ratio: 4 / 1;
+    object-fit: cover;
+    width: 100%;
+    @include cdr-sm-mq-down {
+      aspect-ratio: 4 / 3;
+    }
+  }
+  &__lower {
+    @include cdr-lead-spacing-mixin;
+    background: transparent;
+
+  }
+  &__copy-block {
+    padding: $cdr-space-three-x $cdr-space-two-x $cdr-space-two-x;
+    @include cdr-md-mq-down {
+      padding: $cdr-space-three-x $cdr-space-one-and-a-half-x $cdr-space-two-x;
+    }
+  }
+}

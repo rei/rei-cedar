@@ -1,0 +1,12 @@
+@import '../../../styles/settings/index.scss';
+
+.cdr-heading-subheading-block {
+  &__heading {
+    margin: 0 0 $cdr-space-one-x 0;
+    max-width: 40ch;
+  }
+  &__subheading {
+    margin: 0;
+    max-width: 60ch;
+  }
+}

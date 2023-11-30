@@ -39,3 +39,9 @@ export interface selectOption {
   text: string,
   value: string,
 }
+
+export interface choreographerSchema {
+  type: string,
+  props?: object,
+  content?: string | choreographerSchema
+}

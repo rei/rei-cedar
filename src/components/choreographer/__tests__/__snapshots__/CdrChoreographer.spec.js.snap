@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`CdrChoreographer > matches snapshot 1`] = `
+<div
+  data-v-app=""
+>
+  
+  
+</div>
+`;

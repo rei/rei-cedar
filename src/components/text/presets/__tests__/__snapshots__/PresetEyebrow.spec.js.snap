@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`PresetEyebrow > default configuration > renders correctly 1`] = `
+<p
+  class="cdr-text cdr-eyebrow"
+>
+  <!-- @slot CdrText content -->
+  
+  
+  paragraph
+  
+  
+</p>
+`;

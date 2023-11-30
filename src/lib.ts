@@ -1,4 +1,5 @@
 /* eslint-disable */
+export { default as CdrAbstract } from './components/abstract/CdrAbstract.vue';
 export { default as CdrAccordion } from './components/accordion/CdrAccordion.vue';
 export { default as CdrAccordionGroup } from './components/accordion/CdrAccordionGroup.vue';
 export { default as CdrBanner } from './components/banner/CdrBanner.vue';
@@ -9,12 +10,15 @@ export { default as CdrCard } from './components/card/CdrCard.vue';
 export { default as CdrCheckbox } from './components/checkbox/CdrCheckbox.vue';
 export { default as CdrChip } from './components/chip/CdrChip.vue';
 export { default as CdrChipGroup } from './components/chip/CdrChipGroup.vue';
+export { default as CdrChoreographer } from './components/choreographer/CdrChoreographer.vue';
 export { default as CdrContainer } from './components/container/CdrContainer.vue';
 export { default as CdrFormGroup } from './components/formGroup/CdrFormGroup.vue';
 export { default as CdrGrid } from './components/grid/CdrGrid.vue';
 export { default as CdrIcon } from './components/icon/CdrIcon.vue';
 export { default as CdrImg } from './components/image/CdrImg.vue';
 export { default as CdrInput } from './components/input/CdrInput.vue';
+export { default as CdrKicker } from './components/kicker/CdrKicker.vue';
+export { default as CdrLead } from './components/lead/CdrLead.vue';
 export { default as CdrLink } from './components/link/CdrLink.vue';
 export { default as CdrList } from './components/list/CdrList.vue';
 export { default as CdrModal } from './components/modal/CdrModal.vue';
@@ -30,18 +34,23 @@ export { default as CdrTable } from './components/table/CdrTable.vue';
 export { default as CdrTabPanel } from './components/tabs/CdrTabPanel.vue';
 export { default as CdrTabs } from './components/tabs/CdrTabs.vue';
 export { default as CdrText } from './components/text/CdrText.vue';
+export { default as CdrTitle } from './components/title/CdrTitle.vue';
 export { default as CdrToast } from './components/toast/CdrToast.vue';
 export { default as CdrToggleButton } from './components/toggleButton/CdrToggleButton.vue';
 export { default as CdrToggleGroup } from './components/toggleButton/CdrToggleGroup.vue';
 export { default as CdrSwitch } from './components/switch/CdrSwitch.vue'
 export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
+
+/** Compostions */
 export * from './components/icon/index';
+export * from './components/text/presets/textPresets';
 
 /** Type exports */
 export {
   type breadcrumbItem,
   type paginationItem,
-  type selectOption
+  type selectOption,
+  type choreographerSchema
 } from './types/interfaces'
 
 

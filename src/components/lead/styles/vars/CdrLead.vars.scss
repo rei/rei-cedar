@@ -1,0 +1,16 @@
+@mixin cdr-lead-base-mixin() {
+  width: 100%;
+}
+
+@mixin cdr-lead-spacing-mixin() {
+  padding: 0 $cdr-space-four-x;
+  @include cdr-lg-mq-down {
+    padding: 0 $cdr-space-three-x;
+  }
+  @include cdr-md-mq-down {
+    padding: 0 $cdr-space-two-x;
+  }
+  @include cdr-sm-mq-down {
+    padding: 0 $cdr-space-one-x;
+  }
+}

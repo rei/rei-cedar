@@ -1,20 +1,20 @@
 <template>
   <div data-backstop="simple-card">
-    <simple-card />
+    <!-- <simple-card />
     <hr>
     <complex-card />
+    <hr> -->
+    <filmstrip-cards />
   </div>
 </template>
 
 <script>
-import simpleCard from 'componentsdir/card/examples/demo/simpleCard.vue';
-import complexCard from 'componentsdir/card/examples/demo/complexCard.vue';
+import FilmstripCards from './demo/FilmstripCards.vue';
 
 export default {
   name: 'Cards',
   components: {
-    simpleCard,
-    complexCard,
+    FilmstripCards
   },
 };
 </script>
