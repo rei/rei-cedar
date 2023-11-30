@@ -1,12 +1,12 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
-import PresetBody from '../PresetBody.vue';
+import CdrUtilitySans from '../CdrUtilitySans.vue';
 
 
-describe('PresetBody', () => {
+describe('CdrUtilitySans', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetBody, {
+      wrapper = mount(CdrUtilitySans, {
         slots: {
           default: 'paragraph'
         }
@@ -20,8 +20,8 @@ describe('PresetBody', () => {
   describe('passing a scale', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetBody, {
-        props: { scale: '1' },
+      wrapper = mount(CdrUtilitySans, {
+        props: { scale: '-1' },
         slots: {
           default: 'paragraph'
         }
@@ -35,7 +35,7 @@ describe('PresetBody', () => {
   describe('setting to strong variant', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetBody, {
+      wrapper = mount(CdrUtilitySans, {
         props: { strong: true },
         slots: {
           default: 'paragraph'

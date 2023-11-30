@@ -1,12 +1,12 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
-import PresetUtilitySans from '../PresetUtilitySans.vue';
+import CdrUtilitySerif from '../CdrUtilitySerif.vue';
 
 
-describe('PresetUtilitySans', () => {
+describe('CdrUtilitySerif', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetUtilitySans, {
+      wrapper = mount(CdrUtilitySerif, {
         slots: {
           default: 'paragraph'
         }
@@ -20,7 +20,7 @@ describe('PresetUtilitySans', () => {
   describe('passing a scale', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetUtilitySans, {
+      wrapper = mount(CdrUtilitySerif, {
         props: { scale: '-1' },
         slots: {
           default: 'paragraph'
@@ -35,7 +35,7 @@ describe('PresetUtilitySans', () => {
   describe('setting to strong variant', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetUtilitySans, {
+      wrapper = mount(CdrUtilitySerif, {
         props: { strong: true },
         slots: {
           default: 'paragraph'

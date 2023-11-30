@@ -1,12 +1,12 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
-import PresetHeadingSerif from '../PresetHeadingSerif.vue';
+import CdrBody from '../CdrBody.vue';
 
 
-describe('PresetHeadingSerif', () => {
+describe('CdrBody', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetHeadingSerif, {
+      wrapper = mount(CdrBody, {
         slots: {
           default: 'paragraph'
         }
@@ -20,7 +20,7 @@ describe('PresetHeadingSerif', () => {
   describe('passing a scale', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetHeadingSerif, {
+      wrapper = mount(CdrBody, {
         props: { scale: '1' },
         slots: {
           default: 'paragraph'
@@ -32,10 +32,10 @@ describe('PresetHeadingSerif', () => {
     });
   });
 
-  describe('passing a scale', () => {
+  describe('setting to strong variant', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetHeadingSerif, {
+      wrapper = mount(CdrBody, {
         props: { strong: true },
         slots: {
           default: 'paragraph'

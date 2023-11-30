@@ -1,12 +1,12 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
-import PresetEyebrow from '../PresetEyebrow.vue';
+import CdrEyebrow from '../CdrEyebrow.vue';
 
 
-describe('PresetEyebrow', () => {
+describe('CdrEyebrow', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetEyebrow, {
+      wrapper = mount(CdrEyebrow, {
         slots: {
           default: 'paragraph'
         }
