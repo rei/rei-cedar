@@ -44,7 +44,6 @@ export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
 /** Compostions */
 export * from './components/icon/index';
 export * from './components/text/presets/textPresets';
-export { default as CdrHeadingSubheadingBlock } from './compositions/HeadingSubheadingBlock/CdrHeadingSubheadingBlock.vue';
 
 /** Type exports */
 export {
