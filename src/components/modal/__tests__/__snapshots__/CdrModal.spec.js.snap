@@ -1,318 +1,330 @@
 // Vitest Snapshot v1
 
 exports[`CdrModal.vue > default closed > renders correctly 1`] = `
-<div
-  class="cdr-modal cdr-modal--closed"
+<teleport-stub
+  to="body"
 >
   <div
-    class="cdr-modal__outerWrap"
+    class="cdr-modal cdr-modal--closed"
   >
     <div
-      aria-hidden="true"
-      class="cdr-modal__overlay"
-    />
-    <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
+      class="cdr-modal__outerWrap"
+    >
+      <div
+        aria-hidden="true"
+        class="cdr-modal__overlay"
+      />
+      <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
            content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
-    <div />
-    <div
-      aria-label="Label is the modal title"
-      aria-modal="true"
-      class="cdr-modal__contentWrap cdr-modal__dialog"
-      role="dialog"
-      tabindex="-1"
-    >
-      <!-- @slot Use to override the entire CdrModal content container.
+      <div />
+      <div
+        aria-label="Label is the modal title"
+        aria-modal="true"
+        class="cdr-modal__contentWrap cdr-modal__dialog"
+        role="dialog"
+        tabindex="-1"
+      >
+        <!-- @slot Use to override the entire CdrModal content container.
           You must provide an explicit way to close the modal
           to meet UX and accessibility standards  -->
-      
-      <div
-        class="cdr-modal__innerWrap"
-        style="display: none;"
-      >
-        <section>
-          <div
-            class="cdr-modal__content"
-          >
+        
+        <div
+          class="cdr-modal__innerWrap"
+          style="display: none;"
+        >
+          <section>
             <div
-              class="cdr-modal__header"
+              class="cdr-modal__content"
             >
               <div
-                class="cdr-modal__title"
+                class="cdr-modal__header"
               >
-                <!-- @slot Use to override the default title -->
+                <div
+                  class="cdr-modal__title"
+                >
+                  <!-- @slot Use to override the default title -->
+                  
+                  <h1>
+                    Label is the modal title
+                  </h1>
+                  <!-- @slot CdrModal content -->
+                  
+                </div>
+                <button
+                  aria-label="Close"
+                  class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
+                  type="button"
+                >
+                  <!-- @slot Icon to the left of text content -->
+                  
+                  
+                  <!-- @slot Icon for icon-only button -->
+                  
+                  <svg
+                    aria-hidden="true"
+                    class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    
+                    
+                    
+                    <path
+                      d="M13.415 12.006l5.295-5.292a1 1 0 00-1.414-1.415L12 10.591 6.71 5.296A1 1 0 005.295 6.71l5.292 5.295-5.295 5.292a1 1 0 101.414 1.414l5.295-5.292 5.292 5.295a1 1 0 001.414-1.414l-5.292-5.294z"
+                      role="presentation"
+                    />
+                    
+                    <!--v-if-->
+                  </svg>
+                  
+                  <!-- @slot Readable text of the button. Leave empty if icon-only -->
+                  
+                  
+                  <!-- @slot Icon to the right of text content -->
+                  
+                  
+                </button>
+              </div>
+              <div
+                class="cdr-modal__text-content"
+                role="document"
+                style="max-height: -80px; padding-right: 0px;"
+                tabindex="0"
+              >
                 
-                <h1>
-                  Label is the modal title
-                </h1>
-                <!-- @slot CdrModal content -->
+                Sticky content
                 
               </div>
-              <button
-                aria-label="Close"
-                class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
-                type="button"
-              >
-                <!-- @slot Icon to the left of text content -->
-                
-                
-                <!-- @slot Icon for icon-only button -->
-                
-                <svg
-                  aria-hidden="true"
-                  class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  
-                  
-                  
-                  <path
-                    d="M13.415 12.006l5.295-5.292a1 1 0 00-1.414-1.415L12 10.591 6.71 5.296A1 1 0 005.295 6.71l5.292 5.295-5.295 5.292a1 1 0 101.414 1.414l5.295-5.292 5.292 5.295a1 1 0 001.414-1.414l-5.292-5.294z"
-                    role="presentation"
-                  />
-                  
-                  <!--v-if-->
-                </svg>
-                
-                <!-- @slot Readable text of the button. Leave empty if icon-only -->
-                
-                
-                <!-- @slot Icon to the right of text content -->
-                
-                
-              </button>
             </div>
-            <div
-              class="cdr-modal__text-content"
-              role="document"
-              style="max-height: -80px; padding-right: 0px;"
-              tabindex="0"
-            >
-              
-              Sticky content
-              
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
+        
       </div>
-      
+      <div />
     </div>
-    <div />
   </div>
-</div>
+</teleport-stub>
 `;
 
 exports[`CdrModal.vue > default open > renders correctly 1`] = `
-<div
-  class="cdr-modal"
+<teleport-stub
+  to="body"
 >
   <div
-    class="cdr-modal__outerWrap"
+    class="cdr-modal"
   >
     <div
-      aria-hidden="true"
-      class="cdr-modal__overlay"
-    />
-    <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
+      class="cdr-modal__outerWrap"
+    >
+      <div
+        aria-hidden="true"
+        class="cdr-modal__overlay"
+      />
+      <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
            content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
-    <div
-      tabindex="0"
-    />
-    <div
-      aria-label="Label is the modal title"
-      aria-modal="true"
-      class="cdr-modal__contentWrap cdr-modal__dialog"
-      role="dialog"
-      tabindex="-1"
-    >
-      <!-- @slot Use to override the entire CdrModal content container.
+      <div
+        tabindex="0"
+      />
+      <div
+        aria-label="Label is the modal title"
+        aria-modal="true"
+        class="cdr-modal__contentWrap cdr-modal__dialog"
+        role="dialog"
+        tabindex="-1"
+      >
+        <!-- @slot Use to override the entire CdrModal content container.
           You must provide an explicit way to close the modal
           to meet UX and accessibility standards  -->
-      
-      <div
-        class="cdr-modal__innerWrap"
-      >
-        <section>
-          <div
-            class="cdr-modal__content"
-          >
+        
+        <div
+          class="cdr-modal__innerWrap"
+        >
+          <section>
             <div
-              class="cdr-modal__header"
+              class="cdr-modal__content"
             >
               <div
-                class="cdr-modal__title"
+                class="cdr-modal__header"
               >
-                <!-- @slot Use to override the default title -->
+                <div
+                  class="cdr-modal__title"
+                >
+                  <!-- @slot Use to override the default title -->
+                  
+                  <h1>
+                    Label is the modal title
+                  </h1>
+                  <!-- @slot CdrModal content -->
+                  
+                </div>
+                <button
+                  aria-label="Close"
+                  class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
+                  type="button"
+                >
+                  <!-- @slot Icon to the left of text content -->
+                  
+                  
+                  <!-- @slot Icon for icon-only button -->
+                  
+                  <svg
+                    aria-hidden="true"
+                    class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    
+                    
+                    
+                    <path
+                      d="M13.415 12.006l5.295-5.292a1 1 0 00-1.414-1.415L12 10.591 6.71 5.296A1 1 0 005.295 6.71l5.292 5.295-5.295 5.292a1 1 0 101.414 1.414l5.295-5.292 5.292 5.295a1 1 0 001.414-1.414l-5.292-5.294z"
+                      role="presentation"
+                    />
+                    
+                    <!--v-if-->
+                  </svg>
+                  
+                  <!-- @slot Readable text of the button. Leave empty if icon-only -->
+                  
+                  
+                  <!-- @slot Icon to the right of text content -->
+                  
+                  
+                </button>
+              </div>
+              <div
+                class="cdr-modal__text-content"
+                role="document"
+                style="max-height: 688px; padding-right: 0px;"
+                tabindex="0"
+              >
                 
-                <h1>
-                  Label is the modal title
-                </h1>
-                <!-- @slot CdrModal content -->
+                Sticky content
                 
               </div>
-              <button
-                aria-label="Close"
-                class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
-                type="button"
-              >
-                <!-- @slot Icon to the left of text content -->
-                
-                
-                <!-- @slot Icon for icon-only button -->
-                
-                <svg
-                  aria-hidden="true"
-                  class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  
-                  
-                  
-                  <path
-                    d="M13.415 12.006l5.295-5.292a1 1 0 00-1.414-1.415L12 10.591 6.71 5.296A1 1 0 005.295 6.71l5.292 5.295-5.295 5.292a1 1 0 101.414 1.414l5.295-5.292 5.292 5.295a1 1 0 001.414-1.414l-5.292-5.294z"
-                    role="presentation"
-                  />
-                  
-                  <!--v-if-->
-                </svg>
-                
-                <!-- @slot Readable text of the button. Leave empty if icon-only -->
-                
-                
-                <!-- @slot Icon to the right of text content -->
-                
-                
-              </button>
             </div>
-            <div
-              class="cdr-modal__text-content"
-              role="document"
-              style="max-height: 688px; padding-right: 0px;"
-              tabindex="0"
-            >
-              
-              Sticky content
-              
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
+        
       </div>
-      
+      <div
+        tabindex="0"
+      />
     </div>
-    <div
-      tabindex="0"
-    />
   </div>
-</div>
+</teleport-stub>
 `;
 
 exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
-<div
-  class="cdr-modal"
+<teleport-stub
+  to="body"
 >
   <div
-    class="cdr-modal__outerWrap"
+    class="cdr-modal"
   >
     <div
-      aria-hidden="true"
-      class="cdr-modal__overlay"
-    />
-    <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
+      class="cdr-modal__outerWrap"
+    >
+      <div
+        aria-hidden="true"
+        class="cdr-modal__overlay"
+      />
+      <!-- This div (and the one below) is used to avoid a screen reader "keyboard" trap where the
            content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
-    <div
-      tabindex="0"
-    />
-    <div
-      aria-label="Label is the modal title"
-      aria-modal="true"
-      class="cdr-modal__contentWrap cdr-modal__dialog"
-      role="dialog"
-      tabindex="-1"
-    >
-      <!-- @slot Use to override the entire CdrModal content container.
+      <div
+        tabindex="0"
+      />
+      <div
+        aria-label="Label is the modal title"
+        aria-modal="true"
+        class="cdr-modal__contentWrap cdr-modal__dialog"
+        role="dialog"
+        tabindex="-1"
+      >
+        <!-- @slot Use to override the entire CdrModal content container.
           You must provide an explicit way to close the modal
           to meet UX and accessibility standards  -->
-      
-      <div
-        class="cdr-modal__innerWrap"
-      >
-        <section>
-          <div
-            class="cdr-modal__content"
-          >
+        
+        <div
+          class="cdr-modal__innerWrap"
+        >
+          <section>
             <div
-              class="cdr-modal__header"
+              class="cdr-modal__content"
             >
               <div
-                class="cdr-modal__title"
+                class="cdr-modal__header"
               >
-                <!-- @slot Use to override the default title -->
+                <div
+                  class="cdr-modal__title"
+                >
+                  <!-- @slot Use to override the default title -->
+                  
+                  <h1>
+                    Label is the modal title
+                  </h1>
+                  <!-- @slot CdrModal content -->
+                  
+                </div>
+                <button
+                  aria-label="Close"
+                  class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
+                  type="button"
+                >
+                  <!-- @slot Icon to the left of text content -->
+                  
+                  
+                  <!-- @slot Icon for icon-only button -->
+                  
+                  <svg
+                    aria-hidden="true"
+                    class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    
+                    
+                    
+                    <path
+                      d="M13.415 12.006l5.295-5.292a1 1 0 00-1.414-1.415L12 10.591 6.71 5.296A1 1 0 005.295 6.71l5.292 5.295-5.295 5.292a1 1 0 101.414 1.414l5.295-5.292 5.292 5.295a1 1 0 001.414-1.414l-5.292-5.294z"
+                      role="presentation"
+                    />
+                    
+                    <!--v-if-->
+                  </svg>
+                  
+                  <!-- @slot Readable text of the button. Leave empty if icon-only -->
+                  
+                  
+                  <!-- @slot Icon to the right of text content -->
+                  
+                  
+                </button>
+              </div>
+              <div
+                class="cdr-modal__text-content"
+                role="document"
+                style="max-height: 688px; padding-right: 0px;"
+                tabindex="0"
+              >
                 
-                <h1>
-                  Label is the modal title
-                </h1>
-                <!-- @slot CdrModal content -->
                 
               </div>
-              <button
-                aria-label="Close"
-                class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
-                type="button"
-              >
-                <!-- @slot Icon to the left of text content -->
-                
-                
-                <!-- @slot Icon for icon-only button -->
-                
-                <svg
-                  aria-hidden="true"
-                  class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  
-                  
-                  
-                  <path
-                    d="M13.415 12.006l5.295-5.292a1 1 0 00-1.414-1.415L12 10.591 6.71 5.296A1 1 0 005.295 6.71l5.292 5.295-5.295 5.292a1 1 0 101.414 1.414l5.295-5.292 5.292 5.295a1 1 0 001.414-1.414l-5.292-5.294z"
-                    role="presentation"
-                  />
-                  
-                  <!--v-if-->
-                </svg>
-                
-                <!-- @slot Readable text of the button. Leave empty if icon-only -->
-                
-                
-                <!-- @slot Icon to the right of text content -->
-                
-                
-              </button>
             </div>
-            <div
-              class="cdr-modal__text-content"
-              role="document"
-              style="max-height: 688px; padding-right: 0px;"
-              tabindex="0"
-            >
-              
-              
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
+        
       </div>
-      
+      <div
+        tabindex="0"
+      />
     </div>
-    <div
-      tabindex="0"
-    />
   </div>
-</div>
+</teleport-stub>
 `;
