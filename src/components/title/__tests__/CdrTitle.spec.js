@@ -1,5 +1,5 @@
 import { shallowMount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrTitle from 'componentdir/title/CdrTitle';
+import CdrTitle from '../CdrTitle.vue';
 
 describe('CdrTitle', () => {
   it('matches snapshot', () => {

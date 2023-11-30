@@ -1,5 +1,5 @@
 import { shallowMount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrKicker from 'componentdir/kicker/CdrKicker';
+import CdrKicker from '../CdrKicker.vue';
 
 describe('CdrKicker', () => {
   it('matches snapshot', () => {

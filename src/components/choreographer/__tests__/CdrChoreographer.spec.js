@@ -1,5 +1,5 @@
 import { shallowMount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrChoreographer from 'componentdir/choreographer/CdrChoreographer';
+import CdrChoreographer from '../CdrChoreographer.vue';
 
 describe('CdrChoreographer', () => {
   it('matches snapshot', () => {
@@ -7,7 +7,4 @@ describe('CdrChoreographer', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  it('has a failing test by default so you remember to do them', () => {
-    expect(false).toBe(true);
-  });
 });

@@ -11,6 +11,7 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
   <div
     class="cdr-lead__lower"
   >
+    <!-- @slot Override content section -->
     
     <header
       class="cdr-heading-subheading-block cdr-lead__copy-block"
