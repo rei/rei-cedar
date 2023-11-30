@@ -3,11 +3,11 @@ import CdrKicker from 'componentdir/kicker/CdrKicker';
 
 describe('CdrKicker', () => {
   it('matches snapshot', () => {
-    const wrapper = shallowMount(CdrKicker);
+    const wrapper = shallowMount(CdrKicker, {
+      slots: {
+        default: 'Kicker'
+      }
+    });
     expect(wrapper.element).toMatchSnapshot();
-  });
-
-  it('has a failing test by default so you remember to do them', () => {
-    expect(false).toBe(true);
   });
 });
