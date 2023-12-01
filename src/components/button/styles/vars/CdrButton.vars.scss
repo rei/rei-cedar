@@ -2,18 +2,18 @@
   font-family: $cdr-font-family-sans;
   font-style: normal;
   font-weight: 500;
-  letter-spacing: -.08px;
-  font-size: 14px;
-  line-height: 18px;
+  letter-spacing: -.008rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
 }
 
 @mixin cdr-button-base-text-mixin-medium() {
   font-family: $cdr-font-family-sans;
   font-style: normal;
   font-weight: 500;
-  letter-spacing: -.08px;
-  font-size: 16px;
-  line-height: 22px;
+  letter-spacing: -.008rem;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
 }
 
 @mixin cdr-button-base-mixin() {
@@ -464,8 +464,8 @@
 
 @mixin cdr-button-icon-small-mixin {
   /* This is to correct icon size vs line height */
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
 }
 
 @mixin cdr-button-medium-mixin() {

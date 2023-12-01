@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cdr-card class="card-example">
+    <cdr-card class="fluid-card-example">
       <section>
         <div>
           <cdr-img
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style>
-.card-example {
+.fluid-card-example {
   container-type: inline-size;
   width: 100%;
 }
