@@ -52,6 +52,7 @@ export default {
           content: [
             {
               type: 'title',
+              props: { tag: 'p' },
               content: 'Running nutrition basics' 
             }
           ]
@@ -102,6 +103,7 @@ export default {
               content: [
                 {
                   type: 'title',
+                  props: { tag: 'p' },
                   content: 'Running nutrition basics' 
                 }
               ]

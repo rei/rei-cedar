@@ -14,7 +14,7 @@
             class="cdr-card__link"
             href="#foo"
           >
-          <CdrTitle>
+          <CdrTitle tag="p">
             Fluid title component
           </CdrTitle>
           </cdr-link>
