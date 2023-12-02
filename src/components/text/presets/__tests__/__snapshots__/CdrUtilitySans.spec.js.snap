@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`PresetUtilitySans > default configuration > renders correctly 1`] = `
+exports[`CdrUtilitySans > default configuration > renders correctly 1`] = `
 <p
   class="cdr-text cdr-utility-sans"
   style="--cdr-utility-sans-font-size: var(--cdr-type-scale-1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
@@ -14,7 +14,7 @@ exports[`PresetUtilitySans > default configuration > renders correctly 1`] = `
 </p>
 `;
 
-exports[`PresetUtilitySans > passing a scale > renders correctly 1`] = `
+exports[`CdrUtilitySans > passing a scale > renders correctly 1`] = `
 <p
   class="cdr-text cdr-utility-sans"
   style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
@@ -28,7 +28,7 @@ exports[`PresetUtilitySans > passing a scale > renders correctly 1`] = `
 </p>
 `;
 
-exports[`PresetUtilitySans > setting to strong variant > renders correctly 1`] = `
+exports[`CdrUtilitySans > setting to strong variant > renders correctly 1`] = `
 <p
   class="cdr-text cdr-utility-sans"
   style="--cdr-utility-sans-font-size: var(--cdr-type-scale-1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"

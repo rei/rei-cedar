@@ -21,7 +21,7 @@ await Promise.all(iconFiles.map(async (filePath) => {
 }))
 
 async function createDocgenObj(filePath, docgenObj) {
-    let parsedComponentFile = await parse(filePath);
+    const parsedComponentFile = await parse(filePath);
     docgenObj[parsedComponentFile.displayName] = parsedComponentFile;
 
     _.forIn(docgenObj, (component) => {
@@ -49,8 +49,6 @@ function trimApostrophes(str) {
     return str;
 }
 
-const components = Object.keys(componentObj); // Replace with your actual component names
-
 
 // Iterate over components
 for (const component in componentObj) {
@@ -69,6 +67,7 @@ for (const component in componentObj) {
             // Check if UIProperties already exists for this component
             if(componentObj[component].UIProperties) {
                 // If it does, concatenate the new parsed SCSS with the existing ones
+                // eslint-disable-next-line max-len
                 componentObj[component].UIProperties = componentObj[component].UIProperties.concat(parsedSCSS);
             } else {
                 // If it doesn't, assign the parsed SCSS to UIProperties

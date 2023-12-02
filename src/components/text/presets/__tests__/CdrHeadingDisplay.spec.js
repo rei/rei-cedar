@@ -1,12 +1,12 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
-import PresetHeadingSans from '../PresetHeadingSans.vue';
+import CdrHeadingDisplay from '../CdrHeadingDisplay.vue';
 
 
-describe('PresetHeadingSans', () => {
+describe('CdrHeadingDisplay', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetHeadingSans, {
+      wrapper = mount(CdrHeadingDisplay, {
         slots: {
           default: 'paragraph'
         }
@@ -20,8 +20,8 @@ describe('PresetHeadingSans', () => {
   describe('passing a scale', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(PresetHeadingSans, {
-        props: { scale: '1' },
+      wrapper = mount(CdrHeadingDisplay, {
+        props: { scale: '4' },
         slots: {
           default: 'paragraph'
         }

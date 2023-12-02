@@ -6,6 +6,7 @@
   box-shadow: $cdr-prominence-raised;
   //ITEM_DOC: Text color of a cdr-card
   color: var(--cdr-card-base-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+  container: card / inline-size;
   width: 100%;
   transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
   cursor: pointer;
@@ -16,21 +17,7 @@
     transform: translateY(-$cdr-space-eighth-x);
     transition: $cdr-duration-2-x;
   }
-  container: card / inline-size;
-  
-  @container card (max-width: 250px) {
-    @include cdr-text-heading-sans-500;
-    color: red; 
-    font-size: var(--cdr-type-scale--1);
-    line-height: calc(var(--cdr-type-scale--1) * 1.2);
-  }
 
-  @container card (min-width: 250px) {
-    @include cdr-text-heading-sans-500;
-    color: blue; 
-    font-size: var(--cdr-type-scale-1);
-    line-height: calc(var(--cdr-type-scale-1) * 1.2);
-  }
 }
 
 @mixin cdr-card-link-mixin() {

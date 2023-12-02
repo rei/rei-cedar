@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`PresetBody > default configuration > renders correctly 1`] = `
+exports[`CdrBody > default configuration > renders correctly 1`] = `
 <p
   class="cdr-text cdr-body"
   style="--cdr-body-font-size: var(--cdr-type-scale-0); --cdr-body-line-height: calc(var(--cdr-type-scale-0) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
@@ -14,7 +14,7 @@ exports[`PresetBody > default configuration > renders correctly 1`] = `
 </p>
 `;
 
-exports[`PresetBody > passing a scale > renders correctly 1`] = `
+exports[`CdrBody > passing a scale > renders correctly 1`] = `
 <p
   class="cdr-text cdr-body"
   style="--cdr-body-font-size: var(--cdr-type-scale-1); --cdr-body-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
@@ -28,7 +28,7 @@ exports[`PresetBody > passing a scale > renders correctly 1`] = `
 </p>
 `;
 
-exports[`PresetBody > setting to strong variant > renders correctly 1`] = `
+exports[`CdrBody > setting to strong variant > renders correctly 1`] = `
 <p
   class="cdr-text cdr-body"
   style="--cdr-body-font-size: var(--cdr-type-scale-0); --cdr-body-line-height: calc(var(--cdr-type-scale-0) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 600;"

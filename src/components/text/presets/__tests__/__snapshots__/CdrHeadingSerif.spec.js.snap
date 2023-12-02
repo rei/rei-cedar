@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`PresetHeadingSerif > default configuration > renders correctly 1`] = `
+exports[`CdrHeadingSerif > default configuration > renders correctly 1`] = `
 <p
   class="cdr-text cdr-heading-serif"
   style="--cdr-heading-serif-font-size: var(--cdr-type-scale-5); --cdr-heading-serif-line-height: calc(var(--cdr-type-scale-5) * var(--cdr-heading-serif-line-height-ratio)); --cdr-heading-serif-font-weight: 400;"
@@ -14,7 +14,7 @@ exports[`PresetHeadingSerif > default configuration > renders correctly 1`] = `
 </p>
 `;
 
-exports[`PresetHeadingSerif > passing a scale > renders correctly 1`] = `
+exports[`CdrHeadingSerif > passing a scale > renders correctly 1`] = `
 <p
   class="cdr-text cdr-heading-serif"
   style="--cdr-heading-serif-font-size: var(--cdr-type-scale-1); --cdr-heading-serif-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-heading-serif-line-height-ratio)); --cdr-heading-serif-font-weight: 400;"
@@ -28,7 +28,7 @@ exports[`PresetHeadingSerif > passing a scale > renders correctly 1`] = `
 </p>
 `;
 
-exports[`PresetHeadingSerif > passing a scale > renders correctly 2`] = `
+exports[`CdrHeadingSerif > passing a scale > renders correctly 2`] = `
 <p
   class="cdr-text cdr-heading-serif"
   style="--cdr-heading-serif-font-size: var(--cdr-type-scale-5); --cdr-heading-serif-line-height: calc(var(--cdr-type-scale-5) * var(--cdr-heading-serif-line-height-ratio)); --cdr-heading-serif-font-weight: 600;"
