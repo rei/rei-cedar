@@ -11,10 +11,10 @@ const count = ref(4);
   <CdrContainer modifier="fluid">
     <CdrUtilitySans>Change number of cards</CdrUtilitySans>
     <div class="buttons">
-      <CdrButton :icon-only="true" @click="count -= 1">
+      <CdrButton :icon-only="true" aria-label="less cards" @click="count -= 1">
         <IconMinusFill />
       </CdrButton>
-      <CdrButton :icon-only="true" @click="count += 1">
+      <CdrButton :icon-only="true" aria-label="more cards" @click="count += 1">
         <IconPlusFill />
       </CdrButton>
     </div>

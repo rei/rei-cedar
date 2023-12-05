@@ -96,7 +96,7 @@
       >
         inherit-color plain example
       </cdr-link>
-      <br>
+      <br><br>
       <cdr-link
         inherit-color
         href="#qux"
