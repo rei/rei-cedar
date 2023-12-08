@@ -1,65 +1,18 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import { CdrRadiusSoft, CdrRadiusRound, CdrRadiusSofter } from '@rei/cdr-tokens';
+import { baseImageProps } from '../../types/interfaces';
 
 /** Media for capturing attention and communicating messages */
 defineOptions({
   name: 'CdrImg',
 });
 
-const props = defineProps({
-  /**
-   * Image source url.
-   */
-    src: {
-    type: String,
-    required: true,
-  },
-  /**
-   * Image alt text. Defaults to an empty string
-   */
-  alt: {
-    type: String,
-    default: '',
-  },
-  /**
-   * Aspect ratio of the image
-   * @demoSelectMultiple false
-   * @values Valid CSS aspect-ratio property values
-   */
-  ratio: {
-    type: String,
-    default: undefined,
-  },
-  /**
-   * Object position of the image
-   * @demoSelectMultiple false
-   * @values Valid CSS object-position values
-   */
-  position: {
-    type: String,
-    default: undefined,
-  },
-  /**
-   * Object fit of the image
-   * @demoSelectMultiple false
-   * @values Valid CSS object-fit values
-   */
-  fit: {
-    type: String,
-    default: undefined,
-  },
-  /**
-   * Sets border radius
-   * @demoSelectMultiple false
-   * @values Accepts shorthand to use cedar radius tokens (soft, softer, round) or a custom value as a valid CSS border-radius values
-   */
-  radius: {
-    type: String,
-    default: undefined,
-  }
+const props = withDefaults(defineProps<baseImageProps>(), {
+  alt: '',
 });
 
+/** Maps prop input to relevant CdrToken */
 const radiusTokens = 
   new Map
     <string | undefined, typeof CdrRadiusSoft | typeof CdrRadiusSofter | typeof CdrRadiusRound>
@@ -69,6 +22,8 @@ const radiusTokens =
         ['round', CdrRadiusRound]
       ]); 
 
+/** Checks prop against radiusTokens map for token shorthand and returns if found.
+ *  Otherwise passes value to CSS property */      
 const getRadius = computed(() => radiusTokens.get(props.radius)
   ? `${radiusTokens.get(props.radius)}rem`
   : props.radius
@@ -94,6 +49,11 @@ const style = useCssModule();
     :style="imageProperties"
     :src="src"
     :alt="alt"
+    :srcset="srcset"
+    :sizes="sizes"
+    :loading="loading"
+    :decoding="decoding"
+    :fetchpriority="fetchpriority"
   >
 </template>
 

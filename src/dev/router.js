@@ -43,6 +43,7 @@ const routes = [
   { path: '/lists', name: 'Lists', component: Examples.list },
   { path: '/modals', name: 'Modals', component: Examples.modal },
   { path: '/pagination', name: 'Pagination', component: Examples.pagination },
+  { path: '/picture', name: 'Picture', component: Examples.picture },
   { path: '/popover', name: 'Popover', component: Examples.popover },
   { path: '/presets', name: 'Text Presets', component: Examples.presets },
   { path: '/quotes', name: 'Quotes', component: Examples.quote },

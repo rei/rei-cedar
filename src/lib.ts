@@ -23,6 +23,7 @@ export { default as CdrLink } from './components/link/CdrLink.vue';
 export { default as CdrList } from './components/list/CdrList.vue';
 export { default as CdrModal } from './components/modal/CdrModal.vue';
 export { default as CdrPagination } from './components/pagination/CdrPagination.vue';
+export { default as CdrPicture } from './components/picture/CdrPicture.vue';
 export { default as CdrPopover } from './components/popover/CdrPopover.vue';
 export { default as CdrQuote } from './components/quote/CdrQuote.vue';
 export { default as CdrRadio } from './components/radio/CdrRadio.vue';
@@ -50,7 +51,8 @@ export {
   type breadcrumbItem,
   type paginationItem,
   type selectOption,
-  type choreographerSchema
+  type choreographerSchema,
+  type pictureSourceObject,
 } from './types/interfaces'
 
 
