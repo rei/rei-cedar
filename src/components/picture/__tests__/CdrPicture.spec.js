@@ -1,5 +1,5 @@
 import { shallowMount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrPicture from 'componentdir/picture/CdrPicture';
+import CdrPicture from '../CdrPicture.vue';
 
 describe('CdrPicture', () => {
   it('matches snapshot', () => {
