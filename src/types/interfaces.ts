@@ -68,24 +68,24 @@ export interface baseImageProps {
   ratio?: string,
   /**
    * Object position of the image, passes value to CSS object-position property.
-   * @demoSelectMultiple false
+   * @demoTextField true
    */
   position?: string,
   /**
    * Object fit of the image, passes value to CSS object-fit property
-   * @demoSelectMultiple false
+   * @demoTextField true
    */
   fit?: string,
   /**
    * Border radius of the image. Accepts shorthand for cedar radius tokens ("soft", "softer", "round") or a custom value which is passed ot the CSS border-radius property.
-   * @demoSelectMultiple false
+   * @demoTextField true
    */
   radius?: "soft" | "softer" | "round" | string,
   /**
    * Value for loading attribute ("lazy", "eager", "auto")
    * @demoIgnore
    */
-  loading?: "lazy" | "eager" | "auto",
+  loading?: "lazy" | "eager",
   /** 
    * value for decoding attribute ()
    * @demoIgnore
@@ -95,7 +95,7 @@ export interface baseImageProps {
    * value for fetch priority attribute
    * @demoIgnore
    */
-  fetchpriority?: string,
+  fetchpriority?: "high" | "low" | "auto",
 }
 
 /**
