@@ -1,4 +1,3 @@
-
 @mixin cdr-button-primary-mixin() {
   //ITEM_DOC: Primary button's background color
   --cdr-button-background-color:  var(--cdr-color-background-button-primary-rest, #{$cdr-color-background-button-primary-rest});
@@ -236,17 +235,14 @@
 @mixin cdr-button-icon-only-mixin() {
   --cdr-button-background-color: transparent;
   --cdr-button-radius: $cdr-radius-soft;
-  --cdr-button-box-shadow-offset-x: 0;
   --cdr-button-display: inline-block;
   --cdr-button-line-height: normal;
   --cdr-button-padding: $cdr-space-inset-half-x;
-
-  //ITEM_DOC: Fill color of an icon-only cdr-button
-  fill: var(--cdr-button-icon-only-icon-fill, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
-
+  --cdr-button-fill-color: var(--cdr-color-icon-default, #{$cdr-color-icon-default});
+  --cdr-button-box-shadow: none;
   &:hover{
     --cdr-button-background-color: transparent;
-    --cdr-button-box-shadow-offset-x: 0;
+    --cdr-button-box-shadow: none;
 
     //ITEM_DOC: Fill color of an icon-only cdr-button when hovered
     --cdr-button-fill-color: var(--cdr-color-icon-default, #{$cdr-color-icon-default});
@@ -254,7 +250,7 @@
 
   &:active, &:focus {
     --cdr-button-background-color: transparent;
-    --cdr-button-box-shadow-offset-x: 0;
+    --cdr-button-box-shadow: none;
     //ITEM_DOC: Fill color of an icon-only cdr-button when active or focused
     --cdr-button-fill-color: var(--cdr-color-icon-default, #{$cdr-color-icon-default});
     
@@ -266,12 +262,11 @@
   }
 
   &[disabled] {
-    background: transparent;
-    box-shadow: none;
-    border: none;
+    --cdr-button-background-color: transparent;
+    --cdr-button-box-shadow-offset-x: 0;
 
     //ITEM_DOC: Fill color of a disabled icon-only cdr-button
-    fill: var(--cdr-button-icon-only-disabled-icon-fill, var(--cdr-color-icon-disabled, #{$cdr-color-icon-disabled}));
+    --cdr-button-fill-color: var(--cdr-color-icon-disabled, #{$cdr-color-icon-disabled});
   }
 }
 
@@ -322,86 +317,51 @@
     --cdr-button-box-shadow-color-active-inset: var(--cdr-color-border-button-secondary-active-inset, #{$cdr-color-border-button-secondary-active-inset});
 
     svg {
-      box-shadow: none;
+      --cdr-button-box-shadow-offset-x: 0;
     }
   }
 
   &[disabled] {
     //ITEM_DOC: Background color of a disabled cdr-button with background
-    background-color: var(--cdr-button-with-background-background-color-disabled, var(--cdr-color-background-button-secondary-disabled, #{$cdr-color-background-button-secondary-disabled}));
+    --cdr-button-background-color: var(--cdr-color-background-button-secondary-disabled, #{$cdr-color-background-button-secondary-disabled});
     
     //ITEM_DOC: Box shadow color of a disabled cdr-button with background
-    box-shadow: inset 0 0 0 1px var(--cdr-button-with-background-box-shadow-disabled, var(--cdr-color-border-button-default-disabled, #{$cdr-color-border-button-default-disabled}));
+    --cdr-button-box-shadow-offset-x: 1px;
+    --cdr-button-box-shadow-color:  var(--cdr-color-border-button-default-disabled, #{$cdr-color-border-button-default-disabled});
     
     //ITEM_DOC: Fill color of a disabled cdr-button with background
-    fill: var(--cdr-button-with-background-fill-disabled, var(--cdr-color-text-button-secondary-disabled, #{$cdr-color-text-button-secondary-disabled}));
+    --cdr-button-fill-color: var(--cdr-color-text-button-secondary-disabled, #{$cdr-color-text-button-secondary-disabled});
   }
-}
-
-@mixin cdr-button-base-text-mixin-small() {
-  --cdr-button-text: 1.4rem;
-  --cdr-button-line-height: 1.8rem;
 }
 
 @mixin cdr-button-small-mixin() {
-  @include cdr-button-base-text-mixin-small;
+  --cdr-button-text: 1.4rem;
+  --cdr-button-line-height: 1.8rem;
   --cdr-button-padding: #{$cdr-space-inset-three-quarter-x-squish};
-  width: auto;
-
+ 
   &.cdr-button--has-icon-left {
-    @include cdr-button-has-icon-left-small-mixin;
+    padding-left: calc(#{$cdr-space-three-quarter-x} - #{$cdr-space-quarter-x});
   }
 
   &.cdr-button--has-icon-right {
-    @include cdr-button-has-icon-right-small-mixin;
+    padding-right: calc(#{$cdr-space-three-quarter-x} - #{$cdr-space-quarter-x});
   }
 
   & svg {
-    @include cdr-button-icon-small-mixin;
+    /* This is to correct icon size vs line height */
+    --cdr-button-icon-size: 2rem;
   }
-}
-
-@mixin cdr-button-has-icon-left-small-mixin {
-  padding-left: calc(#{$cdr-space-three-quarter-x} - #{$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-has-icon-right-small-mixin {
-  padding-right: calc(#{$cdr-space-three-quarter-x} - #{$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-icon-small-mixin {
-  /* This is to correct icon size vs line height */
-  width: 20px;
-  height: 20px;
 }
 
 @mixin cdr-button-medium-mixin() {
 
   &.cdr-button--has-icon-left {
-    @include cdr-button-has-icon-left-medium-mixin;
+    padding-left: calc(#{$cdr-space-one-x} - #{$cdr-space-quarter-x});
   }
 
   &.cdr-button--has-icon-right {
-    @include cdr-button-has-icon-right-medium-mixin;
+    padding-right: calc(#{$cdr-space-one-x} - #{$cdr-space-quarter-x});
   }
-
-  & svg {
-    @include cdr-button-icon-medium-mixin;
-  }
-}
-
-@mixin cdr-button-has-icon-left-medium-mixin {
-  padding-left: calc(#{$cdr-space-one-x} - #{$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-has-icon-right-medium-mixin {
-  padding-right: calc(#{$cdr-space-one-x} - #{$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-icon-medium-mixin {
-  /* This is to correct icon size vs line height */
-  width: $cdr-icon-size;
-  height: $cdr-icon-size;
 }
 
 @mixin cdr-button-large-mixin() {
@@ -409,28 +369,12 @@
   --cdr-button-padding: #{$cdr-space-inset-one-and-a-half-x-squish};
 
   &.cdr-button--has-icon-left {
-    @include cdr-button-has-icon-left-large-mixin;
+    padding-left: calc(#{$cdr-space-one-and-a-half-x} - #{$cdr-space-quarter-x});
   }
 
   &.cdr-button--has-icon-right {
-    @include cdr-button-has-icon-right-large-mixin;
-  }
-
-  & svg {
-    @include cdr-button-icon-large-mixin;
+    padding-right: calc(#{$cdr-space-one-and-a-half-x} - #{$cdr-space-quarter-x});
   }
 }
 
-@mixin cdr-button-has-icon-left-large-mixin {
-  padding-left: calc(#{$cdr-space-one-and-a-half-x} - #{$cdr-space-quarter-x});
-}
 
-@mixin cdr-button-has-icon-right-large-mixin {
-  padding-right: calc(#{$cdr-space-one-and-a-half-x} - #{$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-icon-large-mixin {
-  /* This is to correct icon size vs line height */
-  width: $cdr-icon-size;
-  height: $cdr-icon-size;
-}

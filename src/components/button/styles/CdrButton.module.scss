@@ -33,7 +33,7 @@
   width: var(--cdr-button-width, auto);
   &:hover, &:active, &:focus {
     background-color: var(--cdr-button-background-color);
-    box-shadow: inset 0 0 0 var(--cdr-button-box-shadow-offset-x, 0) var(--cdr-button-box-shadow-color), $cdr-prominence-raised;
+    box-shadow: var(--cdr-button-box-shadow, inset 0 0 0 var(--cdr-button-box-shadow-offset-x, 0) var(--cdr-button-box-shadow-color)), $cdr-prominence-raised;
     color: var(--cdr-button-text-color);
     fill: var(--cdr-button-fill-color);
     outline: var(--cdr-button-outline, none);
