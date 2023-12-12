@@ -20,6 +20,7 @@ import links from 'componentsdir/link/examples/Links.vue';
 import list from 'componentsdir/list/examples/Lists.vue';
 import modal from 'componentsdir/modal/examples/Modal.vue';
 import pagination from 'componentsdir/pagination/examples/Pagination.vue';
+import picture from 'componentsdir/picture/examples/Picture.vue';
 import popover from 'componentsdir/popover/examples/Popover.vue';
 import presets from 'componentsdir/text/presets/examples/Presets.vue';
 import quote from 'componentsdir/quote/examples/Quote.vue';
@@ -59,6 +60,7 @@ export default {
   list,
   modal,
   pagination,
+  picture,
   popover,
   presets,
   quote,
