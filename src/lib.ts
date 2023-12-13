@@ -18,6 +18,7 @@ export { default as CdrIcon } from './components/icon/CdrIcon.vue';
 export { default as CdrImg } from './components/image/CdrImg.vue';
 export { default as CdrInput } from './components/input/CdrInput.vue';
 export { default as CdrKicker } from './components/kicker/CdrKicker.vue';
+export { default as CdrLandingLead } from './components/lead/compositions/landingLead/CdrLandingLead.vue';
 export { default as CdrLead } from './components/lead/CdrLead.vue';
 export { default as CdrLink } from './components/link/CdrLink.vue';
 export { default as CdrList } from './components/list/CdrList.vue';
