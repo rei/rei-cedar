@@ -1,4 +1,4 @@
-const sass = require('node-sass');
+const sass = require('sass');
 const tildeImporter = require('node-sass-package-importer');
 const fs = require('fs-extra');
 const glob = require('glob');
