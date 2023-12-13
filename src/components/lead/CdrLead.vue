@@ -25,7 +25,6 @@ const baseClass = 'cdr-lead'
 
 <template>
   <div :class="style[baseClass]">
-    <div :class="style[`${baseClass}__top`]" />
     <div
       v-if="imgSrc"
       :class="style[`${baseClass}__image-container`]"
