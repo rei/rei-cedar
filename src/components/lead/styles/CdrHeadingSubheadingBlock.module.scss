@@ -2,11 +2,13 @@
 
 .cdr-heading-subheading-block {
   &__heading {
+    display: block;
     margin: 0 0 $cdr-space-one-x 0;
     max-width: 40ch;
   }
   &__subheading {
-    margin: 0;
+    display: block;
+    margin-top: $cdr-space-three-quarter-x!important;
     max-width: 60ch;
   }
 }

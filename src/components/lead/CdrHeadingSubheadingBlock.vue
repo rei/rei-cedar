@@ -19,7 +19,10 @@ const style = useCssModule();
     >
       <slot />
     </CdrHeadingDisplay>
-    <CdrSubheadingSans :class="style[`${baseClass}__subheading`]">
+    <CdrSubheadingSans
+      tag="span"
+      :class="style[`${baseClass}__subheading`]"
+    >
       <slot name="subheading" />
     </CdrSubheadingSans>
   </header>
