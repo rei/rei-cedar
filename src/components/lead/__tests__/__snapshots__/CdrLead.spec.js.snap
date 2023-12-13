@@ -4,9 +4,6 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
 <div
   class="cdr-lead"
 >
-  <div
-    class="cdr-lead__top"
-  />
   <!--v-if-->
   <div
     class="cdr-lead__lower"
@@ -29,7 +26,7 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
         
         
       </h1>
-      <p
+      <span
         class="cdr-text cdr-subheading-sans cdr-heading-subheading-block__subheading"
         style="--cdr-subheading-sans-font-size: var(--cdr-type-scale-1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-subheading-sans-line-height-ratio));"
       >
@@ -41,7 +38,7 @@ exports[`CdrLead > renders correctly when presented with correct data 1`] = `
         
         
         
-      </p>
+      </span>
     </header>
     
   </div>

@@ -3,11 +3,6 @@
 
 .cdr-lead {
   @include cdr-lead-base-mixin;
-  &__top {
-    height: 4.8rem;
-    //ITEM_DOC: Lead background color
-    background-color: var(--cdr-lead-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
-  }
   &__image-container {
     @include cdr-lead-spacing-mixin;
     // background: linear-gradient(
