@@ -1,10 +1,64 @@
 @import '../../../styles/settings/_index.scss';
 @import './vars/CdrButton.vars.scss';
+
 .cdr-button {
-  @include cdr-button-base-mixin;
+  background-color: var(--cdr-button-background-color,  #{$cdr-color-background-button-secondary-rest});
+  border: none;
+  border-radius: var(--cdr-button-radius, #{$cdr-radius-softer});
+  box-shadow: inset 0 0 0 var(--cdr-button-box-shadow-offset-x, 0) var(--cdr-button-box-shadow-color,  #{$cdr-color-border-button-secondary-rest});
+  color: var(--cdr-button-text-color, #{$cdr-color-text-button-secondary});
+  cursor: pointer;
+  display: var(--cdr-button-display, inline-flex);
+  fill: var(--cdr-button-fill-color,  #{$cdr-color-icon-default});
+  font-family: var(--cdr-button-font-family, #{$cdr-font-family-sans});
+  font-size: var(--cdr-button-text-size, 1.6rem);
+  font-style: normal;
+  font-weight: 500;
+  justify-content: var(--cdr-button-justify, normal);
+  letter-spacing: -.008rem;
+  line-height: var(--cdr-button-line-height, 2.2rem);
+  outline: none;
+  overflow: visible;
+  margin: 0;
+  padding: var(--cdr-button-padding, #{$cdr-space-inset-one-x-squish});
+  text-align: left;
+  text-decoration: var(--cdr-button-text-decoration, none);
+  text-transform: none;
+  vertical-align: middle;
+  transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease, background-color $cdr-duration-2-x $cdr-timing-function-ease, color $cdr-duration-2-x $cdr-timing-function-ease, fill $cdr-duration-2-x $cdr-timing-function-ease;
+  width: var(--cdr-button-width, auto);
+
+  &:hover, &:active, &:focus {
+    background-color: var(--cdr-button-background-color);
+    box-shadow: var(--cdr-button-box-shadow, inset 0 0 0 var(--cdr-button-box-shadow-offset-x, 0) var(--cdr-button-box-shadow-color)), $cdr-prominence-raised;
+    color: var(--cdr-button-text-color);
+    fill: var(--cdr-button-fill-color);
+    outline: var(--cdr-button-outline, none);
+    outline-color: var(--cdr-button-outline-color, -webkit-focus-ring-color);
+    outline-offset: var(--cdr-button-outline-color, 0);
+    text-decoration: var(--cdr-button-text-decoration);
+  }
+
+  &:active {
+    color: var(--cdr-button-text-color);
+    fill: var(--cdr-button-fill-color);
+    background-color: var(--cdr-button-background-color);
+    box-shadow: inset 0 0 0 var(--cdr-button-box-shadow-offset-x, 0) var(--cdr-button-box-shadow-color), inset 0 0 0 var(--cdr-button-box-shadow-inset-x, 0)  var(--cdr-button-box-shadow-color-active-inset);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: var(--cdr-button-background-color);
+    box-shadow: inset 0 0 0 1px var(--cdr-button-box-shadow-color);
+    color: var(--cdr-button-text-color);     
+    fill: var(--cdr-button-fill-color);
+  }
 
   svg {
-    @include cdr-button-base-icon-mixin;
+    align-self: center;
+    height: var(--cdr-button-icon-size, #{$cdr-icon-size}); 
+    fill: inherit;
+    width: var(--cdr-button-icon-size, #{$cdr-icon-size}); 
   }
 
   &.cdr-button--has-icon-left svg {
@@ -15,8 +69,6 @@
     margin-left: $cdr-space-quarter-x;
   }
 
-  /* Modifier style variants
-    ========================================================================== */
   &--primary {
     @include cdr-button-primary-mixin;
   }
@@ -37,30 +89,17 @@
     @include cdr-button-link-mixin;
   }
 
-  /* Size variants
-    ========================================================================== */
-
-  /* Large
-     ========== */
   &--large {
     @include cdr-button-large-mixin;
   }
 
-  /* Medium
-     ========== */
   &--medium {
     @include cdr-button-medium-mixin;
   }
 
-  /* Small
-     ========== */
-
   &--small {
     @include cdr-button-small-mixin;
   }
-
-  /* Icon Only
-     ========= */
 
   &--icon-only {
     @include cdr-button-icon-only-mixin;
@@ -78,18 +117,10 @@
     @include cdr-button-with-background-mixin;
   }
 
-  /* Full Width
-    ========== */
-
   &--full-width {
     @include cdr-button-full-width-mixin;
   }
 
-  /* Breakpoint variants
-
-  /* @xs
-    0px - 767px
-    ========== */
   @include cdr-xs-mq-only {
     &--small\@xs {
       @include cdr-button-small-mixin;
@@ -108,9 +139,6 @@
     }
   }
 
-  /* @sm
-    768px - 991px
-    ========== */
   @include cdr-sm-mq-only {
     &--small\@sm {
       @include cdr-button-small-mixin;
@@ -129,9 +157,6 @@
     }
   }
 
-  /* @md
-    992px - 1199px
-    ========== */
   @include cdr-md-mq-only {
     &--small\@md {
       @include cdr-button-small-mixin;
@@ -149,10 +174,6 @@
       @include cdr-button-full-width-mixin;
     }
   }
-
-  /* @lg
-    1200px and up
-    ========== */
 
   @include cdr-lg-mq-only {
     &--small\@lg {
