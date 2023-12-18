@@ -11,6 +11,10 @@ export default {
       vue: 'Vue',
     },
     preserveModules: true,
+    assetFileNames: (assetInfo) => {
+      if (assetInfo.name === 'style.css') return 'cdr-style.css';
+      return assetInfo.name;
+    },
   },
   plugins: [
     babel({
