@@ -8,16 +8,25 @@
         Sandstone
       </CdrToggleButton>
     </CdrToggleGroup>
-    <h2>Static lead</h2>
+    <h2>Lead container</h2>
+    <CdrLead :class="`theme-${palettes}`">
+      <template #media>
+        <CdrImg src="/src/dev/static/cedar-1920x1080.jpg" />
+      </template>
+      <template #content>
+        <CdrTitle>Global lead title</CdrTitle>
+      </template>
+    </CdrLead>
 
-    <CdrLead
+    <h2>Static landing lead composition</h2>
+    <CdrLandingLead
       :class="`theme-${palettes}`"
       img-src="src/dev/static/lead-static.jpg"
       heading="Camp with no reservations."
       subheading="We have the know-how to equip you to camp in the middle of nowhere."
     />
 
-    <h2>Static lead w/out image</h2>
+    <h2>Static landing lead w/out image</h2>
     <CdrLead
       :class="`theme-${palettes}`"
       heading="Camp with no reservations."
