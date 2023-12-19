@@ -205,7 +205,7 @@
   --cdr-button-radius: none;
   --cdr-button-display: inline-block;
   --cdr-button-line-height: normal;
-  --cdr-button-padding: $cdr-space-inset-half-x;
+  --cdr-button-padding: var( --cdr-space-inset-half-x, #{$cdr-space-inset-half-x});
   --cdr-button-fill-color: var(--cdr-color-icon-default, #{$cdr-color-icon-default});
   --cdr-button-box-shadow-color: transparent;
   --cdr-button-box-shadow-offset-x: 0;
