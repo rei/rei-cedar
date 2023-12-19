@@ -25,14 +25,14 @@ const baseClass = 'cdr-landing-lead'
 
 <template>
   <CdrLead>
-    <template #media>
+    <template #top>
       <CdrImg 
         :src="imgSrc"
         :alt="imgAlt"
         :class="style[`${baseClass}__image`]"
       />
     </template>
-    <template #content>
+    <template #bottom>
       <CdrHeadingSubheadingBlock :class="style[`${baseClass}__copy-block`]">
         {{ heading }}
         <template #subheading>

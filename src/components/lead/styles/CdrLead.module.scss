@@ -3,12 +3,10 @@
 
 .cdr-lead {
   @include cdr-lead-base-mixin;
-  &__media {
+  &__top {
     @include cdr-lead-spacing-mixin;
-    background-color: transparent;
   }
-  &__content {
+  &__bottom {
     @include cdr-lead-spacing-mixin;
-    background-color: var(--cdr-lead-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
   }
 }
