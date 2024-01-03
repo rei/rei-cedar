@@ -26,8 +26,8 @@ const props = defineProps({
   },
   /**
    * Aspect ratio of the media container
-  * @demoSelectMultiple false
-  * @values auto, square, 1-2, 2-3, 3-4, 9-16, 2-1, 3-2, 4-3, 16-9
+   * @demoTextField true
+   * @demoPlaceholderText Enter aspect ratio here. Example: '16-9'
   */
   ratio: {
     type: String,
