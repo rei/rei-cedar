@@ -11,6 +11,8 @@ defineOptions({
 defineProps({
   /** Sets the lead's image source  */
   imgSrc: { type: String, default: '' },
+  /** Comma-seperated list of img srcsets */
+  imgSrcset: { type: String, default: undefined },
   /** Sets the lead's image alt  */
   imgAlt: { type: String, default: '' },
   /** Sets the lead's heading  */
@@ -28,6 +30,7 @@ const baseClass = 'cdr-landing-lead'
     <template #top>
       <CdrImg 
         :src="imgSrc"
+        :srcset="imgSrcset"
         :alt="imgAlt"
         :class="style[`${baseClass}__image`]"
       />

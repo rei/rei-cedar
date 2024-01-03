@@ -13,15 +13,15 @@ interface leadProps {
    * @demoSelectMultiple false
    * @values 'top', 'bottom'
    */
-  surfaceOrientation: 'top' | 'bottom'
+  surface?: 'top' | 'bottom'
 }
 
 const props = withDefaults(defineProps<leadProps>(), {
-  surfaceOrientation: 'bottom'
+  surface: 'bottom'
 });
 
 const baseClass = 'cdr-lead'
-const surfaceClass = computed(() => `${baseClass}--${props.surfaceOrientation}`);
+const surfaceClass = computed(() => `${baseClass}--${props.surface}`);
 
 const style = useCssModule();
 </script>

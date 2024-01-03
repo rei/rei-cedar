@@ -19,7 +19,7 @@
     </CdrLead>
 
     <h2>Lead container with surface on top</h2>
-    <CdrLead surface-orientation="top" :class="`theme-${palettes}`">
+    <CdrLead surface="top" :class="`theme-${palettes}`">
       <template #top>
         <CdrTitle>Global lead title</CdrTitle>
       </template>
@@ -63,6 +63,6 @@ export default {
 
 <style lang="scss">
 .theme-sandstone {
-  --cdr-lead-base-background-color: #f4f2ed;
+  --cdr-lead-surface-color: #f4f2ed;
 }
 </style>

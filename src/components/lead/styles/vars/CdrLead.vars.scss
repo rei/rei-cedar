@@ -3,14 +3,14 @@
   line-height: 0;
   &--top {
     background: linear-gradient(
-      var(--cdr-lead-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 0 50%,
+      var(--cdr-lead-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 0 50%,
       transparent 50% 100%,
     );
   }
   &--bottom {
     background: linear-gradient(
       transparent 0 50%,
-      var(--cdr-lead-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 50% 100%,
+      var(--cdr-lead-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 50% 100%,
     );
   }
 }

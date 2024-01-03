@@ -2,11 +2,11 @@
 
 .cdr-landing-lead {
   &__image {
-    aspect-ratio: 4 / 1;
+    --cdr-img-aspect-ratio: 4 / 1;
     object-fit: cover;
     width: 100%;
     @include cdr-sm-mq-down {
-      aspect-ratio: 4 / 3;
+      --cdr-img-aspect-ratio: 4 / 3;
     }
   }
   &__copy-block {

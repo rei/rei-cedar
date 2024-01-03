@@ -3,6 +3,8 @@ import { useCssModule, type PropType } from 'vue';
 import { CdrAbstract, CdrKicker, CdrTitle, CdrImg, CdrRating, CdrLink, CdrCard } from '../../lib';
 import { choreographerSchema } from '../../types/interfaces';
 
+/** Choreographer is in an experimental stage and should be considered unstable */
+
 defineOptions({
   name: 'CdrChoreographer',
 });
@@ -16,16 +18,6 @@ const componentMap = {
   link: CdrLink,
   card: CdrCard,
 };
-
-// const componentMap = new Map([
-//   ['abstract', CdrAbstract],
-//   ['kicker', CdrKicker],
-//   ['title', CdrTitle],
-//   ['image', CdrImg],
-//   ['rating', CdrRating],
-//   ['link', CdrLink],
-//   ['card', CdrCard],
-// ]);
 
 defineProps({
   schema: { type: Array as PropType<choreographerSchema[]>, default: () => [] }
