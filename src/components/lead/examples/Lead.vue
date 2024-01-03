@@ -10,11 +10,21 @@
     </CdrToggleGroup>
     <h2>Lead container</h2>
     <CdrLead :class="`theme-${palettes}`">
-      <template #media>
+      <template #top>
         <CdrImg src="/src/dev/static/cedar-1920x1080.jpg" />
       </template>
-      <template #content>
+      <template #bottom>
         <CdrTitle>Global lead title</CdrTitle>
+      </template>
+    </CdrLead>
+
+    <h2>Lead container with surface on top</h2>
+    <CdrLead surface="top" :class="`theme-${palettes}`">
+      <template #top>
+        <CdrTitle>Global lead title</CdrTitle>
+      </template>
+      <template #bottom>
+        <CdrImg src="/src/dev/static/cedar-1920x1080.jpg" />
       </template>
     </CdrLead>
 
@@ -32,13 +42,6 @@
       heading="Camp with no reservations."
       subheading="We have the know-how to equip you to camp in the middle of nowhere."
     />
-
-    <!-- Theorhetical -->
-    <CdrLead>
-      <template #content>
-        <CdrComposer :schema="leadContent" />
-      </template>
-    </CdrLead>
   </div>
 </template>
 
@@ -60,6 +63,6 @@ export default {
 
 <style lang="scss">
 .theme-sandstone {
-  --cdr-lead-base-background-color: #f4f2ed;
+  --cdr-lead-surface-color: #f4f2ed;
 }
 </style>

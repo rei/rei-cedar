@@ -2,27 +2,20 @@
 
 exports[`CdrLead > renders correctly when presented with correct data 1`] = `
 <div
-  class="cdr-lead"
+  class="cdr-lead cdr-lead--bottom"
 >
   <div
-    class="cdr-lead__media"
+    class="cdr-lead__top"
   >
-    <!-- @slot Media slot -->
+    <!-- @slot top slot -->
     
-    <img
-      alt="foo"
-      src="foo.jpg"
-    />
     
   </div>
   <div
-    class="cdr-lead__content"
+    class="cdr-lead__bottom"
   >
-    <!-- @slot Content slot -->
+    <!-- @slot bottom slot -->
     
-    <h1>
-      Title
-    </h1>
     
   </div>
 </div>

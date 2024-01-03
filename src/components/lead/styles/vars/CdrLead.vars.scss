@@ -1,10 +1,18 @@
 @mixin cdr-lead-base-mixin() {
   width: 100%;
   line-height: 0;
-  background: linear-gradient(
-    transparent 0 50%,
-    var(--cdr-lead-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 26% 100%,
-  );
+  &--top {
+    background: linear-gradient(
+      var(--cdr-lead-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 0 50%,
+      transparent 50% 100%,
+    );
+  }
+  &--bottom {
+    background: linear-gradient(
+      transparent 0 50%,
+      var(--cdr-lead-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 50% 100%,
+    );
+  }
 }
 
 @mixin cdr-lead-spacing-mixin() {

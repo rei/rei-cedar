@@ -2,12 +2,12 @@
 
 exports[`CdrLandingLead > renders correctly when presented with correct data 1`] = `
 <div
-  class="cdr-lead"
+  class="cdr-lead cdr-lead--bottom"
 >
   <div
-    class="cdr-lead__media"
+    class="cdr-lead__top"
   >
-    <!-- @slot Media slot -->
+    <!-- @slot top slot -->
     
     <img
       alt=""
@@ -17,9 +17,9 @@ exports[`CdrLandingLead > renders correctly when presented with correct data 1`]
     
   </div>
   <div
-    class="cdr-lead__content"
+    class="cdr-lead__bottom"
   >
-    <!-- @slot Content slot -->
+    <!-- @slot bottom slot -->
     
     <header
       class="cdr-heading-subheading-block cdr-landing-lead__copy-block"

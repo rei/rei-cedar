@@ -1,24 +1,40 @@
 <script setup lang="ts">
-import { useCssModule } from 'vue';
+import { useCssModule, computed } from 'vue';
+import mapClasses from '../../utils/mapClasses';
 
 /** Container used for assembling leads */
 defineOptions({
   name: 'CdrLead'
 });
 
-const style = useCssModule();
+interface leadProps {
+  /** 
+   * Sets the orientation of the background surface
+   * @demoSelectMultiple false
+   * @values 'top', 'bottom'
+   */
+  surface?: 'top' | 'bottom'
+}
+
+const props = withDefaults(defineProps<leadProps>(), {
+  surface: 'bottom'
+});
+
 const baseClass = 'cdr-lead'
+const surfaceClass = computed(() => `${baseClass}--${props.surface}`);
+
+const style = useCssModule();
 </script>
 
 <template>
-  <div :class="style[baseClass]">
-    <div :class="style[`${baseClass}__media`]">
-      <!-- @slot Media slot -->
-      <slot name="media" />
+  <div :class="mapClasses(style, baseClass, surfaceClass)">
+    <div :class="style[`${baseClass}__top`]">
+      <!-- @slot top slot -->
+      <slot name="top" />
     </div>
-    <div :class="style[`${baseClass}__content`]">
-      <!-- @slot Content slot -->
-      <slot name="content" />
+    <div :class="style[`${baseClass}__bottom`]">
+      <!-- @slot bottom slot -->
+      <slot name="bottom" />
     </div>
   </div>
 </template>
