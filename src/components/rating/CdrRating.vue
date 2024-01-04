@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import propValidator from '../../utils/propValidator';
+import sizeProps from '../../props/size';
 import mapClasses from '../../utils/mapClasses';
 import CdrStar100 from './components/CdrStar100.vue';
 import CdrStar75 from './components/CdrStar75.vue';
@@ -52,14 +52,7 @@ const props = defineProps({
    * @demoSelectMultiple false
    * @values small, medium, large
   */
-  size: {
-    type: String,
-    default: 'medium',
-    validator: (value: string) => propValidator(
-      value,
-      ['small', 'medium', 'large'],
-    ),
-  },
+  size: sizeProps,
 });
 
 const style = useCssModule();

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots } from 'vue';
 import mapClasses from '../../utils/mapClasses';
+import sizeProps from '../../props/size';
 import { responsiveModifyClass, buildBooleanClass } from '../../utils/buildClass';
 import propValidator from '../../utils/propValidator';
 
@@ -48,14 +49,7 @@ const props = defineProps({
      * @demoSelectMultiple false
      * @values small, medium, large
      */
-    size: {
-      type: String,
-      default: 'medium',
-      validator: (value: string) => propValidator(
-        value,
-        ['small', 'medium', 'large'],
-      ),
-    },
+    size: sizeProps,
     /**
      * Sets button width to 100%. Setting this value to true will set the button width to 100% of the parent container. Use the 'fullWidth' prop with the 'size' prop to control top and bottom padding.
      */

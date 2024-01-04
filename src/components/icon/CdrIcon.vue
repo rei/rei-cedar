@@ -22,10 +22,10 @@ const props = defineProps({
   inheritColor: { type: Boolean, default: false },
   size: {
     type: String,
-    default: 'medium',
+    default: undefined,
     validator: (value: string) => propValidator(
       value,
-      ['small', 'medium', 'large'],
+      ['small', 'large'],
     ),
   },
 });
