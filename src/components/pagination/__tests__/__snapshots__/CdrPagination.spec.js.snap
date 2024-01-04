@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CdrPagination > pagination component with 20 pages > renders correctly 1`] = `
 <nav
@@ -16,7 +16,7 @@ exports[`CdrPagination > pagination component with 20 pages > renders correctly 
       >
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-icon--inherit-color cdr-pagination_caret--prev"
+          class="cdr-icon cdr-icon--inherit-color cdr-pagination_caret--prev"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -145,7 +145,7 @@ exports[`CdrPagination > pagination component with 20 pages > renders correctly 
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--medium cdr-select--primary"
+              class="cdr-select cdr-select--primary"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -189,7 +189,7 @@ exports[`CdrPagination > pagination component with 20 pages > renders correctly 
             </select>
             <svg
               aria-hidden="true"
-              class="cdr-icon cdr-icon--medium cdr-select__caret"
+              class="cdr-icon cdr-select__caret"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -227,7 +227,7 @@ exports[`CdrPagination > pagination component with 20 pages > renders correctly 
          Next 
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"
+          class="cdr-icon cdr-pagination_caret--next"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -263,7 +263,7 @@ exports[`CdrPagination > pagination component with 20 pages > with "forLabel" pr
       >
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-icon--inherit-color cdr-pagination_caret--prev"
+          class="cdr-icon cdr-icon--inherit-color cdr-pagination_caret--prev"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -392,7 +392,7 @@ exports[`CdrPagination > pagination component with 20 pages > with "forLabel" pr
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--medium cdr-select--primary"
+              class="cdr-select cdr-select--primary"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -436,7 +436,7 @@ exports[`CdrPagination > pagination component with 20 pages > with "forLabel" pr
             </select>
             <svg
               aria-hidden="true"
-              class="cdr-icon cdr-icon--medium cdr-select__caret"
+              class="cdr-icon cdr-select__caret"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -474,7 +474,7 @@ exports[`CdrPagination > pagination component with 20 pages > with "forLabel" pr
          Next 
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"
+          class="cdr-icon cdr-pagination_caret--next"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -510,7 +510,7 @@ exports[`CdrPagination > pagination component with 20 pages > with button pagina
       >
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-icon--inherit-color cdr-pagination_caret--prev"
+          class="cdr-icon cdr-icon--inherit-color cdr-pagination_caret--prev"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -633,7 +633,7 @@ exports[`CdrPagination > pagination component with 20 pages > with button pagina
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--medium cdr-select--primary"
+              class="cdr-select cdr-select--primary"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -677,7 +677,7 @@ exports[`CdrPagination > pagination component with 20 pages > with button pagina
             </select>
             <svg
               aria-hidden="true"
-              class="cdr-icon cdr-icon--medium cdr-select__caret"
+              class="cdr-icon cdr-select__caret"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -714,7 +714,7 @@ exports[`CdrPagination > pagination component with 20 pages > with button pagina
          Next 
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"
+          class="cdr-icon cdr-pagination_caret--next"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -750,7 +750,7 @@ exports[`CdrPagination > when at first page > renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-icon--inherit-color cdr-pagination_caret--prev"
+          class="cdr-icon cdr-icon--inherit-color cdr-pagination_caret--prev"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -822,7 +822,7 @@ exports[`CdrPagination > when at first page > renders correctly 1`] = `
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--medium cdr-select--primary"
+              class="cdr-select cdr-select--primary"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -846,7 +846,7 @@ exports[`CdrPagination > when at first page > renders correctly 1`] = `
             </select>
             <svg
               aria-hidden="true"
-              class="cdr-icon cdr-icon--medium cdr-select__caret"
+              class="cdr-icon cdr-select__caret"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -884,7 +884,7 @@ exports[`CdrPagination > when at first page > renders correctly 1`] = `
          Next 
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"
+          class="cdr-icon cdr-pagination_caret--next"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -919,7 +919,7 @@ exports[`CdrPagination > when on the last page > renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--prev"
+          class="cdr-icon cdr-pagination_caret--prev"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -991,7 +991,7 @@ exports[`CdrPagination > when on the last page > renders correctly 1`] = `
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--medium cdr-select--primary"
+              class="cdr-select cdr-select--primary"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -1015,7 +1015,7 @@ exports[`CdrPagination > when on the last page > renders correctly 1`] = `
             </select>
             <svg
               aria-hidden="true"
-              class="cdr-icon cdr-icon--medium cdr-select__caret"
+              class="cdr-icon cdr-select__caret"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1054,7 +1054,7 @@ exports[`CdrPagination > when on the last page > renders correctly 1`] = `
          Next 
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-icon--inherit-color cdr-pagination_caret--next"
+          class="cdr-icon cdr-icon--inherit-color cdr-pagination_caret--next"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1089,7 +1089,7 @@ exports[`CdrPagination > when the active page is in the middle > renders correct
       >
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--prev"
+          class="cdr-icon cdr-pagination_caret--prev"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1173,7 +1173,7 @@ exports[`CdrPagination > when the active page is in the middle > renders correct
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--medium cdr-select--primary"
+              class="cdr-select cdr-select--primary"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -1202,7 +1202,7 @@ exports[`CdrPagination > when the active page is in the middle > renders correct
             </select>
             <svg
               aria-hidden="true"
-              class="cdr-icon cdr-icon--medium cdr-select__caret"
+              class="cdr-icon cdr-select__caret"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1240,7 +1240,7 @@ exports[`CdrPagination > when the active page is in the middle > renders correct
          Next 
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"
+          class="cdr-icon cdr-pagination_caret--next"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1276,7 +1276,7 @@ exports[`CdrPagination > with 5 pages > renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-icon--inherit-color cdr-pagination_caret--prev"
+          class="cdr-icon cdr-icon--inherit-color cdr-pagination_caret--prev"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1384,7 +1384,7 @@ exports[`CdrPagination > with 5 pages > renders correctly 1`] = `
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--medium cdr-select--primary"
+              class="cdr-select cdr-select--primary"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -1423,7 +1423,7 @@ exports[`CdrPagination > with 5 pages > renders correctly 1`] = `
             </select>
             <svg
               aria-hidden="true"
-              class="cdr-icon cdr-icon--medium cdr-select__caret"
+              class="cdr-icon cdr-select__caret"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1461,7 +1461,7 @@ exports[`CdrPagination > with 5 pages > renders correctly 1`] = `
          Next 
         <svg
           aria-hidden="true"
-          class="cdr-icon cdr-icon--medium cdr-pagination_caret--next"
+          class="cdr-icon cdr-pagination_caret--next"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >

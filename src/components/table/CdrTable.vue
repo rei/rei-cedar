@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
+import sizeProps from '../../props/size';
 import { buildBooleanClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
 
 /** Organizes structured data for users to easily scan, compare, and analyze */
 defineOptions({
@@ -42,14 +42,7 @@ const props = defineProps({
    * @demoSelectMultiple false
    * @values small, medium, large
   */
-  size: {
-    type: String,
-    default: 'medium',
-    validator: (value: string) => propValidator(
-      value,
-      ['small', 'medium', 'large'],
-    ),
-  },
+  size: sizeProps,
 });
 const style = useCssModule();
 const baseClass = 'cdr-table';

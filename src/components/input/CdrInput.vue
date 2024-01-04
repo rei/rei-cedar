@@ -6,7 +6,6 @@ import type { InputHTMLAttributes } from 'vue'
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
-import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
@@ -72,10 +71,10 @@ const props = defineProps({
   background: backgroundProps,
   /**
    * Sets the input field size
-  * @demoSelectMultiple false
-  * @values medium, large
+  * @demoSelectMultiple true
+  * @values large
   */
-  size: sizeProps,
+  size: String,
 
   /**
    * Sets the `role` attribute for the embedded error state messaging.

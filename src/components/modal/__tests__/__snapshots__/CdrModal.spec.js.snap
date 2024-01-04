@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CdrModal.vue > default closed > renders correctly 1`] = `
 <teleport-stub
@@ -64,7 +64,7 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
                   
                   <svg
                     aria-hidden="true"
-                    class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
+                    class="cdr-icon cdr-icon--inherit-color"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -173,7 +173,7 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
                   
                   <svg
                     aria-hidden="true"
-                    class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
+                    class="cdr-icon cdr-icon--inherit-color"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -284,7 +284,7 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
                   
                   <svg
                     aria-hidden="true"
-                    class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
+                    class="cdr-icon cdr-icon--inherit-color"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >

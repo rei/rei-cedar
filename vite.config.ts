@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
+import { configDefaults } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts'
 import options from './rollupOptions.mjs';
@@ -35,6 +36,16 @@ export default defineConfig({
       componentsdir: fileURLToPath(new URL('./src/components', import.meta.url)),
       mixinsdir: fileURLToPath(new URL('./src/mixins', import.meta.url)),
       '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
+    },
+  },
+  test: {
+    globals: true,
+    exclude: [...configDefaults.exclude, '**/test/e2e', '**/templates/__tests__'],
+    environment: 'jsdom',
+    css: {
+      modules: {
+        classNameStrategy: 'non-scoped'
+      },
     },
   },
   plugins: [

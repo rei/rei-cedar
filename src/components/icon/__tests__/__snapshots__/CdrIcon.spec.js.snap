@@ -1,9 +1,9 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CdrIcon > default configuration > renders correctly 1`] = `
 <svg
   aria-hidden="true"
-  class="cdr-icon cdr-icon--medium"
+  class="cdr-icon"
   viewBox="0 0 24 24"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -16,7 +16,7 @@ exports[`CdrIcon > default configuration > renders correctly 1`] = `
 exports[`CdrIcon > single icon component > renders correctly 1`] = `
 <svg
   aria-hidden="true"
-  class="cdr-icon cdr-icon--medium"
+  class="cdr-icon"
   viewBox="0 0 24 24"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -35,7 +35,7 @@ exports[`CdrIcon > single icon component > renders correctly 1`] = `
 exports[`CdrIcon > when a single icon component has been passed aria-labelledby > renders correctly 1`] = `
 <svg
   aria-labelledby="foo"
-  class="cdr-icon cdr-icon--medium"
+  class="cdr-icon"
   viewBox="0 0 24 24"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -54,7 +54,7 @@ exports[`CdrIcon > when a single icon component has been passed aria-labelledby 
 exports[`CdrIcon > when an aria-label attribute has been passed > renders correctly 1`] = `
 <svg
   aria-label="foo"
-  class="cdr-icon cdr-icon--medium"
+  class="cdr-icon"
   viewBox="0 0 24 24"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -67,7 +67,7 @@ exports[`CdrIcon > when an aria-label attribute has been passed > renders correc
 exports[`CdrIcon > when an aria-labelledby attribute has been passed > renders correctly 1`] = `
 <svg
   aria-labelledby="foo"
-  class="cdr-icon cdr-icon--medium"
+  class="cdr-icon"
   viewBox="0 0 24 24"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -112,7 +112,7 @@ exports[`CdrIcon > when size props are passed to the single icon component > ren
 exports[`CdrIcon > with the inheritColor prop set to true > renders correctly 1`] = `
 <svg
   aria-hidden="true"
-  class="cdr-icon cdr-icon--medium cdr-icon--inherit-color"
+  class="cdr-icon cdr-icon--inherit-color"
   viewBox="0 0 24 24"
   xmlns="http://www.w3.org/2000/svg"
 >

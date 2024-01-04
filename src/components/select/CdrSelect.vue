@@ -4,7 +4,6 @@ import { selectOption } from '../../types/interfaces';
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
-import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
@@ -58,11 +57,11 @@ const props = defineProps({
    */
   background: backgroundProps,
   /**
-   * Sets the component's size; values can target responsive breakpoints. Example `small@lg`
-   * @demoSelectMultiple false
-   * @values small, medium, large
+   * Sets the component's size; values can target responsive breakpoints. Example `large@lg`
+   * @demoSelectMultiple true
+   * @values large
   */
-  size: sizeProps,
+  size: String,
   /** Sets the select to an error state, displays the `error` slot if one is present. */
   error: {
     type: [Boolean, String],
@@ -214,7 +213,6 @@ const selectModel = computed({
         :size="multipleSize"
         :disabled="disabled"
         :aria-required="required || undefined"
-
         :aria-invalid="!!error || undefined"
         :aria-errormessage="(!!error && `${uniqueId}-error`) || undefined"
         v-bind="$attrs"

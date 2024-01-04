@@ -24,10 +24,10 @@ const props = defineProps({
    */
   modifier: {
     type: String,
-    default: '',
+    default: undefined,
     validator: (value: string) => propValidator(
       value,
-      ['', 'ordered', 'unordered', 'compact', 'inline']
+      ['ordered', 'unordered', 'compact', 'inline']
     ),
   },
 });
@@ -35,10 +35,14 @@ const props = defineProps({
 const style = useCssModule();
 
 const baseClass = 'cdr-list';
-const modifierClasses = computed(() => {
-  const modifiers = props.modifier.split(' ');
-  return modifiers.map((mod) => style[`${baseClass}--${mod}`]);
-});
+const modifierClasses = computed(() => props.modifier
+  ? props.modifier.split(' ').map((mod) => style[`${baseClass}--${mod}`])
+  : ''
+)
+// const modifierClasses = computed(() => {
+//   const modifiers = props.modifier.split(' ');
+//   return modifiers.map((mod) => style[`${baseClass}--${mod}`]);
+// });
 
 </script>
 
