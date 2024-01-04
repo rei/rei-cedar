@@ -36,9 +36,12 @@ const baseClass = 'cdr-icon';
 const hideSr = !attrs['aria-label'] && !attrs['aria-labelledby'];
 const inheritColorClass = computed(() => props.inheritColor
   ? `${baseClass}--inherit-color`
-  : '');
+  : ''
+);
 const sizeClass = computed(() => props.size
-  && responsiveModifyClass(baseClass, '', props.size));
+  ? responsiveModifyClass(baseClass, '', props.size)
+  : ''
+);
 const dataObj: SVGAttributes = {
   xmlns: 'http://www.w3.org/2000/svg',
   viewBox: '0 0 24 24',
