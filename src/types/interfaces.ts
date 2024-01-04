@@ -63,7 +63,8 @@ export interface baseImageProps {
   sizes?: string,
   /**
    * Aspect ratio of the image, passes to the CSS aspect-ratio property.
-   * @demoSelectMultiple false
+   * @demoTextField true
+   * @demoPlaceholderText Example: '16-9'
    */
   ratio?: string,
   /**
