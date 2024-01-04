@@ -38,6 +38,12 @@ async function createDocgenObj(filePath, docgenObj) {
                 }
                 prop.defaultValue.value = trimApostrophes(prop.defaultValue.value);
             }
+            if (prop.tags && prop.tags.values && prop.tags.values[0].description) {
+                prop.values = prop.tags.values[0].description.split(',').map((value)=>{
+                    return value.trim();
+                });
+                delete prop.tags.values;
+            }
         });
     });
 }

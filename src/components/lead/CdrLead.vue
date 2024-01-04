@@ -11,7 +11,7 @@ interface leadProps {
   /** 
    * Sets the orientation of the background surface
    * @demoSelectMultiple false
-   * @values 'top', 'bottom'
+   * @values top, bottom
    */
   surface?: 'top' | 'bottom'
 }
