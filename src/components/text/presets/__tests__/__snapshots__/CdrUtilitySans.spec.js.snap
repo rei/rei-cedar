@@ -2,42 +2,33 @@
 
 exports[`CdrUtilitySans > default configuration > renders correctly 1`] = `
 <p
-  class="cdr-text cdr-utility-sans"
+  class="cdr-utility-sans"
   style="--cdr-utility-sans-font-size: var(--cdr-type-scale-1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
 >
-  <!-- @slot CdrText content -->
-  
   
   paragraph
-  
   
 </p>
 `;
 
 exports[`CdrUtilitySans > passing a scale > renders correctly 1`] = `
 <p
-  class="cdr-text cdr-utility-sans"
+  class="cdr-utility-sans"
   style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
 >
-  <!-- @slot CdrText content -->
-  
   
   paragraph
-  
   
 </p>
 `;
 
 exports[`CdrUtilitySans > setting to strong variant > renders correctly 1`] = `
 <p
-  class="cdr-text cdr-utility-sans"
+  class="cdr-utility-sans"
   style="--cdr-utility-sans-font-size: var(--cdr-type-scale-1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
 >
-  <!-- @slot CdrText content -->
-  
   
   paragraph
-  
   
 </p>
 `;

@@ -1,14 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CdrEyebrow > default configuration > renders correctly 1`] = `
-<p
-  class="cdr-text cdr-eyebrow"
+<span
+  class="cdr-eyebrow"
 >
-  <!-- @slot CdrText content -->
-  
   
   paragraph
   
-  
-</p>
+</span>
 `;
