@@ -2,15 +2,16 @@
   width: 100%;
   line-height: 0;
   &--top {
+    //ITEM_DOC: Color of the lead's surface layer
     background: linear-gradient(
-      var(--cdr-lead-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 0 50%,
+      var(--cdr-lead-surface-color, var(--cdr-color-surface-primary, #{$cdr-color-surface-primary})) 0 50%,
       transparent 50% 100%,
     );
   }
   &--bottom {
     background: linear-gradient(
       transparent 0 50%,
-      var(--cdr-lead-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 50% 100%,
+      var(--cdr-lead-surface-color, var(--cdr-color-surface-primary, #{$cdr-color-surface-primary})) 50% 100%,
     );
   }
 }
