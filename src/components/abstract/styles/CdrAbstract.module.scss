@@ -1,5 +1,5 @@
 @import '../../../styles/settings/index.scss';
-@import '../../../styles/fluid.css';
+@import '../../../styles/settings/fluid.vars.scss';
 
 .cdr-abstract {
   @include cdr-text-subheading-sans-500;

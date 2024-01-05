@@ -1,22 +1,26 @@
 <script setup lang="ts">
-import { useCssModule, computed, type PropType } from 'vue';
-import CdrText from '../CdrText.vue';
+import { useCssModule, computed } from 'vue';
+import { baseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrHeadingSerif',
 });
 
-type scaleValue = '1'|'2'|'3'|'4'|'5';
-
-const props = defineProps({
-  /** 
-   * Sets the type scale
-   * @type scaleValue
-   * @values '1', '2', '3', '4', '5'
-   */ 
-  scale: { type: String as PropType<scaleValue>, default: '5' },
+interface headingSerifTextProps extends baseTextProps {
+   /** 
+     * Sets the type scale
+     * @type scaleValue
+     * @values 1,2,3,4,5
+   */
+  scale?: '1'|'2'|'3'|'4'|'5',
   /** Toggles the strong variant */
-  strong: { type: Boolean, default: false }
+  strong?: boolean,
+}
+
+const props = withDefaults(defineProps<headingSerifTextProps>(), {
+  tag: 'h1',
+  scale: '5',
+  strong: false
 });
 
 const typeProperties = computed(() => {
@@ -34,20 +38,17 @@ const style = useCssModule();
 </script>
 
 <template>
-  <CdrText
+  <component
+    :is="tag"
     :class="style[baseClass]"
     :style="typeProperties"
   >
     <slot />
-  </CdrText>
-
-
+  </component>
 </template>
 
 <style module lang="scss">
 @import "./styles/CdrPresets.module.scss";
-@import "../../../styles/fluid.css";
-
 .cdr-heading-serif {
   @include cdr-text-base-mixin;
   @include cdr-text-heading-serif-1200;

@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { useCssModule, computed, type PropType } from 'vue';
-import CdrText from '../CdrText.vue';
+import { useCssModule, computed } from 'vue';
+import { baseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrHeadingSans',
 });
 
-type scaleValue = '1'|'2'|'3';
-
-const props = defineProps({
-  /** 
-   * Sets the type scale
-   * @type scaleValue
-   * @values '1', '2', '3'
+interface headingSansTextProps extends baseTextProps {
+   /** 
+     * Sets the type scale
+     * @type scaleValue
+     * @values 1,2,3
    */
-  scale: { type: String as PropType<scaleValue>, default: '3' }
+  scale?: '1'|'2'|'3',
+
+}
+
+const props = withDefaults(defineProps<headingSansTextProps>(), {
+  tag: 'h2',
+  scale: '3',
 });
 
 const typeProperties = computed(() => {
@@ -30,20 +34,17 @@ const style = useCssModule();
 </script>
 
 <template>
-  <CdrText
+  <component
+    :is="tag"
     :class="style[baseClass]"
     :style="typeProperties"
   >
     <slot />
-  </CdrText>
-
-
+  </component>
 </template>
 
 <style module lang="scss">
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
 @import "./styles/CdrPresets.module.scss";
-@import "../../../styles/fluid.css";
 
 .cdr-heading-sans {
   @include cdr-text-base-mixin;

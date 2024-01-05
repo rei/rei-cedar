@@ -1,30 +1,31 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import CdrText from '../CdrText.vue';
+import { baseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrEyebrow',
 });
 
 
+withDefaults(defineProps<baseTextProps>(), {
+  tag: 'span',
+});
+
 const baseClass = 'cdr-eyebrow';
 const style = useCssModule();
 </script>
 
 <template>
-  <CdrText
+  <component
+    :is="tag"
     :class="style[baseClass]"
   >
     <slot />
-  </CdrText>
-
-
+  </component>
 </template>
 
 <style module lang="scss">
 @import "./styles/CdrPresets.module.scss";
-@import "../../../styles/fluid.css";
-
 
 .cdr-eyebrow {
   @include cdr-text-base-mixin;

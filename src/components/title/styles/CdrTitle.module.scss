@@ -1,5 +1,5 @@
 @import '../../../styles/settings/index.scss';
-@import '../../../styles/fluid.css';
+@import '../../../styles/settings/fluid.vars.scss';
 
 .cdr-title {
   @include cdr-text-heading-display-1200;

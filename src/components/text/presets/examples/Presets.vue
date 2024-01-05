@@ -21,8 +21,8 @@ const placeholderParagraph = 'Cedrus, with the common English name cedar, is a g
   <Text.CdrSubheadingSans>We have the know-how to equip you to camp in the middle of nowhere.</Text.CdrSubheadingSans>
 
   <h2>Heading</h2>
-  <Text.CdrHeadingSans>Camp with no reservations.</Text.CdrHeadingSans>
-  <Text.CdrHeadingSerif>Camp with no reservations.</Text.CdrHeadingSerif>
-  <Text.CdrHeadingDisplay tag="h4">Camp with no reservations.</Text.CdrHeadingDisplay>
+  <Text.CdrHeadingSans tag="p">Camp with no reservations.</Text.CdrHeadingSans>
+  <Text.CdrHeadingSerif tag="p">Camp with no reservations.</Text.CdrHeadingSerif>
+  <Text.CdrHeadingDisplay tag="p">Camp with no reservations.</Text.CdrHeadingDisplay>
 </template>
 

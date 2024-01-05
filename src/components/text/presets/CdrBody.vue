@@ -1,23 +1,26 @@
 <script setup lang="ts">
-import { useCssModule, computed, type PropType } from 'vue';
-import CdrText from '../CdrText.vue';
+import { useCssModule, computed } from 'vue';
+import { baseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrBody',
 });
 
-
-type scaleValue = '0'|'1';
-
-const props = defineProps({
-  /** 
+interface bodyTextProps extends baseTextProps {
+   /** 
    * Sets the type scale
    * @type scaleValue
-   * @values '0', '1'
+   * @values 0, 1
    */
-  scale: { type: String as PropType<scaleValue>, default: '0' },
+  scale?: '0'|'1',
   /** Toggles the strong variant */
-  strong: { type: Boolean, default: false }
+  strong?: boolean,
+}
+
+const props = withDefaults(defineProps<bodyTextProps>(), {
+  tag: 'p',
+  scale: '0',
+  strong: false,
 });
 
 const typeProperties = computed(() => {
@@ -34,20 +37,17 @@ const style = useCssModule();
 </script>
 
 <template>
-  <CdrText
+  <component
+    :is="tag"
     :class="style[baseClass]"
     :style="typeProperties"
   >
     <slot />
-  </CdrText>
-
-
+  </component>
 </template>
 
 <style module lang="scss">
 @import "./styles/CdrPresets.module.scss";
-
-@import "../../../styles/fluid.css";
 
 .cdr-body {
   @include cdr-text-base-mixin;
