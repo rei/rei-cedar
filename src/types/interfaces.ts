@@ -115,3 +115,12 @@ export interface pictureSourceObject {
     sizes?: string,
   }
 }
+
+/** 
+ * Text component properties
+ * @interface baseTextProps
+ */
+export interface baseTextProps {
+  /** Sets the HTML tag (p, span, h1, h2, etc) */
+  tag?: string
+}

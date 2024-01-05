@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { useCssModule, computed, type PropType } from 'vue';
-import CdrText from '../CdrText.vue';
+import { useCssModule, computed } from 'vue';
+import { baseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrHeadingDisplay',
 });
 
-type scaleValue = '2'|'3'|'4'|'5'|'6'|'7';
-
-const props = defineProps({
-  /** 
-    * Sets the type scale
-    * @type scaleValue
-    * @values '2', '3', '4', '5', '6', '7'
+interface headingDisplayTextProps extends baseTextProps {
+   /** 
+   * Sets the type scale
+   * @type scaleValue
+   * @values 2,3,4,5,6,7
    */
-  scale: { type: String as PropType<scaleValue>, default: '7' }
+  scale?: '2'|'3'|'4'|'5'|'6'|'7',
+
+}
+
+const props = withDefaults(defineProps<headingDisplayTextProps>(), {
+  tag: 'h1',
+  scale: '7',
 });
 
 const typeProperties = computed(() => {
@@ -30,21 +34,20 @@ const style = useCssModule();
 </script>
 
 <template>
-  <CdrText
+  <component
+    :is="tag"
     :class="style[baseClass]"
     :style="typeProperties"
   >
     <slot />
-  </CdrText>
-
-
+  </component>
 </template>
 
 <style module lang="scss">
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
-@import "../../../styles/fluid.css";
+@import "./styles/CdrPresets.module.scss";
 
 .cdr-heading-display {
+  @include cdr-text-base-mixin;
   @include cdr-text-heading-display-1600;
   font-size: var(--cdr-heading-display-font-size);
   line-height: var(--cdr-heading-display-line-height);

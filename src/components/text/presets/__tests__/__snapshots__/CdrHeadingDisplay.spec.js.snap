@@ -1,29 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CdrHeadingDisplay > default configuration > renders correctly 1`] = `
-<p
-  class="cdr-text cdr-heading-display"
+<h1
+  class="cdr-heading-display"
   style="--cdr-heading-display-font-size: var(--cdr-type-scale-7); --cdr-heading-display-line-height: calc(var(--cdr-type-scale-7) * var(--cdr-heading-display-line-height-ratio));"
 >
-  <!-- @slot CdrText content -->
-  
   
   paragraph
   
-  
-</p>
+</h1>
 `;
 
 exports[`CdrHeadingDisplay > passing a scale > renders correctly 1`] = `
-<p
-  class="cdr-text cdr-heading-display"
+<h1
+  class="cdr-heading-display"
   style="--cdr-heading-display-font-size: var(--cdr-type-scale-4); --cdr-heading-display-line-height: calc(var(--cdr-type-scale-4) * var(--cdr-heading-display-line-height-ratio));"
 >
-  <!-- @slot CdrText content -->
-  
   
   paragraph
   
-  
-</p>
+</h1>
 `;

@@ -6,6 +6,7 @@
     <cdr-checkbox
       v-model="sizeEx"
       size="small"
+      labelClass="test-class"
     >small</cdr-checkbox>
     <cdr-checkbox
       v-model="sizeEx"

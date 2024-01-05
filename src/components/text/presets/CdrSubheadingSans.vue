@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { useCssModule, computed, type PropType } from 'vue';
-import CdrText from '../CdrText.vue';
+import { useCssModule, computed } from 'vue';
+import { baseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrSubheadingSans',
 });
 
-type scaleValue = '0'|'1'|'2';
+interface subheadingSansTextProps extends baseTextProps {
+   /** 
+     * Sets the type scale
+     * @type scaleValue
+     * @values 0,1,2
+   */
+  scale?: '0'|'1'|'2',
+}
 
-const props = defineProps({
-  /** 
-   * Sets the type scale
-   * @type scaleValue
-   * @values '0', '1', '2'
-   */ 
-  scale: { type: String as PropType<scaleValue>, default: '1' },
+const props = withDefaults(defineProps<subheadingSansTextProps>(), {
+  tag: 'p',
+  scale: '1',
 });
 
 const typeProperties = computed(() => {
@@ -31,21 +34,20 @@ const style = useCssModule();
 </script>
 
 <template>
-  <CdrText
+  <component
+    :is="tag"
     :class="style[baseClass]"
     :style="typeProperties"
   >
     <slot />
-  </CdrText>
-
-
+  </component>
 </template>
 
 <style module lang="scss">
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
-@import "../../../styles/fluid.css";
+@import "./styles/CdrPresets.module.scss";
 
 .cdr-subheading-sans {
+  @include cdr-text-base-mixin;
   @include cdr-text-subheading-sans-600;
   font-size: var(--cdr-subheading-sans-font-size);
   line-height: var(--cdr-subheading-sans-line-height);

@@ -1,21 +1,26 @@
 <script setup lang="ts">
-import { useCssModule, computed, type PropType } from 'vue';
-import CdrText from '../CdrText.vue';
+import { useCssModule, computed } from 'vue';
+import { baseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrUtilitySerif',
 });
 
-type scaleValue = '-1'|'0'|'1'|'2'|'3';
-const props = defineProps({
-  /** 
+interface utilitySerifTextProps extends baseTextProps {
+   /** 
    * Sets the type scale
    * @type scaleValue
-   * @values '-1','0','1','2','3'
-   */ 
-  scale: { type: String as PropType<scaleValue>, default: '1' },
-  /** Toggles the strong variant */  
-  strong: { type: Boolean, default: false }
+   * @values -1,0,1,2,3
+   */
+  scale?: '-1'|'0'|'1'|'2'|'3',
+  /** Toggles the strong variant */
+  strong?: boolean,
+}
+
+const props = withDefaults(defineProps<utilitySerifTextProps>(), {
+  tag: 'p',
+  scale: '1',
+  strong: false,
 });
 
 const typeProperties = computed(() => {
@@ -33,21 +38,20 @@ const style = useCssModule();
 </script>
 
 <template>
-  <CdrText
+  <component
+    :is="tag"
     :class="style[baseClass]"
     :style="typeProperties"
   >
     <slot />
-  </CdrText>
-
-
+  </component>
 </template>
 
 <style module lang="scss">
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
-@import "../../../styles/fluid.css";
+@import "./styles/CdrPresets.module.scss";
 
 .cdr-utility-serif {
+  @include cdr-text-base-mixin;
   @include cdr-text-utility-serif-800;
   font-size: var(--cdr-utility-serif-font-size);
   line-height: var(--cdr-utility-serif-line-height);
