@@ -1,8 +1,7 @@
 @import '../../../styles/settings/index.scss';
+@import './vars/CdrText.vars.scss';
 
 .cdr-text {
   @include cdr-text-default;
-  //ITEM_DOC: Text color
-  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
-  margin: 0;
+  @include cdr-text-base-mixin;
 }

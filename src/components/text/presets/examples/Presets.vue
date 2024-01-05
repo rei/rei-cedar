@@ -23,6 +23,6 @@ const placeholderParagraph = 'Cedrus, with the common English name cedar, is a g
   <h2>Heading</h2>
   <Text.CdrHeadingSans>Camp with no reservations.</Text.CdrHeadingSans>
   <Text.CdrHeadingSerif>Camp with no reservations.</Text.CdrHeadingSerif>
-  <Text.CdrHeadingDisplay>Camp with no reservations.</Text.CdrHeadingDisplay>
+  <Text.CdrHeadingDisplay tag="h4">Camp with no reservations.</Text.CdrHeadingDisplay>
 </template>
 

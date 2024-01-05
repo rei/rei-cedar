@@ -42,10 +42,11 @@ const style = useCssModule();
 </template>
 
 <style module lang="scss">
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@import "./styles/CdrPresets.module.scss";
 @import "../../../styles/fluid.css";
 
 .cdr-subheading-sans {
+  @include cdr-text-base-mixin;
   @include cdr-text-subheading-sans-600;
   font-size: var(--cdr-subheading-sans-font-size);
   line-height: var(--cdr-subheading-sans-line-height);

@@ -22,10 +22,12 @@ const style = useCssModule();
 </template>
 
 <style module lang="scss">
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@import "./styles/CdrPresets.module.scss";
 @import "../../../styles/fluid.css";
 
+
 .cdr-eyebrow {
+  @include cdr-text-base-mixin;
   @include cdr-text-eyebrow-100;
   font-size: var(--cdr-type-scale--1);
   line-height: var(--cdr-eyebrow-line-height-ratio);

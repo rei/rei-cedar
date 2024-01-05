@@ -45,10 +45,11 @@ const style = useCssModule();
 </template>
 
 <style module lang="scss">
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@import "./styles/CdrPresets.module.scss";
 @import "../../../styles/fluid.css";
 
 .cdr-heading-serif {
+  @include cdr-text-base-mixin;
   @include cdr-text-heading-serif-1200;
   font-size: var(--cdr-heading-serif-font-size);
   line-height: var(--cdr-heading-serif-line-height);
