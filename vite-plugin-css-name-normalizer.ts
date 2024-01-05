@@ -39,7 +39,8 @@ export default async function cssNameNormalizer(): Promise<Plugin> {
         })
         .forEach((key) => {
           const entry = bundle[key];
-          const fileName = kebabCase(key.split('.').shift());
+          const filePath = kebabCase(key.split('.').shift());
+          const fileName = filePath.split('/').pop();
           entry.fileName = `style/${fileName}.css`;
         });
     },
