@@ -1,8 +1,17 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
+import { baseTextProps } from '../../types/interfaces';
 
+/** 
+ * Atomic content component used for kickers
+ * @preview true
+ **/
 defineOptions({
   name: 'CdrKicker',
+});
+
+withDefaults(defineProps<baseTextProps>(), {
+  tag: 'span',
 });
 
 const style = useCssModule();
@@ -10,9 +19,12 @@ const baseClass = 'cdr-kicker';
 </script>
 
 <template>
-  <span :class="style[baseClass]">
+  <component
+    :is="tag"
+    :class="style[baseClass]"
+  >
     <slot />
-  </span>
+  </component>
 </template>
 
 <style lang="scss" module src="./styles/CdrKicker.module.scss">

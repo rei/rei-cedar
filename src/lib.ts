@@ -43,17 +43,11 @@ export { default as CdrToggleGroup } from './components/toggleButton/CdrToggleGr
 export { default as CdrSwitch } from './components/switch/CdrSwitch.vue'
 export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
 
-/** Compostions */
+/** Compositions */
 export * from './components/icon/index';
 export * from './components/text/presets/textPresets';
 
 /** Type exports */
-export {
-  type breadcrumbItem,
-  type paginationItem,
-  type selectOption,
-  type choreographerSchema,
-  type pictureSourceObject,
-} from './types/interfaces'
+export * from './types/interfaces';
 
 

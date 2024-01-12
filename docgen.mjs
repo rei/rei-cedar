@@ -5,7 +5,16 @@ import _ from 'lodash-es';
 import path from 'path';
 import parseSCSS from './docgen-scss.mjs';
 
-const componentFiles = glob.sync("./src/components/*/*.vue");
+const componentFiles = glob.sync(
+  "./src/components/**/*.vue",
+  { 
+    ignore: [
+      './src/components/**/examples/**/*',
+      './src/components/**/components/*',
+      './src/components/icon/comps/*.vue'
+    ]
+  }
+);
 const iconFiles = glob.sync("./src/components/icon/comps/*.vue");
 const componentObj = {};
 const iconComponentsObj = {};

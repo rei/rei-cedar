@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { CdrHeadingDisplay, CdrSubheadingSans } from '../../../../lib';
+import { CdrHeadingDisplay, CdrSubheadingSans } from '../../../../../lib';
 
 defineProps({
   headingTag: { type: String, default: 'h1' },
@@ -29,4 +29,4 @@ const style = useCssModule();
 
 </template>
 
-<style lang="scss" module src="./styles/CdrHeadingSubheadingBlock.module.scss" />
+<style lang="scss" module src="../styles/CdrHeadingSubheadingBlock.module.scss" />

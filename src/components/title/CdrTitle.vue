@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
+import { baseTextProps } from '../../types/interfaces';
 
-defineProps({
-    /** Sets the HTML tag (p, span, h1, h2, etc) */
-    tag: {
-      type: String,
-      default: 'h1',
-    },
+/** 
+ * Atomic content component used for titles
+ * @preview true
+ **/
+defineOptions({
+  name: 'CdrTitle'
+});
+
+withDefaults(defineProps<baseTextProps>(), {
+  tag: 'h1',
 });
 
 const style = useCssModule();

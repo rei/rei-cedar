@@ -57,31 +57,34 @@ export interface baseImageProps {
   src: string,
   /** The image alt. Defaults to empty string. */
   alt?: string,
-  /** Comma seperated list of image sources */
+  /** Comma separated list of image sources */
   srcset?: string,
-  /** Comma seperated list of source sizes */
+  /** Comma separated list of source sizes */
   sizes?: string,
   /**
-   * Aspect ratio of the image, passes to the CSS aspect-ratio property.
-   * @demoTextField true
-   * @demoPlaceholderText Example: '16-9'
+   * Object fit of the image, passes value to CSS object-fit property
+   * @demoSelectMultiple false
+   * @values none,contain,cover,fill,scale-down
    */
-  ratio?: string,
+    fit?: "contain"|"cover"|"fill"|"none"|"scale-down",
   /**
    * Object position of the image, passes value to CSS object-position property.
-   * @demoTextField true
+   * @demoSelectMultiple true
+   * @values center,top,right,bottom,left
    */
   position?: string,
   /**
-   * Object fit of the image, passes value to CSS object-fit property
-   * @demoTextField true
-   */
-  fit?: string,
-  /**
    * Border radius of the image. Accepts shorthand for cedar radius tokens ("soft", "softer", "round") or a custom value which is passed ot the CSS border-radius property.
-   * @demoTextField true
+   * @demoSelectMultiple false
+   * @values unset, soft, softer, round, 10%
    */
   radius?: "soft" | "softer" | "round" | string,
+  /**
+   * Aspect ratio of the image, passes to the CSS aspect-ratio property.
+   * @demoSelectMultiple false
+   * @values auto,1/1,1/2,3/4,9/16,2/1,4/3,16/9
+   */
+  ratio?: string,
   /**
    * Value for loading attribute ("lazy", "eager", "auto")
    * @demoIgnore

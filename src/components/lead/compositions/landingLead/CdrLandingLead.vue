@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import { CdrImg, CdrLead } from '../../../../lib';
-import CdrHeadingSubheadingBlock from './CdrHeadingSubheadingBlock.vue';
+import CdrHeadingSubheadingBlock from './components/CdrHeadingSubheadingBlock.vue';
 
-/** Static presentation used for page leads */
+/** 
+ * Opinionated expression of a lead intended for use on landing pages
+ * @preview true
+ **/
 defineOptions({
   name: 'CdrLead'
 });
@@ -11,7 +14,7 @@ defineOptions({
 defineProps({
   /** Sets the lead's image source  */
   imgSrc: { type: String, default: '' },
-  /** Comma-seperated list of img srcsets */
+  /** Comma-separated list of img srcsets */
   imgSrcset: { type: String, default: undefined },
   /** Sets the lead's image alt  */
   imgAlt: { type: String, default: '' },
