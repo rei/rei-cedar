@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
+import { baseTextProps } from '../../types/interfaces';
 
+/** 
+ * Atomic content component used for kickers
+ * @preview true
+ **/
 defineOptions({
   name: 'CdrAbstract',
 });
 
-defineProps({
-    /** Sets the HTML tag (p, span, h1, h2, etc) */
-    tag: {
-      type: String,
-      default: 'p',
-    },
+withDefaults(defineProps<baseTextProps>(), {
+  tag: 'p',
 });
 
 const baseClass = 'cdr-abstract';

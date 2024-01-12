@@ -1,22 +1,22 @@
 <template>
   <div>
     <h2>title</h2>
-    <CdrTitle>Stanley Quencher H2.0 FlowState Tumbler - 40 fl. oz.</CdrTitle>
+    <CdrTitle tag="p">Stanley Quencher H2.0 FlowState Tumbler - 40 fl. oz.</CdrTitle>
 
     <div class="container-md">
-    <CdrTitle class="container-md--override">Stanley Quencher H2.0 FlowState Tumbler - 40 fl. oz.</CdrTitle>
+    <CdrTitle tag="p" class="container-md--override">Stanley Quencher H2.0 FlowState Tumbler - 40 fl. oz.</CdrTitle>
   </div>
   card container
   <div class="container-sm">
-    <CdrTitle>Learn to Climb Indoors for Kids</CdrTitle>
+    <CdrTitle tag="p">Learn to Climb Indoors for Kids</CdrTitle>
   </div>
   default container
   <div class="container-xs">
-    <CdrTitle>Gifts for Her</CdrTitle>
+    <CdrTitle tag="p">Gifts for Her</CdrTitle>
   </div>
   card container
   <div class="container-xxs">
-    <CdrTitle>Stanley Quencher H2.0 FlowState Tumbler - 40 fl. oz.</CdrTitle>
+    <CdrTitle tag="p">Stanley Quencher H2.0 FlowState Tumbler - 40 fl. oz.</CdrTitle>
   </div>
   </div>
 </template>
