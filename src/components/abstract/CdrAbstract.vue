@@ -3,7 +3,7 @@ import { useCssModule } from 'vue';
 import { baseTextProps } from '../../types/interfaces';
 
 /** 
- * Atomic content component used for kickers
+ * Opinionated and fluid expressions of content
  * @preview true
  **/
 defineOptions({
