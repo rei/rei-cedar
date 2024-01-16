@@ -105,8 +105,11 @@ const props = defineProps({
   modelValue: {
     type: [String, Number],
   },
-  /** Adds a custom class to the cdr-label-standalone wrapping div */
-  labelClass: String,
+  /** Adds a custom class to the cdr-label-standalone container div */
+  inputContainerClass: String,
+  /** Passes a custom class to the label for custom styles */
+  labelClass: String
+
 });
 
 const emits = defineEmits({
@@ -189,7 +192,8 @@ const inputModel = computed({
     :required="required"
     :optional="optional"
     :disabled="disabled"
-    :class="labelClass"
+    :class="inputContainerClass"
+    :label-class="labelClass"
   >
     <template
       #helper
