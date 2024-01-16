@@ -16,7 +16,7 @@ const props = defineProps({
     required: Boolean,
     optional: Boolean,
     hideLabel: Boolean,
-    labelClass: Boolean,
+    labelClass: { type: String, default: ''},
 });
 const slots = useSlots();
 const style = useCssModule();
@@ -45,7 +45,7 @@ const inputSpacingClass = computed(() => (!props.hideLabel || hasHelper || hasIn
                            'cdr-label-standalone__label',
                            disabledLabelClass,
                            srOnlyLabelClass,
-        ).concat(` ${labelClass || ''}`)"
+        ).concat(` ${labelClass}`)"
         :for="forId"
       >
         {{ label }}{{ required || optional ? '' : '' }}
