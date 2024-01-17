@@ -1,4 +1,6 @@
-@import '../../../../../styles/settings/index.scss';
+@import '../../../styles/settings/index.scss';
+@import '../../text/presets/styles/CdrHeadingDisplay.module.scss';
+@import '../../text/presets/styles/CdrSubheadingSans.module.scss';
 
 .cdr-heading-subheading-block {
   &__heading {

@@ -2,25 +2,25 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 
-/** Container used for assembling leads */
+/** Generic container for creating a split-surface presentation */
 defineOptions({
-  name: 'CdrLead'
+  name: 'CdrSplitSurface'
 });
 
-interface leadProps {
+interface splitSurfaceProps {
   /** 
-   * Sets the orientation of the background surface
+   * Sets the orientation of the surface to the top or bottom slot
    * @demoSelectMultiple false
    * @values top, bottom
    */
   surface?: 'top' | 'bottom'
 }
 
-const props = withDefaults(defineProps<leadProps>(), {
+const props = withDefaults(defineProps<splitSurfaceProps>(), {
   surface: 'bottom'
 });
 
-const baseClass = 'cdr-lead'
+const baseClass = 'cdr-split-surface'
 const surfaceClass = computed(() => `${baseClass}--${props.surface}`);
 
 const style = useCssModule();
@@ -39,5 +39,5 @@ const style = useCssModule();
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrLead.module.scss">
+<style lang="scss" module src="./styles/CdrSplitSurface.module.scss">
 </style>

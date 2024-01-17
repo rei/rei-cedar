@@ -15,7 +15,7 @@ import icon from 'componentsdir/icon/examples/Icons.vue';
 import images from 'componentsdir/image/examples/Images.vue';
 import inputs from 'componentsdir/input/examples/Inputs.vue';
 import kicker from 'componentsdir/kicker/examples/Kicker.vue';
-import lead from 'componentsdir/lead/examples/Lead.vue';
+import landingLead from 'componentsdir/landingLead/examples/LandingLead.vue';
 import links from 'componentsdir/link/examples/Links.vue';
 import list from 'componentsdir/list/examples/Lists.vue';
 import modal from 'componentsdir/modal/examples/Modal.vue';
@@ -28,6 +28,7 @@ import radio from 'componentsdir/radio/examples/Radios.vue';
 import rating from 'componentsdir/rating/examples/Ratings.vue';
 import selects from 'componentsdir/select/examples/Selects.vue';
 import skeleton from 'componentsdir/skeleton/examples/Skeleton.vue';
+import splitSurface from 'componentsdir/splitSurface/examples/SplitSurface.vue';
 import tables from 'componentsdir/table/examples/Table.vue';
 import tabs from 'componentsdir/tabs/examples/Tabs.vue';
 import texts from 'componentsdir/text/examples/Text.vue';
@@ -55,7 +56,7 @@ export default {
   images,
   inputs,
   kicker,
-  lead,
+  landingLead,
   links,
   list,
   modal,
@@ -68,6 +69,7 @@ export default {
   rating,
   selects,
   skeleton,
+  splitSurface,
   tables,
   tabs,
   texts,

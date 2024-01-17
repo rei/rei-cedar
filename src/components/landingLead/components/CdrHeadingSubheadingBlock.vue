@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { CdrHeadingDisplay, CdrSubheadingSans } from '../../../../../lib';
+import { CdrHeadingDisplay, CdrSubheadingSans } from '../../../lib';
 
 defineProps({
   headingTag: { type: String, default: 'h1' },

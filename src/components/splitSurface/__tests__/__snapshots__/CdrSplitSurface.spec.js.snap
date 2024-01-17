@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrSplitSurface > changes surface orientation 1`] = `
+<div
+  class="cdr-split-surface cdr-split-surface--bottom"
+>
+  <div
+    class="cdr-split-surface__top"
+  >
+    <!-- @slot top slot -->
+    
+    Top slot
+    
+  </div>
+  <div
+    class="cdr-split-surface__bottom"
+  >
+    <!-- @slot bottom slot -->
+    
+    Bottom slot
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSplitSurface > default configuration 1`] = `
+<div
+  class="cdr-split-surface cdr-split-surface--bottom"
+>
+  <div
+    class="cdr-split-surface__top"
+  >
+    <!-- @slot top slot -->
+    
+    Top slot
+    
+  </div>
+  <div
+    class="cdr-split-surface__bottom"
+  >
+    <!-- @slot bottom slot -->
+    
+    Bottom slot
+    
+  </div>
+</div>
+`;
