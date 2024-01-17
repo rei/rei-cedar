@@ -5,7 +5,7 @@
   --cdr-split-surface-surface-color: var(--cdr-landing-lead-surface-color, var(--cdr-color-surface-primary, #{$cdr-color-surface-primary}));
   &__image {
     --cdr-img-aspect-ratio: 4 / 1;
-    object-fit: cover;
+    --cdr-img-object-fit: cover;
     width: 100%;
     @include cdr-sm-mq-down {
       --cdr-img-aspect-ratio: 4 / 3;
