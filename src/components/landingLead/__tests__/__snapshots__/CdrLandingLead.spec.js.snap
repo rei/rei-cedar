@@ -2,7 +2,7 @@
 
 exports[`CdrLandingLead > renders correctly when presented with correct data 1`] = `
 <div
-  class="cdr-split-surface cdr-split-surface--bottom"
+  class="cdr-split-surface cdr-split-surface--bottom cdr-landing-lead"
 >
   <div
     class="cdr-split-surface__top"
