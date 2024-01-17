@@ -6,7 +6,7 @@ import CdrHeadingSubheadingBlock from './components/CdrHeadingSubheadingBlock.vu
 /** 
  * Opinionated expression of a lead intended for use on landing pages
  * @preview true
- * @uses CdrImg, CdrSplitSurface, CdrHeadingDisplay, CdrSubheadingSans
+ * @uses CdrSplitSurface, CdrImg, CdrHeadingDisplay, CdrSubheadingSans
  **/
 defineOptions({
   name: 'CdrLandingLead'
