@@ -11,7 +11,7 @@ import mapClasses from '../../utils/mapClasses';
 
 /** 
  * Small overlay used to display contextual information 
- * @uses CdrButton, IconXSm
+ * @uses CdrButton, CdrIcon
  **/
 defineOptions({
   name: 'CdrPopover'

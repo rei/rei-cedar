@@ -9,7 +9,7 @@ import { unwrappedKey } from '../../types/symbols';
 
 /** 
  * Vertically-stacked list that allows users to expand and collapse additional content
- * @uses IconCaretDown
+ * @uses CdrIcon
  **/
 
 defineOptions({
