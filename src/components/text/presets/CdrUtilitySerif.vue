@@ -47,14 +47,5 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module lang="scss">
-@import "./styles/CdrPresets.module.scss";
-
-.cdr-utility-serif {
-  @include cdr-text-base-mixin;
-  @include cdr-text-utility-serif-800;
-  font-size: var(--cdr-utility-serif-font-size);
-  line-height: var(--cdr-utility-serif-line-height);
-  font-weight: var(--cdr-utility-serif-font-weight);
-}
+<style module src="./styles/CdrUtilitySerif.module.scss" lang="scss">
 </style>  

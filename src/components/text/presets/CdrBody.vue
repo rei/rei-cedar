@@ -46,14 +46,5 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module lang="scss">
-@import "./styles/CdrPresets.module.scss";
-
-.cdr-body {
-  @include cdr-text-base-mixin;
-  @include cdr-text-body-400;
-  font-size: var(--cdr-body-font-size);
-  line-height: var(--cdr-body-line-height);
-  font-weight: var(--cdr-body-font-weight);
-}
+<style module src="./styles/CdrBody.module.scss" lang="scss">
 </style>  

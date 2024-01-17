@@ -43,13 +43,5 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module lang="scss">
-@import "./styles/CdrPresets.module.scss";
-
-.cdr-heading-display {
-  @include cdr-text-base-mixin;
-  @include cdr-text-heading-display-1600;
-  font-size: var(--cdr-heading-display-font-size);
-  line-height: var(--cdr-heading-display-line-height);
-}
+<style module src="./styles/CdrHeadingDisplay.module.scss" lang="scss">
 </style>  
