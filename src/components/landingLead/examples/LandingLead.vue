@@ -8,26 +8,6 @@
         Sandstone
       </CdrToggleButton>
     </CdrToggleGroup>
-    <h2>Lead container</h2>
-    <CdrLead :class="`theme-${palettes}`">
-      <template #top>
-        <CdrImg src="/src/dev/static/cedar-1920x1080.jpg" />
-      </template>
-      <template #bottom>
-        <CdrTitle>Global lead title</CdrTitle>
-      </template>
-    </CdrLead>
-
-    <h2>Lead container with surface on top</h2>
-    <CdrLead surface="top" :class="`theme-${palettes}`">
-      <template #top>
-        <CdrTitle>Global lead title</CdrTitle>
-      </template>
-      <template #bottom>
-        <CdrImg src="/src/dev/static/cedar-1920x1080.jpg" />
-      </template>
-    </CdrLead>
-
     <h2>Static landing lead composition</h2>
     <CdrLandingLead
       :class="`theme-${palettes}`"
@@ -36,9 +16,10 @@
       subheading="We have the know-how to equip you to camp in the middle of nowhere."
     />
 
-    <h2>Static landing lead w/out image</h2>
-    <CdrLead
+    <h2>Static landing lead w/out valid image path</h2>
+    <CdrLandingLead
       :class="`theme-${palettes}`"
+      img-src="error.jpg"
       heading="Camp with no reservations."
       subheading="We have the know-how to equip you to camp in the middle of nowhere."
     />
@@ -63,6 +44,6 @@ export default {
 
 <style lang="scss">
 .theme-sandstone {
-  --cdr-lead-surface-color: #f4f2ed;
+  --cdr-landing-lead-surface-color: #f4f2ed;
 }
 </style>

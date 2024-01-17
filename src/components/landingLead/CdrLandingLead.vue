@@ -1,26 +1,27 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { CdrImg, CdrLead } from '../../../../lib';
+import { CdrImg, CdrSplitSurface } from '.././../lib';
 import CdrHeadingSubheadingBlock from './components/CdrHeadingSubheadingBlock.vue';
 
 /** 
  * Opinionated expression of a lead intended for use on landing pages
  * @preview true
+ * @uses CdrImg, CdrSplitSurface, CdrHeadingDisplay, CdrSubheadingSans
  **/
 defineOptions({
-  name: 'CdrLead'
+  name: 'CdrLandingLead'
 });
 
 defineProps({
-  /** Sets the lead's image source  */
-  imgSrc: { type: String, default: '' },
+  /** Sets the landing lead's image source  */
+  imgSrc: { type: String, required: true },
   /** Comma-separated list of img srcsets */
   imgSrcset: { type: String, default: undefined },
-  /** Sets the lead's image alt  */
+  /** Sets the landing lead's image alt  */
   imgAlt: { type: String, default: '' },
-  /** Sets the lead's heading  */
-  heading: { type: String, default: undefined },
-  /** Sets the lead's subheading  */
+  /** Sets the landing lead's heading  */
+  heading: { type: String, required: true },
+  /** Sets the landing lead's subheading  */
   subheading: { type: String, default: undefined }
 });
 
@@ -29,7 +30,7 @@ const baseClass = 'cdr-landing-lead'
 </script>
 
 <template>
-  <CdrLead>
+  <CdrSplitSurface :class="style[baseClass]">
     <template #top>
       <CdrImg 
         :src="imgSrc"
@@ -46,7 +47,7 @@ const baseClass = 'cdr-landing-lead'
         </template>
       </CdrHeadingSubheadingBlock>
     </template>
-  </CdrLead>
+  </CdrSplitSurface>
 </template>
 
 <style lang="scss" module src="./styles/CdrLandingLead.module.scss">

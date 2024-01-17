@@ -2,22 +2,21 @@
 
 exports[`CdrLandingLead > renders correctly when presented with correct data 1`] = `
 <div
-  class="cdr-lead cdr-lead--bottom"
+  class="cdr-split-surface cdr-split-surface--bottom cdr-landing-lead"
 >
   <div
-    class="cdr-lead__top"
+    class="cdr-split-surface__top"
   >
     <!-- @slot top slot -->
     
     <img
       alt=""
       class="cdr-image cdr-landing-lead__image"
-      src=""
     />
     
   </div>
   <div
-    class="cdr-lead__bottom"
+    class="cdr-split-surface__bottom"
   >
     <!-- @slot bottom slot -->
     

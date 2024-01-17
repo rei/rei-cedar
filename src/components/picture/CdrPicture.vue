@@ -3,7 +3,10 @@ import { useCssModule } from 'vue';
 import CdrImg from '../image/CdrImg.vue';
 import { baseImageProps, pictureSourceObject } from '../../types/interfaces';
 
-/** Media for capturing attention and communicating messages while allowing for art-direction of the image */
+/** 
+ * Media for capturing attention and communicating messages while allowing for art-direction of the image
+ * @uses CdrImg
+ **/
 defineOptions({
   name: 'CdrPicture',
 });

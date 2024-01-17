@@ -43,13 +43,5 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module lang="scss">
-@import "./styles/CdrPresets.module.scss";
-
-.cdr-heading-sans {
-  @include cdr-text-base-mixin;
-  @include cdr-text-heading-sans-600;
-  font-size: var(--cdr-heading-sans-font-size);
-  line-height: var(--cdr-heading-sans-line-height);
-}
+<style module src="./styles/CdrHeadingSans.module.scss" lang="scss">
 </style>  

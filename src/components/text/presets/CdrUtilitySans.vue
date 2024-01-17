@@ -47,14 +47,5 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module lang="scss">
-@import "./styles/CdrPresets.module.scss";
-
-.cdr-utility-sans {
-  @include cdr-text-base-mixin;
-  @include cdr-text-utility-sans-800;
-  font-size: var(--cdr-utility-sans-font-size);
-  line-height: var(--cdr-utility-sans-line-height);
-  font-weight: var(--cdr-utility-sans-font-weight);
-}
+<style module src="./styles/CdrUtilitySans.module.scss" lang="scss">
 </style>  

@@ -1,4 +1,4 @@
-import { mount } from '../../../../../../test/vue-jest-style-workaround.js';
+import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrLandingLead from '../CdrLandingLead.vue';
 
 describe('CdrLandingLead', () => {
