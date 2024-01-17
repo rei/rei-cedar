@@ -23,6 +23,7 @@
       "ignoreComments": true,
       "ignoreTrailingComments": true
     }],
-    "vue/multiline-html-element-content-newline": 0
+    "vue/multiline-html-element-content-newline": 0,
+    "@typescript-eslint/no-explicit-any": 0
   }
 }
