@@ -32,7 +32,7 @@
   &__icon-left {
     width: 3.2rem;
     grid-area: icon-left;
-    display: inherit;
+    display: grid;
     align-items: center;
     justify-items: center;
     & svg {
@@ -47,14 +47,14 @@
   }
 
   &__message {
-    display: inherit;
+    display: grid;
     align-items: center;
     grid-area: message;
     padding: 0.7rem;
   }
 
   &__close-button {
-    display: inherit;
+    display: grid;
     align-content: center;
     grid-area: close-button;
     max-height: 3.2rem;
