@@ -2,7 +2,7 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 
-/** Generic container for creating a split-surface presentation */
+/** Introduces a layered surface for distinct content sections, smoothing the transition from one page section to another */
 defineOptions({
   name: 'CdrSplitSurface'
 });
