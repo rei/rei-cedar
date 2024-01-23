@@ -14,10 +14,13 @@ interface splitSurfaceProps {
    * @values top, bottom
    */
   surface?: 'top' | 'bottom'
+  /** Sets the HTML tag for the split-surface element */
+  tag?: string
 }
 
 const props = withDefaults(defineProps<splitSurfaceProps>(), {
-  surface: 'bottom'
+  surface: 'bottom',
+  tag: 'div'
 });
 
 const baseClass = 'cdr-split-surface'
@@ -27,7 +30,10 @@ const style = useCssModule();
 </script>
 
 <template>
-  <div :class="mapClasses(style, baseClass, surfaceClass)">
+  <component
+    :is="tag"
+    :class="mapClasses(style, baseClass, surfaceClass)"
+  >
     <div :class="style[`${baseClass}__top`]">
       <!-- @slot top slot -->
       <slot name="top" />
@@ -36,7 +42,7 @@ const style = useCssModule();
       <!-- @slot bottom slot -->
       <slot name="bottom" />
     </div>
-  </div>
+  </component>
 </template>
 
 <style lang="scss" module src="./styles/CdrSplitSurface.module.scss">
