@@ -103,7 +103,7 @@ watch(() => props.open, () => (props.open ? openTooltip() : closeTooltip()));
 onMounted(() => {
   addHandlers();
   const trigger = triggerEl.value?.children[0];
-  if (trigger) trigger.setAttribute('aria-describedby', props.id);
+  if (trigger) trigger.setAttribute('aria-describedby', uniqueId);
 });
 
 </script>
