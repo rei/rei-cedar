@@ -4,7 +4,7 @@ import CdrImg from '../image/CdrImg.vue';
 import { baseImageProps, pictureSourceObject } from '../../types/interfaces';
 
 /** 
- * Media for capturing attention and communicating messages while allowing for art-direction of the image
+ * Provides instructions for browsers to use alternative image versions in various scenarios
  * @uses CdrImg
  **/
 defineOptions({

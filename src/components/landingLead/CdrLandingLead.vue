@@ -4,7 +4,7 @@ import { CdrImg, CdrSplitSurface } from '.././../lib';
 import CdrHeadingSubheadingBlock from './components/CdrHeadingSubheadingBlock.vue';
 
 /** 
- * Opinionated expression of a lead intended for use on landing pages
+ * Displays a full-width image and heading at the top of a page
  * @preview true
  * @uses CdrSplitSurface, CdrImg, CdrHeadingDisplay, CdrSubheadingSans
  **/

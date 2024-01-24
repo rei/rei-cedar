@@ -3,7 +3,7 @@ import { useCssModule } from 'vue';
 import { baseTextProps } from '../../types/interfaces';
 
 /** 
- * Opinionated and fluid expressions of content
+ * Content building blocks with pre-defined, fluid styles
  * @preview true
  **/
 defineOptions({
