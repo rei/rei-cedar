@@ -1,8 +1,6 @@
-// @import url('@rei/cedar/dist/style/cdr-button.css');
-// @import url('@rei/cedar/dist/style/cdr-icon.css');
 @import '../../button/styles/CdrButton.module.scss';
 @import '../../icon/styles/CdrIcon.module.scss';
-@import '../../../styles/settings/_index.scss';
+@import '../../../styles/settings/index.scss';
 @import './vars/CdrToast.vars.scss';
 
 .cdr-toast {
@@ -34,7 +32,7 @@
   &__icon-left {
     width: 3.2rem;
     grid-area: icon-left;
-    display: inherit;
+    display: grid;
     align-items: center;
     justify-items: center;
     & svg {
@@ -49,14 +47,14 @@
   }
 
   &__message {
-    display: inherit;
+    display: grid;
     align-items: center;
     grid-area: message;
     padding: 0.7rem;
   }
 
   &__close-button {
-    display: inherit;
+    display: grid;
     align-content: center;
     grid-area: close-button;
     max-height: 3.2rem;

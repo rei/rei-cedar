@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrTitle > matches snapshot 1`] = `
+<h1
+  class="cdr-title"
+>
+  
+  This is a title
+  
+</h1>
+`;

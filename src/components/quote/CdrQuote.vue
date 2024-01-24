@@ -20,8 +20,7 @@ const props = defineProps({
   },
   /**
    * Modifies the style variant for the quote
-   * @demoSelectMultiple true
-   * @values pull
+   * @demoIgnore true
    */
   modifier: {
     type: String,

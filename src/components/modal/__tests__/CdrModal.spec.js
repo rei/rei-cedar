@@ -1,5 +1,8 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrModal from '../CdrModal.vue';
+import { config } from '@vue/test-utils'
+
+config.global.stubs['Teleport'] = true;
 
 describe('CdrModal.vue', () => {
 
@@ -48,6 +51,72 @@ describe('CdrModal.vue', () => {
       await wrapper.vm.$nextTick();
 
       expect(wrapper.emitted().closed.length).toBe(2);
+    });
+  });
+
+  describe('ARIA show/hide for screen reader', () => {
+    let wrapper;
+    let modalEl;
+    let ariaHiddenEl;
+    let displayNoneEl;
+    let scriptEl;
+    let styleEl;
+    beforeAll(()=>{
+      modalEl = document.createElement('div');
+      ariaHiddenEl = document.createElement('div');
+      ariaHiddenEl.setAttribute('aria-hidden', 'true');
+      displayNoneEl = document.createElement('div');
+      displayNoneEl.setAttribute('hidden', null);
+      scriptEl = document.createElement('script');
+      styleEl = document.createElement('style');
+      if (document.body) {
+        document.body.appendChild(modalEl);
+        document.body.appendChild(ariaHiddenEl);
+        document.body.appendChild(displayNoneEl);
+        document.body.appendChild(scriptEl);
+        document.body.appendChild(styleEl);
+      }
+      wrapper = mount(CdrModal, {
+        propsData: {
+          opened: true,
+          label: 'Label is the modal title',
+        },
+        slots: {
+          default: 'Sticky content',
+        },
+        attachTo: modalEl,
+      });
+    });
+
+    it('aria-hides elements that should be hidden', () => {
+      expect(modalEl.getAttribute('aria-hidden')).to.equal('true');
+    });
+
+    it('does not show/hide script elements', () => {
+      expect(scriptEl.hasAttribute('aria-hidden')).to.be.false;
+    });
+
+    it('does not show/hide style elements', () => {
+      expect(styleEl.hasAttribute('aria-hidden')).to.be.false;
+    });
+
+    it('does not hide itself', () => {
+      const thisModal = wrapper.find({ ref: 'wrapperEl' });
+      expect(thisModal.attributes('aria-hidden')).toBeUndefined();
+    });
+
+    it('does not show/hide elements that are display: none', () => {
+      expect(displayNoneEl.hasAttribute('aria-hidden')).to.be.false;
+    });
+
+    it('does not remove aria-hidden from elements that were aria-hidden on page load', () => {
+      wrapper.setProps({ opened: false });
+      expect(ariaHiddenEl.getAttribute('aria-hidden')).to.equal('true');
+    });
+
+    it('removes aria-hidden from the elements it added them to on modal close', () => {
+      wrapper.setProps({ opened: false });
+      expect(modalEl.hasAttribute('aria-hidden')).to.be.false;
     });
   });
 

@@ -1,8 +1,8 @@
 /* Tokens */
-@import "/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@import "/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens";
 
 /* Settings */
-@import "./settings/_index";
+@import "./settings/index";
 
 /* Utilities */
-@import "./reset";
+@import "../../public/cdr-reset.css";

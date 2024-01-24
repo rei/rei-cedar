@@ -1,6 +1,0 @@
-@import '../../../styles/settings/_index.scss';
-@import './vars/{NAME-FULLNAME}.vars.scss';
-
-.{NAME-TAGNAME} {
-  @include {NAME-TAGNAME}-base-mixin;
-}

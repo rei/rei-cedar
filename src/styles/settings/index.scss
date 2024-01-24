@@ -1,0 +1,5 @@
+$cdr-warn: false;
+@import "../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@import "./alignment.vars";
+@import "./options.vars";
+@import "./visibility.vars";

@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import mapClasses from '../../../utils/mapClasses';
-import validateProp from "../../../utils/propValidator";
+import sizeProps from '../../../props/size';
 import { useStar } from '../composables/useStar';
 
 const props = defineProps({
-  size: {
-      type: String,
-      default: 'medium',
-      validator: (value: string) => validateProp(
-        value,
-        ['small', 'medium', 'large'],
-      ),
-    },
+  size: sizeProps,
 })
 const { style, sizeClass } = useStar(props.size);
 </script>

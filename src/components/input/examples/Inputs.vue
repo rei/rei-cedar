@@ -6,6 +6,7 @@
     <div data-backstop="input-target">
       <cdr-input
         label-class="demo-input"
+        input-container-class="container-class"
         v-model="defaultModel"
         label="Default"
         :background="backgroundColor"
@@ -441,7 +442,6 @@ export default {
 </script>
 <style>
   .demo-input {
-    margin: 10px;
-    /*line-height: 1;*/
+    font-weight: 500;
   }
 </style>

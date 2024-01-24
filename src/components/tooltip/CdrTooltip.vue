@@ -5,6 +5,7 @@ import {
 import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
 import propValidator from '../../utils/propValidator';
+import uid from '../../utils/uid';
 
 /** Floating label used to clarify interface actions */
 defineOptions({
@@ -38,7 +39,6 @@ const props = defineProps({
   /** ID for the tooltip element, required for accessibility */
   id: {
     type: String,
-    required: true,
   },
   /** Add custom class to the tooltip content wrapper. Allows for overriding size, styling, etc. */
   contentClass: {
@@ -61,6 +61,8 @@ const emits = defineEmits({
   /** Emits when tooltip is closed */
   closed: null,
 });
+
+const uniqueId = props.id ? props.id : uid();
 
 const style = useCssModule();
 const slots = useSlots();
@@ -101,7 +103,7 @@ watch(() => props.open, () => (props.open ? openTooltip() : closeTooltip()));
 onMounted(() => {
   addHandlers();
   const trigger = triggerEl.value?.children[0];
-  if (trigger) trigger.setAttribute('aria-describedby', props.id);
+  if (trigger) trigger.setAttribute('aria-describedby', uniqueId);
 });
 
 </script>
@@ -127,7 +129,7 @@ onMounted(() => {
       :position="position"
       :auto-position="autoPosition"
       :opened="isOpen"
-      :id="id"
+      :id="uniqueId"
       @closed="closeTooltip"
     >
       <!-- @slot CdrTooltip content -->
