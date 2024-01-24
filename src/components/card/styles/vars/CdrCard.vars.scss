@@ -6,6 +6,7 @@
   box-shadow: $cdr-prominence-raised;
   //ITEM_DOC: Text color of a cdr-card
   color: var(--cdr-card-base-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+  container: card / inline-size;
   width: 100%;
   transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
   cursor: pointer;
@@ -16,6 +17,7 @@
     transform: translateY(-$cdr-space-eighth-x);
     transition: $cdr-duration-2-x;
   }
+
 }
 
 @mixin cdr-card-link-mixin() {

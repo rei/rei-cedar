@@ -1,4 +1,6 @@
-const process = require('process');
+/* eslint-env node */
+
+// const process = require('process');
 
 module.exports = {
   syntax: 'postcss-scss',
@@ -12,10 +14,6 @@ module.exports = {
       selectorBlackList: [/^html$/],
       mediaQuery: false,
       minPixelValue: 0,
-    },
-    'postcss-inline-svg': {
-      // paths are relative to root
-      paths: [process.cwd()],
     },
     autoprefixer: {},
   },

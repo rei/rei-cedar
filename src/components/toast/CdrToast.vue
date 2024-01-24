@@ -6,7 +6,10 @@ import propValidator from '../../utils/propValidator';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 
-/** Non-modal dialog used to communicate the status of a task or process */
+/**
+ * Non-modal dialog used to communicate the status of a task or process
+ * @uses CdrButton, CdrIcon
+ **/
 defineOptions({
   name: 'CdrToast',
 });

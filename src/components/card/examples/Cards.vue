@@ -3,18 +3,21 @@
     <simple-card />
     <hr>
     <complex-card />
+    <hr>
+    <filmstrip-cards />
   </div>
 </template>
 
 <script>
-import simpleCard from 'componentsdir/card/examples/demo/simpleCard.vue';
-import complexCard from 'componentsdir/card/examples/demo/complexCard.vue';
-
+import FilmstripCards from './demo/FilmstripCards.vue';
+import SimpleCard from './demo/simpleCard.vue';
+import ComplexCard from './demo/complexCard.vue';
 export default {
   name: 'Cards',
   components: {
-    simpleCard,
-    complexCard,
+    FilmstripCards,
+    SimpleCard,
+    ComplexCard,
   },
 };
 </script>

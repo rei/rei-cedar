@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrKicker > matches snapshot 1`] = `
+<span
+  class="cdr-kicker"
+>
+  
+  Kicker
+  
+</span>
+`;

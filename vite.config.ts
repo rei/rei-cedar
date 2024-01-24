@@ -1,9 +1,11 @@
 /// <reference types="vitest" />
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
+import { configDefaults } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts'
 import options from './rollupOptions.mjs';
+import cssNameNormalizer  from './vite-plugin-css-name-normalizer';
 
 const version = process.env.npm_package_version;
 
@@ -11,6 +13,7 @@ const version = process.env.npm_package_version;
 export default defineConfig({
   base: '/rei-cedar/',
   build: {
+    cssCodeSplit: true,
     lib: {
       entry: './src/lib.ts',
       formats: ['es'],
@@ -35,8 +38,19 @@ export default defineConfig({
       '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
     },
   },
+  test: {
+    globals: true,
+    exclude: [...configDefaults.exclude, '**/test/e2e', '**/templates/__tests__'],
+    environment: 'jsdom',
+    css: {
+      modules: {
+        classNameStrategy: 'non-scoped'
+      },
+    },
+  },
   plugins: [
     vue(),
+    cssNameNormalizer(),
     dts({ rollupTypes: true }),
   ],
 });

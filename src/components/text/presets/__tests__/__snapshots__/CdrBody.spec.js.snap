@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrBody > default configuration > renders correctly 1`] = `
+<p
+  class="cdr-body"
+  style="--cdr-body-font-size: var(--cdr-type-scale-0); --cdr-body-line-height: calc(var(--cdr-type-scale-0) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+>
+  
+  paragraph
+  
+</p>
+`;
+
+exports[`CdrBody > passing a scale > renders correctly 1`] = `
+<p
+  class="cdr-body"
+  style="--cdr-body-font-size: var(--cdr-type-scale-1); --cdr-body-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+>
+  
+  paragraph
+  
+</p>
+`;
+
+exports[`CdrBody > setting to strong variant > renders correctly 1`] = `
+<p
+  class="cdr-body"
+  style="--cdr-body-font-size: var(--cdr-type-scale-0); --cdr-body-line-height: calc(var(--cdr-type-scale-0) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 600;"
+>
+  
+  paragraph
+  
+</p>
+`;

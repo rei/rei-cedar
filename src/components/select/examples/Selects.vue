@@ -12,7 +12,6 @@
         v-model="selectedA"
         :background="backgroundColor"
         prompt="Choose one"
-
         @select-change="doExternal"
       >
         <option value="1">

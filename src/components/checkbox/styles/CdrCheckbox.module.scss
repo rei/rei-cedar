@@ -1,6 +1,5 @@
-@import '../../../styles/settings/_index.scss';
+@import '../../../styles/settings/index.scss';
 @import './vars/CdrCheckbox.vars.scss';
-//@import url('@rei/cedar/dist/style/cdr-label-wrapper.css');
 @import '../../labelWrapper/styles/CdrLabelWrapper.module.scss';
 
 .cdr-checkbox {

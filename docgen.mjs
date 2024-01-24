@@ -5,7 +5,16 @@ import _ from 'lodash-es';
 import path from 'path';
 import parseSCSS from './docgen-scss.mjs';
 
-const componentFiles = glob.sync("./src/components/*/*.vue");
+const componentFiles = glob.sync(
+  "./src/components/**/*.vue",
+  { 
+    ignore: [
+      './src/components/**/examples/**/*',
+      './src/components/**/components/*',
+      './src/components/icon/comps/*.vue'
+    ]
+  }
+);
 const iconFiles = glob.sync("./src/components/icon/comps/*.vue");
 const componentObj = {};
 const iconComponentsObj = {};
@@ -21,7 +30,7 @@ await Promise.all(iconFiles.map(async (filePath) => {
 }))
 
 async function createDocgenObj(filePath, docgenObj) {
-    let parsedComponentFile = await parse(filePath);
+    const parsedComponentFile = await parse(filePath);
     docgenObj[parsedComponentFile.displayName] = parsedComponentFile;
 
     _.forIn(docgenObj, (component) => {
@@ -38,6 +47,12 @@ async function createDocgenObj(filePath, docgenObj) {
                 }
                 prop.defaultValue.value = trimApostrophes(prop.defaultValue.value);
             }
+            if (prop.tags && prop.tags.values && prop.tags.values[0].description) {
+                prop.values = prop.tags.values[0].description.split(',').map((value)=>{
+                    return value.trim();
+                });
+                delete prop.tags.values;
+            }
         });
     });
 }
@@ -48,8 +63,6 @@ function trimApostrophes(str) {
     }
     return str;
 }
-
-const components = Object.keys(componentObj); // Replace with your actual component names
 
 
 // Iterate over components
@@ -69,6 +82,7 @@ for (const component in componentObj) {
             // Check if UIProperties already exists for this component
             if(componentObj[component].UIProperties) {
                 // If it does, concatenate the new parsed SCSS with the existing ones
+                // eslint-disable-next-line max-len
                 componentObj[component].UIProperties = componentObj[component].UIProperties.concat(parsedSCSS);
             } else {
                 // If it doesn't, assign the parsed SCSS to UIProperties

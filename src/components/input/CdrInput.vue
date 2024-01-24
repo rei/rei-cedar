@@ -6,7 +6,6 @@ import type { InputHTMLAttributes } from 'vue'
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
-import sizeProps from '../../props/size';
 import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
@@ -72,10 +71,10 @@ const props = defineProps({
   background: backgroundProps,
   /**
    * Sets the input field size
-  * @demoSelectMultiple false
-  * @values medium, large
+  * @demoSelectMultiple true
+  * @values large
   */
-  size: sizeProps,
+  size: String,
 
   /**
    * Sets the `role` attribute for the embedded error state messaging.
@@ -106,8 +105,11 @@ const props = defineProps({
   modelValue: {
     type: [String, Number],
   },
-  /** Adds a custom class to the cdr-label-standalone wrapping div */
-  labelClass: String,
+  /** Adds a custom class to the cdr-label-standalone container div */
+  inputContainerClass: String,
+  /** Passes a custom class to the label for custom styles */
+  labelClass: String
+
 });
 
 const emits = defineEmits({
@@ -190,7 +192,8 @@ const inputModel = computed({
     :required="required"
     :optional="optional"
     :disabled="disabled"
-    :class="labelClass"
+    :class="inputContainerClass"
+    :label-class="labelClass"
   >
     <template
       #helper
