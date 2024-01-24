@@ -2,6 +2,5 @@
 @import './vars/CdrText.vars.scss';
 
 .cdr-text {
-  @include cdr-text-default;
   @include cdr-text-base-mixin;
 }
