@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useCssModule, type PropType } from 'vue';
-import { CdrAbstract, CdrKicker, CdrTitle, CdrImg, CdrRating, CdrLink, CdrCard } from '../../lib';
 import { choreographerSchema } from '../../types/interfaces';
 
 /** Choreographer is in an experimental stage and should be considered unstable */
@@ -9,17 +8,8 @@ defineOptions({
   name: 'CdrChoreographer',
 });
 
-const componentMap = {
-  abstract: CdrAbstract,
-  kicker: CdrKicker,
-  title: CdrTitle,
-  image: CdrImg,
-  rating: CdrRating,
-  link: CdrLink,
-  card: CdrCard,
-};
-
 defineProps({
+  componentMap: { type: Map, required: true},
   schema: { type: Array as PropType<choreographerSchema[]>, default: () => [] }
 });
 
@@ -38,7 +28,10 @@ const style = useCssModule();
     :class="style[`${baseClass}__${entry.type}`]"
   >
     <template v-if="Array.isArray(entry?.content)">
-      <CdrChoreographer :schema="(entry?.content)" />
+      <CdrChoreographer
+        :component-map="componentMap"
+        :schema="(entry?.content)"
+      />
     </template>
     <template v-else>
       {{ entry?.content }}
