@@ -1,4 +1,7 @@
 @import '../../../styles/settings/index.scss';
+@import '../../image/styles/CdrImg.module.scss';
+@import './CdrHeadingSubheadingBlock.module.scss';
+
 
 .cdr-landing-lead {
   //ITEM_DOC: Color of the landing-leads surface layer. Passes to underlying split-surface component
