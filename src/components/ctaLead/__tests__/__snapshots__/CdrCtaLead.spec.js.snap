@@ -40,40 +40,18 @@ exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
   >
     <!-- @slot bottom slot -->
     
-    <cta
+    <a
       class="cdr-cta"
+      modifier="secondary"
     >
-      <a
-        class="cdr-button cdr-button--primary cdr-button--medium"
-      >
-        <!-- @slot Icon to the left of text content -->
-        
-        
-        <!-- @slot Icon for icon-only button -->
-        
-        
-        <!-- @slot Readable text of the button. Leave empty if icon-only -->
-        
-        <svg
-          aria-hidden="true"
-          class="cdr-icon cdr-icon--inherit-color"
-          icon-right=""
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          
-          
-          <use
-            href="#caret-right"
-            xlink:href="#caret-right"
-          />
-        </svg>
-        
-        <!-- @slot Icon to the right of text content -->
-        
-        
-      </a>
-    </cta>
+      
+      
+      
+      <cdr-icon
+        inherit-color=""
+        use="#caret-right"
+      />
+    </a>
     <img
       alt=""
       class="cdr-image cdr-cta-lead__image"
