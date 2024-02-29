@@ -9,7 +9,7 @@ exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
   >
     <!-- @slot top slot -->
     
-     <header
+    <header
       class="cdr-heading-subheading-block cdr-cta-lead__copy-block"
     >
       <h1
@@ -33,7 +33,7 @@ exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
         
       </span>
     </header>
-    
+
   </div>
   <div
     class="cdr-split-surface__bottom"
