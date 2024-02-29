@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import { CdrButton, CdrIcon } from '../../../lib';
+import { baseButtonProps } from '../../../types/interfaces.ts';
+
 
 interface ctaProps extends baseButtonProps {
-  /** An object containing 1..n child objects containing HTMLSourceElement attributes */
-  sources: ctaSourceObject
+ 
+  /** sets the html element */
+  tag?: string,
+  /** Modifies the style variant for this component */
+  modifier?: string,
 }
 
 withDefaults(defineProps<ctaProps>(), {
-  modifier: '',
+  tag: '',
   href: '',
+  modifier: '',
 });
 
 
@@ -21,8 +27,6 @@ const style = useCssModule();
   <cta :class="style[baseClass]">
     <cdr-button
       tag="a"
-      :href="href"
-      :modifier="modifier"
     >
       <cdr-icon
         use="#caret-right"

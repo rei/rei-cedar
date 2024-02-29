@@ -2,7 +2,7 @@
 import { useCssModule } from 'vue';
 import { CdrImg, CdrSplitSurface } from '.././../lib';
 import CdrHeadingSubheadingBlock from './components/CdrHeadingSubheadingBlock.vue';
-// import CdrCta from './components/CdrCta.vue';
+import CdrCta from './components/CdrCta.vue';
 /** 
  * Displays a full-width image and heading at the top of a page
  * @preview true
@@ -45,6 +45,12 @@ const baseClass = 'cdr-cta-lead'
       </CdrHeadingSubheadingBlock>
     </template>
     <template #bottom>
+      <CdrCta 
+        tag="a"
+        modifier="secondary"
+      > 
+        {{ cta }}
+      </CdrCta>
       <CdrImg 
         :src="imgSrc"
         :srcset="imgSrcset"
