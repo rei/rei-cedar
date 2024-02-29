@@ -40,7 +40,7 @@ exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
   >
     <!-- @slot bottom slot -->
     
-      <img
+    <img
       alt=""
       class="cdr-image cdr-cta-lead__image"
     />
