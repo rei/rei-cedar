@@ -24,7 +24,6 @@ const style = useCssModule();
       :href="href"
       :modifier="modifier"
     >
-      <slot name="cta" />
       <cdr-icon
         use="#caret-right"
         inherit-color
