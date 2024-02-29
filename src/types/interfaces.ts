@@ -127,3 +127,24 @@ export interface baseTextProps {
   /** Sets the HTML tag (p, span, h1, h2, etc) */
   tag?: string
 }
+
+/** 
+ * Button component properties
+ * @interface baseButtonProps
+ */
+export interface baseButtonProps {
+  /** Renders CdrButton as a <button> or <a> element. When using the value of <a>, this element renders as an anchor link. */
+  tag?: string,
+  /** Sets the button type */
+  type?: string,
+  /** Modifies the style variant for this component */
+  modifier?: string | "primary",
+  /** Sets the button size; values can target responsive breakpoints. */
+  size?: "small" | "medium" | "large",
+  /** Sets button width to 100%. Setting this value to true will set the button width to 100% of the parent container. Use the 'fullWidth' prop with the 'size' prop to control top and bottom padding. */
+  fullWidth?: string | boolean,
+  /** Renders an 'icon-only' button. When this value is true, it will override the size and 'responsiveSize' props. Can be used in conjunction with 'with-background' */
+  iconOnly?: boolean,
+  /** Renders an 'icon-only' button with a background color and border. Must be used in conjunction with the 'iconOnly' prop. */
+  withBackground?: boolean,
+}

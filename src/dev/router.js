@@ -32,6 +32,7 @@ const routes = [
   { path: '/chips', name: 'Chip', component: Examples.chip },
   { path: '/choreographer', name: 'Choreographer', component: Examples.choreographer },
   { path: '/containers', name: 'Container', component: Examples.container },
+  { path: '/cta-lead', name: 'Cta Lead', component: Examples.ctaLead },
   { path: '/formGroups', name: 'Form Groups', component: Examples.formGroup },
   { path: '/grid', name: 'Grid', component: Examples.grid },
   { path: '/icons', name: 'Icons', component: Examples.icon },

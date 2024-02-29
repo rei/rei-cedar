@@ -9,6 +9,7 @@ import checkbox from 'componentsdir/checkbox/examples/checkboxes.vue';
 import chip from 'componentsdir/chip/examples/Chip.vue';
 import choreographer from 'componentsdir/choreographer/examples/Choreographer.vue'
 import container from 'componentsdir/container/examples/Container.vue';
+import ctaLead from 'componentsdir/ctaLead/examples/CtaLead.vue';
 import formGroup from 'componentsdir/formGroup/examples/FormGroup.vue';
 import grid from 'componentsdir/grid/examples/Grid.vue';
 import icon from 'componentsdir/icon/examples/Icons.vue';
@@ -50,6 +51,7 @@ export default {
   chip,
   choreographer,
   container,
+  ctaLead,
   formGroup,
   grid,
   icon,

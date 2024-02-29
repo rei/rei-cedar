@@ -12,6 +12,7 @@ export { default as CdrChip } from './components/chip/CdrChip.vue';
 export { default as CdrChipGroup } from './components/chip/CdrChipGroup.vue';
 export { default as CdrChoreographer } from './components/choreographer/CdrChoreographer.vue';
 export { default as CdrContainer } from './components/container/CdrContainer.vue';
+export { default as CdrCtaLead } from './components/ctaLead/CdrCtaLead.vue';
 export { default as CdrFormGroup } from './components/formGroup/CdrFormGroup.vue';
 export { default as CdrGrid } from './components/grid/CdrGrid.vue';
 export { default as CdrIcon } from './components/icon/CdrIcon.vue';
