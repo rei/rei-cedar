@@ -27,7 +27,7 @@ const style = useCssModule();
       <cdr-icon
         use="#caret-right"
         inherit-color
-        v-slot:icon-right
+        v-slot: icon-right
       />
     </cdr-button>
   </cta>
