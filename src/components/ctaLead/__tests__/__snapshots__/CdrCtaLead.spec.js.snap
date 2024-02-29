@@ -2,14 +2,14 @@
 
 exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
 <div
-  class="cdr-split-surface cdr-split-surface--top cdr-cta-lead"
+  class="cdr-split-surface cdr-split-surface--bottom cdr-cta-lead"
 >
   <div
     class="cdr-split-surface__top"
   >
     <!-- @slot top slot -->
     
-     <header
+      <header
       class="cdr-heading-subheading-block cdr-cta-lead__copy-block"
     >
       <h1
