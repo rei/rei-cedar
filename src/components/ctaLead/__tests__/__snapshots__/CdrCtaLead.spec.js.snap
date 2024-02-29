@@ -2,26 +2,37 @@
 
 exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
 <div
-  class="cdr-split-surface cdr-split-surface--bottom cdr-cta-lead"
+  class="cdr-split-surface cdr-split-surface--top cdr-cta-lead"
 >
   <div
     class="cdr-split-surface__top"
   >
     <!-- @slot top slot -->
     
-      <header
+    <header
       class="cdr-heading-subheading-block cdr-cta-lead__copy-block"
     >
       <h1
         class="cdr-heading-display cdr-heading-subheading-block__heading"
         style="--cdr-heading-display-font-size: var(--cdr-type-scale-4); --cdr-heading-display-line-height: calc(var(--cdr-type-scale-4) * var(--cdr-heading-display-line-height-ratio));"
       >
+
+
+
+
+
       </h1>
       <span
         class="cdr-subheading-sans cdr-heading-subheading-block__subheading"
         style="--cdr-subheading-sans-font-size: var(--cdr-type-scale-1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-subheading-sans-line-height-ratio));"
       >
+
+
+
+
+
       </span>
+
     </header>
 
   </div>
