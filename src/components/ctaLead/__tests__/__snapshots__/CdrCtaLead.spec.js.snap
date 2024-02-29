@@ -33,8 +33,7 @@ exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
         
       </span>
     </header>
-
-
+    
   </div>
   <div
     class="cdr-split-surface__bottom"
