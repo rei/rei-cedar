@@ -42,15 +42,11 @@ exports[`CdrCtaLead > renders correctly when presented with correct data 1`] = `
     
     <a
       class="cdr-cta"
-      modifier="secondary"
     >
+      <!--[object Object]-->
       
       
       
-      <cdr-icon
-        inherit-color=""
-        use="#caret-right"
-      />
     </a>
     <img
       alt=""

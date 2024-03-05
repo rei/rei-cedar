@@ -1,2 +1,49 @@
 @import '../../../styles/settings/index.scss';
-@import '../../button/styles/CdrButton.module.scss';
+//@import '../../button/styles/CdrButton.module.scss';
+
+
+
+
+/* CdrCta.module.scss */
+.cdr-cta {
+  background: red;
+  .cdr-button {
+    //ITEM_DOC: Primary button's background color
+    --cdr-button-background-color: var(--cdr-color-background-button-primary-rest, #{$cdr-color-background-button-primary-rest});
+    //ITEM_DOC: Primary button's box shadow color which serves as a border
+    --cdr-button-box-shadow-color: var(--cdr-color-border-button-primary-rest, #{$cdr-color-border-button-primary-rest});
+    --cdr-button-box-shadow-offset-x: 1px;
+    //ITEM_DOC: Primary button's text color
+    --cdr-button-text-color: var(--cdr-color-text-button-primary, #{$cdr-color-text-button-primary});
+    //ITEM_DOC: Primary button's fill color
+    --cdr-button-fill-color: var(--cdr-color-text-button-primary, #{$cdr-color-text-button-primary});
+  
+    &:hover,
+    &:focus {
+      //ITEM_DOC: Primary button's background color when hovered or focused
+      --cdr-button-background-color: var(--cdr-color-background-button-primary-hover, #{$cdr-color-background-button-primary-hover});
+      //ITEM_DOC: Primary button's box shadow color when hovered or focused
+      --cdr-button-box-shadow-color: var(--cdr-color-border-button-primary-hover, #{$cdr-color-border-button-primary-hover});
+      --cdr-button-box-shadow-offset-x: 3px;
+      //ITEM_DOC: Primary button's text color when hovered or focused
+      --cdr-button-text-color: var(--cdr-color-text-button-primary-hover, #{$cdr-color-text-button-primary-hover});
+      //ITEM_DOC: Primary button's fill color when hovered or focused
+      --cdr-button-fill-color: var(--cdr-color-text-button-primary-hover, #{$cdr-color-text-button-primary-hover});
+    }
+  
+    &:active {
+      //ITEM_DOC: Primary button's background color when active
+      --cdr-button-background-color: var(--cdr-color-background-button-primary-active, #{$cdr-color-background-button-primary-active});
+      --cdr-button-box-shadow-offset-x: 3px;
+      //ITEM_DOC: Primary button's box shadow color when active.
+      --cdr-button-box-shadow-color: var(--cdr-color-border-button-primary-active, #{$cdr-color-border-button-primary-active});
+      --cdr-button-box-shadow-inset-x: 5px;
+      //ITEM_DOC: Primary button's box shadow inset color when active. 
+      --cdr-button-box-shadow-color-active-inset: var(--cdr-color-border-button-primary-active-inset, #{$cdr-color-border-button-primary-active-inset});
+      //ITEM_DOC: Primary button's text color when active
+      --cdr-button-text-color: var(--cdr-color-text-button-primary-active, #{$cdr-color-text-button-primary-active});
+      //ITEM_DOC: Primary button's fill color when active
+      --cdr-button-fill-color: var(--cdr-color-text-button-primary-active, #{$cdr-color-text-button-primary-active});
+    }
+  }
+}

@@ -47,7 +47,7 @@ const baseClass = 'cdr-cta-lead'
     <template #bottom>
       <CdrCta 
         tag="a"
-        modifier="secondary"
+        modifier="cta"
       > 
         {{ cta }}
       </CdrCta>
