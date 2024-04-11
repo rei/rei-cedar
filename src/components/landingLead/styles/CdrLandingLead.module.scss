@@ -2,7 +2,6 @@
 @import '../../image/styles/CdrImg.module.scss';
 @import './CdrHeadingSubheadingBlock.module.scss';
 
-
 .cdr-landing-lead {
   //ITEM_DOC: Color of the landing-leads surface layer. Passes to underlying split-surface component
   --cdr-split-surface-surface-color: var(--cdr-landing-lead-surface-color, var(--cdr-color-surface-primary, #{$cdr-color-surface-primary}));
@@ -15,9 +14,6 @@
     }
   }
   &__copy-block {
-    padding: $cdr-space-two-x;
-    @include cdr-md-mq-down {
-      padding: $cdr-space-two-x;
-    }
+    padding: var(--cdr-space-scale-one-and-a-half--two-x);
   }
 }

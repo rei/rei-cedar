@@ -5,12 +5,12 @@
 .cdr-heading-subheading-block {
   &__heading {
     display: block;
-    margin: 0 0 $cdr-space-one-x 0;
+    margin: 0 0 var(--cdr-space-scale-xs) 0;
     max-width: 40ch;
   }
   &__subheading {
     display: block;
-    margin-top: $cdr-space-three-quarter-x!important;
+    margin-top: var(--cdr-space-scale-2xs)!important;
     max-width: 60ch;
   }
 }
