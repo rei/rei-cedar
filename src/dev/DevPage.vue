@@ -42,9 +42,6 @@ export default {
       focusTarget.removeAttribute('tabindex');
     },
   },
-  mounted() {
-    console.log('BACKSTOP_READY'); // eslint-disable-line
-  },
 };
 </script>
 

@@ -24,6 +24,7 @@ const routes = [
   { path: '/abstract', name: 'Abstract', component: Examples.abstract },
   { path: '/accordion', name: 'Accordion', component: Examples.accordion },
   { path: '/banner', name: 'Banner', component: Examples.banner },
+  { path: '/box', name: 'Box', component: Examples.box },
   { path: '/breadcrumbs', name: 'Breadcrumb', component: Examples.breadcrumb },
   { path: '/buttons', name: 'Buttons', component: Examples.buttons },
   { path: '/captions', name: 'Captions', component: Examples.captions },
@@ -60,6 +61,7 @@ const routes = [
   { path: '/toggleButton', name: 'ToggleButton', component: Examples.toggleButton },
   { path: '/switch', name: 'Switch', component: Examples.cdrSwitch },
   { path: '/tooltip', name: 'Tooltip', component: Examples.tooltip },
+  { path: '/unstyledButton', name: 'UnstyledButton', component: Examples.unstyledButton },
 
   // Nightwatch test targets
   { path: '/e2e-1', component: e2e1 },

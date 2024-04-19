@@ -49,5 +49,4 @@ export * from './components/text/presets/textPresets';
 
 /** Type exports */
 export * from './types/interfaces';
-
-
+export * from './types/other';

@@ -1,6 +1,7 @@
 import abstract from 'componentsdir/abstract/examples/Abstract.vue';
 import accordion from 'componentsdir/accordion/examples/Accordion.vue';
 import banner from 'componentsdir/banner/examples/Banner.vue';
+import box from 'componentsdir/box/examples/Box.vue';
 import breadcrumb from 'componentsdir/breadcrumb/examples/Breadcrumb.vue';
 import buttons from 'componentsdir/button/examples/Buttons.vue';
 import captions from 'componentsdir/caption/examples/Caption.vue';
@@ -37,11 +38,13 @@ import toast from 'componentsdir/toast/examples/Toast.vue';
 import toggleButton from 'componentsdir/toggleButton/examples/ToggleButton.vue';
 import cdrSwitch from 'componentsdir/switch/examples/Switch.vue'; // Can't name it switch because it's a JS keyword
 import tooltip from 'componentsdir/tooltip/examples/Tooltip.vue';
+import unstyledButton from 'componentsdir/unstyledButton/examples/UnstyledButton.vue';
 
 export default {
   abstract,
   banner,
   accordion,
+  box,
   breadcrumb,
   buttons,
   captions,
@@ -78,4 +81,5 @@ export default {
   toggleButton,
   cdrSwitch,
   tooltip,
+  unstyledButton,
 };
