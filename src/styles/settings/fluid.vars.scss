@@ -23,6 +23,19 @@
     --cdr-type-scale-5: clamp(3.98rem, 2.33cqw + 3.24rem, 6.1rem);
     --cdr-type-scale-6: clamp(4.78rem, 3.13cqw + 3.78rem, 7.63rem);
     --cdr-type-scale-7: clamp(5.73rem, 4.17cqw + 4.4rem, 9.54rem);
+
+    // space
+    --cdr-space-scale-eighth-x: clamp(0.2rem, 0.2rem + 0.11cqi, 0.3rem);
+    --cdr-space-scale-quarter-x: clamp(0.3rem, 0.3rem + 0.11cqi, 0.4rem);
+    --cdr-space-scale-half-x: clamp(0.4rem, 0.4rem + 0.11cqi, 0.5rem);
+    --cdr-space-scale-three-quarter-x: clamp(0.8rem, 0.7rem + 0.22cqi, 1rem);
+    --cdr-space-scale-one-x: clamp(1.2rem, 1.1rem + 0.33cqi, 1.5rem);
+    --cdr-space-scale-one-and-a-half-x: clamp(1.6rem, 1.5rem + 0.44cqi, 2rem);
+    --cdr-space-scale-two-x: clamp(2.4rem, 2.2rem + 0.66cqi, 3rem);
+    --cdr-space-scale-three-x: clamp(3.2rem, 2.9rem + 0.88cqi, 4rem);
+    --cdr-space-scale-four-x: clamp(4.8rem, 4.4rem + 1.31cqi, 6rem);
+    --cdr-space-scale-five-x: clamp(6.4rem, 5.8rem + 1.75cqi, 8rem);
+    --cdr-space-scale-six-x: clamp(9.6rem, 8.8rem + 2.63cqi, 12rem);
   }
 }
 /** Remove once Safari < 16 is no longer a target */

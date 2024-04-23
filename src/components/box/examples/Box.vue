@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CdrBox, { type CdrBoxProps } from '../CdrBox.vue';
+import CdrText from '../../text/CdrText.vue';
 
 defineOptions({ name: 'Box' });
 
@@ -15,17 +16,20 @@ const boxes: Example[] = [
   },
   {
     description:
-      'This box is styled like a card. This box has padding, background, radius, and shadow props applied.',
-    props: { p: 'one-x', background: 'secondary', radius: 'softer', shadow: 'elevated' },
+      'This is a box with radius, shadow, borderColor, surface, elevation and position props applied.',
+    props: {
+      radius: 'round',
+      shadow: 'elevated',
+      borderColor: 'secondary',
+      surface: 'secondary',
+      elevation: 'modal',
+      position: 'relative',
+    },
   },
   {
-    description:
-      'This box is styled like a tile. This box has padding, background, and borderColor props applied.',
+    description: 'This is a box with the palette prop applied.',
     props: {
-      p: 'one-x',
-      radius: 'softer',
-      background: 'secondary',
-      borderColor: 'secondary',
+      palette: 'sale',
     },
   },
 ];
@@ -40,7 +44,9 @@ const boxes: Example[] = [
     >
       <hr class="boxes-demo__hr" />
       <CdrBox v-bind="props">
-        <span v-html="description" />
+        <CdrText>
+          <span v-html="description" />
+        </CdrText>
       </CdrBox>
     </template>
   </div>
