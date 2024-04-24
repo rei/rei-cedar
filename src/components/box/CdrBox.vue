@@ -89,8 +89,8 @@ const computedProps = computed(() => {
   if (props.palette) {
     const { color, surface } = palettes[props.palette];
     inlineStyles['--cdr-box-surface'] = `var(--cdr-color-background-${surface})`;
-    inlineStyles['--cdr-text-color'] = `var(--cdr-color-text-${color})`;
-    classes.add(surfaceClass);
+    inlineStyles['--cdr-box-text-color'] = `var(--cdr-color-text-${color})`;
+    classes.add(paletteClass);
   }
 
   // Add border

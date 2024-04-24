@@ -1,40 +1,6 @@
 @import '../../../styles/settings/index.scss';
 @import './vars/CdrBox.vars.scss';
 
-@mixin cdr-box-base-mixin() {
-  --cdr-box-border-width-default: var(--cdr-space-inset-eighth-x);
-  --cdr-box-border-style-default: solid;
-  --cdr-box-border-color-default: var(--cdr-color-border-primary);
-  --cdr-box-radius-default: var(--cdr-radius-sharp);
-  --cdr-box-shadow-default: var(--cdr-prominence-flat);
-  --cdr-box-surface-default: transparent;
-  --cdr-box-elevation-default: 0;
-  --cdr-box-position-default: relative;
-}
-
-@mixin cdr-box-border-mixin() {
-  border: var(--cdr-box-border-width, var(--cdr-box-border-width-default))
-    var(--cdr-box-border-style, var(--cdr-box-border-style-default))
-    var(--cdr-box-border-color, var(--cdr-box-border-color-default));
-}
-
-@mixin cdr-box-radius-mixin() {
-  border-radius: var(--cdr-box-radius, var(--cdr-box-radius-default));
-}
-
-@mixin cdr-box-shadow-mixin() {
-  box-shadow: var(--cdr-box-shadow, var(--cdr-box-shadow-default));
-}
-
-@mixin cdr-box-surface-mixin() {
-  background-color: var(--cdr-box-surface, var(--cdr-box-surface-default));
-}
-
-@mixin cdr-box-elevation-mixin() {
-  z-index: var(--cdr-box-elevation, var(--cdr-box-elevation-default));
-  position: var(--cdr-box-position, var(--cdr-box-position-default));
-}
-
 .cdr-box {
   @include cdr-box-base-mixin;
 }
@@ -57,4 +23,8 @@
 
 .cdr-box__elevation {
   @include cdr-box-elevation-mixin;
+}
+
+.cdr-box__palette {
+  @include cdr-box-palette-mixin;
 }
