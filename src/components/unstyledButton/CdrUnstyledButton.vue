@@ -22,6 +22,7 @@ const baseClass = 'cdr-unstyled-button';
 // Manages the props passed along to CdrBox
 const computedProps = computed(() => ({
   ...props,
+  surface: props.surface || 'transparent',
   // Automatically apply a type if using button tag
   type: props.tag == 'button' ? props.type || 'button' : undefined,
   class: mapClasses(style, baseClass),

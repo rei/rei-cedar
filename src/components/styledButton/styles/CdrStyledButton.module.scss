@@ -1,0 +1,26 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrStyledButton.vars.scss';
+
+.cdr-styled-button {
+  @include cdr-button-base-mixin;
+
+  &--primary {
+    @include cdr-button-primary-mixin;
+  }
+
+  &--secondary {
+    @include cdr-button-secondary-mixin;
+  }
+
+  &--large {
+    @include cdr-button-large-mixin;
+  }
+
+  &--medium {
+    @include cdr-button-medium-mixin;
+  }
+
+  &--small {
+    @include cdr-button-small-mixin;
+  }
+}

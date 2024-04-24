@@ -11,12 +11,12 @@ export interface Example {
 
 const boxes: Example[] = [
   {
-    description: 'This is a box without any props',
-    props: {},
+    description: 'This is a box without any specific props',
+    props: { 'data-id': 'test' },
   },
   {
     description:
-      'This is a box with radius, shadow, borderColor, surface, elevation and position props applied.',
+      'This is a box with radius, shadow, borderColor, surface, elevation, position, margin, and padding props applied.',
     props: {
       radius: 'round',
       shadow: 'elevated',
@@ -24,6 +24,8 @@ const boxes: Example[] = [
       surface: 'secondary',
       elevation: 'modal',
       position: 'relative',
+      m: 'one-x',
+      p: 'one-x',
     },
   },
   {

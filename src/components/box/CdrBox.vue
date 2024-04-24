@@ -1,61 +1,62 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import type * as CSS from 'csstype';
+import type { HTMLAttributes } from '../../types/interfaces';
 import mapClasses from '../../utils/mapClasses';
-import type { StylingProps } from '../../types/other';
+import type {
+  Tag,
+  Space,
+  Shadow,
+  Radius,
+  BorderColor,
+  Elevation,
+  Position,
+  Palette,
+  Surface,
+} from '../../types/other';
 
 /** Base component for all other components */
 
 defineOptions({ name: 'CdrBox' });
 
-export interface CdrBoxProps extends StylingProps {
-  tag?: keyof HTMLElementTagNameMap;
-  shadow?: 'flat' | 'raised' | 'elevated' | 'floating' | 'lifted';
-  radius?: 'sharp' | 'soft' | 'softer' | 'round';
-  surface?: 'primary' | 'secondary' | 'brand-spruce';
-  borderWidth?:
-    | 'eighth-x'
-    | 'quarter-x'
-    | 'half-x'
-    | 'three-quarter-x'
-    | 'one-x'
-    | 'one-and-a-half-x'
-    | 'two-x'
-    | 'three-x'
-    | 'four-x';
-  borderColor?: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
-  elevation?:
-    | 'ground'
-    | 'dropdown'
-    | 'popover'
-    | 'navigation'
-    | 'sticky'
-    | 'notification'
-    | 'modal';
-  position?: CSS.Properties['position'];
-  palette?: 'primary' | 'sale';
+export interface CdrBoxProps extends HTMLAttributes {
+  tag?: Tag;
+  shadow?: Shadow;
+  radius?: Radius;
+  surface?: Surface;
+  borderWidth?: Space;
+  borderColor?: BorderColor;
+  elevation?: Elevation;
+  position?: Position;
+  palette?: Palette;
+  m?: Space;
+  mx?: Space;
+  my?: Space;
+  ml?: Space;
+  mr?: Space;
+  mt?: Space;
+  mb?: Space;
+  p?: Space;
+  px?: Space;
+  py?: Space;
+  pl?: Space;
+  pr?: Space;
+  pt?: Space;
+  pb?: Space;
 }
 
 const props = withDefaults(defineProps<CdrBoxProps>(), {
   tag: 'div',
-  shadow: undefined,
-  radius: undefined,
-  surface: undefined,
-  borderWidth: undefined,
-  borderColor: undefined,
-  elevation: undefined,
-  position: undefined,
-  palette: undefined,
 });
 
 const style = useCssModule();
 const baseClass = 'cdr-box';
-const borderClass = `${baseClass}__border`;
-const radiusClass = `${baseClass}__radius`;
-const shadowClass = `${baseClass}__shadow`;
-const surfaceClass = `${baseClass}__surface`;
-const elevationClass = `${baseClass}__elevation`;
-const paletteClass = `${baseClass}__palette`;
+const borderClass = `${baseClass}--border`;
+const radiusClass = `${baseClass}--radius`;
+const shadowClass = `${baseClass}--shadow`;
+const surfaceClass = `${baseClass}--surface`;
+const elevationClass = `${baseClass}--elevation`;
+const paletteClass = `${baseClass}--palette`;
 
 // Map of zIndex for elevation
 const elevations = {
@@ -79,6 +80,25 @@ const palettes = {
     surface: 'primary',
   },
 };
+
+// Map of margins and padding
+const marginsAndPaddingMap = {
+  m: 'margin',
+  mx: 'marginInline',
+  my: 'marginBlock',
+  ml: 'marginInlineStart',
+  mr: 'marginInlineEnd',
+  mt: 'marginTop',
+  mb: 'marginBottom',
+  p: 'padding',
+  px: 'marginInline',
+  py: 'paddingBlock',
+  pl: 'paddingInlineStart',
+  pr: 'paddingInlineEnd',
+  pt: 'paddingTop',
+  pb: 'paddingBottom',
+};
+const marginAndPaddingKeys = Object.keys(marginsAndPaddingMap);
 
 // Manages the props passed along to CdrBox
 const computedProps = computed(() => {
@@ -135,6 +155,15 @@ const computedProps = computed(() => {
     }
 
     classes.add(elevationClass);
+  }
+
+  // Add margin and padding
+  if (marginAndPaddingKeys.find((key) => props[key])) {
+    marginAndPaddingKeys.forEach((key) => {
+      if (props[key]) {
+        inlineStyles[marginsAndPaddingMap[key]] = `var(--cdr-space-scale-${props[key]})`;
+      }
+    });
   }
 
   return { style: inlineStyles, class: mapClasses(style, ...classes) };

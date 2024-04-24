@@ -3,28 +3,34 @@
 
 .cdr-box {
   @include cdr-box-base-mixin;
+  // @include cdr-box-border-mixin;
+  // @include cdr-box-radius-mixin;
+  // @include cdr-box-shadow-mixin;
+  // @include cdr-box-surface-mixin;
+  // @include cdr-box-elevation-mixin;
+  // @include cdr-box-palette-mixin;
 }
 
-.cdr-box__border {
+.cdr-box--border {
   @include cdr-box-border-mixin;
 }
 
-.cdr-box__radius {
+.cdr-box--radius {
   @include cdr-box-radius-mixin;
 }
 
-.cdr-box__shadow {
+.cdr-box--shadow {
   @include cdr-box-shadow-mixin;
 }
 
-.cdr-box__surface {
+.cdr-box--surface {
   @include cdr-box-surface-mixin;
 }
 
-.cdr-box__elevation {
+.cdr-box--elevation {
   @include cdr-box-elevation-mixin;
 }
 
-.cdr-box__palette {
+.cdr-box--palette {
   @include cdr-box-palette-mixin;
 }

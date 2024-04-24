@@ -11,12 +11,12 @@ export interface Example {
 const boxes: Example[] = [
   {
     description: 'This is a styled button',
-    props: {},
+    props: { 'data-id': 'test', surface: 'secondary' },
   },
   {
     description:
-      'This button has padding, background, shadow, and radius applied. It inherits all props from CdrUnstyledButton',
-    props: {},
+      'This button has a modifier prop applied. It inherits all props from CdrUnstyledButton',
+    props: { modifier: 'secondary' },
   },
 ];
 </script>
