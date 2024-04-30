@@ -1,6 +1,0 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrUnstyledButton.vars.scss';
-
-.cdr-unstyled-button {
-  @include cdr-unstyled-button-base-mixin;
-}

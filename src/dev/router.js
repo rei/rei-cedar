@@ -34,7 +34,9 @@ const routes = [
   { path: '/choreographer', name: 'Choreographer', component: Examples.choreographer },
   { path: '/containers', name: 'Container', component: Examples.container },
   { path: '/formGroups', name: 'Form Groups', component: Examples.formGroup },
+  { path: '/genericButton', name: 'GenericButton', component: Examples.genericButton },
   { path: '/grid', name: 'Grid', component: Examples.grid },
+  { path: '/headlessButton', name: 'HeadlessButton', component: Examples.headlessButton },
   { path: '/icons', name: 'Icons', component: Examples.icon },
   { path: '/images', name: 'Images', component: Examples.images },
   { path: '/inputs', name: 'Input', component: Examples.inputs },
@@ -53,7 +55,6 @@ const routes = [
   { path: '/selects', name: 'Selects', component: Examples.selects },
   { path: '/skeleton', name: 'Skeleton', component: Examples.skeleton },
   { path: '/split-surface', name: 'Split Surface', component: Examples.splitSurface },
-  { path: '/styledButton', name: 'StyledButton', component: Examples.styledButton },
   { path: '/tables', name: 'Tables', component: Examples.tables },
   { path: '/tabs', name: 'Tabs', component: Examples.tabs },
   { path: '/texts', name: 'Texts', component: Examples.texts },
@@ -62,7 +63,6 @@ const routes = [
   { path: '/toggleButton', name: 'ToggleButton', component: Examples.toggleButton },
   { path: '/switch', name: 'Switch', component: Examples.cdrSwitch },
   { path: '/tooltip', name: 'Tooltip', component: Examples.tooltip },
-  { path: '/unstyledButton', name: 'UnstyledButton', component: Examples.unstyledButton },
 
   // Nightwatch test targets
   { path: '/e2e-1', component: e2e1 },

@@ -1,11 +1,14 @@
-/**
- * HTMLAttributes data object for allowing any prop to get passed to child
- *
- * @interface HTMLAttributes
- */
-export interface HTMLAttributes {
-  [key: string]: any;
-}
+import type {
+  Tag,
+  Space,
+  Shadow,
+  Radius,
+  BorderColor,
+  Elevation,
+  Position,
+  Palette,
+  Surface,
+} from './other';
 
 /**
  * Breadcrumb data object
@@ -135,4 +138,53 @@ export interface pictureSourceObject {
 export interface baseTextProps {
   /** Sets the HTML tag (p, span, h1, h2, etc) */
   tag?: string;
+}
+
+/**
+ * HTMLAttributes data object for allowing any prop to get passed to child
+ * @interface HTMLAttributes
+ */
+export interface HTMLAttributes {
+  [key: string]: any;
+}
+
+/**
+ * AtomProps is used by all CdrBox based components
+ * @interface AtomProps
+ */
+export interface AtomProps extends HTMLAttributes {
+  tag?: Tag;
+  shadow?: Shadow;
+  radius?: Radius;
+  surface?: Surface;
+  withBorder?: boolean;
+  borderWidth?: Space;
+  borderColor?: BorderColor;
+  elevation?: Elevation;
+  position?: Position;
+  palette?: Palette;
+  m?: Space;
+  mx?: Space;
+  my?: Space;
+  ml?: Space;
+  mr?: Space;
+  mt?: Space;
+  mb?: Space;
+  p?: Space;
+  px?: Space;
+  py?: Space;
+  pl?: Space;
+  pr?: Space;
+  pt?: Space;
+  pb?: Space;
+}
+
+/**
+ * SurfaceProps contains the props used to create a surface
+ * @interface SurfaceProps
+ * @extends AtomProps
+ */
+export interface SurfaceProps extends AtomProps {
+  surface?: Surface;
+  palette?: Palette;
 }

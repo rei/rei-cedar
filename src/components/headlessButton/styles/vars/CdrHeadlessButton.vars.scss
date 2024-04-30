@@ -1,0 +1,21 @@
+@mixin cdr-headless-button-base-reset-mixin() {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  padding-block: 0;
+  padding-inline: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin cdr-headless-button-base-mixin() {
+  @include cdr-text-utility-sans-300;
+  @include cdr-headless-button-base-reset-mixin;
+}

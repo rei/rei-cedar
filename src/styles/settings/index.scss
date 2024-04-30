@@ -1,5 +1,132 @@
 $cdr-warn: false;
-@import "../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
-@import "./alignment.vars";
-@import "./options.vars";
-@import "./visibility.vars";
+@import '../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@import './alignment.vars';
+@import './options.vars';
+@import './visibility.vars';
+
+:root {
+  // New elevation tokens
+  --cdr-elevation-ground: 0;
+  --cdr-elevation-dropdown: 100;
+  --cdr-elevation-popover: 200;
+  --cdr-elevation-navigation: 300;
+  --cdr-elevation-sticky: 400;
+  --cdr-elevation-notification: 500;
+  --cdr-elevation-modal: 600;
+
+  // New color tokens
+  --cdr-color-background-transparent: transparent;
+  --cdr-color-border-transparent: transparent;
+  --cdr-color-border-dark: var(--cdr-color-text-primary);
+
+  // New spacing tokens
+  --cdr-space-inset-zero: 0;
+  --cdr-space-inset-sixteenth-x: 0.1rem;
+  --cdr-space-zero: 0;
+  --cdr-space-sixteenth-x: 0.1rem;
+
+  // Defaults are the least intrusive state of something
+  --cdr-default-border-width: var(--cdr-space-inset-zero);
+  --cdr-default-border-color: var(--cdr-color-border-primary);
+  --cdr-default-border: inset var(--cdr-default-border-width) 0 0 var(--cdr-color-border-primary);
+  --cdr-default-surface: transparent;
+  --cdr-default-radius: var(--cdr-radius-sharp);
+  --cdr-default-shadow: var(--cdr-prominence-flat);
+  --cdr-default-elevation: var(--cdr-elevation-ground);
+  --cdr-default-position: relative;
+  --cdr-default-active-border-color: var(--cdr-color-border-dark);
+}
+
+@mixin cdr-radius-mixin() {
+  border-radius: var(--cdr-radius, var(--cdr-default-radius));
+  overflow: hidden;
+}
+
+// This mixin provides a border and a shadow by layering two box-shadows.
+// The border is on a sudo element to elevate it above inner content.
+@mixin cdr-border-shadow-mixin() {
+  position: relative;
+
+  &::after {
+    @include cdr-radius-mixin;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    box-shadow:
+      inset 0 0 0 var(--cdr-border-width, var(--cdr-default-border-width))
+        var(--cdr-border-color, var(--cdr-palette-border-color, var(--cdr-default-border-color))),
+      var(--cdr-shadow, var(--cdr-default-shadow));
+  }
+}
+
+@mixin cdr-surface-mixin() {
+  background-color: var(--cdr-surface, var(--cdr-palette-surface, var(--cdr-default-surface)));
+}
+
+@mixin cdr-elevation-mixin() {
+  z-index: var(--cdr-elevation, var(--cdr-default-elevation));
+  position: var(--cdr-position, var(--cdr-default-position));
+}
+
+@mixin cdr-palette-primary-mixin() {
+  --cdr-palette-surface: var(--cdr-color-background-primary);
+  --cdr-palette-border-color: var(--cdr-color-border-primary);
+}
+
+@mixin cdr-palette-secondary-mixin() {
+  --cdr-palette-surface: var(--cdr-color-background-secondary);
+  --cdr-palette-border-color: var(--cdr-color-border-secondary);
+}
+
+@mixin cdr-action-mixin() {
+  transition:
+    color $cdr-duration-1-x $cdr-timing-function-ease,
+    fill $cdr-duration-1-x $cdr-timing-function-ease,
+    background-color $cdr-duration-1-x $cdr-timing-function-ease,
+    box-shadow $cdr-duration-1-x $cdr-timing-function-ease;
+
+  &--transparent {
+    &:hover {
+      background-color: $cdr-color-background-primary;
+    }
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    cursor: not-allowed !important;
+  }
+
+  &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
+    filter: brightness(95%);
+  }
+
+  &:focus {
+    --cdr-border-width: var(--cdr-space-inset-quarter-x);
+  }
+
+  &:active {
+    --cdr-border-width: var(--cdr-space-inset-quarter-x);
+  }
+
+  &[aria-pressed='true'],
+  &[aria-checked='true'] {
+    --cdr-border-width: var(--cdr-space-inset-eighth-x);
+    --cdr-border-color: var(--cdr-default-active-border-color);
+    cursor: default;
+  }
+
+  &[aria-pressed='true']:focus,
+  &[aria-checked='true']:focus {
+    --cdr-border-width: var(--cdr-space-inset-quarter-x);
+  }
+
+  &[aria-pressed='true']:active,
+  &[aria-checked='true']:active {
+    --cdr-border-width: var(--cdr-space-inset-quarter-x);
+  }
+}

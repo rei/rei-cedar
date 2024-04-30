@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import CdrBox, { type CdrBoxProps } from '../box/CdrBox.vue';
+import CdrBox from '../box/CdrBox.vue';
+import type { SurfaceProps } from '../../types/interfaces';
 
 /** Base component for all other buttons */
 
-defineOptions({ name: 'CdrUnstyledButton' });
+defineOptions({ name: 'CdrHeadlessButton' });
 
-export interface CdrUnstyledButtonProps extends CdrBoxProps {
+export interface CdrHeadlessButtonProps extends SurfaceProps {
   type?: 'button' | 'reset' | 'submit' | undefined;
 }
 
-const props = withDefaults(defineProps<CdrUnstyledButtonProps>(), {
+const props = withDefaults(defineProps<CdrHeadlessButtonProps>(), {
   tag: 'button',
   type: undefined,
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-unstyled-button';
+const baseClass = 'cdr-headless-button';
 
 // Manages the props passed along to CdrBox
 const computedProps = computed(() => ({
@@ -35,4 +36,4 @@ const computedProps = computed(() => ({
   </CdrBox>
 </template>
 
-<style lang="scss" module src="./styles/CdrUnstyledButton.module.scss"></style>
+<style lang="scss" module src="./styles/CdrHeadlessButton.module.scss"></style>

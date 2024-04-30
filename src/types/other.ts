@@ -2,6 +2,8 @@ import type * as CSS from 'csstype';
 
 export type Tag = keyof HTMLElementTagNameMap;
 export type Space =
+  | 'zero'
+  | 'sixteenth-x'
   | 'eighth-x'
   | 'quarter-x'
   | 'half-x'
@@ -14,7 +16,7 @@ export type Space =
 export type Shadow = 'flat' | 'raised' | 'elevated' | 'floating' | 'lifted';
 export type Surface = 'transparent' | 'primary' | 'secondary' | 'brand-spruce';
 export type Radius = 'sharp' | 'soft' | 'softer' | 'round';
-export type BorderColor = 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+export type BorderColor = 'transparent' | 'primary' | 'secondary' | 'success' | 'warning' | 'error';
 export type Elevation =
   | 'ground'
   | 'dropdown'
@@ -24,4 +26,4 @@ export type Elevation =
   | 'notification'
   | 'modal';
 export type Position = CSS.Properties['position'];
-export type Palette = 'primary' | 'sale';
+export type Palette = 'primary' | 'secondary' | 'sale';

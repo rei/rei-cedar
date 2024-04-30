@@ -1,36 +1,26 @@
 @import '../../../styles/settings/index.scss';
-@import './vars/CdrBox.vars.scss';
-
-.cdr-box {
-  @include cdr-box-base-mixin;
-  // @include cdr-box-border-mixin;
-  // @include cdr-box-radius-mixin;
-  // @include cdr-box-shadow-mixin;
-  // @include cdr-box-surface-mixin;
-  // @include cdr-box-elevation-mixin;
-  // @include cdr-box-palette-mixin;
-}
-
-.cdr-box--border {
-  @include cdr-box-border-mixin;
-}
 
 .cdr-box--radius {
-  @include cdr-box-radius-mixin;
+  @include cdr-radius-mixin;
 }
 
+.cdr-box--border,
 .cdr-box--shadow {
-  @include cdr-box-shadow-mixin;
+  @include cdr-border-shadow-mixin;
 }
 
 .cdr-box--surface {
-  @include cdr-box-surface-mixin;
+  @include cdr-surface-mixin;
 }
 
 .cdr-box--elevation {
-  @include cdr-box-elevation-mixin;
+  @include cdr-elevation-mixin;
 }
 
-.cdr-box--palette {
-  @include cdr-box-palette-mixin;
+.cdr-box--palette-primary {
+  @include cdr-palette-primary-mixin;
+}
+
+.cdr-box--palette-secondary {
+  @include cdr-palette-secondary-mixin;
 }
