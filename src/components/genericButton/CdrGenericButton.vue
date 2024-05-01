@@ -11,7 +11,6 @@ defineOptions({ name: 'CdrGenericButton' });
 
 export interface CdrGenericButtonProps extends CdrHeadlessButtonProps {
   checked?: boolean;
-  modifier?: 'primary' | 'secondary';
 }
 
 const props = withDefaults(defineProps<CdrGenericButtonProps>(), {});
@@ -19,12 +18,12 @@ const props = withDefaults(defineProps<CdrGenericButtonProps>(), {});
 const style = useCssModule();
 const baseClass = 'cdr-generic-button';
 
-// Manages the props passed along to CdrBox
+// Manages the props passed along to CdrHeadlessButton
 const computedProps = computed(() => {
-  const { checked, modifier, ...otherProps } = props;
+  const { checked, ...otherProps } = props;
   const classes = new Set([baseClass]);
   const inlineStyles: CSS.Properties = {};
-  const additionalProps: CdrHeadlessButtonProps = { withBorder: true };
+  const additionalProps: CdrGenericButtonProps = {};
 
   // Add checked
   if (checked) {

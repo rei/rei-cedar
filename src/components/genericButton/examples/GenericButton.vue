@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import CdrGenericButton, { type CdrGenericButtonProps } from '../CdrGenericButton.vue';
 import CdrBox from '../../box/CdrBox.vue';
 
-defineOptions({ name: 'StyledButton' });
+defineOptions({ name: 'GenericButton' });
 
 export interface Example {
   name?: string;

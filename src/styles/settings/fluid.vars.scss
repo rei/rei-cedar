@@ -25,6 +25,7 @@
     --cdr-type-scale-7: clamp(5.73rem, 4.17cqw + 4.4rem, 9.54rem);
 
     // space
+    --cdr-space-scale-sixteenth-x: clamp(0.1rem, 0.1rem + 0.11cqi, 0.2rem);
     --cdr-space-scale-eighth-x: clamp(0.2rem, 0.2rem + 0.11cqi, 0.3rem);
     --cdr-space-scale-quarter-x: clamp(0.3rem, 0.3rem + 0.11cqi, 0.4rem);
     --cdr-space-scale-half-x: clamp(0.4rem, 0.4rem + 0.11cqi, 0.5rem);

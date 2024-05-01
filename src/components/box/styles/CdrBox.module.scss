@@ -4,9 +4,12 @@
   @include cdr-radius-mixin;
 }
 
-.cdr-box--border,
 .cdr-box--shadow {
-  @include cdr-border-shadow-mixin;
+  @include cdr-shadow-mixin;
+}
+
+.cdr-box--border {
+  @include cdr-border-mixin;
 }
 
 .cdr-box--surface {

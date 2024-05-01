@@ -42,9 +42,11 @@ $cdr-warn: false;
   overflow: hidden;
 }
 
-// This mixin provides a border and a shadow by layering two box-shadows.
-// The border is on a sudo element to elevate it above inner content.
-@mixin cdr-border-shadow-mixin() {
+@mixin cdr-shadow-mixin() {
+  box-shadow: var(--cdr-shadow, var(--cdr-default-shadow));
+}
+
+@mixin cdr-border-mixin() {
   position: relative;
 
   &::after {
@@ -56,10 +58,8 @@ $cdr-warn: false;
     width: 100%;
     height: 100%;
     content: '';
-    box-shadow:
-      inset 0 0 0 var(--cdr-border-width, var(--cdr-default-border-width))
-        var(--cdr-border-color, var(--cdr-palette-border-color, var(--cdr-default-border-color))),
-      var(--cdr-shadow, var(--cdr-default-shadow));
+    box-shadow: inset 0 0 0 var(--cdr-border-width, var(--cdr-default-border-width))
+      var(--cdr-border-color, var(--cdr-palette-border-color, var(--cdr-default-border-color)));
   }
 }
 
@@ -83,6 +83,9 @@ $cdr-warn: false;
 }
 
 @mixin cdr-action-mixin() {
+  // Include a border, which is used to apply checked, focus, and active styling
+  @include cdr-border-mixin;
+
   transition:
     color $cdr-duration-1-x $cdr-timing-function-ease,
     fill $cdr-duration-1-x $cdr-timing-function-ease,
@@ -105,10 +108,7 @@ $cdr-warn: false;
     filter: brightness(95%);
   }
 
-  &:focus {
-    --cdr-border-width: var(--cdr-space-inset-quarter-x);
-  }
-
+  &:focus,
   &:active {
     --cdr-border-width: var(--cdr-space-inset-quarter-x);
   }
