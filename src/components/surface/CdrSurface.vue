@@ -7,7 +7,7 @@ import type { SurfaceProps, InlineCss } from '../../types/interfaces';
 
 defineOptions({ name: 'CdrSurface' });
 
-export interface CdrSurfaceProps extends SurfaceProps {}
+export type CdrSurfaceProps = SurfaceProps;
 
 const props = withDefaults(defineProps<CdrSurfaceProps>(), {
   tag: 'div',
