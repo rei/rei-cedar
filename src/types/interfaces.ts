@@ -1,4 +1,5 @@
 import type {
+  Display,
   Tag,
   Space,
   Shadow,
@@ -7,7 +8,7 @@ import type {
   Elevation,
   Position,
   Palette,
-  Surface,
+  Background,
 } from './other';
 
 /**
@@ -141,28 +142,39 @@ export interface baseTextProps {
 }
 
 /**
- * HTMLAttributes data object for allowing any prop to get passed to child
- * @interface HTMLAttributes
+ * HtmlAttributes data object for allowing any HTML attribute
+ * @interface HtmlAttributes
  */
-export interface HTMLAttributes {
+export interface HtmlAttributes {
   [key: string]: any;
 }
 
 /**
- * AtomProps is used by all CdrBox based components
- * @interface AtomProps
+ * InlineCss data object for allowing any CSS attribute, including CSS variables
+ * @interface InlineCss
  */
-export interface AtomProps extends HTMLAttributes {
+export interface InlineCss {
+  [key: string]: any;
+}
+
+/**
+ * SurfaceProps contains the props used to create a surface
+ * @interface SurfaceProps
+ * @extends HtmlAttributes
+ */
+export interface SurfaceProps extends HtmlAttributes {
+  display?: Display;
+  background?: Background;
+  palette?: Palette;
   tag?: Tag;
   shadow?: Shadow;
   radius?: Radius;
-  surface?: Surface;
   withBorder?: boolean;
   borderWidth?: Space;
   borderColor?: BorderColor;
   elevation?: Elevation;
   position?: Position;
-  palette?: Palette;
+  fixed?: boolean;
   m?: Space;
   mx?: Space;
   my?: Space;
@@ -177,14 +189,4 @@ export interface AtomProps extends HTMLAttributes {
   pr?: Space;
   pt?: Space;
   pb?: Space;
-}
-
-/**
- * SurfaceProps contains the props used to create a surface
- * @interface SurfaceProps
- * @extends AtomProps
- */
-export interface SurfaceProps extends AtomProps {
-  surface?: Surface;
-  palette?: Palette;
 }

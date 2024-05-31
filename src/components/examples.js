@@ -1,7 +1,6 @@
 import abstract from 'componentsdir/abstract/examples/Abstract.vue';
 import accordion from 'componentsdir/accordion/examples/Accordion.vue';
 import banner from 'componentsdir/banner/examples/Banner.vue';
-import box from 'componentsdir/box/examples/Box.vue';
 import breadcrumb from 'componentsdir/breadcrumb/examples/Breadcrumb.vue';
 import buttons from 'componentsdir/button/examples/Buttons.vue';
 import captions from 'componentsdir/caption/examples/Caption.vue';
@@ -11,9 +10,8 @@ import chip from 'componentsdir/chip/examples/Chip.vue';
 import choreographer from 'componentsdir/choreographer/examples/Choreographer.vue';
 import container from 'componentsdir/container/examples/Container.vue';
 import formGroup from 'componentsdir/formGroup/examples/FormGroup.vue';
-import genericButton from 'componentsdir/genericButton/examples/GenericButton.vue';
+import fulfillmentTile from 'componentsdir/fulfillmentTile/examples/FulfillmentTile.vue';
 import grid from 'componentsdir/grid/examples/Grid.vue';
-import headlessButton from 'componentsdir/headlessButton/examples/HeadlessButton.vue';
 import icon from 'componentsdir/icon/examples/Icons.vue';
 import images from 'componentsdir/image/examples/Images.vue';
 import inputs from 'componentsdir/input/examples/Inputs.vue';
@@ -32,6 +30,8 @@ import rating from 'componentsdir/rating/examples/Ratings.vue';
 import selects from 'componentsdir/select/examples/Selects.vue';
 import skeleton from 'componentsdir/skeleton/examples/Skeleton.vue';
 import splitSurface from 'componentsdir/splitSurface/examples/SplitSurface.vue';
+import surface from 'componentsdir/surface/examples/Surface.vue';
+import surfaceSelection from 'componentsdir/surfaceSelection/examples/SurfaceSelection.vue';
 import tables from 'componentsdir/table/examples/Table.vue';
 import tabs from 'componentsdir/tabs/examples/Tabs.vue';
 import texts from 'componentsdir/text/examples/Text.vue';
@@ -45,7 +45,6 @@ export default {
   abstract,
   banner,
   accordion,
-  box,
   breadcrumb,
   buttons,
   captions,
@@ -54,10 +53,9 @@ export default {
   chip,
   choreographer,
   container,
+  fulfillmentTile,
   formGroup,
-  genericButton,
   grid,
-  headlessButton,
   icon,
   images,
   inputs,
@@ -76,6 +74,8 @@ export default {
   selects,
   skeleton,
   splitSurface,
+  surface,
+  surfaceSelection,
   tables,
   tabs,
   texts,

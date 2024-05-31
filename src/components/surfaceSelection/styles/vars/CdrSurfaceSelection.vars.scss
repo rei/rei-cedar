@@ -1,0 +1,61 @@
+@import '../../../../styles/settings/index.scss';
+
+@mixin cdr-surface-selection-base-mixin() {
+  @include cdr-text-utility-sans-300;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  padding-block: 0;
+  padding-inline: 0;
+
+  transition:
+    color var(--cdr-duration-1-x) var(--cdr-timing-function-ease),
+    fill var(--cdr-duration-1-x) var(--cdr-timing-function-ease),
+    background-color var(--cdr-duration-1-x) var(--cdr-timing-function-ease),
+    box-shadow var(--cdr-duration-1-x) var(--cdr-timing-function-ease);
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    --cdr-palette-background: var(--cdr-palette-background-disabled);
+    --cdr-palette-border-color: var(--cdr-palette-border-color-disabled);
+    --cdr-palette-text-color: var(--cdr-palette-text-color-disabled);
+    cursor: not-allowed !important;
+  }
+
+  &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
+    --cdr-palette-background: var(--cdr-palette-background-hover);
+    --cdr-palette-border-color: var(--cdr-palette-border-color-hover);
+  }
+
+  &:focus,
+  &:active,
+  &[aria-pressed='true']:focus,
+  &[aria-pressed='true']:active,
+  &[aria-checked='true']:focus,
+  &[aria-checked='true']:active {
+    @include cdr-border-mixin;
+    outline: none;
+    --cdr-border-width: var(--cdr-action-border-width-active);
+    --cdr-palette-background: var(--cdr-palette-background-active);
+    --cdr-palette-border-color: var(--cdr-palette-border-color-active);
+  }
+
+  &[aria-pressed='true'],
+  &[aria-checked='true'] {
+    @include cdr-border-mixin;
+    --cdr-border-width: var(--cdr-action-border-width-checked);
+    --cdr-palette-background: var(--cdr-palette-background-checked);
+    --cdr-palette-border-color: var(--cdr-palette-border-color-checked);
+    @include cdr-text-utility-sans-strong-300;
+  }
+
+  &[aria-pressed='true']:not([role='checkbox']),
+  &[aria-checked='true']:not([role='checkbox']) {
+    cursor: default;
+  }
+}

@@ -1,0 +1,9 @@
+@import './vars/CdrFulfillmentTile.vars.scss';
+
+.cdr-fulfillment-tile {
+  @include cdr-fulfillment-tile-base-mixin;
+
+  &__content {
+    @include cdr-fulfillment-tile-content-mixin;
+  }
+}

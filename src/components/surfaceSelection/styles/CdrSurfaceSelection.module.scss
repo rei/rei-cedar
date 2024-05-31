@@ -1,0 +1,5 @@
+@import './vars/CdrSurfaceSelection.vars.scss';
+
+.cdr-surface-selection {
+  @include cdr-surface-selection-base-mixin;
+}

@@ -1,6 +1,0 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrHeadlessButton.vars.scss';
-
-.cdr-headless-button {
-  @include cdr-headless-button-base-mixin;
-}

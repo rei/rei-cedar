@@ -14,9 +14,16 @@ export type Space =
   | 'three-x'
   | 'four-x';
 export type Shadow = 'flat' | 'raised' | 'elevated' | 'floating' | 'lifted';
-export type Surface = 'transparent' | 'primary' | 'secondary' | 'brand-spruce';
+export type Background = 'transparent' | 'primary' | 'secondary' | 'brand-spruce';
 export type Radius = 'sharp' | 'soft' | 'softer' | 'round';
-export type BorderColor = 'transparent' | 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+export type BorderColor =
+  | 'transparent'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'message-default-01';
 export type Elevation =
   | 'ground'
   | 'dropdown'
@@ -26,4 +33,5 @@ export type Elevation =
   | 'notification'
   | 'modal';
 export type Position = CSS.Properties['position'];
-export type Palette = 'primary' | 'secondary' | 'sale';
+export type Palette = 'primary' | 'secondary';
+export type Display = CSS.Properties['display'];

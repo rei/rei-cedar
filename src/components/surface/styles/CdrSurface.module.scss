@@ -1,29 +1,29 @@
 @import '../../../styles/settings/index.scss';
 
-.cdr-box--radius {
+.cdr-surface--radius {
   @include cdr-radius-mixin;
 }
 
-.cdr-box--shadow {
+.cdr-surface--shadow {
   @include cdr-shadow-mixin;
 }
 
-.cdr-box--border {
+.cdr-surface--border {
   @include cdr-border-mixin;
 }
 
-.cdr-box--surface {
-  @include cdr-surface-mixin;
+.cdr-surface--background {
+  @include cdr-background-mixin;
 }
 
-.cdr-box--elevation {
+.cdr-surface--elevation {
   @include cdr-elevation-mixin;
 }
 
-.cdr-box--palette-primary {
+.cdr-surface--palette-primary {
   @include cdr-palette-primary-mixin;
 }
 
-.cdr-box--palette-secondary {
+.cdr-surface--palette-secondary {
   @include cdr-palette-secondary-mixin;
 }

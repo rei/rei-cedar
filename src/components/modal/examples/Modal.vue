@@ -13,6 +13,7 @@
       role="dialog"
       data-ui="hamburger-modal"
       aria-labelledby="some-heading"
+      class="david-class"
     >
       <template #title>
         <cdr-text
