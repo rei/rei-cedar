@@ -66,7 +66,7 @@ const boxes: Example[] = [
 <template>
   <div class="example">
     <h2>Surface</h2>
-    <template v-for="({ label, props }, index) in boxes" :key="index">
+    <template v-for="({ label, props }) in boxes" :key="label">
       <hr class="example__hr" />
       <CdrSurface v-bind="props">
         {{ label }}

@@ -23,7 +23,7 @@ const elevationClass = `${baseClass}--elevation`;
 const paletteClass = `${baseClass}--palette`;
 
 // Map of margins and padding
-const marginsAndPaddingMap = {
+const marginsAndPaddingMap: Record<string, string> = {
   m: 'margin',
   mx: 'marginInline',
   my: 'marginBlock',

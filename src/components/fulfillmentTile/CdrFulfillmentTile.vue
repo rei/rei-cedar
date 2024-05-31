@@ -5,7 +5,7 @@ import mapClasses from '../../utils/mapClasses';
 import CdrSurfaceSelection from '../surfaceSelection/CdrSurfaceSelection.vue';
 import type { CdrSurfaceSelectionProps } from '../surfaceSelection/CdrSurfaceSelection.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
-import CdrUtilitySans from '../text/presets/CdrUtilitySans.vue';
+import CdrUtilitySans, { type utilitySansTextProps } from '../text/presets/CdrUtilitySans.vue';
 
 /** Tile component for displaying a button with optional icon at the top right */
 
@@ -38,47 +38,61 @@ const rootProps = computed(() => {
 const headerProps = computed(() => ({
   typeScale: props.typeScale,
   class: style[`${baseClass}__header`],
-}))
+}));
 
-const bodyProps = computed(() => ({
-  scale: "-1",
-  tag: "div",
+const bodyProps = computed<utilitySansTextProps>(() => ({
+  scale: '-1',
+  tag: 'div',
   class: {
     [style[`${baseClass}__content`]]: true,
     [style[`${baseClass}__content--body`]]: true,
   },
-}))
+}));
 
-const footerProps = computed(() => ({
-  scale: "-1",
-  tag: "div",
+const footerProps = computed<utilitySansTextProps>(() => ({
+  scale: '-1',
+  tag: 'div',
   class: {
     [style[`${baseClass}__content`]]: true,
     [style[`${baseClass}__content--footer`]]: true,
   },
-}))
+}));
 </script>
 
 <template>
   <CdrSurfaceSelection v-bind="rootProps">
-    <CdrFulfillmentTileHeader v-if="$slots.label" v-bind="headerProps">
-      <template v-if="$slots['icon-left']" #icon-left>
+    <CdrFulfillmentTileHeader
+      v-if="$slots.label"
+      v-bind="headerProps"
+    >
+      <template
+        v-if="$slots['icon-left']"
+        #icon-left
+      >
         <slot name="icon-left" />
       </template>
       <template #label>
         <slot name="label" />
       </template>
-      <template v-if="$slots['icon-right']" #icon-right>
+      <template
+        v-if="$slots['icon-right']"
+        #icon-right
+      >
         <slot name="icon-right" />
       </template>
     </CdrFulfillmentTileHeader>
-    <CdrUtilitySans v-if="$slots.body" v-bind="bodyProps">
+    <CdrUtilitySans
+      v-if="$slots.body"
+      v-bind="bodyProps"
+    >
       <slot name="body" />
     </CdrUtilitySans>
-    <CdrUtilitySans v-if="$slots.footer" v-bind="footerProps">
+    <CdrUtilitySans
+      v-if="$slots.footer"
+      v-bind="footerProps"
+    >
       <slot name="footer" />
     </CdrUtilitySans>
-
   </CdrSurfaceSelection>
 </template>
 

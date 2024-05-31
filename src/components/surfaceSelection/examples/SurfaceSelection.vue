@@ -1,29 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import CdrSurfaceSelection, { type CdrSurfaceSelectionProps } from '../CdrSurfaceSelection.vue';
+import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
-import CdrText from '../../text/CdrText.vue';
 
 defineOptions({ name: 'SurfaceSelection' });
-
-
-
-// const boxes: Example[] = [
-//   {
-//     props: { 'data-id': 'test' },
-//   },
-//   {
-//     props: ,
-//   },
-//   {
-//     props: {
-//       palette: 'secondary',
-//       p: 'one-x',
-//       borderWidth: 'eighth-x',
-//       withBorder: true,
-//     },
-//   },
-// ];
 
 const chips = {
   count: 4,
@@ -51,48 +31,56 @@ const toggle = {
 };
 
 const toggleValue = ref(0);
-
-const card = {
-  props: {
-    class: 'example__card',
-    shadow: 'elevated',
-    radius: 'softer',
-    tag: 'a',
-    href: 'https://rei.com/',
-    palette: 'secondary',
-  },
-};
 </script>
 
 <template>
   <div class="example">
     <h2>SurfaceSelection</h2>
     <hr class="example__hr" />
-    <CdrSurfaceSelection>
-      This is a blank SurfaceSelection
-    </CdrSurfaceSelection>
+    <CdrSurfaceSelection>This is a blank SurfaceSelection</CdrSurfaceSelection>
     <hr class="example__hr" />
-    <CdrSurfaceSelection v-bind="{ p: 'one-x', palette: 'primary', withBorder: true, borderWidth: 'sixteenth-x' }">
+    <CdrSurfaceSelection
+      v-bind="{ p: 'one-x', palette: 'primary', withBorder: true, borderWidth: 'sixteenth-x' }"
+    >
       This surface uses the primary palette to apply a background and border color
     </CdrSurfaceSelection>
     <hr class="example__hr" />
-    <CdrSurfaceSelection v-bind="{ p: 'one-x', palette: 'secondary', withBorder: true, borderWidth: 'sixteenth-x' }">
+    <CdrSurfaceSelection
+      v-bind="{ p: 'one-x', palette: 'secondary', withBorder: true, borderWidth: 'sixteenth-x' }"
+    >
       This surface uses the secondary palette to apply a background and border color
     </CdrSurfaceSelection>
     <hr class="example__hr" />
     <h3 class="example__h3">Chips</h3>
     <div class="example__chips">
-      <CdrSurfaceSelection v-for="(x, index) in new Array(chips.count)" :key="index" v-bind="chips.props"
-        :checked="index === chipsValue" :disabled="index === 2" @click="chipsValue = index">
+      <CdrSurfaceSelection
+        v-for="index in chips.count"
+        :key="index"
+        v-bind="chips.props"
+        :checked="index === chipsValue"
+        :disabled="index === 2"
+        @click="chipsValue = index"
+      >
         Chip {{ index + 1 }}
       </CdrSurfaceSelection>
     </div>
     <hr class="example__hr" />
     <h3 class="example__h3">Toggle</h3>
-    <CdrSurface class="example__toggle" :with-border="true" border-width="sixteenth-x" p="quarter-x" radius="softer"
-      palette="secondary">
-      <CdrSurfaceSelection v-for="(x, index) in new Array(toggle.count)" :key="index" v-bind="toggle.props"
-        :checked="index === toggleValue" @click="toggleValue = index">
+    <CdrSurface
+      class="example__toggle"
+      :with-border="true"
+      border-width="sixteenth-x"
+      p="quarter-x"
+      radius="softer"
+      palette="secondary"
+    >
+      <CdrSurfaceSelection
+        v-for="index in toggle.count"
+        :key="index"
+        v-bind="toggle.props"
+        :checked="index === toggleValue"
+        @click="toggleValue = index"
+      >
         Toggle {{ index + 1 }}
       </CdrSurfaceSelection>
     </CdrSurface>

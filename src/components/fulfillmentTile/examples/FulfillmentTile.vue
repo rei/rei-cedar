@@ -15,7 +15,7 @@ const recommendedValue2 = ref([1]);
 const otherValue1 = ref(1);
 const otherValue2 = ref([1]);
 
-const toggleCheckbox = (value) => {
+const toggleCheckbox = (value: number) => {
   if (recommendedValue2.value.includes(value)) {
     recommendedValue2.value = recommendedValue2.value.filter((v) => v !== value);
   } else {
@@ -23,7 +23,7 @@ const toggleCheckbox = (value) => {
   }
 };
 
-const toggleCheckbox2 = (value) => {
+const toggleCheckbox2 = (value: number) => {
   if (otherValue2.value.includes(value)) {
     otherValue2.value = otherValue2.value.filter((v) => v !== value);
   } else {
@@ -144,8 +144,6 @@ const toggleCheckbox2 = (value) => {
       </CdrFulfillmentTile>
     </div>
     <br />
-    <!--  type-scale="-1"
-         @click="toggleCheckbox2(1)" -->
     <div class="example__tile-row example__tile-row--vertical">
       <CdrSurface class="example__tile example__tile--search example__tile--search-other"
         :border-width="otherValue2.includes(1) ? 'eighth-x' : 'sixteenth-x'" :with-border="true">
