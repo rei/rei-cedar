@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import CdrSurface, { type CdrSurfaceProps } from '../CdrSurface.vue';
+import CdrSurface from '../CdrSurface.vue';
+import type { CdrSurfaceProps } from '../../../types/interfaces';
 
 defineOptions({ name: 'Surface' });
 
