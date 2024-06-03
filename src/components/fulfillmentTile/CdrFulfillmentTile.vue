@@ -3,18 +3,13 @@ import { useCssModule, computed } from 'vue';
 import type * as CSS from 'csstype';
 import mapClasses from '../../utils/mapClasses';
 import CdrSurfaceSelection from '../surfaceSelection/CdrSurfaceSelection.vue';
-import type { CdrSurfaceSelectionProps } from '../surfaceSelection/CdrSurfaceSelection.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
 import CdrUtilitySans, { type utilitySansTextProps } from '../text/presets/CdrUtilitySans.vue';
+import { CdrFulfillmentTileProps } from '../../types/interfaces'
 
 /** Tile component for displaying a button with optional icon at the top right */
 
 defineOptions({ name: 'CdrFulfillmentTile' });
-
-export interface CdrFulfillmentTileProps extends CdrSurfaceSelectionProps {
-  loading?: boolean;
-  typeScale?: '-1' | '0' | '1' | '2' | '3';
-}
 
 const props = withDefaults(defineProps<CdrFulfillmentTileProps>(), {
   typeScale: '0',

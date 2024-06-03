@@ -159,10 +159,10 @@ export interface InlineCss {
 
 /**
  * SurfaceProps contains the props used to create a surface
- * @interface SurfaceProps
+ * @interface CdrSurfaceProps
  * @extends HtmlAttributes
  */
-export interface SurfaceProps extends HtmlAttributes {
+export interface CdrSurfaceProps extends HtmlAttributes {
   display?: Display;
   background?: Background;
   palette?: Palette;
@@ -189,4 +189,14 @@ export interface SurfaceProps extends HtmlAttributes {
   pr?: Space;
   pt?: Space;
   pb?: Space;
+}
+
+export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
+  type?: 'button' | 'reset' | 'submit' | undefined;
+  checked?: boolean;
+}
+
+export interface CdrFulfillmentTileProps extends CdrSurfaceSelectionProps {
+  loading?: boolean;
+  typeScale?: '-1' | '0' | '1' | '2' | '3';
 }

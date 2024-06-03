@@ -2,16 +2,11 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import CdrSurface from '../surface/CdrSurface.vue';
-import type { CdrSurfaceProps } from '../surface/CdrSurface.vue';
+import { CdrSurfaceSelectionProps } from '../../types/interfaces'
 
-/** SurfaceSelection component for buttons that may have a checked state */
+/** Component for buttons that may have a checked state */
 
 defineOptions({ name: 'CdrSurfaceSelection' });
-
-export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
-  type?: 'button' | 'reset' | 'submit' | undefined;
-  checked?: boolean;
-}
 
 const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
   tag: 'button',
