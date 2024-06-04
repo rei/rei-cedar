@@ -2,7 +2,7 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import CdrSurface from '../surface/CdrSurface.vue';
-import { CdrSurfaceSelectionProps } from '../../types/interfaces'
+import { CdrSurfaceSelectionProps, HtmlAttributes } from '../../types/interfaces';
 
 /** Component for buttons that may have a checked state */
 
@@ -19,12 +19,10 @@ const baseClass = 'cdr-surface-selection';
 // Manages the props passed along to CdrSurface
 const computedProps = computed(() => {
   const { checked, ...otherProps } = props;
-  const additionalProps: CdrSurfaceSelectionProps = {};
+  const additionalProps: HtmlAttributes = {};
 
   // Add checked
-  if (checked) {
-    additionalProps['aria-checked'] = 'true';
-  }
+  additionalProps['aria-checked'] = checked;
 
   return {
     ...otherProps,

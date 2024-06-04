@@ -2,17 +2,9 @@
 import { useCssModule } from 'vue';
 import CdrUtilitySans from '../text/presets/CdrUtilitySans.vue';
 
-/** Tile header component */
+/** Fulfillment tile header component */
 
 defineOptions({ name: 'CdrFulfillmentTileHeader' });
-
-export interface CdrFulfillmentTileHeaderProps {
-  typeScale?: '-1' | '0' | '1' | '2' | '3';
-}
-
-withDefaults(defineProps<CdrFulfillmentTileHeaderProps>(), {
-  typeScale: '0',
-});
 
 const style = useCssModule();
 </script>
@@ -27,7 +19,7 @@ const style = useCssModule();
     </span>
     <CdrUtilitySans
       :strong="true"
-      :scale="typeScale"
+      scale="-1"
       tag="span"
       :class="style['cdr-fulfillment-tile-header__label']"
     >

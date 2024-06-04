@@ -16,7 +16,7 @@ const chips = {
     palette: 'primary',
   },
 };
-const chipsValue = ref(0);
+const chipsValue = ref(1);
 
 const toggle = {
   count: 2,
@@ -30,7 +30,7 @@ const toggle = {
   },
 };
 
-const toggleValue = ref(0);
+const toggleValue = ref(1);
 </script>
 
 <template>
@@ -61,7 +61,7 @@ const toggleValue = ref(0);
         :disabled="index === 2"
         @click="chipsValue = index"
       >
-        Chip {{ index + 1 }}
+        Chip {{ index }}
       </CdrSurfaceSelection>
     </div>
     <hr class="example__hr" />
@@ -81,7 +81,7 @@ const toggleValue = ref(0);
         :checked="index === toggleValue"
         @click="toggleValue = index"
       >
-        Toggle {{ index + 1 }}
+        Toggle {{ index }}
       </CdrSurfaceSelection>
     </CdrSurface>
   </div>

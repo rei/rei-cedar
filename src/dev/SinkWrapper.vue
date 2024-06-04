@@ -1,6 +1,6 @@
 <template>
   <div>
-    Toggle palette color:
+    Toggle background palette color:
     <cdr-radio
       v-for="pal in palettes"
       :custom-value="pal"

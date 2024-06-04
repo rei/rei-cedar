@@ -192,8 +192,8 @@ export interface CdrSurfaceProps extends HtmlAttributes {
 }
 
 export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
+  checked: boolean;
   type?: 'button' | 'reset' | 'submit' | undefined;
-  checked?: boolean;
 }
 
 export interface CdrFulfillmentTileProps extends CdrSurfaceSelectionProps {

@@ -5,15 +5,13 @@ import mapClasses from '../../utils/mapClasses';
 import CdrSurfaceSelection from '../surfaceSelection/CdrSurfaceSelection.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
 import CdrUtilitySans, { type utilitySansTextProps } from '../text/presets/CdrUtilitySans.vue';
-import { CdrFulfillmentTileProps } from '../../types/interfaces'
+import { CdrFulfillmentTileProps } from '../../types/interfaces';
 
 /** Tile component for displaying a button with optional icon at the top right */
 
 defineOptions({ name: 'CdrFulfillmentTile' });
 
-const props = withDefaults(defineProps<CdrFulfillmentTileProps>(), {
-  typeScale: '0',
-});
+const props = defineProps<CdrFulfillmentTileProps>();
 
 const style = useCssModule();
 const baseClass = 'cdr-fulfillment-tile';
@@ -31,7 +29,6 @@ const rootProps = computed(() => {
 });
 
 const headerProps = computed(() => ({
-  typeScale: props.typeScale,
   class: style[`${baseClass}__header`],
 }));
 
