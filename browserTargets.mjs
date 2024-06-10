@@ -1,7 +1,7 @@
 export default [
-  'Chrome >= 109',
-  'Firefox >= 108',
-  'iOS >= 15',
-  'Safari >= 15',
-  'Edge >= 115',
+  'Chrome >= 111',
+  'Firefox >= 121',
+  'iOS >= 15.6',
+  'Safari >= 15.6',
+  'Edge >= 120',
 ];
