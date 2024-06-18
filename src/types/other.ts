@@ -24,14 +24,6 @@ export type BorderColor =
   | 'warning'
   | 'error'
   | 'message-default-01';
-export type Elevation =
-  | 'ground'
-  | 'dropdown'
-  | 'popover'
-  | 'navigation'
-  | 'sticky'
-  | 'notification'
-  | 'modal';
 export type Position = CSS.Properties['position'];
-export type Palette = 'primary' | 'secondary';
+export type Variant = 'primary' | 'secondary';
 export type Display = CSS.Properties['display'];

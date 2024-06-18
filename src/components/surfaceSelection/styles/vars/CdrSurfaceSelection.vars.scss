@@ -1,6 +1,38 @@
 @import '../../../../styles/settings/index.scss';
 
-@mixin cdr-surface-selection-base-mixin() {
+@mixin cdr-surface-selection-disabled-mixin() {
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-hover-mixin() {
+  &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-active-mixin() {
+  &:focus,
+  &:active,
+  &[aria-pressed='true']:focus,
+  &[aria-pressed='true']:active,
+  &[aria-checked='true']:focus,
+  &[aria-checked='true']:active {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-checked-mixin() {
+  &[aria-pressed='true'],
+  &[aria-checked='true'] {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-base-mixin($component) {
   @include cdr-text-utility-sans-300;
   border: none;
   cursor: pointer;
@@ -17,44 +49,87 @@
     background-color var(--cdr-duration-1-x) var(--cdr-timing-function-ease),
     box-shadow var(--cdr-duration-1-x) var(--cdr-timing-function-ease);
 
-  &:disabled,
-  &:disabled:hover,
-  &:disabled:focus {
-    --cdr-palette-background: var(--cdr-palette-background-disabled);
-    --cdr-palette-border-color: var(--cdr-palette-border-color-disabled);
-    --cdr-palette-text-color: var(--cdr-palette-text-color-disabled);
+  @include cdr-surface-selection-disabled-mixin() {
     cursor: not-allowed !important;
   }
 
-  &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
-    --cdr-palette-background: var(--cdr-palette-background-hover);
-    --cdr-palette-border-color: var(--cdr-palette-border-color-hover);
-  }
-
-  &:focus,
-  &:active,
-  &[aria-pressed='true']:focus,
-  &[aria-pressed='true']:active,
-  &[aria-checked='true']:focus,
-  &[aria-checked='true']:active {
-    @include cdr-border-mixin;
+  @include cdr-surface-selection-active-mixin() {
+    @include cdr-border-mixin($component);
     outline: none;
-    --cdr-border-width: var(--cdr-action-border-width-active);
-    --cdr-palette-background: var(--cdr-palette-background-active);
-    --cdr-palette-border-color: var(--cdr-palette-border-color-active);
+    --cdr-#{$component}-border-width-default: var(--cdr-space-inset-quarter-x);
   }
 
-  &[aria-pressed='true'],
-  &[aria-checked='true'] {
-    @include cdr-border-mixin;
-    --cdr-border-width: var(--cdr-action-border-width-checked);
-    --cdr-palette-background: var(--cdr-palette-background-checked);
-    --cdr-palette-border-color: var(--cdr-palette-border-color-checked);
+  @include cdr-surface-selection-checked-mixin() {
     @include cdr-text-utility-sans-strong-300;
+    @include cdr-border-mixin($component);
+    --cdr-#{$component}-border-width-default: var(--cdr-space-inset-eighth-x);
   }
 
   &[aria-pressed='true']:not([role='checkbox']),
   &[aria-checked='true']:not([role='checkbox']) {
     cursor: default;
+  }
+}
+
+$surface-selection-background-colors: (
+  'primary': (
+    'rest': $cdr-color-background-primary,
+    'hover': #f4f2ed,
+    'active': #edeae3,
+    'checked': #dcd6cb,
+    'disabled': #ffffff,
+  ),
+  'secondary': (
+    'rest': $cdr-color-background-secondary,
+    'hover': #e3e0d8,
+    'active': #edeae3,
+    'checked': $cdr-color-background-secondary,
+    'disabled': #ffffff,
+  ),
+);
+
+$surface-selection-border-colors: (
+  'primary': (
+    'rest': $cdr-color-border-primary,
+    'hover': $cdr-color-border-secondary,
+    'active': $cdr-color-border-button-dark-active,
+    'checked': $cdr-color-border-button-dark-active,
+    'disabled': $cdr-color-border-primary,
+  ),
+  'secondary': (
+    'rest': $cdr-color-border-secondary,
+    'hover': $cdr-color-border-secondary,
+    'active': $cdr-color-border-button-dark-active,
+    'checked': $cdr-color-border-button-dark-active,
+    'disabled': $cdr-color-border-secondary,
+  ),
+);
+
+@mixin cdr-surface-selection-states-mixin($component, $variants) {
+  @each $key in $variants {
+    .cdr-#{$component}--variant-#{$key} {
+      @include cdr-background-mixin($surface-selection-background-colors, $component, $key);
+      @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key);
+
+      @include cdr-surface-selection-hover-mixin() {
+        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'hover');
+        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'hover');
+      }
+
+      @include cdr-surface-selection-active-mixin() {
+        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'active');
+        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'active');
+      }
+
+      @include cdr-surface-selection-checked-mixin() {
+        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'checked');
+        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'checked');
+      }
+
+      @include cdr-surface-selection-disabled-mixin() {
+        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'disabled');
+        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'disabled');
+      }
+    }
   }
 }

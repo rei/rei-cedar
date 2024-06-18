@@ -1,0 +1,56 @@
+@import '../../../../styles/settings/index.scss';
+
+$surface-background-colors: (
+  'primary': $cdr-color-background-surface-primary,
+  'secondary': $cdr-color-background-surface-secondary,
+);
+
+$surface-border-colors: (
+  'primary': $cdr-color-border-surface-primary,
+  'secondary': $cdr-color-border-surface-secondary,
+);
+
+@mixin cdr-surface-base-mixin($component) {
+  @each $key, $value in $surface-background-colors {
+    .cdr-#{$component}--background-#{$key} {
+      @include cdr-background-mixin($surface-background-colors, $component, $key);
+    }
+  }
+
+  @each $key, $value in $surface-border-colors {
+    .cdr-#{$component}--border-color-#{$key} {
+      @include cdr-border-color-mixin($surface-border-colors, $component, $key);
+    }
+  }
+
+  @each $key, $value in $border-widths {
+    .cdr-#{$component}--border-width-#{$key} {
+      @include cdr-border-width-mixin($component, $key);
+    }
+  }
+
+  @each $key, $value in $radii {
+    .cdr-#{$component}--radius-#{$key} {
+      @include cdr-radius-mixin($component, $key);
+    }
+  }
+
+  @each $key, $value in $shadows {
+    .cdr-#{$component}--shadow-#{$key} {
+      @include cdr-shadow-mixin($component, $key);
+    }
+  }
+
+  .cdr-#{$component}--border {
+    @include cdr-border-mixin($component);
+  }
+}
+
+@mixin cdr-surface-variants-mixin($component, $variants) {
+  @each $key in $variants {
+    .cdr-#{$component}--variant-#{$key} {
+      @include cdr-background-mixin($surface-background-colors, $component, $key);
+      @include cdr-border-color-mixin($surface-border-colors, $component, $key);
+    }
+  }
+}

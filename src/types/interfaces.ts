@@ -5,9 +5,8 @@ import type {
   Shadow,
   Radius,
   BorderColor,
-  Elevation,
   Position,
-  Palette,
+  Variant,
   Background,
 } from './other';
 
@@ -163,16 +162,15 @@ export interface InlineCss {
  * @extends HtmlAttributes
  */
 export interface CdrSurfaceProps extends HtmlAttributes {
+  variant?: Variant;
   display?: Display;
   background?: Background;
-  palette?: Palette;
   tag?: Tag;
   shadow?: Shadow;
   radius?: Radius;
   withBorder?: boolean;
   borderWidth?: Space;
   borderColor?: BorderColor;
-  elevation?: Elevation;
   position?: Position;
   fixed?: boolean;
   m?: Space;

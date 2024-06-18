@@ -53,10 +53,7 @@ const footerProps = computed<utilitySansTextProps>(() => ({
 
 <template>
   <CdrSurfaceSelection v-bind="rootProps">
-    <CdrFulfillmentTileHeader
-      v-if="$slots.label"
-      v-bind="headerProps"
-    >
+    <CdrFulfillmentTileHeader v-bind="headerProps">
       <template
         v-if="$slots['icon-left']"
         #icon-left

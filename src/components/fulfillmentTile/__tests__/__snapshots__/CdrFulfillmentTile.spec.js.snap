@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrFulfillmentTile > icon left configuration 1`] = `
+<cdr-surface-selection-stub
+  background="transparent"
+  checked="false"
+  class="cdr-fulfillment-tile"
+  fixed="false"
+  loading="false"
+  tag="button"
+  withborder="false"
+/>
+`;
+
+exports[`CdrFulfillmentTile > icon right configuration 1`] = `
+<cdr-surface-selection-stub
+  background="transparent"
+  checked="false"
+  class="cdr-fulfillment-tile"
+  fixed="false"
+  loading="false"
+  tag="button"
+  withborder="false"
+/>
+`;

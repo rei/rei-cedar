@@ -13,7 +13,6 @@ const chips = {
     px: 'one-x',
     py: 'half-x',
     radius: 'round',
-    palette: 'primary',
   },
 };
 const chipsValue = ref(1);
@@ -23,7 +22,6 @@ const toggle = {
   props: {
     p: 'one-x',
     radius: 'softer',
-    palette: 'primary',
     borderWidth: 'zero',
     withBorder: true,
     class: 'example__toggle-button',
@@ -37,18 +35,32 @@ const toggleValue = ref(1);
   <div class="example">
     <h2>SurfaceSelection</h2>
     <hr class="example__hr" />
-    <CdrSurfaceSelection>This is a blank SurfaceSelection</CdrSurfaceSelection>
-    <hr class="example__hr" />
-    <CdrSurfaceSelection
-      v-bind="{ p: 'one-x', palette: 'primary', withBorder: true, borderWidth: 'sixteenth-x' }"
-    >
-      This surface uses the primary palette to apply a background and border color
+    <CdrSurfaceSelection v-bind="{ checked: false }">
+      This is a blank SurfaceSelection which uses the primary (default) variant
     </CdrSurfaceSelection>
     <hr class="example__hr" />
     <CdrSurfaceSelection
-      v-bind="{ p: 'one-x', palette: 'secondary', withBorder: true, borderWidth: 'sixteenth-x' }"
+      v-bind="{
+        p: 'one-x',
+        variant: 'primary',
+        withBorder: true,
+        borderWidth: 'sixteenth-x',
+        checked: false,
+      }"
     >
-      This surface uses the secondary palette to apply a background and border color
+      This surface uses the primary variant and has a border
+    </CdrSurfaceSelection>
+    <hr class="example__hr" />
+    <CdrSurfaceSelection
+      v-bind="{
+        p: 'one-x',
+        variant: 'secondary',
+        withBorder: true,
+        borderWidth: 'sixteenth-x',
+        checked: false,
+      }"
+    >
+      This surface uses the secondary variant and has a border
     </CdrSurfaceSelection>
     <hr class="example__hr" />
     <h3 class="example__h3">Chips</h3>
@@ -72,7 +84,7 @@ const toggleValue = ref(1);
       border-width="sixteenth-x"
       p="quarter-x"
       radius="softer"
-      palette="secondary"
+      variant="secondary"
     >
       <CdrSurfaceSelection
         v-for="index in toggle.count"
@@ -110,10 +122,10 @@ const toggleValue = ref(1);
   }
 
   &__toggle-button {
-    --cdr-palette-background-rest: var(--cdr-color-border-transparent);
-    --cdr-palette-background-hover: #e3e0d8;
-    --cdr-palette-background-active: var(--cdr-color-background-primary);
-    --cdr-palette-background-checked: var(--cdr-color-background-primary);
+    --cdr-surface-selection-primary-background-color: var(--cdr-color-border-transparent);
+    --cdr-surface-selection-primary-background-color-hover: #e3e0d8;
+    --cdr-surface-selection-primary-background-color-active: var(--cdr-color-background-primary);
+    --cdr-surface-selection-primary-background-color-checked: var(--cdr-color-background-primary);
   }
 }
 </style>

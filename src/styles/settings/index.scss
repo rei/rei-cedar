@@ -1,61 +1,146 @@
 $cdr-warn: false;
+@use 'sass:map';
+@use 'sass:list';
 @import '../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 @import './alignment.vars';
 @import './options.vars';
 @import './visibility.vars';
 
+$cdr-space-zero: 0;
+$cdr-space-sixteenth-x: 0.1rem;
+$cdr-space-inset-zero: 0;
+$cdr-space-inset-sixteenth-x: 0.1rem;
+$cdr-color-background-transparent: transparent;
+$cdr-color-border-transparent: transparent;
+$cdr-color-border-dark: rgba(12, 11, 8, 0.75);
+
+$cdr-color-background-surface-primary: #ffffff;
+$cdr-color-background-surface-secondary: #f4f2ed;
+$cdr-color-border-surface-primary: #dcd6cb;
+$cdr-color-border-surface-secondary: #928b80;
+
+$cdr-color-background-surface-selection-primary: $cdr-color-background-primary;
+$cdr-color-background-surface-selection-primary-hover: #f4f2ed;
+$cdr-color-background-surface-selection-primary-active: #edeae3;
+$cdr-color-background-surface-selection-primary-checked: #dcd6cb;
+$cdr-color-background-surface-selection-primary-disabled: #ffffff;
+$cdr-color-background-surface-selection-secondary: $cdr-color-background-secondary;
+$cdr-color-background-surface-selection-secondary-hover: #e3e0d8;
+$cdr-color-background-surface-selection-secondary-active: #edeae3;
+$cdr-color-background-surface-selection-secondary-checked: $cdr-color-background-secondary;
+$cdr-color-background-surface-selection-secondary-disabled: #ffffff;
+$cdr-color-border-surface-selection-primary: $cdr-color-border-primary;
+$cdr-color-border-surface-selection-primary-hover: $cdr-color-border-secondary;
+$cdr-color-border-surface-selection-primary-active: $cdr-color-border-button-dark-active;
+$cdr-color-border-surface-selection-primary-checked: $cdr-color-border-button-dark-active;
+$cdr-color-border-surface-selection-primary-disabled: $cdr-color-border-primary;
+$cdr-color-border-surface-selection-secondary: $cdr-color-border-secondary;
+$cdr-color-border-surface-selection-secondary-hover: $cdr-color-border-secondary;
+$cdr-color-border-surface-selection-secondary-active: $cdr-color-border-button-dark-active;
+$cdr-color-border-surface-selection-secondary-checked: $cdr-color-border-button-dark-active;
+$cdr-color-border-surface-selection-secondary-disabled: $cdr-color-border-secondary;
+
 :root {
-  // New elevation tokens
-  --cdr-elevation-ground: 0;
-  --cdr-elevation-dropdown: 100;
-  --cdr-elevation-popover: 200;
-  --cdr-elevation-navigation: 300;
-  --cdr-elevation-sticky: 400;
-  --cdr-elevation-notification: 500;
-  --cdr-elevation-modal: 600;
+  --cdr-color-background-transparent: #{$cdr-color-background-transparent};
+  --cdr-color-border-transparent: #{$cdr-color-border-transparent};
+  --cdr-color-border-dark: #{$cdr-color-border-dark};
+  --cdr-space-inset-zero: #{$cdr-space-inset-zero};
+  --cdr-space-inset-sixteenth-x: #{$cdr-space-inset-sixteenth-x};
+  --cdr-space-zero: #{$cdr-space-zero};
+  --cdr-space-sixteenth-x: #{$cdr-space-sixteenth-x};
 
-  // New color tokens
-  --cdr-color-background-transparent: transparent;
-  --cdr-color-border-transparent: transparent;
-  --cdr-color-border-dark: var(--cdr-color-text-primary);
+  --cdr-color-background-surface-primary: #{$cdr-color-background-surface-primary};
+  --cdr-color-background-surface-secondary: #{$cdr-color-background-surface-secondary};
+  --cdr-color-border-surface-primary: #{$cdr-color-border-surface-primary};
+  --cdr-color-border-surface-secondary: #{$cdr-color-border-surface-secondary};
 
-  // New spacing tokens
-  --cdr-space-inset-zero: 0;
-  --cdr-space-inset-sixteenth-x: 0.1rem;
-  --cdr-space-zero: 0;
-  --cdr-space-sixteenth-x: 0.1rem;
-
-  // Action globals
-  --cdr-action-border-width-rest: var(--cdr-space-inset-zero);
-  --cdr-action-border-width-hover: var(--cdr-space-inset-eighth-x);
-  --cdr-action-border-width-active: var(--cdr-space-inset-quarter-x);
-  --cdr-action-border-width-checked: var(--cdr-space-inset-eighth-x);
-
-  // Defaults are the least intrusive state of something
-  --cdr-border-width-default: var(--cdr-space-inset-zero);
-  --cdr-border-color-default: var(--cdr-color-border-primary);
-  --cdr-background-default: transparent;
-  --cdr-radius-default: var(--cdr-radius-sharp);
-  --cdr-shadow-default: var(--cdr-prominence-flat);
-  --cdr-elevation-default: var(--cdr-elevation-ground);
-  --cdr-position-default: relative;
+  --cdr-color-background-surface-selection-primary: #{$cdr-color-background-surface-selection-primary};
+  --cdr-color-background-surface-selection-primary-hover: #{$cdr-color-background-surface-selection-primary-hover};
+  --cdr-color-background-surface-selection-primary-active: #{$cdr-color-background-surface-selection-primary-active};
+  --cdr-color-background-surface-selection-primary-checked: #{$cdr-color-background-surface-selection-primary-checked};
+  --cdr-color-background-surface-selection-primary-disabled: #{$cdr-color-background-surface-selection-primary-disabled};
+  --cdr-color-background-surface-selection-secondary: #{$cdr-color-background-surface-selection-secondary};
+  --cdr-color-background-surface-selection-secondary-hover: #{$cdr-color-background-surface-selection-secondary-hover};
+  --cdr-color-background-surface-selection-secondary-active: #{$cdr-color-background-surface-selection-secondary-active};
+  --cdr-color-background-surface-selection-secondary-checked: #{$cdr-color-background-surface-selection-secondary-checked};
+  --cdr-color-background-surface-selection-secondary-disabled: #{$cdr-color-background-surface-selection-secondary-disabled};
+  --cdr-color-border-surface-selection-primary: #{$cdr-color-border-surface-selection-primary};
+  --cdr-color-border-surface-selection-primary-hover: #{$cdr-color-border-surface-selection-primary-hover};
+  --cdr-color-border-surface-selection-primary-active: #{$cdr-color-border-surface-selection-primary-active};
+  --cdr-color-border-surface-selection-primary-checked: #{$cdr-color-border-surface-selection-primary-checked};
+  --cdr-color-border-surface-selection-primary-disabled: #{$cdr-color-border-surface-selection-primary-disabled};
+  --cdr-color-border-surface-selection-secondary: #{$cdr-color-border-surface-selection-secondary};
+  --cdr-color-border-surface-selection-secondary-hover: #{$cdr-color-border-surface-selection-secondary-hover};
+  --cdr-color-border-surface-selection-secondary-active: #{$cdr-color-border-surface-selection-secondary-active};
+  --cdr-color-border-surface-selection-secondary-checked: #{$cdr-color-border-surface-selection-secondary-checked};
+  --cdr-color-border-surface-selection-secondary-disabled: #{$cdr-color-border-surface-selection-secondary-disabled};
 }
 
-@mixin cdr-radius-mixin() {
-  border-radius: var(--cdr-radius, var(--cdr-radius-default));
-  overflow: hidden;
+$border-widths: (
+  'zero': $cdr-space-inset-zero,
+  'sixteenth-x': $cdr-space-inset-sixteenth-x,
+  'eighth-x': $cdr-space-inset-eighth-x,
+  'quarter-x': $cdr-space-inset-quarter-x,
+);
+
+$radii: (
+  'sharp': $cdr-radius-sharp,
+  'soft': $cdr-radius-soft,
+  'softer': $cdr-radius-softer,
+  'round': $cdr-radius-round,
+);
+
+$shadows: (
+  'flat': $cdr-prominence-flat,
+  'raised': $cdr-prominence-raised,
+  'elevated': $cdr-prominence-elevated,
+  'floating': $cdr-prominence-floating,
+  'lifted': $cdr-prominence-lifted,
+);
+
+@mixin cdr-background-mixin($options, $component, $key, $state: 'rest') {
+  @if $state == rest {
+    background: var(
+      --cdr-#{$component}-#{$key}-background-color,
+      var(--cdr-color-background-#{$component}-#{$key}, #{map.get($options, $key, $state)})
+    );
+  } @else {
+    background: var(
+      --cdr-#{$component}-#{$key}-background-color-#{$state},
+      var(
+        --cdr-color-background-#{$component}-#{$key}-#{$state},
+        #{map.get($options, $key, $state)}
+      )
+    );
+  }
 }
 
-@mixin cdr-shadow-mixin() {
-  box-shadow: var(--cdr-shadow, var(--cdr-shadow-default));
+@mixin cdr-border-color-mixin($options, $component, $key, $state: 'rest') {
+  @if $state == rest {
+    --cdr-#{$component}-border-color-default: var(
+      --cdr-#{$component}-#{$key}-border-color,
+      var(--cdr-color-border-#{$component}-#{$key}, #{map.get($options, $key, $state)})
+    );
+  } @else {
+    --cdr-#{$component}-border-color-default: var(
+      --cdr-#{$component}-#{$key}-border-color-#{$state},
+      var(--cdr-color-border-#{$component}-#{$key}-#{$state}, #{map.get($options, $key, $state)})
+    );
+  }
 }
 
-@mixin cdr-border-mixin() {
-  --cdr-palette-border-color: initial;
+@mixin cdr-border-width-mixin($component, $key) {
+  --cdr-#{$component}-border-width-default: var(
+    --cdr-#{$component}-border-width,
+    var(--cdr-space-inset-#{$key}, #{map.get($border-widths, $key)})
+  );
+}
+
+@mixin cdr-border-mixin($component) {
   position: relative;
 
   &::after {
-    @include cdr-radius-mixin;
+    border-radius: var(--cdr-#{$component}-radius-default);
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -63,61 +148,23 @@ $cdr-warn: false;
     width: 100%;
     height: 100%;
     content: '';
-    box-shadow: inset 0 0 0 var(--cdr-border-width, var(--cdr-border-width-default))
-      var(--cdr-border-color, var(--cdr-palette-border-color, var(--cdr-border-color-default)));
+    box-shadow: inset 0 0 0 var(--cdr-#{$component}-border-width-default)
+      var(--cdr-#{$component}-border-color-default);
   }
 }
 
-@mixin cdr-background-mixin() {
-  --cdr-palette-background: initial;
-  background-color: var(
-    --cdr-background,
-    var(--cdr-palette-background, var(--cdr-background-default))
+@mixin cdr-radius-mixin($component, $key) {
+  --cdr-#{$component}-radius-default: var(
+    --cdr-#{$component}-radius,
+    var(--cdr-radius-#{$key}, #{map.get($radii, $key)})
   );
+  border-radius: var(--cdr-#{$component}-radius-default);
+  overflow: hidden;
 }
 
-@mixin cdr-elevation-mixin() {
-  z-index: var(--cdr-elevation, var(--cdr-elevation-default));
-  position: var(--cdr-position, var(--cdr-position-default));
-}
-
-@mixin cdr-palette-base-mixin() {
-  @include cdr-background-mixin();
-  @include cdr-border-mixin();
-  --cdr-palette-background: var(--cdr-palette-background-rest);
-  --cdr-palette-border-color: var(--cdr-palette-border-color-rest);
-  --cdr-palette-text-color: var(--cdr-palette-text-color-rest);
-  --cdr-text-color: var(--cdr-palette-text-color);
-}
-
-@mixin cdr-palette-primary-mixin() {
-  @include cdr-palette-base-mixin;
-  --cdr-palette-background-rest: var(--cdr-color-background-primary);
-  --cdr-palette-background-hover: #f4f2ed;
-  --cdr-palette-background-active: #edeae3;
-  --cdr-palette-background-checked: #dcd6cb;
-  --cdr-palette-background-disabled: #ffffff;
-  --cdr-palette-border-color-rest: #dcd6cb;
-  --cdr-palette-border-color-hover: #928b80;
-  --cdr-palette-border-color-active: #4e4d49;
-  --cdr-palette-border-color-checked: #4e4d49;
-  --cdr-palette-border-color-disabled: var(--cdr-color-border-primary);
-  --cdr-palette-text-color-rest: var(--cdr-color-text-primary);
-  --cdr-palette-text-color-disabled: var(--cdr-color-text-disabled);
-}
-
-@mixin cdr-palette-secondary-mixin() {
-  @include cdr-palette-base-mixin;
-  --cdr-palette-background-rest: var(--cdr-color-background-secondary);
-  --cdr-palette-background-hover: #e3e0d8;
-  --cdr-palette-background-active: #edeae3;
-  --cdr-palette-background-checked: var(--cdr-color-border-secondary);
-  --cdr-palette-background-disabled: #ffffff;
-  --cdr-palette-border-color-rest: #928b80;
-  --cdr-palette-border-color-hover: #928b80;
-  --cdr-palette-border-color-active: #4e4d49;
-  --cdr-palette-border-color-checked: #4e4d49;
-  --cdr-palette-border-color-disabled: var(--cdr-color-border-secondary);
-  --cdr-palette-text-color-rest: var(--cdr-color-text-primary);
-  --cdr-palette-text-color-disabled: var(--cdr-color-text-disabled);
+@mixin cdr-shadow-mixin($component, $key) {
+  box-shadow: var(
+    --cdr-#{$component}-shadow,
+    var(--cdr-prominence-#{$key}, #{map.get($shadows, $key)})
+  );
 }

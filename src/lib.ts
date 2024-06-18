@@ -13,7 +13,7 @@ export { default as CdrChipGroup } from './components/chip/CdrChipGroup.vue';
 export { default as CdrChoreographer } from './components/choreographer/CdrChoreographer.vue';
 export { default as CdrContainer } from './components/container/CdrContainer.vue';
 export { default as CdrFormGroup } from './components/formGroup/CdrFormGroup.vue';
-export { default as CdrFulfillmentTile } from './components/fulfillmentTile/CdrFulfillmentTile.vue';
+// export { default as CdrFulfillmentTile } from './components/fulfillmentTile/CdrFulfillmentTile.vue';
 export { default as CdrGrid } from './components/grid/CdrGrid.vue';
 export { default as CdrIcon } from './components/icon/CdrIcon.vue';
 export { default as CdrImg } from './components/image/CdrImg.vue';
@@ -53,3 +53,7 @@ export * from './components/text/presets/textPresets';
 /** Type exports */
 export * from './types/interfaces';
 export * from './types/other';
+
+/** Compile into dist/style folder */
+import "./styles/cdr-reset.scss";
+import "./styles/cdr-fonts.scss";

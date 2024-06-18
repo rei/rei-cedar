@@ -1,29 +1,9 @@
 @import '../../../styles/settings/index.scss';
+@import './vars/CdrSurface.vars.scss';
 
-.cdr-surface--radius {
-  @include cdr-radius-mixin;
-}
+$variants: 'primary', 'secondary';
+$component: 'surface';
 
-.cdr-surface--shadow {
-  @include cdr-shadow-mixin;
-}
+@include cdr-surface-base-mixin($component);
 
-.cdr-surface--border {
-  @include cdr-border-mixin;
-}
-
-.cdr-surface--background {
-  @include cdr-background-mixin;
-}
-
-.cdr-surface--elevation {
-  @include cdr-elevation-mixin;
-}
-
-.cdr-surface--palette-primary {
-  @include cdr-palette-primary-mixin;
-}
-
-.cdr-surface--palette-secondary {
-  @include cdr-palette-secondary-mixin;
-}
+@include cdr-surface-variants-mixin($component, $variants);

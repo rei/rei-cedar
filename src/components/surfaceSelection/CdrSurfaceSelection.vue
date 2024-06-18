@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import CdrSurface from '../surface/CdrSurface.vue';
 import { CdrSurfaceSelectionProps, HtmlAttributes } from '../../types/interfaces';
+import { getSurfaceProps } from '../../utils/surface';
 
 /** Component for buttons that may have a checked state */
 
@@ -10,32 +10,35 @@ defineOptions({ name: 'CdrSurfaceSelection' });
 
 const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
   tag: 'button',
-  background: 'transparent',
+  variant: 'primary',
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-surface-selection';
 
 // Manages the props passed along to CdrSurface
 const computedProps = computed(() => {
-  const { checked, ...otherProps } = props;
+  const { checked } = props;
+  const { inlineStyles, classes } = getSurfaceProps(props, 'cdr-surface-selection');
   const additionalProps: HtmlAttributes = {};
 
   // Add checked
   additionalProps['aria-checked'] = checked;
 
   return {
-    ...otherProps,
     ...additionalProps,
-    class: mapClasses(style, baseClass),
+    style: inlineStyles,
+    class: mapClasses(style, ...classes) || undefined,
   };
 });
 </script>
 
 <template>
-  <CdrSurface v-bind="computedProps">
+  <component
+    :is="tag"
+    v-bind="computedProps"
+  >
     <slot />
-  </CdrSurface>
+  </component>
 </template>
 
 <style lang="scss" module src="./styles/CdrSurfaceSelection.module.scss"></style>

@@ -1,3 +1,5 @@
+@import '../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -25,7 +27,7 @@ html {
 
 body {
   /* cdr-text-default */
-  font-family: Graphik, "Helvetica Neue", sans-serif;
+  font-family: Graphik, 'Helvetica Neue', sans-serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: -0.16px;
@@ -38,18 +40,23 @@ body {
   background-color: #ffffff;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 p {
-  text-wrap: pretty
+  text-wrap: pretty;
 }
 
 a,
 area,
 button,
-[role="button"],
+[role='button'],
 input,
 label,
 select,
@@ -64,38 +71,45 @@ button:focus {
 }
 
 button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
+html [type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
 
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
   -webkit-appearance: listbox;
 }
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type="search"] {
+[type='search'] {
   outline-offset: -0.2rem;
   -webkit-appearance: none;
 }
 
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
+}
+
+[data-palette='sandstone'] {
+  --cdr-color-background-surface-primary: #{$cdr-color-background-secondary};
+  --cdr-color-background-surface-secondary: #dcd6cb;
+  --cdr-color-border-surface-primary: #{$cdr-color-border-secondary};
+  --cdr-color-border-surface-secondary: #726d64;
 }

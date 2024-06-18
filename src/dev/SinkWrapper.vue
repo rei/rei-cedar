@@ -1,17 +1,24 @@
 <template>
-  <div>
-    Toggle background palette color:
-    <cdr-radio
-      v-for="pal in palettes"
-      :custom-value="pal"
-      :key="pal"
-      name="palette"
-      v-model="palette"
-      class="palette-toggle"
+  <div :data-palette="palette">
+    <div class="radios">
+      <div>Toggle palette:</div>
+      <cdr-radio
+        v-for="pal in palettes"
+        :custom-value="pal"
+        :key="pal"
+        name="palette"
+        v-model="palette"
+      >
+        {{ capitalize(pal) }}
+      </cdr-radio>
+    </div>
+    <cdr-surface
+      background="primary"
+      p="two-x"
+      :with-border="true"
+      border-width="sixteenth-x"
+      border-color="primary"
     >
-      {{ capitalize(pal) }}
-    </cdr-radio>
-    <cdr-surface :palette="palette">
       <slot />
     </cdr-surface>
   </div>
@@ -29,8 +36,8 @@ export default {
   },
   data() {
     return {
-      palette: this.$route.query.palette || 'primary',
-      palettes: ['primary', 'secondary'],
+      palette: this.$route.query.palette || 'default',
+      palettes: ['default', 'sandstone'],
     };
   },
   watch: {
@@ -52,8 +59,10 @@ export default {
 </script>
 
 <style>
-.palette-toggle {
-  display: inline-block;
-  margin: 0 8px;
+.radios {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 </style>
