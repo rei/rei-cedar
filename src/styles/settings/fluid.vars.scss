@@ -1,5 +1,8 @@
-
+// type
 /* https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=320&minRatio=1.20&maxFontSize=20&maxWidth=1232&maxRatio=1.25&steps=-1%2C0%2C1%2C2%2C3%2C4%2C5%2C6%2C7&baseStep=0&prefix=cdr-type-scale&decimals=2&useRems=on&remValue=10&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=1247 */
+// space
+/* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1232,20,1.25,7,1,&s=0.75|0.5|0.25|0.2|0.15|0.25|0.2,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+/* TODO our rem is still base 10 set via reset font-size: 62.5%; at some point this should be removed and rem values recaculated */
 
 :root {
   --cdr-heading-display-line-height-ratio: 1.07;
@@ -12,9 +15,13 @@
   --cdr-body-line-height-ratio: 1.8;
 }
 
+// the clamp is comprized of 3 numbers representing the min value, the preferred size expression, and the max value
+// in order the valuse are: min spacing | base spacing + container-growth | max spacing 
+
 @supports(container-type: inline-size) {
   :root {
-    --cdr-type-scale--1: clamp(1.33rem, 0.29cqw + 1.24rem, 1.6rem);
+    // type
+    --cdr-type-scale-xs: clamp(1.33rem, 0.29cqw + 1.24rem, 1.6rem);
     --cdr-type-scale-0: clamp(1.6rem, 0.44cqw + 1.46rem, 2rem);
     --cdr-type-scale-1: clamp(1.92rem, 0.64cqw + 1.72rem, 2.5rem);
     --cdr-type-scale-2: clamp(2.3rem, 0.9cqw + 2.02rem, 3.13rem);
@@ -23,19 +30,51 @@
     --cdr-type-scale-5: clamp(3.98rem, 2.33cqw + 3.24rem, 6.1rem);
     --cdr-type-scale-6: clamp(4.78rem, 3.13cqw + 3.78rem, 7.63rem);
     --cdr-type-scale-7: clamp(5.73rem, 4.17cqw + 4.4rem, 9.54rem);
+
+  // space
+    --cdr-space-scale-0: clamp(0.2rem, 0.2rem + 0.11cqi, 0.3rem);
+    --cdr-space-scale-1: clamp(0.3rem, 0.3rem + 0.11cqi, 0.4rem);
+    --cdr-space-scale-2: clamp(0.4rem, 0.4rem + 0.11cqi, 0.5rem);
+    --cdr-space-scale-3: clamp(0.8rem, 0.7rem + 0.22cqi, 1rem);
+    --cdr-space-scale-4: clamp(1.2rem, 1.1rem + 0.33cqi, 1.5rem);
+    --cdr-space-scale-5: clamp(1.6rem, 1.5rem + 0.44cqi, 2rem);
+    --cdr-space-scale-6: clamp(2.4rem, 2.2rem + 0.66cqi, 3rem);
+    --cdr-space-scale-7: clamp(3.2rem, 2.9rem + 0.88cqi, 4rem);
+    --cdr-space-scale-8: clamp(4.8rem, 4.4rem + 1.31cqi, 6rem);
+    /* One-up pairs */
+    --cdr-space-scale-0--1: clamp(0.2rem, 0.1rem + 0.223cqi, 0.4rem);
+    --cdr-space-scale-3--4: clamp(0.4rem, 0.2rem + 0.66cqi, 1rem);
+    --cdr-space-scale-3--5: clamp(0.8rem, 0.1404px + 1.21cqi, 1.6rem);
+
+    
+
   }
-}
-/** Remove once Safari < 16 is no longer a target */
-@supports not (container-type: inline-size) {
-  :root {
-    --cdr-type-scale--1: clamp(1.33rem, 0.29vw + 1.24rem, 1.6rem);
-    --cdr-type-scale-0: clamp(1.6rem, 0.44vw + 1.46rem, 2rem);
-    --cdr-type-scale-1: clamp(1.92rem, 0.64vw + 1.72rem, 2.5rem);
-    --cdr-type-scale-2: clamp(2.3rem, 0.9vw + 2.02rem, 3.13rem);
-    --cdr-type-scale-3: clamp(2.76rem, 1.25vw + 2.36rem, 3.91rem);
-    --cdr-type-scale-4: clamp(3.32rem, 1.72vw + 2.77rem, 4.88rem);
-    --cdr-type-scale-5: clamp(3.98rem, 2.33vw + 3.24rem, 6.1rem);
-    --cdr-type-scale-6: clamp(4.78rem, 3.13vw + 3.78rem, 7.63rem);
-    --cdr-type-scale-7: clamp(5.73rem, 4.17vw + 4.4rem, 9.54rem);
+  /** Remove once Safari < 16 is no longer a target */
+  @supports not (container-type: inline-size) {
+    :root {
+      --cdr-type-scale--1: clamp(1.33rem, 0.29vw + 1.24rem, 1.6rem);
+      --cdr-type-scale-0: clamp(1.6rem, 0.44vw + 1.46rem, 2rem);
+      --cdr-type-scale-1: clamp(1.92rem, 0.64vw + 1.72rem, 2.5rem);
+      --cdr-type-scale-2: clamp(2.3rem, 0.9vw + 2.02rem, 3.2rem);
+      --cdr-type-scale-3: clamp(2.76rem, 1.25vw + 2.36rem, 3.91rem);
+      --cdr-type-scale-4: clamp(3.32rem, 1.72vw + 2.77rem, 4.88rem);
+      --cdr-type-scale-5: clamp(3.98rem, 2.33vw + 3.24rem, 6.1rem);
+      --cdr-type-scale-6: clamp(4.78rem, 3.13vw + 3.78rem, 7.63rem);
+      --cdr-type-scale-7: clamp(5.73rem, 4.17vw + 4.4rem, 9.54rem);
+      // space
+      --cdr-space-scale-0: clamp(0.2rem, 0.2rem + 0.11vw, 0.3rem);
+      --cdr-space-scale-1: clamp(0.3rem, 0.3rem + 0.11vw, 0.4rem);
+      --cdr-space-scale-2: clamp(0.4rem, 0.4rem + 0.11vw, 0.5rem);
+      --cdr-space-scale-3: clamp(0.8rem, 0.7rem + 0.22vw, 1rem);
+      --cdr-space-scale-4: clamp(1.2rem, 1.1rem + 0.33vw, 1.5rem);
+      --cdr-space-scale-5: clamp(1.6rem, 1.5rem + 0.44vw, 2rem);
+      --cdr-space-scale-6: clamp(2.4rem, 2.2rem + 0.66vw, 3rem);
+      --cdr-space-scale-7: clamp(3.2rem, 2.9rem + 0.88vw, 4rem);
+      --cdr-space-scale-8: clamp(4.8rem, 4.4rem + 1.31vw, 6rem);
+      /* One-up pairs */
+      --cdr-space-scale-0--1: clamp(0.2rem, 0.1rem + 0.223vw, 0.4rem);
+      --cdr-space-scale-3--4: clamp(0.4rem, 0.2rem + 0.66vw, 1rem);
+      --cdr-space-scale-3--5: clamp(0.8rem, 0.1404px + 1.21vw, 1.6rem);
+    }
   }
 }
