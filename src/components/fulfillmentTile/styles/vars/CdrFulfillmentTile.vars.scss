@@ -1,16 +1,11 @@
 @import '../../../../styles/settings/index.scss';
+@import '../../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
 
-@mixin cdr-fulfillment-tile-base-mixin() {
-  @include cdr-text-utility-sans-300;
-  @include cdr-border-mixin;
-  @include cdr-radius-mixin;
-  @include cdr-palette-primary-mixin;
-  --cdr-border-width-default: var(--cdr-space-inset-sixteenth-x);
-  --cdr-radius-default: var(--cdr-radius-softer);
-  --cdr-palette-border-color: var(--cdr-color-border-message-default-01);
-  --cdr-palette-background-checked: var(--cdr-color-background-primary);
-  --cdr-palette-background-disabled: var(--cdr-color-background-button-default-disabled);
-  --cdr-palette-text-color-disabled: var(--cdr-color-text-primary);
+@mixin cdr-fulfillment-tile-base-mixin($component) {
+  --cdr-fulfillment-tile-background-color-checked: var(--cdr-color-background-primary);
+  --cdr-fulfillment-tile-background-color-disabled: var(
+    --cdr-color-background-button-default-disabled
+  );
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -19,6 +14,21 @@
   width: 100%;
   gap: var(--cdr-space-scale-half-x);
   padding: var(--cdr-space-scale-one-x) 0;
+}
+
+@mixin cdr-fulfillment-tile-content-mixin() {
+  padding: 0 var(--cdr-space-scale-one-x);
+  width: 100%;
+  flex: 0 0 auto;
+
+  &--stretch {
+    flex: 1 1 auto;
+  }
+
+  strong {
+    --cdr-utility-sans-font-weight: 600;
+    font-weight: var(--cdr-utility-sans-font-weight);
+  }
 }
 
 @mixin cdr-fulfillment-tile-header-mixin() {
@@ -36,23 +46,5 @@
 
   &__label {
     flex: 1 1 auto;
-  }
-}
-
-@mixin cdr-fulfillment-tile-content-mixin() {
-  padding: 0 var(--cdr-space-scale-one-x);
-  width: 100%;
-
-  strong {
-    --cdr-utility-sans-font-weight: 600;
-    font-weight: var(--cdr-utility-sans-font-weight);
-  }
-
-  &--body {
-    flex: 1 1 auto;
-  }
-
-  &--footer {
-    flex: 0 0 auto;
   }
 }

@@ -1,9 +1,9 @@
 @import '../../../styles/settings/index.scss';
 @import './vars/CdrSurface.vars.scss';
 
-$variants: 'primary', 'secondary';
+$modifiers: 'primary', 'secondary';
 $component: 'surface';
 
 @include cdr-surface-base-mixin($component);
 
-@include cdr-surface-variants-mixin($component, $variants);
+@include cdr-surface-modifiers-mixin($component, $modifiers);

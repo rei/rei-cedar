@@ -99,34 +99,32 @@ $shadows: (
 );
 
 @mixin cdr-background-mixin($options, $component, $key, $state: 'rest') {
-  @if $state == rest {
-    background: var(
-      --cdr-#{$component}-#{$key}-background-color,
-      var(--cdr-color-background-#{$component}-#{$key}, #{map.get($options, $key, $state)})
-    );
-  } @else {
-    background: var(
-      --cdr-#{$component}-#{$key}-background-color-#{$state},
-      var(
-        --cdr-color-background-#{$component}-#{$key}-#{$state},
-        #{map.get($options, $key, $state)}
-      )
-    );
+  $statePart: '';
+
+  @if $state != 'rest' {
+    $statePart: -#{$state};
   }
+
+  background: var(
+    --cdr-#{$component}-#{$key}-background-color#{$statePart},
+    var(
+      --cdr-color-background-#{$component}-#{$key}#{$statePart},
+      #{map.get($options, $key, $state)}
+    )
+  );
 }
 
 @mixin cdr-border-color-mixin($options, $component, $key, $state: 'rest') {
-  @if $state == rest {
-    --cdr-#{$component}-border-color-default: var(
-      --cdr-#{$component}-#{$key}-border-color,
-      var(--cdr-color-border-#{$component}-#{$key}, #{map.get($options, $key, $state)})
-    );
-  } @else {
-    --cdr-#{$component}-border-color-default: var(
-      --cdr-#{$component}-#{$key}-border-color-#{$state},
-      var(--cdr-color-border-#{$component}-#{$key}-#{$state}, #{map.get($options, $key, $state)})
-    );
+  $statePart: '';
+
+  @if $state != 'rest' {
+    $statePart: -#{$state};
   }
+
+  --cdr-#{$component}-border-color-default: var(
+    --cdr-#{$component}-#{$key}-border-color#{$statePart},
+    var(--cdr-color-border-#{$component}-#{$key}#{$statePart}, #{map.get($options, $key, $state)})
+  );
 }
 
 @mixin cdr-border-width-mixin($component, $key) {

@@ -71,64 +71,80 @@
   }
 }
 
-$surface-selection-background-colors: (
+$background-colors: (
   'primary': (
-    'rest': $cdr-color-background-primary,
-    'hover': #f4f2ed,
-    'active': #edeae3,
-    'checked': #dcd6cb,
-    'disabled': #ffffff,
+    'rest': $cdr-color-background-surface-selection-primary,
+    'hover': $cdr-color-background-surface-selection-primary-hover,
+    'active': $cdr-color-background-surface-selection-primary-active,
+    'checked': $cdr-color-background-surface-selection-primary-checked,
+    'disabled': $cdr-color-background-surface-selection-primary-disabled,
   ),
   'secondary': (
-    'rest': $cdr-color-background-secondary,
-    'hover': #e3e0d8,
-    'active': #edeae3,
-    'checked': $cdr-color-background-secondary,
-    'disabled': #ffffff,
+    'rest': $cdr-color-background-surface-selection-secondary,
+    'hover': $cdr-color-background-surface-selection-secondary-hover,
+    'active': $cdr-color-background-surface-selection-secondary-active,
+    'checked': $cdr-color-background-surface-selection-secondary-checked,
+    'disabled': $cdr-color-background-surface-selection-secondary-disabled,
   ),
 );
 
-$surface-selection-border-colors: (
+$border-colors: (
   'primary': (
-    'rest': $cdr-color-border-primary,
-    'hover': $cdr-color-border-secondary,
-    'active': $cdr-color-border-button-dark-active,
-    'checked': $cdr-color-border-button-dark-active,
-    'disabled': $cdr-color-border-primary,
+    'rest': $cdr-color-border-surface-selection-primary,
+    'hover': $cdr-color-border-surface-selection-primary-hover,
+    'active': $cdr-color-border-surface-selection-primary-active,
+    'checked': $cdr-color-border-surface-selection-primary-checked,
+    'disabled': $cdr-color-border-surface-selection-primary-disabled,
   ),
   'secondary': (
-    'rest': $cdr-color-border-secondary,
-    'hover': $cdr-color-border-secondary,
-    'active': $cdr-color-border-button-dark-active,
-    'checked': $cdr-color-border-button-dark-active,
-    'disabled': $cdr-color-border-secondary,
+    'rest': $cdr-color-border-surface-selection-secondary,
+    'hover': $cdr-color-border-surface-selection-secondary-hover,
+    'active': $cdr-color-border-surface-selection-secondary-active,
+    'checked': $cdr-color-border-surface-selection-secondary-checked,
+    'disabled': $cdr-color-border-surface-selection-secondary-disabled,
   ),
 );
 
-@mixin cdr-surface-selection-states-mixin($component, $variants) {
-  @each $key in $variants {
-    .cdr-#{$component}--variant-#{$key} {
-      @include cdr-background-mixin($surface-selection-background-colors, $component, $key);
-      @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key);
+@mixin cdr-surface-selection-states-inner-mixin($component, $key) {
+  @include cdr-background-mixin($background-colors, $component, $key);
+  @include cdr-border-color-mixin($border-colors, $component, $key);
 
-      @include cdr-surface-selection-hover-mixin() {
-        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'hover');
-        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'hover');
-      }
+  @include cdr-surface-selection-hover-mixin() {
+    $state: 'hover';
+    @include cdr-background-mixin($background-colors, $component, $key, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+  }
 
-      @include cdr-surface-selection-active-mixin() {
-        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'active');
-        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'active');
-      }
+  @include cdr-surface-selection-active-mixin() {
+    $state: 'active';
+    @include cdr-background-mixin($background-colors, $component, $key, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+  }
 
-      @include cdr-surface-selection-checked-mixin() {
-        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'checked');
-        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'checked');
-      }
+  @include cdr-surface-selection-checked-mixin() {
+    $state: 'checked';
+    @include cdr-background-mixin($background-colors, $component, $key, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+  }
 
-      @include cdr-surface-selection-disabled-mixin() {
-        @include cdr-background-mixin($surface-selection-background-colors, $component, $key, 'disabled');
-        @include cdr-border-color-mixin($surface-selection-border-colors, $component, $key, 'disabled');
+  @include cdr-surface-selection-disabled-mixin() {
+    $state: 'disabled';
+    @include cdr-background-mixin($background-colors, $component, $key, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+  }
+}
+
+@mixin cdr-surface-selection-states-mixin($component, $modifiers: null) {
+  @if $modifiers == null {
+    $key: 'primary';
+
+    .cdr-#{$component}--modifier-#{$key} {
+      @include cdr-surface-selection-states-inner-mixin($component, $key);
+    }
+  } @else {
+    @each $key in $modifiers {
+      .cdr-#{$component}--modifier-#{$key} {
+        @include cdr-surface-selection-states-inner-mixin($component, $key);
       }
     }
   }

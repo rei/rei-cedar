@@ -1,7 +1,7 @@
 @import './vars/CdrSurfaceSelection.vars.scss';
 @import '../../surface/styles/vars/CdrSurface.vars.scss';
 
-$variants: 'primary', 'secondary';
+$modifiers: 'primary', 'secondary';
 $component: 'surface-selection';
 
 @include cdr-surface-base-mixin($component);
@@ -10,4 +10,4 @@ $component: 'surface-selection';
   @include cdr-surface-selection-base-mixin($component);
 }
 
-@include cdr-surface-selection-states-mixin($component, $variants);
+@include cdr-surface-selection-states-mixin($component, $modifiers);

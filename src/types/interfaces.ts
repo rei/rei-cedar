@@ -1,12 +1,10 @@
 import type {
-  Display,
   Tag,
   Space,
   Shadow,
   Radius,
   BorderColor,
-  Position,
-  Variant,
+  Modifier,
   Background,
 } from './other';
 
@@ -162,8 +160,7 @@ export interface InlineCss {
  * @extends HtmlAttributes
  */
 export interface CdrSurfaceProps extends HtmlAttributes {
-  variant?: Variant;
-  display?: Display;
+  modifier?: Modifier;
   background?: Background;
   tag?: Tag;
   shadow?: Shadow;
@@ -171,7 +168,6 @@ export interface CdrSurfaceProps extends HtmlAttributes {
   withBorder?: boolean;
   borderWidth?: Space;
   borderColor?: BorderColor;
-  position?: Position;
   fixed?: boolean;
   m?: Space;
   mx?: Space;
@@ -196,5 +192,4 @@ export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
 
 export interface CdrFulfillmentTileProps extends CdrSurfaceSelectionProps {
   loading?: boolean;
-  typeScale?: '-1' | '0' | '1' | '2' | '3';
 }

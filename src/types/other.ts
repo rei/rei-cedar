@@ -24,6 +24,4 @@ export type BorderColor =
   | 'warning'
   | 'error'
   | 'message-default-01';
-export type Position = CSS.Properties['position'];
-export type Variant = 'primary' | 'secondary';
-export type Display = CSS.Properties['display'];
+export type Modifier = 'primary' | 'secondary';

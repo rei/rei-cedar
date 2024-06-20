@@ -4,19 +4,19 @@ import mapClasses from '../../utils/mapClasses';
 import { CdrSurfaceSelectionProps, HtmlAttributes } from '../../types/interfaces';
 import { getSurfaceProps } from '../../utils/surface';
 
-/** Component for buttons that may have a checked state */
+/** Component for buttons that have a checked state */
 
 defineOptions({ name: 'CdrSurfaceSelection' });
 
 const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
   tag: 'button',
-  variant: 'primary',
+  modifier: 'primary',
 });
 
 const style = useCssModule();
 
 // Manages the props passed along to CdrSurface
-const computedProps = computed(() => {
+const rootProps = computed(() => {
   const { checked } = props;
   const { inlineStyles, classes } = getSurfaceProps(props, 'cdr-surface-selection');
   const additionalProps: HtmlAttributes = {};
@@ -35,7 +35,7 @@ const computedProps = computed(() => {
 <template>
   <component
     :is="tag"
-    v-bind="computedProps"
+    v-bind="rootProps"
   >
     <slot />
   </component>

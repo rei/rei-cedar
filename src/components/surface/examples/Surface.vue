@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CdrSurface from '../CdrSurface.vue';
+import CdrText from '../../text/CdrText.vue';
 import type { CdrSurfaceProps } from '../../../types/interfaces';
 
 defineOptions({ name: 'Surface' });
@@ -39,9 +40,9 @@ const boxes: Example[] = [
     },
   },
   {
-    label: 'This surface uses the primary variant to apply a background and border color',
+    label: 'This surface uses the primary modifier to apply a background and border color',
     props: {
-      variant: 'primary',
+      modifier: 'primary',
       display: 'inline-block',
       radius: 'soft',
       p: 'one-x',
@@ -50,9 +51,9 @@ const boxes: Example[] = [
     },
   },
   {
-    label: 'This surface uses the secondary variant to apply a background and border color',
+    label: 'This surface uses the secondary modifier to apply a background and border color',
     props: {
-      variant: 'secondary',
+      modifier: 'secondary',
       display: 'inline-block',
       radius: 'soft',
       p: 'one-x',
@@ -69,7 +70,7 @@ const boxes: Example[] = [
     <template v-for="({ label, props }) in boxes" :key="label">
       <hr class="example__hr" />
       <CdrSurface v-bind="props">
-        {{ label }}
+        <CdrText>{{ label }}</CdrText>
       </CdrSurface>
     </template>
   </div>

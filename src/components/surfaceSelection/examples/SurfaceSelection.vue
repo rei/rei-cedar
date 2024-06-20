@@ -36,31 +36,31 @@ const toggleValue = ref(1);
     <h2>SurfaceSelection</h2>
     <hr class="example__hr" />
     <CdrSurfaceSelection v-bind="{ checked: false }">
-      This is a blank SurfaceSelection which uses the primary (default) variant
+      This is a blank SurfaceSelection which uses the primary (default) modifier
     </CdrSurfaceSelection>
     <hr class="example__hr" />
     <CdrSurfaceSelection
       v-bind="{
         p: 'one-x',
-        variant: 'primary',
+        modifier: 'primary',
         withBorder: true,
         borderWidth: 'sixteenth-x',
         checked: false,
       }"
     >
-      This surface uses the primary variant and has a border
+      This surface uses the primary modifier and has a border
     </CdrSurfaceSelection>
     <hr class="example__hr" />
     <CdrSurfaceSelection
       v-bind="{
         p: 'one-x',
-        variant: 'secondary',
+        modifier: 'secondary',
         withBorder: true,
         borderWidth: 'sixteenth-x',
         checked: false,
       }"
     >
-      This surface uses the secondary variant and has a border
+      This surface uses the secondary modifier and has a border
     </CdrSurfaceSelection>
     <hr class="example__hr" />
     <h3 class="example__h3">Chips</h3>
@@ -84,7 +84,7 @@ const toggleValue = ref(1);
       border-width="sixteenth-x"
       p="quarter-x"
       radius="softer"
-      variant="secondary"
+      modifier="secondary"
     >
       <CdrSurfaceSelection
         v-for="index in toggle.count"

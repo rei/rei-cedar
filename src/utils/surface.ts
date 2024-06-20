@@ -24,10 +24,10 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
   const classes = [baseClass];
   const inlineStyles: InlineCss = {};
 
-  // Add variant, which applies a background and border color,
+  // Add modifier, which applies a background and border color,
   // but does not apply a border width
-  if (props.variant) {
-    classes.push(`${baseClass}--variant-${props.variant}`);
+  if (props.modifier) {
+    classes.push(`${baseClass}--modifier-${props.modifier}`);
   }
 
   // Add background
@@ -61,11 +61,6 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
   if (props.shadow) {
     const shadowClass = `${baseClass}--shadow-${props.shadow}`;
     classes.push(shadowClass);
-  }
-
-  // Add display
-  if (props.display) {
-    inlineStyles['display'] = props.display;
   }
 
   // Add margin and padding

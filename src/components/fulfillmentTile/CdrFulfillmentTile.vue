@@ -1,88 +1,49 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type * as CSS from 'csstype';
 import mapClasses from '../../utils/mapClasses';
-import CdrSurfaceSelection from '../surfaceSelection/CdrSurfaceSelection.vue';
-import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
-import CdrUtilitySans, { type utilitySansTextProps } from '../text/presets/CdrUtilitySans.vue';
-import { CdrFulfillmentTileProps } from '../../types/interfaces';
+import { CdrFulfillmentTileProps, HtmlAttributes } from '../../types/interfaces';
+import { getSurfaceProps } from '../../utils/surface';
 
-/** Tile component for displaying a button with optional icon at the top right */
+/** Tile component for displaying a button with optional icon in the header */
 
 defineOptions({ name: 'CdrFulfillmentTile' });
 
-const props = defineProps<CdrFulfillmentTileProps>();
+const props = withDefaults(defineProps<CdrFulfillmentTileProps>(), {
+  tag: 'button',
+  modifier: 'primary',
+  withBorder: true,
+  borderColor: 'primary',
+  borderWidth: 'sixteenth-x',
+  radius: 'softer',
+});
 
 const style = useCssModule();
 const baseClass = 'cdr-fulfillment-tile';
 
-// Manages the props passed along to CdrGenericButton
+// Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const classes = [baseClass];
-  const inlineStyles: CSS.Properties = {};
+  const { checked } = props;
+  const { inlineStyles, classes } = getSurfaceProps(props, baseClass);
+  const additionalProps: HtmlAttributes = {};
+
+  // Add checked
+  additionalProps['aria-checked'] = checked;
 
   return {
-    ...props,
+    ...additionalProps,
     style: inlineStyles,
-    class: mapClasses(style, ...classes),
+    class: mapClasses(style, ...classes) || undefined,
   };
 });
-
-const headerProps = computed(() => ({
-  class: style[`${baseClass}__header`],
-}));
-
-const bodyProps = computed<utilitySansTextProps>(() => ({
-  scale: '-1',
-  tag: 'div',
-  class: {
-    [style[`${baseClass}__content`]]: true,
-    [style[`${baseClass}__content--body`]]: true,
-  },
-}));
-
-const footerProps = computed<utilitySansTextProps>(() => ({
-  scale: '-1',
-  tag: 'div',
-  class: {
-    [style[`${baseClass}__content`]]: true,
-    [style[`${baseClass}__content--footer`]]: true,
-  },
-}));
 </script>
 
 <template>
-  <CdrSurfaceSelection v-bind="rootProps">
-    <CdrFulfillmentTileHeader v-bind="headerProps">
-      <template
-        v-if="$slots['icon-left']"
-        #icon-left
-      >
-        <slot name="icon-left" />
-      </template>
-      <template #label>
-        <slot name="label" />
-      </template>
-      <template
-        v-if="$slots['icon-right']"
-        #icon-right
-      >
-        <slot name="icon-right" />
-      </template>
-    </CdrFulfillmentTileHeader>
-    <CdrUtilitySans
-      v-if="$slots.body"
-      v-bind="bodyProps"
-    >
-      <slot name="body" />
-    </CdrUtilitySans>
-    <CdrUtilitySans
-      v-if="$slots.footer"
-      v-bind="footerProps"
-    >
-      <slot name="footer" />
-    </CdrUtilitySans>
-  </CdrSurfaceSelection>
+  <component
+    :is="tag"
+    v-bind="rootProps"
+  >
+    Test
+  </component>
 </template>
 
 <style lang="scss" module src="./styles/CdrFulfillmentTile.module.scss"></style>

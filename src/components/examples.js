@@ -10,7 +10,7 @@ import chip from 'componentsdir/chip/examples/Chip.vue';
 import choreographer from 'componentsdir/choreographer/examples/Choreographer.vue';
 import container from 'componentsdir/container/examples/Container.vue';
 import formGroup from 'componentsdir/formGroup/examples/FormGroup.vue';
-// import fulfillmentTile from 'componentsdir/fulfillmentTile/examples/FulfillmentTile.vue';
+import fulfillmentTile from 'componentsdir/fulfillmentTile/examples/FulfillmentTile.vue';
 import grid from 'componentsdir/grid/examples/Grid.vue';
 import icon from 'componentsdir/icon/examples/Icons.vue';
 import images from 'componentsdir/image/examples/Images.vue';
@@ -53,7 +53,7 @@ export default {
   chip,
   choreographer,
   container,
-  // fulfillmentTile,
+  fulfillmentTile,
   formGroup,
   grid,
   icon,
