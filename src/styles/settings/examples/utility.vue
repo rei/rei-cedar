@@ -64,7 +64,7 @@
           prompt="Choose one"
           @select-change="doExternal"
         >
-          <option value="cdr-type-scale-xs">XS</option>
+          <option value="cdr-type-scale--1">-1</option>
           <option value="cdr-type-scale-0">0</option>
           <option value="cdr-type-scale-1">1</option>
           <option value="cdr-type-scale-2">2</option>
@@ -301,7 +301,7 @@ export default {
 
 .space {
   grid-template-rows: 28px auto;
-  font-size: var(--cdr-type-scale-xs);
+  font-size: var(--cdr-type-scale--1);
   display: grid;
   grid-gap: 0;
   min-width: 40px;
