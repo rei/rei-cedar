@@ -21,7 +21,7 @@
 @supports(container-type: inline-size) {
   :root {
     // type
-    --cdr-type-scale-xs: clamp(1.33rem, 0.29cqw + 1.24rem, 1.6rem);
+    --cdr-type-scale--1: clamp(1.33rem, 0.29cqw + 1.24rem, 1.6rem);
     --cdr-type-scale-0: clamp(1.6rem, 0.44cqw + 1.46rem, 2rem);
     --cdr-type-scale-1: clamp(1.92rem, 0.64cqw + 1.72rem, 2.5rem);
     --cdr-type-scale-2: clamp(2.3rem, 0.9cqw + 2.02rem, 3.13rem);
