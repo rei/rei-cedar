@@ -98,32 +98,42 @@ $shadows: (
   'lifted': $cdr-prominence-lifted,
 );
 
-@mixin cdr-background-mixin($options, $component, $key, $state: 'rest') {
+@mixin cdr-background-mixin($options, $component, $modifier: 'default', $state: 'rest') {
   $statePart: '';
+  $modifierPart: '';
 
   @if $state != 'rest' {
     $statePart: -#{$state};
   }
 
+  @if $modifier != 'default' {
+    $modifierPart: -#{$modifier};
+  }
+
   background: var(
-    --cdr-#{$component}-#{$key}-background-color#{$statePart},
+    --cdr-#{$component}#{$modifierPart}-background-color#{$statePart},
     var(
-      --cdr-color-background-#{$component}-#{$key}#{$statePart},
-      #{map.get($options, $key, $state)}
+      --cdr-color-background-#{$component}#{$modifierPart}#{$statePart},
+      #{map.get($options, $modifier, $state)}
     )
   );
 }
 
-@mixin cdr-border-color-mixin($options, $component, $key, $state: 'rest') {
+@mixin cdr-border-color-mixin($options, $component, $modifier: 'default', $state: 'rest') {
   $statePart: '';
+  $modifierPart: '';
 
   @if $state != 'rest' {
     $statePart: -#{$state};
   }
 
+  @if $modifier != 'default' {
+    $modifierPart: -#{$modifier};
+  }
+
   --cdr-#{$component}-border-color-default: var(
-    --cdr-#{$component}-#{$key}-border-color#{$statePart},
-    var(--cdr-color-border-#{$component}-#{$key}#{$statePart}, #{map.get($options, $key, $state)})
+    --cdr-#{$component}#{$modifierPart}-border-color#{$statePart},
+    var(--cdr-color-border-#{$component}#{$modifierPart}#{$statePart}, #{map.get($options, $modifier, $state)})
   );
 }
 

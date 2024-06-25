@@ -1,7 +1,9 @@
 @use 'sass:map';
 @import '../../../../styles/settings/index.scss';
 
-$background-colors: (
+$surface-modifiers: 'primary', 'secondary';
+$surface-component: 'surface';
+$surface-background-colors: (
   'primary': (
     'rest': $cdr-color-background-surface-primary,
   ),
@@ -9,8 +11,7 @@ $background-colors: (
     'rest': $cdr-color-background-surface-secondary,
   ),
 );
-
-$border-colors: (
+$surface-border-colors: (
   'primary': (
     'rest': $cdr-color-border-surface-primary,
   ),
@@ -19,16 +20,16 @@ $border-colors: (
   ),
 );
 
-@mixin cdr-surface-base-mixin($component) {
-  @each $key, $value in $background-colors {
-    .cdr-#{$component}--background-#{$key} {
-      @include cdr-background-mixin($background-colors, $component, $key);
+@mixin cdr-surface-base-mixin($background-colors, $border-colors, $component) {
+  @each $modifier, $value in $background-colors {
+    .cdr-#{$component}--background-#{$modifier} {
+      @include cdr-background-mixin($background-colors, $component, $modifier);
     }
   }
 
-  @each $key, $value in $border-colors {
-    .cdr-#{$component}--border-color-#{$key} {
-      @include cdr-border-color-mixin($border-colors, $component, $key);
+  @each $modifier, $value in $border-colors {
+    .cdr-#{$component}--border-color-#{$modifier} {
+      @include cdr-border-color-mixin($border-colors, $component, $modifier);
     }
   }
 
@@ -55,11 +56,11 @@ $border-colors: (
   }
 }
 
-@mixin cdr-surface-modifiers-mixin($component, $modifiers) {
-  @each $key in $modifiers {
-    .cdr-#{$component}--modifier-#{$key} {
-      @include cdr-background-mixin($background-colors, $component, $key);
-      @include cdr-border-color-mixin($border-colors, $component, $key);
+@mixin cdr-surface-modifiers-mixin($background-colors, $border-colors, $component, $modifiers) {
+  @each $modifier in $modifiers {
+    .cdr-#{$component}--modifier-#{$modifier} {
+      @include cdr-background-mixin($background-colors, $component, $modifier);
+      @include cdr-border-color-mixin($border-colors, $component, $modifier);
     }
   }
 }

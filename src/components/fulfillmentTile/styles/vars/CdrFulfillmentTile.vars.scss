@@ -1,11 +1,26 @@
+@use 'sass:map';
 @import '../../../../styles/settings/index.scss';
 @import '../../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
 
-@mixin cdr-fulfillment-tile-base-mixin($component) {
-  --cdr-fulfillment-tile-background-color-checked: var(--cdr-color-background-primary);
-  --cdr-fulfillment-tile-background-color-disabled: var(
-    --cdr-color-background-button-default-disabled
-  );
+$fulfillment-tile-component: 'fulfillment-tile';
+$fulfillment-tile-background-colors: (
+  'default': (
+    'rest': map.get($surface-selection-background-colors, 'primary', 'rest'),
+    'hover': map.get($surface-selection-background-colors, 'primary', 'hover'),
+    'active': map.get($surface-selection-background-colors, 'primary', 'active'),
+    'checked': $cdr-color-background-primary,
+    'disabled': $cdr-color-background-button-default-disabled,
+  ),
+);
+$fulfillment-tile-border-colors: (
+  'default': map.get($surface-selection-border-colors, 'primary'),
+);
+
+@mixin cdr-fulfillment-tile-base-mixin() {
+  @include cdr-border-width-mixin($fulfillment-tile-component, 'sixteenth-x');
+  @include cdr-border-mixin($fulfillment-tile-component);
+  @include cdr-border-color-mixin($fulfillment-tile-border-colors, $fulfillment-tile-component);
+  @include cdr-radius-mixin($fulfillment-tile-component, 'softer');
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -16,35 +31,3 @@
   padding: var(--cdr-space-scale-one-x) 0;
 }
 
-@mixin cdr-fulfillment-tile-content-mixin() {
-  padding: 0 var(--cdr-space-scale-one-x);
-  width: 100%;
-  flex: 0 0 auto;
-
-  &--stretch {
-    flex: 1 1 auto;
-  }
-
-  strong {
-    --cdr-utility-sans-font-weight: 600;
-    font-weight: var(--cdr-utility-sans-font-weight);
-  }
-}
-
-@mixin cdr-fulfillment-tile-header-mixin() {
-  display: flex;
-  align-items: center;
-  gap: var(--cdr-space-scale-three-quarter-x);
-  width: 100%;
-  height: $cdr-space-one-and-a-half-x;
-  padding: 0 var(--cdr-space-scale-one-x);
-
-  &__icon {
-    flex: 0 0 auto;
-    fill: var(--cdr-fulfillment-tile-icon-fill);
-  }
-
-  &__label {
-    flex: 1 1 auto;
-  }
-}

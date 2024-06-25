@@ -1,26 +1,19 @@
-
-// $modifiers: 'primary', 'secondary';
-// $component: 'surface-selection';
-
-// .cdr-fulfillment-tile {
-//   @include cdr-fulfillment-tile-base-mixin($component);
-
-//   &__content {
-//     @include cdr-fulfillment-tile-content-mixin;
-//   }
-// }
-
 @import '../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
 @import '../../surface/styles/vars/CdrSurface.vars.scss';
 @import './vars/CdrFulfillmentTile.vars.scss';
 
-$component: 'fulfillment-tile';
-
-@include cdr-surface-base-mixin($component);
+@include cdr-surface-base-mixin(
+  $fulfillment-tile-background-colors,
+  $fulfillment-tile-border-colors,
+  $fulfillment-tile-component
+);
 
 .cdr-fulfillment-tile {
-  @include cdr-surface-selection-base-mixin($component);
-  @include cdr-fulfillment-tile-base-mixin($component);
+  @include cdr-surface-selection-base-mixin($fulfillment-tile-component);
+  @include cdr-fulfillment-tile-base-mixin();
+  @include cdr-surface-selection-states-mixin(
+    $fulfillment-tile-background-colors,
+    $fulfillment-tile-border-colors,
+    $fulfillment-tile-component
+  );
 }
-
-@include cdr-surface-selection-states-mixin($component);

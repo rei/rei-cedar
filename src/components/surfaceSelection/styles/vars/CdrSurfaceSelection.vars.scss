@@ -1,5 +1,40 @@
 @import '../../../../styles/settings/index.scss';
 
+$surface-selection-modifiers: 'primary', 'secondary';
+$surface-selection-component: 'surface-selection';
+$surface-selection-background-colors: (
+  'primary': (
+    'rest': '$cdr-color-background-surface-selection-primary',
+    'hover': $cdr-color-background-surface-selection-primary-hover,
+    'active': $cdr-color-background-surface-selection-primary-active,
+    'checked': $cdr-color-background-surface-selection-primary-checked,
+    'disabled': $cdr-color-background-surface-selection-primary-disabled,
+  ),
+  'secondary': (
+    'rest': $cdr-color-background-surface-selection-secondary,
+    'hover': $cdr-color-background-surface-selection-secondary-hover,
+    'active': $cdr-color-background-surface-selection-secondary-active,
+    'checked': $cdr-color-background-surface-selection-secondary-checked,
+    'disabled': $cdr-color-background-surface-selection-secondary-disabled,
+  ),
+);
+$surface-selection-border-colors: (
+  'primary': (
+    'rest': $cdr-color-border-surface-selection-primary,
+    'hover': $cdr-color-border-surface-selection-primary-hover,
+    'active': $cdr-color-border-surface-selection-primary-active,
+    'checked': $cdr-color-border-surface-selection-primary-checked,
+    'disabled': $cdr-color-border-surface-selection-primary-disabled,
+  ),
+  'secondary': (
+    'rest': $cdr-color-border-surface-selection-secondary,
+    'hover': $cdr-color-border-surface-selection-secondary-hover,
+    'active': $cdr-color-border-surface-selection-secondary-active,
+    'checked': $cdr-color-border-surface-selection-secondary-checked,
+    'disabled': $cdr-color-border-surface-selection-secondary-disabled,
+  ),
+);
+
 @mixin cdr-surface-selection-disabled-mixin() {
   &:disabled,
   &:disabled:hover,
@@ -71,81 +106,54 @@
   }
 }
 
-$background-colors: (
-  'primary': (
-    'rest': $cdr-color-background-surface-selection-primary,
-    'hover': $cdr-color-background-surface-selection-primary-hover,
-    'active': $cdr-color-background-surface-selection-primary-active,
-    'checked': $cdr-color-background-surface-selection-primary-checked,
-    'disabled': $cdr-color-background-surface-selection-primary-disabled,
-  ),
-  'secondary': (
-    'rest': $cdr-color-background-surface-selection-secondary,
-    'hover': $cdr-color-background-surface-selection-secondary-hover,
-    'active': $cdr-color-background-surface-selection-secondary-active,
-    'checked': $cdr-color-background-surface-selection-secondary-checked,
-    'disabled': $cdr-color-background-surface-selection-secondary-disabled,
-  ),
-);
-
-$border-colors: (
-  'primary': (
-    'rest': $cdr-color-border-surface-selection-primary,
-    'hover': $cdr-color-border-surface-selection-primary-hover,
-    'active': $cdr-color-border-surface-selection-primary-active,
-    'checked': $cdr-color-border-surface-selection-primary-checked,
-    'disabled': $cdr-color-border-surface-selection-primary-disabled,
-  ),
-  'secondary': (
-    'rest': $cdr-color-border-surface-selection-secondary,
-    'hover': $cdr-color-border-surface-selection-secondary-hover,
-    'active': $cdr-color-border-surface-selection-secondary-active,
-    'checked': $cdr-color-border-surface-selection-secondary-checked,
-    'disabled': $cdr-color-border-surface-selection-secondary-disabled,
-  ),
-);
-
-@mixin cdr-surface-selection-states-inner-mixin($component, $key) {
-  @include cdr-background-mixin($background-colors, $component, $key);
-  @include cdr-border-color-mixin($border-colors, $component, $key);
+@mixin cdr-surface-selection-states-mixin(
+  $background-colors,
+  $border-colors,
+  $component,
+  $modifier: 'default'
+) {
+  @include cdr-background-mixin($background-colors, $component, $modifier);
+  @include cdr-border-color-mixin($border-colors, $component, $modifier);
 
   @include cdr-surface-selection-hover-mixin() {
     $state: 'hover';
-    @include cdr-background-mixin($background-colors, $component, $key, $state);
-    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
   @include cdr-surface-selection-active-mixin() {
     $state: 'active';
-    @include cdr-background-mixin($background-colors, $component, $key, $state);
-    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
   @include cdr-surface-selection-checked-mixin() {
     $state: 'checked';
-    @include cdr-background-mixin($background-colors, $component, $key, $state);
-    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
   @include cdr-surface-selection-disabled-mixin() {
     $state: 'disabled';
-    @include cdr-background-mixin($background-colors, $component, $key, $state);
-    @include cdr-border-color-mixin($border-colors, $component, $key, $state);
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 }
 
-@mixin cdr-surface-selection-states-mixin($component, $modifiers: null) {
-  @if $modifiers == null {
-    $key: 'primary';
-
-    .cdr-#{$component}--modifier-#{$key} {
-      @include cdr-surface-selection-states-inner-mixin($component, $key);
-    }
-  } @else {
-    @each $key in $modifiers {
-      .cdr-#{$component}--modifier-#{$key} {
-        @include cdr-surface-selection-states-inner-mixin($component, $key);
-      }
+@mixin cdr-surface-selection-states-modifiers-mixin(
+  $background-colors,
+  $border-colors,
+  $component,
+  $modifiers
+) {
+  @each $modifier in $modifiers {
+    .cdr-#{$component}--modifier-#{$modifier} {
+      @include cdr-surface-selection-states-mixin(
+        $background-colors,
+        $border-colors,
+        $component,
+        $modifier
+      );
     }
   }
 }

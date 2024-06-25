@@ -1,13 +1,19 @@
 @import './vars/CdrSurfaceSelection.vars.scss';
 @import '../../surface/styles/vars/CdrSurface.vars.scss';
 
-$modifiers: 'primary', 'secondary';
-$component: 'surface-selection';
-
-@include cdr-surface-base-mixin($component);
+@include cdr-surface-base-mixin(
+  $surface-selection-background-colors,
+  $surface-selection-border-colors,
+  $surface-selection-component
+);
 
 .cdr-surface-selection {
-  @include cdr-surface-selection-base-mixin($component);
+  @include cdr-surface-selection-base-mixin($surface-selection-component);
 }
 
-@include cdr-surface-selection-states-mixin($component, $modifiers);
+@include cdr-surface-selection-states-modifiers-mixin(
+  $surface-selection-background-colors,
+  $surface-selection-border-colors,
+  $surface-selection-component,
+  $surface-selection-modifiers
+);
