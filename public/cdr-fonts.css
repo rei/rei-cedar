@@ -7,10 +7,7 @@
 @font-face {
   font-family: "Stuart fallback";
   src: local("Georgia");
-  size-adjust: 102.9695%;
-  ascent-override: 95.1738%;
-  descent-override: 20.5886%;
-  line-gap-override: 0%;
+  size-adjust: 106%
 }
 
 @font-face {
@@ -28,11 +25,8 @@
 
 @font-face {
   font-family: "Graphik fallback";
-  src: local("Helvetica Neue");
-  size-adjust: 104.9217%;
-  ascent-override: 93.4983%;
-  descent-override: 18.5853%;
-  line-gap-override: 0%;
+  src: local("Verdana");
+  size-adjust: 92%;
 }
 
 @font-face {
