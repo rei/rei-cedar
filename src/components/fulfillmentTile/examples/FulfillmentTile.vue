@@ -7,7 +7,6 @@ import { IconCheckFill, IconErrorFill, IconXFill } from '../../icon';
 import CdrButton from '../../button/CdrButton.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrSurfaceSelection from '../../surfaceSelection/CdrSurfaceSelection.vue';
-import CdrUtilitySans from '../../text/presets/CdrUtilitySans.vue';
 
 defineOptions({ name: 'FulfillmentTile' });
 
@@ -95,6 +94,30 @@ const toggleCheckbox2 = (value: number) => {
           <IconCheckFill inherit-color />
         </template>
         <template #label>Another option</template>
+        <template #footer>
+          Footer
+          <strong>content</strong>
+        </template>
+      </CdrFulfillmentTile>
+      <CdrFulfillmentTile
+        class="example__checkout-tile"
+        :checked="radio1 === 3"
+        tabindex="0"
+        role="radio"
+        :loading="true"
+        @click="radio1 = 3"
+      >
+        <template
+          v-if="radio1 === 3"
+          #icon-right
+        >
+          <IconCheckFill inherit-color />
+        </template>
+        <template #label>Loading option</template>
+        <template #body>
+          Body
+          <strong>content</strong>
+        </template>
         <template #footer>
           Footer
           <strong>content</strong>
@@ -332,7 +355,7 @@ const toggleCheckbox2 = (value: number) => {
   &__row {
     display: grid;
     gap: var(--cdr-space-scale-three-quarter-x);
-    grid-template-columns: 230px 230px 230px;
+    grid-template-columns: 230px 230px 230px 230px;
   }
 
   &__checkout-tile {
