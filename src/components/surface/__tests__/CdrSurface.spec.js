@@ -1,6 +1,5 @@
-import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
+import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrSurface from '../CdrSurface.vue';
-import sinon from 'sinon'
 
 describe('CdrSurface', () => {
   describe('snapshot test', () => {
@@ -10,13 +9,10 @@ describe('CdrSurface', () => {
     })
     it('renders correctly', () => {
       wrapper.setProps({
-        display: 'flex',
-        background: 'secondary',
-        palette: 'secondary',
+        modifier: 'primary',
         radius: 'soft',
         withBorder: true,
         borderWidth: 'one-x',
-        position: 'absolute',
         p: 'three-x',
         m: 'one-x',
       })
@@ -27,7 +23,7 @@ describe('CdrSurface', () => {
   describe('component unit tests', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = shallowMount(CdrSurface);
+      wrapper = mount(CdrSurface);
     });
 
     describe('default component with no configuration', () => {
@@ -53,25 +49,5 @@ describe('CdrSurface', () => {
         expect(wrapper.element.tagName).toBe('A');
       });
     })
-
-    // describe('when "iconOnly" and "withBackground" is set to true', () => {
-    //   beforeEach(() => {
-    //     wrapper.setProps({
-    //       iconOnly: true,
-    //       withBackground: true,
-    //     });
-    //   });
-    //   it('renders correctly', () => {
-    //     expect(wrapper.element).toMatchSnapshot();
-    //   });
-    //   it('adds class for icon only', () => {
-    //     expect(wrapper.classes()).toContain('cdr-button--icon-only');
-    //   });
-
-    //   it('adds class for icon background', () => {
-    //     expect(wrapper.classes()).toContain('cdr-button--with-background');
-    //   });
-    // })
-
   })
 });

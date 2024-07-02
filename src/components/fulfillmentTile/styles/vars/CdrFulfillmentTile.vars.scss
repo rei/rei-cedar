@@ -19,7 +19,6 @@ $fulfillment-tile-border-colors: (
 @mixin cdr-fulfillment-tile-base-mixin() {
   @include cdr-border-width-mixin($fulfillment-tile-component, 'sixteenth-x');
   @include cdr-border-mixin($fulfillment-tile-component);
-  @include cdr-border-color-mixin($fulfillment-tile-border-colors, $fulfillment-tile-component);
   @include cdr-radius-mixin($fulfillment-tile-component, 'softer');
   display: flex;
   align-items: flex-start;

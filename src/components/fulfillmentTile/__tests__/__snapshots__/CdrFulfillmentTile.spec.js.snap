@@ -1,25 +1,269 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CdrFulfillmentTile > icon left configuration 1`] = `
-<cdr-surface-selection-stub
-  background="transparent"
-  checked="false"
+exports[`CdrFulfillmentTile > component unit tests > default component with no configuration > renders correctly 1`] = `
+<button
+  aria-checked="false"
   class="cdr-fulfillment-tile"
-  fixed="false"
-  loading="false"
-  tag="button"
-  withborder="false"
-/>
+>
+  <div
+    class="cdr-fulfillment-tile-header"
+  >
+    <!--v-if-->
+    <span
+      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
+      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    >
+      
+      
+    </span>
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</button>
 `;
 
-exports[`CdrFulfillmentTile > icon right configuration 1`] = `
-<cdr-surface-selection-stub
-  background="transparent"
-  checked="false"
+exports[`CdrFulfillmentTile > shows body 1`] = `
+<button
+  aria-checked="false"
   class="cdr-fulfillment-tile"
-  fixed="false"
-  loading="false"
-  tag="button"
-  withborder="false"
-/>
+>
+  <div
+    class="cdr-fulfillment-tile-header"
+  >
+    <!--v-if-->
+    <span
+      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
+      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    >
+      
+      
+      
+      Label slot
+      
+      
+      
+    </span>
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-utility-sans cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  >
+    
+    
+    
+    Body slot
+    
+    
+    
+  </div>
+  <!--v-if-->
+</button>
+`;
+
+exports[`CdrFulfillmentTile > shows footer 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-fulfillment-tile"
+>
+  <div
+    class="cdr-fulfillment-tile-header"
+  >
+    <!--v-if-->
+    <span
+      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
+      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    >
+      
+      
+      
+      Label slot
+      
+      
+      
+    </span>
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-utility-sans cdr-fulfillment-tile-content"
+    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  >
+    
+    
+    
+    Footer slot
+    
+    
+    
+  </div>
+</button>
+`;
+
+exports[`CdrFulfillmentTile > shows header 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-fulfillment-tile"
+>
+  <div
+    class="cdr-fulfillment-tile-header"
+  >
+    <!--v-if-->
+    <span
+      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
+      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    >
+      
+      
+      
+      Label slot
+      
+      
+      
+    </span>
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</button>
+`;
+
+exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-fulfillment-tile"
+>
+  <div
+    class="cdr-fulfillment-tile-header"
+  >
+    <!--v-if-->
+    <span
+      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
+      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    >
+      
+      
+    </span>
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</button>
+`;
+
+exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-fulfillment-tile"
+>
+  <div
+    class="cdr-fulfillment-tile-header"
+  >
+    <!--v-if-->
+    <span
+      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
+      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    >
+      
+      
+      
+      Label slot
+      
+      
+      
+    </span>
+    <span
+      class="cdr-fulfillment-tile-header__icon"
+    >
+      
+      
+      X
+      
+      
+    </span>
+  </div>
+  <div
+    class="cdr-utility-sans cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  >
+    
+    
+    
+    Body slot
+    
+    
+    
+  </div>
+  <div
+    class="cdr-utility-sans cdr-fulfillment-tile-content"
+    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  >
+    
+    
+    
+    Footer slot
+    
+    
+    
+  </div>
+</button>
+`;
+
+exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-fulfillment-tile"
+>
+  <div
+    class="cdr-fulfillment-tile-header"
+  >
+    <span
+      class="cdr-fulfillment-tile-header__icon"
+    >
+      
+      
+      X
+      
+      
+    </span>
+    <span
+      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
+      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    >
+      
+      
+      
+      Label slot
+      
+      
+      
+    </span>
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-utility-sans cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  >
+    
+    
+    
+    Body slot
+    
+    
+    
+  </div>
+  <div
+    class="cdr-utility-sans cdr-fulfillment-tile-content"
+    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  >
+    
+    
+    
+    Footer slot
+    
+    
+    
+  </div>
+</button>
 `;

@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrSurfaceSelection > component unit tests > aria attribute correct when checked > renders correctly 1`] = `
+<button
+  aria-checked="true"
+  class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+>
+  
+  
+</button>
+`;
+
+exports[`CdrSurfaceSelection > component unit tests > aria attribute correct when not checked > renders correctly 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+>
+  
+  
+</button>
+`;
+
+exports[`CdrSurfaceSelection > component unit tests > correct class with secondary modifier > renders correctly 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-surface-selection cdr-surface-selection--modifier-secondary"
+>
+  
+  
+</button>
+`;
+
+exports[`CdrSurfaceSelection > component unit tests > default component with no configuration > renders correctly 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+>
+  
+  
+</button>
+`;
+
+exports[`CdrSurfaceSelection > snapshot test > renders correctly 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+>
+  
+  
+</button>
+`;

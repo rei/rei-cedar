@@ -1,5 +1,3 @@
-import type * as CSS from 'csstype';
-
 export type Tag = keyof HTMLElementTagNameMap;
 export type Space =
   | 'zero'

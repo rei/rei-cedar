@@ -4,7 +4,7 @@ $surface-selection-modifiers: 'primary', 'secondary';
 $surface-selection-component: 'surface-selection';
 $surface-selection-background-colors: (
   'primary': (
-    'rest': '$cdr-color-background-surface-selection-primary',
+    'rest': $cdr-color-background-surface-selection-primary,
     'hover': $cdr-color-background-surface-selection-primary-hover,
     'active': $cdr-color-background-surface-selection-primary-active,
     'checked': $cdr-color-background-surface-selection-primary-checked,

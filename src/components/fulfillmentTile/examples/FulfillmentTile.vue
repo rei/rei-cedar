@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import CdrFulfillmentTile from '../CdrFulfillmentTile.vue';
 import CdrFulfillmentTileHeader from '../CdrFulfillmentTileHeader.vue';
+import CdrFulfillmentTileContent from '../CdrFulfillmentTileContent.vue';
 import { IconCheckFill, IconErrorFill, IconXFill } from '../../icon';
 import CdrButton from '../../button/CdrButton.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
@@ -250,6 +251,8 @@ const toggleCheckbox2 = (value: number) => {
         class="example__search-tile-other"
         :border-width="checkbox2.includes(1) ? 'eighth-x' : 'sixteenth-x'"
         :with-border="true"
+        :border-color="checkbox2.includes(1) ? 'secondary' : 'primary'"
+        radius="softer"
       >
         <CdrSurfaceSelection
           class="example__search-tile-other-header-button"
@@ -280,20 +283,17 @@ const toggleCheckbox2 = (value: number) => {
             </template>
             <template #label>Store Pickup (32)</template>
           </CdrFulfillmentTileHeader>
-          <CdrUtilitySans
-            class="example__search-tile-other-header-content"
-            scale="-1"
-            tag="div"
-          >
+          <CdrFulfillmentTileContent class="example__search-tile-other-header-content">
             In stock at
             <strong>Encinitas</strong>
-          </CdrUtilitySans>
+          </CdrFulfillmentTileContent>
         </CdrSurfaceSelection>
         <hr class="example__search-tile-other-header-hr" />
         <CdrButton
           class="example__change-store-other"
           :full-width="true"
           modifier="link"
+          size="small"
         >
           Change store
         </CdrButton>
@@ -305,6 +305,7 @@ const toggleCheckbox2 = (value: number) => {
 <style lang="scss">
 @import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 @import '../styles/vars/CdrFulfillmentTile.vars.scss';
+@import '../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
 
 @mixin tile-colors() {
   &[aria-pressed='true'],
@@ -362,48 +363,46 @@ const toggleCheckbox2 = (value: number) => {
     margin-bottom: var(--cdr-space-scale-half-x);
   }
 
-  // &__checkout-tile-other-disabled {
-  //   --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-  //   --cdr-palette-background-rest: var(--cdr-color-background-button-default-disabled);
-  //   --cdr-palette-border-color: var(--cdr-color-border-primary);
+  &__checkout-tile-other-disabled {
+    --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
+    --cdr-color-background-fulfillment-tile: var(--cdr-color-background-button-default-disabled);
+    --cdr-color-background-fulfillment-tile-checked: var(
+      --cdr-color-background-button-default-disabled
+    );
+  }
 
-  //   &[aria-pressed='true'],
-  //   &[aria-checked='true'] {
-  //     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-  //     --cdr-palette-background-checked: var(--cdr-color-background-button-default-disabled);
-  //     --cdr-palette-border-color: var(--cdr-palette-border-color-checked);
-  //   }
-  // }
+  &__search-tile-other {
+    gap: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
-  // &__search-tile-other {
-  //   @include cdr-fulfillment-tile-base-mixin;
-  //   gap: 0;
-  //   padding-top: 0;
-  //   padding-bottom: 0;
-  // }
+  &__search-tile-other-header-button {
+    --cdr-surface-selection-border-width-default: 0;
+    --cdr-color-background-surface-selection-primary-checked: var(--cdr-color-background-primary);
+    padding: var(--cdr-space-scale-one-x) 0;
+    width: 100%;
+    @include tile-colors;
 
-  // &__search-tile-other-header-button {
-  //   --cdr-action-border-width-checked: 0;
-  //   padding: var(--cdr-space-scale-one-x) 0;
-  //   width: 100%;
-  //   @include tile-colors;
-  // }
+    @include cdr-surface-selection-checked-mixin() {
+      --cdr-surface-selection-border-width-default: 0;
+    }
+  }
 
-  // &__search-tile-other-header-content {
-  //   @include cdr-fulfillment-tile-content-mixin;
-  //   margin-top: var(--cdr-space-scale-half-x);
-  // }
+  &__search-tile-other-header-content {
+    margin-top: var(--cdr-space-scale-half-x);
+  }
 
-  // &__search-tile-other-header-hr {
-  //   margin: 0;
-  //   border-top: var(--cdr-space-scale-sixteenth-x) solid initial;
-  //   width: 100%;
-  // }
+  &__search-tile-other-header-hr {
+    margin: 0;
+    border-top: var(--cdr-space-scale-sixteenth-x) solid initial;
+    width: 100%;
+  }
 
-  // &__change-store-other {
-  //   padding: var(--cdr-space-scale-three-quarter-x) var(--cdr-space-scale-one-x)
-  //     var(--cdr-space-scale-one-x) var(--cdr-space-scale-one-x);
-  //   justify-content: flex-start;
-  // }
+  &__change-store-other {
+    padding: var(--cdr-space-scale-three-quarter-x) var(--cdr-space-scale-one-x)
+      var(--cdr-space-scale-one-x) var(--cdr-space-scale-one-x);
+    justify-content: flex-start;
+  }
 }
 </style>

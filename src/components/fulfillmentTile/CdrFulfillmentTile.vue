@@ -57,12 +57,12 @@ const rootProps = computed(() => {
       </template>
     </CdrFulfillmentTileHeader>
     <template v-if="$slots['body']">
-      <CdrFulfillmentTileContent>
+      <CdrFulfillmentTileContent :stretch="true">
         <slot name="body" />
       </CdrFulfillmentTileContent>
     </template>
     <template v-if="$slots['footer']">
-      <CdrFulfillmentTileContent :stretch="true">
+      <CdrFulfillmentTileContent>
         <slot name="footer" />
       </CdrFulfillmentTileContent>
     </template>

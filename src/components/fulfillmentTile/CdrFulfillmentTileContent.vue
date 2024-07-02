@@ -21,8 +21,8 @@ const rootProps = computed<utilitySansTextProps>(() => ({
   tag: 'div',
   scale: '-1',
   class: {
-    baseClass: true,
-    [style[`${baseClass}__stretch`]]: props.stretch,
+    [style[baseClass]]: true,
+    [style[`${baseClass}--stretch`]]: props.stretch,
   },
 }));
 </script>
