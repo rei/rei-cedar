@@ -57,7 +57,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
     "@emotion/is-prop-valid": "^1.2.1",
-    "@rei/cdr-tokens": "^12.1.0",
+    "@rei/cdr-tokens": "^12.2.0",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@types/tabbable": "^3.1.2",
@@ -69,7 +69,7 @@
     "autoprefixer": "^10.2.5",
     "c8": "^7.11.0",
     "chalk": "^4.1.0",
-    "chromedriver": "^122",
+    "chromedriver": "^126.0.4",
     "concat": "^1.0.3",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
