@@ -30,3 +30,6 @@ $fulfillment-tile-border-colors: (
   padding: var(--cdr-space-scale-one-x) 0;
 }
 
+@mixin cdr-fulfillment-tile-loading-mixin() {
+  padding: 0 var(--cdr-space-scale-one-x);
+}

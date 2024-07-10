@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
+import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
+import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 import mapClasses from '../../utils/mapClasses';
 import { CdrFulfillmentTileProps, HtmlAttributes } from '../../types/interfaces';
 import { getSurfaceProps } from '../../utils/surface';
@@ -12,6 +14,7 @@ defineOptions({ name: 'CdrFulfillmentTile' });
 
 const props = withDefaults(defineProps<CdrFulfillmentTileProps>(), {
   tag: 'button',
+  loading: false,
 });
 
 const style = useCssModule();
@@ -39,32 +42,40 @@ const rootProps = computed(() => {
     :is="tag"
     v-bind="rootProps"
   >
-    <CdrFulfillmentTileHeader>
-      <template
-        v-if="$slots['icon-left']"
-        #icon-left
-      >
-        <slot name="icon-left" />
-      </template>
-      <template #label>
-        <slot name="label" />
-      </template>
-      <template
-        v-if="$slots['icon-right']"
-        #icon-right
-      >
-        <slot name="icon-right" />
-      </template>
-    </CdrFulfillmentTileHeader>
-    <template v-if="$slots['body']">
-      <CdrFulfillmentTileContent :stretch="true">
-        <slot name="body" />
-      </CdrFulfillmentTileContent>
+    <template v-if="loading">
+      <CdrSkeleton :class="style['cdr-fulfillment-tile__loading']">
+        <CdrSkeletonBone type="line" />
+        <CdrSkeletonBone type="line" />
+      </CdrSkeleton>
     </template>
-    <template v-if="$slots['footer']">
-      <CdrFulfillmentTileContent>
-        <slot name="footer" />
-      </CdrFulfillmentTileContent>
+    <template v-else>
+      <CdrFulfillmentTileHeader>
+        <template
+          v-if="$slots['icon-left']"
+          #icon-left
+        >
+          <slot name="icon-left" />
+        </template>
+        <template #label>
+          <slot name="label" />
+        </template>
+        <template
+          v-if="$slots['icon-right']"
+          #icon-right
+        >
+          <slot name="icon-right" />
+        </template>
+      </CdrFulfillmentTileHeader>
+      <template v-if="$slots['body']">
+        <CdrFulfillmentTileContent :stretch="true">
+          <slot name="body" />
+        </CdrFulfillmentTileContent>
+      </template>
+      <template v-if="$slots['footer']">
+        <CdrFulfillmentTileContent>
+          <slot name="footer" />
+        </CdrFulfillmentTileContent>
+      </template>
     </template>
   </component>
 </template>

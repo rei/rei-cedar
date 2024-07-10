@@ -92,4 +92,18 @@ describe('CdrFulfillmentTile', () => {
     expect(wrapper.find('.cdr-fulfillment-tile-content').text()).toBe('Footer slot');
     expect(wrapper.element).toMatchSnapshot();
   });
+
+  it('is loading', () => {
+    const wrapper = mount(CdrFulfillmentTile, {
+      props: { checked: false, loading: true },
+      slots: {
+        label: 'Label slot',
+        footer: 'Footer slot',
+      },
+    });
+    expect(wrapper.element).toMatchSnapshot();
+    expect(wrapper.find('.cdr-fulfillment-tile__loading').exists()).toBe(true);
+    expect(wrapper.find('.cdr-fulfillment-tile-header').exists()).toBe(false);
+    expect(wrapper.find('.cdr-fulfillment-tile-content').exists()).toBe(false);
+  });
 });

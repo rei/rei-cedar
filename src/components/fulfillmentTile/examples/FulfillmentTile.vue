@@ -118,10 +118,6 @@ const toggleCheckbox2 = (value: number) => {
           Body
           <strong>content</strong>
         </template>
-        <template #footer>
-          Footer
-          <strong>content</strong>
-        </template>
       </CdrFulfillmentTile>
     </div>
     <br />

@@ -5,6 +5,7 @@ exports[`CdrFulfillmentTile > component unit tests > default component with no c
   aria-checked="false"
   class="cdr-fulfillment-tile"
 >
+  
   <div
     class="cdr-fulfillment-tile-header"
   >
@@ -20,6 +21,30 @@ exports[`CdrFulfillmentTile > component unit tests > default component with no c
   </div>
   <!--v-if-->
   <!--v-if-->
+  
+</button>
+`;
+
+exports[`CdrFulfillmentTile > is loading 1`] = `
+<button
+  aria-checked="false"
+  class="cdr-fulfillment-tile"
+>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="cdr-skeleton cdr-fulfillment-tile__loading"
+  >
+    <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+    
+    <div
+      class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+    />
+    <div
+      class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+    />
+    
+  </div>
 </button>
 `;
 
@@ -28,6 +53,7 @@ exports[`CdrFulfillmentTile > shows body 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile"
 >
+  
   <div
     class="cdr-fulfillment-tile-header"
   >
@@ -59,6 +85,7 @@ exports[`CdrFulfillmentTile > shows body 1`] = `
     
   </div>
   <!--v-if-->
+  
 </button>
 `;
 
@@ -67,6 +94,7 @@ exports[`CdrFulfillmentTile > shows footer 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile"
 >
+  
   <div
     class="cdr-fulfillment-tile-header"
   >
@@ -98,6 +126,7 @@ exports[`CdrFulfillmentTile > shows footer 1`] = `
     
     
   </div>
+  
 </button>
 `;
 
@@ -106,6 +135,7 @@ exports[`CdrFulfillmentTile > shows header 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile"
 >
+  
   <div
     class="cdr-fulfillment-tile-header"
   >
@@ -126,6 +156,7 @@ exports[`CdrFulfillmentTile > shows header 1`] = `
   </div>
   <!--v-if-->
   <!--v-if-->
+  
 </button>
 `;
 
@@ -134,6 +165,7 @@ exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile"
 >
+  
   <div
     class="cdr-fulfillment-tile-header"
   >
@@ -149,6 +181,7 @@ exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
   </div>
   <!--v-if-->
   <!--v-if-->
+  
 </button>
 `;
 
@@ -157,6 +190,7 @@ exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile"
 >
+  
   <div
     class="cdr-fulfillment-tile-header"
   >
@@ -207,6 +241,7 @@ exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
     
     
   </div>
+  
 </button>
 `;
 
@@ -215,6 +250,7 @@ exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile"
 >
+  
   <div
     class="cdr-fulfillment-tile-header"
   >
@@ -265,5 +301,6 @@ exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
     
     
   </div>
+  
 </button>
 `;
