@@ -33,8 +33,8 @@ describe('CdrSurface', () => {
       it('sets the default tag prop correctly', () => {
         expect(wrapper.element.tagName).toBe('DIV');
       });
-      it('no class added', () => {
-        expect(wrapper.classes()).toEqual([]);
+      it('default class added', () => {
+        expect(wrapper.classes()).toEqual(['cdr-surface']);
       });
     })
 
