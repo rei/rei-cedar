@@ -63,6 +63,7 @@ const routes = [
   { path: '/toggleButton', name: 'ToggleButton', component: Examples.toggleButton },
   { path: '/switch', name: 'Switch', component: Examples.cdrSwitch },
   { path: '/tooltip', name: 'Tooltip', component: Examples.tooltip },
+  { path: '/utility', name: 'Utility', component: Examples.utility },
 
   // Nightwatch test targets
   { path: '/e2e-1', component: e2e1 },
