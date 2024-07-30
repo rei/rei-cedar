@@ -4,32 +4,15 @@
 
 $fulfillment-tile-component: 'fulfillment-tile';
 $fulfillment-tile-background-colors: (
-  'default': (
-    'rest': map.get($surface-selection-background-colors, 'primary', 'rest'),
-    'hover': map.get($surface-selection-background-colors, 'primary', 'hover'),
-    'active': map.get($surface-selection-background-colors, 'primary', 'active'),
-    'checked': $cdr-color-background-primary,
-    'disabled': $cdr-color-background-button-default-disabled,
-  ),
+  'default': map.get($surface-selection-background-colors, 'primary'),
 );
 $fulfillment-tile-border-colors: (
   'default': map.get($surface-selection-border-colors, 'primary'),
 );
 
 @mixin cdr-fulfillment-tile-base-mixin() {
-  @include cdr-border-width-mixin($fulfillment-tile-component, 'sixteenth-x');
-  @include cdr-border-mixin($fulfillment-tile-component);
-  @include cdr-radius-mixin($fulfillment-tile-component, 'softer');
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: column;
-  flex: 1 1 auto;
-  width: 100%;
-  gap: var(--cdr-space-scale-half-x);
-  padding: var(--cdr-space-scale-one-x) 0;
-}
-
-@mixin cdr-fulfillment-tile-loading-mixin() {
-  padding: 0 var(--cdr-space-scale-one-x);
+  &__layout {
+    height: 100%;
+    justify-content: space-between;
+  }
 }

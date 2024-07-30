@@ -1,101 +1,69 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
-import CdrSurface from '../../surface/CdrSurface.vue';
+import CdrSwitch from '../../switch/CdrSwitch.vue';
+import CdrSelect from '../../select/CdrSelect.vue';
 
 defineOptions({ name: 'SurfaceSelection' });
 
-const chips = {
-  count: 4,
-  props: {
-    withBorder: true,
-    borderWidth: 'eighth-x',
-    px: 'one-x',
-    py: 'half-x',
-    radius: 'round',
-  },
-};
-const chipsValue = ref(1);
-
-const toggle = {
-  count: 2,
-  props: {
-    p: 'one-x',
-    radius: 'softer',
-    borderWidth: 'zero',
-    withBorder: true,
-    class: 'example__toggle-button',
-  },
-};
-
-const toggleValue = ref(1);
+const loading = ref(false);
+const modifier = ref('primary');
 </script>
 
 <template>
   <div class="example">
     <h2>SurfaceSelection</h2>
     <hr class="example__hr" />
-    <CdrSurfaceSelection v-bind="{ checked: false }">
-      This is a blank SurfaceSelection which uses the primary (default) modifier
-    </CdrSurfaceSelection>
-    <hr class="example__hr" />
-    <CdrSurfaceSelection
-      v-bind="{
-        p: 'one-x',
-        modifier: 'primary',
-        withBorder: true,
-        borderWidth: 'sixteenth-x',
-        checked: false,
-      }"
-    >
-      This surface uses the primary modifier and has a border
-    </CdrSurfaceSelection>
-    <hr class="example__hr" />
-    <CdrSurfaceSelection
-      v-bind="{
-        p: 'one-x',
-        modifier: 'secondary',
-        withBorder: true,
-        borderWidth: 'sixteenth-x',
-        checked: false,
-      }"
-    >
-      This surface uses the secondary modifier and has a border
-    </CdrSurfaceSelection>
-    <hr class="example__hr" />
-    <h3 class="example__h3">Chips</h3>
-    <div class="example__chips">
-      <CdrSurfaceSelection
-        v-for="index in chips.count"
-        :key="index"
-        v-bind="chips.props"
-        :checked="index === chipsValue"
-        :disabled="index === 2"
-        @click="chipsValue = index"
+    <div class="example__options">
+      <CdrSwitch
+        id="loading"
+        v-model="loading"
       >
-        Chip {{ index }}
+        Toggle loading
+      </CdrSwitch>
+      <CdrSelect
+        id="modifier"
+        v-model="modifier"
+        label=""
+        :options="['primary', 'secondary']"
+      >
+        Modifier
+      </CdrSelect>
+    </div>
+    <hr class="example__hr" />
+    <div class="example__demos">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading }">
+        This is default
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="{ checked: true, modifier, loading }">
+        This is checked
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading: !loading }">
+        This is loading
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, disabled: true }">
+        This is disabled
       </CdrSurfaceSelection>
     </div>
     <hr class="example__hr" />
-    <h3 class="example__h3">Toggle</h3>
-    <CdrSurface
-      class="example__toggle"
-      :with-border="true"
-      border-width="sixteenth-x"
-      p="quarter-x"
-      radius="softer"
-      modifier="secondary"
-    >
-      <CdrSurfaceSelection
-        v-for="index in toggle.count"
-        :key="index"
-        v-bind="toggle.props"
-        :checked="index === toggleValue"
-        @click="toggleValue = index"
-      >
-        Toggle {{ index }}
+    <div class="example__demos2">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading }">
+        Custom loading
+        <template #loading>...</template>
       </CdrSurfaceSelection>
-    </CdrSurface>
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading }">
+        <div>Auto</div>
+        <div>Auto</div>
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, class: 'example__wide' }">
+        <div>Auto</div>
+        <div class="example__100">100%</div>
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, orientation: 'vertical' }">
+        <div>orientation</div>
+        <div>vertical</div>
+      </CdrSurfaceSelection>
+    </div>
   </div>
 </template>
 
@@ -107,25 +75,34 @@ const toggleValue = ref(1);
     margin: $cdr-space-two-x 0;
   }
 
-  &__h3 {
-    margin: $cdr-space-two-x 0 $cdr-space-one-x 0;
+  &__options {
+    gap: $cdr-space-one-x;
+    display: flex;
   }
 
-  &__chips {
-    display: inline-flex;
-    gap: $cdr-space-quarter-x;
+  &__demos {
+    gap: $cdr-space-one-x;
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
   }
 
-  &__toggle {
-    display: inline-flex;
-    gap: $cdr-space-quarter-x;
+  &__demos2 {
+    gap: $cdr-space-one-x;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  &__toggle-button {
-    --cdr-surface-selection-primary-background-color: var(--cdr-color-border-transparent);
-    --cdr-surface-selection-primary-background-color-hover: #e3e0d8;
-    --cdr-surface-selection-primary-background-color-active: var(--cdr-color-background-primary);
-    --cdr-surface-selection-primary-background-color-checked: var(--cdr-color-background-primary);
+  &__wide {
+    width: 200px;
+  }
+
+  &__100 {
+    width: 100%;
+    background: grey;
+    color: white;
+    text-align: center;
   }
 }
 </style>

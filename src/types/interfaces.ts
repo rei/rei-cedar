@@ -4,8 +4,10 @@ import type {
   Shadow,
   Radius,
   BorderColor,
+  BorderStyle,
   Modifier,
   Background,
+  Orientation,
 } from './other';
 
 /**
@@ -168,7 +170,7 @@ export interface CdrSurfaceProps extends HtmlAttributes {
   withBorder?: boolean;
   borderWidth?: Space;
   borderColor?: BorderColor;
-  fixed?: boolean;
+  borderStyle?: BorderStyle;
   m?: Space;
   mx?: Space;
   my?: Space;
@@ -188,8 +190,6 @@ export interface CdrSurfaceProps extends HtmlAttributes {
 export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
   checked: boolean;
   type?: 'button' | 'reset' | 'submit' | undefined;
-}
-
-export interface CdrFulfillmentTileProps extends CdrSurfaceSelectionProps {
   loading?: boolean;
+  orientation?: Orientation;
 }

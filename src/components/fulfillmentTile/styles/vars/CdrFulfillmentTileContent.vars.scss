@@ -1,7 +1,6 @@
 @import '../../../../styles/settings/index.scss';
 
 @mixin cdr-fulfillment-tile-content-mixin() {
-  padding: 0 var(--cdr-space-scale-one-x);
   width: 100%;
   flex: 0 0 auto;
 

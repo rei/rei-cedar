@@ -31,12 +31,10 @@ const boxes: Example[] = [
       display: 'inline-block',
       radius: 'round',
       withBorder: true,
-      borderWidth: 'sixteenth-x',
       borderColor: 'primary',
       background: 'secondary',
       px: 'one-x',
       py: 'three-quarter-x',
-      fixed: true,
     },
   },
   {
@@ -47,7 +45,6 @@ const boxes: Example[] = [
       radius: 'soft',
       p: 'one-x',
       withBorder: true,
-      borderWidth: 'sixteenth-x',
     },
   },
   {
@@ -58,7 +55,7 @@ const boxes: Example[] = [
       radius: 'soft',
       p: 'one-x',
       withBorder: true,
-      borderWidth: 'sixteenth-x',
+      borderStyle: 'dashed',
     },
   },
 ];
@@ -67,7 +64,10 @@ const boxes: Example[] = [
 <template>
   <div class="example">
     <h2>Surface</h2>
-    <template v-for="({ label, props }) in boxes" :key="label">
+    <template
+      v-for="{ label, props } in boxes"
+      :key="label"
+    >
       <hr class="example__hr" />
       <CdrSurface v-bind="props">
         <CdrText>{{ label }}</CdrText>

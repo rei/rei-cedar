@@ -22,43 +22,49 @@ $surface-border-colors: (
 
 @mixin cdr-surface-base-mixin($background-colors, $border-colors, $component) {
   @each $modifier, $value in $background-colors {
-    .cdr-#{$component}--background-#{$modifier} {
+    &--background-#{$modifier} {
       @include cdr-background-mixin($background-colors, $component, $modifier);
     }
   }
 
   @each $modifier, $value in $border-colors {
-    .cdr-#{$component}--border-color-#{$modifier} {
+    &--border-color-#{$modifier} {
       @include cdr-border-color-mixin($border-colors, $component, $modifier);
     }
   }
 
   @each $key, $value in $border-widths {
-    .cdr-#{$component}--border-width-#{$key} {
+    &--border-width-#{$key} {
       @include cdr-border-width-mixin($component, $key);
     }
   }
 
+  @each $key in $border-styles {
+    &--border-style-#{$key} {
+      @include cdr-border-style-mixin($component, $key);
+    }
+  }
+
   @each $key, $value in $radii {
-    .cdr-#{$component}--radius-#{$key} {
+    &--radius-#{$key} {
       @include cdr-radius-mixin($component, $key);
     }
   }
 
   @each $key, $value in $shadows {
-    .cdr-#{$component}--shadow-#{$key} {
+    &--shadow-#{$key} {
       @include cdr-shadow-mixin($component, $key);
     }
   }
 
-  .cdr-#{$component}--border {
+  &--border {
     @include cdr-border-mixin($component);
   }
 }
 
 @mixin cdr-surface-modifiers-mixin($background-colors, $border-colors, $component, $modifiers) {
   @each $modifier in $modifiers {
-    .cdr-#{$component}--modifier-#{$modifier} {
+    &--modifier-#{$modifier} {
       @include cdr-background-mixin($background-colors, $component, $modifier);
       @include cdr-border-color-mixin($border-colors, $component, $modifier);
     }

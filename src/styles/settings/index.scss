@@ -5,49 +5,64 @@ $cdr-warn: false;
 @import './alignment.vars';
 @import './options.vars';
 @import './visibility.vars';
+@import './fluid.vars';
 
 $cdr-space-zero: 0;
 $cdr-space-sixteenth-x: 0.1rem;
+$cdr-space-third-x: 0.3rem;
+$cdr-space-two-third-x: 0.6rem;
 $cdr-space-inset-zero: 0;
 $cdr-space-inset-sixteenth-x: 0.1rem;
+$cdr-space-inset-third-x: 0.3rem;
+$cdr-space-inset-two-third-x: 0.6rem;
 $cdr-color-background-transparent: transparent;
 $cdr-color-border-transparent: transparent;
 $cdr-color-border-dark: rgba(12, 11, 8, 0.75);
+$cdr-radius-softest: 0.6rem;
 
 $cdr-color-background-surface-primary: #ffffff;
 $cdr-color-background-surface-secondary: #f4f2ed;
 $cdr-color-border-surface-primary: #dcd6cb;
 $cdr-color-border-surface-secondary: #928b80;
 
-$cdr-color-background-surface-selection-primary: $cdr-color-background-primary;
-$cdr-color-background-surface-selection-primary-hover: #f4f2ed;
-$cdr-color-background-surface-selection-primary-active: #edeae3;
-$cdr-color-background-surface-selection-primary-checked: #dcd6cb;
-$cdr-color-background-surface-selection-primary-disabled: #ffffff;
-$cdr-color-background-surface-selection-secondary: $cdr-color-background-secondary;
-$cdr-color-background-surface-selection-secondary-hover: #e3e0d8;
-$cdr-color-background-surface-selection-secondary-active: #edeae3;
-$cdr-color-background-surface-selection-secondary-checked: $cdr-color-background-secondary;
-$cdr-color-background-surface-selection-secondary-disabled: #ffffff;
-$cdr-color-border-surface-selection-primary: $cdr-color-border-primary;
-$cdr-color-border-surface-selection-primary-hover: $cdr-color-border-secondary;
-$cdr-color-border-surface-selection-primary-active: $cdr-color-border-button-dark-active;
-$cdr-color-border-surface-selection-primary-checked: $cdr-color-border-button-dark-active;
-$cdr-color-border-surface-selection-primary-disabled: $cdr-color-border-primary;
-$cdr-color-border-surface-selection-secondary: $cdr-color-border-secondary;
-$cdr-color-border-surface-selection-secondary-hover: $cdr-color-border-secondary;
-$cdr-color-border-surface-selection-secondary-active: $cdr-color-border-button-dark-active;
-$cdr-color-border-surface-selection-secondary-checked: $cdr-color-border-button-dark-active;
-$cdr-color-border-surface-selection-secondary-disabled: $cdr-color-border-secondary;
+$cdr-color-background-surface-selection-primary: #fff;
+$cdr-color-background-surface-selection-primary-hover: #fff;
+$cdr-color-background-surface-selection-primary-active: #fff;
+$cdr-color-background-surface-selection-primary-checked: #fff;
+$cdr-color-background-surface-selection-primary-disabled: #F7F5F3;
+$cdr-color-background-surface-selection-primary-loading: #FBFAF9;
+$cdr-color-background-surface-selection-secondary: #f4f2ed;
+$cdr-color-background-surface-selection-secondary-hover: #f4f2ed;
+$cdr-color-background-surface-selection-secondary-active: #f4f2ed;
+$cdr-color-background-surface-selection-secondary-checked: #f4f2ed;
+$cdr-color-background-surface-selection-secondary-disabled: #dcd6cb;
+$cdr-color-background-surface-selection-secondary-loading: #dcd6cb;
+$cdr-color-border-surface-selection-primary: #958E83;
+$cdr-color-border-surface-selection-primary-hover: #958E83;
+$cdr-color-border-surface-selection-primary-active: #958E83;
+$cdr-color-border-surface-selection-primary-checked: #2E2E2B;
+$cdr-color-border-surface-selection-primary-disabled: #958E83;
+$cdr-color-border-surface-selection-primary-loading: #958E83;
+$cdr-color-border-surface-selection-secondary: rgba(66, 59, 47, 0.75);
+$cdr-color-border-surface-selection-secondary-hover: rgba(66, 59, 47, 0.75);
+$cdr-color-border-surface-selection-secondary-active: rgba(66, 59, 47, 0.75);
+$cdr-color-border-surface-selection-secondary-checked: rgba(3, 3, 1, 0.9);
+$cdr-color-border-surface-selection-secondary-disabled: rgba(66, 59, 47, 0.75);
+$cdr-color-border-surface-selection-secondary-loading: rgba(66, 59, 47, 0.75);
 
 :root {
   --cdr-color-background-transparent: #{$cdr-color-background-transparent};
   --cdr-color-border-transparent: #{$cdr-color-border-transparent};
   --cdr-color-border-dark: #{$cdr-color-border-dark};
+  --cdr-radius-softest: #{$cdr-radius-softest};
   --cdr-space-inset-zero: #{$cdr-space-inset-zero};
   --cdr-space-inset-sixteenth-x: #{$cdr-space-inset-sixteenth-x};
+  --cdr-space-inset-third-x: #{$cdr-space-inset-third-x};
+  --cdr-space-inset-two-third-x: #{$cdr-space-inset-two-third-x};
   --cdr-space-zero: #{$cdr-space-zero};
   --cdr-space-sixteenth-x: #{$cdr-space-sixteenth-x};
+  --cdr-space-third-x: #{$cdr-space-third-x};
+  --cdr-space-two-third-x: #{$cdr-space-two-third-x};
 
   --cdr-color-background-surface-primary: #{$cdr-color-background-surface-primary};
   --cdr-color-background-surface-secondary: #{$cdr-color-background-surface-secondary};
@@ -59,21 +74,24 @@ $cdr-color-border-surface-selection-secondary-disabled: $cdr-color-border-second
   --cdr-color-background-surface-selection-primary-active: #{$cdr-color-background-surface-selection-primary-active};
   --cdr-color-background-surface-selection-primary-checked: #{$cdr-color-background-surface-selection-primary-checked};
   --cdr-color-background-surface-selection-primary-disabled: #{$cdr-color-background-surface-selection-primary-disabled};
+  --cdr-color-background-surface-selection-primary-loading: #{$cdr-color-background-surface-selection-primary-loading};
   --cdr-color-background-surface-selection-secondary: #{$cdr-color-background-surface-selection-secondary};
   --cdr-color-background-surface-selection-secondary-hover: #{$cdr-color-background-surface-selection-secondary-hover};
   --cdr-color-background-surface-selection-secondary-active: #{$cdr-color-background-surface-selection-secondary-active};
   --cdr-color-background-surface-selection-secondary-checked: #{$cdr-color-background-surface-selection-secondary-checked};
   --cdr-color-background-surface-selection-secondary-disabled: #{$cdr-color-background-surface-selection-secondary-disabled};
+  --cdr-color-background-surface-selection-secondary-loading: #{$cdr-color-background-surface-selection-secondary-loading};
   --cdr-color-border-surface-selection-primary: #{$cdr-color-border-surface-selection-primary};
   --cdr-color-border-surface-selection-primary-hover: #{$cdr-color-border-surface-selection-primary-hover};
   --cdr-color-border-surface-selection-primary-active: #{$cdr-color-border-surface-selection-primary-active};
   --cdr-color-border-surface-selection-primary-checked: #{$cdr-color-border-surface-selection-primary-checked};
   --cdr-color-border-surface-selection-primary-disabled: #{$cdr-color-border-surface-selection-primary-disabled};
+  --cdr-color-border-surface-selection-primary-loading: #{$cdr-color-border-surface-selection-primary-loading};
   --cdr-color-border-surface-selection-secondary: #{$cdr-color-border-surface-selection-secondary};
   --cdr-color-border-surface-selection-secondary-hover: #{$cdr-color-border-surface-selection-secondary-hover};
   --cdr-color-border-surface-selection-secondary-active: #{$cdr-color-border-surface-selection-secondary-active};
   --cdr-color-border-surface-selection-secondary-checked: #{$cdr-color-border-surface-selection-secondary-checked};
-  --cdr-color-border-surface-selection-secondary-disabled: #{$cdr-color-border-surface-selection-secondary-disabled};
+  --cdr-color-border-surface-selection-secondary-loading: #{$cdr-color-border-surface-selection-secondary-loading};
 }
 
 $border-widths: (
@@ -83,10 +101,13 @@ $border-widths: (
   'quarter-x': $cdr-space-inset-quarter-x,
 );
 
+$border-styles: 'dotted', 'dashed', 'solid';
+
 $radii: (
   'sharp': $cdr-radius-sharp,
   'soft': $cdr-radius-soft,
   'softer': $cdr-radius-softer,
+  'softest': $cdr-radius-softest,
   'round': $cdr-radius-round,
 );
 
@@ -133,7 +154,10 @@ $shadows: (
 
   --cdr-#{$component}-border-color-default: var(
     --cdr-#{$component}#{$modifierPart}-border-color#{$statePart},
-    var(--cdr-color-border-#{$component}#{$modifierPart}#{$statePart}, #{map.get($options, $modifier, $state)})
+    var(
+      --cdr-color-border-#{$component}#{$modifierPart}#{$statePart},
+      #{map.get($options, $modifier, $state)}
+    )
   );
 }
 
@@ -141,6 +165,13 @@ $shadows: (
   --cdr-#{$component}-border-width-default: var(
     --cdr-#{$component}-border-width,
     var(--cdr-space-inset-#{$key}, #{map.get($border-widths, $key)})
+  );
+}
+
+@mixin cdr-border-style-mixin($component, $key) {
+  --cdr-#{$component}-border-style-default: var(
+    --cdr-#{$component}-border-style,
+    var(--cdr-border-style-#{$key}, #{$key})
   );
 }
 
@@ -156,8 +187,8 @@ $shadows: (
     width: 100%;
     height: 100%;
     content: '';
-    box-shadow: inset 0 0 0 var(--cdr-#{$component}-border-width-default)
-      var(--cdr-#{$component}-border-color-default);
+    border: var(--cdr-#{$component}-border-width-default)
+      var(--cdr-#{$component}-border-style-default) var(--cdr-#{$component}-border-color-default);
   }
 }
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import CdrUtilitySans from '../text/presets/CdrUtilitySans.vue';
+import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
 
 /** Fulfillment tile header component */
 
@@ -10,7 +11,10 @@ const style = useCssModule();
 </script>
 
 <template>
-  <div :class="style['cdr-fulfillment-tile-header']">
+  <CdrFulfillmentTileLayout
+    orientation="horizontal"
+    :class="style['cdr-fulfillment-tile-header']"
+  >
     <span
       v-if="$slots['icon-left']"
       :class="style['cdr-fulfillment-tile-header__icon']"
@@ -31,7 +35,7 @@ const style = useCssModule();
     >
       <slot name="icon-right" />
     </span>
-  </div>
+  </CdrFulfillmentTileLayout>
 </template>
 
 <style lang="scss" module src="./styles/CdrFulfillmentTileHeader.module.scss"></style>

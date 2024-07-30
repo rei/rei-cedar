@@ -1,4 +1,9 @@
-import type { CdrSurfaceProps, InlineCss } from '../types/interfaces';
+import type {
+  CdrSurfaceProps,
+  CdrSurfaceSelectionProps,
+  InlineCss,
+  HtmlAttributes,
+} from '../types/interfaces';
 
 // Map of margins and padding
 const marginsAndPaddingMap: Record<string, string> = {
@@ -38,15 +43,16 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
 
   // Add border
   if (props.withBorder) {
-    if (props.borderWidth) {
-      const borderWidthClass = `${baseClass}--border-width-${props.borderWidth}`;
-      classes.push(borderWidthClass);
-    }
-
     if (props.borderColor) {
       const borderColorClass = `${baseClass}--border-color-${props.borderColor}`;
       classes.push(borderColorClass);
     }
+
+    const borderWidthClass = `${baseClass}--border-width-${props.borderWidth || 'sixteenth-x'}`;
+    classes.push(borderWidthClass);
+
+    const borderStyleClass = `${baseClass}--border-style-${props.borderStyle || 'solid'}`;
+    classes.push(borderStyleClass);
 
     classes.push(`${baseClass}--border`);
   }
@@ -68,10 +74,26 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
     marginAndPaddingKeys.forEach((key) => {
       if (props[key]) {
         const cssProperty = marginsAndPaddingMap[key];
-        inlineStyles[cssProperty] = `var(--cdr-space-${props.fixed ? '' : 'scale-'}${props[key]})`;
+        inlineStyles[cssProperty] = `var(--cdr-space-${props[key]})`;
       }
     });
   }
 
   return { classes, inlineStyles };
+};
+
+export const getSurfaceSelectionProps = (props: CdrSurfaceSelectionProps, baseClass: string) => {
+  const { classes, inlineStyles } = getSurfaceProps(props, baseClass);
+  const { checked, loading } = props;
+  const additionalProps: HtmlAttributes = {};
+
+  // Add checked
+  additionalProps['aria-checked'] = checked;
+
+  // Add loading
+  if (loading) {
+    additionalProps['data-loading'] = loading;
+  }
+
+  return { classes, inlineStyles, additionalProps };
 };

@@ -350,7 +350,7 @@ const toggleCheckbox2 = (value: number) => {
 
   &__row {
     display: grid;
-    gap: var(--cdr-space-scale-three-quarter-x);
+    gap: var(--cdr-space-three-quarter-x);
     grid-template-columns: 230px 230px 230px 230px;
   }
 
@@ -379,7 +379,7 @@ const toggleCheckbox2 = (value: number) => {
   &__change-store {
     padding-left: 0;
     padding-right: 0;
-    margin-bottom: var(--cdr-space-scale-half-x);
+    margin-bottom: var(--cdr-space-half-x);
   }
 
   &__checkout-tile-other-disabled {
@@ -399,7 +399,7 @@ const toggleCheckbox2 = (value: number) => {
   &__search-tile-other-header-button {
     --cdr-surface-selection-border-width-default: 0;
     --cdr-color-background-surface-selection-primary-checked: var(--cdr-color-background-primary);
-    padding: var(--cdr-space-scale-one-x) 0;
+    padding: var(--cdr-space-one-x) 0;
     width: 100%;
     @include tile-colors;
 
@@ -409,18 +409,18 @@ const toggleCheckbox2 = (value: number) => {
   }
 
   &__search-tile-other-header-content {
-    margin-top: var(--cdr-space-scale-half-x);
+    margin-top: var(--cdr-space-half-x);
   }
 
   &__search-tile-other-header-hr {
     margin: 0;
-    border-top: var(--cdr-space-scale-sixteenth-x) solid initial;
+    border-top: var(--cdr-space-sixteenth-x) solid initial;
     width: 100%;
   }
 
   &__change-store-other {
-    padding: var(--cdr-space-scale-three-quarter-x) var(--cdr-space-scale-one-x)
-      var(--cdr-space-scale-one-x) var(--cdr-space-scale-one-x);
+    padding: var(--cdr-space-three-quarter-x) var(--cdr-space-one-x)
+      var(--cdr-space-one-x) var(--cdr-space-one-x);
     justify-content: flex-start;
   }
 }

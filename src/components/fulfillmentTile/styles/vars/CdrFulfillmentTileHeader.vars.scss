@@ -1,12 +1,9 @@
 @import '../../../../styles/settings/index.scss';
 
 @mixin cdr-fulfillment-tile-header-mixin() {
-  display: flex;
   align-items: center;
-  gap: var(--cdr-space-scale-three-quarter-x);
   width: 100%;
   height: $cdr-space-one-and-a-half-x;
-  padding: 0 var(--cdr-space-scale-one-x);
 
   &__icon {
     flex: 0 0 auto;

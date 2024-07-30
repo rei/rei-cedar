@@ -2,22 +2,17 @@
 @import '../../surface/styles/vars/CdrSurface.vars.scss';
 @import './vars/CdrFulfillmentTile.vars.scss';
 
-@include cdr-surface-base-mixin(
-  $fulfillment-tile-background-colors,
-  $fulfillment-tile-border-colors,
-  $fulfillment-tile-component
-);
-
 .cdr-fulfillment-tile {
+  @include cdr-surface-base-mixin(
+    $fulfillment-tile-background-colors,
+    $fulfillment-tile-border-colors,
+    $fulfillment-tile-component
+  );
   @include cdr-surface-selection-base-mixin($fulfillment-tile-component);
-  @include cdr-fulfillment-tile-base-mixin();
   @include cdr-surface-selection-states-mixin(
     $fulfillment-tile-background-colors,
     $fulfillment-tile-border-colors,
     $fulfillment-tile-component
   );
-
-  &__loading {
-    @include cdr-fulfillment-tile-loading-mixin();
-  }
+  @include cdr-fulfillment-tile-base-mixin();
 }
