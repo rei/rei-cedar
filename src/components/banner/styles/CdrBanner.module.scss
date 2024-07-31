@@ -5,7 +5,7 @@
   @include cdr-banner-base-mixin;
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-areas: 
+  grid-template-areas:
   "main info-action"
   "message-body info-action"
   ;
@@ -26,15 +26,6 @@
     display: inherit;
     align-items: center;
     justify-items: center;
-    & svg {
-      max-height: 2.2rem;
-      max-width: 2.2rem;
-      stroke: white;
-      stroke-width: 0.4rem;
-      paint-order: stroke fill;
-      margin: $cdr-space-quarter-x;
-  
-    }
   }
   &__message {
     display: inherit;
@@ -79,10 +70,6 @@
       & .cdr-banner__icon-left {
           //ITEM_DOC: Left icon background color for default banner
           background-color: var(--cdr-banner-default-icon-left-background-color, var(--cdr-color-background-message-default-02, #{$cdr-color-background-message-default-02}));
-          svg {
-            //ITEM_DOC: Left icon fill color for default banner
-            fill: var(--cdr-banner-default-icon-left-fill, var(--cdr-color-icon-message-default, #{$cdr-color-icon-message-default}));
-          }
         }
       }
       & .cdr-banner__wrapper {
@@ -98,10 +85,6 @@
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for info banner
         background-color: var(--cdr-banner-info-icon-left-background-color, var(--cdr-color-background-message-info-02, #{$cdr-color-background-message-info-02}));
-        svg {
-          //ITEM_DOC: Left icon fill color for info banner
-          fill: var(--cdr-banner-info-icon-left-fill, var(--cdr-color-icon-message-info, #{$cdr-color-icon-message-info}));
-        }
       }
     }
     & .cdr-banner__wrapper {
@@ -117,10 +100,6 @@
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for warning banner
         background-color: var(--cdr-banner-warning-icon-left-background-color, var(--cdr-color-background-message-warning-02, #{$cdr-color-background-message-warning-02}));
-        svg {
-          //ITEM_DOC: Left icon fill color for warning banner
-          fill: var(--cdr-banner-warning-icon-left-fill, var(--cdr-color-icon-message-warning, #{$cdr-color-icon-message-warning}));
-        }
       }
     }
     & .cdr-banner__wrapper {
@@ -136,10 +115,6 @@
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for success banner
         background-color: var(--cdr-banner-success-icon-left-background-color, var(--cdr-color-background-message-success-02, #{$cdr-color-background-message-success-02}));
-        svg {
-          //ITEM_DOC: Left icon fill color for success banner
-          fill: var(--cdr-banner-success-icon-left-fill, var(--cdr-color-icon-message-success, #{$cdr-color-icon-message-success}));
-        }
       }
     }
     & .cdr-banner__wrapper {
@@ -155,16 +130,12 @@
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for error banner
         background-color: var(--cdr-banner-error-icon-left-background-color, var(--cdr-color-background-message-error-02, #{$cdr-color-background-message-error-02}));
-        svg {
-          //ITEM_DOC: Left icon fill color for error banner
-          fill: var(--cdr-banner-error-icon-left-fill, var(--cdr-color-icon-message-error, #{$cdr-color-icon-message-error}));
-        }
       }
     }
     & .cdr-banner__wrapper {
       border-left: $left-border;
       //ITEM_DOC: Wrapper border left color for error banner
-      border-left-color: var(--cdr-banner-error-wrapper-border-left-color, var(--cdr-color-border-message-error-01, #{$cdr-color-border-message-error-01}));      
+      border-left-color: var(--cdr-banner-error-wrapper-border-left-color, var(--cdr-color-border-message-error-01, #{$cdr-color-border-message-error-01}));
     }
   }
 }

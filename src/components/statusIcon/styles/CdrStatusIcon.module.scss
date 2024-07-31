@@ -1,0 +1,26 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrStatusIcon.vars.scss';
+
+.cdr-status-icon {
+  @include cdr-status-icon-base-mixin;
+
+  &--default {
+    @include cdr-status-icon-default-mixin;
+  }
+
+  &--info {
+    @include cdr-status-icon-info-mixin;
+  }
+
+  &--warning {
+    @include cdr-status-icon-warning-mixin;
+  }
+
+  &--success {
+    @include cdr-status-icon-success-mixin;
+  }
+
+  &--error {
+    @include cdr-status-icon-error-mixin;
+  }
+}

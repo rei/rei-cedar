@@ -53,6 +53,7 @@ const routes = [
   { path: '/selects', name: 'Selects', component: Examples.selects },
   { path: '/skeleton', name: 'Skeleton', component: Examples.skeleton },
   { path: '/split-surface', name: 'Split Surface', component: Examples.splitSurface },
+  { path: '/statusIcon', name: 'Status Icon', component: Examples.statusIcon },
   { path: '/surface', name: 'Surface', component: Examples.surface },
   { path: '/surfaceSelection', name: 'SurfaceSelection', component: Examples.surfaceSelection },
   { path: '/tables', name: 'Tables', component: Examples.tables },

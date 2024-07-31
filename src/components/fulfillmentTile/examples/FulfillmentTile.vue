@@ -321,7 +321,7 @@ const toggleCheckbox2 = (value: number) => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 @import '../styles/vars/CdrFulfillmentTile.vars.scss';
 @import '../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';

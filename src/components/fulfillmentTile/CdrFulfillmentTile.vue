@@ -43,73 +43,48 @@ const rootProps = computed(() => {
     v-bind="rootProps"
   >
     <div :class="style['cdr-fulfillment-tile__inner']">
-      <CdrFulfillmentTileLayout
-        :orientation="orientation"
-        :class="style['cdr-fulfillment-tile__layout']"
-      >
-        <CdrFulfillmentTileHeader>
-          <template
-            v-if="$slots['icon-left']"
-            #icon-left
-          >
-            <slot name="icon-left" />
-          </template>
-          <template #label>
-            <slot name="label" />
-          </template>
-          <template
-            v-if="$slots['icon-right']"
-            #icon-right
-          >
-            <slot name="icon-right" />
-          </template>
-        </CdrFulfillmentTileHeader>
-        <template v-if="$slots['body']">
-          <CdrFulfillmentTileContent :stretch="true">
-            <slot name="body" />
-          </CdrFulfillmentTileContent>
+      <CdrFulfillmentTileHeader>
+        <template
+          v-if="$slots['icon-left']"
+          #icon-left
+        >
+          <slot name="icon-left" />
         </template>
-        <template v-if="$slots['footer']">
-          <CdrFulfillmentTileContent>
-            <slot name="footer" />
-          </CdrFulfillmentTileContent>
+        <template #label>
+          <slot name="label" />
         </template>
-      </CdrFulfillmentTileLayout>
-      <div :class="style['cdr-fulfillment-tile__loading']">
-        <slot name="loading">
-          <CdrSkeleton>
-            <CdrSkeletonBone type="line" />
-          </CdrSkeleton>
-        </slot>
+        <template
+          v-if="$slots['icon-right']"
+          #icon-right
+        >
+          <slot name="icon-right" />
+        </template>
+      </CdrFulfillmentTileHeader>
+      <div :class="style['cdr-fulfillment-tile__main']">
+        <CdrFulfillmentTileLayout
+          :orientation="orientation"
+          :class="style['cdr-fulfillment-tile__layout']"
+        >
+          <template v-if="$slots['body']">
+            <CdrFulfillmentTileContent :stretch="true">
+              <slot name="body" />
+            </CdrFulfillmentTileContent>
+          </template>
+          <template v-if="$slots['footer']">
+            <CdrFulfillmentTileContent scale="-1">
+              <slot name="footer" />
+            </CdrFulfillmentTileContent>
+          </template>
+        </CdrFulfillmentTileLayout>
+        <div :class="style['cdr-fulfillment-tile__loading']">
+          <slot name="loading">
+            <CdrSkeleton>
+              <CdrSkeletonBone type="line" />
+            </CdrSkeleton>
+          </slot>
+        </div>
       </div>
     </div>
-    <!-- <CdrFulfillmentTileHeader>
-      <template
-        v-if="$slots['icon-left']"
-        #icon-left
-      >
-        <slot name="icon-left" />
-      </template>
-      <template #label>
-        <slot name="label" />
-      </template>
-      <template
-        v-if="$slots['icon-right']"
-        #icon-right
-      >
-        <slot name="icon-right" />
-      </template>
-    </CdrFulfillmentTileHeader>
-    <template v-if="$slots['body']">
-      <CdrFulfillmentTileContent :stretch="true">
-        <slot name="body" />
-      </CdrFulfillmentTileContent>
-    </template>
-    <template v-if="$slots['footer']">
-      <CdrFulfillmentTileContent>
-        <slot name="footer" />
-      </CdrFulfillmentTileContent>
-    </template> -->
   </component>
 </template>
 

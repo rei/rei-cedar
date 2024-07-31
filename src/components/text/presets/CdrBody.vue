@@ -6,13 +6,13 @@ defineOptions({
   name: 'CdrBody',
 });
 
-interface bodyTextProps extends baseTextProps {
+export interface bodyTextProps extends baseTextProps {
    /** 
    * Sets the type scale
    * @type scaleValue
    * @values 0, 1
    */
-  scale?: '0'|'1',
+  scale?: '-2' | '-1' | '0' | '1',
   /** Toggles the strong variant */
   strong?: boolean,
 }

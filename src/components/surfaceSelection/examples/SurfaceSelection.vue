@@ -67,7 +67,7 @@ const modifier = ref('primary');
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 
 .example {

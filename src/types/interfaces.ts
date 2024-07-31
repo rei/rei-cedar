@@ -11,6 +11,14 @@ import type {
 } from './other';
 
 /**
+ * HtmlAttributes data object for allowing any HTML attribute
+ * @interface HtmlAttributes
+ */
+export interface HtmlAttributes {
+  [key: string]: any;
+}
+
+/**
  * Breadcrumb data object
  *
  * @interface breadcrumbItem
@@ -135,17 +143,9 @@ export interface pictureSourceObject {
  * Text component properties
  * @interface baseTextProps
  */
-export interface baseTextProps {
+export interface baseTextProps extends HtmlAttributes {
   /** Sets the HTML tag (p, span, h1, h2, etc) */
   tag?: string;
-}
-
-/**
- * HtmlAttributes data object for allowing any HTML attribute
- * @interface HtmlAttributes
- */
-export interface HtmlAttributes {
-  [key: string]: any;
 }
 
 /**

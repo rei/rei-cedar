@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import CdrUtilitySans, { type utilitySansTextProps } from '../text/presets/CdrUtilitySans.vue';
+import CdrBody, { type bodyTextProps } from '../text/presets/CdrBody.vue';
 
 /** Content component for fulfillment tile */
 
@@ -8,18 +8,20 @@ defineOptions({ name: 'CdrFulfillmentTileContent' });
 
 interface CdrFulfillmentTileContentProps {
   stretch?: boolean;
+  scale?: bodyTextProps['scale'];
 }
 
 const props = withDefaults(defineProps<CdrFulfillmentTileContentProps>(), {
   stretch: false,
+  scale: '-2',
 });
 
 const style = useCssModule();
 const baseClass = 'cdr-fulfillment-tile-content';
 
-const rootProps = computed<utilitySansTextProps>(() => ({
+const rootProps = computed((): bodyTextProps => ({
   tag: 'div',
-  scale: '-1',
+  scale: props.scale,
   class: {
     [style[baseClass]]: true,
     [style[`${baseClass}--stretch`]]: props.stretch,
@@ -28,9 +30,9 @@ const rootProps = computed<utilitySansTextProps>(() => ({
 </script>
 
 <template>
-  <CdrUtilitySans v-bind="rootProps">
+  <CdrBody v-bind="rootProps">
     <slot />
-  </CdrUtilitySans>
+  </CdrBody>
 </template>
 
 <style lang="scss" module src="./styles/CdrFulfillmentTileContent.module.scss"></style>

@@ -30,6 +30,7 @@ import rating from 'componentsdir/rating/examples/Ratings.vue';
 import selects from 'componentsdir/select/examples/Selects.vue';
 import skeleton from 'componentsdir/skeleton/examples/Skeleton.vue';
 import splitSurface from 'componentsdir/splitSurface/examples/SplitSurface.vue';
+import statusIcon from 'componentsdir/statusIcon/examples/StatusIcon.vue';
 import surface from 'componentsdir/surface/examples/Surface.vue';
 import surfaceSelection from 'componentsdir/surfaceSelection/examples/SurfaceSelection.vue';
 import tables from 'componentsdir/table/examples/Table.vue';
@@ -75,6 +76,7 @@ export default {
   selects,
   skeleton,
   splitSurface,
+  statusIcon,
   surface,
   surfaceSelection,
   tables,
