@@ -16,11 +16,12 @@
 }
 
 // the clamp is comprized of 3 numbers representing the min value, the preferred size expression, and the max value
-// in order the valuse are: min spacing | base spacing + container-growth | max spacing 
+// in order the valuse are: min spacing | base spacing + container-growth | max spacing
 
 @supports(container-type: inline-size) {
   :root {
     // type
+    --cdr-type-scale--2: clamp(1.3rem, 0.29cqw + 1.24rem, 1.4rem);
     --cdr-type-scale--1: clamp(1.33rem, 0.29cqw + 1.24rem, 1.6rem);
     --cdr-type-scale-0: clamp(1.6rem, 0.44cqw + 1.46rem, 2rem);
     --cdr-type-scale-1: clamp(1.92rem, 0.64cqw + 1.72rem, 2.5rem);
@@ -46,7 +47,7 @@
     --cdr-space-scale-3--4: clamp(0.4rem, 0.2rem + 0.66cqi, 1rem);
     --cdr-space-scale-3--5: clamp(0.8rem, 0.1404px + 1.21cqi, 1.6rem);
 
-    
+
 
   }
   /** Remove once Safari < 16 is no longer a target */

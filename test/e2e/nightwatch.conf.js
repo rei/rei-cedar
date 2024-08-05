@@ -1,7 +1,7 @@
 //require('@babel/register');
 
 // http://nightwatchjs.org/getingstarted#settings-file
-
+const puppeteer = require('puppeteer');
 const vite = require('./vite.js');
 
 const startViteServer = function() {
@@ -24,7 +24,7 @@ module.exports = {
         devServerURL: `http://localhost:3000/#/`,
         asyncHookTimeout: 180000,
         async before() {
-          viteServer = await startViteServer(); 
+          viteServer = await startViteServer();
           const port = viteServer.config.server.port;
           this.launchUrl = `http://localhost:${port}`;
         },
@@ -33,7 +33,10 @@ module.exports = {
         },
       },
       desiredCapabilities: {
-        browserName : 'chrome'
+        browserName : 'chrome',
+        chromeOptions : {
+          binary: puppeteer.executablePath(),
+        }
       },
       webdriver: {
         start_process: true,

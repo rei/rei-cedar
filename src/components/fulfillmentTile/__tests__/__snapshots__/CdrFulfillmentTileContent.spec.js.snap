@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrFulfillmentTileContent > is stretch 1`] = `
+<div
+  class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+  style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+>
+  
+  
+  Default slot
+  
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTileContent > shows content 1`] = `
+<div
+  class="cdr-body cdr-fulfillment-tile-content"
+  style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+>
+  
+  
+  Default slot
+  
+  
+</div>
+`;

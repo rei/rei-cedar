@@ -1,0 +1,72 @@
+@use 'sass:map';
+@import '../../../../styles/settings/index.scss';
+
+$surface-modifiers: 'primary', 'secondary';
+$surface-component: 'surface';
+$surface-background-colors: (
+  'primary': (
+    'rest': $cdr-color-background-surface-primary,
+  ),
+  'secondary': (
+    'rest': $cdr-color-background-surface-secondary,
+  ),
+);
+$surface-border-colors: (
+  'primary': (
+    'rest': $cdr-color-border-surface-primary,
+  ),
+  'secondary': (
+    'rest': $cdr-color-border-surface-secondary,
+  ),
+);
+
+@mixin cdr-surface-base-mixin($background-colors, $border-colors, $component) {
+  @each $modifier, $value in $background-colors {
+    &--background-#{$modifier} {
+      @include cdr-background-mixin($background-colors, $component, $modifier);
+    }
+  }
+
+  @each $modifier, $value in $border-colors {
+    &--border-color-#{$modifier} {
+      @include cdr-border-color-mixin($border-colors, $component, $modifier);
+    }
+  }
+
+  @each $key, $value in $border-widths {
+    &--border-width-#{$key} {
+      @include cdr-border-width-mixin($component, $key);
+    }
+  }
+
+  @each $key in $border-styles {
+    &--border-style-#{$key} {
+      @include cdr-border-style-mixin($component, $key);
+    }
+  }
+
+  @each $key, $value in $radii {
+    &--radius-#{$key} {
+      @include cdr-radius-mixin($component, $key);
+    }
+  }
+
+  @each $key, $value in $shadows {
+    &--shadow-#{$key} {
+      @include cdr-shadow-mixin($component, $key);
+    }
+  }
+
+  &--border {
+    @include cdr-border-mixin($component);
+  }
+}
+
+@mixin cdr-surface-modifiers-mixin($background-colors, $border-colors, $component, $modifiers) {
+  @each $modifier in $modifiers {
+    &--modifier-#{$modifier} {
+      @include cdr-background-mixin($background-colors, $component, $modifier);
+      @include cdr-border-color-mixin($border-colors, $component, $modifier);
+    }
+  }
+}

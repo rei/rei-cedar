@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { createApp } from 'vue';
 import routes from './router';
-import DevPage from './DevPage.vue'; //eslint-disable-line
+import DevPage from './DevPage.vue';
 
 const router = createRouter({
   routes,

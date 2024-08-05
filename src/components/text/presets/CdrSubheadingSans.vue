@@ -12,7 +12,7 @@ interface subheadingSansTextProps extends baseTextProps {
      * @type scaleValue
      * @values 0,1,2
    */
-  scale?: '0'|'1'|'2',
+  scale?: '-1' | '0'|'1'|'2',
 }
 
 const props = withDefaults(defineProps<subheadingSansTextProps>(), {

@@ -7,9 +7,10 @@ import captions from 'componentsdir/caption/examples/Caption.vue';
 import card from 'componentsdir/card/examples/Cards.vue';
 import checkbox from 'componentsdir/checkbox/examples/checkboxes.vue';
 import chip from 'componentsdir/chip/examples/Chip.vue';
-import choreographer from 'componentsdir/choreographer/examples/Choreographer.vue'
+import choreographer from 'componentsdir/choreographer/examples/Choreographer.vue';
 import container from 'componentsdir/container/examples/Container.vue';
 import formGroup from 'componentsdir/formGroup/examples/FormGroup.vue';
+import fulfillmentTile from 'componentsdir/fulfillmentTile/examples/FulfillmentTile.vue';
 import grid from 'componentsdir/grid/examples/Grid.vue';
 import icon from 'componentsdir/icon/examples/Icons.vue';
 import images from 'componentsdir/image/examples/Images.vue';
@@ -29,6 +30,8 @@ import rating from 'componentsdir/rating/examples/Ratings.vue';
 import selects from 'componentsdir/select/examples/Selects.vue';
 import skeleton from 'componentsdir/skeleton/examples/Skeleton.vue';
 import splitSurface from 'componentsdir/splitSurface/examples/SplitSurface.vue';
+import surface from 'componentsdir/surface/examples/Surface.vue';
+import surfaceSelection from 'componentsdir/surfaceSelection/examples/SurfaceSelection.vue';
 import tables from 'componentsdir/table/examples/Table.vue';
 import tabs from 'componentsdir/tabs/examples/Tabs.vue';
 import texts from 'componentsdir/text/examples/Text.vue';
@@ -51,6 +54,7 @@ export default {
   chip,
   choreographer,
   container,
+  fulfillmentTile,
   formGroup,
   grid,
   icon,
@@ -71,6 +75,8 @@ export default {
   selects,
   skeleton,
   splitSurface,
+  surface,
+  surfaceSelection,
   tables,
   tabs,
   texts,

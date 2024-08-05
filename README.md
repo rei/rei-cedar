@@ -43,6 +43,8 @@ Runs unit tests in watch mode. This also allows you to inspect snapshot discrepa
 
 Runs [Nightwatch](http://nightwatchjs.org/) end-to-end tests and Axe a11y tests.
 
+Tests run using Chromedriver. To upgrade Chromedriver, determine the latest version of Chrome and Puppeteer that are compatible by visiting [this](https://pptr.dev/supported-browsers) page.
+
 `npm run test`
 
 Runs both unit and e2e/accessibility tests.

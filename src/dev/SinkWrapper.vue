@@ -1,52 +1,51 @@
 <template>
-  <div
-    :class="backgroundClass"
-  >
-    Toggle background color:
-    <cdr-radio
-      v-for="bg in backgrounds"
-      :custom-value="bg"
-      :key="bg"
-      name="background"
-      v-model="background"
-      class="background-toggle"
+  <div :data-palette="palette">
+    <div class="radios">
+      <div>Toggle palette:</div>
+      <cdr-radio
+        v-for="pal in palettes"
+        :custom-value="pal"
+        :key="pal"
+        name="palette"
+        v-model="palette"
+      >
+        {{ capitalize(pal) }}
+      </cdr-radio>
+    </div>
+    <cdr-surface
+      background="primary"
+      p="two-x"
+      :with-border="true"
+      border-width="sixteenth-x"
+      border-color="primary"
     >
-      {{ capitalize(bg) }}
-    </cdr-radio>
-    <slot />
+      <slot />
+    </cdr-surface>
   </div>
 </template>
 
 <script>
-
-import { CdrRadio } from 'srcdir/lib';
+import { CdrRadio, CdrSurface } from 'srcdir/lib';
 import { upperFirst } from 'lodash-es';
 
 export default {
   name: 'SinkWrapper',
   components: {
     CdrRadio,
+    CdrSurface,
   },
   data() {
     return {
-      background: this.$route.query.background || 'primary',
-      backgrounds: [
-        'primary', 'secondary',
-        //  'success', 'info', 'warning', 'error',
-      ],
+      palette: this.$route.query.palette || 'default',
+      palettes: ['default', 'sandstone'],
     };
   },
-  computed: {
-    backgroundClass() {
-      return `background-${this.background}`;
-    },
-  },
   watch: {
-    background() {
+    palette() {
       this.$router.replace({
         path: this.$route.path,
         query: {
-          background: this.background,
+          palette: this.palette,
         },
       });
     },
@@ -60,9 +59,10 @@ export default {
 </script>
 
 <style>
-.background-toggle {
-  display: inline-block;
-  margin: 0 8px;
+.radios {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
-
 </style>
