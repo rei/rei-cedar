@@ -15,6 +15,7 @@ defineOptions({ name: 'CdrFulfillmentTile' });
 
 const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
   tag: 'button',
+  role: 'radio',
   modifier: 'primary',
   checked: false,
   disabled: false,

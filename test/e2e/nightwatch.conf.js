@@ -24,7 +24,7 @@ module.exports = {
         devServerURL: `http://localhost:3000/#/`,
         asyncHookTimeout: 180000,
         async before() {
-          viteServer = await startViteServer(); 
+          viteServer = await startViteServer();
           const port = viteServer.config.server.port;
           this.launchUrl = `http://localhost:${port}`;
         },

@@ -84,8 +84,8 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
 
 export const getSurfaceSelectionProps = (props: CdrSurfaceSelectionProps, baseClass: string) => {
   const { classes, inlineStyles } = getSurfaceProps(props, baseClass);
-  const { checked, loading, disabled } = props;
-  const additionalProps: HtmlAttributes = {};
+  const { checked, loading, disabled, ...otherProps } = props;
+  const additionalProps: HtmlAttributes = { ...otherProps };
 
   // Add checked
   additionalProps['aria-checked'] = checked;

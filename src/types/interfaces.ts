@@ -193,4 +193,5 @@ export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
   type?: 'button' | 'reset' | 'submit' | undefined;
   loading?: boolean;
   orientation?: Orientation;
+  role?: string;
 }

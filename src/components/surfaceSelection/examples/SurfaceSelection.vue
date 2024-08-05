@@ -24,7 +24,7 @@ const modifier = ref('primary');
       <CdrSelect
         id="modifier"
         v-model="modifier"
-        label=""
+        label="Modifier"
         :options="['primary', 'secondary']"
       >
         Modifier
@@ -32,34 +32,34 @@ const modifier = ref('primary');
     </div>
     <hr class="example__hr" />
     <div class="example__demos">
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading }">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading}">
         This is default
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: true, modifier, loading }">
+      <CdrSurfaceSelection v-bind="{ checked: true, modifier, role: 'checkbox', loading }">
         This is checked
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading: !loading }">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading: !loading }">
         This is loading
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, disabled: true }">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading, disabled: true }">
         This is disabled
       </CdrSurfaceSelection>
     </div>
     <hr class="example__hr" />
     <div class="example__demos2">
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading }">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading }">
         Custom loading
         <template #loading>...</template>
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading }">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading }">
         <div>Auto</div>
         <div>Auto</div>
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, class: 'example__wide' }">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, role: 'checkbox', class: 'example__wide' }">
         <div>Auto</div>
         <div class="example__100">100%</div>
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, orientation: 'vertical' }">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, role: 'checkbox', orientation: 'vertical' }">
         <div>orientation</div>
         <div>vertical</div>
       </CdrSurfaceSelection>
@@ -100,7 +100,7 @@ const modifier = ref('primary');
 
   &__100 {
     width: 100%;
-    background: grey;
+    background: black;
     color: white;
     text-align: center;
   }

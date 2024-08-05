@@ -18,7 +18,7 @@ import e2e2 from 'srcdir/dev/e2e2.vue';
 // import SurveyForm from 'componentsdir/Form/SurveyForm';
 
 const routes = [
-  { path: '/', name: ' ', component: App },
+  { path: '/', name: 'Home', component: App },
   { path: '/kitchen-sink', name: 'KitchenSink', component: KitchenSink },
   // { path: '/utilities', name: 'Utilities', component: Examples.utilities },
   { path: '/abstract', name: 'Abstract', component: Examples.abstract },
