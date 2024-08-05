@@ -4,6 +4,12 @@ exports[`CdrFulfillmentTile > component unit tests > default component with no c
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -61,6 +67,12 @@ exports[`CdrFulfillmentTile > is loading 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
   data-loading="true"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -135,6 +147,12 @@ exports[`CdrFulfillmentTile > shows body 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -209,6 +227,12 @@ exports[`CdrFulfillmentTile > shows footer 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -283,6 +307,12 @@ exports[`CdrFulfillmentTile > shows header 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -344,6 +374,12 @@ exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -400,6 +436,12 @@ exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -493,6 +535,12 @@ exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  modifier="primary"
+  orientation="vertical"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"

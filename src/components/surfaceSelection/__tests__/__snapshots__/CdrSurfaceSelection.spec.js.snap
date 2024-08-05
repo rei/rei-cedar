@@ -4,6 +4,12 @@ exports[`CdrSurfaceSelection > component unit tests > default component with no 
 <button
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+  modifier="primary"
+  orientation="horizontal"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -40,6 +46,12 @@ exports[`CdrSurfaceSelection > is checked 1`] = `
 <button
   aria-checked="true"
   class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+  modifier="primary"
+  orientation="horizontal"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -80,6 +92,12 @@ exports[`CdrSurfaceSelection > is loading 1`] = `
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-primary"
   data-loading="true"
+  modifier="primary"
+  orientation="horizontal"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -119,6 +137,12 @@ exports[`CdrSurfaceSelection > shows default 1`] = `
 <button
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+  modifier="primary"
+  orientation="horizontal"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -158,6 +182,12 @@ exports[`CdrSurfaceSelection > snapshot test > renders correctly 1`] = `
 <button
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-primary"
+  modifier="primary"
+  orientation="horizontal"
+  role="radio"
+  tag="button"
+  type="button"
+  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
