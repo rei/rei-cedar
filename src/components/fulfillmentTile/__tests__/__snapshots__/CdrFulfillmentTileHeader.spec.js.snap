@@ -2,8 +2,9 @@
 
 exports[`CdrFulfillmentTileHeader > icon left configuration 1`] = `
 <div
-  class="cdr-fulfillment-tile-header"
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
 >
+  
   <span
     class="cdr-fulfillment-tile-header__icon"
   >
@@ -12,8 +13,9 @@ exports[`CdrFulfillmentTileHeader > icon left configuration 1`] = `
     
   </span>
   <span
-    class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+    strong="true"
+    style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
   >
     
     
@@ -22,17 +24,20 @@ exports[`CdrFulfillmentTileHeader > icon left configuration 1`] = `
     
   </span>
   <!--v-if-->
+  
 </div>
 `;
 
 exports[`CdrFulfillmentTileHeader > icon right configuration 1`] = `
 <div
-  class="cdr-fulfillment-tile-header"
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
 >
+  
   <!--v-if-->
   <span
-    class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+    strong="true"
+    style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
   >
     
     
@@ -47,17 +52,20 @@ exports[`CdrFulfillmentTileHeader > icon right configuration 1`] = `
     X
     
   </span>
+  
 </div>
 `;
 
 exports[`CdrFulfillmentTileHeader > shows label 1`] = `
 <div
-  class="cdr-fulfillment-tile-header"
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
 >
+  
   <!--v-if-->
   <span
-    class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+    strong="true"
+    style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
   >
     
     
@@ -66,5 +74,6 @@ exports[`CdrFulfillmentTileHeader > shows label 1`] = `
     
   </span>
   <!--v-if-->
+  
 </div>
 `;

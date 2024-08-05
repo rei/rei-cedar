@@ -2,8 +2,8 @@
 
 exports[`CdrFulfillmentTileContent > is stretch 1`] = `
 <div
-  class="cdr-utility-sans cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
-  style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+  style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
 >
   
   
@@ -15,8 +15,8 @@ exports[`CdrFulfillmentTileContent > is stretch 1`] = `
 
 exports[`CdrFulfillmentTileContent > shows content 1`] = `
 <div
-  class="cdr-utility-sans cdr-fulfillment-tile-content"
-  style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
+  class="cdr-body cdr-fulfillment-tile-content"
+  style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
 >
   
   

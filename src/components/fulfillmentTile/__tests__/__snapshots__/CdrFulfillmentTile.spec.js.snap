@@ -3,47 +3,130 @@
 exports[`CdrFulfillmentTile > component unit tests > default component with no configuration > renders correctly 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
 >
-  
   <div
-    class="cdr-fulfillment-tile-header"
+    class="cdr-fulfillment-tile__inner"
   >
-    <!--v-if-->
-    <span
-      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    <div
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
     >
       
+      <!--v-if-->
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+      </span>
+      <!--v-if-->
       
-    </span>
-    <!--v-if-->
+    </div>
+    <div
+      class="cdr-fulfillment-tile__main"
+    >
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <!--v-if-->
-  <!--v-if-->
-  
 </button>
 `;
 
 exports[`CdrFulfillmentTile > is loading 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
+  data-loading="true"
 >
   <div
-    aria-busy="true"
-    aria-live="polite"
-    class="cdr-skeleton cdr-fulfillment-tile__loading"
+    class="cdr-fulfillment-tile__inner"
   >
-    <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-    
     <div
-      class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-    />
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+    >
+      
+      <!--v-if-->
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+        
+        Label slot
+        
+        
+        
+      </span>
+      <!--v-if-->
+      
+    </div>
     <div
-      class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-    />
-    
+      class="cdr-fulfillment-tile__main"
+    >
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        <!--v-if-->
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+          
+          Footer slot
+          
+          
+          
+        </div>
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
 </button>
 `;
@@ -51,256 +134,450 @@ exports[`CdrFulfillmentTile > is loading 1`] = `
 exports[`CdrFulfillmentTile > shows body 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
 >
-  
   <div
-    class="cdr-fulfillment-tile-header"
+    class="cdr-fulfillment-tile__inner"
   >
-    <!--v-if-->
-    <span
-      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    <div
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
     >
       
+      <!--v-if-->
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+        
+        Label slot
+        
+        
+        
+      </span>
+      <!--v-if-->
       
-      
-      Label slot
-      
-      
-      
-    </span>
-    <!--v-if-->
+    </div>
+    <div
+      class="cdr-fulfillment-tile__main"
+    >
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        <div
+          class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+          
+          Body slot
+          
+          
+          
+        </div>
+        <!--v-if-->
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <div
-    class="cdr-utility-sans cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
-  >
-    
-    
-    
-    Body slot
-    
-    
-    
-  </div>
-  <!--v-if-->
-  
 </button>
 `;
 
 exports[`CdrFulfillmentTile > shows footer 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
 >
-  
   <div
-    class="cdr-fulfillment-tile-header"
+    class="cdr-fulfillment-tile__inner"
   >
-    <!--v-if-->
-    <span
-      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    <div
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
     >
       
+      <!--v-if-->
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+        
+        Label slot
+        
+        
+        
+      </span>
+      <!--v-if-->
       
-      
-      Label slot
-      
-      
-      
-    </span>
-    <!--v-if-->
+    </div>
+    <div
+      class="cdr-fulfillment-tile__main"
+    >
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        <!--v-if-->
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+          
+          Footer slot
+          
+          
+          
+        </div>
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <!--v-if-->
-  <div
-    class="cdr-utility-sans cdr-fulfillment-tile-content"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
-  >
-    
-    
-    
-    Footer slot
-    
-    
-    
-  </div>
-  
 </button>
 `;
 
 exports[`CdrFulfillmentTile > shows header 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
 >
-  
   <div
-    class="cdr-fulfillment-tile-header"
+    class="cdr-fulfillment-tile__inner"
   >
-    <!--v-if-->
-    <span
-      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    <div
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
     >
       
+      <!--v-if-->
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+        
+        Label slot
+        
+        
+        
+      </span>
+      <!--v-if-->
       
-      
-      Label slot
-      
-      
-      
-    </span>
-    <!--v-if-->
+    </div>
+    <div
+      class="cdr-fulfillment-tile__main"
+    >
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <!--v-if-->
-  <!--v-if-->
-  
 </button>
 `;
 
 exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
 >
-  
   <div
-    class="cdr-fulfillment-tile-header"
+    class="cdr-fulfillment-tile__inner"
   >
-    <!--v-if-->
-    <span
-      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    <div
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
     >
       
+      <!--v-if-->
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+      </span>
+      <!--v-if-->
       
-    </span>
-    <!--v-if-->
+    </div>
+    <div
+      class="cdr-fulfillment-tile__main"
+    >
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <!--v-if-->
-  <!--v-if-->
-  
 </button>
 `;
 
 exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
 >
-  
   <div
-    class="cdr-fulfillment-tile-header"
+    class="cdr-fulfillment-tile__inner"
   >
-    <!--v-if-->
-    <span
-      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    <div
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
     >
       
+      <!--v-if-->
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+        
+        Label slot
+        
+        
+        
+      </span>
+      <span
+        class="cdr-fulfillment-tile-header__icon"
+      >
+        
+        
+        X
+        
+        
+      </span>
       
-      
-      Label slot
-      
-      
-      
-    </span>
-    <span
-      class="cdr-fulfillment-tile-header__icon"
+    </div>
+    <div
+      class="cdr-fulfillment-tile__main"
     >
-      
-      
-      X
-      
-      
-    </span>
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        <div
+          class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+          
+          Body slot
+          
+          
+          
+        </div>
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+          
+          Footer slot
+          
+          
+          
+        </div>
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <div
-    class="cdr-utility-sans cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
-  >
-    
-    
-    
-    Body slot
-    
-    
-    
-  </div>
-  <div
-    class="cdr-utility-sans cdr-fulfillment-tile-content"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
-  >
-    
-    
-    
-    Footer slot
-    
-    
-    
-  </div>
-  
 </button>
 `;
 
 exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
 <button
   aria-checked="false"
-  class="cdr-fulfillment-tile"
+  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-primary"
 >
-  
   <div
-    class="cdr-fulfillment-tile-header"
+    class="cdr-fulfillment-tile__inner"
   >
-    <span
-      class="cdr-fulfillment-tile-header__icon"
+    <div
+      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
     >
       
+      <span
+        class="cdr-fulfillment-tile-header__icon"
+      >
+        
+        
+        X
+        
+        
+      </span>
+      <span
+        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+        strong="true"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      >
+        
+        
+        
+        Label slot
+        
+        
+        
+      </span>
+      <!--v-if-->
       
-      X
-      
-      
-    </span>
-    <span
-      class="cdr-utility-sans cdr-fulfillment-tile-header__label"
-      style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 600;"
+    </div>
+    <div
+      class="cdr-fulfillment-tile__main"
     >
-      
-      
-      
-      Label slot
-      
-      
-      
-    </span>
-    <!--v-if-->
+      <div
+        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+      >
+        
+        <div
+          class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+          
+          Body slot
+          
+          
+          
+        </div>
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+          
+          Footer slot
+          
+          
+          
+        </div>
+        
+      </div>
+      <div
+        class="cdr-fulfillment-tile__loading"
+      >
+        
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="cdr-skeleton"
+        >
+          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+          
+          <div
+            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <div
-    class="cdr-utility-sans cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
-  >
-    
-    
-    
-    Body slot
-    
-    
-    
-  </div>
-  <div
-    class="cdr-utility-sans cdr-fulfillment-tile-content"
-    style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-sans-line-height-ratio)); --cdr-utility-sans-font-weight: 400;"
-  >
-    
-    
-    
-    Footer slot
-    
-    
-    
-  </div>
-  
 </button>
 `;

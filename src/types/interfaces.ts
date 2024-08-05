@@ -188,6 +188,7 @@ export interface CdrSurfaceProps extends HtmlAttributes {
 }
 
 export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
+  disabled?: boolean;
   checked: boolean;
   type?: 'button' | 'reset' | 'submit' | undefined;
   loading?: boolean;

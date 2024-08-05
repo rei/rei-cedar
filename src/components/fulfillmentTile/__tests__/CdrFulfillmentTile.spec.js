@@ -26,7 +26,10 @@ describe('CdrFulfillmentTile', () => {
         expect(wrapper.element.tagName).toBe('BUTTON');
       });
       it('base classes only', () => {
-        expect(wrapper.classes()).toEqual(['cdr-fulfillment-tile']);
+        expect(wrapper.classes()).toEqual([
+          'cdr-fulfillment-tile',
+          'cdr-fulfillment-tile--modifier-primary',
+        ]);
       });
     });
   });
@@ -78,7 +81,6 @@ describe('CdrFulfillmentTile', () => {
     });
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.find('.cdr-fulfillment-tile-content--stretch').text()).toBe('Body slot');
-
   });
 
   it('shows footer', () => {
@@ -102,8 +104,17 @@ describe('CdrFulfillmentTile', () => {
       },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.find('.cdr-fulfillment-tile__loading').exists()).toBe(true);
-    expect(wrapper.find('.cdr-fulfillment-tile-header').exists()).toBe(false);
-    expect(wrapper.find('.cdr-fulfillment-tile-content').exists()).toBe(false);
+    expect(wrapper.find('.cdr-fulfillment-tile').attributes('data-loading')).toBe('true');
+  });
+
+  it('is not loading', () => {
+    const wrapper = mount(CdrFulfillmentTile, {
+      props: { checked: false, loading: false },
+      slots: {
+        label: 'Label slot',
+        footer: 'Footer slot',
+      },
+    });
+    expect(wrapper.find('.cdr-fulfillment-tile').attributes('data-loading')).toBe(undefined);
   });
 });

@@ -1,20 +1,37 @@
 <script setup lang="ts">
-import { useCssModule } from 'vue';
+import { useCssModule, computed } from 'vue';
 import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
+import type { CdrFulfillmentTileLayoutProps } from './CdrFulfillmentTileLayout.vue';
 
 /** Fulfillment tile header component */
 
 defineOptions({ name: 'CdrFulfillmentTileHeader' });
 
+export interface CdrFulfillmentTileHeaderProps {
+  disabled?: boolean;
+}
+
+const props = withDefaults(defineProps<CdrFulfillmentTileHeaderProps>(), {
+  disabled: false,
+});
+
 const style = useCssModule();
+const baseClass = 'cdr-fulfillment-tile-header';
+
+const rootProps = computed(
+  (): CdrFulfillmentTileLayoutProps => ({
+    orientation: 'horizontal',
+    class: {
+      [style[baseClass]]: true,
+      [style[`${baseClass}--disabled`]]: props.disabled,
+    },
+  }),
+);
 </script>
 
 <template>
-  <CdrFulfillmentTileLayout
-    orientation="horizontal"
-    :class="style['cdr-fulfillment-tile-header']"
-  >
+  <CdrFulfillmentTileLayout v-bind="rootProps">
     <span
       v-if="$slots['icon-left']"
       :class="style['cdr-fulfillment-tile-header__icon']"

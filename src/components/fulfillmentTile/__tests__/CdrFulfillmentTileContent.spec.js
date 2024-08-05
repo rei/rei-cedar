@@ -9,7 +9,7 @@ describe('CdrFulfillmentTileContent', () => {
       },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.classes()).toEqual(['cdr-utility-sans', 'cdr-fulfillment-tile-content']);
+    expect(wrapper.classes()).toEqual(['cdr-body', 'cdr-fulfillment-tile-content']);
     expect(wrapper.text()).toBe('Default slot');
   });
 
@@ -24,7 +24,7 @@ describe('CdrFulfillmentTileContent', () => {
     });
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.classes()).toEqual([
-      'cdr-utility-sans',
+      'cdr-body',
       'cdr-fulfillment-tile-content',
       'cdr-fulfillment-tile-content--stretch',
     ]);

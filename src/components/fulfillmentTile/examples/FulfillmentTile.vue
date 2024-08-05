@@ -7,6 +7,7 @@ import { IconCheckFill, IconErrorFill, IconXFill } from '../../icon';
 import CdrButton from '../../button/CdrButton.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrSurfaceSelection from '../../surfaceSelection/CdrSurfaceSelection.vue';
+import CdrFulfillmentTileIcon from '../CdrFulfillmentTileIcon.vue';
 
 defineOptions({ name: 'FulfillmentTile' });
 
@@ -55,7 +56,9 @@ const toggleCheckbox2 = (value: number) => {
         :checked="false"
       >
         <template #icon-right>
-          <IconErrorFill inherit-color />
+          <CdrFulfillmentTileIcon type="default">
+            <IconErrorFill inherit-color />
+          </CdrFulfillmentTileIcon>
         </template>
         <template #label>Pick up</template>
         <template #body>Not offered</template>
@@ -71,7 +74,9 @@ const toggleCheckbox2 = (value: number) => {
           v-if="radio1 === 1"
           #icon-right
         >
-          <IconCheckFill inherit-color />
+          <CdrFulfillmentTileIcon type="success">
+            <IconCheckFill inherit-color />
+          </CdrFulfillmentTileIcon>
         </template>
         <template #label>Ship to address</template>
         <template #body>Today after 2pm</template>
@@ -91,7 +96,9 @@ const toggleCheckbox2 = (value: number) => {
           v-if="radio1 === 2"
           #icon-right
         >
-          <IconCheckFill inherit-color />
+          <CdrFulfillmentTileIcon type="success">
+            <IconCheckFill inherit-color />
+          </CdrFulfillmentTileIcon>
         </template>
         <template #label>Another option</template>
         <template #footer>
@@ -111,7 +118,9 @@ const toggleCheckbox2 = (value: number) => {
           v-if="radio1 === 3"
           #icon-right
         >
-          <IconCheckFill inherit-color />
+          <CdrFulfillmentTileIcon type="success">
+            <IconCheckFill inherit-color />
+          </CdrFulfillmentTileIcon>
         </template>
         <template #label>Loading option</template>
         <template #body>
@@ -141,24 +150,9 @@ const toggleCheckbox2 = (value: number) => {
           @click="toggleCheckbox1(1)"
         >
           <template #icon-left>
-            <IconCheckFill
-              v-if="checkbox1.includes(1)"
-              inherit-color
+            <div
+              :class="{ example__icon: true, 'example__icon--checked': checkbox1.includes(1) }"
             />
-            <svg
-              v-else
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="example__icon"
-            >
-              <g>
-                <path
-                  fill-rule="evenodd"
-                  d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
-                  clip-rule="evenodd"
-                ></path>
-              </g>
-            </svg>
           </template>
           <template #label>Store Pickup (32)</template>
           <template #footer>
@@ -181,24 +175,7 @@ const toggleCheckbox2 = (value: number) => {
         @click="toggleCheckbox1(2)"
       >
         <template #icon-left>
-          <IconCheckFill
-            v-if="checkbox1.includes(2)"
-            inherit-color
-          />
-          <svg
-            v-else
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            class="example__icon"
-          >
-            <g>
-              <path
-                fill-rule="evenodd"
-                d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
-                clip-rule="evenodd"
-              ></path>
-            </g>
-          </svg>
+          <div :class="{ example__icon: true, 'example__icon--checked': checkbox1.includes(2) }" />
         </template>
         <template #label>Ship to address (32)</template>
       </CdrFulfillmentTile>
@@ -225,7 +202,9 @@ const toggleCheckbox2 = (value: number) => {
           v-if="radio2 === 0"
           #icon-right
         >
-          <IconXFill inherit-color />
+          <CdrFulfillmentTileIcon type="default">
+            <IconXFill inherit-color />
+          </CdrFulfillmentTileIcon>
         </template>
         <template #label>Pick up</template>
         <template #body>Not offered</template>
@@ -240,7 +219,9 @@ const toggleCheckbox2 = (value: number) => {
           v-if="radio2 === 1"
           #icon-right
         >
-          <IconCheckFill inherit-color />
+          <CdrFulfillmentTileIcon type="success">
+            <IconCheckFill inherit-color />
+          </CdrFulfillmentTileIcon>
         </template>
         <template #label>Ship to address</template>
         <template #body>
@@ -268,9 +249,7 @@ const toggleCheckbox2 = (value: number) => {
     >
       <CdrSurface
         class="example__search-tile-other"
-        :border-width="checkbox2.includes(1) ? 'eighth-x' : 'sixteenth-x'"
-        :with-border="true"
-        :border-color="checkbox2.includes(1) ? 'secondary' : 'primary'"
+        :data-store-checked="checkbox2.includes(1)"
         radius="softer"
       >
         <CdrSurfaceSelection
@@ -281,28 +260,13 @@ const toggleCheckbox2 = (value: number) => {
         >
           <CdrFulfillmentTileHeader>
             <template #icon-left>
-              <IconCheckFill
-                v-if="checkbox2.includes(1)"
-                inherit-color
+              <div
+                :class="{ example__icon: true, 'example__icon--checked': checkbox2.includes(1) }"
               />
-              <svg
-                v-else
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                class="example__icon"
-              >
-                <g>
-                  <path
-                    fill-rule="evenodd"
-                    d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </g>
-              </svg>
             </template>
             <template #label>Store Pickup (32)</template>
           </CdrFulfillmentTileHeader>
-          <CdrFulfillmentTileContent class="example__search-tile-other-header-content">
+          <CdrFulfillmentTileContent>
             In stock at
             <strong>Encinitas</strong>
           </CdrFulfillmentTileContent>
@@ -325,6 +289,8 @@ const toggleCheckbox2 = (value: number) => {
 @import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 @import '../styles/vars/CdrFulfillmentTile.vars.scss';
 @import '../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
+
+$component: 'fulfillment-tile';
 
 @mixin tile-colors() {
   &[aria-pressed='true'],
@@ -349,9 +315,14 @@ const toggleCheckbox2 = (value: number) => {
   }
 
   &__row {
-    display: grid;
+    display: flex;
     gap: var(--cdr-space-three-quarter-x);
-    grid-template-columns: 230px 230px 230px 230px;
+    flex-wrap: wrap;
+
+    > * {
+      width: 230px;
+      flex: 0 0 auto;
+    }
   }
 
   &__checkout-tile {
@@ -365,15 +336,23 @@ const toggleCheckbox2 = (value: number) => {
 
   &__search-tile {
     @include tile-colors;
+    width: 100%;
   }
 
   &__icon {
     display: inline-block;
     vertical-align: middle;
     flex: 0 0 auto;
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: $cdr-space-eighth-x;
     fill: inherit;
+    border-radius: $cdr-radius-round;
+    border: $cdr-space-sixteenth-x solid #2e2e2b;
+
+    &--checked {
+      border-width: 0.7rem;
+    }
   }
 
   &__change-store {
@@ -384,32 +363,40 @@ const toggleCheckbox2 = (value: number) => {
 
   &__checkout-tile-other-disabled {
     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-    --cdr-color-background-fulfillment-tile: var(--cdr-color-background-button-default-disabled);
-    --cdr-color-background-fulfillment-tile-checked: var(
-      --cdr-color-background-button-default-disabled
-    );
+    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-primary-disabled;
+    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-primary-disabled;
+    @include cdr-border-style-mixin($component, 'dashed');
   }
 
   &__search-tile-other {
-    gap: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    $modifier: 'default';
+    @include cdr-border-mixin($component);
+    @include cdr-border-style-mixin($component, 'solid');
+    @include cdr-border-width-mixin($component, 'sixteenth-x');
+    @include cdr-border-color-mixin($fulfillment-tile-border-colors, $component, $modifier);
+    @include cdr-radius-mixin($component, 'softest');
+
+    &[data-store-checked='true'] {
+      $state: 'checked';
+      @include cdr-border-width-mixin($component, 'third-x');
+      @include cdr-border-color-mixin(
+        $fulfillment-tile-border-colors,
+        $component,
+        $modifier,
+        $state
+      );
+    }
   }
 
   &__search-tile-other-header-button {
     --cdr-surface-selection-border-width-default: 0;
     --cdr-color-background-surface-selection-primary-checked: var(--cdr-color-background-primary);
-    padding: var(--cdr-space-one-x) 0;
     width: 100%;
     @include tile-colors;
 
     @include cdr-surface-selection-checked-mixin() {
       --cdr-surface-selection-border-width-default: 0;
     }
-  }
-
-  &__search-tile-other-header-content {
-    margin-top: var(--cdr-space-half-x);
   }
 
   &__search-tile-other-header-hr {
@@ -419,8 +406,8 @@ const toggleCheckbox2 = (value: number) => {
   }
 
   &__change-store-other {
-    padding: var(--cdr-space-three-quarter-x) var(--cdr-space-one-x)
-      var(--cdr-space-one-x) var(--cdr-space-one-x);
+    padding: var(--cdr-space-three-quarter-x) var(--cdr-space-one-x) var(--cdr-space-one-x)
+      var(--cdr-space-one-x);
     justify-content: flex-start;
   }
 }

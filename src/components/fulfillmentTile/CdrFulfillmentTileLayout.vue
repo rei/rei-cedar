@@ -2,12 +2,13 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { Orientation } from '../../types/other';
+import { HtmlAttributes } from '../../types/interfaces';
 
 /** Component for layout of a surface selection */
 
 defineOptions({ name: 'CdrFulfillmentTileLayout' });
 
-interface CdrFulfillmentTileLayoutProps {
+export interface CdrFulfillmentTileLayoutProps extends HtmlAttributes {
   orientation?: Orientation;
 }
 
