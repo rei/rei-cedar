@@ -8,7 +8,6 @@ import type {
   Modifier,
   Background,
   Orientation,
-  ButtonType,
 } from './other';
 
 /**
