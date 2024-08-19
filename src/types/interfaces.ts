@@ -171,25 +171,12 @@ export interface CdrSurfaceProps extends HtmlAttributes {
   borderWidth?: Space;
   borderColor?: BorderColor;
   borderStyle?: BorderStyle;
-  m?: Space;
-  mx?: Space;
-  my?: Space;
-  ml?: Space;
-  mr?: Space;
-  mt?: Space;
-  mb?: Space;
-  p?: Space;
-  px?: Space;
-  py?: Space;
-  pl?: Space;
-  pr?: Space;
-  pt?: Space;
-  pb?: Space;
 }
 
-export interface CdrSurfaceSelectionProps extends CdrSurfaceProps {
+export interface CdrSurfaceSelectionProps
+  extends Omit<CdrSurfaceProps, 'withBorder' | 'borderWidth' | 'borderColor' | 'borderStyle'> {
   disabled?: boolean;
-  checked: boolean;
+  checked?: boolean;
   type?: 'button' | 'reset' | 'submit' | undefined;
   loading?: boolean;
   orientation?: Orientation;

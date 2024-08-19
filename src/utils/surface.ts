@@ -1,33 +1,12 @@
 import type {
   CdrSurfaceProps,
   CdrSurfaceSelectionProps,
-  InlineCss,
   HtmlAttributes,
 } from '../types/interfaces';
-
-// Map of margins and padding
-const marginsAndPaddingMap: Record<string, string> = {
-  m: 'margin',
-  mx: 'marginInline',
-  my: 'marginBlock',
-  ml: 'marginInlineStart',
-  mr: 'marginInlineEnd',
-  mt: 'marginTop',
-  mb: 'marginBottom',
-  p: 'padding',
-  px: 'paddingInline',
-  py: 'paddingBlock',
-  pl: 'paddingInlineStart',
-  pr: 'paddingInlineEnd',
-  pt: 'paddingTop',
-  pb: 'paddingBottom',
-};
-const marginAndPaddingKeys = Object.keys(marginsAndPaddingMap);
 
 // Manages the props passed along to all surfaces
 export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
   const classes = [baseClass];
-  const inlineStyles: InlineCss = {};
 
   // Add modifier, which applies a background and border color,
   // but does not apply a border width
@@ -69,21 +48,11 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
     classes.push(shadowClass);
   }
 
-  // Add margin and padding
-  if (marginAndPaddingKeys.find((key) => props[key])) {
-    marginAndPaddingKeys.forEach((key) => {
-      if (props[key]) {
-        const cssProperty = marginsAndPaddingMap[key];
-        inlineStyles[cssProperty] = `var(--cdr-space-${props[key]})`;
-      }
-    });
-  }
-
-  return { classes, inlineStyles };
+  return { classes };
 };
 
 export const getSurfaceSelectionProps = (props: CdrSurfaceSelectionProps, baseClass: string) => {
-  const { classes, inlineStyles } = getSurfaceProps(props, baseClass);
+  const { classes } = getSurfaceProps(props, baseClass);
   const { checked, loading, disabled, ...otherProps } = props;
   const additionalProps: HtmlAttributes = { ...otherProps };
 
@@ -100,5 +69,5 @@ export const getSurfaceSelectionProps = (props: CdrSurfaceSelectionProps, baseCl
     additionalProps['data-loading'] = loading;
   }
 
-  return { classes, inlineStyles, additionalProps };
+  return { classes, additionalProps };
 };

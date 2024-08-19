@@ -1,6 +1,6 @@
 <template>
   <div :data-palette="palette">
-    <div class="radios">
+    <div class="sink-wrapper__radios">
       <div>Toggle palette:</div>
       <cdr-radio
         v-for="pal in palettes"
@@ -14,10 +14,10 @@
     </div>
     <cdr-surface
       background="primary"
-      p="two-x"
       :with-border="true"
       border-width="sixteenth-x"
       border-color="primary"
+      class="sink-wrapper__container"
     >
       <slot />
     </cdr-surface>
@@ -58,11 +58,19 @@ export default {
 };
 </script>
 
-<style>
-.radios {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+<style lang="scss" scoped>
+@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+
+.sink-wrapper {
+  &__radios {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__container {
+    padding: $cdr-space-two-x;
+  }
 }
 </style>

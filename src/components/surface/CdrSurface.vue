@@ -15,8 +15,8 @@ const props = withDefaults(defineProps<CdrSurfaceProps>(), {
 const style = useCssModule();
 
 const rootProps = computed(() => {
-  const { inlineStyles, classes } = getSurfaceProps(props, 'cdr-surface');
-  return { style: inlineStyles, class: mapClasses(style, ...classes) || undefined };
+  const { classes } = getSurfaceProps(props, 'cdr-surface');
+  return { class: mapClasses(style, ...classes) || undefined };
 });
 </script>
 

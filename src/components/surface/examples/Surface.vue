@@ -18,44 +18,39 @@ const boxes: Example[] = [
   {
     label: 'This surface is styled like a card',
     props: {
-      display: 'inline-block',
       radius: 'soft',
       background: 'secondary',
       shadow: 'floating',
-      p: 'two-x',
+      class: 'example__card',
     },
   },
   {
     label: 'This surface is styled like a chip or pill',
     props: {
-      display: 'inline-block',
       radius: 'round',
       withBorder: true,
       borderColor: 'primary',
       background: 'secondary',
-      px: 'one-x',
-      py: 'three-quarter-x',
+      class: 'example__pill',
     },
   },
   {
     label: 'This surface uses the primary modifier to apply a background and border color',
     props: {
       modifier: 'primary',
-      display: 'inline-block',
       radius: 'soft',
-      p: 'one-x',
       withBorder: true,
+      class: 'example__card',
     },
   },
   {
     label: 'This surface uses the secondary modifier to apply a background and border color',
     props: {
       modifier: 'secondary',
-      display: 'inline-block',
       radius: 'soft',
-      p: 'one-x',
       withBorder: true,
       borderStyle: 'dashed',
+      class: 'example__card',
     },
   },
 ];
@@ -82,6 +77,16 @@ const boxes: Example[] = [
 .example {
   &__hr {
     margin: $cdr-space-two-x 0;
+  }
+
+  &__card {
+    display: inline-block;
+    padding: $cdr-space-two-x;
+  }
+
+  &__pill {
+    display: inline-block;
+    padding: $cdr-space-half-x $cdr-space-one-x;
   }
 }
 </style>

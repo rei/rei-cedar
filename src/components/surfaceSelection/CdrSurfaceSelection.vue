@@ -27,13 +27,8 @@ const baseClass = 'cdr-surface-selection';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const { inlineStyles, classes, additionalProps } = getSurfaceSelectionProps(props, baseClass);
-
-  return {
-    ...additionalProps,
-    style: inlineStyles,
-    class: mapClasses(style, ...classes) || undefined,
-  };
+  const { classes, additionalProps } = getSurfaceSelectionProps(props, baseClass);
+  return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
 </script>
 

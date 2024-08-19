@@ -32,7 +32,7 @@ const modifier = ref('primary');
     </div>
     <hr class="example__hr" />
     <div class="example__demos">
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading}">
+      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading }">
         This is default
       </CdrSurfaceSelection>
       <CdrSurfaceSelection v-bind="{ checked: true, modifier, role: 'checkbox', loading }">
