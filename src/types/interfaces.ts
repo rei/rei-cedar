@@ -162,22 +162,72 @@ export interface InlineCss {
  * @extends HtmlAttributes
  */
 export interface CdrSurfaceProps extends HtmlAttributes {
+  /**
+   * Determines which set of styles to apply to the component.
+   * @values primary, secondary
+   */
   modifier?: Modifier;
+  /**
+   * Adds in a background color based on the current palette's tokens.
+   * @values transparent, primary, secondary
+   */
   background?: Background;
+  /**
+   * Determines which HTML tag to use.
+   */
   tag?: Tag;
+  /**
+   * Adds a shadow based on the token options within Cedar.
+   * @values flat, raised, elevated, floating, lifted
+   */
   shadow?: Shadow;
+  /**
+   * Adds in a border radius based on the token options within Cedar.
+   * @values transparent, primary, secondary
+   */
   radius?: Radius;
+  /**
+   * Adds in a border. Comes with a default color, width, and style.
+   */
   withBorder?: boolean;
+  /**
+   * Specifies a border width based on the token options within Cedar.
+   * @values flat, raised, elevated, floating, lifted
+   */
   borderWidth?: Space;
+  /**
+   * Specifies a border color based on the token options within Cedar.
+   * @values transparent, primary, secondary, success, warning, error
+   */
   borderColor?: BorderColor;
+  /**
+   * Specifies a border style based on the token options within Cedar.
+   * @values dotted, dashed, solid
+   */
   borderStyle?: BorderStyle;
 }
 
 export interface CdrSurfaceSelectionProps
   extends Omit<CdrSurfaceProps, 'withBorder' | 'borderWidth' | 'borderColor' | 'borderStyle'> {
+  /**
+   * Determines if the button is in a disabled state.
+   */
   disabled?: boolean;
+  /**
+   * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
+   */
   checked?: boolean;
+  /**
+   * Determines if the button is in a loading state. Adds a `data-loading` attribute to the button. Using CSS, this will hide the default slot and show the loading slot.
+   */
   loading?: boolean;
+  /**
+   * Determines if the layout is in horizontal or vertical mode.
+   * @values horizontal, vertical
+   */
   orientation?: Orientation;
+  /**
+   * Determines the role of the button. Typically, this will either be `radio` or `checkbox`.
+   */
   role?: string;
 }

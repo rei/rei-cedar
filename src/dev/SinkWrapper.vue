@@ -12,7 +12,7 @@
         {{ capitalize(pal) }}
       </cdr-radio>
     </div>
-    <cdr-surface
+    <div
       background="primary"
       :with-border="true"
       border-width="sixteenth-x"
@@ -20,7 +20,7 @@
       class="sink-wrapper__container"
     >
       <slot />
-    </cdr-surface>
+  </div>
   </div>
 </template>
 

@@ -29,7 +29,6 @@ const boxes: Example[] = [
     props: {
       radius: 'round',
       withBorder: true,
-      borderColor: 'primary',
       background: 'secondary',
       class: 'example__pill',
     },

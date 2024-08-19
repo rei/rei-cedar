@@ -26,7 +26,7 @@ export type SpaceFluid =
 export type SpaceScale = 'scale-0--1' | 'scale-3--4' | 'scale-3--5';
 export type Space = SpaceFixed | SpaceFluid | SpaceScale;
 export type Shadow = 'flat' | 'raised' | 'elevated' | 'floating' | 'lifted';
-export type Background = 'transparent' | 'primary' | 'secondary' | 'brand-spruce';
+export type Background = 'transparent' | 'primary' | 'secondary';
 export type Radius = 'sharp' | 'soft' | 'softer' | 'softest' | 'round';
 export type BorderColor =
   | 'transparent'

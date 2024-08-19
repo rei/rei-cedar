@@ -22,10 +22,8 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
 
   // Add border
   if (props.withBorder) {
-    if (props.borderColor) {
-      const borderColorClass = `${baseClass}--border-color-${props.borderColor}`;
-      classes.push(borderColorClass);
-    }
+    const borderColorClass = `${baseClass}--border-color-${props.borderColor || 'primary'}`;
+    classes.push(borderColorClass);
 
     const borderWidthClass = `${baseClass}--border-width-${props.borderWidth || 'sixteenth-x'}`;
     classes.push(borderWidthClass);
