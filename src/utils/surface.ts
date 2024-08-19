@@ -56,8 +56,11 @@ export const getSurfaceSelectionProps = (props: CdrSurfaceSelectionProps, baseCl
   const { checked, loading, disabled, ...otherProps } = props;
   const additionalProps: HtmlAttributes = { ...otherProps };
 
+  // Add button type
+  additionalProps.type = 'button';
+
   // Add checked
-  additionalProps['aria-checked'] = checked;
+  additionalProps['aria-checked'] = Boolean(checked);
 
   // Add disabled
   if (disabled) {

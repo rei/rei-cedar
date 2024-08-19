@@ -8,6 +8,7 @@ import type {
   Modifier,
   Background,
   Orientation,
+  ButtonType,
 } from './other';
 
 /**
@@ -177,7 +178,6 @@ export interface CdrSurfaceSelectionProps
   extends Omit<CdrSurfaceProps, 'withBorder' | 'borderWidth' | 'borderColor' | 'borderStyle'> {
   disabled?: boolean;
   checked?: boolean;
-  type?: 'button' | 'reset' | 'submit' | undefined;
   loading?: boolean;
   orientation?: Orientation;
   role?: string;

@@ -19,7 +19,6 @@ const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
   modifier: 'primary',
   checked: false,
   disabled: false,
-  type: 'button',
   loading: false,
   orientation: 'vertical',
 });
