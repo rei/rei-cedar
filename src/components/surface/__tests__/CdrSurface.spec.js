@@ -13,8 +13,6 @@ describe('CdrSurface', () => {
         radius: 'soft',
         withBorder: true,
         borderWidth: 'one-x',
-        p: 'three-x',
-        m: 'one-x',
       })
       expect(wrapper.element).toMatchSnapshot()
     });

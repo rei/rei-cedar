@@ -9,7 +9,6 @@ exports[`CdrSurfaceSelection > component unit tests > default component with no 
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -51,7 +50,6 @@ exports[`CdrSurfaceSelection > is checked 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -97,7 +95,6 @@ exports[`CdrSurfaceSelection > is loading 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -142,7 +139,6 @@ exports[`CdrSurfaceSelection > shows default 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"
@@ -187,7 +183,6 @@ exports[`CdrSurfaceSelection > snapshot test > renders correctly 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-surface-selection__inner"

@@ -9,7 +9,6 @@ exports[`CdrFulfillmentTile > component unit tests > default component with no c
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -72,7 +71,6 @@ exports[`CdrFulfillmentTile > is loading 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -152,7 +150,6 @@ exports[`CdrFulfillmentTile > shows body 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -232,7 +229,6 @@ exports[`CdrFulfillmentTile > shows footer 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -312,7 +308,6 @@ exports[`CdrFulfillmentTile > shows header 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -379,7 +374,6 @@ exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -441,7 +435,6 @@ exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
@@ -540,7 +533,6 @@ exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
   role="radio"
   tag="button"
   type="button"
-  withborder="false"
 >
   <div
     class="cdr-fulfillment-tile__inner"
