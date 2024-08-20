@@ -20,7 +20,7 @@
       class="sink-wrapper__container"
     >
       <slot />
-  </CdrSurface>
+    </CdrSurface>
   </div>
 </template>
 
