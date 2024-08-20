@@ -228,11 +228,6 @@ export interface CdrSurfaceSelectionProps extends HtmlAttributes {
    */
   shadow?: Shadow;
   /**
-   * Adds in a border radius based on the token options within Cedar.
-   * @values transparent, primary, secondary
-   */
-  radius?: Radius;
-  /**
    * Determines if the button is in a disabled state.
    */
   disabled?: boolean;
@@ -246,6 +241,7 @@ export interface CdrSurfaceSelectionProps extends HtmlAttributes {
   loading?: boolean;
   /**
    * Determines if the layout is in horizontal or vertical mode.
+   * @demoSelectMultiple true
    * @values horizontal, vertical
    */
   orientation?: Orientation;

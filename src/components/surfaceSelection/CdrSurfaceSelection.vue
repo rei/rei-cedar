@@ -12,6 +12,8 @@ import CdrSelectionLayout from './CdrSurfaceSelectionLayout.vue';
 defineOptions({ name: 'CdrSurfaceSelection' });
 
 const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
+  background: undefined,
+  shadow: undefined,
   tag: 'button',
   role: 'radio',
   modifier: 'primary',
@@ -41,10 +43,11 @@ const rootProps = computed(() => {
         :orientation="orientation"
         :class="style['cdr-surface-selection__layout']"
       >
-        <!-- @slot Where all context should be placed. -->
+        <!-- @slot Where all default content should be placed. -->
         <slot />
       </CdrSelectionLayout>
       <div :class="style['cdr-surface-selection__loading']">
+        <!-- @slot This slot allows for custom loading content. -->
         <slot name="loading">
           <CdrSkeleton>
             <CdrSkeletonBone type="line" />
