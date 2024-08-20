@@ -41,6 +41,7 @@ const rootProps = computed(() => {
         :orientation="orientation"
         :class="style['cdr-surface-selection__layout']"
       >
+        <!-- @slot Where all context should be placed. -->
         <slot />
       </CdrSelectionLayout>
       <div :class="style['cdr-surface-selection__loading']">

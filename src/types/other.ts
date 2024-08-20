@@ -34,8 +34,7 @@ export type BorderColor =
   | 'secondary'
   | 'success'
   | 'warning'
-  | 'error'
-  | 'message-default-01';
+  | 'error';
 export type BorderStyle = 'solid' | 'dotted' | 'dashed';
 export type Modifier = 'primary' | 'secondary';
 export type Orientation = 'vertical' | 'horizontal';

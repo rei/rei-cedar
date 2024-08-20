@@ -1,13 +1,44 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
+import type { CdrSurfaceSelectionProps } from '../../../types/interfaces';
+import type { Modifier } from '../../../types/other';
 import CdrSwitch from '../../switch/CdrSwitch.vue';
 import CdrSelect from '../../select/CdrSelect.vue';
 
 defineOptions({ name: 'SurfaceSelection' });
 
 const loading = ref(false);
-const modifier = ref('primary');
+const modifier = ref<Modifier>('primary');
+
+const examples: CdrSurfaceSelectionProps[] = [
+  { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+  { checked: true, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+  { checked: false, modifier: modifier.value, role: 'checkbox', loading: !loading },
+  {
+    checked: false,
+    modifier: modifier.value,
+    role: 'checkbox',
+    loading: loading.value,
+    disabled: true,
+  },
+  { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+  { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+  {
+    checked: false,
+    modifier: modifier.value,
+    loading: loading.value,
+    role: 'checkbox',
+    class: 'example__wide',
+  },
+  {
+    checked: false,
+    modifier: modifier.value,
+    loading: loading.value,
+    role: 'checkbox',
+    orientation: 'vertical',
+  },
+];
 </script>
 
 <template>
@@ -32,34 +63,26 @@ const modifier = ref('primary');
     </div>
     <hr class="example__hr" />
     <div class="example__demos">
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading }">
-        This is default
-      </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: true, modifier, role: 'checkbox', loading }">
-        This is checked
-      </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading: !loading }">
-        This is loading
-      </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading, disabled: true }">
-        This is disabled
-      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[0]">This is default</CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[1]">This is checked</CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[2]">This is loading</CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[3]">This is disabled</CdrSurfaceSelection>
     </div>
     <hr class="example__hr" />
     <div class="example__demos2">
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading }">
+      <CdrSurfaceSelection v-bind="examples[4]">
         Custom loading
         <template #loading>...</template>
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, role: 'checkbox', loading }">
+      <CdrSurfaceSelection v-bind="examples[5]">
         <div>Auto</div>
         <div>Auto</div>
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, role: 'checkbox', class: 'example__wide' }">
+      <CdrSurfaceSelection v-bind="examples[6]">
         <div>Auto</div>
         <div class="example__100">100%</div>
       </CdrSurfaceSelection>
-      <CdrSurfaceSelection v-bind="{ checked: false, modifier, loading, role: 'checkbox', orientation: 'vertical' }">
+      <CdrSurfaceSelection v-bind="examples[7]">
         <div>orientation</div>
         <div>vertical</div>
       </CdrSurfaceSelection>

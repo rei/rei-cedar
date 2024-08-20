@@ -207,8 +207,31 @@ export interface CdrSurfaceProps extends HtmlAttributes {
   borderStyle?: BorderStyle;
 }
 
-export interface CdrSurfaceSelectionProps
-  extends Omit<CdrSurfaceProps, 'withBorder' | 'borderWidth' | 'borderColor' | 'borderStyle'> {
+export interface CdrSurfaceSelectionProps extends HtmlAttributes {
+  /**
+   * Determines which set of styles to apply to the component.
+   * @values primary, secondary
+   */
+  modifier?: Modifier;
+  /**
+   * Adds in a background color based on the current palette's tokens.
+   * @values transparent, primary, secondary
+   */
+  background?: Background;
+  /**
+   * Determines which HTML tag to use.
+   */
+  tag?: Tag;
+  /**
+   * Adds a shadow based on the token options within Cedar.
+   * @values flat, raised, elevated, floating, lifted
+   */
+  shadow?: Shadow;
+  /**
+   * Adds in a border radius based on the token options within Cedar.
+   * @values transparent, primary, secondary
+   */
+  radius?: Radius;
   /**
    * Determines if the button is in a disabled state.
    */

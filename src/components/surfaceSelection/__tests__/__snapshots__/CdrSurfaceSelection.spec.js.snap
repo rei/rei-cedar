@@ -58,6 +58,7 @@ exports[`CdrSurfaceSelection > is checked 1`] = `
       class="cdr-surface-selection-layout cdr-surface-selection-layout--horizontal cdr-surface-selection__layout"
     >
       
+      <!-- @slot Where all context should be placed. -->
       
       Default slot
       
@@ -103,6 +104,7 @@ exports[`CdrSurfaceSelection > is loading 1`] = `
       class="cdr-surface-selection-layout cdr-surface-selection-layout--horizontal cdr-surface-selection__layout"
     >
       
+      <!-- @slot Where all context should be placed. -->
       
       Default slot
       
@@ -147,6 +149,7 @@ exports[`CdrSurfaceSelection > shows default 1`] = `
       class="cdr-surface-selection-layout cdr-surface-selection-layout--horizontal cdr-surface-selection__layout"
     >
       
+      <!-- @slot Where all context should be placed. -->
       
       Default slot
       
