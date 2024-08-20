@@ -2,7 +2,7 @@
   <div :data-palette="palette">
     <div class="sink-wrapper__radios">
       <div>Toggle palette:</div>
-      <cdr-radio
+      <CdrRadio
         v-for="pal in palettes"
         :custom-value="pal"
         :key="pal"
@@ -10,9 +10,9 @@
         v-model="palette"
       >
         {{ capitalize(pal) }}
-      </cdr-radio>
+      </CdrRadio>
     </div>
-    <div
+    <CdrSurface
       background="primary"
       :with-border="true"
       border-width="sixteenth-x"
@@ -20,7 +20,7 @@
       class="sink-wrapper__container"
     >
       <slot />
-  </div>
+  </CdrSurface>
   </div>
 </template>
 
