@@ -1,11 +1,7 @@
-import type {
-  CdrSurfaceProps,
-  CdrSurfaceSelectionProps,
-  HtmlAttributes,
-} from '../types/interfaces';
+import type { surface, surfaceSelection, HtmlAttributes } from '../types/interfaces';
 
 // Manages the props passed along to all surfaces
-export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
+export const getSurfaceProps = (props: surface, baseClass: string) => {
   const classes = [baseClass];
 
   // Add modifier, which applies a background and border color,
@@ -49,7 +45,7 @@ export const getSurfaceProps = (props: CdrSurfaceProps, baseClass: string) => {
   return { classes };
 };
 
-export const getSurfaceSelectionProps = (props: CdrSurfaceSelectionProps, baseClass: string) => {
+export const getSurfaceSelectionProps = (props: surfaceSelection, baseClass: string) => {
   const { classes } = getSurfaceProps(props, baseClass);
   const { checked, loading, disabled, ...otherProps } = props;
   const additionalProps: HtmlAttributes = { ...otherProps };
