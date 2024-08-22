@@ -157,44 +157,16 @@ export interface InlineCss {
 }
 
 /**
- * SurfaceProps contains the props used to create a surface
- * @interface CdrSurfaceProps
+ * surface contains the props used to create a surface
+ * @interface surface
  * @extends HtmlAttributes
  */
-export interface CdrSurfaceProps extends HtmlAttributes {
-  /**
-   * Determines which set of styles to apply to the component.
-   * @values primary, secondary
-   */
-  modifier?: Modifier;
+export interface surface extends HtmlAttributes {
   /**
    * Adds in a background color based on the current palette's tokens.
    * @values transparent, primary, secondary
    */
   background?: Background;
-  /**
-   * Determines which HTML tag to use.
-   */
-  tag?: Tag;
-  /**
-   * Adds a shadow based on the token options within Cedar.
-   * @values flat, raised, elevated, floating, lifted
-   */
-  shadow?: Shadow;
-  /**
-   * Adds in a border radius based on the token options within Cedar.
-   * @values transparent, primary, secondary
-   */
-  radius?: Radius;
-  /**
-   * Adds in a border. Comes with a default color, width, and style.
-   */
-  withBorder?: boolean;
-  /**
-   * Specifies a border width based on the token options within Cedar.
-   * @values flat, raised, elevated, floating, lifted
-   */
-  borderWidth?: Space;
   /**
    * Specifies a border color based on the token options within Cedar.
    * @values transparent, primary, secondary, success, warning, error
@@ -205,40 +177,59 @@ export interface CdrSurfaceProps extends HtmlAttributes {
    * @values dotted, dashed, solid
    */
   borderStyle?: BorderStyle;
-}
-
-export interface CdrSurfaceSelectionProps extends HtmlAttributes {
+  /**
+   * Specifies a border width based on the token options within Cedar.
+   * @values flat, raised, elevated, floating, lifted
+   */
+  borderWidth?: Space;
   /**
    * Determines which set of styles to apply to the component.
    * @values primary, secondary
    */
   modifier?: Modifier;
   /**
-   * Adds in a background color based on the current palette's tokens.
+   * Adds in a border radius based on the token options within Cedar.
    * @values transparent, primary, secondary
    */
-  background?: Background;
-  /**
-   * Determines which HTML tag to use.
-   */
-  tag?: Tag;
+  radius?: Radius;
   /**
    * Adds a shadow based on the token options within Cedar.
    * @values flat, raised, elevated, floating, lifted
    */
   shadow?: Shadow;
   /**
-   * Determines if the button is in a disabled state.
+   * Determines which HTML tag to use.
    */
-  disabled?: boolean;
+  tag?: Tag;
+  /**
+   * Adds in a border. Comes with a default color, width, and style.
+   */
+  withBorder?: boolean;
+}
+
+export interface surfaceSelection extends HtmlAttributes {
+  /**
+   * Adds in a background color based on the current palette's tokens.
+   * @values transparent, primary, secondary
+   */
+  background?: Background;
   /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
    */
   checked?: boolean;
   /**
+   * Determines if the button is in a disabled state.
+   */
+  disabled?: boolean;
+  /**
    * Determines if the button is in a loading state. Adds a `data-loading` attribute to the button. Using CSS, this will hide the default slot and show the loading slot.
    */
   loading?: boolean;
+  /**
+   * Determines which set of styles to apply to the component.
+   * @values primary, secondary
+   */
+  modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
    * @demoSelectMultiple true
@@ -249,4 +240,17 @@ export interface CdrSurfaceSelectionProps extends HtmlAttributes {
    * Determines the role of the button. Typically, this will either be `radio` or `checkbox`.
    */
   role?: string;
+  /**
+   * Adds a shadow based on the token options within Cedar.
+   * @values flat, raised, elevated, floating, lifted
+   */
+  shadow?: Shadow;
+  /**
+   * Determines which HTML tag to use.
+   */
+  tag?: Tag;
+}
+
+export interface surfaceSelectionLayout {
+  orientation?: Orientation;
 }

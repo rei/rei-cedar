@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { Orientation } from '../../types/other';
+import { surfaceSelectionLayout } from '../../types/interfaces';
 
 /** Component for layout of a surface selection */
 
 defineOptions({ name: 'CdrSurfaceSelectionLayout' });
 
-interface CdrSurfaceSelectionLayoutProps {
-  orientation?: Orientation;
-}
-
-const props = withDefaults(defineProps<CdrSurfaceSelectionLayoutProps>(), {
+const props = withDefaults(defineProps<surfaceSelectionLayout>(), {
   orientation: 'horizontal',
 });
 

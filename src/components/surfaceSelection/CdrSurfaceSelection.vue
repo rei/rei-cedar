@@ -3,15 +3,15 @@ import { useCssModule, computed } from 'vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 import mapClasses from '../../utils/mapClasses';
-import { CdrSurfaceSelectionProps } from '../../types/interfaces';
+import { surfaceSelection } from '../../types/interfaces';
 import { getSurfaceSelectionProps } from '../../utils/surface';
-import CdrSelectionLayout from './CdrSurfaceSelectionLayout.vue';
+import CdrSurfaceSelectionLayout from './CdrSurfaceSelectionLayout.vue';
 
 /** Component for buttons that have a checked state */
 
 defineOptions({ name: 'CdrSurfaceSelection' });
 
-const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
+const props = withDefaults(defineProps<surfaceSelection>(), {
   background: undefined,
   shadow: undefined,
   tag: 'button',
@@ -39,13 +39,13 @@ const rootProps = computed(() => {
     v-bind="rootProps"
   >
     <div :class="style['cdr-surface-selection__inner']">
-      <CdrSelectionLayout
+      <CdrSurfaceSelectionLayout
         :orientation="orientation"
         :class="style['cdr-surface-selection__layout']"
       >
         <!-- @slot Where all default content should be placed. -->
         <slot />
-      </CdrSelectionLayout>
+      </CdrSurfaceSelectionLayout>
       <div :class="style['cdr-surface-selection__loading']">
         <!-- @slot This slot allows for custom loading content. -->
         <slot name="loading">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { CdrSurfaceSelectionProps } from '../../types/interfaces';
+import { surfaceSelection } from '../../types/interfaces';
 import { getSurfaceSelectionProps } from '../../utils/surface';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
@@ -13,7 +13,7 @@ import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 
 defineOptions({ name: 'CdrFulfillmentTile' });
 
-const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
+const props = withDefaults(defineProps<surfaceSelection>(), {
   tag: 'button',
   role: 'radio',
   modifier: 'primary',

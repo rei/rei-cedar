@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import type { CdrSurfaceProps } from '../../types/interfaces';
+import type { surface } from '../../types/interfaces';
 import { getSurfaceProps } from '../../utils/surface';
 
 /** Base component for all other components */
 
 defineOptions({ name: 'CdrSurface' });
 
-const props = withDefaults(defineProps<CdrSurfaceProps>(), {
+const props = withDefaults(defineProps<surface>(), {
   tag: 'div',
 });
 

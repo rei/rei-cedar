@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import CdrSurface from '../CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
-import type { CdrSurfaceProps } from '../../../types/interfaces';
+import type { surface } from '../../../types/interfaces';
 
 defineOptions({ name: 'Surface' });
 
 export interface Example {
   label: string;
-  props: CdrSurfaceProps;
+  props: surface;
 }
 
 const boxes: Example[] = [

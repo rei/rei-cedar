@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
-import type { CdrSurfaceSelectionProps } from '../../../types/interfaces';
+import type { surfaceSelection } from '../../../types/interfaces';
 import type { Modifier } from '../../../types/other';
 import CdrSwitch from '../../switch/CdrSwitch.vue';
 import CdrSelect from '../../select/CdrSelect.vue';
@@ -11,34 +11,37 @@ defineOptions({ name: 'SurfaceSelection' });
 const loading = ref(false);
 const modifier = ref<Modifier>('primary');
 
-const examples: CdrSurfaceSelectionProps[] = [
-  { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
-  { checked: true, modifier: modifier.value, role: 'checkbox', loading: loading.value },
-  { checked: false, modifier: modifier.value, role: 'checkbox', loading: !loading },
-  {
-    checked: false,
-    modifier: modifier.value,
-    role: 'checkbox',
-    loading: loading.value,
-    disabled: true,
-  },
-  { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
-  { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
-  {
-    checked: false,
-    modifier: modifier.value,
-    loading: loading.value,
-    role: 'checkbox',
-    class: 'example__wide',
-  },
-  {
-    checked: false,
-    modifier: modifier.value,
-    loading: loading.value,
-    role: 'checkbox',
-    orientation: 'vertical',
-  },
-];
+const examples = computed(
+  () =>
+    <surfaceSelection[]>[
+      { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+      { checked: true, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+      { checked: false, modifier: modifier.value, role: 'checkbox', loading: !loading.value },
+      {
+        checked: false,
+        modifier: modifier.value,
+        role: 'checkbox',
+        loading: loading.value,
+        disabled: true,
+      },
+      { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+      { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+      {
+        checked: false,
+        modifier: modifier.value,
+        loading: loading.value,
+        role: 'checkbox',
+        class: 'example__wide',
+      },
+      {
+        checked: false,
+        modifier: modifier.value,
+        loading: loading.value,
+        role: 'checkbox',
+        orientation: 'vertical',
+      },
+    ],
+);
 </script>
 
 <template>
