@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrFulfillmentTileHeader > icon left configuration 1`] = `
+<div
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+>
+  
+  <span
+    class="cdr-fulfillment-tile-header__icon"
+  >
+    
+    X
+    
+  </span>
+  <span
+    class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+    strong="true"
+    style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+  >
+    
+    
+    Label slot
+    
+    
+  </span>
+  <!--v-if-->
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTileHeader > icon right configuration 1`] = `
+<div
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+>
+  
+  <!--v-if-->
+  <span
+    class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+    strong="true"
+    style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+  >
+    
+    
+    Label slot
+    
+    
+  </span>
+  <span
+    class="cdr-fulfillment-tile-header__icon"
+  >
+    
+    X
+    
+  </span>
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTileHeader > shows label 1`] = `
+<div
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+>
+  
+  <!--v-if-->
+  <span
+    class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
+    strong="true"
+    style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+  >
+    
+    
+    Label slot
+    
+    
+  </span>
+  <!--v-if-->
+  
+</div>
+`;
