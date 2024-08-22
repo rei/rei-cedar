@@ -209,11 +209,6 @@ export interface surface extends HtmlAttributes {
 
 export interface surfaceSelection extends HtmlAttributes {
   /**
-   * Adds in a background color based on the current palette's tokens.
-   * @values transparent, primary, secondary
-   */
-  background?: Background;
-  /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
    */
   checked?: boolean;
