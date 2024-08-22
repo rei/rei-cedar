@@ -12,7 +12,6 @@ import CdrSurfaceSelectionLayout from './CdrSurfaceSelectionLayout.vue';
 defineOptions({ name: 'CdrSurfaceSelection' });
 
 const props = withDefaults(defineProps<surfaceSelection>(), {
-  background: undefined,
   shadow: undefined,
   tag: 'button',
   role: 'radio',
