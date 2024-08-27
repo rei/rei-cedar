@@ -1,14 +1,9 @@
-@use 'sass:map';
 @import '../../../../styles/settings/index.scss';
 @import '../../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
 
 $fulfillment-tile-component: 'fulfillment-tile';
-$fulfillment-tile-background-colors: (
-  'default': map.get($surface-selection-background-colors, 'primary'),
-);
-$fulfillment-tile-border-colors: (
-  'default': map.get($surface-selection-border-colors, 'primary'),
-);
+$fulfillment-tile-background-colors: $surface-selection-background-colors;
+$fulfillment-tile-border-colors: $surface-selection-border-colors;
 
 @mixin cdr-fulfillment-tile-base-mixin() {
   &__inner {

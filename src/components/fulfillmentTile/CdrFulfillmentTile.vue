@@ -28,7 +28,7 @@ const baseClass = 'cdr-fulfillment-tile';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const { classes, additionalProps } = getSurfaceSelectionProps(props, baseClass);
+  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);  
   return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
 </script>

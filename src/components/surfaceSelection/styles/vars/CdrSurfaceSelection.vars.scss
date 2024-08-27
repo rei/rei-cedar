@@ -1,9 +1,8 @@
 @import '../../../../styles/settings/index.scss';
 
-$surface-selection-modifiers: 'primary', 'secondary';
 $surface-selection-component: 'surface-selection';
 $surface-selection-background-colors: (
-  'primary': (
+  'default': (
     'rest': $cdr-color-background-surface-selection-primary,
     'hover': $cdr-color-background-surface-selection-primary-hover,
     'active': $cdr-color-background-surface-selection-primary-active,
@@ -11,31 +10,15 @@ $surface-selection-background-colors: (
     'disabled': $cdr-color-background-surface-selection-primary-disabled,
     'loading': $cdr-color-background-surface-selection-primary-loading,
   ),
-  'secondary': (
-    'rest': $cdr-color-background-surface-selection-secondary,
-    'hover': $cdr-color-background-surface-selection-secondary-hover,
-    'active': $cdr-color-background-surface-selection-secondary-active,
-    'checked': $cdr-color-background-surface-selection-secondary-checked,
-    'disabled': $cdr-color-background-surface-selection-secondary-disabled,
-    'loading': $cdr-color-background-surface-selection-secondary-loading,
-  ),
 );
 $surface-selection-border-colors: (
-  'primary': (
+  'default': (
     'rest': $cdr-color-border-surface-selection-primary,
     'hover': $cdr-color-border-surface-selection-primary-hover,
     'active': $cdr-color-border-surface-selection-primary-active,
     'checked': $cdr-color-border-surface-selection-primary-checked,
     'disabled': $cdr-color-border-surface-selection-primary-disabled,
     'loading': $cdr-color-border-surface-selection-primary-loading,
-  ),
-  'secondary': (
-    'rest': $cdr-color-border-surface-selection-secondary,
-    'hover': $cdr-color-border-surface-selection-secondary-hover,
-    'active': $cdr-color-border-surface-selection-secondary-active,
-    'checked': $cdr-color-border-surface-selection-secondary-checked,
-    'disabled': $cdr-color-border-surface-selection-secondary-disabled,
-    'loading': $cdr-color-border-surface-selection-secondary-loading,
   ),
 );
 
@@ -180,23 +163,5 @@ $surface-selection-border-colors: (
   @include cdr-surface-selection-loading-mixin() {
     $state: 'loading';
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
-  }
-}
-
-@mixin cdr-surface-selection-states-modifiers-mixin(
-  $background-colors,
-  $border-colors,
-  $component,
-  $modifiers
-) {
-  @each $modifier in $modifiers {
-    &--modifier-#{$modifier} {
-      @include cdr-surface-selection-states-mixin(
-        $background-colors,
-        $border-colors,
-        $component,
-        $modifier
-      );
-    }
   }
 }

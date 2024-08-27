@@ -26,10 +26,7 @@ describe('CdrFulfillmentTile', () => {
         expect(wrapper.element.tagName).toBe('BUTTON');
       });
       it('base classes only', () => {
-        expect(wrapper.classes()).toEqual([
-          'cdr-fulfillment-tile',
-          'cdr-fulfillment-tile--modifier-primary',
-        ]);
+        expect(wrapper.classes()).toEqual(['cdr-fulfillment-tile']);
       });
     });
   });

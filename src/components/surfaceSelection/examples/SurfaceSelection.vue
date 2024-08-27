@@ -2,40 +2,34 @@
 import { ref, computed } from 'vue';
 import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
 import type { surfaceSelection } from '../../../types/interfaces';
-import type { Modifier } from '../../../types/other';
 import CdrSwitch from '../../switch/CdrSwitch.vue';
-import CdrSelect from '../../select/CdrSelect.vue';
 
 defineOptions({ name: 'SurfaceSelection' });
 
 const loading = ref(false);
-const modifier = ref<Modifier>('primary');
 
 const examples = computed(
   () =>
     <surfaceSelection[]>[
-      { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
-      { checked: true, modifier: modifier.value, role: 'checkbox', loading: loading.value },
-      { checked: false, modifier: modifier.value, role: 'checkbox', loading: !loading.value },
+      { checked: false, role: 'checkbox', loading: loading.value },
+      { checked: true, role: 'checkbox', loading: loading.value },
+      { checked: false, role: 'checkbox', loading: !loading.value },
       {
         checked: false,
-        modifier: modifier.value,
         role: 'checkbox',
         loading: loading.value,
         disabled: true,
       },
-      { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
-      { checked: false, modifier: modifier.value, role: 'checkbox', loading: loading.value },
+      { checked: false, role: 'checkbox', loading: loading.value },
+      { checked: false, role: 'checkbox', loading: loading.value },
       {
         checked: false,
-        modifier: modifier.value,
         loading: loading.value,
         role: 'checkbox',
         class: 'example__wide',
       },
       {
         checked: false,
-        modifier: modifier.value,
         loading: loading.value,
         role: 'checkbox',
         orientation: 'vertical',
@@ -55,14 +49,6 @@ const examples = computed(
       >
         Toggle loading
       </CdrSwitch>
-      <CdrSelect
-        id="modifier"
-        v-model="modifier"
-        label="Modifier"
-        :options="['primary', 'secondary']"
-      >
-        Modifier
-      </CdrSelect>
     </div>
     <hr class="example__hr" />
     <div class="example__demos">

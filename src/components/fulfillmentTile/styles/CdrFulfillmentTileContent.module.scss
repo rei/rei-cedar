@@ -1,5 +1,5 @@
 @import './vars/CdrFulfillmentTileContent.vars.scss';
 
 .cdr-fulfillment-tile-content {
-  @include cdr-fulfillment-tile-content-mixin;
+  @include cdr-fulfillment-tile-content-base-mixin;
 }

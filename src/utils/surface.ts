@@ -5,7 +5,7 @@ export const getSurfaceProps = (props: surface, baseClass: string) => {
   const classes = [baseClass];
 
   // Add modifier, which applies a background and border color,
-  // but does not apply a border width
+  // but does not apply a border
   if (props.modifier) {
     classes.push(`${baseClass}--modifier-${props.modifier}`);
   }
@@ -66,5 +66,5 @@ export const getSurfaceSelectionProps = (props: surfaceSelection, baseClass: str
     additionalProps['data-loading'] = loading;
   }
 
-  return { classes, additionalProps };
+  return { classes, ...additionalProps };
 };

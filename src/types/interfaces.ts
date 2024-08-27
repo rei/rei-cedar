@@ -151,14 +151,6 @@ export interface baseTextProps extends HtmlAttributes {
 }
 
 /**
- * InlineCss data object for allowing any CSS attribute, including CSS variables
- * @interface InlineCss
- */
-export interface InlineCss {
-  [key: string]: any;
-}
-
-/**
  * surface contains the props used to create a surface
  * @interface surface
  * @extends HtmlAttributes
@@ -222,11 +214,6 @@ export interface surfaceSelection extends HtmlAttributes {
    * Determines if the button is in a loading state. Adds a `data-loading` attribute to the button. Using CSS, this will hide the default slot and show the loading slot.
    */
   loading?: boolean;
-  /**
-   * Determines which set of styles to apply to the component.
-   * @values primary, secondary
-   */
-  modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
    * @demoSelectMultiple true
