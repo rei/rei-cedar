@@ -363,8 +363,8 @@ $component: 'fulfillment-tile';
 
   &__checkout-tile-other-disabled {
     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-primary-disabled;
-    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-primary-disabled;
+    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-disabled;
+    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-disabled;
     @include cdr-border-style-mixin($component, 'dashed');
   }
 
@@ -378,7 +378,7 @@ $component: 'fulfillment-tile';
 
     &[data-store-checked='true'] {
       $state: 'checked';
-      @include cdr-border-width-mixin($component, 'third-x');
+      @include cdr-border-width-mixin($component, 'three-sixteenth-x');
       @include cdr-border-color-mixin(
         $fulfillment-tile-border-colors,
         $component,
@@ -390,7 +390,7 @@ $component: 'fulfillment-tile';
 
   &__search-tile-other-header-button {
     --cdr-surface-selection-border-width-default: 0;
-    --cdr-color-background-surface-selection-primary-checked: var(--cdr-color-background-primary);
+    --cdr-color-background-surface-selection-checked: var(--cdr-color-background-primary);
     width: 100%;
     @include tile-colors;
 

@@ -3,22 +3,22 @@
 $surface-selection-component: 'surface-selection';
 $surface-selection-background-colors: (
   'default': (
-    'rest': $cdr-color-background-surface-selection-primary,
-    'hover': $cdr-color-background-surface-selection-primary-hover,
-    'active': $cdr-color-background-surface-selection-primary-active,
-    'checked': $cdr-color-background-surface-selection-primary-checked,
-    'disabled': $cdr-color-background-surface-selection-primary-disabled,
-    'loading': $cdr-color-background-surface-selection-primary-loading,
+    'rest': $cdr-color-background-surface-selection-rest,
+    'hover': $cdr-color-background-surface-selection-hover,
+    'active': $cdr-color-background-surface-selection-active,
+    'checked': $cdr-color-background-surface-selection-checked,
+    'disabled': $cdr-color-background-surface-selection-disabled,
+    'loading': $cdr-color-background-surface-selection-loading,
   ),
 );
 $surface-selection-border-colors: (
   'default': (
-    'rest': $cdr-color-border-surface-selection-primary,
-    'hover': $cdr-color-border-surface-selection-primary-hover,
-    'active': $cdr-color-border-surface-selection-primary-active,
-    'checked': $cdr-color-border-surface-selection-primary-checked,
-    'disabled': $cdr-color-border-surface-selection-primary-disabled,
-    'loading': $cdr-color-border-surface-selection-primary-loading,
+    'rest': $cdr-color-border-surface-selection-rest,
+    'hover': $cdr-color-border-surface-selection-hover,
+    'active': $cdr-color-border-surface-selection-active,
+    'checked': $cdr-color-border-surface-selection-checked,
+    'disabled': $cdr-color-border-surface-selection-disabled,
+    'loading': $cdr-color-border-surface-selection-loading,
   ),
 );
 
@@ -114,11 +114,11 @@ $surface-selection-border-colors: (
 
   @include cdr-surface-selection-active-mixin() {
     outline: none;
-    @include cdr-border-width-mixin($component, 'third-x');
+    @include cdr-border-width-mixin($component, 'three-sixteenth-x');
   }
 
   @include cdr-surface-selection-checked-mixin() {
-    @include cdr-border-width-mixin($component, 'third-x');
+    @include cdr-border-width-mixin($component, 'three-sixteenth-x');
   }
 
   &[aria-pressed='true']:not([role='checkbox']),
@@ -133,8 +133,9 @@ $surface-selection-border-colors: (
   $component,
   $modifier: 'default'
 ) {
-  @include cdr-background-mixin($background-colors, $component, $modifier);
-  @include cdr-border-color-mixin($border-colors, $component, $modifier);
+  $state: 'rest';
+  @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+  @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
 
   @include cdr-surface-selection-hover-mixin() {
     $state: 'hover';
