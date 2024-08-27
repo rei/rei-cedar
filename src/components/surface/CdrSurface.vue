@@ -25,6 +25,7 @@ const rootProps = computed(() => {
     :is="tag"
     v-bind="rootProps"
   >
+    <!-- @slot Where all default content should be placed. -->
     <slot />
   </component>
 </template>

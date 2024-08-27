@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { StatusType } from '../../types/other';
+import { fulfillmentTileIcon } from '../../types/interfaces';
 
 /** Provides stylized icons for typical notifications */
 
 defineOptions({ name: 'CdrFulfillmentTileIcon' });
 
-export interface CdrFulfillmentTileIconProps {
-  type?: StatusType;
-}
-
-const props = withDefaults(defineProps<CdrFulfillmentTileIconProps>(), {
+const props = withDefaults(defineProps<fulfillmentTileIcon>(), {
   type: 'default',
 });
 
@@ -21,6 +17,7 @@ const typeClass = computed(() => `${baseClass}--${props.type}`);
 
 <template>
   <span :class="[style[baseClass], style[typeClass]]">
+    <!-- @slot Where all default content should be placed. -->
     <slot />
   </span>
 </template>

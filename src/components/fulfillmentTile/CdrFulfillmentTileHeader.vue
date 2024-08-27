@@ -2,17 +2,13 @@
 import { useCssModule, computed } from 'vue';
 import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
-import type { CdrFulfillmentTileLayoutProps } from './CdrFulfillmentTileLayout.vue';
+import { fulfillmentTileHeader, surfaceSelectionLayout } from '../../types/interfaces';
 
 /** Fulfillment tile header component */
 
 defineOptions({ name: 'CdrFulfillmentTileHeader' });
 
-export interface CdrFulfillmentTileHeaderProps {
-  disabled?: boolean;
-}
-
-const props = withDefaults(defineProps<CdrFulfillmentTileHeaderProps>(), {
+const props = withDefaults(defineProps<fulfillmentTileHeader>(), {
   disabled: false,
 });
 
@@ -20,7 +16,7 @@ const style = useCssModule();
 const baseClass = 'cdr-fulfillment-tile-header';
 
 const rootProps = computed(
-  (): CdrFulfillmentTileLayoutProps => ({
+  (): surfaceSelectionLayout => ({
     orientation: 'horizontal',
     class: {
       [style[baseClass]]: true,
@@ -36,6 +32,7 @@ const rootProps = computed(
       v-if="$slots['icon-left']"
       :class="style['cdr-fulfillment-tile-header__icon']"
     >
+      <!-- @slot Place an icon to the left of the header content -->
       <slot name="icon-left" />
     </span>
     <CdrSubheadingSans
@@ -44,12 +41,14 @@ const rootProps = computed(
       tag="span"
       :class="style['cdr-fulfillment-tile-header__label']"
     >
-      <slot name="label" />
+      <!-- @slot Header content that is still visible during loading. -->
+      <slot name="header" />
     </CdrSubheadingSans>
     <span
       v-if="$slots['icon-right']"
       :class="style['cdr-fulfillment-tile-header__icon']"
     >
+      <!-- @slot Place an icon to the right of the header content -->
       <slot name="icon-right" />
     </span>
   </CdrFulfillmentTileLayout>

@@ -6,7 +6,7 @@ describe('CdrFulfillmentTileHeader', () => {
     const wrapper = mount(CdrFulfillmentTileHeader, {
       slots: {
         'icon-left': 'X',
-        label: 'Label slot',
+        header: 'Label slot',
       },
     });
     expect(wrapper.element).toMatchSnapshot();
@@ -16,7 +16,7 @@ describe('CdrFulfillmentTileHeader', () => {
     const wrapper = mount(CdrFulfillmentTileHeader, {
       slots: {
         'icon-right': 'X',
-        label: 'Label slot',
+        header: 'Label slot',
       },
     });
     expect(wrapper.element).toMatchSnapshot();
@@ -25,7 +25,7 @@ describe('CdrFulfillmentTileHeader', () => {
   it('shows label', () => {
     const wrapper = mount(CdrFulfillmentTileHeader, {
       slots: {
-        label: 'Label slot',
+        header: 'Label slot',
       },
     });
     expect(wrapper.element).toMatchSnapshot();

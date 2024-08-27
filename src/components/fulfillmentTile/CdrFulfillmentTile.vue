@@ -9,7 +9,7 @@ import CdrFulfillmentTileContent from './CdrFulfillmentTileContent.vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 
-/** Tile component for displaying a button with optional icon in the header */
+/** Tile component for displaying a button with optional icon in the header. Based on Surface selection. */
 
 defineOptions({ name: 'CdrFulfillmentTile' });
 
@@ -44,15 +44,18 @@ const rootProps = computed(() => {
           v-if="$slots['icon-left']"
           #icon-left
         >
+          <!-- @slot Place an icon to the left of the header content -->
           <slot name="icon-left" />
         </template>
-        <template #label>
-          <slot name="label" />
+        <template #header>
+          <!-- @slot Header content that is still visible during loading. -->
+          <slot name="header" />
         </template>
         <template
           v-if="$slots['icon-right']"
           #icon-right
         >
+          <!-- @slot Place an icon to the right of the header content -->
           <slot name="icon-right" />
         </template>
       </CdrFulfillmentTileHeader>
@@ -63,16 +66,19 @@ const rootProps = computed(() => {
         >
           <template v-if="$slots['body']">
             <CdrFulfillmentTileContent :stretch="true">
+              <!-- @slot Default font size is a step down. Placed just below the header. -->
               <slot name="body" />
             </CdrFulfillmentTileContent>
           </template>
           <template v-if="$slots['footer']">
             <CdrFulfillmentTileContent scale="-1">
+              <!-- @slot Footer content will be at the bottom of the component. -->
               <slot name="footer" />
             </CdrFulfillmentTileContent>
           </template>
         </CdrFulfillmentTileLayout>
         <div :class="style['cdr-fulfillment-tile__loading']">
+          <!-- @slot Custom content when component is loading. -->
           <slot name="loading">
             <CdrSkeleton>
               <CdrSkeletonBone type="line" />

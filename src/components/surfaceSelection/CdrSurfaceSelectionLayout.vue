@@ -28,6 +28,8 @@ const rootProps = computed(() => {
 
 <template>
   <div v-bind="rootProps">
+    <!-- @slot Where all default content should be placed.
+      Elements are placed within a flex box. -->
     <slot />
   </div>
 </template>

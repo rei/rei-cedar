@@ -39,3 +39,4 @@ export type BorderStyle = 'solid' | 'dotted' | 'dashed';
 export type Modifier = 'primary' | 'secondary';
 export type Orientation = 'vertical' | 'horizontal';
 export type StatusType = 'info' | 'warning' | 'success' | 'error' | 'default';
+export type ScaleValue = '-2' | '-1' | '0' | '1';

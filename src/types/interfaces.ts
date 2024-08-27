@@ -8,6 +8,8 @@ import type {
   Modifier,
   Background,
   Orientation,
+  ScaleValue,
+  StatusType,
 } from './other';
 
 /**
@@ -246,6 +248,37 @@ export interface surfaceSelection extends HtmlAttributes {
   tag?: Tag;
 }
 
-export interface surfaceSelectionLayout {
+export interface surfaceSelectionLayout extends HtmlAttributes {
+  /**
+   * Determines if the layout is in horizontal or vertical mode.
+   * @demoSelectMultiple true
+   * @values horizontal, vertical
+   */
   orientation?: Orientation;
+}
+
+export interface fulfillmentTileContent extends HtmlAttributes {
+  /**
+   * Determines if the content should expand when space is available.
+   */
+  stretch?: boolean;
+  /**
+   * Sets the type scale
+   * @values -2, -1, 0, 1
+   */
+  scale?: ScaleValue;
+}
+
+export interface fulfillmentTileHeader extends HtmlAttributes {
+  /**
+   * Determines if the content should appear disabled.
+   */
+  disabled?: boolean;
+}
+
+export interface fulfillmentTileIcon extends HtmlAttributes {
+  /**
+   * The intent or type of message being displayed.
+   */
+  type?: StatusType;
 }

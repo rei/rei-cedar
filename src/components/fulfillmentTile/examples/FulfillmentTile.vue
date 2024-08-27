@@ -60,7 +60,7 @@ const toggleCheckbox2 = (value: number) => {
             <IconErrorFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
-        <template #label>Pick up</template>
+        <template #header>Pick up</template>
         <template #body>Not offered</template>
       </CdrFulfillmentTile>
       <CdrFulfillmentTile
@@ -78,7 +78,7 @@ const toggleCheckbox2 = (value: number) => {
             <IconCheckFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
-        <template #label>Ship to address</template>
+        <template #header>Ship to address</template>
         <template #body>Today after 2pm</template>
         <template #footer>
           <strong>FREE</strong>
@@ -100,7 +100,7 @@ const toggleCheckbox2 = (value: number) => {
             <IconCheckFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
-        <template #label>Another option</template>
+        <template #header>Another option</template>
         <template #footer>
           Footer
           <strong>content</strong>
@@ -122,7 +122,7 @@ const toggleCheckbox2 = (value: number) => {
             <IconCheckFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
-        <template #label>Loading option</template>
+        <template #header>Loading option</template>
         <template #body>
           Body
           <strong>content</strong>
@@ -154,7 +154,7 @@ const toggleCheckbox2 = (value: number) => {
               :class="{ example__icon: true, 'example__icon--checked': checkbox1.includes(1) }"
             />
           </template>
-          <template #label>Store Pickup (32)</template>
+          <template #header>Store Pickup (32)</template>
           <template #footer>
             In stock at
             <strong>Encinitas</strong>
@@ -177,7 +177,7 @@ const toggleCheckbox2 = (value: number) => {
         <template #icon-left>
           <div :class="{ example__icon: true, 'example__icon--checked': checkbox1.includes(2) }" />
         </template>
-        <template #label>Ship to address (32)</template>
+        <template #header>Ship to address (32)</template>
       </CdrFulfillmentTile>
     </div>
     <h3 class="action-tile-demo__h3">Other patterns</h3>
@@ -206,7 +206,7 @@ const toggleCheckbox2 = (value: number) => {
             <IconXFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
-        <template #label>Pick up</template>
+        <template #header>Pick up</template>
         <template #body>Not offered</template>
       </CdrFulfillmentTile>
       <CdrFulfillmentTile
@@ -223,7 +223,7 @@ const toggleCheckbox2 = (value: number) => {
             <IconCheckFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
-        <template #label>Ship to address</template>
+        <template #header>Ship to address</template>
         <template #body>
           Today after 2pm
           <br />
@@ -264,7 +264,7 @@ const toggleCheckbox2 = (value: number) => {
                 :class="{ example__icon: true, 'example__icon--checked': checkbox2.includes(1) }"
               />
             </template>
-            <template #label>Store Pickup (32)</template>
+            <template #header>Store Pickup (32)</template>
           </CdrFulfillmentTileHeader>
           <CdrFulfillmentTileContent>
             In stock at

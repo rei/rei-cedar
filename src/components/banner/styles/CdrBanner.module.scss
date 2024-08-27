@@ -5,7 +5,7 @@
   @include cdr-banner-base-mixin;
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-areas:
+  grid-template-areas: 
   "main info-action"
   "message-body info-action"
   ;
@@ -33,7 +33,7 @@
       stroke-width: 0.4rem;
       paint-order: stroke fill;
       margin: $cdr-space-quarter-x;
-
+  
     }
   }
   &__message {
@@ -164,7 +164,7 @@
     & .cdr-banner__wrapper {
       border-left: $left-border;
       //ITEM_DOC: Wrapper border left color for error banner
-      border-left-color: var(--cdr-banner-error-wrapper-border-left-color, var(--cdr-color-border-message-error-01, #{$cdr-color-border-message-error-01}));
+      border-left-color: var(--cdr-banner-error-wrapper-border-left-color, var(--cdr-color-border-message-error-01, #{$cdr-color-border-message-error-01}));      
     }
   }
 }

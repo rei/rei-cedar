@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { Orientation } from '../../types/other';
-import { HtmlAttributes } from '../../types/interfaces';
+import { surfaceSelectionLayout } from '../../types/interfaces';
 
 /** Component for layout of a surface selection */
 
 defineOptions({ name: 'CdrFulfillmentTileLayout' });
 
-export interface CdrFulfillmentTileLayoutProps extends HtmlAttributes {
-  orientation?: Orientation;
-}
-
-const props = withDefaults(defineProps<CdrFulfillmentTileLayoutProps>(), {
+const props = withDefaults(defineProps<surfaceSelectionLayout>(), {
   orientation: 'horizontal',
 });
 
@@ -33,6 +28,7 @@ const rootProps = computed(() => {
 
 <template>
   <div v-bind="rootProps">
+    <!-- @slot Place elements in the default slot. -->
     <slot />
   </div>
 </template>

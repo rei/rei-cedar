@@ -39,7 +39,7 @@ describe('CdrFulfillmentTile', () => {
       props: { checked: false },
       slots: {
         'icon-left': 'X',
-        label: 'Label slot',
+        header: 'Label slot',
         body: 'Body slot',
         footer: 'Footer slot',
       },
@@ -52,7 +52,7 @@ describe('CdrFulfillmentTile', () => {
       props: { checked: false },
       slots: {
         'icon-right': 'X',
-        label: 'Label slot',
+        header: 'Label slot',
         body: 'Body slot',
         footer: 'Footer slot',
       },
@@ -64,7 +64,7 @@ describe('CdrFulfillmentTile', () => {
     const wrapper = mount(CdrFulfillmentTile, {
       props: { checked: false },
       slots: {
-        label: 'Label slot',
+        header: 'Label slot',
       },
     });
     expect(wrapper.element).toMatchSnapshot();
@@ -75,7 +75,7 @@ describe('CdrFulfillmentTile', () => {
     const wrapper = mount(CdrFulfillmentTile, {
       props: { checked: false },
       slots: {
-        label: 'Label slot',
+        header: 'Label slot',
         body: 'Body slot',
       },
     });
@@ -87,7 +87,7 @@ describe('CdrFulfillmentTile', () => {
     const wrapper = mount(CdrFulfillmentTile, {
       props: { checked: false },
       slots: {
-        label: 'Label slot',
+        header: 'Label slot',
         footer: 'Footer slot',
       },
     });
@@ -99,7 +99,7 @@ describe('CdrFulfillmentTile', () => {
     const wrapper = mount(CdrFulfillmentTile, {
       props: { checked: false, loading: true },
       slots: {
-        label: 'Label slot',
+        header: 'Label slot',
         footer: 'Footer slot',
       },
     });
@@ -111,7 +111,7 @@ describe('CdrFulfillmentTile', () => {
     const wrapper = mount(CdrFulfillmentTile, {
       props: { checked: false, loading: false },
       slots: {
-        label: 'Label slot',
+        header: 'Label slot',
         footer: 'Footer slot',
       },
     });
