@@ -158,36 +158,43 @@ export interface baseTextProps extends HtmlAttributes {
 export interface surface extends HtmlAttributes {
   /**
    * Adds in a background color based on the current palette's tokens.
+   * @demoSelectMultiple true
    * @values transparent, primary, secondary
    */
   background?: Background;
   /**
    * Specifies a border color based on the token options within Cedar.
+   * @demoSelectMultiple true
    * @values transparent, primary, secondary, success, warning, error
    */
   borderColor?: BorderColor;
   /**
    * Specifies a border style based on the token options within Cedar.
+   * @demoSelectMultiple true
    * @values dotted, dashed, solid
    */
   borderStyle?: BorderStyle;
   /**
    * Specifies a border width based on the token options within Cedar.
+   * @demoSelectMultiple true
    * @values flat, raised, elevated, floating, lifted
    */
   borderWidth?: Space;
   /**
    * Determines which set of styles to apply to the component.
+   * @demoSelectMultiple true
    * @values primary, secondary
    */
   modifier?: Modifier;
   /**
    * Adds in a border radius based on the token options within Cedar.
+   * @demoSelectMultiple true
    * @values transparent, primary, secondary
    */
   radius?: Radius;
   /**
    * Adds a shadow based on the token options within Cedar.
+   * @demoSelectMultiple true
    * @values flat, raised, elevated, floating, lifted
    */
   shadow?: Shadow;
