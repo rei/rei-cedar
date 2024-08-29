@@ -159,37 +159,34 @@ export interface surface extends HtmlAttributes {
   /**
    * Adds in a background color based on the current palette's tokens.
    * @demoSelectMultiple true
-   * @values transparent, primary, secondary
+   * @values primary, secondary
    */
   background?: Background;
   /**
    * Specifies a border color based on the token options within Cedar.
    * @demoSelectMultiple true
-   * @values transparent, primary, secondary, success, warning, error
+   * @values primary, secondary
    */
   borderColor?: BorderColor;
   /**
    * Specifies a border style based on the token options within Cedar.
-   * @demoSelectMultiple true
    * @values dotted, dashed, solid
    */
   borderStyle?: BorderStyle;
   /**
    * Specifies a border width based on the token options within Cedar.
-   * @demoSelectMultiple true
    * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x'
    */
   borderWidth?: Space;
   /**
    * Determines which set of styles to apply to the component.
-   * @demoSelectMultiple true
    * @values primary, secondary
    */
   modifier?: Modifier;
   /**
    * Adds in a border radius based on the token options within Cedar.
    * @demoSelectMultiple true
-   * @values transparent, primary, secondary
+   * @values sharp, soft, softer, softest, round
    */
   radius?: Radius;
   /**

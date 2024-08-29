@@ -11,7 +11,9 @@ $border-widths: (
   'zero': $cdr-space-zero,
   'sixteenth-x': $cdr-space-inset-sixteenth-x,
   'eighth-x': $cdr-space-inset-eighth-x,
+  'three-sixteenth-x': $cdr-space-inset-three-sixteenth-x,
   'quarter-x': $cdr-space-inset-quarter-x,
+  'three-eighth-x': $cdr-space-inset-three-eighth-x,
 );
 
 $border-styles: 'dotted', 'dashed', 'solid';
