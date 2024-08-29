@@ -164,7 +164,6 @@ export interface surface extends HtmlAttributes {
   background?: Background;
   /**
    * Specifies a border color based on the token options within Cedar.
-   * @demoSelectMultiple true
    * @values primary, secondary
    */
   borderColor?: BorderColor;
@@ -247,7 +246,6 @@ export interface surfaceSelection extends HtmlAttributes {
 export interface surfaceSelectionLayout extends HtmlAttributes {
   /**
    * Determines if the layout is in horizontal or vertical mode.
-   * @demoSelectMultiple true
    * @values horizontal, vertical
    */
   orientation?: Orientation;
@@ -275,6 +273,7 @@ export interface fulfillmentTileHeader extends HtmlAttributes {
 export interface fulfillmentTileIcon extends HtmlAttributes {
   /**
    * The intent or type of message being displayed.
+   * @values info, warning, success, error, default
    */
   type?: StatusType;
 }
