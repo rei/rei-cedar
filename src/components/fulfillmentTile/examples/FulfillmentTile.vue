@@ -363,8 +363,8 @@ $component: 'fulfillment-tile';
 
   &__checkout-tile-other-disabled {
     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-disabled;
-    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-disabled;
+    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-default-disabled;
+    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-default-disabled;
     @include cdr-border-style-mixin($component, 'dashed');
   }
 

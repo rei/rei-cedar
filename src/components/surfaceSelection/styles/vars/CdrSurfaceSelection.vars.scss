@@ -1,24 +1,25 @@
 @import '../../../../styles/settings/index.scss';
 
 $surface-selection-component: 'surface-selection';
+$surface-selection-modifiers: 'default';
 $surface-selection-background-colors: (
   'default': (
-    'rest': $cdr-color-background-surface-selection-rest,
-    'hover': $cdr-color-background-surface-selection-hover,
-    'active': $cdr-color-background-surface-selection-active,
-    'checked': $cdr-color-background-surface-selection-checked,
-    'disabled': $cdr-color-background-surface-selection-disabled,
-    'loading': $cdr-color-background-surface-selection-loading,
+    'rest': $cdr-color-background-surface-selection-default-rest,
+    'hover': $cdr-color-background-surface-selection-default-hover,
+    'active': $cdr-color-background-surface-selection-default-active,
+    'checked': $cdr-color-background-surface-selection-default-checked,
+    'disabled': $cdr-color-background-surface-selection-default-disabled,
+    'loading': $cdr-color-background-surface-selection-default-loading,
   ),
 );
 $surface-selection-border-colors: (
   'default': (
-    'rest': $cdr-color-border-surface-selection-rest,
-    'hover': $cdr-color-border-surface-selection-hover,
-    'active': $cdr-color-border-surface-selection-active,
-    'checked': $cdr-color-border-surface-selection-checked,
-    'disabled': $cdr-color-border-surface-selection-disabled,
-    'loading': $cdr-color-border-surface-selection-loading,
+    'rest': $cdr-color-border-surface-selection-default-rest,
+    'hover': $cdr-color-border-surface-selection-default-hover,
+    'active': $cdr-color-border-surface-selection-default-active,
+    'checked': $cdr-color-border-surface-selection-default-checked,
+    'disabled': $cdr-color-border-surface-selection-default-disabled,
+    'loading': $cdr-color-border-surface-selection-default-loading,
   ),
 );
 
@@ -164,5 +165,23 @@ $surface-selection-border-colors: (
   @include cdr-surface-selection-loading-mixin() {
     $state: 'loading';
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+  }
+}
+
+@mixin cdr-surface-selection-states-modifiers-mixin(
+  $background-colors,
+  $border-colors,
+  $component,
+  $modifiers
+) {
+  @each $modifier in $modifiers {
+    &--modifier-#{$modifier} {
+      @include cdr-surface-selection-states-mixin(
+        $background-colors,
+        $border-colors,
+        $component,
+        $modifier
+      );
+    }
   }
 }

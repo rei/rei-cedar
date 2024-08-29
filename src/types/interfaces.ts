@@ -177,7 +177,7 @@ export interface surface extends HtmlAttributes {
   /**
    * Specifies a border width based on the token options within Cedar.
    * @demoSelectMultiple true
-   * @values flat, raised, elevated, floating, lifted
+   * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x'
    */
   borderWidth?: Space;
   /**
@@ -221,6 +221,11 @@ export interface surfaceSelection extends HtmlAttributes {
    * Determines if the button is in a loading state. Adds a `data-loading` attribute to the button. Using CSS, this will hide the default slot and show the loading slot.
    */
   loading?: boolean;
+  /**
+   * Determines which set of styles to apply to the component.
+   * @values default
+   */
+  modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
    * @demoSelectMultiple true

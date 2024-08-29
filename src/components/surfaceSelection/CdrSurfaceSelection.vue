@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<surfaceSelection>(), {
   shadow: undefined,
   tag: 'button',
   role: 'radio',
-  modifier: 'primary',
+  modifier: 'default',
   checked: false,
   disabled: false,
   loading: false,

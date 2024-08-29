@@ -5,18 +5,18 @@ $surface-modifiers: 'primary', 'secondary';
 $surface-component: 'surface';
 $surface-background-colors: (
   'primary': (
-    'default': $cdr-color-background-surface-primary,
+    'undefined': $cdr-color-background-surface-primary,
   ),
   'secondary': (
-    'default': $cdr-color-background-surface-secondary,
+    'undefined': $cdr-color-background-surface-secondary,
   ),
 );
 $surface-border-colors: (
   'primary': (
-    'default': $cdr-color-border-surface-primary,
+    'undefined': $cdr-color-border-surface-primary,
   ),
   'secondary': (
-    'default': $cdr-color-border-surface-secondary,
+    'undefined': $cdr-color-border-surface-secondary,
   ),
 );
 

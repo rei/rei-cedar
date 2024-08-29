@@ -26,7 +26,10 @@ describe('CdrSurfaceSelection', () => {
         expect(wrapper.element.tagName).toBe('BUTTON');
       });
       it('base classes only', () => {
-        expect(wrapper.classes()).toEqual(['cdr-surface-selection']);
+        expect(wrapper.classes()).toEqual([
+          'cdr-surface-selection',
+          'cdr-surface-selection--modifier-default',
+        ]);
       });
     });
   });

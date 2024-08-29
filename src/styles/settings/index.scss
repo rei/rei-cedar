@@ -32,15 +32,15 @@ $shadows: (
   'lifted': $cdr-prominence-lifted,
 );
 
-@mixin cdr-background-mixin($options, $component, $modifier: 'default', $state: 'default') {
+@mixin cdr-background-mixin($options, $component, $modifier: 'undefined', $state: 'undefined') {
   $statePart: '';
   $modifierPart: '';
 
-  @if $state != 'default' {
+  @if $state != 'undefined' {
     $statePart: -#{$state};
   }
 
-  @if $modifier != 'default' {
+  @if $modifier != 'undefined' {
     $modifierPart: -#{$modifier};
   }
 
@@ -53,15 +53,15 @@ $shadows: (
   );
 }
 
-@mixin cdr-border-color-mixin($options, $component, $modifier: 'default', $state: 'default') {
+@mixin cdr-border-color-mixin($options, $component, $modifier: 'undefined', $state: 'undefined') {
   $statePart: '';
   $modifierPart: '';
 
-  @if $state != 'default' {
+  @if $state != 'undefined' {
     $statePart: -#{$state};
   }
 
-  @if $modifier != 'default' {
+  @if $modifier != 'undefined' {
     $modifierPart: -#{$modifier};
   }
 

@@ -3,10 +3,10 @@ export type SpaceFixed =
   | 'zero'
   | 'sixteenth-x'
   | 'eighth-x'
-  | 'quarter-x'
   | 'three-sixteenth-x'
-  | 'half-x'
+  | 'quarter-x'
   | 'three-eighth-x'
+  | 'half-x'
   | 'three-quarter-x'
   | 'one-x'
   | 'one-and-a-half-x'
@@ -28,15 +28,9 @@ export type Space = SpaceFixed | SpaceFluid | SpaceScale;
 export type Shadow = 'flat' | 'raised' | 'elevated' | 'floating' | 'lifted';
 export type Background = 'transparent' | 'primary' | 'secondary';
 export type Radius = 'sharp' | 'soft' | 'softer' | 'softest' | 'round';
-export type BorderColor =
-  | 'transparent'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error';
+export type BorderColor = 'transparent' | 'primary' | 'secondary' | 'success' | 'warning' | 'error';
 export type BorderStyle = 'solid' | 'dotted' | 'dashed';
-export type Modifier = 'primary' | 'secondary';
+export type Modifier = 'default' | 'primary' | 'secondary';
 export type Orientation = 'vertical' | 'horizontal';
 export type StatusType = 'info' | 'warning' | 'success' | 'error' | 'default';
 export type ScaleValue = '-2' | '-1' | '0' | '1';

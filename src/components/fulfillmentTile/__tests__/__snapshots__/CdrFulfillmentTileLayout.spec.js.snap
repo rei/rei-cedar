@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrFulfillmentTileLayout > has defaults 1`] = `
+<div
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal"
+>
+  <!-- @slot Place elements in the default slot. -->
+  
+  X
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTileLayout > has vertical layout 1`] = `
+<div
+  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical"
+>
+  <!-- @slot Place elements in the default slot. -->
+  
+  X
+  
+</div>
+`;

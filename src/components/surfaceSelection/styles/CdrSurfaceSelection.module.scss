@@ -8,9 +8,10 @@
     $surface-selection-component
   );
   @include cdr-surface-selection-base-mixin($surface-selection-component);
-  @include cdr-surface-selection-states-mixin(
+  @include cdr-surface-selection-states-modifiers-mixin(
     $surface-selection-background-colors,
     $surface-selection-border-colors,
-    $surface-selection-component
+    $surface-selection-component,
+    $surface-selection-modifiers
   );
 }
