@@ -263,13 +263,6 @@ export interface fulfillmentTileContent extends HtmlAttributes {
   scale?: ScaleValue;
 }
 
-export interface fulfillmentTileHeader extends HtmlAttributes {
-  /**
-   * Determines if the content should appear disabled.
-   */
-  disabled?: boolean;
-}
-
 export interface fulfillmentTileIcon extends HtmlAttributes {
   /**
    * The intent or type of message being displayed.

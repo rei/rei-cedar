@@ -2,15 +2,11 @@
 import { useCssModule, computed } from 'vue';
 import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
-import { fulfillmentTileHeader, surfaceSelectionLayout } from '../../types/interfaces';
+import { surfaceSelectionLayout } from '../../types/interfaces';
 
 /** Fulfillment tile header component */
 
 defineOptions({ name: 'CdrFulfillmentTileHeader' });
-
-const props = withDefaults(defineProps<fulfillmentTileHeader>(), {
-  disabled: false,
-});
 
 const style = useCssModule();
 const baseClass = 'cdr-fulfillment-tile-header';
@@ -18,10 +14,7 @@ const baseClass = 'cdr-fulfillment-tile-header';
 const rootProps = computed(
   (): surfaceSelectionLayout => ({
     orientation: 'horizontal',
-    class: {
-      [style[baseClass]]: true,
-      [style[`${baseClass}--disabled`]]: props.disabled,
-    },
+    class: { [style[baseClass]]: true },
   }),
 );
 </script>
