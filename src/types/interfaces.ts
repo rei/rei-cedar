@@ -179,6 +179,7 @@ export interface surface extends HtmlAttributes {
   borderWidth?: Space;
   /**
    * Determines which set of styles to apply to the component.
+   * @demoSelectMultiple true
    * @values primary, secondary
    */
   modifier?: Modifier;
