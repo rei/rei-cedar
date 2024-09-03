@@ -7,6 +7,7 @@
   justify-content: center;
   border-radius: $cdr-radius-round;
   position: relative;
+  fill: var(--cdr-fulfillment-tile-icon-fill);
 
   &:after {
     content: '';
@@ -27,6 +28,7 @@
     stroke-width: $cdr-space-eighth-x;
     paint-order: stroke fill;
     margin: $cdr-space-quarter-x;
+
   }
 }
 

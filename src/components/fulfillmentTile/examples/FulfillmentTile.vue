@@ -49,7 +49,6 @@ const toggleCheckbox2 = (value: number) => {
       aria-labelledby="radio1"
     >
       <CdrFulfillmentTile
-        class="example__checkout-tile"
         :disabled="true"
         tabindex="0"
         role="radio"
@@ -64,7 +63,6 @@ const toggleCheckbox2 = (value: number) => {
         <template #body>Not offered</template>
       </CdrFulfillmentTile>
       <CdrFulfillmentTile
-        class="example__checkout-tile"
         :checked="radio1 === 1"
         tabindex="0"
         role="radio"
@@ -86,7 +84,6 @@ const toggleCheckbox2 = (value: number) => {
         </template>
       </CdrFulfillmentTile>
       <CdrFulfillmentTile
-        class="example__checkout-tile"
         :checked="radio1 === 2"
         tabindex="0"
         role="radio"
@@ -107,7 +104,6 @@ const toggleCheckbox2 = (value: number) => {
         </template>
       </CdrFulfillmentTile>
       <CdrFulfillmentTile
-        class="example__checkout-tile"
         :checked="radio1 === 3"
         tabindex="0"
         role="radio"
@@ -210,7 +206,6 @@ const toggleCheckbox2 = (value: number) => {
         <template #body>Not offered</template>
       </CdrFulfillmentTile>
       <CdrFulfillmentTile
-        class="example__checkout-tile"
         :checked="radio2 === 1"
         role="radio"
         @click="radio2 = 1"
@@ -292,19 +287,6 @@ const toggleCheckbox2 = (value: number) => {
 
 $component: 'fulfillment-tile';
 
-@mixin tile-colors() {
-  &[aria-pressed='true'],
-  &[aria-checked='true'] {
-    --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-message-success);
-  }
-
-  &:disabled,
-  &:disabled:hover,
-  &:disabled:focus {
-    --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-  }
-}
-
 .example {
   &__h3 {
     margin: $cdr-space-two-x 0 $cdr-space-one-x 0;
@@ -325,17 +307,12 @@ $component: 'fulfillment-tile';
     }
   }
 
-  &__checkout-tile {
-    @include tile-colors;
-  }
-
   &__column {
     width: 100%;
     max-width: 230px;
   }
 
   &__search-tile {
-    @include tile-colors;
     width: 100%;
   }
 
@@ -392,7 +369,6 @@ $component: 'fulfillment-tile';
     --cdr-surface-selection-border-width-default: 0;
     --cdr-color-background-surface-selection-checked: var(--cdr-color-background-primary);
     width: 100%;
-    @include tile-colors;
 
     @include cdr-surface-selection-checked-mixin() {
       --cdr-surface-selection-border-width-default: 0;
