@@ -158,7 +158,7 @@ export interface baseTextProps extends HtmlAttributes {
 export interface surface extends HtmlAttributes {
   /**
    * Adds in a background color based on the current palette's tokens.
-   * @demoSelectMultiple true
+   * @demoSelectMultiple false
    * @values primary, secondary
    */
   background?: Background;
@@ -179,19 +179,19 @@ export interface surface extends HtmlAttributes {
   borderWidth?: Space;
   /**
    * Determines which set of styles to apply to the component.
-   * @demoSelectMultiple true
+   * @demoSelectMultiple false
    * @values primary, secondary
    */
   modifier?: Modifier;
   /**
    * Adds in a border radius based on the token options within Cedar.
-   * @demoSelectMultiple true
+   * @demoSelectMultiple false
    * @values sharp, soft, softer, softest, round
    */
   radius?: Radius;
   /**
    * Adds a shadow based on the token options within Cedar.
-   * @demoSelectMultiple true
+   * @demoSelectMultiple false
    * @values flat, raised, elevated, floating, lifted
    */
   shadow?: Shadow;
@@ -225,7 +225,7 @@ export interface surfaceSelection extends HtmlAttributes {
   modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
-   * @demoSelectMultiple true
+   * @demoSelectMultiple false
    * @values horizontal, vertical
    */
   orientation?: Orientation;
