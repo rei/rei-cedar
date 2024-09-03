@@ -27,7 +27,11 @@ const SUPPORTED_COMPONENTS = [
   'CdrTable.vars.scss',
   'CdrSurface.vars.scss',
   'CdrSurfaceSelection.vars.scss',
-  'CdrFulfillmentTile.vars.scss'
+  'CdrSurfaceSelectionLayout.vars.scss',
+  'CdrFulfillmentTile.vars.scss',
+  'CdrFulfillmentTileContent.vars.scss',
+  'CdrFulfillmentTileHeader.vars.scss',
+  'CdrFulfillmentTileIcon.vars.scss'
 ];
 
 const destMixinsDir = path.join(__dirname, `../../${DEST_REPO_NAME + path.sep + DEST_PATH}`);
