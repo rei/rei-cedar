@@ -8,8 +8,8 @@
     $fulfillment-tile-border-colors,
     $fulfillment-tile-component
   );
-  @include cdr-surface-selection-base-mixin($fulfillment-tile-component);
-  @include cdr-surface-selection-states-mixin(
+  @include cdr-selectable-surface-base-mixin($fulfillment-tile-component);
+  @include cdr-selectable-surface-states-mixin(
     $fulfillment-tile-background-colors,
     $fulfillment-tile-border-colors,
     $fulfillment-tile-component

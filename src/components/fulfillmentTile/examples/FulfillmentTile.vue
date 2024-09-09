@@ -340,8 +340,8 @@ $component: 'fulfillment-tile';
 
   &__checkout-tile-other-disabled {
     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-default-disabled;
-    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-default-disabled;
+    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-selectable-surface-default-disabled;
+    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-selectable-surface-default-disabled;
     @include cdr-border-style-mixin($component, 'dashed');
   }
 
@@ -366,12 +366,12 @@ $component: 'fulfillment-tile';
   }
 
   &__search-tile-other-header-button {
-    --cdr-surface-selection-border-width-default: 0;
-    --cdr-color-background-surface-selection-checked: var(--cdr-color-background-primary);
+    --cdr-selectable-surface-border-width-default: 0;
+    --cdr-color-background-selectable-surface-checked: var(--cdr-color-background-primary);
     width: 100%;
 
-    @include cdr-surface-selection-checked-mixin() {
-      --cdr-surface-selection-border-width-default: 0;
+    @include cdr-selectable-surface-checked-mixin() {
+      --cdr-selectable-surface-border-width-default: 0;
     }
   }
 

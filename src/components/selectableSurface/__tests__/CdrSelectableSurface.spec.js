@@ -27,8 +27,8 @@ describe('CdrSelectableSurface', () => {
       });
       it('base classes only', () => {
         expect(wrapper.classes()).toEqual([
-          'cdr-surface-selection',
-          'cdr-surface-selection--modifier-default',
+          'cdr-selectable-surface',
+          'cdr-selectable-surface--modifier-default',
         ]);
       });
     });
@@ -39,7 +39,7 @@ describe('CdrSelectableSurface', () => {
       props: { checked: false },
       slots: { default: 'Default slot' },
     });
-    expect(wrapper.find('.cdr-surface-selection').text()).toBe('Default slot');
+    expect(wrapper.find('.cdr-selectable-surface').text()).toBe('Default slot');
     expect(wrapper.element).toMatchSnapshot();
   });
 
@@ -49,7 +49,7 @@ describe('CdrSelectableSurface', () => {
       slots: { default: 'Default slot' },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.find('.cdr-surface-selection').attributes('data-loading')).toBe('true');
+    expect(wrapper.find('.cdr-selectable-surface').attributes('data-loading')).toBe('true');
   });
 
   it('is not loading', () => {
@@ -57,7 +57,7 @@ describe('CdrSelectableSurface', () => {
       props: { checked: false, loading: false },
       slots: { default: 'Default slot' },
     });
-    expect(wrapper.find('.cdr-surface-selection').attributes('data-loading')).toBe(undefined);
+    expect(wrapper.find('.cdr-selectable-surface').attributes('data-loading')).toBe(undefined);
   });
 
   it('is checked', () => {
@@ -66,6 +66,6 @@ describe('CdrSelectableSurface', () => {
       slots: { default: 'Default slot' },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.find('.cdr-surface-selection').attributes('aria-checked')).toBe('true');
+    expect(wrapper.find('.cdr-selectable-surface').attributes('aria-checked')).toBe('true');
   });
 });

@@ -1,17 +1,17 @@
 @import './vars/CdrSelectableSurface.vars.scss';
 @import '../../surface/styles/vars/CdrSurface.vars.scss';
 
-.cdr-surface-selection {
+.cdr-selectable-surface {
   @include cdr-surface-base-mixin(
-    $surface-selection-background-colors,
-    $surface-selection-border-colors,
-    $surface-selection-component
+    $selectable-surface-background-colors,
+    $selectable-surface-border-colors,
+    $selectable-surface-component
   );
-  @include cdr-surface-selection-base-mixin($surface-selection-component);
-  @include cdr-surface-selection-states-modifiers-mixin(
-    $surface-selection-background-colors,
-    $surface-selection-border-colors,
-    $surface-selection-component,
-    $surface-selection-modifiers
+  @include cdr-selectable-surface-base-mixin($selectable-surface-component);
+  @include cdr-selectable-surface-states-modifiers-mixin(
+    $selectable-surface-background-colors,
+    $selectable-surface-border-colors,
+    $selectable-surface-component,
+    $selectable-surface-modifiers
   );
 }

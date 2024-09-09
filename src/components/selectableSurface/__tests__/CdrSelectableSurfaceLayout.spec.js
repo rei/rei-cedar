@@ -18,8 +18,8 @@ describe('CdrSelectableSurfaceLayout', () => {
       const wrapper = mount(CdrSelectableSurfaceLayout, { props: { orientation: 'horizontal' } });
       expect(wrapper.element).toMatchSnapshot();
       expect(wrapper.classes()).toEqual([
-        'cdr-surface-selection-layout',
-        'cdr-surface-selection-layout--horizontal',
+        'cdr-selectable-surface-layout',
+        'cdr-selectable-surface-layout--horizontal',
       ]);
     });
 
@@ -27,8 +27,8 @@ describe('CdrSelectableSurfaceLayout', () => {
       const wrapper = mount(CdrSelectableSurfaceLayout, { props: { orientation: 'vertical' } });
       expect(wrapper.element).toMatchSnapshot();
       expect(wrapper.classes()).toEqual([
-        'cdr-surface-selection-layout',
-        'cdr-surface-selection-layout--vertical',
+        'cdr-selectable-surface-layout',
+        'cdr-selectable-surface-layout--vertical',
       ]);
     });
   });

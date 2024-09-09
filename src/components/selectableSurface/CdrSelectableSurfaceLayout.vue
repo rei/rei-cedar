@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<selectableSurfaceLayout>(), {
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-surface-selection-layout';
+const baseClass = 'cdr-selectable-surface-layout';
 
 // Manages the props passed along to root
 const rootProps = computed(() => {

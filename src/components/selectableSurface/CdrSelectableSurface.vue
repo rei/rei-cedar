@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<selectableSurface>(), {
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-surface-selection';
+const baseClass = 'cdr-selectable-surface';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
@@ -37,15 +37,15 @@ const rootProps = computed(() => {
     :is="tag"
     v-bind="rootProps"
   >
-    <div :class="style['cdr-surface-selection__inner']">
+    <div :class="style['cdr-selectable-surface__inner']">
       <CdrSelectableSurfaceLayout
         :orientation="orientation"
-        :class="style['cdr-surface-selection__layout']"
+        :class="style['cdr-selectable-surface__layout']"
       >
         <!-- @slot Where all default content should be placed. -->
         <slot />
       </CdrSelectableSurfaceLayout>
-      <div :class="style['cdr-surface-selection__loading']">
+      <div :class="style['cdr-selectable-surface__loading']">
         <!-- @slot This slot allows for custom loading content. -->
         <slot name="loading">
           <CdrSkeleton>

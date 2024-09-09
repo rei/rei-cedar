@@ -2,5 +2,5 @@
 @import '../../surface/styles/vars/CdrSurface.vars.scss';
 
 .cdr-fulfillment-tile-layout {
-  @include cdr-surface-selection-layout-base-mixin();
+  @include cdr-selectable-surface-layout-base-mixin();
 }
