@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { surfaceSelection } from '../../types/interfaces';
-import { getSurfaceSelectionProps } from '../../utils/surface';
+import { selectableSurface } from '../../types/interfaces';
+import { getSelectableSurfaceProps } from '../../utils/surface';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
 import CdrFulfillmentTileContent from './CdrFulfillmentTileContent.vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 
-/** Tile component for displaying a button with optional icon in the header. Based on Surface selection. */
+/** Displays a button with optional icon in the header */
 
 defineOptions({ name: 'CdrFulfillmentTile' });
 
-const props = withDefaults(defineProps<surfaceSelection>(), {
+const props = withDefaults(defineProps<selectableSurface>(), {
   tag: 'button',
   role: 'radio',
   modifier: 'default',
@@ -28,7 +28,7 @@ const baseClass = 'cdr-fulfillment-tile';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);  
+  const { classes, ...additionalProps } = getSelectableSurfaceProps(props, baseClass);  
   return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
 </script>

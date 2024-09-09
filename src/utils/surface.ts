@@ -1,4 +1,4 @@
-import type { surface, surfaceSelection, HtmlAttributes } from '../types/interfaces';
+import type { surface, selectableSurface, HtmlAttributes } from '../types/interfaces';
 
 // Manages the props passed along to all surfaces
 export const getSurfaceProps = (props: surface, baseClass: string) => {
@@ -45,7 +45,7 @@ export const getSurfaceProps = (props: surface, baseClass: string) => {
   return { classes };
 };
 
-export const getSurfaceSelectionProps = (props: surfaceSelection, baseClass: string) => {
+export const getSelectableSurfaceProps = (props: selectableSurface, baseClass: string) => {
   const { classes } = getSurfaceProps(props, baseClass);
   const { checked, loading, disabled, ...otherProps } = props;
   const additionalProps: HtmlAttributes = { ...otherProps };

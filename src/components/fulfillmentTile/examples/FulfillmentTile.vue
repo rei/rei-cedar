@@ -6,7 +6,7 @@ import CdrFulfillmentTileContent from '../CdrFulfillmentTileContent.vue';
 import { IconCheckFill, IconErrorFill, IconXFill } from '../../icon';
 import CdrButton from '../../button/CdrButton.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
-import CdrSurfaceSelection from '../../surfaceSelection/CdrSurfaceSelection.vue';
+import CdrSelectableSurface from '../../selectableSurface/CdrSelectableSurface.vue';
 import CdrFulfillmentTileIcon from '../CdrFulfillmentTileIcon.vue';
 
 defineOptions({ name: 'FulfillmentTile' });
@@ -247,7 +247,7 @@ const toggleCheckbox2 = (value: number) => {
         :data-store-checked="checkbox2.includes(1)"
         radius="softer"
       >
-        <CdrSurfaceSelection
+        <CdrSelectableSurface
           class="example__search-tile-other-header-button"
           :checked="checkbox2.includes(1)"
           role="checkbox"
@@ -265,7 +265,7 @@ const toggleCheckbox2 = (value: number) => {
             In stock at
             <strong>Encinitas</strong>
           </CdrFulfillmentTileContent>
-        </CdrSurfaceSelection>
+        </CdrSelectableSurface>
         <hr class="example__search-tile-other-header-hr" />
         <CdrButton
           class="example__change-store-other"
@@ -283,7 +283,7 @@ const toggleCheckbox2 = (value: number) => {
 <style lang="scss" scoped>
 @import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 @import '../styles/vars/CdrFulfillmentTile.vars.scss';
-@import '../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
+@import '../../selectableSurface/styles/vars/CdrSelectableSurface.vars.scss';
 
 $component: 'fulfillment-tile';
 

@@ -3,15 +3,15 @@ import { useCssModule, computed } from 'vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 import mapClasses from '../../utils/mapClasses';
-import { surfaceSelection } from '../../types/interfaces';
-import { getSurfaceSelectionProps } from '../../utils/surface';
-import CdrSurfaceSelectionLayout from './CdrSurfaceSelectionLayout.vue';
+import { selectableSurface } from '../../types/interfaces';
+import { getSelectableSurfaceProps } from '../../utils/surface';
+import CdrSelectableSurfaceLayout from './CdrSelectableSurfaceLayout.vue';
 
-/** Component for buttons that have a checked state. */
+/** Base component for buttons that have a checked state */
 
-defineOptions({ name: 'CdrSurfaceSelection' });
+defineOptions({ name: 'CdrSelectableSurface' });
 
-const props = withDefaults(defineProps<surfaceSelection>(), {
+const props = withDefaults(defineProps<selectableSurface>(), {
   shadow: undefined,
   tag: 'button',
   role: 'radio',
@@ -27,7 +27,7 @@ const baseClass = 'cdr-surface-selection';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);
+  const { classes, ...additionalProps } = getSelectableSurfaceProps(props, baseClass);
   return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
 </script>
@@ -38,13 +38,13 @@ const rootProps = computed(() => {
     v-bind="rootProps"
   >
     <div :class="style['cdr-surface-selection__inner']">
-      <CdrSurfaceSelectionLayout
+      <CdrSelectableSurfaceLayout
         :orientation="orientation"
         :class="style['cdr-surface-selection__layout']"
       >
         <!-- @slot Where all default content should be placed. -->
         <slot />
-      </CdrSurfaceSelectionLayout>
+      </CdrSelectableSurfaceLayout>
       <div :class="style['cdr-surface-selection__loading']">
         <!-- @slot This slot allows for custom loading content. -->
         <slot name="loading">
@@ -57,4 +57,4 @@ const rootProps = computed(() => {
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrSurfaceSelection.module.scss"></style>
+<style lang="scss" module src="./styles/CdrSelectableSurface.module.scss"></style>

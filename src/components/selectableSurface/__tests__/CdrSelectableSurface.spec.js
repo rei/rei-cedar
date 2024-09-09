@@ -1,11 +1,11 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
+import CdrSelectableSurface from '../CdrSelectableSurface.vue';
 
-describe('CdrSurfaceSelection', () => {
+describe('CdrSelectableSurface', () => {
   describe('snapshot test', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(CdrSurfaceSelection, { props: { checked: false } });
+      wrapper = mount(CdrSelectableSurface, { props: { checked: false } });
     });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -15,7 +15,7 @@ describe('CdrSurfaceSelection', () => {
   describe('component unit tests', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(CdrSurfaceSelection, { props: { checked: false } });
+      wrapper = mount(CdrSelectableSurface, { props: { checked: false } });
     });
 
     describe('default component with no configuration', () => {
@@ -35,7 +35,7 @@ describe('CdrSurfaceSelection', () => {
   });
 
   it('shows default', () => {
-    const wrapper = mount(CdrSurfaceSelection, {
+    const wrapper = mount(CdrSelectableSurface, {
       props: { checked: false },
       slots: { default: 'Default slot' },
     });
@@ -44,7 +44,7 @@ describe('CdrSurfaceSelection', () => {
   });
 
   it('is loading', () => {
-    const wrapper = mount(CdrSurfaceSelection, {
+    const wrapper = mount(CdrSelectableSurface, {
       props: { checked: false, loading: true },
       slots: { default: 'Default slot' },
     });
@@ -53,7 +53,7 @@ describe('CdrSurfaceSelection', () => {
   });
 
   it('is not loading', () => {
-    const wrapper = mount(CdrSurfaceSelection, {
+    const wrapper = mount(CdrSelectableSurface, {
       props: { checked: false, loading: false },
       slots: { default: 'Default slot' },
     });
@@ -61,7 +61,7 @@ describe('CdrSurfaceSelection', () => {
   });
 
   it('is checked', () => {
-    const wrapper = mount(CdrSurfaceSelection, {
+    const wrapper = mount(CdrSelectableSurface, {
       props: { checked: true },
       slots: { default: 'Default slot' },
     });

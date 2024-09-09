@@ -1,11 +1,11 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrSurfaceSelectionLayout from '../CdrSurfaceSelectionLayout.vue';
+import CdrSelectableSurfaceLayout from '../CdrSelectableSurfaceLayout.vue';
 
-describe('CdrSurfaceSelectionLayout', () => {
+describe('CdrSelectableSurfaceLayout', () => {
   describe('snapshot test', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(CdrSurfaceSelectionLayout, { props: { orientation: 'horizontal' } });
+      wrapper = mount(CdrSelectableSurfaceLayout, { props: { orientation: 'horizontal' } });
     });
 
     it('renders correctly', () => {
@@ -15,7 +15,7 @@ describe('CdrSurfaceSelectionLayout', () => {
 
   describe('orientation test', () => {
     it('shows horizontal', () => {
-      const wrapper = mount(CdrSurfaceSelectionLayout, { props: { orientation: 'horizontal' } });
+      const wrapper = mount(CdrSelectableSurfaceLayout, { props: { orientation: 'horizontal' } });
       expect(wrapper.element).toMatchSnapshot();
       expect(wrapper.classes()).toEqual([
         'cdr-surface-selection-layout',
@@ -24,7 +24,7 @@ describe('CdrSurfaceSelectionLayout', () => {
     });
 
     it('shows vertical', () => {
-      const wrapper = mount(CdrSurfaceSelectionLayout, { props: { orientation: 'vertical' } });
+      const wrapper = mount(CdrSelectableSurfaceLayout, { props: { orientation: 'vertical' } });
       expect(wrapper.element).toMatchSnapshot();
       expect(wrapper.classes()).toEqual([
         'cdr-surface-selection-layout',

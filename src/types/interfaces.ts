@@ -205,7 +205,7 @@ export interface surface extends HtmlAttributes {
   withBorder?: boolean;
 }
 
-export interface surfaceSelection extends HtmlAttributes {
+export interface selectableSurface extends HtmlAttributes {
   /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
    */
@@ -244,7 +244,7 @@ export interface surfaceSelection extends HtmlAttributes {
   tag?: Tag;
 }
 
-export interface surfaceSelectionLayout extends HtmlAttributes {
+export interface selectableSurfaceLayout extends HtmlAttributes {
   /**
    * Determines if the layout is in horizontal or vertical mode.
    * @values horizontal, vertical

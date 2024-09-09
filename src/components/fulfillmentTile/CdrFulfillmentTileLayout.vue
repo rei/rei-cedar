@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { surfaceSelectionLayout } from '../../types/interfaces';
+import { selectableSurfaceLayout } from '../../types/interfaces';
 
 /** Component for layout of a surface selection */
 
 defineOptions({ name: 'CdrFulfillmentTileLayout' });
 
-const props = withDefaults(defineProps<surfaceSelectionLayout>(), {
+const props = withDefaults(defineProps<selectableSurfaceLayout>(), {
   orientation: 'horizontal',
 });
 

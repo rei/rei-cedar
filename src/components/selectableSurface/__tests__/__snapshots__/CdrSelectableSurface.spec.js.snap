@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CdrSurfaceSelection > component unit tests > default component with no configuration > renders correctly 1`] = `
+exports[`CdrSelectableSurface > component unit tests > default component with no configuration > renders correctly 1`] = `
 <button
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-default"
@@ -44,7 +44,7 @@ exports[`CdrSurfaceSelection > component unit tests > default component with no 
 </button>
 `;
 
-exports[`CdrSurfaceSelection > is checked 1`] = `
+exports[`CdrSelectableSurface > is checked 1`] = `
 <button
   aria-checked="true"
   class="cdr-surface-selection cdr-surface-selection--modifier-default"
@@ -92,7 +92,7 @@ exports[`CdrSurfaceSelection > is checked 1`] = `
 </button>
 `;
 
-exports[`CdrSurfaceSelection > is loading 1`] = `
+exports[`CdrSelectableSurface > is loading 1`] = `
 <button
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-default"
@@ -141,7 +141,7 @@ exports[`CdrSurfaceSelection > is loading 1`] = `
 </button>
 `;
 
-exports[`CdrSurfaceSelection > shows default 1`] = `
+exports[`CdrSelectableSurface > shows default 1`] = `
 <button
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-default"
@@ -189,7 +189,7 @@ exports[`CdrSurfaceSelection > shows default 1`] = `
 </button>
 `;
 
-exports[`CdrSurfaceSelection > snapshot test > renders correctly 1`] = `
+exports[`CdrSelectableSurface > snapshot test > renders correctly 1`] = `
 <button
   aria-checked="false"
   class="cdr-surface-selection cdr-surface-selection--modifier-default"
