@@ -52,27 +52,6 @@ const boxes: Example[] = [
       class: 'example__card',
     },
   },
-  ...['member', 'member-alt', 'sale', 'brand-spruce'].map(
-    (color) =>
-      ({
-        label: `Surface with ${color} background`,
-        props: {
-          background: color,
-          class: 'example__card',
-        },
-      }) as Example,
-  ),
-  ...['success', 'warning', 'error', 'info'].map(
-    (color) =>
-      ({
-        label: `Surface with ${color} border`,
-        props: {
-          withBorder: true,
-          borderColor: color,
-          class: 'example__card',
-        },
-      }) as Example,
-  ),
 ];
 </script>
 
