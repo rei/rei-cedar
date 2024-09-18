@@ -31,7 +31,7 @@ import selects from 'componentsdir/select/examples/Selects.vue';
 import skeleton from 'componentsdir/skeleton/examples/Skeleton.vue';
 import splitSurface from 'componentsdir/splitSurface/examples/SplitSurface.vue';
 import surface from 'componentsdir/surface/examples/Surface.vue';
-import selectableSurface from 'componentsdir/selectableSurface/examples/SelectableSurface.vue';
+import surfaceSelection from 'componentsdir/surfaceSelection/examples/SurfaceSelection.vue';
 import tables from 'componentsdir/table/examples/Table.vue';
 import tabs from 'componentsdir/tabs/examples/Tabs.vue';
 import texts from 'componentsdir/text/examples/Text.vue';
@@ -76,7 +76,7 @@ export default {
   skeleton,
   splitSurface,
   surface,
-  selectableSurface,
+  surfaceSelection,
   tables,
   tabs,
   texts,

@@ -6,17 +6,17 @@ describe('CdrSurface', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSurface);
-    })
+    });
     it('renders correctly', () => {
       wrapper.setProps({
         modifier: 'primary',
         radius: 'soft',
         withBorder: true,
         borderWidth: 'one-x',
-      })
-      expect(wrapper.element).toMatchSnapshot()
+      });
+      expect(wrapper.element).toMatchSnapshot();
     });
-  })
+  });
 
   describe('component unit tests', () => {
     let wrapper;
@@ -32,9 +32,15 @@ describe('CdrSurface', () => {
         expect(wrapper.element.tagName).toBe('DIV');
       });
       it('default class added', () => {
-        expect(wrapper.classes()).toEqual(['cdr-surface']);
+        expect(wrapper.classes()).toEqual([
+          'cdr-surface',
+          'cdr-surface--modifier-default',
+          'cdr-surface--background-primary',
+          'cdr-surface--radius-sharp',
+          'cdr-surface--shadow-flat',
+        ]);
       });
-    })
+    });
 
     describe('when "tag" is set to "a"', () => {
       beforeEach(() => {
@@ -46,6 +52,6 @@ describe('CdrSurface', () => {
       it('renders a link', () => {
         expect(wrapper.element.tagName).toBe('A');
       });
-    })
-  })
+    });
+  });
 });

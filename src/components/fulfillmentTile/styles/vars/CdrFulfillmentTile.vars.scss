@@ -1,21 +1,21 @@
 @use 'sass:map';
 @import '../../../../styles/settings/index.scss';
-@import '../../../selectableSurface/styles/vars/CdrSelectableSurface.vars.scss';
+@import '../../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
 
 $fulfillment-tile-component: 'fulfillment-tile';
-$fulfillment-tile-background-colors: $selectable-surface-background-colors;
-$fulfillment-tile-border-colors: $selectable-surface-border-colors;
+$fulfillment-tile-background-colors: $surface-selection-background-colors;
+$fulfillment-tile-border-colors: $surface-selection-border-colors;
 
 @mixin cdr-fulfillment-tile-base-mixin() {
   // Create tokens for background color
-  @each $modifier, $states in $selectable-surface-background-colors {
+  @each $modifier, $states in $surface-selection-background-colors {
     @each $state, $value in $states {
       --cdr-color-background-fulfillment-tile-#{$modifier}-#{$state}: #{$value};
     }
   }
 
   // Create tokens for border color
-  @each $modifier, $states in $selectable-surface-border-colors {
+  @each $modifier, $states in $surface-selection-border-colors {
     @each $state, $value in $states {
       --cdr-color-border-fulfillment-tile-#{$modifier}-#{$state}: #{$value};
     }

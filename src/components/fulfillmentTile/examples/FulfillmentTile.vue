@@ -6,7 +6,7 @@ import CdrFulfillmentTileContent from '../CdrFulfillmentTileContent.vue';
 import { IconCheckFill, IconErrorFill, IconXFill } from '../../icon';
 import CdrButton from '../../button/CdrButton.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
-import CdrSelectableSurface from '../../selectableSurface/CdrSelectableSurface.vue';
+import CdrSurfaceSelection from '../../surfaceSelection/CdrSurfaceSelection.vue';
 import CdrFulfillmentTileIcon from '../CdrFulfillmentTileIcon.vue';
 
 defineOptions({ name: 'FulfillmentTile' });
@@ -247,7 +247,7 @@ const toggleCheckbox2 = (value: number) => {
         :data-store-checked="checkbox2.includes(1)"
         radius="softer"
       >
-        <CdrSelectableSurface
+        <CdrSurfaceSelection
           class="example__search-tile-other-header-button"
           :checked="checkbox2.includes(1)"
           role="checkbox"
@@ -265,7 +265,7 @@ const toggleCheckbox2 = (value: number) => {
             In stock at
             <strong>Encinitas</strong>
           </CdrFulfillmentTileContent>
-        </CdrSelectableSurface>
+        </CdrSurfaceSelection>
         <hr class="example__search-tile-other-header-hr" />
         <CdrButton
           class="example__change-store-other"
@@ -283,7 +283,7 @@ const toggleCheckbox2 = (value: number) => {
 <style lang="scss" scoped>
 @import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 @import '../styles/vars/CdrFulfillmentTile.vars.scss';
-@import '../../selectableSurface/styles/vars/CdrSelectableSurface.vars.scss';
+@import '../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
 
 $component: 'fulfillment-tile';
 
@@ -340,8 +340,8 @@ $component: 'fulfillment-tile';
 
   &__checkout-tile-other-disabled {
     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-selectable-surface-default-disabled;
-    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-selectable-surface-default-disabled;
+    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-default-disabled;
+    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-default-disabled;
     @include cdr-border-style-mixin($component, 'dashed');
   }
 
@@ -366,12 +366,12 @@ $component: 'fulfillment-tile';
   }
 
   &__search-tile-other-header-button {
-    --cdr-selectable-surface-border-width-default: 0;
-    --cdr-color-background-selectable-surface-checked: var(--cdr-color-background-primary);
+    --cdr-surface-selection-border-width-default: 0;
+    --cdr-color-background-surface-selection-checked: var(--cdr-color-background-primary);
     width: 100%;
 
-    @include cdr-selectable-surface-checked-mixin() {
-      --cdr-selectable-surface-border-width-default: 0;
+    @include cdr-surface-selection-checked-mixin() {
+      --cdr-surface-selection-border-width-default: 0;
     }
   }
 

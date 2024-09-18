@@ -26,9 +26,15 @@ export type SpaceFluid =
 export type SpaceScale = 'scale-0--1' | 'scale-3--4' | 'scale-3--5';
 export type Space = SpaceFixed | SpaceFluid | SpaceScale;
 export type Shadow = 'flat' | 'raised' | 'elevated' | 'floating' | 'lifted';
-export type Background = 'primary' | 'secondary';
+export type Background =
+  | 'primary'
+  | 'secondary'
+  | 'brand-spruce'
+  | 'sale'
+  | 'member'
+  | 'member-alt';
 export type Radius = 'sharp' | 'soft' | 'softer' | 'softest' | 'round';
-export type BorderColor = 'primary' | 'secondary';
+export type BorderColor = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
 export type BorderStyle = 'solid' | 'dotted' | 'dashed';
 export type Modifier = 'default' | 'primary' | 'secondary';
 export type Orientation = 'vertical' | 'horizontal';

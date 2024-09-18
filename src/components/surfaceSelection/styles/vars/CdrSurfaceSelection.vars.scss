@@ -1,29 +1,29 @@
 @import '../../../../styles/settings/index.scss';
 
-$selectable-surface-component: 'surface-selection';
-$selectable-surface-modifiers: 'default';
-$selectable-surface-background-colors: (
+$surface-selection-component: 'surface-selection';
+$surface-selection-modifiers: 'default';
+$surface-selection-background-colors: (
   'default': (
-    'rest': $cdr-color-background-selectable-surface-default-rest,
-    'hover': $cdr-color-background-selectable-surface-default-hover,
-    'active': $cdr-color-background-selectable-surface-default-active,
-    'checked': $cdr-color-background-selectable-surface-default-checked,
-    'disabled': $cdr-color-background-selectable-surface-default-disabled,
-    'loading': $cdr-color-background-selectable-surface-default-loading,
+    'rest': $cdr-color-background-surface-selection-default-rest,
+    'hover': $cdr-color-background-surface-selection-default-hover,
+    'active': $cdr-color-background-surface-selection-default-active,
+    'checked': $cdr-color-background-surface-selection-default-checked,
+    'disabled': $cdr-color-background-surface-selection-default-disabled,
+    'loading': $cdr-color-background-surface-selection-default-loading,
   ),
 );
-$selectable-surface-border-colors: (
+$surface-selection-border-colors: (
   'default': (
-    'rest': $cdr-color-border-selectable-surface-default-rest,
-    'hover': $cdr-color-border-selectable-surface-default-hover,
-    'active': $cdr-color-border-selectable-surface-default-active,
-    'checked': $cdr-color-border-selectable-surface-default-checked,
-    'disabled': $cdr-color-border-selectable-surface-default-disabled,
-    'loading': $cdr-color-border-selectable-surface-default-loading,
+    'rest': $cdr-color-border-surface-selection-default-rest,
+    'hover': $cdr-color-border-surface-selection-default-hover,
+    'active': $cdr-color-border-surface-selection-default-active,
+    'checked': $cdr-color-border-surface-selection-default-checked,
+    'disabled': $cdr-color-border-surface-selection-default-disabled,
+    'loading': $cdr-color-border-surface-selection-default-loading,
   ),
 );
 
-@mixin cdr-selectable-surface-disabled-mixin() {
+@mixin cdr-surface-selection-disabled-mixin() {
   &:disabled,
   &:disabled:hover,
   &:disabled:focus {
@@ -31,13 +31,13 @@ $selectable-surface-border-colors: (
   }
 }
 
-@mixin cdr-selectable-surface-hover-mixin() {
+@mixin cdr-surface-selection-hover-mixin() {
   &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
     @content;
   }
 }
 
-@mixin cdr-selectable-surface-active-mixin() {
+@mixin cdr-surface-selection-active-mixin() {
   &:focus,
   &:active,
   &[aria-pressed='true']:focus,
@@ -48,20 +48,20 @@ $selectable-surface-border-colors: (
   }
 }
 
-@mixin cdr-selectable-surface-checked-mixin() {
+@mixin cdr-surface-selection-checked-mixin() {
   &[aria-pressed='true'],
   &[aria-checked='true'] {
     @content;
   }
 }
 
-@mixin cdr-selectable-surface-loading-mixin() {
+@mixin cdr-surface-selection-loading-mixin() {
   &[data-loading='true'] {
     @content;
   }
 }
 
-@mixin cdr-selectable-surface-base-mixin($component) {
+@mixin cdr-surface-selection-base-mixin($component) {
   @include cdr-text-utility-sans-300;
   @include cdr-border-mixin($component);
   @include cdr-border-width-mixin($component, 'sixteenth-x');
@@ -77,7 +77,7 @@ $selectable-surface-border-colors: (
   padding: $cdr-space-inset-half-x-stretch;
   transition: all var(--cdr-duration-1-x) var(--cdr-timing-function-ease);
 
-  @include cdr-selectable-surface-loading-mixin() {
+  @include cdr-surface-selection-loading-mixin() {
     pointer-events: none;
 
     .cdr-#{$component}__layout {
@@ -108,17 +108,17 @@ $selectable-surface-border-colors: (
     pointer-events: none;
   }
 
-  @include cdr-selectable-surface-disabled-mixin() {
+  @include cdr-surface-selection-disabled-mixin() {
     cursor: not-allowed !important;
     @include cdr-border-style-mixin($component, 'dashed');
   }
 
-  @include cdr-selectable-surface-active-mixin() {
+  @include cdr-surface-selection-active-mixin() {
     outline: none;
     @include cdr-border-width-mixin($component, 'three-sixteenth-x');
   }
 
-  @include cdr-selectable-surface-checked-mixin() {
+  @include cdr-surface-selection-checked-mixin() {
     @include cdr-border-width-mixin($component, 'three-sixteenth-x');
   }
 
@@ -128,7 +128,7 @@ $selectable-surface-border-colors: (
   }
 }
 
-@mixin cdr-selectable-surface-states-mixin(
+@mixin cdr-surface-selection-states-mixin(
   $background-colors,
   $border-colors,
   $component,
@@ -138,37 +138,37 @@ $selectable-surface-border-colors: (
   @include cdr-background-mixin($background-colors, $component, $modifier, $state);
   @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
 
-  @include cdr-selectable-surface-hover-mixin() {
+  @include cdr-surface-selection-hover-mixin() {
     $state: 'hover';
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-selectable-surface-active-mixin() {
+  @include cdr-surface-selection-active-mixin() {
     $state: 'active';
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-selectable-surface-checked-mixin() {
+  @include cdr-surface-selection-checked-mixin() {
     $state: 'checked';
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-selectable-surface-disabled-mixin() {
+  @include cdr-surface-selection-disabled-mixin() {
     $state: 'disabled';
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-selectable-surface-loading-mixin() {
+  @include cdr-surface-selection-loading-mixin() {
     $state: 'loading';
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
   }
 }
 
-@mixin cdr-selectable-surface-states-modifiers-mixin(
+@mixin cdr-surface-selection-states-modifiers-mixin(
   $background-colors,
   $border-colors,
   $component,
@@ -176,7 +176,7 @@ $selectable-surface-border-colors: (
 ) {
   @each $modifier in $modifiers {
     &--modifier-#{$modifier} {
-      @include cdr-selectable-surface-states-mixin(
+      @include cdr-surface-selection-states-mixin(
         $background-colors,
         $border-colors,
         $component,

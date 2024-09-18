@@ -54,7 +54,7 @@ const routes = [
   { path: '/skeleton', name: 'Skeleton', component: Examples.skeleton },
   { path: '/split-surface', name: 'Split Surface', component: Examples.splitSurface },
   { path: '/surface', name: 'Surface', component: Examples.surface },
-  { path: '/selectableSurface', name: 'SelectableSurface', component: Examples.selectableSurface },
+  { path: '/surfaceSelection', name: 'SurfaceSelection', component: Examples.surfaceSelection },
   { path: '/tables', name: 'Tables', component: Examples.tables },
   { path: '/tabs', name: 'Tabs', component: Examples.tabs },
   { path: '/texts', name: 'Texts', component: Examples.texts },

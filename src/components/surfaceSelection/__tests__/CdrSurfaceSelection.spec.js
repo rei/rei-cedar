@@ -1,11 +1,11 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
-import CdrSelectableSurface from '../CdrSelectableSurface.vue';
+import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
 
-describe('CdrSelectableSurface', () => {
+describe('CdrSurfaceSelection', () => {
   describe('snapshot test', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(CdrSelectableSurface, { props: { checked: false } });
+      wrapper = mount(CdrSurfaceSelection, { props: { checked: false } });
     });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -15,7 +15,7 @@ describe('CdrSelectableSurface', () => {
   describe('component unit tests', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = mount(CdrSelectableSurface, { props: { checked: false } });
+      wrapper = mount(CdrSurfaceSelection, { props: { checked: false } });
     });
 
     describe('default component with no configuration', () => {
@@ -27,45 +27,45 @@ describe('CdrSelectableSurface', () => {
       });
       it('base classes only', () => {
         expect(wrapper.classes()).toEqual([
-          'cdr-selectable-surface',
-          'cdr-selectable-surface--modifier-default',
+          'cdr-surface-selection',
+          'cdr-surface-selection--modifier-default',
         ]);
       });
     });
   });
 
   it('shows default', () => {
-    const wrapper = mount(CdrSelectableSurface, {
+    const wrapper = mount(CdrSurfaceSelection, {
       props: { checked: false },
       slots: { default: 'Default slot' },
     });
-    expect(wrapper.find('.cdr-selectable-surface').text()).toBe('Default slot');
+    expect(wrapper.find('.cdr-surface-selection').text()).toBe('Default slot');
     expect(wrapper.element).toMatchSnapshot();
   });
 
   it('is loading', () => {
-    const wrapper = mount(CdrSelectableSurface, {
+    const wrapper = mount(CdrSurfaceSelection, {
       props: { checked: false, loading: true },
       slots: { default: 'Default slot' },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.find('.cdr-selectable-surface').attributes('data-loading')).toBe('true');
+    expect(wrapper.find('.cdr-surface-selection').attributes('data-loading')).toBe('true');
   });
 
   it('is not loading', () => {
-    const wrapper = mount(CdrSelectableSurface, {
+    const wrapper = mount(CdrSurfaceSelection, {
       props: { checked: false, loading: false },
       slots: { default: 'Default slot' },
     });
-    expect(wrapper.find('.cdr-selectable-surface').attributes('data-loading')).toBe(undefined);
+    expect(wrapper.find('.cdr-surface-selection').attributes('data-loading')).toBe(undefined);
   });
 
   it('is checked', () => {
-    const wrapper = mount(CdrSelectableSurface, {
+    const wrapper = mount(CdrSurfaceSelection, {
       props: { checked: true },
       slots: { default: 'Default slot' },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.find('.cdr-selectable-surface').attributes('aria-checked')).toBe('true');
+    expect(wrapper.find('.cdr-surface-selection').attributes('aria-checked')).toBe('true');
   });
 });

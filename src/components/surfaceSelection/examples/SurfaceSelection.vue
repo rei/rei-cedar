@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import CdrSelectableSurface from '../CdrSelectableSurface.vue';
-import type { selectableSurface } from '../../../types/interfaces';
+import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
+import type { surfaceSelection } from '../../../types/interfaces';
 import CdrSwitch from '../../switch/CdrSwitch.vue';
 
-defineOptions({ name: 'SelectableSurface' });
+defineOptions({ name: 'SurfaceSelection' });
 
 const loading = ref(false);
 
 const examples = computed(
   () =>
-    <selectableSurface[]>[
+    <surfaceSelection[]>[
       { checked: false, role: 'checkbox', loading: loading.value },
       { checked: true, role: 'checkbox', loading: loading.value },
       { checked: false, role: 'checkbox', loading: !loading.value },
@@ -40,7 +40,7 @@ const examples = computed(
 
 <template>
   <div class="example">
-    <h2>SelectableSurface</h2>
+    <h2>SurfaceSelection</h2>
     <hr class="example__hr" />
     <div class="example__options">
       <CdrSwitch
@@ -52,29 +52,29 @@ const examples = computed(
     </div>
     <hr class="example__hr" />
     <div class="example__demos">
-      <CdrSelectableSurface v-bind="examples[0]">This is default</CdrSelectableSurface>
-      <CdrSelectableSurface v-bind="examples[1]">This is checked</CdrSelectableSurface>
-      <CdrSelectableSurface v-bind="examples[2]">This is loading</CdrSelectableSurface>
-      <CdrSelectableSurface v-bind="examples[3]">This is disabled</CdrSelectableSurface>
+      <CdrSurfaceSelection v-bind="examples[0]">This is default</CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[1]">This is checked</CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[2]">This is loading</CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[3]">This is disabled</CdrSurfaceSelection>
     </div>
     <hr class="example__hr" />
     <div class="example__demos2">
-      <CdrSelectableSurface v-bind="examples[4]">
+      <CdrSurfaceSelection v-bind="examples[4]">
         Custom loading
         <template #loading>...</template>
-      </CdrSelectableSurface>
-      <CdrSelectableSurface v-bind="examples[5]">
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[5]">
         <div>Auto</div>
         <div>Auto</div>
-      </CdrSelectableSurface>
-      <CdrSelectableSurface v-bind="examples[6]">
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[6]">
         <div>Auto</div>
         <div class="example__100">100%</div>
-      </CdrSelectableSurface>
-      <CdrSelectableSurface v-bind="examples[7]">
+      </CdrSurfaceSelection>
+      <CdrSurfaceSelection v-bind="examples[7]">
         <div>orientation</div>
         <div>vertical</div>
-      </CdrSelectableSurface>
+      </CdrSurfaceSelection>
     </div>
   </div>
 </template>

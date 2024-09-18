@@ -1,6 +1,6 @@
 @import '../../../../styles/settings/index.scss';
 
-@mixin cdr-selectable-surface-layout-base-mixin() {
+@mixin cdr-surface-selection-layout-base-mixin() {
   display: flex;
   gap: $cdr-space-three-eighth-x;
 

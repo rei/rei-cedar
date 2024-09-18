@@ -2,7 +2,7 @@
 import { useCssModule, computed } from 'vue';
 import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
-import { selectableSurfaceLayout } from '../../types/interfaces';
+import { surfaceSelectionLayout } from '../../types/interfaces';
 
 /** Fulfillment tile header component */
 
@@ -12,7 +12,7 @@ const style = useCssModule();
 const baseClass = 'cdr-fulfillment-tile-header';
 
 const rootProps = computed(
-  (): selectableSurfaceLayout => ({
+  (): surfaceSelectionLayout => ({
     orientation: 'horizontal',
     class: { [style[baseClass]]: true },
   }),

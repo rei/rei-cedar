@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { selectableSurface } from '../../types/interfaces';
-import { getSelectableSurfaceProps } from '../../utils/surface';
+import { surfaceSelection } from '../../types/interfaces';
+import { getSurfaceSelectionProps } from '../../utils/surface';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
 import CdrFulfillmentTileContent from './CdrFulfillmentTileContent.vue';
@@ -13,7 +13,7 @@ import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 
 defineOptions({ name: 'CdrFulfillmentTile' });
 
-const props = withDefaults(defineProps<selectableSurface>(), {
+const props = withDefaults(defineProps<surfaceSelection>(), {
   tag: 'button',
   role: 'radio',
   modifier: 'default',
@@ -28,7 +28,7 @@ const baseClass = 'cdr-fulfillment-tile';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const { classes, ...additionalProps } = getSelectableSurfaceProps(props, baseClass);  
+  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);  
   return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
 </script>

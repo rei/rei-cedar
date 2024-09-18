@@ -1,6 +1,0 @@
-@import './vars/CdrSelectableSurfaceLayout.vars.scss';
-@import '../../surface/styles/vars/CdrSurface.vars.scss';
-
-.cdr-selectable-surface-layout {
-  @include cdr-selectable-surface-layout-base-mixin();
-}

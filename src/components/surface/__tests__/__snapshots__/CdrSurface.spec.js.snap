@@ -2,7 +2,7 @@
 
 exports[`CdrSurface > component unit tests > default component with no configuration > renders correctly 1`] = `
 <div
-  class="cdr-surface"
+  class="cdr-surface cdr-surface--modifier-default cdr-surface--background-primary cdr-surface--radius-sharp cdr-surface--shadow-flat"
 >
   <!-- @slot Where all default content should be placed. -->
   
@@ -12,7 +12,7 @@ exports[`CdrSurface > component unit tests > default component with no configura
 
 exports[`CdrSurface > component unit tests > when "tag" is set to "a" > renders correctly 1`] = `
 <a
-  class="cdr-surface"
+  class="cdr-surface cdr-surface--modifier-default cdr-surface--background-primary cdr-surface--radius-sharp cdr-surface--shadow-flat"
 >
   <!-- @slot Where all default content should be placed. -->
   
@@ -22,7 +22,7 @@ exports[`CdrSurface > component unit tests > when "tag" is set to "a" > renders 
 
 exports[`CdrSurface > snapshot test > renders correctly 1`] = `
 <div
-  class="cdr-surface"
+  class="cdr-surface cdr-surface--modifier-default cdr-surface--background-primary cdr-surface--radius-sharp cdr-surface--shadow-flat"
 >
   <!-- @slot Where all default content should be placed. -->
   

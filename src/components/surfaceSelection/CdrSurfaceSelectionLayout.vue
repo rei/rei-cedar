@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { selectableSurfaceLayout } from '../../types/interfaces';
+import { surfaceSelectionLayout } from '../../types/interfaces';
 
 /** Component for layout of a surface selection */
 
-defineOptions({ name: 'CdrSelectableSurfaceLayout' });
+defineOptions({ name: 'CdrSurfaceSelectionLayout' });
 
-const props = withDefaults(defineProps<selectableSurfaceLayout>(), {
+const props = withDefaults(defineProps<surfaceSelectionLayout>(), {
   orientation: 'horizontal',
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-selectable-surface-layout';
+const baseClass = 'cdr-surface-selection-layout';
 
 // Manages the props passed along to root
 const rootProps = computed(() => {
@@ -34,4 +34,4 @@ const rootProps = computed(() => {
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrSelectableSurfaceLayout.module.scss"></style>
+<style lang="scss" module src="./styles/CdrSurfaceSelectionLayout.module.scss"></style>

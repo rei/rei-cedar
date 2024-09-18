@@ -9,7 +9,15 @@ import { getSurfaceProps } from '../../utils/surface';
 defineOptions({ name: 'CdrSurface' });
 
 const props = withDefaults(defineProps<surface>(), {
+  background: 'primary',
+  borderColor: 'primary',
+  borderStyle: 'solid',
+  borderWidth: 'sixteenth-x',
+  modifier: 'default',
+  radius: 'sharp',
+  shadow: 'flat',
   tag: 'div',
+  withBorder: false,
 });
 
 const style = useCssModule();
