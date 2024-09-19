@@ -218,6 +218,7 @@ export interface surfaceSelection extends HtmlAttributes {
   disabled?: boolean;
   /**
    * Determines if the button is in a loading state. Adds a `data-loading` attribute to the button. Using CSS, this will hide the default slot and show the loading slot.
+   * @skip true
    */
   loading?: boolean;
   /**
