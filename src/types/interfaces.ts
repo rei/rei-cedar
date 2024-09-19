@@ -227,7 +227,6 @@ export interface surfaceSelection extends HtmlAttributes {
   modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
-   * @skip true
    * @values horizontal, vertical
    */
   orientation?: Orientation;
