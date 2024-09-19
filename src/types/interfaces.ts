@@ -208,10 +208,12 @@ export interface surface extends HtmlAttributes {
 export interface surfaceSelection extends HtmlAttributes {
   /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
+   * @skip true
    */
   checked?: boolean;
   /**
    * Determines if the button is in a disabled state.
+   * @skip true
    */
   disabled?: boolean;
   /**
@@ -220,12 +222,12 @@ export interface surfaceSelection extends HtmlAttributes {
   loading?: boolean;
   /**
    * Determines which set of styles to apply to the component.
+   * @skip true
    * @values default
    */
   modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
-   * @demoSelectMultiple false
    * @values horizontal, vertical
    */
   orientation?: Orientation;
