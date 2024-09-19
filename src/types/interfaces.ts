@@ -222,12 +222,12 @@ export interface surfaceSelection extends HtmlAttributes {
   loading?: boolean;
   /**
    * Determines which set of styles to apply to the component.
-   * @skip true
    * @values default
    */
   modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
+   * @skip true
    * @values horizontal, vertical
    */
   orientation?: Orientation;
