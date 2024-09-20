@@ -159,7 +159,7 @@ export interface surface extends HtmlAttributes {
   /**
    * Adds in a background color based on the current palette's tokens.
    * @demoSelectMultiple false
-   * @values primary, secondary, brand-spruce, sale, member, member-alt
+   * @values primary, secondary, brand-spruce, sale
    */
   background?: Background;
   /**
