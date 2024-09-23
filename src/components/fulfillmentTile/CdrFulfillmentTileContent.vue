@@ -3,7 +3,7 @@ import { useCssModule, computed } from 'vue';
 import CdrBody, { type bodyTextProps } from '../text/presets/CdrBody.vue';
 import { fulfillmentTileContent } from '../../types/interfaces';
 
-/** Content component for fulfillment tile */
+/** Content component with scale option for fulfillment tile */
 
 defineOptions({ name: 'CdrFulfillmentTileContent' });
 

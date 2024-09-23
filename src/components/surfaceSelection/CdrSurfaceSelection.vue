@@ -7,7 +7,7 @@ import { surfaceSelection } from '../../types/interfaces';
 import { getSurfaceSelectionProps } from '../../utils/surface';
 import CdrSurfaceSelectionLayout from './CdrSurfaceSelectionLayout.vue';
 
-/** Base component for buttons that have a checked state */
+/** Base component for user selections that have a checked state */
 
 defineOptions({ name: 'CdrSurfaceSelection' });
 
