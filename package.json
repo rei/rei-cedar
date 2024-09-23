@@ -58,7 +58,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
     "@emotion/is-prop-valid": "^1.2.1",
-    "@rei/cdr-tokens": "github:rei/rei-cedar-tokens#pr/surface-selection",
+    "@rei/cdr-tokens": "^12.3.0",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@types/tabbable": "^3.1.2",
