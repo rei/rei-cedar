@@ -244,7 +244,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
       <!--v-if-->
       <select
         aria-required="true"
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select--primary"
         id="renders"
         name="testing"
       >
@@ -313,11 +313,10 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--multiple cdr-select--primary"
+        class="cdr-select cdr-select--multiple cdr-select--primary"
         id="renders"
         multiple=""
         name="testing"
-        value=""
       >
         <!--v-if-->
         

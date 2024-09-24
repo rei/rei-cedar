@@ -24,7 +24,7 @@ describe('CdrChipGroup', () => {
       })
       chips = wrapper.findAll('.cdr-chip').map(domWrapper => domWrapper.element);
     })
-    
+
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
@@ -91,7 +91,7 @@ describe('CdrChipGroup', () => {
             h(CdrChip, { 'aria-checked': true, tabindex: 0, role: 'radio' }, { default: () => 'chip 1' }),
             h(CdrChip, { 'aria-checked': false, tabindex: -1, role: 'radio' }, { default: () => 'chip 2' }),
           ],
-          label: 'hey im overriding here!!!',
+          label: () => 'hey im overriding here!!!',
         },
       ));
     })

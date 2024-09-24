@@ -12,7 +12,7 @@ describe('CdrSkeleton', () => {
         slots: {
           default: [
             h(CdrSkeletonBone, { type: 'heading'}),
-            h(CdrSkeletonBone, { type: 'text'}),
+            h(CdrSkeletonBone, { type: 'line'}),
           ],
         },
         attachTo: document.body
