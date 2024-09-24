@@ -17,6 +17,7 @@ exports[`CdrPicture > matches snapshot 1`] = `
   
   <cdr-img-stub
     alt=""
+    src="/src/dev/static/cedar-350x150.jpg"
   />
 </picture>
 `;

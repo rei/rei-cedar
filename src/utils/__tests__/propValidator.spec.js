@@ -7,8 +7,7 @@ describe('propValidator', () => {
   });
 
   it('invalidates correctly', () => {
-    const valid = propValidator('ba', ['b', 'a']);
+    const valid = propValidator('ba', ['b', 'a'], false, () => null);
     expect(valid).toBeFalsy();
   });
 });
-

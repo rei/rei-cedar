@@ -1,0 +1,10 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrSurface.vars.scss';
+
+.cdr-surface {
+  @include cdr-surface-base-mixin(
+    $surface-background-colors,
+    $surface-border-colors,
+    $surface-component
+  );
+}

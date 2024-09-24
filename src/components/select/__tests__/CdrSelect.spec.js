@@ -9,7 +9,7 @@ describe('CdrSelect', () => {
       wrapper = mount(CdrSelect, {
         propsData: {
           label: 'Label Test',
-          id: 'renders'
+          id: 'renders',
         },
         attrs: {
           name: 'testing',
@@ -69,7 +69,7 @@ describe('CdrSelect', () => {
 
     describe('with a required prop', () => {
       beforeEach(() => {
-        wrapper.setProps({ required: true })
+        wrapper.setProps({ modelValue: [], required: true })
       })
 
       it('renders correctly', () => {
@@ -84,7 +84,7 @@ describe('CdrSelect', () => {
       beforeEach(() => {
         wrapper.setProps({
           multiple: true,
-          value: []
+          modelValue: []
         })
       })
 
@@ -352,57 +352,4 @@ describe('CdrSelect', () => {
       expect(wrapper.find('select').attributes('aria-describedby')).toBe(undefined);
     });
   })
-
-
-
-  // TODO: something wrong with v-model binding for CdrSelect?
-  // xit('emits change event with correct value', async () => {
-  //   const wrapper = mount(CdrSelect, {
-  //     propsData: {
-  //       label: 'test',
-  //       value: '4',
-  //       options: ['3', '4'],
-  //       id: 'test',
-  //     },
-  //   });
-  //   const select = wrapper.find('select');
-  //   const options = select.findAll('option');
-  //   options[0].setSelected();
-  //   await wrapper.vm.$nextTick();
-  //   expect(wrapper.emitted().change[0][0]).toBe('3');
-  //   expect(wrapper.emitted().change[0][1] instanceof Event).toBeTruthy();
-  // });
-
-  // xit('emits change event with correct value for multiple', () => {
-  //   const wrapper = mount(CdrSelect, {
-  //     propsData: {
-  //       label: 'test',
-  //       multiple: true,
-  //       id: 'test',
-  //       value: ['1', '2'],
-  //       options: [{
-  //         value: '1',
-  //         text: 'one',
-  //       },
-  //       {
-  //         value: '2',
-  //         text: 'two',
-  //       },
-  //       {
-  //         value: '3',
-  //         text: 'three',
-  //       }],
-  //     },
-  //   });
-  //   const select = wrapper.find('select');
-  //   const options = select.findAll('option');
-  //   console.log('multiple opt', options)
-  //   options[0].element.selected = true;
-  //   options[1].element.selected = false;
-  //   options[2].element.selected = true;
-  //   select.trigger('change');
-  //   console.log('multi', wrapper.emitted())
-  //   expect(wrapper.emitted().change[0][0]).toEqual(['1', '3']);
-  //   expect(wrapper.emitted().change[0][1] instanceof Event).toBeTruthy();
-  // });
 });
