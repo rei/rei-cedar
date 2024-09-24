@@ -10,8 +10,9 @@ exports[`CdrLandingLead > renders correctly when presented with correct data 1`]
     <!-- @slot top slot -->
     
     <img
-      alt=""
+      alt="alt"
       class="cdr-image cdr-landing-lead__image"
+      src="lead.jpg"
     />
     
   </div>
@@ -29,7 +30,7 @@ exports[`CdrLandingLead > renders correctly when presented with correct data 1`]
       >
         
         
-         
+        Heading 
         
         
       </h1>
@@ -39,7 +40,7 @@ exports[`CdrLandingLead > renders correctly when presented with correct data 1`]
       >
         
         
-        
+        Subheading
         
         
       </span>

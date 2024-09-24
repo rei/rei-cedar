@@ -42,9 +42,6 @@ export default {
       focusTarget.removeAttribute('tabindex');
     },
   },
-  mounted() {
-    console.log('BACKSTOP_READY'); // eslint-disable-line
-  },
 };
 </script>
 
@@ -105,6 +102,7 @@ export default {
 @import "../styles/main.scss";
 @import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
 @import "@rei/cdr-tokens/dist/rei-dot-com/css/cdr-tokens.css";
+
 .stack {
   margin-top: $cdr-space-one-x;
 }
@@ -134,19 +132,6 @@ export default {
 .nav {
   padding: $cdr-space-quarter-x;
   display:inline-flex;
-}
-
-.background-primary {
-  background-color: $cdr-color-background-primary;
-
-}
-
-.background-secondary {
-  background-color: $cdr-color-background-secondary;
-}
-
-.background-brand {
-  background-color: $cdr-color-background-brand-spruce;
 }
 
 // NOTE: type examples in this file are for testing and development purposes only

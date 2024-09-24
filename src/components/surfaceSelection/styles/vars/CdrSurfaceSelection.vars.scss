@@ -1,0 +1,187 @@
+@import '../../../../styles/settings/index.scss';
+
+$surface-selection-component: 'surface-selection';
+$surface-selection-modifiers: 'default';
+$surface-selection-background-colors: (
+  'default': (
+    'rest': $cdr-color-background-surface-selection-default-rest,
+    'hover': $cdr-color-background-surface-selection-default-hover,
+    'active': $cdr-color-background-surface-selection-default-active,
+    'checked': $cdr-color-background-surface-selection-default-checked,
+    'disabled': $cdr-color-background-surface-selection-default-disabled,
+    'loading': $cdr-color-background-surface-selection-default-loading,
+  ),
+);
+$surface-selection-border-colors: (
+  'default': (
+    'rest': $cdr-color-border-surface-selection-default-rest,
+    'hover': $cdr-color-border-surface-selection-default-hover,
+    'active': $cdr-color-border-surface-selection-default-active,
+    'checked': $cdr-color-border-surface-selection-default-checked,
+    'disabled': $cdr-color-border-surface-selection-default-disabled,
+    'loading': $cdr-color-border-surface-selection-default-loading,
+  ),
+);
+
+@mixin cdr-surface-selection-disabled-mixin() {
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-hover-mixin() {
+  &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-active-mixin() {
+  &:focus,
+  &:active,
+  &[aria-pressed='true']:focus,
+  &[aria-pressed='true']:active,
+  &[aria-checked='true']:focus,
+  &[aria-checked='true']:active {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-checked-mixin() {
+  &[aria-pressed='true'],
+  &[aria-checked='true'] {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-loading-mixin() {
+  &[data-loading='true'] {
+    @content;
+  }
+}
+
+@mixin cdr-surface-selection-base-mixin($component) {
+  @include cdr-text-utility-sans-300;
+  @include cdr-border-mixin($component);
+  @include cdr-border-width-mixin($component, 'sixteenth-x');
+  @include cdr-border-style-mixin($component, 'solid');
+  @include cdr-radius-mixin($component, 'softest');
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  padding: $cdr-space-inset-half-x-stretch;
+  transition: all var(--cdr-duration-1-x) var(--cdr-timing-function-ease);
+
+  @include cdr-surface-selection-loading-mixin() {
+    pointer-events: none;
+
+    .cdr-#{$component}__layout {
+      opacity: 0;
+    }
+
+    .cdr-#{$component}__loading {
+      opacity: 1;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    height: 100%;
+  }
+
+  &__layout {
+    opacity: 1;
+  }
+
+  &__loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all var(--cdr-duration-1-x) var(--cdr-timing-function-ease);
+    pointer-events: none;
+  }
+
+  @include cdr-surface-selection-disabled-mixin() {
+    cursor: not-allowed !important;
+    @include cdr-border-style-mixin($component, 'dashed');
+  }
+
+  @include cdr-surface-selection-active-mixin() {
+    outline: none;
+    @include cdr-border-width-mixin($component, 'three-sixteenth-x');
+  }
+
+  @include cdr-surface-selection-checked-mixin() {
+    @include cdr-border-width-mixin($component, 'three-sixteenth-x');
+  }
+
+  &[aria-pressed='true']:not([role='checkbox']),
+  &[aria-checked='true']:not([role='checkbox']) {
+    cursor: default;
+  }
+}
+
+@mixin cdr-surface-selection-states-mixin(
+  $background-colors,
+  $border-colors,
+  $component,
+  $modifier: 'default'
+) {
+  $state: 'rest';
+  @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+  @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
+
+  @include cdr-surface-selection-hover-mixin() {
+    $state: 'hover';
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
+  }
+
+  @include cdr-surface-selection-active-mixin() {
+    $state: 'active';
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
+  }
+
+  @include cdr-surface-selection-checked-mixin() {
+    $state: 'checked';
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
+  }
+
+  @include cdr-surface-selection-disabled-mixin() {
+    $state: 'disabled';
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+    @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
+  }
+
+  @include cdr-surface-selection-loading-mixin() {
+    $state: 'loading';
+    @include cdr-background-mixin($background-colors, $component, $modifier, $state);
+  }
+}
+
+@mixin cdr-surface-selection-states-modifiers-mixin(
+  $background-colors,
+  $border-colors,
+  $component,
+  $modifiers
+) {
+  @each $modifier in $modifiers {
+    &--modifier-#{$modifier} {
+      @include cdr-surface-selection-states-mixin(
+        $background-colors,
+        $border-colors,
+        $component,
+        $modifier
+      );
+    }
+  }
+}

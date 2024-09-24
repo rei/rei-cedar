@@ -13,6 +13,11 @@ export { default as CdrChipGroup } from './components/chip/CdrChipGroup.vue';
 export { default as CdrChoreographer } from './components/choreographer/CdrChoreographer.vue';
 export { default as CdrContainer } from './components/container/CdrContainer.vue';
 export { default as CdrFormGroup } from './components/formGroup/CdrFormGroup.vue';
+export { default as CdrFulfillmentTile } from './components/fulfillmentTile/CdrFulfillmentTile.vue';
+export { default as CdrFulfillmentTileContent } from './components/fulfillmentTile/CdrFulfillmentTileContent.vue';
+export { default as CdrFulfillmentTileHeader } from './components/fulfillmentTile/CdrFulfillmentTileHeader.vue';
+export { default as CdrFulfillmentTileIcon } from './components/fulfillmentTile/CdrFulfillmentTileIcon.vue';
+export { default as CdrFulfillmentTileLayout } from './components/fulfillmentTile/CdrFulfillmentTileLayout.vue';
 export { default as CdrGrid } from './components/grid/CdrGrid.vue';
 export { default as CdrIcon } from './components/icon/CdrIcon.vue';
 export { default as CdrImg } from './components/image/CdrImg.vue';
@@ -32,6 +37,9 @@ export { default as CdrSelect } from './components/select/CdrSelect.vue';
 export { default as CdrSkeleton } from './components/skeleton/CdrSkeleton.vue';
 export { default as CdrSkeletonBone } from './components/skeleton/CdrSkeletonBone.vue';
 export { default as CdrSplitSurface } from './components/splitSurface/CdrSplitSurface.vue';
+export { default as CdrSurface } from './components/surface/CdrSurface.vue';
+export { default as CdrSurfaceSelection } from './components/surfaceSelection/CdrSurfaceSelection.vue';
+export { default as CdrSurfaceSelectionLayout } from './components/surfaceSelection/CdrSurfaceSelectionLayout.vue';
 export { default as CdrTable } from './components/table/CdrTable.vue';
 export { default as CdrTabPanel } from './components/tabs/CdrTabPanel.vue';
 export { default as CdrTabs } from './components/tabs/CdrTabs.vue';
@@ -40,7 +48,7 @@ export { default as CdrTitle } from './components/title/CdrTitle.vue';
 export { default as CdrToast } from './components/toast/CdrToast.vue';
 export { default as CdrToggleButton } from './components/toggleButton/CdrToggleButton.vue';
 export { default as CdrToggleGroup } from './components/toggleButton/CdrToggleGroup.vue';
-export { default as CdrSwitch } from './components/switch/CdrSwitch.vue'
+export { default as CdrSwitch } from './components/switch/CdrSwitch.vue';
 export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
 
 /** Compositions */
@@ -49,5 +57,8 @@ export * from './components/text/presets/textPresets';
 
 /** Type exports */
 export * from './types/interfaces';
+export * from './types/other';
 
-
+/** Compile into dist/style folder */
+import './styles/cdr-reset.scss';
+import './styles/cdr-fonts.scss';
