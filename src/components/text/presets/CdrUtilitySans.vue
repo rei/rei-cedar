@@ -6,7 +6,7 @@ defineOptions({
   name: 'CdrUtilitySans',
 });
 
-interface utilitySansTextProps extends baseTextProps {
+export interface utilitySansTextProps extends baseTextProps {
    /** 
    * Sets the type scale
    * @type scaleValue

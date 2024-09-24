@@ -171,7 +171,6 @@ describe('CdrModal.vue', () => {
       });
 
       it('sets the dialog class', () => {
-      console.log(dialogEl.classes());
         const innerWrapEl = dialogEl.find('.cdr-modal__innerWrap');
         expect(innerWrapEl.classes('content-class')).to.be.true;
       });

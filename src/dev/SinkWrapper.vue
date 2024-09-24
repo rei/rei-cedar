@@ -1,52 +1,51 @@
 <template>
-  <div
-    :class="backgroundClass"
-  >
-    Toggle background color:
-    <cdr-radio
-      v-for="bg in backgrounds"
-      :custom-value="bg"
-      :key="bg"
-      name="background"
-      v-model="background"
-      class="background-toggle"
+  <div :data-palette="palette">
+    <div class="sink-wrapper__radios">
+      <div>Toggle palette:</div>
+      <CdrRadio
+        v-for="pal in palettes"
+        :custom-value="pal"
+        :key="pal"
+        name="palette"
+        v-model="palette"
+      >
+        {{ capitalize(pal) }}
+      </CdrRadio>
+    </div>
+    <CdrSurface
+      background="primary"
+      :with-border="true"
+      border-width="sixteenth-x"
+      border-color="primary"
+      class="sink-wrapper__container"
     >
-      {{ capitalize(bg) }}
-    </cdr-radio>
-    <slot />
+      <slot />
+    </CdrSurface>
   </div>
 </template>
 
 <script>
-
-import { CdrRadio } from 'srcdir/lib';
+import { CdrRadio, CdrSurface } from 'srcdir/lib';
 import { upperFirst } from 'lodash-es';
 
 export default {
   name: 'SinkWrapper',
   components: {
     CdrRadio,
+    CdrSurface,
   },
   data() {
     return {
-      background: this.$route.query.background || 'primary',
-      backgrounds: [
-        'primary', 'secondary',
-        //  'success', 'info', 'warning', 'error',
-      ],
+      palette: this.$route.query.palette || 'default',
+      palettes: ['default', 'sandstone'],
     };
   },
-  computed: {
-    backgroundClass() {
-      return `background-${this.background}`;
-    },
-  },
   watch: {
-    background() {
+    palette() {
       this.$router.replace({
         path: this.$route.path,
         query: {
-          background: this.background,
+          palette: this.palette,
         },
       });
     },
@@ -59,10 +58,19 @@ export default {
 };
 </script>
 
-<style>
-.background-toggle {
-  display: inline-block;
-  margin: 0 8px;
-}
+<style lang="scss" scoped>
+@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
 
+.sink-wrapper {
+  &__radios {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__container {
+    padding: $cdr-space-two-x;
+  }
+}
 </style>

@@ -18,7 +18,7 @@ import e2e2 from 'srcdir/dev/e2e2.vue';
 // import SurveyForm from 'componentsdir/Form/SurveyForm';
 
 const routes = [
-  { path: '/', name: ' ', component: App },
+  { path: '/', name: 'Home', component: App },
   { path: '/kitchen-sink', name: 'KitchenSink', component: KitchenSink },
   // { path: '/utilities', name: 'Utilities', component: Examples.utilities },
   { path: '/abstract', name: 'Abstract', component: Examples.abstract },
@@ -33,6 +33,7 @@ const routes = [
   { path: '/choreographer', name: 'Choreographer', component: Examples.choreographer },
   { path: '/containers', name: 'Container', component: Examples.container },
   { path: '/formGroups', name: 'Form Groups', component: Examples.formGroup },
+  { path: '/fulfillmentTile', name: 'FulfillmentTile', component: Examples.fulfillmentTile },
   { path: '/grid', name: 'Grid', component: Examples.grid },
   { path: '/icons', name: 'Icons', component: Examples.icon },
   { path: '/images', name: 'Images', component: Examples.images },
@@ -52,6 +53,8 @@ const routes = [
   { path: '/selects', name: 'Selects', component: Examples.selects },
   { path: '/skeleton', name: 'Skeleton', component: Examples.skeleton },
   { path: '/split-surface', name: 'Split Surface', component: Examples.splitSurface },
+  { path: '/surface', name: 'Surface', component: Examples.surface },
+  { path: '/surfaceSelection', name: 'SurfaceSelection', component: Examples.surfaceSelection },
   { path: '/tables', name: 'Tables', component: Examples.tables },
   { path: '/tabs', name: 'Tabs', component: Examples.tabs },
   { path: '/texts', name: 'Texts', component: Examples.texts },
