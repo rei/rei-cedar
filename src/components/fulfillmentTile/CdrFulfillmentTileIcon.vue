@@ -2,7 +2,7 @@
 import { useCssModule, computed } from 'vue';
 import { fulfillmentTileIcon } from '../../types/interfaces';
 
-/** Provides stylized icons for typical notifications */
+/** Stylized icon to display a status for fulfillment tile */
 
 defineOptions({ name: 'CdrFulfillmentTileIcon' });
 

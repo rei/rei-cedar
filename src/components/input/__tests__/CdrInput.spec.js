@@ -40,7 +40,7 @@ describe('CdrInput', () => {
       input.setValue('foo');
       expect(wrapper.emitted()['update:modelValue'][0][0]).toBe('foo');
     });
-    
+
     describe('with prop type of "number"', () => {
       beforeEach(() => {
         wrapper.setProps({ type: 'number' })

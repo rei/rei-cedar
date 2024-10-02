@@ -9,7 +9,7 @@ import CdrFulfillmentTileContent from './CdrFulfillmentTileContent.vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 
-/** Tile component for displaying a button with optional icon in the header. Based on Surface selection. */
+/** Displays a composed selection option and provides feedback with optional icons */
 
 defineOptions({ name: 'CdrFulfillmentTile' });
 

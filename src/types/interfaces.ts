@@ -159,12 +159,13 @@ export interface surface extends HtmlAttributes {
   /**
    * Adds in a background color based on the current palette's tokens.
    * @demoSelectMultiple false
-   * @values primary, secondary
+   * @values primary, secondary, brand-spruce, sale
    */
   background?: Background;
   /**
    * Specifies a border color based on the token options within Cedar.
-   * @values primary, secondary
+   * @demoSelectMultiple false
+   * @values primary, secondary, success, warning, error, info
    */
   borderColor?: BorderColor;
   /**
@@ -179,8 +180,7 @@ export interface surface extends HtmlAttributes {
   borderWidth?: Space;
   /**
    * Determines which set of styles to apply to the component.
-   * @demoSelectMultiple false
-   * @values primary, secondary
+   * @values default
    */
   modifier?: Modifier;
   /**
@@ -208,14 +208,17 @@ export interface surface extends HtmlAttributes {
 export interface surfaceSelection extends HtmlAttributes {
   /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
+   * @skip true
    */
   checked?: boolean;
   /**
    * Determines if the button is in a disabled state.
+   * @skip true
    */
   disabled?: boolean;
   /**
    * Determines if the button is in a loading state. Adds a `data-loading` attribute to the button. Using CSS, this will hide the default slot and show the loading slot.
+   * @skip true
    */
   loading?: boolean;
   /**
@@ -225,7 +228,6 @@ export interface surfaceSelection extends HtmlAttributes {
   modifier?: Modifier;
   /**
    * Determines if the layout is in horizontal or vertical mode.
-   * @demoSelectMultiple false
    * @values horizontal, vertical
    */
   orientation?: Orientation;

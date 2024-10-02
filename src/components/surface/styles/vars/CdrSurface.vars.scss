@@ -1,7 +1,6 @@
 @use 'sass:map';
 @import '../../../../styles/settings/index.scss';
 
-$surface-modifiers: 'primary', 'secondary';
 $surface-component: 'surface';
 $surface-background-colors: (
   'primary': (
@@ -10,6 +9,12 @@ $surface-background-colors: (
   'secondary': (
     'undefined': $cdr-color-background-surface-secondary,
   ),
+  'brand-spruce': (
+    'undefined': $cdr-color-background-surface-brand-spruce,
+  ),
+  'sale': (
+    'undefined': $cdr-color-background-surface-sale,
+  ),
 );
 $surface-border-colors: (
   'primary': (
@@ -17,6 +22,18 @@ $surface-border-colors: (
   ),
   'secondary': (
     'undefined': $cdr-color-border-surface-secondary,
+  ),
+  'success': (
+    'undefined': $cdr-color-border-surface-success,
+  ),
+  'warning': (
+    'undefined': $cdr-color-border-surface-warning,
+  ),
+  'error': (
+    'undefined': $cdr-color-border-surface-error,
+  ),
+  'info': (
+    'undefined': $cdr-color-border-surface-info,
   ),
 );
 
@@ -59,14 +76,5 @@ $surface-border-colors: (
 
   &--border {
     @include cdr-border-mixin($component);
-  }
-}
-
-@mixin cdr-surface-modifiers-mixin($background-colors, $border-colors, $component, $modifiers) {
-  @each $modifier in $modifiers {
-    &--modifier-#{$modifier} {
-      @include cdr-background-mixin($background-colors, $component, $modifier);
-      @include cdr-border-color-mixin($border-colors, $component, $modifier);
-    }
   }
 }

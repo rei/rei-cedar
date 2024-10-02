@@ -3,7 +3,7 @@ import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { surfaceSelectionLayout } from '../../types/interfaces';
 
-/** Component for layout of a surface selection */
+/** Configurable layout for surface selection */
 
 defineOptions({ name: 'CdrSurfaceSelectionLayout' });
 

@@ -4,12 +4,20 @@ import mapClasses from '../../utils/mapClasses';
 import type { surface } from '../../types/interfaces';
 import { getSurfaceProps } from '../../utils/surface';
 
-/** Base component for all other components */
+/** Foundational container for creating structured layouts */
 
 defineOptions({ name: 'CdrSurface' });
 
 const props = withDefaults(defineProps<surface>(), {
+  background: 'primary',
+  borderColor: 'primary',
+  borderStyle: 'solid',
+  borderWidth: 'sixteenth-x',
+  modifier: 'default',
+  radius: 'sharp',
+  shadow: 'flat',
   tag: 'div',
+  withBorder: false,
 });
 
 const style = useCssModule();

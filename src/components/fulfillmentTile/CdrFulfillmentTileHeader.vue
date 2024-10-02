@@ -4,7 +4,7 @@ import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
 import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
 import { surfaceSelectionLayout } from '../../types/interfaces';
 
-/** Fulfillment tile header component */
+/** Header component with icon slot for fulfillment tile */
 
 defineOptions({ name: 'CdrFulfillmentTileHeader' });
 
