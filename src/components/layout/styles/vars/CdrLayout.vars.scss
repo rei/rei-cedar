@@ -1,0 +1,49 @@
+@import '../../../../styles/settings/index.scss';
+
+$layout-component: 'layout';
+$structures: rows, columns;
+$flows: row, column;
+
+@mixin cdr-layout-base-mixin() {
+  display: grid;
+}
+
+@mixin cdr-layout-structure-mixin($component) {
+  @each $structure in $structures {
+    &--#{$structure} {
+      grid-template-#{$structure}: var(--cdr-#{$component}-#{$structure});
+
+      &-responsive {
+        --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-xs);
+
+        @include cdr-sm-mq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-sm);
+        }
+
+        @include cdr-md-mq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-md);
+        }
+
+        @include cdr-lg-mq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-lg);
+        }
+      }
+    }
+  }
+}
+
+@mixin cdr-layout-spacing-mixin() {
+  @each $key, $value in $spacing {
+    &--gap-#{$key} {
+      gap: $value;
+    }
+  }
+}
+
+@mixin cdr-layout-flow-mixin() {
+  @each $flow in $flows {
+    &--flow-#{$flow} {
+      grid-auto-flow: $flow;
+    }
+  }
+}
