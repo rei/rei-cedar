@@ -1,8 +1,0 @@
-@import './CdrPresets.module.scss';
-
-.cdr-eyebrow {
-  @include cdr-text-base-mixin;
-  @include cdr-text-eyebrow-100;
-  font-size: var(--cdr-type-scale--1);
-  line-height: var(--cdr-eyebrow-line-height-ratio);
-}
