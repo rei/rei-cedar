@@ -4,11 +4,13 @@ permissions:
   contents: write
 jobs:
   build-and-deploy:
-    runs-on: node:20
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
       - name: Install and Build 🔧
+        with:
+          node-version: 20
         run: |
           npm ci
           npm run pages
