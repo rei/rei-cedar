@@ -8,9 +8,11 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
-      - name: Install and Build 🔧
+      - name: Node version
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 20
+      - name: Install and Build 🔧
         run: |
           npm ci
           npm run pages
