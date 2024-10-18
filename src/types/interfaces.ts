@@ -1,3 +1,4 @@
+import type { Component } from 'vue';
 import type {
   Tag,
   Space,
@@ -10,7 +11,14 @@ import type {
   Orientation,
   ScaleValue,
   StatusType,
+  Flow,
+  StructureOption,
 } from './other';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export interface NameValuePair {
+  [key: string]: any;
+}
 
 /**
  * HtmlAttributes data object for allowing any HTML attribute
@@ -175,7 +183,7 @@ export interface surface extends HtmlAttributes {
   borderStyle?: BorderStyle;
   /**
    * Specifies a border width based on the token options within Cedar.
-   * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x'
+   * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x
    */
   borderWidth?: Space;
   /**
@@ -272,4 +280,31 @@ export interface fulfillmentTileIcon extends HtmlAttributes {
    * @values info, warning, success, error, default
    */
   type?: StatusType;
+}
+
+export interface Layout extends HtmlAttributes {
+  /**
+   * Determines if the layout is in horizontal or vertical mode.
+   * @demoSelectMultiple false
+   * @values row, column
+   */
+  flow?: Flow;
+  /**
+   * Determines the number of columns at various breakpoints
+   */
+  columns?: StructureOption;
+  /**
+   * Determines the number of rows at various breakpoints
+   */
+  rows?: StructureOption;
+  /**
+   * Specifies a border width based on the token options within Cedar.
+   * @demoSelectMultiple false
+   * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x, three-eighth-x, half-x, three-quarter-x, one-x, one-and-a-half-x, two-x, three-x, four-x
+   */
+  gap?: Space;
+  /**
+   * The component or HTML tag to render at the root level
+   */
+  as?: Component | string;
 }

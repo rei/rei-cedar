@@ -7,13 +7,29 @@ $cdr-warn: false;
 @import './visibility.vars';
 @import './fluid.vars';
 
+$spacing: (
+  'zero': $cdr-space-zero,
+  'sixteenth-x': $cdr-space-sixteenth-x,
+  'eighth-x': $cdr-space-eighth-x,
+  'three-sixteenth-x': $cdr-space-three-sixteenth-x,
+  'quarter-x': $cdr-space-quarter-x,
+  'three-eighth-x': $cdr-space-three-eighth-x,
+  'half-x': $cdr-space-half-x,
+  'three-quarter-x': $cdr-space-three-quarter-x,
+  'one-x': $cdr-space-one-x,
+  'one-and-a-half-x': $cdr-space-one-and-a-half-x,
+  'two-x': $cdr-space-two-x,
+  'three-x': $cdr-space-three-x,
+  'four-x': $cdr-space-four-x,
+);
+
 $border-widths: (
   'zero': $cdr-space-zero,
-  'sixteenth-x': $cdr-space-inset-sixteenth-x,
-  'eighth-x': $cdr-space-inset-eighth-x,
-  'three-sixteenth-x': $cdr-space-inset-three-sixteenth-x,
-  'quarter-x': $cdr-space-inset-quarter-x,
-  'three-eighth-x': $cdr-space-inset-three-eighth-x,
+  'sixteenth-x': $cdr-space-sixteenth-x,
+  'eighth-x': $cdr-space-eighth-x,
+  'three-sixteenth-x': $cdr-space-three-sixteenth-x,
+  'quarter-x': $cdr-space-quarter-x,
+  'three-eighth-x': $cdr-space-three-eighth-x,
 );
 
 $border-styles: 'dotted', 'dashed', 'solid';

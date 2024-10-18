@@ -1,31 +1,31 @@
 <script setup lang="ts">
 import { CdrPicture } from '../../../lib';
+import cedarSm from '../../../dev/static/cedar-1920x1080.jpg';
+import cedarXs from '../../../dev/static/cedar-350x150.jpg';
+import testImage from '../../../dev/static/test-image.png';
 
 const sourceObj = {
   xs: {
     media: '(max-width: 768px)',
-    srcset: '/src/dev/static/cedar-350x150.jpg',
+    srcset: cedarXs,
     width: '300',
   },
   sm: {
     media: '(min-width: 768px)',
-    srcset: '/src/dev/static/cedar-1920x1080.jpg',
-  }
-}
+    srcset: cedarSm,
+  },
+};
 </script>
-
-
 
 <template>
   <div>
     <h2>picture</h2>
-    <cdr-picture 
-      src="/src/dev/static/test-image.png"
+    <cdr-picture
+      :src="testImage"
       loading="eager"
       :sources="sourceObj"
     />
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
