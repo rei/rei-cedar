@@ -1,0 +1,19 @@
+name: GitHub Pages
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+      - name: Install and Build 🔧
+        run: |
+          npm ci
+          npm run pages
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: pages
+          clean: true

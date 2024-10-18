@@ -50,3 +50,5 @@ src/**/styles/themes/*
 
 src/**/package-lock\.json
 unmigrated/
+
+pages

@@ -1,5 +1,6 @@
 <script>
 import * as Components from 'srcdir/lib';
+import testImage from '../../../dev/static/test-image.png';
 
 export default {
   name: 'Skeleton',
@@ -9,6 +10,7 @@ export default {
   data() {
     return {
       motionToggle: true,
+      testImage,
     };
   },
 };
@@ -49,7 +51,7 @@ export default {
       <CdrSkeletonBone type="square" />
     </CdrSkeleton>
     <h3>custom</h3>
-    <hr style="margin: 6.4rem 0">
+    <hr style="margin: 6.4rem 0" />
     <h2>Loading example</h2>
     <h3>Card example</h3>
     <CdrSkeleton :loaded="onLoad">
@@ -73,7 +75,7 @@ export default {
           <div>
             <cdr-img
               alt="card test image"
-              src="/src/dev/static/test-image.png"
+              :src="testImage"
               modifier="responsive"
             />
           </div>
@@ -82,18 +84,14 @@ export default {
               class="cdr-card__link"
               href="#foo"
             >
-              <h2>
-                Complex Card Title
-              </h2>
+              <h2>Complex Card Title</h2>
             </cdr-link>
             <cdr-rating
               rating="4.2"
               count="12"
               size="small"
             />
-            <cdr-text class="cdr-text-dev--body-300">
-              Card content
-            </cdr-text>
+            <cdr-text class="cdr-text-dev--body-300">Card content</cdr-text>
           </div>
         </section>
       </cdr-card>
@@ -102,18 +100,18 @@ export default {
 </template>
 
 <style lang="scss">
-  .custom {
-    inline-size: 50rem;
-    block-size: 35rem;
-    border-radius: 999;
-  }
-  .skeleton-card {
-    max-width: 250px;
-    width: 250px;
-    &--body {
-      * {
-        margin-bottom: 0.5rem;
-      }
+.custom {
+  inline-size: 50rem;
+  block-size: 35rem;
+  border-radius: 999;
+}
+.skeleton-card {
+  max-width: 250px;
+  width: 250px;
+  &--body {
+    * {
+      margin-bottom: 0.5rem;
     }
+  }
 }
 </style>
