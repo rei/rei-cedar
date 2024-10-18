@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import config from './vite.config';
 
 export default defineConfig({
+  base: '/rei-cedar/',
   css: config.css,
   resolve: config.resolve,
   plugins: [vue()],

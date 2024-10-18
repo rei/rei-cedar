@@ -4,7 +4,7 @@ permissions:
   contents: write
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: node:20
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
