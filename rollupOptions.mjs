@@ -3,9 +3,10 @@ import browserTargets from './browserTargets.mjs';
 
 export default {
   // Externalize peerDependencies
-  external: (id) => ['vue', 'core-js', 'tabbable'].some(
-    (dep) => dep === id || id.startsWith(`${dep}/`),
-  ),
+  external: (id) =>
+    ['vue', 'core-js', '@rei/cdr-tokens', 'tabbable'].some(
+      (dep) => dep === id || id.startsWith(`${dep}/`),
+    ),
   output: {
     globals: {
       vue: 'Vue',

@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "15.2.0",
+  "version": "15.2.1",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -13,12 +13,12 @@
   },
   "author": "REI Software Engineering",
   "main": "./dist/cedar.umd.js",
-  "module": "./dist/src/lib.mjs",
+  "module": "./dist/lib.mjs",
   "types": "./dist/lib.d.ts",
   "exports": {
     ".": {
       "types": "./dist/lib.d.ts",
-      "import": "./dist/src/lib.mjs",
+      "import": "./dist/lib.mjs",
       "require": "./dist/cedar.umd.js"
     },
     "./dist/": "./dist/"
