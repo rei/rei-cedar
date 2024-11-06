@@ -1,4 +1,5 @@
 @import './vars/CdrLayout.vars.scss';
+@import '../../../styles/settings/fluid.vars.scss';
 
 .cdr-layout {
   @include cdr-layout-base-mixin();

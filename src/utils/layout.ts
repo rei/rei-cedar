@@ -15,6 +15,8 @@ export function getStructureStyles({
   structure: Structure;
   breakpoint?: Breakpoint;
 }) {
+  console.log(JSON.parse(JSON.stringify(props)));
+  
   // This will be assigned a StructureOption.
   // If breakpoint is passed then get the deep value, otherwise use top-level value.
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -4,7 +4,7 @@ import mapClasses from '../../utils/mapClasses';
 import { getStructureStyles } from '../../utils/layout';
 import type { Layout, NameValuePair } from '../../types/interfaces';
 import type { Structure } from '../../types/other';
-import CdrSurface from '../../components/surface/CdrSurface.vue';
+import { modifyClassName } from '../../utils/buildClass';
 
 /** Foundational container for creating structured layouts */
 
@@ -12,9 +12,12 @@ defineOptions({ name: 'CdrLayout' });
 
 const props = withDefaults(defineProps<Layout>(), {
   gap: 'zero',
+  rowGap: 'zero',
+  columnGap: 'zero',
   columns: undefined,
   rows: undefined,
-  as: CdrSurface,
+  as: 'div',
+  queryType: 'container',
 });
 
 const style = useCssModule();
@@ -24,16 +27,26 @@ const rootProps = computed(() => {
   const classes = [baseClass];
   const inlineStyles: NameValuePair = {};
 
-  // Add gap for all grid cells
-  if (props.gap) {
-    classes.push(`${baseClass}--gap-${props.gap}`);
+  // Add gap for entire grid
+  if (props.gap !== 'zero') {
+    classes.push(modifyClassName(baseClass, `gap-${props.gap}`));
+  }
+
+  // Add gap for columns
+  if (props.columnGap !== 'zero') {
+    classes.push(modifyClassName(baseClass, `column-gap-${props.columnGap}`));
+  }
+
+  // Add gap for rows
+  if (props.rowGap !== 'zero') {
+    classes.push(modifyClassName(baseClass, `row-gap-${props.rowGap}`));
   }
 
   // Add grid-auto-flow
   if (props.flow) {
-    classes.push(`${baseClass}--flow-${props.flow}`);
+    classes.push(modifyClassName(baseClass, `flow-${props.flow}`));
   }
-
+Why is string not being added?
   // Add grid templates for columns and rows
   (['rows', 'columns'] as Structure[]).forEach((structure) => {
     if (!props[structure]) {
@@ -41,11 +54,12 @@ const rootProps = computed(() => {
     }
 
     // Add class for applying inline grid styles for rows or columns
-    classes.push(`${baseClass}--${structure}`);
+    classes.push(modifyClassName(baseClass, structure));
 
     // Add responsive styles if it is the type StructureObject
     if (typeof props[structure] === 'object' && !Array.isArray(props[structure])) {
-      classes.push(`${baseClass}--${structure}-responsive`);
+      const querySuffix = props.queryType === 'container' ? 'cq' : 'mq';
+      classes.push(modifyClassName(baseClass, `${structure}-${querySuffix}`));
     }
 
     // Add inline styles that will be picked up by classes

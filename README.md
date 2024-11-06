@@ -1,7 +1,7 @@
 # REI Cedar Style Framework!
+
 [![codecov](https://codecov.io/gh/rei/rei-cedar/branch/master/graph/badge.svg)](https://codecov.io/gh/rei/rei-cedar)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
 
 Welcome to REI's style framework! The overall goals of this project are to provide a common scaffolding for UI elements,
 and a set of themes that build on this scaffolding. We started this project in 2015 as a fork of
@@ -57,8 +57,13 @@ Publishes package to npm with a prerelease tag. You must increment the component
 
 ## Commits
 
-This project is Commitizen friendly.  To install: `npm install -g commitizen`
+This project is Commitizen friendly. To install: `npm install -g commitizen`
 When creating a pull request run `git cz` rather than `git commit` and follow the prompts.
 
 This projects Changelogs are generated.
+
 - Generate the Changelog: `npm run changelog`
+
+## Developer demo
+
+The main documentation site for Cedar is our separate [Cedar docs](https://cedar.rei.com) website. With that in mind, we also have a playground for developing components and sharing ideas with others and within our team. The Cedar team produces this *developer demo* through GitHub Pages that can be accessed at [https://rei.github.io/rei-cedar/](https://rei.github.io/rei-cedar/), but we do not guarantee it will always be up to date or be an accurate representation of the Cedar library.

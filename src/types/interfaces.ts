@@ -2,6 +2,7 @@ import type { Component } from 'vue';
 import type {
   Tag,
   Space,
+  SpaceOption,
   Shadow,
   Radius,
   BorderColor,
@@ -13,6 +14,7 @@ import type {
   StatusType,
   Flow,
   StructureOption,
+  QueryType,
 } from './other';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -159,6 +161,56 @@ export interface baseTextProps extends HtmlAttributes {
 }
 
 /**
+ * Foundational container for creating structured layouts
+ * @interface Layout
+ * @extends HtmlAttributes
+ */
+export interface Layout extends HtmlAttributes {
+  /**
+   * Determines if the layout is in horizontal or vertical mode.
+   * @demoSelectMultiple false
+   * @values container, media
+   */
+  queryType?: QueryType;
+  /**
+   * Determines if the layout is in horizontal or vertical mode.
+   * @demoSelectMultiple false
+   * @values row, column
+   */
+  flow?: Flow;
+  /**
+   * Determines the number of columns at various breakpoints
+   */
+  columns?: StructureOption;
+  /**
+   * Determines the number of rows at various breakpoints
+   */
+  rows?: StructureOption;
+  /**
+   * Specifies a gap based on the token options within Cedar.
+   * @demoSelectMultiple false
+   * @values zero, one-x, two-x, scale-4, scale-3--5
+   */
+  gap?: SpaceOption;
+  /**
+   * Specifies a row gap based on the token options within Cedar.
+   * @demoSelectMultiple false
+   * @values zero, one-x, two-x, scale-4, scale-3--5
+   */
+  rowGap?: SpaceOption;
+  /**
+   * Specifies a column gap based on the token options within Cedar.
+   * @demoSelectMultiple false
+   * @values zero, one-x, two-x, scale-4, scale-3--5
+   */
+  columnGap?: SpaceOption;
+  /**
+   * The component or HTML tag to render at the root level
+   */
+  as?: Component | string;
+}
+
+/**
  * surface contains the props used to create a surface
  * @interface surface
  * @extends HtmlAttributes
@@ -235,11 +287,6 @@ export interface surfaceSelection extends HtmlAttributes {
    */
   modifier?: Modifier;
   /**
-   * Determines if the layout is in horizontal or vertical mode.
-   * @values horizontal, vertical
-   */
-  orientation?: Orientation;
-  /**
    * Determines the role of the button. Typically, this will either be `radio` or `checkbox`.
    */
   role?: string;
@@ -252,14 +299,11 @@ export interface surfaceSelection extends HtmlAttributes {
    * Determines which HTML tag to use.
    */
   tag?: Tag;
-}
-
-export interface surfaceSelectionLayout extends HtmlAttributes {
   /**
-   * Determines if the layout is in horizontal or vertical mode.
+   * Layout props that will be merged with a set of defaults.
    * @values horizontal, vertical
    */
-  orientation?: Orientation;
+  layout: Layout;
 }
 
 export interface fulfillmentTileContent extends HtmlAttributes {
@@ -282,29 +326,3 @@ export interface fulfillmentTileIcon extends HtmlAttributes {
   type?: StatusType;
 }
 
-export interface Layout extends HtmlAttributes {
-  /**
-   * Determines if the layout is in horizontal or vertical mode.
-   * @demoSelectMultiple false
-   * @values row, column
-   */
-  flow?: Flow;
-  /**
-   * Determines the number of columns at various breakpoints
-   */
-  columns?: StructureOption;
-  /**
-   * Determines the number of rows at various breakpoints
-   */
-  rows?: StructureOption;
-  /**
-   * Specifies a border width based on the token options within Cedar.
-   * @demoSelectMultiple false
-   * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x, three-eighth-x, half-x, three-quarter-x, one-x, one-and-a-half-x, two-x, three-x, four-x
-   */
-  gap?: Space;
-  /**
-   * The component or HTML tag to render at the root level
-   */
-  as?: Component | string;
-}

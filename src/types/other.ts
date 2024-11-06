@@ -25,6 +25,8 @@ export type SpaceFluid =
   | 'scale-8';
 export type SpaceScale = 'scale-0--1' | 'scale-3--4' | 'scale-3--5';
 export type Space = SpaceFixed | SpaceFluid | SpaceScale;
+export type SpaceObject = { [key in Breakpoint]: Space };
+export type SpaceOption = Space | SpaceObject;
 export type Shadow = 'flat' | 'raised' | 'elevated' | 'floating' | 'lifted';
 export type Background = 'primary' | 'secondary' | 'brand-spruce' | 'sale';
 export type Radius = 'sharp' | 'soft' | 'softer' | 'softest' | 'round';
@@ -41,3 +43,4 @@ export type StructureValue = number | string;
 export type StructureArray = StructureValue[];
 export type StructureObject = { [key in Breakpoint]: StructureValue | StructureArray };
 export type StructureOption = StructureValue | StructureArray | StructureObject;
+export type QueryType = 'container' | 'media';

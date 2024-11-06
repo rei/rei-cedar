@@ -27,12 +27,13 @@ const examples = computed(
         loading: loading.value,
         role: 'checkbox',
         class: 'example__wide',
+        layout: { columns: ['auto', 1] },
       },
       {
         checked: false,
         loading: loading.value,
         role: 'checkbox',
-        orientation: 'vertical',
+        layout: { flow: 'row' },
       },
     ],
 );
@@ -64,12 +65,12 @@ const examples = computed(
         <template #loading>...</template>
       </CdrSurfaceSelection>
       <CdrSurfaceSelection v-bind="examples[5]">
-        <div>Auto</div>
-        <div>Auto</div>
+        <div>auto</div>
+        <div>auto</div>
       </CdrSurfaceSelection>
       <CdrSurfaceSelection v-bind="examples[6]">
-        <div>Auto</div>
-        <div class="example__100">100%</div>
+        <div>auto</div>
+        <div class="example__remaining">1fr</div>
       </CdrSurfaceSelection>
       <CdrSurfaceSelection v-bind="examples[7]">
         <div>orientation</div>
@@ -107,11 +108,10 @@ const examples = computed(
   }
 
   &__wide {
-    width: 200px;
+    width: 300px;
   }
 
-  &__100 {
-    width: 100%;
+  &__remaining {
     background: black;
     color: white;
     text-align: center;

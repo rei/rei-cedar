@@ -33,7 +33,7 @@ $fulfillment-tile-border-colors: $surface-selection-border-colors;
 
   &__layout {
     height: 100%;
-    justify-content: flex-end;
+    align-content: end;
   }
 
   &__loading {

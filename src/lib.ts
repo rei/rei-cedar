@@ -17,7 +17,6 @@ export { default as CdrFulfillmentTile } from './components/fulfillmentTile/CdrF
 export { default as CdrFulfillmentTileContent } from './components/fulfillmentTile/CdrFulfillmentTileContent.vue';
 export { default as CdrFulfillmentTileHeader } from './components/fulfillmentTile/CdrFulfillmentTileHeader.vue';
 export { default as CdrFulfillmentTileIcon } from './components/fulfillmentTile/CdrFulfillmentTileIcon.vue';
-export { default as CdrFulfillmentTileLayout } from './components/fulfillmentTile/CdrFulfillmentTileLayout.vue';
 export { default as CdrGrid } from './components/grid/CdrGrid.vue';
 export { default as CdrIcon } from './components/icon/CdrIcon.vue';
 export { default as CdrImg } from './components/image/CdrImg.vue';
@@ -41,7 +40,6 @@ export { default as CdrSkeletonBone } from './components/skeleton/CdrSkeletonBon
 export { default as CdrSplitSurface } from './components/splitSurface/CdrSplitSurface.vue';
 export { default as CdrSurface } from './components/surface/CdrSurface.vue';
 export { default as CdrSurfaceSelection } from './components/surfaceSelection/CdrSurfaceSelection.vue';
-export { default as CdrSurfaceSelectionLayout } from './components/surfaceSelection/CdrSurfaceSelectionLayout.vue';
 export { default as CdrTable } from './components/table/CdrTable.vue';
 export { default as CdrTabPanel } from './components/tabs/CdrTabPanel.vue';
 export { default as CdrTabs } from './components/tabs/CdrTabs.vue';

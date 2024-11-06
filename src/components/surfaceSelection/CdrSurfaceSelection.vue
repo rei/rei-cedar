@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
+import merge from 'lodash/merge.js';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 import mapClasses from '../../utils/mapClasses';
 import { surfaceSelection } from '../../types/interfaces';
-import { getSurfaceSelectionProps } from '../../utils/surface';
-import CdrSurfaceSelectionLayout from './CdrSurfaceSelectionLayout.vue';
+import { getSurfaceSelectionProps, getDefaultLayout } from '../../utils/surface';
+import CdrLayout from '../layout/CdrLayout.vue';
 
 /** Base component for user selections that have a checked state */
 
@@ -19,7 +20,7 @@ const props = withDefaults(defineProps<surfaceSelection>(), {
   checked: false,
   disabled: false,
   loading: false,
-  orientation: 'horizontal',
+  layout: () => getDefaultLayout(),
 });
 
 const style = useCssModule();
@@ -30,6 +31,9 @@ const rootProps = computed(() => {
   const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);
   return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
+
+// Merge layout props
+const layoutProps = computed(() => merge(getDefaultLayout(), props.layout));
 </script>
 
 <template>
@@ -38,13 +42,13 @@ const rootProps = computed(() => {
     v-bind="rootProps"
   >
     <div :class="style['cdr-surface-selection__inner']">
-      <CdrSurfaceSelectionLayout
-        :orientation="orientation"
+      <CdrLayout
+        v-bind="layoutProps"
         :class="style['cdr-surface-selection__layout']"
       >
         <!-- @slot Where all default content should be placed. -->
         <slot />
-      </CdrSurfaceSelectionLayout>
+      </CdrLayout>
       <div :class="style['cdr-surface-selection__loading']">
         <!-- @slot This slot allows for custom loading content. -->
         <slot name="loading">

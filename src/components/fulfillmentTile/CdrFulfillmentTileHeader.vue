@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
-import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
-import { surfaceSelectionLayout } from '../../types/interfaces';
+import CdrLayout from '../layout/CdrLayout.vue';
+import { getDefaultLayout } from '../../utils/surface';
 
 /** Header component with icon slot for fulfillment tile */
 
@@ -11,16 +11,14 @@ defineOptions({ name: 'CdrFulfillmentTileHeader' });
 const style = useCssModule();
 const baseClass = 'cdr-fulfillment-tile-header';
 
-const rootProps = computed(
-  (): surfaceSelectionLayout => ({
-    orientation: 'horizontal',
-    class: { [style[baseClass]]: true },
-  }),
-);
+const rootProps = computed(() => getDefaultLayout({ columns: [1, 'auto'] }));
 </script>
 
 <template>
-  <CdrFulfillmentTileLayout v-bind="rootProps">
+  <CdrLayout
+    v-bind="rootProps"
+    :class="[style[baseClass]]"
+  >
     <span
       v-if="$slots['icon-left']"
       :class="style['cdr-fulfillment-tile-header__icon']"
@@ -44,7 +42,7 @@ const rootProps = computed(
       <!-- @slot Place an icon to the right of the header content -->
       <slot name="icon-right" />
     </span>
-  </CdrFulfillmentTileLayout>
+  </CdrLayout>
 </template>
 
 <style lang="scss" module src="./styles/CdrFulfillmentTileHeader.module.scss"></style>

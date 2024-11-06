@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
+import merge from 'lodash/merge.js';
 import mapClasses from '../../utils/mapClasses';
 import { surfaceSelection } from '../../types/interfaces';
-import { getSurfaceSelectionProps } from '../../utils/surface';
-import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
+import { getSurfaceSelectionProps, getDefaultLayout } from '../../utils/surface';
+import CdrLayout from '../layout/CdrLayout.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
 import CdrFulfillmentTileContent from './CdrFulfillmentTileContent.vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
@@ -20,7 +21,7 @@ const props = withDefaults(defineProps<surfaceSelection>(), {
   checked: false,
   disabled: false,
   loading: false,
-  orientation: 'vertical',
+  layout: () => getDefaultLayout({ flow: 'row' }),
 });
 
 const style = useCssModule();
@@ -28,9 +29,12 @@ const baseClass = 'cdr-fulfillment-tile';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);  
+  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);
   return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
+
+// Merge layout props
+const layoutProps = computed(() => merge(getDefaultLayout({ flow: 'row' }), props.layout));
 </script>
 
 <template>
@@ -60,8 +64,8 @@ const rootProps = computed(() => {
         </template>
       </CdrFulfillmentTileHeader>
       <div :class="style['cdr-fulfillment-tile__main']">
-        <CdrFulfillmentTileLayout
-          :orientation="orientation"
+        <CdrLayout
+          v-bind="layoutProps"
           :class="style['cdr-fulfillment-tile__layout']"
         >
           <template v-if="$slots['body']">
@@ -76,7 +80,7 @@ const rootProps = computed(() => {
               <slot name="footer" />
             </CdrFulfillmentTileContent>
           </template>
-        </CdrFulfillmentTileLayout>
+        </CdrLayout>
         <div :class="style['cdr-fulfillment-tile__loading']">
           <!-- @slot Custom content when component is loading. -->
           <slot name="loading">

@@ -13,7 +13,7 @@ $flows: row, column;
     &--#{$structure} {
       grid-template-#{$structure}: var(--cdr-#{$component}-#{$structure});
 
-      &-responsive {
+      &-mq {
         --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-xs);
 
         @include cdr-sm-mq-up {
@@ -28,6 +28,22 @@ $flows: row, column;
           --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-lg);
         }
       }
+
+      &-cq {
+        --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-xs);
+
+        @include cdr-sm-cq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-sm);
+        }
+
+        @include cdr-md-cq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-md);
+        }
+
+        @include cdr-lg-cq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-lg);
+        }
+      }
     }
   }
 }
@@ -35,7 +51,15 @@ $flows: row, column;
 @mixin cdr-layout-spacing-mixin() {
   @each $key, $value in $spacing {
     &--gap-#{$key} {
-      gap: $value;
+      gap: #{$value};
+    }
+
+    &--row-gap-#{$key} {
+      row-gap: #{$value};
+    }
+
+    &--column-gap-#{$key} {
+      column-gap: #{$value};
     }
   }
 }
