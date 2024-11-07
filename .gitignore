@@ -50,3 +50,6 @@ src/**/styles/themes/*
 
 src/**/package-lock\.json
 unmigrated/
+
+## Dev output for hosting
+pages
