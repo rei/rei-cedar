@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrCard > renders correctly 1`] = `
+<article
+  class="cdr-card"
+>
+  <!-- @slot CdrCard content -->
+  
+  
+</article>
+`;

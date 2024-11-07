@@ -1,0 +1,135 @@
+@mixin cdr-table-base-text-mixin() {
+  @include cdr-text-utility-sans-200;
+  //ITEM_DOC: Color of the cdr-table base text
+  color: var(--cdr-table-base-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+}
+
+@mixin cdr-table-base-mixin() {
+  @include cdr-table-base-text-mixin();
+
+  border: none;
+  border-collapse: collapse;
+
+  tr {
+    //ITEM_DOC: Background color of the table rows
+    background-color: var(--cdr-table-row-background-color, var(--cdr-color-background-table-row, #{$cdr-color-background-table-row}));
+  }
+
+  thead tr {
+    //ITEM_DOC: Background color of the table header
+    background-color: var(--cdr-table-header-background-color, var(--cdr-color-background-table-header, #{$cdr-color-background-table-header}));
+  }
+
+  th,
+  td {
+    //ITEM_DOC: Text color of the table cells
+    color: var(--cdr-table-text-cell-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    padding: $cdr-space-inset-one-x-squish;
+    text-align: left;
+  }
+
+  th {
+    @include cdr-text-utility-sans-strong-200;
+  }
+
+
+  caption {
+    @include cdr-text-utility-sans-strong-300;
+    text-align: left;
+    margin-bottom: $cdr-space-half-x;
+  }
+}
+
+@mixin cdr-table-small-mixin {
+  th, td {
+    padding: 0.4rem 1.6rem;
+  }
+}
+
+@mixin cdr-table-medium-mixin {
+  th, td {
+    padding: $cdr-space-inset-one-x-squish;
+  }
+}
+
+@mixin cdr-table-large-mixin {
+  th, td {
+    padding: $cdr-space-inset-one-x;
+  }
+}
+
+@mixin cdr-table-border-mixin() {
+  //ITEM_DOC: Default border color of the table
+  --table-border-default: 1px solid var(--cdr-table-border-color-default, var(--cdr-color-border-table-default, #{$cdr-color-border-table-default}));
+  //ITEM_DOC: Head border color of the table
+  --table-border-head: 1px solid var(--cdr-table-head-border-default, var(--cdr-color-border-table-head, #{$cdr-color-border-table-head}));
+
+  tr + tr > * {
+    border-top: var(--table-border-default);
+  }
+
+  thead {
+    tr + tr > * {
+      border-top: var(--table-border-head);
+    }
+  }
+
+  tbody, tfoot {
+    tr + tr > * {
+      border-top: var(--table-border-default);
+    }
+  }
+
+  thead + tbody,
+  tbody + tfoot {
+    border-top: var(--table-border-default);
+  }
+}
+
+@mixin cdr-table-striped-mixin() {
+  tr:nth-child(odd) {
+   //ITEM_DOC: Background color of all odd rows in the table
+   background-color: var(--cdr-table-odd-row-background-color, var(--cdr-color-background-table-row-alt, #{$cdr-color-background-table-row-alt}));
+  }
+
+  thead {
+    & + tbody tr {
+      &:nth-child(even) {
+        //ITEM_DOC: Background color of odd rows in the table header
+        background-color: var(--cdr-table-header-odd-row-background-color, var(--cdr-color-background-table-row, #{$cdr-color-background-table-row}));
+      }
+
+      &:nth-child(odd) {
+        //ITEM_DOC: Background color of the odd rows in striped tables
+        background-color: var(--cdr-table-striped-odd-row-background-color, var(--cdr-color-background-table-row, #{$cdr-color-background-table-row}));
+      }
+    }
+  }
+
+  tbody,
+  tfoot {
+    tr {
+      &:nth-child(odd) {
+        //ITEM_DOC: Background color of odd rows in the table body and footer
+        background-color: var(--cdr-table-body-footer-odd-row-background-color, var(--cdr-color-background-table-row-alt, #{$cdr-color-background-table-row-alt}));
+      }
+    }
+  }
+}
+
+@mixin cdr-table-full-width-mixin() {
+  width: 100%;
+}
+
+@mixin cdr-table-responsive-mixin {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+@mixin cdr-table-hover-mixin {
+  tr:hover > * {
+    //ITEM_DOC: Background color of table cells on hover
+    background-color: var(--cdr-table-cell-background-color-hover, var(--cdr-color-background-table-header, #{$cdr-color-background-table-header}));
+  }
+}

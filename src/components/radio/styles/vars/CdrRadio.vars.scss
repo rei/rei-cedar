@@ -1,0 +1,92 @@
+@mixin cdr-form-figure-radio-base-mixin() {
+  border-radius: 100%;
+  &::after {
+    content: '';
+    position: absolute;
+    width: calc(#{$cdr-form-figure-size-medium} / 4);
+    height: calc(#{$cdr-form-figure-size-medium} / 4);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: $cdr-radius-round;
+  }
+}
+
+@mixin cdr-form-figure-radio-checked-mixin() {
+  //ITEM_DOC: Box-shadow color of cdr-radio when selected
+  box-shadow: inset 0 0 0 1px var(--cdr-radio-box-shadow-color-selected, var(--cdr-color-border-input-default-selected, #{$cdr-color-border-input-default-selected}));
+  
+  //ITEM_DOC: Background color of cdr-radio when selected
+  background-color: var(--cdr-radio-background-color-selected, var(--cdr-color-background-input-default-selected, #{$cdr-color-background-input-default-selected}));
+  
+  &::after {
+    //ITEM_DOC: Background color of the inner circle of cdr-radio when selected
+    background-color: var(--cdr-radio-inner-circle-background-color-selected, var(--cdr-color-icon-checkbox-default-selected, #{$cdr-color-icon-checkbox-default-selected}));
+  }
+}
+
+@mixin cdr-form-figure-radio-hover-mixin() {
+  cursor: pointer;
+  //ITEM_DOC: Box-shadow color of cdr-radio on hover
+  box-shadow: inset 0 0 0 1px var(--cdr-radio-box-shadow-color-hover, var(--cdr-color-border-input-default-hover, #{$cdr-color-border-input-default-hover})), 0 0 0 1px var(--cdr-radio-box-shadow-color-hover, var(--cdr-color-border-input-default-hover, #{$cdr-color-border-input-default-hover}));
+
+  //ITEM_DOC: Background color of cdr-radio on hover
+  background-color: var(--cdr-radio-background-color-hover, var(--cdr-color-background-input-default-hover, #{$cdr-color-background-input-default-hover}));
+}
+
+@mixin cdr-form-figure-radio-checked-hover-mixin() {
+  //ITEM_DOC: Box-shadow color of cdr-radio when selected on hover
+  box-shadow: inset 0 0 0 1px var(--cdr-radio-box-shadow-color-selected-hover, var(--cdr-color-border-input-default-selected-hover, #{$cdr-color-border-input-default-selected-hover})), 0 0 0 1px var(--cdr-radio-box-shadow-color-selected-hover, var(--cdr-color-border-input-default-selected-hover, #{$cdr-color-border-input-default-selected-hover}));
+  
+  //ITEM_DOC: Background color of cdr-radio when selected on hover
+  background-color: var(--cdr-radio-background-color-selected-hover, var(--cdr-color-background-input-default-selected-hover, #{$cdr-color-background-input-default-selected-hover}));
+}
+
+@mixin cdr-form-figure-radio-disabled-mixin() {
+  cursor: not-allowed !important;
+
+  //ITEM_DOC: Box-shadow color of cdr-radio when disabled
+  box-shadow: inset 0 0 0 1px var(--cdr-radio-box-shadow-color-disabled, var(--cdr-color-border-input-default-disabled, #{$cdr-color-border-input-default-disabled})) !important;
+  
+  //ITEM_DOC: Background color of cdr-radio when disabled
+  background-color: var(--cdr-radio-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled})) !important;
+  
+  &:after {
+    //ITEM_DOC: Background color of the inner circle of cdr-radio when disabled
+    background-color: var(--cdr-radio-inner-circle-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled})) !important;
+  }
+
+}
+
+@mixin cdr-form-figure-radio-checked-disabled-mixin() {
+  &::after {
+    //ITEM_DOC: Background color of the inner circle of cdr-radio when selected and disabled
+    background-color: var(--cdr-radio-inner-circle-background-color-selected-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled})) !important;
+  }
+}
+
+@mixin cdr-form-figure-radio-focus-mixin() {
+  //ITEM_DOC: Box-shadow color of cdr-radio on focus
+  box-shadow: inset 0 0 0 1px var(--cdr-radio-box-shadow-color-focus, var(--cdr-color-border-input-default-active, #{$cdr-color-border-input-default-active})), 0 0 0 1px var(--cdr-radio-box-shadow-color-focus, var(--cdr-color-border-input-default-active, #{$cdr-color-border-input-default-active}));
+  
+  //ITEM_DOC: Background color of cdr-radio on focus
+  background-color: var(--cdr-radio-background-color-focus, var(--cdr-color-background-input-default-focus, #{$cdr-color-background-input-default-focus}));
+}
+
+@mixin cdr-form-figure-radio-checked-focus-mixin() {
+  //ITEM_DOC: Background color of cdr-radio when selected on focus
+  background-color: var(--cdr-radio-background-color-selected-focus, var(--cdr-color-background-input-default-selected-focus, #{$cdr-color-background-input-default-selected-focus}));
+}
+
+@mixin cdr-form-figure-radio-active-mixin() {
+  //ITEM_DOC: Box-shadow color of cdr-radio when active
+  box-shadow: inset 0 0 0 1px var(--cdr-radio-box-shadow-color-active, var(--cdr-color-border-input-default-active, #{$cdr-color-border-input-default-active})), 0 0 0 1px var(--cdr-radio-box-shadow-color-active, var(--cdr-color-border-input-default-active, #{$cdr-color-border-input-default-active}));
+
+  //ITEM_DOC: Background color of cdr-radio when active
+  background-color: var(--cdr-radio-background-color-active, var(--cdr-color-background-input-default-active, #{$cdr-color-background-input-default-active}));
+  
+  &::after {
+    //ITEM_DOC: Background color of the inner circle of cdr-radio when selected and active
+    background-color: var(--cdr-radio-inner-circle-background-color-selected-active, var(--cdr-color-icon-checkbox-default-selected-active, #{$cdr-color-icon-checkbox-default-selected-active}));
+  }
+}

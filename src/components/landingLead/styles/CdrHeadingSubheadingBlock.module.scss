@@ -1,0 +1,16 @@
+@import '../../../styles/settings/index.scss';
+@import '../../text/presets/styles/CdrHeadingDisplay.module.scss';
+@import '../../text/presets/styles/CdrSubheadingSans.module.scss';
+
+.cdr-heading-subheading-block {
+  &__heading {
+    display: block;
+    margin: 0 0 $cdr-space-one-x 0;
+    max-width: 40ch;
+  }
+  &__subheading {
+    display: block;
+    margin-top: $cdr-space-three-quarter-x!important;
+    max-width: 60ch;
+  }
+}

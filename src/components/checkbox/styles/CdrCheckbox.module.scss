@@ -1,0 +1,149 @@
+@import '../../../styles/settings/index.scss';
+@import './vars/CdrCheckbox.vars.scss';
+@import '../../labelWrapper/styles/CdrLabelWrapper.module.scss';
+
+.cdr-checkbox {
+  &__svg-box {
+    position: relative;
+    right: 2.8rem;
+    top: 2rem;
+    svg {
+      fill: transparent;
+      position: absolute;
+      top: -1.7rem;
+      left: 0.35rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      z-index: 1;
+    }
+  }
+  /* Checked
+  ========== */
+  &__input:checked {
+    & ~ .cdr-label-wrapper__figure {
+      @include cdr-form-figure-checkbox-checked-mixin;
+    }
+    & ~ .cdr-checkbox__svg-box {
+      svg {
+        //ITEM_DOC: Fill color of the checkbox check icon when checked
+        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected, #{$cdr-color-icon-checkbox-default-selected}));
+      }
+    }
+  } 
+
+  //cdr-checkbox__svg-box
+  &__input[indeterminate] ~ .cdr-label-wrapper__figure {
+    box-shadow: inset 0 0 0 1px $cdr-color-border-input-default-selected;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 2px;
+      background-color: $cdr-color-background-input-default-selected;
+      border-radius: $cdr-radius-soft;
+    }
+  }
+  
+  &:hover {
+    .cdr-label-wrapper__figure {
+      @include cdr-form-figure-checkbox-hover-mixin;
+    }
+
+    .cdr-checkbox__input {
+      /* Hover + Checked
+      ========== */
+      &:checked ~ .cdr-label-wrapper__figure {
+        @include cdr-form-figure-checkbox-checked-hover-mixin;
+      }
+
+      &:checked ~ .cdr-checkbox__svg-box svg {
+        //ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
+        fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover, #{$cdr-color-icon-checkbox-default-selected-hover}));
+      }
+
+      /* Hover + Indeterminate
+      ========== */
+      &[indeterminate] ~ .cdr-label-wrapper__figure {
+        box-shadow: inset 0 0 0 2px $cdr-color-border-input-default-selected-hover;
+        &::after {
+          background-color: $cdr-color-icon-checkbox-default-selected-hover;
+        }
+      }
+    }
+  }
+
+  /* Disabled
+  ========== */
+  &__input:disabled {
+
+    & ~ .cdr-label-wrapper__figure {
+      @include cdr-form-figure-checkbox-disabled-mixin;
+    }
+    & ~ .cdr-checkbox__svg-box {
+      svg {
+        fill: transparent !important;
+      }
+    }
+    /* Disabled + Checked
+    ========== */
+    &:checked {
+      & ~ .cdr-label-wrapper__figure {
+        @include cdr-form-figure-checkbox-checked-disabled-mixin;
+      }
+    }
+
+    /* Disabled + Active
+    ========== */
+    &:active {
+      & ~ .cdr-checkbox__svg-box {
+        svg {
+          fill: transparent;
+        }
+      }
+    }
+
+    /* Disabled + Indeterminate
+    ========== */
+    &[indeterminate] {
+      & ~ .cdr-label-wrapper__figure {
+        box-shadow: inset 0 0 0 1px $cdr-color-border-input-default-disabled !important;
+
+        &::after {
+          background-color: $cdr-color-background-input-default-disabled !important;
+        }
+      }
+    }
+  }
+
+  /* Active
+  ========== */
+  &:active {
+    .cdr-label-wrapper__figure, .cdr-checkbox__input:checked ~ .cdr-label-wrapper__figure  {
+      @include cdr-form-figure-checkbox-active-mixin;
+    }
+
+   .cdr-checkbox__svg-box {
+      svg {
+        //ITEM_DOC: Fill color of the checkbox check icon when active
+        fill: var(--cdr-form-figure-checkbox-fill-active , var(--cdr-color-icon-checkbox-default-selected-active))
+      }
+    }
+    .cdr-checkbox__input[indeterminate] ~ .cdr-label-wrapper__figure::after {
+      content: none;
+    }
+  }
+
+  /* Focus
+  ========== */
+  &__input:focus ~ .cdr-label-wrapper__figure {
+    @include cdr-form-figure-checkbox-focus-mixin;
+  }
+
+  &__input:focus:checked ~ .cdr-label-wrapper__figure {
+    @include cdr-form-figure-checkbox-checked-focus-mixin;
+  }
+}

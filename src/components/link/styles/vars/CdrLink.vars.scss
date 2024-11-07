@@ -1,0 +1,60 @@
+@mixin cdr-link-base-mixin() {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  //ITEM_DOC: Color of the link text
+  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
+  //ITEM_DOC: Color of the link fill
+  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
+  cursor: pointer;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+  text-decoration: underline;
+  vertical-align: top;
+
+  &:active,
+  &:focus {
+    //ITEM_DOC: Color of the link text when active or focused
+    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active, #{$cdr-color-text-link-active}));
+  }
+
+  &:hover {
+    //ITEM_DOC: Color of the link text when hovered
+    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover}));
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: $default-outline;
+    outline-color: -webkit-focus-ring-color;
+    outline-offset: 0;
+  }
+}
+
+@mixin cdr-link-inherit-color-mixin() {
+  fill: inherit;
+  color: inherit;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: inherit;
+    fill: inherit;
+  }
+}
+
+@mixin cdr-link-standalone-mixin() {
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    text-decoration: underline;
+  }
+}

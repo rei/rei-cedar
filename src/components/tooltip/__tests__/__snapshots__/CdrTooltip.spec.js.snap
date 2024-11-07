@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrTooltip > default component settings > matches snapshot 1`] = `
+<div
+  class="cdr-tooltip--wrapper cdr-tooltip--position"
+>
+  <div>
+    <!-- @slot  Slot for the element that triggers the tooltip.
+        Element should be a button and must be the first and only child of this slot.
+        Event handlers are bound to this element automatically.-->
+    
+    <button
+      aria-describedby="tooltip-test"
+      id="tooltip-trigger"
+    />
+    
+  </div>
+  <div
+    class="cdr-popup cdr-popup--closed"
+  >
+    <div
+      class="cdr-popup__content"
+      id="tooltip-test"
+      role="tooltip"
+    >
+      
+      <!-- @slot CdrTooltip content -->
+      
+      tooltip content
+      
+      
+    </div>
+    <div
+      class="cdr-popup__arrow"
+    />
+  </div>
+</div>
+`;

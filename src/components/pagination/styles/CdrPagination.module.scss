@@ -1,0 +1,125 @@
+@import '../../../styles/settings/index.scss';
+@import '../../icon/styles/CdrIcon.module.scss';
+@import '../../select/styles/CdrSelect.module.scss';
+
+.cdr-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+
+  &__li {
+    &--links {
+      display: none;
+
+      & + & {
+        margin-left: $cdr-space-quarter-x;
+      }
+    }
+
+    &--select {
+      display: block;
+    }
+  }
+
+  &__link {
+    @include cdr-text-utility-sans-300;
+
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    //ITEM_DOC: Text color of a cdr-pagination link
+    color: var(--cdr-pagination-link-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    //ITEM_DOC: Fill color of a cdr-pagination link
+    fill: var(--cdr-pagination-link-fill-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    display: block;
+    padding: $cdr-space-inset-three-quarter-x-squish;
+    text-decoration: none;
+    border-radius: $cdr-radius-softer;
+
+    &:hover,
+    &:focus,
+    &:active {
+      //ITEM_DOC: Background color of a cdr-pagination link on hover/focus/active
+      background-color: var(--cdr-pagination-link-background-color-interaction, var(--cdr-color-background-pagination-hover, #{$cdr-color-background-pagination-hover}));
+      cursor: pointer;
+    }
+
+    &--current {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 2px;
+        width: 80%;
+        //ITEM_DOC: Background color of the keyline for the current cdr-pagination link
+        background-color: var(--cdr-pagination-link-current-background-color-keyline, var(--cdr-color-background-pagination-keyline, #{$cdr-color-background-pagination-keyline}));
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+    }
+
+    &#{&}--disabled {
+      //ITEM_DOC: Text color of a disabled cdr-pagination link
+      color: var(--cdr-pagination-link-text-color-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
+      //ITEM_DOC: Fill color of a disabled cdr-pagination link
+      fill: var(--cdr-pagination-link-fill-color-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
+      cursor: not-allowed;
+
+      &:hover,
+      &:focus,
+      &:active {
+        //ITEM_DOC: Text color of a disabled cdr-pagination link on hover/focus/active
+        color: var(--cdr-pagination-link-text-color-interactive-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__ellipse {
+    display: block;
+    padding: $cdr-space-inset-three-quarter-x-squish;
+  }
+
+  &__prev {
+    display: flex;
+    align-items: center;
+    margin-right: $cdr-space-one-x;
+  }
+
+  &__next {
+    display: flex;
+    align-items: center;
+    margin-left: $cdr-space-one-x;
+  }
+
+  &__caret {
+    &--prev {
+      margin-right: $cdr-space-eighth-x;
+    }
+
+    &--next {
+      margin-left: $cdr-space-eighth-x;
+    }
+  }
+
+  /* Responsive */
+  @include cdr-sm-mq {
+    &__li--links {
+      display: block;
+    }
+
+    &__li--select {
+      display: none;
+    }
+  }
+}

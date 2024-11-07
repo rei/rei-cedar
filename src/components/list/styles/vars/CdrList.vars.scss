@@ -1,0 +1,82 @@
+@mixin cdr-list-base-mixin() {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  & > li + li {
+    margin-top: $cdr-space-half-x;
+  }
+}
+
+@mixin cdr-list-base-nested-mixin() {
+  margin-top: $cdr-space-half-x;
+  padding-left: 1em;
+  list-style-type: none;
+}
+
+@mixin cdr-list-compact-mixin() {
+  & > li + li {
+    margin-top: $cdr-space-quarter-x;
+  }
+}
+
+@mixin cdr-list-compact-nested-mixin() {
+  margin-top: $cdr-space-quarter-x;
+}
+
+@mixin cdr-list-ordered-mixin() {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  list-style-position: outside;
+
+  & li {
+    padding: 0 0 0 $cdr-space-quarter-x;
+  }
+}
+
+@mixin cdr-list-ordered-nested-mixin() {
+  position: relative;
+  padding-left: 1em;
+
+  & > li {
+    padding-left: 0;
+
+    &::before {
+      content: '\2013';
+      position: absolute;
+      //ITEM_DOC: Color of the nested ordered cdr-list item prefix
+      color: var(--cdr-list-ordered-nested-prefix-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
+      left: 0;
+    }
+  }
+}
+
+@mixin cdr-list-unordered-mixin() {
+  position: relative;
+  padding-left: 1em;
+
+  & > li::before {
+    content: '\2022';
+    position: relative;
+    margin-left: -1em;
+    padding-right: $cdr-space-half-x;
+    //ITEM_DOC: Color of the unordered cdr-list item prefix
+    color: var(--cdr-list-unordered-prefix-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
+  }
+}
+
+@mixin cdr-list-unordered-nested-mixin() {
+  position: relative;
+  padding-left: 1em;
+
+  & > li {
+    &::before {
+      content: '\2013';
+      position: relative;
+      margin-left: -1em;
+      padding-right: $cdr-space-half-x;
+      //ITEM_DOC: Color of the nested unordered cdr-list item prefix
+      color: var(--cdr-list-unordered-nested-prefix-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
+    }
+  }
+}

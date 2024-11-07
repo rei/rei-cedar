@@ -1,0 +1,14 @@
+# built files
+public/
+dist/
+dist-docs/
+backstop_data/
+
+node_modules/
+
+src/css/settings/brandai.pcss
+*.md
+*.js
+*.svg
+*.json
+*.bak

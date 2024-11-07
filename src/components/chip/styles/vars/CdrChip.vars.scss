@@ -1,0 +1,107 @@
+@mixin cdr-chip-base-mixin() {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  width: max-content;
+  padding: $cdr-space-half-x $cdr-space-three-quarter-x;
+  border-radius: 30px;
+  border: 0;
+
+  //ITEM_DOC: Text color of a cdr-chip
+  color: var(--cdr-chip-text-color, var(--cdr-color-text-chip-default, #{$cdr-color-text-chip-default}));
+  //ITEM_DOC: Fill color of a cdr-chip
+  fill: var(--cdr-chip-fill-color, var(--cdr-color-text-chip-default, #{$cdr-color-text-chip-default}));
+  //ITEM_DOC: Background color of a cdr-chip
+  background-color: var(--cdr-chip-background-color-rest, var(--cdr-color-background-chip-default-rest, #{$cdr-color-background-chip-default-rest}));
+  //ITEM_DOC: Box-shadow color of a cdr-chip
+  box-shadow: inset 0 0 0 1px var(--cdr-chip-box-shadow-color-rest, var(--cdr-color-border-chip-default-rest, #{$cdr-color-border-chip-default-rest}));
+
+  cursor: pointer;
+  font-family: $cdr-font-family-sans;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 400;
+  letter-spacing: -0.08px;
+  transition: color $cdr-duration-1-x $cdr-timing-function-ease, fill $cdr-duration-1-x $cdr-timing-function-ease, background-color $cdr-duration-1-x $cdr-timing-function-ease, box-shadow $cdr-duration-1-x $cdr-timing-function-ease;
+
+  &:disabled, &:disabled:hover, &:disabled:focus  {
+    cursor: not-allowed !important;
+    //ITEM_DOC: Background color of a cdr-chip when disabled
+    background-color: var(--cdr-chip-background-color-disabled, var(--cdr-color-background-chip-default-disabled, #{$cdr-color-background-chip-default-disabled})) !important;
+    //ITEM_DOC: Box-shadow color of a cdr-chip when disabled
+    box-shadow: inset 0 0 0 1px var(--cdr-chip-box-shadow-color-disabled, var(--cdr-color-border-chip-default-disabled, #{$cdr-color-border-chip-default-disabled})) !important;
+    //ITEM_DOC: Text color of a cdr-chip when disabled
+    color: var(--cdr-chip-text-color-disabled, var(--cdr-color-text-chip-disabled, #{$cdr-color-text-chip-disabled})) !important;
+  }
+
+  &:hover {
+    //ITEM_DOC: Background color of a cdr-chip on hover
+    background-color: var(--cdr-chip-background-color-hover, var(--cdr-color-background-chip-default-hover, #{$cdr-color-background-chip-default-hover}));
+    //ITEM_DOC: Box-shadow color of a cdr-chip on hover
+    box-shadow: inset 0 0 0 2px var(--cdr-chip-box-shadow-color-hover, var(--cdr-color-border-chip-default-hover, #{$cdr-color-border-chip-default-hover}));
+  }
+
+  &:focus {
+    outline: none;
+    outline-offset: 0;
+    //ITEM_DOC: Background color of a cdr-chip on focus
+    background-color: var(--cdr-chip-background-color-focus, var(--cdr-color-background-chip-default-focus, #{$cdr-color-background-chip-default-focus}));
+    //ITEM_DOC: Box-shadow color of a cdr-chip on focus
+    box-shadow: inset 0 0 0 3px var(--cdr-chip-box-shadow-color-focus, var(--cdr-color-border-chip-default-focus, #{$cdr-color-border-chip-default-focus})), $cdr-prominence-raised;
+  }
+
+  &:active {
+    //ITEM_DOC: Background color of a cdr-chip when active
+    background-color: var(--cdr-chip-background-color-active, var(--cdr-color-background-chip-default-active, #{$cdr-color-background-chip-default-active}));
+    //ITEM_DOC: Box-shadow color of a cdr-chip when active
+    box-shadow: inset 0 0 0 3px var(--cdr-chip-box-shadow-color-active, var(--cdr-color-border-chip-default-active, #{$cdr-color-border-chip-default-active})), $cdr-prominence-raised;
+  }
+
+  &[aria-pressed="true"], &[aria-checked="true"] {
+    font-weight: 500;
+    //ITEM_DOC: Background color of a cdr-chip when selected
+    background-color: var(--cdr-chip-background-color-selected-rest, var(--cdr-color-background-chip-default-selected, #{$cdr-color-background-chip-default-selected}));
+    //ITEM_DOC: Box-shadow color of a cdr-chip when selected
+    box-shadow: inset 0 0 0 2px var(--cdr-chip-box-shadow-color-selected-rest, var(--cdr-color-border-chip-default-selected-rest, #{$cdr-color-border-chip-default-selected-rest}));
+  }
+
+  &[aria-pressed="true"]:hover, &[aria-checked="true"]:hover {
+    //ITEM_DOC: Background color of a cdr-chip when selected and hovered
+    background-color: var(--cdr-chip-background-color-selected-hover, var(--cdr-color-background-chip-default-selected-hover, #{$cdr-color-background-chip-default-selected-hover}));
+    //ITEM_DOC: Box-shadow color of a cdr-chip when selected and hovered
+    box-shadow: inset 0 0 0 2px var(--cdr-chip-box-shadow-color-selected-hover, var(--cdr-color-border-chip-default-selected-hover, #{$cdr-color-border-chip-default-selected-hover}));
+  }
+
+  &[aria-pressed="true"]:focus, &[aria-checked="true"]:focus  {
+    //ITEM_DOC: Background color of a cdr-chip when selected and focused
+    background-color: var(--cdr-chip-background-color-selected-focus, var(--cdr-color-background-chip-default-selected-focus, #{$cdr-color-background-chip-default-selected-focus}));
+    //ITEM_DOC: Box-shadow color of a cdr-chip when selected and focused
+    box-shadow: inset 0 0 0 3px var(--cdr-chip-box-shadow-color-selected-focus, var(--cdr-color-border-chip-default-selected-focus, #{$cdr-color-border-chip-default-selected-focus})), $cdr-prominence-raised;
+  }
+
+  &[aria-pressed="true"]:active, &[aria-checked="true"]:active  {
+    //ITEM_DOC: Background color of a cdr-chip when selected and active
+    background-color: var(--cdr-chip-background-color-selected-active, var(--cdr-color-background-chip-default-selected-active, #{$cdr-color-background-chip-default-selected-active}));
+    //ITEM_DOC: Box-shadow color of a cdr-chip when selected and active
+    box-shadow: inset 0 0 0 3px var(--cdr-chip-box-shadow-color-selected-focus, var(--cdr-color-border-chip-default-selected-focus, #{$cdr-color-border-chip-default-selected-focus})), $cdr-prominence-raised;
+  }
+}
+
+@mixin cdr-chip-icon-left-mixin() {
+  position: absolute;
+  left: $cdr-space-half-x;
+}
+
+@mixin cdr-chip-icon-right-mixin() {
+  position: absolute;
+  right: $cdr-space-half-x;
+}
+
+
+@mixin cdr-chip-content-right-mixin() {
+  margin-left: $cdr-space-one-x;
+}
+
+@mixin cdr-chip-content-left-mixin() {
+  margin-right: $cdr-space-one-x;
+}

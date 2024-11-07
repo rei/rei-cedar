@@ -1,0 +1,1363 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrInput >  when error state is inactive > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="test"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > when "multiline" is set to true and the "rows" prop is set to 10 > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <textarea
+        class="cdr-input cdr-input--multiline cdr-input--primary"
+        id="renders"
+        multiline="true"
+        rows="10"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > when "type" is set to url > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        type="url"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with error prop set > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-describedby="renders-error"
+        aria-errormessage="renders-error"
+        aria-invalid="true"
+        autocomplete="off"
+        class="cdr-input cdr-input--error cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+      role="status"
+    >
+      <span
+        class="cdr-form-error__icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      
+      <span>
+        Something is wrong!
+      </span>
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with error prop set > renders correctly 2`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-describedby="renders-error"
+        aria-errormessage="renders-error"
+        aria-invalid="true"
+        autocomplete="off"
+        class="cdr-input cdr-input--error cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+      role="status"
+    >
+      <span
+        class="cdr-form-error__icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      
+      <span>
+        incorrect!
+      </span>
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with prop "numeric" set to true > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <span
+        aria-hidden="true"
+      >
+        *
+      </span>
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-required="true"
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with prop "type" set to "number" > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <span
+        aria-hidden="true"
+      >
+        *
+      </span>
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-required="true"
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        type="number"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with prop type of "number" > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        type="number"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with the "disabled" prop set to true > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label cdr-label-standalone__label--disabled"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        disabled=""
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with the "required" prop set to true > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <span
+        aria-hidden="true"
+      >
+        *
+      </span>
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-required="true"
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > basic input component > with the "rows" prop set to 2 > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <textarea
+        class="cdr-input cdr-input--multiline cdr-input--primary"
+        id="renders"
+        rows="2"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > components with attributes > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="test"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        autofocus=""
+        class="cdr-input cdr-input--primary"
+        id="test"
+        maxlength="20"
+        name="testName"
+        pizza="time"
+        placeholder="test placeholder"
+        readonly=""
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > when error is active and a helper-bottom-text slot has been passed > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-describedby="test-error"
+        aria-errormessage="test-error"
+        aria-invalid="true"
+        autocomplete="off"
+        class="cdr-input cdr-input--error cdr-input--primary"
+        id="test"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    <div
+      class="cdr-form-error"
+      id="test-error"
+      role="status"
+    >
+      <span
+        class="cdr-form-error__icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      
+      <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
+      
+      whoops
+      
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > when error state is active > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-describedby="test-error"
+        aria-errormessage="test-error"
+        aria-invalid="true"
+        autocomplete="off"
+        class="cdr-input cdr-input--error cdr-input--primary"
+        id="test"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    <div
+      class="cdr-form-error"
+      id="test-error"
+      role="status"
+    >
+      <span
+        class="cdr-form-error__icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      
+      <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
+      
+      whoops
+      
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > when multiple elements are present in post-icon slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--posticon cdr-input--posticons cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <span
+        class="cdr-input__post-icon"
+      >
+        <!-- @slot Icon after text within the input field -->
+        
+        <button
+          class="cdr-button cdr-button--primary cdr-button--medium"
+          type="button"
+        >
+          <!-- @slot Icon to the left of text content -->
+          
+          
+          <!-- @slot Icon for icon-only button -->
+          
+          
+          <!-- @slot Readable text of the button. Leave empty if icon-only -->
+          
+          
+          <!-- @slot Icon to the right of text content -->
+          
+          
+        </button>
+        <button
+          class="cdr-button cdr-button--primary cdr-button--medium"
+          type="button"
+        >
+          <!-- @slot Icon to the left of text content -->
+          
+          
+          <!-- @slot Icon for icon-only button -->
+          
+          
+          <!-- @slot Readable text of the button. Leave empty if icon-only -->
+          
+          
+          <!-- @slot Icon to the right of text content -->
+          
+          
+        </button>
+        
+      </span>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > with "helper-text-bottom" slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-describedby="renders-helper-text-bottom"
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    <span
+      class="cdr-input__helper-text"
+      id="renders-helper-text-bottom"
+    >
+      <!-- @slot Helper text below the input field -->
+      
+      very helpful
+      
+    </span>
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > with a post-icon slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--posticon cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <span
+        class="cdr-input__post-icon"
+      >
+        <!-- @slot Icon after text within the input field -->
+        
+        😎
+        
+      </span>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > with a pre-icon slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--preicon cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <span
+        class="cdr-input__pre-icon"
+      >
+        <!-- @slot Icon preceding text within the input field -->
+        
+        🤠
+        
+      </span>
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="aria-test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <br />
+    <span
+      class="cdr-label-standalone__helper"
+      id="aria-test-helper-text-top"
+    >
+      
+      <!-- @slot Helper text above the input field -->
+      
+      extremely helpful
+      
+      
+    </span>
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-describedby="aria-test-helper-text-top aria-test-helper-text-bottom"
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="aria-test"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    <span
+      class="cdr-input__helper-text"
+      id="aria-test-helper-text-bottom"
+    >
+      <!-- @slot Helper text below the input field -->
+      
+      very helpful
+      
+    </span>
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and aria-describedby set > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="aria-test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <br />
+    <span
+      class="cdr-label-standalone__helper"
+      id="aria-test-helper-text-top"
+    >
+      
+      <!-- @slot Helper text above the input field -->
+      
+      extremely helpful
+      
+      
+    </span>
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        aria-describedby="aria-test-helper-text-top aria-test-helper-text-bottom foo"
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="aria-test"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    <span
+      class="cdr-input__helper-text"
+      id="aria-test-helper-text-bottom"
+    >
+      <!-- @slot Helper text below the input field -->
+      
+      very helpful
+      
+    </span>
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrInput > with info action slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        class="cdr-input cdr-input--primary"
+        id="renders"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    <div
+      class="cdr-label-standalone__info-action"
+    >
+      
+      <!-- @slot Action-wrapped icon within the input field (precedes post-icon) -->
+      
+      🤠
+      
+      
+    </div>
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;

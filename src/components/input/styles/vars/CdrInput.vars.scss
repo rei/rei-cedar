@@ -1,0 +1,99 @@
+@mixin cdr-input-base-mixin() {
+  @include cdr-text-utility-sans-300;
+  font-weight: 500;
+  //ITEM_DOC: Text color of a cdr-input by default
+  color: var(--cdr-input-text-color-default, var(--cdr-color-text-input-default, #{$cdr-color-text-input-default}));
+  border: 0;
+  //ITEM_DOC: Background color of a cdr-input by default
+  background-color: var(--cdr-input-background-color-default, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
+  //ITEM_DOC: Box-shadow color of a cdr-input by default
+  box-shadow: inset 0 0 0 1px var(--cdr-input-box-shadow-default, var(--cdr-color-border-input-default, #{$cdr-color-border-input-default}));
+  border-radius: $cdr-radius-softer;
+  //ITEM_DOC: Fill color of an icon in a cdr-input
+  fill: var(--cdr-input-icon-fill, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
+  border-radius: $cdr-radius-softer;
+  padding: $cdr-space-inset-half-x;
+  height: $cdr-form-input-height-default;
+  display: block;
+  width: 100%;
+  overflow: visible;
+  margin: 0;
+  -webkit-appearance: none!important;
+
+  &[type=number]::-webkit-inner-spin-button,
+  &[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+  &:active,
+  &:focus {
+    outline: none;
+    //ITEM_DOC: Box shadow of a focused or active cdr-input
+    box-shadow: inset 0 0 0 2px var(--cdr-input-box-shadow-focus, var(--cdr-color-border-input-default-focus, #{$cdr-color-border-input-default-focus})), $cdr-prominence-raised;
+  }
+  &::placeholder {
+    @include cdr-text-utility-sans-300;
+    color: var(--cdr-input-placeholder-text-color, var(--cdr-color-text-input-placeholder, #{$cdr-color-text-input-placeholder}));
+  }
+
+  &[disabled] {
+    //ITEM_DOC: Background color of a disabled cdr-input
+    background-color: var(--cdr-input-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled}));
+    //ITEM_DOC: Text color of a disabled cdr-input
+    color: var(--cdr-input-text-color-disabled, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled}));
+    //ITEM_DOC: Box-shadow color of a disabled cdr-input
+    box-shadow: inset 0 0 0 1px var(--cdr-input-box-shadow-disabled, var(--cdr-color-border-input-default-disabled, #{$cdr-color-border-input-default-disabled}));
+    &:hover {
+      box-shadow: inset 0 0 0 1px var(--cdr-input-box-shadow-disabled-hover, var(--cdr-color-border-input-default-disabled, #{$cdr-color-border-input-default-disabled}));
+      cursor: not-allowed;
+    }
+    &::placeholder {
+      color: var(--cdr-input-placeholder-text-color-disabled, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled}));
+    }
+  }
+}
+
+@mixin cdr-input-primary-mixin() {
+  //ITEM_DOC: Background color of a default cdr-input
+  background-color: var(--cdr-input-background-color-default, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
+  &:active,
+  &:focus {
+    //ITEM_DOC: Background color of a default cdr-input in active or focus state
+    background-color: var(--cdr-input-background-color-default-focus, var(--cdr-color-background-input-default-active, #{$cdr-color-background-input-default-active}));
+  }
+}
+
+@mixin cdr-input-secondary-mixin() {
+  //ITEM_DOC: Background color of a secondary cdr-input
+  background-color: var(--cdr-input-background-color-secondary, var(--cdr-color-background-input-secondary, #{$cdr-color-background-input-secondary}));
+  &:active,
+  &:focus {
+    //ITEM_DOC: Background color of a secondary cdr-input in active or focus state
+    background-color: var(--cdr-input-background-color-secondary-active, var(--cdr-color-background-input-secondary-active, #{$cdr-color-background-input-secondary-active}));
+  }
+}
+
+@mixin cdr-input-error-mixin() {
+  //ITEM_DOC: Background color of a cdr-input in error state
+  background-color: var(--cdr-input-error-background-color, var(--cdr-color-background-input-error, #{$cdr-color-background-input-error}));
+  //ITEM_DOC: Box-shadow color of a cdr-input in error state
+  box-shadow: inset 0 0 0 1px var(--cdr-input-error-box-shadow, var(--cdr-color-border-input-error, #{$cdr-color-border-input-error}));
+}
+
+@mixin cdr-input-large-mixin() {
+  @include cdr-text-utility-sans-400;
+  line-height: $cdr-space-half-x + $cdr-text-utility-sans-400-height;
+  padding-left: $cdr-space-half-x;
+  height: $cdr-form-input-height-large;
+  &::placeholder {
+    line-height: $cdr-space-half-x + $cdr-text-utility-sans-400-height;
+  }
+}
+
+@mixin cdr-input-helper-text-mixin() {
+  @include cdr-text-utility-sans-200;
+  //ITEM_DOC: Text color of a cdr-input's helper text
+  color: var(--cdr-input-helper-text-color, var(--cdr-color-text-input-help, #{$cdr-color-text-input-help}));
+}
