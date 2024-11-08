@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 // lint-report-generator.mjs
 import stylelint from 'stylelint';
 import fs from 'fs';
@@ -72,7 +74,10 @@ const generateMarkdownContent = (styleWarnings, reportDate) => {
         mdReport += '|----------|------|---------||\n';
         file.warnings.forEach(warning => {
             const escapedText = warning.text.replace(/\|/g, '\\|');
-            mdReport += `| ${warning.line}:${warning.column} | \`${warning.rule}\` | ${escapedText} |\n`;
+            mdReport += `
+            | ${warning.line}:${warning.column} 
+            | \`${warning.rule}\` 
+            | ${escapedText} |\n`;
         });
         mdReport += '\n';
     });
@@ -135,6 +140,7 @@ Summary:
 // Execute if called directly
 if (import.meta.url === `file://${__filename}`) {
     generateLintReport().catch(error => {
+        console.error('An error occurred:', error);
         process.exit(1);
     });
 }
