@@ -1,19 +1,58 @@
 {
-    "extends": "stylelint-config-recommended-scss",
+    "extends": [
+      "stylelint-config-recommended-scss",
+      "stylelint-config-standard-scss"
+    ],
     "ignoreFiles": [
-        "**/*.js",
-        "**/*.snap",
-        "**/*.vars.pcss"
+      "**/*.js",
+      "**/*.snap",
+      "**/*.vars.pcss"
     ],
     "plugins": [
-        "stylelint-scss"
+      "stylelint-scss"
     ],
     "rules": {
-        "at-rule-disallowed-list": ["debug"],
-        "no-empty-source": null,
-        "no-descending-specificity": null,
-        "selector-pseudo-class-no-unknown": [true, {
-            "ignorePseudoClasses": ["global"]
-        }]
+      "at-rule-disallowed-list": ["debug"],
+      "no-empty-source": null,
+      "no-descending-specificity": null,
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": ["global"]
+        }
+      ],
+      "scss/at-extend-no-missing-placeholder": true,
+      "scss/comment-no-loud": true,
+      "scss/function-color-relative": true,
+      "scss/at-if-no-null": true,
+      "scss/dollar-variable-no-missing-interpolation": true,
+      "scss/selector-no-redundant-nesting-selector": true,
+      "scss/at-import-partial-extension": null,
+      "scss/at-mixin-pattern": "^[a-z][a-zA-Z0-9]+$",
+      "scss/at-function-pattern": "^[a-z][a-zA-Z0-9]+$",
+      "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9]+$",
+      "scss/percent-placeholder-pattern": "^[a-z][a-zA-Z0-9]+$",
+      "function-disallowed-list": [
+        "rgb",
+        "rgba",
+        "hsl",
+        "hsla"
+      ],
+      "color-function-notation": "modern",
+      "alpha-value-notation": [
+      "percentage",
+      {
+        "exceptProperties": ["opacity"]
+      }
+    ],
+    "color-hex-length": ["short", { "severity": "warning" }],
+    "comment-empty-line-before": [true, { "severity": "warning" }],
+      "selector-class-pattern": [
+        "^[a-z0-9]+(?:-[a-z0-9]+)*(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))?(?:--(?:[a-z0-9]+(?:-[a-z0-9]+)*))?$",
+        {
+          "message": "Expected class selector to follow BEM naming convention (selector-class-pattern)"
+        }
+      ]
     }
-}
+  }
+  
