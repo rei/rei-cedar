@@ -251,6 +251,7 @@ const toggleCheckbox2 = (value: number) => {
           class="example__search-tile-other-header-button"
           :checked="checkbox2.includes(1)"
           role="checkbox"
+          :layout="{ flow: 'rows' }"
           @click="toggleCheckbox2(1)"
         >
           <CdrFulfillmentTileHeader>
@@ -330,8 +331,6 @@ $component: 'fulfillment-tile';
     &--checked {
       box-shadow: inset 0px 0px 0px 0.7rem #2e2e2b;
     }
-
-    
   }
 
   &__fulfillment-icon {
@@ -348,8 +347,8 @@ $component: 'fulfillment-tile';
 
   &__checkout-tile-other-disabled {
     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-default-disabled;
-    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-default-disabled;
+    #{--cdr-color-background-fulfillment-tile-default-rest}: $cdr-color-background-surface-selection-default-disabled;
+    #{--cdr-color-background-fulfillment-tile-default-checked}: $cdr-color-background-surface-selection-default-disabled;
     @include cdr-border-style-mixin($component, 'dashed');
   }
 
