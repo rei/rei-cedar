@@ -2,7 +2,6 @@ import type { Component } from 'vue';
 import type {
   Tag,
   Space,
-  SpaceOption,
   Shadow,
   Radius,
   BorderColor,
@@ -194,19 +193,19 @@ export interface Layout extends HtmlAttributes {
    * @demoSelectMultiple false
    * @values zero, one-x, two-x, scale-4, scale-3--5
    */
-  gap?: SpaceOption;
+  gap?: Space;
   /**
    * Specifies a row gap based on the token options within Cedar.
    * @demoSelectMultiple false
    * @values zero, one-x, two-x, scale-4, scale-3--5
    */
-  rowGap?: SpaceOption;
+  rowGap?: Space;
   /**
    * Specifies a column gap based on the token options within Cedar.
    * @demoSelectMultiple false
    * @values zero, one-x, two-x, scale-4, scale-3--5
    */
-  columnGap?: SpaceOption;
+  columnGap?: Space;
   /**
    * The component or HTML tag to render at the root level
    */
@@ -309,10 +308,6 @@ export interface surfaceSelection extends HtmlAttributes {
 }
 
 export interface fulfillmentTileContent extends HtmlAttributes {
-  /**
-   * Determines if the content should expand when space is available.
-   */
-  stretch?: boolean;
   /**
    * Sets the type scale
    * @values -2, -1, 0, 1

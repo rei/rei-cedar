@@ -44,17 +44,12 @@ const rootProps = computed(() => {
     classes.push(modifyClassName(baseClass, `row-gap-${props.rowGap}`));
   }
 
-  // Add grid-auto-flow
+  // Add grid-auto-flow and supporting value
   if (props.flow) {
     classes.push(modifyClassName(baseClass, `flow-${props.flow}`));
-
-    // Add grid-auto-columns or grid-auto-rows
-    if (props.flowValue) {
-      inlineStyles['--cdr-layout-flow-value'] = props.flowValue;
-    }
+    inlineStyles['--cdr-layout-flow-value'] = props.flowValue;
   }
 
-  // Why is string not being added?
   // Add grid templates for columns and rows
   (['rows', 'columns'] as Structure[]).forEach((structure) => {
     if (!props[structure]) {

@@ -43,7 +43,6 @@ const routes = [
   { path: '/layout', name: 'Layout', component: Examples.layout },
   { path: '/links', name: 'Links', component: Examples.links },
   { path: '/lists', name: 'Lists', component: Examples.list },
-  // { path: '/mediaObject', name: 'MediaObject', component: Examples.mediaObject },
   { path: '/modals', name: 'Modals', component: Examples.modal },
   { path: '/pagination', name: 'Pagination', component: Examples.pagination },
   { path: '/picture', name: 'Picture', component: Examples.picture },
