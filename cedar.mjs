@@ -18756,7 +18756,7 @@ function qg(e, t, l, r, o, c) {
     i(u)
   ]);
 }
-const kg = /* @__PURE__ */ A(yg, [["render", qg]]), Qe = (e) => (kl("data-v-bf58918a"), e = e(), gl(), e), gg = { class: "example" }, xg = /* @__PURE__ */ Qe(() => /* @__PURE__ */ n("h2", null, "FulfillmentTile", -1)), Sg = /* @__PURE__ */ Qe(() => /* @__PURE__ */ n("h3", { class: "example__h3" }, "Recommended patterns", -1)), Rg = /* @__PURE__ */ Qe(() => /* @__PURE__ */ n("div", {
+const kg = /* @__PURE__ */ A(yg, [["render", qg]]), Qe = (e) => (kl("data-v-29cccc46"), e = e(), gl(), e), gg = { class: "example" }, xg = /* @__PURE__ */ Qe(() => /* @__PURE__ */ n("h2", null, "FulfillmentTile", -1)), Sg = /* @__PURE__ */ Qe(() => /* @__PURE__ */ n("h3", { class: "example__h3" }, "Recommended patterns", -1)), Rg = /* @__PURE__ */ Qe(() => /* @__PURE__ */ n("div", {
   id: "radio1",
   class: "example__sr-only"
 }, " How would you like to receieve your order? ", -1)), vg = {
@@ -19032,6 +19032,7 @@ const kg = /* @__PURE__ */ A(yg, [["render", qg]]), Qe = (e) => (kl("data-v-bf58
               class: "example__search-tile-other-header-button",
               checked: o.value.includes(1),
               role: "checkbox",
+              layout: { flow: "rows" },
               onClick: u[7] || (u[7] = (m) => s(1))
             }, {
               default: a(() => [
@@ -19074,7 +19075,7 @@ const kg = /* @__PURE__ */ A(yg, [["render", qg]]), Qe = (e) => (kl("data-v-bf58
       ])
     ]));
   }
-}), zg = /* @__PURE__ */ A(Pg, [["__scopeId", "data-v-bf58918a"]]), Hg = {
+}), zg = /* @__PURE__ */ A(Pg, [["__scopeId", "data-v-29cccc46"]]), Hg = {
   name: "Grid",
   components: {
     ...qe
