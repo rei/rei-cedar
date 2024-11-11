@@ -1,0 +1,118 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrLayout > base classes only 1`] = `
+<span
+  class="cdr-layout"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</span>
+`;
+
+exports[`CdrLayout > basic columns 1`] = `
+<div
+  class="cdr-layout cdr-layout--columns"
+  style="--cdr-layout-columns: 1fr 1fr;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrLayout > container query columns 1`] = `
+<div
+  class="cdr-layout cdr-layout--columns cdr-layout--columns-cq"
+  style="--cdr-layout-columns-xs: 1fr; --cdr-layout-columns-sm: 100px 1fr; --cdr-layout-columns-md: 400px 1fr; --cdr-layout-columns-lg: 800px 1fr;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrLayout > default snapshot 1`] = `
+<div
+  class="cdr-layout"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrLayout > different gap 1`] = `
+<div
+  class="cdr-layout cdr-layout--column-gap-one-x cdr-layout--row-gap-one-x cdr-layout--columns"
+  style="--cdr-layout-columns: 1fr 1fr;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrLayout > flow to generate columns 1`] = `
+<div
+  class="cdr-layout cdr-layout--flow-column"
+  style="--cdr-layout-flow-value: 100px;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  <div>
+    1
+  </div>
+  <div>
+    2
+  </div>
+  <div>
+    3
+  </div>
+  
+</div>
+`;
+
+exports[`CdrLayout > media query columns 1`] = `
+<div
+  class="cdr-layout cdr-layout--columns cdr-layout--columns-mq"
+  style="--cdr-layout-columns-xs: 1fr; --cdr-layout-columns-sm: 100px 1fr; --cdr-layout-columns-md: 400px 1fr; --cdr-layout-columns-lg: 800px 1fr;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrLayout > ratio columns 1`] = `
+<div
+  class="cdr-layout cdr-layout--columns"
+  style="--cdr-layout-columns: 2fr 1fr;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrLayout > same gap 1`] = `
+<div
+  class="cdr-layout cdr-layout--gap-one-x cdr-layout--columns"
+  style="--cdr-layout-columns: 1fr 1fr;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrLayout > shows default slot 1`] = `
+<div
+  class="cdr-layout"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  Default slot
+  
+</div>
+`;
