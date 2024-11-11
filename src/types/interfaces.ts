@@ -9,7 +9,6 @@ import type {
   BorderStyle,
   Modifier,
   Background,
-  Orientation,
   ScaleValue,
   StatusType,
   Flow,
@@ -173,11 +172,15 @@ export interface Layout extends HtmlAttributes {
    */
   queryType?: QueryType;
   /**
-   * Determines if the layout is in horizontal or vertical mode.
+   * Specifies the auto-placement behavior. This is translated to `grid-auto-flow`.
    * @demoSelectMultiple false
    * @values row, column
    */
   flow?: Flow;
+  /**
+   * Specifies how auto-generated tracks will be created. This is translated to either `grid-auto-columns` or `grid-auto-rows`, depending on flow.
+   */
+  flowValue?: string;
   /**
    * Determines the number of columns at various breakpoints
    */
@@ -301,9 +304,8 @@ export interface surfaceSelection extends HtmlAttributes {
   tag?: Tag;
   /**
    * Layout props that will be merged with a set of defaults.
-   * @values horizontal, vertical
    */
-  layout: Layout;
+  layout?: Layout;
 }
 
 export interface fulfillmentTileContent extends HtmlAttributes {

@@ -77,8 +77,6 @@ export const getSurfaceSelectionProps = (props: surfaceSelection, baseClass: str
 export const getDefaultLayout = (defaults = {}) => {
   const options: Layout = {
     flow: 'column',
-    columns: 'auto',
-    rows: 'auto',
     gap: 'three-eighth-x',
     ...defaults,
   };

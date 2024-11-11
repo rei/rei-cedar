@@ -21,11 +21,6 @@ $fulfillment-tile-border-colors: $surface-selection-border-colors;
     }
   }
 
-  &__inner {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__main {
     position: relative;
     height: 100%;

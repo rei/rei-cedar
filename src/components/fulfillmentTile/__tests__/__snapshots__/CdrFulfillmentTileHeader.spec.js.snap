@@ -2,10 +2,8 @@
 
 exports[`CdrFulfillmentTileHeader > icon left configuration 1`] = `
 <div
-  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+  class="cdr-fulfillment-tile-header"
 >
-  <!-- @slot Place elements in the default slot. -->
-  
   <span
     class="cdr-fulfillment-tile-header__icon"
   >
@@ -27,16 +25,13 @@ exports[`CdrFulfillmentTileHeader > icon left configuration 1`] = `
     
   </span>
   <!--v-if-->
-  
 </div>
 `;
 
 exports[`CdrFulfillmentTileHeader > icon right configuration 1`] = `
 <div
-  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+  class="cdr-fulfillment-tile-header"
 >
-  <!-- @slot Place elements in the default slot. -->
-  
   <!--v-if-->
   <span
     class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -58,16 +53,13 @@ exports[`CdrFulfillmentTileHeader > icon right configuration 1`] = `
     X
     
   </span>
-  
 </div>
 `;
 
 exports[`CdrFulfillmentTileHeader > shows label 1`] = `
 <div
-  class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+  class="cdr-fulfillment-tile-header"
 >
-  <!-- @slot Place elements in the default slot. -->
-  
   <!--v-if-->
   <span
     class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -82,6 +74,5 @@ exports[`CdrFulfillmentTileHeader > shows label 1`] = `
     
   </span>
   <!--v-if-->
-  
 </div>
 `;

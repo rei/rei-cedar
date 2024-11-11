@@ -86,7 +86,7 @@ describe('CdrFulfillmentTile', () => {
       },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.find('.cdr-fulfillment-tile-content--stretch').text()).toBe('Body slot');
+    expect(wrapper.find('.cdr-fulfillment-tile-content').text()).toBe('Body slot');
   });
 
   it('shows footer', () => {
@@ -97,7 +97,7 @@ describe('CdrFulfillmentTile', () => {
         footer: 'Footer slot',
       },
     });
-    expect(wrapper.find('.cdr-fulfillment-tile-content').text()).toBe('Footer slot');
+    expect(wrapper.find('.cdr-fulfillment-tile-content:nth-child(2)').text()).toBe('Footer slot');
     expect(wrapper.element).toMatchSnapshot();
   });
 

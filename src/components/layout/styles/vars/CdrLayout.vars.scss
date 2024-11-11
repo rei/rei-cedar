@@ -64,10 +64,11 @@ $flows: row, column;
   }
 }
 
-@mixin cdr-layout-flow-mixin() {
+@mixin cdr-layout-flow-mixin($component) {
   @each $flow in $flows {
     &--flow-#{$flow} {
       grid-auto-flow: $flow;
+      grid-auto-#{$flow}s: var(--cdr-#{$component}-flow-value);
     }
   }
 }

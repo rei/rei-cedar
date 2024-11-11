@@ -73,8 +73,8 @@ const examples = computed(
         <div class="example__remaining">1fr</div>
       </CdrSurfaceSelection>
       <CdrSurfaceSelection v-bind="examples[7]">
-        <div>orientation</div>
-        <div>vertical</div>
+        <div class="example__color-row">layout flow</div>
+        <div class="example__color-row">set to "row"</div>
       </CdrSurfaceSelection>
     </div>
   </div>
@@ -115,6 +115,12 @@ const examples = computed(
     background: black;
     color: white;
     text-align: center;
+  }
+
+  &__color-row {
+    padding: .2rem .8rem;
+    color: white;
+    background: black;
   }
 }
 </style>

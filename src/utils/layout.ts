@@ -14,9 +14,7 @@ export function getStructureStyles({
   styles?: NameValuePair;
   structure: Structure;
   breakpoint?: Breakpoint;
-}) {
-  console.log(JSON.parse(JSON.stringify(props)));
-  
+}) {  
   // This will be assigned a StructureOption.
   // If breakpoint is passed then get the deep value, otherwise use top-level value.
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -25,11 +23,19 @@ export function getStructureStyles({
 
   if (!option) {
     return newStyles;
-  }
+  }  
 
   const styles = { ...newStyles };
 
   switch (true) {
+    // Example: "100px"
+    // Output:
+    // --cdr-layout-columns: 100px;
+    case typeof option === 'string': {
+      const breakpointPart = breakpoint ? `-${breakpoint}` : '';
+      styles[`--cdr-layout-${structure}${breakpointPart}`] = option;
+      break;
+    }
     // Example: 2
     // Output:
     // --cdr-layout-columns: 1fr 1fr;

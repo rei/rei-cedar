@@ -33,7 +33,6 @@ export type Radius = 'sharp' | 'soft' | 'softer' | 'softest' | 'round';
 export type BorderColor = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
 export type BorderStyle = 'solid' | 'dotted' | 'dashed';
 export type Modifier = 'default' | 'primary' | 'secondary';
-export type Orientation = 'vertical' | 'horizontal';
 export type Flow = 'row' | 'column';
 export type Structure = 'rows' | 'columns';
 export type StatusType = 'info' | 'warning' | 'success' | 'error' | 'default';

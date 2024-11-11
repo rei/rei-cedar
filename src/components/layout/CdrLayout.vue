@@ -18,6 +18,8 @@ const props = withDefaults(defineProps<Layout>(), {
   rows: undefined,
   as: 'div',
   queryType: 'container',
+  flow: undefined,
+  flowValue: 'auto',
 });
 
 const style = useCssModule();
@@ -45,8 +47,14 @@ const rootProps = computed(() => {
   // Add grid-auto-flow
   if (props.flow) {
     classes.push(modifyClassName(baseClass, `flow-${props.flow}`));
+
+    // Add grid-auto-columns or grid-auto-rows
+    if (props.flowValue) {
+      inlineStyles['--cdr-layout-flow-value'] = props.flowValue;
+    }
   }
-Why is string not being added?
+
+  // Why is string not being added?
   // Add grid templates for columns and rows
   (['rows', 'columns'] as Structure[]).forEach((structure) => {
     if (!props[structure]) {

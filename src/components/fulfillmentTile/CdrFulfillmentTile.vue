@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import merge from 'lodash/merge.js';
 import mapClasses from '../../utils/mapClasses';
 import { surfaceSelection } from '../../types/interfaces';
 import { getSurfaceSelectionProps, getDefaultLayout } from '../../utils/surface';
@@ -34,7 +33,9 @@ const rootProps = computed(() => {
 });
 
 // Merge layout props
-const layoutProps = computed(() => merge(getDefaultLayout({ flow: 'row' }), props.layout));
+const layoutProps = computed(() =>
+  Object.assign(getDefaultLayout({ flow: 'row', rows: [1] }), props.layout),
+);
 </script>
 
 <template>
@@ -42,7 +43,10 @@ const layoutProps = computed(() => merge(getDefaultLayout({ flow: 'row' }), prop
     :is="tag"
     v-bind="rootProps"
   >
-    <div :class="style['cdr-fulfillment-tile__inner']">
+    <CdrLayout
+      :rows="['auto', 1]"
+      :class="style['cdr-fulfillment-tile__inner']"
+    >
       <CdrFulfillmentTileHeader>
         <template
           v-if="$slots['icon-left']"
@@ -68,12 +72,10 @@ const layoutProps = computed(() => merge(getDefaultLayout({ flow: 'row' }), prop
           v-bind="layoutProps"
           :class="style['cdr-fulfillment-tile__layout']"
         >
-          <template v-if="$slots['body']">
-            <CdrFulfillmentTileContent :stretch="true">
-              <!-- @slot Default font size is a step down. Placed just below the header. -->
-              <slot name="body" />
-            </CdrFulfillmentTileContent>
-          </template>
+          <CdrFulfillmentTileContent>
+            <!-- @slot Default font size is a step down. Placed just below the header. -->
+            <slot name="body" />
+          </CdrFulfillmentTileContent>
           <template v-if="$slots['footer']">
             <CdrFulfillmentTileContent scale="-1">
               <!-- @slot Footer content will be at the bottom of the component. -->
@@ -90,7 +92,7 @@ const layoutProps = computed(() => merge(getDefaultLayout({ flow: 'row' }), prop
           </slot>
         </div>
       </div>
-    </div>
+    </CdrLayout>
   </component>
 </template>
 

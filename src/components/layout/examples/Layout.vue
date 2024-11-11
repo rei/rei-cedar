@@ -14,67 +14,67 @@ interface LayoutExample {
 }
 
 const layouts: LayoutExample[] = [
-  // {
-  //   label: 'Basic columns',
-  //   props: {
-  //     columns: 2,
-  //   },
-  //   children: 2,
-  // },
-  // {
-  //   label: 'Ratio columns',
-  //   props: {
-  //     gap: 'one-x',
-  //     columns: [2, 1],
-  //   },
-  //   children: 2,
-  // },
+  {
+    label: 'Basic columns',
+    props: {
+      columns: 2,
+    },
+    children: 2,
+  },
+  {
+    label: 'Ratio columns',
+    props: {
+      gap: 'one-x',
+      columns: [2, 1],
+    },
+    children: 2,
+  },
   {
     label: 'Using flow to generate columns',
     props: {
       gap: 'one-x',
-      columns: '1fr',
       flow: 'column',
+      flowValue: '100px',
     },
     children: 3,
   },
-  // {
-  //   label: 'Container query columns',
-  //   props: {
-  //     gap: 'scale-3--5',
-  //     columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
-  //   },
-  //   children: 2,
-  // },
-  // {
-  //   label: 'Container query columns with 70% width container',
-  //   props: {
-  //     gap: 'one-x',
-  //     columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
-  //   },
-  //   children: 2,
-  //   isNarrow: true,
-  // },
-  // {
-  //   label: 'Media query columns',
-  //   props: {
-  //     queryType: 'media',
-  //     gap: 'one-x',
-  //     columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
-  //   },
-  //   children: 2,
-  // },
-  // {
-  //   label: 'Responsive columns and rows with different gaps',
-  //   props: {
-  //     rowGap: 'one-x',
-  //     columnGap: 'three-x',
-  //     columns: { xs: 1, sm: 1, md: ['400px', 1], lg: ['400px', 1] },
-  //     rows: { xs: 1, sm: 1, md: [1, 2], lg: [1, 2] },
-  //     class: 'example__layout--tall',
-  //   },
-  //   children: 4,
-  // },
+  {
+    label: 'Container query columns',
+    props: {
+      gap: 'scale-3--5',
+      columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
+    },
+    children: 2,
+  },
+  {
+    label: 'Container query columns with 70% width container',
+    props: {
+      gap: 'one-x',
+      columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
+    },
+    children: 2,
+    isNarrow: true,
+  },
+  {
+    label: 'Media query columns',
+    props: {
+      queryType: 'media',
+      gap: 'one-x',
+      columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
+    },
+    children: 2,
+  },
+  {
+    label: 'Responsive columns and rows with different gaps',
+    props: {
+      rowGap: 'one-x',
+      columnGap: 'three-x',
+      columns: { xs: 1, sm: 1, md: ['400px', 1], lg: ['400px', 1] },
+      rows: { xs: 1, sm: 1, md: [1, 2], lg: [1, 2] },
+      class: 'example__layout--tall',
+    },
+    children: 4,
+  },
 ];
 </script>
 
@@ -111,7 +111,7 @@ const layouts: LayoutExample[] = [
     <CdrText>
       <code><strong>Responsive nested layout</strong></code>
     </CdrText>
-    <!-- <CdrLayout
+    <CdrLayout
       class="example__surface"
       gap="one-x"
       :columns="{ xs: 1, sm: 1, md: 2, lg: 2 }"
@@ -151,7 +151,7 @@ const layouts: LayoutExample[] = [
       >
         2
       </CdrSurface>
-    </CdrLayout> -->
+    </CdrLayout>
   </div>
 </template>
 

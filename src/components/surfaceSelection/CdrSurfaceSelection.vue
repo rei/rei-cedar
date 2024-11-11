@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import merge from 'lodash/merge.js';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 import mapClasses from '../../utils/mapClasses';
@@ -33,7 +32,7 @@ const rootProps = computed(() => {
 });
 
 // Merge layout props
-const layoutProps = computed(() => merge(getDefaultLayout(), props.layout));
+const layoutProps = computed(() => Object.assign(getDefaultLayout(), props.layout));
 </script>
 
 <template>
