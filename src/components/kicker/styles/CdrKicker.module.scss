@@ -1,9 +1,0 @@
-@import '../../../styles/settings/index.scss';
-@import '../../../styles/settings/fluid.vars.scss';
-
-.cdr-kicker {
-  @include cdr-text-eyebrow-100;
-  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
-  font-size: var(--cdr-type-scale--1);
-  line-height: calc(var(--cdr-type-scale--1) * var(--cdr-heading-display-line-height-ratio));
-}
