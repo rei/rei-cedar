@@ -1,12 +1,12 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrLabelWrapper.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrLabelWrapper.vars';
 
 .cdr-label-wrapper {
   @include cdr-label-wrapper-base-mixin;
+
   display: flex;
   align-items: flex-start;
   flex-grow: 1;
-
   position: relative;
   user-select: none;
 
@@ -31,6 +31,7 @@
 
   &--disabled {
     @include cdr-label-wrapper-disabled-mixin;
+
     .cdr-label-wrapper__figure {
       cursor: not-allowed !important;
     }
@@ -50,6 +51,7 @@
     & > .cdr-label-wrapper__figure {
       display: none;
     }
+
     & > .cdr-checkbox__svg-box svg {
       fill: transparent !important;
     }

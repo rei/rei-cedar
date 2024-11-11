@@ -1,6 +1,6 @@
 /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
 
-@use '../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens';
+@import '../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens';
 
 html {
   -webkit-box-sizing: border-box;
@@ -23,7 +23,7 @@ html {
   box-sizing: inherit;
 }
 
-@-ms-viewport {
+@viewport {
   width: device-width;
 }
 
@@ -37,7 +37,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   margin: 0;
-  
+
   /* cdr-color-text-primary */
 
   color: rgba(12, 11, 8, 0.75);

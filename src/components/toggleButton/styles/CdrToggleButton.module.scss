@@ -1,16 +1,19 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrToggleButton.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrToggleButton.vars';
 
 .cdr-toggle-button {
   &__item {
     @include cdr-toggle-button-base-text-mixin-medium;
+
     display: flex;
     justify-content: center;
     gap: .3rem;
     border: .2rem solid transparent;
     border-radius: .3rem;
+
     //ITEM_DOC: Default text color of the cdr-toggle-button
     color: var(--cdr-toggle-button-color-default-rest, var(--cdr-color-text-toggle-button-default-rest, #{$cdr-color-text-toggle-button-default-rest}));
+
     //ITEM_DOC: Default background color of the cdr-toggle-button
     background-color: var(--cdr-toggle-button-background-color-default-rest, var(--cdr-color-background-toggle-button-default-rest, #{$cdr-color-background-toggle-button-default-rest}));
     width: 100%;
@@ -20,8 +23,10 @@
       outline: none;
       padding: 0.7rem 1.3rem;
       border-radius: .3rem;
+
       //ITEM_DOC: Focus border color of the cdr-toggle-button
       border: .3rem solid var(--cdr-toggle-button-border-color-default-focus, var(--cdr-color-border-toggle-button-default-focus, #{$cdr-color-border-toggle-button-default-focus}));
+
       //ITEM_DOC: Focus background color of the cdr-toggle-button
       background-color: var(--cdr-toggle-button-background-color-default-focus, var(--cdr-color-background-toggle-button-default-focus, #{$cdr-color-background-toggle-button-default-focus}));
     }
@@ -35,6 +40,7 @@
       //ITEM_DOC: Selected background color of the cdr-toggle-button at rest
       background-color: var(--cdr-toggle-button-background-color-default-selected-rest, var(--cdr-color-background-toggle-button-default-selected-rest, #{$cdr-color-background-toggle-button-default-selected-rest}));
       padding: 0.8rem 1.4rem;
+
       //ITEM_DOC: Selected border color of the cdr-toggle-button at rest
       border: .2rem solid var(--cdr-toggle-button-border-color-default-selected-rest, var(--cdr-color-border-toggle-button-default-selected-rest, #{$cdr-color-border-toggle-button-default-selected-rest}));
       border-radius: .2rem;
@@ -48,6 +54,7 @@
 
       &:focus {
         padding: 0.7rem 1.3rem;
+
         //ITEM_DOC: Selected border color of the cdr-toggle-button on focus
         border: .3rem solid var(--cdr-toggle-button-border-color-default-selected-focus, var(--cdr-color-border-toggle-button-default-selected-focus, #{$cdr-color-border-toggle-button-default-selected-focus}));
         border-radius: .2rem;

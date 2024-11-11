@@ -1,5 +1,5 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrFulfillmentTileIcon.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrFulfillmentTileIcon.vars';
 
 .cdr-fulfillment-tile-icon {
   @include cdr-fulfillment-tile-icon-base-mixin;

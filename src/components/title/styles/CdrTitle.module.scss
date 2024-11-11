@@ -1,8 +1,9 @@
-@import '../../../styles/settings/index.scss';
-@import '../../../styles/settings/fluid.vars.scss';
+@import '../../../styles/settings/index';
+@import '../../../styles/settings/fluid.vars';
 
 .cdr-title {
   @include cdr-text-heading-display-1200;
+
   color: var(--cdr-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
   margin: 0;
   font-size: var(--cdr-type-scale-4);
@@ -10,26 +11,35 @@
 
   @container (min-width: 720px) and (max-width: 900px) {
     @include cdr-text-heading-serif-800;
+
     font-size: var(--cdr-type-scale-3);
     line-height: calc(var(--cdr-type-scale-3) * var(--cdr-heading-serif-line-height-ratio));
   }
+
   @container (min-width: 540px) and (max-width: 720px) {
     @include cdr-text-heading-serif-800;
+
     font-size: var(--cdr-type-scale-2);
     line-height: calc(var(--cdr-type-scale-2) * var(--cdr-heading-serif-line-height-ratio));
   }
+
   @container (min-width: 360px) and (max-width: 540px) {
     @include cdr-text-heading-sans-500;
+
     font-size: var(--cdr-type-scale-1);
     line-height: calc(var(--cdr-type-scale-1) * var(--cdr-heading-sans-line-height-ratio));
   }
+
   @container (min-width: 180px) and (max-width: 360px) {
     @include cdr-text-heading-sans-500;
+
     font-size: var(--cdr-type-scale-0);
     line-height: calc(var(--cdr-type-scale-0) * var(--cdr-heading-sans-line-height-ratio));
   }
+
   @container (max-width: 180px) {
     @include cdr-text-heading-sans-500;
+
     font-size: var(--cdr-type-scale--1);
     line-height: calc(var(--cdr-type-scale--1) * var(--cdr-heading-sans-line-height-ratio));
   }

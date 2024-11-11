@@ -1,8 +1,9 @@
-@import './CdrPresets.module.scss';
+@import './CdrPresets.module';
 
 .cdr-heading-sans {
   @include cdr-text-base-mixin;
   @include cdr-text-heading-sans-600;
+
   font-size: var(--cdr-heading-sans-font-size);
   line-height: var(--cdr-heading-sans-line-height);
 }

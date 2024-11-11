@@ -9,7 +9,7 @@
   position: relative;
   fill: var(--cdr-fulfillment-tile-icon-fill);
 
-  &:after {
+  &::after {
     content: '';
     position: absolute;
     top: 0;

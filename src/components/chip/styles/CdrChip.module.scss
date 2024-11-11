@@ -1,5 +1,5 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrChip.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrChip.vars';
 
 .cdr-chip {
   @include cdr-chip-base-mixin;
@@ -7,6 +7,7 @@
 
 .cdr-chip__icon-left {
   @include cdr-chip-icon-left-mixin;
+
   & svg {
     fill: inherit;
   }
@@ -14,6 +15,7 @@
 
 .cdr-chip__icon-right {
   @include cdr-chip-icon-right-mixin;
+
   & svg {
     fill: inherit;
   }
