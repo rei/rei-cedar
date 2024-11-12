@@ -1,0 +1,1129 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrSelect > default configuration with a name attribute > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="renders"
+        name="testing"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > default configuration with a name attribute > with a hide-label prop > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label cdr-label-standalone__label--sr-only"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="renders"
+        name="testing"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > default configuration with a name attribute > with a prompt prop > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="renders"
+        name="testing"
+      >
+        <option
+          class="cdr-select__prompt"
+          disabled=""
+          value=""
+        >
+          what is it
+        </option>
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > default configuration with a name attribute > with a required prop > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <span
+        aria-hidden="true"
+      >
+        *
+      </span>
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        aria-required="true"
+        class="cdr-select cdr-select--primary"
+        id="renders"
+        name="testing"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > default configuration with a name attribute > with a required prop > renders correctly 2`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select--multiple cdr-select--primary"
+        id="renders"
+        multiple=""
+        name="testing"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > default configuration with a name attribute > with an error state > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        aria-describedby="renders-error"
+        aria-errormessage="renders-error"
+        aria-invalid="true"
+        class="cdr-select cdr-select__prompt cdr-select--primary cdr-select--error"
+        id="renders"
+        name="testing"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+      role="status"
+    >
+      <span
+        class="cdr-form-error__icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      
+      <span>
+        What happened?
+      </span>
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > using the error slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="test"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with "autofocus" set to true > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        autofocus=""
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="renders"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with "disabled" set to true > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label cdr-label-standalone__label--disabled"
+      for="renders"
+    >
+      Label Test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        disabled=""
+        id="renders"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret cdr-select__caret--disabled"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with aria-describedby and id provided > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="aria-test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <br />
+    <span
+      class="cdr-label-standalone__helper"
+      id="aria-test-helper-text-top"
+    >
+      
+      <!-- @slot Helper text above the select field -->
+      
+      extremely helpful
+      
+      
+    </span>
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        aria-describedby="aria-test-helper-text-top foo"
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="aria-test"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with helper text slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="aria-test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <br />
+    <span
+      class="cdr-label-standalone__helper"
+      id="aria-test-helper-text-top"
+    >
+      
+      <!-- @slot Helper text above the select field -->
+      
+      yee haw
+      
+      
+    </span>
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        aria-describedby="aria-test-helper-text-top"
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="aria-test"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with info action slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="info-action"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="info-action"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <div
+      class="cdr-label-standalone__info-action"
+    >
+      
+      <!-- @slot Action-wrapped icon to the right of the select field -->
+      
+      🤠
+      
+      
+    </div>
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with info slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="info-action"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="info-action"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <span
+    class="cdr-label-standalone__info"
+  >
+    
+    <!-- @slot Link or icon to the right above the select field.  -->
+    
+    howdy
+    
+    
+  </span>
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with no attr or helper slots > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="aria-test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <!--v-if-->
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary"
+        id="aria-test"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;
+
+exports[`CdrSelect > with pre-icon slot > renders correctly 1`] = `
+<div
+  class="cdr-label-standalone"
+>
+  <div
+    class="cdr-label-standalone__label-wrapper"
+  >
+    <label
+      class="cdr-label-standalone__label"
+      for="test"
+    >
+      test 
+      <!--v-if-->
+    </label>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div
+    class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+  >
+    
+    <div
+      class="cdr-select-wrap"
+    >
+      <span
+        class="cdr-select__pre-icon"
+      >
+        <!-- @slot Icon preceding text within the select field -->
+        
+        🤠
+        
+      </span>
+      <select
+        class="cdr-select cdr-select__prompt cdr-select--primary cdr-select--preicon"
+        id="test"
+      >
+        <!--v-if-->
+        
+        
+        <!-- @slot CdrSelect content (&lt;option&gt; tags). Leave empty if using the \`options\` prop. -->
+        
+        
+      </select>
+      <svg
+        aria-hidden="true"
+        class="cdr-icon cdr-select__caret"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        
+        
+        
+        <path
+          d="M12 16c.273 0 .521-.11.702-.288l5.005-5.005a1 1 0 00-1.414-1.414L12 13.586 7.705 9.29a1 1 0 00-1.412 1.417l4.98 4.98c.182.193.44.313.727.313z"
+          role="presentation"
+        />
+        
+        <!--v-if-->
+      </svg>
+    </div>
+    
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <div
+    class="cdr-label-standalone__post-content"
+  >
+    
+    
+    
+    
+  </div>
+</div>
+`;

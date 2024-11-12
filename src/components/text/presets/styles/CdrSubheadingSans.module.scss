@@ -1,0 +1,9 @@
+@import './CdrPresets.module';
+
+.cdr-subheading-sans {
+  @include cdr-text-base-mixin;
+  @include cdr-text-subheading-sans-600;
+
+  font-size: var(--cdr-subheading-sans-font-size);
+  line-height: var(--cdr-subheading-sans-line-height);
+}

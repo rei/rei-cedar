@@ -1,0 +1,26 @@
+@import '../../../styles/settings/index';
+@import './vars/CdrFulfillmentTileIcon.vars';
+
+.cdr-fulfillment-tile-icon {
+  @include cdr-fulfillment-tile-icon-base-mixin;
+
+  &--default {
+    @include cdr-fulfillment-tile-icon-default-mixin;
+  }
+
+  &--info {
+    @include cdr-fulfillment-tile-icon-info-mixin;
+  }
+
+  &--warning {
+    @include cdr-fulfillment-tile-icon-warning-mixin;
+  }
+
+  &--success {
+    @include cdr-fulfillment-tile-icon-success-mixin;
+  }
+
+  &--error {
+    @include cdr-fulfillment-tile-icon-error-mixin;
+  }
+}

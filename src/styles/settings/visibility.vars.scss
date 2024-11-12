@@ -1,0 +1,35 @@
+
+
+@mixin cdr-display-none-mixin() {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+@mixin cdr-display-hidden-mixin() {
+  visibility: hidden !important
+}
+
+@mixin cdr-display-block-mixin() {
+  visibility: visible !important;
+  display: block !important;
+}
+
+@mixin cdr-display-inline-mixin() {
+  visibility: visible !important;
+  display: inline !important;
+}
+
+@mixin cdr-display-inline-block-mixin() {
+  visibility: visible !important;
+  display: inline-block !important;
+}
+
+@mixin cdr-display-flex-mixin() {
+  visibility: visible !important;
+  display: flex !important;
+}
+
+@mixin cdr-display-inline-flex-mixin() {
+  visibility: visible !important;
+  display: inline-flex !important;
+}

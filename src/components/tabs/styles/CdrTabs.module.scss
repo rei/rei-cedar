@@ -1,0 +1,235 @@
+@import '../../../styles/settings/index';
+
+//@import url('@rei/cedar/dist/style/cdr-tab-panel.css');
+@import './CdrTabPanel.module';
+
+@mixin cdr-tabs-base-header-item-label() {
+  font-family: $cdr-font-family-sans;
+  font-style: normal;
+  font-weight: inherit;
+  letter-spacing: -.08px;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+}
+
+@mixin cdr-tabs-small-header-item-label() {
+  font-family: $cdr-font-family-sans;
+  font-style: normal;
+  font-weight: inherit;
+  letter-spacing: -.08px;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.cdr-tabs {
+  /* overflow-x: auto; */
+  display: flex;
+  flex-flow: column;
+  height: 500px;
+  overflow-x: hidden;
+
+  /* https://davidwalsh.name/osx-overflow */
+  ::-webkit-scrollbar {
+    appearance: none;
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+
+  &__header-container {
+    display: flex;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+
+    //ITEM_DOC: Keyline color of the cdr-tabs header container
+    border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest, #{$cdr-color-border-tab-keyline-rest}));
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
+  }
+
+  &__header {
+    display: flex;
+    margin: 0 0 0 1.6rem;
+    padding: 0;
+    position: relative;
+    cursor: pointer;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  &__header-item {
+    & + & {
+      margin-left: $cdr-space-one-x;
+    }
+
+    @include cdr-tabs-base-header-item-label;
+
+    border: none;
+    flex-grow: 1;
+    background-color: transparent;
+    display: block;
+
+    //ITEM_DOC: Text color in a tab
+    color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest, #{$cdr-color-text-tab-rest}));
+    font-weight: 300;
+    text-decoration: none;
+    padding: $cdr-space-inset-half-x-stretch;
+    white-space: nowrap;
+    outline-offset: -3px;
+
+    &-active {
+      //ITEM_DOC: Text color of an active tab
+      color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active, #{$cdr-color-text-tab-active}));
+      font-weight: 500;
+    }
+
+    /* Prevent content from shifting when font-weight changes */
+    &::before {
+      display: block;
+      content: attr(js-name);
+      font-weight: 500;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    &:active,
+    &:hover,
+    &:focus {
+      text-decoration: none;
+
+      //ITEM_DOC: Text color of a tab on active, focus, or hover
+      color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover, #{$cdr-color-text-tab-hover}));
+    }
+
+    &--disabled {
+      border: none;
+      background-color: transparent;
+
+      //ITEM_DOC: Text color of a disabled tab
+      color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{$cdr-color-text-tab-disabled}));
+
+      &:active,
+      &:hover,
+      &:focus {
+        color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{$cdr-color-text-tab-disabled}));
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__gradient-container {
+    position: relative;
+  }
+
+  &__gradient {
+    transition: opacity $cdr-duration-2-x ease;
+    transition: opacity $cdr-duration-2-x ease;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    width: $cdr-space-three-x;
+    pointer-events: none;
+    opacity: 0;
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__underline {
+    z-index: 1;
+    position: absolute;
+    width: 30px;
+    margin: 0;
+    height: $cdr-space-quarter-x;
+    margin-top: -$cdr-space-quarter-x;
+    box-sizing: border-box;
+    border: none;
+
+    //ITEM_DOC: Background color of the cdr-tabs keyline
+    background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active, #{$cdr-color-border-tab-keyline-active}));
+    transition: $cdr-duration-4-x $cdr-timing-function-ease-out;
+  }
+
+  &__content-container {
+    position: relative;
+    flex: 1 1 auto;
+    overflow: hidden auto;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    opacity: 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+
+  /* Compact
+    ========== */
+  &--compact, &--small {
+    .cdr-tabs__header-item-label {
+      @include cdr-tabs-small-header-item-label;
+
+      padding: $cdr-space-inset-three-quarter-x-squish;
+
+    }
+
+    .cdr-tabs__header-item {
+      & + & {
+        margin-left: $cdr-space-half-x;
+      }
+    }
+  }
+
+  /* No Border
+    ========== */
+  &--no-border {
+    .cdr-tabs__header,
+    .cdr-tabs__header-container {
+      //ITEM_DOC: Border color of the cdr-tabs with no-border modifier
+      border-bottom: 1px solid var(--cdr-tabs-no-border-border-color, transparent);
+    }
+  }
+
+  /* Full Width
+  ========== */
+  &--full-width {
+    .cdr-tabs__header {
+      flex-grow: 1;
+    }
+  }
+  
+  /* Centered
+    ========== */
+  &--centered {
+    .cdr-tabs__header:first-of-type {
+      margin-left: auto;
+    }
+
+    .cdr-tabs__header:last-of-type {
+      margin-right: auto;
+    }
+  }
+}

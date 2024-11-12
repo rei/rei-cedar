@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrChip > default matches snapshot 1`] = `
+<button
+  class="cdr-chip"
+>
+  <!--v-if-->
+  <!--v-if-->
+  <span
+    class="cdr-chip__content"
+  >
+    <!-- @slot Primary CdrChip content -->
+    
+    tortilla chip
+    
+  </span>
+</button>
+`;
+
+exports[`CdrChip > renders icon slots 1`] = `
+<button
+  class="cdr-chip"
+>
+  <span
+    class="cdr-chip__icon-left"
+  >
+    <!-- @slot Icon to the left of the content -->
+    
+    🌮
+    
+  </span>
+  <span
+    class="cdr-chip__icon-right"
+  >
+    <!-- @slot Icon to the right of the content -->
+    
+    🍔
+    
+  </span>
+  <span
+    class="cdr-chip__content"
+  >
+    <!-- @slot Primary CdrChip content -->
+    
+    tortilla chip
+    
+  </span>
+</button>
+`;

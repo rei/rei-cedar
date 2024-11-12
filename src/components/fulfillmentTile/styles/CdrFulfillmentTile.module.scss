@@ -1,0 +1,18 @@
+@import '../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars';
+@import '../../surface/styles/vars/CdrSurface.vars';
+@import './vars/CdrFulfillmentTile.vars';
+
+.cdr-fulfillment-tile {
+  @include cdr-surface-base-mixin(
+    $fulfillment-tile-background-colors,
+    $fulfillment-tile-border-colors,
+    $fulfillment-tile-component
+  );
+  @include cdr-surface-selection-base-mixin($fulfillment-tile-component);
+  @include cdr-surface-selection-states-mixin(
+    $fulfillment-tile-background-colors,
+    $fulfillment-tile-border-colors,
+    $fulfillment-tile-component
+  );
+  @include cdr-fulfillment-tile-base-mixin;
+}

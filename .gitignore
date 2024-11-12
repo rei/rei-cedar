@@ -1,0 +1,58 @@
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
+*~
+
+# OS or Editor folders
+._*
+.cache
+.DS_Store
+.idea
+*.iml
+.classpath
+.metadata
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+Thumbs.db
+.vscode
+jsconfig.json
+
+# Folders to ignore
+node_modules
+dist-docs
+dist
+
+# Test results
+.nyc_output
+backstop_data/bitmaps_reference
+backstop_data/bitmaps_backup
+backstop_data/bitmaps_test
+backstop_data/html_report
+test/e2e/reports
+test/unit/coverage
+coverage/
+
+# Build assets
+**/dist/*
+src/**/styles/themes/*
+
+src/**/package-lock\.json
+unmigrated/
+
+## Dev output for hosting
+pages
+
+# Ignore reports directory
+/reports/

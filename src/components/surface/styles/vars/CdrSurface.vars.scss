@@ -1,0 +1,80 @@
+@use 'sass:map';
+@import '../../../../styles/settings/index';
+
+$surface-component: 'surface';
+$surface-background-colors: (
+  'primary': (
+    'undefined': $cdr-color-background-surface-primary,
+  ),
+  'secondary': (
+    'undefined': $cdr-color-background-surface-secondary,
+  ),
+  'brand-spruce': (
+    'undefined': $cdr-color-background-surface-brand-spruce,
+  ),
+  'sale': (
+    'undefined': $cdr-color-background-surface-sale,
+  ),
+);
+$surface-border-colors: (
+  'primary': (
+    'undefined': $cdr-color-border-surface-primary,
+  ),
+  'secondary': (
+    'undefined': $cdr-color-border-surface-secondary,
+  ),
+  'success': (
+    'undefined': $cdr-color-border-surface-success,
+  ),
+  'warning': (
+    'undefined': $cdr-color-border-surface-warning,
+  ),
+  'error': (
+    'undefined': $cdr-color-border-surface-error,
+  ),
+  'info': (
+    'undefined': $cdr-color-border-surface-info,
+  ),
+);
+
+@mixin cdr-surface-base-mixin($background-colors, $border-colors, $component) {
+  @each $modifier, $value in $background-colors {
+    &--background-#{$modifier} {
+      @include cdr-background-mixin($background-colors, $component, $modifier);
+    }
+  }
+
+  @each $modifier, $value in $border-colors {
+    &--border-color-#{$modifier} {
+      @include cdr-border-color-mixin($border-colors, $component, $modifier);
+    }
+  }
+
+  @each $key, $value in $border-widths {
+    &--border-width-#{$key} {
+      @include cdr-border-width-mixin($component, $key);
+    }
+  }
+
+  @each $key in $border-styles {
+    &--border-style-#{$key} {
+      @include cdr-border-style-mixin($component, $key);
+    }
+  }
+
+  @each $key, $value in $radii {
+    &--radius-#{$key} {
+      @include cdr-radius-mixin($component, $key);
+    }
+  }
+
+  @each $key, $value in $shadows {
+    &--shadow-#{$key} {
+      @include cdr-shadow-mixin($component, $key);
+    }
+  }
+
+  &--border {
+    @include cdr-border-mixin($component);
+  }
+}

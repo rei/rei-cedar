@@ -1,0 +1,10 @@
+@import '../../../styles/settings/index';
+
+.cdr-container {
+  @include cdr-text-default;
+  @include cdr-container-base;
+}
+
+.cdr-container--static {
+  @include cdr-container-static;
+}

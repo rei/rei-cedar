@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrPicture > matches snapshot 1`] = `
+<picture
+  class="cdr-picture"
+>
+  
+  <source
+    media="(max-width: 768px)"
+    srcset="/src/dev/static/cedar-350x150.jpg"
+    width="300"
+  />
+  <source
+    media="(min-width: 768px)"
+    srcset="/src/dev/static/cedar-1920x1080.jpg"
+  />
+  
+  <cdr-img-stub
+    alt=""
+    src="/src/dev/static/cedar-350x150.jpg"
+  />
+</picture>
+`;

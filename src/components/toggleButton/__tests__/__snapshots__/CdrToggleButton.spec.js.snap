@@ -1,0 +1,196 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrToggleButton > component snapshot > adding the large prop > matches the snapshot 1`] = `
+<ul
+  class="cdr-toggle-group cdr-toggle-group--large"
+  role="radiogroup"
+>
+  <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
+  
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      aria-label="thing-1"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="0"
+      value="thing-1"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-1
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="thing-2"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-2"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-2
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="thing-3"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-3"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-3
+      
+    </button>
+  </li>
+  
+</ul>
+`;
+
+exports[`CdrToggleButton > component snapshot > matches the snapshot 1`] = `
+<ul
+  class="cdr-toggle-group cdr-toggle-group--medium"
+  role="radiogroup"
+>
+  <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
+  
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      aria-label="thing-1"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="0"
+      value="thing-1"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-1
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="thing-2"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-2"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-2
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="thing-3"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-3"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-3
+      
+    </button>
+  </li>
+  
+</ul>
+`;
+
+exports[`CdrToggleButton > component snapshot > when clicking on an unchecked button > matches snapshot 1`] = `
+<ul
+  class="cdr-toggle-group cdr-toggle-group--medium"
+  role="radiogroup"
+>
+  <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
+  
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="thing-1"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-1"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-1
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      aria-label="thing-2"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="0"
+      value="thing-2"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-2
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="thing-3"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="thing-3"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      thing-3
+      
+    </button>
+  </li>
+  
+</ul>
+`;

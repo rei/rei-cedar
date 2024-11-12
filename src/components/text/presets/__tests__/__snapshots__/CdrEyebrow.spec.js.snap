@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrEyebrow > default configuration > renders correctly 1`] = `
+<span
+  class="cdr-eyebrow"
+>
+  
+  paragraph
+  
+</span>
+`;

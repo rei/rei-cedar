@@ -1,0 +1,6 @@
+@import '../../../styles/settings/index';
+@import './vars/CdrText.vars';
+
+.cdr-text {
+  @include cdr-text-base-mixin;
+}

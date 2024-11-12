@@ -1,0 +1,27 @@
+/* ==========================================================================
+  # CdrLink
+
+  TOC:
+
+    :Base Styles
+      :States
+    :Modifiers
+      :Style variants
+        :Standalone
+========================================================================== */
+@import '../../../styles/settings/index';
+@import './vars/CdrLink.vars';
+
+.cdr-link {
+  @include cdr-link-base-mixin;
+}
+
+/* Standalone
+    ========== */
+.cdr-link--standalone {
+  @include cdr-link-standalone-mixin;
+}
+
+.cdr-link--inherit-color {
+  @include cdr-link-inherit-color-mixin;
+}
