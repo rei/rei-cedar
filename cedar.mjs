@@ -7388,7 +7388,7 @@ const P3 = /* @__PURE__ */ g({
   setup(e) {
     const t = e, l = se(), r = E(() => {
       const o = "cdr-layout", c = [o], s = {};
-      return t.gap !== "zero" && c.push(De(o, `gap-${t.gap}`)), t.columnGap !== "zero" && c.push(De(o, `column-gap-${t.columnGap}`)), t.rowGap !== "zero" && c.push(De(o, `row-gap-${t.rowGap}`)), t.flow && (c.push(De(o, `flow-${t.flow}`)), t.flowValue && (s["--cdr-layout-flow-value"] = t.flowValue)), ["rows", "columns"].forEach((d) => {
+      return t.gap !== "zero" && c.push(De(o, `gap-${t.gap}`)), t.columnGap !== "zero" && c.push(De(o, `column-gap-${t.columnGap}`)), t.rowGap !== "zero" && c.push(De(o, `row-gap-${t.rowGap}`)), t.flow && (c.push(De(o, `flow-${t.flow}`)), s["--cdr-layout-flow-value"] = t.flowValue), ["rows", "columns"].forEach((d) => {
         if (!t[d])
           return;
         if (c.push(De(o, d)), typeof t[d] == "object" && !Array.isArray(t[d])) {
@@ -7590,7 +7590,6 @@ const P3 = /* @__PURE__ */ g({
   name: "CdrFulfillmentTileContent",
   __name: "CdrFulfillmentTileContent",
   props: {
-    stretch: { type: Boolean },
     scale: { default: "-2" }
   },
   setup(e) {
@@ -26204,7 +26203,6 @@ const gC = /* @__PURE__ */ A(yC, [["render", kC]]), Qu = [
   { path: "/layout", name: "Layout", component: be.layout },
   { path: "/links", name: "Links", component: be.links },
   { path: "/lists", name: "Lists", component: be.list },
-  // { path: '/mediaObject', name: 'MediaObject', component: Examples.mediaObject },
   { path: "/modals", name: "Modals", component: be.modal },
   { path: "/pagination", name: "Pagination", component: be.pagination },
   { path: "/picture", name: "Picture", component: be.picture },
