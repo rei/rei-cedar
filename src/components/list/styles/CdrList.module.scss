@@ -1,5 +1,5 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrList.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrList.vars';
 
 .cdr-list {
   @include cdr-list-base-mixin;
@@ -92,6 +92,7 @@
 
         &::before {
           content: '\2022';
+
           //ITEM_DOC: Color of the unordered inline list item prefix
           color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
           display: block;

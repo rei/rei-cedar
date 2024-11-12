@@ -6,6 +6,7 @@
 @mixin cdr-breadcrumb-item-linked-mixin() {
   text-decoration: none;
   color: inherit;
+
   &:hover,
   &:active,
   &:focus {

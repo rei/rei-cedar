@@ -1,7 +1,8 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrInput.vars.scss';
-@import '../../labelStandalone/styles/CdrLabelStandalone.module.scss';
-@import '../../formError/styles/CdrFormError.module.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrInput.vars';
+@import '../../labelStandalone/styles/CdrLabelStandalone.module';
+@import '../../formError/styles/CdrFormError.module';
+
 /* ==========================================================================
   # INPUT LABEL
   ========================================================================== */
@@ -12,8 +13,10 @@
   & ~ & {
     position: relative;
     margin-left: -4px;
+
     &::before {
       content: '';
+
       //ITEM_DOC: Background color of the cdr-button label
       background-color: var(--cdr-input-label-background-color, var(--cdr-color-border-input-default, #{$cdr-color-border-input-default}));
       position: absolute;
@@ -31,18 +34,21 @@
   &:focus-within {
     //ITEM_DOC: Background color of the cdr-input label in hover, active, focus, and focus-within states
     background-color: var(--cdr-input-label-background-interaction, var(--cdr-color-background-input-default-active, #{$cdr-color-background-input-default-active}));
+
     //ITEM_DOC: Box-shadow color of the cdr-input label in hover, active, focus, and focus-within states
     box-shadow: inset 0 0 0 2px var(--cdr-input-label-box-shadow-interaction, var(--cdr-color-border-input-default-focus, #{$cdr-color-border-input-default-focus}));
     outline: none;
+
     //ITEM_DOC: Fill color of the cdr-input label in hover, active, focus, and focus-within states
     fill: var(--cdr-input-label-fill-interaction, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+
     svg {
       box-shadow: none;
       fill: var(--cdr-input-label-svg-fill-interaction, var(--cdr-color-text-primary, #{$cdr-color-text-primary})) !important;
     }
 
     &::before {
-      width: 0px;
+      width: 0;
     }
   }
 
@@ -59,6 +65,7 @@
 
 .cdr-input {
   @include cdr-input-base-mixin;
+
   /* Style variants
     ========================================================================== */
 
@@ -163,6 +170,7 @@
 
   &__helper-text {
     @include cdr-input-helper-text-mixin;
+
     display: inline-block;
     margin-top: $cdr-space-quarter-x;
   }
@@ -175,6 +183,7 @@
    .cdr-input-wrap {
     position: relative;
     flex-grow: 1;
+
     //ITEM_DOC: Fill color of the cdr-input wrapper
     fill: var(--cdr-input-wrap-fill, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
   }  

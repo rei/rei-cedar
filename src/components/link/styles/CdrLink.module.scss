@@ -9,8 +9,9 @@
       :Style variants
         :Standalone
 ========================================================================== */
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrLink.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrLink.vars';
+
 .cdr-link {
   @include cdr-link-base-mixin;
 }

@@ -5,14 +5,17 @@
   min-block-size: 1rem;
   flex-direction: column;
 }
+
 @mixin cdr-skeleton-bone-mixin() {
   flex: 1 1 auto;
   border-radius: $cdr-radius-soft;
+
   // warm-gray-300
   //ITEM_DOC: Skeleton bone background color
   background: var(--cdr-skeleton-bone-background-color, #edeae3);
   background-size: 1200px 100%;
 }
+
 @mixin cdr-skeleton-shimmer-mixin() {
   @media (prefers-reduced-motion: no-preference) {
     // warm-gray-300 => warm-gray-100 => warm-gray-300
@@ -21,10 +24,12 @@
     animation: shimmer 3s $cdr-timing-function-linear;
     animation-iteration-count: infinite;
   }
+
   @keyframes shimmer {
     0% {
       background-position: -1200px 0;
     }
+
     100% {
       background-position: 1200px 0;
     }

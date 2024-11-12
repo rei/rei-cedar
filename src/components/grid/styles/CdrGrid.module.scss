@@ -1,5 +1,5 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrGrid.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrGrid.vars';
 
 .cdr-grid {
   @include cdr-grid-base-mixin;
@@ -37,6 +37,7 @@
       @include cdr-grid-gutter-large-mixin;
     }
   }
+
   @include cdr-sm-mq-only {
     &--gutter-none\@sm {
       @include cdr-grid-gutter-none-mixin;
@@ -54,6 +55,7 @@
       @include cdr-grid-gutter-large-mixin;
     }
   }
+
   @include cdr-md-mq-only {
     &--gutter-none\@md {
       @include cdr-grid-gutter-none-mixin;
@@ -71,6 +73,7 @@
       @include cdr-grid-gutter-large-mixin;
     }
   }
+
   @include cdr-lg-mq-only {
     &--gutter-none\@lg {
       @include cdr-grid-gutter-none-mixin;

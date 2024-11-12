@@ -1,9 +1,8 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrLabelStandalone.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrLabelStandalone.vars';
 
 .cdr-label-standalone {
   display: grid;
-
   grid-template-areas:
     "label label info"
     "input input input"
@@ -16,9 +15,11 @@
 
   &__label {
     @include cdr-label-standalone-label-mixin;
+
     &--sr-only {
       @include cdr-display-sr-only;
     }
+
     &--disabled {
       @include cdr-label-standalone-disabled-mixin;
 
@@ -38,10 +39,10 @@
 
   &__info {
     @include cdr-label-standalone-info-mixin;
+
     grid-area: info;
     order: 2;
-    align-self: end;
-    justify-self: end;
+    place-self: end end;
   }
 
   &__post-content {

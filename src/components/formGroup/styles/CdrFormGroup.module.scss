@@ -1,7 +1,8 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrFormGroup.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrFormGroup.vars';
+
 //@import '~@rei/cedar/dist/style/cdr-form-error.css';
-@import '../../formError/styles/CdrFormError.module.scss';
+@import '../../formError/styles/CdrFormError.module';
 
 .cdr-form-group {
   @include cdr-form-group-base-mixin;

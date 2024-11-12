@@ -1,5 +1,5 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrSkeleton.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrSkeleton.vars';
 
 .cdr-skeleton {
   @include cdr-skeleton-base-mixin;

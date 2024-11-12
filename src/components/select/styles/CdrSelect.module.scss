@@ -1,8 +1,9 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrSelect.vars.scss';
-@import '../../icon/styles/CdrIcon.module.scss';
-@import '../../labelStandalone/styles/CdrLabelStandalone.module.scss';
-@import '../../formError/styles/CdrFormError.module.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrSelect.vars';
+@import '../../icon/styles/CdrIcon.module';
+@import '../../labelStandalone/styles/CdrLabelStandalone.module';
+@import '../../formError/styles/CdrFormError.module';
+
 /* ==========================================================================
   # CdrSelect
 
@@ -22,8 +23,8 @@
   @include cdr-select-base-mixin;
 
   /* Hide Browser Styled Drowpdown Arrow */
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  appearance: none;
+  appearance: none;
   appearance: none;
 
   &::-ms-expand {
