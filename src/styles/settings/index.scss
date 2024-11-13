@@ -1,7 +1,8 @@
 $cdr-warn: false;
+
 @use 'sass:map';
 @use 'sass:list';
-@import '../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@import '../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens';
 @import './alignment.vars';
 @import './options.vars';
 @import './visibility.vars';
@@ -16,9 +17,7 @@ $border-widths: (
   'quarter-x': $cdr-space-inset-quarter-x,
   'three-eighth-x': $cdr-space-inset-three-eighth-x,
 );
-
 $border-styles: 'dotted', 'dashed', 'solid';
-
 $radii: (
   'sharp': $cdr-radius-sharp,
   'soft': $cdr-radius-soft,
@@ -26,7 +25,6 @@ $radii: (
   'softest': $cdr-radius-softest,
   'round': $cdr-radius-round,
 );
-
 $shadows: (
   'flat': $cdr-prominence-flat,
   'raised': $cdr-prominence-raised,
@@ -113,6 +111,7 @@ $shadows: (
     --cdr-#{$component}-radius,
     var(--cdr-radius-#{$key}, #{map.get($radii, $key)})
   );
+
   border-radius: var(--cdr-#{$component}-radius-default);
   overflow: hidden;
 }

@@ -1,6 +1,7 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/index';
+
 //@import url('@rei/cedar/dist/style/cdr-popup.css');
-@import '../../popup/styles/CdrPopup.module.scss';
+@import '../../popup/styles/CdrPopup.module';
 
 .cdr-tooltip--position {
   position: relative;
@@ -16,10 +17,13 @@
 
   .cdr-popup__content {
     @include cdr-text-utility-sans-strong-100;
+
     //ITEM_DOC: Background color of the cdr-popup
     background: var(--cdr-popup-background-color-default, var(--cdr-color-background-tooltip-default, #{$cdr-color-background-tooltip-default}));
+
     //ITEM_DOC: Text color of the cdr-popup
     color: var(--cdr-popup-text-color-default, var(--cdr-color-text-tooltip-default, #{$cdr-color-text-tooltip-default}));
+
     //ITEM_DOC: Border color of the cdr-popup
     border: 1px solid var(--cdr-popup-border-color-default, var(--cdr-color-border-tooltip-default, #{$cdr-color-border-tooltip-default}));
     padding: $cdr-space-inset-three-quarter-x-squish;

@@ -1,4 +1,4 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/index';
 
 .cdr-tab-panel {
   width: 100%;
@@ -63,6 +63,7 @@
   :global {
     animation-name: enter-left;
   }
+
   @include cdr-tab-panel-animation;
 }
 
@@ -70,6 +71,7 @@
   :global {
     animation-name: enter-right;
   }
+
   @include cdr-tab-panel-animation;
 }
 
@@ -77,6 +79,7 @@
   :global {
     animation-name: exit-left;
   }
+
   @include cdr-tab-panel-animation;
 }
 
@@ -84,5 +87,6 @@
   :global {
     animation-name: exit-right;
   }
+
   @include cdr-tab-panel-animation;
 }

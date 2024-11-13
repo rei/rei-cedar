@@ -1,5 +1,5 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrPopup.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrPopup.vars';
 
 .cdr-popup {
   opacity: 0;
@@ -17,8 +17,10 @@
     animation-duration: $animation-duration;
     animation-timing-function: $timing-function;
     animation-fill-mode: forwards;
+
     //ITEM_DOC: Background color of cdr-popup content
     background: var(--cdr-popup-content-background, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
+
     //ITEM_DOC: Border color of cdr-popup content
     border: 1px solid var(--cdr-popup-content-border-color, var(--cdr-color-border-secondary, #{$cdr-color-border-secondary}));
     border-radius: $cdr-radius-softer;

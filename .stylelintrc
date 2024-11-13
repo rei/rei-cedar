@@ -1,19 +1,48 @@
 {
-    "extends": "stylelint-config-recommended-scss",
+    "extends": [
+      "stylelint-config-recommended-scss",
+      "stylelint-config-standard-scss"
+    ],
     "ignoreFiles": [
-        "**/*.js",
-        "**/*.snap",
-        "**/*.vars.pcss"
+      "**/*.js",
+      "**/*.snap",
+      "**/*.vars.pcss"
     ],
     "plugins": [
-        "stylelint-scss"
+      "stylelint-scss"
     ],
     "rules": {
-        "at-rule-disallowed-list": ["debug"],
-        "no-empty-source": null,
-        "no-descending-specificity": null,
-        "selector-pseudo-class-no-unknown": [true, {
-            "ignorePseudoClasses": ["global"]
-        }]
+      "at-rule-disallowed-list": ["debug"],
+      "no-empty-source": null,
+      "no-descending-specificity": null,
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": ["global"]
+        }
+      ],
+      "scss/at-extend-no-missing-placeholder": true,
+      "scss/comment-no-loud": null,
+      "scss/function-color-relative": true,
+      "scss/at-if-no-null": true,
+      "scss/dollar-variable-no-missing-interpolation": true,
+      "scss/selector-no-redundant-nesting-selector": true,
+      "scss/at-import-partial-extension": null,
+      "scss/at-mixin-pattern": null,
+      "scss/at-function-pattern": null,
+      "scss/dollar-variable-pattern": null,
+      "scss/percent-placeholder-pattern": null,
+      "function-disallowed-list": null,
+      "color-function-notation": null,
+      "alpha-value-notation": null,
+      "color-hex-length": null,
+      "custom-property-pattern": null,
+      "selector-class-pattern": [
+        "^[a-z0-9]+(?:-[a-z0-9]+)*(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))?(?:--(?:[a-z0-9]+(?:-[a-z0-9]+)*))?$",
+        {
+          "message": "Expected class selector to follow BEM naming convention (selector-class-pattern)"
+        }
+      ]
     }
-}
+  }
+  

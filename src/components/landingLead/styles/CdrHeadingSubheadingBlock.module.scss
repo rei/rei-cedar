@@ -1,13 +1,14 @@
-@import '../../../styles/settings/index.scss';
-@import '../../text/presets/styles/CdrHeadingDisplay.module.scss';
-@import '../../text/presets/styles/CdrSubheadingSans.module.scss';
+@import '../../../styles/settings/index';
+@import '../../text/presets/styles/CdrHeadingDisplay.module';
+@import '../../text/presets/styles/CdrSubheadingSans.module';
 
 .cdr-heading-subheading-block {
   &__heading {
     display: block;
-    margin: 0 0 $cdr-space-one-x 0;
+    margin: 0 0 $cdr-space-one-x;
     max-width: 40ch;
   }
+
   &__subheading {
     display: block;
     margin-top: $cdr-space-three-quarter-x!important;

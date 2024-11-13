@@ -1,5 +1,6 @@
 @mixin cdr-form-figure-radio-base-mixin() {
   border-radius: 100%;
+
   &::after {
     content: '';
     position: absolute;
@@ -27,6 +28,7 @@
 
 @mixin cdr-form-figure-radio-hover-mixin() {
   cursor: pointer;
+
   //ITEM_DOC: Box-shadow color of cdr-radio on hover
   box-shadow: inset 0 0 0 1px var(--cdr-radio-box-shadow-color-hover, var(--cdr-color-border-input-default-hover, #{$cdr-color-border-input-default-hover})), 0 0 0 1px var(--cdr-radio-box-shadow-color-hover, var(--cdr-color-border-input-default-hover, #{$cdr-color-border-input-default-hover}));
 
@@ -51,7 +53,7 @@
   //ITEM_DOC: Background color of cdr-radio when disabled
   background-color: var(--cdr-radio-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled})) !important;
   
-  &:after {
+  &::after {
     //ITEM_DOC: Background color of the inner circle of cdr-radio when disabled
     background-color: var(--cdr-radio-inner-circle-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled})) !important;
   }

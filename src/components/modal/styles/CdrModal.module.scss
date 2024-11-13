@@ -1,4 +1,4 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/index';
 
 $modal-animation-duration: 150ms;
 
@@ -9,13 +9,10 @@ $modal-animation-duration: 150ms;
     }
   }
 
-  bottom: 0;
+  inset: 0;
   height: 100%;
-  left: 0;
   overflow-y: scroll;
   position: fixed;
-  right: 0;
-  top: 0;
   visibility: visible;
   z-index: 9999;
 
@@ -23,12 +20,9 @@ $modal-animation-duration: 150ms;
     //ITEM_DOC: Background color of the modal overlay
     background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay, #{$cdr-color-background-modal-overlay}));
     backdrop-filter: blur($cdr-space-one-x);
-    bottom: 0;
-    left: 0;
+    inset: 0;
     opacity: 1;
     position: fixed;
-    right: 0;
-    top: 0;
     transition: opacity $modal-animation-duration;
     z-index: 0;
   }
@@ -43,6 +37,7 @@ $modal-animation-duration: 150ms;
 
   &__contentWrap {
     align-items: flex-start;
+
     //ITEM_DOC: Background color of the content wrap
     background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
     display: flex;
@@ -57,6 +52,7 @@ $modal-animation-duration: 150ms;
     transition: opacity $modal-animation-duration $modal-animation-duration;
     width: 100%;
     z-index: 0;
+
     &:focus {
       outline: 0;
     }
@@ -80,10 +76,13 @@ $modal-animation-duration: 150ms;
     padding-bottom: $cdr-space-one-x;
     justify-content: space-between;
   }
+
   &__title {
     flex: auto;
+
     @include cdr-text-heading-serif-600;
   }
+
   &__close-button {
     flex: none;
     align-self: center;
