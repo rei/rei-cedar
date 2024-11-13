@@ -1,0 +1,30 @@
+
+[data-palette='sandstone'] {
+  --cdr-color-background-surface-primary: #{$cdr-color-background-secondary};
+  --cdr-color-background-surface-secondary: #dcd6cb;
+  --cdr-color-border-surface-primary: #{$cdr-color-border-secondary};
+  --cdr-color-border-surface-secondary: #726d64;
+}
+
+[data-palette='membership-subtle'] {
+  --cdr-color-background-surface-primary: var(--cdr-membership-subtle-color-background-primary);
+  --cdr-color-text-primary: var(--cdr-membership-subtle-color-text-primary);
+  --cdr-color-border-button-primary-rest: var(--cdr-membership-subtle-color-border-button-primary-rest);
+  --cdr-color-border-button-primary-active: var(--cdr-membership-subtle-color-border-button-primary-active);
+  --cdr-color-border-button-primary-hover: var(--cdr-membership-subtle-color-border-button-primary-hover);
+  --cdr-color-text-button-primary-hover: var(--cdr-membership-subtle-color-text-button-primary-hover);
+  --cdr-color-background-button-primary-rest: var(--cdr-membership-subtle-color-background-button-primary-rest);
+  --cdr-color-background-button-primary-active: var(--cdr-membership-subtle-color-background-button-primary-active);
+}
+
+[data-palette='membership-vibrant'] {
+  --cdr-color-background-surface-primary: var(--cdr-membership-vibrant-color-background-primary);
+  --cdr-color-text-surface-primary: var(--cdr-membership-vibrant-color-text-primary);
+  --cdr-color-border-button-primary-rest: var(--cdr-membership-vibrant-color-border-button-primary-rest);
+  --cdr-color-border-button-primary-active: var(--cdr-membership-vibrant-color-border-button-primary-active);
+  --cdr-color-border-button-primary-hover: var(--cdr-membership-vibrant-color-border-button-primary-hover);
+  --cdr-color-text-button-primary-hover: var(--cdr-membership-vibrant-color-text-button-primary-hover);
+  --cdr-color-background-button-primary-rest: var(--cdr-membership-vibrant-color-background-button-primary-rest);
+  --cdr-color-background-button-primary-active: var(--cdr-membership-vibrant-color-background-button-primary-active);
+}
+

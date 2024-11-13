@@ -107,9 +107,4 @@ input[type='month'] {
   -webkit-appearance: none;
 }
 
-[data-palette='sandstone'] {
-  --cdr-color-background-surface-primary: #{$cdr-color-background-secondary};
-  --cdr-color-background-surface-secondary: #dcd6cb;
-  --cdr-color-border-surface-primary: #{$cdr-color-border-secondary};
-  --cdr-color-border-surface-secondary: #726d64;
-}
+

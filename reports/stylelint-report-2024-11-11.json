@@ -1,0 +1,3816 @@
+{
+  "date": "2024-11-11",
+  "styleWarnings": [
+    {
+      "file": "src/components/accordion/styles/CdrAccordion.module.scss",
+      "warnings": [
+        {
+          "line": 101,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 157,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 3,
+          "column": 3,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 6,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 10,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 26,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 30,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 43,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 69,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 92,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 95,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/accordion/styles/CdrAccordionGroup.module.scss",
+      "warnings": [
+        {
+          "line": 10,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/banner/styles/CdrBanner.module.scss",
+      "warnings": [
+        {
+          "line": 33,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 64,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 80,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 90,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 93,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 104,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 113,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 116,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 127,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 136,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 139,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 150,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 159,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 162,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 173,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 182,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 185,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 196,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 54,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 68,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 84,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 94,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 98,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 107,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 117,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 121,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 130,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 140,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 144,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 153,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 163,
+          "column": 35,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 167,
+          "column": 39,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 176,
+          "column": 37,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 186,
+          "column": 41,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 190,
+          "column": 45,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 199,
+          "column": 43,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/breadcrumb/styles/CdrBreadcrumb.module.scss",
+      "warnings": [
+        {
+          "line": 57,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 67,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/button/styles/CdrButton.module.scss",
+      "warnings": [
+        {
+          "line": 69,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/checkbox/styles/CdrCheckbox.module.scss",
+      "warnings": [
+        {
+          "line": 25,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 29,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 86,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 90,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 99,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 107,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 117,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 31,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 37,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 67,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 136,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/chip/styles/CdrChip.module.scss",
+      "warnings": [
+        {
+          "line": 11,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 19,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/formGroup/styles/CdrFormGroup.module.scss",
+      "warnings": [
+        {
+          "line": 4,
+          "column": 3,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/icon/styles/CdrIcon.module.scss",
+      "warnings": [
+        {
+          "line": 10,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/input/styles/CdrInput.module.scss",
+      "warnings": [
+        {
+          "line": 20,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 38,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 42,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 74,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 187,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/labelWrapper/styles/CdrLabelWrapper.module.scss",
+      "warnings": [
+        {
+          "line": 51,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 55,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/landingLead/styles/CdrLandingLead.module.scss",
+      "warnings": [
+        {
+          "line": 7,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/list/styles/CdrList.module.scss",
+      "warnings": [
+        {
+          "line": 9,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 23,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 33,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 36,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 49,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 62,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 65,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 82,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 85,
+          "column": 9,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 114,
+          "column": 9,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 96,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/modal/styles/CdrModal.module.scss",
+      "warnings": [
+        {
+          "line": 7,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 20,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 41,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 144,
+          "column": 3,
+          "rule": "selector-class-pattern",
+          "text": "Expected class selector to follow BEM naming convention (selector-class-pattern)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/pagination/styles/CdrPagination.module.scss",
+      "warnings": [
+        {
+          "line": 32,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 45,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 62,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 74,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 77,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 84,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/quote/styles/CdrQuote.module.scss",
+      "warnings": [
+        {
+          "line": 1,
+          "column": 3,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/popup/styles/CdrPopup.module.scss",
+      "warnings": [
+        {
+          "line": 21,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 24,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/rating/styles/CdrRating.module.scss",
+      "warnings": [
+        {
+          "line": 8,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 14,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 36,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 42,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 86,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 95,
+          "column": 9,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 90,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 96,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 109,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 114,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 119,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 124,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 129,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 132,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 137,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 140,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/radio/styles/CdrRadio.module.scss",
+      "warnings": [
+        {
+          "line": 38,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 45,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 4,
+          "column": 3,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/select/styles/CdrSelect.module.scss",
+      "warnings": [
+        {
+          "line": 83,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 57,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 66,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 26,
+          "column": 3,
+          "rule": "declaration-block-no-duplicate-properties",
+          "text": "Unexpected duplicate \"appearance\" (declaration-block-no-duplicate-properties)",
+          "severity": "error"
+        },
+        {
+          "line": 27,
+          "column": 3,
+          "rule": "declaration-block-no-duplicate-properties",
+          "text": "Unexpected duplicate \"appearance\" (declaration-block-no-duplicate-properties)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/switch/styles/CdrSwitch.module.scss",
+      "warnings": [
+        {
+          "line": 13,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 16,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 20,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 25,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 29,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 33,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 39,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 46,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 49,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 53,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 59,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 68,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 72,
+          "column": 35,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 77,
+          "column": 37,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 80,
+          "column": 39,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 86,
+          "column": 45,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 89,
+          "column": 47,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 95,
+          "column": 47,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 104,
+          "column": 49,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 110,
+          "column": 49,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 113,
+          "column": 51,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 117,
+          "column": 55,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 123,
+          "column": 59,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 148,
+          "column": 55,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 151,
+          "column": 57,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 153,
+          "column": 7,
+          "rule": "declaration-block-no-duplicate-properties",
+          "text": "Unexpected duplicate \"transition\" (declaration-block-no-duplicate-properties)",
+          "severity": "error"
+        },
+        {
+          "line": 141,
+          "column": 5,
+          "rule": "declaration-block-no-duplicate-properties",
+          "text": "Unexpected duplicate \"transition\" (declaration-block-no-duplicate-properties)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/tabs/styles/CdrTabPanel.module.scss",
+      "warnings": [
+        {
+          "line": 9,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(exit-left)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 21,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(exit-right)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 33,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(enter-left)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 45,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(enter-right)\" to be kebab-case",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/tabs/styles/CdrTabs.module.scss",
+      "warnings": [
+        {
+          "line": 3,
+          "column": 3,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 49,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 80,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 89,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 109,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 117,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 167,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 211,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 134,
+          "column": 5,
+          "rule": "declaration-block-no-duplicate-properties",
+          "text": "Unexpected duplicate \"transition\" (declaration-block-no-duplicate-properties)",
+          "severity": "error"
+        },
+        {
+          "line": 53,
+          "column": 26,
+          "rule": "declaration-block-single-line-max-declarations",
+          "text": "Expected no more than 1 declaration (declaration-block-single-line-max-declarations)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/toggleButton/styles/CdrToggleButton.module.scss",
+      "warnings": [
+        {
+          "line": 14,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 17,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 27,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 30,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 40,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 44,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 51,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 58,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 64,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 70,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 76,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/toggleButton/styles/CdrToggleGroup.module.scss",
+      "warnings": [
+        {
+          "line": 4,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 8,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/toast/styles/CdrToast.module.scss",
+      "warnings": [
+        {
+          "line": 41,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 65,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 75,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 78,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 93,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 96,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 112,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 115,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 131,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 134,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 150,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 153,
+          "column": 7,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 69,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 79,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 83,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 97,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 101,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 107,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 116,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 120,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 126,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 135,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 139,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 145,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 154,
+          "column": 35,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 158,
+          "column": 39,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 164,
+          "column": 35,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/tooltip/styles/CdrTooltip.module.scss",
+      "warnings": [
+        {
+          "line": 3,
+          "column": 3,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 21,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 24,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 27,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 34,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 39,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 44,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/banner/styles/vars/CdrBanner.vars.scss",
+      "warnings": [
+        {
+          "line": 10,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 14,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 20,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 24,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 30,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 34,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 40,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 44,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 50,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 54,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/breadcrumb/styles/vars/CdrBreadcrumb.vars.scss",
+      "warnings": [
+        {
+          "line": 2,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 13,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/button/styles/vars/CdrButton.vars.scss",
+      "warnings": [
+        {
+          "line": 502,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 535,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 568,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 53,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 56,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 59,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 62,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 67,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 70,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 73,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 76,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 81,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 84,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 87,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 90,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 95,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 98,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 101,
+          "column": 35,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 104,
+          "column": 37,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 110,
+          "column": 37,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 113,
+          "column": 39,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 116,
+          "column": 41,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 119,
+          "column": 43,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 124,
+          "column": 47,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 127,
+          "column": 49,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 130,
+          "column": 51,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 133,
+          "column": 53,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 138,
+          "column": 55,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 141,
+          "column": 57,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 144,
+          "column": 59,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 147,
+          "column": 61,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 152,
+          "column": 63,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 155,
+          "column": 65,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 159,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 162,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 168,
+          "column": 24,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 171,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 174,
+          "column": 34,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 177,
+          "column": 36,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 182,
+          "column": 14,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 185,
+          "column": 16,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 188,
+          "column": 12,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 191,
+          "column": 20,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 196,
+          "column": 34,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 199,
+          "column": 36,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 202,
+          "column": 32,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 204,
+          "column": 93,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 210,
+          "column": 34,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 213,
+          "column": 1,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 216,
+          "column": 44,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 219,
+          "column": 46,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 225,
+          "column": 56,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 228,
+          "column": 39,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 231,
+          "column": 66,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 234,
+          "column": 68,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 239,
+          "column": 46,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 242,
+          "column": 48,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 245,
+          "column": 44,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 248,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 253,
+          "column": 66,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 256,
+          "column": 68,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 259,
+          "column": 64,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 261,
+          "column": 125,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 267,
+          "column": 66,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 270,
+          "column": 72,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 273,
+          "column": 76,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 276,
+          "column": 78,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 283,
+          "column": 79,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 286,
+          "column": 81,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 293,
+          "column": 60,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 298,
+          "column": 72,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 305,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 307,
+          "column": 2,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 315,
+          "column": 79,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 320,
+          "column": 57,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 324,
+          "column": 151,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 331,
+          "column": 87,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 336,
+          "column": 65,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 340,
+          "column": 157,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 347,
+          "column": 96,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 352,
+          "column": 74,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 357,
+          "column": 10,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 363,
+          "column": 102,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 368,
+          "column": 80,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 373,
+          "column": 16,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 395,
+          "column": 10,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 401,
+          "column": 106,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 411,
+          "column": 98,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 415,
+          "column": 89,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 425,
+          "column": 117,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 435,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 436,
+          "column": 118,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 439,
+          "column": 120,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 444,
+          "column": 109,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 447,
+          "column": 105,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 450,
+          "column": 107,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 459,
+          "column": 126,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 462,
+          "column": 128,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 465,
+          "column": 124,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 468,
+          "column": 126,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 477,
+          "column": 127,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 480,
+          "column": 129,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 483,
+          "column": 137,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/caption/styles/vars/CdrCaption.vars.scss",
+      "warnings": [
+        {
+          "line": 18,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 15,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 31,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/card/styles/vars/CdrCard.vars.scss",
+      "warnings": [
+        {
+          "line": 4,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 9,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 28,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/checkbox/styles/vars/CdrCheckbox.vars.scss",
+      "warnings": [
+        {
+          "line": 4,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 7,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 15,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 18,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 23,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 26,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 31,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 34,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 40,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 45,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 48,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 53,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 56,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 61,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/chip/styles/vars/CdrChip.vars.scss",
+      "warnings": [
+        {
+          "line": 10,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 13,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 16,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 19,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 32,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 38,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 43,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 46,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 54,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 57,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 62,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 65,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 72,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 75,
+          "column": 35,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 80,
+          "column": 37,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 83,
+          "column": 39,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 88,
+          "column": 41,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 91,
+          "column": 43,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 96,
+          "column": 45,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 99,
+          "column": 47,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/chip/styles/vars/CdrChipGroup.vars.scss",
+      "warnings": [
+        {
+          "line": 14,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/formError/styles/vars/CdrFormError.vars.scss",
+      "warnings": [
+        {
+          "line": 4,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 7,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/formGroup/styles/vars/CdrFormGroup.vars.scss",
+      "warnings": [
+        {
+          "line": 46,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 16,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 19,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 23,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 29,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 36,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/input/styles/vars/CdrInput.vars.scss",
+      "warnings": [
+        {
+          "line": 6,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 10,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 13,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 16,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 39,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 50,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 53,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 56,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 71,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 76,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 82,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 87,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 93,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 96,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 115,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 29,
+          "column": 5,
+          "rule": "declaration-block-no-duplicate-properties",
+          "text": "Unexpected duplicate \"appearance\" (declaration-block-no-duplicate-properties)",
+          "severity": "error"
+        },
+        {
+          "line": 30,
+          "column": 5,
+          "rule": "declaration-block-no-duplicate-properties",
+          "text": "Unexpected duplicate \"appearance\" (declaration-block-no-duplicate-properties)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/labelStandalone/styles/vars/CdrLabelStandalone.vars.scss",
+      "warnings": [
+        {
+          "line": 4,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 10,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 15,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 22,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/labelWrapper/styles/vars/CdrLabelWrapper.vars.scss",
+      "warnings": [
+        {
+          "line": 146,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 156,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 166,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 8,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 11,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 21,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 27,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 30,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 41,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 45,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 51,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 56,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 62,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 67,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 134,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 137,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/list/styles/vars/CdrList.vars.scss",
+      "warnings": [
+        {
+          "line": 6,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 18,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 32,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 41,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 59,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 74,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 48,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 65,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 81,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/link/styles/vars/CdrLink.vars.scss",
+      "warnings": [
+        {
+          "line": 10,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 13,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 24,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 29,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/popup/styles/vars/CdrPopup.vars.scss",
+      "warnings": [
+        {
+          "line": 17,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-exit-down)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 27,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-enter-down)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 37,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-exit-down)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 47,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-enter-down)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 57,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-exit-up)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 67,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-enter-up)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 77,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-exit-up)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 87,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-enter-up)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 97,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-exit-left)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 107,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-enter-left)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 117,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-exit-left)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 127,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-enter-left)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 137,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-exit-right)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 147,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-enter-right)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 157,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-exit-right)\" to be kebab-case",
+          "severity": "error"
+        },
+        {
+          "line": 167,
+          "column": 12,
+          "rule": "keyframes-name-pattern",
+          "text": "Expected keyframe name \":global(popup-arrow-enter-right)\" to be kebab-case",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/quote/styles/vars/CdrQuote.vars.scss",
+      "warnings": [
+        {
+          "line": 6,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 31,
+          "column": 3,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 9,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 22,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 39,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/select/styles/vars/CdrSelect.vars.scss",
+      "warnings": [
+        {
+          "line": 6,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 9,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 12,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 25,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 28,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 31,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 42,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 53,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 57,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 70,
+          "column": 23,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 75,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 81,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 86,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 92,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 95,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/radio/styles/vars/CdrRadio.vars.scss",
+      "warnings": [
+        {
+          "line": 17,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 20,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 24,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 32,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 40,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 43,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 50,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 53,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 57,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 65,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 71,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 74,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 79,
+          "column": 31,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 84,
+          "column": 33,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 87,
+          "column": 35,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 91,
+          "column": 39,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/skeleton/styles/vars/CdrSkeleton.vars.scss",
+      "warnings": [
+        {
+          "line": 14,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 22,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/splitSurface/styles/vars/CdrSplitSurface.vars.scss",
+      "warnings": [
+        {
+          "line": 6,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/table/styles/vars/CdrTable.vars.scss",
+      "warnings": [
+        {
+          "line": 99,
+          "column": 5,
+          "rule": "scss/selector-no-redundant-nesting-selector",
+          "text": "Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)",
+          "severity": "error"
+        },
+        {
+          "line": 4,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 15,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 20,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 26,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 64,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 67,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 94,
+          "column": 18,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 101,
+          "column": 25,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 106,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 116,
+          "column": 29,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 135,
+          "column": 27,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/text/styles/vars/CdrText.vars.scss",
+      "warnings": [
+        {
+          "line": 2,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "src/components/toast/styles/vars/CdrToast.vars.scss",
+      "warnings": [
+        {
+          "line": 17,
+          "column": 5,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 21,
+          "column": 7,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 27,
+          "column": 9,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 35,
+          "column": 11,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 39,
+          "column": 13,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 45,
+          "column": 15,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 49,
+          "column": 17,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 55,
+          "column": 19,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        },
+        {
+          "line": 59,
+          "column": 21,
+          "rule": "scss/double-slash-comment-whitespace-inside",
+          "text": "Expected a space after // (scss/double-slash-comment-whitespace-inside)",
+          "severity": "error"
+        }
+      ]
+    }
+  ]
+}

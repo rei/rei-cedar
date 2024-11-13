@@ -22,6 +22,7 @@ const boxes: Example[] = [
       background: 'secondary',
       shadow: 'floating',
       class: 'example__card',
+      palette: 'membership-subtle',  // Updated to use membership-subtle palette
     },
   },
   {
@@ -31,25 +32,21 @@ const boxes: Example[] = [
       withBorder: true,
       background: 'secondary',
       class: 'example__pill',
+      palette: 'membership-vibrant',  // Updated to use membership-vibrant palette
     },
   },
   {
     label: 'This surface uses the primary modifier to apply a background and border color',
     props: {
-      modifier: 'primary',
-      radius: 'soft',
-      withBorder: true,
       class: 'example__card',
+      palette: 'membership-subtle',  // Updated to use membership-subtle palette
     },
   },
   {
     label: 'This surface uses the secondary modifier to apply a background and border color',
     props: {
-      modifier: 'secondary',
-      radius: 'soft',
-      withBorder: true,
-      borderStyle: 'dashed',
       class: 'example__card',
+      palette: 'membership-vibrant',  // Updated to use membership-vibrant palette
     },
   },
 ];

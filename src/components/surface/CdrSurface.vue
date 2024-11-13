@@ -18,13 +18,17 @@ const props = withDefaults(defineProps<surface>(), {
   shadow: 'flat',
   tag: 'div',
   withBorder: false,
+  palette: 'default',
 });
 
 const style = useCssModule();
 
 const rootProps = computed(() => {
   const { classes } = getSurfaceProps(props, 'cdr-surface');
-  return { class: mapClasses(style, ...classes) || undefined };
+  const paletteClass = `palette-${props.palette}`;
+  return {
+    class: mapClasses(style, ...classes, paletteClass) || undefined,
+  };
 });
 </script>
 
@@ -32,6 +36,7 @@ const rootProps = computed(() => {
   <component
     :is="tag"
     v-bind="rootProps"
+    :data-palette="props.palette"
   >
     <!-- @slot Where all default content should be placed. -->
     <slot />
