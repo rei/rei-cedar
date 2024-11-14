@@ -44,7 +44,7 @@
   &__message {
     display: inherit;
     grid-area: message;
-    padding: 0 $cdr-space-half-x;
+    padding: $cdr-space-half-x;
     align-items: center;
   }
 
