@@ -25,9 +25,9 @@ const style = useCssModule();
 
 const rootProps = computed(() => {
   const { classes } = getSurfaceProps(props, 'cdr-surface');
-  const paletteClass = `palette-${props.palette}`;
+ 
   return {
-    class: mapClasses(style, ...classes, paletteClass) || undefined,
+    class: mapClasses(style, ...classes) || undefined,
   };
 });
 </script>

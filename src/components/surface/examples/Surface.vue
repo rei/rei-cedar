@@ -22,7 +22,6 @@ const boxes: Example[] = [
       background: 'secondary',
       shadow: 'floating',
       class: 'example__card',
-      palette: 'membership-subtle',  // Updated to use membership-subtle palette
     },
   },
   {
@@ -32,7 +31,6 @@ const boxes: Example[] = [
       withBorder: true,
       background: 'secondary',
       class: 'example__pill',
-      palette: 'membership-vibrant',  // Updated to use membership-vibrant palette
     },
   },
   {
