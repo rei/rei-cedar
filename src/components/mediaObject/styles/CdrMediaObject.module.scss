@@ -1,0 +1,6 @@
+@import './vars/CdrMediaObject.vars.scss';
+
+.cdr-media-object {
+  @include cdr-media-object-base-mixin($media-object-component);
+  @include cdr-media-object-content-alignment-mixin;
+}

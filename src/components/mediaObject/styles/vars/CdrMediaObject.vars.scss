@@ -1,0 +1,33 @@
+@import '../../../../styles/settings/index.scss';
+
+$media-object-component: 'media-object';
+$content-alignment: start, center, end;
+
+@mixin cdr-media-object-base-mixin($component) {
+  grid-template-areas: var(--cdr-#{$component}-content-position);
+
+  & > img,
+  & > picture > img,
+  & > video {
+    object-fit: var(--cdr-#{$component}-media-fit);
+    object-position: var(--cdr-#{$component}-media-position);
+    height: 100%;
+    width: 100%;
+  }
+
+  & > :first-child {
+    grid-area: media;
+  }
+
+  & > :last-child {
+    grid-area: content;
+  }
+}
+
+@mixin cdr-media-object-content-alignment-mixin() {
+  @each $alignment in $content-alignment {
+    &--content-alignment-#{$alignment} {
+      align-items: $alignment;
+    }
+  }
+}

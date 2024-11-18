@@ -13,6 +13,9 @@ import type {
   Flow,
   StructureOption,
   QueryType,
+  ContentPosition,
+  ContentAlignment,
+  MediaMeasurement,
 } from './other';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -323,3 +326,11 @@ export interface fulfillmentTileIcon extends HtmlAttributes {
   type?: StatusType;
 }
 
+export interface MediaObject extends Layout {
+  contentPosition?: ContentPosition;
+  contentAlignment?: ContentAlignment;
+  mediaWidth?: MediaMeasurement;
+  mediaHeight?: MediaMeasurement;
+  mediaFit?: 'fill' | 'contain' | 'cover' | string;
+  mediaPosition?: 'top' | 'bottom' | 'left' | 'right' | 'center' | string;
+}
