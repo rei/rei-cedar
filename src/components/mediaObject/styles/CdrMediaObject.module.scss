@@ -3,4 +3,5 @@
 .cdr-media-object {
   @include cdr-media-object-base-mixin($media-object-component);
   @include cdr-media-object-content-alignment-mixin;
+  @include cdr-media-object-content-position-mixin($media-object-component);
 }

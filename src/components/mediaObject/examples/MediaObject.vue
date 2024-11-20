@@ -20,60 +20,60 @@ const contentShort =
 const contentLong = `${contentShort} ${contentShort}`;
 
 const examples: MediaObjectExample[] = [
+  {
+    label: 'Dynamic position and width',
+    props: {
+      mediaWidth: { xs: '100%', sm: '100%', md: '400px', lg: '600px' },
+      contentPosition: { xs: 'bottom', sm: 'bottom', md: 'right', lg: 'right' },
+    },
+  },
   // {
-  //   label: 'Dynamic position and width',
+  //   label: 'Default (Position right)',
+  //   props: {},
+  // },
+  // {
+  //   label: 'Position left, align center',
   //   props: {
-  //     mediaWidth: { xs: '100%', sm: '100%', md: '400px', lg: '600px' },
-  //     contentPosition: { xs: 'bottom', sm: 'bottom', md: 'right', lg: 'right' },
+  //     contentPosition: 'left',
+  //     contentAlignment: 'center',
   //   },
   // },
-  {
-    label: 'Default (Position right)',
-    props: {},
-  },
-  {
-    label: 'Position left, align center',
-    props: {
-      contentPosition: 'left',
-      contentAlignment: 'center',
-    },
-  },
-  {
-    label: 'Position top',
-    props: {
-      contentPosition: 'top',
-      mediaHeight: '200px',
-    },
-  },
-  {
-    label: 'Position bottom',
-    props: {
-      contentPosition: 'bottom',
-      mediaHeight: '200px',
-    },
-  },
-  {
-    label: 'Pass down props to Layout and Surface',
-    props: {
-      gap: 'two-x',
-      background: 'brand-spruce',
-    },
-    flags: ['no-padding', 'color-inverse'],
-  },
-  {
-    label: 'Content cut-off (known issue)',
-    props: {
-      mediaHeight: '100px',
-    },
-    flags: ['long'],
-  },
-  {
-    label: 'Content not cut-off',
-    props: {
-      mediaHeight: 'auto',
-    },
-    flags: ['long'],
-  },
+  // {
+  //   label: 'Position top',
+  //   props: {
+  //     contentPosition: 'top',
+  //     mediaHeight: '200px',
+  //   },
+  // },
+  // {
+  //   label: 'Position bottom',
+  //   props: {
+  //     contentPosition: 'bottom',
+  //     mediaHeight: '200px',
+  //   },
+  // },
+  // {
+  //   label: 'Pass down props to Layout and Surface',
+  //   props: {
+  //     gap: 'two-x',
+  //     background: 'brand-spruce',
+  //   },
+  //   flags: ['no-padding', 'color-inverse'],
+  // },
+  // {
+  //   label: 'Content cut-off (known issue)',
+  //   props: {
+  //     mediaHeight: '100px',
+  //   },
+  //   flags: ['long'],
+  // },
+  // {
+  //   label: 'Content not cut-off',
+  //   props: {
+  //     mediaHeight: 'auto',
+  //   },
+  //   flags: ['long'],
+  // },
 ];
 
 const tallColumnSExample = {
@@ -132,7 +132,7 @@ const sideBySideExample = {
           </CdrMediaObject>
         </div>
       </template>
-      <div>
+      <!-- <div>
         <CdrText>
           <code>
             <strong v-html="tallColumnSExample.label" />
@@ -227,7 +227,7 @@ const sideBySideExample = {
             </template>
           </CdrMediaObject>
         </CdrLayout>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

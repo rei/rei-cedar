@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { MediaObject, NameValuePair, HtmlAttributes, Layout } from '../../types/interfaces';
+import { MediaObject, NameValuePair, HtmlAttributes } from '../../types/interfaces';
 import { modifyClassName } from '../../utils/buildClass';
 import { getLayoutStyling } from '../../utils/mediaObject';
 import CdrLayout from '../layout/CdrLayout.vue';
@@ -46,6 +46,11 @@ const rootProps = computed(() => {
   // content position, both of which can be dynamic
   const layoutStyling = getLayoutStyling(contentPosition, mediaWidth, mediaHeight);
   Object.assign(inlineStyles, layoutStyling.inlineStyles);
+
+  // Add in class for allowing dynamic content positioning
+  if (typeof props.contentPosition !== 'string') {
+    classes.push(modifyClassName(baseClass, 'content-position-cq'));
+  }
 
   // Add content alignment
   classes.push(modifyClassName(baseClass, `content-alignment-${contentAlignment}`));

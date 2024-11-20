@@ -4,8 +4,6 @@ $media-object-component: 'media-object';
 $content-alignment: start, center, end;
 
 @mixin cdr-media-object-base-mixin($component) {
-  grid-template-areas: var(--cdr-#{$component}-content-position);
-
   & > img,
   & > picture > img,
   & > video {
@@ -28,6 +26,26 @@ $content-alignment: start, center, end;
   @each $alignment in $content-alignment {
     &--content-alignment-#{$alignment} {
       align-items: $alignment;
+    }
+  }
+}
+
+@mixin cdr-media-object-content-position-mixin($component) {
+  grid-template-areas: var(--cdr-#{$component}-content-position);
+
+  &--content-position-cq {
+    --cdr-#{$component}-content-position: var(--cdr-#{$component}-content-position-xs);
+
+    @include cdr-sm-cq-up {
+      --cdr-#{$component}-content-position: var(--cdr-#{$component}-content-position-sm);
+    }
+
+    @include cdr-md-cq-up {
+      --cdr-#{$component}-content-position: var(--cdr-#{$component}-content-position-md);
+    }
+
+    @include cdr-lg-cq-up {
+      --cdr-#{$component}-content-position: var(--cdr-#{$component}-content-position-lg);
     }
   }
 }
