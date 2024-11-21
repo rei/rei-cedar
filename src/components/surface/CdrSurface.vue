@@ -15,7 +15,15 @@ const props = withDefaults(defineProps<surface>(), {
   borderWidth: 'sixteenth-x',
   modifier: 'default',
   radius: 'sharp',
+  /**
+   * Sets Adds a shadow based on the token options within Cedar. 
+   * @values flat, raised, elevated, floating, lifted
+   */
   shadow: 'flat',
+  /**
+   * Sets valid HTML element tag
+   * @values a, button
+   */
   tag: 'div',
   withBorder: false,
   palette: 'default',
@@ -25,18 +33,19 @@ const style = useCssModule();
 
 const rootProps = computed(() => {
   const { classes } = getSurfaceProps(props, 'cdr-surface');
- 
+  const { palette } = props; // Assuming 'palette' is a prop passed to your component
   return {
     class: mapClasses(style, ...classes) || undefined,
+    'data-palette': palette || undefined,
   };
 });
+
 </script>
 
 <template>
   <component
     :is="tag"
     v-bind="rootProps"
-    :data-palette="props.palette"
   >
     <!-- @slot Where all default content should be placed. -->
     <slot />
