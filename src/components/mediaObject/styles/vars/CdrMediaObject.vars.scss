@@ -4,6 +4,7 @@ $media-object-component: 'media-object';
 $content-alignment: start, center, end;
 
 @mixin cdr-media-object-base-mixin($component) {
+  & > svg,
   & > img,
   & > picture > img,
   & > video {

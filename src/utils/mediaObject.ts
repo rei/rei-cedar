@@ -1,6 +1,9 @@
 import { Layout, NameValuePair } from '../types/interfaces';
 import {
+  Breakpoint,
   StructureOption,
+  StructureValue,
+  StructureArray,
   StructureObject,
   MediaMeasurement,
   ContentPosition,
@@ -14,16 +17,43 @@ const positions = {
   bottom: "'media' 'content'",
 };
 
-const passThrough = (measurement) => measurement;
-const oneToX = (measurement = [1, measurement]);
-const xToOne = (measurement = [measurement, 1]);
+// Various ways to fill out the structure for the layout of columns and rows.
+// The output gets mapped into a StructureArray for Layout.
+const passThrough = (measurement: StructureValue): StructureOption => measurement;
+const oneToX = (measurement: StructureValue): StructureOption => [1, measurement];
+const xToOne = (measurement: StructureValue): StructureOption => [measurement, 1];
 
-const fillAlgorithms = {
+const fillAlgorithmsByPosition = {
   left: { columns: oneToX, rows: passThrough },
   right: { columns: xToOne, rows: passThrough },
   bottom: { columns: passThrough, rows: xToOne },
   top: { columns: passThrough, rows: oneToX },
   overlay: { columns: passThrough, rows: passThrough },
+};
+
+const getStructure = (
+  mediaMeasurement: MediaMeasurement | undefined,
+  fillAlgorithm: (mesurement: string) => StructureOption,
+) => {
+  if (!mediaMeasurement) {
+    return 'auto';
+  }
+
+  let structure: StructureOption;
+
+  // If a string is passed, the width or height is static,
+  // otherwise use breakpoints to create dynamic rows or columns
+  if (typeof mediaMeasurement === 'string') {
+    structure = fillAlgorithm(mediaMeasurement);
+  } else {
+    structure = breakpoints.reduce((newStructure: NameValuePair, breakpoint) => {
+      const mediaMeasurementString = mediaMeasurement[breakpoint];
+      newStructure[breakpoint] = fillAlgorithm(mediaMeasurementString);
+      return newStructure;
+    }, {}) as StructureObject;
+  }
+
+  return structure;
 };
 
 export const getLayoutStyling = (
@@ -34,89 +64,48 @@ export const getLayoutStyling = (
   const props: Layout = {};
   const inlineStyles: NameValuePair = {};
 
-  // Get the row or column structure for a particular media height or width,
-  // which can be either a string or object
-  const getStructure = (
-    mediaMeasurement: MediaMeasurement | undefined,
-    fillAlgorithm: (mesurement: string) => StructureOption,
-  ) => {
+  const getMeasurementValue = (mediaMeasurement: MediaMeasurement, breakpoint: Breakpoint) => {
     if (!mediaMeasurement) {
       return 'auto';
     }
 
-    let structure: StructureOption;
-
-    // If a string is passed, the width or height is static,
-    // otherwise use breakpoints to create dynamic rows or columns
     if (typeof mediaMeasurement === 'string') {
-      structure = fillAlgorithm(mediaMeasurement);
+      return mediaMeasurement;
     } else {
-      structure = breakpoints.reduce((newStructure: NameValuePair, breakpoint) => {
-        const mediaMeasurementString = mediaMeasurement[breakpoint];
-        newStructure[breakpoint] = fillAlgorithm(mediaMeasurementString);
-        return newStructure;
-      }, {}) as StructureObject;
-    }
-
-    return structure;
-  };
-
-  const setStructure = () => {
-    switch (contentPosition) {
-      case 'left':
-        props.columns = getStructure(mediaWidth, (measurement) => [1, measurement]);
-        props.rows = getStructure(mediaHeight, (measurement) => measurement);
-        break;
-      case 'right':
-        props.columns = getStructure(mediaWidth, (measurement) => [measurement, 1]);
-        props.rows = getStructure(mediaHeight, (measurement) => measurement);
-        break;
-      case 'top':
-        props.columns = getStructure(mediaWidth, (measurement) => measurement);
-        props.rows = getStructure(mediaHeight, (measurement) => [1, measurement]);
-        break;
-      case 'bottom':
-        props.columns = getStructure(mediaWidth, (measurement) => measurement);
-        props.rows = getStructure(mediaHeight, (measurement) => [measurement, 1]);
-        break;
-      case 'overlay':
-        props.columns = getStructure(mediaWidth, (measurement) => measurement);
-        props.rows = getStructure(mediaHeight, (measurement) => measurement);
-        break;
+      return mediaMeasurement[breakpoint];
     }
   };
-
-
 
   if (typeof contentPosition === 'string') {
-    setStructure();
-    setPosition();
+    const fillAlgorithm = fillAlgorithmsByPosition[contentPosition];
+    props.rows = getStructure(mediaHeight, fillAlgorithm.rows);
+    props.columns = getStructure(mediaWidth, fillAlgorithm.columns);
+    inlineStyles['--cdr-media-object-content-position'] = positions[contentPosition];
   } else {
-    // const rows = {};
-    // const columns = {};
+    const rows = {};
+    const columns = {};
 
-    // const getStructureValues = (breakpoint, contentPositionValue) => {
-    //   const fillAlgorithm = fillAlgorithms[contentPositionValue];
-    // };
+    const getStructureValues = (breakpoint: Breakpoint, contentPositionValue) => {
+      const fillAlgorithm = fillAlgorithmsByPosition[contentPositionValue];
 
-    // breakpoints.forEach((breakpoint) => {
-    //   const contentPositionValue = contentPosition[breakpoint];
-    //   const rowValue = getStructureValues(breakpoint);
-    //   const columnValue = getStructureValues(breakpoint);
+      const rowMeasurement = getMeasurementValue(mediaHeight, breakpoint);
+      rows[breakpoint] = fillAlgorithm.rows(rowMeasurement);
 
-    //   rows[breakpoint] = rowValue;
-    //   columns[breakpoint] = columnValue;
+      const columnMeasurement = getMeasurementValue(mediaWidth, breakpoint);
+      columns[breakpoint] = fillAlgorithm.columns(columnMeasurement);
+    };
 
-    //   inlineStyles[`--cdr-media-object-content-position-${breakpoint}`] =
-    //     positions[contentPositionValue];
+    breakpoints.forEach((breakpoint) => {
+      const contentPositionValue = contentPosition[breakpoint];
 
-    //   // fill row for this breakpoint
-    //   // fill column for this breakpoint
-    //   // set the inlineStyle for breakpoint
-    // });
+      getStructureValues(breakpoint, contentPositionValue);
+      getStructureValues(breakpoint, contentPositionValue);
 
-    // props.rows = rows;
-    // props.columns = columns;
+      inlineStyles[`--cdr-media-object-content-position-${breakpoint}`] =
+        positions[contentPositionValue];
+    });
+    props.rows = rows;
+    props.columns = columns;
   }
 
   return { props, inlineStyles };

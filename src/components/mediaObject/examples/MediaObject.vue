@@ -6,8 +6,9 @@ import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
 import type { MediaObject } from '../../../types/interfaces';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
+import cedarSmallImage from '../../../dev/static/cedar-100x100.jpg';
 
-defineOptions({ name: 'Layout' });
+defineOptions({ name: 'Media Object' });
 
 interface MediaObjectExample {
   props: MediaObject;
@@ -21,62 +22,70 @@ const contentLong = `${contentShort} ${contentShort}`;
 
 const examples: MediaObjectExample[] = [
   {
+    label: 'Default (Position right)',
+    props: {},
+  },
+  {
+    label: 'Position left, align center',
+    props: {
+      contentPosition: 'left',
+      contentAlignment: 'center',
+    },
+  },
+  {
+    label: 'Position top',
+    props: {
+      contentPosition: 'top',
+      mediaHeight: '200px',
+    },
+  },
+  {
+    label: 'Position bottom',
+    props: {
+      contentPosition: 'bottom',
+      mediaHeight: '200px',
+    },
+  },
+  {
+    label: 'Pass down props to Layout and Surface',
+    props: {
+      gap: 'two-x',
+      background: 'brand-spruce',
+    },
+    flags: ['no-padding', 'color-inverse'],
+  },
+  {
+    label: 'Content cut-off (known issue)',
+    props: {
+      mediaHeight: '100px',
+    },
+    flags: ['long'],
+  },
+  {
+    label: 'Content not cut-off',
+    props: {
+      mediaHeight: 'auto',
+    },
+    flags: ['long'],
+  },
+  {
     label: 'Dynamic position and width',
     props: {
-      mediaWidth: { xs: '100%', sm: '100%', md: '400px', lg: '600px' },
+      mediaWidth: { xs: '100%', sm: '100%', md: '50%', lg: '75%' },
+      mediaHeight: { xs: '100px', sm: '200px', md: 'auto', lg: 'auto' },
       contentPosition: { xs: 'bottom', sm: 'bottom', md: 'right', lg: 'right' },
     },
   },
-  // {
-  //   label: 'Default (Position right)',
-  //   props: {},
-  // },
-  // {
-  //   label: 'Position left, align center',
-  //   props: {
-  //     contentPosition: 'left',
-  //     contentAlignment: 'center',
-  //   },
-  // },
-  // {
-  //   label: 'Position top',
-  //   props: {
-  //     contentPosition: 'top',
-  //     mediaHeight: '200px',
-  //   },
-  // },
-  // {
-  //   label: 'Position bottom',
-  //   props: {
-  //     contentPosition: 'bottom',
-  //     mediaHeight: '200px',
-  //   },
-  // },
-  // {
-  //   label: 'Pass down props to Layout and Surface',
-  //   props: {
-  //     gap: 'two-x',
-  //     background: 'brand-spruce',
-  //   },
-  //   flags: ['no-padding', 'color-inverse'],
-  // },
-  // {
-  //   label: 'Content cut-off (known issue)',
-  //   props: {
-  //     mediaHeight: '100px',
-  //   },
-  //   flags: ['long'],
-  // },
-  // {
-  //   label: 'Content not cut-off',
-  //   props: {
-  //     mediaHeight: 'auto',
-  //   },
-  //   flags: ['long'],
-  // },
+  {
+    label: 'Small image',
+    props: {
+      mediaFit: 'none',
+    },
+    flags: ['small-image', 'long'],
+  },
 ];
 
-const tallColumnSExample = {
+const tallColumnsExample = {
   label: 'Tall columns',
   props: {
     mediaWidth: '100px',
@@ -94,7 +103,7 @@ const sideBySideExample = {
 
 <template>
   <div class="example">
-    <h2>Layout</h2>
+    <h2>Media Object</h2>
 
     <hr class="example__hr" />
     <div class="example__container">
@@ -126,18 +135,18 @@ const sideBySideExample = {
             <template #media>
               <CdrImg
                 alt="Test image"
-                :src="cedarImage"
+                :src="flags && flags.includes('small-image') ? cedarSmallImage : cedarImage"
               />
             </template>
           </CdrMediaObject>
         </div>
       </template>
-      <!-- <div>
+      <div>
         <CdrText>
           <code>
-            <strong v-html="tallColumnSExample.label" />
+            <strong v-html="tallColumnsExample.label" />
             <br />
-            {{ JSON.stringify(tallColumnSExample.props) }}
+            {{ JSON.stringify(tallColumnsExample.props) }}
           </code>
         </CdrText>
         <CdrLayout
@@ -145,7 +154,7 @@ const sideBySideExample = {
           gap="two-x"
         >
           <CdrMediaObject
-            v-bind="tallColumnSExample.props"
+            v-bind="tallColumnsExample.props"
             :as="CdrSurface"
             background="secondary"
           >
@@ -162,7 +171,7 @@ const sideBySideExample = {
             </template>
           </CdrMediaObject>
           <CdrMediaObject
-            v-bind="tallColumnSExample.props"
+            v-bind="tallColumnsExample.props"
             :as="CdrSurface"
             background="secondary"
           >
@@ -227,7 +236,7 @@ const sideBySideExample = {
             </template>
           </CdrMediaObject>
         </CdrLayout>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -241,7 +250,8 @@ const sideBySideExample = {
   }
 
   &__container {
-    width: 850px;
+    max-width: 850px;
+    width: 100%;
 
     & > *:not(:first-child) {
       margin-top: $cdr-space-two-x;
