@@ -10557,14 +10557,18 @@ const g4 = /* @__PURE__ */ g({
     radius: { default: "sharp" },
     shadow: { default: "flat" },
     tag: { default: "div" },
-    withBorder: { type: Boolean, default: !1 }
+    withBorder: { type: Boolean, default: !1 },
+    palette: { default: "default" }
   },
   setup(e) {
     const t = e, l = se(), r = E(() => {
-      const { classes: o } = f1(t, "cdr-surface");
-      return { class: ye(l, ...o) || void 0 };
+      const { classes: o } = f1(t, "cdr-surface"), { palette: c } = t;
+      return {
+        class: ye(l, ...o) || void 0,
+        "data-palette": c || void 0
+      };
     });
-    return (o, c) => (p(), k(Ue(o.tag), U(j(r.value)), {
+    return (o, c) => (p(), k(Ue(t.tag), U(j(r.value)), {
       default: a(() => [
         q(o.$slots, "default")
       ]),
@@ -23359,7 +23363,7 @@ function gU(e, t, l, r, o, c) {
     }, 8, ["class"])
   ]);
 }
-const xU = /* @__PURE__ */ A(bU, [["render", gU]]), Yu = (e) => (kl("data-v-07f12e40"), e = e(), gl(), e), SU = { class: "example" }, RU = /* @__PURE__ */ Yu(() => /* @__PURE__ */ n("h2", null, "Surface", -1)), vU = /* @__PURE__ */ Yu(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), IU = /* @__PURE__ */ g({
+const xU = /* @__PURE__ */ A(bU, [["render", gU]]), Yu = (e) => (kl("data-v-7b06c25d"), e = e(), gl(), e), SU = { class: "example" }, RU = /* @__PURE__ */ Yu(() => /* @__PURE__ */ n("h2", null, "Surface", -1)), vU = /* @__PURE__ */ Yu(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), IU = /* @__PURE__ */ g({
   name: "Surface",
   __name: "Surface",
   setup(e) {
@@ -23387,22 +23391,39 @@ const xU = /* @__PURE__ */ A(bU, [["render", gU]]), Yu = (e) => (kl("data-v-07f1
         }
       },
       {
-        label: "This surface uses the primary modifier to apply a background and border color",
+        label: "This surface uses the primary modifier to apply a background but is in the membership-subtle palette ",
         props: {
-          modifier: "primary",
-          radius: "soft",
-          withBorder: !0,
-          class: "example__card"
+          class: "example__card",
+          palette: "membership-subtle",
+          // Updated to use membership-subtle palette
+          background: "primary"
         }
       },
       {
-        label: "This surface uses the secondary modifier to apply a background and border color",
+        label: "This surface uses the secondary modifier to apply a background it is in the membership-subtle palette, however the palette had no secondary color defined thus default palette values are used ",
         props: {
-          modifier: "secondary",
-          radius: "soft",
-          withBorder: !0,
-          borderStyle: "dashed",
-          class: "example__card"
+          class: "example__card",
+          palette: "membership-subtle",
+          // Updated to use membership-subtle palette
+          background: "secondary"
+        }
+      },
+      {
+        label: "This surface uses the primary modifier to apply a background but is in the membership-vibrant palette ",
+        props: {
+          class: "example__card",
+          palette: "membership-vibrant",
+          // Updated to use membership-subtle palette
+          background: "primary"
+        }
+      },
+      {
+        label: "This surface uses the secondary modifier to apply a background it is in the membership-vibrant palette, however the palette had no secondary color defined thus default palette values are used ",
+        props: {
+          class: "example__card",
+          palette: "membership-vibrant",
+          // Updated to use membership-subtle palette
+          background: "secondary"
         }
       }
     ];
@@ -23424,7 +23445,7 @@ const xU = /* @__PURE__ */ A(bU, [["render", gU]]), Yu = (e) => (kl("data-v-07f1
       ], 64))), 64))
     ]));
   }
-}), KU = /* @__PURE__ */ A(IU, [["__scopeId", "data-v-07f12e40"]]), It = (e) => (kl("data-v-90141e89"), e = e(), gl(), e), UU = { class: "example" }, jU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("h2", null, "SurfaceSelection", -1)), TU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), EU = { class: "example__options" }, LU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), CU = { class: "example__demos" }, MU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), JU = { class: "example__demos2" }, AU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", null, "auto", -1)), wU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", null, "auto", -1)), WU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", null, "auto", -1)), OU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", { class: "example__remaining" }, "1fr", -1)), FU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, "layout flow", -1)), XU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, 'set to "row"', -1)), ZU = /* @__PURE__ */ g({
+}), KU = /* @__PURE__ */ A(IU, [["__scopeId", "data-v-7b06c25d"]]), It = (e) => (kl("data-v-90141e89"), e = e(), gl(), e), UU = { class: "example" }, jU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("h2", null, "SurfaceSelection", -1)), TU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), EU = { class: "example__options" }, LU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), CU = { class: "example__demos" }, MU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), JU = { class: "example__demos2" }, AU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", null, "auto", -1)), wU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", null, "auto", -1)), WU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", null, "auto", -1)), OU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", { class: "example__remaining" }, "1fr", -1)), FU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, "layout flow", -1)), XU = /* @__PURE__ */ It(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, 'set to "row"', -1)), ZU = /* @__PURE__ */ g({
   name: "SurfaceSelection",
   __name: "SurfaceSelection",
   setup(e) {
@@ -26316,7 +26337,7 @@ const fM = {
   data() {
     return {
       palette: this.$route.query.palette || "default",
-      palettes: ["default", "sandstone"]
+      palettes: ["default", "sandstone", "membership-vibrant", "membership-subtle"]
     };
   },
   watch: {
@@ -26334,7 +26355,7 @@ const fM = {
       return mM(e);
     }
   }
-}, hM = (e) => (kl("data-v-4ed7d465"), e = e(), gl(), e), VM = ["data-palette"], bM = { class: "sink-wrapper__radios" }, yM = /* @__PURE__ */ hM(() => /* @__PURE__ */ n("div", null, "Toggle palette:", -1));
+}, hM = (e) => (kl("data-v-5792760b"), e = e(), gl(), e), VM = ["data-palette"], bM = { class: "sink-wrapper__radios" }, yM = /* @__PURE__ */ hM(() => /* @__PURE__ */ n("div", null, "Toggle palette:", -1));
 function qM(e, t, l, r, o, c) {
   const s = K("CdrRadio"), d = K("CdrSurface");
   return p(), x("div", { "data-palette": o.palette }, [
@@ -26367,7 +26388,7 @@ function qM(e, t, l, r, o, c) {
     })
   ], 8, VM);
 }
-const kM = /* @__PURE__ */ A(fM, [["render", qM], ["__scopeId", "data-v-4ed7d465"]]), gM = {
+const kM = /* @__PURE__ */ A(fM, [["render", qM], ["__scopeId", "data-v-5792760b"]]), gM = {
   components: {
     SinkWrapper: kM,
     CdrLink: Or
