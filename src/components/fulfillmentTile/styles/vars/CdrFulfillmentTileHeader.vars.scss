@@ -1,10 +1,11 @@
 @import '../../../../styles/settings/index';
 
 @mixin cdr-fulfillment-tile-header-base-mixin() {
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   height: $cdr-space-one-and-a-half-x;
-  flex: 0 0 auto;
+  gap: $cdr-space-three-eighth-x;
 
   &__icon {
     flex: 0 0 auto;

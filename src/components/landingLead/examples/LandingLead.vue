@@ -1,17 +1,16 @@
 <template>
   <div style="min-height: 100vh">
-    <CdrToggleGroup v-model="palettes" style="max-width: clamp(300px, 25vw, 30vw)">
-      <CdrToggleButton toggle-value="default">
-        Default
-      </CdrToggleButton>
-      <CdrToggleButton toggle-value="sandstone">
-        Sandstone
-      </CdrToggleButton>
+    <CdrToggleGroup
+      v-model="palettes"
+      style="max-width: clamp(300px, 25vw, 30vw)"
+    >
+      <CdrToggleButton toggle-value="default">Default</CdrToggleButton>
+      <CdrToggleButton toggle-value="sandstone">Sandstone</CdrToggleButton>
     </CdrToggleGroup>
     <h2>Static landing lead composition</h2>
     <CdrLandingLead
       :class="`theme-${palettes}`"
-      img-src="src/dev/static/lead-static.jpg"
+      :img-src="leadImage"
       heading="Camp with no reservations."
       subheading="We have the know-how to equip you to camp in the middle of nowhere."
     />
@@ -28,6 +27,7 @@
 
 <script>
 import * as Components from 'srcdir/lib';
+import leadImage from '../../../dev/static/lead-static.jpg';
 
 export default {
   name: 'Lead',
@@ -36,9 +36,10 @@ export default {
   },
   data() {
     return {
-      palettes: 'default'
-    }
-  }
+      palettes: 'default',
+      leadImage,
+    };
+  },
 };
 </script>
 

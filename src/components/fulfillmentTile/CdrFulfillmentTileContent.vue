@@ -8,7 +8,6 @@ import { fulfillmentTileContent } from '../../types/interfaces';
 defineOptions({ name: 'CdrFulfillmentTileContent' });
 
 const props = withDefaults(defineProps<fulfillmentTileContent>(), {
-  stretch: false,
   scale: '-2',
 });
 
@@ -19,10 +18,7 @@ const rootProps = computed(
   (): bodyTextProps => ({
     tag: 'div',
     scale: props.scale,
-    class: {
-      [style[baseClass]]: true,
-      [style[`${baseClass}--stretch`]]: props.stretch,
-    },
+    class: [style[baseClass]],
   }),
 );
 </script>

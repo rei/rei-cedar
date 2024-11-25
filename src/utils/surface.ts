@@ -1,4 +1,4 @@
-import type { surface, surfaceSelection, HtmlAttributes } from '../types/interfaces';
+import type { surface, surfaceSelection, HtmlAttributes, Layout } from '../types/interfaces';
 
 // Manages the props passed along to all surfaces
 export const getSurfaceProps = (props: surface, baseClass: string) => {
@@ -66,5 +66,19 @@ export const getSurfaceSelectionProps = (props: surfaceSelection, baseClass: str
     additionalProps['data-loading'] = loading;
   }
 
+  // Remove unwanted props that would be passed to element
+  delete additionalProps.layout;
+  delete additionalProps.modifier;
+  delete additionalProps.tag;
+
   return { classes, ...additionalProps };
+};
+
+export const getDefaultLayout = (defaults = {}) => {
+  const options: Layout = {
+    flow: 'column',
+    gap: 'three-eighth-x',
+    ...defaults,
+  };
+  return options;
 };

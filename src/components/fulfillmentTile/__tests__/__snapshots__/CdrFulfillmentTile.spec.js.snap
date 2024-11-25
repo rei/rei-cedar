@@ -4,20 +4,18 @@ exports[`CdrFulfillmentTile > component unit tests > default component with no c
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <!--v-if-->
       <span
         class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -35,16 +33,24 @@ exports[`CdrFulfillmentTile > component unit tests > default component with no c
         
       </span>
       <!--v-if-->
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+        </div>
+        <!--v-if-->
         
       </div>
       <div
@@ -67,6 +73,7 @@ exports[`CdrFulfillmentTile > component unit tests > default component with no c
         
       </div>
     </div>
+    
   </div>
 </button>
 `;
@@ -76,20 +83,18 @@ exports[`CdrFulfillmentTile > is loading 1`] = `
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
   data-loading="true"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <!--v-if-->
       <span
         class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -107,17 +112,23 @@ exports[`CdrFulfillmentTile > is loading 1`] = `
         
       </span>
       <!--v-if-->
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
-        <!--v-if-->
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+        </div>
         <div
           class="cdr-body cdr-fulfillment-tile-content"
           style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
@@ -154,6 +165,7 @@ exports[`CdrFulfillmentTile > is loading 1`] = `
         
       </div>
     </div>
+    
   </div>
 </button>
 `;
@@ -162,20 +174,18 @@ exports[`CdrFulfillmentTile > shows body 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <!--v-if-->
       <span
         class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -193,18 +203,18 @@ exports[`CdrFulfillmentTile > shows body 1`] = `
         
       </span>
       <!--v-if-->
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
         <div
-          class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+          class="cdr-body cdr-fulfillment-tile-content"
           style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
         >
           
@@ -240,6 +250,7 @@ exports[`CdrFulfillmentTile > shows body 1`] = `
         
       </div>
     </div>
+    
   </div>
 </button>
 `;
@@ -248,20 +259,18 @@ exports[`CdrFulfillmentTile > shows footer 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <!--v-if-->
       <span
         class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -279,17 +288,23 @@ exports[`CdrFulfillmentTile > shows footer 1`] = `
         
       </span>
       <!--v-if-->
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
-        <!--v-if-->
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+        </div>
         <div
           class="cdr-body cdr-fulfillment-tile-content"
           style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
@@ -326,6 +341,7 @@ exports[`CdrFulfillmentTile > shows footer 1`] = `
         
       </div>
     </div>
+    
   </div>
 </button>
 `;
@@ -334,20 +350,18 @@ exports[`CdrFulfillmentTile > shows header 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <!--v-if-->
       <span
         class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -365,16 +379,24 @@ exports[`CdrFulfillmentTile > shows header 1`] = `
         
       </span>
       <!--v-if-->
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+        </div>
+        <!--v-if-->
         
       </div>
       <div
@@ -397,6 +419,7 @@ exports[`CdrFulfillmentTile > shows header 1`] = `
         
       </div>
     </div>
+    
   </div>
 </button>
 `;
@@ -405,20 +428,18 @@ exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <!--v-if-->
       <span
         class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -436,16 +457,24 @@ exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
         
       </span>
       <!--v-if-->
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
+        <div
+          class="cdr-body cdr-fulfillment-tile-content"
+          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+        >
+          
+          
+        </div>
+        <!--v-if-->
         
       </div>
       <div
@@ -468,6 +497,7 @@ exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
         
       </div>
     </div>
+    
   </div>
 </button>
 `;
@@ -476,20 +506,18 @@ exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <!--v-if-->
       <span
         class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
@@ -517,18 +545,18 @@ exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
         
         
       </span>
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
         <div
-          class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+          class="cdr-body cdr-fulfillment-tile-content"
           style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
         >
           
@@ -577,6 +605,7 @@ exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
         
       </div>
     </div>
+    
   </div>
 </button>
 `;
@@ -585,20 +614,18 @@ exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
 <button
   aria-checked="false"
   class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  modifier="default"
-  orientation="vertical"
   role="radio"
-  tag="button"
   type="button"
 >
   <div
-    class="cdr-fulfillment-tile__inner"
+    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
+    style="--cdr-layout-rows: auto 1fr;"
   >
+    <!-- @slot Where all default content should be placed. -->
+    
     <div
-      class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--horizontal cdr-fulfillment-tile-header"
+      class="cdr-fulfillment-tile-header"
     >
-      <!-- @slot Place elements in the default slot. -->
-      
       <span
         class="cdr-fulfillment-tile-header__icon"
       >
@@ -626,18 +653,18 @@ exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
         
       </span>
       <!--v-if-->
-      
     </div>
     <div
       class="cdr-fulfillment-tile__main"
     >
       <div
-        class="cdr-fulfillment-tile-layout cdr-fulfillment-tile-layout--vertical cdr-fulfillment-tile__layout"
+        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
+        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
       >
-        <!-- @slot Place elements in the default slot. -->
+        <!-- @slot Where all default content should be placed. -->
         
         <div
-          class="cdr-body cdr-fulfillment-tile-content cdr-fulfillment-tile-content--stretch"
+          class="cdr-body cdr-fulfillment-tile-content"
           style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
         >
           
@@ -686,6 +713,7 @@ exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
         
       </div>
     </div>
+    
   </div>
 </button>
 `;

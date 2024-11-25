@@ -1,0 +1,78 @@
+@import '../../../../styles/settings/index.scss';
+
+$layout-component: 'layout';
+$structures: rows, columns;
+$flows: row, column;
+
+@mixin cdr-layout-base-mixin() {
+  display: grid;
+}
+
+// Adds in media and container queries for layouts that change at various breakpoints
+@mixin cdr-layout-structure-mixin($component) {
+  @each $structure in $structures {
+    &--#{$structure} {
+      grid-template-#{$structure}: var(--cdr-#{$component}-#{$structure});
+
+      &-mq {
+        --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-xs);
+
+        @include cdr-sm-mq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-sm);
+        }
+
+        @include cdr-md-mq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-md);
+        }
+
+        @include cdr-lg-mq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-lg);
+        }
+      }
+
+      &-cq {
+        --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-xs);
+
+        @include cdr-sm-cq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-sm);
+        }
+
+        @include cdr-md-cq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-md);
+        }
+
+        @include cdr-lg-cq-up {
+          --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-lg);
+        }
+      }
+    }
+  }
+}
+
+// Creates gap classes for layouts to use
+@mixin cdr-layout-gap-mixin() {
+  @each $key, $value in $spacing {
+    &--gap-#{$key} {
+      gap: #{$value};
+    }
+
+    &--row-gap-#{$key} {
+      row-gap: #{$value};
+    }
+
+    &--column-gap-#{$key} {
+      column-gap: #{$value};
+    }
+  }
+}
+
+// Allows for a layout to expand in one direction (row or column).
+// The size of auto generated rows or columns is provided through an inline style CSS variable.
+@mixin cdr-layout-flow-mixin($component) {
+  @each $flow in $flows {
+    &--flow-#{$flow} {
+      grid-auto-flow: $flow;
+      grid-auto-#{$flow}s: var(--cdr-#{$component}-flow-value);
+    }
+  }
+}

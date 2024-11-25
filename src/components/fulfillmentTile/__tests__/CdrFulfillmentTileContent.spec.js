@@ -23,10 +23,6 @@ describe('CdrFulfillmentTileContent', () => {
       },
     });
     expect(wrapper.element).toMatchSnapshot();
-    expect(wrapper.classes()).toEqual([
-      'cdr-body',
-      'cdr-fulfillment-tile-content',
-      'cdr-fulfillment-tile-content--stretch',
-    ]);
+    expect(wrapper.classes()).toEqual(['cdr-body', 'cdr-fulfillment-tile-content']);
   });
 });
