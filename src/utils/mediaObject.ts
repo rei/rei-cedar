@@ -3,18 +3,19 @@ import {
   Breakpoint,
   StructureOption,
   StructureValue,
-  StructureArray,
   StructureObject,
   MediaMeasurement,
   ContentPosition,
+  ContentPositionValue,
 } from '../types/other';
 import { breakpoints } from '../utils/other';
 
-const positions = {
+const positions: { [key in ContentPositionValue]: string } = {
   left: "'content media'",
   right: "'media content'",
   top: "'content' 'media'",
   bottom: "'media' 'content'",
+  overlay: "'content'",
 };
 
 // Various ways to fill out the structure for the layout of columns and rows.
@@ -23,7 +24,7 @@ const passThrough = (measurement: StructureValue): StructureOption => measuremen
 const oneToX = (measurement: StructureValue): StructureOption => [1, measurement];
 const xToOne = (measurement: StructureValue): StructureOption => [measurement, 1];
 
-const fillAlgorithmsByPosition = {
+const fillAlgorithmsByPosition: { [key in ContentPositionValue]: object } = {
   left: { columns: oneToX, rows: passThrough },
   right: { columns: xToOne, rows: passThrough },
   bottom: { columns: passThrough, rows: xToOne },
@@ -85,7 +86,10 @@ export const getLayoutStyling = (
     const rows = {};
     const columns = {};
 
-    const getStructureValues = (breakpoint: Breakpoint, contentPositionValue) => {
+    const getStructureValues = (
+      breakpoint: Breakpoint,
+      contentPositionValue: ContentPositionValue,
+    ) => {
       const fillAlgorithm = fillAlgorithmsByPosition[contentPositionValue];
 
       const rowMeasurement = getMeasurementValue(mediaHeight, breakpoint);
@@ -104,6 +108,7 @@ export const getLayoutStyling = (
       inlineStyles[`--cdr-media-object-content-position-${breakpoint}`] =
         positions[contentPositionValue];
     });
+
     props.rows = rows;
     props.columns = columns;
   }
