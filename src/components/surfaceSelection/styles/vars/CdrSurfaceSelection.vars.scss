@@ -1,4 +1,4 @@
-@import '../../../../styles/settings/index.scss';
+@import '../../../../styles/settings/index';
 
 $surface-selection-component: 'surface-selection';
 $surface-selection-modifiers: 'default';
@@ -67,6 +67,7 @@ $surface-selection-border-colors: (
   @include cdr-border-width-mixin($component, 'sixteenth-x');
   @include cdr-border-style-mixin($component, 'solid');
   @include cdr-radius-mixin($component, 'softest');
+
   border: none;
   cursor: pointer;
   appearance: none;
@@ -77,7 +78,7 @@ $surface-selection-border-colors: (
   padding: $cdr-space-inset-half-x-stretch;
   transition: all var(--cdr-duration-1-x) var(--cdr-timing-function-ease);
 
-  @include cdr-surface-selection-loading-mixin() {
+  @include cdr-surface-selection-loading-mixin {
     pointer-events: none;
 
     .cdr-#{$component}__layout {
@@ -108,17 +109,19 @@ $surface-selection-border-colors: (
     pointer-events: none;
   }
 
-  @include cdr-surface-selection-disabled-mixin() {
+  @include cdr-surface-selection-disabled-mixin {
     cursor: not-allowed !important;
+
     @include cdr-border-style-mixin($component, 'dashed');
   }
 
-  @include cdr-surface-selection-active-mixin() {
+  @include cdr-surface-selection-active-mixin {
     outline: none;
+
     @include cdr-border-width-mixin($component, 'three-sixteenth-x');
   }
 
-  @include cdr-surface-selection-checked-mixin() {
+  @include cdr-surface-selection-checked-mixin {
     @include cdr-border-width-mixin($component, 'three-sixteenth-x');
   }
 
@@ -135,35 +138,41 @@ $surface-selection-border-colors: (
   $modifier: 'default'
 ) {
   $state: 'rest';
+
   @include cdr-background-mixin($background-colors, $component, $modifier, $state);
   @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
 
-  @include cdr-surface-selection-hover-mixin() {
+  @include cdr-surface-selection-hover-mixin {
     $state: 'hover';
+
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-surface-selection-active-mixin() {
+  @include cdr-surface-selection-active-mixin {
     $state: 'active';
+
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-surface-selection-checked-mixin() {
+  @include cdr-surface-selection-checked-mixin {
     $state: 'checked';
+
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-surface-selection-disabled-mixin() {
+  @include cdr-surface-selection-disabled-mixin {
     $state: 'disabled';
+
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
     @include cdr-border-color-mixin($border-colors, $component, $modifier, $state);
   }
 
-  @include cdr-surface-selection-loading-mixin() {
+  @include cdr-surface-selection-loading-mixin {
     $state: 'loading';
+
     @include cdr-background-mixin($background-colors, $component, $modifier, $state);
   }
 }

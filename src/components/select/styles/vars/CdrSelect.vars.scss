@@ -1,10 +1,14 @@
 @mixin cdr-select-base-mixin() {
   @include cdr-text-utility-sans-300;
+
   font-weight: 500;
+
   //ITEM_DOC: Background color of cdr-select
   background: var(--cdr-select-background-color, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
+
   //ITEM_DOC: Text color of cdr-select
   color: var(--cdr-select-text-color, var(--cdr-color-text-input-default, #{$cdr-color-text-input-default}));
+
   //ITEM_DOC: Box-shadow color of cdr-select
   box-shadow: inset 0 0 0 1px var(--cdr-select-box-shadow-color, var(--cdr-color-border-input-default, #{$cdr-color-border-input-default}));
   border: 0;
@@ -20,8 +24,10 @@
   &[disabled] {
     //ITEM_DOC: Background color of a disabled cdr-select
     background-color: var(--cdr-select-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{$cdr-color-background-input-default-disabled}));
+
     //ITEM_DOC: Text color of a disabled cdr-select
     color: var(--cdr-select-text-color-disabled, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled}));
+
     //ITEM_DOC: Box-shadow color of a disabled cdr-select
     box-shadow: inset 0 0 0 1px var(--cdr-select-box-shadow-color-disabled, var(--cdr-color-border-input-default-disabled, #{$cdr-color-border-input-default-disabled}));
 
@@ -43,6 +49,7 @@
   @include cdr-text-utility-sans-300;
 
   font-style: normal;
+
   //ITEM_DOC: Text color of cdr-select prompt
   color: var(--cdr-select-prompt-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
 
@@ -51,8 +58,10 @@
     color: var(--cdr-select-prompt-text-color-disabled, var(--cdr-color-text-input-disabled, #{$cdr-color-text-input-disabled}));
   }
 }
+
 @mixin cdr-select-large-mixin() {
   @include cdr-text-utility-sans-400;
+
   height: $cdr-form-input-height-large;
   padding-left: $cdr-space-half-x;
 }
@@ -60,6 +69,7 @@
 @mixin cdr-select-primary-mixin() {
   //ITEM_DOC: Background color of a primary cdr-select
   background-color: var(--cdr-select-primary-background-color, var(--cdr-color-background-input-default, #{$cdr-color-background-input-default}));
+
   &:active,
   &:focus {
     //ITEM_DOC: Background color of a primary cdr-select when active or focused
@@ -81,6 +91,7 @@
 @mixin cdr-select-error-mixin() {
   //ITEM_DOC: Background color of a cdr-select error
   background-color: var(--cdr-select-background-color-error, var(--cdr-color-background-input-error, #{$cdr-color-background-input-error}));
+
   //ITEM_DOC: Box-shadow color of a cdr-select error
   box-shadow: inset 0 0 0 1px var(--cdr-select-box-shadow-color-error, var(--cdr-color-border-input-error, #{$cdr-color-border-input-error}));
 }

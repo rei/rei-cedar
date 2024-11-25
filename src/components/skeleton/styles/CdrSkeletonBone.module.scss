@@ -1,39 +1,49 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrSkeleton.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrSkeleton.vars';
 
 .cdr-skeleton-bone {
   @include cdr-skeleton-bone-mixin;
+
   &__shimmer {
     @include cdr-skeleton-shimmer-mixin;
   }
+
   &--line {
     block-size: 1.6rem;
     margin: $cdr-space-quarter-x 0;
     flex: none;
+
     &:nth-child(1) {
       width: 100%;
     }
+
     &:nth-child(2) {
       width: 55%;
     }
+
     &:nth-child(3) {
       width: 85%;
     }
+
     &:nth-child(4) {
       width: 65%;
     }
+
     &:nth-child(5) {
       width: 35%;
     }
   }
+
   &--heading {
     block-size: 3.2rem;
     flex: none;
   }
+
   &--rectangle {
     overflow: hidden;
     padding-top: 75%;
   }
+
   &--square {
     overflow: hidden;
     padding-top: 100%;

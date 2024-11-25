@@ -1,7 +1,8 @@
 $cdr-warn: false;
+
 @use 'sass:map';
 @use 'sass:list';
-@import '../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@import '../../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens';
 @import './alignment.vars';
 @import './options.vars';
 @import './visibility.vars';
