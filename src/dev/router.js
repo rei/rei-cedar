@@ -40,6 +40,7 @@ const routes = [
   { path: '/inputs', name: 'Input', component: Examples.inputs },
   { path: '/kicker', name: 'Kicker', component: Examples.kicker },
   { path: '/landing-lead', name: 'Landing Lead', component: Examples.landingLead },
+  { path: '/layout', name: 'Layout', component: Examples.layout },
   { path: '/links', name: 'Links', component: Examples.links },
   { path: '/lists', name: 'Lists', component: Examples.list },
   { path: '/modals', name: 'Modals', component: Examples.modal },

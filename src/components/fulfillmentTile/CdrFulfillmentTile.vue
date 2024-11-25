@@ -2,8 +2,8 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { surfaceSelection } from '../../types/interfaces';
-import { getSurfaceSelectionProps } from '../../utils/surface';
-import CdrFulfillmentTileLayout from './CdrFulfillmentTileLayout.vue';
+import { getSurfaceSelectionProps, getDefaultLayout } from '../../utils/surface';
+import CdrLayout from '../layout/CdrLayout.vue';
 import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
 import CdrFulfillmentTileContent from './CdrFulfillmentTileContent.vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<surfaceSelection>(), {
   checked: false,
   disabled: false,
   loading: false,
-  orientation: 'vertical',
+  layout: () => getDefaultLayout({ flow: 'row' }),
 });
 
 const style = useCssModule();
@@ -28,9 +28,14 @@ const baseClass = 'cdr-fulfillment-tile';
 
 // Manages the props passed along to CdrSurface
 const rootProps = computed(() => {
-  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);  
+  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);
   return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
 });
+
+// Merge layout props
+const layoutProps = computed(() =>
+  Object.assign(getDefaultLayout({ flow: 'row', rows: [1] }), props.layout),
+);
 </script>
 
 <template>
@@ -38,7 +43,10 @@ const rootProps = computed(() => {
     :is="tag"
     v-bind="rootProps"
   >
-    <div :class="style['cdr-fulfillment-tile__inner']">
+    <CdrLayout
+      :rows="['auto', 1]"
+      :class="style['cdr-fulfillment-tile__inner']"
+    >
       <CdrFulfillmentTileHeader>
         <template
           v-if="$slots['icon-left']"
@@ -60,23 +68,21 @@ const rootProps = computed(() => {
         </template>
       </CdrFulfillmentTileHeader>
       <div :class="style['cdr-fulfillment-tile__main']">
-        <CdrFulfillmentTileLayout
-          :orientation="orientation"
+        <CdrLayout
+          v-bind="layoutProps"
           :class="style['cdr-fulfillment-tile__layout']"
         >
-          <template v-if="$slots['body']">
-            <CdrFulfillmentTileContent :stretch="true">
-              <!-- @slot Default font size is a step down. Placed just below the header. -->
-              <slot name="body" />
-            </CdrFulfillmentTileContent>
-          </template>
+          <CdrFulfillmentTileContent>
+            <!-- @slot Default font size is a step down. Placed just below the header. -->
+            <slot name="body" />
+          </CdrFulfillmentTileContent>
           <template v-if="$slots['footer']">
             <CdrFulfillmentTileContent scale="-1">
               <!-- @slot Footer content will be at the bottom of the component. -->
               <slot name="footer" />
             </CdrFulfillmentTileContent>
           </template>
-        </CdrFulfillmentTileLayout>
+        </CdrLayout>
         <div :class="style['cdr-fulfillment-tile__loading']">
           <!-- @slot Custom content when component is loading. -->
           <slot name="loading">
@@ -86,7 +92,7 @@ const rootProps = computed(() => {
           </slot>
         </div>
       </div>
-    </div>
+    </CdrLayout>
   </component>
 </template>
 

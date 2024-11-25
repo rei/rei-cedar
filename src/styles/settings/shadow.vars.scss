@@ -1,0 +1,16 @@
+// Available Cedar token shadow options
+$shadows: (
+  'flat': $cdr-prominence-flat,
+  'raised': $cdr-prominence-raised,
+  'elevated': $cdr-prominence-elevated,
+  'floating': $cdr-prominence-floating,
+  'lifted': $cdr-prominence-lifted,
+);
+
+// Generates a shadow property with a predictable format for overriding
+@mixin cdr-shadow-mixin($component, $key) {
+  box-shadow: var(
+    --cdr-#{$component}-shadow,
+    var(--cdr-prominence-#{$key}, #{map.get($shadows, $key)})
+  );
+}

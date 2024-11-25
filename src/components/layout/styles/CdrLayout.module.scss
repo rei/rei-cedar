@@ -1,0 +1,9 @@
+@import './vars/CdrLayout.vars.scss';
+@import '../../../styles/settings/fluid.vars.scss';
+
+.cdr-layout {
+  @include cdr-layout-base-mixin();
+  @include cdr-layout-structure-mixin($layout-component);
+  @include cdr-layout-gap-mixin();
+  @include cdr-layout-flow-mixin($layout-component);
+}

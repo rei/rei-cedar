@@ -1,6 +1,0 @@
-@import '../../surfaceSelection/styles/vars/CdrSurfaceSelectionLayout.vars';
-@import '../../surface/styles/vars/CdrSurface.vars';
-
-.cdr-fulfillment-tile-layout {
-  @include cdr-surface-selection-layout-base-mixin;
-}

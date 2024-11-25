@@ -68,11 +68,11 @@ const toggleCheckbox2 = (value: number) => {
         role="radio"
         @click="radio1 = 1"
       >
-        <template
-          v-if="radio1 === 1"
-          #icon-right
-        >
-          <CdrFulfillmentTileIcon type="success">
+        <template #icon-right>
+          <CdrFulfillmentTileIcon
+            type="success"
+            :class="radio1 === 1 ? '' : 'example__fulfillment-icon--hidden'"
+          >
             <IconCheckFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
@@ -89,15 +89,15 @@ const toggleCheckbox2 = (value: number) => {
         role="radio"
         @click="radio1 = 2"
       >
-        <template
-          v-if="radio1 === 2"
-          #icon-right
-        >
-          <CdrFulfillmentTileIcon type="success">
+        <template #icon-right>
+          <CdrFulfillmentTileIcon
+            type="success"
+            :class="radio1 === 2 ? '' : 'example__fulfillment-icon--hidden'"
+          >
             <IconCheckFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
-        <template #header>Another option</template>
+        <template #header>Another option with really long text</template>
         <template #footer>
           Footer
           <strong>content</strong>
@@ -110,11 +110,11 @@ const toggleCheckbox2 = (value: number) => {
         :loading="true"
         @click="radio1 = 3"
       >
-        <template
-          v-if="radio1 === 3"
-          #icon-right
-        >
-          <CdrFulfillmentTileIcon type="success">
+        <template #icon-right>
+          <CdrFulfillmentTileIcon
+            type="success"
+            v-if="radio1 === 3"
+          >
             <IconCheckFill inherit-color />
           </CdrFulfillmentTileIcon>
         </template>
@@ -251,6 +251,7 @@ const toggleCheckbox2 = (value: number) => {
           class="example__search-tile-other-header-button"
           :checked="checkbox2.includes(1)"
           role="checkbox"
+          :layout="{ flow: 'rows' }"
           @click="toggleCheckbox2(1)"
         >
           <CdrFulfillmentTileHeader>
@@ -322,13 +323,19 @@ $component: 'fulfillment-tile';
     flex: 0 0 auto;
     width: 1.8rem;
     height: 1.8rem;
-    margin: $cdr-space-eighth-x;
+    margin: 0.3rem 0.4rem 0.5rem 0.4rem;
     fill: inherit;
     border-radius: $cdr-radius-round;
-    border: $cdr-space-sixteenth-x solid #2e2e2b;
+    box-shadow: inset 0px 0px 0px $cdr-space-sixteenth-x #2e2e2b;
 
     &--checked {
-      border-width: 0.7rem;
+      box-shadow: inset 0px 0px 0px 0.7rem #2e2e2b;
+    }
+  }
+
+  &__fulfillment-icon {
+    &--hidden {
+      opacity: 0;
     }
   }
 
@@ -340,8 +347,8 @@ $component: 'fulfillment-tile';
 
   &__checkout-tile-other-disabled {
     --cdr-fulfillment-tile-icon-fill: var(--cdr-color-icon-default);
-    #{--cdr-color-background-fulfillment-tile}: $cdr-color-background-surface-selection-default-disabled;
-    #{--cdr-color-background-fulfillment-tile-checked}: $cdr-color-background-surface-selection-default-disabled;
+    #{--cdr-color-background-fulfillment-tile-default-rest}: $cdr-color-background-surface-selection-default-disabled;
+    #{--cdr-color-background-fulfillment-tile-default-checked}: $cdr-color-background-surface-selection-default-disabled;
     @include cdr-border-style-mixin($component, 'dashed');
   }
 

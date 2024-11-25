@@ -1,0 +1,21 @@
+// Generates a background property with a predictable format for overriding
+@mixin cdr-background-mixin($options, $component, $modifier: 'undefined', $state: 'undefined') {
+  $statePart: '';
+  $modifierPart: '';
+
+  @if $state != 'undefined' {
+    $statePart: -#{$state};
+  }
+
+  @if $modifier != 'undefined' {
+    $modifierPart: -#{$modifier};
+  }
+
+  background: var(
+    --cdr-#{$component}#{$modifierPart}-background-color#{$statePart},
+    var(
+      --cdr-color-background-#{$component}#{$modifierPart}#{$statePart},
+      #{map.get($options, $modifier, $state)}
+    )
+  );
+}
