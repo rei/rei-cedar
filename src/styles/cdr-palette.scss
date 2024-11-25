@@ -2,19 +2,7 @@
 @import '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens';
 
 // Sandstone palettes
-//
 // palette options for membership surfaces inclued both vibrant and subtle variants
-//
-//
-// Updated Values:
-// --cdr-color-background-surface-primary
-//--cdr-color-background-surface-secondary
-// --cdr-color-border-surface-primary
-// --cdr-color-border-surface-secondary
-//
-// Usage:
-//   <cdr-surface palette="sandstone">I am a secondary palette of the default theme</cdr-surface>
-//
 
 [data-palette='sandstone'] {
   --cdr-color-background-surface-primary: #{$cdr-color-background-secondary};
@@ -24,24 +12,7 @@
 }
 
 // Membership palettes
-//
 // palette options for membership surfaces inclued both vibrant and subtle variants
-//
-//
-// Updated Values:
-// --cdr-color-background-surface-primary
-// --cdr-color-text-primary
-// --cdr-color-border-button-primary-rest
-// --cdr-color-border-button-primary-active
-// --cdr-color-border-button-primary-hover
-// --cdr-color-text-button-primary-hover
-// --cdr-color-background-button-primary-rest
-// --cdr-color-background-button-primary-active
-//
-// Usage:
-//   <cdr-surface palette="membership-subtle">I am a subtle membership surface</cdr-surface>
-//   <cdr-surface palette="membership-vibrant">I am a vibrant membership surface</cdr-surface>
-//
 
 [data-palette='membership-subtle'] {
   --cdr-color-background-surface-primary: var(--cdr-membership-subtle-color-background-primary, #{$cdr-membership-subtle-color-background-primary});
