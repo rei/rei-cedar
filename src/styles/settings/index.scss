@@ -7,7 +7,6 @@ $cdr-warn: false;
 @import './options.vars';
 @import './visibility.vars';
 @import './fluid.vars';
-@import './member-palette';
 
 $border-widths: (
   'zero': $cdr-space-zero,
