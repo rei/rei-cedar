@@ -9,8 +9,9 @@
 
     :Base - CdrCaption
 ========================================================================== */
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrCaption.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrCaption.vars';
+
 .cdr-caption {
   @include cdr-caption-container-mixin;
 

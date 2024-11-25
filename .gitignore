@@ -53,3 +53,6 @@ unmigrated/
 
 ## Dev output for hosting
 pages
+
+# Ignore reports directory
+/reports/

@@ -6,8 +6,10 @@
   background-color: transparent;
   border: 0;
   margin: 0;
+
   //ITEM_DOC: Color of the link text
   color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
+
   //ITEM_DOC: Color of the link fill
   fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
   cursor: pointer;

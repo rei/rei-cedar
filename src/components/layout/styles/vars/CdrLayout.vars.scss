@@ -8,6 +8,7 @@ $flows: row, column;
   display: grid;
 }
 
+// Adds in media and container queries for layouts that change at various breakpoints
 @mixin cdr-layout-structure-mixin($component) {
   @each $structure in $structures {
     &--#{$structure} {
@@ -48,7 +49,8 @@ $flows: row, column;
   }
 }
 
-@mixin cdr-layout-spacing-mixin() {
+// Creates gap classes for layouts to use
+@mixin cdr-layout-gap-mixin() {
   @each $key, $value in $spacing {
     &--gap-#{$key} {
       gap: #{$value};
@@ -64,6 +66,8 @@ $flows: row, column;
   }
 }
 
+// Allows for a layout to expand in one direction (row or column).
+// The size of auto generated rows or columns is provided through an inline style CSS variable.
 @mixin cdr-layout-flow-mixin($component) {
   @each $flow in $flows {
     &--flow-#{$flow} {

@@ -1,11 +1,13 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrSplitSurface.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrSplitSurface.vars';
 
 .cdr-split-surface {
   @include cdr-split-surface-base-mixin;
+
   &__top {
     @include cdr-split-surface-spacing-mixin;
   }
+
   &__bottom {
     @include cdr-split-surface-spacing-mixin;
   }

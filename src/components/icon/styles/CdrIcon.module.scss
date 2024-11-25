@@ -1,4 +1,4 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/index';
 
 .cdr-icon {
   display: inline-block;
@@ -6,6 +6,7 @@
   flex: 0 0 auto;
   width: $cdr-icon-size;
   height: $cdr-icon-size;
+
   //ITEM_DOC: Fill color of an icon
   fill: var(--cdr-icon-fill-default, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
 

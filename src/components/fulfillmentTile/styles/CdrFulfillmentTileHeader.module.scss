@@ -1,4 +1,4 @@
-@import './vars/CdrFulfillmentTileHeader.vars.scss';
+@import './vars/CdrFulfillmentTileHeader.vars';
 
 .cdr-fulfillment-tile-header {
   @include cdr-fulfillment-tile-header-base-mixin;

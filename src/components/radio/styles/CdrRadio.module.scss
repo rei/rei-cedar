@@ -1,7 +1,9 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/CdrRadio.vars.scss';
+@import '../../../styles/settings/index';
+@import './vars/CdrRadio.vars';
+
 //@import url('@rei/cedar/dist/style/cdr-label-wrapper.css');
-@import '../../labelWrapper/styles/CdrLabelWrapper.module.scss';
+@import '../../labelWrapper/styles/CdrLabelWrapper.module';
+
 .cdr-radio {
   /* Figure
   ========== */
@@ -33,7 +35,6 @@
   /* Disabled
   ========== */
   &__input:disabled {
-
     & ~ .cdr-label-wrapper__figure {
       @include cdr-form-figure-radio-disabled-mixin;
     }

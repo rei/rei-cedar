@@ -4,6 +4,6 @@
 .cdr-layout {
   @include cdr-layout-base-mixin();
   @include cdr-layout-structure-mixin($layout-component);
-  @include cdr-layout-spacing-mixin();
+  @include cdr-layout-gap-mixin();
   @include cdr-layout-flow-mixin($layout-component);
 }

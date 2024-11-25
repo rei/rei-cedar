@@ -1,6 +1,6 @@
-@import '../../../styles/settings/index.scss';
-@import '../../icon/styles/CdrIcon.module.scss';
-@import '../../select/styles/CdrSelect.module.scss';
+@import '../../../styles/settings/index';
+@import '../../icon/styles/CdrIcon.module';
+@import '../../select/styles/CdrSelect.module';
 
 .cdr-pagination {
   display: flex;
@@ -28,9 +28,10 @@
 
     background-color: transparent;
     border: none;
-    padding: 0;
+
     //ITEM_DOC: Text color of a cdr-pagination link
     color: var(--cdr-pagination-link-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+
     //ITEM_DOC: Fill color of a cdr-pagination link
     fill: var(--cdr-pagination-link-fill-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
     display: block;
@@ -49,7 +50,7 @@
     &--current {
       position: relative;
 
-      &:after {
+      &::after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -57,6 +58,7 @@
         transform: translateX(-50%);
         height: 2px;
         width: 80%;
+
         //ITEM_DOC: Background color of the keyline for the current cdr-pagination link
         background-color: var(--cdr-pagination-link-current-background-color-keyline, var(--cdr-color-background-pagination-keyline, #{$cdr-color-background-pagination-keyline}));
       }
@@ -71,6 +73,7 @@
     &#{&}--disabled {
       //ITEM_DOC: Text color of a disabled cdr-pagination link
       color: var(--cdr-pagination-link-text-color-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
+
       //ITEM_DOC: Fill color of a disabled cdr-pagination link
       fill: var(--cdr-pagination-link-fill-color-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
       cursor: not-allowed;

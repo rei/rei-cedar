@@ -51,7 +51,7 @@ const rootProps = computed(() => {
   }
 
   // Add grid templates for columns and rows
-  (['rows', 'columns'] as Structure[]).forEach((structure) => {
+  ['rows' as Structure, 'columns' as Structure].forEach((structure) => {
     if (!props[structure]) {
       return;
     }

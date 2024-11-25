@@ -1,4 +1,4 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/index';
 
 $rating-color: #2b6692;
 $empty-star: '\2606';
@@ -51,7 +51,6 @@ $filled-star: '\2605';
   align-items: center;
   position: relative;
   line-height: 1;
-
   color: $cdr-color-text-rating-default;
 
   /* Elements
@@ -129,6 +128,7 @@ $filled-star: '\2605';
     &--filled {
       //ITEM_DOC: Fill color of a filled star
       fill: var(--cdr-rating-star-filled-fill-color, #FFD280);
+
       //ITEM_DOC: Stroke color of a filled star
       stroke: var(--cdr-rating-star-filled-stroke-color, #BD7B2D);
     }
@@ -136,6 +136,7 @@ $filled-star: '\2605';
     &--empty {
       //ITEM_DOC: Fill color of an empty star
       fill: var(--cdr-rating-star-empty-fill-color, #F9F8F6);
+
       //ITEM_DOC: Stroke color of an empty star
       stroke: var(--cdr-rating-star-empty-stroke-color, #BD7B2D);
     }
@@ -144,10 +145,12 @@ $filled-star: '\2605';
       width: $cdr-icon-size-sm;
       height: $cdr-icon-size-sm;
     }
+
     &--medium {
       width: $cdr-icon-size;
       height: $cdr-icon-size;
     }
+
     &--large {
       width: $cdr-icon-size-lg;
       height: $cdr-icon-size-lg;
@@ -203,6 +206,7 @@ $filled-star: '\2605';
         height: $cdr-icon-size-lg;
       }
     }
+
     @include cdr-lg-mq-only {
       &--small\@lg {
         width: $cdr-icon-size-sm;
@@ -235,7 +239,7 @@ $filled-star: '\2605';
     ========== */
 
   &--medium {
-    @include cdr-rating-medium();
+    @include cdr-rating-medium;
   }
 
   /* Small

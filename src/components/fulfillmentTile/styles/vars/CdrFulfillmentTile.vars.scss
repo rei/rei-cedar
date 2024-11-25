@@ -1,6 +1,6 @@
 @use 'sass:map';
-@import '../../../../styles/settings/index.scss';
-@import '../../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars.scss';
+@import '../../../../styles/settings/index';
+@import '../../../surfaceSelection/styles/vars/CdrSurfaceSelection.vars';
 
 $fulfillment-tile-component: 'fulfillment-tile';
 $fulfillment-tile-background-colors: $surface-selection-background-colors;

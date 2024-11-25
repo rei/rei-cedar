@@ -1,12 +1,15 @@
-@import '../../../styles/settings/index.scss';
+@import '../../../styles/settings/index';
+
 //@import url('@rei/cedar/dist/style/cdr-icon.css');
-@import '../../icon/styles/CdrIcon.module.scss';
+@import '../../icon/styles/CdrIcon.module';
+
 //@import url('@rei/cedar/dist/style/cdr-accordion-group.css');
-@import './CdrAccordionGroup.module.scss';
+@import './CdrAccordionGroup.module';
 
 .cdr-accordion {
   //ITEM_DOC: Border color of cdr-accordion
   --cdr-accordion-border: 1px solid var(--cdr-accordion-border-color, var(--cdr-color-border-primary, #{$cdr-color-border-primary}));
+
   border-top: var(--cdr-accordion-border);
   border-bottom: var(--cdr-accordion-border);
   position: relative;
@@ -19,9 +22,11 @@
 
   &__button {
     @include cdr-text-utility-sans-strong-300;
+
     //ITEM_DOC: Background color of a cdr-accordion header button
     background-color: var(--cdr-accordion-button-background-color, transparent);
     border: none;
+
     //ITEM_DOC: Text color of a cdr-accordion header button
     color: var(--cdr-accordion-button-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
     cursor: pointer;
@@ -50,14 +55,17 @@
     font-weight: unset;
     font-style: unset;
     font-size: unset;
+
     &--unwrapped {
       @include cdr-text-heading-sans-400;
+
       margin: $cdr-space-one-x 0;
     }
   }
 
   &__icon {
     margin-left: $cdr-space-one-x;
+
     //ITEM_DOC: Fill color of icons on a cdr-accordion. This is used for the caret which changes orientation when the accordion collapses and expands
     fill: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
     transition: transform $cdr-duration-3-x $cdr-timing-function-ease-out;
@@ -80,8 +88,10 @@
 
   &__content {
     @include cdr-text-body-300;
+
     //ITEM_DOC: Background color of cdr-accordion content
     background-color:  var(--cdr-accordion-content-background-color, transparent);
+
     //ITEM_DOC: Text color of cdr-accordion content
     color: var(--cdr-accordion-content-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
     padding: $cdr-space-half-x $cdr-space-one-x $cdr-space-one-x;
@@ -106,6 +116,7 @@
   &--unwrap {
     padding: 0;
   }
+
   /* Border-Aligned
      ========== */
   &--border-aligned {

@@ -1,0 +1,18 @@
+// Cedar token variable options
+$radii: (
+  'sharp': $cdr-radius-sharp,
+  'soft': $cdr-radius-soft,
+  'softer': $cdr-radius-softer,
+  'softest': $cdr-radius-softest,
+  'round': $cdr-radius-round,
+);
+
+// Generates a radius property with a predictable format for overriding
+@mixin cdr-radius-mixin($component, $key) {
+  --cdr-#{$component}-radius-default: var(
+    --cdr-#{$component}-radius,
+    var(--cdr-radius-#{$key}, #{map.get($radii, $key)})
+  );
+  border-radius: var(--cdr-#{$component}-radius-default);
+  overflow: hidden;
+}
