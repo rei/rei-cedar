@@ -265,6 +265,11 @@ export interface surface extends HtmlAttributes {
    * Adds in a border. Comes with a default color, width, and style.
    */
   withBorder?: boolean;
+  /**
+   * Defines a palette for the component's style variations.
+   * @values default, sandstone, membership-subtle, membership-vibrant
+   */
+  palette?: 'default' | 'sandstone' | 'membership-subtle' | 'membership-vibrant';
 }
 
 export interface surfaceSelection extends HtmlAttributes {

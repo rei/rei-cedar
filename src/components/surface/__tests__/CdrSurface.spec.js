@@ -13,6 +13,7 @@ describe('CdrSurface', () => {
         radius: 'soft',
         withBorder: true,
         borderWidth: 'one-x',
+        palette: 'default',
       });
       expect(wrapper.element).toMatchSnapshot();
     });
@@ -53,5 +54,10 @@ describe('CdrSurface', () => {
         expect(wrapper.element.tagName).toBe('A');
       });
     });
+
+    it('has data-palette attribute set to "default" by default', () => {
+      expect(wrapper.attributes('data-palette')).toBe('default');
+    });
+    
   });
 });
