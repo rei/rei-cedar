@@ -18,19 +18,25 @@ const props = withDefaults(defineProps<surface>(), {
   shadow: 'flat',
   tag: 'div',
   withBorder: false,
+  palette: 'default',
 });
 
 const style = useCssModule();
 
 const rootProps = computed(() => {
   const { classes } = getSurfaceProps(props, 'cdr-surface');
-  return { class: mapClasses(style, ...classes) || undefined };
+  const { palette } = props; // Assuming 'palette' is a prop passed to your component
+  return {
+    class: mapClasses(style, ...classes) || undefined,
+    'data-palette': palette || undefined,
+  };
 });
+
 </script>
 
 <template>
   <component
-    :is="tag"
+    :is="props.tag"
     v-bind="rootProps"
   >
     <!-- @slot Where all default content should be placed. -->

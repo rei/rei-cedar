@@ -17,7 +17,6 @@ const layouts: LayoutExample[] = [
   {
     label: 'Basic columns',
     props: {
-      gap: 'one-x',
       columns: 2,
     },
     children: 2,

@@ -62,3 +62,4 @@ export * from './types/other';
 /** Compile into dist/style folder */
 import './styles/cdr-reset.scss';
 import './styles/cdr-fonts.scss';
+import './styles/cdr-palette.scss';

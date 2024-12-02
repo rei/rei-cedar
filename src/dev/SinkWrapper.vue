@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       palette: this.$route.query.palette || 'default',
-      palettes: ['default', 'sandstone'],
+      palettes: ['default', 'sandstone', 'membership-vibrant', 'membership-subtle'],
     };
   },
   watch: {

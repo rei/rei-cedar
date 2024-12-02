@@ -34,22 +34,35 @@ const boxes: Example[] = [
     },
   },
   {
-    label: 'This surface uses the primary modifier to apply a background and border color',
+    label: 'This surface uses the primary modifier to apply a background but is in the membership-subtle palette ',
     props: {
-      modifier: 'primary',
-      radius: 'soft',
-      withBorder: true,
       class: 'example__card',
+      palette: 'membership-subtle',  // Updated to use membership-subtle palette
+      background: 'primary',
     },
   },
   {
-    label: 'This surface uses the secondary modifier to apply a background and border color',
+    label: 'This surface uses the secondary modifier to apply a background it is in the membership-subtle palette, however the palette had no secondary color defined thus default palette values are used ',
     props: {
-      modifier: 'secondary',
-      radius: 'soft',
-      withBorder: true,
-      borderStyle: 'dashed',
       class: 'example__card',
+      palette: 'membership-subtle',  // Updated to use membership-subtle palette
+      background: 'secondary',
+    },
+  },
+  {
+    label: 'This surface uses the primary modifier to apply a background but is in the membership-vibrant palette ',
+    props: {
+      class: 'example__card',
+      palette: 'membership-vibrant',  // Updated to use membership-subtle palette
+      background: 'primary',
+    },
+  },
+  {
+    label: 'This surface uses the secondary modifier to apply a background it is in the membership-vibrant palette, however the palette had no secondary color defined thus default palette values are used ',
+    props: {
+      class: 'example__card',
+      palette: 'membership-vibrant',  // Updated to use membership-subtle palette
+      background: 'secondary',
     },
   },
 ];
