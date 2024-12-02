@@ -10654,14 +10654,18 @@ const M4 = /* @__PURE__ */ k({
     radius: { default: "sharp" },
     shadow: { default: "flat" },
     tag: { default: "div" },
-    withBorder: { type: Boolean, default: !1 }
+    withBorder: { type: Boolean, default: !1 },
+    palette: { default: "default" }
   },
   setup(e) {
     const t = e, l = se(), r = A(() => {
-      const { classes: o } = v1(t, "cdr-surface");
-      return { class: ye(l, ...o) || void 0 };
+      const { classes: o } = v1(t, "cdr-surface"), { palette: c } = t;
+      return {
+        class: ye(l, ...o) || void 0,
+        "data-palette": c || void 0
+      };
     });
-    return (o, c) => (p(), g(Ue(o.tag), U(j(r.value)), {
+    return (o, c) => (p(), g(Ue(t.tag), U(j(r.value)), {
       default: a(() => [
         q(o.$slots, "default")
       ]),
@@ -19972,7 +19976,7 @@ function Sx(e, t, l, r, o, c) {
     }, null, 8, ["class"])
   ]);
 }
-const vx = /* @__PURE__ */ w(qx, [["render", Sx]]), In = (e) => (cl("data-v-e4ecd4b3"), e = e(), dl(), e), Rx = { class: "example" }, Ix = /* @__PURE__ */ In(() => /* @__PURE__ */ n("h2", null, "Layout", -1)), Kx = /* @__PURE__ */ In(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), Ux = /* @__PURE__ */ In(() => /* @__PURE__ */ n("br", null, null, -1)), jx = /* @__PURE__ */ In(() => /* @__PURE__ */ n("code", null, [
+const vx = /* @__PURE__ */ w(qx, [["render", Sx]]), In = (e) => (cl("data-v-17c7cd69"), e = e(), dl(), e), Rx = { class: "example" }, Ix = /* @__PURE__ */ In(() => /* @__PURE__ */ n("h2", null, "Layout", -1)), Kx = /* @__PURE__ */ In(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), Ux = /* @__PURE__ */ In(() => /* @__PURE__ */ n("br", null, null, -1)), jx = /* @__PURE__ */ In(() => /* @__PURE__ */ n("code", null, [
   /* @__PURE__ */ n("strong", null, "Responsive nested layout")
 ], -1)), Tx = /* @__PURE__ */ k({
   name: "Layout",
@@ -19982,7 +19986,6 @@ const vx = /* @__PURE__ */ w(qx, [["render", Sx]]), In = (e) => (cl("data-v-e4ec
       {
         label: "Basic columns",
         props: {
-          gap: "one-x",
           columns: 2
         },
         children: 2
@@ -20141,7 +20144,7 @@ const vx = /* @__PURE__ */ w(qx, [["render", Sx]]), In = (e) => (cl("data-v-e4ec
       })
     ]));
   }
-}), Ex = /* @__PURE__ */ w(Tx, [["__scopeId", "data-v-e4ecd4b3"]]), Ax = {
+}), Ex = /* @__PURE__ */ w(Tx, [["__scopeId", "data-v-17c7cd69"]]), Ax = {
   name: "StandardLinks",
   components: {
     ...qe
@@ -23710,7 +23713,7 @@ function YU(e, t, l, r, o, c) {
     }, 8, ["class"])
   ]);
 }
-const QU = /* @__PURE__ */ w(HU, [["render", YU]]), n0 = (e) => (cl("data-v-07f12e40"), e = e(), dl(), e), BU = { class: "example" }, DU = /* @__PURE__ */ n0(() => /* @__PURE__ */ n("h2", null, "Surface", -1)), _U = /* @__PURE__ */ n0(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), $U = /* @__PURE__ */ k({
+const QU = /* @__PURE__ */ w(HU, [["render", YU]]), n0 = (e) => (cl("data-v-7b06c25d"), e = e(), dl(), e), BU = { class: "example" }, DU = /* @__PURE__ */ n0(() => /* @__PURE__ */ n("h2", null, "Surface", -1)), _U = /* @__PURE__ */ n0(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), $U = /* @__PURE__ */ k({
   name: "Surface",
   __name: "Surface",
   setup(e) {
@@ -23738,22 +23741,39 @@ const QU = /* @__PURE__ */ w(HU, [["render", YU]]), n0 = (e) => (cl("data-v-07f1
         }
       },
       {
-        label: "This surface uses the primary modifier to apply a background and border color",
+        label: "This surface uses the primary modifier to apply a background but is in the membership-subtle palette ",
         props: {
-          modifier: "primary",
-          radius: "soft",
-          withBorder: !0,
-          class: "example__card"
+          class: "example__card",
+          palette: "membership-subtle",
+          // Updated to use membership-subtle palette
+          background: "primary"
         }
       },
       {
-        label: "This surface uses the secondary modifier to apply a background and border color",
+        label: "This surface uses the secondary modifier to apply a background it is in the membership-subtle palette, however the palette had no secondary color defined thus default palette values are used ",
         props: {
-          modifier: "secondary",
-          radius: "soft",
-          withBorder: !0,
-          borderStyle: "dashed",
-          class: "example__card"
+          class: "example__card",
+          palette: "membership-subtle",
+          // Updated to use membership-subtle palette
+          background: "secondary"
+        }
+      },
+      {
+        label: "This surface uses the primary modifier to apply a background but is in the membership-vibrant palette ",
+        props: {
+          class: "example__card",
+          palette: "membership-vibrant",
+          // Updated to use membership-subtle palette
+          background: "primary"
+        }
+      },
+      {
+        label: "This surface uses the secondary modifier to apply a background it is in the membership-vibrant palette, however the palette had no secondary color defined thus default palette values are used ",
+        props: {
+          class: "example__card",
+          palette: "membership-vibrant",
+          // Updated to use membership-subtle palette
+          background: "secondary"
         }
       }
     ];
@@ -23775,7 +23795,7 @@ const QU = /* @__PURE__ */ w(HU, [["render", YU]]), n0 = (e) => (cl("data-v-07f1
       ], 64))), 64))
     ]));
   }
-}), ej = /* @__PURE__ */ w($U, [["__scopeId", "data-v-07f12e40"]]), jt = (e) => (cl("data-v-90141e89"), e = e(), dl(), e), tj = { class: "example" }, lj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("h2", null, "SurfaceSelection", -1)), oj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), nj = { class: "example__options" }, rj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), sj = { class: "example__demos" }, aj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), ij = { class: "example__demos2" }, cj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", null, "auto", -1)), dj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", null, "auto", -1)), uj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", null, "auto", -1)), pj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", { class: "example__remaining" }, "1fr", -1)), mj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, "layout flow", -1)), fj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, 'set to "row"', -1)), hj = /* @__PURE__ */ k({
+}), ej = /* @__PURE__ */ w($U, [["__scopeId", "data-v-7b06c25d"]]), jt = (e) => (cl("data-v-90141e89"), e = e(), dl(), e), tj = { class: "example" }, lj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("h2", null, "SurfaceSelection", -1)), oj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), nj = { class: "example__options" }, rj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), sj = { class: "example__demos" }, aj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("hr", { class: "example__hr" }, null, -1)), ij = { class: "example__demos2" }, cj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", null, "auto", -1)), dj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", null, "auto", -1)), uj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", null, "auto", -1)), pj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", { class: "example__remaining" }, "1fr", -1)), mj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, "layout flow", -1)), fj = /* @__PURE__ */ jt(() => /* @__PURE__ */ n("div", { class: "example__color-row" }, 'set to "row"', -1)), hj = /* @__PURE__ */ k({
   name: "SurfaceSelection",
   __name: "SurfaceSelection",
   setup(e) {
@@ -26668,7 +26688,7 @@ const XC = {
   data() {
     return {
       palette: this.$route.query.palette || "default",
-      palettes: ["default", "sandstone"]
+      palettes: ["default", "sandstone", "membership-vibrant", "membership-subtle"]
     };
   },
   watch: {
@@ -26686,7 +26706,7 @@ const XC = {
       return FC(e);
     }
   }
-}, ZC = (e) => (cl("data-v-4ed7d465"), e = e(), dl(), e), PC = ["data-palette"], HC = { class: "sink-wrapper__radios" }, zC = /* @__PURE__ */ ZC(() => /* @__PURE__ */ n("div", null, "Toggle palette:", -1));
+}, ZC = (e) => (cl("data-v-5792760b"), e = e(), dl(), e), PC = ["data-palette"], HC = { class: "sink-wrapper__radios" }, zC = /* @__PURE__ */ ZC(() => /* @__PURE__ */ n("div", null, "Toggle palette:", -1));
 function NC(e, t, l, r, o, c) {
   const s = K("CdrRadio"), d = K("CdrSurface");
   return p(), x("div", { "data-palette": o.palette }, [
@@ -26719,7 +26739,7 @@ function NC(e, t, l, r, o, c) {
     })
   ], 8, PC);
 }
-const GC = /* @__PURE__ */ w(XC, [["render", NC], ["__scopeId", "data-v-4ed7d465"]]), YC = {
+const GC = /* @__PURE__ */ w(XC, [["render", NC], ["__scopeId", "data-v-5792760b"]]), YC = {
   components: {
     SinkWrapper: GC,
     CdrLink: Hr
