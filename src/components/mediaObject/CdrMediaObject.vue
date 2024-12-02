@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<MediaObject>(), {
   contentAlignment: 'start',
   mediaWidth: '1fr',
   mediaHeight: 'auto',
-  mediaFit: 'cover',
+  mediaFit: 'none',
   mediaPosition: 'center',
 });
 
@@ -36,11 +36,16 @@ const rootProps = computed(() => {
   } = props;
   const additionalProps: HtmlAttributes = { ...otherProps };
 
-  // Determine how the media will take up space
-  inlineStyles['--cdr-media-object-media-fit'] = mediaFit;
+  // Add in class for object fit
+  if (props.mediaFit !== 'none') {
+    classes.push(modifyClassName(baseClass, 'media-fit'));
 
-  // Determine media position within cell
-  inlineStyles['--cdr-media-object-media-position'] = mediaPosition;
+    // Determine how the media will take up space
+    inlineStyles['--cdr-media-object-media-fit'] = mediaFit;
+
+    // Determine media position within cell
+    inlineStyles['--cdr-media-object-media-position'] = mediaPosition;
+  }
 
   // Get layout related props and inline styles based on media measurements and
   // content position, both of which can be dynamic
@@ -66,8 +71,10 @@ const rootProps = computed(() => {
 
 <template>
   <CdrLayout v-bind="rootProps">
-    <!-- @slot Where the media should be placed. -->
-    <slot name="media" />
+    <div>
+      <!-- @slot Where the media should be placed. -->
+      <slot name="media" />
+    </div>
     <!-- @slot Where all content should be placed. -->
     <slot name="content" />
   </CdrLayout>

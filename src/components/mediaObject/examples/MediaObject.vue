@@ -18,15 +18,25 @@ interface MediaObjectExample {
 
 const contentShort =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-const contentLong = `${contentShort} ${contentShort}`;
+const contentLong = `${contentShort} ${contentShort} ${contentShort}`;
 
 const examples: MediaObjectExample[] = [
   {
-    label: 'Default (Position right)',
+    label: 'Default (content position right)',
     props: {},
   },
   {
-    label: 'Position left, align center',
+    label: 'Image filling the same height as text, set media width',
+    props: { mediaFit: 'cover', mediaWidth: '125px' },
+    flags: ['long'],
+  },
+  {
+    label: 'Short image with long content',
+    props: { mediaWidth: '100px', mediaPosition: 'top', mediaFit: 'contain' },
+    flags: ['long', 'small-image'],
+  },
+  {
+    label: 'Content position left, align center',
     props: {
       contentPosition: 'left',
       contentAlignment: 'center',
@@ -36,14 +46,29 @@ const examples: MediaObjectExample[] = [
     label: 'Position top',
     props: {
       contentPosition: 'top',
-      mediaHeight: '200px',
     },
   },
   {
-    label: 'Position bottom',
+    label: 'Position bottom with a small image',
+    props: {
+      contentPosition: 'bottom',
+    },
+    flags: ['small-image'],
+  },
+  // {
+  //   label: 'Position bottom, small image, media left',
+  //   props: {
+  //     contentPosition: 'bottom',
+  //     mediaPosition: 'left',
+  //   },
+  //   flags: ['small-image'],
+  // },
+  {
+    label: 'Position bottom, cover, set media height',
     props: {
       contentPosition: 'bottom',
       mediaHeight: '200px',
+      mediaFit: 'cover',
     },
   },
   {
@@ -54,20 +79,20 @@ const examples: MediaObjectExample[] = [
     },
     flags: ['no-padding', 'color-inverse'],
   },
-  {
-    label: 'Content cut-off (known issue)',
-    props: {
-      mediaHeight: '100px',
-    },
-    flags: ['long'],
-  },
-  {
-    label: 'Content not cut-off',
-    props: {
-      mediaHeight: 'auto',
-    },
-    flags: ['long'],
-  },
+  // {
+  //   label: 'Content cut-off (known issue)',
+  //   props: {
+  //     mediaHeight: '100px',
+  //   },
+  //   flags: ['long'],
+  // },
+  // {
+  //   label: 'Content not cut-off',
+  //   props: {
+  //     mediaHeight: 'auto',
+  //   },
+  //   flags: ['long'],
+  // },
   {
     label: 'Dynamic position and width',
     props: {
@@ -78,9 +103,7 @@ const examples: MediaObjectExample[] = [
   },
   {
     label: 'Small image',
-    props: {
-      mediaFit: 'none',
-    },
+    props: {},
     flags: ['small-image', 'long'],
   },
 ];
@@ -89,6 +112,7 @@ const tallColumnsExample = {
   label: 'Tall columns',
   props: {
     mediaWidth: '100px',
+    mediaFit: 'cover',
   },
 };
 
@@ -136,6 +160,10 @@ const sideBySideExample = {
               <CdrImg
                 alt="Test image"
                 :src="flags && flags.includes('small-image') ? cedarSmallImage : cedarImage"
+                :class="{
+                  example__image: true,
+                  'example__image--height': flags && flags.includes('image-height'),
+                }"
               />
             </template>
           </CdrMediaObject>
@@ -272,6 +300,14 @@ const sideBySideExample = {
 
   &__full-height {
     height: 100%;
+  }
+
+  &__image {
+    &--height {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 }
 </style>

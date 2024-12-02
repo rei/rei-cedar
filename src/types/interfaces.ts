@@ -331,6 +331,11 @@ export interface MediaObject extends Layout {
   contentAlignment?: ContentAlignment;
   mediaWidth?: MediaMeasurement;
   mediaHeight?: MediaMeasurement;
-  mediaFit?: 'fill' | 'contain' | 'cover' | string;
-  mediaPosition?: 'top' | 'bottom' | 'left' | 'right' | 'center' | string;
+  mediaFit?: 'fill' | 'contain' | 'cover' | 'none' | string;
+  mediaPosition?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'scale-down' | string;
 }
+
+/*
+
+
+*/
