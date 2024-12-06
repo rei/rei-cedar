@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrMediaObject > snapshot test > renders correctly 1`] = `
+<div
+  checked="false"
+  class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object"
+  style="--cdr-layout-rows: auto; --cdr-layout-columns: 1fr 1fr; --cdr-media-object-media-position: 'media content'; --cdr-media-object-align: start;"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  <div
+    class="cdr-media-object__media"
+  >
+    <!-- @slot Where the media should be placed. Should be a single node. -->
+    
+    
+  </div>
+  <div
+    class="cdr-media-object__content"
+  >
+    <!-- @slot Where all content should be placed. Can be multiple nodes. -->
+    
+    
+  </div>
+  
+</div>
+`;

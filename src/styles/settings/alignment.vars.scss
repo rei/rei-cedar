@@ -1,3 +1,5 @@
+$alignment: start, center, end;
+
 @mixin cdr-align-text-left-mixin() {
   text-align: left !important;
 }
