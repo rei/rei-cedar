@@ -2,10 +2,12 @@ import * as tokens from '@rei/cdr-tokens';
 import { Breakpoint, Space } from '../types/other';
 import { NameValuePair } from '../types/interfaces';
 
-const capitalize = (text: string) => String(text[0]).toUpperCase() + String(text).slice(1);
+export const capitalize = (text: string) => String(text[0]).toUpperCase() + String(text).slice(1);
 
+// Breakpoints for use by internal functions
 export const breakpoints: Breakpoint[] = ['xs', 'sm', 'md', 'lg'];
 
+// Spacing tokens for mapping to inline styles
 export const spacing = {
   ...[
     'zero',
