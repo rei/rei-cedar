@@ -2,6 +2,7 @@ import type { Component } from 'vue';
 import type {
   Tag,
   Space,
+  SpaceOption,
   Shadow,
   Radius,
   BorderColor,
@@ -13,8 +14,8 @@ import type {
   Flow,
   StructureOption,
   QueryType,
-  ContentPosition,
-  ContentAlignment,
+  Position,
+  Alignment,
   MediaMeasurement,
 } from './other';
 
@@ -332,15 +333,48 @@ export interface fulfillmentTileIcon extends HtmlAttributes {
 }
 
 export interface MediaObject extends Layout {
-  contentPosition?: ContentPosition;
-  contentAlignment?: ContentAlignment;
+  /**
+   * The alignment of the media and content along the x or y axis, depending on the layout. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values start, center, end
+   */
+  align?: Alignment;
+  /**
+   * The position of the media, in relation to the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values top, right, bottom, left
+   */
+  mediaPosition?: Position;
+  /**
+   * The width of the column that media is placed within. This can be any CSS value. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values 1fr, auto, 25%, 50%, 75%, 200px
+   */
   mediaWidth?: MediaMeasurement;
+  /**
+   * The height of the column that media is placed within. This can be any CSS value. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values 1fr, auto, 25%, 50%, 75%, 200px
+   */
   mediaHeight?: MediaMeasurement;
-  mediaFit?: 'fill' | 'contain' | 'cover' | 'none' | string;
-  mediaPosition?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'scale-down' | string;
+  /**
+   * This property forces media to take up the full height and width of the media container and positions media to be absolute. Images and videos will still need to be configured with object-fit and object-position.
+   */
+  cover?: boolean;
+  /**
+   * Determines if content will overlay the media. When true, only overlay related props are used, no others.
+   */
+  overlay?: boolean;
+  /**
+   * The alignment of the content along the x axis.
+   * @values start, center, end
+   */
+  overlayRowAlign?: Alignment;
+  /**
+   * The alignment of the content along the y axis.
+   * @values start, center, end
+   */
+  overlayColumnAlign?: Alignment;
+  /**
+   * The spacing token to use for padding around the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @demoSelectMultiple false
+   * @values zero, one-x, two-x, scale-4, scale-3--5
+   */
+  contentPadding?: SpaceOption;
 }
-
-/*
-
-
-*/

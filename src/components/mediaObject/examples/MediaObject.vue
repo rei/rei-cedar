@@ -6,7 +6,7 @@ import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
 import type { MediaObject } from '../../../types/interfaces';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
-import cedarSmallImage from '../../../dev/static/cedar-100x100.jpg';
+import cedarSmallImage from '../../../dev/static/cedar-50x50.jpg';
 
 defineOptions({ name: 'Media Object' });
 
@@ -22,107 +22,154 @@ const contentLong = `${contentShort} ${contentShort} ${contentShort}`;
 
 const examples: MediaObjectExample[] = [
   {
-    label: 'Default (content position right)',
+    label: 'default: media position left, media width 1fr, media height auto, align start',
     props: {},
+    flags: [],
   },
   {
-    label: 'Image filling the same height as text, set media width',
-    props: { mediaFit: 'cover', mediaWidth: '125px' },
-    flags: ['long'],
+    label: 'content padding',
+    props: { contentPadding: 'two-x' },
+    flags: [],
   },
   {
-    label: 'Short image with long content',
-    props: { mediaWidth: '100px', mediaPosition: 'top', mediaFit: 'contain' },
-    flags: ['long', 'small-image'],
+    label: 'content padding dynamic',
+    props: { contentPadding: { xs: 'one-x', sm: 'one-x', md: 'three-x', lg: 'three-x' } },
+    flags: [],
   },
   {
-    label: 'Content position left, align center',
+    label: 'small image, media width auto',
+    props: { mediaWidth: 'auto' },
+    flags: ['content-long', 'image-small'],
+  },
+  {
+    label: 'media width 100px',
+    props: { mediaWidth: '100px' },
+    flags: [],
+  },
+  {
+    label: 'media width dynamic',
+    props: { mediaWidth: { xs: '100px', sm: '100px', md: '300px', lg: '300px' } },
+    flags: [],
+  },
+  {
+    label: 'align center',
+    props: { mediaWidth: 'auto', align: 'center' },
+    flags: ['image-small', 'content-long'],
+  },
+  {
+    label: 'dynamic align',
+    props: { mediaWidth: 'auto', align: { xs: 'center', sm: 'center', md: 'end', lg: 'start' } },
+    flags: ['image-small', 'content-long'],
+  },
+  {
+    label: 'cover, media configured independently to object-fit cover',
+    props: { mediaWidth: '125px', cover: true },
+    flags: ['content-long', 'image-cover'],
+  },
+  {
+    label: 'media position right',
     props: {
-      contentPosition: 'left',
-      contentAlignment: 'center',
+      mediaPosition: 'right',
     },
   },
   {
-    label: 'Position top',
+    label: 'media position dynamic',
     props: {
-      contentPosition: 'top',
+      mediaPosition: { xs: 'top', sm: 'bottom', md: 'left', lg: 'right' },
     },
   },
   {
-    label: 'Position bottom with a small image',
+    label: 'media bottom',
     props: {
-      contentPosition: 'bottom',
-    },
-    flags: ['small-image'],
-  },
-  // {
-  //   label: 'Position bottom, small image, media left',
-  //   props: {
-  //     contentPosition: 'bottom',
-  //     mediaPosition: 'left',
-  //   },
-  //   flags: ['small-image'],
-  // },
-  {
-    label: 'Position bottom, cover, set media height',
-    props: {
-      contentPosition: 'bottom',
-      mediaHeight: '200px',
-      mediaFit: 'cover',
+      mediaPosition: 'bottom',
     },
   },
   {
-    label: 'Pass down props to Layout and Surface',
+    label: 'media top, align center',
+    props: {
+      mediaPosition: 'top',
+      align: 'center',
+    },
+    flags: ['image-small'],
+  },
+
+  {
+    label: 'media top, align start',
+    props: {
+      mediaPosition: 'top',
+      align: 'start',
+    },
+    flags: ['image-small'],
+  },
+  {
+    label: 'media top, cover, media height set',
+    props: {
+      mediaPosition: 'top',
+      mediaHeight: '100px',
+      cover: true,
+    },
+    flags: ['image-cover'],
+  },
+  {
+    label: 'media position dynamic, media height dynamic, media width dynamic',
+    props: {
+      mediaWidth: { xs: '100%', sm: '100%', md: '50%', lg: '75%' },
+      mediaHeight: { xs: '100px', sm: '200px', md: 'auto', lg: 'auto' },
+      mediaPosition: { xs: 'top', sm: 'top', md: 'left', lg: 'left' },
+      cover: true,
+    },
+    flags: ['image-cover'],
+  },
+  {
+    label: 'media configured to object fit none, object position center',
+    props: { cover: true },
+    flags: ['image-center', 'image-small', 'content-long'],
+  },
+  {
+    label: 'overlay, row align, column align, content configured independently to 50% width',
+    props: {
+      overlay: true,
+      overlayColumnAlign: 'end',
+      overlayRowAlign: 'center',
+    },
+    flags: ['color-inverse', 'image-1/1', 'content-narrow'],
+  },
+  {
+    label: 'pass down props to Layout and Surface',
     props: {
       gap: 'two-x',
       background: 'brand-spruce',
     },
-    flags: ['no-padding', 'color-inverse'],
-  },
-  // {
-  //   label: 'Content cut-off (known issue)',
-  //   props: {
-  //     mediaHeight: '100px',
-  //   },
-  //   flags: ['long'],
-  // },
-  // {
-  //   label: 'Content not cut-off',
-  //   props: {
-  //     mediaHeight: 'auto',
-  //   },
-  //   flags: ['long'],
-  // },
-  {
-    label: 'Dynamic position and width',
-    props: {
-      mediaWidth: { xs: '100%', sm: '100%', md: '50%', lg: '75%' },
-      mediaHeight: { xs: '100px', sm: '200px', md: 'auto', lg: 'auto' },
-      contentPosition: { xs: 'bottom', sm: 'bottom', md: 'right', lg: 'right' },
-    },
-  },
-  {
-    label: 'Small image',
-    props: {},
-    flags: ['small-image', 'long'],
+    flags: ['color-inverse'],
   },
 ];
 
-const tallColumnsExample = {
-  label: 'Tall columns',
-  props: {
-    mediaWidth: '100px',
-    mediaFit: 'cover',
+const columnExamples = [
+  {
+    label: 'Tall columns',
+    props: {
+      mediaWidth: '100px',
+      cover: true,
+    },
+    flags: ['image-cover'],
   },
-};
-
-const sideBySideExample = {
-  label: 'Side by side',
-  props: {
-    mediaHeight: '200px',
-    contentPosition: 'bottom',
+  {
+    label: 'Side by side, cover',
+    props: {
+      mediaHeight: '100px',
+      mediaPosition: 'top',
+      cover: true,
+    },
+    flags: ['image-cover'],
   },
-};
+  {
+    label: 'Side by side 1:1 images',
+    props: {
+      mediaPosition: 'top',
+    },
+    flags: ['image-1/1'],
+  },
+];
 </script>
 
 <template>
@@ -131,7 +178,7 @@ const sideBySideExample = {
 
     <hr class="example__hr" />
     <div class="example__container">
-      <template v-for="{ props, label, flags } in examples">
+      <template v-for="({ props, label, flags }, index) in examples">
         <div>
           <CdrText>
             <code>
@@ -143,128 +190,100 @@ const sideBySideExample = {
           <CdrMediaObject
             :as="CdrSurface"
             background="secondary"
+            :content-padding="index === 0 ? 'zero' : 'two-x'"
             v-bind="props"
           >
             <template #content>
               <div
                 :class="{
                   example__content: true,
-                  'example__content--no-padding': flags && flags.includes('no-padding'),
                   'example__content--color-inverse': flags && flags.includes('color-inverse'),
+                  'example__content--narrow': flags && flags.includes('content-narrow'),
                 }"
               >
-                {{ flags && flags.includes('long') ? contentLong : contentShort }}
+                {{ flags && flags.includes('content-long') ? contentLong : contentShort }}
               </div>
             </template>
             <template #media>
               <CdrImg
                 alt="Test image"
-                :src="flags && flags.includes('small-image') ? cedarSmallImage : cedarImage"
+                :src="flags && flags.includes('image-small') ? cedarSmallImage : cedarImage"
                 :class="{
                   example__image: true,
                   'example__image--height': flags && flags.includes('image-height'),
+                  'example__image--11': flags && flags.includes('image-1/1'),
                 }"
+                :fit="
+                  flags && (flags.includes('image-cover') || flags.includes('image-1/1'))
+                    ? 'cover'
+                    : flags && flags.includes('image-center')
+                      ? 'none'
+                      : undefined
+                "
+                :position="
+                  flags && (flags.includes('image-cover') || flags.includes('image-center'))
+                    ? 'center'
+                    : undefined
+                "
+                :ratio="flags && flags.includes('image-1/1') ? '2/1' : 'auto'"
               />
             </template>
           </CdrMediaObject>
         </div>
       </template>
-      <div>
-        <CdrText>
-          <code>
-            <strong v-html="tallColumnsExample.label" />
-            <br />
-            {{ JSON.stringify(tallColumnsExample.props) }}
-          </code>
-        </CdrText>
-        <CdrLayout
-          :columns="2"
-          gap="two-x"
-        >
-          <CdrMediaObject
-            v-bind="tallColumnsExample.props"
-            :as="CdrSurface"
-            background="secondary"
+      <template v-for="{ props, label, flags } in columnExamples">
+        <div>
+          <CdrText>
+            <code>
+              <strong v-html="label" />
+              <br />
+              {{ JSON.stringify(props) }}
+            </code>
+          </CdrText>
+          <CdrLayout
+            :columns="2"
+            gap="two-x"
           >
-            <template #content>
-              <div class="example__content">
-                {{ contentLong }}
-              </div>
-            </template>
-            <template #media>
-              <CdrImg
-                alt="Test image"
-                :src="cedarImage"
-              />
-            </template>
-          </CdrMediaObject>
-          <CdrMediaObject
-            v-bind="tallColumnsExample.props"
-            :as="CdrSurface"
-            background="secondary"
-          >
-            <template #content>
-              <div class="example__content">
-                {{ contentShort }}
-              </div>
-            </template>
-            <template #media>
-              <CdrImg
-                alt="Test image"
-                :src="cedarImage"
-              />
-            </template>
-          </CdrMediaObject>
-        </CdrLayout>
-      </div>
-      <div>
-        <CdrText>
-          <code>
-            <strong v-html="sideBySideExample.label" />
-            <br />
-            {{ JSON.stringify(sideBySideExample.props) }}
-          </code>
-        </CdrText>
-        <CdrLayout
-          :columns="2"
-          gap="two-x"
-        >
-          <CdrMediaObject
-            v-bind="sideBySideExample.props"
-            :as="CdrSurface"
-            background="secondary"
-          >
-            <template #content>
-              <div class="example__content">
-                {{ contentLong }}
-              </div>
-            </template>
-            <template #media>
-              <CdrImg
-                alt="Test image"
-                :src="cedarImage"
-              />
-            </template>
-          </CdrMediaObject>
-          <CdrMediaObject
-            v-bind="sideBySideExample.props"
-            :as="CdrSurface"
-            background="secondary"
-          >
-            <template #content>
-              <div class="example__content">
-                {{ contentShort }}
-              </div>
-            </template>
-            <template #media>
-              <CdrImg
-                alt="Test image"
-                :src="cedarImage"
-              />
-            </template>
-          </CdrMediaObject>
-        </CdrLayout>
-      </div>
+            <CdrMediaObject
+              v-for="index in 2"
+              v-bind="props"
+              :as="CdrSurface"
+              background="secondary"
+              content-padding="two-x"
+            >
+              <template #content>
+                <div class="example__content">
+                  {{ index }}: {{ index === 1 ? contentLong : contentShort }}
+                </div>
+              </template>
+              <template #media>
+                <CdrImg
+                  alt="Test image"
+                  :src="flags && flags.includes('image-small') ? cedarSmallImage : cedarImage"
+                  :class="{
+                    example__image: true,
+                    'example__image--height': flags && flags.includes('image-height'),
+                    'example__image--11': flags && flags.includes('image-1/1'),
+                  }"
+                  :fit="
+                    flags && (flags.includes('image-cover') || flags.includes('image-1/1'))
+                      ? 'cover'
+                      : flags && flags.includes('image-center')
+                        ? 'none'
+                        : undefined
+                  "
+                  :position="
+                    flags && (flags.includes('image-cover') || flags.includes('image-center'))
+                      ? 'center'
+                      : undefined
+                  "
+                  :ratio="flags && flags.includes('image-1/1') ? '1/1' : undefined"
+                />
+              </template>
+            </CdrMediaObject>
+          </CdrLayout>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -287,14 +306,12 @@ const sideBySideExample = {
   }
 
   &__content {
-    padding: $cdr-space-two-x;
-
-    &--no-padding {
-      padding: 0;
-    }
-
     &--color-inverse {
       color: $cdr-color-text-inverse;
+    }
+
+    &--narrow {
+      max-width: 50%;
     }
   }
 
@@ -303,10 +320,17 @@ const sideBySideExample = {
   }
 
   &__image {
+    display: block;
+
     &--height {
       height: 200px;
       width: 100%;
       object-fit: cover;
+    }
+
+    &--11 {
+      height: 100%;
+      width: 100%;
     }
   }
 }

@@ -2,6 +2,9 @@
 
 .cdr-media-object {
   @include cdr-media-object-base-mixin($media-object-component);
-  @include cdr-media-object-content-alignment-mixin;
-  @include cdr-media-object-content-position-mixin($media-object-component);
+  @include cdr-media-object-align-mixin($media-object-component);
+  @include cdr-media-object-media-position-mixin($media-object-component);
+  @include cdr-media-object-cover-mixin($media-object-component);
+  @include cdr-media-object-overlay-mixin($media-object-component);
+  @include cdr-media-object-content-padding-mixin($media-object-component);
 }

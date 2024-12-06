@@ -2,21 +2,26 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { MediaObject, NameValuePair, HtmlAttributes } from '../../types/interfaces';
+import type { Breakpoint } from '../../types/other';
 import { modifyClassName } from '../../utils/buildClass';
 import { getLayoutStyling } from '../../utils/mediaObject';
 import CdrLayout from '../layout/CdrLayout.vue';
+import { breakpoints, spacing } from '../../utils/other';
 
 /** Component for buttons that have a checked state. */
 
 defineOptions({ name: 'CdrMediaObject' });
-//  go back to using media height and width to set cols/rows, that way we can still use 1fr if desired. discard the opposite height/width dependong on content position
+
 const props = withDefaults(defineProps<MediaObject>(), {
-  contentPosition: 'right',
-  contentAlignment: 'start',
+  align: 'start',
+  mediaPosition: 'left',
   mediaWidth: '1fr',
   mediaHeight: 'auto',
-  mediaFit: 'none',
-  mediaPosition: 'center',
+  cover: false,
+  overlay: false,
+  overlayRowAlign: 'start',
+  overlayColumnAlign: 'start',
+  contentPadding: 'zero',
 });
 
 const style = useCssModule();
@@ -26,43 +31,72 @@ const rootProps = computed(() => {
   const classes = [baseClass];
   const inlineStyles: NameValuePair = {};
   const {
-    contentPosition,
-    contentAlignment,
-    mediaFit,
+    align,
     mediaPosition,
     mediaWidth,
     mediaHeight,
+    cover,
+    overlay,
+    overlayRowAlign,
+    overlayColumnAlign,
+    contentPadding,
     ...otherProps
   } = props;
   const additionalProps: HtmlAttributes = { ...otherProps };
 
-  // Add in class for object fit
-  if (props.mediaFit !== 'none') {
-    classes.push(modifyClassName(baseClass, 'media-fit'));
+  if (contentPadding !== 'zero') {
+    if (typeof contentPadding === 'string') {
+      inlineStyles['--cdr-media-object-content-padding'] = spacing[contentPadding];
+    } else {
+      classes.push(modifyClassName(baseClass, 'content-padding-cq'));
 
-    // Determine how the media will take up space
-    inlineStyles['--cdr-media-object-media-fit'] = mediaFit;
-
-    // Determine media position within cell
-    inlineStyles['--cdr-media-object-media-position'] = mediaPosition;
+      breakpoints.forEach((breakpoint: Breakpoint) => {
+        // Add in padding styles for various breakpoints
+        inlineStyles[`--cdr-media-object-content-padding-${breakpoint}`] =
+          spacing[contentPadding[breakpoint]];
+      });
+    }
   }
 
-  // Get layout related props and inline styles based on media measurements and
-  // content position, both of which can be dynamic
-  const layoutStyling = getLayoutStyling(contentPosition, mediaWidth, mediaHeight);
-  Object.assign(inlineStyles, layoutStyling.inlineStyles);
+  // Add overlay class, which skips most other props
+  if (overlay) {
+    classes.push(modifyClassName(baseClass, 'overlay'));
+    Object.assign(additionalProps, { rows: 'auto', columns: 'auto' });
+    inlineStyles['--cdr-media-object-row-align'] = overlayRowAlign;
+    inlineStyles['--cdr-media-object-column-align'] = overlayColumnAlign;
+  } else {
+    // Get layout related props and inline styles based on media measurements and
+    // content position, both of which can be dynamic
+    const layoutStyling = getLayoutStyling(mediaPosition, mediaWidth, mediaHeight);
+    Object.assign(inlineStyles, layoutStyling.inlineStyles);
+    Object.assign(additionalProps, layoutStyling.props);
 
-  // Add in class for allowing dynamic content positioning
-  if (typeof props.contentPosition !== 'string') {
-    classes.push(modifyClassName(baseClass, 'content-position-cq'));
+    // Add in class for allowing dynamic content positioning
+    if (typeof mediaPosition !== 'string') {
+      classes.push(modifyClassName(baseClass, 'media-position-cq'));
+    }
+
+    // Add align class and inline styles for allowing dynamic align values
+    // or set the static value
+    if (typeof align !== 'string') {
+      classes.push(modifyClassName(baseClass, 'align-cq'));
+
+      breakpoints.forEach((breakpoint: Breakpoint) => {
+        // Add in media position styles for various breakpoints
+        inlineStyles[`--cdr-media-object-align-${breakpoint}`] = align[breakpoint];
+      });
+    } else {
+      inlineStyles['--cdr-media-object-align'] = align;
+    }
+
+    // Add cover class
+    if (cover) {
+      classes.push(modifyClassName(baseClass, 'cover'));
+    }
   }
-
-  // Add content alignment
-  classes.push(modifyClassName(baseClass, `content-alignment-${contentAlignment}`));
 
   return {
     ...additionalProps,
-    ...layoutStyling.props,
     class: mapClasses(style, ...classes) || undefined,
     style: inlineStyles,
   };
@@ -71,12 +105,14 @@ const rootProps = computed(() => {
 
 <template>
   <CdrLayout v-bind="rootProps">
-    <div>
-      <!-- @slot Where the media should be placed. -->
+    <div :class="style['cdr-media-object__media']">
+      <!-- @slot Where the media should be placed. Should be a single node. -->
       <slot name="media" />
     </div>
-    <!-- @slot Where all content should be placed. -->
-    <slot name="content" />
+    <div :class="style['cdr-media-object__content']">
+      <!-- @slot Where all content should be placed. Can be multiple nodes. -->
+      <slot name="content" />
+    </div>
   </CdrLayout>
 </template>
 
