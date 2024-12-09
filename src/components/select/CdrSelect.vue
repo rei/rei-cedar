@@ -261,6 +261,7 @@ const selectModel = computed({
         :role="errorRole"
         :id="`${uniqueId}-error`"
         v-if="error"
+        aria-live="polite"
       >
         <template #error>
           <!-- @slot Error messaging text that is displayed when the `error` prop is true. -->

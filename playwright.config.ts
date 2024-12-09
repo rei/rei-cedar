@@ -1,4 +1,22 @@
 import { defineConfig, devices } from '@playwright/test';
+// import vite from 'test/vite';
+
+// const startViteServer = function() {
+//   return vite.start({
+//     configFile: './vite.config.ts',
+//   });
+// }
+
+// let viteServer;
+
+// async before() {
+//   viteServer = await startViteServer();
+//   const port = viteServer.config.server.port;
+//   this.launchUrl = `http://localhost:${port}`;
+// },
+// async after() {
+//   await viteServer.close();
+// },
 
 /**
  * Read environment variables from file.
@@ -71,9 +89,10 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: {
+    command: 'npm run dev',
+    url: 'http://localhost:3001/rei-cedar/',
+    reuseExistingServer: !process.env.CI,
+    stdout: 'pipe',
+  },
 });
