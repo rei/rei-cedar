@@ -1,22 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-// import vite from 'test/vite';
-
-// const startViteServer = function() {
-//   return vite.start({
-//     configFile: './vite.config.ts',
-//   });
-// }
-
-// let viteServer;
-
-// async before() {
-//   viteServer = await startViteServer();
-//   const port = viteServer.config.server.port;
-//   this.launchUrl = `http://localhost:${port}`;
-// },
-// async after() {
-//   await viteServer.close();
-// },
 
 /**
  * Read environment variables from file.
