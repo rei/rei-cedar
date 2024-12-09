@@ -39,11 +39,9 @@ Runs unit tests.
 
 Runs unit tests in watch mode. This also allows you to inspect snapshot discrepancies and regenerate the snapshots if appropriate.
 
-`npm run e2e`
+`npm run test:playwright`
 
-Runs [Nightwatch](http://nightwatchjs.org/) end-to-end tests and Axe a11y tests.
-
-Tests run using Chromedriver. To upgrade Chromedriver, determine the latest version of Chrome and Puppeteer that are compatible by visiting [this](https://pptr.dev/supported-browsers) page.
+Runs [Playwright](https://playwright.dev) end-to-end tests and Axe a11y tests.
 
 `npm run test`
 

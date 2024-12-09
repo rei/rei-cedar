@@ -48,6 +48,7 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
     
   </div>
   <div
+    aria-live="polite"
     class="cdr-form-error"
     id="123-error"
     role="status"
@@ -112,6 +113,7 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
     
   </div>
   <div
+    aria-live="polite"
     class="cdr-form-error"
     id="renders-error"
     role="status"
@@ -311,6 +313,7 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
     
   </div>
   <div
+    aria-live="polite"
     class="cdr-form-error"
     id="123-error"
     role="status"

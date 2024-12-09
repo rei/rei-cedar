@@ -77,6 +77,7 @@ const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled'
       :error="error"
       v-if="error"
       :id="`${uniqueId}-error`"
+      aria-live="polite"
     >
       <!-- @slot Error messaging template content that is displayed when `error` prop is true  -->
       <template #error>

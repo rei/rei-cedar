@@ -2,8 +2,6 @@ import App from 'srcdir/dev/App.vue';
 import Examples from 'componentsdir/examples';
 
 import KitchenSink from 'srcdir/dev/KitchenSink.vue';
-import e2e1 from 'srcdir/dev/e2e1.vue';
-import e2e2 from 'srcdir/dev/e2e2.vue';
 
 // // Extra paths for backstop.
 // //  These are smaller sections of larger demo pages to make screenshotting more reliable
@@ -43,6 +41,7 @@ const routes = [
   { path: '/layout', name: 'Layout', component: Examples.layout },
   { path: '/links', name: 'Links', component: Examples.links },
   { path: '/lists', name: 'Lists', component: Examples.list },
+  { path: '/mediaObject', name: 'Media Object', component: Examples.mediaObject },
   { path: '/modals', name: 'Modals', component: Examples.modal },
   { path: '/pagination', name: 'Pagination', component: Examples.pagination },
   { path: '/picture', name: 'Picture', component: Examples.picture },
@@ -65,10 +64,6 @@ const routes = [
   { path: '/switch', name: 'Switch', component: Examples.cdrSwitch },
   { path: '/tooltip', name: 'Tooltip', component: Examples.tooltip },
   { path: '/utility', name: 'Utility', component: Examples.utility },
-
-  // Nightwatch test targets
-  { path: '/e2e-1', component: e2e1 },
-  { path: '/e2e-2', component: e2e2 },
 ];
 
 export default routes;

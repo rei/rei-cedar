@@ -1,0 +1,74 @@
+@import '../../../../styles/settings/index.scss';
+
+$media-object-component: 'media-object';
+
+// Base mixin for media object
+@mixin cdr-media-object-base-mixin($component) {
+  & > .cdr-#{$component}__media {
+    grid-area: media;
+  }
+
+  & > .cdr-#{$component}__content {
+    grid-area: content;
+  }
+}
+
+// Alignment mixin for how axis the media and content align on
+@mixin cdr-media-object-align-mixin($component) {
+  align-items: var(--cdr-#{$component}-align);
+  justify-items: var(--cdr-#{$component}-align);
+  @include cdr-cq-mixin($component, 'align');
+}
+
+// Allows for switching positions of media and content at breakpoints
+@mixin cdr-media-object-media-position-mixin($component) {
+  grid-template-areas: var(--cdr-#{$component}-media-position);
+  @include cdr-cq-mixin($component, 'media-position');
+}
+
+// Allow for media to cover entire container
+@mixin cdr-media-object-cover-mixin($component) {
+  &--cover {
+    & > .cdr-#{$component}__media {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: relative;
+
+      & > :first-child {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+// Allow for content to overlay media
+@mixin cdr-media-object-overlay-mixin($component) {
+  &--overlay {
+    position: relative;
+
+    & > .cdr-#{$component}__content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: var(--cdr-#{$component}-column-align);
+      justify-content: var(--cdr-#{$component}-row-align);
+    }
+  }
+}
+
+// Padding for inner content
+@mixin cdr-media-object-content-padding-mixin($component) {
+  @include cdr-cq-mixin($component, 'content-padding');
+
+  & > .cdr-#{$component}__content {
+    padding: var(--cdr-#{$component}-content-padding);
+  }
+}
