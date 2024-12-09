@@ -4,14 +4,14 @@ import CdrLayout from '../../layout/CdrLayout.vue';
 import CdrMediaObject from '../CdrMediaObject.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
-import type { MediaObject } from '../../../types/interfaces';
+import type { MediaObject, HtmlAttributes } from '../../../types/interfaces';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
 import cedarSmallImage from '../../../dev/static/cedar-50x50.jpg';
 
 defineOptions({ name: 'Media Object' });
 
 interface MediaObjectExample {
-  props: MediaObject;
+  props: MediaObject | HtmlAttributes;
   label: string;
   flags?: string[];
 }

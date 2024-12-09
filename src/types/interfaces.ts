@@ -157,7 +157,7 @@ export interface pictureSourceObject {
  * Text component properties
  * @interface baseTextProps
  */
-export interface baseTextProps extends HtmlAttributes {
+export interface baseTextProps {
   /** Sets the HTML tag (p, span, h1, h2, etc) */
   tag?: string;
 }
@@ -165,9 +165,8 @@ export interface baseTextProps extends HtmlAttributes {
 /**
  * Foundational container for creating structured layouts
  * @interface Layout
- * @extends HtmlAttributes
  */
-export interface Layout extends HtmlAttributes {
+export interface Layout extends NameValuePair {
   /**
    * Determines if the layout is in horizontal or vertical mode.
    * @demoSelectMultiple false
@@ -219,9 +218,8 @@ export interface Layout extends HtmlAttributes {
 /**
  * surface contains the props used to create a surface
  * @interface surface
- * @extends HtmlAttributes
  */
-export interface surface extends HtmlAttributes {
+export interface surface {
   /**
    * Adds in a background color based on the current palette's tokens.
    * @demoSelectMultiple false
@@ -276,7 +274,7 @@ export interface surface extends HtmlAttributes {
   palette?: 'default' | 'sandstone' | 'membership-subtle' | 'membership-vibrant';
 }
 
-export interface surfaceSelection extends HtmlAttributes {
+export interface surfaceSelection {
   /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
    * @skip true
@@ -316,7 +314,7 @@ export interface surfaceSelection extends HtmlAttributes {
   layout?: Layout;
 }
 
-export interface fulfillmentTileContent extends HtmlAttributes {
+export interface fulfillmentTileContent {
   /**
    * Sets the type scale
    * @values -2, -1, 0, 1
@@ -324,7 +322,7 @@ export interface fulfillmentTileContent extends HtmlAttributes {
   scale?: ScaleValue;
 }
 
-export interface fulfillmentTileIcon extends HtmlAttributes {
+export interface fulfillmentTileIcon {
   /**
    * The intent or type of message being displayed.
    * @values info, warning, success, error, default
