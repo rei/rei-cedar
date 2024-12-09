@@ -28,4 +28,4 @@ jobs:
       - run: npm run lint
       - run: npm run unit
       - name: Run headless test
-        run: xvfb-run --auto-servernum npm run e2e -- --env chrome
+        run: xvfb-run --auto-servernum npm run e2e
