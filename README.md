@@ -65,4 +65,3 @@ This projects Changelogs are generated.
 ## Developer demo
 
 The main documentation site for Cedar is our separate [Cedar docs](https://cedar.rei.com) website. With that in mind, we also have a playground for developing components and sharing ideas with others and within our team. The Cedar team produces this *developer demo* through GitHub Pages that can be accessed at [https://rei.github.io/rei-cedar/](https://rei.github.io/rei-cedar/), but we do not guarantee it will always be up to date or be an accurate representation of the Cedar library.
-
