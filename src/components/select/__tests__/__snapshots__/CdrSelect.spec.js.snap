@@ -425,6 +425,7 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
     
     
     <div
+      aria-live="polite"
       class="cdr-form-error"
       id="renders-error"
       role="status"
