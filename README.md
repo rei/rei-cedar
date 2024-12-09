@@ -39,11 +39,9 @@ Runs unit tests.
 
 Runs unit tests in watch mode. This also allows you to inspect snapshot discrepancies and regenerate the snapshots if appropriate.
 
-`npm run e2e`
+`npm run test:playwright`
 
-Runs [Nightwatch](http://nightwatchjs.org/) end-to-end tests and Axe a11y tests.
-
-Tests run using Chromedriver. To upgrade Chromedriver, determine the latest version of Chrome and Puppeteer that are compatible by visiting [this](https://pptr.dev/supported-browsers) page.
+Runs [Playwright](https://playwright.dev) end-to-end tests and Axe a11y tests.
 
 `npm run test`
 
@@ -67,3 +65,4 @@ This projects Changelogs are generated.
 ## Developer demo
 
 The main documentation site for Cedar is our separate [Cedar docs](https://cedar.rei.com) website. With that in mind, we also have a playground for developing components and sharing ideas with others and within our team. The Cedar team produces this *developer demo* through GitHub Pages that can be accessed at [https://rei.github.io/rei-cedar/](https://rei.github.io/rei-cedar/), but we do not guarantee it will always be up to date or be an accurate representation of the Cedar library.
+
