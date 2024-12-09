@@ -137,7 +137,6 @@ const examples: MediaObjectExample[] = [
   {
     label: 'pass down props to Layout and Surface',
     props: {
-      gap: 'two-x',
       background: 'brand-spruce',
     },
     flags: ['color-inverse'],
