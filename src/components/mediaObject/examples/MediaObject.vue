@@ -62,8 +62,8 @@ const examples: MediaObjectExample[] = [
     flags: ['image-small', 'content-long'],
   },
   {
-    label: 'cover, media configured independently to object-fit cover',
-    props: { mediaWidth: '125px', cover: true },
+    label: 'media cover, media configured independently to object-fit cover',
+    props: { mediaWidth: '125px', mediaCover: true },
     flags: ['content-long', 'image-cover'],
   },
   {
@@ -102,11 +102,11 @@ const examples: MediaObjectExample[] = [
     flags: ['image-small'],
   },
   {
-    label: 'media top, cover, media height set',
+    label: 'media top, media cover, media height set',
     props: {
       mediaPosition: 'top',
       mediaHeight: '100px',
-      cover: true,
+      mediaCover: true,
     },
     flags: ['image-cover'],
   },
@@ -116,13 +116,13 @@ const examples: MediaObjectExample[] = [
       mediaWidth: { xs: '100%', sm: '100%', md: '50%', lg: '75%' },
       mediaHeight: { xs: '100px', sm: '200px', md: 'auto', lg: 'auto' },
       mediaPosition: { xs: 'top', sm: 'top', md: 'left', lg: 'left' },
-      cover: true,
+      mediaCover: true,
     },
     flags: ['image-cover'],
   },
   {
     label: 'media configured to object fit none, object position center',
-    props: { cover: true },
+    props: { mediaCover: true },
     flags: ['image-center', 'image-small', 'content-long'],
   },
   {
@@ -138,6 +138,8 @@ const examples: MediaObjectExample[] = [
     label: 'pass down props to Layout and Surface',
     props: {
       background: 'brand-spruce',
+      gap: 'two-x',
+      contentPadding: 'none',
     },
     flags: ['color-inverse'],
   },
@@ -148,16 +150,16 @@ const columnExamples = [
     label: 'Tall columns',
     props: {
       mediaWidth: '100px',
-      cover: true,
+      mediaCover: true,
     },
     flags: ['image-cover'],
   },
   {
-    label: 'Side by side, cover',
+    label: 'Side by side, media cover',
     props: {
       mediaHeight: '100px',
       mediaPosition: 'top',
-      cover: true,
+      mediaCover: true,
     },
     flags: ['image-cover'],
   },

@@ -354,7 +354,7 @@ export interface MediaObject extends Layout {
   /**
    * This property forces media to take up the full height and width of the media container and positions media to be absolute. Images and videos will still need to be configured with object-fit and object-position.
    */
-  cover?: boolean;
+  mediaCover?: boolean;
   /**
    * Determines if content will overlay the media. When true, only overlay related props are used, no others.
    */

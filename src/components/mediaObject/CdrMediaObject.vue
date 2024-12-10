@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<MediaObject>(), {
   mediaPosition: 'left',
   mediaWidth: '1fr',
   mediaHeight: 'auto',
-  cover: false,
+  mediaCover: false,
   overlay: false,
   overlayRowAlign: 'start',
   overlayColumnAlign: 'start',
@@ -35,7 +35,7 @@ const rootProps = computed(() => {
     mediaPosition,
     mediaWidth,
     mediaHeight,
-    cover,
+    mediaCover,
     overlay,
     overlayRowAlign,
     overlayColumnAlign,
@@ -58,7 +58,8 @@ const rootProps = computed(() => {
     }
   }
 
-  // Add overlay class, which skips most other props
+  // Enter overlay mode, which does not use these props, because they are not relevant:
+  // mediaPosition, mediaWidth, mediaHeight, mediaCover, align
   if (overlay) {
     classes.push(modifyClassName(baseClass, 'overlay'));
     Object.assign(additionalProps, { rows: 'auto', columns: 'auto' });
@@ -90,7 +91,7 @@ const rootProps = computed(() => {
     }
 
     // Add cover class
-    if (cover) {
+    if (mediaCover) {
       classes.push(modifyClassName(baseClass, 'cover'));
     }
   }

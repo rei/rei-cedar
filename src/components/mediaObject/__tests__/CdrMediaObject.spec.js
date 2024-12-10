@@ -36,7 +36,7 @@ export const examples = [
   },
   {
     label: 'cover',
-    props: { mediaWidth: '125px', cover: true },
+    props: { mediaWidth: '125px', mediaCover: true },
   },
   {
     label: 'media position right',
@@ -69,7 +69,7 @@ export const examples = [
       mediaWidth: { xs: '100%', sm: '100%', md: '50%', lg: '75%' },
       mediaHeight: { xs: '100px', sm: '200px', md: 'auto', lg: 'auto' },
       mediaPosition: { xs: 'top', sm: 'top', md: 'left', lg: 'left' },
-      cover: true,
+      mediaCover: true,
     },
   },
   {
