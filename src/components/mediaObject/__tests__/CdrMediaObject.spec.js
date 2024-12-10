@@ -1,6 +1,9 @@
+import { markRaw } from 'vue';
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrMediaObject from '../CdrMediaObject.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
+
+const CdrSurfaceRaw = markRaw(CdrSurface);
 
 export const examples = [
   {
@@ -81,7 +84,7 @@ export const examples = [
     label: 'pass down props to Layout and Surface',
     props: {
       background: 'brand-spruce',
-      as: CdrSurface,
+      as: CdrSurfaceRaw,
     },
   },
 ];
