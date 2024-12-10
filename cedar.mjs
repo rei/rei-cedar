@@ -9795,7 +9795,7 @@ const Wv = /* @__PURE__ */ k({
     mediaPosition: { default: "left" },
     mediaWidth: { default: "1fr" },
     mediaHeight: { default: "auto" },
-    cover: { type: Boolean, default: !1 },
+    mediaCover: { type: Boolean, default: !1 },
     overlay: { type: Boolean, default: !1 },
     overlayRowAlign: { default: "start" },
     overlayColumnAlign: { default: "start" },
@@ -9817,7 +9817,7 @@ const Wv = /* @__PURE__ */ k({
         mediaPosition: c,
         mediaWidth: f,
         mediaHeight: p,
-        cover: y,
+        mediaCover: y,
         overlay: g,
         overlayRowAlign: h,
         overlayColumnAlign: M,
@@ -22333,8 +22333,8 @@ const PE = /* @__PURE__ */ J(HE, [["render", ZE]]), Li = "data:image/jpeg;base64
         flags: ["image-small", "content-long"]
       },
       {
-        label: "cover, media configured independently to object-fit cover",
-        props: { mediaWidth: "125px", cover: !0 },
+        label: "media cover, media configured independently to object-fit cover",
+        props: { mediaWidth: "125px", mediaCover: !0 },
         flags: ["content-long", "image-cover"]
       },
       {
@@ -22372,11 +22372,11 @@ const PE = /* @__PURE__ */ J(HE, [["render", ZE]]), Li = "data:image/jpeg;base64
         flags: ["image-small"]
       },
       {
-        label: "media top, cover, media height set",
+        label: "media top, media cover, media height set",
         props: {
           mediaPosition: "top",
           mediaHeight: "100px",
-          cover: !0
+          mediaCover: !0
         },
         flags: ["image-cover"]
       },
@@ -22386,13 +22386,13 @@ const PE = /* @__PURE__ */ J(HE, [["render", ZE]]), Li = "data:image/jpeg;base64
           mediaWidth: { xs: "100%", sm: "100%", md: "50%", lg: "75%" },
           mediaHeight: { xs: "100px", sm: "200px", md: "auto", lg: "auto" },
           mediaPosition: { xs: "top", sm: "top", md: "left", lg: "left" },
-          cover: !0
+          mediaCover: !0
         },
         flags: ["image-cover"]
       },
       {
         label: "media configured to object fit none, object position center",
-        props: { cover: !0 },
+        props: { mediaCover: !0 },
         flags: ["image-center", "image-small", "content-long"]
       },
       {
@@ -22407,7 +22407,9 @@ const PE = /* @__PURE__ */ J(HE, [["render", ZE]]), Li = "data:image/jpeg;base64
       {
         label: "pass down props to Layout and Surface",
         props: {
-          background: "brand-spruce"
+          background: "brand-spruce",
+          gap: "two-x",
+          contentPadding: "none"
         },
         flags: ["color-inverse"]
       }
@@ -22416,16 +22418,16 @@ const PE = /* @__PURE__ */ J(HE, [["render", ZE]]), Li = "data:image/jpeg;base64
         label: "Tall columns",
         props: {
           mediaWidth: "100px",
-          cover: !0
+          mediaCover: !0
         },
         flags: ["image-cover"]
       },
       {
-        label: "Side by side, cover",
+        label: "Side by side, media cover",
         props: {
           mediaHeight: "100px",
           mediaPosition: "top",
-          cover: !0
+          mediaCover: !0
         },
         flags: ["image-cover"]
       },
@@ -22531,7 +22533,7 @@ const PE = /* @__PURE__ */ J(HE, [["render", ZE]]), Li = "data:image/jpeg;base64
       ])
     ]));
   }
-}), DE = /* @__PURE__ */ J(QE, [["__scopeId", "data-v-00041f9f"]]), _E = {
+}), DE = /* @__PURE__ */ J(QE, [["__scopeId", "data-v-dc987fc5"]]), _E = {
   name: "FancyModal",
   components: {
     ...Ve,
