@@ -2,6 +2,7 @@ import type { Component } from 'vue';
 import type {
   Tag,
   Space,
+  SpaceOption,
   Shadow,
   Radius,
   BorderColor,
@@ -13,6 +14,9 @@ import type {
   Flow,
   StructureOption,
   QueryType,
+  Position,
+  Alignment,
+  MediaMeasurement,
 } from './other';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -153,7 +157,7 @@ export interface pictureSourceObject {
  * Text component properties
  * @interface baseTextProps
  */
-export interface baseTextProps extends HtmlAttributes {
+export interface baseTextProps {
   /** Sets the HTML tag (p, span, h1, h2, etc) */
   tag?: string;
 }
@@ -161,9 +165,8 @@ export interface baseTextProps extends HtmlAttributes {
 /**
  * Foundational container for creating structured layouts
  * @interface Layout
- * @extends HtmlAttributes
  */
-export interface Layout extends HtmlAttributes {
+export interface Layout extends NameValuePair {
   /**
    * Determines if the layout is in horizontal or vertical mode.
    * @demoSelectMultiple false
@@ -215,9 +218,8 @@ export interface Layout extends HtmlAttributes {
 /**
  * surface contains the props used to create a surface
  * @interface surface
- * @extends HtmlAttributes
  */
-export interface surface extends HtmlAttributes {
+export interface surface {
   /**
    * Adds in a background color based on the current palette's tokens.
    * @demoSelectMultiple false
@@ -272,7 +274,7 @@ export interface surface extends HtmlAttributes {
   palette?: 'default' | 'sandstone' | 'membership-subtle' | 'membership-vibrant';
 }
 
-export interface surfaceSelection extends HtmlAttributes {
+export interface surfaceSelection {
   /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
    * @skip true
@@ -312,7 +314,7 @@ export interface surfaceSelection extends HtmlAttributes {
   layout?: Layout;
 }
 
-export interface fulfillmentTileContent extends HtmlAttributes {
+export interface fulfillmentTileContent {
   /**
    * Sets the type scale
    * @values -2, -1, 0, 1
@@ -320,7 +322,7 @@ export interface fulfillmentTileContent extends HtmlAttributes {
   scale?: ScaleValue;
 }
 
-export interface fulfillmentTileIcon extends HtmlAttributes {
+export interface fulfillmentTileIcon {
   /**
    * The intent or type of message being displayed.
    * @values info, warning, success, error, default
@@ -328,3 +330,49 @@ export interface fulfillmentTileIcon extends HtmlAttributes {
   type?: StatusType;
 }
 
+export interface MediaObject extends Layout {
+  /**
+   * The alignment of the media and content along the x or y axis, depending on the layout. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values start, center, end
+   */
+  align?: Alignment;
+  /**
+   * The position of the media, in relation to the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values top, right, bottom, left
+   */
+  mediaPosition?: Position;
+  /**
+   * The width of the column that media is placed within. This can be any CSS value. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values 1fr, auto, 25%, 50%, 75%, 200px
+   */
+  mediaWidth?: MediaMeasurement;
+  /**
+   * The height of the column that media is placed within. This can be any CSS value. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @values 1fr, auto, 25%, 50%, 75%, 200px
+   */
+  mediaHeight?: MediaMeasurement;
+  /**
+   * This property forces media to take up the full height and width of the media container and positions media to be absolute. Images and videos will still need to be configured with object-fit and object-position.
+   */
+  mediaCover?: boolean;
+  /**
+   * Determines if content will overlay the media. When true, only overlay related props are used, no others.
+   */
+  overlay?: boolean;
+  /**
+   * The alignment of the content along the x axis.
+   * @values start, center, end
+   */
+  overlayRowAlign?: Alignment;
+  /**
+   * The alignment of the content along the y axis.
+   * @values start, center, end
+   */
+  overlayColumnAlign?: Alignment;
+  /**
+   * The spacing token to use for padding around the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @demoSelectMultiple false
+   * @values zero, one-x, two-x, scale-4, scale-3--5
+   */
+  contentPadding?: SpaceOption;
+}

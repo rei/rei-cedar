@@ -2,12 +2,12 @@
 import CdrLayout from '../CdrLayout.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
-import type { Layout } from '../../../types/interfaces';
+import type { Layout, HtmlAttributes } from '../../../types/interfaces';
 
 defineOptions({ name: 'Layout' });
 
 interface LayoutExample {
-  props: Layout;
+  props: Layout | HtmlAttributes;
   children: number;
   label: string;
   isNarrow?: boolean;

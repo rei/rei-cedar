@@ -107,14 +107,14 @@
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-scss": "^6.8.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6",
+    "typescript": "5.6.3",
     "vite": "^5.0.1",
     "vite-plugin-dts": "^3.3.1",
     "vitest": "^1.1.1",
     "vue-docgen-cli": "^4.79.0",
     "vue-eslint-parser": "^9.3.0",
     "vue-router": "^4.0.10",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "2.1.10"
   },
   "engines": {
     "node": ">= 20.0.0",
