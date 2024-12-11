@@ -143,6 +143,11 @@ const examples: MediaObjectExample[] = [
     },
     flags: ['color-inverse'],
   },
+  {
+    label: 'badges within media by passing in a div with multiple images',
+    props: {},
+    flags: ['image-badge'],
+  },
 ];
 
 const columnExamples = [
@@ -206,7 +211,23 @@ const columnExamples = [
               </div>
             </template>
             <template #media>
+              <div
+                v-if="flags && flags.includes('image-badge')"
+                class="example__badge-example"
+              >
+                <CdrImg
+                  alt="Test image"
+                  :src="cedarImage"
+                  class="example__image"
+                />
+                <CdrImg
+                  alt="Badge"
+                  :src="cedarSmallImage"
+                  class="example__image--badge"
+                />
+              </div>
               <CdrImg
+                v-else
                 alt="Test image"
                 :src="flags && flags.includes('image-small') ? cedarSmallImage : cedarImage"
                 :class="{
@@ -333,6 +354,17 @@ const columnExamples = [
       height: 100%;
       width: 100%;
     }
+
+    &--badge {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      border: 1px solid red;
+    }
+  }
+
+  &__badge-example {
+    position: relative;
   }
 }
 </style>
