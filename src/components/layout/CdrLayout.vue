@@ -76,7 +76,7 @@ const rootProps = computed(() => {
 
 <template>
   <component
-    :is="as"
+    :is="props.as"
     v-bind="rootProps"
   >
     <!-- @slot Where all default content should be placed. -->

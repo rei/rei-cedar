@@ -251,7 +251,7 @@ const toggleCheckbox2 = (value: number) => {
           class="example__search-tile-other-header-button"
           :checked="checkbox2.includes(1)"
           role="checkbox"
-          :layout="{ flow: 'rows' }"
+          :layout="{ flow: 'row' }"
           @click="toggleCheckbox2(1)"
         >
           <CdrFulfillmentTileHeader>

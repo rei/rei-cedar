@@ -20,7 +20,7 @@ import landingLead from 'componentsdir/landingLead/examples/LandingLead.vue';
 import layout from 'componentsdir/layout/examples/Layout.vue';
 import links from 'componentsdir/link/examples/Links.vue';
 import list from 'componentsdir/list/examples/Lists.vue';
-// import mediaObject from 'componentsdir/mediaObject/examples/MediaObject.vue';
+import mediaObject from 'componentsdir/mediaObject/examples/MediaObject.vue';
 import modal from 'componentsdir/modal/examples/Modal.vue';
 import pagination from 'componentsdir/pagination/examples/Pagination.vue';
 import picture from 'componentsdir/picture/examples/Picture.vue';
@@ -67,7 +67,7 @@ export default {
   layout,
   links,
   list,
-  // mediaObject,
+  mediaObject,
   modal,
   pagination,
   picture,
