@@ -131,7 +131,7 @@
     }
   },
   "dependencies": {
-    "@rei/cdr-tokens": "^12.4.2",
+    "@rei/cdr-tokens": "^12.4.4",
     "tabbable": "^4.0.0"
   },
   "peerDependencies": {
