@@ -6,6 +6,10 @@ $media-object-component: 'media-object';
 @mixin cdr-media-object-base-mixin($component) {
   & > .cdr-#{$component}__media {
     grid-area: media;
+
+    & > :first-child {
+      display: block;
+    }
   }
 
   & > .cdr-#{$component}__content {

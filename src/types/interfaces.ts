@@ -338,6 +338,7 @@ export interface MediaObject extends Layout {
   align?: Alignment;
   /**
    * The position of the media, in relation to the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
+   * @demoSelectMultiple false
    * @values top, right, bottom, left
    */
   mediaPosition?: Position;

@@ -8,7 +8,7 @@ import { getLayoutStyling } from '../../utils/mediaObject';
 import CdrLayout from '../layout/CdrLayout.vue';
 import { breakpoints, spacing } from '../../utils/other';
 
-/** Component for buttons that have a checked state. */
+/** Component that pairs images or videos with related text in a consistent way */
 
 defineOptions({ name: 'CdrMediaObject' });
 
