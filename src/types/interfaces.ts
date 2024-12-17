@@ -16,6 +16,7 @@ import type {
   QueryType,
   Position,
   Alignment,
+  AlignmentValue,
   MediaMeasurement,
 } from './other';
 
@@ -364,12 +365,12 @@ export interface MediaObject extends Layout {
    * The alignment of the content along the x axis.
    * @values start, center, end
    */
-  overlayRowAlign?: Alignment;
+  overlayRowAlign?: AlignmentValue;
   /**
    * The alignment of the content along the y axis.
    * @values start, center, end
    */
-  overlayColumnAlign?: Alignment;
+  overlayColumnAlign?: AlignmentValue;
   /**
    * The spacing token to use for padding around the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
    * @demoSelectMultiple false
