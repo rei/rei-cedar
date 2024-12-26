@@ -10,6 +10,8 @@ $media-object-component: 'media-object';
 
   & > .cdr-#{$component}__content {
     grid-area: content;
+    container-type: size;
+    width: 100%;
   }
 }
 
