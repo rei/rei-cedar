@@ -9842,16 +9842,12 @@ const Wv = /* @__PURE__ */ k({
     });
     return (r, d) => (m(), S(At, T(K(o.value)), {
       default: i(() => [
-        n("div", {
-          class: R(V(l)["cdr-media-object__media"])
-        }, [
+        n("div", null, [
           q(r.$slots, "media")
-        ], 2),
-        n("div", {
-          class: R(V(l)["cdr-media-object__content"])
-        }, [
+        ]),
+        n("div", null, [
           q(r.$slots, "content")
-        ], 2)
+        ])
       ]),
       _: 3
     }, 16));
