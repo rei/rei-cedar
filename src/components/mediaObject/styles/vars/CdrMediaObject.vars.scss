@@ -16,7 +16,6 @@ $media-object-component: 'media-object';
 
 // Base mixin for media object
 @mixin cdr-media-object-base-mixin($component) {
-  // & > .cdr-#{$component}__media {
   @include media {
     grid-area: media;
   }
