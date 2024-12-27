@@ -22,7 +22,6 @@ $media-object-component: 'media-object';
 
   @include content {
     grid-area: content;
-    container-type: size;
     width: 100%;
   }
 }
