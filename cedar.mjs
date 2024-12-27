@@ -9858,8 +9858,6 @@ const Wv = /* @__PURE__ */ k({
   }
 }), iI = {
   "cdr-media-object": "cdr-media-object_15-2-1",
-  "cdr-media-object__media": "cdr-media-object__media_15-2-1",
-  "cdr-media-object__content": "cdr-media-object__content_15-2-1",
   "cdr-media-object--align-cq": "cdr-media-object--align-cq_15-2-1",
   "cdr-media-object--media-position-cq": "cdr-media-object--media-position-cq_15-2-1",
   "cdr-media-object--cover": "cdr-media-object--cover_15-2-1",
