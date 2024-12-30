@@ -18,6 +18,12 @@ $media-object-component: 'media-object';
 @mixin cdr-media-object-base-mixin($component) {
   @include media {
     grid-area: media;
+
+    & > img,
+    & > picture,
+    & > video {
+      display: block;
+    }
   }
 
   @include content {

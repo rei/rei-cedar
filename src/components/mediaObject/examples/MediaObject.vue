@@ -131,6 +131,9 @@ const examples: MediaObjectExample[] = [
       overlay: true,
       overlayColumnAlign: 'end',
       overlayRowAlign: 'center',
+      withBorder: true,
+      borderWidth: 'one-x',
+      radius: 'softer',
     },
     flags: ['color-inverse', 'image-1/1', 'content-narrow'],
   },
@@ -342,8 +345,6 @@ const columnExamples = [
   }
 
   &__image {
-    display: block;
-
     &--height {
       height: 200px;
       width: 100%;
