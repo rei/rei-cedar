@@ -131,9 +131,22 @@ const examples: MediaObjectExample[] = [
       overlay: true,
       overlayColumnAlign: 'end',
       overlayRowAlign: 'center',
-      withBorder: true,
-      borderWidth: 'one-x',
-      radius: 'softer',
+    },
+    flags: ['color-inverse', 'image-1/1', 'content-narrow'],
+  },
+  {
+    label: 'overlay, media height static',
+    props: {
+      overlay: true,
+      mediaHeight: '200px',
+    },
+    flags: ['color-inverse', 'image-1/1', 'content-narrow'],
+  },
+  {
+    label: 'overlay, media height responsive',
+    props: {
+      overlay: true,
+      mediaHeight: { xs: '200px', sm: '200px', md: '400px', lg: '400px' },
     },
     flags: ['color-inverse', 'image-1/1', 'content-narrow'],
   },

@@ -58,13 +58,22 @@ const rootProps = computed(() => {
     }
   }
 
-  // Enter overlay mode, which does not use these props, because they are not relevant:
-  // mediaPosition, mediaWidth, mediaHeight, mediaCover, align
+  // Enter overlay mode, which uses media heights and widths as dimensions for
+  // the entire container
   if (overlay) {
     classes.push(modifyClassName(baseClass, 'overlay'));
     Object.assign(additionalProps, { rows: 'auto', columns: 'auto' });
     inlineStyles['--cdr-media-object-row-align'] = overlayRowAlign;
     inlineStyles['--cdr-media-object-column-align'] = overlayColumnAlign;
+
+    // Use mediaHeight to generate row height
+    if (mediaHeight === 'string') {
+      additionalProps.rows = mediaHeight;
+    } else if (mediaHeight) {
+      additionalProps.rows = mediaHeight;
+    } else {
+      additionalProps.rows = 'auto';
+    }
   } else {
     // Get layout related props and inline styles based on media measurements and
     // content position, both of which can be dynamic

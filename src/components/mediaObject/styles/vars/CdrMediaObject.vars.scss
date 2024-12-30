@@ -69,6 +69,7 @@ $media-object-component: 'media-object';
 // Allow for content to overlay media
 @mixin cdr-media-object-overlay-mixin($component) {
   &--overlay {
+    grid-template-areas: 'media';
     position: relative;
 
     @include content {
