@@ -76,8 +76,9 @@ export interface selectOption {
 }
 
 export interface choreographerSchema {
-  type: string;
+  type?: string;
   props?: object;
+  slots?: { [key: string]: choreographerSchema };
   content?: string | choreographerSchema;
 }
 

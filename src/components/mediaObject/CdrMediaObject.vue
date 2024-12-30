@@ -106,11 +106,11 @@ const rootProps = computed(() => {
 
 <template>
   <CdrLayout v-bind="rootProps">
-    <div :class="style['cdr-media-object__media']">
+    <div>
       <!-- @slot Where the media should be placed. Should be a single node. -->
       <slot name="media" />
     </div>
-    <div :class="style['cdr-media-object__content']">
+    <div>
       <!-- @slot Where all content should be placed. Can be multiple nodes. -->
       <slot name="content" />
     </div>
