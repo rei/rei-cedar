@@ -53,7 +53,7 @@ const style = useCssModule();
   <component
     v-for="(entry, i) in schema"
     :key="`entry-${i}`"
-    :is="componentMap[entry.type as keyof typeof componentMap]"
+    :is="entry.type ? componentMap[entry.type as keyof typeof componentMap] : 'div'"
     v-bind="entry?.props"
     :class="style[`${baseClass}__${entry.type}`]"
   >
@@ -62,6 +62,15 @@ const style = useCssModule();
     </template>
     <template v-else>
       {{ entry?.content }}
+    </template>
+    <template
+      v-for="(value, key) in entry.slots"
+      #[key]
+    >
+      <CdrChoreographer
+        :key="key"
+        :schema="[value]"
+      />
     </template>
   </component>
 </template>
