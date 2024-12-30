@@ -9844,7 +9844,7 @@ const Wv = /* @__PURE__ */ k({
       if (j !== "zero" && (typeof j == "string" ? s["--cdr-media-object-content-padding"] = Ri[j] : (d.push(Pe(r, "content-padding-cq")), ln.forEach((W) => {
         s[`--cdr-media-object-content-padding-${W}`] = Ri[j[W]];
       }))), g)
-        d.push(Pe(r, "overlay")), Object.assign(E, { rows: "auto", columns: "auto" }), s["--cdr-media-object-row-align"] = h, s["--cdr-media-object-column-align"] = M;
+        d.push(Pe(r, "overlay")), Object.assign(E, { rows: "auto", columns: "auto" }), s["--cdr-media-object-row-align"] = h, s["--cdr-media-object-column-align"] = M, p === "string" || p ? E.rows = p : E.rows = "auto";
       else {
         const W = oI(c, f, p);
         Object.assign(s, W.inlineStyles), Object.assign(E, W.props), typeof c != "string" && d.push(Pe(r, "media-position-cq")), typeof u != "string" ? (d.push(Pe(r, "align-cq")), ln.forEach((O) => {
@@ -22416,10 +22416,23 @@ const ZE = /* @__PURE__ */ w(OE, [["render", XE]]), Dn = "data:image/jpeg;base64
         props: {
           overlay: !0,
           overlayColumnAlign: "end",
-          overlayRowAlign: "center",
-          withBorder: !0,
-          borderWidth: "one-x",
-          radius: "softer"
+          overlayRowAlign: "center"
+        },
+        flags: ["color-inverse", "image-1/1", "content-narrow"]
+      },
+      {
+        label: "overlay, media height static",
+        props: {
+          overlay: !0,
+          mediaHeight: "200px"
+        },
+        flags: ["color-inverse", "image-1/1", "content-narrow"]
+      },
+      {
+        label: "overlay, media height responsive",
+        props: {
+          overlay: !0,
+          mediaHeight: { xs: "200px", sm: "200px", md: "400px", lg: "400px" }
         },
         flags: ["color-inverse", "image-1/1", "content-narrow"]
       },
@@ -22569,7 +22582,7 @@ const ZE = /* @__PURE__ */ w(OE, [["render", XE]]), Dn = "data:image/jpeg;base64
       ])
     ]));
   }
-}), DE = /* @__PURE__ */ w(QE, [["__scopeId", "data-v-6d246b6b"]]), _E = {
+}), DE = /* @__PURE__ */ w(QE, [["__scopeId", "data-v-cc25ef65"]]), _E = {
   name: "FancyModal",
   components: {
     ...Ve,
