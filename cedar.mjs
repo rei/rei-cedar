@@ -22416,7 +22416,10 @@ const ZE = /* @__PURE__ */ w(OE, [["render", XE]]), Dn = "data:image/jpeg;base64
         props: {
           overlay: !0,
           overlayColumnAlign: "end",
-          overlayRowAlign: "center"
+          overlayRowAlign: "center",
+          withBorder: !0,
+          borderWidth: "one-x",
+          radius: "softer"
         },
         flags: ["color-inverse", "image-1/1", "content-narrow"]
       },
@@ -22566,7 +22569,7 @@ const ZE = /* @__PURE__ */ w(OE, [["render", XE]]), Dn = "data:image/jpeg;base64
       ])
     ]));
   }
-}), DE = /* @__PURE__ */ w(QE, [["__scopeId", "data-v-70c4d592"]]), _E = {
+}), DE = /* @__PURE__ */ w(QE, [["__scopeId", "data-v-6d246b6b"]]), _E = {
   name: "FancyModal",
   components: {
     ...Ve,
