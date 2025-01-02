@@ -2,11 +2,11 @@
   <div class="foo">
     <h2>choreographer</h2>
     <h3>Standalone card built from schema</h3>
-    <!-- <div style="max-width: 550px; margin-bottom: 6.4rem">
+    <div style="max-width: 550px; margin-bottom: 6.4rem">
       <CdrChoreographer :schema="schemaB" />
-    </div> -->
+    </div>
     <CdrChoreographer :schema="schemaA" />
-    <!-- <h3>Card</h3>
+    <h3>Card</h3>
 
     <cdr-card class="c-card">
       <CdrChoreographer :schema="schemaA" />
@@ -14,7 +14,7 @@
 
     <cdr-card class="b-card">
       <CdrChoreographer :schema="schemaA" />
-    </cdr-card> -->
+    </cdr-card>
   </div>
 </template>
 
