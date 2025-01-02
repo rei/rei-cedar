@@ -362,7 +362,7 @@ export interface MediaObject extends Layout {
    */
   mediaCover?: boolean;
   /**
-   * Determines if content will overlay the media. A default media height is set, but it is suggested to apply your own using container width units (cqw) or pixels (px).
+   * Determines if content will overlay the media. A default media height is set, but it is suggested to apply your own using as value such as container width units (cqw) or rem.
    */
   overlay?: boolean;
   /**

@@ -149,7 +149,7 @@ const examples: MediaObjectExample[] = [
     props: {
       background: 'brand-spruce',
       gap: 'two-x',
-      contentPadding: 'none',
+      contentPadding: 'zero',
     },
     flags: ['color-inverse'],
   },

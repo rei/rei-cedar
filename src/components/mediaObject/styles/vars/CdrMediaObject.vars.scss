@@ -2,13 +2,13 @@
 
 $media-object-component: 'media-object';
 
-@mixin media() {
+@mixin cdr-media-object-media-mixin() {
   & > *:first-child {
     @content;
   }
 }
 
-@mixin content() {
+@mixin cdr-media-object-content-mixin() {
   & > *:last-child {
     @content;
   }
@@ -16,7 +16,7 @@ $media-object-component: 'media-object';
 
 // Base mixin for media object
 @mixin cdr-media-object-base-mixin($component) {
-  @include media {
+  @include cdr-media-object-media-mixin {
     grid-area: media;
 
     & > img,
@@ -26,7 +26,7 @@ $media-object-component: 'media-object';
     }
   }
 
-  @include content {
+  @include cdr-media-object-content-mixin {
     grid-area: content;
     container-type: inline-size;
     width: 100%;
@@ -48,7 +48,7 @@ $media-object-component: 'media-object';
 
 // Allow for media to cover entire container
 @mixin cdr-media-object-cover-mixin($component) {
-  @include media {
+  @include cdr-media-object-media-mixin {
     width: 100%;
     height: 100%;
     display: flex;
@@ -70,7 +70,7 @@ $media-object-component: 'media-object';
   grid-template-areas: 'media';
   position: relative;
 
-  @include content {
+  @include cdr-media-object-content-mixin {
     position: absolute;
     left: 0;
     right: 0;
@@ -86,7 +86,7 @@ $media-object-component: 'media-object';
 @mixin cdr-media-object-content-padding-mixin($component) {
   @include cdr-cq-mixin($component, 'content-padding');
 
-  @include content {
+  @include cdr-media-object-content-mixin {
     padding: var(--cdr-#{$component}-content-padding);
   }
 }
