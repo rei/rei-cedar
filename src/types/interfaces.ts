@@ -215,6 +215,10 @@ export interface Layout extends NameValuePair {
    * The component or HTML tag to render at the root level
    */
   as?: Component | string;
+  /**
+   * The container query name that will be applied, if needed
+   */
+  containerName?: string;
 }
 
 /**
@@ -345,12 +349,12 @@ export interface MediaObject extends Layout {
   mediaPosition?: Position;
   /**
    * The width of the column that media is placed within. This can be any CSS value. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
-   * @values 1fr, auto, 25%, 50%, 75%, 200px
+   * @values 1fr, auto, 25%, 50%, 75%, 200px, 50cqh
    */
   mediaWidth?: MediaMeasurement;
   /**
    * The height of the column that media is placed within. This can be any CSS value. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
-   * @values 1fr, auto, 25%, 50%, 75%, 200px
+   * @values 1fr, auto, 25%, 50%, 75%, 200px, 50cqw
    */
   mediaHeight?: MediaMeasurement;
   /**
@@ -358,7 +362,7 @@ export interface MediaObject extends Layout {
    */
   mediaCover?: boolean;
   /**
-   * Determines if content will overlay the media. When true, only overlay related props are used, no others.
+   * Determines if content will overlay the media. A default media height is set, but it is suggested to apply your own using container width units (cqw) or pixels (px).
    */
   overlay?: boolean;
   /**

@@ -6,6 +6,7 @@ $flows: row, column;
 
 @mixin cdr-layout-base-mixin() {
   display: grid;
+  container-type: inline-size;
 }
 
 // Adds in media and container queries for layouts that change at various breakpoints

@@ -66,13 +66,12 @@ const rootProps = computed(() => {
     inlineStyles['--cdr-media-object-row-align'] = overlayRowAlign;
     inlineStyles['--cdr-media-object-column-align'] = overlayColumnAlign;
 
-    // Use mediaHeight to generate row height
-    if (mediaHeight === 'string') {
-      additionalProps.rows = mediaHeight;
-    } else if (mediaHeight) {
-      additionalProps.rows = mediaHeight;
+    // Use mediaHeight to generate row height. Using 'auto' results in 0px height.
+    if (mediaHeight === 'auto') {
+      // Defaults to 9/16 ratio of container
+      additionalProps.rows = '56cqw';
     } else {
-      additionalProps.rows = 'auto';
+      additionalProps.rows = mediaHeight;
     }
   } else {
     // Get layout related props and inline styles based on media measurements and

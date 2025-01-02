@@ -20,6 +20,7 @@ const props = withDefaults(defineProps<Layout>(), {
   queryType: 'container',
   flow: undefined,
   flowValue: 'auto',
+  containerName: undefined,
 });
 
 const style = useCssModule();
@@ -28,6 +29,10 @@ const rootProps = computed(() => {
   const baseClass = 'cdr-layout';
   const classes = [baseClass];
   const inlineStyles: NameValuePair = {};
+
+  if (props.containerName) {
+    inlineStyles['container-name'] = props.containerName;
+  }
 
   // Add gap for entire grid
   if (props.gap !== 'zero') {

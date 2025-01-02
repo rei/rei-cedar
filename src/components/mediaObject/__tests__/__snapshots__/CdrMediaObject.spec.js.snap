@@ -302,7 +302,7 @@ exports[`CdrMediaObject > snapshot tests > media width dynamic 1`] = `
 exports[`CdrMediaObject > snapshot tests > overlay, row align, column align, content configured independently to 50% width 1`] = `
 <div
   class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object cdr-media-object--overlay"
-  style="--cdr-layout-rows: auto; --cdr-layout-columns: auto; --cdr-media-object-row-align: center; --cdr-media-object-column-align: end;"
+  style="--cdr-layout-rows: 56cqw; --cdr-layout-columns: auto; --cdr-media-object-row-align: center; --cdr-media-object-column-align: end;"
 >
   <!-- @slot Where all default content should be placed. -->
   
