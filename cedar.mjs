@@ -22451,7 +22451,7 @@ const PE = /* @__PURE__ */ w(HE, [["render", ZE]]), Dn = "data:image/jpeg;base64
         props: {
           background: "brand-spruce",
           gap: "two-x",
-          contentPadding: "none"
+          contentPadding: "zero"
         },
         flags: ["color-inverse"]
       },
@@ -22609,7 +22609,7 @@ const PE = /* @__PURE__ */ w(HE, [["render", ZE]]), Dn = "data:image/jpeg;base64
       })
     ]));
   }
-}), DE = /* @__PURE__ */ w(QE, [["__scopeId", "data-v-f5fb75cd"]]), _E = {
+}), DE = /* @__PURE__ */ w(QE, [["__scopeId", "data-v-a90a2dd8"]]), _E = {
   name: "FancyModal",
   components: {
     ...Ve,
