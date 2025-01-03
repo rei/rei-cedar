@@ -5,6 +5,7 @@ import { getStructureStyles } from '../../utils/layout';
 import type { Layout, NameValuePair } from '../../types/interfaces';
 import type { Structure } from '../../types/other';
 import { modifyClassName } from '../../utils/buildClass';
+import CdrSurface from '../surface/CdrSurface.vue';
 
 /** Foundational container for creating structured layouts */
 
@@ -77,11 +78,13 @@ const rootProps = computed(() => {
 
   return { class: mapClasses(style, ...classes) || undefined, style: inlineStyles };
 });
+
+const componentIs = props.as === 'CdrSurface' ? CdrSurface : props.as;
 </script>
 
 <template>
   <component
-    :is="props.as"
+    :is="componentIs"
     v-bind="rootProps"
   >
     <!-- @slot Where all default content should be placed. -->

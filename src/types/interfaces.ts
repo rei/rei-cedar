@@ -212,7 +212,7 @@ export interface Layout extends NameValuePair {
    */
   columnGap?: Space;
   /**
-   * The component or HTML tag to render at the root level
+   * The component or HTML tag to render at the root level. Note: The component "CdrSurface" has special treatment and may be used in quotes.
    */
   as?: Component | string;
   /**
