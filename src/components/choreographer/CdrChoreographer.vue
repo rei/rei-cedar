@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, type PropType } from 'vue';
+import { useCssModule, computed } from 'vue';
 import {
   CdrAbstract,
   CdrKicker,
@@ -9,14 +9,16 @@ import {
   CdrRating,
   CdrLink,
   CdrCard,
-  CdrSurface,
-  CdrMediaObject,
   CdrLayout,
   CdrPicture,
   CdrButton,
   CdrContainer,
 } from '../../lib';
-import { choreographerSchema } from '../../types/interfaces';
+import {
+  Choreographer,
+  ChoreographerComponents,
+  ChoreographerSchema,
+} from '../../types/interfaces';
 
 /** Choreographer is in an experimental stage and should be considered unstable */
 
@@ -24,26 +26,28 @@ defineOptions({
   name: 'CdrChoreographer',
 });
 
-const componentMap = {
-  abstract: CdrAbstract,
-  kicker: CdrKicker,
-  title: CdrTitle,
-  body: CdrBody,
-  image: CdrImg,
-  picture: CdrPicture,
-  rating: CdrRating,
-  link: CdrLink,
-  card: CdrCard,
-  surface: CdrSurface,
-  mediaObject: CdrMediaObject,
-  layout: CdrLayout,
-  button: CdrButton,
-  container: CdrContainer,
-};
-
-defineProps({
-  schema: { type: Array as PropType<choreographerSchema[]>, default: () => [] },
+const props = withDefaults(defineProps<Choreographer>(), {
+  components: () => ({}),
 });
+
+const componentMap = computed(
+  () =>
+    ({
+      abstract: CdrAbstract,
+      kicker: CdrKicker,
+      title: CdrTitle,
+      body: CdrBody,
+      image: CdrImg,
+      picture: CdrPicture,
+      rating: CdrRating,
+      link: CdrLink,
+      card: CdrCard,
+      layout: CdrLayout,
+      button: CdrButton,
+      container: CdrContainer,
+      ...props.components,
+    }) as ChoreographerComponents,
+);
 
 const baseClass = 'cdr-choreographer';
 const style = useCssModule();
@@ -53,12 +57,16 @@ const style = useCssModule();
   <component
     v-for="(entry, i) in schema"
     :key="`entry-${i}`"
-    :is="entry.type ? componentMap[entry.type as keyof typeof componentMap] : 'div'"
+    :is="
+      entry.type && componentMap[entry.type]
+        ? componentMap[entry.type as keyof typeof componentMap]
+        : 'div'
+    "
     v-bind="entry?.props"
     :class="style[`${baseClass}__${entry.type}`]"
   >
-    <template v-if="Array.isArray(entry?.content)">
-      <CdrChoreographer :schema="entry?.content" />
+    <template v-if="entry.content && Array.isArray(entry.content)">
+      <CdrChoreographer :schema="entry.content as [ChoreographerSchema]" />
     </template>
     <template v-else>
       {{ entry?.content }}

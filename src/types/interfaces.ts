@@ -75,11 +75,20 @@ export interface selectOption {
   value: string;
 }
 
-export interface choreographerSchema {
+export interface ChoreographerSchema {
   type?: string;
   props?: object;
-  slots?: { [key: string]: choreographerSchema };
-  content?: string | choreographerSchema;
+  slots?: { [key: string]: ChoreographerSchema };
+  content?: string | ChoreographerSchema;
+}
+
+export interface ChoreographerComponents {
+  [key: string]: Component;
+}
+
+export interface Choreographer {
+  schema: [ChoreographerSchema];
+  components?: ChoreographerComponents;
 }
 
 /**

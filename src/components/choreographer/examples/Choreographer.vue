@@ -15,6 +15,11 @@
     <cdr-card class="b-card">
       <CdrChoreographer :schema="schemaA" />
     </cdr-card>
+
+    <CdrChoreographer
+      :schema="schemaC"
+      :components="{ surface: CdrSurface }"
+    />
   </div>
 </template>
 
@@ -28,6 +33,7 @@ export default {
   },
   data() {
     return {
+      CdrSurface: Components.CdrSurface,
       schemaA: [
         {
           type: 'mediaObject',
@@ -140,6 +146,15 @@ export default {
                 'Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.',
             },
           ],
+        },
+      ],
+      schemaC: [
+        {
+          type: 'surface',
+          props: {
+            background: 'secondary',
+          },
+          content: 'Using passed-in components',
         },
       ],
     };
