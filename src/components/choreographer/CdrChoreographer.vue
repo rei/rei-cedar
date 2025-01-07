@@ -49,8 +49,6 @@ const componentMap = computed(
     }) as ChoreographerComponents,
 );
 
-console.log(componentMap.value);
-
 const baseClass = 'cdr-choreographer';
 const style = useCssModule();
 </script>
@@ -68,7 +66,10 @@ const style = useCssModule();
     :class="style[`${baseClass}__${entry.type}`]"
   >
     <template v-if="entry.content && Array.isArray(entry.content)">
-      <CdrChoreographer :schema="entry.content as [ChoreographerSchema]" />
+      <CdrChoreographer
+        :schema="entry.content as [ChoreographerSchema]"
+        :components="components"
+      />
     </template>
     <template v-else>
       {{ entry?.content }}
@@ -80,6 +81,7 @@ const style = useCssModule();
       <CdrChoreographer
         :key="key"
         :schema="[value]"
+        :components="components"
       />
     </template>
   </component>
