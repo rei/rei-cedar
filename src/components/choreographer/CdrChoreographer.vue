@@ -49,6 +49,8 @@ const componentMap = computed(
     }) as ChoreographerComponents,
 );
 
+console.log(componentMap.value);
+
 const baseClass = 'cdr-choreographer';
 const style = useCssModule();
 </script>

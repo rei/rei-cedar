@@ -18,7 +18,7 @@
 
     <CdrChoreographer
       :schema="schemaC"
-      :components="{ surface: CdrSurface }"
+      :components="{ CdrSurface, CdrMediaObject }"
     />
   </div>
 </template>
@@ -34,6 +34,7 @@ export default {
   data() {
     return {
       CdrSurface: Components.CdrSurface,
+      CdrMediaObject: Components.CdrMediaObject,
       schemaA: [
         {
           type: 'mediaObject',
@@ -150,11 +151,36 @@ export default {
       ],
       schemaC: [
         {
-          type: 'surface',
+          type: 'CdrSurface',
           props: {
             background: 'secondary',
           },
           content: 'Using passed-in components',
+        },
+        {
+          type: 'CdrMediaObject',
+          props: {
+            as: 'CdrSurface',
+            background: 'secondary',
+            gap: 'one-x',
+          },
+          slots: {
+            media: {
+              type: 'image',
+              props: {
+                alt: 'A sample image',
+                src: 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md',
+              },
+            },
+            content: {
+              content: [
+                {
+                  type: 'body',
+                  content: 'This media object uses an overlay and has responsive heights',
+                },
+              ],
+            },
+          },
         },
       ],
     };
