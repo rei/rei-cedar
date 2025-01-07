@@ -8276,9 +8276,7 @@ const E9 = ["id"], A9 = ["id"], M9 = ["aria-controls", "aria-label"], L9 = ["hre
         container: No,
         ...e.components
       })
-    );
-    console.log(l.value);
-    const o = ie();
+    ), o = ie();
     return (r, d) => {
       const s = C("CdrChoreographer", !0);
       return m(!0), x(z, null, te(r.schema, (u, c) => (m(), S(Te(
@@ -8292,8 +8290,9 @@ const E9 = ["id"], A9 = ["id"], M9 = ["aria-controls", "aria-label"], L9 = ["hre
         default: i(() => [
           u.content && Array.isArray(u.content) ? (m(), S(s, {
             key: 0,
-            schema: u.content
-          }, null, 8, ["schema"])) : (m(), x(z, { key: 1 }, [
+            schema: u.content,
+            components: r.components
+          }, null, 8, ["schema", "components"])) : (m(), x(z, { key: 1 }, [
             b(J(u == null ? void 0 : u.content), 1)
           ], 64))
         ]),
@@ -8304,8 +8303,9 @@ const E9 = ["id"], A9 = ["id"], M9 = ["aria-controls", "aria-label"], L9 = ["hre
           fn: i(() => [
             (m(), S(s, {
               key: p,
-              schema: [f]
-            }, null, 8, ["schema"]))
+              schema: [f],
+              components: r.components
+            }, null, 8, ["schema", "components"]))
           ])
         }))
       ]), 1040, ["class"]))), 128);
