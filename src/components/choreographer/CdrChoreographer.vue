@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, markRaw } from 'vue';
+import { useCssModule, computed } from 'vue';
 import {
   CdrAbstract,
   CdrKicker,
@@ -30,21 +30,24 @@ const props = withDefaults(defineProps<Choreographer>(), {
   components: () => ({}),
 });
 
-const componentMap = markRaw({
-  abstract: CdrAbstract,
-  kicker: CdrKicker,
-  title: CdrTitle,
-  body: CdrBody,
-  image: CdrImg,
-  picture: CdrPicture,
-  rating: CdrRating,
-  link: CdrLink,
-  card: CdrCard,
-  layout: CdrLayout,
-  button: CdrButton,
-  container: CdrContainer,
-  ...props.components,
-}) as ChoreographerComponents;
+const componentMap = computed(
+  () =>
+    ({
+      abstract: CdrAbstract,
+      kicker: CdrKicker,
+      title: CdrTitle,
+      body: CdrBody,
+      image: CdrImg,
+      picture: CdrPicture,
+      rating: CdrRating,
+      link: CdrLink,
+      card: CdrCard,
+      layout: CdrLayout,
+      button: CdrButton,
+      container: CdrContainer,
+      ...props.components,
+    }) as ChoreographerComponents,
+);
 
 const baseClass = 'cdr-choreographer';
 const style = useCssModule();
