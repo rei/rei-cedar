@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "15.2.1",
+  "version": "15.3.0",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -131,7 +131,7 @@
     }
   },
   "dependencies": {
-    "@rei/cdr-tokens": "^12.4.2",
+    "@rei/cdr-tokens": "^12.5.2",
     "tabbable": "^4.0.0"
   },
   "peerDependencies": {
