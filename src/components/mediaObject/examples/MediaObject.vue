@@ -4,6 +4,8 @@ import CdrLayout from '../../layout/CdrLayout.vue';
 import CdrMediaObject from '../CdrMediaObject.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
+import CdrBody from '../../text/presets/CdrBody.vue';
+import CdrTitle from '../../title/CdrTitle.vue';
 import type { MediaObject, HtmlAttributes } from '../../../types/interfaces';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
 import cedarSmallImage from '../../../dev/static/cedar-50x50.jpg';
@@ -29,7 +31,7 @@ const examples: MediaObjectExample[] = [
   {
     label: 'content padding',
     props: { contentPadding: 'two-x' },
-    flags: [],
+    flags: ['content-title'],
   },
   {
     label: 'content padding dynamic',
@@ -132,14 +134,22 @@ const examples: MediaObjectExample[] = [
       overlayColumnAlign: 'end',
       overlayRowAlign: 'center',
     },
-    flags: ['color-inverse', 'image-1/1', 'content-narrow'],
+    flags: ['image-cover', 'color-inverse', 'content-narrow'],
+  },
+  {
+    label: 'overlay, media height responsive',
+    props: {
+      overlay: true,
+      mediaHeight: { xs: '200px', sm: '200px', md: '400px', lg: '600px' },
+    },
+    flags: ['image-cover', 'color-inverse', 'content-narrow'],
   },
   {
     label: 'pass down props to Layout and Surface',
     props: {
       background: 'brand-spruce',
       gap: 'two-x',
-      contentPadding: 'none',
+      contentPadding: 'zero',
     },
     flags: ['color-inverse'],
   },
@@ -183,7 +193,10 @@ const columnExamples = [
     <h2>Media Object</h2>
 
     <hr class="example__hr" />
-    <div class="example__container">
+    <CdrLayout
+      class="example__container"
+      gap="two-x"
+    >
       <template v-for="({ props, label, flags }, index) in examples">
         <div>
           <CdrText>
@@ -200,7 +213,10 @@ const columnExamples = [
             v-bind="props"
           >
             <template #content>
-              <div
+              <CdrTitle v-if="flags && flags.includes('content-title')">
+                A CdrTitle example
+              </CdrTitle>
+              <CdrBody
                 :class="{
                   example__content: true,
                   'example__content--color-inverse': flags && flags.includes('color-inverse'),
@@ -208,7 +224,7 @@ const columnExamples = [
                 }"
               >
                 {{ flags && flags.includes('content-long') ? contentLong : contentShort }}
-              </div>
+              </CdrBody>
             </template>
             <template #media>
               <div
@@ -306,7 +322,7 @@ const columnExamples = [
           </CdrLayout>
         </div>
       </template>
-    </div>
+    </CdrLayout>
   </div>
 </template>
 
@@ -319,12 +335,7 @@ const columnExamples = [
   }
 
   &__container {
-    max-width: 850px;
-    width: 100%;
-
-    & > *:not(:first-child) {
-      margin-top: $cdr-space-two-x;
-    }
+    max-width: 1300px;
   }
 
   &__content {
@@ -342,8 +353,6 @@ const columnExamples = [
   }
 
   &__image {
-    display: block;
-
     &--height {
       height: 200px;
       width: 100%;
