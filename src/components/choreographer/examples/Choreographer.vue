@@ -2,8 +2,8 @@
   <div class="foo">
     <h2>choreographer</h2>
     <h3>Standalone card built from schema</h3>
-    <div style="max-width: 550px; margin-bottom: 6.4rem;">
-      <CdrChoreographer :schema="schemaB"/>
+    <div style="max-width: 550px; margin-bottom: 6.4rem">
+      <CdrChoreographer :schema="schemaB" />
     </div>
     <CdrChoreographer :schema="schemaA" />
     <h3>Card</h3>
@@ -16,6 +16,10 @@
       <CdrChoreographer :schema="schemaA" />
     </cdr-card>
 
+    <CdrChoreographer
+      :schema="schemaC"
+      :components="{ CdrSurface, CdrMediaObject }"
+    />
   </div>
 </template>
 
@@ -26,64 +30,85 @@ export default {
   name: 'Choreographer',
   components: {
     ...Components,
-},
+  },
   data() {
     return {
+      CdrSurface: Components.CdrSurface,
+      CdrMediaObject: Components.CdrMediaObject,
       schemaA: [
+        {
+          type: 'mediaObject',
+          slots: {
+            media: {
+              type: 'image',
+              props: {
+                alt: 'A sample image',
+                src: 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md',
+              },
+            },
+            content: {
+              content: [
+                { type: 'kicker', content: 'Example kicker' },
+                { type: 'title', content: 'Example title' },
+              ],
+            },
+          },
+        },
         {
           type: 'image',
           props: {
-            alt: "standard landscape",
-            src: "https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md",
+            alt: 'standard landscape',
+            src: 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md',
             responsive: true,
-            cover: true
+            cover: true,
           },
         },
         {
           type: 'kicker',
-          content: 'skills'
+          content: 'skills',
         },
         {
           type: 'link',
           props: {
             href: '#',
-            modifier: 'standalone'
+            modifier: 'standalone',
           },
           content: [
             {
               type: 'title',
               props: { tag: 'p' },
-              content: 'Running nutrition basics' 
-            }
-          ]
+              content: 'Running nutrition basics',
+            },
+          ],
         },
         {
           type: 'rating',
           props: {
-            rating: "4.0",
-            count: "49",
-            size: "small"
-          }
+            rating: '4.0',
+            count: '49',
+            size: 'small',
+          },
         },
         {
           type: 'abstract',
-          content: 'Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.'
-        }
+          content:
+            'Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.',
+        },
       ],
       schemaB: [
         {
           type: 'card',
           props: {
-            as: 'lead'
+            as: 'lead',
           },
           content: [
             {
               type: 'image',
               props: {
-                alt: "standard landscape",
-                src: "https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md",
+                alt: 'standard landscape',
+                src: 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md',
                 responsive: true,
-                cover: true
+                cover: true,
               },
             },
             {
@@ -91,40 +116,75 @@ export default {
               props: {
                 tag: 'span',
               },
-              content: 'skills'
+              content: 'skills',
             },
             {
               type: 'link',
               props: {
                 href: '#',
                 modifier: 'standalone',
-                class: "cdr-card__link"
+                class: 'cdr-card__link',
               },
               content: [
                 {
                   type: 'title',
                   props: { tag: 'p' },
-                  content: 'Running nutrition basics' 
-                }
-              ]
+                  content: 'Running nutrition basics',
+                },
+              ],
             },
             {
               type: 'rating',
               props: {
-                rating: "4.0",
-                count: "49",
-                size: "small"
-              }
+                rating: '4.0',
+                count: '49',
+                size: 'small',
+              },
             },
             {
               type: 'abstract',
-              content: 'Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.'
-            }
-          ]
-        }
-      ]
-    }
-  }
+              content:
+                'Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.',
+            },
+          ],
+        },
+      ],
+      schemaC: [
+        {
+          type: 'CdrSurface',
+          props: {
+            background: 'secondary',
+          },
+          content: 'Using passed-in components',
+        },
+        {
+          type: 'CdrMediaObject',
+          props: {
+            as: 'CdrSurface',
+            background: 'secondary',
+            gap: 'one-x',
+          },
+          slots: {
+            media: {
+              type: 'image',
+              props: {
+                alt: 'A sample image',
+                src: 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md',
+              },
+            },
+            content: {
+              content: [
+                {
+                  type: 'body',
+                  content: 'This media object uses an overlay and has responsive heights',
+                },
+              ],
+            },
+          },
+        },
+      ],
+    };
+  },
 };
 </script>
 
@@ -140,7 +200,5 @@ export default {
   max-width: 600px;
   margin-bottom: 5rem;
   padding-bottom: 2.4rem;
-
-
 }
 </style>

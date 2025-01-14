@@ -2,18 +2,34 @@
 
 $media-object-component: 'media-object';
 
+@mixin cdr-media-object-media-mixin() {
+  & > *:first-child {
+    @content;
+  }
+}
+
+@mixin cdr-media-object-content-mixin() {
+  & > *:last-child {
+    @content;
+  }
+}
+
 // Base mixin for media object
 @mixin cdr-media-object-base-mixin($component) {
-  & > .cdr-#{$component}__media {
+  @include cdr-media-object-media-mixin {
     grid-area: media;
 
-    & > :first-child {
+    & > img,
+    & > picture,
+    & > video {
       display: block;
     }
   }
 
-  & > .cdr-#{$component}__content {
+  @include cdr-media-object-content-mixin {
     grid-area: content;
+    container-type: inline-size;
+    width: 100%;
   }
 }
 
@@ -32,39 +48,37 @@ $media-object-component: 'media-object';
 
 // Allow for media to cover entire container
 @mixin cdr-media-object-cover-mixin($component) {
-  &--cover {
-    & > .cdr-#{$component}__media {
+  @include cdr-media-object-media-mixin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+
+    & > :first-child {
+      position: absolute;
+      left: 0;
+      right: 0;
       width: 100%;
       height: 100%;
-      display: flex;
-      position: relative;
-
-      & > :first-child {
-        position: absolute;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-      }
     }
   }
 }
 
 // Allow for content to overlay media
 @mixin cdr-media-object-overlay-mixin($component) {
-  &--overlay {
-    position: relative;
+  @include cdr-media-object-cover-mixin($component);
+  grid-template-areas: 'media';
+  position: relative;
 
-    & > .cdr-#{$component}__content {
-      position: absolute;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: var(--cdr-#{$component}-column-align);
-      justify-content: var(--cdr-#{$component}-row-align);
-    }
+  @include cdr-media-object-content-mixin {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: var(--cdr-#{$component}-column-align);
+    justify-content: var(--cdr-#{$component}-row-align);
   }
 }
 
@@ -72,7 +86,7 @@ $media-object-component: 'media-object';
 @mixin cdr-media-object-content-padding-mixin($component) {
   @include cdr-cq-mixin($component, 'content-padding');
 
-  & > .cdr-#{$component}__content {
+  @include cdr-media-object-content-mixin {
     padding: var(--cdr-#{$component}-content-padding);
   }
 }

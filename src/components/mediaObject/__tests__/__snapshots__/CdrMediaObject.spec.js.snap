@@ -7,17 +7,13 @@ exports[`CdrMediaObject > snapshot tests > align center 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -34,17 +30,13 @@ exports[`CdrMediaObject > snapshot tests > content padding 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -61,17 +53,13 @@ exports[`CdrMediaObject > snapshot tests > content padding dynamic 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -88,17 +76,13 @@ exports[`CdrMediaObject > snapshot tests > cover 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -115,17 +99,13 @@ exports[`CdrMediaObject > snapshot tests > default: media position left, media w
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -142,17 +122,13 @@ exports[`CdrMediaObject > snapshot tests > dynamic align 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -169,17 +145,13 @@ exports[`CdrMediaObject > snapshot tests > media bottom 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -196,17 +168,13 @@ exports[`CdrMediaObject > snapshot tests > media position dynamic 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -223,17 +191,13 @@ exports[`CdrMediaObject > snapshot tests > media position dynamic, media height 
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -250,17 +214,13 @@ exports[`CdrMediaObject > snapshot tests > media position right 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -277,17 +237,13 @@ exports[`CdrMediaObject > snapshot tests > media top, align center 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -304,17 +260,13 @@ exports[`CdrMediaObject > snapshot tests > media width 100px 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -331,17 +283,13 @@ exports[`CdrMediaObject > snapshot tests > media width dynamic 1`] = `
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -354,21 +302,17 @@ exports[`CdrMediaObject > snapshot tests > media width dynamic 1`] = `
 exports[`CdrMediaObject > snapshot tests > overlay, row align, column align, content configured independently to 50% width 1`] = `
 <div
   class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object cdr-media-object--overlay"
-  style="--cdr-layout-rows: auto; --cdr-layout-columns: auto; --cdr-media-object-row-align: center; --cdr-media-object-column-align: end;"
+  style="--cdr-layout-rows: 56cqw; --cdr-layout-columns: auto; --cdr-media-object-row-align: center; --cdr-media-object-column-align: end;"
 >
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content
@@ -388,17 +332,13 @@ exports[`CdrMediaObject > snapshot tests > pass down props to Layout and Surface
   
   <!-- @slot Where all default content should be placed. -->
   
-  <div
-    class="cdr-media-object__media"
-  >
+  <div>
     <!-- @slot Where the media should be placed. Should be a single node. -->
     
     Some media
     
   </div>
-  <div
-    class="cdr-media-object__content"
-  >
+  <div>
     <!-- @slot Where all content should be placed. Can be multiple nodes. -->
     
     Some content

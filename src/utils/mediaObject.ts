@@ -88,7 +88,7 @@ export const getLayoutStyling = (
   const inlineStyles: NameValuePair = {};
 
   if (typeof mediaPosition === 'string') {
-    const fillAlgorithm = fillAlgorithmsByPosition[mediaPosition];    
+    const fillAlgorithm = fillAlgorithmsByPosition[mediaPosition];
     props.rows = getStructure(mediaHeight, fillAlgorithm.rows);
     props.columns = getStructure(mediaWidth, fillAlgorithm.columns);
     inlineStyles['--cdr-media-object-media-position'] = gridForMediaPosition[mediaPosition];
