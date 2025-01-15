@@ -1,9 +1,18 @@
 @import './CdrPresets.module';
 
 .cdr-eyebrow {
-  @include cdr-text-base-mixin;
-  @include cdr-text-eyebrow-100;
+  @include set-text-styles("eyebrow-100");
+  
+  /* 
+  * NOTE: 
+  * 
+  * The following CSS variables are currently defined directly in this stylesheet. 
+  * 
+  * In a future version (v2), the component will map directly to the cdr-text-base vars 
+  * and depricate the .cdr-eyebrow mappings 
+  * 
+  */
 
-  font-size: var(--cdr-type-scale--1);
-  line-height: var(--cdr-eyebrow-line-height-ratio);
+  --cdr-text-size: var(--cdr-type-scale--1, var( --cdr-text-eyebrow-100-size, #{cdr-text-eyebrow-100-size}));
+  --cdr-text-height: var( --cdr-eyebrow-line-height-ratio, #{cdr-text-eyebrow-100-height});
 }

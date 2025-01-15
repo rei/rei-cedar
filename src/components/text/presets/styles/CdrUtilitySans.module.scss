@@ -1,10 +1,19 @@
 @import './CdrPresets.module';
 
 .cdr-utility-sans {
-  @include cdr-text-base-mixin;
-  @include cdr-text-utility-sans-800;
+  @include set-text-styles("utility-sans-800");
+  
+  /* 
+  * NOTE: 
+  * 
+  * The following CSS variables are currently defined directly in this stylesheet. 
+  * 
+  * In a future version (v2), the component will map directly to the cdr-text-base vars 
+  * and depricate the utility mappings 
+  * 
+  */
 
-  font-size: var(--cdr-utility-sans-font-size);
-  line-height: var(--cdr-utility-sans-line-height);
-  font-weight: var(--cdr-utility-sans-font-weight);
+  --cdr-text-size: var(--cdr-utility-sans-font-size);
+  --cdr-text-height: var(--cdr-utility-sans-line-height);
+  --cdr-text-weight: var(--cdr-utility-sans-font-weight);
 }
