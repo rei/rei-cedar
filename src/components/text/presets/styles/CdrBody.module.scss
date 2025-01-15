@@ -1,11 +1,21 @@
 @import './CdrPresets.module';
 
 .cdr-body {
-  @include cdr-text-base-mixin;
-  @include cdr-text-body-400;
+  @include set-text-styles("body-400");
 
-  font-size: var(--cdr-body-font-size);
-  line-height: var(--cdr-body-line-height);
-  font-weight: var(--cdr-body-font-weight);
+  /* 
+  * NOTE: 
+  * 
+  * The following CSS variables are currently defined directly in this stylesheet. 
+  * 
+  * In a future version (v2), the component will map directly to the cdr-text-base vars 
+  * and depricate the cdr-body mappings 
+  * 
+  */
+
+  --cdr-text-size: var( --cdr-body-font-size, var( --cdr-text-body-400-size, #{cdr-text-body-400-size}));
+  --cdr-text-weight: var( --cdr-body-font-weight, var( --cdr-text-body-400-weight, #{cdr-text-body-400-weight}));
+  --cdr-text-height:  var( --cdr-body-line-height, var( --cdr-text-body-400-height, #{cdr-text-body-400-height}));
+
   max-width: var(--cdr-body-max-width, 75ch);
 }
