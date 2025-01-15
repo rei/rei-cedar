@@ -75,6 +75,7 @@
     <async-modal />
     <br />
     <long-modal />
+    <div class="spacer" />
   </div>
 </template>
 
@@ -112,5 +113,9 @@ export default {
   .modal-example {
     min-height: 80vh; /* fixes a safari display bug */
   }
+}
+
+.spacer {
+  height: 100vh;
 }
 </style>

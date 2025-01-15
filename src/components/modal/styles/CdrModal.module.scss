@@ -10,7 +10,7 @@ $modal-animation-duration: 150ms;
   }
 
   inset: 0;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   position: fixed;
   visibility: visible;
@@ -151,4 +151,7 @@ $modal-animation-duration: 150ms;
   overflow: hidden !important;
   position: fixed !important;
   width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
