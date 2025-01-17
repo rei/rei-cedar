@@ -76,7 +76,6 @@
     <br />
     <long-modal />
     <div class="spacer" />
-    <div class="sticky">Something sticky</div>
   </div>
 </template>
 
@@ -118,13 +117,5 @@ export default {
 
 .spacer {
   height: 100vh;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: red;
 }
 </style>
