@@ -23031,8 +23031,7 @@ function EA(t, e, l, o, r, d) {
     a(g),
     e[20] || (e[20] = n("br", null, null, -1)),
     a(h),
-    e[21] || (e[21] = n("div", { class: "spacer" }, null, -1)),
-    e[22] || (e[22] = n("div", { class: "sticky" }, "Something sticky", -1))
+    e[21] || (e[21] = n("div", { class: "spacer" }, null, -1))
   ]);
 }
 const AA = /* @__PURE__ */ J(KA, [["render", EA]]), MA = {
