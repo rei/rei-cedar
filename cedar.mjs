@@ -28081,7 +28081,7 @@ function pJ(t, e, l, o, r, d) {
     })
   ], 8, uJ);
 }
-const mJ = /* @__PURE__ */ J(dJ, [["render", pJ], ["__scopeId", "data-v-5792760b"]]), fJ = {
+const mJ = /* @__PURE__ */ J(dJ, [["render", pJ], ["__scopeId", "data-v-69ee15c8"]]), fJ = {
   components: {
     SinkWrapper: mJ,
     CdrLink: In
