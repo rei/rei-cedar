@@ -67,6 +67,7 @@ export default {
     align-items: center;
     gap: 8px;
     margin-bottom: 8px;
+    container-type: inline-size;
   }
 
   &__container {
