@@ -8666,13 +8666,12 @@ const tR = /* @__PURE__ */ k({
     gap: { default: "zero" },
     rowGap: { default: "zero" },
     columnGap: { default: "zero" },
-    as: { default: "div" },
-    containerName: { default: void 0 }
+    as: { default: "div" }
   },
   setup(t) {
     const e = t, l = ie(), o = A(() => {
       const d = "cdr-layout", s = [d], u = {};
-      return e.containerName && (u["container-name"] = e.containerName), e.gap !== "zero" && s.push(Pe(d, `gap-${e.gap}`)), e.columnGap !== "zero" && s.push(Pe(d, `column-gap-${e.columnGap}`)), e.rowGap !== "zero" && s.push(Pe(d, `row-gap-${e.rowGap}`)), e.flow && (s.push(Pe(d, `flow-${e.flow}`)), u["--cdr-layout-flow-value"] = e.flowValue), ["rows", "columns"].forEach((c) => {
+      return e.gap !== "zero" && s.push(Pe(d, `gap-${e.gap}`)), e.columnGap !== "zero" && s.push(Pe(d, `column-gap-${e.columnGap}`)), e.rowGap !== "zero" && s.push(Pe(d, `row-gap-${e.rowGap}`)), e.flow && (s.push(Pe(d, `flow-${e.flow}`)), u["--cdr-layout-flow-value"] = e.flowValue), ["rows", "columns"].forEach((c) => {
         if (!e[c])
           return;
         if (s.push(Pe(d, c)), typeof e[c] == "object" && !Array.isArray(e[c])) {
@@ -9912,8 +9911,7 @@ const tR = /* @__PURE__ */ k({
     gap: {},
     rowGap: {},
     columnGap: {},
-    as: {},
-    containerName: {}
+    as: {}
   },
   setup(t) {
     const e = t, l = ie(), o = A(() => {
