@@ -224,10 +224,6 @@ export interface Layout extends NameValuePair {
    * The component or HTML tag to render at the root level. Note: The component "CdrSurface" has special treatment and may be used in quotes.
    */
   as?: Component | string;
-  /**
-   * The container query name that will be applied, if needed
-   */
-  containerName?: string;
 }
 
 /**
