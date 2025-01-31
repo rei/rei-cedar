@@ -41,6 +41,12 @@ export default {
     };
   },
   watch: {
+    '$route.query.palette': {
+      immediate: true,
+      handler(newValue) {
+        this.palette = newValue || 'default';
+      }
+    },
     palette() {
       this.$router.replace({
         path: this.$route.path,

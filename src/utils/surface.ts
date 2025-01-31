@@ -1,4 +1,10 @@
-import type { surface, surfaceSelection, HtmlAttributes, Layout } from '../types/interfaces';
+import type {
+  surface,
+  surfaceSelection,
+  HtmlAttributes,
+  Layout,
+  surfaceNavigation,
+} from '../types/interfaces';
 
 // Manages the props passed along to all surfaces
 export const getSurfaceProps = (props: surface, baseClass: string) => {
@@ -42,6 +48,55 @@ export const getSurfaceProps = (props: surface, baseClass: string) => {
     classes.push(shadowClass);
   }
 
+  return { classes };
+};
+
+export const getSurfaceNavigationProps = (props: surfaceNavigation, baseClass: string) => {
+  const classes = [baseClass];
+  const states = ['rest', 'hover', 'active', 'visited'] as const;
+
+  if (props.background) {
+    states.forEach(state => {
+      if (props.borderColor?.[state]) {
+        classes.push(`${baseClass}-background-color-${props.background?.[state]}--${state}`);
+      }
+    });
+  }
+
+  states.forEach(state => {
+    if (props.borderColor?.[state]) {
+      classes.push(`${baseClass}-border-color-${props.borderColor?.[state]}--${state}`);
+    }
+
+    if (props.borderWidth?.[state]) {
+      classes.push(`${baseClass}-border-width-${props.borderWidth?.[state]}--${state}`);
+    }
+
+    if (props.borderStyle?.[state]) {
+      classes.push(`${baseClass}-border-style-${props.borderStyle?.[state]}--${state}`);
+    }
+
+    if (props.withBorder?.[state]) {
+      classes.push(`${baseClass}-border--${state}`);
+    }
+  });
+
+  if (props.radius) {
+    states.forEach(state => {
+      if (props.radius?.[state]) {
+        classes.push(`${baseClass}-radius-${props.radius?.[state]}--${state}`);
+      }
+    });
+  }
+
+  if (props.shadow) {
+    states.forEach(state => {
+      if (props.shadow?.[state]) {
+        classes.push(`${baseClass}-shadow-${props.shadow?.[state]}--${state}`);
+      }
+    });
+  }
+  
   return { classes };
 };
 

@@ -1,0 +1,17 @@
+@import './vars/CdrSurfaceNavigation.vars';
+@import '../../surface/styles/vars/CdrSurface.vars';
+
+.cdr-surface-navigation {
+  appearance: none;
+  display: block;
+  border: 0;
+  position: relative;
+  text-align: left;
+
+  @include cdr-surface-navigation-base-mixin(
+    $surface-navigation-background-colors,
+    $surface-navigation-border-colors,
+    $surface-navigation-component,
+    $surface-navigation-states
+  );
+}

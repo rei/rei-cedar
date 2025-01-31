@@ -1,0 +1,109 @@
+@import '../../../../styles/settings/index';
+
+$surface-navigation-component: 'surface-navigation';
+$surface-navigation-background-colors: (
+  'primary': (
+    'undefined': $cdr-color-background-primary,
+  ),
+  'secondary': (
+    'undefined': $cdr-color-background-secondary,
+  ),
+);
+$surface-navigation-border-colors: (
+  'primary': (
+    'undefined': $cdr-color-border-primary,
+  ),
+  'secondary': (
+    'undefined': $cdr-color-border-secondary,
+  ),
+);
+$surface-navigation-states: ('rest', 'hover', 'active', 'visited');
+
+// Helper function to get the selector for a state
+@function get-state-selector($state) {
+  @if $state == 'rest' {
+    @return '&';
+  } @else if $state == 'hover' {
+    @return '&:hover';
+  } @else if $state == 'active' {
+    @return '&:active, &:focus';
+  } @else if $state == 'visited' {
+    @return '&:visited';
+  }
+  @return '&';
+}
+
+@mixin cdr-surface-navigation-base-mixin($background-colors, $border-colors, $component, $states) {
+  @each $state in $states {
+    $selector: get-state-selector($state);
+
+    // Border base class
+    &-border--#{$state} {
+      #{$selector} {
+        &::after {
+          border: var(--cdr-#{$component}-border-width-default)
+            var(--cdr-#{$component}-border-style-default)
+            var(--cdr-#{$component}-border-color-default);
+          border-radius: inherit;
+          content: '';
+          inset: 0;
+          position: absolute;
+        }
+      }
+    }
+
+    // Background colors
+    @each $modifier, $value in $background-colors {
+      &-background-color-#{$modifier}--#{$state} {
+        #{$selector} {
+          @include cdr-background-mixin($background-colors, $component, $modifier);
+        }
+      }
+    }
+
+    // Border colors
+    @each $modifier, $value in $border-colors {
+      &-border-color-#{$modifier}--#{$state} {
+        #{$selector} {
+          @include cdr-border-color-mixin($border-colors, $component, $modifier);
+        }
+      }
+    }
+
+    // Border widths
+    @each $key, $value in $border-widths {
+      &-border-width-#{$key}--#{$state} {
+        #{$selector} {
+          @include cdr-border-width-mixin($component, $key);
+        }
+      }
+    }
+
+    // Border styles
+    @each $key in $border-styles {
+      &-border-style-#{$key}--#{$state} {
+        #{$selector} {
+          @include cdr-border-style-mixin($component, $key);
+        }
+      }
+    }
+
+    // Radii
+    @each $key, $value in $radii {
+      &-radius-#{$key}--#{$state} {
+        #{$selector} {
+          @include cdr-radius-mixin($component, $key);
+        }
+      }
+    }
+
+    // Shadows
+    @each $key, $value in $shadows {
+      &-shadow-#{$key}--#{$state} {
+        #{$selector} {
+          @include cdr-shadow-mixin($component, $key);
+        }
+      }
+    }
+  }
+}
