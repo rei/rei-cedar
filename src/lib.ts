@@ -39,6 +39,7 @@ export { default as CdrSkeleton } from './components/skeleton/CdrSkeleton.vue';
 export { default as CdrSkeletonBone } from './components/skeleton/CdrSkeletonBone.vue';
 export { default as CdrSplitSurface } from './components/splitSurface/CdrSplitSurface.vue';
 export { default as CdrSurface } from './components/surface/CdrSurface.vue';
+export { default as CdrSurfaceNavigation } from './components/surfaceNavigation/CdrSurfaceNavigation.vue';
 export { default as CdrSurfaceSelection } from './components/surfaceSelection/CdrSurfaceSelection.vue';
 export { default as CdrTable } from './components/table/CdrTable.vue';
 export { default as CdrTabPanel } from './components/tabs/CdrTabPanel.vue';

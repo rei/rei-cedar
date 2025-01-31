@@ -289,6 +289,106 @@ export interface surface {
   palette?: 'default' | 'sandstone' | 'membership-subtle' | 'membership-vibrant';
 }
 
+export interface surfaceNavigation {
+  /**
+   * Adds in a background color based on the current palette's tokens.
+   * @demoSelectMultiple false
+   * @values primary, secondary
+   */
+  background?: {
+    rest?: Background;
+    hover?: Background;
+    active?: Background;
+    focused?: Background;
+    visited?: Background;
+  };
+  /**
+   * Specifies a border color based on the token options within Cedar.
+   * @demoSelectMultiple false
+   * @values primary, secondary
+   */
+  borderColor?: {
+    rest?: BorderColor;
+    hover?: BorderColor;
+    active?: BorderColor;
+    focused?: BorderColor;
+    visited?: BorderColor;
+  };
+  /**
+   * Specifies a border style based on the token options within Cedar.
+   * @values dotted, dashed, solid
+   */
+  borderStyle?: {
+    rest?: BorderStyle;
+    hover?: BorderStyle;
+    active?: BorderStyle;
+    focused?: BorderStyle;
+    visited?: BorderStyle;
+  };
+  /**
+   * Specifies a border width based on the token options within Cedar.
+   * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x
+   */
+  borderWidth?: {
+    rest?: Space;
+    hover?: Space;
+    active?: Space;
+    focused?: Space;
+    visited?: Space;
+  };
+  /**
+   * Adds in a border radius based on the token options within Cedar.
+   * @demoSelectMultiple false
+   * @values sharp, soft, softer, softest, round
+   */
+  radius?: {
+    rest?: Radius;
+    hover?: Radius;
+    active?: Radius;
+    focused?: Radius;
+    visited?: Radius;
+  };
+  /**
+   * Adds a shadow based on the token options within Cedar.
+   * @demoSelectMultiple false
+   * @values flat, raised, elevated, floating, lifted
+   */
+  shadow?: {
+    rest?: Shadow;
+    hover?: Shadow;
+    active?: Shadow;
+    focused?: Shadow;
+    visited?: Shadow;
+  };
+  /**
+   * Determines which HTML tag to use.
+   */
+  tag?: Tag;
+  /**
+   * Adds in a border. Comes with a default color, width, and style.
+   */
+  withBorder?: {
+    rest?: boolean;
+    hover?: boolean;
+    active?: boolean;
+    focused?: boolean;
+    visited?: boolean;
+  };
+  /**
+   * Defines a palette for the component's style variations.
+   * @values default, sandstone, membership-subtle, membership-vibrant
+   */
+  palette?: 'default';
+}
+
+// TODO - remove interface properties that are native to
+export interface surfaceNavigationLink extends HtmlAttributes {
+  /**
+   * Determines which HTML tag to use, it can be an anchor or custom router link.
+   */
+  tag?: Tag;
+}
+
 export interface surfaceSelection {
   /**
    * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
