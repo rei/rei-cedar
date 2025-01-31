@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrSurface > component unit tests > default component with no configuration > renders correctly 1`] = `
+<div
+  class="cdr-surface-navigation cdr-surface-navigation-radius-sharp--rest cdr-surface-navigation-shadow-flat--rest"
+  data-palette="default"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > snapshot test > renders correctly 1`] = `
+<div
+  class="cdr-surface-navigation cdr-surface-navigation-radius-sharp--rest cdr-surface-navigation-shadow-flat--rest"
+  data-palette="default"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</div>
+`;
