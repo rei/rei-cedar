@@ -1,18 +1,9 @@
 @import './CdrPresets.module';
 
 .cdr-heading-display {
-  @include set-text-styles("heading-display-1600");
-  
-  /* 
-  * NOTE: 
-  * 
-  * The following CSS variables are currently defined directly in this stylesheet. 
-  * 
-  * In a future version (v2), the component will map directly to the cdr-text-base vars 
-  * and depricate the heading mappings 
-  * 
-  */
+  @include cdr-text-base-mixin;
+  @include cdr-text-heading-display-1600;
 
-  --cdr-text-size: var(--cdr-heading-display-font-size);
-  --cdr-text-height: var(--cdr-heading-display-line-height);
+  font-size: var(--cdr-heading-display-font-size);
+  line-height: var(--cdr-heading-display-line-height);
 }

@@ -1,19 +1,10 @@
 @import './CdrPresets.module';
 
 .cdr-heading-serif {
-  @include set-text-styles("heading-serif-1200");
- 
-  /* 
-  * NOTE: 
-  * 
-  * The following CSS variables are currently defined directly in this stylesheet. 
-  * 
-  * In a future version (v2), the component will map directly to the cdr-text-base vars 
-  * and depricate the heading mappings 
-  * 
-  */
+  @include cdr-text-base-mixin;
+  @include cdr-text-heading-serif-1200;
 
-  --cdr-text-siz: var(--cdr-heading-serif-font-size);
-  --cdr-text-height: var(--cdr-heading-serif-line-height);
-  --cdr-text-weight: var(--cdr-heading-serif-font-weight);
+  font-size: var(--cdr-heading-serif-font-size);
+  line-height: var(--cdr-heading-serif-line-height);
+  font-weight: var(--cdr-heading-serif-font-weight);
 }

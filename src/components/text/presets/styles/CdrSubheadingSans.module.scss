@@ -1,18 +1,9 @@
 @import './CdrPresets.module';
 
 .cdr-subheading-sans {
-  @include set-text-styles("subheading-sans-600");
-  
-  /* 
-  * NOTE: 
-  * 
-  * The following CSS variables are currently defined directly in this stylesheet. 
-  * 
-  * In a future version (v2), the component will map directly to the cdr-text-base vars 
-  * and depricate the subheading mappings 
-  * 
-  */
+  @include cdr-text-base-mixin;
+  @include cdr-text-subheading-sans-600;
 
-  --cdr-text-size: var(--cdr-subheading-sans-font-size);
-  --cdr-text-height: var(--cdr-subheading-sans-line-height);
+  font-size: var(--cdr-subheading-sans-font-size);
+  line-height: var(--cdr-subheading-sans-line-height);
 }

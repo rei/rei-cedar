@@ -2,6 +2,5 @@
 @import './vars/CdrText.vars';
 
 .cdr-text {
-  @include set-text-styles("body-400");
-  
+  @include cdr-text-base-mixin;
 }

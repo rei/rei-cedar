@@ -1,20 +1,5 @@
 @mixin cdr-text-base-mixin() {
-    font-family: var( --cdr-text-family);
-    font-size: var( --cdr-text-size);
-    font-style: var( --cdr-text-style);
-    font-weight: var( --cdr-text-weight);
-    letter-spacing: var( --cdr-text-spacing);
-    line-height: var( --cdr-text-height);
+    //ITEM_DOC: Text color
+    color: var(--cdr-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    margin: 0;
 }
-
-@mixin set-text-styles($my-text-style) {
-    @include cdr-text-base-mixin; 
-    --cdr-text-color: var( --cdr-text-#{$my-text-style}-color,  #{cdr-color-text-primary});
-    --cdr-text-family: var( --cdr-text-#{$my-text-style}-family, #{cdr-text-#{$my-text-style}-family});
-    --cdr-text-size: var( --cdr-text-#{$my-text-style}-size, #{cdr-text-#{$my-text-style}-size});
-    --cdr-text-style: var( --cdr-text-#{$my-text-style}-style, #{cdr-text-#{$my-text-style}-style});
-    --cdr-text-weight: var( --cdr-text-#{$my-text-style}-weight, #{cdr-text-#{$my-text-style}-weight});
-    --cdr-text-spacing: var( --cdr-text-#{$my-text-style}-spacing, #{cdr-text-#{$my-text-style}-spacing});
-    --cdr-text-height: var( --cdr-text-#{$my-text-style}-height, #{cdr-text-#{$my-text-style}-height});
-    --cdr-text-margin: var( --cdr-text-#{$my-text-style}-margin, 0); 
-  }

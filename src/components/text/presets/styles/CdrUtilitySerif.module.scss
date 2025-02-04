@@ -1,20 +1,10 @@
 @import './CdrPresets.module';
 
 .cdr-utility-serif {
-  @include set-text-styles("utility-serif-800");
+  @include cdr-text-base-mixin;
+  @include cdr-text-utility-serif-800;
 
-
-  /* 
- * NOTE: 
- * 
- * The following CSS variables are currently defined directly in this stylesheet. 
- * 
- * In a future version (v2), the component will map directly to the cdr-text-base vars 
- * and depricate the utility mappings 
- * 
- */
-
-  --cdr-text-size: var(--cdr-utility-serif-font-size);
-  --cdr-text-height: var(--cdr-utility-serif-line-height);
-  --cdr-text-weight: var(--cdr-utility-serif-font-weight);
+  font-size: var(--cdr-utility-serif-font-size);
+  line-height: var(--cdr-utility-serif-line-height);
+  font-weight: var(--cdr-utility-serif-font-weight);
 }

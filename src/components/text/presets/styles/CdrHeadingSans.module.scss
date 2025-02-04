@@ -1,21 +1,9 @@
 @import './CdrPresets.module';
 
 .cdr-heading-sans {
-  @include set-text-styles("heading-serif-600");
+  @include cdr-text-base-mixin;
+  @include cdr-text-heading-sans-600;
 
-  /* 
-  * NOTE: 
-  * 
-  * The following CSS variables are currently defined directly in this stylesheet. 
-  * 
-  * In a future version (v2), the component will map directly to the cdr-text-base vars 
-  * and depricate the heading mappings 
-  * 
-  */
-
-  --cdr-text-size: var( --cdr-heading-sans-font-size, var( --cdr-text-heading-serif-600-size, #{cdr-text-heading-serif-600-size}));
-  --cdr-text-height: var( --cdr-heading-sans-line-height, var( --cdr-text-heading-serif-600-height, #{cdr-text-heading-serif-600-height}));
-  
-  
-
+  font-size: var(--cdr-heading-sans-font-size);
+  line-height: var(--cdr-heading-sans-line-height);
 }
