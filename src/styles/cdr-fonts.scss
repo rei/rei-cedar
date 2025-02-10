@@ -35,3 +35,15 @@
   font-weight: 1 999;
   font-style: italic;
   src: url("//www.rei.com/satchel/media/font-optimized/Graphik/GraphikWebItalic-VF-Web-Subset.woff2") format("woff2-variations"), url("//www.rei.com/satchel/media/font-optimized/Graphik/GraphikWebItalic-VF-Web-Subset.woff2") format("woff2"); }
+
+  @font-face {
+    font-display: swap;
+    font-family: Pressura; 
+    font-weight: 400; /* Regular weight */ 
+    src: url("//www.rei.com/satchel/media/font/Pressura/gt-pressura-mono-regular.woff2") format("woff2"), url("//www.rei.com/satchel/media/font/Pressura/gt-pressura-mono-regular.woff") format("woff"); }
+  
+  @font-face {
+    font-display: swap;
+    font-family: Pressura; 
+    font-weight: 700; 
+    src: url("//www.rei.com/satchel/media/font/Pressura/gt-pressura-mono-bold.woff2") format("woff2"), url("//www.rei.com/satchel/media/font/Pressura/gt-pressura-mono-bold.woff") format("woff"); }
