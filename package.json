@@ -132,6 +132,8 @@
   },
   "dependencies": {
     "@rei/cdr-tokens": "^12.6.0",
+    "@vueuse/core": "^12.7.0",
+    "radix-vue": "^1.9.16",
     "tabbable": "^4.0.0"
   },
   "peerDependencies": {

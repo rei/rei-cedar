@@ -388,3 +388,8 @@ export interface MediaObject extends Layout {
    */
   contentPadding?: SpaceOption;
 }
+
+/**
+ * Interface for the `CdrScrollCarousel` component.
+ */
+export * from '../components/scrollCarousel/interfaces';
