@@ -4,7 +4,7 @@ import browserTargets from './browserTargets.mjs';
 export default {
   // Externalize peerDependencies
   external: (id) =>
-    ['vue', 'core-js', '@rei/cdr-tokens', 'tabbable'].some(
+    ['vue', 'core-js', '@rei/cdr-tokens', 'tabbable', 'radix-vue', '@vueuse/core'].some(
       (dep) => dep === id || id.startsWith(`${dep}/`),
     ),
   output: {
