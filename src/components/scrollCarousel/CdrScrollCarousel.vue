@@ -1,13 +1,12 @@
 <template>
   <div
     v-if="hasCarouselSlides"
-    ref="CdrScrollCarousel"
+    ref="CdrScrollCarouselContainer"
     v-bind="dataAttributes"
   >
     <slot name="heading" />
     <CdrBaseCarousel
       :id="carouselId"
-      ref="CdrBaseCarousel"
       :description="description"
       :slides="slides"
       :slides-gap="slidesGap"
@@ -81,7 +80,7 @@ const props = withDefaults(defineProps<CdrScrollCarousel<unknown>>(), {
 });
 
 // Reference to the carousel container element.
-const CdrScrollCarousel = ref<HTMLElement | null>(null);
+const CdrScrollCarouselContainer = ref<HTMLElement | null>(null);
 const SLIDES_TO_SHOW_DEFAULT = 6;
 
 /**
@@ -184,7 +183,7 @@ const onResize = useDebounceFn(() => {
  * Sets up the resize observer for the carousel container.
  */
 watch(
-  () => CdrScrollCarousel.value,
+  () => CdrScrollCarouselContainer.value,
   (el) => {
     if (el) {
       useResizeObserver(el, onResize);
