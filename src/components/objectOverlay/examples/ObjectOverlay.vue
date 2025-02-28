@@ -1,0 +1,44 @@
+<script setup lang="ts">
+import CdrObjectOverlay from '../CdrObjectOverlay.vue';
+
+defineOptions({ name: 'ObjectOverlay' });
+</script>
+
+<template>
+  <CdrObjectOverlay position="top-right" margin="1rem">
+    <template #container>
+      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" />
+    </template>
+    <template #content>
+      <div class="overlay-content" :style="{ backgroundColor: '#fff', padding: '20px' }">
+        Positioned Content
+      </div>
+    </template>
+  </CdrObjectOverlay>
+
+  <hr />
+
+  <CdrObjectOverlay position="center">
+    <template #container>
+      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" />
+    </template>
+    <template #content>
+      <div class="overlay-content" :style="{ backgroundColor: '#fff', padding: '20px' }">
+        Positioned Content
+      </div>
+    </template>
+  </CdrObjectOverlay>
+
+  <hr />
+
+  <CdrObjectOverlay position="bottom-left" margin="1rem">
+    <template #container>
+      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" />
+    </template>
+    <template #content>
+      <div class="overlay-content" :style="{ backgroundColor: '#fff', padding: '20px' }">
+        Positioned Content
+      </div>
+    </template>
+  </CdrObjectOverlay>
+</template>

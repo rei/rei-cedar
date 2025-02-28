@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrObjectOverlay.vue > default rendering > matches the snapshot 1`] = `
+<div
+  class="cdr-object-overlay cdr-object-overlay--center"
+  style="--cdr-object-overlay-margin: 0;"
+>
+  <div
+    class="cdr-object-overlay__container"
+  >
+    <!-- @slot Container content that the overlay will be positioned relative to -->
+    
+    <div
+      class="container-slot"
+    >
+      Container Content
+    </div>
+    
+  </div>
+  <div
+    class="cdr-object-overlay__content"
+  >
+    <!-- @slot Content to be positioned -->
+    
+    <div
+      class="content-slot"
+    >
+      Overlay Content
+    </div>
+    
+  </div>
+</div>
+`;

@@ -28,6 +28,7 @@ export { default as CdrLink } from './components/link/CdrLink.vue';
 export { default as CdrList } from './components/list/CdrList.vue';
 export { default as CdrMediaObject } from './components/mediaObject/CdrMediaObject.vue';
 export { default as CdrModal } from './components/modal/CdrModal.vue';
+export { default as CdrObjectOverlay } from './components/objectOverlay/CdrObjectOverlay.vue';
 export { default as CdrPagination } from './components/pagination/CdrPagination.vue';
 export { default as CdrPicture } from './components/picture/CdrPicture.vue';
 export { default as CdrPopover } from './components/popover/CdrPopover.vue';

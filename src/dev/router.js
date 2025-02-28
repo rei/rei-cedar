@@ -42,6 +42,7 @@ const routes = [
   { path: '/links', name: 'Links', component: Examples.links },
   { path: '/lists', name: 'Lists', component: Examples.list },
   { path: '/mediaObject', name: 'Media Object', component: Examples.mediaObject },
+  { path: '/object-overlay', name: 'Object Overlay', component: Examples.objectOverlay },
   { path: '/modals', name: 'Modals', component: Examples.modal },
   { path: '/pagination', name: 'Pagination', component: Examples.pagination },
   { path: '/picture', name: 'Picture', component: Examples.picture },
