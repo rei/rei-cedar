@@ -1,0 +1,469 @@
+{
+  "content": {
+    "heading": {
+      "text": "Trending now",
+      "level": "h2",
+      "size": "sm-standard"
+    }
+  },
+  "slideStyle": "lifestyle-portrait-sm",
+  "slidesVisible": 4,
+  "slides": [
+    {
+      "media": {
+        "images": {
+          "xs": {
+            "caption": null,
+            "alt": "A runner wearing Vuori apparel.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "sm": {
+            "caption": null,
+            "alt": "A runner wearing Vuori apparel.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "md": {
+            "caption": null,
+            "alt": "A runner wearing Vuori apparel.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "lg": {
+            "caption": null,
+            "alt": "A runner wearing Vuori apparel.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          }
+        },
+        "alt": "A runner wearing Vuori apparel.",
+        "useResizing": true,
+        "renderedSizes": {
+          "mobile": "33vw",
+          "desktop": "25vw"
+        }
+      },
+      "cta": {
+        "target": "/b/vuori/c/all",
+        "text": "Vuori"
+      }
+    },
+    {
+      "media": {
+        "images": {
+          "xs": {
+            "caption": null,
+            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "sm": {
+            "caption": null,
+            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "md": {
+            "caption": null,
+            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "lg": {
+            "caption": null,
+            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          }
+        },
+        "alt": "A child getting a piggy back ride from a person in a red jacket.",
+        "useResizing": true,
+        "renderedSizes": {
+          "mobile": "33vw",
+          "desktop": "25vw"
+        }
+      },
+      "cta": {
+        "target": "/s/gifts-for-him",
+        "text": "Father's Day"
+      }
+    },
+    {
+      "media": {
+        "images": {
+          "xs": {
+            "caption": null,
+            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "sm": {
+            "caption": null,
+            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "md": {
+            "caption": null,
+            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "lg": {
+            "caption": null,
+            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          }
+        },
+        "alt": "A person walks in casual athletic clothing in front of a cactus.",
+        "useResizing": true,
+        "renderedSizes": {
+          "mobile": "33vw",
+          "desktop": "25vw"
+        }
+      },
+      "cta": {
+        "target": "/s/gifts-for-them",
+        "text": "Grad gifts"
+      }
+    },
+    {
+      "media": {
+        "images": {
+          "xs": {
+            "caption": null,
+            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "sm": {
+            "caption": null,
+            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "md": {
+            "caption": null,
+            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "lg": {
+            "caption": null,
+            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          }
+        },
+        "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+        "useResizing": true,
+        "renderedSizes": {
+          "mobile": "33vw",
+          "desktop": "25vw"
+        }
+      },
+      "cta": {
+        "target": "/s/outside-with-pride",
+        "text": "Pride"
+      }
+    },
+    {
+      "media": {
+        "images": {
+          "xs": {
+            "caption": null,
+            "alt": "A runner wearing warm weather gear.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "sm": {
+            "caption": null,
+            "alt": "A runner wearing warm weather gear.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "md": {
+            "caption": null,
+            "alt": "A runner wearing warm weather gear.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "lg": {
+            "caption": null,
+            "alt": "A runner wearing warm weather gear.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          }
+        },
+        "alt": "A runner wearing warm weather gear.",
+        "useResizing": true,
+        "renderedSizes": {
+          "mobile": "33vw",
+          "desktop": "25vw"
+        }
+      },
+      "cta": {
+        "target": "/c/running",
+        "text": "Summer running"
+      }
+    },
+    {
+      "media": {
+        "images": {
+          "xs": {
+            "caption": null,
+            "alt": "A swimmer dives off of a platform.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "sm": {
+            "caption": null,
+            "alt": "A swimmer dives off of a platform.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "md": {
+            "caption": null,
+            "alt": "A swimmer dives off of a platform.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          },
+          "lg": {
+            "caption": null,
+            "alt": "A swimmer dives off of a platform.",
+            "attribution": null,
+            "renditions": {
+              "original": {
+                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
+                "width": 1200,
+                "height": 1600
+              },
+              "wide": null,
+              "vertical": null
+            },
+            "imageType": "jpg"
+          }
+        },
+        "alt": "A swimmer dives off of a platform.",
+        "useResizing": true,
+        "renderedSizes": {
+          "mobile": "33vw",
+          "desktop": "25vw"
+        }
+      },
+      "cta": {
+        "target": "/c/swimwear",
+        "text": "Swimwear"
+      }
+    }
+  ]
+}

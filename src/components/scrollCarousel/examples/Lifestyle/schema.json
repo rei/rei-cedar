@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "level": {
+              "type": "string",
+              "enum": ["h1", "h2", "h3", "h4", "h5", "h6"]
+            },
+            "size": {
+              "type": "string"
+            }
+          },
+          "required": ["text", "level", "size"]
+        }
+      },
+      "required": ["heading"]
+    },
+    "slideStyle": {
+      "type": "string"
+    },
+    "slidesVisible": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "slides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "media": {
+            "type": "object",
+            "properties": {
+              "images": {
+                "type": "object",
+                "properties": {
+                  "xs": {
+                    "$ref": "#/definitions/imageObject"
+                  },
+                  "sm": {
+                    "$ref": "#/definitions/imageObject"
+                  },
+                  "md": {
+                    "$ref": "#/definitions/imageObject"
+                  },
+                  "lg": {
+                    "$ref": "#/definitions/imageObject"
+                  }
+                },
+                "required": ["xs"]
+              },
+              "alt": {
+                "type": "string"
+              },
+              "useResizing": {
+                "type": "boolean"
+              },
+              "renderedSizes": {
+                "type": "object",
+                "properties": {
+                  "mobile": {
+                    "type": "string"
+                  },
+                  "desktop": {
+                    "type": "string"
+                  }
+                },
+                "required": ["mobile", "desktop"]
+              }
+            },
+            "required": ["images", "alt", "useResizing", "renderedSizes"]
+          },
+          "cta": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": ["target", "text"]
+          }
+        },
+        "required": ["media", "cta"]
+      }
+    }
+  },
+  "required": ["content", "slideStyle", "slidesVisible", "slides"],
+  "definitions": {
+    "imageObject": {
+      "type": "object",
+      "properties": {
+        "caption": {
+          "type": ["string", "null"]
+        },
+        "alt": {
+          "type": "string"
+        },
+        "attribution": {
+          "type": ["string", "null"]
+        },
+        "renditions": {
+          "type": "object",
+          "properties": {
+            "original": {
+              "$ref": "#/definitions/imageRendition"
+            },
+            "wide": {
+              "$ref": "#/definitions/imageRendition"
+            },
+            "vertical": {
+              "$ref": "#/definitions/imageRendition"
+            }
+          },
+          "required": ["original"]
+        },
+        "imageType": {
+          "type": "string",
+          "enum": ["jpg", "png", "gif", "webp", "svg"]
+        }
+      },
+      "required": ["alt", "renditions", "imageType"]
+    },
+    "imageRendition": {
+      "type": ["object", "null"],
+      "properties": {
+        "src": {
+          "type": "string",
+          "pattern": "^(https?|ftp):\\/\\/[\\S]+$"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": ["src", "width", "height"]
+    }
+  }
+}
