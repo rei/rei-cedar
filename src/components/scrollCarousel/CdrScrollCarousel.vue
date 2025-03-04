@@ -36,7 +36,6 @@ import type {
   CdrScrollCarouselConfig,
   CdrScrollCarousel,
 } from './interfaces';
-// import { CdrScrollCarouselEventKey } from './injection-key';
 import { computed, h, provide, ref, useId, watch } from 'vue';
 import { CdrScrollCarouselEventKey } from '../../types/symbols';
 defineOptions({ name: 'CdrScrollCarousel' });

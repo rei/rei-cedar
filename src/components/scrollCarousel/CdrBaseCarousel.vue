@@ -3,29 +3,30 @@
     :id="id"
     ref="containerRef"
     :data-ui="dataUi"
-    class="cdr-base-carousel"
+    :style="computedCSSVars"
+    :class="classObj[BASE_CLASS]"
     @focusin="handleFocusIn"
   >
     <ScrollAreaRoot
       type="auto"
-      class="cdr-base-carousel__root"
+      :class="mapClasses(classObj, `${BASE_CLASS}__root`)"
     >
       <ScrollAreaViewport
         ref="slidesRef"
-        class="cdr-base-carousel__viewport"
+        :class="mapClasses(classObj, `${BASE_CLASS}__viewport`)"
         :aria-label="description || `${slides.length} items`"
         :tabindex="viewportTabindex"
       >
         <ul
           :id="`${id}-slides`"
-          class="cdr-base-carousel__slides"
-          data-ui="cdr-base-carousel__slides"
+          :class="mapClasses(classObj, `${BASE_CLASS}__slides`)"
+          :data-ui="`${BASE_CLASS}__slides`"
         >
           <li
             v-for="(slide, index) in slides"
             :key="slide.key"
             ref="slidesItemsRef"
-            class="cdr-base-carousel__slide"
+            :class="mapClasses(classObj, `${BASE_CLASS}__slide`)"
           >
             <slot
               name="slide"
@@ -37,10 +38,10 @@
         </ul>
       </ScrollAreaViewport>
       <ScrollAreaScrollbar
-        class="cdr-base-carousel__bar cdr-base-carousel__bar--horizontal"
+        :class="mapClasses(classObj, `${BASE_CLASS}__bar`, `${BASE_CLASS}__bar--horizontal`)"
         orientation="horizontal"
       >
-        <ScrollAreaThumb class="cdr-base-carousel__thumb" />
+        <ScrollAreaThumb :class="mapClasses(classObj, `${BASE_CLASS}__thumb`)" />
       </ScrollAreaScrollbar>
     </ScrollAreaRoot>
     <template v-for="{ direction, attributes, icon } in arrows">
@@ -50,7 +51,7 @@
         :on-click="(e: Event) => onArrowClick(e, direction)"
       >
         <CdrButton
-          v-if="isContainerHovered && props.isShowingArrows"
+          v-if="true"
           :key="direction"
           :icon-only="true"
           :with-background="true"
@@ -67,6 +68,7 @@
 </template>
 
 <script setup lang="ts">
+import mapClasses from '../../utils/mapClasses';
 import { useResizeObserver, useElementHover, useDebounceFn, useEventListener } from '@vueuse/core';
 import {
   ScrollAreaRoot,
@@ -82,7 +84,10 @@ import type {
   CdrBaseCarousel,
   CdrBaseCarouselArrow,
 } from './interfaces';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, useCssModule } from 'vue';
+
+const classObj = useCssModule();
+const BASE_CLASS = 'cdr-base-carousel';
 
 defineOptions({ name: 'CdrBaseCarousel' });
 
@@ -90,7 +95,7 @@ const props = withDefaults(defineProps<CdrBaseCarousel>(), {
   id: '',
   slides: () => [],
   description: '',
-  dataUi: 'cdr-base-carousel',
+  dataUi: BASE_CLASS,
   isShowingArrows: true,
   slidesToShow: 5,
   slidesToScroll: 4,
@@ -114,6 +119,7 @@ const currentIndex = ref(0); // Current visible slide index
 const focusIndex = ref(0); // Currently focused slide index
 const hasScrolled = ref(false); // Tracks if the carousel has been scrolled
 const isContainerHovered = useElementHover(containerRef); // Hover state for the container
+
 /**
  * Calculates the width of each slide based on the container size, gap, and extra width.
  * This is used for determining how much space each slide occupies in the viewport.
@@ -125,6 +131,15 @@ const slideWidth = computed(() => {
 });
 
 /**
+ * Generates the CSS variables for the scrollable viewport.
+ */
+const computedCSSVars = computed(() => ({
+  '--slides-gap': props.slidesGap,
+  '--slide-width': slideWidth.value,
+  '--slide-extra': props.slideExtra,
+}));
+
+/**
  * Generates the properties and states for navigation arrows.
  * Calculates whether the left or right arrow should be enabled or disabled based on the current slide index.
  */
@@ -133,16 +148,19 @@ const arrows = computed(() => {
   const isAtRightBoundary = currentIndex.value >= props.slides.length - props.slidesToShow;
 
   return ['left', 'right'].map((direction) => {
-    const isEnabled = direction === 'left' ? !isAtLeftBoundary : !isAtRightBoundary;
-
+    // const isEnabled = direction === 'left' ? !isAtLeftBoundary : !isAtRightBoundary;
+    const isEnabled = true;
     return {
       direction,
       icon: direction === 'left' ? IconCaretLeft : IconCaretRight,
       attributes: {
-        'data-ui': `cdr-base-carousel__arrow--${direction}`,
-        class: `cdr-base-carousel__arrow cdr-base-carousel__arrow--${direction} ${
-          isEnabled ? '' : 'cdr-base-carousel__arrow--disabled'
-        }`,
+        'data-ui': `${BASE_CLASS}__arrow--${direction}`,
+        class: mapClasses(
+          classObj,
+          `${BASE_CLASS}__arrow`,
+          `${BASE_CLASS}__arrow--${direction}`,
+          isEnabled ? '' : `${BASE_CLASS}__arrow--disabled`,
+        ),
         'aria-label': `${direction === 'right' ? 'Next' : 'Previous'} Slide`,
         'aria-controls': `${props.id}-slides`,
         tabindex: 0,
@@ -256,203 +274,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
-// .cdr-base-carousel {
-//   &__viewport {
-//     width: 100%;
-//     height: 100%;
-//     scroll-behavior: auto;
-//     position: relative;
-//     border-radius: $cdr-radius-softer;
-//     outline: none;
-
-//     @include cdr-sm-mq-down {
-//       padding: 0 $cdr-space-one-x;
-//     }
-
-//     @media (prefers-reduced-motion: no-preference) {
-//       scroll-behavior: smooth;
-//     }
-//   }
-// }
-</style>
-
-<style lang="scss" scoped>
-// $prominence-02:
-//   5px 12px 4px 0px rgba(75, 74, 72, 0),
-//   3px 8px 3px 0px rgba(75, 74, 72, 0.02),
-//   2px 4px 3px 0px rgba(75, 74, 72, 0.07),
-//   1px 2px 2px 0px rgba(75, 74, 72, 0.12),
-//   0px 0px 1px 0px rgba(75, 74, 72, 0.14);
-// $prominence-03:
-//   30px 37px 13px 0px rgba(75, 74, 72, 0),
-//   19px 24px 12px 0px rgba(75, 74, 72, 0.02),
-//   11px 13px 10px 0px rgba(75, 74, 72, 0.07),
-//   5px 6px 8px 0px rgba(75, 74, 72, 0.12),
-//   1px 1px 4px 0px rgba(75, 74, 72, 0.14);
-
-// .cdr-base-carousel {
-//   --slides-gap: v-bind(slidesGap);
-//   --slide-width: v-bind(slideWidth);
-//   --slide-extra: v-bind(slideExtra);
-//   position: relative;
-
-//   &__root {
-//     width: 100%;
-//     height: auto;
-//   }
-
-//   &__slides {
-//     list-style: none;
-//     margin: 0;
-//     padding: 0;
-//     display: grid;
-//     grid-auto-columns: calc(var(--slide-width) * 1px);
-//     grid-template-rows: auto;
-//     grid-auto-flow: column;
-//     gap: calc(var(--slides-gap) * 1px);
-//   }
-
-//   &__slide {
-//     width: 100%;
-//     scroll-snap-align: start;
-//   }
-
-//   &__bar {
-//     --surface-size: 2.4rem;
-//     --track-size: 0.2rem;
-//     --control-size: 0.4rem;
-//     display: flex;
-//     user-select: none;
-//     touch-action: none;
-//     cursor: grab;
-//     position: relative !important;
-//     margin-top: $cdr-space-half-x;
-//     border-radius: $cdr-radius-round;
-
-//     @include cdr-sm-mq-down {
-//       margin-left: $cdr-space-one-x;
-//       margin-right: $cdr-space-one-x;
-//     }
-
-//     &:active {
-//       cursor: grabbing;
-//     }
-
-//     &:after {
-//       background-color: #e8e0ce;
-//     }
-
-//     &--horizontal {
-//       flex-direction: column;
-//       justify-content: center;
-//       height: var(--surface-size);
-
-//       &:after {
-//         height: var(--track-size);
-//         position: absolute;
-//         content: '';
-//         width: 100%;
-//         top: calc((var(--surface-size) / 2) - (var(--track-size) / 2));
-//         left: 0;
-//       }
-
-//       .cdr-base-carousel__thumb {
-//         --radix-scroll-area-thumb-height: var(--surface-size);
-//         height: var(--track-size);
-
-//         &:after {
-//           width: 100%;
-//           height: var(--track-size);
-//         }
-//       }
-//     }
-
-//     &:hover {
-//       .cdr-base-carousel__thumb {
-//         &:after {
-//           box-shadow: $prominence-03;
-//           height: var(--control-size);
-//         }
-//       }
-//     }
-//   }
-
-//   &__thumb {
-//     position: relative;
-//     z-index: 1;
-//     display: flex;
-//     align-items: center;
-
-//     &:after {
-//       content: '';
-//       background: #454441;
-//       border-radius: $cdr-radius-round;
-//     }
-//   }
-
-//   &__arrow {
-//     #{--cdr-button-with-background-background-color-active}: #eae0cc;
-//     #{--cdr-button-with-background-background-color-disabled}: #eeeae2;
-//     #{--cdr-button-with-background-background-color-interaction}: #eae0cc;
-//     #{--cdr-button-with-background-background-color}: #eae0cc;
-//     #{--cdr-button-with-background-box-shadow-active}: #eae0cc;
-//     #{--cdr-button-with-background-box-shadow-disabled}: #eeeae2;
-//     #{--cdr-button-with-background-box-shadow-interaction}: #eae0cc;
-//     #{--cdr-button-with-background-box-shadow}: #eae0cc;
-//     #{--cdr-button-with-background-fill-active}: #454441;
-//     #{--cdr-button-with-background-fill-disabled}: #b2ab9f;
-//     #{--cdr-button-with-background-icon-fill-active}: #454441;
-//     #{--cdr-button-with-background-icon-fill-interaction}: #454441;
-//     #{--cdr-button-with-background-icon-fill}: #454441;
-//     #{--cdr-color-border-button-secondary-active-inset}: #eae0cc;
-//     box-shadow: $prominence-02;
-//     pointer-events: all;
-//     --button-half: #{$cdr-space-one-and-a-half-x};
-//     position: absolute;
-//     top: var(
-//       --cdr-base-carousel-arrow-top,
-//       calc(50% - (2 * var(--button-half)) - $cdr-space-half-x)
-//     );
-//     z-index: 1;
-
-//     &:active,
-//     &:focus {
-//       box-shadow:
-//         inset 0 0 0 $cdr-space-eighth-x #2e2e2b,
-//         $prominence-02;
-//     }
-
-//     @include cdr-sm-mq-down {
-//       display: none;
-//     }
-
-//     &--left {
-//       left: 0;
-
-//       @include cdr-lg-mq-up {
-//         left: calc(var(--button-half) * -1);
-//       }
-//     }
-
-//     &--right {
-//       --extra-slide-width: calc(1px * ((var(--slide-width) * var(--slide-extra))));
-//       --half-gap: calc(var(--slides-gap) / 2 * 1px);
-//       right: calc(var(--extra-slide-width) + var(--half-gap) - var(--button-half));
-//     }
-
-//     &:disabled {
-//       filter: none;
-//       box-shadow: none;
-//     }
-
-//     &:hover:not(:disabled) {
-//       box-shadow: $prominence-03;
-//     }
-//   }
-
-//   &__sr-only {
-//     @include cdr-display-sr-only;
-//   }
-// }
-</style>
+<style lang="scss" module src="./styles/CdrBaseCarousel.module.scss"></style>
