@@ -51,7 +51,7 @@
         :on-click="(e: Event) => onArrowClick(e, direction)"
       >
         <CdrButton
-          v-if="true"
+          v-if="isContainerHovered && props.isShowingArrows"
           :key="direction"
           :icon-only="true"
           :with-background="true"
@@ -148,8 +148,7 @@ const arrows = computed(() => {
   const isAtRightBoundary = currentIndex.value >= props.slides.length - props.slidesToShow;
 
   return ['left', 'right'].map((direction) => {
-    // const isEnabled = direction === 'left' ? !isAtLeftBoundary : !isAtRightBoundary;
-    const isEnabled = true;
+    const isEnabled = direction === 'left' ? !isAtLeftBoundary : !isAtRightBoundary;
     return {
       direction,
       icon: direction === 'left' ? IconCaretLeft : IconCaretRight,
