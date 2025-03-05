@@ -1,5 +1,5 @@
 import type {
-  CdrBaseCarouselArrowClickPayload,
+  CdrScrollCarouselArrowClickPayload,
   CdrScrollCarouselResizePayload,
 } from '../../interfaces';
 import type { LifestyleModel, LifestyleSlideClickPayload } from '.';
@@ -30,7 +30,7 @@ export function onSlideClick(payload: unknown): void {
  * @return {void}
  */
 export function onArrowClick(payload: unknown): void {
-  const { direction, event, model = {} } = payload as CdrBaseCarouselArrowClickPayload;
+  const { direction, event, model = {} } = payload as CdrScrollCarouselArrowClickPayload;
   const { slidesVisible, slideStyle } = model as Partial<LifestyleModel>;
 
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';

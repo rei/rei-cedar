@@ -80,18 +80,18 @@ import CdrButton from '../button/CdrButton.vue';
 import { IconCaretLeft, IconCaretRight } from '../icon';
 
 import type {
-  CdrBaseCarouselArrowClickPayload,
-  CdrBaseCarousel,
-  CdrBaseCarouselArrow,
+  CdrScrollCarouselArrowClickPayload,
+  CdrScrollCarouselEngine,
+  CdrScrollCarouselArrow,
 } from './interfaces';
 import { computed, onMounted, onUnmounted, ref, useCssModule } from 'vue';
 
 const classObj = useCssModule();
-const BASE_CLASS = 'cdr-base-carousel';
+const BASE_CLASS = 'cdr-scroll-carousel';
 
-defineOptions({ name: 'CdrBaseCarousel' });
+defineOptions({ name: 'CdrScrollCarouselEngine' });
 
-const props = withDefaults(defineProps<CdrBaseCarousel>(), {
+const props = withDefaults(defineProps<CdrScrollCarouselEngine>(), {
   id: '',
   slides: () => [],
   description: '',
@@ -106,7 +106,7 @@ const props = withDefaults(defineProps<CdrBaseCarousel>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'arrowClick', payload: CdrBaseCarouselArrowClickPayload): void;
+  (e: 'arrowClick', payload: CdrScrollCarouselArrowClickPayload): void;
 }>();
 
 const ariaMessage = ref(''); // Live region message for screen readers
@@ -166,7 +166,7 @@ const arrows = computed(() => {
         size: 'large',
         disabled: !isEnabled,
       },
-    } as CdrBaseCarouselArrow;
+    } as CdrScrollCarouselArrow;
   });
 });
 
@@ -200,7 +200,7 @@ const scrollToIndex = (newIndex: number) => {
  * @param direction - Direction of the arrow ("left" or "right")
  */
 const onArrowClick = (event: Event, direction: 'left' | 'right') => {
-  const arrowClickPayload: CdrBaseCarouselArrowClickPayload = { event, direction };
+  const arrowClickPayload: CdrScrollCarouselArrowClickPayload = { event, direction };
   emit('arrowClick', arrowClickPayload);
   const delta = direction === 'left' ? -props.slidesToScroll : props.slidesToScroll;
   const proposedIndex = currentIndex.value + delta;
@@ -273,4 +273,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrBaseCarousel.module.scss"></style>
+<style lang="scss" module src="./styles/CdrScrollCarousel.module.scss"></style>

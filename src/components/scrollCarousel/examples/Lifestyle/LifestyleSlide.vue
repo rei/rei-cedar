@@ -126,7 +126,7 @@ const onSlideClick = (event: Event) => {
 </script>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
 
 .lifestyle-slide {
   position: relative;

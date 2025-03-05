@@ -1,0 +1,41 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as *;
+@use 'sass:map';
+@use 'sass:meta';
+
+$prominence-02:
+  5px 12px 4px 0px rgba(75, 74, 72, 0),
+  3px 8px 3px 0px rgba(75, 74, 72, 0.02),
+  2px 4px 3px 0px rgba(75, 74, 72, 0.07),
+  1px 2px 2px 0px rgba(75, 74, 72, 0.12),
+  0px 0px 1px 0px rgba(75, 74, 72, 0.14);
+$prominence-03:
+  30px 37px 13px 0px rgba(75, 74, 72, 0),
+  19px 24px 12px 0px rgba(75, 74, 72, 0.02),
+  11px 13px 10px 0px rgba(75, 74, 72, 0.07),
+  5px 6px 8px 0px rgba(75, 74, 72, 0.12),
+  1px 1px 4px 0px rgba(75, 74, 72, 0.14);
+
+$button-vars: (
+  --cdr-button-with-background-background-color-active: #eae0cc,
+  --cdr-button-with-background-background-color-disabled: #eeeae2,
+  --cdr-button-with-background-background-color-interaction: #eae0cc,
+  --cdr-button-with-background-background-color: #eae0cc,
+  --cdr-button-with-background-box-shadow-active: #eae0cc,
+  --cdr-button-with-background-box-shadow-disabled: #eeeae2,
+  --cdr-button-with-background-fill-active: #454441,
+  --cdr-button-with-background-fill-disabled: #b2ab9f,
+  --cdr-button-with-background-icon-fill-active: #454441,
+  --cdr-button-with-background-icon-fill-interaction: #454441,
+  --cdr-button-with-background-icon-fill: #454441,
+  --cdr-color-border-button-secondary-active-inset: #eae0cc,
+);
+
+@mixin arrow-vars() {
+  @each $var, $fallback in $button-vars {
+    @if meta.variable-exists($var) {
+      #{$var}: var(#{$var}, #{$fallback});
+    } @else {
+      #{$var}: #{$fallback}; // Use fallback directly if the var doesn't exist
+    }
+  }
+}
