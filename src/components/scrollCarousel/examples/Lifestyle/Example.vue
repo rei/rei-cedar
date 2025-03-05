@@ -3,30 +3,19 @@
     class="lifestyle-scroll-carousel"
     :model="lifestyleModelData"
     :adapter="LifestyleAdapter"
-    @slide-click="lifestyleOnSlideClick"
-    @arrow-click="lifestyleOnArrowClick"
+    @slide-click="onSlideClick"
+    @arrow-click="onArrowClick"
     @resize="onResize"
   />
 </template>
 
 <script setup lang="ts">
 import CdrScrollCarousel from '../../CdrScrollCarousel.vue';
-
 import type { LifestyleModel } from './index';
-
 import lifestyleModel from './mock.json';
 
-// Models
 const lifestyleModelData = lifestyleModel as LifestyleModel;
-
-// Handlers
-import {
-  onSlideClick as lifestyleOnSlideClick,
-  onArrowClick as lifestyleOnArrowClick,
-  onResize,
-} from './handlers';
-
-// Adapters
+import { onSlideClick, onArrowClick, onResize } from './handlers';
 import LifestyleAdapter from './adapter';
 </script>
 
