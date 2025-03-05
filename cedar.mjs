@@ -19882,7 +19882,8 @@ const pC = /* @__PURE__ */ w(uC, [["render", cC]]), fC = /* @__PURE__ */ k({
     }));
     return (i, s) => (f(), S(ot, Oe(o.value, {
       class: V(n)["cdr-surface-selection"],
-      tag: e.tag
+      tag: e.tag,
+      role: i.$props.role
     }), {
       default: a(() => [
         l("div", {
@@ -19911,7 +19912,7 @@ const pC = /* @__PURE__ */ w(uC, [["render", cC]]), fC = /* @__PURE__ */ k({
         ], 2)
       ]),
       _: 3
-    }, 16, ["class", "tag"]));
+    }, 16, ["class", "tag", "role"]));
   }
 }), mC = {
   "cdr-surface-selection": "cdr-surface-selection_15-3-1",
@@ -19935,7 +19936,7 @@ const pC = /* @__PURE__ */ w(uC, [["render", cC]]), fC = /* @__PURE__ */ k({
     borderWidth: {},
     radius: {},
     boxShadow: {},
-    tag: { default: "button" },
+    tag: { default: "div" },
     palette: {}
   },
   setup(t) {
@@ -19947,7 +19948,8 @@ const pC = /* @__PURE__ */ w(uC, [["render", cC]]), fC = /* @__PURE__ */ k({
     }));
     return (r, i) => (f(), S(wt, Oe(o.value, {
       class: V(n)["cdr-fulfillment-tile"],
-      tag: e.tag
+      tag: e.tag,
+      role: e.role
     }), {
       default: a(() => [
         l("div", {
@@ -20010,7 +20012,7 @@ const pC = /* @__PURE__ */ w(uC, [["render", cC]]), fC = /* @__PURE__ */ k({
         ], 2)
       ]),
       _: 3
-    }, 16, ["class", "tag"]));
+    }, 16, ["class", "tag", "role"]));
   }
 }), gC = {
   "cdr-fulfillment-tile": "cdr-fulfillment-tile_15-3-1",
