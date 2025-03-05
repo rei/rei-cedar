@@ -6,6 +6,7 @@ exports[`CdrSurfaceSelection > applies checked state 1`] = `
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -48,6 +49,7 @@ exports[`CdrSurfaceSelection > applies custom layout props 1`] = `
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -90,6 +92,7 @@ exports[`CdrSurfaceSelection > applies disabled state 1`] = `
   aria-disabled="true"
   class="cdr-surface cdr-surface-selection"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -132,6 +135,7 @@ exports[`CdrSurfaceSelection > applies loading state 1`] = `
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection"
   data-loading="true"
+  role="checkbox"
 >
   
   <div
@@ -174,6 +178,7 @@ exports[`CdrSurfaceSelection > applies multiple states 1`] = `
   aria-disabled="true"
   class="cdr-surface cdr-surface-selection"
   data-loading="true"
+  role="checkbox"
 >
   
   <div
@@ -222,6 +227,7 @@ exports[`CdrSurfaceSelection > applies surface props 1`] = `
   data-box-shadow="raised"
   data-loading="false"
   data-radius="soft"
+  role="checkbox"
 >
   
   <div
@@ -264,6 +270,7 @@ exports[`CdrSurfaceSelection > base classes only 1`] = `
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -306,6 +313,7 @@ exports[`CdrSurfaceSelection > default snapshot 1`] = `
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -348,6 +356,7 @@ exports[`CdrSurfaceSelection > shows custom loading slot 1`] = `
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection"
   data-loading="true"
+  role="checkbox"
 >
   
   <div
@@ -379,6 +388,7 @@ exports[`CdrSurfaceSelection > shows default slot 1`] = `
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection"
   data-loading="false"
+  role="checkbox"
 >
   
   <div

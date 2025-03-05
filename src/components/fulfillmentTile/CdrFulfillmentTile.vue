@@ -10,7 +10,7 @@ import { getSurfaceProps } from '../../utils/surface';
 defineOptions({ name: 'CdrFulfillmentTile' });
 
 const props = withDefaults(defineProps<surfaceSelection>(), {
-  tag: 'button',
+  tag: 'div',
   role: 'checkbox',
 });
 
@@ -30,6 +30,7 @@ const surfaceProps = computed(() => ({
     v-bind="surfaceProps"
     :class="style['cdr-fulfillment-tile']"
     :tag="props.tag"
+    :role="props.role"
   >
     <div :class="style['cdr-fulfillment-tile__content']">
       <div

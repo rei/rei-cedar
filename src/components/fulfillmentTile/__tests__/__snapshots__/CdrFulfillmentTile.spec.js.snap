@@ -1,11 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CdrFulfillmentTile > applies checked state 1`] = `
-<button
+<div
   aria-checked="true"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -47,15 +48,16 @@ exports[`CdrFulfillmentTile > applies checked state 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > applies disabled state 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="true"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -97,15 +99,16 @@ exports[`CdrFulfillmentTile > applies disabled state 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > applies loading state 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="true"
+  role="checkbox"
 >
   
   <div
@@ -147,15 +150,16 @@ exports[`CdrFulfillmentTile > applies loading state 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > applies multiple states 1`] = `
-<button
+<div
   aria-checked="true"
   aria-disabled="true"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="true"
+  role="checkbox"
 >
   
   <div
@@ -197,15 +201,16 @@ exports[`CdrFulfillmentTile > applies multiple states 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > base classes only 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -247,15 +252,16 @@ exports[`CdrFulfillmentTile > base classes only 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > default snapshot 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -297,15 +303,16 @@ exports[`CdrFulfillmentTile > default snapshot 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > renders body slot 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -362,15 +369,16 @@ exports[`CdrFulfillmentTile > renders body slot 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > renders footer slot 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -427,15 +435,16 @@ exports[`CdrFulfillmentTile > renders footer slot 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > renders header slot 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -496,15 +505,16 @@ exports[`CdrFulfillmentTile > renders header slot 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > renders icon-left slot 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -576,15 +586,16 @@ exports[`CdrFulfillmentTile > renders icon-left slot 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;
 
 exports[`CdrFulfillmentTile > renders icon-right slot 1`] = `
-<button
+<div
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
   data-loading="false"
+  role="checkbox"
 >
   
   <div
@@ -656,5 +667,5 @@ exports[`CdrFulfillmentTile > renders icon-right slot 1`] = `
     </div>
   </div>
   
-</button>
+</div>
 `;

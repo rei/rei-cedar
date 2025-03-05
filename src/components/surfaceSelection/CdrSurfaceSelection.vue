@@ -37,6 +37,7 @@ const layoutProps = computed(() => ({
     v-bind="surfaceProps"
     :class="style['cdr-surface-selection']"
     :tag="props.tag"
+    :role="$props.role"
   >
     <div :class="style['cdr-surface-selection__inner']">
       <CdrLayout

@@ -9,7 +9,7 @@ describe('CdrFulfillmentTile', () => {
 
   it('sets the default tag prop correctly', () => {
     const wrapper = mount(CdrFulfillmentTile);
-    expect(wrapper.element.tagName).toBe('BUTTON');
+    expect(wrapper.element.tagName).toBe('DIV');
   });
 
   it('can override the default tag', () => {
