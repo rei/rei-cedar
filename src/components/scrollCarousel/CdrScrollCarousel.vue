@@ -14,6 +14,7 @@
       :slides-to-scroll="slidesToScroll"
       :focus-selector="focusSelector"
       @arrow-click="onArrowClick"
+      v-bind="$attrs"
     >
       <template #slide="{ ...slideProps }: Record<string, unknown>">
         <component
@@ -38,6 +39,10 @@ import type {
 } from './interfaces';
 import { computed, h, provide, ref, useId, watch } from 'vue';
 import { CdrScrollCarouselEventKey } from '../../types/symbols';
+
+/**
+ * Configures the options for the CdrScrollCarousel component.
+ */
 defineOptions({ name: 'CdrScrollCarousel' });
 
 /**
