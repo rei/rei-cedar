@@ -1,53 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CdrSurfaceSelection > component unit tests > default component with no configuration > renders correctly 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-surface-selection cdr-surface-selection--modifier-default"
-  role="radio"
-  type="button"
->
-  <div
-    class="cdr-surface-selection__inner"
-  >
-    <div
-      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
-      style="--cdr-layout-flow-value: auto;"
-    >
-      <!-- @slot Where all default content should be placed. -->
-      
-      
-    </div>
-    <div
-      class="cdr-surface-selection__loading"
-    >
-      <!-- @slot This slot allows for custom loading content. -->
-      
-      <div
-        aria-busy="true"
-        aria-live="polite"
-        class="cdr-skeleton"
-      >
-        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-        
-        <div
-          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-        />
-        
-      </div>
-      
-    </div>
-  </div>
-</button>
-`;
-
-exports[`CdrSurfaceSelection > is checked 1`] = `
-<button
+exports[`CdrSurfaceSelection > applies checked state 1`] = `
+<div
   aria-checked="true"
-  class="cdr-surface-selection cdr-surface-selection--modifier-default"
-  role="radio"
-  type="button"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="false"
 >
+  
   <div
     class="cdr-surface-selection__inner"
   >
@@ -57,16 +17,11 @@ exports[`CdrSurfaceSelection > is checked 1`] = `
     >
       <!-- @slot Where all default content should be placed. -->
       
-      <!-- @slot Where all default content should be placed. -->
-      
-      Default slot
-      
       
     </div>
     <div
       class="cdr-surface-selection__loading"
     >
-      <!-- @slot This slot allows for custom loading content. -->
       
       <div
         aria-busy="true"
@@ -83,17 +38,102 @@ exports[`CdrSurfaceSelection > is checked 1`] = `
       
     </div>
   </div>
-</button>
+  
+</div>
 `;
 
-exports[`CdrSurfaceSelection > is loading 1`] = `
-<button
+exports[`CdrSurfaceSelection > applies custom layout props 1`] = `
+<div
   aria-checked="false"
-  class="cdr-surface-selection cdr-surface-selection--modifier-default"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="false"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-one-x cdr-layout--flow-column cdr-layout--columns cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto; --cdr-layout-columns: auto 1fr;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > applies disabled state 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="true"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="false"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > applies loading state 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
   data-loading="true"
-  role="radio"
-  type="button"
 >
+  
   <div
     class="cdr-surface-selection__inner"
   >
@@ -103,7 +143,253 @@ exports[`CdrSurfaceSelection > is loading 1`] = `
     >
       <!-- @slot Where all default content should be placed. -->
       
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > applies multiple states 1`] = `
+<div
+  aria-checked="true"
+  aria-disabled="true"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="true"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
       <!-- @slot Where all default content should be placed. -->
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > applies surface props 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
+  data-background="primary"
+  data-border-color="primary"
+  data-border-style="solid"
+  data-border-width="one-x"
+  data-box-shadow="raised"
+  data-loading="false"
+  data-radius="soft"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > base classes only 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="false"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > default snapshot 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="false"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > shows custom loading slot 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="true"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      Custom loading
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrSurfaceSelection > shows default slot 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection"
+  data-loading="false"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
       
       Default slot
       
@@ -112,7 +398,6 @@ exports[`CdrSurfaceSelection > is loading 1`] = `
     <div
       class="cdr-surface-selection__loading"
     >
-      <!-- @slot This slot allows for custom loading content. -->
       
       <div
         aria-busy="true"
@@ -129,91 +414,6 @@ exports[`CdrSurfaceSelection > is loading 1`] = `
       
     </div>
   </div>
-</button>
-`;
-
-exports[`CdrSurfaceSelection > shows default 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-surface-selection cdr-surface-selection--modifier-default"
-  role="radio"
-  type="button"
->
-  <div
-    class="cdr-surface-selection__inner"
-  >
-    <div
-      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
-      style="--cdr-layout-flow-value: auto;"
-    >
-      <!-- @slot Where all default content should be placed. -->
-      
-      <!-- @slot Where all default content should be placed. -->
-      
-      Default slot
-      
-      
-    </div>
-    <div
-      class="cdr-surface-selection__loading"
-    >
-      <!-- @slot This slot allows for custom loading content. -->
-      
-      <div
-        aria-busy="true"
-        aria-live="polite"
-        class="cdr-skeleton"
-      >
-        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-        
-        <div
-          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-        />
-        
-      </div>
-      
-    </div>
-  </div>
-</button>
-`;
-
-exports[`CdrSurfaceSelection > snapshot test > renders correctly 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-surface-selection cdr-surface-selection--modifier-default"
-  role="radio"
-  type="button"
->
-  <div
-    class="cdr-surface-selection__inner"
-  >
-    <div
-      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
-      style="--cdr-layout-flow-value: auto;"
-    >
-      <!-- @slot Where all default content should be placed. -->
-      
-      
-    </div>
-    <div
-      class="cdr-surface-selection__loading"
-    >
-      <!-- @slot This slot allows for custom loading content. -->
-      
-      <div
-        aria-busy="true"
-        aria-live="polite"
-        class="cdr-skeleton"
-      >
-        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-        
-        <div
-          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-        />
-        
-      </div>
-      
-    </div>
-  </div>
-</button>
+  
+</div>
 `;

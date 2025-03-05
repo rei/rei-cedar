@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CdrSurfaceNavigation from '../CdrSurfaceNavigation.vue';
-import CdrSurfaceNavigationLink from '../CdrSurfaceNavigationLink.vue';
+import CdrSurface from '../CdrSurface.vue';
+import CdrSurfaceLink from '../CdrSurfaceLink.vue';
 import CdrUtilitySans from '../../text/presets/CdrUtilitySans.vue';
 import CdrSubheadingSans from '../../text/presets/CdrSubheadingSans.vue';
 import CdrMediaObject from '../../mediaObject/CdrMediaObject.vue';
@@ -102,7 +102,7 @@ const handleFocus = (e: FocusEvent) => {
       <h3>
         {{ exampleName }}
       </h3>
-      <CdrSurfaceNavigation v-bind="props" class="card">
+      <CdrSurface v-bind="props" class="card">
         <CdrMediaObject v-bind="mediaObjectProps">
           <template #media>
             <div class="card__image-wrapper">
@@ -111,14 +111,14 @@ const handleFocus = (e: FocusEvent) => {
           </template>
           <template #content>
             <CdrUtilitySans>{{ label }}</CdrUtilitySans>
-            <CdrSurfaceNavigationLink @click="handleClick" @blur="handleBlur" @focus="handleFocus">
+            <CdrSurfaceLink @click="handleClick" @blur="handleBlur" @focus="handleFocus">
               <CdrSubheadingSans class="card__title">{{ title }}</CdrSubheadingSans>
-            </CdrSurfaceNavigationLink>
+            </CdrSurfaceLink>
             <CdrRating v-bind="ratingProps" />
             <CdrUtilitySans>{{ price }}</CdrUtilitySans>
           </template>
         </CdrMediaObject>
-      </CdrSurfaceNavigation>
+      </CdrSurface>
     </template>
   </div>
 </template>

@@ -14,7 +14,7 @@
     </div>
     <CdrSurface
       background="primary"
-      :with-border="true"
+      border-style="solid"
       border-width="sixteenth-x"
       border-color="primary"
       class="sink-wrapper__container"

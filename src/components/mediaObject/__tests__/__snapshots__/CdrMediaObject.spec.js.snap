@@ -324,11 +324,10 @@ exports[`CdrMediaObject > snapshot tests > overlay, row align, column align, con
 
 exports[`CdrMediaObject > snapshot tests > pass down props to Layout and Surface 1`] = `
 <div
-  class="cdr-surface cdr-surface--modifier-default cdr-surface--background-brand-spruce cdr-surface--radius-sharp cdr-surface--shadow-flat cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object"
-  data-palette="default"
+  class="cdr-surface cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object"
+  data-background="brand-spruce"
   style="--cdr-layout-rows: auto; --cdr-layout-columns: 1fr 1fr; --cdr-media-object-media-position: 'media content'; --cdr-media-object-align: start;"
 >
-  <!-- @slot Where all default content should be placed. -->
   
   <!-- @slot Where all default content should be placed. -->
   

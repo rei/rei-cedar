@@ -1,34 +1,136 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CdrSurface > component unit tests > default component with no configuration > renders correctly 1`] = `
+exports[`CdrSurface > applies background property 1`] = `
 <div
-  class="cdr-surface cdr-surface--modifier-default cdr-surface--background-primary cdr-surface--radius-sharp cdr-surface--shadow-flat"
-  data-palette="default"
+  class="cdr-surface"
+  data-background="primary"
 >
-  <!-- @slot Where all default content should be placed. -->
   
   
 </div>
 `;
 
-exports[`CdrSurface > component unit tests > when "tag" is set to "a" > renders correctly 1`] = `
-<a
-  class="cdr-surface cdr-surface--modifier-default cdr-surface--background-primary cdr-surface--radius-sharp cdr-surface--shadow-flat"
-  data-palette="default"
+exports[`CdrSurface > applies border color property 1`] = `
+<div
+  class="cdr-surface"
+  data-border-color="primary"
 >
-  <!-- @slot Where all default content should be placed. -->
   
   
-</a>
+</div>
 `;
 
-exports[`CdrSurface > snapshot test > renders correctly 1`] = `
+exports[`CdrSurface > applies border style property 1`] = `
 <div
-  class="cdr-surface cdr-surface--modifier-default cdr-surface--background-primary cdr-surface--radius-sharp cdr-surface--shadow-flat"
-  data-palette="default"
+  class="cdr-surface"
+  data-border-style="solid"
 >
-  <!-- @slot Where all default content should be placed. -->
   
+  
+</div>
+`;
+
+exports[`CdrSurface > applies border width property 1`] = `
+<div
+  class="cdr-surface"
+  data-border-width="one-x"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > applies box shadow property 1`] = `
+<div
+  class="cdr-surface"
+  data-box-shadow="raised"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > applies loading state 1`] = `
+<div
+  class="cdr-surface"
+  data-loading="true"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > applies multiple properties 1`] = `
+<div
+  class="cdr-surface"
+  data-background="secondary"
+  data-border-color="primary"
+  data-border-style="solid"
+  data-border-width="one-x"
+  data-box-shadow="raised"
+  data-radius="soft"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > applies palette property 1`] = `
+<div
+  class="cdr-surface"
+  data-background="primary"
+  data-palette="membership-subtle"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > applies radius property 1`] = `
+<div
+  class="cdr-surface"
+  data-radius="soft"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > applies state-specific properties 1`] = `
+<div
+  class="cdr-surface"
+  data-background="primary"
+  data-background-hover="secondary"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > base classes only 1`] = `
+<span
+  class="cdr-surface"
+>
+  
+  
+</span>
+`;
+
+exports[`CdrSurface > default snapshot 1`] = `
+<div
+  class="cdr-surface"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurface > shows default slot 1`] = `
+<div
+  class="cdr-surface"
+>
+  
+  Default slot
   
 </div>
 `;

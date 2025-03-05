@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { surfaceNavigationLink } from '../../types/interfaces';
+import type { surfaceLink } from '../../types/interfaces';
 
 /** Navigation-specific link for use within CdrSurfaceNavigation */
 
 defineOptions({ name: 'CdrSurfaceNavigationLink' });
 
-const props = withDefaults(defineProps<surfaceNavigationLink>(), {
+const props = withDefaults(defineProps<surfaceLink>(), {
   href: '#',
   tag: 'a',
 });
@@ -45,4 +45,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrSurfaceNavigationLink.module.scss" />
+<style lang="scss" module src="./styles/CdrSurfaceNavigation.module.scss" />
