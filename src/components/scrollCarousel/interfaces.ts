@@ -4,7 +4,7 @@ import type { Component, Ref } from 'vue';
  *
  * @template Props - The type of props that the slide component will receive (defaulting to `Record<string, unknown>`).
  */
-export interface CdrBaseCarouselSlide<Props = Record<string, unknown>> {
+export interface CdrScrollCarouselSlide<Props = Record<string, unknown>> {
   /**
    * The unique key for the slide, used to differentiate slides.
    */
@@ -22,7 +22,7 @@ export interface CdrBaseCarouselSlide<Props = Record<string, unknown>> {
  *
  * @description This type defines the properties that can be passed into a carousel component.
  */
-export interface CdrBaseCarousel {
+export interface CdrScrollCarouselEngine {
   /**
    * Unique ID for the carousel.
    * This ID can be used for targeting specific carousels or for testing/analytics purposes.
@@ -51,7 +51,7 @@ export interface CdrBaseCarousel {
    * List of slides in the carousel.
    * This is an array of `Slide` objects that will populate the carousel.
    */
-  slides?: CdrBaseCarouselSlide[];
+  slides?: CdrScrollCarouselSlide[];
 
   /**
    * The number of slides to show at a time in the carousel.
@@ -121,7 +121,7 @@ export interface CdrScrollCarouselConfig<T = Record<string, unknown>> {
   /**
    * The array of slides, each containing metadata and references to the components.
    */
-  slides: CdrBaseCarouselSlide<T>[];
+  slides: CdrScrollCarouselSlide<T>[];
 
   /**
    * The unique ID of the carousel.
@@ -162,7 +162,7 @@ export interface CdrScrollCarouselConfig<T = Record<string, unknown>> {
 /**
  * Payload for carousel arrow click events.
  */
-export interface CdrBaseCarouselArrowClickPayload<T = Record<string, unknown>> {
+export interface CdrScrollCarouselArrowClickPayload<T = Record<string, unknown>> {
   /**
    * The direction of the arrow that was clicked.
    */
@@ -200,7 +200,7 @@ export interface CdrScrollCarouselResizePayload<T = Record<string, unknown>> {
 /**
  * Interface representing a carousel arrow, including its properties and attributes.
  */
-export interface CdrBaseCarouselArrow {
+export interface CdrScrollCarouselArrow {
   /**
    * The direction the arrow points to.
    */

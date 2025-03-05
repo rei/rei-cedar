@@ -5,7 +5,7 @@
     v-bind="dataAttributes"
   >
     <slot name="heading" />
-    <CdrBaseCarousel
+    <CdrScrollCarouselEngine
       :id="carouselId"
       :description="description"
       :slides="slides"
@@ -21,16 +21,16 @@
           v-bind="slideProps"
         />
       </template>
-    </CdrBaseCarousel>
+    </CdrScrollCarouselEngine>
   </div>
 </template>
 
 <script setup lang="ts">
-import CdrBaseCarousel from './CdrBaseCarousel.vue';
+import CdrScrollCarouselEngine from './CdrScrollCarouselEngine.vue';
 import { useResizeObserver, useDebounceFn } from '@vueuse/core';
 import type {
-  CdrBaseCarouselSlide,
-  CdrBaseCarouselArrowClickPayload,
+  CdrScrollCarouselSlide,
+  CdrScrollCarouselArrowClickPayload,
   CdrScrollCarouselResizePayload,
   CdrScrollCarouselEventEmitter,
   CdrScrollCarouselConfig,
@@ -44,7 +44,7 @@ defineOptions({ name: 'CdrScrollCarousel' });
  * Emits an event with a specified name and optional payload.
  */
 const emit = defineEmits<{
-  (e: 'arrowClick', payload: CdrBaseCarouselArrowClickPayload): void;
+  (e: 'arrowClick', payload: CdrScrollCarouselArrowClickPayload): void;
   (e: 'resize', payload: CdrScrollCarouselResizePayload): void;
   (e: string, payload?: unknown): void;
 }>();
@@ -100,7 +100,7 @@ const slidesToScroll = ref<number>(slidesToShow.value);
 /**
  * Extracts slides from the resolved carousel model.
  */
-const slides = computed(() => carouselConfig.value.slides as CdrBaseCarouselSlide<never>[]);
+const slides = computed(() => carouselConfig.value.slides as CdrScrollCarouselSlide<never>[]);
 
 /**
  * Checks if the carousel has slides.
@@ -144,8 +144,8 @@ const dataAttributes = computed(() => carouselConfig.value?.dataAttributes || {}
 /**
  * Handles arrow click events.
  */
-function onArrowClick({ event, direction }: CdrBaseCarouselArrowClickPayload) {
-  const arrowClickPayload: CdrBaseCarouselArrowClickPayload = {
+function onArrowClick({ event, direction }: CdrScrollCarouselArrowClickPayload) {
+  const arrowClickPayload: CdrScrollCarouselArrowClickPayload = {
     event,
     direction,
     model: props.model as Record<string, unknown>,

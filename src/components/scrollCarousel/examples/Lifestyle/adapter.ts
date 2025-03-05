@@ -3,7 +3,7 @@ import type { LifestyleModel, LifestyleSlideExtended } from '.';
 import type {
   CdrScrollCarouselAdapter,
   CdrScrollCarouselConfig,
-  CdrBaseCarouselSlide,
+  CdrScrollCarouselSlide,
 } from '../../interfaces';
 import SlideComponent from './LifestyleSlide.vue';
 
@@ -25,9 +25,9 @@ export const adapter: CdrScrollCarouselAdapter<LifestyleSlideExtended> = (modelD
   /**
    * Transforms raw items into an array of slides for the carousel.
    *
-   * @type {CdrBaseCarouselSlide<LifestyleSlideExtended>[]}
+   * @type {CdrScrollCarouselSlide<LifestyleSlideExtended>[]}
    */
-  const slides: CdrBaseCarouselSlide<LifestyleSlideExtended>[] = Array.isArray(slideItems)
+  const slides: CdrScrollCarouselSlide<LifestyleSlideExtended>[] = Array.isArray(slideItems)
     ? slideItems.map((slide, index) => ({
         key: `lifestyle-slide-${index}`,
         props: {

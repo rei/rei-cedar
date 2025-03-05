@@ -1,7 +1,7 @@
-@use '../../../styles/settings/index' as *;
-@use './vars/CdrBaseCarousel.vars' as *;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as *;
+@use './vars/CdrScrollCarousel.vars' as *;
 
-.cdr-base-carousel {
+.cdr-scroll-carousel {
   position: relative;
 
   &__viewport {
@@ -81,7 +81,7 @@
         left: 0;
       }
 
-      .cdr-base-carousel__thumb {
+      .cdr-scroll-carousel__thumb {
         --radix-scroll-area-thumb-height: var(--surface-size);
         height: var(--track-size);
 
@@ -93,7 +93,7 @@
     }
 
     &:hover {
-      .cdr-base-carousel__thumb {
+      .cdr-scroll-carousel__thumb {
         &:after {
           box-shadow: $prominence-03;
           height: var(--control-size);
@@ -116,26 +116,13 @@
   }
 
   &__arrow {
-    #{--cdr-button-with-background-background-color-active}: #eae0cc;
-    #{--cdr-button-with-background-background-color-disabled}: #eeeae2;
-    #{--cdr-button-with-background-background-color-interaction}: #eae0cc;
-    #{--cdr-button-with-background-background-color}: #eae0cc;
-    #{--cdr-button-with-background-box-shadow-active}: #eae0cc;
-    #{--cdr-button-with-background-box-shadow-disabled}: #eeeae2;
-    #{--cdr-button-with-background-box-shadow-interaction}: #eae0cc;
-    #{--cdr-button-with-background-box-shadow}: #eae0cc;
-    #{--cdr-button-with-background-fill-active}: #454441;
-    #{--cdr-button-with-background-fill-disabled}: #b2ab9f;
-    #{--cdr-button-with-background-icon-fill-active}: #454441;
-    #{--cdr-button-with-background-icon-fill-interaction}: #454441;
-    #{--cdr-button-with-background-icon-fill}: #454441;
-    #{--cdr-color-border-button-secondary-active-inset}: #eae0cc;
+    @include arrow-vars;
     box-shadow: $prominence-02;
     pointer-events: all;
     --button-half: #{$cdr-space-one-and-a-half-x};
     position: absolute;
     top: var(
-      --cdr-base-carousel-arrow-top,
+      --cdr-scroll-carousel-arrow-top,
       calc(50% - (2 * var(--button-half)) - $cdr-space-half-x)
     );
     z-index: 1;
