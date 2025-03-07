@@ -1,5 +1,5 @@
 import { CdrSpaceThreeQuarterX } from '@rei/cdr-tokens';
-import type { LifestyleModel, LifestyleSlideExtended } from '.';
+import type { Lifestyle, LifestyleSlideExtended } from '.';
 import type {
   CdrScrollCarouselAdapter,
   CdrScrollCarouselConfig,
@@ -15,7 +15,7 @@ export const adapter: CdrScrollCarouselAdapter<LifestyleSlideExtended> = (modelD
     slides: slideItems = [],
     slideStyle,
     slidesVisible = 4,
-  } = modelData as Partial<LifestyleModel>;
+  } = modelData as Partial<Lifestyle>;
 
   /**
    * Determines the carousel ID.

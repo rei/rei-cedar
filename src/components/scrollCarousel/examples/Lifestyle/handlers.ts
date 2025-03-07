@@ -2,7 +2,7 @@ import type {
   CdrScrollCarouselArrowClickPayload,
   CdrScrollCarouselResizePayload,
 } from '../../interfaces';
-import type { LifestyleModel, LifestyleSlideClickPayload } from '.';
+import type { Lifestyle, LifestyleSlideClickPayload } from '.';
 import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens';
 
 /**
@@ -31,7 +31,7 @@ export function onSlideClick(payload: unknown): void {
  */
 export function onArrowClick(payload: unknown): void {
   const { direction, event, model = {} } = payload as CdrScrollCarouselArrowClickPayload;
-  const { slidesVisible, slideStyle } = model as Partial<LifestyleModel>;
+  const { slidesVisible, slideStyle } = model as Partial<Lifestyle>;
 
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';
   const scrollValue = `scroll-${direction}`;
@@ -55,7 +55,7 @@ export function onArrowClick(payload: unknown): void {
  */
 export function onResize(payload: unknown): void {
   const { slidesToScroll, slidesToShow, model = {} } = payload as CdrScrollCarouselResizePayload;
-  const { slidesVisible = 3 } = model as Partial<LifestyleModel>;
+  const { slidesVisible = 3 } = model as Partial<Lifestyle>;
 
   const { clientWidth } = window.document.body;
   switch (true) {

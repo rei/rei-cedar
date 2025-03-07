@@ -11,16 +11,16 @@
 
 <script setup lang="ts">
 import CdrScrollCarousel from '../../CdrScrollCarousel.vue';
-import type { LifestyleModel } from './index';
+import type { Lifestyle } from './index';
 import lifestyleModel from './mock.json';
 
-const lifestyleModelData = lifestyleModel as LifestyleModel;
+const lifestyleModelData = lifestyleModel as Lifestyle;
 import { onSlideClick, onArrowClick, onResize } from './handlers';
 import LifestyleAdapter from './adapter';
 </script>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
 
 .lifestyle-scroll-carousel {
   margin-left: -$cdr-space-one-x;
