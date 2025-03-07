@@ -6,6 +6,7 @@
   >
     <slot name="heading" />
     <CdrScrollCarouselEngine
+      :class="classAttr"
       :id="carouselId"
       :description="description"
       :slides="slides"
@@ -14,7 +15,6 @@
       :slides-to-scroll="slidesToScroll"
       :focus-selector="focusSelector"
       @arrow-click="onArrowClick"
-      v-bind="$attrs"
     >
       <template #slide="{ ...slideProps }: Record<string, unknown>">
         <component
@@ -37,7 +37,7 @@ import type {
   CdrScrollCarouselConfig,
   CdrScrollCarousel,
 } from './interfaces';
-import { computed, h, provide, ref, useId, watch } from 'vue';
+import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
 import { CdrScrollCarouselEventKey } from '../../types/symbols';
 
 /**
@@ -49,8 +49,6 @@ defineOptions({ name: 'CdrScrollCarousel' });
  * Emits an event with a specified name and optional payload.
  */
 const emit = defineEmits<{
-  (e: 'arrowClick', payload: CdrScrollCarouselArrowClickPayload): void;
-  (e: 'resize', payload: CdrScrollCarouselResizePayload): void;
   (e: string, payload?: unknown): void;
 }>();
 
@@ -60,6 +58,12 @@ const emit = defineEmits<{
 const emitEvent: CdrScrollCarouselEventEmitter = (eventName, payload) => {
   emit(eventName, payload);
 };
+
+const attrs = useAttrs();
+/**
+ * Extracts the class attribute from the component's attributes.
+ */
+const classAttr = attrs.class || '';
 
 /**
  * Provides the event emitter function to child components.
