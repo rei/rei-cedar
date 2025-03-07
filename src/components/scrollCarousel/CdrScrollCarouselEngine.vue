@@ -6,7 +6,6 @@
     :style="computedCSSVars"
     :class="classObj[BASE_CLASS]"
     @focusin="handleFocusIn"
-    v-bind="filteredAttrs"
   >
     <ScrollAreaRoot
       type="auto"
@@ -85,7 +84,7 @@ import type {
   CdrScrollCarouselEngine,
   CdrScrollCarouselArrow,
 } from './interfaces';
-import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
+import { computed, onMounted, onUnmounted, ref, useCssModule } from 'vue';
 
 const classObj = useCssModule();
 const BASE_CLASS = 'cdr-scroll-carousel';
@@ -109,12 +108,6 @@ const props = withDefaults(defineProps<CdrScrollCarouselEngine>(), {
 const emit = defineEmits<{
   (e: 'arrowClick', payload: CdrScrollCarouselArrowClickPayload): void;
 }>();
-
-const attrs = useAttrs();
-const filteredAttrs = computed(() => {
-  const { class: _, ...rest } = attrs;
-  return rest;
-});
 
 const ariaMessage = ref(''); // Live region message for screen readers
 const containerRef = ref<HTMLElement | null>(null); // Carousel container
