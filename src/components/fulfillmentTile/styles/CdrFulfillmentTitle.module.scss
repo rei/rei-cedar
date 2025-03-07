@@ -1,0 +1,42 @@
+.cdr-fulfillment-tile {
+    &[data-loading="true"] &__header {
+        display: block !important;
+    }
+
+    &[data-loading="false"] .cdr-surface-selection__loading {
+        display: none !important;
+    }
+
+    .cdr-surface-selection__layout {
+        opacity: 1 !important;
+    }
+
+    .cdr-surface-selection__loading {
+        position: static !important;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        display: flex;
+
+        & > div {
+            flex-grow: 1;
+        }
+
+        & > span {
+            flex-shrink: 0;
+        }
+    }
+
+    &__main {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        margin-top: auto;
+        flex-grow: 1;
+    }
+}

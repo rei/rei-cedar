@@ -43,6 +43,7 @@ export default {
     },
   },
 };
+console.log(routes)
 </script>
 
 <template>

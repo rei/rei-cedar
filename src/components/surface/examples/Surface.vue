@@ -26,7 +26,7 @@ const boxes: Example[] = [
     props: {
       radius: 'soft',
       background: 'secondary',
-      shadow: 'floating',
+      boxShadow: 'floating',
       class: 'example__card',
     },
   },
@@ -35,7 +35,6 @@ const boxes: Example[] = [
     title: '',
     props: {
       radius: 'round',
-      withBorder: true,
       background: 'secondary',
       class: 'example__pill',
     },

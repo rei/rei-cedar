@@ -18,6 +18,7 @@ $media-object-component: 'media-object';
 @mixin cdr-media-object-base-mixin($component) {
   @include cdr-media-object-media-mixin {
     grid-area: media;
+    width: 100%;
 
     & > img,
     & > picture,

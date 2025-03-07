@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrSurfaceNavigation > applies surface props 1`] = `
+<div
+  class="cdr-surface cdr-surface-navigation"
+  data-background="primary"
+  data-background-hover="secondary"
+  data-border-color="primary"
+  data-border-style="solid"
+  data-border-width="sixteenth-x"
+  data-box-shadow="flat"
+  data-box-shadow-hover="elevated"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurfaceNavigation > base classes only 1`] = `
+<div
+  class="cdr-surface cdr-surface-navigation"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurfaceNavigation > default snapshot 1`] = `
+<div
+  class="cdr-surface cdr-surface-navigation"
+>
+  
+  
+</div>
+`;
+
+exports[`CdrSurfaceNavigation > shows default slot 1`] = `
+<div
+  class="cdr-surface cdr-surface-navigation"
+>
+  
+  
+  Default slot
+  
+  
+</div>
+`;

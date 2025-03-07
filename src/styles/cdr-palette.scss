@@ -2,22 +2,18 @@
 @import '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens';
 
 // Sandstone palettes
-// palette options for membership surfaces inclued both vibrant and subtle variants
 
 [data-palette='sandstone'] {
-  --cdr-color-background-surface-primary: #{$cdr-color-background-secondary};
-  --cdr-color-background-surface-secondary: #dcd6cb;
-  --cdr-color-border-surface-primary: #{$cdr-color-border-secondary};
-  --cdr-color-border-surface-secondary: #726d64;
+  --cdr-color-background-primary: #{$cdr-color-background-secondary};
+  --cdr-color-background-secondary: #dcd6cb;
+  --cdr-color-border-primary: #{$cdr-color-border-secondary};
+  --cdr-color-border-secondary: #726d64;
 }
 
 // Membership palettes
-// palette options for membership surfaces inclued both vibrant and subtle variants
 
 [data-palette='membership-subtle'] {
-  --cdr-color-background-surface-primary: var(--cdr-membership-subtle-color-background-primary, #{$cdr-membership-subtle-color-background-primary});
   --cdr-color-background-primary: var(--cdr-membership-subtle-color-background-primary, #{$cdr-membership-subtle-color-background-primary});
-  --cdr-color-text-surface-primary: var(--cdr-membership-vibrant-color-text-primary, #{$cdr-membership-vibrant-color-text-primary});
   --cdr-color-text-primary: var(--cdr-membership-subtle-color-text-primary, #{$cdr-membership-subtle-color-text-primary});
   --cdr-color-border-button-primary-rest: var(--cdr-membership-subtle-color-border-button-primary-rest, #{$cdr-membership-subtle-color-border-button-primary-rest});
   --cdr-color-border-button-primary-active: var(--cdr-membership-subtle-color-border-button-primary-active, #{$cdr-membership-subtle-color-border-button-primary-active});
@@ -31,9 +27,7 @@
 }
 
 [data-palette='membership-vibrant'] {
-  --cdr-color-background-surface-primary: var(--cdr-membership-vibrant-color-background-primary, #{$cdr-membership-vibrant-color-background-primary});
   --cdr-color-background-primary: var(--cdr-membership-vibrant-color-background-primary, #{$cdr-membership-vibrant-color-background-primary});
-  --cdr-color-text-surface-primary: var(--cdr-membership-vibrant-color-text-primary, #{$cdr-membership-vibrant-color-text-primary});
   --cdr-color-text-primary: var(--cdr-membership-vibrant-color-text-primary, #{$cdr-membership-vibrant-color-text-primary});
   --cdr-color-border-button-primary-rest: var(--cdr-membership-vibrant-color-border-button-primary-rest, #{$cdr-membership-vibrant-color-border-button-primary-rest});
   --cdr-color-border-button-primary-active: var(--cdr-membership-vibrant-color-border-button-primary-active, #{$cdr-membership-vibrant-color-border-button-primary-active});
