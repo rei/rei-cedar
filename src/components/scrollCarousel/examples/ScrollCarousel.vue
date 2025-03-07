@@ -23,7 +23,7 @@
       >
         Product recommendations
       </CdrSubheadingSans>
-      <!-- <LifestyleScrollCarousel /> -->
+      <ProductRecommendationScrollCarousel />
     </div>
   </CdrContainer>
 </template>
@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { CdrContainer, CdrHeadingSerif, CdrSubheadingSans } from '../../../lib';
 import LifestyleScrollCarousel from './Lifestyle/Example.vue';
+import ProductRecommendationScrollCarousel from './ProductRecommendation/Example.vue';
 </script>
 
 <style lang="scss" scoped>

@@ -62,17 +62,14 @@ export interface LifestyleSlide {
   cta: Cta;
 }
 
-export interface LifestyleModel {
+export interface Lifestyle {
   content?: Content;
-  slideStyle?:
-    | 'lifestyle-portrait'
-    | 'lifestyle-portrait-sm'
-    | 'lifestyle-square';
+  slideStyle?: 'lifestyle-portrait' | 'lifestyle-portrait-sm' | 'lifestyle-square';
   slidesVisible?: number;
   slides?: LifestyleSlide[];
 }
 
-export interface LifestyleSlideExtended extends LifestyleModel, LifestyleSlide {
+export interface LifestyleSlideExtended extends Lifestyle, LifestyleSlide {
   lastSlide?: boolean;
 }
 
