@@ -29949,7 +29949,7 @@ const tF = ["media", "srcset", "sizes"], lF = ["media", "srcset", "sizes"], rF =
       ], 2);
     };
   }
-}), pF = /* @__PURE__ */ J(cF, [["__scopeId", "data-v-6843071c"]]), mF = (t) => {
+}), pF = /* @__PURE__ */ J(cF, [["__scopeId", "data-v-42f803cc"]]), mF = (t) => {
   const {
     frames: e = [],
     frameStyle: l,
