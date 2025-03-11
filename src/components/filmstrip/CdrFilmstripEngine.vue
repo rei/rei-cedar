@@ -12,26 +12,26 @@
       :class="mapClasses(classObj, `${BASE_CLASS}__root`)"
     >
       <ScrollAreaViewport
-        ref="slidesRef"
+        ref="framesRef"
         :class="mapClasses(classObj, `${BASE_CLASS}__viewport`)"
-        :aria-label="description || `${slides.length} items`"
+        :aria-label="description || `${frames.length} items`"
         :tabindex="viewportTabindex"
       >
         <ul
-          :id="`${id}-slides`"
-          :class="mapClasses(classObj, `${BASE_CLASS}__slides`)"
-          :data-ui="`${BASE_CLASS}__slides`"
+          :id="`${id}-frames`"
+          :class="mapClasses(classObj, `${BASE_CLASS}__frames`)"
+          :data-ui="`${BASE_CLASS}__frames`"
         >
           <li
-            v-for="(slide, index) in slides"
-            :key="slide.key"
-            ref="slidesItemsRef"
-            :class="mapClasses(classObj, `${BASE_CLASS}__slide`)"
+            v-for="(frame, index) in frames"
+            :key="frame.key"
+            ref="framesItemsRef"
+            :class="mapClasses(classObj, `${BASE_CLASS}__frame`)"
           >
             <slot
-              name="slide"
+              name="frame"
               :index="index"
-              v-bind="slide.props"
+              v-bind="frame.props"
               :tabindex="index === focusIndex ? '0' : '-1'"
             />
           </li>
@@ -80,72 +80,72 @@ import CdrButton from '../button/CdrButton.vue';
 import { IconCaretLeft, IconCaretRight } from '../icon';
 
 import type {
-  CdrScrollCarouselArrowClickPayload,
-  CdrScrollCarouselEngine,
-  CdrScrollCarouselArrow,
+  CdrFilmstripArrowClickPayload,
+  CdrFilmstripEngine,
+  CdrFilmstripArrow,
 } from './interfaces';
 import { computed, onMounted, onUnmounted, ref, useCssModule } from 'vue';
 
 const classObj = useCssModule();
-const BASE_CLASS = 'cdr-scroll-carousel';
+const BASE_CLASS = 'cdr-filmstrip';
 
-defineOptions({ name: 'CdrScrollCarouselEngine' });
+defineOptions({ name: 'CdrFilmstripEngine' });
 
-const props = withDefaults(defineProps<CdrScrollCarouselEngine>(), {
+const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
   id: '',
-  slides: () => [],
+  frames: () => [],
   description: '',
   dataUi: BASE_CLASS,
   isShowingArrows: true,
-  slidesToShow: 5,
-  slidesToScroll: 4,
-  slidesGap: 0,
-  slideExtra: 0.25,
+  framesToShow: 5,
+  framesToScroll: 4,
+  framesGap: 0,
+  frameExtra: 0.25,
   focusSelector: ':first-child',
   viewportTabindex: '-1',
 });
 
 const emit = defineEmits<{
-  (e: 'arrowClick', payload: CdrScrollCarouselArrowClickPayload): void;
+  (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
 }>();
 
 const ariaMessage = ref(''); // Live region message for screen readers
-const containerRef = ref<HTMLElement | null>(null); // Carousel container
-const slidesRef = ref<typeof ScrollAreaViewport | null>(null); // Scrollable viewport
-const slidesItemsRef = ref<Array<HTMLElement> | null>(null); // List of slide elements
+const containerRef = ref<HTMLElement | null>(null); // filmstrip container
+const framesRef = ref<typeof ScrollAreaViewport | null>(null); // Scrollable viewport
+const framesItemsRef = ref<Array<HTMLElement> | null>(null); // List of frame elements
 
-const containerWidth = ref(0); // Width of the carousel container
-const currentIndex = ref(0); // Current visible slide index
-const focusIndex = ref(0); // Currently focused slide index
-const hasScrolled = ref(false); // Tracks if the carousel has been scrolled
+const containerWidth = ref(0); // Width of the filmstrip container
+const currentIndex = ref(0); // Current visible frame index
+const focusIndex = ref(0); // Currently focused frame index
+const hasScrolled = ref(false); // Tracks if the filmstrip has been scrolled
 const isContainerHovered = useElementHover(containerRef); // Hover state for the container
 
 /**
- * Calculates the width of each slide based on the container size, gap, and extra width.
- * This is used for determining how much space each slide occupies in the viewport.
+ * Calculates the width of each frame based on the container size, gap, and extra width.
+ * This is used for determining how much space each frame occupies in the viewport.
  */
-const slideWidth = computed(() => {
-  const totalGaps = props.slidesToShow * props.slidesGap;
+const frameWidth = computed(() => {
+  const totalGaps = props.framesToShow * props.framesGap;
   const availableWidth = containerWidth.value - totalGaps;
-  return availableWidth / (props.slidesToShow + props.slideExtra);
+  return availableWidth / (props.framesToShow + props.frameExtra);
 });
 
 /**
  * Generates the CSS variables for the scrollable viewport.
  */
 const computedCSSVars = computed(() => ({
-  '--slides-gap': props.slidesGap,
-  '--slide-width': slideWidth.value,
-  '--slide-extra': props.slideExtra,
+  '--frames-gap': props.framesGap,
+  '--frame-width': frameWidth.value,
+  '--frame-extra': props.frameExtra,
 }));
 
 /**
  * Generates the properties and states for navigation arrows.
- * Calculates whether the left or right arrow should be enabled or disabled based on the current slide index.
+ * Calculates whether the left or right arrow should be enabled or disabled based on the current frame index.
  */
 const arrows = computed(() => {
   const isAtLeftBoundary = currentIndex.value === 0;
-  const isAtRightBoundary = currentIndex.value >= props.slides.length - props.slidesToShow;
+  const isAtRightBoundary = currentIndex.value >= props.frames.length - props.framesToShow;
 
   return ['left', 'right'].map((direction) => {
     const isEnabled = direction === 'left' ? !isAtLeftBoundary : !isAtRightBoundary;
@@ -160,35 +160,35 @@ const arrows = computed(() => {
           `${BASE_CLASS}__arrow--${direction}`,
           isEnabled ? '' : `${BASE_CLASS}__arrow--disabled`,
         ),
-        'aria-label': `${direction === 'right' ? 'Next' : 'Previous'} Slide`,
-        'aria-controls': `${props.id}-slides`,
+        'aria-label': `${direction === 'right' ? 'Next' : 'Previous'} Frame`,
+        'aria-controls': `${props.id}-frames`,
         tabindex: 0,
         size: 'large',
         disabled: !isEnabled,
       },
-    } as CdrScrollCarouselArrow;
+    } as CdrFilmstripArrow;
   });
 });
 
 /**
- * Calculates the scroll position for a given slide index.
- * @param index - Index of the slide to scroll to
+ * Calculates the scroll position for a given frame index.
+ * @param index - Index of the frame to scroll to
  * @returns The calculated scroll position in pixels
  */
 const calculateScrollPosition = (index: number) => {
-  const slidesOffset = slideWidth.value * index;
-  const gapsOffset = props.slidesGap * index;
-  return slidesOffset + gapsOffset;
+  const framesOffset = frameWidth.value * index;
+  const gapsOffset = props.framesGap * index;
+  return framesOffset + gapsOffset;
 };
 
 /**
- * Smoothly scrolls to the specified slide index.
- * @param newIndex - The target slide index
+ * Smoothly scrolls to the specified frame index.
+ * @param newIndex - The target frame index
  */
 const scrollToIndex = (newIndex: number) => {
   const newLeft = calculateScrollPosition(newIndex);
-  const currentLeft = slidesRef.value?.viewportElement.scrollLeft ?? 0;
-  slidesRef.value?.viewportElement.scrollBy({
+  const currentLeft = framesRef.value?.viewportElement.scrollLeft ?? 0;
+  framesRef.value?.viewportElement.scrollBy({
     left: newLeft - currentLeft,
     behavior: 'smooth',
   });
@@ -200,36 +200,36 @@ const scrollToIndex = (newIndex: number) => {
  * @param direction - Direction of the arrow ("left" or "right")
  */
 const onArrowClick = (event: Event, direction: 'left' | 'right') => {
-  const arrowClickPayload: CdrScrollCarouselArrowClickPayload = { event, direction };
+  const arrowClickPayload: CdrFilmstripArrowClickPayload = { event, direction };
   emit('arrowClick', arrowClickPayload);
-  const delta = direction === 'left' ? -props.slidesToScroll : props.slidesToScroll;
+  const delta = direction === 'left' ? -props.framesToScroll : props.framesToScroll;
   const proposedIndex = currentIndex.value + delta;
 
-  currentIndex.value = Math.max(0, Math.min(proposedIndex, props.slides.length - 1));
+  currentIndex.value = Math.max(0, Math.min(proposedIndex, props.frames.length - 1));
   scrollToIndex(currentIndex.value);
 };
 
 /**
- * Announces the visible slides for screen readers. The message is debounced to avoid excessive announcements.
+ * Announces the visible frames for screen readers. The message is debounced to avoid excessive announcements.
  */
-const announceSlides = useDebounceFn(() => {
+const announceFrames = useDebounceFn(() => {
   const start = currentIndex.value + 1;
-  const end = Math.min(props.slides.length, start + props.slidesToShow - 1);
+  const end = Math.min(props.frames.length, start + props.framesToShow - 1);
 
   ariaMessage.value =
-    props.slidesToShow === 1
-      ? `Now showing slide ${start}`
-      : `Now showing slides ${start} through ${end}`;
+    props.framesToShow === 1
+      ? `Now showing frame ${start}`
+      : `Now showing frames ${start} through ${end}`;
 }, 1000);
 
 /**
- * Provides initial accessibility announcement when focus enters the carousel.
+ * Provides initial accessibility announcement when focus enters the filmstrip.
  * @param e - The focus event
  */
 const handleFocusIn = (e: FocusEvent) => {
   const currentTarget = e.currentTarget as HTMLElement;
   if (!currentTarget.contains(e.relatedTarget as HTMLElement)) {
-    ariaMessage.value = `Showing ${props.slides.length} items. Currently on item ${
+    ariaMessage.value = `Showing ${props.frames.length} items. Currently on item ${
       currentIndex.value + 1
     }. Use left and right arrow keys to navigate.`;
   }
@@ -241,7 +241,7 @@ const handleFocusIn = (e: FocusEvent) => {
  */
 const debouncedHandleScroll = useDebounceFn((e: Event) => {
   const scrollLeft = (e.target as HTMLElement).scrollLeft;
-  const positions = props.slides.map((_, index) => calculateScrollPosition(index));
+  const positions = props.frames.map((_, index) => calculateScrollPosition(index));
   const closestIndex = positions.findIndex(
     (pos) =>
       Math.abs(pos - scrollLeft) ===
@@ -250,14 +250,14 @@ const debouncedHandleScroll = useDebounceFn((e: Event) => {
 
   if (closestIndex !== currentIndex.value) {
     currentIndex.value = closestIndex;
-    announceSlides();
+    announceFrames();
   }
 
   if (!hasScrolled.value) hasScrolled.value = true;
 }, 100);
 
 onMounted(() => {
-  useEventListener(slidesRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
+  useEventListener(framesRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
 
   // Initialize resize observer
   const { stop } = useResizeObserver(containerRef, (entries) => {
@@ -273,4 +273,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrScrollCarousel.module.scss"></style>
+<style lang="scss" module src="./styles/CdrFilmstrip.module.scss"></style>

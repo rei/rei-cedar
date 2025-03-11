@@ -2,7 +2,7 @@
   <CdrLink
     class="product-recommendation"
     :href="href"
-    @click.once.prevent="onSlideClick"
+    @click.once.prevent="onFrameClick"
   >
     <div class="product-recommendation__image-container">
       <CdrImg
@@ -44,29 +44,29 @@
 import { computed, inject } from 'vue';
 import { CdrRating, CdrImg, CdrText, CdrLink } from '../../../../../lib';
 import ProductRecommendationPrice from './ProductRecommendationPrice.vue';
-import type { ProductRecommendationSlide, ProductRecommendationSlideClickPayload } from '..';
+import type { ProductRecommendationFrame, ProductRecommendationFrameClickPayload } from '..';
 
-import type { CdrScrollCarouselEventEmitter } from '../../../interfaces';
-import { CdrScrollCarouselEventKey } from '../../../../../types/symbols';
+import type { CdrFilmstripEventEmitter } from '../../../interfaces';
+import { CdrFilmstripEventKey } from '../../../../../types/symbols';
 
-const props = defineProps<ProductRecommendationSlide>();
+const props = defineProps<ProductRecommendationFrame>();
 
 const formattedTitle = computed(() => props.name?.replace('&quot;', '"'));
 const imageSrc = computed(() => `https://rei.com/media/product/${props.id}?size=300`);
 
-const emitEvent = inject(CdrScrollCarouselEventKey) as CdrScrollCarouselEventEmitter;
+const emitEvent = inject(CdrFilmstripEventKey) as CdrFilmstripEventEmitter;
 
 /**
- * Handles the click event on a slide, emitting a 'slideClick' event with the event details and the slide item.
+ * Handles the click event on a frame, emitting a 'frameClick' event with the event details and the frame item.
  *
  * @param {Event} event - The click event that triggered this function.
  * @return {void}
  */
-const onSlideClick = (event: Event) => {
-  emitEvent?.('slideClick', {
+const onFrameClick = (event: Event) => {
+  emitEvent?.('frameClick', {
     event,
     item: props,
-  } as ProductRecommendationSlideClickPayload);
+  } as ProductRecommendationFrameClickPayload);
 };
 </script>
 

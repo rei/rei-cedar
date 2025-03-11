@@ -1,29 +1,29 @@
 /**
- * Represents the model for recommended products in the carousel.
+ * Represents the model for recommended products in the filmstrip.
  * Maps to the main structure in the schema.json.
  */
 export interface ProductRecommendation {
-  /** Type of the recommended product carousel. */
+  /** Type of the recommended product filmstrip. */
   type: string;
-  /** List of slides containing recommended product details. */
-  items: ProductRecommendationSlide[];
+  /** List of frames containing recommended product details. */
+  items: ProductRecommendationFrame[];
   /** Message associated with the recommended products. */
   message: string;
   /** Strategy used for recommending products. */
   strategy: string;
-  /** Time when the carousel is rendered. */
+  /** Time when the filmstrip is rendered. */
   renderTime: string;
-  /** Name of the page area where the carousel is placed. */
+  /** Name of the page area where the filmstrip is placed. */
   pageAreaName: string;
-  /** Name of the placement for the carousel. */
+  /** Name of the placement for the filmstrip. */
   placementName: string;
 }
 
 /**
- * Represents a single slide containing details about a recommended product.
+ * Represents a single frame containing details about a recommended product.
  * Maps to the items structure in the schema.json.
  */
-export interface ProductRecommendationSlide {
+export interface ProductRecommendationFrame {
   /** Unique identifier for the product. */
   id: string;
   /** URL to navigate to when the product is clicked. */
@@ -90,12 +90,12 @@ export interface AnalyticsConfig {
 }
 
 /**
- * Payload for slide click events in the carousel.
+ * Payload for frame click events in the filmstrip.
  * Contains event and item details.
  */
-export interface ProductRecommendationSlideClickPayload {
-  /** The event triggered by the slide click. */
+export interface ProductRecommendationFrameClickPayload {
+  /** The event triggered by the frame click. */
   event: Event;
-  /** The slide item that was clicked. */
-  item: ProductRecommendationSlide;
+  /** The frame item that was clicked. */
+  item: ProductRecommendationFrame;
 }

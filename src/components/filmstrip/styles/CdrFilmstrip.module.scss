@@ -1,7 +1,7 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as *;
-@use './vars/CdrScrollCarousel.vars' as *;
+@use './vars/CdrFilmstrip.vars' as *;
 
-.cdr-scroll-carousel {
+.cdr-filmstrip {
   position: relative;
 
   &__viewport {
@@ -26,18 +26,18 @@
     height: auto;
   }
 
-  &__slides {
+  &__frames {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-auto-columns: calc(var(--slide-width) * 1px);
+    grid-auto-columns: calc(var(--frame-width) * 1px);
     grid-template-rows: auto;
     grid-auto-flow: column;
-    gap: calc(var(--slides-gap) * 1px);
+    gap: calc(var(--frames-gap) * 1px);
   }
 
-  &__slide {
+  &__frame {
     width: 100%;
     scroll-snap-align: start;
   }
@@ -81,7 +81,7 @@
         left: 0;
       }
 
-      .cdr-scroll-carousel__thumb {
+      .cdr-filmstrip__thumb {
         --radix-scroll-area-thumb-height: var(--surface-size);
         height: var(--track-size);
 
@@ -93,7 +93,7 @@
     }
 
     &:hover {
-      .cdr-scroll-carousel__thumb {
+      .cdr-filmstrip__thumb {
         &:after {
           box-shadow: $prominence-03;
           height: var(--control-size);
@@ -121,10 +121,7 @@
     pointer-events: all;
     --button-half: #{$cdr-space-one-and-a-half-x};
     position: absolute;
-    top: var(
-      --cdr-scroll-carousel-arrow-top,
-      calc(50% - (2 * var(--button-half)) - $cdr-space-half-x)
-    );
+    top: var(--cdr-filmstrip-arrow-top, calc(50% - (2 * var(--button-half)) - $cdr-space-half-x));
     z-index: 1;
 
     &:active,
@@ -147,9 +144,9 @@
     }
 
     &--right {
-      --extra-slide-width: calc(1px * ((var(--slide-width) * var(--slide-extra))));
-      --half-gap: calc(var(--slides-gap) / 2 * 1px);
-      right: calc(var(--extra-slide-width) + var(--half-gap) - var(--button-half));
+      --extra-frame-width: calc(1px * ((var(--frame-width) * var(--frame-extra))));
+      --half-gap: calc(var(--frames-gap) / 2 * 1px);
+      right: calc(var(--extra-frame-width) + var(--half-gap) - var(--button-half));
     }
 
     &:disabled {

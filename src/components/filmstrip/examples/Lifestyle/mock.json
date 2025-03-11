@@ -6,9 +6,9 @@
       "size": "sm-standard"
     }
   },
-  "slideStyle": "lifestyle-portrait-sm",
-  "slidesVisible": 4,
-  "slides": [
+  "frameStyle": "lifestyle-portrait-sm",
+  "framesVisible": 4,
+  "frames": [
     {
       "media": {
         "images": {

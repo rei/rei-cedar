@@ -419,6 +419,6 @@ export interface ObjectOverlayProps {
   tag?: string;
 }
 /**
- * Interface for the `CdrScrollCarousel` component.
+ * Interface for the `CdrFilmstrip` component.
  */
-export * from '../components/scrollCarousel/interfaces';
+export * from '../components/filmstrip/interfaces';
