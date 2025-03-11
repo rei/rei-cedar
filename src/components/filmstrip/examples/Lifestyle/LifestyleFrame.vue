@@ -1,19 +1,19 @@
 <template>
   <div
-    class="lifestyle-slide"
-    :class="[slideStyle, { 'lifestyle-slide--last': lastSlide }]"
+    class="lifestyle-frame"
+    :class="[frameStyle, { 'lifestyle-frame--last': lastFrame }]"
   >
     <template v-if="media">
       <BasePicture
         v-if="!isLegacyMedia"
         :images="images as Images"
-        class="lifestyle-slide__image"
+        class="lifestyle-frame__image"
       />
       <cdr-img
         v-else
         :alt="(media as LegacyMedia).alt"
         :src="(media as LegacyMedia).src"
-        class="lifestyle-slide__image"
+        class="lifestyle-frame__image"
         loading="lazy"
       />
     </template>
@@ -21,17 +21,17 @@
     <template v-if="cta?.text">
       <div
         v-if="isLifestylePortrait"
-        class="lifestyle-slide__button-container"
+        class="lifestyle-frame__button-container"
       >
         <cdr-button
-          class="lifestyle-slide__cta"
+          class="lifestyle-frame__cta"
           :href="cta.target"
           tag="a"
           modifier="secondary"
           data-focus
           :size="buttonSize"
           :tabindex="-1"
-          @click.once.prevent="onSlideClick"
+          @click.once.prevent="onFrameClick"
         >
           {{ cta.text }}
         </cdr-button>
@@ -42,7 +42,7 @@
         :href="cta.target"
         :tabindex="-1"
         modifier="standalone"
-        class="lifestyle-slide__link"
+        class="lifestyle-frame__link"
         data-focus
       >
         {{ cta.text }}
@@ -57,12 +57,12 @@ import BasePicture, { type Images } from './BasePicture.vue';
 import type {
   Cta,
   LegacyMedia,
-  LifestyleSlideClickPayload,
-  LifestyleSlideExtended,
+  LifestyleFrameClickPayload,
+  LifestyleFrameExtended,
   Media,
 } from '.';
-import type { CdrScrollCarouselEventEmitter } from '../../interfaces';
-import { CdrScrollCarouselEventKey } from '../../../../types/symbols';
+import type { CdrFilmstripEventEmitter } from '../../interfaces';
+import { CdrFilmstripEventKey } from '../../../../types/symbols';
 import { computed, inject } from 'vue';
 
 /**
@@ -73,24 +73,24 @@ const isMedia = (media: Media | LegacyMedia): media is Media => {
 };
 
 /**
- * Props for the LifestyleSlide component.
+ * Props for the LifestyleFrame component.
  */
-const props = withDefaults(defineProps<LifestyleSlideExtended>(), {
+const props = withDefaults(defineProps<LifestyleFrameExtended>(), {
   cta: () => ({}) as Cta,
   media: () => ({}) as Media | LegacyMedia,
-  slideStyle: 'lifestyle-portrait',
-  lastSlide: false,
+  frameStyle: 'lifestyle-portrait',
+  lastFrame: false,
 });
 
 /**
- * Determines if the slide style is a lifestyle portrait (large or small).
+ * Determines if the frame style is a lifestyle portrait (large or small).
  */
-const isLifestylePortrait = computed(() => props.slideStyle.startsWith('lifestyle-portrait'));
+const isLifestylePortrait = computed(() => props.frameStyle.startsWith('lifestyle-portrait'));
 
 /**
- * Determines if the slide style is a lifestyle square.
+ * Determines if the frame style is a lifestyle square.
  */
-const isLifestyleSquare = computed(() => props.slideStyle === 'lifestyle-square');
+const isLifestyleSquare = computed(() => props.frameStyle === 'lifestyle-square');
 
 /**
  * Checks if the media format is legacy (non-responsive image format).
@@ -98,10 +98,10 @@ const isLifestyleSquare = computed(() => props.slideStyle === 'lifestyle-square'
 const isLegacyMedia = computed(() => !isMedia(props.media));
 
 /**
- * Determines the button size based on slide style.
+ * Determines the button size based on frame style.
  */
 const buttonSize = computed(() =>
-  props.slideStyle === 'lifestyle-portrait-sm' ? 'small@xs small@sm small@md' : 'medium',
+  props.frameStyle === 'lifestyle-portrait-sm' ? 'small@xs small@sm small@md' : 'medium',
 );
 
 /**
@@ -109,26 +109,26 @@ const buttonSize = computed(() =>
  */
 const images = computed(() => (props.media as Media).images);
 
-const emitEvent = inject(CdrScrollCarouselEventKey) as CdrScrollCarouselEventEmitter;
+const emitEvent = inject(CdrFilmstripEventKey) as CdrFilmstripEventEmitter;
 
 /**
- * Handles the click event on a slide, emitting a 'slideClick' event with the event details and the slide item.
+ * Handles the click event on a frame, emitting a 'frameClick' event with the event details and the frame item.
  *
  * @param {Event} event - The click event that triggered this function.
  * @return {void}
  */
-const onSlideClick = (event: Event) => {
-  emitEvent?.('slideClick', {
+const onFrameClick = (event: Event) => {
+  emitEvent?.('frameClick', {
     event,
     item: props,
-  } as LifestyleSlideClickPayload);
+  } as LifestyleFrameClickPayload);
 };
 </script>
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
 
-.lifestyle-slide {
+.lifestyle-frame {
   position: relative;
 
   &.lifestyle-portrait,
@@ -145,7 +145,7 @@ const onSlideClick = (event: Event) => {
   }
 
   &.lifestyle-portrait-sm {
-    .lifestyle-slide__button-container {
+    .lifestyle-frame__button-container {
       padding: $cdr-space-three-quarter-x;
 
       @include cdr-lg-mq-up {
@@ -157,7 +157,7 @@ const onSlideClick = (event: Event) => {
   &.lifestyle-square {
     border-radius: 4px;
 
-    .lifestyle-slide__image,
+    .lifestyle-frame__image,
     .base-picture {
       display: block;
       aspect-ratio: 1;
@@ -172,7 +172,7 @@ const onSlideClick = (event: Event) => {
     }
   }
 
-  &.lifestyle-slide--last {
+  &.lifestyle-frame--last {
     margin-right: 0;
   }
 
@@ -221,6 +221,7 @@ const onSlideClick = (event: Event) => {
     &:active {
       color: $cdr-color-text-primary;
 
+      // TODO: refactor
       & ~ .filmstrip-carousel__slide-inner {
         box-shadow: inset 0 0 80px #ece6db;
 

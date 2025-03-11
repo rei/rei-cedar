@@ -1,15 +1,15 @@
-import type { CdrScrollCarouselArrowClickPayload } from '../../interfaces';
+import type { CdrFilmstripArrowClickPayload } from '../../interfaces';
 
-import type { ProductRecommendation, ProductRecommendationSlideClickPayload } from '.';
+import type { ProductRecommendation, ProductRecommendationFrameClickPayload } from '.';
 
 /**
- * Handles slide click events in the carousel.
+ * Handles frame click events in the filmstrip.
  * Extracts relevant analytics data and logs the event.
  *
- * @param {unknown} payload - The event payload containing details about the clicked slide.
+ * @param {unknown} payload - The event payload containing details about the clicked frame.
  */
-export function onSlideClick(payload: unknown): void {
-  const { event, item } = payload as ProductRecommendationSlideClickPayload;
+export function onFrameClick(payload: unknown): void {
+  const { event, item } = payload as ProductRecommendationFrameClickPayload;
 
   const analytics = {
     rrClickUrl: item.rrClickUrl, // URL for tracking clicks
@@ -17,17 +17,17 @@ export function onSlideClick(payload: unknown): void {
     analyticsConfig: item.analyticsConfig, // Custom analytics config
   };
 
-  console.log('onSlideClick', { event, item, analytics });
+  console.log('onFrameClick', { event, item, analytics });
 }
 
 /**
- * Handles arrow click events in the carousel.
+ * Handles arrow click events in the filmstrip.
  * Determines scroll direction and formats analytics tracking data.
  *
  * @param {unknown} payload - The event payload containing navigation details.
  */
 export function onArrowClick(payload: unknown): void {
-  const { direction, event, model = {} } = payload as CdrScrollCarouselArrowClickPayload;
+  const { direction, event, model = {} } = payload as CdrFilmstripArrowClickPayload;
   const { placementName, strategy } = model as Partial<ProductRecommendation>;
 
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';

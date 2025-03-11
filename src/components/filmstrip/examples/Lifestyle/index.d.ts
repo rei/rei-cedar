@@ -57,25 +57,25 @@ export interface Cta {
   text: string;
 }
 
-export interface LifestyleSlide {
+export interface LifestyleFrame {
   media: Media | LegacyMedia;
   cta: Cta;
 }
 
 export interface Lifestyle {
   content?: Content;
-  slideStyle?: 'lifestyle-portrait' | 'lifestyle-portrait-sm' | 'lifestyle-square';
-  slidesVisible?: number;
-  slides?: LifestyleSlide[];
+  frameStyle?: 'lifestyle-portrait' | 'lifestyle-portrait-sm' | 'lifestyle-square';
+  framesVisible?: number;
+  frames?: LifestyleFrame[];
 }
 
-export interface LifestyleSlideExtended extends Lifestyle, LifestyleSlide {
-  lastSlide?: boolean;
+export interface LifestyleFrameExtended extends Lifestyle, LifestyleFrame {
+  lastFrame?: boolean;
 }
 
-export interface LifestyleSlideClickPayload {
-  /** The event triggered by the slide click. */
+export interface LifestyleFrameClickPayload {
+  /** The event triggered by the frame click. */
   event: Event;
-  /** The slide item that was clicked. */
-  item: LifestyleSlideExtended;
+  /** The frame item that was clicked. */
+  item: LifestyleFrameExtended;
 }

@@ -5,7 +5,7 @@
       tag="h2"
       scale="4"
     >
-      Scroll Carousel showcase
+      Filmstrip showcase
     </CdrHeadingSerif>
     <div>
       <CdrSubheadingSans
@@ -14,7 +14,7 @@
       >
         Lifestyle
       </CdrSubheadingSans>
-      <LifestyleScrollCarousel />
+      <LifestyleFilmstrip />
     </div>
     <div>
       <CdrSubheadingSans
@@ -23,15 +23,15 @@
       >
         Product recommendations
       </CdrSubheadingSans>
-      <ProductRecommendationScrollCarousel />
+      <ProductRecommendationFilmstrip />
     </div>
   </CdrContainer>
 </template>
 
 <script setup lang="ts">
 import { CdrContainer, CdrHeadingSerif, CdrSubheadingSans } from '../../../lib';
-import LifestyleScrollCarousel from './Lifestyle/Example.vue';
-import ProductRecommendationScrollCarousel from './ProductRecommendation/Example.vue';
+import LifestyleFilmstrip from './Lifestyle/Example.vue';
+import ProductRecommendationFilmstrip from './ProductRecommendation/Example.vue';
 </script>
 
 <style lang="scss" scoped>

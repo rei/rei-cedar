@@ -1,5 +1,5 @@
 import { type InjectionKey, type Ref } from 'vue';
-import { CdrScrollCarouselEventEmitter } from './interfaces';
+import { CdrFilmstripEventEmitter } from './interfaces';
 
 /** Skeleton injection key */
 export const motionKey: InjectionKey<Ref<boolean>> = Symbol();
@@ -16,13 +16,13 @@ export const selectedToggleKey: InjectionKey<
 export const unwrappedKey: InjectionKey<Ref<boolean>> = Symbol();
 
 /**
- * Injection key for providing a `CarouselEventEmitter` instance via Vue's dependency injection system.
+ * Injection key for providing a `FilmstripEventEmitter` instance via Vue's dependency injection system.
  *
- * This key is used to enable event communication within the carousel component tree,
+ * This key is used to enable event communication within the filmstrip component tree,
  * allowing child components to emit events without requiring direct parent-child communication.
  *
- * @type {InjectionKey<CdrScrollCarouselEventEmitter>}
+ * @type {InjectionKey<CdrFilmstripEventEmitter>}
  */
-export const CdrScrollCarouselEventKey: InjectionKey<CdrScrollCarouselEventEmitter> = Symbol(
-  'CdrScrollCarouselEventEmitter',
+export const CdrFilmstripEventKey: InjectionKey<CdrFilmstripEventEmitter> = Symbol(
+  'CdrFilmstripEventEmitter',
 );

@@ -64,7 +64,7 @@ const routes = [
   { path: '/switch', name: 'Switch', component: Examples.cdrSwitch },
   { path: '/tooltip', name: 'Tooltip', component: Examples.tooltip },
   { path: '/utility', name: 'Utility', component: Examples.utility },
-  { path: '/scrollCarousel', name: 'Scroll Carousel', component: Examples.scrollCarousel },
+  { path: '/filmstrip', name: 'Filmstrip', component: Examples.filmstrip },
 ];
 
 export default routes;

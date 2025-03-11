@@ -43,7 +43,7 @@ import toggleButton from 'componentsdir/toggleButton/examples/ToggleButton.vue';
 import cdrSwitch from 'componentsdir/switch/examples/Switch.vue'; // Can't name it switch because it's a JS keyword
 import tooltip from 'componentsdir/tooltip/examples/Tooltip.vue';
 import utility from '../styles/settings/examples/utility.vue';
-import scrollCarousel from 'componentsdir/scrollCarousel/examples/ScrollCarousel.vue';
+import filmstrip from 'componentsdir/filmstrip/examples/Filmstrip.vue';
 
 export default {
   abstract,
@@ -91,5 +91,5 @@ export default {
   cdrSwitch,
   tooltip,
   utility,
-  scrollCarousel,
+  filmstrip,
 };
