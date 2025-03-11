@@ -222,7 +222,7 @@ const onFrameClick = (event: Event) => {
       color: $cdr-color-text-primary;
 
       // TODO: refactor
-      & ~ .filmstrip-carousel__slide-inner {
+      & ~ .lifestyle-frame__inner {
         box-shadow: inset 0 0 80px #ece6db;
 
         img {
