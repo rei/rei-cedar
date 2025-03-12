@@ -2,8 +2,8 @@
 
 exports[`CdrObjectOverlay.vue > default rendering > matches the snapshot 1`] = `
 <div
-  class="cdr-object-overlay cdr-object-overlay--center"
-  style="--cdr-object-overlay-margin: 0;"
+  class="cdr-object-overlay"
+  data-position="center-center"
 >
   <div
     class="cdr-object-overlay__container"
@@ -19,6 +19,7 @@ exports[`CdrObjectOverlay.vue > default rendering > matches the snapshot 1`] = `
   </div>
   <div
     class="cdr-object-overlay__content"
+    style="--margin: var(--cdr-space-zero);"
   >
     <!-- @slot Content to be positioned -->
     

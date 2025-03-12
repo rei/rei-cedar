@@ -5,9 +5,9 @@ defineOptions({ name: 'ObjectOverlay' });
 </script>
 
 <template>
-  <CdrObjectOverlay position="top-right" margin="1rem">
+  <CdrObjectOverlay position="top-right" margin="zero" gradient="to-top">
     <template #container>
-      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" />
+      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" :style="{ display: 'block' }" />
     </template>
     <template #content>
       <div class="overlay-content" :style="{ backgroundColor: '#fff', padding: '20px' }">
@@ -18,9 +18,9 @@ defineOptions({ name: 'ObjectOverlay' });
 
   <hr />
 
-  <CdrObjectOverlay position="center">
+  <CdrObjectOverlay :position="{ xs: 'center-center', lg: 'bottom-center' }" :margin="['zero', 'eighth-x']">
     <template #container>
-      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" />
+      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" :style="{ display: 'block' }"/>
     </template>
     <template #content>
       <div class="overlay-content" :style="{ backgroundColor: '#fff', padding: '20px' }">
@@ -31,9 +31,9 @@ defineOptions({ name: 'ObjectOverlay' });
 
   <hr />
 
-  <CdrObjectOverlay position="bottom-left" margin="1rem">
+  <CdrObjectOverlay position="bottom-left" :margin="{ xs: 'zero', lg: ['half-x', 'four-x'] }" :gradient="{ xs: 'to-top', lg: 'to-right' }">
     <template #container>
-      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" />
+      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" :style="{ display: 'block' }"/>
     </template>
     <template #content>
       <div class="overlay-content" :style="{ backgroundColor: '#fff', padding: '20px' }">

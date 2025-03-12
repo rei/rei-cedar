@@ -18,6 +18,7 @@ import type {
   Alignment,
   AlignmentValue,
   MediaMeasurement,
+  SpaceFixed,
 } from './other';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -388,3 +389,49 @@ export interface MediaObject extends Layout {
    */
   contentPadding?: SpaceOption;
 }
+
+export type Gradient =
+  | 'to-top'
+  | 'to-right'
+  | 'to-bottom'
+  | 'to-left';
+
+export type ResponsiveGradient = {
+  xs?: Gradient;
+  sm?: Gradient;
+  md?: Gradient;
+  lg?: Gradient;
+};
+
+export type ObjectPosition =
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'center-left'
+  | 'center-center'
+  | 'center-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
+
+export type ResponsivePosition = {
+  xs?: ObjectPosition;
+  sm?: ObjectPosition;
+  md?: ObjectPosition;
+  lg?: ObjectPosition;
+};
+
+export type SpaceTuple =
+  | [SpaceFixed] 
+  | [SpaceFixed, SpaceFixed]
+  | [SpaceFixed, SpaceFixed, SpaceFixed] 
+  | [SpaceFixed, SpaceFixed, SpaceFixed, SpaceFixed];
+
+export type Spacing = SpaceFixed | SpaceTuple;
+
+export type ResponsiveSpace = {
+  xs?: Spacing;
+  sm?: Spacing;
+  md?: Spacing;
+  lg?: Spacing;
+};

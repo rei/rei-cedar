@@ -1,7 +1,41 @@
+@import '../../../styles/settings/index';
+
+$breakpoints: (
+  '': '',
+  '-sm': $cdr-breakpoint-sm,
+  '-md': $cdr-breakpoint-md,
+  '-lg': $cdr-breakpoint-lg
+);
+
+$positions: (
+  'top-left': (top: 0, left: 0),
+  'top-center': (top: 0, left: 50%, transform: translateX(-50%)),
+  'top-right': (top: 0, right: 0),
+  'center-left': (top: 50%, left: 0, transform: translateY(-50%)),
+  'center-center': (top: 50%, left: 50%, transform: translate(-50%, -50%)),
+  'center-right': (top: 50%, right: 0, transform: translateY(-50%)),
+  'bottom-left': (bottom: 0, left: 0),
+  'bottom-center': (bottom: 0, left: 50%, transform: translateX(-50%)),
+  'bottom-right': (bottom: 0, right: 0)
+);
+
+$gradients: (
+  'to-top': linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent),
+  'to-bottom': linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent),
+  'to-left': linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent),
+  'to-right': linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent)
+);
+
 .cdr-object-overlay {
   position: relative;
   width: 100%;
   height: 100%;
+
+  &[data-gradient]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
 
   &__container {
     width: 100%;
@@ -10,59 +44,63 @@
 
   &__content {
     position: absolute;
-    margin: var(--cdr-object-overlay-margin);
+    margin: var(--margin);
+    padding: var(--padding);
+
+    @each $breakpoint-suffix, $min-width in $breakpoints {
+      @if $breakpoint-suffix != '' {
+        @media (min-width: $min-width) {
+          margin: var(--margin#{$breakpoint-suffix});
+          padding: var(--padding#{$breakpoint-suffix});
+        }
+      }
+    }
   }
 
-  // Top positions
-  &--top-left &__content {
-    top: 0;
-    left: 0;
-  }
+  // Generate positions for all breakpoints
+  @each $breakpoint-suffix, $min-width in $breakpoints {
+    @if $breakpoint-suffix == '' {
+      @each $position, $properties in $positions {
+        &[data-position="#{$position}"] &__content {
+          @each $prop, $value in $properties {
+            #{$prop}: $value;
+          }
+          // Set unused positions to auto
+          @each $side in top, right, bottom, left {
+            @if not map-has-key($properties, $side) {
+              #{$side}: auto;
+            }
+          }
+        }
+      }
 
-  &--top-center &__content {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+      @each $gradient, $direction in $gradients {
+        &[data-gradient="#{$gradient}"]::before {
+          background: $direction;
+        }
+      }
+    } @else {
+      @media (min-width: $min-width) {
+        @each $position, $properties in $positions {
+          &[data-position#{$breakpoint-suffix}="#{$position}"] &__content {
+            @each $prop, $value in $properties {
+              #{$prop}: $value;
+            }
+            // Set unused positions to auto
+            @each $side in top, right, bottom, left {
+              @if not map-has-key($properties, $side) {
+                #{$side}: auto;
+              }
+            }
+          }
+        }
 
-  &--top-right &__content {
-    top: 0;
-    right: 0;
-  }
-
-  // Center positions
-  &--left &__content {
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-  }
-
-  &--center &__content {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &--right &__content {
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-  }
-
-  // Bottom positions
-  &--bottom-left &__content {
-    bottom: 0;
-    left: 0;
-  }
-
-  &--bottom-center &__content {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &--bottom-right &__content {
-    bottom: 0;
-    right: 0;
+        @each $gradient, $direction in $gradients {
+          &[data-gradient#{$breakpoint-suffix}="#{$gradient}"]::before {
+            background: $direction;
+          }
+        }
+      }
+    }
   }
 }
