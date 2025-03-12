@@ -5,7 +5,7 @@ defineOptions({ name: 'ObjectOverlay' });
 </script>
 
 <template>
-  <CdrObjectOverlay position="top-right" margin="zero" gradient="to-top">
+  <CdrObjectOverlay position="top-right" margin="half-x" gradient="to-top">
     <template #container>
       <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" :style="{ display: 'block' }" />
     </template>

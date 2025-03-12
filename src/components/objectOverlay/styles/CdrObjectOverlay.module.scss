@@ -51,8 +51,8 @@ $gradients: (
     @each $breakpoint-suffix, $min-width in $breakpoints {
       @if $breakpoint-suffix != '' {
         @media (min-width: $min-width) {
-          margin: var(--margin#{$breakpoint-suffix});
-          padding: var(--padding#{$breakpoint-suffix});
+          margin: var(--margin#{$breakpoint-suffix}, var(--margin));
+          padding: var(--padding#{$breakpoint-suffix}, var(--padding));
         }
       }
     }
