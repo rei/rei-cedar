@@ -23114,7 +23114,7 @@ const WA = /* @__PURE__ */ w(MA, [["render", JA]]), FA = /* @__PURE__ */ k({
     return (e, l) => (m(), x(P, null, [
       a(Xr, {
         position: "top-right",
-        margin: "zero",
+        margin: "half-x",
         gradient: "to-top"
       }, {
         container: i(() => l[0] || (l[0] = [
