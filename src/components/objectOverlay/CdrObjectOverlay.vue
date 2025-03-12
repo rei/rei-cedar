@@ -32,74 +32,89 @@ const props = withDefaults(defineProps<ObjectOverlayProps>(), {
   tag: 'div',
 });
 
-const attrs = computed(() => {
-  const component: Record<string, string> = {};
-  const content: Record<string, any> = {};
-
-  const componentProperties = [
-    'position',
-    'gradient'
-  ];
-
-  componentProperties.forEach((property) => {
-    const prop = props[property as keyof typeof props];
-
-    if (typeof prop ==='string') {
-      component[`data-${property}`] = prop;
-    } else if (typeof prop === 'object') {
+// Helper function to process component properties (position, gradient)
+const processComponentProperty = (property: string, prop: any): Record<string, string> => {
+  const result: Record<string, string> = {};
+  
+  try {
+    if (typeof prop === 'string') {
+      result[`data-${property}`] = prop;
+    } else if (typeof prop === 'object' && prop !== null) {
       Object.entries(prop).forEach(([mq, value]) => {
         if (mq === 'xs') {
-          component[`data-${property}`] = value;
+          result[`data-${property}`] = String(value);
         } else {
-          component[`data-${property}-${mq}`] = value;
+          result[`data-${property}-${mq}`] = String(value);
         }
       });
     }
+  } catch (error) {
+    console.error(`Error processing ${property}:`, error);
+  }
+  
+  return result;
+};
+
+// Helper function to create CSS variable references
+const createCssVar = (space: string): string => `var(--cdr-space-${space})`;
+
+// Helper function to process content properties (margin, padding)
+const processContentProperty = (
+  property: string, 
+  prop: string | string[] | Record<string, string | string[]>,
+  existingStyle: Record<string, string> = {}
+): Record<string, string> => {
+  const style = { ...existingStyle };
+  
+  try {
+    if (typeof prop === 'string') {
+      style[`--${property}`] = createCssVar(prop);
+    } else if (Array.isArray(prop)) {
+      style[`--${property}`] = prop.map(createCssVar).join(' ');
+    } else if (typeof prop === 'object' && prop !== null) {
+      Object.entries(prop).forEach(([mq, value]) => {
+        const val = typeof value === 'string' 
+          ? createCssVar(value)
+          : (value as string[]).map(createCssVar).join(' ');
+
+        style[`--${property}-${mq}`] = val;
+      });
+    }
+  } catch (error) {
+    console.error(`Error processing ${property}:`, error);
+  }
+  
+  return style;
+};
+
+const attrs = computed(() => {
+  const component: Record<string, string> = {};
+  const content: Record<string, any> = { style: {} };
+
+  // Process component properties
+  ['position', 'gradient'].forEach((property) => {
+    const prop = props[property as keyof typeof props];
+    if (prop) {
+      Object.assign(component, processComponentProperty(property, prop));
+    }
   });
 
-  const contentProperties = [
-    'margin',
-    'padding'
-  ]
-
-  contentProperties.forEach((property) => {
-      const prop = props[property as keyof typeof props];
-
-      if (typeof prop === 'string') {
-        content.style = {
-          ...(content.style || {}),
-          [`--${property}`]: `var(--cdr-space-${prop})`
-        };
-      } else if (typeof prop === 'object') {
-        if (Array.isArray(prop)) {
-          content.style = {
-            ...content.style,
-            [`--${property}`]: prop.map(
-              (val) => `var(--cdr-space-${val})`
-            ).join(' ')
-          };
-        } else {
-          Object.entries(prop).forEach(([mq, value]) => {
-            const val = typeof value === 'string' ? 
-              `var(--cdr-space-${value})`
-              :
-              value.map(
-                (v: string) => `var(--cdr-space-${v})`
-              ).join(' ');
-
-            content.style = {
-              ...content.style,
-              [`--${property}-${mq}`]: val
-            };
-          });
-        }
-      }
+  // Process content properties
+  ['margin', 'padding'].forEach((property) => {
+    const prop = props[property as keyof typeof props];
+    if (prop) {
+      content.style = processContentProperty(
+        property, 
+        prop as string | string[] | Record<string, string | string[]>,
+        content.style
+      );
+    }
   });
 
   return {
     component,
     content
-  }
+  };
 });
 
 const styles = useCssModule();

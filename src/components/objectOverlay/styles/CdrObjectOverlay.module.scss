@@ -1,3 +1,4 @@
+@use 'sass:map';
 @import '../../../styles/settings/index';
 
 $breakpoints: (
@@ -57,11 +58,27 @@ $gradients: (
     }
   }
 
+  // Create a mixin for breakpoints
+  @mixin at-breakpoint($breakpoint) {
+    @if $breakpoint == '' {
+      @content;
+    } @else {
+      @media (min-width: map.get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    }
+  }
+
   // Generate positions for all breakpoints
   @each $breakpoint-suffix, $min-width in $breakpoints {
-    @if $breakpoint-suffix == '' {
+    @include at-breakpoint($breakpoint-suffix) {
+      // Position styles
       @each $position, $properties in $positions {
-        &[data-position="#{$position}"] &__content {
+        $selector: if($breakpoint-suffix == '', 
+                     '[data-position="#{$position}"]', 
+                     '[data-position#{$breakpoint-suffix}="#{$position}"]');
+                     
+        &#{$selector} &__content {
           @each $prop, $value in $properties {
             #{$prop}: $value;
           }
@@ -74,31 +91,14 @@ $gradients: (
         }
       }
 
+      // Gradient styles
       @each $gradient, $direction in $gradients {
-        &[data-gradient="#{$gradient}"]::before {
-          background: $direction;
-        }
-      }
-    } @else {
-      @media (min-width: $min-width) {
-        @each $position, $properties in $positions {
-          &[data-position#{$breakpoint-suffix}="#{$position}"] &__content {
-            @each $prop, $value in $properties {
-              #{$prop}: $value;
-            }
-            // Set unused positions to auto
-            @each $side in top, right, bottom, left {
-              @if not map-has-key($properties, $side) {
-                #{$side}: auto;
-              }
-            }
-          }
-        }
-
-        @each $gradient, $direction in $gradients {
-          &[data-gradient#{$breakpoint-suffix}="#{$gradient}"]::before {
-            background: $direction;
-          }
+        $selector: if($breakpoint-suffix == '', 
+                     '[data-gradient="#{$gradient}"]', 
+                     '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]');
+                     
+        &#{$selector}::before {
+          background-image: $direction;
         }
       }
     }
