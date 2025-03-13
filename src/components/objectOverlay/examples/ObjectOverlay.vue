@@ -7,12 +7,10 @@ import CdrText from '../../text/CdrText.vue';
 import CdrBody from '../../text/presets/CdrBody.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
-import cedarSmallImage from '../../../dev/static/cedar-50x50.jpg';
 
 defineOptions({ name: 'ObjectOverlay' });
 
 const contentShort = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-const contentLong = `${contentShort} ${contentShort} ${contentShort}`;
 
 const overlayExamples = [
   {
@@ -81,7 +79,7 @@ const overlayExamples = [
               <CdrImg
                 alt="Test image"
                 :src="cedarImage"
-                class="example__image"
+                radius="soft"
               />
             </template>
           </CdrMediaObject>
@@ -94,19 +92,19 @@ const overlayExamples = [
     <h2>Media Object with Multiple Overlays</h2>
     <CdrMediaObject>
       <template #media>
-        <CdrObjectOverlay position="top-left" margin="zero">
+        <CdrObjectOverlay position="top-left" margin="zero" gradient="to-bottom">
           <template #container>
-            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" />
+            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" radius="soft" />
           </template>
           <template #content>
-            <div class="overlay-content" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#fff', padding: '20px' }">
+            <div class="overlay-content">
               Top Left Overlay
             </div>
           </template>
         </CdrObjectOverlay>
-        <CdrObjectOverlay position="bottom-right" margin="zero">
+        <CdrObjectOverlay position="bottom-right" margin="zero" gradient="to-top">
           <template #content>
-            <div class="overlay-content" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#fff', padding: '20px' }">
+            <div class="overlay-content">
               Bottom Right Overlay
             </div>
           </template>
@@ -125,12 +123,12 @@ const overlayExamples = [
     <h2>Media Object with Responsive Overlay</h2>
     <CdrMediaObject>
       <template #media>
-        <CdrObjectOverlay :position="{ xs: 'top-left', md: 'center-center', lg: 'bottom-right' }" margin="zero">
+        <CdrObjectOverlay :position="{ xs: 'top-left', md: 'center-center', lg: 'bottom-right' }" margin="zero" gradient="to-right">
           <template #container>
-            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" />
+            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" radius="soft" />
           </template>
           <template #content>
-            <div class="overlay-content" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#fff', padding: '20px' }">
+            <div class="overlay-content">
               Responsive Overlay
             </div>
           </template>
@@ -149,26 +147,26 @@ const overlayExamples = [
     <h2>Media Object with Multiple Overlays and Content</h2>
     <CdrMediaObject>
       <template #media>
-        <CdrObjectOverlay position="top-left" margin="zero">
+        <CdrObjectOverlay position="top-left" margin="zero" gradient="to-bottom">
           <template #container>
-            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" />
+            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" radius="soft" />
           </template>
           <template #content>
-            <div class="overlay-content" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#fff', padding: '20px' }">
+            <div class="overlay-content">
               Top Left Overlay
             </div>
           </template>
         </CdrObjectOverlay>
-        <CdrObjectOverlay position="bottom-right" margin="zero">
+        <CdrObjectOverlay position="bottom-right" margin="zero" gradient="to-top">
           <template #content>
-            <div class="overlay-content" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#fff', padding: '20px' }">
+            <div class="overlay-content">
               Bottom Right Overlay
             </div>
           </template>
         </CdrObjectOverlay>
-        <CdrObjectOverlay position="center-center" margin="zero">
+        <CdrObjectOverlay position="center-center" margin="zero" gradient="to-left">
           <template #content>
-            <div class="overlay-content" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#fff', padding: '20px' }">
+            <div class="overlay-content">
               Center Overlay
             </div>
           </template>
@@ -184,11 +182,14 @@ const overlayExamples = [
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+
 .overlay-content {
   color: white;
   font-size: 1.5rem;
   padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for contrast */
 }
 
 .example {
@@ -227,6 +228,10 @@ const overlayExamples = [
       top: 20px;
       left: 0;
       border: 1px solid red;
+    }
+
+    &--soft-radius {
+      border-radius: 8px; /* Apply soft radius to images */
     }
   }
 
