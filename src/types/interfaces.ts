@@ -435,3 +435,16 @@ export type ResponsiveSpace = {
   md?: Spacing;
   lg?: Spacing;
 };
+
+export interface ObjectOverlayProps {
+  /** Gradient to be applied to the container */
+  gradient?: ResponsiveGradient | Gradient;
+  /** Position of the content relative to the container */
+  position?: ResponsivePosition | ObjectPosition;
+  /** Margin space around the positioned content */
+  margin?: ResponsiveSpace | Spacing;
+  /** Padding space around the positioned content */
+  padding?: ResponsiveSpace | Spacing;
+  /** Sets the HTML tag for the container element */
+  tag?: string;
+}

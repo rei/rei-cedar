@@ -1,30 +1,10 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import {
-  ObjectPosition,
-  ResponsivePosition,
-  ResponsiveSpace,
-  Spacing,
-  Gradient,
-  ResponsiveGradient
-} from '../../types/interfaces';
+import type { ObjectOverlayProps } from '../../types/interfaces';
 
 /** Component for positioning content in 9 different positions relative to a container */
 
 defineOptions({ name: 'CdrObjectOverlay' });
-
-interface ObjectOverlayProps {
-  /** Gradient to be applied to the container */
-  gradient?: ResponsiveGradient | Gradient;
-  /** Position of the content relative to the container */
-  position?: ResponsivePosition | ObjectPosition;
-  /** Margin space around the positioned content */
-  margin?: ResponsiveSpace | Spacing;
-  /** Padding space around the positioned content */
-  padding?: ResponsiveSpace | Spacing;
-  /** Sets the HTML tag for the container element */
-  tag?: string;
-}
 
 const props = withDefaults(defineProps<ObjectOverlayProps>(), {
   position: 'center-center',
