@@ -23136,7 +23136,7 @@ const WA = /* @__PURE__ */ w(MA, [["render", JA]]), FA = /* @__PURE__ */ k({
       }),
       l[6] || (l[6] = n("hr", null, null, -1)),
       a(Xr, {
-        position: { xs: "center-center", lg: "bottom-center" },
+        position: { xs: "center-center", lg: "bottom-center", md: "bottom-left" },
         margin: ["zero", "eighth-x"]
       }, {
         container: i(() => l[2] || (l[2] = [
