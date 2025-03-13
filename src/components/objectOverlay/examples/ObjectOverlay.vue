@@ -18,7 +18,7 @@ defineOptions({ name: 'ObjectOverlay' });
 
   <hr />
 
-  <CdrObjectOverlay :position="{ xs: 'center-center', lg: 'bottom-center' }" :margin="['zero', 'eighth-x']">
+  <CdrObjectOverlay :position="{ xs: 'center-center', lg: 'bottom-center', md: 'bottom-left' }" :margin="['zero', 'eighth-x']">
     <template #container>
       <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" :style="{ display: 'block' }"/>
     </template>
