@@ -6,7 +6,11 @@ import CdrImg from '../../image/CdrImg.vue';
 import CdrText from '../../text/CdrText.vue';
 import CdrBody from '../../text/presets/CdrBody.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
+import CdrButton from '../../button/CdrButton.vue';
+import CdrIcon from '../../icon/CdrIcon.vue';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
+import cedarSquareImage from '../../../dev/static/cedar-1080x1080.jpg';
+import cedarTallImage from '../../../dev/static/cedar-1080x1920.jpg';
 
 defineOptions({ name: 'ObjectOverlay' });
 
@@ -76,11 +80,20 @@ const overlayExamples = [
               </CdrBody>
             </template>
             <template #media>
-              <CdrImg
-                alt="Test image"
-                :src="cedarImage"
-                radius="soft"
-              />
+              <CdrObjectOverlay position="center-center" gradient="to-bottom">
+                <template #container>
+                  <CdrImg
+                    alt="Test image"
+                    :src="cedarImage"
+                    radius="soft"
+                  />
+                </template>
+                <template #content>
+                  <CdrButton icon-only aria-label="Close">
+                    <CdrIcon name="close" />
+                  </CdrButton>
+                </template>
+              </CdrObjectOverlay>
             </template>
           </CdrMediaObject>
         </div>
@@ -103,6 +116,9 @@ const overlayExamples = [
           </template>
         </CdrObjectOverlay>
         <CdrObjectOverlay position="bottom-right" margin="zero" gradient="to-top">
+          <template #container>
+            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" radius="soft" />
+          </template>
           <template #content>
             <div class="overlay-content">
               Bottom Right Overlay
@@ -152,12 +168,15 @@ const overlayExamples = [
             <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" radius="soft" />
           </template>
           <template #content>
-            <div class="overlay-content">
-              Top Left Overlay
-            </div>
+            <CdrButton icon-only aria-label="Close">
+              <CdrIcon name="close" />
+            </CdrButton>
           </template>
         </CdrObjectOverlay>
         <CdrObjectOverlay position="bottom-right" margin="zero" gradient="to-top">
+          <template #container>
+            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" radius="soft" />
+          </template>
           <template #content>
             <div class="overlay-content">
               Bottom Right Overlay
@@ -165,6 +184,57 @@ const overlayExamples = [
           </template>
         </CdrObjectOverlay>
         <CdrObjectOverlay position="center-center" margin="zero" gradient="to-left">
+          <template #container>
+            <CdrImg src="https://placehold.co/600x400" width="100%" height="100%" alt="Media image" radius="soft" />
+          </template>
+          <template #content>
+            <div class="overlay-content">
+              Center Overlay
+            </div>
+          </template>
+        </CdrObjectOverlay>
+      </template>
+      <template #content>
+        <div>
+          <h3>Media Object Title</h3>
+          <p>This is the content of the media object.</p>
+        </div>
+      </template>
+    </CdrMediaObject>
+
+    <hr />
+
+    <h2>Media Object with Square Image</h2>
+    <CdrMediaObject>
+      <template #media>
+        <CdrObjectOverlay position="center-center" margin="zero" gradient="to-bottom">
+          <template #container>
+            <CdrImg src="https://placehold.co/600x600" width="100%" height="100%" alt="Square media image" radius="soft" />
+          </template>
+          <template #content>
+            <div class="overlay-content">
+              Center Overlay
+            </div>
+          </template>
+        </CdrObjectOverlay>
+      </template>
+      <template #content>
+        <div>
+          <h3>Media Object Title</h3>
+          <p>This is the content of the media object.</p>
+        </div>
+      </template>
+    </CdrMediaObject>
+
+    <hr />
+
+    <h2>Media Object with Tall Image</h2>
+    <CdrMediaObject>
+      <template #media>
+        <CdrObjectOverlay position="center-center" margin="zero" gradient="to-bottom">
+          <template #container>
+            <CdrImg src="https://placehold.co/400x800" width="100%" height="100%" alt="Tall media image" radius="soft" />
+          </template>
           <template #content>
             <div class="overlay-content">
               Center Overlay
@@ -190,6 +260,12 @@ const overlayExamples = [
   font-size: 1.5rem;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for contrast */
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px; /* Match the radius of the image */
 }
 
 .example {
