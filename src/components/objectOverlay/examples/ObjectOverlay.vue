@@ -9,8 +9,6 @@ import CdrTitle from '../../title/CdrTitle.vue';
 import CdrButton from '../../button/CdrButton.vue';
 import CdrIcon from '../../icon/CdrIcon.vue';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
-import cedarSquareImage from '../../../dev/static/cedar-1080x1080.jpg';
-import cedarTallImage from '../../../dev/static/cedar-1080x1920.jpg';
 
 defineOptions({ name: 'ObjectOverlay' });
 
@@ -100,7 +98,16 @@ const overlayExamples = [
       </template>
     </CdrLayout>
 
-    <hr />
+  <CdrObjectOverlay :position="{ xs: 'center-center', lg: 'bottom-center', md: 'bottom-left' }" :margin="['zero', 'eighth-x']">
+    <template #container>
+      <img src="https://placehold.co/600x400" width="100%" height="100%" alt="Background image" :style="{ display: 'block' }"/>
+    </template>
+    <template #content>
+      <div class="overlay-content" :style="{ backgroundColor: '#fff', padding: '20px' }">
+        Positioned Content
+      </div>
+    </template>
+  </CdrObjectOverlay>
 
     <h2>Media Object with Multiple Overlays</h2>
     <CdrMediaObject>
