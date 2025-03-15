@@ -227,7 +227,7 @@ const announceFrames = useDebounceFn(() => {
       : `Now showing frames ${start} through ${end} of ${totalFrames}`;
 
   emit('ariaMessage', ariaMessage.value);
-}, 0);
+}, 300);
 
 /**
  * Provides initial accessibility announcement when focus enters the filmstrip.
