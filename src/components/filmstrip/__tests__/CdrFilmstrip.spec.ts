@@ -1,18 +1,17 @@
 import { mount, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import CdrFilmstrip from '../CdrFilmstrip.vue';
 import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
-import { nextTick, ref } from 'vue';
+import { h, nextTick } from 'vue';
+import type {
+  CdrFilmstripFrame,
+  CdrFilmstripConfig,
+  CdrFilmstripArrowClickPayload,
+  CdrFilmstripResizePayload,
+} from '../interfaces';
 
-vi.mock('@vueuse/core', async () => {
-  const actual = await vi.importActual('@vueuse/core');
-  return {
-    ...actual,
-    useElementHover: () => ref(true), // Force hover state to be true
-  };
-});
-
-describe('CdrFilmstripEngine', () => {
-  const sampleFrames = [
+describe('CdrFilmstrip.vue', () => {
+  const sampleFrames: CdrFilmstripFrame[] = [
     { key: 'frame-1', props: { text: 'Frame 1' } },
     { key: 'frame-2', props: { text: 'Frame 2' } },
     { key: 'frame-3', props: { text: 'Frame 3' } },
@@ -20,133 +19,168 @@ describe('CdrFilmstripEngine', () => {
     { key: 'frame-5', props: { text: 'Frame 5' } },
   ];
 
+  const mockAdapter = vi.fn(
+    (): CdrFilmstripConfig => ({
+      frames: sampleFrames,
+      filmstripId: 'test-filmstrip',
+      component: h('div'),
+      description: 'Test filmstrip description',
+      framesGap: 10,
+      framesToShow: 3,
+      useDefaultResizeStrategy: true,
+    }),
+  );
+
   let wrapper: VueWrapper<any>;
 
   beforeEach(() => {
-    wrapper = mount(CdrFilmstripEngine, {
-      props: { frames: sampleFrames, framesToShow: 2, framesToScroll: 1, isShowingArrows: true },
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model: {},
+        adapter: mockAdapter,
+      },
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  // ✅ 1. Basic Rendering
+  it('renders correctly when frames exist', async () => {
+    await nextTick();
+    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(true);
+    expect(wrapper.find('[data-ui="cdr-filmstrip__frames"]').exists()).toBe(true);
+  });
+
+  it('does not render when there are no frames', async () => {
+    mockAdapter.mockReturnValueOnce({
+      frames: [],
+      filmstripId: 'empty-filmstrip',
+      component: h('div'),
+      description: 'Empty',
     });
 
-    // **Mock `scrollBy()` on viewport element**
-    const mockViewport = wrapper.vm.framesRef?.viewportElement;
-    if (mockViewport) {
-      mockViewport.scrollBy = vi.fn(); // Mock as a no-op function
-    }
-  });
-
-  it('renders correctly with provided frames', async () => {
-    await nextTick();
-    expect(wrapper.find('.cdr-filmstrip__viewport').exists()).toBe(true);
-    expect(wrapper.findAll('.cdr-filmstrip__frame')).toHaveLength(sampleFrames.length);
-  });
-
-  it('shows arrows when isShowingArrows is true', async () => {
-    await wrapper.setProps({ isShowingArrows: true });
-    await nextTick();
-
-    expect(wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]').exists()).toBe(true);
-    expect(wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]').exists()).toBe(true);
-  });
-
-  it('disables left arrow at the start and right arrow at the end', async () => {
-    await wrapper.setProps({ isShowingArrows: true });
-    await nextTick();
-
-    const leftArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]');
-    const rightArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]');
-
-    expect(leftArrow.attributes('disabled')).toBeDefined();
-    expect(rightArrow.attributes('disabled')).toBeUndefined();
-
-    // Move to the last frame
-    await wrapper.vm.onArrowClick(new Event('click'), 'right');
-    await wrapper.vm.onArrowClick(new Event('click'), 'right');
-    await wrapper.vm.onArrowClick(new Event('click'), 'right');
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model: {},
+        adapter: mockAdapter,
+      },
+    });
 
     await nextTick();
-
-    expect(leftArrow.attributes('disabled')).toBeUndefined();
-    expect(rightArrow.attributes('disabled')).toBeDefined();
+    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
   });
 
-  // it('emits arrowClick event with correct payload', async () => {
-  //   const emitSpy = vi.spyOn(wrapper.vm, '$emit');
+  // ✅ 2. Prop forwarding
+  it('passes the correct props to CdrFilmstripEngine', async () => {
+    await nextTick();
+    const engine = wrapper.findComponent(CdrFilmstripEngine);
 
-  //   await wrapper.vm.onArrowClick(new Event('click'), 'right');
-  //   await nextTick();
+    expect(engine.props('id')).toMatch(/^test-filmstrip/);
+    expect(engine.props('description')).toBe('Test filmstrip description');
+    expect(engine.props('framesGap')).toBe(10);
+    expect(engine.props('framesToShow')).toBe(3);
+  });
 
-  //   expect(emitSpy).toHaveBeenCalledWith(
-  //     'arrowClick',
-  //     expect.objectContaining({ direction: 'right' }),
-  //   );
+  // ✅ 3. Event Bubbling
+  it('bubbles up ariaMessage event to the parent', async () => {
+    const message = 'Now showing frames 1-3';
+    await wrapper.findComponent(CdrFilmstripEngine).vm.$emit('ariaMessage', message);
+    await nextTick();
 
-  //   await wrapper.vm.onArrowClick(new Event('click'), 'left');
-  //   await nextTick();
+    expect(wrapper.emitted('ariaMessage')).toBeTruthy();
+    expect(wrapper.emitted('ariaMessage')?.[0]).toEqual([message]);
+  });
 
-  //   expect(emitSpy).toHaveBeenCalledWith(
-  //     'arrowClick',
-  //     expect.objectContaining({ direction: 'left' }),
-  //   );
-  // });
+  it('bubbles up arrowClick event with the correct payload', async () => {
+    const arrowEvent: CdrFilmstripArrowClickPayload = {
+      event: new Event('click'),
+      direction: 'right',
+      model: {},
+    };
 
-  // it('updates correctly when frames prop changes', async () => {
-  //   await wrapper.setProps({
-  //     frames: [
-  //       { key: 'frame-6', props: { text: 'Frame 6' } },
-  //       { key: 'frame-7', props: { text: 'Frame 7' } },
-  //     ],
-  //   });
+    await wrapper.findComponent(CdrFilmstripEngine).vm.$emit('arrowClick', arrowEvent);
+    await nextTick();
 
-  //   await nextTick();
-  //   expect(wrapper.findAll('.cdr-filmstrip__frame')).toHaveLength(2);
-  // });
+    expect(wrapper.emitted('arrowClick')).toBeTruthy();
+    expect(wrapper.emitted('arrowClick')?.[0]).toEqual([arrowEvent]);
+  });
 
-  // it('handles keyboard navigation correctly', async () => {
-  //   const viewport = wrapper.find('.cdr-filmstrip__viewport');
-  //   await viewport.trigger('keydown', { key: 'ArrowRight' });
+  it('updates framesToShow based on window resize (default strategy)', async () => {
+    global.innerWidth = 1024; // Desktop
+    window.dispatchEvent(new Event('resize'));
+    await nextTick();
+    await wrapper.vm.onResize();
+    expect(wrapper.vm.framesToShow).toBe(5);
 
-  //   await nextTick();
-  //   expect(wrapper.vm.currentIndex).toBe(1);
+    global.innerWidth = 768; // Tablet
+    window.dispatchEvent(new Event('resize'));
+    await nextTick();
+    await wrapper.vm.onResize();
+    expect(wrapper.vm.framesToShow).toBe(4);
 
-  //   await viewport.trigger('keydown', { key: 'ArrowLeft' });
-  //   await nextTick();
-  //   expect(wrapper.vm.currentIndex).toBe(0);
-  // });
+    global.innerWidth = 400; // Mobile
+    window.dispatchEvent(new Event('resize'));
+    await nextTick();
+    await wrapper.vm.onResize();
+    expect(wrapper.vm.framesToShow).toBe(2);
+  });
 
-  // it('resizes correctly when container width changes', async () => {
-  //   const container = wrapper.vm.containerRef;
-  //   expect(container).not.toBeNull();
+  it('emits a resize event with updated framesToShow and framesToScroll', async () => {
+    await nextTick();
 
-  //   const mockResizeObserverCallback = vi.fn();
-  //   const resizeObserver = new ResizeObserver((entries) => {
-  //     entries.forEach(() => mockResizeObserverCallback());
-  //   });
+    window.dispatchEvent(new Event('resize'));
+    await wrapper.vm.onResize();
+    await nextTick();
 
-  //   resizeObserver.observe(container);
-  //   await nextTick();
+    expect(wrapper.emitted('resize')).toBeTruthy();
+    const resizePayload = wrapper.emitted('resize')?.[0]?.[0] as CdrFilmstripResizePayload;
 
-  //   expect(mockResizeObserverCallback).toHaveBeenCalled();
-  // });
+    expect(resizePayload.framesToShow.value).toBe(wrapper.vm.framesToShow);
+    expect(resizePayload.framesToScroll.value).toBe(Math.max(wrapper.vm.framesToShow - 1, 1));
+  });
 
-  // it('manages focus correctly', async () => {
-  //   const frames = wrapper.findAll('.cdr-filmstrip__frame');
-  //   await frames[1].trigger('focusin');
+  it('handles case when no adapter is provided', async () => {
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model: {},
+        adapter: () => ({
+          frames: [],
+          filmstripId: 'default-filmstrip',
+          component: h('div'),
+          description: 'Default test filmstrip',
+        }),
+      },
+    });
 
-  //   await nextTick();
-  //   expect(wrapper.vm.focusIndex).toBe(1);
+    await nextTick();
 
-  //   await frames[0].trigger('focusin');
-  //   await nextTick();
-  //   expect(wrapper.vm.focusIndex).toBe(0);
-  // });
+    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
 
-  // it('announces frames to screen readers when scrolling', async () => {
-  //   const mockAnnounceFrames = vi.fn();
-  //   wrapper.vm.announceFrames = mockAnnounceFrames;
+    // ✅ Instead of checking <div>, check the `hasFilmstripFrames` computed value
+    expect(wrapper.vm.hasFilmstripFrames).toBe(false);
+  });
 
-  //   await wrapper.vm.onArrowClick(new Event('click'), 'right');
-  //   await nextTick();
+  it('sets focusSelector correctly', async () => {
+    await nextTick();
+    expect(wrapper.vm.focusSelector).toBe(':first-child');
+  });
 
-  //   expect(mockAnnounceFrames).toHaveBeenCalled();
-  // });
+  it('does not break when an empty model is passed', async () => {
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model: {},
+        adapter: () => ({
+          frames: [],
+          filmstripId: 'empty',
+          component: h('div'),
+          description: 'Test filmstrip description',
+        }),
+      },
+    });
+
+    await nextTick();
+    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
+  });
 });

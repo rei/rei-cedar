@@ -5,6 +5,7 @@
     :adapter="ProductRecommendationAdapter"
     @frameClick="onFrameClick"
     @arrowClick="onArrowClick"
+    @ariaMessage="(msg) => console.log(msg)"
   />
 </template>
 

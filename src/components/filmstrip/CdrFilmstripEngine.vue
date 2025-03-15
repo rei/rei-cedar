@@ -214,15 +214,20 @@ const onArrowClick = (event: Event, direction: 'left' | 'right') => {
  * Announces the visible frames for screen readers. The message is debounced to avoid excessive announcements.
  */
 const announceFrames = useDebounceFn(() => {
-  const start = currentIndex.value + 1;
-  const end = Math.min(props.frames.length, start + props.framesToShow - 1);
+  const totalFrames = props.frames.length;
 
+  // Ensure `currentIndex` is within bounds
+  const start = Math.max(1, currentIndex.value + 1);
+  const end = Math.min(totalFrames, start + props.framesToShow - 1);
+
+  // Generate message based on framesToShow
   ariaMessage.value =
     props.framesToShow === 1
-      ? `Now showing frame ${start}`
-      : `Now showing frames ${start} through ${end}`;
+      ? `Now showing frame ${start} of ${totalFrames}`
+      : `Now showing frames ${start} through ${end} of ${totalFrames}`;
+
   emit('ariaMessage', ariaMessage.value);
-}, 1000);
+}, 0);
 
 /**
  * Provides initial accessibility announcement when focus enters the filmstrip.
@@ -230,10 +235,20 @@ const announceFrames = useDebounceFn(() => {
  */
 const handleFocusIn = (e: FocusEvent) => {
   const currentTarget = e.currentTarget as HTMLElement;
-  if (!currentTarget.contains(e.relatedTarget as HTMLElement)) {
-    ariaMessage.value = `Showing ${props.frames.length} items. Currently on item ${
-      currentIndex.value + 1
-    }. Use left and right arrow keys to navigate.`;
+  if (
+    !currentTarget ||
+    !e.relatedTarget ||
+    !currentTarget.contains(e.relatedTarget as HTMLElement)
+  ) {
+    const totalFrames = props.frames.length;
+    const start = Math.max(1, currentIndex.value + 1);
+    const end = Math.min(totalFrames, start + props.framesToShow - 1);
+
+    ariaMessage.value =
+      props.framesToShow === 1
+        ? `Showing frame ${start} of ${totalFrames}. Use left and right arrow keys to navigate.`
+        : `Showing frames ${start} through ${end} of ${totalFrames}. Use left and right arrow keys to navigate.`;
+
     emit('ariaMessage', ariaMessage.value);
   }
 };

@@ -100,7 +100,7 @@ export interface CdrFilmstrip<T> {
    * The adapter function that transforms `model` data into a structured filmstrip model.
    * This function is responsible for generating the frames and metadata for the filmstrip.
    */
-  adapter: CdrFilmstripAdapter<T>;
+  adapter?: CdrFilmstripAdapter<T>;
 
   /**
    * The model data used to resolve filmstrip content.
