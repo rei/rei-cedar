@@ -235,6 +235,7 @@ const announceFrames = useDebounceFn(() => {
  */
 const handleFocusIn = (e: FocusEvent) => {
   const currentTarget = e.currentTarget as HTMLElement;
+
   if (
     !currentTarget ||
     !e.relatedTarget ||
@@ -244,10 +245,14 @@ const handleFocusIn = (e: FocusEvent) => {
     const start = Math.max(1, currentIndex.value + 1);
     const end = Math.min(totalFrames, start + props.framesToShow - 1);
 
-    ariaMessage.value =
-      props.framesToShow === 1
-        ? `Showing frame ${start} of ${totalFrames}. Use left and right arrow keys to navigate.`
-        : `Showing frames ${start} through ${end} of ${totalFrames}. Use left and right arrow keys to navigate.`;
+    if (props.framesToShow === 1) {
+      ariaMessage.value =
+        `Showing frame ${start} of ${totalFrames}. ` + `Use left and right arrow keys to navigate.`;
+    } else {
+      ariaMessage.value =
+        `Showing frames ${start} through ${end} of ${totalFrames}. ` +
+        `Use left and right arrow keys to navigate.`;
+    }
 
     emit('ariaMessage', ariaMessage.value);
   }
