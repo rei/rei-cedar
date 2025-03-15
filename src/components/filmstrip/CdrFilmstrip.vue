@@ -10,11 +10,12 @@
       :id="filmstripId"
       :description="description"
       :frames="frames"
-      :framesGap="framesGap"
-      :framesToShow="framesToShow"
-      :framesToScroll="framesToScroll"
+      :frames-gap="framesGap"
+      :frames-to-show="framesToShow"
+      :frames-to-scroll="framesToScroll"
       :focus-selector="focusSelector"
-      @arrow-click="onArrowClick"
+      @ariaMessage="$emit('ariaMessage', $event)"
+      @arrowClick="onArrowClick"
     >
       <template #frame="{ ...frameProps }: Record<string, unknown>">
         <component

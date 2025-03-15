@@ -3,8 +3,8 @@
     class="lifestyle-filmstrip"
     :model="lifestyleModelData"
     :adapter="LifestyleAdapter"
-    @frame-click="onFrameClick"
-    @arrow-click="onArrowClick"
+    @frameClick="onFrameClick"
+    @arrowClick="onArrowClick"
     @resize="onResize"
   />
 </template>

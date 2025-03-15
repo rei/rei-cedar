@@ -107,6 +107,7 @@ const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
 
 const emit = defineEmits<{
   (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
+  (e: 'ariaMessage', message: string): void;
 }>();
 
 const ariaMessage = ref(''); // Live region message for screen readers
@@ -220,6 +221,7 @@ const announceFrames = useDebounceFn(() => {
     props.framesToShow === 1
       ? `Now showing frame ${start}`
       : `Now showing frames ${start} through ${end}`;
+  emit('ariaMessage', ariaMessage.value);
 }, 1000);
 
 /**
@@ -232,6 +234,7 @@ const handleFocusIn = (e: FocusEvent) => {
     ariaMessage.value = `Showing ${props.frames.length} items. Currently on item ${
       currentIndex.value + 1
     }. Use left and right arrow keys to navigate.`;
+    emit('ariaMessage', ariaMessage.value);
   }
 };
 

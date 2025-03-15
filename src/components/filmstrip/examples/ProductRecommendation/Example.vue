@@ -3,8 +3,8 @@
     class="product-recommendation-filmstrip"
     :model="ProductRecommendationModelData"
     :adapter="ProductRecommendationAdapter"
-    @frame-click="onFrameClick"
-    @arrow-click="onArrowClick"
+    @frameClick="onFrameClick"
+    @arrowClick="onArrowClick"
   />
 </template>
 
