@@ -98,18 +98,6 @@ describe('CdrObjectOverlay.vue', () => {
       wrapper.unmount();
     });
 
-    it('applies gradient through data attribute', () => {
-      const wrapper = mount(CdrObjectOverlay, {
-        props: { gradient: 'to-top' },
-        slots: {
-          container: '<div>Container</div>',
-          content: '<div>Content</div>',
-        },
-      });
-      expect(wrapper.attributes('data-gradient')).toBe('to-top');
-      wrapper.unmount();
-    });
-
     it('handles responsive position values', () => {
       const wrapper = mount(CdrObjectOverlay, {
         props: { 
@@ -156,6 +144,85 @@ describe('CdrObjectOverlay.vue', () => {
         },
       });
       expect(wrapper.element.tagName).toBe('SECTION');
+      wrapper.unmount();
+    });
+
+    // New tests for gradientTheme
+    it('applies dark gradient theme by default when withGradient is true', () => {
+      const wrapper = mount(CdrObjectOverlay, {
+        props: { 
+          withGradient: true,
+          position: 'left-top'
+        },
+        slots: {
+          container: '<div>Container</div>',
+          content: '<div>Content</div>',
+        },
+      });
+      expect(wrapper.attributes('data-gradient')).toBe('to-bottom');
+      expect(wrapper.attributes('data-gradient-theme')).toBe('dark');
+      wrapper.unmount();
+    });
+
+    it('applies light gradient theme when specified', () => {
+      const wrapper = mount(CdrObjectOverlay, {
+        props: { 
+          withGradient: true,
+          gradientTheme: 'light',
+          position: 'left-top'
+        },
+        slots: {
+          container: '<div>Container</div>',
+          content: '<div>Content</div>',
+        },
+      });
+      expect(wrapper.attributes('data-gradient')).toBe('to-bottom');
+      expect(wrapper.attributes('data-gradient-theme')).toBe('light');
+      wrapper.unmount();
+    });
+
+    it('applies correct gradient direction based on position with light theme', () => {
+      const positionsAndDirections = [
+        { position: 'left-top', direction: 'to-bottom' },
+        { position: 'center-top', direction: 'to-bottom' },
+        { position: 'right-top', direction: 'to-bottom' },
+        { position: 'left-center', direction: 'to-right' },
+        { position: 'right-center', direction: 'to-left' },
+        { position: 'left-bottom', direction: 'to-top' },
+        { position: 'center-bottom', direction: 'to-top' },
+        { position: 'right-bottom', direction: 'to-top' },
+      ];
+
+      positionsAndDirections.forEach(({ position, direction }) => {
+        const wrapper = mount(CdrObjectOverlay, {
+          props: { 
+            withGradient: true,
+            gradientTheme: 'light',
+            position
+          },
+          slots: {
+            container: '<div>Container</div>',
+            content: '<div>Content</div>',
+          },
+        });
+        expect(wrapper.attributes('data-gradient')).toBe(direction);
+        expect(wrapper.attributes('data-gradient-theme')).toBe('light');
+        wrapper.unmount();
+      });
+    });
+
+    it('does not apply gradient when position is center-center', () => {
+      const wrapper = mount(CdrObjectOverlay, {
+        props: { 
+          withGradient: true,
+          position: 'center-center'
+        },
+        slots: {
+          container: '<div>Container</div>',
+          content: '<div>Content</div>',
+        },
+      });
+      expect(wrapper.attributes('data-gradient')).toBeUndefined();
       wrapper.unmount();
     });
   });

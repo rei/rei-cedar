@@ -390,29 +390,16 @@ export interface MediaObject extends Layout {
   contentPadding?: SpaceOption;
 }
 
-export type Gradient =
-  | 'to-top'
-  | 'to-right'
-  | 'to-bottom'
-  | 'to-left';
-
-export type ResponsiveGradient = {
-  xs?: Gradient;
-  sm?: Gradient;
-  md?: Gradient;
-  lg?: Gradient;
-};
-
 export type ObjectPosition =
-  | 'top-left'
-  | 'top-center'
-  | 'top-right'
-  | 'center-left'
+  | 'left-top'
+  | 'center-top'
+  | 'right-top'
+  | 'left-center'
   | 'center-center'
-  | 'center-right'
-  | 'bottom-left'
-  | 'bottom-center'
-  | 'bottom-right';
+  | 'right-center'
+  | 'left-bottom'
+  | 'center-bottom'
+  | 'right-bottom';
 
 export type ResponsivePosition = {
   xs?: ObjectPosition;
@@ -437,8 +424,10 @@ export type ResponsiveSpace = {
 };
 
 export interface ObjectOverlayProps {
-  /** Gradient to be applied to the container */
-  gradient?: ResponsiveGradient | Gradient;
+  /** Determines if the container will have a gradient based on position */
+  withGradient?: boolean;
+  /** Theme for the gradient (dark or light) */
+  gradientTheme?: 'dark' | 'light';
   /** Position of the content relative to the container */
   position?: ResponsivePosition | ObjectPosition;
   /** Margin space around the positioned content */
