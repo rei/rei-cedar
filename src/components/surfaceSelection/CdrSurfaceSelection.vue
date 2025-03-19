@@ -1,55 +1,52 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
+import CdrSurface from '../surface/CdrSurface.vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
-import mapClasses from '../../utils/mapClasses';
-import { surfaceSelection } from '../../types/interfaces';
-import { getSurfaceSelectionProps, getDefaultLayout } from '../../utils/surface';
 import CdrLayout from '../layout/CdrLayout.vue';
+import type { surfaceSelection } from '../../types/interfaces';
+import { getSurfaceProps, getDefaultLayout } from '../../utils/surface';
 
-/** Base component for user selections that have a checked state */
-
+/** Selection variant of CdrSurface with additional interactive states */
 defineOptions({ name: 'CdrSurfaceSelection' });
 
 const props = withDefaults(defineProps<surfaceSelection>(), {
-  shadow: undefined,
-  tag: 'button',
-  role: 'radio',
-  modifier: 'default',
-  checked: false,
-  disabled: false,
-  loading: false,
-  layout: () => getDefaultLayout(),
+  tag: 'div',
+  role: 'checkbox',
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-surface-selection';
 
-// Manages the props passed along to CdrSurface
-const rootProps = computed(() => {
-  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);
-  return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
-});
+// Compute surface props including selection-specific attributes
+const surfaceProps = computed(() => ({
+  ...getSurfaceProps(props),
+  'aria-checked': props.checked,
+  'aria-disabled': props.disabled,
+  'data-loading': props.loading,
+}));
 
-// Merge layout props
-const layoutProps = computed(() => Object.assign(getDefaultLayout(), props.layout));
+// Merge default layout with any passed layout props
+const layoutProps = computed(() => ({
+  ...getDefaultLayout(),
+  ...props.layout,
+}));
 </script>
 
 <template>
-  <component
-    :is="tag"
-    v-bind="rootProps"
+  <CdrSurface
+    v-bind="surfaceProps"
+    :class="style['cdr-surface-selection']"
+    :tag="props.tag"
+    :role="$props.role"
   >
     <div :class="style['cdr-surface-selection__inner']">
       <CdrLayout
         v-bind="layoutProps"
         :class="style['cdr-surface-selection__layout']"
       >
-        <!-- @slot Where all default content should be placed. -->
         <slot />
       </CdrLayout>
       <div :class="style['cdr-surface-selection__loading']">
-        <!-- @slot This slot allows for custom loading content. -->
         <slot name="loading">
           <CdrSkeleton>
             <CdrSkeletonBone type="line" />
@@ -57,7 +54,7 @@ const layoutProps = computed(() => Object.assign(getDefaultLayout(), props.layou
         </slot>
       </div>
     </div>
-  </component>
+  </CdrSurface>
 </template>
 
-<style lang="scss" module src="./styles/CdrSurfaceSelection.module.scss"></style>
+<style lang="scss" module src="./styles/CdrSurfaceSelection.module.scss" />

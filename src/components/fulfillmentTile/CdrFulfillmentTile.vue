@@ -1,99 +1,91 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import mapClasses from '../../utils/mapClasses';
-import { surfaceSelection } from '../../types/interfaces';
-import { getSurfaceSelectionProps, getDefaultLayout } from '../../utils/surface';
-import CdrLayout from '../layout/CdrLayout.vue';
-import CdrFulfillmentTileHeader from './CdrFulfillmentTileHeader.vue';
-import CdrFulfillmentTileContent from './CdrFulfillmentTileContent.vue';
-import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
-import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
+import CdrSurfaceSelection from '../surfaceSelection/CdrSurfaceSelection.vue';
+import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
+import CdrBody from '../text/presets/CdrBody.vue';
+import type { surfaceSelection } from '../../types/interfaces';
+import { getSurfaceProps } from '../../utils/surface';
 
-/** Displays a composed selection option and provides feedback with optional icons */
-
+/** Selection variant of CdrSurfaceSelection with additional interactive states */
 defineOptions({ name: 'CdrFulfillmentTile' });
 
 const props = withDefaults(defineProps<surfaceSelection>(), {
-  tag: 'button',
-  role: 'radio',
-  modifier: 'default',
-  checked: false,
-  disabled: false,
-  loading: false,
-  layout: () => getDefaultLayout({ flow: 'row' }),
+  tag: 'div',
+  role: 'checkbox',
+  borderRadius: 'soft'
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-fulfillment-tile';
 
-// Manages the props passed along to CdrSurface
-const rootProps = computed(() => {
-  const { classes, ...additionalProps } = getSurfaceSelectionProps(props, baseClass);
-  return { ...additionalProps, class: mapClasses(style, ...classes) || undefined };
-});
-
-// Merge layout props
-const layoutProps = computed(() =>
-  Object.assign(getDefaultLayout({ flow: 'row', rows: [1] }), props.layout),
-);
+// Compute surface props including selection-specific attributes
+const surfaceProps = computed(() => ({
+  ...getSurfaceProps(props),
+  'aria-checked': props.checked,
+  'aria-disabled': props.disabled,
+  'data-loading': props.loading,
+}));
 </script>
 
 <template>
-  <component
-    :is="tag"
-    v-bind="rootProps"
+  <CdrSurfaceSelection
+    v-bind="surfaceProps"
+    :class="style['cdr-fulfillment-tile']"
+    :tag="props.tag"
+    :role="props.role"
   >
-    <CdrLayout
-      :rows="['auto', 1]"
-      :class="style['cdr-fulfillment-tile__inner']"
-    >
-      <CdrFulfillmentTileHeader>
-        <template
+    <div :class="style['cdr-fulfillment-tile__content']">
+      <div
+        v-if="$slots.header"
+        :class="style['cdr-fulfillment-tile__header']"
+      >
+        <span
           v-if="$slots['icon-left']"
-          #icon-left
+          :class="style['cdr-fulfillment-tile-header__icon']"
         >
-          <!-- @slot Place an icon to the left of the header content -->
+          <!-- @slot Icon to display on the left of the header. -->
           <slot name="icon-left" />
-        </template>
-        <template #header>
-          <!-- @slot Header content that is still visible during loading. -->
-          <slot name="header" />
-        </template>
-        <template
-          v-if="$slots['icon-right']"
-          #icon-right
-        >
-          <!-- @slot Place an icon to the right of the header content -->
-          <slot name="icon-right" />
-        </template>
-      </CdrFulfillmentTileHeader>
-      <div :class="style['cdr-fulfillment-tile__main']">
-        <CdrLayout
-          v-bind="layoutProps"
-          :class="style['cdr-fulfillment-tile__layout']"
-        >
-          <CdrFulfillmentTileContent>
-            <!-- @slot Default font size is a step down. Placed just below the header. -->
-            <slot name="body" />
-          </CdrFulfillmentTileContent>
-          <template v-if="$slots['footer']">
-            <CdrFulfillmentTileContent scale="-1">
-              <!-- @slot Footer content will be at the bottom of the component. -->
-              <slot name="footer" />
-            </CdrFulfillmentTileContent>
-          </template>
-        </CdrLayout>
-        <div :class="style['cdr-fulfillment-tile__loading']">
-          <!-- @slot Custom content when component is loading. -->
-          <slot name="loading">
-            <CdrSkeleton>
-              <CdrSkeletonBone type="line" />
-            </CdrSkeleton>
-          </slot>
+        </span>
+        <div v-if="$slots.header">
+          <CdrSubheadingSans
+            :strong="true"
+            scale="-1"
+            tag="span"
+          >
+            <!-- @slot Header content that is still visible during loading. -->
+            <slot name="header" />
+          </CdrSubheadingSans>
         </div>
+        <span
+          v-if="$slots['icon-right']"
+          :class="style['cdr-fulfillment-tile-header__icon']"
+        >
+          <!-- @slot Icon to display on the right of the header. -->
+          <slot name="icon-right" />
+        </span>
       </div>
-    </CdrLayout>
-  </component>
+      <div
+        :class="style['cdr-fulfillment-tile__main']"
+        v-if="$slots['body'] || $slots['footer']"
+      >
+        <CdrBody
+          tag="div"
+          scale="-2"
+          v-if="$slots['body']"
+        >
+          <!-- @slot Default font size is a step down. Placed just below the header. -->
+          <slot name="body" />
+        </CdrBody>
+        <CdrBody
+          tag="div"
+          scale="-1"
+          v-if="$slots['footer']"
+        >
+          <!-- @slot Footer content will be at the bottom of the component. -->
+          <slot name="footer" />
+        </CdrBody>
+      </div>
+    </div>
+  </CdrSurfaceSelection>
 </template>
 
-<style lang="scss" module src="./styles/CdrFulfillmentTile.module.scss"></style>
+<style lang="scss" module src="./styles/CdrFulfillmentTitle.module.scss" />
