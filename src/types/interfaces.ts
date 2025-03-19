@@ -3,7 +3,6 @@ import type {
   Tag,
   Space,
   SpaceFixed,
-  SpaceOption,
   Shadow,
   Radius,
   BorderColor,
@@ -17,7 +16,7 @@ import type {
   Position,
   Alignment,
   AlignmentValue,
-  MediaMeasurement,
+  MediaMeasurement
 } from './other';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -361,7 +360,55 @@ export interface MediaObject extends Layout {
   /**
    * The spacing token to use for padding around the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
    * @demoSelectMultiple false
-   * @values zero, one-x, two-x, scale-4, scale-3--5
+   * @values zero, one-x, two-x
    */
-  contentPadding?: SpaceOption;
+  contentPadding?: SpaceFixed;
+}
+
+export type ObjectPosition =
+  | 'left-top'
+  | 'center-top'
+  | 'right-top'
+  | 'left-center'
+  | 'center-center'
+  | 'right-center'
+  | 'left-bottom'
+  | 'center-bottom'
+  | 'right-bottom';
+
+export type ResponsivePosition = {
+  xs?: ObjectPosition;
+  sm?: ObjectPosition;
+  md?: ObjectPosition;
+  lg?: ObjectPosition;
+};
+
+export type SpaceTuple =
+  | [SpaceFixed] 
+  | [SpaceFixed, SpaceFixed]
+  | [SpaceFixed, SpaceFixed, SpaceFixed] 
+  | [SpaceFixed, SpaceFixed, SpaceFixed, SpaceFixed];
+
+export type Spacing = SpaceFixed | SpaceTuple;
+
+export type ResponsiveSpace = {
+  xs?: Spacing;
+  sm?: Spacing;
+  md?: Spacing;
+  lg?: Spacing;
+};
+
+export interface ObjectOverlayProps {
+  /** Determines if the container will have a gradient based on position */
+  withGradient?: boolean;
+  /** Theme for the gradient (dark or light) */
+  gradientTheme?: 'dark' | 'light';
+  /** Position of the content relative to the container */
+  position?: ResponsivePosition | ObjectPosition;
+  /** Margin space around the positioned content */
+  margin?: ResponsiveSpace | Spacing;
+  /** Padding space around the positioned content */
+  padding?: ResponsiveSpace | Spacing;
+  /** Sets the HTML tag for the container element */
+  tag?: string;
 }

@@ -1,0 +1,133 @@
+@use 'sass:map';
+@import '../../../styles/settings/index';
+
+$breakpoints: (
+  '': '',
+  '-sm': $cdr-breakpoint-sm,
+  '-md': $cdr-breakpoint-md,
+  '-lg': $cdr-breakpoint-lg
+);
+
+$positions: (
+  'left-top': (top: 0, left: 0, transform: none),
+  'center-top': (top: 0, left: 50%, transform: translateX(-50%)),
+  'right-top': (top: 0, right: 0, transform: none),
+  'left-center': (top: 50%, left: 0, transform: translateY(-50%)),
+  'center-center': (top: 50%, left: 50%, transform: translate(-50%, -50%)),
+  'right-center': (top: 50%, right: 0, transform: translateY(-50%)),
+  'left-bottom': (bottom: 0, left: 0, transform: none),
+  'center-bottom': (bottom: 0, left: 50%, transform: translateX(-50%)),
+  'right-bottom': (bottom: 0, right: 0, transform: none)
+);
+
+// Dark theme gradients (default)
+$dark-gradients: (
+  'to-top': linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%),
+  'to-bottom': linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%),
+  'to-left': linear-gradient(to left, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%),
+  'to-right': linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%)
+);
+
+// Light theme gradients
+$light-gradients: (
+  'to-top': linear-gradient(to top, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%),
+  'to-bottom': linear-gradient(to bottom, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%),
+  'to-left': linear-gradient(to left, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%),
+  'to-right': linear-gradient(to right, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%)
+);
+
+.cdr-object-overlay {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__content {
+    position: absolute;
+    margin: var(--margin);
+    padding: var(--padding);
+    z-index: 2;
+
+    @each $breakpoint-suffix, $min-width in $breakpoints {
+      @if $breakpoint-suffix != '' {
+        @media (min-width: $min-width) {
+          margin: var(--margin#{$breakpoint-suffix}, var(--margin));
+          padding: var(--padding#{$breakpoint-suffix}, var(--padding));
+        }
+      }
+    }
+  }
+
+  // Create a mixin for breakpoints
+  @mixin at-breakpoint($breakpoint) {
+    @if $breakpoint == '' {
+      @content;
+    } @else {
+      @media (min-width: map.get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    }
+  }
+
+  // Generate positions for all breakpoints
+  @each $breakpoint-suffix, $min-width in $breakpoints {
+    @include at-breakpoint($breakpoint-suffix) {
+      // Position
+      @each $position, $properties in $positions {
+        $selector: if($breakpoint-suffix == '', 
+                     '[data-position="#{$position}"]', 
+                     '[data-position#{$breakpoint-suffix}="#{$position}"]');
+                     
+        &#{$selector} &__content {
+          @each $prop, $value in $properties {
+            #{$prop}: $value;
+          }
+          // Set unused positions to auto
+          @each $side in top, right, bottom, left {
+            @if not map-has-key($properties, $side) {
+              #{$side}: auto;
+            }
+          }
+        }
+      }
+
+      // Dark theme gradients (default)
+      @each $gradient, $direction in $dark-gradients {
+        $selector: if($breakpoint-suffix == '', 
+                     '[data-gradient="#{$gradient}"]', 
+                     '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]');
+                     
+        &#{$selector}:not([data-gradient-theme="light"])::before {
+          background-image: $direction;
+          border-radius: inherit;
+          display: block;
+          content: '';
+          position: absolute;
+          inset: 0;
+        }
+      }
+
+      // Light theme gradients
+      @each $gradient, $direction in $light-gradients {
+        $selector: if($breakpoint-suffix == '', 
+                     '[data-gradient="#{$gradient}"]', 
+                     '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]');
+                     
+        &#{$selector}[data-gradient-theme="light"]::before {
+          background-image: $direction;
+          border-radius: inherit;
+          display: block;
+          content: '';
+          position: absolute;
+          inset: 0;
+        }
+      }
+    }
+  }
+}
