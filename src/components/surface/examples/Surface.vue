@@ -24,7 +24,7 @@ const boxes: Example[] = [
     label: 'This surface is styled like a card',
     title: 'secondary background',
     props: {
-      radius: 'soft',
+      borderRadius: 'soft',
       background: 'secondary',
       boxShadow: 'floating',
       class: 'example__card',
@@ -34,7 +34,7 @@ const boxes: Example[] = [
     label: 'This surface is styled like a chip or pill',
     title: '',
     props: {
-      radius: 'round',
+      borderRadius: 'round',
       background: 'secondary',
       class: 'example__pill',
     },
@@ -73,6 +73,9 @@ const boxes: Example[] = [
       class: 'example__card',
       palette: 'membership-vibrant',  // Updated to use membership-subtle palette
       background: 'secondary',
+      borderWidth: 'quarter-x',
+      borderStyle: 'solid',
+      borderColor: 'primary',
     },
   },
 ];

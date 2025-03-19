@@ -1,14 +1,14 @@
 .cdr-fulfillment-tile-icon {
-  width: 2.2rem;
-  height: 2.2rem;
-  background: white;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  background: white;
   border-radius: var(--cdr-radius-round);
-  position: relative;
+  display: flex;
   fill: var(--cdr-fulfillment-tile-icon-fill);
   flex-shrink: 0;
+  height: 2.2rem;
+  justify-content: center;
+  position: relative;
+  width: 2.2rem;
 
   &::after {
     content: '';

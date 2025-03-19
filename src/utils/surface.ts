@@ -21,7 +21,7 @@ export function getSurfaceProps(props: surface) {
     'borderColor',
     'borderStyle',
     'borderWidth',
-    'radius',
+    'borderRadius',
     'boxShadow'
   ];
 

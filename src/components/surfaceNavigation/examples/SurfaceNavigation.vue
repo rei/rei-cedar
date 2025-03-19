@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CdrSurfaceNavigation from '../CdrSurfaceNavigation.vue';
-import CdrSurfaceNavigationLink from '../CdrSurfaceNavigationLink.vue';
+import CdrLink from '../../link/CdrLink.vue';
 import CdrUtilitySans from '../../text/presets/CdrUtilitySans.vue';
 import CdrSubheadingSans from '../../text/presets/CdrSubheadingSans.vue';
 import CdrMediaObject from '../../mediaObject/CdrMediaObject.vue';
@@ -59,7 +59,7 @@ const boxes: Example[] = [
       borderWidth: {
         rest: 'sixteenth-x'
       },
-      shadow: {
+      boxShadow: {
         rest: 'flat',
         hover: 'elevated',
       }
@@ -76,19 +76,6 @@ const boxes: Example[] = [
     }
   }
 ];
-
-const handleClick = (e: MouseEvent) => {
-  e.preventDefault();
-  console.log('clicked', e);
-};
-
-const handleBlur = (e: FocusEvent) => {
-  console.log('blurred', e);
-}
-
-const handleFocus = (e: FocusEvent) => {
-  console.log('focused', e);
-}
 </script>
 
 <template>
@@ -111,9 +98,9 @@ const handleFocus = (e: FocusEvent) => {
           </template>
           <template #content>
             <CdrUtilitySans>{{ label }}</CdrUtilitySans>
-            <CdrSurfaceNavigationLink @click="handleClick" @blur="handleBlur" @focus="handleFocus">
-              <CdrSubheadingSans class="card__title">{{ title }}</CdrSubheadingSans>
-            </CdrSurfaceNavigationLink>
+            <CdrLink class="card__title">
+              <CdrSubheadingSans>{{ title }}</CdrSubheadingSans>
+            </CdrLink>
             <CdrRating v-bind="ratingProps" />
             <CdrUtilitySans>{{ price }}</CdrUtilitySans>
           </template>
@@ -151,6 +138,16 @@ const handleFocus = (e: FocusEvent) => {
     width: 100%;
     height: 150px;
     object-fit: contain;
+  }
+
+  &__title {
+    appearance: none;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 </style>

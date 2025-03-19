@@ -1,12 +1,13 @@
-@use "sass:map";
+@use 'sass:map';
 
 // Property maps
+// TODO: Add ang get these from Cedar Tokens
 $properties: (
   background: (
     primary: var(--cdr-color-background-primary),
     secondary: var(--cdr-color-background-secondary),
-    brand-spruce: var(--cdr-color-background-brand-spruce),
-    sale: var(--cdr-color-background-sale)
+    brand: var(--cdr-color-background-brand-spruce),
+    sale: var(--cdr-color-background-sale),
   ),
   border-color: (
     primary: var(--cdr-color-border-primary),
@@ -14,7 +15,7 @@ $properties: (
     success: var(--cdr-color-border-success),
     warning: var(--cdr-color-border-warning),
     error: var(--cdr-color-border-error),
-    info: var(--cdr-color-border-info)
+    info: var(--cdr-color-border-info),
   ),
   border-width: (
     zero: var(--cdr-space-zero),
@@ -29,37 +30,37 @@ $properties: (
     one-and-a-half-x: var(--cdr-space-one-and-a-half-x),
     two-x: var(--cdr-space-two-x),
     three-x: var(--cdr-space-three-x),
-    four-x: var(--cdr-space-four-x)
+    four-x: var(--cdr-space-four-x),
   ),
   border-style: (
     solid: solid,
     dashed: dashed,
-    dotted: dotted
+    dotted: dotted,
   ),
-  radius: (
+  border-radius: (
     sharp: var(--cdr-radius-sharp),
     soft: var(--cdr-radius-soft),
     softer: var(--cdr-radius-softer),
     softest: var(--cdr-radius-softest),
-    round: var(--cdr-radius-round)
+    round: var(--cdr-radius-round),
   ),
   box-shadow: (
     flat: var(--cdr-prominence-flat),
     raised: var(--cdr-prominence-raised),
     elevated: var(--cdr-prominence-elevated),
     floating: var(--cdr-prominence-floating),
-    lifted: var(--cdr-prominence-lifted)
-  )
+    lifted: var(--cdr-prominence-lifted),
+  ),
 );
 
 $states: (rest, hover, active, checked, loading, disabled, visited);
 $css-vars: (
-  background: --background,
-  border-color: --border-color,
-  border-width: --border-width,
-  border-style: --border-style,
-  radius: --border-radius,
-  box-shadow: --box-shadow
+  background: --cdr-surface-background,
+  border-color: --cdr-surface-border-color,
+  border-width: --cdr-surface-border-width,
+  border-style: --cdr-surface-border-style,
+  border-radius: --border-radius,
+  box-shadow: --cdr-surface-box-shadow,
 );
 
 .cdr-surface {
@@ -68,13 +69,17 @@ $css-vars: (
   position: relative;
   text-align: left;
 
-  // Base CSS custom properties
-  --background: var(--cdr-surface-background, var(--cdr-surface-background-rest));
-  --border-radius: var(--cdr-surface-radius, var(--cdr-surface-radius-rest));
-  --box-shadow: var(--cdr-surface-box-shadow, var(--cdr-surface-box-box-shadow-rest));
-  --border-width: var(--cdr-surface-border-width, var(--cdr-surface-border-width-rest));
-  --border-style: var(--cdr-surface-border-style, var(--cdr-surface-border-style-rest));
-  --border-color: var(--cdr-surface-border-color, var(--cdr-surface-border-color-rest));
+  // Prevent inheritance styles
+  .cdr-surface & {
+    :where(&) {
+      --cdr-surface-background: initial;
+      --cdr-surface-border-color: initial;
+      --cdr-surface-border-width: initial;
+      --cdr-surface-border-style: initial;
+      --cdr-surface-border-radius: initial;
+      --cdr-surface-box-shadow: initial;
+    }
+  }
 
   // Generate base styles
   @each $prop, $values in $properties {
@@ -88,21 +93,17 @@ $css-vars: (
   // Generate state-based styles
   @each $state in $states {
     @if $state != 'rest' {
+      $selector: if(
+        $state == 'hover',
+        '&:hover:not([aria-pressed="true"], [aria-checked="true"], :disabled)',
+        if($state == 'active', '&:active, &:focus', '&[data-#{$state}="true"]')
+      );
+
       @each $prop, $values in $properties {
         @each $value-name, $value in $values {
           &[data-#{$prop}-#{$state}='#{$value-name}'] {
-            @if $state == 'hover' {
-              &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
-                #{map.get($css-vars, $prop)}: #{$value};
-              }
-            } @else if $state == 'active' {
-              &:active, &:focus {
-                #{map.get($css-vars, $prop)}: #{$value};
-              }
-            } @else {
-              &[data-#{$state}='true'] {
-                #{map.get($css-vars, $prop)}: #{$value};
-              }
+            #{$selector} {
+              #{map.get($css-vars, $prop)}: #{$value};
             }
           }
         }
@@ -110,33 +111,34 @@ $css-vars: (
     }
   }
 
-  background: var(--background);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  
+  background: var(--cdr-surface-background);
+  border-radius: var(--cdr-surface-border-radius);
+  box-shadow: var(--cdr-surface-box-shadow);
+
   &::before {
-    border: var(--border-width) var(--border-style) var(--border-color);
+    border: var(--cdr-surface-border-width) var(--cdr-surface-border-style) var(--cdr-surface-border-color);
     border-radius: inherit;
     content: '';
     inset: 0;
     position: absolute;
     transition: border-color var(--cdr-duration-3-x) var(--cdr-timing-function-ease);
+    will-change: transition;
     pointer-events: none;
     z-index: 0;
   }
 
-  transition: 
+  transition:
     background var(--cdr-duration-3-x) var(--cdr-timing-function-ease),
     box-shadow var(--cdr-duration-3-x) var(--cdr-timing-function-ease);
 
   &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
-    background: var(--cdr-surface-background-hover, var(--background));
-    box-shadow: var(--cdr-surface-box-shadow-hover, var(--box-shadow));
-    
+    background: var(--cdr-surface-background-hover, var(--cdr-surface-background));
+    box-shadow: var(--cdr-surface-box-shadow-hover, var(--cdr-surface-box-shadow));
+
     &::before {
-      border: var(--cdr-surface-border-width-hover, var(--border-width))
-        var(--cdr-surface-border-style-hover, var(--border-style)) 
-        var(--cdr-surface-border-color-hover, var(--border-color));
+      border: var(--cdr-surface-border-width-hover, var(--cdr-surface-border-width))
+        var(--cdr-surface-border-style-hover, var(--cdr-surface-border-style))
+        var(--cdr-surface-border-color-hover, var(--cdr-surface-border-color));
     }
   }
 
@@ -146,13 +148,13 @@ $css-vars: (
   &[aria-pressed='true']:active,
   &[aria-checked='true']:focus,
   &[aria-checked='true']:active {
-    background: var(--cdr-surface-background-active, var(--background));
-    box-shadow: var(--cdr-surface-box-shadow-active, var(--box-shadow));
-    
+    background: var(--cdr-surface-background-active, var(--cdr-surface-background));
+    box-shadow: var(--cdr-surface-box-shadow-active, var(--cdr-surface-box-shadow));
+
     &::before {
-      border: var(--cdr-surface-border-width-active, var(--border-width))
-        var(--cdr-surface-border-style-active, var(--border-style)) 
-        var(--cdr-surface-border-color-active, var(--border-color));
+      border: var(--cdr-surface-border-width-active, var(--cdr-surface-border-width))
+        var(--cdr-surface-border-style-active, var(--cdr-surface-border-style))
+        var(--cdr-surface-border-color-active, var(--cdr-surface-border-color));
     }
   }
 
@@ -162,37 +164,37 @@ $css-vars: (
   &[aria-disabled='true'],
   &[aria-disabled='true']:hover,
   &[aria-disabled='true']:focus {
-    background: var(--cdr-surface-background-disabled, var(--background));
-    box-shadow: var(--cdr-surface-box-shadow-disabled, var(--box-shadow));
+    background: var(--cdr-surface-background-disabled, var(--cdr-surface-background));
+    box-shadow: var(--cdr-surface-box-shadow-disabled, var(--cdr-surface-box-shadow));
     cursor: not-allowed;
-    
+
     &::before {
-      border: var(--cdr-surface-border-width-disabled, var(--border-width))
-        var(--cdr-surface-border-style-disabled, var(--border-style)) 
-        var(--cdr-surface-border-color-disabled, var(--border-color));
+      border: var(--cdr-surface-border-width-disabled, var(--cdr-surface-border-width))
+        var(--cdr-surface-border-style-disabled, var(--cdr-surface-border-style))
+        var(--cdr-surface-border-color-disabled, var(--cdr-surface-border-color));
     }
   }
 
   &[aria-pressed='true'],
   &[aria-checked='true'] {
-    background: var(--cdr-surface-background-checked, var(--background));
-    box-shadow: var(--cdr-surface-box-shadow-checked, var(--box-shadow));
-    
+    background: var(--cdr-surface-background-checked, var(--cdr-surface-background));
+    box-shadow: var(--cdr-surface-box-shadow-checked, var(--cdr-surface-box-shadow));
+
     &::before {
-      border: var(--cdr-surface-border-width-checked, var(--border-width))
-        var(--cdr-surface-border-style-checked, var(--border-style)) 
-        var(--cdr-surface-border-color-checked, var(--border-color));
+      border: var(--cdr-surface-border-width-checked, var(--cdr-surface-border-width))
+        var(--cdr-surface-border-style-checked, var(--cdr-surface-border-style))
+        var(--cdr-surface-border-color-checked, var(--cdr-surface-border-color));
     }
   }
 
-  &[data-loading="true"] {
-    background: var(--cdr-surface-background-loading, var(--background));
-    box-shadow: var(--cdr-surface-box-shadow-loading, var(--box-shadow));
-    
+  &[data-loading='true'] {
+    background: var(--cdr-surface-background-loading, var(--cdr-surface-background));
+    box-shadow: var(--cdr-surface-box-shadow-loading, var(--cdr-surface-box-shadow));
+
     &::before {
-      border: var(--cdr-surface-border-width-loading, var(--border-width)) 
-        var(--cdr-surface-border-style-loading, var(--border-style)) 
-        var(--cdr-surface-border-color-loading, var(--border-color));
+      border: var(--cdr-surface-border-width-loading, var(--cdr-surface-border-width))
+        var(--cdr-surface-border-style-loading, var(--cdr-surface-border-style))
+        var(--cdr-surface-border-color-loading, var(--cdr-surface-border-color));
     }
   }
 }

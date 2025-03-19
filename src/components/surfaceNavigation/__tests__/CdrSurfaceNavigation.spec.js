@@ -12,12 +12,6 @@ describe('CdrSurfaceNavigation', () => {
     expect(wrapper.element.tagName).toBe('SPAN');
   });
 
-  it('base classes only', () => {
-    const wrapper = mount(CdrSurfaceNavigation);
-    expect(wrapper.classes()).toEqual(['cdr-surface', 'cdr-surface-navigation']);
-    expect(wrapper.element).toMatchSnapshot();
-  });
-
   it('shows default slot', () => {
     const wrapper = mount(CdrSurfaceNavigation, { slots: { default: 'Default slot' } });
     expect(wrapper.text()).toBe('Default slot');

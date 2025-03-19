@@ -230,14 +230,14 @@ export interface Layout extends NameValuePair {
   containerName?: string;
 }
 
-interface StateConfig<T> {
-  rest: T;
-  hover?: T;
-  active?: T;
-  checked?: T;
-  loading?: T;
-  disabled?: T;
-  visited?: T;
+interface StateConfig<PropertyValue> {
+  rest: PropertyValue;
+  hover?: PropertyValue;
+  active?: PropertyValue;
+  checked?: PropertyValue;
+  loading?: PropertyValue;
+  disabled?: PropertyValue;
+  visited?: PropertyValue;
 }
 
 /**
@@ -264,7 +264,7 @@ export interface surface {
   /**
    * Adds in a border radius based on the token options within Cedar.
    */
-  radius?: Radius | StateConfig<Radius>;
+  borderRadius?: Radius | StateConfig<Radius>;
   /**
    * Adds a shadow based on the token options within Cedar.
    */
@@ -277,13 +277,6 @@ export interface surface {
    * Defines a palette for the component's style variations.
    */
   palette?: 'default' | 'sandstone' | 'membership-subtle' | 'membership-vibrant';
-}
-
-export interface surfaceLink extends HtmlAttributes {
-  /**
-   * Determines which HTML tag to use, it can be an anchor or custom router link.
-   */
-  tag?: Tag;
 }
 
 export interface surfaceSelection extends surface {

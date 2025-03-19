@@ -65,10 +65,10 @@ exports[`CdrSurface > applies multiple properties 1`] = `
   class="cdr-surface"
   data-background="secondary"
   data-border-color="primary"
+  data-border-radius="soft"
   data-border-style="solid"
   data-border-width="one-x"
   data-box-shadow="raised"
-  data-radius="soft"
 >
   
   
@@ -89,7 +89,7 @@ exports[`CdrSurface > applies palette property 1`] = `
 exports[`CdrSurface > applies radius property 1`] = `
 <div
   class="cdr-surface"
-  data-radius="soft"
+  data-border-radius="soft"
 >
   
   

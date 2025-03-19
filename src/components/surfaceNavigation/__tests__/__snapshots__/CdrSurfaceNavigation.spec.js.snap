@@ -2,7 +2,7 @@
 
 exports[`CdrSurfaceNavigation > applies surface props 1`] = `
 <div
-  class="cdr-surface cdr-surface-navigation"
+  class="cdr-surface"
   data-background="primary"
   data-background-hover="secondary"
   data-border-color="primary"
@@ -16,18 +16,9 @@ exports[`CdrSurfaceNavigation > applies surface props 1`] = `
 </div>
 `;
 
-exports[`CdrSurfaceNavigation > base classes only 1`] = `
-<div
-  class="cdr-surface cdr-surface-navigation"
->
-  
-  
-</div>
-`;
-
 exports[`CdrSurfaceNavigation > default snapshot 1`] = `
 <div
-  class="cdr-surface cdr-surface-navigation"
+  class="cdr-surface"
 >
   
   
@@ -36,7 +27,7 @@ exports[`CdrSurfaceNavigation > default snapshot 1`] = `
 
 exports[`CdrSurfaceNavigation > shows default slot 1`] = `
 <div
-  class="cdr-surface cdr-surface-navigation"
+  class="cdr-surface"
 >
   
   

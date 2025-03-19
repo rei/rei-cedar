@@ -325,7 +325,7 @@ exports[`CdrMediaObject > snapshot tests > overlay, row align, column align, con
 exports[`CdrMediaObject > snapshot tests > pass down props to Layout and Surface 1`] = `
 <div
   class="cdr-surface cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object"
-  data-background="brand-spruce"
+  data-background="brand"
   style="--cdr-layout-rows: auto; --cdr-layout-columns: 1fr 1fr; --cdr-media-object-media-position: 'media content'; --cdr-media-object-align: start;"
 >
   

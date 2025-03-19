@@ -13,7 +13,7 @@
   --cdr-surface-border-style-disabled: dashed;
   --cdr-surface-border-width: var(--cdr-space-sixteenth-x);
   --cdr-surface-border-width-checked: var(--cdr-space-three-sixteenth-x);
-  --cdr-surface-radius: var(--cdr-radius-softest);
+  --cdr-surface-border-radius: var(--cdr-radius-softest);
 
   &__inner {
     height: 100%;

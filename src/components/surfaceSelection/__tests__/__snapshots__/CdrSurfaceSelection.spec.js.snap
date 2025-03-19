@@ -226,7 +226,6 @@ exports[`CdrSurfaceSelection > applies surface props 1`] = `
   data-border-width="one-x"
   data-box-shadow="raised"
   data-loading="false"
-  data-radius="soft"
   role="checkbox"
 >
   

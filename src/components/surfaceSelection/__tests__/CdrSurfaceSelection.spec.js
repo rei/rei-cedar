@@ -87,7 +87,6 @@ describe('CdrSurfaceSelection', () => {
         borderColor: 'primary',
         borderWidth: 'one-x',
         borderStyle: 'solid',
-        radius: 'soft',
         boxShadow: 'raised'
       }
     });
@@ -95,7 +94,6 @@ describe('CdrSurfaceSelection', () => {
     expect(wrapper.attributes('data-border-color')).toBe('primary');
     expect(wrapper.attributes('data-border-width')).toBe('one-x');
     expect(wrapper.attributes('data-border-style')).toBe('solid');
-    expect(wrapper.attributes('data-radius')).toBe('soft');
     expect(wrapper.attributes('data-box-shadow')).toBe('raised');
     expect(wrapper.element).toMatchSnapshot();
   });

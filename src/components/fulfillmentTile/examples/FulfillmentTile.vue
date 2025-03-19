@@ -59,11 +59,12 @@ defineOptions({ name: 'FulfillmentTile' });
 <style lang="scss" scoped>
 .example {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--cdr-space-one-x);
 }
 
 .example__tile {
-  height: 108px;
+  min-height: 108px;
   width: 230px;
 }
 </style>

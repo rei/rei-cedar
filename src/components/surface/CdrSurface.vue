@@ -7,7 +7,6 @@ import { getSurfaceProps } from '../../utils/surface';
 defineOptions({ name: 'CdrSurface' });
 
 const props = withDefaults(defineProps<surface>(), {
-  variant: 'base',
   tag: 'div',
 });
 

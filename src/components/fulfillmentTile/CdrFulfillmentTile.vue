@@ -12,6 +12,7 @@ defineOptions({ name: 'CdrFulfillmentTile' });
 const props = withDefaults(defineProps<surfaceSelection>(), {
   tag: 'div',
   role: 'checkbox',
+  borderRadius: 'soft'
 });
 
 const style = useCssModule();

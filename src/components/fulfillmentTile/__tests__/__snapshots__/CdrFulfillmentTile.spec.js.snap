@@ -5,6 +5,7 @@ exports[`CdrFulfillmentTile > applies checked state 1`] = `
   aria-checked="true"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -56,6 +57,7 @@ exports[`CdrFulfillmentTile > applies disabled state 1`] = `
   aria-checked="false"
   aria-disabled="true"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -107,6 +109,7 @@ exports[`CdrFulfillmentTile > applies loading state 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="true"
   role="checkbox"
 >
@@ -158,6 +161,7 @@ exports[`CdrFulfillmentTile > applies multiple states 1`] = `
   aria-checked="true"
   aria-disabled="true"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="true"
   role="checkbox"
 >
@@ -209,6 +213,7 @@ exports[`CdrFulfillmentTile > base classes only 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -260,6 +265,7 @@ exports[`CdrFulfillmentTile > default snapshot 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -311,6 +317,7 @@ exports[`CdrFulfillmentTile > renders body slot 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -377,6 +384,7 @@ exports[`CdrFulfillmentTile > renders footer slot 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -443,6 +451,7 @@ exports[`CdrFulfillmentTile > renders header slot 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -513,6 +522,7 @@ exports[`CdrFulfillmentTile > renders icon-left slot 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
@@ -594,6 +604,7 @@ exports[`CdrFulfillmentTile > renders icon-right slot 1`] = `
   aria-checked="false"
   aria-disabled="false"
   class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="false"
   role="checkbox"
 >
