@@ -1,17 +1,45 @@
-@import './vars/CdrSurfaceSelection.vars';
-@import '../../surface/styles/vars/CdrSurface.vars';
-
 .cdr-surface-selection {
-  @include cdr-surface-base-mixin(
-    $surface-selection-background-colors,
-    $surface-selection-border-colors,
-    $surface-selection-component
-  );
-  @include cdr-surface-selection-base-mixin($surface-selection-component);
-  @include cdr-surface-selection-states-modifiers-mixin(
-    $surface-selection-background-colors,
-    $surface-selection-border-colors,
-    $surface-selection-component,
-    $surface-selection-modifiers
-  );
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  border: 0;
+  text-decoration: none;
+  touch-action: manipulation;
+  padding: var(--cdr-space-inset-half-x-stretch);
+
+  --cdr-surface-background: var(--cdr-color-background-primary);
+  --cdr-surface-background-disabled: var(--cdr-color-background-secondary);
+  --cdr-surface-border-color: var(--cdr-color-border-secondary);
+  --cdr-surface-border-style: solid;
+  --cdr-surface-border-style-disabled: dashed;
+  --cdr-surface-border-width: var(--cdr-space-sixteenth-x);
+  --cdr-surface-border-width-checked: var(--cdr-space-three-sixteenth-x);
+  --cdr-surface-border-radius: var(--cdr-radius-softest);
+
+  &__inner {
+    height: 100%;
+    position: relative;
+  }
+  
+  &__layout {
+    height: auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  &__loading {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--cdr-duration-1-x);
+  }
+
+  &[data-loading="true"] &__loading {
+    opacity: 1;
+  }
+
+  &[data-loading="true"] &__layout {
+    opacity: 0;
+  }
 }

@@ -1,26 +1,68 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrFulfillmentTileIcon.vars';
-
 .cdr-fulfillment-tile-icon {
-  @include cdr-fulfillment-tile-icon-base-mixin;
+  align-items: center;
+  background: var(--cdr-color-background-primary);
+  border-radius: var(--cdr-radius-round);
+  display: flex;
+  fill: var(--cdr-fulfillment-tile-icon-fill);
+  flex-shrink: 0;
+  height: 2.2rem;
+  justify-content: center;
+  position: relative;
+  width: 2.2rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 var(--cdr-space-eighth-x) var(--cdr-fulfillment-tile-icon-fill);
+    opacity: 0.3;
+  }
+
+  svg {
+    max-height: 2rem;
+    max-width: 2rem;
+    stroke: white;
+    stroke-width: var(--cdr-space-eighth-x);
+    paint-order: stroke fill;
+    margin: var(--cdr-space-quarter-x);
+  }
 
   &--default {
-    @include cdr-fulfillment-tile-icon-default-mixin;
+    --cdr-fulfillment-tile-icon-fill: var(
+      --cdr-fulfillment-tile-icon-default-icon-fill,
+      var(--cdr-color-icon-message-default, var(--cdr-color-icon-message-default))
+    );
   }
 
   &--info {
-    @include cdr-fulfillment-tile-icon-info-mixin;
+    --cdr-fulfillment-tile-icon-fill: var(
+      --cdr-fulfillment-tile-icon-info-icon-fill,
+      var(--cdr-color-border-message-info-01, var(--cdr-color-border-message-info-01))
+    );
   }
 
   &--warning {
-    @include cdr-fulfillment-tile-icon-warning-mixin;
+    --cdr-fulfillment-tile-icon-fill: var(
+      --cdr-fulfillment-tile-icon-warning-icon-fill,
+      var(--cdr-color-border-message-warning-01, var(--cdr-color-border-message-warning-01))
+    );
   }
 
   &--success {
-    @include cdr-fulfillment-tile-icon-success-mixin;
+    --cdr-fulfillment-tile-icon-fill: var(
+      --cdr-fulfillment-tile-icon-success-icon-fill,
+      var(--cdr-color-icon-message-success, var(--cdr-color-icon-message-success))
+    );
   }
 
   &--error {
-    @include cdr-fulfillment-tile-icon-error-mixin;
+    --cdr-fulfillment-tile-icon-fill: var(
+      --cdr-fulfillment-tile-icon-error-icon-fill,
+      var(--cdr-color-border-message-error-01, var(--cdr-color-border-message-error-01))
+    );
   }
 }

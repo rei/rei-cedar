@@ -8,31 +8,57 @@ defineOptions({ name: 'SurfaceSelection' });
 
 const loading = ref(false);
 
+const commonProps = <surfaceSelection>{
+  variant: 'selection',
+  role: 'checkbox'
+};
+
 const examples = computed(
   () =>
     <surfaceSelection[]>[
-      { checked: false, role: 'checkbox', loading: loading.value },
-      { checked: true, role: 'checkbox', loading: loading.value },
-      { checked: false, role: 'checkbox', loading: !loading.value },
       {
+        ...commonProps,
         checked: false,
-        role: 'checkbox',
+        loading: loading.value,
+      },
+      {
+        ...commonProps,
+        checked: true,
+        loading: loading.value
+      },
+      {
+        ...commonProps,
+        checked: false,
+        loading: !loading.value,
+      },
+      {
+        ...commonProps,
+        checked: false,
         loading: loading.value,
         disabled: true,
       },
-      { checked: false, role: 'checkbox', loading: loading.value },
-      { checked: false, role: 'checkbox', loading: loading.value },
       {
+        ...commonProps,
         checked: false,
         loading: loading.value,
-        role: 'checkbox',
-        class: 'example__wide',
-        layout: { columns: ['auto', 1] },
       },
       {
+        ...commonProps,
         checked: false,
         loading: loading.value,
-        role: 'checkbox',
+      },
+      {
+        ...commonProps,
+        checked: false,
+        loading: loading.value,
+        class: 'example__wide',
+        layout: { columns: ['auto', 1] },
+        variant: 'selection'
+      },
+      {
+        ...commonProps,
+        checked: false,
+        loading: loading.value,
         layout: { flow: 'row' },
       },
     ],

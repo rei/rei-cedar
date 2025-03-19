@@ -1,719 +1,682 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CdrFulfillmentTile > component unit tests > default component with no configuration > renders correctly 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  role="radio"
-  type="button"
+exports[`CdrFulfillmentTile > applies checked state 1`] = `
+<div
+  aria-checked="true"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
 >
+  
   <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
+    class="cdr-surface-selection__inner"
   >
-    <!-- @slot Where all default content should be placed. -->
-    
     <div
-      class="cdr-fulfillment-tile-header"
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
     >
-      <!--v-if-->
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
-      >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Header
-        
-        
-        
-      </span>
-      <!--v-if-->
-    </div>
-    <div
-      class="cdr-fulfillment-tile__main"
-    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
       <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
+        class="cdr-fulfillment-tile__content"
       >
-        <!-- @slot Where all default content should be placed. -->
-        
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          
-        </div>
         <!--v-if-->
-        
+        <!--v-if-->
       </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
       <div
-        class="cdr-fulfillment-tile__loading"
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
       >
-        <!-- @slot Custom content when component is loading. -->
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
         
         <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
         
       </div>
+      
     </div>
-    
   </div>
-</button>
+  
+</div>
 `;
 
-exports[`CdrFulfillmentTile > is loading 1`] = `
-<button
+exports[`CdrFulfillmentTile > applies disabled state 1`] = `
+<div
   aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
+  aria-disabled="true"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
+      >
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTile > applies loading state 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
   data-loading="true"
-  role="radio"
-  type="button"
+  role="checkbox"
 >
+  
   <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
+    class="cdr-surface-selection__inner"
   >
-    <!-- @slot Where all default content should be placed. -->
-    
     <div
-      class="cdr-fulfillment-tile-header"
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
     >
-      <!--v-if-->
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
       >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Label slot
-        
-        
-        
-      </span>
-      <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      
+      
     </div>
     <div
-      class="cdr-fulfillment-tile__main"
+      class="cdr-surface-selection__loading"
     >
+      
       <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
       >
-        <!-- @slot Where all default content should be placed. -->
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
         
         <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          
-        </div>
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          <!-- @slot Where all default content should be placed. -->
-          
-          <!-- @slot Footer content will be at the bottom of the component. -->
-          
-          Footer slot
-          
-          
-          
-        </div>
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
         
       </div>
-      <div
-        class="cdr-fulfillment-tile__loading"
-      >
-        <!-- @slot Custom content when component is loading. -->
-        
-        <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
-        
-      </div>
+      
     </div>
-    
   </div>
-</button>
+  
+</div>
 `;
 
-exports[`CdrFulfillmentTile > shows body 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  role="radio"
-  type="button"
+exports[`CdrFulfillmentTile > applies multiple states 1`] = `
+<div
+  aria-checked="true"
+  aria-disabled="true"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="true"
+  role="checkbox"
 >
+  
   <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
+    class="cdr-surface-selection__inner"
   >
-    <!-- @slot Where all default content should be placed. -->
-    
     <div
-      class="cdr-fulfillment-tile-header"
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
     >
-      <!--v-if-->
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
       >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Label slot
-        
-        
-        
-      </span>
-      <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      
+      
     </div>
     <div
-      class="cdr-fulfillment-tile__main"
+      class="cdr-surface-selection__loading"
     >
+      
       <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
       >
-        <!-- @slot Where all default content should be placed. -->
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
         
         <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTile > base classes only 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
+      >
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTile > default snapshot 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
+      >
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTile > renders body slot 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
+      >
+        <!--v-if-->
+        <div
+          class="cdr-fulfillment-tile__main"
         >
-          
-          <!-- @slot Where all default content should be placed. -->
-          
-          <!-- @slot Default font size is a step down. Placed just below the header. -->
-          
-          Body slot
-          
-          
-          
+          <div
+            class="cdr-body"
+            style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+          >
+            
+            <!-- @slot Default font size is a step down. Placed just below the header. -->
+            
+            Body Content
+            
+            
+          </div>
+          <!--v-if-->
+        </div>
+      </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTile > renders footer slot 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
+      >
+        <!--v-if-->
+        <div
+          class="cdr-fulfillment-tile__main"
+        >
+          <!--v-if-->
+          <div
+            class="cdr-body"
+            style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+          >
+            
+            <!-- @slot Footer content will be at the bottom of the component. -->
+            
+            Footer Content
+            
+            
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
+      >
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
+        
+        <div
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`CdrFulfillmentTile > renders header slot 1`] = `
+<div
+  aria-checked="false"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
+>
+  
+  <div
+    class="cdr-surface-selection__inner"
+  >
+    <div
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
+    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
+      <div
+        class="cdr-fulfillment-tile__content"
+      >
+        <div
+          class="cdr-fulfillment-tile__header"
+        >
+          <!--v-if-->
+          <div>
+            <span
+              class="cdr-subheading-sans"
+              strong="true"
+              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+            >
+              
+              <!-- @slot Header content that is still visible during loading. -->
+              
+              Header Content
+              
+              
+            </span>
+          </div>
+          <!--v-if-->
         </div>
         <!--v-if-->
-        
       </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
       <div
-        class="cdr-fulfillment-tile__loading"
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
       >
-        <!-- @slot Custom content when component is loading. -->
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
         
         <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
         
       </div>
+      
     </div>
-    
   </div>
-</button>
+  
+</div>
 `;
 
-exports[`CdrFulfillmentTile > shows footer 1`] = `
-<button
+exports[`CdrFulfillmentTile > renders icon-left slot 1`] = `
+<div
   aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  role="radio"
-  type="button"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
 >
+  
   <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
+    class="cdr-surface-selection__inner"
   >
-    <!-- @slot Where all default content should be placed. -->
-    
     <div
-      class="cdr-fulfillment-tile-header"
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
     >
-      <!--v-if-->
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
-      >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Label slot
-        
-        
-        
-      </span>
-      <!--v-if-->
-    </div>
-    <div
-      class="cdr-fulfillment-tile__main"
-    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
       <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
+        class="cdr-fulfillment-tile__content"
       >
-        <!-- @slot Where all default content should be placed. -->
-        
         <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+          class="cdr-fulfillment-tile__header"
         >
-          
-          
-        </div>
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          <!-- @slot Where all default content should be placed. -->
-          
-          <!-- @slot Footer content will be at the bottom of the component. -->
-          
-          Footer slot
-          
-          
-          
-        </div>
-        
-      </div>
-      <div
-        class="cdr-fulfillment-tile__loading"
-      >
-        <!-- @slot Custom content when component is loading. -->
-        
-        <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
-        
-      </div>
-    </div>
-    
-  </div>
-</button>
-`;
-
-exports[`CdrFulfillmentTile > shows header 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  role="radio"
-  type="button"
->
-  <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
-  >
-    <!-- @slot Where all default content should be placed. -->
-    
-    <div
-      class="cdr-fulfillment-tile-header"
-    >
-      <!--v-if-->
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
-      >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Label slot
-        
-        
-        
-      </span>
-      <!--v-if-->
-    </div>
-    <div
-      class="cdr-fulfillment-tile__main"
-    >
-      <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
-      >
-        <!-- @slot Where all default content should be placed. -->
-        
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          
+          <span
+            class="cdr-fulfillment-tile-header__icon"
+          >
+            <!-- @slot Icon to display on the left of the header. -->
+            
+            <span
+              data-testid="left-icon"
+            >
+              Icon
+            </span>
+            
+          </span>
+          <div>
+            <span
+              class="cdr-subheading-sans"
+              strong="true"
+              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+            >
+              
+              <!-- @slot Header content that is still visible during loading. -->
+              
+              Header Content
+              
+              
+            </span>
+          </div>
+          <!--v-if-->
         </div>
         <!--v-if-->
-        
       </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
       <div
-        class="cdr-fulfillment-tile__loading"
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
       >
-        <!-- @slot Custom content when component is loading. -->
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
         
         <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
         
       </div>
+      
     </div>
-    
   </div>
-</button>
+  
+</div>
 `;
 
-exports[`CdrFulfillmentTile > snapshot test > renders correctly 1`] = `
-<button
+exports[`CdrFulfillmentTile > renders icon-right slot 1`] = `
+<div
   aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  role="radio"
-  type="button"
+  aria-disabled="false"
+  class="cdr-surface cdr-surface-selection cdr-fulfillment-tile"
+  data-border-radius="soft"
+  data-loading="false"
+  role="checkbox"
 >
+  
   <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
+    class="cdr-surface-selection__inner"
   >
-    <!-- @slot Where all default content should be placed. -->
-    
     <div
-      class="cdr-fulfillment-tile-header"
+      class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-column cdr-surface-selection__layout"
+      style="--cdr-layout-flow-value: auto;"
     >
-      <!--v-if-->
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
-      >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Header
-        
-        
-        
-      </span>
-      <!--v-if-->
-    </div>
-    <div
-      class="cdr-fulfillment-tile__main"
-    >
+      <!-- @slot Where all default content should be placed. -->
+      
+      
       <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
+        class="cdr-fulfillment-tile__content"
       >
-        <!-- @slot Where all default content should be placed. -->
-        
         <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
+          class="cdr-fulfillment-tile__header"
         >
-          
-          
+          <!--v-if-->
+          <div>
+            <span
+              class="cdr-subheading-sans"
+              strong="true"
+              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
+            >
+              
+              <!-- @slot Header content that is still visible during loading. -->
+              
+              Header Content
+              
+              
+            </span>
+          </div>
+          <span
+            class="cdr-fulfillment-tile-header__icon"
+          >
+            <!-- @slot Icon to display on the right of the header. -->
+            
+            <span
+              data-testid="right-icon"
+            >
+              Icon
+            </span>
+            
+          </span>
         </div>
         <!--v-if-->
-        
       </div>
+      
+      
+    </div>
+    <div
+      class="cdr-surface-selection__loading"
+    >
+      
       <div
-        class="cdr-fulfillment-tile__loading"
+        aria-busy="true"
+        aria-live="polite"
+        class="cdr-skeleton"
       >
-        <!-- @slot Custom content when component is loading. -->
+        <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
         
         <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
+          class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
+        />
         
       </div>
+      
     </div>
-    
   </div>
-</button>
-`;
-
-exports[`CdrFulfillmentTile > supports  icon right configuration 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  role="radio"
-  type="button"
->
-  <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
-  >
-    <!-- @slot Where all default content should be placed. -->
-    
-    <div
-      class="cdr-fulfillment-tile-header"
-    >
-      <!--v-if-->
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
-      >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Label slot
-        
-        
-        
-      </span>
-      <span
-        class="cdr-fulfillment-tile-header__icon"
-      >
-        <!-- @slot Place an icon to the right of the header content -->
-        
-        <!-- @slot Place an icon to the right of the header content -->
-        
-        X
-        
-        
-      </span>
-    </div>
-    <div
-      class="cdr-fulfillment-tile__main"
-    >
-      <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
-      >
-        <!-- @slot Where all default content should be placed. -->
-        
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          <!-- @slot Where all default content should be placed. -->
-          
-          <!-- @slot Default font size is a step down. Placed just below the header. -->
-          
-          Body slot
-          
-          
-          
-        </div>
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          <!-- @slot Where all default content should be placed. -->
-          
-          <!-- @slot Footer content will be at the bottom of the component. -->
-          
-          Footer slot
-          
-          
-          
-        </div>
-        
-      </div>
-      <div
-        class="cdr-fulfillment-tile__loading"
-      >
-        <!-- @slot Custom content when component is loading. -->
-        
-        <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
-        
-      </div>
-    </div>
-    
-  </div>
-</button>
-`;
-
-exports[`CdrFulfillmentTile > supports icon left configuration 1`] = `
-<button
-  aria-checked="false"
-  class="cdr-fulfillment-tile cdr-fulfillment-tile--modifier-default"
-  role="radio"
-  type="button"
->
-  <div
-    class="cdr-layout cdr-layout--rows cdr-fulfillment-tile__inner"
-    style="--cdr-layout-rows: auto 1fr;"
-  >
-    <!-- @slot Where all default content should be placed. -->
-    
-    <div
-      class="cdr-fulfillment-tile-header"
-    >
-      <span
-        class="cdr-fulfillment-tile-header__icon"
-      >
-        <!-- @slot Place an icon to the left of the header content -->
-        
-        <!-- @slot Place an icon to the left of the header content -->
-        
-        X
-        
-        
-      </span>
-      <span
-        class="cdr-subheading-sans cdr-fulfillment-tile-header__label"
-        strong="true"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-subheading-sans-line-height-ratio));"
-      >
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        <!-- @slot Header content that is still visible during loading. -->
-        
-        Label slot
-        
-        
-        
-      </span>
-      <!--v-if-->
-    </div>
-    <div
-      class="cdr-fulfillment-tile__main"
-    >
-      <div
-        class="cdr-layout cdr-layout--gap-three-eighth-x cdr-layout--flow-row cdr-layout--rows cdr-fulfillment-tile__layout"
-        style="--cdr-layout-flow-value: auto; --cdr-layout-rows: 1fr;"
-      >
-        <!-- @slot Where all default content should be placed. -->
-        
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--2); --cdr-body-line-height: calc(var(--cdr-type-scale--2) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          <!-- @slot Where all default content should be placed. -->
-          
-          <!-- @slot Default font size is a step down. Placed just below the header. -->
-          
-          Body slot
-          
-          
-          
-        </div>
-        <div
-          class="cdr-body cdr-fulfillment-tile-content"
-          style="--cdr-body-font-size: var(--cdr-type-scale--1); --cdr-body-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-body-line-height-ratio)); --cdr-body-font-weight: 400;"
-        >
-          
-          <!-- @slot Where all default content should be placed. -->
-          
-          <!-- @slot Footer content will be at the bottom of the component. -->
-          
-          Footer slot
-          
-          
-          
-        </div>
-        
-      </div>
-      <div
-        class="cdr-fulfillment-tile__loading"
-      >
-        <!-- @slot Custom content when component is loading. -->
-        
-        <div
-          aria-busy="true"
-          aria-live="polite"
-          class="cdr-skeleton"
-        >
-          <!-- @slot CdrSkeleton content (CdrSkeletonBone components) -->
-          
-          <div
-            class="cdr-skeleton-bone cdr-skeleton-bone--line cdr-skeleton-bone__shimmer"
-          />
-          
-        </div>
-        
-      </div>
-    </div>
-    
-  </div>
-</button>
+  
+</div>
 `;
