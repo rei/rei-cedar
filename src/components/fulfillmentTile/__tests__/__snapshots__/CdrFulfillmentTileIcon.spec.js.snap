@@ -1,23 +1,74 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CdrFulfillmentTileIcon > has defaults 1`] = `
+exports[`CdrFulfillmentTileIcon > applies error type class 1`] = `
 <span
-  class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--default"
+  class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--error"
 >
   <!-- @slot Where all default content should be placed. -->
   
-  X
   
 </span>
 `;
 
-exports[`CdrFulfillmentTileIcon > has success type 1`] = `
+exports[`CdrFulfillmentTileIcon > applies info type class 1`] = `
+<span
+  class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--info"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</span>
+`;
+
+exports[`CdrFulfillmentTileIcon > applies success type class 1`] = `
 <span
   class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--success"
 >
   <!-- @slot Where all default content should be placed. -->
   
-  X
+  
+</span>
+`;
+
+exports[`CdrFulfillmentTileIcon > applies warning type class 1`] = `
+<span
+  class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--warning"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</span>
+`;
+
+exports[`CdrFulfillmentTileIcon > default snapshot 1`] = `
+<span
+  class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--default"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</span>
+`;
+
+exports[`CdrFulfillmentTileIcon > has default type class 1`] = `
+<span
+  class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--default"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  
+</span>
+`;
+
+exports[`CdrFulfillmentTileIcon > renders default slot content 1`] = `
+<span
+  class="cdr-fulfillment-tile-icon cdr-fulfillment-tile-icon--default"
+>
+  <!-- @slot Where all default content should be placed. -->
+  
+  <svg
+    data-testid="icon-svg"
+  />
   
 </span>
 `;

@@ -2,12 +2,12 @@ import type { Component } from 'vue';
 import type {
   Tag,
   Space,
+  SpaceFixed,
   SpaceOption,
   Shadow,
   Radius,
   BorderColor,
   BorderStyle,
-  Modifier,
   Background,
   ScaleValue,
   StatusType,
@@ -226,6 +226,16 @@ export interface Layout extends NameValuePair {
   as?: Component | string;
 }
 
+interface StateConfig<PropertyValue> {
+  rest: PropertyValue;
+  hover?: PropertyValue;
+  active?: PropertyValue;
+  checked?: PropertyValue;
+  loading?: PropertyValue;
+  disabled?: PropertyValue;
+  visited?: PropertyValue;
+}
+
 /**
  * surface contains the props used to create a surface
  * @interface surface
@@ -233,94 +243,61 @@ export interface Layout extends NameValuePair {
 export interface surface {
   /**
    * Adds in a background color based on the current palette's tokens.
-   * @demoSelectMultiple false
-   * @values primary, secondary, brand-spruce, sale
    */
-  background?: Background;
+  background?: Background | StateConfig<Background>;
   /**
    * Specifies a border color based on the token options within Cedar.
-   * @demoSelectMultiple false
-   * @values primary, secondary, success, warning, error, info
    */
-  borderColor?: BorderColor;
+  borderColor?: BorderColor | StateConfig<BorderColor>;
   /**
    * Specifies a border style based on the token options within Cedar.
-   * @values dotted, dashed, solid
    */
-  borderStyle?: BorderStyle;
+  borderStyle?: BorderStyle | StateConfig<BorderStyle>;
   /**
    * Specifies a border width based on the token options within Cedar.
-   * @values zero, sixteenth-x, eighth-x, three-sixteenth-x, quarter-x
    */
-  borderWidth?: Space;
-  /**
-   * Determines which set of styles to apply to the component.
-   * @values default
-   */
-  modifier?: Modifier;
+  borderWidth?: SpaceFixed | StateConfig<SpaceFixed>;
   /**
    * Adds in a border radius based on the token options within Cedar.
-   * @demoSelectMultiple false
-   * @values sharp, soft, softer, softest, round
    */
-  radius?: Radius;
+  borderRadius?: Radius | StateConfig<Radius>;
   /**
    * Adds a shadow based on the token options within Cedar.
-   * @demoSelectMultiple false
-   * @values flat, raised, elevated, floating, lifted
    */
-  shadow?: Shadow;
+  boxShadow?: Shadow | StateConfig<Shadow>;
   /**
    * Determines which HTML tag to use.
    */
   tag?: Tag;
   /**
-   * Adds in a border. Comes with a default color, width, and style.
-   */
-  withBorder?: boolean;
-  /**
    * Defines a palette for the component's style variations.
-   * @values default, sandstone, membership-subtle, membership-vibrant
    */
   palette?: 'default' | 'sandstone' | 'membership-subtle' | 'membership-vibrant';
 }
 
-export interface surfaceSelection {
+export interface surfaceSelection extends surface {
   /**
-   * Determines if the button is in a checked state. Adds an `aria-checked` attribute to the button.
-   * @skip true
+   * Determines if the surface is in a checked state. Adds an `aria-checked` attribute.
    */
   checked?: boolean;
+
   /**
-   * Determines if the button is in a disabled state.
-   * @skip true
+   * Determines if the surface is in a disabled state.
    */
   disabled?: boolean;
+
   /**
-   * Determines if the button is in a loading state. Adds a `data-loading` attribute to the button. Using CSS, this will hide the default slot and show the loading slot.
-   * @skip true
+   * Determines if the surface is in a loading state.
    */
   loading?: boolean;
+
   /**
-   * Determines which set of styles to apply to the component.
-   * @values default
-   */
-  modifier?: Modifier;
-  /**
-   * Determines the role of the button. Typically, this will either be `radio` or `checkbox`.
+   * Determines the ARIA role of the surface. Typically 'radio' or 'checkbox'.
    */
   role?: string;
+
   /**
-   * Adds a shadow based on the token options within Cedar.
-   * @values flat, raised, elevated, floating, lifted
-   */
-  shadow?: Shadow;
-  /**
-   * Determines which HTML tag to use.
-   */
-  tag?: Tag;
-  /**
-   * Layout props that will be merged with a set of defaults.
+   * Layout props that will be merged with selection defaults.
    */
   layout?: Layout;
 }
