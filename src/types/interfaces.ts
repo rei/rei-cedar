@@ -2,7 +2,6 @@ import type { Component } from 'vue';
 import type {
   Tag,
   Space,
-  SpaceOption,
   Shadow,
   Radius,
   BorderColor,
@@ -385,9 +384,9 @@ export interface MediaObject extends Layout {
   /**
    * The spacing token to use for padding around the content. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
    * @demoSelectMultiple false
-   * @values zero, one-x, two-x, scale-4, scale-3--5
+   * @values zero, one-x, two-x
    */
-  contentPadding?: SpaceOption;
+  contentPadding?: SpaceFixed;
 }
 
 export type ObjectPosition =
