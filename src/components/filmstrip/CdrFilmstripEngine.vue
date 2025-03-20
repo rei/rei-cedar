@@ -89,6 +89,10 @@ import { computed, onMounted, onUnmounted, ref, useCssModule } from 'vue';
 const classObj = useCssModule();
 const BASE_CLASS = 'cdr-filmstrip';
 
+/**
+ * Responsive filmstrip component providing smooth, accessible scrolling through frames.
+ * @uses CdrButton, CdrIcon
+ */
 defineOptions({ name: 'CdrFilmstripEngine' });
 
 const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
@@ -110,20 +114,38 @@ const emit = defineEmits<{
   (e: 'ariaMessage', message: string): void;
 }>();
 
-const ariaMessage = ref(''); // Live region message for screen readers
-const containerRef = ref<HTMLElement | null>(null); // filmstrip container
-const framesRef = ref<typeof ScrollAreaViewport | null>(null); // Scrollable viewport
-const framesItemsRef = ref<Array<HTMLElement> | null>(null); // List of frame elements
+// Live region message for screen readers
+const ariaMessage = ref('');
 
-const containerWidth = ref(0); // Width of the filmstrip container
-const currentIndex = ref(0); // Current visible frame index
-const focusIndex = ref(0); // Currently focused frame index
-const hasScrolled = ref(false); // Tracks if the filmstrip has been scrolled
-const isContainerHovered = useElementHover(containerRef); // Hover state for the container
+// Filmstrip container reference element
+const containerRef = ref<HTMLElement | null>(null);
+
+// Scrollable viewport reference
+const framesRef = ref<typeof ScrollAreaViewport | null>(null);
+
+// List of frame elements (each frame rendered as an <li>)
+const framesItemsRef = ref<Array<HTMLElement> | null>(null);
+
+// Width of the filmstrip container in pixels
+const containerWidth = ref(0);
+
+// Current visible frame index in the filmstrip
+const currentIndex = ref(0);
+
+// Currently focused frame index for keyboard navigation
+const focusIndex = ref(0);
+
+// Tracks if the filmstrip has been scrolled at least once
+const hasScrolled = ref(false);
+
+// Reactive state to determine if the container is hovered
+const isContainerHovered = useElementHover(containerRef);
 
 /**
- * Calculates the width of each frame based on the container size, gap, and extra width.
- * This is used for determining how much space each frame occupies in the viewport.
+ * Calculates the width of each frame based on the container's width,
+ * the gap between frames, and any extra width defined.
+ *
+ * @returns {number} The computed width for a single frame in pixels.
  */
 const frameWidth = computed(() => {
   const totalGaps = props.framesToShow * props.framesGap;
@@ -132,7 +154,11 @@ const frameWidth = computed(() => {
 });
 
 /**
- * Generates the CSS variables for the scrollable viewport.
+ * Generates an object of CSS variables that can be applied to the filmstrip.
+ * These variables control the gap between frames, the width of each frame,
+ * and any additional width to be added.
+ *
+ * @returns {Record<string, number|string>} An object mapping CSS variable names to values.
  */
 const computedCSSVars = computed(() => ({
   '--frames-gap': props.framesGap,
@@ -141,8 +167,11 @@ const computedCSSVars = computed(() => ({
 }));
 
 /**
- * Generates the properties and states for navigation arrows.
- * Calculates whether the left or right arrow should be enabled or disabled based on the current frame index.
+ * Generates properties and state information for navigation arrows (left/right).
+ * Determines whether each arrow should be enabled based on the current frame index.
+ *
+ * @returns {CdrFilmstripArrow[]} Array of arrow configuration objects containing
+ * direction, icon, and accessibility attributes.
  */
 const arrows = computed(() => {
   const isAtLeftBoundary = currentIndex.value === 0;
@@ -172,21 +201,23 @@ const arrows = computed(() => {
 });
 
 /**
- * Calculates the scroll position for a given frame index.
- * @param index - Index of the frame to scroll to
- * @returns The calculated scroll position in pixels
+ * Calculates the horizontal scroll position (in pixels) for a given frame index.
+ *
+ * @param {number} index - The target frame index to scroll to.
+ * @returns {number} The calculated scroll position in pixels.
  */
-const calculateScrollPosition = (index: number) => {
+const calculateScrollPosition = (index: number): number => {
   const framesOffset = frameWidth.value * index;
   const gapsOffset = props.framesGap * index;
   return framesOffset + gapsOffset;
 };
 
 /**
- * Smoothly scrolls to the specified frame index.
- * @param newIndex - The target frame index
+ * Smoothly scrolls the viewport to display the frame at the specified index.
+ *
+ * @param {number} newIndex - The target frame index to scroll into view.
  */
-const scrollToIndex = (newIndex: number) => {
+const scrollToIndex = (newIndex: number): void => {
   const newLeft = calculateScrollPosition(newIndex);
   const currentLeft = framesRef.value?.viewportElement.scrollLeft ?? 0;
   framesRef.value?.viewportElement.scrollBy({
@@ -196,11 +227,14 @@ const scrollToIndex = (newIndex: number) => {
 };
 
 /**
- * Handles navigation arrow clicks and updates the current index.
- * Emits an event when the arrow is clicked.
- * @param direction - Direction of the arrow ("left" or "right")
+ * Handles clicks on the navigation arrows. It calculates the new frame index
+ * based on the direction clicked, updates the current index, scrolls the viewport,
+ * and emits an 'arrowClick' event with the relevant payload.
+ *
+ * @param {Event} event - The click event triggered by the arrow.
+ * @param {'left' | 'right'} direction - The direction of the arrow clicked.
  */
-const onArrowClick = (event: Event, direction: 'left' | 'right') => {
+const onArrowClick = (event: Event, direction: 'left' | 'right'): void => {
   const arrowClickPayload: CdrFilmstripArrowClickPayload = { event, direction };
   emit('arrowClick', arrowClickPayload);
   const delta = direction === 'left' ? -props.framesToScroll : props.framesToScroll;
@@ -211,16 +245,17 @@ const onArrowClick = (event: Event, direction: 'left' | 'right') => {
 };
 
 /**
- * Announces the visible frames for screen readers. The message is debounced to avoid excessive announcements.
+ * Announces the currently visible frames for accessibility purposes.
+ * This debounced function generates a message that indicates which frames are
+ * visible and emits an 'ariaMessage' event to update screen reader users.
+ *
+ * @returns {void}
  */
-const announceFrames = useDebounceFn(() => {
+const announceFrames = useDebounceFn((): void => {
   const totalFrames = props.frames.length;
-
-  // Ensure `currentIndex` is within bounds
   const start = Math.max(1, currentIndex.value + 1);
   const end = Math.min(totalFrames, start + props.framesToShow - 1);
 
-  // Generate message based on framesToShow
   ariaMessage.value =
     props.framesToShow === 1
       ? `Now showing frame ${start} of ${totalFrames}`
@@ -230,10 +265,14 @@ const announceFrames = useDebounceFn(() => {
 }, 300);
 
 /**
- * Provides initial accessibility announcement when focus enters the filmstrip.
- * @param e - The focus event
+ * Handles the focusin event on the filmstrip container.
+ * When focus enters the filmstrip (and not from within an already focused child),
+ * this function emits an initial accessibility message indicating the visible frames
+ * and instructs the user on navigation.
+ *
+ * @param {FocusEvent} e - The focus event object.
  */
-const handleFocusIn = (e: FocusEvent) => {
+const handleFocusIn = (e: FocusEvent): void => {
   const currentTarget = e.currentTarget as HTMLElement;
 
   if (
@@ -259,10 +298,13 @@ const handleFocusIn = (e: FocusEvent) => {
 };
 
 /**
- * Debounced scroll handler that updates the current index based on the scroll position.
- * @param e - The scroll event
+ * Debounced scroll handler that updates the current frame index based on the viewport's scroll position.
+ * It determines the nearest frame index to the current scroll position, updates the internal state,
+ * and triggers an accessibility announcement if the index has changed.
+ *
+ * @param {Event} e - The scroll event object from the viewport.
  */
-const debouncedHandleScroll = useDebounceFn((e: Event) => {
+const debouncedHandleScroll = useDebounceFn((e: Event): void => {
   const scrollLeft = (e.target as HTMLElement).scrollLeft;
   const positions = props.frames.map((_, index) => calculateScrollPosition(index));
   const closestIndex = positions.findIndex(
@@ -280,18 +322,20 @@ const debouncedHandleScroll = useDebounceFn((e: Event) => {
 }, 100);
 
 onMounted(() => {
+  // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
   useEventListener(framesRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
 
-  // Initialize resize observer
+  // Initialize a resize observer to update the container width dynamically.
   const { stop } = useResizeObserver(containerRef, (entries) => {
     entries.forEach((entry) => {
       containerWidth.value = entry.contentRect.width;
     });
   });
   onUnmounted(() => {
-    stop(); // Clean up the observer when the component is unmounted
+    // Clean up the resize observer when the component is unmounted.
+    stop();
   });
-  // Initial container width
+  // Set the initial container width.
   containerWidth.value = containerRef.value?.offsetWidth ?? 0;
 });
 </script>
