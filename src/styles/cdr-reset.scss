@@ -37,14 +37,8 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   margin: 0;
-
-  /* cdr-color-text-primary */
-
-  color: var(--cdr-color-text-primary), rgba(12, 11, 8, 0.75);
-
-  /* cdr-color-background-primary */
-
-  background-color: #ffffff;
+  color: var(--cdr-text-color, #{$cdr-color-text-primary, #4b4a48});
+  background-color: ar(--cdr-background-color, #{$cdr-color-background-primary, #ffffff});
 }
 
 h1,
