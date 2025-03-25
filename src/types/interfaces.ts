@@ -277,16 +277,19 @@ export interface surface {
 export interface surfaceSelection extends surface {
   /**
    * Determines if the surface is in a checked state. Adds an `aria-checked` attribute.
+   * @demoIgnore
    */
   checked?: boolean;
 
   /**
    * Determines if the surface is in a disabled state.
+   * @demoIgnore
    */
   disabled?: boolean;
 
   /**
    * Determines if the surface is in a loading state.
+   * @demoIgnore
    */
   loading?: boolean;
 
@@ -399,7 +402,10 @@ export type ResponsiveSpace = {
 };
 
 export interface ObjectOverlayProps {
-  /** Determines if the container will have a gradient based on position */
+  /**
+   * Determines if the container will have a gradient based on position
+   * @demoIgnore
+   */
   withGradient?: boolean;
   /** Theme for the gradient (dark or light) */
   gradientTheme?: 'dark' | 'light';
