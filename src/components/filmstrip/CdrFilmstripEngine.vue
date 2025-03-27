@@ -9,24 +9,36 @@
   >
     <ScrollAreaRoot
       type="auto"
-      :class="mapClasses(classObj, `${BASE_CLASS}__root`)"
+      :class="[
+        mapClasses(classObj, `${BASE_CLASS}__root`),
+        classAttr ? `${classAttr}__root` : null,
+      ]"
     >
       <ScrollAreaViewport
         ref="framesRef"
-        :class="mapClasses(classObj, `${BASE_CLASS}__viewport`)"
+        :class="[
+          mapClasses(classObj, `${BASE_CLASS}__viewport`),
+          classAttr ? `${classAttr}__viewport` : null,
+        ]"
         :aria-label="description || `${frames.length} items`"
         :tabindex="viewportTabindex"
       >
         <ul
           :id="`${id}-frames`"
-          :class="mapClasses(classObj, `${BASE_CLASS}__frames`)"
+          :class="[
+            mapClasses(classObj, `${BASE_CLASS}__frames`),
+            classAttr && `${classAttr}__frames`,
+          ]"
           :data-ui="`${BASE_CLASS}__frames`"
         >
           <li
             v-for="(frame, index) in frames"
             :key="frame.key"
             ref="framesItemsRef"
-            :class="mapClasses(classObj, `${BASE_CLASS}__frame`)"
+            :class="[
+              mapClasses(classObj, `${BASE_CLASS}__frame`),
+              classAttr ? `${classAttr}__frame` : null,
+            ]"
           >
             <slot
               name="frame"
@@ -38,10 +50,19 @@
         </ul>
       </ScrollAreaViewport>
       <ScrollAreaScrollbar
-        :class="mapClasses(classObj, `${BASE_CLASS}__bar`, `${BASE_CLASS}__bar--horizontal`)"
+        :class="[
+          mapClasses(classObj, `${BASE_CLASS}__bar`, `${BASE_CLASS}__bar--horizontal`),
+          classAttr ? `${classAttr}__bar` : null,
+          classAttr ? `${classAttr}__bar--horizontal` : null,
+        ]"
         orientation="horizontal"
       >
-        <ScrollAreaThumb :class="mapClasses(classObj, `${BASE_CLASS}__thumb`)" />
+        <ScrollAreaThumb
+          :class="[
+            mapClasses(classObj, `${BASE_CLASS}__thumb`),
+            classAttr ? `${classAttr}__thumb` : null,
+          ]"
+        />
       </ScrollAreaScrollbar>
     </ScrollAreaRoot>
     <template v-for="{ direction, attributes, icon } in arrows">
@@ -84,7 +105,7 @@ import type {
   CdrFilmstripEngine,
   CdrFilmstripArrow,
 } from './interfaces';
-import { computed, onMounted, onUnmounted, ref, useCssModule } from 'vue';
+import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
 
 const classObj = useCssModule();
 const BASE_CLASS = 'cdr-filmstrip';
@@ -108,6 +129,16 @@ const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
   focusSelector: ':first-child',
   viewportTabindex: '-1',
 });
+
+/**
+ * Retrieves the component's attributes.
+ */
+const attrs = useAttrs();
+
+/**
+ * Extracts the class attribute from the component's attributes.
+ */
+const classAttr = attrs.class || '';
 
 const emit = defineEmits<{
   (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
@@ -184,12 +215,19 @@ const arrows = computed(() => {
       icon: direction === 'left' ? IconCaretLeft : IconCaretRight,
       attributes: {
         'data-ui': `${BASE_CLASS}__arrow--${direction}`,
-        class: mapClasses(
-          classObj,
-          `${BASE_CLASS}__arrow`,
-          `${BASE_CLASS}__arrow--${direction}`,
-          isEnabled ? '' : `${BASE_CLASS}__arrow--disabled`,
-        ),
+        class: [
+          mapClasses(
+            classObj,
+            `${BASE_CLASS}__arrow`,
+            `${BASE_CLASS}__arrow--${direction}`,
+            isEnabled ? '' : `${BASE_CLASS}__arrow--disabled`,
+          ),
+          classAttr ? `${classAttr}__arrow` : null,
+          classAttr ? `${classAttr}__arrow--${direction}` : null,
+          isEnabled ? '' : classAttr && `${BASE_CLASS}__arrow--disabled`,
+        ]
+          .filter(Boolean)
+          .join(' '),
         'aria-label': `${direction === 'right' ? 'Next' : 'Previous'} Frame`,
         'aria-controls': `${props.id}-frames`,
         tabindex: 0,
