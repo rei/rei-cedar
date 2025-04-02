@@ -9,6 +9,7 @@ import checkbox from 'componentsdir/checkbox/examples/checkboxes.vue';
 import chip from 'componentsdir/chip/examples/Chip.vue';
 import choreographer from 'componentsdir/choreographer/examples/Choreographer.vue';
 import container from 'componentsdir/container/examples/Container.vue';
+import filmstrip from 'componentsdir/filmstrip/examples/Filmstrip.vue';
 import formGroup from 'componentsdir/formGroup/examples/FormGroup.vue';
 import fulfillmentTile from 'componentsdir/fulfillmentTile/examples/FulfillmentTile.vue';
 import grid from 'componentsdir/grid/examples/Grid.vue';
@@ -45,7 +46,6 @@ import toggleButton from 'componentsdir/toggleButton/examples/ToggleButton.vue';
 import cdrSwitch from 'componentsdir/switch/examples/Switch.vue'; // Can't name it switch because it's a JS keyword
 import tooltip from 'componentsdir/tooltip/examples/Tooltip.vue';
 import utility from '../styles/settings/examples/utility.vue';
-import filmstrip from 'componentsdir/filmstrip/examples/Filmstrip.vue';
 
 export default {
   abstract,
@@ -59,6 +59,7 @@ export default {
   chip,
   choreographer,
   container,
+  filmstrip,
   fulfillmentTile,
   formGroup,
   grid,
@@ -95,5 +96,4 @@ export default {
   cdrSwitch,
   tooltip,
   utility,
-  filmstrip,
 };
