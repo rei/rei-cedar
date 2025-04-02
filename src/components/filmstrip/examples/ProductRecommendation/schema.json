@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "price": {
+            "type": "object",
+            "properties": {
+              "base": {
+                "type": "number"
+              },
+              "isRange": {
+                "type": "boolean"
+              },
+              "compare": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              },
+              "min": {
+                "type": "number"
+              }
+            },
+            "required": ["isRange"]
+          },
+          "rating": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "average": {
+                "type": "number"
+              }
+            },
+            "required": ["count", "average"]
+          },
+          "rrClickUrl": {
+            "type": "string"
+          },
+          "analyticsConfig": {
+            "type": "object",
+            "properties": {
+              "linkName": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "products": {
+                "type": "string"
+              },
+              "rrMessage": {
+                "type": "string"
+              },
+              "rrStrategy": {
+                "type": "string"
+              },
+              "rrPlacementName": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "linkName",
+              "location",
+              "products",
+              "rrMessage",
+              "rrStrategy",
+              "rrPlacementName"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "href",
+          "name",
+          "brand",
+          "price",
+          "rating",
+          "rrClickUrl",
+          "analyticsConfig"
+        ]
+      }
+    },
+    "message": {
+      "type": "string"
+    },
+    "strategy": {
+      "type": "string"
+    },
+    "renderTime": {
+      "type": "string"
+    },
+    "pageAreaName": {
+      "type": "string"
+    },
+    "placementName": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "items",
+    "message",
+    "strategy",
+    "renderTime",
+    "pageAreaName",
+    "placementName"
+  ]
+}

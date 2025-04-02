@@ -16,7 +16,7 @@ import type {
   Position,
   Alignment,
   AlignmentValue,
-  MediaMeasurement
+  MediaMeasurement,
 } from './other';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -387,9 +387,9 @@ export type ResponsivePosition = {
 };
 
 export type SpaceTuple =
-  | [SpaceFixed] 
+  | [SpaceFixed]
   | [SpaceFixed, SpaceFixed]
-  | [SpaceFixed, SpaceFixed, SpaceFixed] 
+  | [SpaceFixed, SpaceFixed, SpaceFixed]
   | [SpaceFixed, SpaceFixed, SpaceFixed, SpaceFixed];
 
 export type Spacing = SpaceFixed | SpaceTuple;
@@ -418,3 +418,7 @@ export interface ObjectOverlayProps {
   /** Sets the HTML tag for the container element */
   tag?: string;
 }
+/**
+ * Interface for the `CdrFilmstrip` component.
+ */
+export * from '../components/filmstrip/interfaces';

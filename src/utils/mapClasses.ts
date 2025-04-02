@@ -1,18 +1,29 @@
 /**
- * Maps a list of class names to their corresponding styles.
+ * Maps an array of class names to scoped class names from a given
+ * styles object. Flattens and splits only string values, maps to
+ * scoped class names, removes undefined or falsy values, and joins
+ * to a single string.
  *
- * This function takes a style object and a list of class names, then maps each class name
- * to its corresponding style value from the style object. It filters out any undefined or
- * falsy values and joins the resulting styles into a single string.
+ * @example
+ * mapClasses(styles, 'cdr-button', 'cdr-button--primary') => 'cdr-button cdr-button--primary'
+ * @example
+ * mapClasses(styles, ['cdr-button', 'cdr-button--primary']) => 'cdr-button cdr-button--primary'
+ * @example
+ * mapClasses(styles, 'cdr-button', false, 'cdr-button--primary', null, undefined) => 'cdr-button cdr-button--primary'
+ * @example
+ * mapClasses(styles, 'cdr-button cdr-button--primary') => 'cdr-button cdr-button--primary'
  *
- * @param {object} style - An object where keys are class names and values are style definitions.
- * @param {...string} classes - A list of class names to be mapped to styles.
- * @returns {string} A string of styles corresponding to the provided class names.
+ * @param {Record<string, string>} style - An object of scoped class names.
+ * @param {...(string | boolean | null | undefined)[]} classes - An array of class names to map.
+ * @returns {string} A string of scoped class names.
  */
-export default function mapClasses(style: object, ...classes: string[]) {
+export default function mapClasses(
+  style: Record<string, string>,
+  ...classes: (string | boolean | null | undefined)[]
+): string {
   return classes
-    .reduce((acc: string[], el: string) => acc.concat((el || '').split(' ')), [])
-    .map((className: string) => style[className as keyof object])
-    .filter((x) => x)
-    .join(' ');
+    .flatMap((el) => (typeof el === 'string' ? el.split(' ') : [])) // Flatten and split only string values
+    .map((className) => style[className]) // Map to scoped class names
+    .filter(Boolean) // Remove undefined or falsy values
+    .join(' '); // Join to a single string
 }

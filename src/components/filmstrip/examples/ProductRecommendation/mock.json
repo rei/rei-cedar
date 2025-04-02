@@ -1,0 +1,245 @@
+{
+  "type": "product",
+  "items": [
+    {
+      "id": "151970",
+      "href": "#/product/151970/rei-co-op-ruckpack-28-pack",
+      "name": "Ruckpack 28 Pack",
+      "brand": "REI Co-op",
+      "price": {
+        "base": 99.95,
+        "isRange": false
+      },
+      "rating": {
+        "count": 99,
+        "average": 4.5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=118790&ind=0",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";118790",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "118815",
+      "href": "#/product/118815/rei-co-op-ruckpack-40-pack-mens",
+      "name": "Ruckpack 40 Pack - Men's",
+      "brand": "REI Co-op",
+      "price": {
+        "base": 34.93,
+        "compare": 69.95,
+        "isRange": false
+      },
+      "rating": {
+        "count": 56,
+        "average": 4.5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=118815&ind=1",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";118815",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "895887",
+      "href": "/product/895887/osprey-daylite-plus-daypack",
+      "name": "Daylite Plus Daypack",
+      "brand": "Osprey",
+      "price": {
+        "base": 65,
+        "isRange": false
+      },
+      "rating": {
+        "count": 148,
+        "average": 4
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=895887&ind=2",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";895887",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "117965",
+      "href": "/product/117965/patagonia-atom-pack",
+      "name": "Atom Pack",
+      "brand": "Patagonia",
+      "price": {
+        "max": 79,
+        "min": 38.93,
+        "isRange": true
+      },
+      "rating": {
+        "count": 11,
+        "average": 3.5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=117965&ind=3",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";117965",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "117962",
+      "href": "/product/117962/patagonia-refugio-28l-pack",
+      "name": "Refugio 28L Pack",
+      "brand": "Patagonia",
+      "price": {
+        "max": 89,
+        "min": 61.93,
+        "isRange": true
+      },
+      "rating": {
+        "count": 22,
+        "average": 4.5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=117962&ind=4",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";117962",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "136585",
+      "href": "/product/136585/rei-co-op-trail-25-pack-mens",
+      "name": "Trail 25 Pack - Men's",
+      "brand": "REI Co-op",
+      "price": {
+        "base": 79.95,
+        "isRange": false
+      },
+      "rating": {
+        "count": 24,
+        "average": 5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=136585&ind=5",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";136585",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "118816",
+      "href": "/product/118816/rei-co-op-ruckpack-40-pack-womens",
+      "name": "Ruckpack 40 Pack - Women's",
+      "brand": "REI Co-op",
+      "price": {
+        "base": 139,
+        "isRange": false
+      },
+      "rating": {
+        "count": 42,
+        "average": 4.5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=118816&ind=6",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";118816",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "137741",
+      "href": "/product/137741/rei-co-op-workload-pack-mens",
+      "name": "Workload Pack - Men's",
+      "brand": "REI Co-op",
+      "price": {
+        "base": 89.95,
+        "isRange": false
+      },
+      "rating": {
+        "count": 10,
+        "average": 4.5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=137741&ind=7",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";137741",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "884917",
+      "href": "/product/884917/patagonia-black-hole-25l-daypack",
+      "name": "Black Hole 25L Daypack",
+      "brand": "Patagonia",
+      "price": {
+        "max": 129,
+        "min": 89.93,
+        "isRange": true
+      },
+      "rating": {
+        "count": 53,
+        "average": 4.5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=884917&ind=8",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";884917",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    },
+    {
+      "id": "117961",
+      "href": "/product/117961/patagonia-chacabuco-30l-pack",
+      "name": "Chacabuco 30L Pack",
+      "brand": "Patagonia",
+      "price": {
+        "max": 99,
+        "min": 48.93,
+        "isRange": true
+      },
+      "rating": {
+        "count": 8,
+        "average": 5
+      },
+      "rrClickUrl": "https://integration.richrelevance.com/rrserver/click?a=30280c406d639577&vg=2c3f3f7b-3366-452f-fff1-885a88c97658&pti=1&pa=online_product_test&hpi=12864&rti=1&sgs=&u=89850405580619611201014038328838700075&mvtId=-1&mvtTs=1555371573974&uguid=d9dd0ebd-0584-42a4-6e5c-065a68664698&channelId=WEB&s=898504055806196112010140383288387000752019315&pg=3199&stn=ClickCP&stid=4&p=117961&ind=9",
+      "analyticsConfig": {
+        "linkName": "rr_item_page.online_product_test_People also viewed_loc0",
+        "location": "loc0",
+        "products": ";117961",
+        "rrMessage": "People also viewed",
+        "rrStrategy": "ClickCP",
+        "rrPlacementName": "item_page.online_product_test"
+      }
+    }
+  ],
+  "message": "People also viewed",
+  "strategy": "ClickCP",
+  "renderTime": "1555371574056",
+  "pageAreaName": "online_product_test",
+  "placementName": "item_page.online_product_test"
+}
