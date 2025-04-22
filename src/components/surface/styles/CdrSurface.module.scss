@@ -1,7 +1,7 @@
 @use 'sass:map';
 
 // Property maps
-// TODO: Add ang get these from Cedar Tokens
+// TODO: Get these from Cedar Tokens
 $properties: (
   background: (
     primary: var(--cdr-color-background-primary),
@@ -111,7 +111,7 @@ $css-vars: (
     }
   }
 
-  background: var(--cdr-surface-background);
+  background-color: var(--cdr-surface-background);
   border-radius: var(--cdr-surface-border-radius, var(--border-radius)); // Added fallback for potential naming mismatch
   box-shadow: var(--cdr-surface-box-shadow);
 
@@ -133,11 +133,11 @@ $css-vars: (
   }
 
   transition:
-    background var(--cdr-duration-3-x) var(--cdr-timing-function-ease),
+    background-color var(--cdr-duration-3-x) var(--cdr-timing-function-ease),
     box-shadow var(--cdr-duration-3-x) var(--cdr-timing-function-ease);
 
   &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {
-    background: var(--cdr-surface-background-hover, var(--cdr-surface-background));
+    background-color: var(--cdr-surface-background-hover, var(--cdr-surface-background));
     box-shadow: var(--cdr-surface-box-shadow-hover, var(--cdr-surface-box-shadow));
 
     &::before {
@@ -153,7 +153,7 @@ $css-vars: (
   &[aria-pressed='true']:active,
   &[aria-checked='true']:focus,
   &[aria-checked='true']:active {
-    background: var(--cdr-surface-background-active, var(--cdr-surface-background));
+    background-color: var(--cdr-surface-background-active, var(--cdr-surface-background));
     box-shadow: var(--cdr-surface-box-shadow-active, var(--cdr-surface-box-shadow));
 
     &::before {
@@ -169,7 +169,7 @@ $css-vars: (
   &[aria-disabled='true'],
   &[aria-disabled='true']:hover,
   &[aria-disabled='true']:focus {
-    background: var(--cdr-surface-background-disabled, var(--cdr-surface-background));
+    background-color: var(--cdr-surface-background-disabled, var(--cdr-surface-background));
     box-shadow: var(--cdr-surface-box-shadow-disabled, var(--cdr-surface-box-shadow));
     cursor: not-allowed;
 
@@ -182,7 +182,7 @@ $css-vars: (
 
   &[aria-pressed='true'],
   &[aria-checked='true'] {
-    background: var(--cdr-surface-background-checked, var(--cdr-surface-background));
+    background-color: var(--cdr-surface-background-checked, var(--cdr-surface-background));
     box-shadow: var(--cdr-surface-box-shadow-checked, var(--cdr-surface-box-shadow));
 
     &::before {
@@ -193,7 +193,7 @@ $css-vars: (
   }
 
   &[data-loading='true'] {
-    background: var(--cdr-surface-background-loading, var(--cdr-surface-background));
+    background-color: var(--cdr-surface-background-loading, var(--cdr-surface-background));
     box-shadow: var(--cdr-surface-box-shadow-loading, var(--cdr-surface-box-shadow));
 
     &::before {
