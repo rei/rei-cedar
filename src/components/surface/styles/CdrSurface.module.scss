@@ -60,7 +60,7 @@ $css-vars: (
   border-width: --cdr-surface-border-width,
   border-style: --cdr-surface-border-style,
   border-radius: --border-radius,
-  box-shadow: --cdr-surface-box-shadow,
+  box-shadow: --cdr-surface-box-shadow
 );
 
 .cdr-surface {
@@ -112,8 +112,13 @@ $css-vars: (
   }
 
   background: var(--cdr-surface-background);
-  border-radius: var(--cdr-surface-border-radius);
+  border-radius: var(--cdr-surface-border-radius, var(--border-radius)); // Added fallback for potential naming mismatch
   box-shadow: var(--cdr-surface-box-shadow);
+
+  background-image: var(--cdr-surface-background-image);
+  background-size: var(--cdr-surface-background-size);
+  background-position: var(--cdr-surface-background-position);
+  background-repeat: no-repeat;
 
   &::before {
     border: var(--cdr-surface-border-width) var(--cdr-surface-border-style) var(--cdr-surface-border-color);
