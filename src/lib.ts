@@ -59,6 +59,7 @@ export * from './components/text/presets/textPresets';
 /** Type exports */
 export * from './types/interfaces';
 export * from './types/other';
+export * from './types/symbols';
 
 /** Compile into dist/style folder */
 import './styles/cdr-reset.scss';
