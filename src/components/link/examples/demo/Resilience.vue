@@ -155,6 +155,68 @@
       </li>
     </cdr-list>
 
+    <h3>Variant: Standalone</h3>
+    <cdr-link href="#foo" modifier="standalone">
+      Standalone variant link
+    </cdr-link>
+
+    <h3>Variant: Inherit Color</h3>
+    <div style="color: red;">
+      <cdr-link href="#foo" :inherit-color="true">
+        Inherit color (should be red)
+      </cdr-link>
+    </div>
+
+    <h3>Variant: Inherit Color (custom color context)</h3>
+    <p class="cdr-link-demo-red">
+      This is a paragraph with a
+      <cdr-link href="#foo" modifier="inherit-color">
+        red inherit-color link
+      </cdr-link>
+      inside.
+    </p>
+
+    <h3>Variant: Neutral</h3>
+    <cdr-link href="#foo" modifier="neutral">
+      Neutral variant link (should use primary text color)
+    </cdr-link>
+
+    <h3>Combined: Standalone + Inherit Color</h3>
+    <div style="color: green;">
+      <cdr-link href="#foo" modifier="standalone" inherit-color>
+        Standalone + inherit color (should be green, no underline by default)
+      </cdr-link>
+    </div>
+
+    <h3>Combined: Standalone + Inherit Color (custom color context)</h3>
+    <p class="cdr-link-demo-green">
+      This is a paragraph with a
+      <cdr-link href="#foo" modifier="standalone inherit-color">
+        green standalone + inherit-color link
+      </cdr-link>
+      inside.
+    </p>
+
+    <h3>Combined: Standalone + Neutral</h3>
+    <cdr-link href="#foo" modifier="standalone neutral">
+      Standalone + neutral (should use primary text color, no underline by default)
+    </cdr-link>
+
+    <h3>Edge: Button Tag</h3>
+    <cdr-link tag="button">
+      Rendered as button
+    </cdr-link>
+
+    <h3>Edge: Disabled Button</h3>
+    <cdr-link tag="button" :disabled="true">
+      Disabled button link
+    </cdr-link>
+
+    <h3>Edge: Custom rel and target</h3>
+    <cdr-link href="https://rei.com" target="_blank" rel="noopener">
+      External link with custom rel/target
+    </cdr-link>
+
   </div>
 </template>
 
@@ -182,5 +244,13 @@ export default {
 <style>
 p {
   margin: 1rem 0!important;
+}
+
+.cdr-link-demo-red {
+  color: red;
+}
+
+.cdr-link-demo-green {
+  color: green;
 }
 </style>
