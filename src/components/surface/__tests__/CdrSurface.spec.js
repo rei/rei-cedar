@@ -112,4 +112,40 @@ describe('CdrSurface', () => {
     expect(wrapper.attributes('data-background')).toBe('primary');
     expect(wrapper.element).toMatchSnapshot();
   });
+
+  it('applies background image properties via style attribute', () => {
+    const wrapper = mount(CdrSurface, {
+      props: {
+        backgroundImage: 'path/to/image.jpg',
+        backgroundSize: 'contain',
+        backgroundPosition: 'top left',
+      }
+    });
+    const style = wrapper.attributes('style');
+    expect(style).toContain('--cdr-surface-background-image: url(path/to/image.jpg);');
+    expect(style).toContain('--cdr-surface-background-size: contain;');
+    expect(style).toContain('--cdr-surface-background-position: top left;');
+    expect(wrapper.element).toMatchSnapshot();
+  });
+
+  it('applies background image with default size and position', () => {
+    const wrapper = mount(CdrSurface, {
+      props: {
+        backgroundImage: 'path/to/another.png',
+      }
+    });
+    const style = wrapper.attributes('style');
+    expect(style).toContain('--cdr-surface-background-image: url(path/to/another.png);');
+    expect(style).toContain('--cdr-surface-background-size: cover;'); // Default
+    expect(style).toContain('--cdr-surface-background-position: center;'); // Default
+    expect(wrapper.element).toMatchSnapshot();
+  });
+
+  it('does not apply background image styles if prop is not provided', () => {
+    const wrapper = mount(CdrSurface);
+    const style = wrapper.attributes('style');
+    // Expect style attribute to be undefined or not contain the background image variables
+    expect(style === undefined || !style.includes('--cdr-surface-background-image')).toBe(true);
+    expect(wrapper.element).toMatchSnapshot(); // Should match default snapshot
+  });
 });

@@ -11,7 +11,7 @@ defineOptions({ name: 'Surface' });
 export interface Example {
   label: string;
   title: string;
-  props: surface | HtmlAttributes;
+  props: surface | HtmlAttributes | Record<string, any>;
 }
 
 const boxes: Example[] = [
@@ -78,6 +78,19 @@ const boxes: Example[] = [
       borderColor: 'primary',
     },
   },
+  {
+    label: 'This surface has a background image',
+    title: 'Background Image Example',
+    props: {
+      class: 'example__card example__card--image',
+      backgroundImage: 'https://picsum.photos/600/200',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      style: {
+        padding: '16px'
+      }
+    },
+  },
 ];
 </script>
 
@@ -109,6 +122,26 @@ const boxes: Example[] = [
   &__card {
     display: inline-block;
     padding: $cdr-space-two-x;
+    min-width: 300px;
+
+    &--image {
+      min-height: 150px;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+        border-radius: inherit;
+        pointer-events: none;
+      }
+
+      > * {
+        position: relative;
+        z-index: 1;
+      }
+    }
   }
 
   &__pill {
