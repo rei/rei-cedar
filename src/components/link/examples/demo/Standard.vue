@@ -48,6 +48,47 @@
       REI.com
     </cdr-link>
 
+    <h3>Standalone + Neutral (Combined props)</h3>
+    <cdr-link
+      modifier="standalone neutral"
+      href="#bar"
+      data-backstop="cdr-link--standalone-neutral"
+    >
+      Standalone + Neutral
+    </cdr-link>
+
+    <h3>Standalone + Inherit Color (Combined props)</h3>
+    <div style="color: blue;">
+      <cdr-link
+        modifier="standalone"
+        href="#bar"
+        inherit-color
+        data-backstop="cdr-link--standalone-inherit"
+      >
+        Standalone + Inherit Color (should be blue)
+      </cdr-link>
+    </div>
+
+    <h3>Neutral Only (Prop usage)</h3>
+    <cdr-link
+      modifier="neutral"
+      href="#bar"
+      data-backstop="cdr-link--neutral"
+    >
+      Neutral Only
+    </cdr-link>
+
+    <h3>Inherit Color Only (Prop usage)</h3>
+    <div style="color: orange;">
+      <cdr-link
+        href="#bar"
+        inherit-color
+        data-backstop="cdr-link--inherit"
+      >
+        Inherit Color Only (should be orange)
+      </cdr-link>
+    </div>
+
     <h3>Links, with icon</h3>
 
     <cdr-list>
@@ -153,4 +194,11 @@ export default {
   padding-right: 0;
 }
 
+/* Remove .cdr-link-demo-neutral and .cdr-link--neutral, as variants should be set via props */
+
+/* Example: Inherit color using custom property override for legacy/demo only */
+.cdr-link-demo-inherit {
+  --cdr-link-text-color: inherit;
+  --cdr-link-fill-color: inherit;
+}
 </style>

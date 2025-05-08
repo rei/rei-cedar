@@ -1,62 +1,67 @@
+/**
+ * Base styles for CdrLink.
+ * Uses custom properties for easy theming and overrides.
+ * - Typography/layout: font, size, alignment, etc.
+ * - Color: uses --cdr-link-text-color and --cdr-link-fill-color for theming.
+ * - Decoration: uses --cdr-link-text-decoration for underline/none.
+ */
 @mixin cdr-link-base-mixin() {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  align-items: center;
-  background-color: transparent;
-  border: 0;
-  margin: 0;
+  font-family: var(--cdr-link-font-family, inherit);
+  font-size: var(--cdr-link-font-size, inherit);
+  line-height: var(--cdr-link-line-height, inherit);
+  align-items: var(--cdr-link-align-items, center);
+  background-color: var(--cdr-link-background-color, transparent);
+  border: var(--cdr-link-border, 0);
+  margin: var(--cdr-link-margin, 0);
+  cursor: var(--cdr-link-cursor, pointer);
+  display: var(--cdr-link-display, inline-flex);
+  outline: var(--cdr-link-outline, none);
+  padding: var(--cdr-link-padding, 0);
+  vertical-align: var(--cdr-link-vertical-align, top);
 
-  //ITEM_DOC: Color of the link text
-  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
-
-  //ITEM_DOC: Color of the link fill
-  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest}));
-  cursor: pointer;
-  display: inline-flex;
-  outline: none;
-  padding: 0;
-  text-decoration: underline;
-  vertical-align: top;
+  // Themed color and decoration
+  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest})));
+  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest})));
+  text-decoration: var(--cdr-link-text-decoration, underline);
 
   &:active,
   &:focus {
-    //ITEM_DOC: Color of the link text when active or focused
-    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active, #{$cdr-color-text-link-active}));
+    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active, var(--cdr-color-text-link-active, #{$cdr-color-text-link-active})));
   }
 
   &:hover {
-    //ITEM_DOC: Color of the link text when hovered
-    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover}));
-    text-decoration: none;
+    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover})));
+    text-decoration: var(--cdr-link-text-decoration-hover, none);
   }
 
   &:focus {
-    outline: $default-outline;
+    outline: 2px solid var(--cdr-color-outline, Highlight);
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
   }
 }
 
 @mixin cdr-link-inherit-color-mixin() {
-  fill: inherit;
-  color: inherit;
-
-  &:active,
-  &:hover,
-  &:focus {
-    color: inherit;
-    fill: inherit;
-  }
+  // Inherit text and fill color from parent for the link and its icon content
+  color: inherit !important;
+  fill: inherit !important;
+  --cdr-link-text-color: inherit;
+  --cdr-link-fill-color: inherit ;
+  --cdr-link-text-color-hover: inherit;
+  --cdr-link-active-text-color-active: inherit ;
 }
 
 @mixin cdr-link-standalone-mixin() {
-  text-decoration: none;
+  // Standalone variant styles
+  // Only set text-decoration if not already set by another variant
+  --cdr-link-text-decoration: none;
+  --cdr-link-text-decoration-hover: underline;
+}
 
-  &:hover,
-  &:active,
-  &:focus,
-  &:visited {
-    text-decoration: underline;
-  }
+@mixin cdr-link-neutral-mixin() {
+  // Neutral variant: all states use primary text color
+  // Only set color variables if not already set by another variant
+  --cdr-link-text-color: var(--cdr-color-text-primary, #{$cdr-color-text-primary});
+  --cdr-link-text-color-hover:  var(--cdr-color-text-primary, #{$cdr-color-text-primary});
+  --cdr-link-active-text-color-active: var(--cdr-color-text-primary, #{$cdr-color-text-primary});
 }
