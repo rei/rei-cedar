@@ -322,6 +322,10 @@ export interface fulfillmentTileIcon {
 
 export interface MediaObject extends Layout {
   /**
+   * @ignore
+   */
+  queryType?: QueryType;
+  /**
    * The alignment of the media and content along the x or y axis, depending on the layout. This can be an object with values for each Cedar breakpoint (xs, sm, md, lg).
    * @values start, center, end
    */

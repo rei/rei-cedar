@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<MediaObject>(), {
   overlayRowAlign: 'start',
   overlayColumnAlign: 'start',
   contentPadding: 'zero',
+  queryType: "media",
 });
 
 const style = useCssModule();
