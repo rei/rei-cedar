@@ -9832,6 +9832,7 @@ const nA = /* @__PURE__ */ k({
   name: "CdrMediaObject",
   __name: "CdrMediaObject",
   props: {
+    queryType: { default: "media" },
     align: { default: "start" },
     mediaPosition: { default: "left" },
     mediaWidth: { default: "1fr" },
@@ -9841,7 +9842,6 @@ const nA = /* @__PURE__ */ k({
     overlayRowAlign: { default: "start" },
     overlayColumnAlign: { default: "start" },
     contentPadding: { default: "zero" },
-    queryType: {},
     flow: {},
     flowValue: {},
     columns: {},
