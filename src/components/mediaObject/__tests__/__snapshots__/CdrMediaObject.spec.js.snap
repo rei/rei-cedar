@@ -48,7 +48,7 @@ exports[`CdrMediaObject > snapshot tests > content padding 1`] = `
 
 exports[`CdrMediaObject > snapshot tests > content padding dynamic 1`] = `
 <div
-  class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object cdr-media-object--content-padding-cq"
+  class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object cdr-media-object--content-padding-mq"
   style="--cdr-layout-rows: auto; --cdr-layout-columns: 1fr 1fr; --cdr-media-object-content-padding-xs: 16px; --cdr-media-object-content-padding-sm: 16px; --cdr-media-object-content-padding-md: 48px; --cdr-media-object-content-padding-lg: 48px; --cdr-media-object-media-position: 'media content'; --cdr-media-object-align: start;"
 >
   <!-- @slot Where all default content should be placed. -->
@@ -117,7 +117,7 @@ exports[`CdrMediaObject > snapshot tests > default: media position left, media w
 
 exports[`CdrMediaObject > snapshot tests > dynamic align 1`] = `
 <div
-  class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object cdr-media-object--align-cq"
+  class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-media-object cdr-media-object--align-mq"
   style="--cdr-layout-rows: auto; --cdr-layout-columns: auto 1fr; --cdr-media-object-media-position: 'media content'; --cdr-media-object-align-xs: center; --cdr-media-object-align-sm: center; --cdr-media-object-align-md: end; --cdr-media-object-align-lg: start;"
 >
   <!-- @slot Where all default content should be placed. -->
@@ -163,7 +163,7 @@ exports[`CdrMediaObject > snapshot tests > media bottom 1`] = `
 
 exports[`CdrMediaObject > snapshot tests > media position dynamic 1`] = `
 <div
-  class="cdr-layout cdr-layout--rows cdr-layout--rows-cq cdr-layout--columns cdr-layout--columns-cq cdr-media-object cdr-media-object--media-position-cq"
+  class="cdr-layout cdr-layout--rows cdr-layout--rows-mq cdr-layout--columns cdr-layout--columns-mq cdr-media-object cdr-media-object--media-position-mq"
   style="--cdr-layout-rows-xs: auto 1fr; --cdr-layout-rows-sm: 1fr auto; --cdr-layout-rows-md: auto; --cdr-layout-rows-lg: auto; --cdr-layout-columns-xs: 1fr; --cdr-layout-columns-sm: 1fr; --cdr-layout-columns-md: 1fr 1fr; --cdr-layout-columns-lg: 1fr 1fr; --cdr-media-object-media-position-xs: 'media' 'content'; --cdr-media-object-media-position-sm: 'content' 'media'; --cdr-media-object-media-position-md: 'media content'; --cdr-media-object-media-position-lg: 'content media'; --cdr-media-object-align: start;"
 >
   <!-- @slot Where all default content should be placed. -->
@@ -186,7 +186,7 @@ exports[`CdrMediaObject > snapshot tests > media position dynamic 1`] = `
 
 exports[`CdrMediaObject > snapshot tests > media position dynamic, media height dynamic, media width dynamic 1`] = `
 <div
-  class="cdr-layout cdr-layout--rows cdr-layout--rows-cq cdr-layout--columns cdr-layout--columns-cq cdr-media-object cdr-media-object--media-position-cq cdr-media-object--cover"
+  class="cdr-layout cdr-layout--rows cdr-layout--rows-mq cdr-layout--columns cdr-layout--columns-mq cdr-media-object cdr-media-object--media-position-mq cdr-media-object--cover"
   style="--cdr-layout-rows-xs: 100px 1fr; --cdr-layout-rows-sm: 200px 1fr; --cdr-layout-rows-md: auto; --cdr-layout-rows-lg: auto; --cdr-layout-columns-xs: 100%; --cdr-layout-columns-sm: 100%; --cdr-layout-columns-md: 50% 1fr; --cdr-layout-columns-lg: 75% 1fr; --cdr-media-object-media-position-xs: 'media' 'content'; --cdr-media-object-media-position-sm: 'media' 'content'; --cdr-media-object-media-position-md: 'media content'; --cdr-media-object-media-position-lg: 'media content'; --cdr-media-object-align: start;"
 >
   <!-- @slot Where all default content should be placed. -->
@@ -278,7 +278,7 @@ exports[`CdrMediaObject > snapshot tests > media width 100px 1`] = `
 
 exports[`CdrMediaObject > snapshot tests > media width dynamic 1`] = `
 <div
-  class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-layout--columns-cq cdr-media-object"
+  class="cdr-layout cdr-layout--rows cdr-layout--columns cdr-layout--columns-mq cdr-media-object"
   style="--cdr-layout-rows: auto; --cdr-layout-columns-xs: 100px 1fr; --cdr-layout-columns-sm: 100px 1fr; --cdr-layout-columns-md: 300px 1fr; --cdr-layout-columns-lg: 300px 1fr; --cdr-media-object-media-position: 'media content'; --cdr-media-object-align: start;"
 >
   <!-- @slot Where all default content should be placed. -->
