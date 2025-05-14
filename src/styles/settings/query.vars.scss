@@ -1,6 +1,6 @@
 // Allows for easily adding dynamic values for a specific CSS variable
 @mixin cdr-mq-mixin($component, $name) {
-  &--#{$name}-cq {
+  &--#{$name}-mq {
     --cdr-#{$component}-#{$name}: var(--cdr-#{$component}-#{$name}-xs);
 
     @include cdr-sm-mq-up {

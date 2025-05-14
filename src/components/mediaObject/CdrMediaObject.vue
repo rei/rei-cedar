@@ -48,7 +48,7 @@ const rootProps = computed(() => {
     if (typeof contentPadding === 'string') {
       inlineStyles['--cdr-media-object-content-padding'] = spacing[contentPadding];
     } else {
-      classes.push(modifyClassName(baseClass, 'content-padding-cq'));
+      classes.push(modifyClassName(baseClass, 'content-padding-mq'));
 
       breakpoints.forEach((breakpoint: Breakpoint) => {
         // Add in padding styles for various breakpoints
@@ -82,13 +82,13 @@ const rootProps = computed(() => {
 
     // Add in class for allowing dynamic content positioning
     if (typeof mediaPosition !== 'string') {
-      classes.push(modifyClassName(baseClass, 'media-position-cq'));
+      classes.push(modifyClassName(baseClass, 'media-position-mq'));
     }
 
     // Add align class and inline styles for allowing dynamic align values
     // or set the static value
     if (typeof align !== 'string') {
-      classes.push(modifyClassName(baseClass, 'align-cq'));
+      classes.push(modifyClassName(baseClass, 'align-mq'));
 
       breakpoints.forEach((breakpoint: Breakpoint) => {
         // Add in media position styles for various breakpoints
