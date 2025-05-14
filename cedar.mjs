@@ -9865,13 +9865,13 @@ const nA = /* @__PURE__ */ k({
         contentPadding: w,
         ...z
       } = e, j = { ...z };
-      if (w !== "zero" && (typeof w == "string" ? a["--cdr-media-object-content-padding"] = ei[w] : (i.push(Ze(r, "content-padding-cq")), vl.forEach((U) => {
+      if (w !== "zero" && (typeof w == "string" ? a["--cdr-media-object-content-padding"] = ei[w] : (i.push(Ze(r, "content-padding-mq")), vl.forEach((U) => {
         a[`--cdr-media-object-content-padding-${U}`] = ei[w[U]];
       }))), V)
         i.push(Ze(r, "overlay")), Object.assign(j, { rows: "auto", columns: "auto" }), a["--cdr-media-object-row-align"] = S, a["--cdr-media-object-column-align"] = H, p === "auto" ? j.rows = "56cqw" : j.rows = p;
       else {
         const U = cT(c, f, p);
-        Object.assign(a, U.inlineStyles), Object.assign(j, U.props), typeof c != "string" && i.push(Ze(r, "media-position-cq")), typeof d != "string" ? (i.push(Ze(r, "align-cq")), vl.forEach((O) => {
+        Object.assign(a, U.inlineStyles), Object.assign(j, U.props), typeof c != "string" && i.push(Ze(r, "media-position-mq")), typeof d != "string" ? (i.push(Ze(r, "align-mq")), vl.forEach((O) => {
           a[`--cdr-media-object-align-${O}`] = d[O];
         })) : a["--cdr-media-object-align"] = d, b && i.push(Ze(r, "cover"));
       }
@@ -9895,9 +9895,9 @@ const nA = /* @__PURE__ */ k({
   }
 }), fT = {
   "cdr-media-object": "cdr-media-object_15-6-1-beta-1",
-  "cdr-media-object--align-cq": "cdr-media-object--align-cq_15-6-1-beta-1",
-  "cdr-media-object--media-position-cq": "cdr-media-object--media-position-cq_15-6-1-beta-1",
-  "cdr-media-object--content-padding-cq": "cdr-media-object--content-padding-cq_15-6-1-beta-1",
+  "cdr-media-object--align-mq": "cdr-media-object--align-mq_15-6-1-beta-1",
+  "cdr-media-object--media-position-mq": "cdr-media-object--media-position-mq_15-6-1-beta-1",
+  "cdr-media-object--content-padding-mq": "cdr-media-object--content-padding-mq_15-6-1-beta-1",
   "cdr-media-object--cover": "cdr-media-object--cover_15-6-1-beta-1",
   "cdr-media-object--overlay": "cdr-media-object--overlay_15-6-1-beta-1"
 }, mT = {
