@@ -6253,7 +6253,7 @@ const lm = /* @__PURE__ */ W(tm, [["render", rm]]), om = "cdr-abstract", am = /*
     }, 8, ["class"]));
   }
 }), sm = {
-  "cdr-abstract": "cdr-abstract_15-6-1-beta-1"
+  "cdr-abstract": "cdr-abstract_15-6-1-beta-2"
 }, im = {
   $style: sm
 }, sd = /* @__PURE__ */ W(am, [["__cssModules", im]]);
@@ -6311,18 +6311,18 @@ const po = "cdr-icon", dm = /* @__PURE__ */ k({
     ], 16));
   }
 }), um = {
-  "cdr-icon": "cdr-icon_15-6-1-beta-1",
-  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-1",
-  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-1",
-  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-1",
-  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-1",
-  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-1",
-  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-1",
-  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-1",
-  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-1",
-  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-1",
-  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-1",
-  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-1"
+  "cdr-icon": "cdr-icon_15-6-1-beta-2",
+  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-2",
+  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-2",
+  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-2",
+  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-2",
+  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-2",
+  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-2",
+  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-2",
+  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-2",
+  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-2",
+  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-2",
+  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-2"
 }, cm = {
   $style: um
 }, K = /* @__PURE__ */ W(dm, [["__cssModules", cm]]), Ml = /* @__PURE__ */ k({
@@ -6484,35 +6484,35 @@ const po = "cdr-icon", dm = /* @__PURE__ */ k({
     ], 10, pm));
   }
 }), xm = {
-  "cdr-icon": "cdr-icon_15-6-1-beta-1",
-  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-1",
-  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-1",
-  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-1",
-  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-1",
-  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-1",
-  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-1",
-  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-1",
-  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-1",
-  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-1",
-  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-1",
-  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-1",
-  "cdr-accordion-group": "cdr-accordion-group_15-6-1-beta-1",
-  "cdr-accordion": "cdr-accordion_15-6-1-beta-1",
-  "cdr-accordion__button": "cdr-accordion__button_15-6-1-beta-1",
-  "cdr-accordion__label": "cdr-accordion__label_15-6-1-beta-1",
-  "cdr-accordion__header": "cdr-accordion__header_15-6-1-beta-1",
-  "cdr-accordion__header--unwrapped": "cdr-accordion__header--unwrapped_15-6-1-beta-1",
-  "cdr-accordion__icon": "cdr-accordion__icon_15-6-1-beta-1",
-  "cdr-accordion--open": "cdr-accordion--open_15-6-1-beta-1",
-  "cdr-accordion__content-container": "cdr-accordion__content-container_15-6-1-beta-1",
-  "cdr-tabs--open": "cdr-tabs--open_15-6-1-beta-1",
-  "cdr-accordion__content": "cdr-accordion__content_15-6-1-beta-1",
-  "cdr-accordion--closed": "cdr-accordion--closed_15-6-1-beta-1",
-  "cdr-accordion--unwrap": "cdr-accordion--unwrap_15-6-1-beta-1",
-  "cdr-accordion--border-aligned": "cdr-accordion--border-aligned_15-6-1-beta-1",
-  "cdr-accordion--no-spacing": "cdr-accordion--no-spacing_15-6-1-beta-1",
-  "cdr-accordion--compact": "cdr-accordion--compact_15-6-1-beta-1",
-  "cdr-accordion--focused": "cdr-accordion--focused_15-6-1-beta-1"
+  "cdr-icon": "cdr-icon_15-6-1-beta-2",
+  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-2",
+  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-2",
+  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-2",
+  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-2",
+  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-2",
+  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-2",
+  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-2",
+  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-2",
+  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-2",
+  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-2",
+  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-2",
+  "cdr-accordion-group": "cdr-accordion-group_15-6-1-beta-2",
+  "cdr-accordion": "cdr-accordion_15-6-1-beta-2",
+  "cdr-accordion__button": "cdr-accordion__button_15-6-1-beta-2",
+  "cdr-accordion__label": "cdr-accordion__label_15-6-1-beta-2",
+  "cdr-accordion__header": "cdr-accordion__header_15-6-1-beta-2",
+  "cdr-accordion__header--unwrapped": "cdr-accordion__header--unwrapped_15-6-1-beta-2",
+  "cdr-accordion__icon": "cdr-accordion__icon_15-6-1-beta-2",
+  "cdr-accordion--open": "cdr-accordion--open_15-6-1-beta-2",
+  "cdr-accordion__content-container": "cdr-accordion__content-container_15-6-1-beta-2",
+  "cdr-tabs--open": "cdr-tabs--open_15-6-1-beta-2",
+  "cdr-accordion__content": "cdr-accordion__content_15-6-1-beta-2",
+  "cdr-accordion--closed": "cdr-accordion--closed_15-6-1-beta-2",
+  "cdr-accordion--unwrap": "cdr-accordion--unwrap_15-6-1-beta-2",
+  "cdr-accordion--border-aligned": "cdr-accordion--border-aligned_15-6-1-beta-2",
+  "cdr-accordion--no-spacing": "cdr-accordion--no-spacing_15-6-1-beta-2",
+  "cdr-accordion--compact": "cdr-accordion--compact_15-6-1-beta-2",
+  "cdr-accordion--focused": "cdr-accordion--focused_15-6-1-beta-2"
 }, Sm = {
   $style: xm
 }, km = /* @__PURE__ */ W(vm, [["__cssModules", Sm]]), Vl = (t, e = 300) => {
@@ -7472,8 +7472,8 @@ const Th = "cdr-accordion-group", Ph = /* @__PURE__ */ k({
     ], 34));
   }
 }), Rh = {
-  "cdr-accordion-group": "cdr-accordion-group_15-6-1-beta-1",
-  "cdr-accordion": "cdr-accordion_15-6-1-beta-1"
+  "cdr-accordion-group": "cdr-accordion-group_15-6-1-beta-2",
+  "cdr-accordion": "cdr-accordion_15-6-1-beta-2"
 }, Ch = {
   $style: Rh
 }, Ih = /* @__PURE__ */ W(Ph, [["__cssModules", Ch]]), fo = "cdr-banner", wh = /* @__PURE__ */ k({
@@ -7539,20 +7539,20 @@ const Th = "cdr-accordion-group", Ph = /* @__PURE__ */ k({
     ], 2));
   }
 }), Hh = {
-  "cdr-banner": "cdr-banner_15-6-1-beta-1",
-  "cdr-banner__wrapper--prominence": "cdr-banner__wrapper--prominence_15-6-1-beta-1",
-  "cdr-banner__main": "cdr-banner__main_15-6-1-beta-1",
-  "cdr-banner__icon-left": "cdr-banner__icon-left_15-6-1-beta-1",
-  "cdr-banner__message": "cdr-banner__message_15-6-1-beta-1",
-  "cdr-banner__message-body": "cdr-banner__message-body_15-6-1-beta-1",
-  "cdr-banner__icon-right": "cdr-banner__icon-right_15-6-1-beta-1",
-  "cdr-banner__info-action": "cdr-banner__info-action_15-6-1-beta-1",
-  "cdr-banner--default": "cdr-banner--default_15-6-1-beta-1",
-  "cdr-banner__wrapper": "cdr-banner__wrapper_15-6-1-beta-1",
-  "cdr-banner--info": "cdr-banner--info_15-6-1-beta-1",
-  "cdr-banner--warning": "cdr-banner--warning_15-6-1-beta-1",
-  "cdr-banner--success": "cdr-banner--success_15-6-1-beta-1",
-  "cdr-banner--error": "cdr-banner--error_15-6-1-beta-1"
+  "cdr-banner": "cdr-banner_15-6-1-beta-2",
+  "cdr-banner__wrapper--prominence": "cdr-banner__wrapper--prominence_15-6-1-beta-2",
+  "cdr-banner__main": "cdr-banner__main_15-6-1-beta-2",
+  "cdr-banner__icon-left": "cdr-banner__icon-left_15-6-1-beta-2",
+  "cdr-banner__message": "cdr-banner__message_15-6-1-beta-2",
+  "cdr-banner__message-body": "cdr-banner__message-body_15-6-1-beta-2",
+  "cdr-banner__icon-right": "cdr-banner__icon-right_15-6-1-beta-2",
+  "cdr-banner__info-action": "cdr-banner__info-action_15-6-1-beta-2",
+  "cdr-banner--default": "cdr-banner--default_15-6-1-beta-2",
+  "cdr-banner__wrapper": "cdr-banner__wrapper_15-6-1-beta-2",
+  "cdr-banner--info": "cdr-banner--info_15-6-1-beta-2",
+  "cdr-banner--warning": "cdr-banner--warning_15-6-1-beta-2",
+  "cdr-banner--success": "cdr-banner--success_15-6-1-beta-2",
+  "cdr-banner--error": "cdr-banner--error_15-6-1-beta-2"
 }, Kh = {
   $style: Hh
 }, Uh = /* @__PURE__ */ W(wh, [["__cssModules", Kh]]);
@@ -7674,13 +7674,13 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     ], 10, Oh));
   }
 }), Lh = {
-  "cdr-breadcrumb": "cdr-breadcrumb_15-6-1-beta-1",
-  "cdr-breadcrumb__list": "cdr-breadcrumb__list_15-6-1-beta-1",
-  "cdr-breadcrumb__item": "cdr-breadcrumb__item_15-6-1-beta-1",
-  "cdr-breadcrumb__link": "cdr-breadcrumb__link_15-6-1-beta-1",
-  "cdr-breadcrumb__delimiter": "cdr-breadcrumb__delimiter_15-6-1-beta-1",
-  "cdr-breadcrumb__ellipses": "cdr-breadcrumb__ellipses_15-6-1-beta-1",
-  "cdr-breadcrumb__ellipses-icon": "cdr-breadcrumb__ellipses-icon_15-6-1-beta-1"
+  "cdr-breadcrumb": "cdr-breadcrumb_15-6-1-beta-2",
+  "cdr-breadcrumb__list": "cdr-breadcrumb__list_15-6-1-beta-2",
+  "cdr-breadcrumb__item": "cdr-breadcrumb__item_15-6-1-beta-2",
+  "cdr-breadcrumb__link": "cdr-breadcrumb__link_15-6-1-beta-2",
+  "cdr-breadcrumb__delimiter": "cdr-breadcrumb__delimiter_15-6-1-beta-2",
+  "cdr-breadcrumb__ellipses": "cdr-breadcrumb__ellipses_15-6-1-beta-2",
+  "cdr-breadcrumb__ellipses-icon": "cdr-breadcrumb__ellipses-icon_15-6-1-beta-2"
 }, Jh = {
   $style: Lh
 }, Eh = /* @__PURE__ */ W(zh, [["__cssModules", Jh]]), Tt = {
@@ -7786,37 +7786,37 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     }, 8, ["class", "type"]));
   }
 }), Zh = {
-  "cdr-button": "cdr-button_15-6-1-beta-1",
-  "cdr-button--has-icon-left": "cdr-button--has-icon-left_15-6-1-beta-1",
-  "cdr-button--has-icon-right": "cdr-button--has-icon-right_15-6-1-beta-1",
-  "cdr-button--primary": "cdr-button--primary_15-6-1-beta-1",
-  "cdr-button--secondary": "cdr-button--secondary_15-6-1-beta-1",
-  "cdr-button--dark": "cdr-button--dark_15-6-1-beta-1",
-  "cdr-button--sale": "cdr-button--sale_15-6-1-beta-1",
-  "cdr-button--link": "cdr-button--link_15-6-1-beta-1",
-  "cdr-button--large": "cdr-button--large_15-6-1-beta-1",
-  "cdr-button--medium": "cdr-button--medium_15-6-1-beta-1",
-  "cdr-button--small": "cdr-button--small_15-6-1-beta-1",
-  "cdr-button--icon-only": "cdr-button--icon-only_15-6-1-beta-1",
-  "cdr-button--icon-only-large": "cdr-button--icon-only-large_15-6-1-beta-1",
-  "cdr-button--with-background": "cdr-button--with-background_15-6-1-beta-1",
-  "cdr-button--full-width": "cdr-button--full-width_15-6-1-beta-1",
-  "cdr-button--small@xs": "cdr-button--small@xs_15-6-1-beta-1",
-  "cdr-button--medium@xs": "cdr-button--medium@xs_15-6-1-beta-1",
-  "cdr-button--large@xs": "cdr-button--large@xs_15-6-1-beta-1",
-  "cdr-button--full-width@xs": "cdr-button--full-width@xs_15-6-1-beta-1",
-  "cdr-button--small@sm": "cdr-button--small@sm_15-6-1-beta-1",
-  "cdr-button--medium@sm": "cdr-button--medium@sm_15-6-1-beta-1",
-  "cdr-button--large@sm": "cdr-button--large@sm_15-6-1-beta-1",
-  "cdr-button--full-width@sm": "cdr-button--full-width@sm_15-6-1-beta-1",
-  "cdr-button--small@md": "cdr-button--small@md_15-6-1-beta-1",
-  "cdr-button--medium@md": "cdr-button--medium@md_15-6-1-beta-1",
-  "cdr-button--large@md": "cdr-button--large@md_15-6-1-beta-1",
-  "cdr-button--full-width@md": "cdr-button--full-width@md_15-6-1-beta-1",
-  "cdr-button--small@lg": "cdr-button--small@lg_15-6-1-beta-1",
-  "cdr-button--medium@lg": "cdr-button--medium@lg_15-6-1-beta-1",
-  "cdr-button--large@lg": "cdr-button--large@lg_15-6-1-beta-1",
-  "cdr-button--full-width@lg": "cdr-button--full-width@lg_15-6-1-beta-1"
+  "cdr-button": "cdr-button_15-6-1-beta-2",
+  "cdr-button--has-icon-left": "cdr-button--has-icon-left_15-6-1-beta-2",
+  "cdr-button--has-icon-right": "cdr-button--has-icon-right_15-6-1-beta-2",
+  "cdr-button--primary": "cdr-button--primary_15-6-1-beta-2",
+  "cdr-button--secondary": "cdr-button--secondary_15-6-1-beta-2",
+  "cdr-button--dark": "cdr-button--dark_15-6-1-beta-2",
+  "cdr-button--sale": "cdr-button--sale_15-6-1-beta-2",
+  "cdr-button--link": "cdr-button--link_15-6-1-beta-2",
+  "cdr-button--large": "cdr-button--large_15-6-1-beta-2",
+  "cdr-button--medium": "cdr-button--medium_15-6-1-beta-2",
+  "cdr-button--small": "cdr-button--small_15-6-1-beta-2",
+  "cdr-button--icon-only": "cdr-button--icon-only_15-6-1-beta-2",
+  "cdr-button--icon-only-large": "cdr-button--icon-only-large_15-6-1-beta-2",
+  "cdr-button--with-background": "cdr-button--with-background_15-6-1-beta-2",
+  "cdr-button--full-width": "cdr-button--full-width_15-6-1-beta-2",
+  "cdr-button--small@xs": "cdr-button--small@xs_15-6-1-beta-2",
+  "cdr-button--medium@xs": "cdr-button--medium@xs_15-6-1-beta-2",
+  "cdr-button--large@xs": "cdr-button--large@xs_15-6-1-beta-2",
+  "cdr-button--full-width@xs": "cdr-button--full-width@xs_15-6-1-beta-2",
+  "cdr-button--small@sm": "cdr-button--small@sm_15-6-1-beta-2",
+  "cdr-button--medium@sm": "cdr-button--medium@sm_15-6-1-beta-2",
+  "cdr-button--large@sm": "cdr-button--large@sm_15-6-1-beta-2",
+  "cdr-button--full-width@sm": "cdr-button--full-width@sm_15-6-1-beta-2",
+  "cdr-button--small@md": "cdr-button--small@md_15-6-1-beta-2",
+  "cdr-button--medium@md": "cdr-button--medium@md_15-6-1-beta-2",
+  "cdr-button--large@md": "cdr-button--large@md_15-6-1-beta-2",
+  "cdr-button--full-width@md": "cdr-button--full-width@md_15-6-1-beta-2",
+  "cdr-button--small@lg": "cdr-button--small@lg_15-6-1-beta-2",
+  "cdr-button--medium@lg": "cdr-button--medium@lg_15-6-1-beta-2",
+  "cdr-button--large@lg": "cdr-button--large@lg_15-6-1-beta-2",
+  "cdr-button--full-width@lg": "cdr-button--full-width@lg_15-6-1-beta-2"
 }, Gh = {
   $style: Zh
 }, St = /* @__PURE__ */ W(Fh, [["__cssModules", Gh]]), Nh = "cdr-caption", Bh = "cdr-caption__summary", Dh = "cdr-caption__cite", Yh = /* @__PURE__ */ k({
@@ -7854,8 +7854,8 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     ], 2));
   }
 }), Qh = {
-  "cdr-caption": "cdr-caption_15-6-1-beta-1",
-  "cdr-caption__summary": "cdr-caption__summary_15-6-1-beta-1"
+  "cdr-caption": "cdr-caption_15-6-1-beta-2",
+  "cdr-caption__summary": "cdr-caption__summary_15-6-1-beta-2"
 }, _h = {
   $style: Qh
 }, $h = /* @__PURE__ */ W(Yh, [["__cssModules", _h]]), ej = "cdr-card", tj = /* @__PURE__ */ k({
@@ -7880,7 +7880,7 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     }, 8, ["class"]));
   }
 }), nj = {
-  "cdr-card": "cdr-card_15-6-1-beta-1"
+  "cdr-card": "cdr-card_15-6-1-beta-2"
 }, rj = {
   $style: nj
 }, gd = /* @__PURE__ */ W(tj, [["__cssModules", rj]]), Wr = {
@@ -7927,31 +7927,31 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     ], 2));
   }
 }), oj = {
-  "cdr-label-wrapper": "cdr-label-wrapper_15-6-1-beta-1",
-  "cdr-label-wrapper__container": "cdr-label-wrapper__container_15-6-1-beta-1",
-  "cdr-label-wrapper--primary": "cdr-label-wrapper--primary_15-6-1-beta-1",
-  "cdr-label-wrapper--secondary": "cdr-label-wrapper--secondary_15-6-1-beta-1",
-  "cdr-label-wrapper--disabled": "cdr-label-wrapper--disabled_15-6-1-beta-1",
-  "cdr-label-wrapper__figure": "cdr-label-wrapper__figure_15-6-1-beta-1",
-  "cdr-label-wrapper__content": "cdr-label-wrapper__content_15-6-1-beta-1",
-  "cdr-label-wrapper--hide-figure": "cdr-label-wrapper--hide-figure_15-6-1-beta-1",
-  "cdr-checkbox__svg-box": "cdr-checkbox__svg-box_15-6-1-beta-1",
-  "cdr-label-wrapper--small": "cdr-label-wrapper--small_15-6-1-beta-1",
-  "cdr-label-wrapper--medium": "cdr-label-wrapper--medium_15-6-1-beta-1",
-  "cdr-label-wrapper--large": "cdr-label-wrapper--large_15-6-1-beta-1",
-  "cdr-checkbox__checkbox-box": "cdr-checkbox__checkbox-box_15-6-1-beta-1",
-  "cdr-label-wrapper--small@xs": "cdr-label-wrapper--small@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@xs": "cdr-label-wrapper--medium@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--large@xs": "cdr-label-wrapper--large@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--small@sm": "cdr-label-wrapper--small@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@sm": "cdr-label-wrapper--medium@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--large@sm": "cdr-label-wrapper--large@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--small@md": "cdr-label-wrapper--small@md_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@md": "cdr-label-wrapper--medium@md_15-6-1-beta-1",
-  "cdr-label-wrapper--large@md": "cdr-label-wrapper--large@md_15-6-1-beta-1",
-  "cdr-label-wrapper--small@lg": "cdr-label-wrapper--small@lg_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@lg": "cdr-label-wrapper--medium@lg_15-6-1-beta-1",
-  "cdr-label-wrapper--large@lg": "cdr-label-wrapper--large@lg_15-6-1-beta-1"
+  "cdr-label-wrapper": "cdr-label-wrapper_15-6-1-beta-2",
+  "cdr-label-wrapper__container": "cdr-label-wrapper__container_15-6-1-beta-2",
+  "cdr-label-wrapper--primary": "cdr-label-wrapper--primary_15-6-1-beta-2",
+  "cdr-label-wrapper--secondary": "cdr-label-wrapper--secondary_15-6-1-beta-2",
+  "cdr-label-wrapper--disabled": "cdr-label-wrapper--disabled_15-6-1-beta-2",
+  "cdr-label-wrapper__figure": "cdr-label-wrapper__figure_15-6-1-beta-2",
+  "cdr-label-wrapper__content": "cdr-label-wrapper__content_15-6-1-beta-2",
+  "cdr-label-wrapper--hide-figure": "cdr-label-wrapper--hide-figure_15-6-1-beta-2",
+  "cdr-checkbox__svg-box": "cdr-checkbox__svg-box_15-6-1-beta-2",
+  "cdr-label-wrapper--small": "cdr-label-wrapper--small_15-6-1-beta-2",
+  "cdr-label-wrapper--medium": "cdr-label-wrapper--medium_15-6-1-beta-2",
+  "cdr-label-wrapper--large": "cdr-label-wrapper--large_15-6-1-beta-2",
+  "cdr-checkbox__checkbox-box": "cdr-checkbox__checkbox-box_15-6-1-beta-2",
+  "cdr-label-wrapper--small@xs": "cdr-label-wrapper--small@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@xs": "cdr-label-wrapper--medium@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--large@xs": "cdr-label-wrapper--large@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--small@sm": "cdr-label-wrapper--small@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@sm": "cdr-label-wrapper--medium@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--large@sm": "cdr-label-wrapper--large@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--small@md": "cdr-label-wrapper--small@md_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@md": "cdr-label-wrapper--medium@md_15-6-1-beta-2",
+  "cdr-label-wrapper--large@md": "cdr-label-wrapper--large@md_15-6-1-beta-2",
+  "cdr-label-wrapper--small@lg": "cdr-label-wrapper--small@lg_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@lg": "cdr-label-wrapper--medium@lg_15-6-1-beta-2",
+  "cdr-label-wrapper--large@lg": "cdr-label-wrapper--large@lg_15-6-1-beta-2"
 }, aj = {
   $style: oj
 }, yd = /* @__PURE__ */ W(lj, [["__cssModules", aj]]), sj = ["disabled", "true-value", "false-value", "value"], ij = "cdr-checkbox", dj = /* @__PURE__ */ k({
@@ -8107,33 +8107,33 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     }, 8, ["class", "size", "modifier", "label-class", "content-class", "background", "disabled"]));
   }
 }), uj = {
-  "cdr-label-wrapper": "cdr-label-wrapper_15-6-1-beta-1",
-  "cdr-label-wrapper__container": "cdr-label-wrapper__container_15-6-1-beta-1",
-  "cdr-label-wrapper--primary": "cdr-label-wrapper--primary_15-6-1-beta-1",
-  "cdr-label-wrapper--secondary": "cdr-label-wrapper--secondary_15-6-1-beta-1",
-  "cdr-label-wrapper--disabled": "cdr-label-wrapper--disabled_15-6-1-beta-1",
-  "cdr-label-wrapper__figure": "cdr-label-wrapper__figure_15-6-1-beta-1",
-  "cdr-label-wrapper__content": "cdr-label-wrapper__content_15-6-1-beta-1",
-  "cdr-label-wrapper--hide-figure": "cdr-label-wrapper--hide-figure_15-6-1-beta-1",
-  "cdr-checkbox__svg-box": "cdr-checkbox__svg-box_15-6-1-beta-1",
-  "cdr-label-wrapper--small": "cdr-label-wrapper--small_15-6-1-beta-1",
-  "cdr-label-wrapper--medium": "cdr-label-wrapper--medium_15-6-1-beta-1",
-  "cdr-label-wrapper--large": "cdr-label-wrapper--large_15-6-1-beta-1",
-  "cdr-checkbox__checkbox-box": "cdr-checkbox__checkbox-box_15-6-1-beta-1",
-  "cdr-label-wrapper--small@xs": "cdr-label-wrapper--small@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@xs": "cdr-label-wrapper--medium@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--large@xs": "cdr-label-wrapper--large@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--small@sm": "cdr-label-wrapper--small@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@sm": "cdr-label-wrapper--medium@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--large@sm": "cdr-label-wrapper--large@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--small@md": "cdr-label-wrapper--small@md_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@md": "cdr-label-wrapper--medium@md_15-6-1-beta-1",
-  "cdr-label-wrapper--large@md": "cdr-label-wrapper--large@md_15-6-1-beta-1",
-  "cdr-label-wrapper--small@lg": "cdr-label-wrapper--small@lg_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@lg": "cdr-label-wrapper--medium@lg_15-6-1-beta-1",
-  "cdr-label-wrapper--large@lg": "cdr-label-wrapper--large@lg_15-6-1-beta-1",
-  "cdr-checkbox": "cdr-checkbox_15-6-1-beta-1",
-  "cdr-checkbox__input": "cdr-checkbox__input_15-6-1-beta-1"
+  "cdr-label-wrapper": "cdr-label-wrapper_15-6-1-beta-2",
+  "cdr-label-wrapper__container": "cdr-label-wrapper__container_15-6-1-beta-2",
+  "cdr-label-wrapper--primary": "cdr-label-wrapper--primary_15-6-1-beta-2",
+  "cdr-label-wrapper--secondary": "cdr-label-wrapper--secondary_15-6-1-beta-2",
+  "cdr-label-wrapper--disabled": "cdr-label-wrapper--disabled_15-6-1-beta-2",
+  "cdr-label-wrapper__figure": "cdr-label-wrapper__figure_15-6-1-beta-2",
+  "cdr-label-wrapper__content": "cdr-label-wrapper__content_15-6-1-beta-2",
+  "cdr-label-wrapper--hide-figure": "cdr-label-wrapper--hide-figure_15-6-1-beta-2",
+  "cdr-checkbox__svg-box": "cdr-checkbox__svg-box_15-6-1-beta-2",
+  "cdr-label-wrapper--small": "cdr-label-wrapper--small_15-6-1-beta-2",
+  "cdr-label-wrapper--medium": "cdr-label-wrapper--medium_15-6-1-beta-2",
+  "cdr-label-wrapper--large": "cdr-label-wrapper--large_15-6-1-beta-2",
+  "cdr-checkbox__checkbox-box": "cdr-checkbox__checkbox-box_15-6-1-beta-2",
+  "cdr-label-wrapper--small@xs": "cdr-label-wrapper--small@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@xs": "cdr-label-wrapper--medium@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--large@xs": "cdr-label-wrapper--large@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--small@sm": "cdr-label-wrapper--small@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@sm": "cdr-label-wrapper--medium@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--large@sm": "cdr-label-wrapper--large@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--small@md": "cdr-label-wrapper--small@md_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@md": "cdr-label-wrapper--medium@md_15-6-1-beta-2",
+  "cdr-label-wrapper--large@md": "cdr-label-wrapper--large@md_15-6-1-beta-2",
+  "cdr-label-wrapper--small@lg": "cdr-label-wrapper--small@lg_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@lg": "cdr-label-wrapper--medium@lg_15-6-1-beta-2",
+  "cdr-label-wrapper--large@lg": "cdr-label-wrapper--large@lg_15-6-1-beta-2",
+  "cdr-checkbox": "cdr-checkbox_15-6-1-beta-2",
+  "cdr-checkbox__input": "cdr-checkbox__input_15-6-1-beta-2"
 }, cj = {
   $style: uj
 }, xa = /* @__PURE__ */ W(dj, [["__cssModules", cj]]), pj = "cdr-chip", fj = /* @__PURE__ */ k({
@@ -8164,10 +8164,10 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     ], 2));
   }
 }), mj = {
-  "cdr-chip": "cdr-chip_15-6-1-beta-1",
-  "cdr-chip__icon-left": "cdr-chip__icon-left_15-6-1-beta-1",
-  "cdr-chip__icon-right": "cdr-chip__icon-right_15-6-1-beta-1",
-  "cdr-chip__content": "cdr-chip__content_15-6-1-beta-1"
+  "cdr-chip": "cdr-chip_15-6-1-beta-2",
+  "cdr-chip__icon-left": "cdr-chip__icon-left_15-6-1-beta-2",
+  "cdr-chip__icon-right": "cdr-chip__icon-right_15-6-1-beta-2",
+  "cdr-chip__content": "cdr-chip__content_15-6-1-beta-2"
 }, bj = {
   $style: mj
 }, gj = /* @__PURE__ */ W(fj, [["__cssModules", bj]]), yj = "cdr-chip-group", Vj = /* @__PURE__ */ k({
@@ -8251,10 +8251,10 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     ], 34));
   }
 }), vj = {
-  "cdr-chip-group": "cdr-chip-group_15-6-1-beta-1",
-  "cdr-chip-group__content": "cdr-chip-group__content_15-6-1-beta-1",
-  "cdr-chip-group__legend--hidden": "cdr-chip-group__legend--hidden_15-6-1-beta-1",
-  "cdr-chip-group__legend": "cdr-chip-group__legend_15-6-1-beta-1"
+  "cdr-chip-group": "cdr-chip-group_15-6-1-beta-2",
+  "cdr-chip-group__content": "cdr-chip-group__content_15-6-1-beta-2",
+  "cdr-chip-group__legend--hidden": "cdr-chip-group__legend--hidden_15-6-1-beta-2",
+  "cdr-chip-group__legend": "cdr-chip-group__legend_15-6-1-beta-2"
 }, xj = {
   $style: vj
 }, Sj = /* @__PURE__ */ W(Vj, [["__cssModules", xj]]), kj = "cdr-choreographer", qj = /* @__PURE__ */ k({
@@ -8317,10 +8317,10 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     };
   }
 }), hj = {
-  "cdr-choreographer__kicker": "cdr-choreographer__kicker_15-6-1-beta-1",
-  "cdr-choreographer__title": "cdr-choreographer__title_15-6-1-beta-1",
-  "cdr-choreographer__rating": "cdr-choreographer__rating_15-6-1-beta-1",
-  "cdr-choreographer__abstract": "cdr-choreographer__abstract_15-6-1-beta-1"
+  "cdr-choreographer__kicker": "cdr-choreographer__kicker_15-6-1-beta-2",
+  "cdr-choreographer__title": "cdr-choreographer__title_15-6-1-beta-2",
+  "cdr-choreographer__rating": "cdr-choreographer__rating_15-6-1-beta-2",
+  "cdr-choreographer__abstract": "cdr-choreographer__abstract_15-6-1-beta-2"
 }, jj = {
   $style: hj
 }, Aj = /* @__PURE__ */ W(qj, [["__cssModules", jj]]), Ds = "cdr-container", Tj = /* @__PURE__ */ k({
@@ -8359,8 +8359,8 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     }, 8, ["class"]));
   }
 }), Pj = {
-  "cdr-container": "cdr-container_15-6-1-beta-1",
-  "cdr-container--static": "cdr-container--static_15-6-1-beta-1"
+  "cdr-container": "cdr-container_15-6-1-beta-2",
+  "cdr-container--static": "cdr-container--static_15-6-1-beta-2"
 }, Rj = {
   $style: Pj
 }, zl = /* @__PURE__ */ W(Tj, [["__cssModules", Rj]]), Sa = /* @__PURE__ */ k({
@@ -8416,8 +8416,8 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     ], 2));
   }
 }), Hj = {
-  "cdr-form-error": "cdr-form-error_15-6-1-beta-1",
-  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-1"
+  "cdr-form-error": "cdr-form-error_15-6-1-beta-2",
+  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-2"
 }, Kj = {
   $style: Hj
 }, ka = /* @__PURE__ */ W(wj, [["__cssModules", Kj]]), Uj = ["disabled", "aria-invalid", "aria-errormessage", "aria-describedby"], Oj = {
@@ -8493,14 +8493,14 @@ const Oh = ["id"], Xh = ["id"], Mh = ["aria-controls", "aria-label"], Wh = ["hre
     ], 10, Uj));
   }
 }), Wj = {
-  "cdr-form-error": "cdr-form-error_15-6-1-beta-1",
-  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-1",
-  "cdr-form-group": "cdr-form-group_15-6-1-beta-1",
-  "cdr-form-group--error": "cdr-form-group--error_15-6-1-beta-1",
-  "cdr-form-group--disabled": "cdr-form-group--disabled_15-6-1-beta-1",
-  "cdr-form-group__optional": "cdr-form-group__optional_15-6-1-beta-1",
-  "cdr-form-group__required": "cdr-form-group__required_15-6-1-beta-1",
-  "cdr-form-group__wrapper": "cdr-form-group__wrapper_15-6-1-beta-1"
+  "cdr-form-error": "cdr-form-error_15-6-1-beta-2",
+  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-2",
+  "cdr-form-group": "cdr-form-group_15-6-1-beta-2",
+  "cdr-form-group--error": "cdr-form-group--error_15-6-1-beta-2",
+  "cdr-form-group--disabled": "cdr-form-group--disabled_15-6-1-beta-2",
+  "cdr-form-group__optional": "cdr-form-group__optional_15-6-1-beta-2",
+  "cdr-form-group__required": "cdr-form-group__required_15-6-1-beta-2",
+  "cdr-form-group__wrapper": "cdr-form-group__wrapper_15-6-1-beta-2"
 }, zj = {
   $style: Wj
 }, Ll = /* @__PURE__ */ W(Mj, [["__cssModules", zj]]);
@@ -8560,7 +8560,7 @@ const Jj = (t = {}) => ({
     }, 16, ["class"]));
   }
 }), Fj = {
-  "cdr-surface": "cdr-surface_15-6-1-beta-1"
+  "cdr-surface": "cdr-surface_15-6-1-beta-2"
 }, Zj = {
   $style: Fj
 }, dt = /* @__PURE__ */ W(Ej, [["__cssModules", Zj]]), Gj = "cdr-skeleton", Nj = /* @__PURE__ */ k({
@@ -8586,7 +8586,7 @@ const Jj = (t = {}) => ({
     ], 2));
   }
 }), Bj = {
-  "cdr-skeleton": "cdr-skeleton_15-6-1-beta-1"
+  "cdr-skeleton": "cdr-skeleton_15-6-1-beta-2"
 }, Dj = {
   $style: Bj
 }, Vd = /* @__PURE__ */ W(Nj, [["__cssModules", Dj]]), bo = "cdr-skeleton-bone", Yj = /* @__PURE__ */ k({
@@ -8619,14 +8619,14 @@ const Jj = (t = {}) => ({
       class: h(y(ye)(y(n), bo, o.value, i.value))
     }, null, 2));
   }
-}), Qj = "shimmer_15-6-1-beta-1", _j = {
-  "cdr-skeleton-bone": "cdr-skeleton-bone_15-6-1-beta-1",
-  "cdr-skeleton-bone__shimmer": "cdr-skeleton-bone__shimmer_15-6-1-beta-1",
+}), Qj = "shimmer_15-6-1-beta-2", _j = {
+  "cdr-skeleton-bone": "cdr-skeleton-bone_15-6-1-beta-2",
+  "cdr-skeleton-bone__shimmer": "cdr-skeleton-bone__shimmer_15-6-1-beta-2",
   shimmer: Qj,
-  "cdr-skeleton-bone--line": "cdr-skeleton-bone--line_15-6-1-beta-1",
-  "cdr-skeleton-bone--heading": "cdr-skeleton-bone--heading_15-6-1-beta-1",
-  "cdr-skeleton-bone--rectangle": "cdr-skeleton-bone--rectangle_15-6-1-beta-1",
-  "cdr-skeleton-bone--square": "cdr-skeleton-bone--square_15-6-1-beta-1"
+  "cdr-skeleton-bone--line": "cdr-skeleton-bone--line_15-6-1-beta-2",
+  "cdr-skeleton-bone--heading": "cdr-skeleton-bone--heading_15-6-1-beta-2",
+  "cdr-skeleton-bone--rectangle": "cdr-skeleton-bone--rectangle_15-6-1-beta-2",
+  "cdr-skeleton-bone--square": "cdr-skeleton-bone--square_15-6-1-beta-2"
 }, $j = {
   $style: _j
 }, vd = /* @__PURE__ */ W(Yj, [["__cssModules", $j]]), eA = ["xs", "sm", "md", "lg"];
@@ -8711,90 +8711,90 @@ const tA = /* @__PURE__ */ k({
     }, 16));
   }
 }), nA = {
-  "cdr-layout": "cdr-layout_15-6-1-beta-1",
-  "cdr-layout--rows": "cdr-layout--rows_15-6-1-beta-1",
-  "cdr-layout--rows-mq": "cdr-layout--rows-mq_15-6-1-beta-1",
-  "cdr-layout--rows-cq": "cdr-layout--rows-cq_15-6-1-beta-1",
-  "cdr-layout--columns": "cdr-layout--columns_15-6-1-beta-1",
-  "cdr-layout--columns-mq": "cdr-layout--columns-mq_15-6-1-beta-1",
-  "cdr-layout--columns-cq": "cdr-layout--columns-cq_15-6-1-beta-1",
-  "cdr-layout--gap-zero": "cdr-layout--gap-zero_15-6-1-beta-1",
-  "cdr-layout--row-gap-zero": "cdr-layout--row-gap-zero_15-6-1-beta-1",
-  "cdr-layout--column-gap-zero": "cdr-layout--column-gap-zero_15-6-1-beta-1",
-  "cdr-layout--gap-sixteenth-x": "cdr-layout--gap-sixteenth-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-sixteenth-x": "cdr-layout--row-gap-sixteenth-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-sixteenth-x": "cdr-layout--column-gap-sixteenth-x_15-6-1-beta-1",
-  "cdr-layout--gap-eighth-x": "cdr-layout--gap-eighth-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-eighth-x": "cdr-layout--row-gap-eighth-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-eighth-x": "cdr-layout--column-gap-eighth-x_15-6-1-beta-1",
-  "cdr-layout--gap-three-sixteenth-x": "cdr-layout--gap-three-sixteenth-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-three-sixteenth-x": "cdr-layout--row-gap-three-sixteenth-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-three-sixteenth-x": "cdr-layout--column-gap-three-sixteenth-x_15-6-1-beta-1",
-  "cdr-layout--gap-quarter-x": "cdr-layout--gap-quarter-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-quarter-x": "cdr-layout--row-gap-quarter-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-quarter-x": "cdr-layout--column-gap-quarter-x_15-6-1-beta-1",
-  "cdr-layout--gap-three-eighth-x": "cdr-layout--gap-three-eighth-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-three-eighth-x": "cdr-layout--row-gap-three-eighth-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-three-eighth-x": "cdr-layout--column-gap-three-eighth-x_15-6-1-beta-1",
-  "cdr-layout--gap-half-x": "cdr-layout--gap-half-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-half-x": "cdr-layout--row-gap-half-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-half-x": "cdr-layout--column-gap-half-x_15-6-1-beta-1",
-  "cdr-layout--gap-three-quarter-x": "cdr-layout--gap-three-quarter-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-three-quarter-x": "cdr-layout--row-gap-three-quarter-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-three-quarter-x": "cdr-layout--column-gap-three-quarter-x_15-6-1-beta-1",
-  "cdr-layout--gap-one-x": "cdr-layout--gap-one-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-one-x": "cdr-layout--row-gap-one-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-one-x": "cdr-layout--column-gap-one-x_15-6-1-beta-1",
-  "cdr-layout--gap-one-and-a-half-x": "cdr-layout--gap-one-and-a-half-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-one-and-a-half-x": "cdr-layout--row-gap-one-and-a-half-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-one-and-a-half-x": "cdr-layout--column-gap-one-and-a-half-x_15-6-1-beta-1",
-  "cdr-layout--gap-two-x": "cdr-layout--gap-two-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-two-x": "cdr-layout--row-gap-two-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-two-x": "cdr-layout--column-gap-two-x_15-6-1-beta-1",
-  "cdr-layout--gap-three-x": "cdr-layout--gap-three-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-three-x": "cdr-layout--row-gap-three-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-three-x": "cdr-layout--column-gap-three-x_15-6-1-beta-1",
-  "cdr-layout--gap-four-x": "cdr-layout--gap-four-x_15-6-1-beta-1",
-  "cdr-layout--row-gap-four-x": "cdr-layout--row-gap-four-x_15-6-1-beta-1",
-  "cdr-layout--column-gap-four-x": "cdr-layout--column-gap-four-x_15-6-1-beta-1",
-  "cdr-layout--gap-scale-0": "cdr-layout--gap-scale-0_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-0": "cdr-layout--row-gap-scale-0_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-0": "cdr-layout--column-gap-scale-0_15-6-1-beta-1",
-  "cdr-layout--gap-scale-1": "cdr-layout--gap-scale-1_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-1": "cdr-layout--row-gap-scale-1_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-1": "cdr-layout--column-gap-scale-1_15-6-1-beta-1",
-  "cdr-layout--gap-scale-2": "cdr-layout--gap-scale-2_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-2": "cdr-layout--row-gap-scale-2_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-2": "cdr-layout--column-gap-scale-2_15-6-1-beta-1",
-  "cdr-layout--gap-scale-3": "cdr-layout--gap-scale-3_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-3": "cdr-layout--row-gap-scale-3_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-3": "cdr-layout--column-gap-scale-3_15-6-1-beta-1",
-  "cdr-layout--gap-scale-4": "cdr-layout--gap-scale-4_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-4": "cdr-layout--row-gap-scale-4_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-4": "cdr-layout--column-gap-scale-4_15-6-1-beta-1",
-  "cdr-layout--gap-scale-5": "cdr-layout--gap-scale-5_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-5": "cdr-layout--row-gap-scale-5_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-5": "cdr-layout--column-gap-scale-5_15-6-1-beta-1",
-  "cdr-layout--gap-scale-6": "cdr-layout--gap-scale-6_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-6": "cdr-layout--row-gap-scale-6_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-6": "cdr-layout--column-gap-scale-6_15-6-1-beta-1",
-  "cdr-layout--gap-scale-7": "cdr-layout--gap-scale-7_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-7": "cdr-layout--row-gap-scale-7_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-7": "cdr-layout--column-gap-scale-7_15-6-1-beta-1",
-  "cdr-layout--gap-scale-8": "cdr-layout--gap-scale-8_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-8": "cdr-layout--row-gap-scale-8_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-8": "cdr-layout--column-gap-scale-8_15-6-1-beta-1",
-  "cdr-layout--gap-scale-0--1": "cdr-layout--gap-scale-0--1_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-0--1": "cdr-layout--row-gap-scale-0--1_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-0--1": "cdr-layout--column-gap-scale-0--1_15-6-1-beta-1",
-  "cdr-layout--gap-scale-3--4": "cdr-layout--gap-scale-3--4_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-3--4": "cdr-layout--row-gap-scale-3--4_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-3--4": "cdr-layout--column-gap-scale-3--4_15-6-1-beta-1",
-  "cdr-layout--gap-scale-3--5": "cdr-layout--gap-scale-3--5_15-6-1-beta-1",
-  "cdr-layout--row-gap-scale-3--5": "cdr-layout--row-gap-scale-3--5_15-6-1-beta-1",
-  "cdr-layout--column-gap-scale-3--5": "cdr-layout--column-gap-scale-3--5_15-6-1-beta-1",
-  "cdr-layout--flow-row": "cdr-layout--flow-row_15-6-1-beta-1",
-  "cdr-layout--flow-column": "cdr-layout--flow-column_15-6-1-beta-1"
+  "cdr-layout": "cdr-layout_15-6-1-beta-2",
+  "cdr-layout--rows": "cdr-layout--rows_15-6-1-beta-2",
+  "cdr-layout--rows-mq": "cdr-layout--rows-mq_15-6-1-beta-2",
+  "cdr-layout--rows-cq": "cdr-layout--rows-cq_15-6-1-beta-2",
+  "cdr-layout--columns": "cdr-layout--columns_15-6-1-beta-2",
+  "cdr-layout--columns-mq": "cdr-layout--columns-mq_15-6-1-beta-2",
+  "cdr-layout--columns-cq": "cdr-layout--columns-cq_15-6-1-beta-2",
+  "cdr-layout--gap-zero": "cdr-layout--gap-zero_15-6-1-beta-2",
+  "cdr-layout--row-gap-zero": "cdr-layout--row-gap-zero_15-6-1-beta-2",
+  "cdr-layout--column-gap-zero": "cdr-layout--column-gap-zero_15-6-1-beta-2",
+  "cdr-layout--gap-sixteenth-x": "cdr-layout--gap-sixteenth-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-sixteenth-x": "cdr-layout--row-gap-sixteenth-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-sixteenth-x": "cdr-layout--column-gap-sixteenth-x_15-6-1-beta-2",
+  "cdr-layout--gap-eighth-x": "cdr-layout--gap-eighth-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-eighth-x": "cdr-layout--row-gap-eighth-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-eighth-x": "cdr-layout--column-gap-eighth-x_15-6-1-beta-2",
+  "cdr-layout--gap-three-sixteenth-x": "cdr-layout--gap-three-sixteenth-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-three-sixteenth-x": "cdr-layout--row-gap-three-sixteenth-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-three-sixteenth-x": "cdr-layout--column-gap-three-sixteenth-x_15-6-1-beta-2",
+  "cdr-layout--gap-quarter-x": "cdr-layout--gap-quarter-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-quarter-x": "cdr-layout--row-gap-quarter-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-quarter-x": "cdr-layout--column-gap-quarter-x_15-6-1-beta-2",
+  "cdr-layout--gap-three-eighth-x": "cdr-layout--gap-three-eighth-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-three-eighth-x": "cdr-layout--row-gap-three-eighth-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-three-eighth-x": "cdr-layout--column-gap-three-eighth-x_15-6-1-beta-2",
+  "cdr-layout--gap-half-x": "cdr-layout--gap-half-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-half-x": "cdr-layout--row-gap-half-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-half-x": "cdr-layout--column-gap-half-x_15-6-1-beta-2",
+  "cdr-layout--gap-three-quarter-x": "cdr-layout--gap-three-quarter-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-three-quarter-x": "cdr-layout--row-gap-three-quarter-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-three-quarter-x": "cdr-layout--column-gap-three-quarter-x_15-6-1-beta-2",
+  "cdr-layout--gap-one-x": "cdr-layout--gap-one-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-one-x": "cdr-layout--row-gap-one-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-one-x": "cdr-layout--column-gap-one-x_15-6-1-beta-2",
+  "cdr-layout--gap-one-and-a-half-x": "cdr-layout--gap-one-and-a-half-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-one-and-a-half-x": "cdr-layout--row-gap-one-and-a-half-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-one-and-a-half-x": "cdr-layout--column-gap-one-and-a-half-x_15-6-1-beta-2",
+  "cdr-layout--gap-two-x": "cdr-layout--gap-two-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-two-x": "cdr-layout--row-gap-two-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-two-x": "cdr-layout--column-gap-two-x_15-6-1-beta-2",
+  "cdr-layout--gap-three-x": "cdr-layout--gap-three-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-three-x": "cdr-layout--row-gap-three-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-three-x": "cdr-layout--column-gap-three-x_15-6-1-beta-2",
+  "cdr-layout--gap-four-x": "cdr-layout--gap-four-x_15-6-1-beta-2",
+  "cdr-layout--row-gap-four-x": "cdr-layout--row-gap-four-x_15-6-1-beta-2",
+  "cdr-layout--column-gap-four-x": "cdr-layout--column-gap-four-x_15-6-1-beta-2",
+  "cdr-layout--gap-scale-0": "cdr-layout--gap-scale-0_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-0": "cdr-layout--row-gap-scale-0_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-0": "cdr-layout--column-gap-scale-0_15-6-1-beta-2",
+  "cdr-layout--gap-scale-1": "cdr-layout--gap-scale-1_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-1": "cdr-layout--row-gap-scale-1_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-1": "cdr-layout--column-gap-scale-1_15-6-1-beta-2",
+  "cdr-layout--gap-scale-2": "cdr-layout--gap-scale-2_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-2": "cdr-layout--row-gap-scale-2_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-2": "cdr-layout--column-gap-scale-2_15-6-1-beta-2",
+  "cdr-layout--gap-scale-3": "cdr-layout--gap-scale-3_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-3": "cdr-layout--row-gap-scale-3_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-3": "cdr-layout--column-gap-scale-3_15-6-1-beta-2",
+  "cdr-layout--gap-scale-4": "cdr-layout--gap-scale-4_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-4": "cdr-layout--row-gap-scale-4_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-4": "cdr-layout--column-gap-scale-4_15-6-1-beta-2",
+  "cdr-layout--gap-scale-5": "cdr-layout--gap-scale-5_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-5": "cdr-layout--row-gap-scale-5_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-5": "cdr-layout--column-gap-scale-5_15-6-1-beta-2",
+  "cdr-layout--gap-scale-6": "cdr-layout--gap-scale-6_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-6": "cdr-layout--row-gap-scale-6_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-6": "cdr-layout--column-gap-scale-6_15-6-1-beta-2",
+  "cdr-layout--gap-scale-7": "cdr-layout--gap-scale-7_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-7": "cdr-layout--row-gap-scale-7_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-7": "cdr-layout--column-gap-scale-7_15-6-1-beta-2",
+  "cdr-layout--gap-scale-8": "cdr-layout--gap-scale-8_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-8": "cdr-layout--row-gap-scale-8_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-8": "cdr-layout--column-gap-scale-8_15-6-1-beta-2",
+  "cdr-layout--gap-scale-0--1": "cdr-layout--gap-scale-0--1_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-0--1": "cdr-layout--row-gap-scale-0--1_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-0--1": "cdr-layout--column-gap-scale-0--1_15-6-1-beta-2",
+  "cdr-layout--gap-scale-3--4": "cdr-layout--gap-scale-3--4_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-3--4": "cdr-layout--row-gap-scale-3--4_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-3--4": "cdr-layout--column-gap-scale-3--4_15-6-1-beta-2",
+  "cdr-layout--gap-scale-3--5": "cdr-layout--gap-scale-3--5_15-6-1-beta-2",
+  "cdr-layout--row-gap-scale-3--5": "cdr-layout--row-gap-scale-3--5_15-6-1-beta-2",
+  "cdr-layout--column-gap-scale-3--5": "cdr-layout--column-gap-scale-3--5_15-6-1-beta-2",
+  "cdr-layout--flow-row": "cdr-layout--flow-row_15-6-1-beta-2",
+  "cdr-layout--flow-column": "cdr-layout--flow-column_15-6-1-beta-2"
 }, rA = {
   $style: nA
 }, Wt = /* @__PURE__ */ W(tA, [["__cssModules", rA]]), lA = /* @__PURE__ */ k({
@@ -8860,10 +8860,10 @@ const tA = /* @__PURE__ */ k({
     }, 16, ["class", "tag", "role"]));
   }
 }), oA = {
-  "cdr-surface-selection": "cdr-surface-selection_15-6-1-beta-1",
-  "cdr-surface-selection__inner": "cdr-surface-selection__inner_15-6-1-beta-1",
-  "cdr-surface-selection__layout": "cdr-surface-selection__layout_15-6-1-beta-1",
-  "cdr-surface-selection__loading": "cdr-surface-selection__loading_15-6-1-beta-1"
+  "cdr-surface-selection": "cdr-surface-selection_15-6-1-beta-2",
+  "cdr-surface-selection__inner": "cdr-surface-selection__inner_15-6-1-beta-2",
+  "cdr-surface-selection__layout": "cdr-surface-selection__layout_15-6-1-beta-2",
+  "cdr-surface-selection__loading": "cdr-surface-selection__loading_15-6-1-beta-2"
 }, aA = {
   $style: oA
 }, Ot = /* @__PURE__ */ W(lA, [["__cssModules", aA]]), sA = "cdr-subheading-sans", iA = /* @__PURE__ */ k({
@@ -8889,7 +8889,7 @@ const tA = /* @__PURE__ */ k({
     }, 8, ["class", "style"]));
   }
 }), dA = {
-  "cdr-subheading-sans": "cdr-subheading-sans_15-6-1-beta-1"
+  "cdr-subheading-sans": "cdr-subheading-sans_15-6-1-beta-2"
 }, uA = {
   $style: dA
 }, Cn = /* @__PURE__ */ W(iA, [["__cssModules", uA]]), cA = "cdr-body", pA = /* @__PURE__ */ k({
@@ -8917,7 +8917,7 @@ const tA = /* @__PURE__ */ k({
     }, 8, ["class", "style"]));
   }
 }), fA = {
-  "cdr-body": "cdr-body_15-6-1-beta-1"
+  "cdr-body": "cdr-body_15-6-1-beta-2"
 }, mA = {
   $style: fA
 }, yt = /* @__PURE__ */ W(pA, [["__cssModules", mA]]), bA = { key: 1 }, gA = /* @__PURE__ */ k({
@@ -9014,12 +9014,12 @@ const tA = /* @__PURE__ */ k({
     }, 16, ["class", "tag", "role"]));
   }
 }), yA = {
-  "cdr-fulfillment-tile": "cdr-fulfillment-tile_15-6-1-beta-1",
-  "cdr-fulfillment-tile__header": "cdr-fulfillment-tile__header_15-6-1-beta-1",
-  "cdr-surface-selection__loading": "cdr-surface-selection__loading_15-6-1-beta-1",
-  "cdr-surface-selection__layout": "cdr-surface-selection__layout_15-6-1-beta-1",
-  "cdr-fulfillment-tile__content": "cdr-fulfillment-tile__content_15-6-1-beta-1",
-  "cdr-fulfillment-tile__main": "cdr-fulfillment-tile__main_15-6-1-beta-1"
+  "cdr-fulfillment-tile": "cdr-fulfillment-tile_15-6-1-beta-2",
+  "cdr-fulfillment-tile__header": "cdr-fulfillment-tile__header_15-6-1-beta-2",
+  "cdr-surface-selection__loading": "cdr-surface-selection__loading_15-6-1-beta-2",
+  "cdr-surface-selection__layout": "cdr-surface-selection__layout_15-6-1-beta-2",
+  "cdr-fulfillment-tile__content": "cdr-fulfillment-tile__content_15-6-1-beta-2",
+  "cdr-fulfillment-tile__main": "cdr-fulfillment-tile__main_15-6-1-beta-2"
 }, VA = {
   $style: yA
 }, dr = /* @__PURE__ */ W(gA, [["__cssModules", VA]]), Ys = "cdr-fulfillment-tile-icon", vA = /* @__PURE__ */ k({
@@ -9037,12 +9037,12 @@ const tA = /* @__PURE__ */ k({
     ], 2));
   }
 }), xA = {
-  "cdr-fulfillment-tile-icon": "cdr-fulfillment-tile-icon_15-6-1-beta-1",
-  "cdr-fulfillment-tile-icon--default": "cdr-fulfillment-tile-icon--default_15-6-1-beta-1",
-  "cdr-fulfillment-tile-icon--info": "cdr-fulfillment-tile-icon--info_15-6-1-beta-1",
-  "cdr-fulfillment-tile-icon--warning": "cdr-fulfillment-tile-icon--warning_15-6-1-beta-1",
-  "cdr-fulfillment-tile-icon--success": "cdr-fulfillment-tile-icon--success_15-6-1-beta-1",
-  "cdr-fulfillment-tile-icon--error": "cdr-fulfillment-tile-icon--error_15-6-1-beta-1"
+  "cdr-fulfillment-tile-icon": "cdr-fulfillment-tile-icon_15-6-1-beta-2",
+  "cdr-fulfillment-tile-icon--default": "cdr-fulfillment-tile-icon--default_15-6-1-beta-2",
+  "cdr-fulfillment-tile-icon--info": "cdr-fulfillment-tile-icon--info_15-6-1-beta-2",
+  "cdr-fulfillment-tile-icon--warning": "cdr-fulfillment-tile-icon--warning_15-6-1-beta-2",
+  "cdr-fulfillment-tile-icon--success": "cdr-fulfillment-tile-icon--success_15-6-1-beta-2",
+  "cdr-fulfillment-tile-icon--error": "cdr-fulfillment-tile-icon--error_15-6-1-beta-2"
 }, SA = {
   $style: xA
 }, Wo = /* @__PURE__ */ W(vA, [["__cssModules", SA]]), Qs = "cdr-grid", kA = /* @__PURE__ */ k({
@@ -9080,27 +9080,27 @@ const tA = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), qA = {
-  "cdr-grid": "cdr-grid_15-6-1-beta-1",
-  "cdr-grid--gutter-none": "cdr-grid--gutter-none_15-6-1-beta-1",
-  "cdr-grid--gutter-small": "cdr-grid--gutter-small_15-6-1-beta-1",
-  "cdr-grid--gutter-medium": "cdr-grid--gutter-medium_15-6-1-beta-1",
-  "cdr-grid--gutter-large": "cdr-grid--gutter-large_15-6-1-beta-1",
-  "cdr-grid--gutter-none@xs": "cdr-grid--gutter-none@xs_15-6-1-beta-1",
-  "cdr-grid--gutter-small@xs": "cdr-grid--gutter-small@xs_15-6-1-beta-1",
-  "cdr-grid--gutter-medium@xs": "cdr-grid--gutter-medium@xs_15-6-1-beta-1",
-  "cdr-grid--gutter-large@xs": "cdr-grid--gutter-large@xs_15-6-1-beta-1",
-  "cdr-grid--gutter-none@sm": "cdr-grid--gutter-none@sm_15-6-1-beta-1",
-  "cdr-grid--gutter-small@sm": "cdr-grid--gutter-small@sm_15-6-1-beta-1",
-  "cdr-grid--gutter-medium@sm": "cdr-grid--gutter-medium@sm_15-6-1-beta-1",
-  "cdr-grid--gutter-large@sm": "cdr-grid--gutter-large@sm_15-6-1-beta-1",
-  "cdr-grid--gutter-none@md": "cdr-grid--gutter-none@md_15-6-1-beta-1",
-  "cdr-grid--gutter-small@md": "cdr-grid--gutter-small@md_15-6-1-beta-1",
-  "cdr-grid--gutter-medium@md": "cdr-grid--gutter-medium@md_15-6-1-beta-1",
-  "cdr-grid--gutter-large@md": "cdr-grid--gutter-large@md_15-6-1-beta-1",
-  "cdr-grid--gutter-none@lg": "cdr-grid--gutter-none@lg_15-6-1-beta-1",
-  "cdr-grid--gutter-small@lg": "cdr-grid--gutter-small@lg_15-6-1-beta-1",
-  "cdr-grid--gutter-medium@lg": "cdr-grid--gutter-medium@lg_15-6-1-beta-1",
-  "cdr-grid--gutter-large@lg": "cdr-grid--gutter-large@lg_15-6-1-beta-1"
+  "cdr-grid": "cdr-grid_15-6-1-beta-2",
+  "cdr-grid--gutter-none": "cdr-grid--gutter-none_15-6-1-beta-2",
+  "cdr-grid--gutter-small": "cdr-grid--gutter-small_15-6-1-beta-2",
+  "cdr-grid--gutter-medium": "cdr-grid--gutter-medium_15-6-1-beta-2",
+  "cdr-grid--gutter-large": "cdr-grid--gutter-large_15-6-1-beta-2",
+  "cdr-grid--gutter-none@xs": "cdr-grid--gutter-none@xs_15-6-1-beta-2",
+  "cdr-grid--gutter-small@xs": "cdr-grid--gutter-small@xs_15-6-1-beta-2",
+  "cdr-grid--gutter-medium@xs": "cdr-grid--gutter-medium@xs_15-6-1-beta-2",
+  "cdr-grid--gutter-large@xs": "cdr-grid--gutter-large@xs_15-6-1-beta-2",
+  "cdr-grid--gutter-none@sm": "cdr-grid--gutter-none@sm_15-6-1-beta-2",
+  "cdr-grid--gutter-small@sm": "cdr-grid--gutter-small@sm_15-6-1-beta-2",
+  "cdr-grid--gutter-medium@sm": "cdr-grid--gutter-medium@sm_15-6-1-beta-2",
+  "cdr-grid--gutter-large@sm": "cdr-grid--gutter-large@sm_15-6-1-beta-2",
+  "cdr-grid--gutter-none@md": "cdr-grid--gutter-none@md_15-6-1-beta-2",
+  "cdr-grid--gutter-small@md": "cdr-grid--gutter-small@md_15-6-1-beta-2",
+  "cdr-grid--gutter-medium@md": "cdr-grid--gutter-medium@md_15-6-1-beta-2",
+  "cdr-grid--gutter-large@md": "cdr-grid--gutter-large@md_15-6-1-beta-2",
+  "cdr-grid--gutter-none@lg": "cdr-grid--gutter-none@lg_15-6-1-beta-2",
+  "cdr-grid--gutter-small@lg": "cdr-grid--gutter-small@lg_15-6-1-beta-2",
+  "cdr-grid--gutter-medium@lg": "cdr-grid--gutter-medium@lg_15-6-1-beta-2",
+  "cdr-grid--gutter-large@lg": "cdr-grid--gutter-large@lg_15-6-1-beta-2"
 }, hA = {
   $style: qA
 }, Sd = /* @__PURE__ */ W(kA, [["__cssModules", hA]]), jA = ["src", "alt", "srcset", "sizes", "loading", "decoding", "fetchpriority"], AA = "cdr-image", TA = /* @__PURE__ */ k({
@@ -9145,7 +9145,7 @@ const tA = /* @__PURE__ */ k({
     }, null, 14, jA));
   }
 }), PA = {
-  "cdr-image": "cdr-image_15-6-1-beta-1"
+  "cdr-image": "cdr-image_15-6-1-beta-2"
 }, RA = {
   $style: PA
 }, Ge = /* @__PURE__ */ W(TA, [["__cssModules", RA]]), CA = ["for"], IA = {
@@ -9228,18 +9228,18 @@ const tA = /* @__PURE__ */ k({
     ], 2));
   }
 }), OA = {
-  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-1",
-  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-1",
-  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-1",
-  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-1",
-  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-1",
-  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-1",
-  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-1",
-  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-1",
-  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-1",
-  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-1",
-  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-1",
-  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-1"
+  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-2",
+  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-2",
+  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-2",
+  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-2",
+  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-2",
+  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-2",
+  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-2",
+  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-2",
+  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-2",
+  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-2",
+  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-2",
+  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-2"
 }, XA = {
   $style: OA
 }, kd = /* @__PURE__ */ W(UA, [["__cssModules", XA]]), MA = ["rows", "id", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby"], WA = ["type", "disabled", "aria-required", "aria-invalid", "aria-errormessage", "aria-describedby"], zA = ["id"], go = "cdr-input", LA = /* @__PURE__ */ k({
@@ -9505,38 +9505,38 @@ const tA = /* @__PURE__ */ k({
     ]), 1032, ["for-id", "label", "hide-label", "required", "optional", "disabled", "class", "label-class"]));
   }
 }), JA = {
-  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-1",
-  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-1",
-  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-1",
-  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-1",
-  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-1",
-  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-1",
-  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-1",
-  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-1",
-  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-1",
-  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-1",
-  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-1",
-  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-1",
-  "cdr-form-error": "cdr-form-error_15-6-1-beta-1",
-  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-1",
-  "cdr-input": "cdr-input_15-6-1-beta-1",
-  "cdr-input--focus": "cdr-input--focus_15-6-1-beta-1",
-  "cdr-input--multiline": "cdr-input--multiline_15-6-1-beta-1",
-  "cdr-input--preicon": "cdr-input--preicon_15-6-1-beta-1",
-  "cdr-input--posticon": "cdr-input--posticon_15-6-1-beta-1",
-  "cdr-input--posticons": "cdr-input--posticons_15-6-1-beta-1",
-  "cdr-input--primary": "cdr-input--primary_15-6-1-beta-1",
-  "cdr-input--secondary": "cdr-input--secondary_15-6-1-beta-1",
-  "cdr-input--error": "cdr-input--error_15-6-1-beta-1",
-  "cdr-input--large": "cdr-input--large_15-6-1-beta-1",
-  "cdr-input--large@xs": "cdr-input--large@xs_15-6-1-beta-1",
-  "cdr-input--large@sm": "cdr-input--large@sm_15-6-1-beta-1",
-  "cdr-input--large@md": "cdr-input--large@md_15-6-1-beta-1",
-  "cdr-input--large@lg": "cdr-input--large@lg_15-6-1-beta-1",
-  "cdr-input__pre-icon": "cdr-input__pre-icon_15-6-1-beta-1",
-  "cdr-input__post-icon": "cdr-input__post-icon_15-6-1-beta-1",
-  "cdr-input__helper-text": "cdr-input__helper-text_15-6-1-beta-1",
-  "cdr-input-wrap": "cdr-input-wrap_15-6-1-beta-1"
+  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-2",
+  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-2",
+  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-2",
+  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-2",
+  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-2",
+  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-2",
+  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-2",
+  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-2",
+  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-2",
+  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-2",
+  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-2",
+  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-2",
+  "cdr-form-error": "cdr-form-error_15-6-1-beta-2",
+  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-2",
+  "cdr-input": "cdr-input_15-6-1-beta-2",
+  "cdr-input--focus": "cdr-input--focus_15-6-1-beta-2",
+  "cdr-input--multiline": "cdr-input--multiline_15-6-1-beta-2",
+  "cdr-input--preicon": "cdr-input--preicon_15-6-1-beta-2",
+  "cdr-input--posticon": "cdr-input--posticon_15-6-1-beta-2",
+  "cdr-input--posticons": "cdr-input--posticons_15-6-1-beta-2",
+  "cdr-input--primary": "cdr-input--primary_15-6-1-beta-2",
+  "cdr-input--secondary": "cdr-input--secondary_15-6-1-beta-2",
+  "cdr-input--error": "cdr-input--error_15-6-1-beta-2",
+  "cdr-input--large": "cdr-input--large_15-6-1-beta-2",
+  "cdr-input--large@xs": "cdr-input--large@xs_15-6-1-beta-2",
+  "cdr-input--large@sm": "cdr-input--large@sm_15-6-1-beta-2",
+  "cdr-input--large@md": "cdr-input--large@md_15-6-1-beta-2",
+  "cdr-input--large@lg": "cdr-input--large@lg_15-6-1-beta-2",
+  "cdr-input__pre-icon": "cdr-input__pre-icon_15-6-1-beta-2",
+  "cdr-input__post-icon": "cdr-input__post-icon_15-6-1-beta-2",
+  "cdr-input__helper-text": "cdr-input__helper-text_15-6-1-beta-2",
+  "cdr-input-wrap": "cdr-input-wrap_15-6-1-beta-2"
 }, EA = {
   $style: JA
 }, qd = /* @__PURE__ */ W(LA, [["__cssModules", EA]]), FA = "cdr-kicker", ZA = /* @__PURE__ */ k({
@@ -9557,7 +9557,7 @@ const tA = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), GA = {
-  "cdr-kicker": "cdr-kicker_15-6-1-beta-1"
+  "cdr-kicker": "cdr-kicker_15-6-1-beta-2"
 }, NA = {
   $style: GA
 }, hd = /* @__PURE__ */ W(ZA, [["__cssModules", NA]]), yo = "cdr-heading-subheading-block", BA = /* @__PURE__ */ k({
@@ -9592,10 +9592,10 @@ const tA = /* @__PURE__ */ k({
     ], 2));
   }
 }), DA = {
-  "cdr-heading-display": "cdr-heading-display_15-6-1-beta-1",
-  "cdr-subheading-sans": "cdr-subheading-sans_15-6-1-beta-1",
-  "cdr-heading-subheading-block__heading": "cdr-heading-subheading-block__heading_15-6-1-beta-1",
-  "cdr-heading-subheading-block__subheading": "cdr-heading-subheading-block__subheading_15-6-1-beta-1"
+  "cdr-heading-display": "cdr-heading-display_15-6-1-beta-2",
+  "cdr-subheading-sans": "cdr-subheading-sans_15-6-1-beta-2",
+  "cdr-heading-subheading-block__heading": "cdr-heading-subheading-block__heading_15-6-1-beta-2",
+  "cdr-heading-subheading-block__subheading": "cdr-heading-subheading-block__subheading_15-6-1-beta-2"
 }, YA = {
   $style: DA
 }, QA = /* @__PURE__ */ W(BA, [["__cssModules", YA]]), Vo = "cdr-landing-lead", _A = /* @__PURE__ */ k({
@@ -9643,14 +9643,14 @@ const tA = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), $A = {
-  "cdr-image": "cdr-image_15-6-1-beta-1",
-  "cdr-heading-display": "cdr-heading-display_15-6-1-beta-1",
-  "cdr-subheading-sans": "cdr-subheading-sans_15-6-1-beta-1",
-  "cdr-heading-subheading-block__heading": "cdr-heading-subheading-block__heading_15-6-1-beta-1",
-  "cdr-heading-subheading-block__subheading": "cdr-heading-subheading-block__subheading_15-6-1-beta-1",
-  "cdr-landing-lead": "cdr-landing-lead_15-6-1-beta-1",
-  "cdr-landing-lead__image": "cdr-landing-lead__image_15-6-1-beta-1",
-  "cdr-landing-lead__copy-block": "cdr-landing-lead__copy-block_15-6-1-beta-1"
+  "cdr-image": "cdr-image_15-6-1-beta-2",
+  "cdr-heading-display": "cdr-heading-display_15-6-1-beta-2",
+  "cdr-subheading-sans": "cdr-subheading-sans_15-6-1-beta-2",
+  "cdr-heading-subheading-block__heading": "cdr-heading-subheading-block__heading_15-6-1-beta-2",
+  "cdr-heading-subheading-block__subheading": "cdr-heading-subheading-block__subheading_15-6-1-beta-2",
+  "cdr-landing-lead": "cdr-landing-lead_15-6-1-beta-2",
+  "cdr-landing-lead__image": "cdr-landing-lead__image_15-6-1-beta-2",
+  "cdr-landing-lead__copy-block": "cdr-landing-lead__copy-block_15-6-1-beta-2"
 }, eT = {
   $style: $A
 }, tT = /* @__PURE__ */ W(_A, [["__cssModules", eT]]), nT = /* @__PURE__ */ k({
@@ -9684,10 +9684,10 @@ const tA = /* @__PURE__ */ k({
     }, 16, ["class", "href", "rel", "target"]));
   }
 }), rT = {
-  "cdr-link": "cdr-link_15-6-1-beta-1",
-  "cdr-link--standalone": "cdr-link--standalone_15-6-1-beta-1",
-  "cdr-link--inherit-color": "cdr-link--inherit-color_15-6-1-beta-1",
-  "cdr-link--neutral": "cdr-link--neutral_15-6-1-beta-1"
+  "cdr-link": "cdr-link_15-6-1-beta-2",
+  "cdr-link--standalone": "cdr-link--standalone_15-6-1-beta-2",
+  "cdr-link--inherit-color": "cdr-link--inherit-color_15-6-1-beta-2",
+  "cdr-link--neutral": "cdr-link--neutral_15-6-1-beta-2"
 }, lT = {
   $style: rT
 }, Hn = /* @__PURE__ */ W(nT, [["__cssModules", lT]]), _s = "cdr-list", oT = /* @__PURE__ */ k({
@@ -9731,11 +9731,11 @@ const tA = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), aT = {
-  "cdr-list": "cdr-list_15-6-1-beta-1",
-  "cdr-list--compact": "cdr-list--compact_15-6-1-beta-1",
-  "cdr-list--ordered": "cdr-list--ordered_15-6-1-beta-1",
-  "cdr-list--unordered": "cdr-list--unordered_15-6-1-beta-1",
-  "cdr-list--inline": "cdr-list--inline_15-6-1-beta-1"
+  "cdr-list": "cdr-list_15-6-1-beta-2",
+  "cdr-list--compact": "cdr-list--compact_15-6-1-beta-2",
+  "cdr-list--ordered": "cdr-list--ordered_15-6-1-beta-2",
+  "cdr-list--unordered": "cdr-list--unordered_15-6-1-beta-2",
+  "cdr-list--inline": "cdr-list--inline_15-6-1-beta-2"
 }, sT = {
   $style: aT
 }, iT = /* @__PURE__ */ W(oT, [["__cssModules", sT]]), dT = (t) => String(t[0]).toUpperCase() + String(t).slice(1), vl = ["xs", "sm", "md", "lg"], $s = {
@@ -9871,12 +9871,12 @@ const tA = /* @__PURE__ */ k({
     }, 16));
   }
 }), pT = {
-  "cdr-media-object": "cdr-media-object_15-6-1-beta-1",
-  "cdr-media-object--align-mq": "cdr-media-object--align-mq_15-6-1-beta-1",
-  "cdr-media-object--media-position-mq": "cdr-media-object--media-position-mq_15-6-1-beta-1",
-  "cdr-media-object--content-padding-mq": "cdr-media-object--content-padding-mq_15-6-1-beta-1",
-  "cdr-media-object--cover": "cdr-media-object--cover_15-6-1-beta-1",
-  "cdr-media-object--overlay": "cdr-media-object--overlay_15-6-1-beta-1"
+  "cdr-media-object": "cdr-media-object_15-6-1-beta-2",
+  "cdr-media-object--align-mq": "cdr-media-object--align-mq_15-6-1-beta-2",
+  "cdr-media-object--media-position-mq": "cdr-media-object--media-position-mq_15-6-1-beta-2",
+  "cdr-media-object--content-padding-mq": "cdr-media-object--content-padding-mq_15-6-1-beta-2",
+  "cdr-media-object--cover": "cdr-media-object--cover_15-6-1-beta-2",
+  "cdr-media-object--overlay": "cdr-media-object--overlay_15-6-1-beta-2"
 }, fT = {
   $style: pT
 }, Mt = /* @__PURE__ */ W(cT, [["__cssModules", fT]]);
@@ -10254,18 +10254,18 @@ const TT = (t, e, n) => {
     ]));
   }
 }), HT = {
-  "cdr-modal": "cdr-modal_15-6-1-beta-1",
-  "cdr-modal__overlay": "cdr-modal__overlay_15-6-1-beta-1",
-  "cdr-modal__outerWrap": "cdr-modal__outerWrap_15-6-1-beta-1",
-  "cdr-modal__contentWrap": "cdr-modal__contentWrap_15-6-1-beta-1",
-  "cdr-modal__innerWrap": "cdr-modal__innerWrap_15-6-1-beta-1",
-  "cdr-modal__dialog": "cdr-modal__dialog_15-6-1-beta-1",
-  "cdr-modal__content": "cdr-modal__content_15-6-1-beta-1",
-  "cdr-modal__header": "cdr-modal__header_15-6-1-beta-1",
-  "cdr-modal__title": "cdr-modal__title_15-6-1-beta-1",
-  "cdr-modal__close-button": "cdr-modal__close-button_15-6-1-beta-1",
-  "cdr-modal__text-content": "cdr-modal__text-content_15-6-1-beta-1",
-  "cdr-modal--closed": "cdr-modal--closed_15-6-1-beta-1"
+  "cdr-modal": "cdr-modal_15-6-1-beta-2",
+  "cdr-modal__overlay": "cdr-modal__overlay_15-6-1-beta-2",
+  "cdr-modal__outerWrap": "cdr-modal__outerWrap_15-6-1-beta-2",
+  "cdr-modal__contentWrap": "cdr-modal__contentWrap_15-6-1-beta-2",
+  "cdr-modal__innerWrap": "cdr-modal__innerWrap_15-6-1-beta-2",
+  "cdr-modal__dialog": "cdr-modal__dialog_15-6-1-beta-2",
+  "cdr-modal__content": "cdr-modal__content_15-6-1-beta-2",
+  "cdr-modal__header": "cdr-modal__header_15-6-1-beta-2",
+  "cdr-modal__title": "cdr-modal__title_15-6-1-beta-2",
+  "cdr-modal__close-button": "cdr-modal__close-button_15-6-1-beta-2",
+  "cdr-modal__text-content": "cdr-modal__text-content_15-6-1-beta-2",
+  "cdr-modal--closed": "cdr-modal--closed_15-6-1-beta-2"
 }, KT = {
   $style: HT
 }, UT = /* @__PURE__ */ W(wT, [["__cssModules", KT]]), OT = /* @__PURE__ */ k({
@@ -10371,9 +10371,9 @@ const TT = (t, e, n) => {
     }, 16, ["class"]));
   }
 }), XT = {
-  "cdr-object-overlay": "cdr-object-overlay_15-6-1-beta-1",
-  "cdr-object-overlay__container": "cdr-object-overlay__container_15-6-1-beta-1",
-  "cdr-object-overlay__content": "cdr-object-overlay__content_15-6-1-beta-1"
+  "cdr-object-overlay": "cdr-object-overlay_15-6-1-beta-2",
+  "cdr-object-overlay__container": "cdr-object-overlay__container_15-6-1-beta-2",
+  "cdr-object-overlay__content": "cdr-object-overlay__content_15-6-1-beta-2"
 }, MT = {
   $style: XT
 }, Kt = /* @__PURE__ */ W(OT, [["__cssModules", MT]]), Ir = /* @__PURE__ */ k({
@@ -10634,48 +10634,48 @@ const TT = (t, e, n) => {
     ]), 1032, ["for-id", "label", "hide-label", "required", "optional", "disabled"]));
   }
 }), JT = {
-  "cdr-icon": "cdr-icon_15-6-1-beta-1",
-  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-1",
-  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-1",
-  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-1",
-  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-1",
-  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-1",
-  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-1",
-  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-1",
-  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-1",
-  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-1",
-  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-1",
-  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-1",
-  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-1",
-  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-1",
-  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-1",
-  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-1",
-  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-1",
-  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-1",
-  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-1",
-  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-1",
-  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-1",
-  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-1",
-  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-1",
-  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-1",
-  "cdr-form-error": "cdr-form-error_15-6-1-beta-1",
-  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-1",
-  "cdr-select": "cdr-select_15-6-1-beta-1",
-  "cdr-select--primary": "cdr-select--primary_15-6-1-beta-1",
-  "cdr-select--secondary": "cdr-select--secondary_15-6-1-beta-1",
-  "cdr-select--error": "cdr-select--error_15-6-1-beta-1",
-  "cdr-select--preicon": "cdr-select--preicon_15-6-1-beta-1",
-  "cdr-select__prompt": "cdr-select__prompt_15-6-1-beta-1",
-  "cdr-select__caret": "cdr-select__caret_15-6-1-beta-1",
-  "cdr-select__caret--disabled": "cdr-select__caret--disabled_15-6-1-beta-1",
-  "cdr-select__pre-icon": "cdr-select__pre-icon_15-6-1-beta-1",
-  "cdr-select--multiple": "cdr-select--multiple_15-6-1-beta-1",
-  "cdr-select--large@xs": "cdr-select--large@xs_15-6-1-beta-1",
-  "cdr-select--large": "cdr-select--large_15-6-1-beta-1",
-  "cdr-select--large@sm": "cdr-select--large@sm_15-6-1-beta-1",
-  "cdr-select--large@md": "cdr-select--large@md_15-6-1-beta-1",
-  "cdr-select--large@lg": "cdr-select--large@lg_15-6-1-beta-1",
-  "cdr-select-wrap": "cdr-select-wrap_15-6-1-beta-1"
+  "cdr-icon": "cdr-icon_15-6-1-beta-2",
+  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-2",
+  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-2",
+  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-2",
+  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-2",
+  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-2",
+  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-2",
+  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-2",
+  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-2",
+  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-2",
+  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-2",
+  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-2",
+  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-2",
+  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-2",
+  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-2",
+  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-2",
+  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-2",
+  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-2",
+  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-2",
+  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-2",
+  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-2",
+  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-2",
+  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-2",
+  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-2",
+  "cdr-form-error": "cdr-form-error_15-6-1-beta-2",
+  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-2",
+  "cdr-select": "cdr-select_15-6-1-beta-2",
+  "cdr-select--primary": "cdr-select--primary_15-6-1-beta-2",
+  "cdr-select--secondary": "cdr-select--secondary_15-6-1-beta-2",
+  "cdr-select--error": "cdr-select--error_15-6-1-beta-2",
+  "cdr-select--preicon": "cdr-select--preicon_15-6-1-beta-2",
+  "cdr-select__prompt": "cdr-select__prompt_15-6-1-beta-2",
+  "cdr-select__caret": "cdr-select__caret_15-6-1-beta-2",
+  "cdr-select__caret--disabled": "cdr-select__caret--disabled_15-6-1-beta-2",
+  "cdr-select__pre-icon": "cdr-select__pre-icon_15-6-1-beta-2",
+  "cdr-select--multiple": "cdr-select--multiple_15-6-1-beta-2",
+  "cdr-select--large@xs": "cdr-select--large@xs_15-6-1-beta-2",
+  "cdr-select--large": "cdr-select--large_15-6-1-beta-2",
+  "cdr-select--large@sm": "cdr-select--large@sm_15-6-1-beta-2",
+  "cdr-select--large@md": "cdr-select--large@md_15-6-1-beta-2",
+  "cdr-select--large@lg": "cdr-select--large@lg_15-6-1-beta-2",
+  "cdr-select-wrap": "cdr-select-wrap_15-6-1-beta-2"
 }, ET = {
   $style: JT
 }, Aa = /* @__PURE__ */ W(LT, [["__cssModules", ET]]), FT = ["aria-label"], ZT = { key: 0 }, GT = {
@@ -10927,59 +10927,59 @@ const TT = (t, e, n) => {
     ], 8, FT));
   }
 }), QT = {
-  "cdr-icon": "cdr-icon_15-6-1-beta-1",
-  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-1",
-  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-1",
-  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-1",
-  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-1",
-  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-1",
-  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-1",
-  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-1",
-  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-1",
-  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-1",
-  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-1",
-  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-1",
-  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-1",
-  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-1",
-  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-1",
-  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-1",
-  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-1",
-  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-1",
-  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-1",
-  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-1",
-  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-1",
-  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-1",
-  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-1",
-  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-1",
-  "cdr-form-error": "cdr-form-error_15-6-1-beta-1",
-  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-1",
-  "cdr-select": "cdr-select_15-6-1-beta-1",
-  "cdr-select--primary": "cdr-select--primary_15-6-1-beta-1",
-  "cdr-select--secondary": "cdr-select--secondary_15-6-1-beta-1",
-  "cdr-select--error": "cdr-select--error_15-6-1-beta-1",
-  "cdr-select--preicon": "cdr-select--preicon_15-6-1-beta-1",
-  "cdr-select__prompt": "cdr-select__prompt_15-6-1-beta-1",
-  "cdr-select__caret": "cdr-select__caret_15-6-1-beta-1",
-  "cdr-select__caret--disabled": "cdr-select__caret--disabled_15-6-1-beta-1",
-  "cdr-select__pre-icon": "cdr-select__pre-icon_15-6-1-beta-1",
-  "cdr-select--multiple": "cdr-select--multiple_15-6-1-beta-1",
-  "cdr-select--large@xs": "cdr-select--large@xs_15-6-1-beta-1",
-  "cdr-select--large": "cdr-select--large_15-6-1-beta-1",
-  "cdr-select--large@sm": "cdr-select--large@sm_15-6-1-beta-1",
-  "cdr-select--large@md": "cdr-select--large@md_15-6-1-beta-1",
-  "cdr-select--large@lg": "cdr-select--large@lg_15-6-1-beta-1",
-  "cdr-select-wrap": "cdr-select-wrap_15-6-1-beta-1",
-  "cdr-pagination": "cdr-pagination_15-6-1-beta-1",
-  "cdr-pagination__li--links": "cdr-pagination__li--links_15-6-1-beta-1",
-  "cdr-pagination__li--select": "cdr-pagination__li--select_15-6-1-beta-1",
-  "cdr-pagination__link": "cdr-pagination__link_15-6-1-beta-1",
-  "cdr-pagination__link--current": "cdr-pagination__link--current_15-6-1-beta-1",
-  "cdr-pagination__link--disabled": "cdr-pagination__link--disabled_15-6-1-beta-1",
-  "cdr-pagination__ellipse": "cdr-pagination__ellipse_15-6-1-beta-1",
-  "cdr-pagination__prev": "cdr-pagination__prev_15-6-1-beta-1",
-  "cdr-pagination__next": "cdr-pagination__next_15-6-1-beta-1",
-  "cdr-pagination__caret--prev": "cdr-pagination__caret--prev_15-6-1-beta-1",
-  "cdr-pagination__caret--next": "cdr-pagination__caret--next_15-6-1-beta-1"
+  "cdr-icon": "cdr-icon_15-6-1-beta-2",
+  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-2",
+  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-2",
+  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-2",
+  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-2",
+  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-2",
+  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-2",
+  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-2",
+  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-2",
+  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-2",
+  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-2",
+  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-2",
+  "cdr-label-standalone": "cdr-label-standalone_15-6-1-beta-2",
+  "cdr-label-standalone__label-wrapper": "cdr-label-standalone__label-wrapper_15-6-1-beta-2",
+  "cdr-label-standalone__label": "cdr-label-standalone__label_15-6-1-beta-2",
+  "cdr-label-standalone__label--sr-only": "cdr-label-standalone__label--sr-only_15-6-1-beta-2",
+  "cdr-label-standalone__label--disabled": "cdr-label-standalone__label--disabled_15-6-1-beta-2",
+  "cdr-label-standalone__optional": "cdr-label-standalone__optional_15-6-1-beta-2",
+  "cdr-label-standalone__helper": "cdr-label-standalone__helper_15-6-1-beta-2",
+  "cdr-label-standalone__info": "cdr-label-standalone__info_15-6-1-beta-2",
+  "cdr-label-standalone__post-content": "cdr-label-standalone__post-content_15-6-1-beta-2",
+  "cdr-label-standalone__info-action": "cdr-label-standalone__info-action_15-6-1-beta-2",
+  "cdr-label-standalone__input-wrap": "cdr-label-standalone__input-wrap_15-6-1-beta-2",
+  "cdr-label-standalone__input-spacing": "cdr-label-standalone__input-spacing_15-6-1-beta-2",
+  "cdr-form-error": "cdr-form-error_15-6-1-beta-2",
+  "cdr-form-error__icon": "cdr-form-error__icon_15-6-1-beta-2",
+  "cdr-select": "cdr-select_15-6-1-beta-2",
+  "cdr-select--primary": "cdr-select--primary_15-6-1-beta-2",
+  "cdr-select--secondary": "cdr-select--secondary_15-6-1-beta-2",
+  "cdr-select--error": "cdr-select--error_15-6-1-beta-2",
+  "cdr-select--preicon": "cdr-select--preicon_15-6-1-beta-2",
+  "cdr-select__prompt": "cdr-select__prompt_15-6-1-beta-2",
+  "cdr-select__caret": "cdr-select__caret_15-6-1-beta-2",
+  "cdr-select__caret--disabled": "cdr-select__caret--disabled_15-6-1-beta-2",
+  "cdr-select__pre-icon": "cdr-select__pre-icon_15-6-1-beta-2",
+  "cdr-select--multiple": "cdr-select--multiple_15-6-1-beta-2",
+  "cdr-select--large@xs": "cdr-select--large@xs_15-6-1-beta-2",
+  "cdr-select--large": "cdr-select--large_15-6-1-beta-2",
+  "cdr-select--large@sm": "cdr-select--large@sm_15-6-1-beta-2",
+  "cdr-select--large@md": "cdr-select--large@md_15-6-1-beta-2",
+  "cdr-select--large@lg": "cdr-select--large@lg_15-6-1-beta-2",
+  "cdr-select-wrap": "cdr-select-wrap_15-6-1-beta-2",
+  "cdr-pagination": "cdr-pagination_15-6-1-beta-2",
+  "cdr-pagination__li--links": "cdr-pagination__li--links_15-6-1-beta-2",
+  "cdr-pagination__li--select": "cdr-pagination__li--select_15-6-1-beta-2",
+  "cdr-pagination__link": "cdr-pagination__link_15-6-1-beta-2",
+  "cdr-pagination__link--current": "cdr-pagination__link--current_15-6-1-beta-2",
+  "cdr-pagination__link--disabled": "cdr-pagination__link--disabled_15-6-1-beta-2",
+  "cdr-pagination__ellipse": "cdr-pagination__ellipse_15-6-1-beta-2",
+  "cdr-pagination__prev": "cdr-pagination__prev_15-6-1-beta-2",
+  "cdr-pagination__next": "cdr-pagination__next_15-6-1-beta-2",
+  "cdr-pagination__caret--prev": "cdr-pagination__caret--prev_15-6-1-beta-2",
+  "cdr-pagination__caret--next": "cdr-pagination__caret--next_15-6-1-beta-2"
 }, _T = {
   $style: QT
 }, $T = /* @__PURE__ */ W(YT, [["__cssModules", _T]]), eP = "cdr-picture", tP = /* @__PURE__ */ k({
@@ -11021,8 +11021,8 @@ const TT = (t, e, n) => {
     ], 2));
   }
 }), nP = {
-  "cdr-image": "cdr-image_15-6-1-beta-1",
-  "cdr-picture": "cdr-picture_15-6-1-beta-1"
+  "cdr-image": "cdr-image_15-6-1-beta-2",
+  "cdr-picture": "cdr-picture_15-6-1-beta-2"
 }, rP = {
   $style: nP
 }, Ta = /* @__PURE__ */ W(tP, [["__cssModules", rP]]), zr = /* @__PURE__ */ k({
@@ -11178,20 +11178,20 @@ const oP = "cdr-popup", aP = /* @__PURE__ */ k({
     ], 2));
   }
 }), sP = {
-  "cdr-popup": "cdr-popup_15-6-1-beta-1",
-  "cdr-popup--open": "cdr-popup--open_15-6-1-beta-1",
-  "cdr-popup--closed": "cdr-popup--closed_15-6-1-beta-1",
-  "cdr-popup__content": "cdr-popup__content_15-6-1-beta-1",
-  "cdr-popup__arrow": "cdr-popup__arrow_15-6-1-beta-1",
-  "cdr-popup--top": "cdr-popup--top_15-6-1-beta-1",
-  "cdr-popup--bottom": "cdr-popup--bottom_15-6-1-beta-1",
-  "cdr-popup--exit": "cdr-popup--exit_15-6-1-beta-1",
-  "cdr-popup--corner-left": "cdr-popup--corner-left_15-6-1-beta-1",
-  "cdr-popup--corner-right": "cdr-popup--corner-right_15-6-1-beta-1",
-  "cdr-popup--left": "cdr-popup--left_15-6-1-beta-1",
-  "cdr-popup--right": "cdr-popup--right_15-6-1-beta-1",
-  "cdr-popup--corner-top": "cdr-popup--corner-top_15-6-1-beta-1",
-  "cdr-popup--corner-bottom": "cdr-popup--corner-bottom_15-6-1-beta-1"
+  "cdr-popup": "cdr-popup_15-6-1-beta-2",
+  "cdr-popup--open": "cdr-popup--open_15-6-1-beta-2",
+  "cdr-popup--closed": "cdr-popup--closed_15-6-1-beta-2",
+  "cdr-popup__content": "cdr-popup__content_15-6-1-beta-2",
+  "cdr-popup__arrow": "cdr-popup__arrow_15-6-1-beta-2",
+  "cdr-popup--top": "cdr-popup--top_15-6-1-beta-2",
+  "cdr-popup--bottom": "cdr-popup--bottom_15-6-1-beta-2",
+  "cdr-popup--exit": "cdr-popup--exit_15-6-1-beta-2",
+  "cdr-popup--corner-left": "cdr-popup--corner-left_15-6-1-beta-2",
+  "cdr-popup--corner-right": "cdr-popup--corner-right_15-6-1-beta-2",
+  "cdr-popup--left": "cdr-popup--left_15-6-1-beta-2",
+  "cdr-popup--right": "cdr-popup--right_15-6-1-beta-2",
+  "cdr-popup--corner-top": "cdr-popup--corner-top_15-6-1-beta-2",
+  "cdr-popup--corner-bottom": "cdr-popup--corner-bottom_15-6-1-beta-2"
 }, iP = {
   $style: sP
 }, Cd = /* @__PURE__ */ W(aP, [["__cssModules", iP]]), dP = /* @__PURE__ */ k({
@@ -11342,69 +11342,69 @@ const oP = "cdr-popup", aP = /* @__PURE__ */ k({
     ], 2));
   }
 }), uP = {
-  "cdr-popup": "cdr-popup_15-6-1-beta-1",
-  "cdr-popup--open": "cdr-popup--open_15-6-1-beta-1",
-  "cdr-popup--closed": "cdr-popup--closed_15-6-1-beta-1",
-  "cdr-popup__content": "cdr-popup__content_15-6-1-beta-1",
-  "cdr-popup__arrow": "cdr-popup__arrow_15-6-1-beta-1",
-  "cdr-popup--top": "cdr-popup--top_15-6-1-beta-1",
-  "cdr-popup--bottom": "cdr-popup--bottom_15-6-1-beta-1",
-  "cdr-popup--exit": "cdr-popup--exit_15-6-1-beta-1",
-  "cdr-popup--corner-left": "cdr-popup--corner-left_15-6-1-beta-1",
-  "cdr-popup--corner-right": "cdr-popup--corner-right_15-6-1-beta-1",
-  "cdr-popup--left": "cdr-popup--left_15-6-1-beta-1",
-  "cdr-popup--right": "cdr-popup--right_15-6-1-beta-1",
-  "cdr-popup--corner-top": "cdr-popup--corner-top_15-6-1-beta-1",
-  "cdr-popup--corner-bottom": "cdr-popup--corner-bottom_15-6-1-beta-1",
-  "cdr-button": "cdr-button_15-6-1-beta-1",
-  "cdr-button--has-icon-left": "cdr-button--has-icon-left_15-6-1-beta-1",
-  "cdr-button--has-icon-right": "cdr-button--has-icon-right_15-6-1-beta-1",
-  "cdr-button--primary": "cdr-button--primary_15-6-1-beta-1",
-  "cdr-button--secondary": "cdr-button--secondary_15-6-1-beta-1",
-  "cdr-button--dark": "cdr-button--dark_15-6-1-beta-1",
-  "cdr-button--sale": "cdr-button--sale_15-6-1-beta-1",
-  "cdr-button--link": "cdr-button--link_15-6-1-beta-1",
-  "cdr-button--large": "cdr-button--large_15-6-1-beta-1",
-  "cdr-button--medium": "cdr-button--medium_15-6-1-beta-1",
-  "cdr-button--small": "cdr-button--small_15-6-1-beta-1",
-  "cdr-button--icon-only": "cdr-button--icon-only_15-6-1-beta-1",
-  "cdr-button--icon-only-large": "cdr-button--icon-only-large_15-6-1-beta-1",
-  "cdr-button--with-background": "cdr-button--with-background_15-6-1-beta-1",
-  "cdr-button--full-width": "cdr-button--full-width_15-6-1-beta-1",
-  "cdr-button--small@xs": "cdr-button--small@xs_15-6-1-beta-1",
-  "cdr-button--medium@xs": "cdr-button--medium@xs_15-6-1-beta-1",
-  "cdr-button--large@xs": "cdr-button--large@xs_15-6-1-beta-1",
-  "cdr-button--full-width@xs": "cdr-button--full-width@xs_15-6-1-beta-1",
-  "cdr-button--small@sm": "cdr-button--small@sm_15-6-1-beta-1",
-  "cdr-button--medium@sm": "cdr-button--medium@sm_15-6-1-beta-1",
-  "cdr-button--large@sm": "cdr-button--large@sm_15-6-1-beta-1",
-  "cdr-button--full-width@sm": "cdr-button--full-width@sm_15-6-1-beta-1",
-  "cdr-button--small@md": "cdr-button--small@md_15-6-1-beta-1",
-  "cdr-button--medium@md": "cdr-button--medium@md_15-6-1-beta-1",
-  "cdr-button--large@md": "cdr-button--large@md_15-6-1-beta-1",
-  "cdr-button--full-width@md": "cdr-button--full-width@md_15-6-1-beta-1",
-  "cdr-button--small@lg": "cdr-button--small@lg_15-6-1-beta-1",
-  "cdr-button--medium@lg": "cdr-button--medium@lg_15-6-1-beta-1",
-  "cdr-button--large@lg": "cdr-button--large@lg_15-6-1-beta-1",
-  "cdr-button--full-width@lg": "cdr-button--full-width@lg_15-6-1-beta-1",
-  "cdr-icon": "cdr-icon_15-6-1-beta-1",
-  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-1",
-  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-1",
-  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-1",
-  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-1",
-  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-1",
-  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-1",
-  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-1",
-  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-1",
-  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-1",
-  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-1",
-  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-1",
-  "cdr-popover--position": "cdr-popover--position_15-6-1-beta-1",
-  "cdr-popover--wrapper": "cdr-popover--wrapper_15-6-1-beta-1",
-  "cdr-popover__title": "cdr-popover__title_15-6-1-beta-1",
-  "cdr-popover__container": "cdr-popover__container_15-6-1-beta-1",
-  "cdr-popover__content": "cdr-popover__content_15-6-1-beta-1",
-  "cdr-popover__close-button": "cdr-popover__close-button_15-6-1-beta-1"
+  "cdr-popup": "cdr-popup_15-6-1-beta-2",
+  "cdr-popup--open": "cdr-popup--open_15-6-1-beta-2",
+  "cdr-popup--closed": "cdr-popup--closed_15-6-1-beta-2",
+  "cdr-popup__content": "cdr-popup__content_15-6-1-beta-2",
+  "cdr-popup__arrow": "cdr-popup__arrow_15-6-1-beta-2",
+  "cdr-popup--top": "cdr-popup--top_15-6-1-beta-2",
+  "cdr-popup--bottom": "cdr-popup--bottom_15-6-1-beta-2",
+  "cdr-popup--exit": "cdr-popup--exit_15-6-1-beta-2",
+  "cdr-popup--corner-left": "cdr-popup--corner-left_15-6-1-beta-2",
+  "cdr-popup--corner-right": "cdr-popup--corner-right_15-6-1-beta-2",
+  "cdr-popup--left": "cdr-popup--left_15-6-1-beta-2",
+  "cdr-popup--right": "cdr-popup--right_15-6-1-beta-2",
+  "cdr-popup--corner-top": "cdr-popup--corner-top_15-6-1-beta-2",
+  "cdr-popup--corner-bottom": "cdr-popup--corner-bottom_15-6-1-beta-2",
+  "cdr-button": "cdr-button_15-6-1-beta-2",
+  "cdr-button--has-icon-left": "cdr-button--has-icon-left_15-6-1-beta-2",
+  "cdr-button--has-icon-right": "cdr-button--has-icon-right_15-6-1-beta-2",
+  "cdr-button--primary": "cdr-button--primary_15-6-1-beta-2",
+  "cdr-button--secondary": "cdr-button--secondary_15-6-1-beta-2",
+  "cdr-button--dark": "cdr-button--dark_15-6-1-beta-2",
+  "cdr-button--sale": "cdr-button--sale_15-6-1-beta-2",
+  "cdr-button--link": "cdr-button--link_15-6-1-beta-2",
+  "cdr-button--large": "cdr-button--large_15-6-1-beta-2",
+  "cdr-button--medium": "cdr-button--medium_15-6-1-beta-2",
+  "cdr-button--small": "cdr-button--small_15-6-1-beta-2",
+  "cdr-button--icon-only": "cdr-button--icon-only_15-6-1-beta-2",
+  "cdr-button--icon-only-large": "cdr-button--icon-only-large_15-6-1-beta-2",
+  "cdr-button--with-background": "cdr-button--with-background_15-6-1-beta-2",
+  "cdr-button--full-width": "cdr-button--full-width_15-6-1-beta-2",
+  "cdr-button--small@xs": "cdr-button--small@xs_15-6-1-beta-2",
+  "cdr-button--medium@xs": "cdr-button--medium@xs_15-6-1-beta-2",
+  "cdr-button--large@xs": "cdr-button--large@xs_15-6-1-beta-2",
+  "cdr-button--full-width@xs": "cdr-button--full-width@xs_15-6-1-beta-2",
+  "cdr-button--small@sm": "cdr-button--small@sm_15-6-1-beta-2",
+  "cdr-button--medium@sm": "cdr-button--medium@sm_15-6-1-beta-2",
+  "cdr-button--large@sm": "cdr-button--large@sm_15-6-1-beta-2",
+  "cdr-button--full-width@sm": "cdr-button--full-width@sm_15-6-1-beta-2",
+  "cdr-button--small@md": "cdr-button--small@md_15-6-1-beta-2",
+  "cdr-button--medium@md": "cdr-button--medium@md_15-6-1-beta-2",
+  "cdr-button--large@md": "cdr-button--large@md_15-6-1-beta-2",
+  "cdr-button--full-width@md": "cdr-button--full-width@md_15-6-1-beta-2",
+  "cdr-button--small@lg": "cdr-button--small@lg_15-6-1-beta-2",
+  "cdr-button--medium@lg": "cdr-button--medium@lg_15-6-1-beta-2",
+  "cdr-button--large@lg": "cdr-button--large@lg_15-6-1-beta-2",
+  "cdr-button--full-width@lg": "cdr-button--full-width@lg_15-6-1-beta-2",
+  "cdr-icon": "cdr-icon_15-6-1-beta-2",
+  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-2",
+  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-2",
+  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-2",
+  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-2",
+  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-2",
+  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-2",
+  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-2",
+  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-2",
+  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-2",
+  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-2",
+  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-2",
+  "cdr-popover--position": "cdr-popover--position_15-6-1-beta-2",
+  "cdr-popover--wrapper": "cdr-popover--wrapper_15-6-1-beta-2",
+  "cdr-popover__title": "cdr-popover__title_15-6-1-beta-2",
+  "cdr-popover__container": "cdr-popover__container_15-6-1-beta-2",
+  "cdr-popover__content": "cdr-popover__content_15-6-1-beta-2",
+  "cdr-popover__close-button": "cdr-popover__close-button_15-6-1-beta-2"
 }, cP = {
   $style: uP
 }, pP = /* @__PURE__ */ W(dP, [["__cssModules", cP]]), ii = "cdr-quote", fP = "cdr-quote__summary", mP = "cdr-quote__citation", bP = /* @__PURE__ */ k({
@@ -11455,10 +11455,10 @@ const oP = "cdr-popup", aP = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), gP = {
-  "cdr-text": "cdr-text_15-6-1-beta-1",
-  "cdr-quote": "cdr-quote_15-6-1-beta-1",
-  "cdr-quote__summary": "cdr-quote__summary_15-6-1-beta-1",
-  "cdr-quote--pull": "cdr-quote--pull_15-6-1-beta-1"
+  "cdr-text": "cdr-text_15-6-1-beta-2",
+  "cdr-quote": "cdr-quote_15-6-1-beta-2",
+  "cdr-quote__summary": "cdr-quote__summary_15-6-1-beta-2",
+  "cdr-quote--pull": "cdr-quote--pull_15-6-1-beta-2"
 }, yP = {
   $style: gP
 }, VP = /* @__PURE__ */ W(bP, [["__cssModules", yP]]), vP = ["name", "value", "disabled"], xP = "cdr-radio", SP = /* @__PURE__ */ k({
@@ -11565,33 +11565,33 @@ const oP = "cdr-popup", aP = /* @__PURE__ */ k({
     }, 8, ["class", "size", "modifier", "label-class", "content-class", "background", "disabled"]));
   }
 }), kP = {
-  "cdr-label-wrapper": "cdr-label-wrapper_15-6-1-beta-1",
-  "cdr-label-wrapper__container": "cdr-label-wrapper__container_15-6-1-beta-1",
-  "cdr-label-wrapper--primary": "cdr-label-wrapper--primary_15-6-1-beta-1",
-  "cdr-label-wrapper--secondary": "cdr-label-wrapper--secondary_15-6-1-beta-1",
-  "cdr-label-wrapper--disabled": "cdr-label-wrapper--disabled_15-6-1-beta-1",
-  "cdr-label-wrapper__figure": "cdr-label-wrapper__figure_15-6-1-beta-1",
-  "cdr-label-wrapper__content": "cdr-label-wrapper__content_15-6-1-beta-1",
-  "cdr-label-wrapper--hide-figure": "cdr-label-wrapper--hide-figure_15-6-1-beta-1",
-  "cdr-checkbox__svg-box": "cdr-checkbox__svg-box_15-6-1-beta-1",
-  "cdr-label-wrapper--small": "cdr-label-wrapper--small_15-6-1-beta-1",
-  "cdr-label-wrapper--medium": "cdr-label-wrapper--medium_15-6-1-beta-1",
-  "cdr-label-wrapper--large": "cdr-label-wrapper--large_15-6-1-beta-1",
-  "cdr-checkbox__checkbox-box": "cdr-checkbox__checkbox-box_15-6-1-beta-1",
-  "cdr-label-wrapper--small@xs": "cdr-label-wrapper--small@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@xs": "cdr-label-wrapper--medium@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--large@xs": "cdr-label-wrapper--large@xs_15-6-1-beta-1",
-  "cdr-label-wrapper--small@sm": "cdr-label-wrapper--small@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@sm": "cdr-label-wrapper--medium@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--large@sm": "cdr-label-wrapper--large@sm_15-6-1-beta-1",
-  "cdr-label-wrapper--small@md": "cdr-label-wrapper--small@md_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@md": "cdr-label-wrapper--medium@md_15-6-1-beta-1",
-  "cdr-label-wrapper--large@md": "cdr-label-wrapper--large@md_15-6-1-beta-1",
-  "cdr-label-wrapper--small@lg": "cdr-label-wrapper--small@lg_15-6-1-beta-1",
-  "cdr-label-wrapper--medium@lg": "cdr-label-wrapper--medium@lg_15-6-1-beta-1",
-  "cdr-label-wrapper--large@lg": "cdr-label-wrapper--large@lg_15-6-1-beta-1",
-  "cdr-radio": "cdr-radio_15-6-1-beta-1",
-  "cdr-radio__input": "cdr-radio__input_15-6-1-beta-1"
+  "cdr-label-wrapper": "cdr-label-wrapper_15-6-1-beta-2",
+  "cdr-label-wrapper__container": "cdr-label-wrapper__container_15-6-1-beta-2",
+  "cdr-label-wrapper--primary": "cdr-label-wrapper--primary_15-6-1-beta-2",
+  "cdr-label-wrapper--secondary": "cdr-label-wrapper--secondary_15-6-1-beta-2",
+  "cdr-label-wrapper--disabled": "cdr-label-wrapper--disabled_15-6-1-beta-2",
+  "cdr-label-wrapper__figure": "cdr-label-wrapper__figure_15-6-1-beta-2",
+  "cdr-label-wrapper__content": "cdr-label-wrapper__content_15-6-1-beta-2",
+  "cdr-label-wrapper--hide-figure": "cdr-label-wrapper--hide-figure_15-6-1-beta-2",
+  "cdr-checkbox__svg-box": "cdr-checkbox__svg-box_15-6-1-beta-2",
+  "cdr-label-wrapper--small": "cdr-label-wrapper--small_15-6-1-beta-2",
+  "cdr-label-wrapper--medium": "cdr-label-wrapper--medium_15-6-1-beta-2",
+  "cdr-label-wrapper--large": "cdr-label-wrapper--large_15-6-1-beta-2",
+  "cdr-checkbox__checkbox-box": "cdr-checkbox__checkbox-box_15-6-1-beta-2",
+  "cdr-label-wrapper--small@xs": "cdr-label-wrapper--small@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@xs": "cdr-label-wrapper--medium@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--large@xs": "cdr-label-wrapper--large@xs_15-6-1-beta-2",
+  "cdr-label-wrapper--small@sm": "cdr-label-wrapper--small@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@sm": "cdr-label-wrapper--medium@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--large@sm": "cdr-label-wrapper--large@sm_15-6-1-beta-2",
+  "cdr-label-wrapper--small@md": "cdr-label-wrapper--small@md_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@md": "cdr-label-wrapper--medium@md_15-6-1-beta-2",
+  "cdr-label-wrapper--large@md": "cdr-label-wrapper--large@md_15-6-1-beta-2",
+  "cdr-label-wrapper--small@lg": "cdr-label-wrapper--small@lg_15-6-1-beta-2",
+  "cdr-label-wrapper--medium@lg": "cdr-label-wrapper--medium@lg_15-6-1-beta-2",
+  "cdr-label-wrapper--large@lg": "cdr-label-wrapper--large@lg_15-6-1-beta-2",
+  "cdr-radio": "cdr-radio_15-6-1-beta-2",
+  "cdr-radio__input": "cdr-radio__input_15-6-1-beta-2"
 }, qP = {
   $style: kP
 }, Pa = /* @__PURE__ */ W(SP, [["__cssModules", qP]]);
@@ -11624,50 +11624,50 @@ const hP = /* @__PURE__ */ k({
     ], 2));
   }
 }), Kn = {
-  "cdr-rating__icon": "cdr-rating__icon_15-6-1-beta-1",
-  "cdr-rating__count": "cdr-rating__count_15-6-1-beta-1",
-  "cdr-rating": "cdr-rating_15-6-1-beta-1",
-  "cdr-rating__number": "cdr-rating__number_15-6-1-beta-1",
-  "cdr-rating__ratings": "cdr-rating__ratings_15-6-1-beta-1",
-  "cdr-rating__caption-sr": "cdr-rating__caption-sr_15-6-1-beta-1",
-  "cdr-rating--linked": "cdr-rating--linked_15-6-1-beta-1",
-  "cdr-rating__star": "cdr-rating__star_15-6-1-beta-1",
-  "cdr-rating__star--null-fill": "cdr-rating__star--null-fill_15-6-1-beta-1",
-  "cdr-rating__star--null-outline": "cdr-rating__star--null-outline_15-6-1-beta-1",
-  "cdr-rating__star--partial-fill": "cdr-rating__star--partial-fill_15-6-1-beta-1",
-  "cdr-rating__star--partial-stroke": "cdr-rating__star--partial-stroke_15-6-1-beta-1",
-  "cdr-rating__star--filled": "cdr-rating__star--filled_15-6-1-beta-1",
-  "cdr-rating__star--empty": "cdr-rating__star--empty_15-6-1-beta-1",
-  "cdr-rating__star--small": "cdr-rating__star--small_15-6-1-beta-1",
-  "cdr-rating__star--medium": "cdr-rating__star--medium_15-6-1-beta-1",
-  "cdr-rating__star--large": "cdr-rating__star--large_15-6-1-beta-1",
-  "cdr-rating__star--small@xs": "cdr-rating__star--small@xs_15-6-1-beta-1",
-  "cdr-rating__star--medium@xs": "cdr-rating__star--medium@xs_15-6-1-beta-1",
-  "cdr-rating__star--large@xs": "cdr-rating__star--large@xs_15-6-1-beta-1",
-  "cdr-rating__star--small@sm": "cdr-rating__star--small@sm_15-6-1-beta-1",
-  "cdr-rating__star--medium@sm": "cdr-rating__star--medium@sm_15-6-1-beta-1",
-  "cdr-rating__star--large@sm": "cdr-rating__star--large@sm_15-6-1-beta-1",
-  "cdr-rating__star--small@md": "cdr-rating__star--small@md_15-6-1-beta-1",
-  "cdr-rating__star--medium@md": "cdr-rating__star--medium@md_15-6-1-beta-1",
-  "cdr-rating__star--large@md": "cdr-rating__star--large@md_15-6-1-beta-1",
-  "cdr-rating__star--small@lg": "cdr-rating__star--small@lg_15-6-1-beta-1",
-  "cdr-rating__star--medium@lg": "cdr-rating__star--medium@lg_15-6-1-beta-1",
-  "cdr-rating__star--large@lg": "cdr-rating__star--large@lg_15-6-1-beta-1",
-  "cdr-rating--large": "cdr-rating--large_15-6-1-beta-1",
-  "cdr-rating--medium": "cdr-rating--medium_15-6-1-beta-1",
-  "cdr-rating--small": "cdr-rating--small_15-6-1-beta-1",
-  "cdr-rating--small@xs": "cdr-rating--small@xs_15-6-1-beta-1",
-  "cdr-rating--medium@xs": "cdr-rating--medium@xs_15-6-1-beta-1",
-  "cdr-rating--large@xs": "cdr-rating--large@xs_15-6-1-beta-1",
-  "cdr-rating--small@sm": "cdr-rating--small@sm_15-6-1-beta-1",
-  "cdr-rating--medium@sm": "cdr-rating--medium@sm_15-6-1-beta-1",
-  "cdr-rating--large@sm": "cdr-rating--large@sm_15-6-1-beta-1",
-  "cdr-rating--small@md": "cdr-rating--small@md_15-6-1-beta-1",
-  "cdr-rating--medium@md": "cdr-rating--medium@md_15-6-1-beta-1",
-  "cdr-rating--large@md": "cdr-rating--large@md_15-6-1-beta-1",
-  "cdr-rating--small@lg": "cdr-rating--small@lg_15-6-1-beta-1",
-  "cdr-rating--medium@lg": "cdr-rating--medium@lg_15-6-1-beta-1",
-  "cdr-rating--large@lg": "cdr-rating--large@lg_15-6-1-beta-1"
+  "cdr-rating__icon": "cdr-rating__icon_15-6-1-beta-2",
+  "cdr-rating__count": "cdr-rating__count_15-6-1-beta-2",
+  "cdr-rating": "cdr-rating_15-6-1-beta-2",
+  "cdr-rating__number": "cdr-rating__number_15-6-1-beta-2",
+  "cdr-rating__ratings": "cdr-rating__ratings_15-6-1-beta-2",
+  "cdr-rating__caption-sr": "cdr-rating__caption-sr_15-6-1-beta-2",
+  "cdr-rating--linked": "cdr-rating--linked_15-6-1-beta-2",
+  "cdr-rating__star": "cdr-rating__star_15-6-1-beta-2",
+  "cdr-rating__star--null-fill": "cdr-rating__star--null-fill_15-6-1-beta-2",
+  "cdr-rating__star--null-outline": "cdr-rating__star--null-outline_15-6-1-beta-2",
+  "cdr-rating__star--partial-fill": "cdr-rating__star--partial-fill_15-6-1-beta-2",
+  "cdr-rating__star--partial-stroke": "cdr-rating__star--partial-stroke_15-6-1-beta-2",
+  "cdr-rating__star--filled": "cdr-rating__star--filled_15-6-1-beta-2",
+  "cdr-rating__star--empty": "cdr-rating__star--empty_15-6-1-beta-2",
+  "cdr-rating__star--small": "cdr-rating__star--small_15-6-1-beta-2",
+  "cdr-rating__star--medium": "cdr-rating__star--medium_15-6-1-beta-2",
+  "cdr-rating__star--large": "cdr-rating__star--large_15-6-1-beta-2",
+  "cdr-rating__star--small@xs": "cdr-rating__star--small@xs_15-6-1-beta-2",
+  "cdr-rating__star--medium@xs": "cdr-rating__star--medium@xs_15-6-1-beta-2",
+  "cdr-rating__star--large@xs": "cdr-rating__star--large@xs_15-6-1-beta-2",
+  "cdr-rating__star--small@sm": "cdr-rating__star--small@sm_15-6-1-beta-2",
+  "cdr-rating__star--medium@sm": "cdr-rating__star--medium@sm_15-6-1-beta-2",
+  "cdr-rating__star--large@sm": "cdr-rating__star--large@sm_15-6-1-beta-2",
+  "cdr-rating__star--small@md": "cdr-rating__star--small@md_15-6-1-beta-2",
+  "cdr-rating__star--medium@md": "cdr-rating__star--medium@md_15-6-1-beta-2",
+  "cdr-rating__star--large@md": "cdr-rating__star--large@md_15-6-1-beta-2",
+  "cdr-rating__star--small@lg": "cdr-rating__star--small@lg_15-6-1-beta-2",
+  "cdr-rating__star--medium@lg": "cdr-rating__star--medium@lg_15-6-1-beta-2",
+  "cdr-rating__star--large@lg": "cdr-rating__star--large@lg_15-6-1-beta-2",
+  "cdr-rating--large": "cdr-rating--large_15-6-1-beta-2",
+  "cdr-rating--medium": "cdr-rating--medium_15-6-1-beta-2",
+  "cdr-rating--small": "cdr-rating--small_15-6-1-beta-2",
+  "cdr-rating--small@xs": "cdr-rating--small@xs_15-6-1-beta-2",
+  "cdr-rating--medium@xs": "cdr-rating--medium@xs_15-6-1-beta-2",
+  "cdr-rating--large@xs": "cdr-rating--large@xs_15-6-1-beta-2",
+  "cdr-rating--small@sm": "cdr-rating--small@sm_15-6-1-beta-2",
+  "cdr-rating--medium@sm": "cdr-rating--medium@sm_15-6-1-beta-2",
+  "cdr-rating--large@sm": "cdr-rating--large@sm_15-6-1-beta-2",
+  "cdr-rating--small@md": "cdr-rating--small@md_15-6-1-beta-2",
+  "cdr-rating--medium@md": "cdr-rating--medium@md_15-6-1-beta-2",
+  "cdr-rating--large@md": "cdr-rating--large@md_15-6-1-beta-2",
+  "cdr-rating--small@lg": "cdr-rating--small@lg_15-6-1-beta-2",
+  "cdr-rating--medium@lg": "cdr-rating--medium@lg_15-6-1-beta-2",
+  "cdr-rating--large@lg": "cdr-rating--large@lg_15-6-1-beta-2"
 }, jP = {
   $style: Kn
 }, di = /* @__PURE__ */ W(hP, [["__cssModules", jP]]), AP = /* @__PURE__ */ k({
@@ -11987,11 +11987,11 @@ const hP = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), GP = {
-  "cdr-split-surface": "cdr-split-surface_15-6-1-beta-1",
-  "cdr-split-surface--top": "cdr-split-surface--top_15-6-1-beta-1",
-  "cdr-split-surface--bottom": "cdr-split-surface--bottom_15-6-1-beta-1",
-  "cdr-split-surface__top": "cdr-split-surface__top_15-6-1-beta-1",
-  "cdr-split-surface__bottom": "cdr-split-surface__bottom_15-6-1-beta-1"
+  "cdr-split-surface": "cdr-split-surface_15-6-1-beta-2",
+  "cdr-split-surface--top": "cdr-split-surface--top_15-6-1-beta-2",
+  "cdr-split-surface--bottom": "cdr-split-surface--bottom_15-6-1-beta-2",
+  "cdr-split-surface__top": "cdr-split-surface__top_15-6-1-beta-2",
+  "cdr-split-surface__bottom": "cdr-split-surface__bottom_15-6-1-beta-2"
 }, NP = {
   $style: GP
 }, Id = /* @__PURE__ */ W(ZP, [["__cssModules", NP]]), wd = /* @__PURE__ */ k({
@@ -12077,19 +12077,19 @@ const hP = /* @__PURE__ */ k({
     ], 2));
   }
 }), DP = {
-  "cdr-table": "cdr-table_15-6-1-beta-1",
-  "cdr-table--small": "cdr-table--small_15-6-1-beta-1",
-  "cdr-table--medium": "cdr-table--medium_15-6-1-beta-1",
-  "cdr-table--large": "cdr-table--large_15-6-1-beta-1",
-  "cdr-table--striped": "cdr-table--striped_15-6-1-beta-1",
-  "cdr-table--border": "cdr-table--border_15-6-1-beta-1",
-  "cdr-table--full-width": "cdr-table--full-width_15-6-1-beta-1",
-  "cdr-table--responsive": "cdr-table--responsive_15-6-1-beta-1",
-  "cdr-table--hover": "cdr-table--hover_15-6-1-beta-1",
-  "cdr-table--full-width@xs": "cdr-table--full-width@xs_15-6-1-beta-1",
-  "cdr-table--full-width@sm": "cdr-table--full-width@sm_15-6-1-beta-1",
-  "cdr-table--full-width@md": "cdr-table--full-width@md_15-6-1-beta-1",
-  "cdr-table--full-width@lg": "cdr-table--full-width@lg_15-6-1-beta-1"
+  "cdr-table": "cdr-table_15-6-1-beta-2",
+  "cdr-table--small": "cdr-table--small_15-6-1-beta-2",
+  "cdr-table--medium": "cdr-table--medium_15-6-1-beta-2",
+  "cdr-table--large": "cdr-table--large_15-6-1-beta-2",
+  "cdr-table--striped": "cdr-table--striped_15-6-1-beta-2",
+  "cdr-table--border": "cdr-table--border_15-6-1-beta-2",
+  "cdr-table--full-width": "cdr-table--full-width_15-6-1-beta-2",
+  "cdr-table--responsive": "cdr-table--responsive_15-6-1-beta-2",
+  "cdr-table--hover": "cdr-table--hover_15-6-1-beta-2",
+  "cdr-table--full-width@xs": "cdr-table--full-width@xs_15-6-1-beta-2",
+  "cdr-table--full-width@sm": "cdr-table--full-width@sm_15-6-1-beta-2",
+  "cdr-table--full-width@md": "cdr-table--full-width@md_15-6-1-beta-2",
+  "cdr-table--full-width@lg": "cdr-table--full-width@lg_15-6-1-beta-2"
 }, YP = {
   $style: DP
 }, QP = /* @__PURE__ */ W(BP, [["__cssModules", YP]]);
@@ -12132,11 +12132,11 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     ]);
   }
 }), tR = {
-  "cdr-tab-panel": "cdr-tab-panel_15-6-1-beta-1",
-  "cdr-tab-panel-enter-left": "cdr-tab-panel-enter-left_15-6-1-beta-1",
-  "cdr-tab-panel-enter-right": "cdr-tab-panel-enter-right_15-6-1-beta-1",
-  "cdr-tab-panel-exit-left": "cdr-tab-panel-exit-left_15-6-1-beta-1",
-  "cdr-tab-panel-exit-right": "cdr-tab-panel-exit-right_15-6-1-beta-1"
+  "cdr-tab-panel": "cdr-tab-panel_15-6-1-beta-2",
+  "cdr-tab-panel-enter-left": "cdr-tab-panel-enter-left_15-6-1-beta-2",
+  "cdr-tab-panel-enter-right": "cdr-tab-panel-enter-right_15-6-1-beta-2",
+  "cdr-tab-panel-exit-left": "cdr-tab-panel-exit-left_15-6-1-beta-2",
+  "cdr-tab-panel-exit-right": "cdr-tab-panel-exit-right_15-6-1-beta-2"
 }, nR = {
   $style: tR
 }, rR = /* @__PURE__ */ W(eR, [["__cssModules", nR]]), lR = ["id", "disabled", "aria-selected", "tabIndex", "onClick"], oR = "cdr-tabs", aR = /* @__PURE__ */ k({
@@ -12315,34 +12315,34 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     ], 6));
   }
 }), sR = {
-  "cdr-tab-panel": "cdr-tab-panel_15-6-1-beta-1",
-  "cdr-tab-panel-enter-left": "cdr-tab-panel-enter-left_15-6-1-beta-1",
-  "cdr-tab-panel-enter-right": "cdr-tab-panel-enter-right_15-6-1-beta-1",
-  "cdr-tab-panel-exit-left": "cdr-tab-panel-exit-left_15-6-1-beta-1",
-  "cdr-tab-panel-exit-right": "cdr-tab-panel-exit-right_15-6-1-beta-1",
-  "cdr-tabs": "cdr-tabs_15-6-1-beta-1",
-  "cdr-tabs__header-container": "cdr-tabs__header-container_15-6-1-beta-1",
-  "cdr-tabs__header": "cdr-tabs__header_15-6-1-beta-1",
-  "cdr-tabs__header-item": "cdr-tabs__header-item_15-6-1-beta-1",
-  "cdr-tabs__header-item-active": "cdr-tabs__header-item-active_15-6-1-beta-1",
-  "cdr-tabs__header-item--disabled": "cdr-tabs__header-item--disabled_15-6-1-beta-1",
-  "cdr-tabs__gradient-container": "cdr-tabs__gradient-container_15-6-1-beta-1",
-  "cdr-tabs__gradient": "cdr-tabs__gradient_15-6-1-beta-1",
-  "cdr-tabs__gradient--left": "cdr-tabs__gradient--left_15-6-1-beta-1",
-  "cdr-tabs__gradient--right": "cdr-tabs__gradient--right_15-6-1-beta-1",
-  "cdr-tabs__gradient--active": "cdr-tabs__gradient--active_15-6-1-beta-1",
-  "cdr-tabs__underline": "cdr-tabs__underline_15-6-1-beta-1",
-  "cdr-tabs__content-container": "cdr-tabs__content-container_15-6-1-beta-1",
-  "fade-enter-active": "fade-enter-active_15-6-1-beta-1",
-  "fade-leave-active": "fade-leave-active_15-6-1-beta-1",
-  "fade-enter": "fade-enter_15-6-1-beta-1",
-  "fade-leave-to": "fade-leave-to_15-6-1-beta-1",
-  "cdr-tabs--compact": "cdr-tabs--compact_15-6-1-beta-1",
-  "cdr-tabs__header-item-label": "cdr-tabs__header-item-label_15-6-1-beta-1",
-  "cdr-tabs--small": "cdr-tabs--small_15-6-1-beta-1",
-  "cdr-tabs--no-border": "cdr-tabs--no-border_15-6-1-beta-1",
-  "cdr-tabs--full-width": "cdr-tabs--full-width_15-6-1-beta-1",
-  "cdr-tabs--centered": "cdr-tabs--centered_15-6-1-beta-1"
+  "cdr-tab-panel": "cdr-tab-panel_15-6-1-beta-2",
+  "cdr-tab-panel-enter-left": "cdr-tab-panel-enter-left_15-6-1-beta-2",
+  "cdr-tab-panel-enter-right": "cdr-tab-panel-enter-right_15-6-1-beta-2",
+  "cdr-tab-panel-exit-left": "cdr-tab-panel-exit-left_15-6-1-beta-2",
+  "cdr-tab-panel-exit-right": "cdr-tab-panel-exit-right_15-6-1-beta-2",
+  "cdr-tabs": "cdr-tabs_15-6-1-beta-2",
+  "cdr-tabs__header-container": "cdr-tabs__header-container_15-6-1-beta-2",
+  "cdr-tabs__header": "cdr-tabs__header_15-6-1-beta-2",
+  "cdr-tabs__header-item": "cdr-tabs__header-item_15-6-1-beta-2",
+  "cdr-tabs__header-item-active": "cdr-tabs__header-item-active_15-6-1-beta-2",
+  "cdr-tabs__header-item--disabled": "cdr-tabs__header-item--disabled_15-6-1-beta-2",
+  "cdr-tabs__gradient-container": "cdr-tabs__gradient-container_15-6-1-beta-2",
+  "cdr-tabs__gradient": "cdr-tabs__gradient_15-6-1-beta-2",
+  "cdr-tabs__gradient--left": "cdr-tabs__gradient--left_15-6-1-beta-2",
+  "cdr-tabs__gradient--right": "cdr-tabs__gradient--right_15-6-1-beta-2",
+  "cdr-tabs__gradient--active": "cdr-tabs__gradient--active_15-6-1-beta-2",
+  "cdr-tabs__underline": "cdr-tabs__underline_15-6-1-beta-2",
+  "cdr-tabs__content-container": "cdr-tabs__content-container_15-6-1-beta-2",
+  "fade-enter-active": "fade-enter-active_15-6-1-beta-2",
+  "fade-leave-active": "fade-leave-active_15-6-1-beta-2",
+  "fade-enter": "fade-enter_15-6-1-beta-2",
+  "fade-leave-to": "fade-leave-to_15-6-1-beta-2",
+  "cdr-tabs--compact": "cdr-tabs--compact_15-6-1-beta-2",
+  "cdr-tabs__header-item-label": "cdr-tabs__header-item-label_15-6-1-beta-2",
+  "cdr-tabs--small": "cdr-tabs--small_15-6-1-beta-2",
+  "cdr-tabs--no-border": "cdr-tabs--no-border_15-6-1-beta-2",
+  "cdr-tabs--full-width": "cdr-tabs--full-width_15-6-1-beta-2",
+  "cdr-tabs--centered": "cdr-tabs--centered_15-6-1-beta-2"
 }, iR = {
   $style: sR
 }, dR = /* @__PURE__ */ W(aR, [["__cssModules", iR]]), uR = /* @__PURE__ */ k({
@@ -12363,7 +12363,7 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), cR = {
-  "cdr-text": "cdr-text_15-6-1-beta-1"
+  "cdr-text": "cdr-text_15-6-1-beta-2"
 }, pR = {
   $style: cR
 }, ct = /* @__PURE__ */ W(uR, [["__cssModules", pR]]), fR = "cdr-title", mR = /* @__PURE__ */ k({
@@ -12384,7 +12384,7 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), bR = {
-  "cdr-title": "cdr-title_15-6-1-beta-1"
+  "cdr-title": "cdr-title_15-6-1-beta-2"
 }, gR = {
   $style: bR
 }, Fl = /* @__PURE__ */ W(mR, [["__cssModules", gR]]), ui = "cdr-toast", yR = /* @__PURE__ */ k({
@@ -12498,63 +12498,63 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     }, 8, ["enter-from-class", "enter-active-class", "leave-to-class", "leave-active-class"]));
   }
 }), VR = {
-  "cdr-button": "cdr-button_15-6-1-beta-1",
-  "cdr-button--has-icon-left": "cdr-button--has-icon-left_15-6-1-beta-1",
-  "cdr-button--has-icon-right": "cdr-button--has-icon-right_15-6-1-beta-1",
-  "cdr-button--primary": "cdr-button--primary_15-6-1-beta-1",
-  "cdr-button--secondary": "cdr-button--secondary_15-6-1-beta-1",
-  "cdr-button--dark": "cdr-button--dark_15-6-1-beta-1",
-  "cdr-button--sale": "cdr-button--sale_15-6-1-beta-1",
-  "cdr-button--link": "cdr-button--link_15-6-1-beta-1",
-  "cdr-button--large": "cdr-button--large_15-6-1-beta-1",
-  "cdr-button--medium": "cdr-button--medium_15-6-1-beta-1",
-  "cdr-button--small": "cdr-button--small_15-6-1-beta-1",
-  "cdr-button--icon-only": "cdr-button--icon-only_15-6-1-beta-1",
-  "cdr-button--icon-only-large": "cdr-button--icon-only-large_15-6-1-beta-1",
-  "cdr-button--with-background": "cdr-button--with-background_15-6-1-beta-1",
-  "cdr-button--full-width": "cdr-button--full-width_15-6-1-beta-1",
-  "cdr-button--small@xs": "cdr-button--small@xs_15-6-1-beta-1",
-  "cdr-button--medium@xs": "cdr-button--medium@xs_15-6-1-beta-1",
-  "cdr-button--large@xs": "cdr-button--large@xs_15-6-1-beta-1",
-  "cdr-button--full-width@xs": "cdr-button--full-width@xs_15-6-1-beta-1",
-  "cdr-button--small@sm": "cdr-button--small@sm_15-6-1-beta-1",
-  "cdr-button--medium@sm": "cdr-button--medium@sm_15-6-1-beta-1",
-  "cdr-button--large@sm": "cdr-button--large@sm_15-6-1-beta-1",
-  "cdr-button--full-width@sm": "cdr-button--full-width@sm_15-6-1-beta-1",
-  "cdr-button--small@md": "cdr-button--small@md_15-6-1-beta-1",
-  "cdr-button--medium@md": "cdr-button--medium@md_15-6-1-beta-1",
-  "cdr-button--large@md": "cdr-button--large@md_15-6-1-beta-1",
-  "cdr-button--full-width@md": "cdr-button--full-width@md_15-6-1-beta-1",
-  "cdr-button--small@lg": "cdr-button--small@lg_15-6-1-beta-1",
-  "cdr-button--medium@lg": "cdr-button--medium@lg_15-6-1-beta-1",
-  "cdr-button--large@lg": "cdr-button--large@lg_15-6-1-beta-1",
-  "cdr-button--full-width@lg": "cdr-button--full-width@lg_15-6-1-beta-1",
-  "cdr-icon": "cdr-icon_15-6-1-beta-1",
-  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-1",
-  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-1",
-  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-1",
-  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-1",
-  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-1",
-  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-1",
-  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-1",
-  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-1",
-  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-1",
-  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-1",
-  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-1",
-  "cdr-toast": "cdr-toast_15-6-1-beta-1",
-  "cdr-toast__transition--toast-enter-from": "cdr-toast__transition--toast-enter-from_15-6-1-beta-1",
-  "cdr-toast__transition--toast-enter-active": "cdr-toast__transition--toast-enter-active_15-6-1-beta-1",
-  "cdr-toast__transition--toast-leave-to": "cdr-toast__transition--toast-leave-to_15-6-1-beta-1",
-  "cdr-toast__transition--toast-leave-active": "cdr-toast__transition--toast-leave-active_15-6-1-beta-1",
-  "cdr-toast__main": "cdr-toast__main_15-6-1-beta-1",
-  "cdr-toast__icon-left": "cdr-toast__icon-left_15-6-1-beta-1",
-  "cdr-toast__message": "cdr-toast__message_15-6-1-beta-1",
-  "cdr-toast__close-button": "cdr-toast__close-button_15-6-1-beta-1",
-  "cdr-toast--default": "cdr-toast--default_15-6-1-beta-1",
-  "cdr-toast--info": "cdr-toast--info_15-6-1-beta-1",
-  "cdr-toast--warning": "cdr-toast--warning_15-6-1-beta-1",
-  "cdr-toast--success": "cdr-toast--success_15-6-1-beta-1",
-  "cdr-toast--error": "cdr-toast--error_15-6-1-beta-1"
+  "cdr-button": "cdr-button_15-6-1-beta-2",
+  "cdr-button--has-icon-left": "cdr-button--has-icon-left_15-6-1-beta-2",
+  "cdr-button--has-icon-right": "cdr-button--has-icon-right_15-6-1-beta-2",
+  "cdr-button--primary": "cdr-button--primary_15-6-1-beta-2",
+  "cdr-button--secondary": "cdr-button--secondary_15-6-1-beta-2",
+  "cdr-button--dark": "cdr-button--dark_15-6-1-beta-2",
+  "cdr-button--sale": "cdr-button--sale_15-6-1-beta-2",
+  "cdr-button--link": "cdr-button--link_15-6-1-beta-2",
+  "cdr-button--large": "cdr-button--large_15-6-1-beta-2",
+  "cdr-button--medium": "cdr-button--medium_15-6-1-beta-2",
+  "cdr-button--small": "cdr-button--small_15-6-1-beta-2",
+  "cdr-button--icon-only": "cdr-button--icon-only_15-6-1-beta-2",
+  "cdr-button--icon-only-large": "cdr-button--icon-only-large_15-6-1-beta-2",
+  "cdr-button--with-background": "cdr-button--with-background_15-6-1-beta-2",
+  "cdr-button--full-width": "cdr-button--full-width_15-6-1-beta-2",
+  "cdr-button--small@xs": "cdr-button--small@xs_15-6-1-beta-2",
+  "cdr-button--medium@xs": "cdr-button--medium@xs_15-6-1-beta-2",
+  "cdr-button--large@xs": "cdr-button--large@xs_15-6-1-beta-2",
+  "cdr-button--full-width@xs": "cdr-button--full-width@xs_15-6-1-beta-2",
+  "cdr-button--small@sm": "cdr-button--small@sm_15-6-1-beta-2",
+  "cdr-button--medium@sm": "cdr-button--medium@sm_15-6-1-beta-2",
+  "cdr-button--large@sm": "cdr-button--large@sm_15-6-1-beta-2",
+  "cdr-button--full-width@sm": "cdr-button--full-width@sm_15-6-1-beta-2",
+  "cdr-button--small@md": "cdr-button--small@md_15-6-1-beta-2",
+  "cdr-button--medium@md": "cdr-button--medium@md_15-6-1-beta-2",
+  "cdr-button--large@md": "cdr-button--large@md_15-6-1-beta-2",
+  "cdr-button--full-width@md": "cdr-button--full-width@md_15-6-1-beta-2",
+  "cdr-button--small@lg": "cdr-button--small@lg_15-6-1-beta-2",
+  "cdr-button--medium@lg": "cdr-button--medium@lg_15-6-1-beta-2",
+  "cdr-button--large@lg": "cdr-button--large@lg_15-6-1-beta-2",
+  "cdr-button--full-width@lg": "cdr-button--full-width@lg_15-6-1-beta-2",
+  "cdr-icon": "cdr-icon_15-6-1-beta-2",
+  "cdr-icon--small": "cdr-icon--small_15-6-1-beta-2",
+  "cdr-icon--large": "cdr-icon--large_15-6-1-beta-2",
+  "cdr-icon--small@xs": "cdr-icon--small@xs_15-6-1-beta-2",
+  "cdr-icon--large@xs": "cdr-icon--large@xs_15-6-1-beta-2",
+  "cdr-icon--small@sm": "cdr-icon--small@sm_15-6-1-beta-2",
+  "cdr-icon--large@sm": "cdr-icon--large@sm_15-6-1-beta-2",
+  "cdr-icon--small@md": "cdr-icon--small@md_15-6-1-beta-2",
+  "cdr-icon--large@md": "cdr-icon--large@md_15-6-1-beta-2",
+  "cdr-icon--small@lg": "cdr-icon--small@lg_15-6-1-beta-2",
+  "cdr-icon--large@lg": "cdr-icon--large@lg_15-6-1-beta-2",
+  "cdr-icon--inherit-color": "cdr-icon--inherit-color_15-6-1-beta-2",
+  "cdr-toast": "cdr-toast_15-6-1-beta-2",
+  "cdr-toast__transition--toast-enter-from": "cdr-toast__transition--toast-enter-from_15-6-1-beta-2",
+  "cdr-toast__transition--toast-enter-active": "cdr-toast__transition--toast-enter-active_15-6-1-beta-2",
+  "cdr-toast__transition--toast-leave-to": "cdr-toast__transition--toast-leave-to_15-6-1-beta-2",
+  "cdr-toast__transition--toast-leave-active": "cdr-toast__transition--toast-leave-active_15-6-1-beta-2",
+  "cdr-toast__main": "cdr-toast__main_15-6-1-beta-2",
+  "cdr-toast__icon-left": "cdr-toast__icon-left_15-6-1-beta-2",
+  "cdr-toast__message": "cdr-toast__message_15-6-1-beta-2",
+  "cdr-toast__close-button": "cdr-toast__close-button_15-6-1-beta-2",
+  "cdr-toast--default": "cdr-toast--default_15-6-1-beta-2",
+  "cdr-toast--info": "cdr-toast--info_15-6-1-beta-2",
+  "cdr-toast--warning": "cdr-toast--warning_15-6-1-beta-2",
+  "cdr-toast--success": "cdr-toast--success_15-6-1-beta-2",
+  "cdr-toast--error": "cdr-toast--error_15-6-1-beta-2"
 }, vR = {
   $style: VR
 }, xR = /* @__PURE__ */ W(yR, [["__cssModules", vR]]), SR = ["value", "aria-label", "aria-checked", "tabindex"], kR = /* @__PURE__ */ k({
@@ -12590,8 +12590,8 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     ], 2));
   }
 }), qR = {
-  "cdr-toggle-button__item": "cdr-toggle-button__item_15-6-1-beta-1",
-  "cdr-toggle-button__container": "cdr-toggle-button__container_15-6-1-beta-1"
+  "cdr-toggle-button__item": "cdr-toggle-button__item_15-6-1-beta-2",
+  "cdr-toggle-button__container": "cdr-toggle-button__container_15-6-1-beta-2"
 }, hR = {
   $style: qR
 }, jR = /* @__PURE__ */ W(kR, [["__cssModules", hR]]), AR = ["onKeyup"], TR = "cdr-toggle-group", PR = /* @__PURE__ */ k({
@@ -12671,11 +12671,11 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     ], 16, AR));
   }
 }), RR = {
-  "cdr-toggle-group": "cdr-toggle-group_15-6-1-beta-1",
-  "cdr-toggle-group--medium": "cdr-toggle-group--medium_15-6-1-beta-1",
-  "cdr-toggle-button__item": "cdr-toggle-button__item_15-6-1-beta-1",
-  "cdr-toggle-button__container": "cdr-toggle-button__container_15-6-1-beta-1",
-  "cdr-toggle-group--large": "cdr-toggle-group--large_15-6-1-beta-1"
+  "cdr-toggle-group": "cdr-toggle-group_15-6-1-beta-2",
+  "cdr-toggle-group--medium": "cdr-toggle-group--medium_15-6-1-beta-2",
+  "cdr-toggle-button__item": "cdr-toggle-button__item_15-6-1-beta-2",
+  "cdr-toggle-button__container": "cdr-toggle-button__container_15-6-1-beta-2",
+  "cdr-toggle-group--large": "cdr-toggle-group--large_15-6-1-beta-2"
 }, CR = {
   $style: RR
 }, IR = /* @__PURE__ */ W(PR, [["__cssModules", CR]]), Ra = /* @__PURE__ */ k({
@@ -12783,14 +12783,14 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     ], 2));
   }
 }), UR = {
-  "cdr-switch": "cdr-switch_15-6-1-beta-1",
-  "cdr-switch__button": "cdr-switch__button_15-6-1-beta-1",
-  "cdr-switch__button-icon": "cdr-switch__button-icon_15-6-1-beta-1",
-  "cdr-switch__handle": "cdr-switch__handle_15-6-1-beta-1",
-  "cdr-switch__label": "cdr-switch__label_15-6-1-beta-1",
-  "cdr-switch--full-width": "cdr-switch--full-width_15-6-1-beta-1",
-  "cdr-switch--large": "cdr-switch--large_15-6-1-beta-1",
-  "cdr-switch--medium": "cdr-switch--medium_15-6-1-beta-1"
+  "cdr-switch": "cdr-switch_15-6-1-beta-2",
+  "cdr-switch__button": "cdr-switch__button_15-6-1-beta-2",
+  "cdr-switch__button-icon": "cdr-switch__button-icon_15-6-1-beta-2",
+  "cdr-switch__handle": "cdr-switch__handle_15-6-1-beta-2",
+  "cdr-switch__label": "cdr-switch__label_15-6-1-beta-2",
+  "cdr-switch--full-width": "cdr-switch--full-width_15-6-1-beta-2",
+  "cdr-switch--large": "cdr-switch--large_15-6-1-beta-2",
+  "cdr-switch--medium": "cdr-switch--medium_15-6-1-beta-2"
 }, OR = {
   $style: UR
 }, Hd = /* @__PURE__ */ W(KR, [["__cssModules", OR]]), XR = /* @__PURE__ */ k({
@@ -12895,22 +12895,22 @@ const $P = ["aria-hidden", "id", "aria-labelledby"], eR = /* @__PURE__ */ k({
     ], 2));
   }
 }), MR = {
-  "cdr-popup": "cdr-popup_15-6-1-beta-1",
-  "cdr-popup--open": "cdr-popup--open_15-6-1-beta-1",
-  "cdr-popup--closed": "cdr-popup--closed_15-6-1-beta-1",
-  "cdr-popup__content": "cdr-popup__content_15-6-1-beta-1",
-  "cdr-popup__arrow": "cdr-popup__arrow_15-6-1-beta-1",
-  "cdr-popup--top": "cdr-popup--top_15-6-1-beta-1",
-  "cdr-popup--bottom": "cdr-popup--bottom_15-6-1-beta-1",
-  "cdr-popup--exit": "cdr-popup--exit_15-6-1-beta-1",
-  "cdr-popup--corner-left": "cdr-popup--corner-left_15-6-1-beta-1",
-  "cdr-popup--corner-right": "cdr-popup--corner-right_15-6-1-beta-1",
-  "cdr-popup--left": "cdr-popup--left_15-6-1-beta-1",
-  "cdr-popup--right": "cdr-popup--right_15-6-1-beta-1",
-  "cdr-popup--corner-top": "cdr-popup--corner-top_15-6-1-beta-1",
-  "cdr-popup--corner-bottom": "cdr-popup--corner-bottom_15-6-1-beta-1",
-  "cdr-tooltip--position": "cdr-tooltip--position_15-6-1-beta-1",
-  "cdr-tooltip--wrapper": "cdr-tooltip--wrapper_15-6-1-beta-1"
+  "cdr-popup": "cdr-popup_15-6-1-beta-2",
+  "cdr-popup--open": "cdr-popup--open_15-6-1-beta-2",
+  "cdr-popup--closed": "cdr-popup--closed_15-6-1-beta-2",
+  "cdr-popup__content": "cdr-popup__content_15-6-1-beta-2",
+  "cdr-popup__arrow": "cdr-popup__arrow_15-6-1-beta-2",
+  "cdr-popup--top": "cdr-popup--top_15-6-1-beta-2",
+  "cdr-popup--bottom": "cdr-popup--bottom_15-6-1-beta-2",
+  "cdr-popup--exit": "cdr-popup--exit_15-6-1-beta-2",
+  "cdr-popup--corner-left": "cdr-popup--corner-left_15-6-1-beta-2",
+  "cdr-popup--corner-right": "cdr-popup--corner-right_15-6-1-beta-2",
+  "cdr-popup--left": "cdr-popup--left_15-6-1-beta-2",
+  "cdr-popup--right": "cdr-popup--right_15-6-1-beta-2",
+  "cdr-popup--corner-top": "cdr-popup--corner-top_15-6-1-beta-2",
+  "cdr-popup--corner-bottom": "cdr-popup--corner-bottom_15-6-1-beta-2",
+  "cdr-tooltip--position": "cdr-tooltip--position_15-6-1-beta-2",
+  "cdr-tooltip--wrapper": "cdr-tooltip--wrapper_15-6-1-beta-2"
 }, WR = {
   $style: MR
 }, zR = /* @__PURE__ */ W(XR, [["__cssModules", WR]]);
@@ -18072,18 +18072,18 @@ const Zd = /* @__PURE__ */ k({
     ], 46, jC));
   }
 }), PC = {
-  "cdr-filmstrip": "cdr-filmstrip_15-6-1-beta-1",
-  "cdr-filmstrip__viewport": "cdr-filmstrip__viewport_15-6-1-beta-1",
-  "cdr-filmstrip__root": "cdr-filmstrip__root_15-6-1-beta-1",
-  "cdr-filmstrip__frames": "cdr-filmstrip__frames_15-6-1-beta-1",
-  "cdr-filmstrip__frame": "cdr-filmstrip__frame_15-6-1-beta-1",
-  "cdr-filmstrip__bar": "cdr-filmstrip__bar_15-6-1-beta-1",
-  "cdr-filmstrip__bar--horizontal": "cdr-filmstrip__bar--horizontal_15-6-1-beta-1",
-  "cdr-filmstrip__thumb": "cdr-filmstrip__thumb_15-6-1-beta-1",
-  "cdr-filmstrip__arrow": "cdr-filmstrip__arrow_15-6-1-beta-1",
-  "cdr-filmstrip__arrow--left": "cdr-filmstrip__arrow--left_15-6-1-beta-1",
-  "cdr-filmstrip__arrow--right": "cdr-filmstrip__arrow--right_15-6-1-beta-1",
-  "cdr-filmstrip__sr-only": "cdr-filmstrip__sr-only_15-6-1-beta-1"
+  "cdr-filmstrip": "cdr-filmstrip_15-6-1-beta-2",
+  "cdr-filmstrip__viewport": "cdr-filmstrip__viewport_15-6-1-beta-2",
+  "cdr-filmstrip__root": "cdr-filmstrip__root_15-6-1-beta-2",
+  "cdr-filmstrip__frames": "cdr-filmstrip__frames_15-6-1-beta-2",
+  "cdr-filmstrip__frame": "cdr-filmstrip__frame_15-6-1-beta-2",
+  "cdr-filmstrip__bar": "cdr-filmstrip__bar_15-6-1-beta-2",
+  "cdr-filmstrip__bar--horizontal": "cdr-filmstrip__bar--horizontal_15-6-1-beta-2",
+  "cdr-filmstrip__thumb": "cdr-filmstrip__thumb_15-6-1-beta-2",
+  "cdr-filmstrip__arrow": "cdr-filmstrip__arrow_15-6-1-beta-2",
+  "cdr-filmstrip__arrow--left": "cdr-filmstrip__arrow--left_15-6-1-beta-2",
+  "cdr-filmstrip__arrow--right": "cdr-filmstrip__arrow--right_15-6-1-beta-2",
+  "cdr-filmstrip__sr-only": "cdr-filmstrip__sr-only_15-6-1-beta-2"
 }, RC = {
   $style: PC
 }, CC = /* @__PURE__ */ W(TC, [["__cssModules", RC]]), IC = 6, Ma = /* @__PURE__ */ k({
@@ -18190,7 +18190,7 @@ const Zd = /* @__PURE__ */ k({
     }, 8, ["class", "style"]));
   }
 }), KC = {
-  "cdr-heading-display": "cdr-heading-display_15-6-1-beta-1"
+  "cdr-heading-display": "cdr-heading-display_15-6-1-beta-2"
 }, UC = {
   $style: KC
 }, Wa = /* @__PURE__ */ W(HC, [["__cssModules", UC]]), OC = "cdr-heading-serif", XC = /* @__PURE__ */ k({
@@ -18218,7 +18218,7 @@ const Zd = /* @__PURE__ */ k({
     }, 8, ["class", "style"]));
   }
 }), MC = {
-  "cdr-heading-serif": "cdr-heading-serif_15-6-1-beta-1"
+  "cdr-heading-serif": "cdr-heading-serif_15-6-1-beta-2"
 }, WC = {
   $style: MC
 }, za = /* @__PURE__ */ W(XC, [["__cssModules", WC]]), zC = "cdr-heading-sans", LC = /* @__PURE__ */ k({
@@ -18244,7 +18244,7 @@ const Zd = /* @__PURE__ */ k({
     }, 8, ["class", "style"]));
   }
 }), JC = {
-  "cdr-heading-sans": "cdr-heading-sans_15-6-1-beta-1"
+  "cdr-heading-sans": "cdr-heading-sans_15-6-1-beta-2"
 }, EC = {
   $style: JC
 }, sl = /* @__PURE__ */ W(LC, [["__cssModules", EC]]), FC = "cdr-utility-sans", ZC = /* @__PURE__ */ k({
@@ -18272,7 +18272,7 @@ const Zd = /* @__PURE__ */ k({
     }, 8, ["class", "style"]));
   }
 }), GC = {
-  "cdr-utility-sans": "cdr-utility-sans_15-6-1-beta-1"
+  "cdr-utility-sans": "cdr-utility-sans_15-6-1-beta-2"
 }, NC = {
   $style: GC
 }, Kr = /* @__PURE__ */ W(ZC, [["__cssModules", NC]]), BC = "cdr-utility-serif", DC = /* @__PURE__ */ k({
@@ -18300,7 +18300,7 @@ const Zd = /* @__PURE__ */ k({
     }, 8, ["class", "style"]));
   }
 }), YC = {
-  "cdr-utility-serif": "cdr-utility-serif_15-6-1-beta-1"
+  "cdr-utility-serif": "cdr-utility-serif_15-6-1-beta-2"
 }, QC = {
   $style: YC
 }, rp = /* @__PURE__ */ W(DC, [["__cssModules", QC]]), _C = "cdr-eyebrow", $C = /* @__PURE__ */ k({
@@ -18321,7 +18321,7 @@ const Zd = /* @__PURE__ */ k({
     }, 8, ["class"]));
   }
 }), eI = {
-  "cdr-eyebrow": "cdr-eyebrow_15-6-1-beta-1"
+  "cdr-eyebrow": "cdr-eyebrow_15-6-1-beta-2"
 }, tI = {
   $style: eI
 }, lp = /* @__PURE__ */ W($C, [["__cssModules", tI]]), xe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
