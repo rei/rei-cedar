@@ -3,13 +3,13 @@
 $media-object-component: 'media-object';
 
 @mixin cdr-media-object-media-mixin() {
-  & > *:first-child {
+  &>*:first-child {
     @content;
   }
 }
 
 @mixin cdr-media-object-content-mixin() {
-  & > *:last-child {
+  &>*:last-child {
     @content;
   }
 }
@@ -20,15 +20,14 @@ $media-object-component: 'media-object';
     grid-area: media;
     width: 100%;
 
-    & > img,
-    & > picture,
-    & > video {
+    &>img,
+    &>picture,
+    &>video {
       display: block;
     }
   }
 
   @include cdr-media-object-content-mixin {
-    grid-area: content;
     container-type: inline-size;
     width: 100%;
   }
@@ -38,13 +37,13 @@ $media-object-component: 'media-object';
 @mixin cdr-media-object-align-mixin($component) {
   align-items: var(--cdr-#{$component}-align);
   justify-items: var(--cdr-#{$component}-align);
-  @include cdr-cq-mixin($component, 'align');
+  @include cdr-mq-mixin($component, 'align');
 }
 
 // Allows for switching positions of media and content at breakpoints
 @mixin cdr-media-object-media-position-mixin($component) {
   grid-template-areas: var(--cdr-#{$component}-media-position);
-  @include cdr-cq-mixin($component, 'media-position');
+  @include cdr-mq-mixin($component, 'media-position');
 }
 
 // Allow for media to cover entire container
@@ -55,7 +54,7 @@ $media-object-component: 'media-object';
     display: flex;
     position: relative;
 
-    & > :first-child {
+    &> :first-child {
       position: absolute;
       left: 0;
       right: 0;
@@ -85,7 +84,7 @@ $media-object-component: 'media-object';
 
 // Padding for inner content
 @mixin cdr-media-object-content-padding-mixin($component) {
-  @include cdr-cq-mixin($component, 'content-padding');
+  @include cdr-mq-mixin($component, 'content-padding');
 
   @include cdr-media-object-content-mixin {
     padding: var(--cdr-#{$component}-content-padding);
