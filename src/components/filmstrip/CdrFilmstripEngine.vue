@@ -39,6 +39,8 @@
               mapClasses(classObj, `${BASE_CLASS}__frame`),
               classAttr ? `${classAttr}__frame` : null,
             ]"
+            @keydown.right="(e) => onShiftFocus(e, 'right')"
+            @keydown.left="(e) => onShiftFocus(e, 'left')"
           >
             <slot
               name="frame"
@@ -101,9 +103,10 @@ import CdrButton from '../button/CdrButton.vue';
 import { IconCaretLeft, IconCaretRight } from '../icon';
 
 import type {
-  CdrFilmstripArrowClickPayload,
   CdrFilmstripEngine,
   CdrFilmstripArrow,
+  CdrFilmstripArrowClickPayload,
+  CdrFilmstripScrollPayload,
 } from './interfaces';
 import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
 
@@ -142,6 +145,7 @@ const classAttr = attrs.class || '';
 
 const emit = defineEmits<{
   (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
+  (e: 'scrollNavigate', payload: CdrFilmstripScrollPayload): void;
   (e: 'ariaMessage', message: string): void;
 }>();
 
@@ -166,11 +170,11 @@ const currentIndex = ref(0);
 // Currently focused frame index for keyboard navigation
 const focusIndex = ref(0);
 
-// Tracks if the filmstrip has been scrolled at least once
-const hasScrolled = ref(false);
-
 // Reactive state to determine if the container is hovered
 const isContainerHovered = useElementHover(containerRef);
+
+// Flag to track if scroll is programmatic to avoid emitting events unnecessarily
+const isProgrammaticScroll = ref(false);
 
 /**
  * Calculates the width of each frame based on the container's width,
@@ -279,6 +283,7 @@ const onArrowClick = (event: Event, direction: 'left' | 'right'): void => {
   const proposedIndex = currentIndex.value + delta;
 
   currentIndex.value = Math.max(0, Math.min(proposedIndex, props.frames.length - 1));
+  isProgrammaticScroll.value = true;
   scrollToIndex(currentIndex.value);
 };
 
@@ -336,6 +341,34 @@ const handleFocusIn = (e: FocusEvent): void => {
 };
 
 /**
+ * Handles left and right arrow key presses on the filmstrip container
+ * to focus on the previous or next frame. This function is used
+ * to implement keyboard navigation for the filmstrip.
+ * @param {Event} e - The keyboard event object.
+ * @param {string} direction - The direction of the arrow key press ('left' or 'right').
+ */
+function onShiftFocus(e: Event, direction: string): void {
+  e.preventDefault();
+
+  isProgrammaticScroll.value = true;
+
+  if (direction === 'left') {
+    focusIndex.value = focusIndex.value <= 0 ? props.frames.length - 1 : focusIndex.value - 1;
+  } else {
+    focusIndex.value = focusIndex.value >= props.frames.length - 1 ? 0 : focusIndex.value + 1;
+  }
+
+  if (framesItemsRef.value) {
+    const liEl = framesItemsRef.value[focusIndex.value];
+    const focusEl = liEl.querySelector(props.focusSelector) as HTMLElement;
+
+    if (focusEl) {
+      focusEl.focus();
+    }
+  }
+}
+
+/**
  * Debounced scroll handler that updates the current frame index based on the viewport's scroll position.
  * It determines the nearest frame index to the current scroll position, updates the internal state,
  * and triggers an accessibility announcement if the index has changed.
@@ -356,7 +389,13 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
     announceFrames();
   }
 
-  if (!hasScrolled.value) hasScrolled.value = true;
+  if (!isProgrammaticScroll.value) {
+    emit('scrollNavigate', {
+      event: e,
+      index: currentIndex.value,
+    });
+  }
+  isProgrammaticScroll.value = false;
 }, 100);
 
 onMounted(() => {

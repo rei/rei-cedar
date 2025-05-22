@@ -4,6 +4,7 @@
     ref="CdrFilmstripContainer"
     v-bind="dataAttributes"
   >
+    <!-- @slot Optional injection of a heading element for the filmstrip -->
     <slot name="heading" />
     <CdrFilmstripEngine
       :class="classAttr"
@@ -16,6 +17,7 @@
       :focus-selector="focusSelector"
       @ariaMessage="$emit('ariaMessage', $event)"
       @arrowClick="onArrowClick"
+      @scrollNavigate="onScrollNavigate"
     >
       <template #frame="{ ...frameProps }: Record<string, unknown>">
         <component
@@ -37,24 +39,78 @@ import type {
   CdrFilmstripEventEmitter,
   CdrFilmstripConfig,
   CdrFilmstrip,
+  CdrFilmstripScrollPayload,
+  CdrFilmstripAdapter,
 } from './interfaces';
 import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
 import { CdrFilmstripEventKey } from '../../types/symbols';
 
 /**
  * Responsive, accessible filmstrip for displaying a horizontal list of content frames.
+ *
  * @uses CdrFilmstripEngine
- **/
+ */
 defineOptions({ name: 'CdrFilmstrip' });
 
-/**
- * Emits an event with a specified name and optional payload.
- * These events are used for communication between the filmstrip component and its consumers.
- *
- * @event arrowClick - Emitted when a navigation arrow is clicked.
- * @event ariaMessage - Emitted to update screen readers with the current frame information.
- */
+const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
+  /**
+   * Default model provided to the filmstrip.
+   * Returns an empty object when no model is passed.
+   * @returns {Record<string, unknown>}
+   * @default {}
+   */
+  model: (): Record<string, unknown> => ({}),
+
+  /**
+   * Default adapter used by the filmstrip when no custom adapter is provided.
+   * Returns an empty filmstrip configuration using a generic wrapper element.
+   *
+   * @param {Record<string, unknown>} modelData - The raw model data passed to the adapter.
+   * @returns {CdrFilmstripConfig<Record<string, unknown>>} A valid empty configuration for the filmstrip.
+   * @default defaultAdapter
+   */
+  adapter: (): CdrFilmstripAdapter<Record<string, unknown>> => {
+    return (_modelData: unknown): CdrFilmstripConfig<Record<string, unknown>> => {
+      console.warn(`No adapter provided for CdrFilmstrip`);
+      return {
+        frames: [],
+        filmstripId: 'empty-filmstrip',
+        component: h('div'),
+        description: 'An empty filmstrip',
+      };
+    };
+  },
+});
+
 const emit = defineEmits<{
+  /**
+   * Emitted when a user clicks the navigation arrows.
+   * @param payload - The arrow click event metadata.
+   */
+  (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
+
+  /**
+   * Emitted when the filmstrip scrolls to a new frame.
+   * @param payload - The scroll event metadata including target index.
+   */
+  (e: 'scrollNavigate', payload: CdrFilmstripScrollPayload): void;
+
+  /**
+   * Emitted when the layout changes due to screen or container resize.
+   * @param payload - The resize metadata including updated frame counts.
+   */
+  (e: 'resize', payload: CdrFilmstripResizePayload): void;
+
+  /**
+   * Emitted to update screen readers with the current frame information.
+   * @param payload - A string message intended for screen readers.
+   */
+  (e: 'ariaMessage', payload: string): void;
+
+  /**
+   * Emitted when a custom event is triggered.
+   * @param payload - The optional payload for a custom event.
+   */
   (e: string, payload?: unknown): void;
 }>();
 
@@ -81,30 +137,6 @@ const classAttr = attrs.class || '';
  * This allows descendant components to trigger events on the filmstrip component.
  */
 provide(CdrFilmstripEventKey, emitEvent);
-
-/**
- * Defines the props for the CdrFilmstrip component.
- *
- * @prop {unknown} model - The data model representing the filmstrip content.
- * @prop {Function} adapter - A function that transforms the model into a filmstrip configuration.
- *
- * @default
- * model: {}
- * adapter: A function that logs a warning and returns a default filmstrip configuration.
- */
-const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
-  model: () => ({}),
-  adapter: () => {
-    console.warn(`No adapter provided for CdrFilmstrip`);
-    const filmstripConfig: CdrFilmstripConfig<unknown> = {
-      frames: [],
-      filmstripId: 'empty-filmstrip',
-      component: h('div'),
-      description: 'An empty filmstrip',
-    };
-    return filmstripConfig;
-  },
-});
 
 // Reference to the filmstrip container element.
 const CdrFilmstripContainer = ref<HTMLElement | null>(null);
@@ -210,6 +242,21 @@ function onArrowClick({ event, direction }: CdrFilmstripArrowClickPayload) {
     model: props.model as Record<string, unknown>,
   };
   emit('arrowClick', arrowClickPayload);
+}
+
+/**
+ * Handles scroll navigation events in the filmstrip.
+ * Constructs a scroll payload and emits the 'scrollNavigate' event.
+ *
+ * @param {CdrFilmstripScrollPayload} param0 - The scroll event payload.
+ */
+function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
+  const scrollPayload: CdrFilmstripScrollPayload = {
+    event,
+    index,
+    model: props.model as Record<string, unknown>,
+  };
+  emit('scrollNavigate', scrollPayload);
 }
 
 /**

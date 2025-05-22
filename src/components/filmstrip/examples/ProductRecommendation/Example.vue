@@ -6,6 +6,7 @@
     @frameClick="onFrameClick"
     @arrowClick="onArrowClick"
     @ariaMessage="(msg) => console.log(msg)"
+    @scrollNavigate="onScrollNavigate"
   />
 </template>
 
@@ -15,7 +16,7 @@ import type { ProductRecommendation } from './index';
 import ProductRecommendationModel from './mock.json';
 
 const ProductRecommendationModelData = ProductRecommendationModel as ProductRecommendation;
-import { onFrameClick, onArrowClick } from './handlers';
+import { onFrameClick, onArrowClick, onScrollNavigate } from './handlers';
 import ProductRecommendationAdapter from './adapter';
 </script>
 
