@@ -4,9 +4,9 @@
     :model="ProductRecommendationModelData"
     :adapter="ProductRecommendationAdapter"
     @frameClick="onFrameClick"
-    @arrowClick="onArrowClick"
-    @ariaMessage="(msg) => console.log(msg)"
-    @scrollNavigate="onScrollNavigate"
+    @arrow-click="onArrowClick"
+    @aria-message="(msg) => console.log(msg)"
+    @scroll-navigate="onScrollNavigate"
   />
 </template>
 

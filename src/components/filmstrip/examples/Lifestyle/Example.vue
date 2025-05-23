@@ -4,7 +4,7 @@
     :model="lifestyleModelData"
     :adapter="LifestyleAdapter"
     @frameClick="onFrameClick"
-    @arrowClick="onArrowClick"
+    @arrow-click="onArrowClick"
     @resize="onResize"
   />
 </template>

@@ -15,9 +15,9 @@
       :frames-to-show="framesToShow"
       :frames-to-scroll="framesToScroll"
       :focus-selector="focusSelector"
-      @ariaMessage="$emit('ariaMessage', $event)"
-      @arrowClick="onArrowClick"
-      @scrollNavigate="onScrollNavigate"
+      @aria-message="$emit('ariaMessage', $event)"
+      @arrow-click="onArrowClick"
+      @scroll-navigate="onScrollNavigate"
     >
       <template #frame="{ ...frameProps }: Record<string, unknown>">
         <component
