@@ -21829,7 +21829,7 @@ const $w = ["media", "srcset", "sizes"], eH = ["media", "srcset", "sizes"], tH =
       onResize: y(_w)
     }, null, 8, ["model", "adapter", "onFrameClick", "onArrowClick", "onResize"]));
   }
-}), fH = /* @__PURE__ */ W(pH, [["__scopeId", "data-v-18ea4cfe"]]), mH = "product", bH = [
+}), fH = /* @__PURE__ */ W(pH, [["__scopeId", "data-v-8b53fc31"]]), mH = "product", bH = [
   {
     id: "151970",
     href: "#/product/151970/rei-co-op-ruckpack-28-pack",
@@ -22258,7 +22258,7 @@ const jH = { key: 0 }, AH = { key: 1 }, TH = {
       onScrollNavigate: y(hH)
     }, null, 8, ["model", "adapter", "onFrameClick", "onArrowClick", "onScrollNavigate"]));
   }
-}), OH = /* @__PURE__ */ W(UH, [["__scopeId", "data-v-c8571cf0"]]), XH = /* @__PURE__ */ k({
+}), OH = /* @__PURE__ */ W(UH, [["__scopeId", "data-v-34ab680a"]]), XH = /* @__PURE__ */ k({
   __name: "Filmstrip",
   setup(t) {
     return (e, n) => (m(), x(y(zl), { class: "showcase" }, {
