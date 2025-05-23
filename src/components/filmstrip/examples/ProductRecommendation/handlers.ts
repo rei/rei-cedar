@@ -1,4 +1,4 @@
-import type { CdrFilmstripArrowClickPayload } from '../../interfaces';
+import type { CdrFilmstripArrowClickPayload, CdrFilmstripScrollPayload } from '../../interfaces';
 
 import type { ProductRecommendation, ProductRecommendationFrameClickPayload } from '.';
 
@@ -42,4 +42,26 @@ export function onArrowClick(payload: unknown): void {
   };
 
   console.log('onArrowClick', { event, direction, analytics });
+}
+
+/**
+ * Handles scroll navigation events in the filmstrip.
+ * Extracts relevant analytics data based on the scrolled-to frame.
+ *
+ * @param {unknown} payload - The event payload containing scroll details.
+ */
+export function onScrollNavigate(payload: unknown): void {
+  const { index, event, model = {} } = payload as CdrFilmstripScrollPayload;
+  const { placementName, strategy } = model as Partial<ProductRecommendation>;
+
+  const format = (str?: string): string | undefined => str?.replace(/_/g, '-');
+
+  const analytics = {
+    rrPlacementName: format(placementName), // Formatted placement name
+    rrStrategy: format(strategy), // Formatted strategy type
+    scrollPosition: index, // Index scrolled to
+    linkName: `rr_${format(placementName)}_${format(strategy)}_scroll-${index}`, // Analytics label
+  };
+
+  console.log('onScrollNavigate', { index, model, event, analytics });
 }
