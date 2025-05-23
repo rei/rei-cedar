@@ -3,7 +3,7 @@
     class="product-recommendation-filmstrip"
     :model="ProductRecommendationModelData"
     :adapter="ProductRecommendationAdapter"
-    @frameClick="onFrameClick"
+    @frame-click="onFrameClick"
     @arrow-click="onArrowClick"
     @aria-message="(msg) => console.log(msg)"
     @scroll-navigate="onScrollNavigate"
