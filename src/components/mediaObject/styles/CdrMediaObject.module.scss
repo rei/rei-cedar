@@ -1,16 +1,16 @@
-@import './vars/CdrMediaObject.vars.scss';
+@use './vars/CdrMediaObject.vars.scss' as vars;
 
 .cdr-media-object {
-  @include cdr-media-object-base-mixin($media-object-component);
-  @include cdr-media-object-align-mixin($media-object-component);
-  @include cdr-media-object-media-position-mixin($media-object-component);
-  @include cdr-media-object-content-padding-mixin($media-object-component);
+  @include vars.cdr-media-object-base-mixin(vars.$media-object-component);
+  @include vars.cdr-media-object-align-mixin(vars.$media-object-component);
+  @include vars.cdr-media-object-media-position-mixin(vars.$media-object-component);
+  @include vars.cdr-media-object-content-padding-mixin(vars.$media-object-component);
 
   &--cover {
-    @include cdr-media-object-cover-mixin($media-object-component);
+    @include vars.cdr-media-object-cover-mixin(vars.$media-object-component);
   }
 
   &--overlay {
-    @include cdr-media-object-overlay-mixin($media-object-component);
+    @include vars.cdr-media-object-overlay-mixin(vars.$media-object-component);
   }
 }

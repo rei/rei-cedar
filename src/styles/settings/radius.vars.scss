@@ -1,10 +1,12 @@
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 // Cedar token variable options
 $radii: (
-  'sharp': $cdr-radius-sharp,
-  'soft': $cdr-radius-soft,
-  'softer': $cdr-radius-softer,
-  'softest': $cdr-radius-softest,
-  'round': $cdr-radius-round,
+  'sharp': tokens.$cdr-radius-sharp,
+  'soft': tokens.$cdr-radius-soft,
+  'softer': tokens.$cdr-radius-softer,
+  'softest': tokens.$cdr-radius-softest,
+  'round': tokens.$cdr-radius-round,
 );
 
 // Generates a radius property with a predictable format for overriding

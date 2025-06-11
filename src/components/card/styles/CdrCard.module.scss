@@ -1,10 +1,9 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrCard.vars';
+@use './vars/CdrCard.vars' as vars;
 
 .cdr-card {
-  @include cdr-card-base-mixin;
+  @include vars.cdr-card-base-mixin;
 }
 
 :global(.cdr-card__link) {
-  @include cdr-card-link-mixin;
+  @include vars.cdr-card-link-mixin;
 }

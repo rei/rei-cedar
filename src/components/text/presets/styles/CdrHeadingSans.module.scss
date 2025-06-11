@@ -1,8 +1,9 @@
-@import './CdrPresets.module';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '../../styles/vars/CdrText.vars.scss' as vars;
 
 .cdr-heading-sans {
-  @include cdr-text-base-mixin;
-  @include cdr-text-heading-sans-600;
+  @include vars.cdr-text-base-mixin;
+  @include tokens.cdr-text-heading-sans-600;
 
   font-size: var(--cdr-heading-sans-font-size);
   line-height: var(--cdr-heading-sans-line-height);

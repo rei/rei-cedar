@@ -1,8 +1,9 @@
-@import './CdrPresets.module';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '../../styles/vars/CdrText.vars.scss' as vars;
 
 .cdr-eyebrow {
-  @include cdr-text-base-mixin;
-  @include cdr-text-eyebrow-100;
+  @include vars.cdr-text-base-mixin;
+  @include tokens.cdr-text-eyebrow-100;
 
   font-size: var(--cdr-type-scale--1);
   line-height: var(--cdr-eyebrow-line-height-ratio);

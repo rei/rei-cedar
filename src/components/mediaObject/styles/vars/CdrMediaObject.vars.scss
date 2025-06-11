@@ -1,4 +1,4 @@
-@import '../../../../styles/settings/index.scss';
+@use '../../../../styles/settings/query.vars.scss' as query;
 
 $media-object-component: 'media-object';
 
@@ -37,13 +37,13 @@ $media-object-component: 'media-object';
 @mixin cdr-media-object-align-mixin($component) {
   align-items: var(--cdr-#{$component}-align);
   justify-items: var(--cdr-#{$component}-align);
-  @include cdr-mq-mixin($component, 'align');
+  @include query.cdr-mq-mixin($component, 'align');
 }
 
 // Allows for switching positions of media and content at breakpoints
 @mixin cdr-media-object-media-position-mixin($component) {
   grid-template-areas: var(--cdr-#{$component}-media-position);
-  @include cdr-mq-mixin($component, 'media-position');
+  @include query.cdr-mq-mixin($component, 'media-position');
 }
 
 // Allow for media to cover entire container
@@ -84,7 +84,7 @@ $media-object-component: 'media-object';
 
 // Padding for inner content
 @mixin cdr-media-object-content-padding-mixin($component) {
-  @include cdr-mq-mixin($component, 'content-padding');
+  @include query.cdr-mq-mixin($component, 'content-padding');
 
   @include cdr-media-object-content-mixin {
     padding: var(--cdr-#{$component}-content-padding);

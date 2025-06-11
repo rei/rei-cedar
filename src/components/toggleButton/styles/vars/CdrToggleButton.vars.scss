@@ -1,5 +1,7 @@
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-toggle-button-base-text-mixin-medium() {
-    font-family: $cdr-font-family-sans;
+    font-family: tokens.$cdr-font-family-sans;
     font-style: normal;
     font-weight: 400;
     letter-spacing: -.16px;

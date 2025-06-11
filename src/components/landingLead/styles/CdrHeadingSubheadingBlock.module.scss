@@ -1,17 +1,15 @@
-@import '../../../styles/settings/index';
-@import '../../text/presets/styles/CdrHeadingDisplay.module';
-@import '../../text/presets/styles/CdrSubheadingSans.module';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-heading-subheading-block {
   &__heading {
     display: block;
-    margin: 0 0 $cdr-space-one-x;
+    margin: 0 0 tokens.$cdr-space-one-x;
     max-width: 40ch;
   }
 
   &__subheading {
     display: block;
-    margin-top: $cdr-space-three-quarter-x!important;
+    margin-top: tokens.$cdr-space-three-quarter-x !important;
     max-width: 60ch;
   }
 }

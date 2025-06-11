@@ -1,7 +1,4 @@
-//@import url('@rei/cedar/dist/style/cdr-text.css');
-@import '../../text/styles/CdrText.module';
-@import '../../../styles/settings/index';
-@import './vars/CdrQuote.vars';
+@use './vars/CdrQuote.vars' as vars;
 
 /* ==========================================================================
   # Cdrquote
@@ -12,17 +9,17 @@
 ========================================================================== */
 
 .cdr-quote {
-  @include cdr-quote-base-container;
+  @include vars.cdr-quote-base-container;
 
   &__summary {
-    @include cdr-quote-base-content;
+    @include vars.cdr-quote-base-content;
   }
 
   &--pull {
-    @include cdr-quote-pull-container;
+    @include vars.cdr-quote-pull-container;
 
     .cdr-quote__summary {
-      @include cdr-quote-pull-content;
+      @include vars.cdr-quote-pull-content;
     }
   }
 }

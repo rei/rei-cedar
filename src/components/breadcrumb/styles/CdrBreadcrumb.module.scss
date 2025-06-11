@@ -1,5 +1,6 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrBreadcrumb.vars';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
+@use './vars/CdrBreadcrumb.vars' as vars;
 
 .cdr-breadcrumb {
   line-height: 1;
@@ -20,21 +21,21 @@
     flex: none;
     padding: 0;
 
-    @include cdr-breadcrumb-item-mixin;
+    @include vars.cdr-breadcrumb-item-mixin;
   }
 
 
   /* Link
   ---------- */
   &__link {
-    @include cdr-breadcrumb-item-linked-mixin;
+    @include vars.cdr-breadcrumb-item-linked-mixin;
   }
 
   /* Delimiter
   ========== */
   &__delimiter {
     color: inherit;
-    padding: 0 $cdr-space-half-x;
+    padding: 0 tokens.$cdr-space-half-x;
   }
 
   /* Ellipses
@@ -55,7 +56,7 @@
     ========== */
     .cdr-breadcrumb__ellipses-icon {
       //ITEM_DOC: Ellipses icon color
-      color: var(--cdr-breadcrumb-ellipses-icon-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
+      color: var(--cdr-breadcrumb-ellipses-icon-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
       border-bottom: 1px solid transparent;
       fill: inherit;
     }
@@ -65,7 +66,7 @@
     &:focus {
       .cdr-breadcrumb__ellipses-icon {
         //ITEM_DOC: Ellipses icon hover, active and focus color
-        color: var(--cdr-breadcrumb-ellipses-icon-highlight-color, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover}));
+        color: var(--cdr-breadcrumb-ellipses-icon-highlight-color, var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover}));
         text-decoration: underline;
       }
     }
@@ -74,14 +75,14 @@
   &__link,
   &__delimiter,
   &__ellipses {
-    @include cdr-breadcrumb-xs-text-mixin;
+    @include vars.cdr-breadcrumb-xs-text-mixin;
   }
 
-  @include cdr-md-mq {
+  @include tokens.cdr-md-mq {
     &__link,
     &__delimiter,
     &__ellipses {
-      @include cdr-breadcrumb-base-text-mixin;
+      @include vars.cdr-breadcrumb-base-text-mixin;
     }
   }
 }
