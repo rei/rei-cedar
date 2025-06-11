@@ -9,17 +9,16 @@
 
     :Base - CdrCaption
 ========================================================================== */
-@import '../../../styles/settings/index';
-@import './vars/CdrCaption.vars';
+@use './vars/CdrCaption.vars' as vars;
 
 .cdr-caption {
-  @include cdr-caption-container-mixin;
+  @include vars.cdr-caption-container-mixin;
 
   cite {
-    @include cdr-caption-cite-mixin;
+    @include vars.cdr-caption-cite-mixin;
   }
 
   &__summary {
-    @include cdr-caption-summary-mixin;
+    @include vars.cdr-caption-summary-mixin;
   }
 }

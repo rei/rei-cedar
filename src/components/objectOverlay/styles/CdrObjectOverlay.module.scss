@@ -1,11 +1,11 @@
 @use 'sass:map';
-@import '../../../styles/settings/index';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 $breakpoints: (
   '': '',
-  '-sm': $cdr-breakpoint-sm,
-  '-md': $cdr-breakpoint-md,
-  '-lg': $cdr-breakpoint-lg
+  '-sm': tokens.$cdr-breakpoint-sm,
+  '-md': tokens.$cdr-breakpoint-md,
+  '-lg': tokens.$cdr-breakpoint-lg
 );
 
 $positions: (
@@ -30,10 +30,10 @@ $dark-gradients: (
 
 // Light theme gradients
 $light-gradients: (
-  'to-top': linear-gradient(to top, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%),
-  'to-bottom': linear-gradient(to bottom, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%),
-  'to-left': linear-gradient(to left, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%),
-  'to-right': linear-gradient(to right, white 0%, rgba($cdr-color-background-primary, 0.5) 20%, transparent 40%)
+  'to-top': linear-gradient(to top, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%),
+  'to-bottom': linear-gradient(to bottom, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%),
+  'to-left': linear-gradient(to left, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%),
+  'to-right': linear-gradient(to right, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%)
 );
 
 .cdr-object-overlay {

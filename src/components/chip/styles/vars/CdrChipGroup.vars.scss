@@ -1,3 +1,5 @@
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-chip-group-base-mixin() {
   border: none;
   margin-inline: 0;
@@ -6,17 +8,17 @@
 
   legend {
     padding-inline-start: 0;
-    margin-bottom: $cdr-space-half-x;
+    margin-bottom: tokens.$cdr-space-half-x;
   }
 }
 
 @mixin cdr-chip-group-content-mixin() {
   & > button:not(:last-child)  {
-    margin-right: $cdr-space-half-x;
-    margin-bottom: $cdr-space-half-x;
+    margin-right: tokens.$cdr-space-half-x;
+    margin-bottom: tokens.$cdr-space-half-x;
   }
 }
 
 @mixin cdr-chip-group-legend-mixin() {
-  @include cdr-text-heading-sans-300;
+  @include tokens.cdr-text-heading-sans-300;
 }

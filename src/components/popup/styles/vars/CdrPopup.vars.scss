@@ -1,16 +1,18 @@
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 $arrow-size: 1rem;
-$arrow-spacing: #{$arrow-size + $cdr-space-quarter-x + 0.1rem};
-$content-spacing: calc(100% + #{$arrow-size} + #{$cdr-space-quarter-x});
-$animation-duration: $cdr-duration-2-x;
-$timing-function: $cdr-timing-function-ease-out;
+$arrow-spacing: #{$arrow-size + tokens.$cdr-space-quarter-x + 0.1rem};
+$content-spacing: calc(100% + #{$arrow-size} + #{tokens.$cdr-space-quarter-x});
+$animation-duration: tokens.$cdr-duration-2-x;
+$timing-function: tokens.$cdr-timing-function-ease-out;
 
 @mixin arrow($borderSide) {
   &::before {
-    border-#{$borderSide}-color: $cdr-color-border-secondary;
+    border-#{$borderSide}-color: tokens.$cdr-color-border-secondary;
   }
 
   &::after {
-    border-#{$borderSide}-color: $cdr-color-background-primary;
+    border-#{$borderSide}-color: tokens.$cdr-color-background-primary;
   }
 }
 

@@ -1,8 +1,6 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrSelect.vars';
-@import '../../icon/styles/CdrIcon.module';
-@import '../../labelStandalone/styles/CdrLabelStandalone.module';
-@import '../../formError/styles/CdrFormError.module';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
+@use './vars/CdrSelect.vars' as vars;
 
 /* ==========================================================================
   # CdrSelect
@@ -20,7 +18,7 @@
 ========================================================================== */
 
 .cdr-select {
-  @include cdr-select-base-mixin;
+  @include vars.cdr-select-base-mixin;
 
   /* Hide Browser Styled Drowpdown Arrow */
   appearance: none;
@@ -32,39 +30,39 @@
   }
 
   &--primary {
-    @include cdr-select-primary-mixin;
+    @include vars.cdr-select-primary-mixin;
   }
 
   &--secondary {
-    @include cdr-select-secondary-mixin;
+    @include vars.cdr-select-secondary-mixin;
   }
 
   &--error {
-    @include cdr-select-error-mixin;
+    @include vars.cdr-select-error-mixin;
   }
 
   &--preicon {
     /* $input-pre-icon-default-width = 25px with the expectation that
         slot provided icon is close to that width */
-    padding-left: calc(#{$cdr-space-half-x} + #{$cdr-space-quarter-x} + 25px);
+    padding-left: calc(#{tokens.$cdr-space-half-x} + #{tokens.$cdr-space-quarter-x} + 25px);
   }
 
   &__prompt {
-    @include cdr-select-prompt-mixin;
+    @include vars.cdr-select-prompt-mixin;
   }
 
   &__caret {
     //ITEM_DOC: Color of the cdr-select caret
-    fill: var(--cdr-select-caret-fill, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    fill: var(--cdr-select-caret-fill, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
     position: absolute;
     top: 50%;
-    right: $cdr-space-half-x;
+    right: tokens.$cdr-space-half-x;
     transform: translateY(-50%);
     pointer-events: none;
 
     &--disabled {
       //ITEM_DOC: Color of  a disabled cdr-select caret
-      fill: var(--cdr-select-caret-fill-disabled, var(--cdr-color-icon-disabled, #{$cdr-color-icon-disabled}));
+      fill: var(--cdr-select-caret-fill-disabled, var(--cdr-color-icon-disabled, #{tokens.$cdr-color-icon-disabled}));
     }
 }
 
@@ -72,13 +70,13 @@
   &__pre-icon {
     position: absolute;
     top: 50%;
-    left: $cdr-space-half-x;
+    left: tokens.$cdr-space-half-x;
     transform: translateY(-50%);
   }
 
   &--multiple {
     height: auto;
-    padding: $cdr-space-half-x;
+    padding: tokens.$cdr-space-half-x;
 
     & + .cdr-select__caret {
       display: none;
@@ -88,9 +86,9 @@
   /* @xs
   0px - 767px
   ========== */
-  @include cdr-xs-mq-only {
+  @include tokens.cdr-xs-mq-only {
     &--large\@xs {
-      @include cdr-select-large-mixin;
+      @include vars.cdr-select-large-mixin;
     }
   }
 
@@ -98,24 +96,24 @@
     ========================================================================== */
 
     &--large {
-      @include cdr-select-large-mixin;
+      @include vars.cdr-select-large-mixin;
     }
 
   /* @sm
     768px - 991px
     ========== */
-  @include cdr-sm-mq-only {
+  @include tokens.cdr-sm-mq-only {
     &--large\@sm {
-      @include cdr-select-large-mixin;
+      @include vars.cdr-select-large-mixin;
     }
   }
 
   /* @md
     992px - 1199px
     ========== */
-  @include cdr-md-mq-only {
+  @include tokens.cdr-md-mq-only {
     &--large\@md {
-      @include cdr-select-large-mixin;
+      @include vars.cdr-select-large-mixin;
     }
   }
 
@@ -123,9 +121,9 @@
     1200px and up
     ========== */
 
-  @include cdr-lg-mq-only {
+  @include tokens.cdr-lg-mq-only {
     &--large\@lg {
-      @include cdr-select-large-mixin;
+      @include vars.cdr-select-large-mixin;
     }
   }
 }

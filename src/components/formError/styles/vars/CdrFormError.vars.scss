@@ -1,14 +1,16 @@
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-form-error-base-mixin() {
-  @include cdr-text-utility-sans-300;
+  @include tokens.cdr-text-utility-sans-300;
 
   //ITEM_DOC: Text color of a cdr-form-error
-  color: var(--cdr-form-error-text-color, var(--cdr-color-text-input-error, #{$cdr-color-text-input-error}));
+  color: var(--cdr-form-error-text-color, var(--cdr-color-text-input-error, #{tokens.$cdr-color-text-input-error}));
 
   //ITEM_DOC: Fill color of a cdr-form-error
-  fill: var(--cdr-form-error-fill-color, var(--cdr-color-text-input-error, #{$cdr-color-text-input-error}));
-  margin-top: $cdr-space-quarter-x;
+  fill: var(--cdr-form-error-fill-color, var(--cdr-color-text-input-error, #{tokens.$cdr-color-text-input-error}));
+  margin-top: tokens.$cdr-space-quarter-x;
 }
 
 @mixin cdr-form-error-icon-mixin() {
-  margin-right: $cdr-space-quarter-x;
+  margin-right: tokens.$cdr-space-quarter-x;
 }

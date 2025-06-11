@@ -1,10 +1,9 @@
-@import '../../../styles/settings/index';
-@import '../../../styles/settings/fluid.vars';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-kicker {
-  @include cdr-text-eyebrow-100;
+  @include tokens.cdr-text-eyebrow-100;
 
-  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
   font-size: var(--cdr-type-scale--1);
   line-height: calc(var(--cdr-type-scale--1) * var(--cdr-heading-display-line-height-ratio));
 }

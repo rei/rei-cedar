@@ -1,9 +1,9 @@
-@import '../../../styles/settings/index';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-tab-panel {
   width: 100%;
   height: 100%;
-  padding-top: $cdr-space-eighth-x;
+  padding-top: tokens.$cdr-space-eighth-x;
 }
 
 @keyframes :global(exit-left) {
@@ -55,8 +55,8 @@
 }
 
 @mixin cdr-tab-panel-animation {
-  animation-duration: $cdr-duration-2-x;
-  animation-timing-function: $cdr-timing-function-ease-out;
+  animation-duration: tokens.$cdr-duration-2-x;
+  animation-timing-function: tokens.$cdr-timing-function-ease-out;
 }
 
 .cdr-tab-panel-enter-left {

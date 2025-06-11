@@ -1,6 +1,4 @@
-@import '../../../styles/settings/index';
-@import '../../icon/styles/CdrIcon.module';
-@import '../../select/styles/CdrSelect.module';
+@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-pagination {
   display: flex;
@@ -14,7 +12,7 @@
       display: none;
 
       & + & {
-        margin-left: $cdr-space-quarter-x;
+        margin-left: tokens.$cdr-space-quarter-x;
       }
     }
 
@@ -24,26 +22,26 @@
   }
 
   &__link {
-    @include cdr-text-utility-sans-300;
+    @include tokens.cdr-text-utility-sans-300;
 
     background-color: transparent;
     border: none;
 
     //ITEM_DOC: Text color of a cdr-pagination link
-    color: var(--cdr-pagination-link-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    color: var(--cdr-pagination-link-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
 
     //ITEM_DOC: Fill color of a cdr-pagination link
-    fill: var(--cdr-pagination-link-fill-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    fill: var(--cdr-pagination-link-fill-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
     display: block;
-    padding: $cdr-space-inset-three-quarter-x-squish;
+    padding: tokens.$cdr-space-inset-three-quarter-x-squish;
     text-decoration: none;
-    border-radius: $cdr-radius-softer;
+    border-radius: tokens.$cdr-radius-softer;
 
     &:hover,
     &:focus,
     &:active {
       //ITEM_DOC: Background color of a cdr-pagination link on hover/focus/active
-      background-color: var(--cdr-pagination-link-background-color-interaction, var(--cdr-color-background-pagination-hover, #{$cdr-color-background-pagination-hover}));
+      background-color: var(--cdr-pagination-link-background-color-interaction, var(--cdr-color-background-pagination-hover, #{tokens.$cdr-color-background-pagination-hover}));
       cursor: pointer;
     }
 
@@ -60,7 +58,7 @@
         width: 80%;
 
         //ITEM_DOC: Background color of the keyline for the current cdr-pagination link
-        background-color: var(--cdr-pagination-link-current-background-color-keyline, var(--cdr-color-background-pagination-keyline, #{$cdr-color-background-pagination-keyline}));
+        background-color: var(--cdr-pagination-link-current-background-color-keyline, var(--cdr-color-background-pagination-keyline, #{tokens.$cdr-color-background-pagination-keyline}));
       }
 
       &:hover,
@@ -72,17 +70,17 @@
 
     &#{&}--disabled {
       //ITEM_DOC: Text color of a disabled cdr-pagination link
-      color: var(--cdr-pagination-link-text-color-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
+      color: var(--cdr-pagination-link-text-color-disabled, var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled}));
 
       //ITEM_DOC: Fill color of a disabled cdr-pagination link
-      fill: var(--cdr-pagination-link-fill-color-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
+      fill: var(--cdr-pagination-link-fill-color-disabled, var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled}));
       cursor: not-allowed;
 
       &:hover,
       &:focus,
       &:active {
         //ITEM_DOC: Text color of a disabled cdr-pagination link on hover/focus/active
-        color: var(--cdr-pagination-link-text-color-interactive-disabled, var(--cdr-color-text-disabled, #{$cdr-color-text-disabled}));
+        color: var(--cdr-pagination-link-text-color-interactive-disabled, var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled}));
         background-color: transparent;
       }
     }
@@ -90,33 +88,33 @@
 
   &__ellipse {
     display: block;
-    padding: $cdr-space-inset-three-quarter-x-squish;
+    padding: tokens.$cdr-space-inset-three-quarter-x-squish;
   }
 
   &__prev {
     display: flex;
     align-items: center;
-    margin-right: $cdr-space-one-x;
+    margin-right: tokens.$cdr-space-one-x;
   }
 
   &__next {
     display: flex;
     align-items: center;
-    margin-left: $cdr-space-one-x;
+    margin-left: tokens.$cdr-space-one-x;
   }
 
   &__caret {
     &--prev {
-      margin-right: $cdr-space-eighth-x;
+      margin-right: tokens.$cdr-space-eighth-x;
     }
 
     &--next {
-      margin-left: $cdr-space-eighth-x;
+      margin-left: tokens.$cdr-space-eighth-x;
     }
   }
 
   /* Responsive */
-  @include cdr-sm-mq {
+  @include tokens.cdr-sm-mq {
     &__li--links {
       display: block;
     }
