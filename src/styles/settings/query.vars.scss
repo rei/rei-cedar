@@ -1,4 +1,4 @@
-@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 // Allows for easily adding dynamic values for a specific CSS variable
 @mixin cdr-mq-mixin($component, $name) {

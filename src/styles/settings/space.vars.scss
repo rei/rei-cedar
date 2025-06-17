@@ -1,7 +1,7 @@
 // All standard spacing options a component might use.
 // Intentially not including inset spacing to avoid duplicate looking options,
 // avoid possible confusion for users, and limit classes generated.
-@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 $spacing: (
   'zero': tokens.$cdr-space-zero,
