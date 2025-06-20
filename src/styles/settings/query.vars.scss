@@ -1,17 +1,19 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 // Allows for easily adding dynamic values for a specific CSS variable
 @mixin cdr-mq-mixin($component, $name) {
   &--#{$name}-mq {
     --cdr-#{$component}-#{$name}: var(--cdr-#{$component}-#{$name}-xs);
 
-    @include cdr-sm-mq-up {
+    @include tokens.cdr-sm-mq-up {
       --cdr-#{$component}-#{$name}: var(--cdr-#{$component}-#{$name}-sm);
     }
 
-    @include cdr-md-mq-up {
+    @include tokens.cdr-md-mq-up {
       --cdr-#{$component}-#{$name}: var(--cdr-#{$component}-#{$name}-md);
     }
 
-    @include cdr-lg-mq-up {
+    @include tokens.cdr-lg-mq-up {
       --cdr-#{$component}-#{$name}: var(--cdr-#{$component}-#{$name}-lg);
     }
   }

@@ -1,39 +1,40 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-card-base-mixin() {
   position: relative;
 
   //ITEM_DOC: Background color of a cdr-card
-  background-color: var(--cdr-card-base-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
-  border-radius: $cdr-radius-softer;
-  box-shadow: $cdr-prominence-raised;
+  background-color: var(--cdr-card-base-background-color, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary}));
+  border-radius: tokens.$cdr-radius-softer;
+  box-shadow: tokens.$cdr-prominence-raised;
 
   //ITEM_DOC: Text color of a cdr-card
-  color: var(--cdr-card-base-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+  color: var(--cdr-card-base-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
   container: card / inline-size;
   width: 100%;
-  transition: box-shadow $cdr-duration-2-x $cdr-timing-function-ease;
+  transition: box-shadow tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease;
   cursor: pointer;
   overflow: hidden;
 
   &:active, &:hover {
-    box-shadow: $cdr-prominence-floating;
-    transform: translateY(-$cdr-space-eighth-x);
-    transition: $cdr-duration-2-x;
+    box-shadow: tokens.$cdr-prominence-floating;
+    transform: translateY(-#{tokens.$cdr-space-eighth-x});
+    transition: tokens.$cdr-duration-2-x;
   }
-
 }
 
 @mixin cdr-card-link-mixin() {
   position: static;
 
   //ITEM_DOC: Link text color of a cdr-card
-  color: var(--cdr-card-link-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary})) !important;
+  color: var(--cdr-card-link-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})) !important;
   text-decoration: none !important;
 
   &:hover {
     text-decoration: underline !important;
 
     //ITEM_DOC: Link hover text color of a cdr-card
-    color: var(--cdr-card-link-hover-color, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover})) !important;
+    color: var(--cdr-card-link-hover-color, var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})) !important;
   }
 
   &::before {

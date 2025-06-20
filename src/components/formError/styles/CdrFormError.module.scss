@@ -1,10 +1,9 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrFormError.vars';
+@use './vars/CdrFormError.vars' as vars;
 
 .cdr-form-error {
-  @include cdr-form-error-base-mixin;
+  @include vars.cdr-form-error-base-mixin;
 
   &__icon {
-    @include cdr-form-error-icon-mixin;
+    @include vars.cdr-form-error-icon-mixin;
   }
 }

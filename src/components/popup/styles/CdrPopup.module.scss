@@ -1,9 +1,10 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrPopup.vars';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
+@use './vars/CdrPopup.vars' as vars;
 
 .cdr-popup {
   opacity: 0;
-  transition: opacity $animation-duration $timing-function;
+  transition: opacity vars.$animation-duration vars.$timing-function;
 
   &--open {
     opacity: 1;
@@ -14,17 +15,17 @@
   }
 
   &__content {
-    animation-duration: $animation-duration;
-    animation-timing-function: $timing-function;
+    animation-duration: vars.$animation-duration;
+    animation-timing-function: vars.$timing-function;
     animation-fill-mode: forwards;
 
     //ITEM_DOC: Background color of cdr-popup content
-    background: var(--cdr-popup-content-background, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
+    background: var(--cdr-popup-content-background, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary}));
 
     //ITEM_DOC: Border color of cdr-popup content
-    border: 1px solid var(--cdr-popup-content-border-color, var(--cdr-color-border-secondary, #{$cdr-color-border-secondary}));
-    border-radius: $cdr-radius-softer;
-    box-shadow: $cdr-prominence-elevated;
+    border: 1px solid var(--cdr-popup-content-border-color, var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary}));
+    border-radius: tokens.$cdr-radius-softer;
+    box-shadow: tokens.$cdr-prominence-elevated;
     max-width: 286px;
     width: max-content;
     position: absolute;
@@ -40,18 +41,18 @@
       height: 0;
       border-style: solid;
       border-color: transparent;
-      animation-duration: $animation-duration;
-      animation-timing-function: $timing-function;
+      animation-duration: vars.$animation-duration;
+      animation-timing-function: vars.$timing-function;
       animation-fill-mode: forwards;
       z-index: 100;
     }
 
     &::before {
-      border-width: $arrow-size;
+      border-width: vars.$arrow-size;
     }
 
     &::after {
-      border-width: #{$arrow-size - 0.1rem};
+      border-width: #{vars.$arrow-size - 0.1rem};
     }
   }
 
@@ -97,11 +98,11 @@
     }
 
     .cdr-popup__content {
-      top: $content-spacing;
+      top: vars.$content-spacing;
     }
 
     .cdr-popup__arrow {
-      @include arrow(bottom);
+      @include vars.arrow(bottom);
     }
   }
 
@@ -139,11 +140,11 @@
     }
 
     .cdr-popup__content {
-      bottom: $content-spacing;
+      bottom: vars.$content-spacing;
     }
 
     .cdr-popup__arrow {
-      @include arrow(top);
+      @include vars.arrow(top);
     }
   }
 
@@ -200,11 +201,11 @@
     }
 
     .cdr-popup__content {
-      right: $content-spacing;
+      right: vars.$content-spacing;
     }
 
     .cdr-popup__arrow {
-      @include arrow(left);
+      @include vars.arrow(left);
     }
   }
 
@@ -242,11 +243,11 @@
     }
 
     .cdr-popup__content {
-      left: $content-spacing;
+      left: vars.$content-spacing;
     }
 
     .cdr-popup__arrow {
-      @include arrow(right);
+      @include vars.arrow(right);
     }
   }
 
