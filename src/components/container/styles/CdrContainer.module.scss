@@ -1,10 +1,10 @@
-@import '../../../styles/settings/index';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-container {
-  @include cdr-text-default;
-  @include cdr-container-base;
+  @include tokens.cdr-text-default;
+  @include tokens.cdr-container-base;
 }
 
 .cdr-container--static {
-  @include cdr-container-static;
+  @include tokens.cdr-container-static;
 }

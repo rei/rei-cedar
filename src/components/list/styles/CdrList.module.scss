@@ -1,13 +1,13 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrList.vars';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use './vars/CdrList.vars' as vars;
 
 .cdr-list {
-  @include cdr-list-base-mixin;
+  @include vars.cdr-list-base-mixin;
 
   /* nesting
     ---------- */
   & li > .cdr-list {
-    @include cdr-list-base-nested-mixin;
+    @include vars.cdr-list-base-nested-mixin;
   }
 
   /* Style variants
@@ -16,25 +16,25 @@
   /* Compact
     ========== */
   &--compact {
-    @include cdr-list-compact-mixin;
+    @include vars.cdr-list-compact-mixin;
 
     /* nesting
       ---------- */
     & li > .cdr-list {
-      @include cdr-list-compact-nested-mixin;
+      @include vars.cdr-list-compact-nested-mixin;
     }
   }
 
   /* Ordered
     ========== */
   &--ordered {
-    @include cdr-list-ordered-mixin;
+    @include vars.cdr-list-ordered-mixin;
 
     & li {
       /* nesting
       ---------- */
       & > .cdr-list {
-        @include cdr-list-ordered-nested-mixin;
+        @include vars.cdr-list-ordered-nested-mixin;
       }
     }
   }
@@ -42,12 +42,12 @@
   /* Unordered
      ========== */
   &--unordered {
-    @include cdr-list-unordered-mixin;
+    @include vars.cdr-list-unordered-mixin;
 
     /* nesting
       ---------- */
     & li > .cdr-list {
-      @include cdr-list-unordered-nested-mixin;
+      @include vars.cdr-list-unordered-nested-mixin;
     }
   }
 
@@ -94,7 +94,7 @@
           content: '\2022';
 
           //ITEM_DOC: Color of the unordered inline list item prefix
-          color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
+          color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
           display: block;
           position: absolute;
           top: 50%;

@@ -1,6 +1,7 @@
-@import '../../../styles/settings/index.scss';
-@import './vars/{NAME-FULLNAME}.vars.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
+@use './vars/{NAME-FULLNAME}.vars.scss' as vars;
 
 .{NAME-TAGNAME} {
-  @include {NAME-TAGNAME}-base-mixin;
+  @include vars.{NAME-TAGNAME}-base-mixin;
 }
