@@ -1,4 +1,5 @@
-import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from '../../interfaces';
+import type { CdrFilmstripAdapter, CdrFilmstripConfig } from '../../interfaces';
+import type { CdrSurfaceScrollFrame } from '../../../surfaceScroll/interfaces';
 import FrameComponent from './components/ProductRecommendationFrame.vue';
 import type { ProductRecommendation, ProductRecommendationFrame } from '.';
 
@@ -7,7 +8,7 @@ import type { ProductRecommendation, ProductRecommendationFrame } from '.';
  *
  * This function takes `modelData`, extracts relevant product information,
  * and transforms it into a structured filmstrip model that conforms to the
- * `CdrFilmstripConfig<CdrFilmstripFrame>` format.
+ * `CdrFilmstripConfig<CdrSurfaceScrollFrame>` format.
  *
  * @param {Record<string, unknown>} modelData - The raw data used to populate the filmstrip.
  * @returns {CdrFilmstripConfig<ProductRecommendationFrame>} The resolved product filmstrip model.
@@ -23,9 +24,9 @@ export const adapter: CdrFilmstripAdapter<ProductRecommendationFrame> = (modelDa
   /**
    * Transforms raw items into an array of frames for the filmstrip.
    *
-   * @type {CdrFilmstripFrame<ProductRecommendationFrame>[]}
+   * @type {CdrSurfaceScrollFrame<ProductRecommendationFrame>[]}
    */
-  const frames: CdrFilmstripFrame<ProductRecommendationFrame>[] = Array.isArray(items)
+  const frames: CdrSurfaceScrollFrame<ProductRecommendationFrame>[] = Array.isArray(items)
     ? items.map((item, index) => ({
         key: `product-frame-${index}`,
         props: item,

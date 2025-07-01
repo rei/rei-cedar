@@ -1,6 +1,7 @@
 import { CdrSpaceThreeQuarterX } from '@rei/cdr-tokens';
 import type { Lifestyle, LifestyleFrameExtended } from '.';
-import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from '../../interfaces';
+import type { CdrFilmstripAdapter, CdrFilmstripConfig } from '../../interfaces';
+import type { CdrSurfaceScrollFrame } from '../../../surfaceScroll/interfaces';
 import FrameComponent from './LifestyleFrame.vue';
 
 export const adapter: CdrFilmstripAdapter<LifestyleFrameExtended> = (modelData) => {
@@ -21,9 +22,9 @@ export const adapter: CdrFilmstripAdapter<LifestyleFrameExtended> = (modelData) 
   /**
    * Transforms raw items into an array of frames for the filmstrip.
    *
-   * @type {CdrFilmstripFrame<LifestyleFrameExtended>[]}
+   * @type {CdrSurfaceScrollFrame<LifestyleFrameExtended>[]}
    */
-  const frames: CdrFilmstripFrame<LifestyleFrameExtended>[] = Array.isArray(frameItems)
+  const frames: CdrSurfaceScrollFrame<LifestyleFrameExtended>[] = Array.isArray(frameItems)
     ? frameItems.map((frame, index) => ({
         key: `lifestyle-frame-${index}`,
         props: {
