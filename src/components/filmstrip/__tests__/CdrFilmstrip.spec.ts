@@ -1,17 +1,19 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import CdrFilmstrip from '../CdrFilmstrip.vue';
-import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
+import CdrSurfaceScroll from '../../surfaceScroll/CdrSurfaceScroll.vue';
 import { h, nextTick } from 'vue';
 import type {
-  CdrFilmstripFrame,
   CdrFilmstripConfig,
-  CdrFilmstripArrowClickPayload,
   CdrFilmstripResizePayload,
 } from '../interfaces';
+import type {
+  CdrSurfaceScrollFrame,
+  CdrSurfaceScrollArrowClickPayload,
+} from '../../surfaceScroll/interfaces';
 
 describe('CdrFilmstrip.vue', () => {
-  const sampleFrames: CdrFilmstripFrame[] = [
+  const sampleFrames: CdrSurfaceScrollFrame[] = [
     { key: 'frame-1', props: { text: 'Frame 1' } },
     { key: 'frame-2', props: { text: 'Frame 2' } },
     { key: 'frame-3', props: { text: 'Frame 3' } },
@@ -49,8 +51,8 @@ describe('CdrFilmstrip.vue', () => {
   // ✅ 1. Basic Rendering
   it('renders correctly when frames exist', async () => {
     await nextTick();
-    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(true);
-    expect(wrapper.find('[data-ui="cdr-filmstrip__frames"]').exists()).toBe(true);
+    expect(wrapper.findComponent(CdrSurfaceScroll).exists()).toBe(true);
+    expect(wrapper.find('[data-ui="cdr-surface-scroll__frames"]').exists()).toBe(true);
   });
 
   it('does not render when there are no frames', async () => {
@@ -69,13 +71,13 @@ describe('CdrFilmstrip.vue', () => {
     });
 
     await nextTick();
-    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
+    expect(wrapper.findComponent(CdrSurfaceScroll).exists()).toBe(false);
   });
 
   // ✅ 2. Prop forwarding
-  it('passes the correct props to CdrFilmstripEngine', async () => {
+  it('passes the correct props to CdrSurfaceScroll', async () => {
     await nextTick();
-    const engine = wrapper.findComponent(CdrFilmstripEngine);
+    const engine = wrapper.findComponent(CdrSurfaceScroll);
 
     expect(engine.props('id')).toMatch(/^test-filmstrip/);
     expect(engine.props('description')).toBe('Test filmstrip description');
@@ -86,7 +88,7 @@ describe('CdrFilmstrip.vue', () => {
   // ✅ 3. Event Bubbling
   it('bubbles up ariaMessage event to the parent', async () => {
     const message = 'Now showing frames 1-3';
-    await wrapper.findComponent(CdrFilmstripEngine).vm.$emit('ariaMessage', message);
+    await wrapper.findComponent(CdrSurfaceScroll).vm.$emit('ariaMessage', message);
     await nextTick();
 
     expect(wrapper.emitted('ariaMessage')).toBeTruthy();
@@ -94,13 +96,13 @@ describe('CdrFilmstrip.vue', () => {
   });
 
   it('bubbles up arrowClick event with the correct payload', async () => {
-    const arrowEvent: CdrFilmstripArrowClickPayload = {
+    const arrowEvent: CdrSurfaceScrollArrowClickPayload = {
       event: new Event('click'),
       direction: 'right',
       model: {},
     };
 
-    await wrapper.findComponent(CdrFilmstripEngine).vm.$emit('arrowClick', arrowEvent);
+    await wrapper.findComponent(CdrSurfaceScroll).vm.$emit('arrowClick', arrowEvent);
     await nextTick();
 
     expect(wrapper.emitted('arrowClick')).toBeTruthy();
@@ -156,7 +158,7 @@ describe('CdrFilmstrip.vue', () => {
 
     await nextTick();
 
-    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
+    expect(wrapper.findComponent(CdrSurfaceScroll).exists()).toBe(false);
 
     // ✅ Instead of checking <div>, check the `hasFilmstripFrames` computed value
     expect(wrapper.vm.hasFilmstripFrames).toBe(false);
@@ -181,6 +183,6 @@ describe('CdrFilmstrip.vue', () => {
     });
 
     await nextTick();
-    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
+    expect(wrapper.findComponent(CdrSurfaceScroll).exists()).toBe(false);
   });
 });

@@ -1,7 +1,7 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as *;
-@use './vars/CdrFilmstrip.vars' as *;
+@use './vars/CdrSurfaceScroll.vars' as *;
 
-.cdr-filmstrip {
+.cdr-surface-scroll {
   position: relative;
 
   &__viewport {
@@ -81,7 +81,7 @@
         left: 0;
       }
 
-      .cdr-filmstrip__thumb {
+      .cdr-surface-scroll__thumb {
         --radix-scroll-area-thumb-height: var(--surface-size);
         height: var(--track-size);
 
@@ -93,7 +93,7 @@
     }
 
     &:hover {
-      .cdr-filmstrip__thumb {
+      .cdr-surface-scroll__thumb {
         &:after {
           box-shadow: $prominence-03;
           height: var(--control-size);
