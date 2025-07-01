@@ -1,8 +1,8 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
+import CdrSurfaceScroll from '../CdrSurfaceScroll.vue';
 import { nextTick, ref } from 'vue';
-import type { CdrFilmstripArrowClickPayload } from '../interfaces';
+import type { CdrSurfaceScrollArrowClickPayload } from '../interfaces';
 
 vi.mock('@vueuse/core', async () => {
   const actual = await vi.importActual('@vueuse/core');
@@ -12,7 +12,7 @@ vi.mock('@vueuse/core', async () => {
   };
 });
 
-describe('CdrFilmstripEngine.vue', () => {
+describe('CdrSurfaceScroll.vue', () => {
   const sampleFrames = [
     { key: 'frame-1', props: { text: 'Frame 1' } },
     { key: 'frame-2', props: { text: 'Frame 2' } },
@@ -24,7 +24,7 @@ describe('CdrFilmstripEngine.vue', () => {
   let wrapper: VueWrapper<any>;
 
   beforeEach(() => {
-    wrapper = mount(CdrFilmstripEngine, {
+    wrapper = mount(CdrSurfaceScroll, {
       props: {
         frames: sampleFrames,
         framesToShow: 2,
@@ -47,12 +47,12 @@ describe('CdrFilmstripEngine.vue', () => {
   // ✅ 1. Basic Rendering
   it('renders correctly with provided frames', async () => {
     await nextTick();
-    expect(wrapper.find('.cdr-filmstrip__viewport').exists()).toBe(true);
-    expect(wrapper.findAll('.cdr-filmstrip__frame')).toHaveLength(sampleFrames.length);
+    expect(wrapper.find('.cdr-surface-scroll__viewport').exists()).toBe(true);
+    expect(wrapper.findAll('.cdr-surface-scroll__frame')).toHaveLength(sampleFrames.length);
   });
 
   it('does not break when no frames are provided', async () => {
-    wrapper = mount(CdrFilmstripEngine, {
+    wrapper = mount(CdrSurfaceScroll, {
       props: {
         frames: [],
         framesToShow: 2,
@@ -62,7 +62,7 @@ describe('CdrFilmstripEngine.vue', () => {
     });
 
     await nextTick();
-    expect(wrapper.findAll('.cdr-filmstrip__frame')).toHaveLength(0);
+    expect(wrapper.findAll('.cdr-surface-scroll__frame')).toHaveLength(0);
   });
 
   // ✅ 2. Arrow Navigation
@@ -70,8 +70,8 @@ describe('CdrFilmstripEngine.vue', () => {
     await wrapper.setProps({ isShowingArrows: true });
     await nextTick();
 
-    const leftArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]');
-    const rightArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]');
+    const leftArrow = wrapper.find('[data-ui="cdr-surface-scroll__arrow--left"]');
+    const rightArrow = wrapper.find('[data-ui="cdr-surface-scroll__arrow--right"]');
 
     expect(leftArrow.exists()).toBe(true);
     expect(rightArrow.exists()).toBe(true);
@@ -91,8 +91,8 @@ describe('CdrFilmstripEngine.vue', () => {
   });
 
   it('moves to the next and previous set of frames when clicking arrows', async () => {
-    const rightArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]');
-    const leftArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]');
+    const rightArrow = wrapper.find('[data-ui="cdr-surface-scroll__arrow--right"]');
+    const leftArrow = wrapper.find('[data-ui="cdr-surface-scroll__arrow--left"]');
 
     await rightArrow.trigger('click');
     await nextTick();
@@ -108,7 +108,7 @@ describe('CdrFilmstripEngine.vue', () => {
   });
 
   it('emits arrowClick event when arrow is clicked', async () => {
-    const arrowEvent: CdrFilmstripArrowClickPayload = {
+    const arrowEvent: CdrSurfaceScrollArrowClickPayload = {
       event: new Event('click'),
       direction: 'right',
     };

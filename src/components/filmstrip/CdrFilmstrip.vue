@@ -6,7 +6,7 @@
   >
     <!-- @slot Optional injection of a heading element for the filmstrip -->
     <slot name="heading" />
-    <CdrFilmstripEngine
+    <CdrSurfaceScroll
       :class="classAttr"
       :id="filmstripId"
       :description="description"
@@ -25,30 +25,32 @@
           v-bind="frameProps"
         />
       </template>
-    </CdrFilmstripEngine>
+    </CdrSurfaceScroll>
   </div>
 </template>
 
 <script setup lang="ts">
-import CdrFilmstripEngine from './CdrFilmstripEngine.vue';
+import CdrSurfaceScroll from '../surfaceScroll/CdrSurfaceScroll.vue';
 import { useResizeObserver, useDebounceFn } from '@vueuse/core';
 import type {
-  CdrFilmstripFrame,
-  CdrFilmstripArrowClickPayload,
   CdrFilmstripResizePayload,
   CdrFilmstripEventEmitter,
   CdrFilmstripConfig,
   CdrFilmstrip,
-  CdrFilmstripScrollPayload,
   CdrFilmstripAdapter,
 } from './interfaces';
+import type {
+  CdrSurfaceScrollFrame,
+  CdrSurfaceScrollArrowClickPayload,
+  CdrSurfaceScrollPayload,
+} from '../surfaceScroll/interfaces';
 import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
 import { CdrFilmstripEventKey } from '../../types/symbols';
 
 /**
  * Responsive, accessible filmstrip for displaying a horizontal list of content frames.
  *
- * @uses CdrFilmstripEngine
+ * @uses CdrSurfaceScroll
  */
 defineOptions({ name: 'CdrFilmstrip' });
 
@@ -70,7 +72,7 @@ const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
    * @default defaultAdapter
    */
   adapter: (): CdrFilmstripAdapter<Record<string, unknown>> => {
-    return (_modelData: unknown): CdrFilmstripConfig<Record<string, unknown>> => {
+    return (): CdrFilmstripConfig<Record<string, unknown>> => {
       console.warn(`No adapter provided for CdrFilmstrip`);
       return {
         frames: [],
@@ -87,13 +89,13 @@ const emit = defineEmits<{
    * Emitted when a user clicks the navigation arrows.
    * @param payload - The arrow click event metadata.
    */
-  (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
+  (e: 'arrowClick', payload: CdrSurfaceScrollArrowClickPayload): void;
 
   /**
    * Emitted when the filmstrip scrolls to a new frame.
    * @param payload - The scroll event metadata including target index.
    */
-  (e: 'scrollNavigate', payload: CdrFilmstripScrollPayload): void;
+  (e: 'scrollNavigate', payload: CdrSurfaceScrollPayload): void;
 
   /**
    * Emitted when the layout changes due to screen or container resize.
@@ -128,7 +130,7 @@ const emitEvent: CdrFilmstripEventEmitter = (eventName, payload) => {
 const attrs = useAttrs();
 /**
  * Extracts the class attribute from the component's attributes.
- * This class is applied to the CdrFilmstripEngine for styling purposes.
+ * This class is applied to the CdrSurfaceScroll for styling purposes.
  */
 const classAttr = attrs.class || '';
 
@@ -167,9 +169,9 @@ const framesToScroll = ref<number>(framesToShow.value);
 /**
  * Extracts frames from the resolved filmstrip model.
  *
- * @returns {CdrFilmstripFrame<never>[]} An array of frames to be rendered by the filmstrip engine.
+ * @returns {CdrSurfaceScrollFrame<never>[]} An array of frames to be rendered by the filmstrip engine.
  */
-const frames = computed(() => filmstripConfig.value.frames as CdrFilmstripFrame<never>[]);
+const frames = computed(() => filmstripConfig.value.frames as CdrSurfaceScrollFrame<never>[]);
 
 /**
  * Checks if the filmstrip has any frames to display.
@@ -233,10 +235,10 @@ const dataAttributes = computed(() => filmstripConfig.value?.dataAttributes || {
  * Handles arrow click events for navigating through the filmstrip.
  * Constructs an arrow click payload and emits the 'arrowClick' event.
  *
- * @param {CdrFilmstripArrowClickPayload} param0 - The arrow click event payload.
+ * @param {CdrSurfaceScrollArrowClickPayload} param0 - The arrow click event payload.
  */
-function onArrowClick({ event, direction }: CdrFilmstripArrowClickPayload) {
-  const arrowClickPayload: CdrFilmstripArrowClickPayload = {
+function onArrowClick({ event, direction }: CdrSurfaceScrollArrowClickPayload) {
+  const arrowClickPayload: CdrSurfaceScrollArrowClickPayload = {
     event,
     direction,
     model: props.model as Record<string, unknown>,
@@ -248,10 +250,10 @@ function onArrowClick({ event, direction }: CdrFilmstripArrowClickPayload) {
  * Handles scroll navigation events in the filmstrip.
  * Constructs a scroll payload and emits the 'scrollNavigate' event.
  *
- * @param {CdrFilmstripScrollPayload} param0 - The scroll event payload.
+ * @param {CdrSurfaceScrollPayload} param0 - The scroll event payload.
  */
-function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
-  const scrollPayload: CdrFilmstripScrollPayload = {
+function onScrollNavigate({ index, event }: CdrSurfaceScrollPayload): void {
+  const scrollPayload: CdrSurfaceScrollPayload = {
     event,
     index,
     model: props.model as Record<string, unknown>,

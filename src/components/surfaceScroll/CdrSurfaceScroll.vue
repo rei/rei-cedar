@@ -103,23 +103,23 @@ import CdrButton from '../button/CdrButton.vue';
 import { IconCaretLeft, IconCaretRight } from '../icon';
 
 import type {
-  CdrFilmstripEngine,
-  CdrFilmstripArrow,
-  CdrFilmstripArrowClickPayload,
-  CdrFilmstripScrollPayload,
+  CdrSurfaceScrollEngine,
+  CdrSurfaceScrollArrow,
+  CdrSurfaceScrollArrowClickPayload,
+  CdrSurfaceScrollPayload,
 } from './interfaces';
 import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
 
 const classObj = useCssModule();
-const BASE_CLASS = 'cdr-filmstrip';
+const BASE_CLASS = 'cdr-surface-scroll';
 
 /**
- * Responsive filmstrip component providing smooth, accessible scrolling through frames.
+ * Responsive scroll component providing smooth, accessible scrolling through frames.
  * @uses CdrButton, CdrIcon
  */
-defineOptions({ name: 'CdrFilmstripEngine' });
+defineOptions({ name: 'CdrSurfaceScroll' });
 
-const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
+const props = withDefaults(defineProps<CdrSurfaceScrollEngine>(), {
   id: '',
   frames: () => [],
   description: '',
@@ -144,15 +144,15 @@ const attrs = useAttrs();
 const classAttr = attrs.class || '';
 
 const emit = defineEmits<{
-  (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
-  (e: 'scrollNavigate', payload: CdrFilmstripScrollPayload): void;
+  (e: 'arrowClick', payload: CdrSurfaceScrollArrowClickPayload): void;
+  (e: 'scrollNavigate', payload: CdrSurfaceScrollPayload): void;
   (e: 'ariaMessage', message: string): void;
 }>();
 
 // Live region message for screen readers
 const ariaMessage = ref('');
 
-// Filmstrip container reference element
+// Scroll container reference element
 const containerRef = ref<HTMLElement | null>(null);
 
 // Scrollable viewport reference
@@ -161,10 +161,10 @@ const framesRef = ref<typeof ScrollAreaViewport | null>(null);
 // List of frame elements (each frame rendered as an <li>)
 const framesItemsRef = ref<Array<HTMLElement> | null>(null);
 
-// Width of the filmstrip container in pixels
+// Width of the scroll container in pixels
 const containerWidth = ref(0);
 
-// Current visible frame index in the filmstrip
+// Current visible frame index in the scroll
 const currentIndex = ref(0);
 
 // Currently focused frame index for keyboard navigation
@@ -189,7 +189,7 @@ const frameWidth = computed(() => {
 });
 
 /**
- * Generates an object of CSS variables that can be applied to the filmstrip.
+ * Generates an object of CSS variables that can be applied to the scroll.
  * These variables control the gap between frames, the width of each frame,
  * and any additional width to be added.
  *
@@ -205,7 +205,7 @@ const computedCSSVars = computed(() => ({
  * Generates properties and state information for navigation arrows (left/right).
  * Determines whether each arrow should be enabled based on the current frame index.
  *
- * @returns {CdrFilmstripArrow[]} Array of arrow configuration objects containing
+ * @returns {CdrSurfaceScrollArrow[]} Array of arrow configuration objects containing
  * direction, icon, and accessibility attributes.
  */
 const arrows = computed(() => {
@@ -238,7 +238,7 @@ const arrows = computed(() => {
         size: 'large',
         disabled: !isEnabled,
       },
-    } as CdrFilmstripArrow;
+    } as CdrSurfaceScrollArrow;
   });
 });
 
@@ -277,7 +277,7 @@ const scrollToIndex = (newIndex: number): void => {
  * @param {'left' | 'right'} direction - The direction of the arrow clicked.
  */
 const onArrowClick = (event: Event, direction: 'left' | 'right'): void => {
-  const arrowClickPayload: CdrFilmstripArrowClickPayload = { event, direction };
+  const arrowClickPayload: CdrSurfaceScrollArrowClickPayload = { event, direction };
   emit('arrowClick', arrowClickPayload);
   const delta = direction === 'left' ? -props.framesToScroll : props.framesToScroll;
   const proposedIndex = currentIndex.value + delta;
@@ -308,8 +308,8 @@ const announceFrames = useDebounceFn((): void => {
 }, 300);
 
 /**
- * Handles the focusin event on the filmstrip container.
- * When focus enters the filmstrip (and not from within an already focused child),
+ * Handles the focusin event on the scroll container.
+ * When focus enters the scroll (and not from within an already focused child),
  * this function emits an initial accessibility message indicating the visible frames
  * and instructs the user on navigation.
  *
@@ -341,9 +341,9 @@ const handleFocusIn = (e: FocusEvent): void => {
 };
 
 /**
- * Handles left and right arrow key presses on the filmstrip container
+ * Handles left and right arrow key presses on the scroll container
  * to focus on the previous or next frame. This function is used
- * to implement keyboard navigation for the filmstrip.
+ * to implement keyboard navigation for the scroll.
  * @param {Event} e - The keyboard event object.
  * @param {string} direction - The direction of the arrow key press ('left' or 'right').
  */
@@ -417,4 +417,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" module src="./styles/CdrFilmstrip.module.scss"></style>
+<style lang="scss" module src="./styles/CdrSurfaceScroll.module.scss"></style>
