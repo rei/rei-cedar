@@ -28400,7 +28400,7 @@ const uX = /* @__PURE__ */ W(sX, [["render", dX]]), cX = { class: "example" }, p
       _: 1
     }));
   }
-}), CX = /* @__PURE__ */ W(RX, [["__scopeId", "data-v-5272af46"]]), wX = /* @__PURE__ */ k({
+}), CX = /* @__PURE__ */ W(RX, [["__scopeId", "data-v-d5ffdbe2"]]), wX = /* @__PURE__ */ k({
   __name: "SurfaceScroll",
   setup(t) {
     return (e, n) => (m(), x(y(Lr), { class: "showcase" }, {
