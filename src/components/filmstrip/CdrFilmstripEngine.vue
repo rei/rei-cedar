@@ -7,66 +7,44 @@
     :class="classObj[BASE_CLASS]"
     @focusin="handleFocusIn"
   >
-    <ScrollAreaRoot
-      type="auto"
-      :class="[
-        mapClasses(classObj, `${BASE_CLASS}__root`),
-        classAttr ? `${classAttr}__root` : null,
-      ]"
+    <CdrSurfaceScroll
+      ref="surfaceScrollRef"
+      :viewport-props="{
+        'aria-label': description || `${frames.length} items`,
+        tabindex: viewportTabindex
+      }"
+      :scrollbar-props="{
+        orientation: 'horizontal'
+      }"
     >
-      <ScrollAreaViewport
-        ref="framesRef"
+      <ul
+        :id="`${id}-frames`"
         :class="[
-          mapClasses(classObj, `${BASE_CLASS}__viewport`),
-          classAttr ? `${classAttr}__viewport` : null,
+          mapClasses(classObj, `${BASE_CLASS}__frames`),
+          classAttr && `${classAttr}__frames`,
         ]"
-        :aria-label="description || `${frames.length} items`"
-        :tabindex="viewportTabindex"
+        :data-ui="`${BASE_CLASS}__frames`"
       >
-        <ul
-          :id="`${id}-frames`"
+        <li
+          v-for="(frame, index) in frames"
+          :key="frame.key"
+          ref="framesItemsRef"
           :class="[
-            mapClasses(classObj, `${BASE_CLASS}__frames`),
-            classAttr && `${classAttr}__frames`,
+            mapClasses(classObj, `${BASE_CLASS}__frame`),
+            classAttr ? `${classAttr}__frame` : null,
           ]"
-          :data-ui="`${BASE_CLASS}__frames`"
+          @keydown.right="(e) => onShiftFocus(e, 'right')"
+          @keydown.left="(e) => onShiftFocus(e, 'left')"
         >
-          <li
-            v-for="(frame, index) in frames"
-            :key="frame.key"
-            ref="framesItemsRef"
-            :class="[
-              mapClasses(classObj, `${BASE_CLASS}__frame`),
-              classAttr ? `${classAttr}__frame` : null,
-            ]"
-            @keydown.right="(e) => onShiftFocus(e, 'right')"
-            @keydown.left="(e) => onShiftFocus(e, 'left')"
-          >
-            <slot
-              name="frame"
-              :index="index"
-              v-bind="frame.props"
-              :tabindex="index === focusIndex ? '0' : '-1'"
-            />
-          </li>
-        </ul>
-      </ScrollAreaViewport>
-      <ScrollAreaScrollbar
-        :class="[
-          mapClasses(classObj, `${BASE_CLASS}__bar`, `${BASE_CLASS}__bar--horizontal`),
-          classAttr ? `${classAttr}__bar` : null,
-          classAttr ? `${classAttr}__bar--horizontal` : null,
-        ]"
-        orientation="horizontal"
-      >
-        <ScrollAreaThumb
-          :class="[
-            mapClasses(classObj, `${BASE_CLASS}__thumb`),
-            classAttr ? `${classAttr}__thumb` : null,
-          ]"
-        />
-      </ScrollAreaScrollbar>
-    </ScrollAreaRoot>
+          <slot
+            name="frame"
+            :index="index"
+            v-bind="frame.props"
+            :tabindex="index === focusIndex ? '0' : '-1'"
+          />
+        </li>
+      </ul>
+    </CdrSurfaceScroll>
     <template v-for="{ direction, attributes, icon } in arrows">
       <slot
         name="arrow"
@@ -91,24 +69,19 @@
 </template>
 
 <script setup lang="ts">
-import mapClasses from '../../utils/mapClasses';
+import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
 import { useResizeObserver, useElementHover, useDebounceFn, useEventListener } from '@vueuse/core';
-import {
-  ScrollAreaRoot,
-  ScrollAreaScrollbar,
-  ScrollAreaThumb,
-  ScrollAreaViewport,
-} from 'radix-vue';
+
+import mapClasses from '../../utils/mapClasses';
 import CdrButton from '../button/CdrButton.vue';
 import { IconCaretLeft, IconCaretRight } from '../icon';
-
+import CdrSurfaceScroll from '../surfaceScroll/CdrSurfaceScroll.vue';
 import type {
   CdrFilmstripEngine,
   CdrFilmstripArrow,
   CdrFilmstripArrowClickPayload,
   CdrFilmstripScrollPayload,
 } from './interfaces';
-import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
 
 const classObj = useCssModule();
 const BASE_CLASS = 'cdr-filmstrip';
@@ -152,11 +125,14 @@ const emit = defineEmits<{
 // Live region message for screen readers
 const ariaMessage = ref('');
 
+// Surface scroll reference
+const surfaceScrollRef = ref<typeof CdrSurfaceScroll | null>(null);
+
 // Filmstrip container reference element
 const containerRef = ref<HTMLElement | null>(null);
 
-// Scrollable viewport reference
-const framesRef = ref<typeof ScrollAreaViewport | null>(null);
+// Scrollable viewport reference - computed to access the exposed viewportRef
+const viewportRef = computed(() => surfaceScrollRef.value?.viewportRef);
 
 // List of frame elements (each frame rendered as an <li>)
 const framesItemsRef = ref<Array<HTMLElement> | null>(null);
@@ -261,8 +237,8 @@ const calculateScrollPosition = (index: number): number => {
  */
 const scrollToIndex = (newIndex: number): void => {
   const newLeft = calculateScrollPosition(newIndex);
-  const currentLeft = framesRef.value?.viewportElement.scrollLeft ?? 0;
-  framesRef.value?.viewportElement.scrollBy({
+  const currentLeft = viewportRef.value?.viewportElement.scrollLeft ?? 0;
+  viewportRef.value?.viewportElement.scrollBy({
     left: newLeft - currentLeft,
     behavior: 'smooth',
   });
@@ -400,7 +376,7 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
 
 onMounted(() => {
   // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
-  useEventListener(framesRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
+  useEventListener(viewportRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
 
   // Initialize a resize observer to update the container width dynamically.
   const { stop } = useResizeObserver(containerRef, (entries) => {

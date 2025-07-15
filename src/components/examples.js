@@ -37,6 +37,7 @@ import splitSurface from 'componentsdir/splitSurface/examples/SplitSurface.vue';
 import surface from 'componentsdir/surface/examples/Surface.vue';
 import surfaceSelection from 'componentsdir/surfaceSelection/examples/SurfaceSelection.vue';
 import surfaceNavigation from 'componentsdir/surfaceNavigation/examples/SurfaceNavigation.vue';
+import surfaceScroll from 'componentsdir/surfaceScroll/examples/SurfaceScroll.vue';
 import tables from 'componentsdir/table/examples/Table.vue';
 import tabs from 'componentsdir/tabs/examples/Tabs.vue';
 import texts from 'componentsdir/text/examples/Text.vue';
@@ -87,6 +88,7 @@ export default {
   surface,
   surfaceSelection,
   surfaceNavigation,
+  surfaceScroll,
   tables,
   tabs,
   texts,
