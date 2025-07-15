@@ -11,6 +11,12 @@ $prominence-03:
   &__root {
     height: auto;
     width: 100%;
+
+    &:has([data-orientation='vertical']) {
+      .cdr-surface-scroll__viewport {
+        padding-right: $cdr-space-two-x;
+      }
+    }
   }
 
   &__viewport {
@@ -20,10 +26,6 @@ $prominence-03:
     position: relative;
     border-radius: $cdr-radius-softer;
     outline: none;
-
-    &:has([data-orientation='vertical']) {
-      padding-right: $cdr-space-two-x;
-    }
 
     @media (prefers-reduced-motion: no-preference) {
       scroll-behavior: smooth;

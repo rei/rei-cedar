@@ -1,8 +1,8 @@
 <template>
   <CdrSurfaceScroll
     :scrollbar-props="{ orientation: 'vertical' }"
-
-  class="text-content-scroll">
+    class="text-content-scroll"
+  >
     <div class="text-container">
       <CdrText tag="h3" class="text-container__title">Scrollable Text Content</CdrText>
       <CdrText class="text-container__paragraph">
