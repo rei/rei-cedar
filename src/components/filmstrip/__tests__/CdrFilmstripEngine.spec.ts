@@ -34,7 +34,7 @@ describe('CdrFilmstripEngine.vue', () => {
     });
 
     // Mock `scrollBy()` on the viewport element
-    const mockViewport = wrapper.vm.framesRef?.viewportElement;
+    const mockViewport = wrapper.vm.viewportRef?.viewportElement;
     if (mockViewport) {
       mockViewport.scrollBy = vi.fn(); // Mock as a no-op function
     }
@@ -47,7 +47,7 @@ describe('CdrFilmstripEngine.vue', () => {
   // ✅ 1. Basic Rendering
   it('renders correctly with provided frames', async () => {
     await nextTick();
-    expect(wrapper.find('.cdr-filmstrip__viewport').exists()).toBe(true);
+    expect(wrapper.find('.cdr-surface-scroll__viewport').exists()).toBe(true);
     expect(wrapper.findAll('.cdr-filmstrip__frame')).toHaveLength(sampleFrames.length);
   });
 

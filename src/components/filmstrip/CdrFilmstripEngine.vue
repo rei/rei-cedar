@@ -237,8 +237,8 @@ const calculateScrollPosition = (index: number): number => {
  */
 const scrollToIndex = (newIndex: number): void => {
   const newLeft = calculateScrollPosition(newIndex);
-  const currentLeft = viewportRef.value?.viewportElement.scrollLeft ?? 0;
-  viewportRef.value?.viewportElement.scrollBy({
+  const currentLeft = viewportRef.value?.viewportElement?.scrollLeft ?? 0;
+  viewportRef.value?.viewportElement?.scrollBy({
     left: newLeft - currentLeft,
     behavior: 'smooth',
   });
@@ -376,7 +376,7 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
 
 onMounted(() => {
   // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
-  useEventListener(viewportRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
+  useEventListener(viewportRef, 'scroll', debouncedHandleScroll);
 
   // Initialize a resize observer to update the container width dynamically.
   const { stop } = useResizeObserver(containerRef, (entries) => {
