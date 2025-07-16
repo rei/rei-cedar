@@ -1,4 +1,4 @@
-import type { CdrSurfaceScrollArrowClickPayload, CdrSurfaceScrollPayload } from '../../../surfaceScroll/interfaces';
+import type { CdrFilmstripArrowClickPayload, CdrFilmstripScrollPayload } from '../../interfaces';
 
 import type { ProductRecommendation, ProductRecommendationFrameClickPayload } from '.';
 
@@ -27,7 +27,7 @@ export function onFrameClick(payload: unknown): void {
  * @param {unknown} payload - The event payload containing navigation details.
  */
 export function onArrowClick(payload: unknown): void {
-  const { direction, event, model = {} } = payload as CdrSurfaceScrollArrowClickPayload;
+  const { direction, event, model = {} } = payload as CdrFilmstripArrowClickPayload;
   const { placementName, strategy } = model as Partial<ProductRecommendation>;
 
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';
@@ -51,7 +51,7 @@ export function onArrowClick(payload: unknown): void {
  * @param {unknown} payload - The event payload containing scroll details.
  */
 export function onScrollNavigate(payload: unknown): void {
-  const { index, event, model = {} } = payload as CdrSurfaceScrollPayload;
+  const { index, event, model = {} } = payload as CdrFilmstripScrollPayload;
   const { placementName, strategy } = model as Partial<ProductRecommendation>;
 
   const format = (str?: string): string | undefined => str?.replace(/_/g, '-');

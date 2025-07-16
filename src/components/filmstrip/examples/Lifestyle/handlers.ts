@@ -1,5 +1,4 @@
-import type { CdrFilmstripResizePayload } from '../../interfaces';
-import type { CdrSurfaceScrollArrowClickPayload } from '../../../surfaceScroll/interfaces';
+import type { CdrFilmstripArrowClickPayload, CdrFilmstripResizePayload } from '../../interfaces';
 import type { Lifestyle, LifestyleFrameClickPayload } from '.';
 import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens';
 
@@ -28,7 +27,7 @@ export function onFrameClick(payload: unknown): void {
  * @return {void}
  */
 export function onArrowClick(payload: unknown): void {
-  const { direction, event, model = {} } = payload as CdrSurfaceScrollArrowClickPayload;
+  const { direction, event, model = {} } = payload as CdrFilmstripArrowClickPayload;
   const { framesVisible, frameStyle } = model as Partial<Lifestyle>;
 
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';

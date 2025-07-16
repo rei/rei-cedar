@@ -1,0 +1,70 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as *;
+@use './vars/CdrFilmstrip.vars' as *;
+
+.cdr-filmstrip {
+  position: relative;
+
+  &__frames {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-auto-columns: calc(var(--frame-width) * 1px);
+    grid-template-rows: auto;
+    grid-auto-flow: column;
+    gap: calc(var(--frames-gap) * 1px);
+  }
+
+  &__frame {
+    width: 100%;
+    scroll-snap-align: start;
+  }
+
+  &__arrow {
+    @include arrow-vars;
+    box-shadow: $prominence-02;
+    pointer-events: all;
+    --button-half: #{$cdr-space-one-and-a-half-x};
+    position: absolute;
+    top: var(--cdr-filmstrip-arrow-top, calc(50% - (2 * var(--button-half)) - $cdr-space-half-x));
+    z-index: 1;
+
+    &:active,
+    &:focus {
+      box-shadow:
+        inset 0 0 0 $cdr-space-eighth-x #2e2e2b,
+        $prominence-02;
+    }
+
+    @include cdr-sm-mq-down {
+      display: none;
+    }
+
+    &--left {
+      left: 0;
+
+      @include cdr-lg-mq-up {
+        left: calc(var(--button-half) * -1);
+      }
+    }
+
+    &--right {
+      --extra-frame-width: calc(1px * ((var(--frame-width) * var(--frame-extra))));
+      --half-gap: calc(var(--frames-gap) / 2 * 1px);
+      right: calc(var(--extra-frame-width) + var(--half-gap) - var(--button-half));
+    }
+
+    &:disabled {
+      filter: none;
+      box-shadow: none;
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: $prominence-03;
+    }
+  }
+
+  &__sr-only {
+    @include cdr-display-sr-only;
+  }
+}
