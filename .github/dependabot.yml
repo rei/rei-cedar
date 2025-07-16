@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" # root where pnpm-lock.yaml is located
+    schedule:
+      interval: "daily"
