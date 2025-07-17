@@ -1,3 +1,5 @@
+@import './CdrTabPanel.module';
+
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 @mixin cdr-tabs-base-header-item-label() {

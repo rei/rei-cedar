@@ -1,3 +1,6 @@
+@import '../../icon/styles/CdrIcon.module';
+@import './CdrAccordionGroup.module';
+
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-accordion {

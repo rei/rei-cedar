@@ -1,3 +1,6 @@
+@import '../../icon/styles/CdrIcon.module';
+@import '../../select/styles/CdrSelect.module';
+
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-pagination {

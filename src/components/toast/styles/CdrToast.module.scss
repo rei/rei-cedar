@@ -1,5 +1,7 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@import '../../button/styles/CdrButton.module';
+@import '../../icon/styles/CdrIcon.module';
 
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 @use './vars/CdrToast.vars.scss' as vars;
 
 .cdr-toast {

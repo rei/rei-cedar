@@ -1,5 +1,8 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@import '../../icon/styles/CdrIcon.module';
+@import '../../labelStandalone/styles/CdrLabelStandalone.module';
+@import '../../formError/styles/CdrFormError.module';
 
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 @use './vars/CdrSelect.vars' as vars;
 
 /* ==========================================================================

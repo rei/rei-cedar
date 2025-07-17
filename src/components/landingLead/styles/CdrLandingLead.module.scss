@@ -1,5 +1,7 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@import '../../image/styles/CdrImg.module';
+@import './CdrHeadingSubheadingBlock.module';
 
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-landing-lead {
   //ITEM_DOC: Color of the landing-leads surface layer. Passes to underlying split-surface component
