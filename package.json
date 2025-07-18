@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "15.6.1-beta.2",
+  "version": "15.6.1-beta.4",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -133,7 +133,7 @@
   "dependencies": {
     "@rei/cdr-tokens": "^12.7.1",
     "@vueuse/core": "^12.7.0",
-    "radix-vue": "^1.9.16",
+    "radix-vue": "^1.9.17",
     "tabbable": "^4.0.0"
   },
   "peerDependencies": {

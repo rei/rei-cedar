@@ -30,6 +30,7 @@ const routes = [
   { path: '/chips', name: 'Chip', component: Examples.chip },
   { path: '/choreographer', name: 'Choreographer', component: Examples.choreographer },
   { path: '/containers', name: 'Container', component: Examples.container },
+  { path: '/filmstrip', name: 'Filmstrip', component: Examples.filmstrip },
   { path: '/formGroups', name: 'Form Groups', component: Examples.formGroup },
   { path: '/fulfillmentTile', name: 'FulfillmentTile', component: Examples.fulfillmentTile },
   { path: '/grid', name: 'Grid', component: Examples.grid },
@@ -57,6 +58,7 @@ const routes = [
   { path: '/surface', name: 'Surface', component: Examples.surface },
   { path: '/surfaceSelection', name: 'SurfaceSelection', component: Examples.surfaceSelection },
   { path: '/surfaceNavigation', name: 'SurfaceNavigation', component: Examples.surfaceNavigation },
+  { path: '/surfaceScroll', name: 'SurfaceScroll', component: Examples.surfaceScroll },
   { path: '/tables', name: 'Tables', component: Examples.tables },
   { path: '/tabs', name: 'Tabs', component: Examples.tabs },
   { path: '/texts', name: 'Texts', component: Examples.texts },
@@ -66,7 +68,6 @@ const routes = [
   { path: '/switch', name: 'Switch', component: Examples.cdrSwitch },
   { path: '/tooltip', name: 'Tooltip', component: Examples.tooltip },
   { path: '/utility', name: 'Utility', component: Examples.utility },
-  { path: '/filmstrip', name: 'Filmstrip', component: Examples.filmstrip },
 ];
 
 export default routes;

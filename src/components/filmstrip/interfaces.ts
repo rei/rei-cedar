@@ -1,295 +1,160 @@
 import type { Component, Ref } from 'vue';
 /**
- * Interface representing a single frame in the filmstrip.
- *
- * @template Props - The type of props that the frame component will receive (defaulting to `Record<string, unknown>`).
+ * @template Props
+ * @typedef {object} CdrFilmstripFrame
+ * @property {string} key - The unique key for the frame.
+ * @property {Props} props - Props or data associated with the frame.
  */
 export interface CdrFilmstripFrame<Props = Record<string, unknown>> {
-  /**
-   * The unique key for the frame, used to differentiate frames.
-   */
   key: string;
-
-  /**
-   * The properties or data associated with the frame.
-   * The type of these props is flexible and can be customized for different types of frames.
-   */
   props: Props;
 }
 
 /**
- * Interface representing the props for a filmstrip component.
- *
- * @description This type defines the properties that can be passed into a filmstrip component.
+ * @typedef {object} CdrFilmstripEngine
+ * @property {string} [id] - Unique ID for targeting or testing.
+ * @property {string} [description] - ARIA description for screen readers.
+ * @property {string} [dataUi] - Data attribute for analytics or test hooks.
+ * @property {boolean} [isShowingArrows] - Whether navigation arrows should be visible.
+ * @property {CdrFilmstripFrame[]} [frames] - Array of filmstrip frames.
+ * @property {number} [framesToShow] - Frames visible at once.
+ * @property {number} [framesToScroll] - Frames to scroll on arrow click.
+ * @property {number} [framesGap] - Pixel gap between frames.
+ * @property {number} [frameExtra] - Extra width factor for layout tuning.
+ * @property {string} [focusSelector] - Selector for initial focusable frame.
+ * @property {string} [viewportTabindex] - Tabindex value for scroll viewport.
  */
 export interface CdrFilmstripEngine {
-  /**
-   * Unique ID for the filmstrip.
-   * This ID can be used for targeting specific filmstrips or for testing/analytics purposes.
-   */
   id?: string;
-
-  /**
-   * ARIA description for accessibility purposes.
-   * This helps describe the purpose of the filmstrip for screen readers.
-   */
   description?: string;
-
-  /**
-   * A custom data attribute for testing or analytics.
-   * This allows the filmstrip component to be targeted in testing scenarios or analytics tracking.
-   */
   dataUi?: string;
-
-  /**
-   * Flag to determine whether navigation arrows should be displayed.
-   * This allows the user to control whether arrows for navigation should appear.
-   */
   isShowingArrows?: boolean;
-
-  /**
-   * List of frames in the filmstrip.
-   * This is an array of `Frame` objects that will populate the filmstrip.
-   */
   frames?: CdrFilmstripFrame[];
-
-  /**
-   * The number of frames to show at a time in the filmstrip.
-   * This defines how many frames are visible to the user in a single view.
-   */
   framesToShow?: number;
-
-  /**
-   * The number of frames to scroll on each arrow click.
-   * This determines how many frames are moved when the user clicks on a navigation arrow.
-   */
   framesToScroll?: number;
-
-  /**
-   * The gap between each frame in the filmstrip.
-   * This specifies the spacing between frames in pixels.
-   */
   framesGap?: number;
-
-  /**
-   * Additional width factor for the frames.
-   * This can be used to adjust the width of the frames beyond the default.
-   */
   frameExtra?: number;
-
-  /**
-   * CSS selector for the initial focusable frame.
-   * This allows you to specify which frame should receive focus when the filmstrip is initialized.
-   */
   focusSelector?: string;
-
-  /**
-   * The tabindex value for the filmstrip viewport.
-   * This allows the filmstrip viewport to be included in the tab order for accessibility purposes.
-   */
   viewportTabindex?: string;
 }
 
 /**
- * Interface for the CdrFilmstripEngine component's props.
- *
- * @description This type defines the structure of the props that will be passed to the `CdrFilmstripEngine` component.
+ * @template T
+ * @typedef {object} CdrFilmstrip
+ * @property {CdrFilmstripAdapter<T>} adapter - Adapter function to build a filmstrip config.
+ * @property {T} model - Model data passed into the adapter.
  */
 export interface CdrFilmstrip<T> {
-  /**
-   * The adapter function that transforms `model` data into a structured filmstrip model.
-   * This function is responsible for generating the frames and metadata for the filmstrip.
-   */
-  adapter?: CdrFilmstripAdapter<T>;
-
-  /**
-   * The model data used to resolve filmstrip content.
-   * This can be any object that holds the raw data needed to transform into the filmstrip's structure.
-   */
+  adapter: CdrFilmstripAdapter<T>;
   model: T;
 }
 
 /**
- * The data returned by the filmstrip adapter, encapsulating the full filmstrip structure.
+ * @template T
+ * @typedef {object} CdrFilmstripConfig
+ * @property {Component} component - Component used to render each frame.
+ * @property {CdrFilmstripFrame<T>[]} frames - Array of frame definitions.
+ * @property {string} filmstripId - Unique ID for the filmstrip instance.
+ * @property {string} description - Textual description for screen readers.
+ * @property {Record<string, unknown>} [dataAttributes] - Optional HTML data attributes.
+ * @property {number} [framesGap] - Pixel gap between frames.
+ * @property {number} [framesToShow] - Count of visible frames.
+ * @property {boolean} [useDefaultResizeStrategy] - Whether to auto-resize based on container.
+ * @property {string} [focusSelector] - CSS selector for focus management.
  */
 export interface CdrFilmstripConfig<T = Record<string, unknown>> {
-  /**
-   * The component used for rendering each individual frame.
-   */
   component: Component;
-
-  /**
-   * The array of frames, each containing metadata and references to the components.
-   */
   frames: CdrFilmstripFrame<T>[];
-
-  /**
-   * The unique ID of the filmstrip.
-   */
   filmstripId: string;
-
-  /**
-   * A description of the filmstrip for accessibility or display purposes.
-   */
   description: string;
-
-  /**
-   * Additional data attributes for the filmstrip container.
-   */
   dataAttributes?: Record<string, unknown>;
-
-  /**
-   * Gap between frames in the filmstrip.
-   */
   framesGap?: number;
-
-  /**
-   * The number of frames to show at a time in the filmstrip.
-   */
   framesToShow?: number;
-
-  /**
-   * Whether to dynamically adjust the number of frames to show based on screen size.
-   */
   useDefaultResizeStrategy?: boolean;
-
-  /**
-   * CSS selector for the initial focusable frame.
-   */
   focusSelector?: string;
 }
 
 /**
- * Payload for filmstrip arrow click events.
+ * @template T
+ * @typedef {object} CdrFilmstripArrowClickPayload
+ * @property {'left'|'right'} direction - Direction of navigation.
+ * @property {Event} event - The click event.
+ * @property {T} [model] - Optional model reference.
  */
 export interface CdrFilmstripArrowClickPayload<T = Record<string, unknown>> {
-  /**
-   * The direction of the arrow that was clicked.
-   */
   direction: 'left' | 'right';
-
-  /**
-   * The event object associated with the click.
-   */
   event: Event;
-
-  /**
-   * The model data associated with the filmstrip.
-   */
   model?: T;
 }
 
 /**
- * Payload for filmstrip resize events.
+ * @template T
+ * @typedef {object} CdrFilmstripScrollPayload
+ * @property {number} index - Index of the frame scrolled into view.
+ * @property {Event} event - The scroll event.
+ * @property {T} [model] - Optional model reference.
+ */
+export interface CdrFilmstripScrollPayload<T = Record<string, unknown>> {
+  index: number;
+  event: Event;
+  model?: T;
+}
+
+/**
+ * @template T
+ * @typedef {object} CdrFilmstripResizePayload
+ * @property {Ref<number>} framesToShow - Updated visible frames.
+ * @property {Ref<number>} framesToScroll - Updated scroll delta.
+ * @property {T} [model] - Optional model reference.
  */
 export interface CdrFilmstripResizePayload<T = Record<string, unknown>> {
-  /**
-   * The number of frames to show at a time in the filmstrip.
-   */
   framesToShow: Ref<number>;
-  /**
-   * The number of frames to scroll on each arrow click.
-   */
   framesToScroll: Ref<number>;
-  /**
-   * The model data associated with the filmstrip.
-   */
   model?: T;
 }
 
 /**
- * Interface representing a filmstrip arrow, including its properties and attributes.
+ * @typedef {object} CdrFilmstripArrow
+ * @property {'left'|'right'} direction - Direction the arrow points.
+ * @property {Component} icon - Icon component.
+ * @property {object} attributes - DOM attributes for the arrow.
+ * @property {string} attributes.data-ui
+ * @property {string} attributes.class
+ * @property {string} attributes.aria-label
+ * @property {string} attributes.aria-controls
+ * @property {number} attributes.tabindex
+ * @property {string} attributes.size
+ * @property {boolean} attributes.disabled
  */
 export interface CdrFilmstripArrow {
-  /**
-   * The direction the arrow points to.
-   */
   direction: 'left' | 'right';
-
-  /**
-   * The icon component associated with the arrow.
-   */
   icon: Component;
-
-  /**
-   * Attributes for the arrow element.
-   */
   attributes: {
-    /**
-     * Data attribute for UI identification.
-     */
     'data-ui': string;
-
-    /**
-     * CSS class for styling the arrow.
-     */
     class: string;
-
-    /**
-     * Accessible label for the arrow.
-     */
     'aria-label': string;
-
-    /**
-     * ARIA controls attribute to specify the controlled element.
-     */
     'aria-controls': string;
-
-    /**
-     * Tabindex for focus management.
-     */
     tabindex: number;
-
-    /**
-     * Size of the arrow component.
-     */
     size: string;
-
-    /**
-     * Disabled state of the arrow.
-     */
     disabled: boolean;
   };
 }
 
 /**
- * Interface representing a function that emits events with a specified name and an optional payload.
- * This function signature allows for emitting arbitrary events with dynamic event names.
- * The payload is optional and can be of any type (`unknown`).
- *
- * This is useful for components or systems where events are emitted dynamically,
- * and the event names and payloads can vary at runtime.
- *
- * @param {string} event - The name of the event to emit.
- * @param {unknown} [payload] -´ An optional payload associated with the event.
- *
- * @example
- * // Example usage of CdrFilmstripEventEmitter interface
- * const emitEvent: CdrFilmstripEventEmitter = (event, payload) => {
- *   // handle emitting the event (e.g., using Vue's `emit` function)
- *   console.log(`Event: ${event}, Payload:`, payload);
- * };
- *
- * // Emitting a known event
- * emitEvent('arrowClick', { direction: 'left' });
- *
- * // Emitting a custom event with no payload
- * emitEvent('frameChange');
+ * @typedef {function} CdrFilmstripEventEmitter
+ * @param {string} event - Name of the event.
+ * @param {unknown} [payload] - Optional data.
  */
 export interface CdrFilmstripEventEmitter {
   (event: string, payload?: unknown): void;
 }
 
 /**
- * Interface representing the structure and behavior of a Filmstrip Adapter.
- * This adapter function takes the raw model data and returns the transformed filmstrip information.
+ * @template T
+ * @typedef {function} CdrFilmstripAdapter
+ * @param {T} modelData - Raw model input.
+ * @returns {CdrFilmstripConfig<T>} Filmstrip configuration.
  */
 export interface CdrFilmstripAdapter<T> {
-  /**
-   * Resolves and transforms the given model data into filmstrip-specific metadata.
-   *
-   * @param modelData - Raw data for the filmstrip, typically coming from an API or external model.
-   * @returns {CdrFilmstripConfig} The transformed filmstrip data, including frames, filmstrip metadata, and other necessary details.
-   */
   (modelData: unknown): CdrFilmstripConfig<T>;
 }

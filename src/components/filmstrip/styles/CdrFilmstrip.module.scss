@@ -4,28 +4,6 @@
 .cdr-filmstrip {
   position: relative;
 
-  &__viewport {
-    width: 100%;
-    height: 100%;
-    scroll-behavior: auto;
-    position: relative;
-    border-radius: tokens.$cdr-radius-softer;
-    outline: none;
-
-    @include tokens.cdr-sm-mq-down {
-      padding: 0 tokens.$cdr-space-one-x;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      scroll-behavior: smooth;
-    }
-  }
-
-  &__root {
-    width: 100%;
-    height: auto;
-  }
-
   &__frames {
     list-style: none;
     margin: 0;
@@ -40,79 +18,6 @@
   &__frame {
     width: 100%;
     scroll-snap-align: start;
-  }
-
-  &__bar {
-    --surface-size: 2.4rem;
-    --track-size: 0.2rem;
-    --control-size: 0.4rem;
-    display: flex;
-    user-select: none;
-    touch-action: none;
-    cursor: grab;
-    position: relative !important;
-    margin-top: tokens.$cdr-space-half-x;
-    border-radius: tokens.$cdr-radius-round;
-
-    @include tokens.cdr-sm-mq-down {
-      margin-left: tokens.$cdr-space-one-x;
-      margin-right: tokens.$cdr-space-one-x;
-    }
-
-    &:active {
-      cursor: grabbing;
-    }
-
-    &:after {
-      background-color: #e8e0ce;
-    }
-
-    &--horizontal {
-      flex-direction: column;
-      justify-content: center;
-      height: var(--surface-size);
-
-      &:after {
-        height: var(--track-size);
-        position: absolute;
-        content: '';
-        width: 100%;
-        top: calc((var(--surface-size) / 2) - (var(--track-size) / 2));
-        left: 0;
-      }
-
-      .cdr-filmstrip__thumb {
-        --radix-scroll-area-thumb-height: var(--surface-size);
-        height: var(--track-size);
-
-        &:after {
-          width: 100%;
-          height: var(--track-size);
-        }
-      }
-    }
-
-    &:hover {
-      .cdr-filmstrip__thumb {
-        &:after {
-          box-shadow: vars.$prominence-03;
-          height: var(--control-size);
-        }
-      }
-    }
-  }
-
-  &__thumb {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-
-    &:after {
-      content: '';
-      background: #454441;
-      border-radius: tokens.$cdr-radius-round;
-    }
   }
 
   &__arrow {
