@@ -290,7 +290,8 @@ export default {
 };
 </script>
 <style lang="scss">
-@import '../index.scss';
+@use '../alignment.vars.scss' as *;
+@use '../visibility.vars.scss' as *;
 
 .spaces, .spaces-heading {
   display: grid;

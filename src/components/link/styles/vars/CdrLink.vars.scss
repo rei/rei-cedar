@@ -1,3 +1,5 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 /**
  * Base styles for CdrLink.
  * Uses custom properties for easy theming and overrides.
@@ -20,17 +22,17 @@
   vertical-align: var(--cdr-link-vertical-align, top);
 
   // Themed color and decoration
-  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest})));
-  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest})));
+  color: var(--cdr-link-text-color, var(--cdr-color-text-link-rest, var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})));
+  fill: var(--cdr-link-fill-color, var(--cdr-color-text-link-rest, var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})));
   text-decoration: var(--cdr-link-text-decoration, underline);
 
   &:active,
   &:focus {
-    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active, var(--cdr-color-text-link-active, #{$cdr-color-text-link-active})));
+    color: var(--cdr-link-active-text-color-active, var(--cdr-color-text-link-active, var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})));
   }
 
   &:hover {
-    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover, var(--cdr-color-text-link-hover, #{$cdr-color-text-link-hover})));
+    color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover, var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})));
     text-decoration: var(--cdr-link-text-decoration-hover, none);
   }
 
@@ -61,7 +63,7 @@
 @mixin cdr-link-neutral-mixin() {
   // Neutral variant: all states use primary text color
   // Only set color variables if not already set by another variant
-  --cdr-link-text-color: var(--cdr-color-text-primary, #{$cdr-color-text-primary});
-  --cdr-link-text-color-hover:  var(--cdr-color-text-primary, #{$cdr-color-text-primary});
-  --cdr-link-active-text-color-active: var(--cdr-color-text-primary, #{$cdr-color-text-primary});
+  --cdr-link-text-color: var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary});
+  --cdr-link-text-color-hover:  var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary});
+  --cdr-link-active-text-color-active: var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary});
 }

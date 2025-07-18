@@ -1,4 +1,6 @@
-@import '../../../../styles/settings/index.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
+@use '../../../../styles/settings/space.vars.scss' as space;
 
 $layout-component: 'layout';
 $structures: rows, columns;
@@ -17,15 +19,15 @@ $flows: row, column;
       &-mq {
         --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-xs);
 
-        @include cdr-sm-mq-up {
+        @include tokens.cdr-sm-mq-up {
           --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-sm);
         }
 
-        @include cdr-md-mq-up {
+        @include tokens.cdr-md-mq-up {
           --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-md);
         }
 
-        @include cdr-lg-mq-up {
+        @include tokens.cdr-lg-mq-up {
           --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-lg);
         }
       }
@@ -33,15 +35,15 @@ $flows: row, column;
       &-cq {
         --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-xs);
 
-        @include cdr-sm-cq-up {
+        @include tokens.cdr-sm-cq-up {
           --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-sm);
         }
 
-        @include cdr-md-cq-up {
+        @include tokens.cdr-md-cq-up {
           --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-md);
         }
 
-        @include cdr-lg-cq-up {
+        @include tokens.cdr-lg-cq-up {
           --cdr-#{$component}-#{$structure}: var(--cdr-#{$component}-#{$structure}-lg);
         }
       }
@@ -51,7 +53,7 @@ $flows: row, column;
 
 // Creates gap classes for layouts to use
 @mixin cdr-layout-gap-mixin() {
-  @each $key, $value in $spacing {
+  @each $key, $value in space.$spacing {
     &--gap-#{$key} {
       gap: #{$value};
     }

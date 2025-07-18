@@ -1,4 +1,4 @@
-@import '../../../styles/settings/index';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 $modal-animation-duration: 150ms;
 
@@ -18,8 +18,8 @@ $modal-animation-duration: 150ms;
 
   &__overlay {
     //ITEM_DOC: Background color of the modal overlay
-    background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay, #{$cdr-color-background-modal-overlay}));
-    backdrop-filter: blur($cdr-space-one-x);
+    background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay, #{tokens.$cdr-color-background-modal-overlay}));
+    backdrop-filter: blur(tokens.$cdr-space-one-x);
     inset: 0;
     opacity: 1;
     position: fixed;
@@ -39,7 +39,7 @@ $modal-animation-duration: 150ms;
     align-items: flex-start;
 
     //ITEM_DOC: Background color of the content wrap
-    background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
+    background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary}));
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -60,7 +60,7 @@ $modal-animation-duration: 150ms;
 
   &__innerWrap {
     width: 100%;
-    padding: $cdr-space-one-x;
+    padding: tokens.$cdr-space-one-x;
   }
 
   &__dialog {
@@ -73,20 +73,20 @@ $modal-animation-duration: 150ms;
 
   &__header {
     display: flex;
-    padding-bottom: $cdr-space-one-x;
+    padding-bottom: tokens.$cdr-space-one-x;
     justify-content: space-between;
   }
 
   &__title {
     flex: auto;
 
-    @include cdr-text-heading-serif-600;
+    @include tokens.cdr-text-heading-serif-600;
   }
 
   &__close-button {
     flex: none;
     align-self: center;
-    margin-left: $cdr-space-half-x;
+    margin-left: tokens.$cdr-space-half-x;
     padding: 7px;
     position: relative;
     top: -2px;
@@ -99,18 +99,18 @@ $modal-animation-duration: 150ms;
     position: relative;
   }
 
-  @media (min-width: $cdr-breakpoint-sm) {
+  @media (min-width: tokens.$cdr-breakpoint-sm) {
     &__outerWrap {
-      padding: $cdr-space-one-x;
+      padding: tokens.$cdr-space-one-x;
     }
 
     &__innerWrap {
-      padding: $cdr-space-one-and-a-half-x;
+      padding: tokens.$cdr-space-one-and-a-half-x;
     }
 
     &__contentWrap {
-      border-radius: $cdr-radius-softer;
-      box-shadow: $cdr-prominence-lifted;
+      border-radius: tokens.$cdr-radius-softer;
+      box-shadow: tokens.$cdr-prominence-lifted;
       min-height: auto;
       position: relative;
       top: auto;
@@ -123,7 +123,7 @@ $modal-animation-duration: 150ms;
     }
 
     &__close-button {
-      margin-left: $cdr-space-three-quarter-x;
+      margin-left: tokens.$cdr-space-three-quarter-x;
       right: -8px;
       top: -5px;
     }

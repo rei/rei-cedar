@@ -1,5 +1,6 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrLabelStandalone.vars';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
+@use './vars/CdrLabelStandalone.vars' as vars;
 
 .cdr-label-standalone {
   display: grid;
@@ -14,31 +15,31 @@
   }
 
   &__label {
-    @include cdr-label-standalone-label-mixin;
+    @include vars.cdr-label-standalone-label-mixin;
 
     &--sr-only {
-      @include cdr-display-sr-only;
+      @include tokens.cdr-display-sr-only;
     }
 
     &--disabled {
-      @include cdr-label-standalone-disabled-mixin;
+      @include vars.cdr-label-standalone-disabled-mixin;
 
       .cdr-label-standalone__optional {
-        @include cdr-label-standalone-disabled-mixin;
+        @include vars.cdr-label-standalone-disabled-mixin;
       }
     }
   }
 
   &__optional {
-    @include cdr-label-standalone-optional-mixin;
+    @include vars.cdr-label-standalone-optional-mixin;
   }
 
   &__helper {
-    @include cdr-label-standalone-helper-mixin;
+    @include vars.cdr-label-standalone-helper-mixin;
   }
 
   &__info {
-    @include cdr-label-standalone-info-mixin;
+    @include vars.cdr-label-standalone-info-mixin;
 
     grid-area: info;
     order: 2;
@@ -63,7 +64,6 @@
   }
 
   &__input-spacing {
-    margin-top: $cdr-space-half-x;
+    margin-top: tokens.$cdr-space-half-x;
   }
-
 }
