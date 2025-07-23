@@ -1,6 +1,6 @@
-@import './CdrTabPanel.module';
-
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
+@import './CdrTabPanel.module';
 
 @mixin cdr-tabs-base-header-item-label() {
   font-family: tokens.$cdr-font-family-sans;

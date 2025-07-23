@@ -1,8 +1,8 @@
-@import '../../labelStandalone/styles/CdrLabelStandalone.module';
-@import '../../formError/styles/CdrFormError.module';
-
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 @use './vars/CdrInput.vars' as vars;
+
+@import '../../labelStandalone/styles/CdrLabelStandalone.module';
+@import '../../formError/styles/CdrFormError.module';
 
 /* ==========================================================================
   # INPUT LABEL

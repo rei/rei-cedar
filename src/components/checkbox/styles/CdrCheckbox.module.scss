@@ -1,7 +1,7 @@
-@import '../../labelWrapper/styles/CdrLabelWrapper.module';
-
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 @use './vars/CdrCheckbox.vars' as vars;
+
+@import '../../labelWrapper/styles/CdrLabelWrapper.module';
 
 .cdr-checkbox {
   &__svg-box {

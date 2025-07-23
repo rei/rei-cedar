@@ -1,13 +1,13 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @import '../../popup/styles/CdrPopup.module';
 @import '../../button/styles/CdrButton.module';
 @import '../../icon/styles/CdrIcon.module';
 
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
-
 .cdr-popover{
   &--position {
     position: relative;
-  }
+}
 
   &--wrapper {
     width: max-content;

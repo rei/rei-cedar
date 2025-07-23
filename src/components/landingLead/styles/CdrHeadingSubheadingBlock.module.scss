@@ -1,7 +1,7 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @import '../../text/presets/styles/CdrHeadingDisplay.module';
 @import '../../text/presets/styles/CdrSubheadingSans.module';
-
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-heading-subheading-block {
   &__heading {
