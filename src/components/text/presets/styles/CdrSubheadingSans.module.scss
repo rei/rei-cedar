@@ -1,8 +1,9 @@
-@import './CdrPresets.module';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '../../styles/vars/CdrText.vars.scss' as vars;
 
 .cdr-subheading-sans {
-  @include cdr-text-base-mixin;
-  @include cdr-text-subheading-sans-600;
+  @include vars.cdr-text-base-mixin;
+  @include tokens.cdr-text-subheading-sans-600;
 
   font-size: var(--cdr-subheading-sans-font-size);
   line-height: var(--cdr-subheading-sans-line-height);

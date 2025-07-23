@@ -1,67 +1,67 @@
-@import '../../../styles/settings/index';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-icon {
   display: inline-block;
   vertical-align: middle;
   flex: 0 0 auto;
-  width: $cdr-icon-size;
-  height: $cdr-icon-size;
+  width: tokens.$cdr-icon-size;
+  height: tokens.$cdr-icon-size;
 
   //ITEM_DOC: Fill color of an icon
-  fill: var(--cdr-icon-fill-default, var(--cdr-color-icon-default, #{$cdr-color-icon-default}));
+  fill: var(--cdr-icon-fill-default, var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default}));
 
   &--small {
-    width: $cdr-icon-size-sm;
-    height: $cdr-icon-size-sm;
+    width: tokens.$cdr-icon-size-sm;
+    height: tokens.$cdr-icon-size-sm;
   }
 
   &--large {
-    width: $cdr-icon-size-lg;
-    height: $cdr-icon-size-lg;
+    width: tokens.$cdr-icon-size-lg;
+    height: tokens.$cdr-icon-size-lg;
   }
 
   /* @xs
     0px - 767px
     ========== */
-  @include cdr-xs-mq-only {
+  @include tokens.cdr-xs-mq-only {
     &--small\@xs {
-      width: $cdr-icon-size-sm;
-      height: $cdr-icon-size-sm;
+      width: tokens.$cdr-icon-size-sm;
+      height: tokens.$cdr-icon-size-sm;
     }
 
     &--large\@xs {
-      width: $cdr-icon-size-lg;
-      height: $cdr-icon-size-lg;
+      width: tokens.$cdr-icon-size-lg;
+      height: tokens.$cdr-icon-size-lg;
     }
   }
 
   /* @sm
     768px - 991px
     ========== */
-  @include cdr-sm-mq-only {
+  @include tokens.cdr-sm-mq-only {
     &--small\@sm {
-      width: $cdr-icon-size-sm;
-      height: $cdr-icon-size-sm;
+      width: tokens.$cdr-icon-size-sm;
+      height: tokens.$cdr-icon-size-sm;
     }
 
     &--large\@sm {
-      width: $cdr-icon-size-lg;
-      height: $cdr-icon-size-lg;
+      width: tokens.$cdr-icon-size-lg;
+      height: tokens.$cdr-icon-size-lg;
     }
   }
 
   /* @md
     992px - 1199px
     ========== */
-  @include cdr-md-mq-only {
+  @include tokens.cdr-md-mq-only {
     &--small\@md {
-      width: $cdr-icon-size-sm;
-      height: $cdr-icon-size-sm;
+      width: tokens.$cdr-icon-size-sm;
+      height: tokens.$cdr-icon-size-sm;
     }
 
     &--large\@md {
-      width: $cdr-icon-size-lg;
-      height: $cdr-icon-size-lg;
+      width: tokens.$cdr-icon-size-lg;
+      height: tokens.$cdr-icon-size-lg;
     }
   }
 
@@ -69,15 +69,15 @@
     1200px and up
     ========== */
 
-  @include cdr-lg-mq-only {
+  @include tokens.cdr-lg-mq-only {
     &--small\@lg {
-      width: $cdr-icon-size-sm;
-      height: $cdr-icon-size-sm;
+      width: tokens.$cdr-icon-size-sm;
+      height: tokens.$cdr-icon-size-sm;
     }
 
     &--large\@lg {
-      width: $cdr-icon-size-lg;
-      height: $cdr-icon-size-lg;
+      width: tokens.$cdr-icon-size-lg;
+      height: tokens.$cdr-icon-size-lg;
     }
   }
 }

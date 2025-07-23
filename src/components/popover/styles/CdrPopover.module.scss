@@ -1,12 +1,13 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @import '../../popup/styles/CdrPopup.module';
 @import '../../button/styles/CdrButton.module';
 @import '../../icon/styles/CdrIcon.module';
-@import '../../../styles/settings/index';
 
 .cdr-popover{
   &--position {
     position: relative;
-  }
+}
 
   &--wrapper {
     width: max-content;
@@ -18,15 +19,15 @@
   }
 
   &__title {
-    @include cdr-text-heading-serif-400;
+    @include tokens.cdr-text-heading-serif-400;
 
-    margin-bottom: $cdr-space-half-x;
-    margin-right: $cdr-space-half-x;
+    margin-bottom: tokens.$cdr-space-half-x;
+    margin-right: tokens.$cdr-space-half-x;
   }
 
   &__container {
-    padding: $cdr-space-half-x;
-    padding-left: $cdr-space-one-x;
+    padding: tokens.$cdr-space-half-x;
+    padding-left: tokens.$cdr-space-one-x;
     display: flex;
   }
 

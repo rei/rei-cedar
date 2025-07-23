@@ -1,10 +1,9 @@
-@import '../../../styles/settings/index';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
-//@import url('@rei/cedar/dist/style/cdr-tab-panel.css');
 @import './CdrTabPanel.module';
 
 @mixin cdr-tabs-base-header-item-label() {
-  font-family: $cdr-font-family-sans;
+  font-family: tokens.$cdr-font-family-sans;
   font-style: normal;
   font-weight: inherit;
   letter-spacing: -.08px;
@@ -13,7 +12,7 @@
 }
 
 @mixin cdr-tabs-small-header-item-label() {
-  font-family: $cdr-font-family-sans;
+  font-family: tokens.$cdr-font-family-sans;
   font-style: normal;
   font-weight: inherit;
   letter-spacing: -.08px;
@@ -47,7 +46,7 @@
     padding: 0;
 
     //ITEM_DOC: Keyline color of the cdr-tabs header container
-    border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest, #{$cdr-color-border-tab-keyline-rest}));
+    border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest, #{tokens.$cdr-color-border-tab-keyline-rest}));
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     &::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
@@ -67,7 +66,7 @@
 
   &__header-item {
     & + & {
-      margin-left: $cdr-space-one-x;
+      margin-left: tokens.$cdr-space-one-x;
     }
 
     @include cdr-tabs-base-header-item-label;
@@ -78,16 +77,16 @@
     display: block;
 
     //ITEM_DOC: Text color in a tab
-    color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest, #{$cdr-color-text-tab-rest}));
+    color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest, #{tokens.$cdr-color-text-tab-rest}));
     font-weight: 300;
     text-decoration: none;
-    padding: $cdr-space-inset-half-x-stretch;
+    padding: tokens.$cdr-space-inset-half-x-stretch;
     white-space: nowrap;
     outline-offset: -3px;
 
     &-active {
       //ITEM_DOC: Text color of an active tab
-      color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active, #{$cdr-color-text-tab-active}));
+      color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active, #{tokens.$cdr-color-text-tab-active}));
       font-weight: 500;
     }
 
@@ -107,7 +106,7 @@
       text-decoration: none;
 
       //ITEM_DOC: Text color of a tab on active, focus, or hover
-      color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover, #{$cdr-color-text-tab-hover}));
+      color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover, #{tokens.$cdr-color-text-tab-hover}));
     }
 
     &--disabled {
@@ -115,12 +114,12 @@
       background-color: transparent;
 
       //ITEM_DOC: Text color of a disabled tab
-      color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{$cdr-color-text-tab-disabled}));
+      color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled}));
 
       &:active,
       &:hover,
       &:focus {
-        color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{$cdr-color-text-tab-disabled}));
+        color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled}));
         cursor: not-allowed;
       }
     }
@@ -131,13 +130,13 @@
   }
 
   &__gradient {
-    transition: opacity $cdr-duration-2-x ease;
-    transition: opacity $cdr-duration-2-x ease;
+    transition: opacity tokens.$cdr-duration-2-x ease;
+    transition: opacity tokens.$cdr-duration-2-x ease;
     position: absolute;
     z-index: 100;
     top: 0;
     bottom: 0;
-    width: $cdr-space-three-x;
+    width: tokens.$cdr-space-three-x;
     pointer-events: none;
     opacity: 0;
 
@@ -159,14 +158,14 @@
     position: absolute;
     width: 30px;
     margin: 0;
-    height: $cdr-space-quarter-x;
-    margin-top: -$cdr-space-quarter-x;
+    height: tokens.$cdr-space-quarter-x;
+    margin-top: -#{tokens.$cdr-space-quarter-x};
     box-sizing: border-box;
     border: none;
 
     //ITEM_DOC: Background color of the cdr-tabs keyline
-    background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active, #{$cdr-color-border-tab-keyline-active}));
-    transition: $cdr-duration-4-x $cdr-timing-function-ease-out;
+    background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active, #{tokens.$cdr-color-border-tab-keyline-active}));
+    transition: tokens.$cdr-duration-4-x tokens.$cdr-timing-function-ease-out;
   }
 
   &__content-container {
@@ -192,13 +191,13 @@
     .cdr-tabs__header-item-label {
       @include cdr-tabs-small-header-item-label;
 
-      padding: $cdr-space-inset-three-quarter-x-squish;
+      padding: tokens.$cdr-space-inset-three-quarter-x-squish;
 
     }
 
     .cdr-tabs__header-item {
       & + & {
-        margin-left: $cdr-space-half-x;
+        margin-left: tokens.$cdr-space-half-x;
       }
     }
   }

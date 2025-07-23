@@ -9,21 +9,20 @@
       :Style variants
         :Standalone
 ========================================================================== */
-@import '../../../styles/settings/index';
-@import './vars/CdrLink.vars';
+@use './vars/CdrLink.vars' as vars;
 
 .cdr-link {
-  @include cdr-link-base-mixin;
+  @include vars.cdr-link-base-mixin;
 }
 
 .cdr-link--standalone {
-  @include cdr-link-standalone-mixin;
+  @include vars.cdr-link-standalone-mixin;
 }
 
 .cdr-link--inherit-color {
-  @include cdr-link-inherit-color-mixin;
+  @include vars.cdr-link-inherit-color-mixin;
 }
 
 .cdr-link--neutral {
-  @include cdr-link-neutral-mixin;
+  @include vars.cdr-link-neutral-mixin;
 }

@@ -1,5 +1,6 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrCheckbox.vars';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use './vars/CdrCheckbox.vars' as vars;
+
 @import '../../labelWrapper/styles/CdrLabelWrapper.module';
 
 .cdr-checkbox {
@@ -23,20 +24,20 @@
   ========== */
   &__input:checked {
     & ~ .cdr-label-wrapper__figure {
-      @include cdr-form-figure-checkbox-checked-mixin;
+      @include vars.cdr-form-figure-checkbox-checked-mixin;
     }
 
     & ~ .cdr-checkbox__svg-box {
       svg {
         //ITEM_DOC: Fill color of the checkbox check icon when checked
-        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected, #{$cdr-color-icon-checkbox-default-selected}));
+        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected, #{tokens.$cdr-color-icon-checkbox-default-selected}));
       }
     }
   } 
 
   //cdr-checkbox__svg-box
   &__input[indeterminate] ~ .cdr-label-wrapper__figure {
-    box-shadow: inset 0 0 0 1px $cdr-color-border-input-default-selected;
+    box-shadow: inset 0 0 0 1px tokens.$cdr-color-border-input-default-selected;
 
     &::after {
       content: '';
@@ -46,35 +47,35 @@
       transform: translate(-50%, -50%);
       width: 8px;
       height: 2px;
-      background-color: $cdr-color-background-input-default-selected;
-      border-radius: $cdr-radius-soft;
+      background-color: tokens.$cdr-color-background-input-default-selected;
+      border-radius: tokens.$cdr-radius-soft;
     }
   }
   
   &:hover {
     .cdr-label-wrapper__figure {
-      @include cdr-form-figure-checkbox-hover-mixin;
+      @include vars.cdr-form-figure-checkbox-hover-mixin;
     }
 
     .cdr-checkbox__input {
       /* Hover + Checked
       ========== */
       &:checked ~ .cdr-label-wrapper__figure {
-        @include cdr-form-figure-checkbox-checked-hover-mixin;
+        @include vars.cdr-form-figure-checkbox-checked-hover-mixin;
       }
 
       &:checked ~ .cdr-checkbox__svg-box svg {
         //ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
-        fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover, #{$cdr-color-icon-checkbox-default-selected-hover}));
+        fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover, #{tokens.$cdr-color-icon-checkbox-default-selected-hover}));
       }
 
       /* Hover + Indeterminate
       ========== */
       &[indeterminate] ~ .cdr-label-wrapper__figure {
-        box-shadow: inset 0 0 0 2px $cdr-color-border-input-default-selected-hover;
+        box-shadow: inset 0 0 0 2px tokens.$cdr-color-border-input-default-selected-hover;
 
         &::after {
-          background-color: $cdr-color-icon-checkbox-default-selected-hover;
+          background-color: tokens.$cdr-color-icon-checkbox-default-selected-hover;
         }
       }
     }
@@ -84,7 +85,7 @@
   ========== */
   &__input:disabled {
     & ~ .cdr-label-wrapper__figure {
-      @include cdr-form-figure-checkbox-disabled-mixin;
+      @include vars.cdr-form-figure-checkbox-disabled-mixin;
     }
 
     & ~ .cdr-checkbox__svg-box {
@@ -97,7 +98,7 @@
     ========== */
     &:checked {
       & ~ .cdr-label-wrapper__figure {
-        @include cdr-form-figure-checkbox-checked-disabled-mixin;
+        @include vars.cdr-form-figure-checkbox-checked-disabled-mixin;
       }
     }
 
@@ -115,10 +116,10 @@
     ========== */
     &[indeterminate] {
       & ~ .cdr-label-wrapper__figure {
-        box-shadow: inset 0 0 0 1px $cdr-color-border-input-default-disabled !important;
+        box-shadow: inset 0 0 0 1px tokens.$cdr-color-border-input-default-disabled !important;
 
         &::after {
-          background-color: $cdr-color-background-input-default-disabled !important;
+          background-color: tokens.$cdr-color-background-input-default-disabled !important;
         }
       }
     }
@@ -128,7 +129,7 @@
   ========== */
   &:active {
     .cdr-label-wrapper__figure, .cdr-checkbox__input:checked ~ .cdr-label-wrapper__figure  {
-      @include cdr-form-figure-checkbox-active-mixin;
+      @include vars.cdr-form-figure-checkbox-active-mixin;
     }
 
    .cdr-checkbox__svg-box {
@@ -146,10 +147,10 @@
   /* Focus
   ========== */
   &__input:focus ~ .cdr-label-wrapper__figure {
-    @include cdr-form-figure-checkbox-focus-mixin;
+    @include vars.cdr-form-figure-checkbox-focus-mixin;
   }
 
   &__input:focus:checked ~ .cdr-label-wrapper__figure {
-    @include cdr-form-figure-checkbox-checked-focus-mixin;
+    @include vars.cdr-form-figure-checkbox-checked-focus-mixin;
   }
 }

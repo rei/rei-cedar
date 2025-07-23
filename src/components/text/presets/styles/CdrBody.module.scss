@@ -1,8 +1,9 @@
-@import './CdrPresets.module';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '../../styles/vars/CdrText.vars.scss' as vars;
 
 .cdr-body {
-  @include cdr-text-base-mixin;
-  @include cdr-text-body-400;
+  @include vars.cdr-text-base-mixin;
+  @include tokens.cdr-text-body-400;
 
   font-size: var(--cdr-body-font-size);
   line-height: var(--cdr-body-line-height);

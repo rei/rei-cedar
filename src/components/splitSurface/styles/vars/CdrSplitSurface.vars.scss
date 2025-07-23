@@ -1,3 +1,5 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-split-surface-base-mixin() {
   width: 100%;
   line-height: 0;
@@ -5,7 +7,7 @@
   &--top {
     //ITEM_DOC: Color of the split-surface's surface layer
     background: linear-gradient(
-      var(--cdr-split-surface-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 0 50%,
+      var(--cdr-split-surface-surface-color, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})) 0 50%,
       transparent 50% 100%,
     );
   }
@@ -13,23 +15,23 @@
   &--bottom {
     background: linear-gradient(
       transparent 0 50%,
-      var(--cdr-split-surface-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary})) 50% 100%,
+      var(--cdr-split-surface-surface-color, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})) 50% 100%,
     );
   }
 }
 
 @mixin cdr-split-surface-spacing-mixin() {
-  padding: 0 $cdr-space-four-x;
+  padding: 0 tokens.$cdr-space-four-x;
 
-  @include cdr-lg-mq-down {
-    padding: 0 $cdr-space-three-x;
+  @include tokens.cdr-lg-mq-down {
+    padding: 0 tokens.$cdr-space-three-x;
   }
 
-  @include cdr-md-mq-down {
-    padding: 0 $cdr-space-two-x;
+  @include tokens.cdr-md-mq-down {
+    padding: 0 tokens.$cdr-space-two-x;
   }
 
-  @include cdr-sm-mq-down {
-    padding: 0 $cdr-space-one-x;
+  @include tokens.cdr-sm-mq-down {
+    padding: 0 tokens.$cdr-space-one-x;
   }
 }

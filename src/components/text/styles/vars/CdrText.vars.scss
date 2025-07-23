@@ -1,5 +1,7 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-text-base-mixin() {
     //ITEM_DOC: Text color
-    color: var(--cdr-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+    color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
     margin: 0;
 }

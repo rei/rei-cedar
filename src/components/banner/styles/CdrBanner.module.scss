@@ -1,8 +1,8 @@
-@import '../../../styles/settings/index';
-@import './vars/CdrBanner.vars';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use './vars/CdrBanner.vars' as vars;
 
 .cdr-banner {
-  @include cdr-banner-base-mixin;
+  @include vars.cdr-banner-base-mixin;
 
   display: grid;
   grid-template-columns: 1fr auto;
@@ -13,7 +13,7 @@
 
   &__wrapper {
     &--prominence {
-      box-shadow: $cdr-prominence-raised;
+      box-shadow: tokens.$cdr-prominence-raised;
     }
   }
 
@@ -36,7 +36,7 @@
       stroke: white;
       stroke-width: 0.4rem;
       paint-order: stroke fill;
-      margin: $cdr-space-quarter-x;
+      margin: tokens.$cdr-space-quarter-x;
   
     }
   }
@@ -44,7 +44,7 @@
   &__message {
     display: inherit;
     grid-area: message;
-    padding: $cdr-space-half-x;
+    padding: tokens.$cdr-space-half-x;
     align-items: center;
   }
 
@@ -52,8 +52,8 @@
     grid-area: message-body;
 
     //ITEM_DOC: Message body background color
-    background-color: var(--cdr-banner-message-body-background-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
-    padding: $cdr-space-half-x;
+    background-color: var(--cdr-banner-message-body-background-color, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary}));
+    padding: tokens.$cdr-space-half-x;
   }
 
   &__icon-right {
@@ -66,7 +66,7 @@
       max-width: 2rem;
 
       //ITEM_DOC: Right icon fill color
-      fill: var(--cdr-banner-icon-right-fill, var(--cdr-color-text-emphasis, #{$cdr-color-text-emphasis})) !important;
+      fill: var(--cdr-banner-icon-right-fill, var(--cdr-color-text-emphasis, #{tokens.$cdr-color-text-emphasis})) !important;
     }
   }
 
@@ -82,122 +82,122 @@
       max-width: 2.2rem;
 
       //ITEM_DOC: Info action icon fill color
-      fill: var(--cdr-banner-info-action-fill, var(--cdr-color-text-link-rest, #{$cdr-color-text-link-rest})) !important;
+      fill: var(--cdr-banner-info-action-fill, var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})) !important;
     }
   }
 
   &--default {
     & .cdr-banner__main {
-      @include cdr-banner-default-mixin;
+      @include vars.cdr-banner-default-mixin;
 
       & .cdr-banner__icon-left {
           //ITEM_DOC: Left icon background color for default banner
-          background-color: var(--cdr-banner-default-icon-left-background-color, var(--cdr-color-background-message-default-02, #{$cdr-color-background-message-default-02}));
+          background-color: var(--cdr-banner-default-icon-left-background-color, var(--cdr-color-background-message-default-02, #{tokens.$cdr-color-background-message-default-02}));
 
           svg {
             //ITEM_DOC: Left icon fill color for default banner
-            fill: var(--cdr-banner-default-icon-left-fill, var(--cdr-color-icon-message-default, #{$cdr-color-icon-message-default}));
+            fill: var(--cdr-banner-default-icon-left-fill, var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default}));
           }
         }
       }
 
       & .cdr-banner__wrapper {
-        border-left: $left-border;
+        border-left: vars.$left-border;
 
         //ITEM_DOC: Wrapper border left color for default banner
-        border-left-color: var(--cdr-banner-default-wrapper-border-left-color, var(--cdr-color-border-message-default-01, #{$cdr-color-border-message-default-01}));
+        border-left-color: var(--cdr-banner-default-wrapper-border-left-color, var(--cdr-color-border-message-default-01, #{tokens.$cdr-color-border-message-default-01}));
       }
   }
 
   &--info {
     & .cdr-banner__main {
-      @include cdr-banner-info-mixin;
+      @include vars.cdr-banner-info-mixin;
 
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for info banner
-        background-color: var(--cdr-banner-info-icon-left-background-color, var(--cdr-color-background-message-info-02, #{$cdr-color-background-message-info-02}));
+        background-color: var(--cdr-banner-info-icon-left-background-color, var(--cdr-color-background-message-info-02, #{tokens.$cdr-color-background-message-info-02}));
 
         svg {
           //ITEM_DOC: Left icon fill color for info banner
-          fill: var(--cdr-banner-info-icon-left-fill, var(--cdr-color-icon-message-info, #{$cdr-color-icon-message-info}));
+          fill: var(--cdr-banner-info-icon-left-fill, var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info}));
         }
       }
     }
 
     & .cdr-banner__wrapper {
-      border-left: $left-border;
+      border-left: vars.$left-border;
 
       //ITEM_DOC: Wrapper border left color for info banner
-      border-left-color: var(--cdr-banner-info-wrapper-border-left-color, var(--cdr-color-border-message-info-01, #{$cdr-color-border-message-info-01}));
+      border-left-color: var(--cdr-banner-info-wrapper-border-left-color, var(--cdr-color-border-message-info-01, #{tokens.$cdr-color-border-message-info-01}));
     }
   }
 
   &--warning {
     & .cdr-banner__main {
-      @include cdr-banner-warning-mixin;
+      @include vars.cdr-banner-warning-mixin;
 
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for warning banner
-        background-color: var(--cdr-banner-warning-icon-left-background-color, var(--cdr-color-background-message-warning-02, #{$cdr-color-background-message-warning-02}));
+        background-color: var(--cdr-banner-warning-icon-left-background-color, var(--cdr-color-background-message-warning-02, #{tokens.$cdr-color-background-message-warning-02}));
 
         svg {
           //ITEM_DOC: Left icon fill color for warning banner
-          fill: var(--cdr-banner-warning-icon-left-fill, var(--cdr-color-icon-message-warning, #{$cdr-color-icon-message-warning}));
+          fill: var(--cdr-banner-warning-icon-left-fill, var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning}));
         }
       }
     }
 
     & .cdr-banner__wrapper {
-      border-left: $left-border;
+      border-left: vars.$left-border;
 
       //ITEM_DOC: Wrapper border left color for warning banner
-      border-left-color: var(--cdr-banner-warning-wrapper-border-left-color, var(--cdr-color-border-message-warning-01, #{$cdr-color-border-message-warning-01}));
+      border-left-color: var(--cdr-banner-warning-wrapper-border-left-color, var(--cdr-color-border-message-warning-01, #{tokens.$cdr-color-border-message-warning-01}));
     }
   }
 
   &--success {
     & .cdr-banner__main {
-      @include cdr-banner-success-mixin;
+      @include vars.cdr-banner-success-mixin;
 
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for success banner
-        background-color: var(--cdr-banner-success-icon-left-background-color, var(--cdr-color-background-message-success-02, #{$cdr-color-background-message-success-02}));
+        background-color: var(--cdr-banner-success-icon-left-background-color, var(--cdr-color-background-message-success-02, #{tokens.$cdr-color-background-message-success-02}));
 
         svg {
           //ITEM_DOC: Left icon fill color for success banner
-          fill: var(--cdr-banner-success-icon-left-fill, var(--cdr-color-icon-message-success, #{$cdr-color-icon-message-success}));
+          fill: var(--cdr-banner-success-icon-left-fill, var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success}));
         }
       }
     }
 
     & .cdr-banner__wrapper {
-      border-left: $left-border;
+      border-left: vars.$left-border;
 
       //ITEM_DOC: Wrapper border left color for success banner
-      border-left-color: var(--cdr-banner-success-wrapper-border-left-color, var(--cdr-color-border-message-success-01, #{$cdr-color-border-message-success-01}));
+      border-left-color: var(--cdr-banner-success-wrapper-border-left-color, var(--cdr-color-border-message-success-01, #{tokens.$cdr-color-border-message-success-01}));
     }
   }
 
   &--error {
     & .cdr-banner__main {
-      @include cdr-banner-error-mixin;
+      @include vars.cdr-banner-error-mixin;
 
       & .cdr-banner__icon-left {
         //ITEM_DOC: Left icon background color for error banner
-        background-color: var(--cdr-banner-error-icon-left-background-color, var(--cdr-color-background-message-error-02, #{$cdr-color-background-message-error-02}));
+        background-color: var(--cdr-banner-error-icon-left-background-color, var(--cdr-color-background-message-error-02, #{tokens.$cdr-color-background-message-error-02}));
 
         svg {
           //ITEM_DOC: Left icon fill color for error banner
-          fill: var(--cdr-banner-error-icon-left-fill, var(--cdr-color-icon-message-error, #{$cdr-color-icon-message-error}));
+          fill: var(--cdr-banner-error-icon-left-fill, var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error}));
         }
       }
     }
 
     & .cdr-banner__wrapper {
-      border-left: $left-border;
+      border-left: vars.$left-border;
 
       //ITEM_DOC: Wrapper border left color for error banner
-      border-left-color: var(--cdr-banner-error-wrapper-border-left-color, var(--cdr-color-border-message-error-01, #{$cdr-color-border-message-error-01}));      
+      border-left-color: var(--cdr-banner-error-wrapper-border-left-color, var(--cdr-color-border-message-error-01, #{tokens.$cdr-color-border-message-error-01}));      
     }
   }
 }

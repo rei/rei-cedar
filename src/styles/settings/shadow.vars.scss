@@ -1,10 +1,12 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 // Available Cedar token shadow options
 $shadows: (
-  'flat': $cdr-prominence-flat,
-  'raised': $cdr-prominence-raised,
-  'elevated': $cdr-prominence-elevated,
-  'floating': $cdr-prominence-floating,
-  'lifted': $cdr-prominence-lifted,
+  'flat': tokens.$cdr-prominence-flat,
+  'raised': tokens.$cdr-prominence-raised,
+  'elevated': tokens.$cdr-prominence-elevated,
+  'floating': tokens.$cdr-prominence-floating,
+  'lifted': tokens.$cdr-prominence-lifted,
 );
 
 // Generates a shadow property with a predictable format for overriding

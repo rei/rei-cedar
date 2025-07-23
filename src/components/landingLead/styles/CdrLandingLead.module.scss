@@ -1,11 +1,11 @@
-@import '../../../styles/settings/index';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @import '../../image/styles/CdrImg.module';
 @import './CdrHeadingSubheadingBlock.module';
 
-
 .cdr-landing-lead {
   //ITEM_DOC: Color of the landing-leads surface layer. Passes to underlying split-surface component
-  --cdr-split-surface-surface-color: var(--cdr-landing-lead-surface-color, var(--cdr-color-background-primary, #{$cdr-color-background-primary}));
+  --cdr-split-surface-surface-color: var(--cdr-landing-lead-surface-color, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary}));
 
   &__image {
     --cdr-img-aspect-ratio: 4 / 1;
@@ -13,16 +13,16 @@
 
     width: 100%;
 
-    @include cdr-sm-mq-down {
+    @include tokens.cdr-sm-mq-down {
       --cdr-img-aspect-ratio: 4 / 3;
     }
   }
 
   &__copy-block {
-    padding: $cdr-space-two-x;
+    padding: tokens.$cdr-space-two-x;
 
-    @include cdr-md-mq-down {
-      padding: $cdr-space-two-x;
+    @include tokens.cdr-md-mq-down {
+      padding: tokens.$cdr-space-two-x;
     }
   }
 }

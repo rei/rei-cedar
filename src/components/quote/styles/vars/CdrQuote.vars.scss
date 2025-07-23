@@ -1,35 +1,37 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-quote-base-container() {
   margin: 0;
-  padding: $cdr-space-inset-one-x-stretch;
+  padding: tokens.$cdr-space-inset-one-x-stretch;
   line-height: 1;
 
   & cite {
-    @include cdr-text-utility-sans-100;
+    @include tokens.cdr-text-utility-sans-100;
 
     //ITEM_DOC: Text color of a cdr-quote citation
-    color: var(--cdr-quote-cite-text-color, var(--cdr-color-text-secondary, #{$cdr-color-text-secondary}));
+    color: var(--cdr-quote-cite-text-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
     display: block;
   }
 }
 
 @mixin cdr-quote-base-content() {
-  font-family: $cdr-font-family-serif;
+  font-family: tokens.$cdr-font-family-serif;
   font-weight: 400;
   font-size: 2.4rem;
   line-height: 3.6rem;
   letter-spacing: -.08rem;
 
   //ITEM_DOC: Text color of cdr-quote content
-  color: var(--cdr-quote-content-text-color, var(--cdr-color-text-primary, #{$cdr-color-text-primary}));
+  color: var(--cdr-quote-content-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
   margin: 0;
 
-  @include cdr-xs-mq-only {
+  @include tokens.cdr-xs-mq-only {
     font-size: 1.8rem;
     line-height: 2.8rem;
   }
 
   & + cite {
-    padding-top: $cdr-space-one-x;
+    padding-top: tokens.$cdr-space-one-x;
   }
 }
 
@@ -37,18 +39,18 @@
   border-style: solid;
 
   //ITEM_DOC: Border color of a cdr-quote pull container
-  border-color: var(--cdr-quote-pull-container-border-color, var(--cdr-color-border-primary, #{$cdr-color-border-primary}));
+  border-color: var(--cdr-quote-pull-container-border-color, var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary}));
 
-  @include cdr-xs-mq {
+  @include tokens.cdr-xs-mq {
     border-width: 0 0 1px;
-    padding: $cdr-space-inset-one-x-stretch;
-    margin: 0 0 $cdr-space-one-x;
+    padding: tokens.$cdr-space-inset-one-x-stretch;
+    margin: 0 0 tokens.$cdr-space-one-x;
   }
 
-  @include cdr-sm-mq {
+  @include tokens.cdr-sm-mq {
     border-width: 0 0 0 1px;
-    padding: $cdr-space-half-x $cdr-space-one-x $cdr-space-half-x $cdr-space-two-x;
-    margin: $cdr-space-one-x 0;
+    padding: tokens.$cdr-space-half-x tokens.$cdr-space-one-x tokens.$cdr-space-half-x tokens.$cdr-space-two-x;
+    margin: tokens.$cdr-space-one-x 0;
   }
 }
 

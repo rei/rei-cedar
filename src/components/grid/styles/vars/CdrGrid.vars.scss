@@ -1,9 +1,11 @@
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+
 @mixin cdr-grid-base-mixin() {
   display: grid;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: $cdr-space-one-x $cdr-space-one-x;
+  gap: tokens.$cdr-space-one-x tokens.$cdr-space-one-x;
 }
 
 @mixin cdr-grid-gutter-none-mixin() {
@@ -11,13 +13,13 @@
 }
 
 @mixin cdr-grid-gutter-small-mixin() {
-  gap: $cdr-space-eighth-x $cdr-space-eighth-x;
+  gap: tokens.$cdr-space-eighth-x tokens.$cdr-space-eighth-x;
 }
 
 @mixin cdr-grid-gutter-medium-mixin() {
-  gap: $cdr-space-one-x $cdr-space-one-x;
+  gap: tokens.$cdr-space-one-x tokens.$cdr-space-one-x;
 }
 
 @mixin cdr-grid-gutter-large-mixin() {
-  gap: $cdr-space-two-x $cdr-space-two-x;
+  gap: tokens.$cdr-space-two-x tokens.$cdr-space-two-x;
 }

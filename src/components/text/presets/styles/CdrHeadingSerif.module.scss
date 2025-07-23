@@ -1,8 +1,9 @@
-@import './CdrPresets.module';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '../../styles/vars/CdrText.vars.scss' as vars;
 
 .cdr-heading-serif {
-  @include cdr-text-base-mixin;
-  @include cdr-text-heading-serif-1200;
+  @include vars.cdr-text-base-mixin;
+  @include tokens.cdr-text-heading-serif-1200;
 
   font-size: var(--cdr-heading-serif-font-size);
   line-height: var(--cdr-heading-serif-line-height);
