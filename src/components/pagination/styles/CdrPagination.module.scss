@@ -117,7 +117,7 @@
   }
 
   /* Responsive */
-  @include tokens.cdr-sm-mq {
+  @include tokens.cdr-sm-mq-up {
     &__li--links {
       display: block;
     }
