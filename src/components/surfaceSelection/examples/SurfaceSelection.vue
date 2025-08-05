@@ -107,27 +107,27 @@ const examples = computed(
 </template>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .example {
   &__hr {
-    margin: $cdr-space-two-x 0;
+    margin: tokens.$cdr-space-two-x 0;
   }
 
   &__options {
-    gap: $cdr-space-one-x;
+    gap: tokens.$cdr-space-one-x;
     display: flex;
   }
 
   &__demos {
-    gap: $cdr-space-one-x;
+    gap: tokens.$cdr-space-one-x;
     display: flex;
     flex-direction: column;
     max-width: 200px;
   }
 
   &__demos2 {
-    gap: $cdr-space-one-x;
+    gap: tokens.$cdr-space-one-x;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

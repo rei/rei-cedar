@@ -57,12 +57,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import "node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 .custom-grid {
   // 3 column at md or lg
   grid-template-columns: 1fr 1fr 1fr;
 
-  @include cdr-sm-mq-down {
+  @include tokens.cdr-sm-mq-down {
     // 1 column at xs or sm
     grid-template-columns: 1fr;
   }
@@ -71,6 +71,6 @@ export default {
 .grid-item {
   border: 1px solid black;
   text-align: center;
-  padding: $cdr-space-one-x;
+  padding: tokens.$cdr-space-one-x;
 }
 </style>

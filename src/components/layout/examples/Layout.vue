@@ -156,15 +156,15 @@ const layouts: LayoutExample[] = [
 </template>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .example {
   &__hr {
-    margin: $cdr-space-two-x 0;
+    margin: tokens.$cdr-space-two-x 0;
   }
 
   &__surface {
-    margin-bottom: $cdr-space-two-x;
+    margin-bottom: tokens.$cdr-space-two-x;
   }
 
   &__container {
@@ -172,21 +172,21 @@ const layouts: LayoutExample[] = [
   }
 
   &__layout-cell {
-    padding: $cdr-space-half-x;
+    padding: tokens.$cdr-space-half-x;
   }
 
   &__cell {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $cdr-space-half-x;
+    padding: tokens.$cdr-space-half-x;
   }
 
   &__layout {
     &--tall {
       height: 200px;
 
-      @include cdr-sm-mq-down {
+      @include tokens.cdr-sm-mq-down {
         height: auto;
       }
     }

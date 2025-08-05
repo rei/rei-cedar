@@ -100,20 +100,21 @@ console.log(routes)
 </template>
 
 <style lang="scss">
-@import "../styles/main.scss";
-@import "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
-@import "@rei/cdr-tokens/dist/rei-dot-com/css/cdr-tokens.css";
+@use "@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens" as tokens;
+
+@use "../styles/main.scss" as main;
+@use "@rei/cdr-tokens/dist/rei-dot-com/css/cdr-tokens.css";
 
 .stack {
-  margin-top: $cdr-space-one-x;
+  margin-top: tokens.$cdr-space-one-x;
 }
 
 .mega-stack {
-  margin-top: $cdr-space-four-x;
+  margin-top: tokens.$cdr-space-four-x;
 }
 
 .inset {
-  padding: $cdr-space-one-x;
+  padding: tokens.$cdr-space-one-x;
 }
 
 .center {
@@ -121,24 +122,24 @@ console.log(routes)
 }
 
 .sr-only {
-  @include cdr-display-sr-only;
+  @include tokens.cdr-display-sr-only;
 }
 
 // root page container
 .container {
-  @include cdr-container-fluid;
+  @include tokens.cdr-container-fluid;
 }
 
 // router links at top of page
 .nav {
-  padding: $cdr-space-quarter-x;
+  padding: tokens.$cdr-space-quarter-x;
   display:inline-flex;
 }
 
 // NOTE: type examples in this file are for testing and development purposes only
 .cdr-text-dev {
   &--italic {
-    @include cdr-text-italic;
+    @include tokens.cdr-text-italic;
     font-weight: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -148,7 +149,7 @@ console.log(routes)
   }
 
   &--strong {
-    @include cdr-text-strong;
+    @include tokens.cdr-text-strong;
     font-size: inherit;
     line-height: inherit;
     letter-spacing: inherit;
@@ -157,286 +158,286 @@ console.log(routes)
   }
 
   &--body {
-    &-300 { @include cdr-text-body-300; }
-    &-400 { @include cdr-text-body-400; }
-    &-500 { @include cdr-text-body-500; }
+    &-300 { @include tokens.cdr-text-body-300; }
+    &-400 { @include tokens.cdr-text-body-400; }
+    &-500 { @include tokens.cdr-text-body-500; }
     &-strong {
-      &-300 { @include cdr-text-body-strong-300; }
-      &-400 { @include cdr-text-body-strong-400; }
-      &-500 { @include cdr-text-body-strong-500; }
+      &-300 { @include tokens.cdr-text-body-strong-300; }
+      &-400 { @include tokens.cdr-text-body-strong-400; }
+      &-500 { @include tokens.cdr-text-body-strong-500; }
     }
   }
   &--utility {
     &-sans {
-      &-100 { @include cdr-text-utility-sans-100; }
-      &-200 { @include cdr-text-utility-sans-200; }
-      &-300 { @include cdr-text-utility-sans-300; }
-      &-400 { @include cdr-text-utility-sans-400; }
-      &-500 { @include cdr-text-utility-sans-500; }
-      &-600 { @include cdr-text-utility-sans-600; }
-      &-700 { @include cdr-text-utility-sans-700; }
-      &-800 { @include cdr-text-utility-sans-800; }
+      &-100 { @include tokens.cdr-text-utility-sans-100; }
+      &-200 { @include tokens.cdr-text-utility-sans-200; }
+      &-300 { @include tokens.cdr-text-utility-sans-300; }
+      &-400 { @include tokens.cdr-text-utility-sans-400; }
+      &-500 { @include tokens.cdr-text-utility-sans-500; }
+      &-600 { @include tokens.cdr-text-utility-sans-600; }
+      &-700 { @include tokens.cdr-text-utility-sans-700; }
+      &-800 { @include tokens.cdr-text-utility-sans-800; }
 
       &-strong {
-        &-100 { @include cdr-text-utility-sans-strong-100; }
-        &-200 { @include cdr-text-utility-sans-strong-200; }
-        &-300 { @include cdr-text-utility-sans-strong-300; }
-        &-400 { @include cdr-text-utility-sans-strong-400; }
-        &-500 { @include cdr-text-utility-sans-strong-500; }
-        &-600 { @include cdr-text-utility-sans-strong-600; }
-        &-700 { @include cdr-text-utility-sans-strong-700; }
-        &-800 { @include cdr-text-utility-sans-strong-800; }
+        &-100 { @include tokens.cdr-text-utility-sans-strong-100; }
+        &-200 { @include tokens.cdr-text-utility-sans-strong-200; }
+        &-300 { @include tokens.cdr-text-utility-sans-strong-300; }
+        &-400 { @include tokens.cdr-text-utility-sans-strong-400; }
+        &-500 { @include tokens.cdr-text-utility-sans-strong-500; }
+        &-600 { @include tokens.cdr-text-utility-sans-strong-600; }
+        &-700 { @include tokens.cdr-text-utility-sans-strong-700; }
+        &-800 { @include tokens.cdr-text-utility-sans-strong-800; }
       }
     }
     &-serif {
-      &-200 { @include cdr-text-utility-serif-200; }
-      &-300 { @include cdr-text-utility-serif-300; }
-      &-400 { @include cdr-text-utility-serif-400; }
-      &-500 { @include cdr-text-utility-serif-500; }
-      &-600 { @include cdr-text-utility-serif-600; }
-      &-700 { @include cdr-text-utility-serif-700; }
-      &-800 { @include cdr-text-utility-serif-800; }
+      &-200 { @include tokens.cdr-text-utility-serif-200; }
+      &-300 { @include tokens.cdr-text-utility-serif-300; }
+      &-400 { @include tokens.cdr-text-utility-serif-400; }
+      &-500 { @include tokens.cdr-text-utility-serif-500; }
+      &-600 { @include tokens.cdr-text-utility-serif-600; }
+      &-700 { @include tokens.cdr-text-utility-serif-700; }
+      &-800 { @include tokens.cdr-text-utility-serif-800; }
 
       &-strong {
-        &-200 { @include cdr-text-utility-serif-strong-200; }
-        &-300 { @include cdr-text-utility-serif-strong-300; }
-        &-400 { @include cdr-text-utility-serif-strong-400; }
-        &-500 { @include cdr-text-utility-serif-strong-500; }
-        &-600 { @include cdr-text-utility-serif-strong-600; }
-        &-700 { @include cdr-text-utility-serif-strong-700; }
-        &-800 { @include cdr-text-utility-serif-strong-800; }
+        &-200 { @include tokens.cdr-text-utility-serif-strong-200; }
+        &-300 { @include tokens.cdr-text-utility-serif-strong-300; }
+        &-400 { @include tokens.cdr-text-utility-serif-strong-400; }
+        &-500 { @include tokens.cdr-text-utility-serif-strong-500; }
+        &-600 { @include tokens.cdr-text-utility-serif-strong-600; }
+        &-700 { @include tokens.cdr-text-utility-serif-strong-700; }
+        &-800 { @include tokens.cdr-text-utility-serif-strong-800; }
       }
     }
   }
 
   &--citation {
-    @include cdr-text-utility-sans-strong-100;
+    @include tokens.cdr-text-utility-sans-strong-100;
   }
 
   &--eyebrow-100 {
-    @include cdr-text-eyebrow-100;
+    @include tokens.cdr-text-eyebrow-100;
   }
 
   &--heading {
     &-display {
-      &-800 { @include cdr-text-heading-display-800; }
-      &-900 { @include cdr-text-heading-display-900; }
-      &-1000 { @include cdr-text-heading-display-1000; }
-      &-1100 { @include cdr-text-heading-display-1100; }
-      &-1200 { @include cdr-text-heading-display-1200; }
-      &-1300 { @include cdr-text-heading-display-1300; }
-      &-1400 { @include cdr-text-heading-display-1400; }
-      &-1500 { @include cdr-text-heading-display-1500; }
-      &-1600 { @include cdr-text-heading-display-1600; }
+      &-800 { @include tokens.cdr-text-heading-display-800; }
+      &-900 { @include tokens.cdr-text-heading-display-900; }
+      &-1000 { @include tokens.cdr-text-heading-display-1000; }
+      &-1100 { @include tokens.cdr-text-heading-display-1100; }
+      &-1200 { @include tokens.cdr-text-heading-display-1200; }
+      &-1300 { @include tokens.cdr-text-heading-display-1300; }
+      &-1400 { @include tokens.cdr-text-heading-display-1400; }
+      &-1500 { @include tokens.cdr-text-heading-display-1500; }
+      &-1600 { @include tokens.cdr-text-heading-display-1600; }
     }
     &-sans {
-      &-200 { @include cdr-text-heading-sans-200; }
-      &-300 { @include cdr-text-heading-sans-300; }
-      &-400 { @include cdr-text-heading-sans-400; }
-      &-500 { @include cdr-text-heading-sans-500; }
-      &-600 { @include cdr-text-heading-sans-600; }
+      &-200 { @include tokens.cdr-text-heading-sans-200; }
+      &-300 { @include tokens.cdr-text-heading-sans-300; }
+      &-400 { @include tokens.cdr-text-heading-sans-400; }
+      &-500 { @include tokens.cdr-text-heading-sans-500; }
+      &-600 { @include tokens.cdr-text-heading-sans-600; }
     }
     &-serif {
-      &-200 { @include cdr-text-heading-serif-200; }
-      &-300 { @include cdr-text-heading-serif-300; }
-      &-400 { @include cdr-text-heading-serif-400; }
-      &-500 { @include cdr-text-heading-serif-500; }
-      &-600 { @include cdr-text-heading-serif-600; }
-      &-700 { @include cdr-text-heading-serif-700; }
-      &-800 { @include cdr-text-heading-serif-800; }
-      &-900 { @include cdr-text-heading-serif-900; }
-      &-1000 { @include cdr-text-heading-serif-1000; }
-      &-1100 { @include cdr-text-heading-serif-1100; }
-      &-1200 { @include cdr-text-heading-serif-1200; }
+      &-200 { @include tokens.cdr-text-heading-serif-200; }
+      &-300 { @include tokens.cdr-text-heading-serif-300; }
+      &-400 { @include tokens.cdr-text-heading-serif-400; }
+      &-500 { @include tokens.cdr-text-heading-serif-500; }
+      &-600 { @include tokens.cdr-text-heading-serif-600; }
+      &-700 { @include tokens.cdr-text-heading-serif-700; }
+      &-800 { @include tokens.cdr-text-heading-serif-800; }
+      &-900 { @include tokens.cdr-text-heading-serif-900; }
+      &-1000 { @include tokens.cdr-text-heading-serif-1000; }
+      &-1100 { @include tokens.cdr-text-heading-serif-1100; }
+      &-1200 { @include tokens.cdr-text-heading-serif-1200; }
       &-strong {
-        &-600 { @include cdr-text-heading-serif-strong-600; }
-        &-700 { @include cdr-text-heading-serif-strong-700; }
-        &-800 { @include cdr-text-heading-serif-strong-800; }
-        &-900 { @include cdr-text-heading-serif-strong-900; }
-        &-1000 { @include cdr-text-heading-serif-strong-1000; }
-        &-1100 { @include cdr-text-heading-serif-strong-1100; }
-        &-1200 { @include cdr-text-heading-serif-strong-1200; }
+        &-600 { @include tokens.cdr-text-heading-serif-strong-600; }
+        &-700 { @include tokens.cdr-text-heading-serif-strong-700; }
+        &-800 { @include tokens.cdr-text-heading-serif-strong-800; }
+        &-900 { @include tokens.cdr-text-heading-serif-strong-900; }
+        &-1000 { @include tokens.cdr-text-heading-serif-strong-1000; }
+        &-1100 { @include tokens.cdr-text-heading-serif-strong-1100; }
+        &-1200 { @include tokens.cdr-text-heading-serif-strong-1200; }
       }
     }
   }
 
   &--subheading {
     &-sans {
-      &-300 { @include cdr-text-subheading-sans-300; }
-      &-400 { @include cdr-text-subheading-sans-400; }
-      &-500 { @include cdr-text-subheading-sans-500; }
-      &-600 { @include cdr-text-subheading-sans-600; }
+      &-300 { @include tokens.cdr-text-subheading-sans-300; }
+      &-400 { @include tokens.cdr-text-subheading-sans-400; }
+      &-500 { @include tokens.cdr-text-subheading-sans-500; }
+      &-600 { @include tokens.cdr-text-subheading-sans-600; }
     }
   }
 
-  @include cdr-xs-mq-only {
+  @include tokens.cdr-xs-mq-only {
     &--heading {
       &-sans {
-        &-200\@xs { @include cdr-text-heading-sans-200; }
-        &-300\@xs { @include cdr-text-heading-sans-300; }
-        &-400\@xs { @include cdr-text-heading-sans-400; }
-        &-500\@xs { @include cdr-text-heading-sans-500; }
-        &-600\@xs { @include cdr-text-heading-sans-600; }
+        &-200\@xs { @include tokens.cdr-text-heading-sans-200; }
+        &-300\@xs { @include tokens.cdr-text-heading-sans-300; }
+        &-400\@xs { @include tokens.cdr-text-heading-sans-400; }
+        &-500\@xs { @include tokens.cdr-text-heading-sans-500; }
+        &-600\@xs { @include tokens.cdr-text-heading-sans-600; }
       }
       &-serif {
-        &-200\@xs { @include cdr-text-heading-serif-200; }
-        &-300\@xs { @include cdr-text-heading-serif-300; }
-        &-400\@xs { @include cdr-text-heading-serif-400; }
-        &-500\@xs { @include cdr-text-heading-serif-500; }
-        &-600\@xs { @include cdr-text-heading-serif-600; }
-        &-700\@xs { @include cdr-text-heading-serif-700; }
-        &-800\@xs { @include cdr-text-heading-serif-800; }
-        &-900\@xs { @include cdr-text-heading-serif-900; }
-        &-1000\@xs { @include cdr-text-heading-serif-1000; }
-        &-1100\@xs { @include cdr-text-heading-serif-1100; }
-        &-1200\@xs { @include cdr-text-heading-serif-1200; }
+        &-200\@xs { @include tokens.cdr-text-heading-serif-200; }
+        &-300\@xs { @include tokens.cdr-text-heading-serif-300; }
+        &-400\@xs { @include tokens.cdr-text-heading-serif-400; }
+        &-500\@xs { @include tokens.cdr-text-heading-serif-500; }
+        &-600\@xs { @include tokens.cdr-text-heading-serif-600; }
+        &-700\@xs { @include tokens.cdr-text-heading-serif-700; }
+        &-800\@xs { @include tokens.cdr-text-heading-serif-800; }
+        &-900\@xs { @include tokens.cdr-text-heading-serif-900; }
+        &-1000\@xs { @include tokens.cdr-text-heading-serif-1000; }
+        &-1100\@xs { @include tokens.cdr-text-heading-serif-1100; }
+        &-1200\@xs { @include tokens.cdr-text-heading-serif-1200; }
         &-strong {
-          &-600\@xs { @include cdr-text-heading-serif-strong-600; }
-          &-700\@xs { @include cdr-text-heading-serif-strong-700; }
-          &-800\@xs { @include cdr-text-heading-serif-strong-800; }
-          &-900\@xs { @include cdr-text-heading-serif-strong-900; }
-          &-1000\@xs { @include cdr-text-heading-serif-strong-1000; }
-          &-1100\@xs { @include cdr-text-heading-serif-strong-1100; }
-          &-1200\@xs { @include cdr-text-heading-serif-strong-1200; }
+          &-600\@xs { @include tokens.cdr-text-heading-serif-strong-600; }
+          &-700\@xs { @include tokens.cdr-text-heading-serif-strong-700; }
+          &-800\@xs { @include tokens.cdr-text-heading-serif-strong-800; }
+          &-900\@xs { @include tokens.cdr-text-heading-serif-strong-900; }
+          &-1000\@xs { @include tokens.cdr-text-heading-serif-strong-1000; }
+          &-1100\@xs { @include tokens.cdr-text-heading-serif-strong-1100; }
+          &-1200\@xs { @include tokens.cdr-text-heading-serif-strong-1200; }
         }
       }
     }
 
     &--subheading {
       &-sans {
-        &-300\@xs { @include cdr-text-subheading-sans-300; }
-        &-400\@xs { @include cdr-text-subheading-sans-400; }
-        &-500\@xs { @include cdr-text-subheading-sans-500; }
-        &-600\@xs { @include cdr-text-subheading-sans-600; }
+        &-300\@xs { @include tokens.cdr-text-subheading-sans-300; }
+        &-400\@xs { @include tokens.cdr-text-subheading-sans-400; }
+        &-500\@xs { @include tokens.cdr-text-subheading-sans-500; }
+        &-600\@xs { @include tokens.cdr-text-subheading-sans-600; }
       }
     }
   }
 
-  @include cdr-sm-mq-only {
+  @include tokens.cdr-sm-mq-only {
     &--heading {
       &-sans {
-        &-200\@sm { @include cdr-text-heading-sans-200; }
-        &-300\@sm { @include cdr-text-heading-sans-300; }
-        &-400\@sm { @include cdr-text-heading-sans-400; }
-        &-500\@sm { @include cdr-text-heading-sans-500; }
-        &-600\@sm { @include cdr-text-heading-sans-600; }
+        &-200\@sm { @include tokens.cdr-text-heading-sans-200; }
+        &-300\@sm { @include tokens.cdr-text-heading-sans-300; }
+        &-400\@sm { @include tokens.cdr-text-heading-sans-400; }
+        &-500\@sm { @include tokens.cdr-text-heading-sans-500; }
+        &-600\@sm { @include tokens.cdr-text-heading-sans-600; }
       }
       &-serif {
-        &-200\@sm { @include cdr-text-heading-serif-200; }
-        &-300\@sm { @include cdr-text-heading-serif-300; }
-        &-400\@sm { @include cdr-text-heading-serif-400; }
-        &-500\@sm { @include cdr-text-heading-serif-500; }
-        &-600\@sm { @include cdr-text-heading-serif-600; }
-        &-700\@sm { @include cdr-text-heading-serif-700; }
-        &-800\@sm { @include cdr-text-heading-serif-800; }
-        &-900\@sm { @include cdr-text-heading-serif-900; }
-        &-1000\@sm { @include cdr-text-heading-serif-1000; }
-        &-1100\@sm { @include cdr-text-heading-serif-1100; }
-        &-1200\@sm { @include cdr-text-heading-serif-1200; }
+        &-200\@sm { @include tokens.cdr-text-heading-serif-200; }
+        &-300\@sm { @include tokens.cdr-text-heading-serif-300; }
+        &-400\@sm { @include tokens.cdr-text-heading-serif-400; }
+        &-500\@sm { @include tokens.cdr-text-heading-serif-500; }
+        &-600\@sm { @include tokens.cdr-text-heading-serif-600; }
+        &-700\@sm { @include tokens.cdr-text-heading-serif-700; }
+        &-800\@sm { @include tokens.cdr-text-heading-serif-800; }
+        &-900\@sm { @include tokens.cdr-text-heading-serif-900; }
+        &-1000\@sm { @include tokens.cdr-text-heading-serif-1000; }
+        &-1100\@sm { @include tokens.cdr-text-heading-serif-1100; }
+        &-1200\@sm { @include tokens.cdr-text-heading-serif-1200; }
         &-strong {
-          &-600\@sm { @include cdr-text-heading-serif-strong-600; }
-          &-700\@sm { @include cdr-text-heading-serif-strong-700; }
-          &-800\@sm { @include cdr-text-heading-serif-strong-800; }
-          &-900\@sm { @include cdr-text-heading-serif-strong-900; }
-          &-1000\@sm { @include cdr-text-heading-serif-strong-1000; }
-          &-1100\@sm { @include cdr-text-heading-serif-strong-1100; }
-          &-1200\@sm { @include cdr-text-heading-serif-strong-1200; }
+          &-600\@sm { @include tokens.cdr-text-heading-serif-strong-600; }
+          &-700\@sm { @include tokens.cdr-text-heading-serif-strong-700; }
+          &-800\@sm { @include tokens.cdr-text-heading-serif-strong-800; }
+          &-900\@sm { @include tokens.cdr-text-heading-serif-strong-900; }
+          &-1000\@sm { @include tokens.cdr-text-heading-serif-strong-1000; }
+          &-1100\@sm { @include tokens.cdr-text-heading-serif-strong-1100; }
+          &-1200\@sm { @include tokens.cdr-text-heading-serif-strong-1200; }
         }
       }
     }
 
     &--subheading {
       &-sans {
-        &-300\@sm { @include cdr-text-subheading-sans-300; }
-        &-400\@sm { @include cdr-text-subheading-sans-400; }
-        &-500\@sm { @include cdr-text-subheading-sans-500; }
-        &-600\@sm { @include cdr-text-subheading-sans-600; }
+        &-300\@sm { @include tokens.cdr-text-subheading-sans-300; }
+        &-400\@sm { @include tokens.cdr-text-subheading-sans-400; }
+        &-500\@sm { @include tokens.cdr-text-subheading-sans-500; }
+        &-600\@sm { @include tokens.cdr-text-subheading-sans-600; }
       }
     }
   }
 
-  @include cdr-md-mq-only {
+  @include tokens.cdr-md-mq-only {
     &--heading {
       &-sans {
-        &-200\@md { @include cdr-text-heading-sans-200; }
-        &-300\@md { @include cdr-text-heading-sans-300; }
-        &-400\@md { @include cdr-text-heading-sans-400; }
-        &-500\@md { @include cdr-text-heading-sans-500; }
-        &-600\@md { @include cdr-text-heading-sans-600; }
+        &-200\@md { @include tokens.cdr-text-heading-sans-200; }
+        &-300\@md { @include tokens.cdr-text-heading-sans-300; }
+        &-400\@md { @include tokens.cdr-text-heading-sans-400; }
+        &-500\@md { @include tokens.cdr-text-heading-sans-500; }
+        &-600\@md { @include tokens.cdr-text-heading-sans-600; }
       }
       &-serif {
-        &-200\@md { @include cdr-text-heading-serif-200; }
-        &-300\@md { @include cdr-text-heading-serif-300; }
-        &-400\@md { @include cdr-text-heading-serif-400; }
-        &-500\@md { @include cdr-text-heading-serif-500; }
-        &-600\@md { @include cdr-text-heading-serif-600; }
-        &-700\@md { @include cdr-text-heading-serif-700; }
-        &-800\@md { @include cdr-text-heading-serif-800; }
-        &-900\@md { @include cdr-text-heading-serif-900; }
-        &-1000\@md { @include cdr-text-heading-serif-1000; }
-        &-1100\@md { @include cdr-text-heading-serif-1100; }
-        &-1200\@md { @include cdr-text-heading-serif-1200; }
+        &-200\@md { @include tokens.cdr-text-heading-serif-200; }
+        &-300\@md { @include tokens.cdr-text-heading-serif-300; }
+        &-400\@md { @include tokens.cdr-text-heading-serif-400; }
+        &-500\@md { @include tokens.cdr-text-heading-serif-500; }
+        &-600\@md { @include tokens.cdr-text-heading-serif-600; }
+        &-700\@md { @include tokens.cdr-text-heading-serif-700; }
+        &-800\@md { @include tokens.cdr-text-heading-serif-800; }
+        &-900\@md { @include tokens.cdr-text-heading-serif-900; }
+        &-1000\@md { @include tokens.cdr-text-heading-serif-1000; }
+        &-1100\@md { @include tokens.cdr-text-heading-serif-1100; }
+        &-1200\@md { @include tokens.cdr-text-heading-serif-1200; }
         &-strong {
-          &-600\@md { @include cdr-text-heading-serif-strong-600; }
-          &-700\@md { @include cdr-text-heading-serif-strong-700; }
-          &-800\@md { @include cdr-text-heading-serif-strong-800; }
-          &-900\@md { @include cdr-text-heading-serif-strong-900; }
-          &-1000\@md { @include cdr-text-heading-serif-strong-1000; }
-          &-1100\@md { @include cdr-text-heading-serif-strong-1100; }
-          &-1200\@md { @include cdr-text-heading-serif-strong-1200; }
+          &-600\@md { @include tokens.cdr-text-heading-serif-strong-600; }
+          &-700\@md { @include tokens.cdr-text-heading-serif-strong-700; }
+          &-800\@md { @include tokens.cdr-text-heading-serif-strong-800; }
+          &-900\@md { @include tokens.cdr-text-heading-serif-strong-900; }
+          &-1000\@md { @include tokens.cdr-text-heading-serif-strong-1000; }
+          &-1100\@md { @include tokens.cdr-text-heading-serif-strong-1100; }
+          &-1200\@md { @include tokens.cdr-text-heading-serif-strong-1200; }
         }
       }
     }
 
     &--subheading {
       &-sans {
-        &-300\@md { @include cdr-text-subheading-sans-300; }
-        &-400\@md { @include cdr-text-subheading-sans-400; }
-        &-500\@md { @include cdr-text-subheading-sans-500; }
-        &-600\@md { @include cdr-text-subheading-sans-600; }
+        &-300\@md { @include tokens.cdr-text-subheading-sans-300; }
+        &-400\@md { @include tokens.cdr-text-subheading-sans-400; }
+        &-500\@md { @include tokens.cdr-text-subheading-sans-500; }
+        &-600\@md { @include tokens.cdr-text-subheading-sans-600; }
       }
     }
   }
 
-  @include cdr-lg-mq-only {
+  @include tokens.cdr-lg-mq-only {
     &--heading {
       &-sans {
-        &-200\@lg { @include cdr-text-heading-sans-200; }
-        &-300\@lg { @include cdr-text-heading-sans-300; }
-        &-400\@lg { @include cdr-text-heading-sans-400; }
-        &-500\@lg { @include cdr-text-heading-sans-500; }
-        &-600\@lg { @include cdr-text-heading-sans-600; }
+        &-200\@lg { @include tokens.cdr-text-heading-sans-200; }
+        &-300\@lg { @include tokens.cdr-text-heading-sans-300; }
+        &-400\@lg { @include tokens.cdr-text-heading-sans-400; }
+        &-500\@lg { @include tokens.cdr-text-heading-sans-500; }
+        &-600\@lg { @include tokens.cdr-text-heading-sans-600; }
       }
       &-serif {
-        &-200\@lg { @include cdr-text-heading-serif-200; }
-        &-300\@lg { @include cdr-text-heading-serif-300; }
-        &-400\@lg { @include cdr-text-heading-serif-400; }
-        &-500\@lg { @include cdr-text-heading-serif-500; }
-        &-600\@lg { @include cdr-text-heading-serif-600; }
-        &-700\@lg { @include cdr-text-heading-serif-700; }
-        &-800\@lg { @include cdr-text-heading-serif-800; }
-        &-900\@lg { @include cdr-text-heading-serif-900; }
-        &-1000\@lg { @include cdr-text-heading-serif-1000; }
-        &-1100\@lg { @include cdr-text-heading-serif-1100; }
-        &-1200\@lg { @include cdr-text-heading-serif-1200; }
+        &-200\@lg { @include tokens.cdr-text-heading-serif-200; }
+        &-300\@lg { @include tokens.cdr-text-heading-serif-300; }
+        &-400\@lg { @include tokens.cdr-text-heading-serif-400; }
+        &-500\@lg { @include tokens.cdr-text-heading-serif-500; }
+        &-600\@lg { @include tokens.cdr-text-heading-serif-600; }
+        &-700\@lg { @include tokens.cdr-text-heading-serif-700; }
+        &-800\@lg { @include tokens.cdr-text-heading-serif-800; }
+        &-900\@lg { @include tokens.cdr-text-heading-serif-900; }
+        &-1000\@lg { @include tokens.cdr-text-heading-serif-1000; }
+        &-1100\@lg { @include tokens.cdr-text-heading-serif-1100; }
+        &-1200\@lg { @include tokens.cdr-text-heading-serif-1200; }
         &-strong {
-          &-600\@lg { @include cdr-text-heading-serif-strong-600; }
-          &-700\@lg { @include cdr-text-heading-serif-strong-700; }
-          &-800\@lg { @include cdr-text-heading-serif-strong-800; }
-          &-900\@lg { @include cdr-text-heading-serif-strong-900; }
-          &-1000\@lg { @include cdr-text-heading-serif-strong-1000; }
-          &-1100\@lg { @include cdr-text-heading-serif-strong-1100; }
-          &-1200\@lg { @include cdr-text-heading-serif-strong-1200; }
+          &-600\@lg { @include tokens.cdr-text-heading-serif-strong-600; }
+          &-700\@lg { @include tokens.cdr-text-heading-serif-strong-700; }
+          &-800\@lg { @include tokens.cdr-text-heading-serif-strong-800; }
+          &-900\@lg { @include tokens.cdr-text-heading-serif-strong-900; }
+          &-1000\@lg { @include tokens.cdr-text-heading-serif-strong-1000; }
+          &-1100\@lg { @include tokens.cdr-text-heading-serif-strong-1100; }
+          &-1200\@lg { @include tokens.cdr-text-heading-serif-strong-1200; }
         }
       }
     }
 
     &--subheading {
       &-sans {
-        &-300\@lg { @include cdr-text-subheading-sans-300; }
-        &-400\@lg { @include cdr-text-subheading-sans-400; }
-        &-500\@lg { @include cdr-text-subheading-sans-500; }
-        &-600\@lg { @include cdr-text-subheading-sans-600; }
+        &-300\@lg { @include tokens.cdr-text-subheading-sans-300; }
+        &-400\@lg { @include tokens.cdr-text-subheading-sans-400; }
+        &-500\@lg { @include tokens.cdr-text-subheading-sans-500; }
+        &-600\@lg { @include tokens.cdr-text-subheading-sans-600; }
       }
     }
   }

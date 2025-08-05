@@ -1,8 +1,8 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
-@import '../../popup/styles/CdrPopup.module';
-@import '../../button/styles/CdrButton.module';
-@import '../../icon/styles/CdrIcon.module';
+@use '../../popup/styles/CdrPopup.module';
+@use '../../button/styles/CdrButton.module';
+@use '../../icon/styles/CdrIcon.module';
 
 .cdr-popover{
   &--position {
