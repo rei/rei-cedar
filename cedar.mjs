@@ -11975,7 +11975,7 @@ const AP = /* @__PURE__ */ k({
             class: h(y(n)["cdr-rating__number"])
           }, M(f.value), 3)) : pe("", !0),
           l("span", null, M(C.value), 1),
-          t.compact ? pe("", !0) : (m(), q("span", FP, "  Reviews "))
+          t.compact ? pe("", !0) : (m(), q("span", FP, " Reviews"))
         ], 2)) : pe("", !0),
         l("span", {
           class: h(y(n)["cdr-rating__caption-sr"])
