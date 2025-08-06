@@ -43,6 +43,7 @@
     "pages": "vite build --config vite.pages.config.mts",
     "preview": "vite preview --config vite.pages.config.mts",
     "unit": "vitest run",
+    "unit:update": "vitest --update",
     "watch": "vitest",
     "coverage": "vitest run --coverage",
     "test:playwright": "playwright test",
