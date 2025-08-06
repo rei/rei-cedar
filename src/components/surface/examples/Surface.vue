@@ -3,7 +3,6 @@ import CdrSurface from '../CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
 import CdrButton from '../../button/CdrButton.vue';
-import CdrLink from '../../link/CdrLink.vue';
 import type { surface, HtmlAttributes } from '../../../types/interfaces';
 
 defineOptions({ name: 'Surface' });

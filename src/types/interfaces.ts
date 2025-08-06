@@ -225,7 +225,7 @@ export interface Layout extends NameValuePair {
   as?: Component | string;
 }
 
-interface StateConfig<PropertyValue> {
+export interface StateConfig<PropertyValue> {
   rest: PropertyValue;
   hover?: PropertyValue;
   active?: PropertyValue;
