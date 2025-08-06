@@ -42,7 +42,9 @@ $media-object-component: 'media-object';
 
 // Allows for switching positions of media and content at breakpoints
 @mixin cdr-media-object-media-position-mixin($component) {
-  grid-template-areas: var(--cdr-#{$component}-media-position);
+  & {
+    grid-template-areas: var(--cdr-#{$component}-media-position);
+  }
   @include query.cdr-mq-mixin($component, 'media-position');
 }
 
@@ -66,9 +68,12 @@ $media-object-component: 'media-object';
 
 // Allow for content to overlay media
 @mixin cdr-media-object-overlay-mixin($component) {
+  & {
+    grid-template-areas: 'media';
+    position: relative;
+  }
+  
   @include cdr-media-object-cover-mixin($component);
-  grid-template-areas: 'media';
-  position: relative;
 
   @include cdr-media-object-content-mixin {
     position: absolute;

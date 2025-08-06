@@ -1,7 +1,7 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
-@import '../../icon/styles/CdrIcon.module';
-@import './CdrAccordionGroup.module';
+@use '../../icon/styles/CdrIcon.module';
+@use './CdrAccordionGroup.module';
 
 .cdr-accordion {
   //ITEM_DOC: Border color of cdr-accordion

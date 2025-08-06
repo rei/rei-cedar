@@ -1,7 +1,7 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
-@import '../../icon/styles/CdrIcon.module';
-@import '../../select/styles/CdrSelect.module';
+@use '../../icon/styles/CdrIcon.module';
+@use '../../select/styles/CdrSelect.module';
 
 .cdr-pagination {
   display: flex;

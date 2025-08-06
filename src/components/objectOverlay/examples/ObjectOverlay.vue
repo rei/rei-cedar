@@ -177,7 +177,7 @@ defineOptions({ name: 'ObjectOverlay' });
 </template>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .overlay-content {
   color: white;
@@ -194,7 +194,7 @@ defineOptions({ name: 'ObjectOverlay' });
 
 .example {
   &__hr {
-    margin: $cdr-space-two-x 0;
+    margin: tokens.$cdr-space-two-x 0;
   }
 
   &__container {
@@ -203,7 +203,7 @@ defineOptions({ name: 'ObjectOverlay' });
 
   &__content {
     &--color-inverse {
-      color: $cdr-color-text-inverse;
+      color: tokens.$cdr-color-text-inverse;
     }
 
     &--narrow {

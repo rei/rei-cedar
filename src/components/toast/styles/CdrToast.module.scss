@@ -1,8 +1,8 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 @use './vars/CdrToast.vars.scss' as vars;
 
-@import '../../button/styles/CdrButton.module';
-@import '../../icon/styles/CdrIcon.module';
+@use '../../button/styles/CdrButton.module';
+@use '../../icon/styles/CdrIcon.module';
 
 .cdr-toast {
   @include vars.cdr-toast-base-mixin;

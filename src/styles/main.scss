@@ -2,6 +2,6 @@
 @use './settings/index' as *;
 
 /* Utilities */
-@import './cdr-reset';
-@import './cdr-fonts';
-@import './cdr-palette';
+@use './cdr-reset';
+@use './cdr-fonts';
+@use './cdr-palette';
