@@ -156,10 +156,7 @@ const srText = computed(() => {
       <span>
         {{ formattedCount }}
       </span>
-
-      <span v-if="!compact">
-        &nbsp;Reviews
-      </span>
+      <span v-if="!compact">&nbsp;Reviews</span>
     </span>
 
     <span :class="style['cdr-rating__caption-sr']">
