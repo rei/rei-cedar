@@ -100,7 +100,7 @@
     "postcss-calc": "^8.0.0",
     "postcss-pxtorem": "^6.0.0",
     "postcss-scss": "^4.0.9",
-    "sass": "^1.71.1",
+    "sass": "^1.9.0",
     "sinon": "^11.1.0",
     "stylelint": "^16.10.0",
     "stylelint-config-recommended-scss": "^14.1.0",
