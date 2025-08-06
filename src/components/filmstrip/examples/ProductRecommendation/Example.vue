@@ -12,10 +12,9 @@
 
 <script setup lang="ts">
 import CdrFilmstrip from '../../CdrFilmstrip.vue';
-import type { ProductRecommendation } from './index';
 import ProductRecommendationModel from './mock.json';
 
-const ProductRecommendationModelData = ProductRecommendationModel as ProductRecommendation;
+const ProductRecommendationModelData = ProductRecommendationModel as Record<string, unknown>;
 import { onFrameClick, onArrowClick, onScrollNavigate } from './handlers';
 import ProductRecommendationAdapter from './adapter';
 </script>

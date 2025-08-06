@@ -42,13 +42,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import "node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .tokens-container {
-  @include cdr-container;
+  @include tokens.cdr-container;
 }
 
 .tokens-container-fluid {
-  @include cdr-container-fluid;
+  @include tokens.cdr-container-fluid;
 }
 </style>

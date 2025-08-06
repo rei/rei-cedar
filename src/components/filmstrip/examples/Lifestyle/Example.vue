@@ -11,10 +11,9 @@
 
 <script setup lang="ts">
 import CdrFilmstrip from '../../CdrFilmstrip.vue';
-import type { Lifestyle } from './index';
 import lifestyleModel from './mock.json';
 
-const lifestyleModelData = lifestyleModel as Lifestyle;
+const lifestyleModelData = lifestyleModel as Record<string, unknown>;
 import { onFrameClick, onArrowClick, onResize } from './handlers';
 import LifestyleAdapter from './adapter';
 </script>

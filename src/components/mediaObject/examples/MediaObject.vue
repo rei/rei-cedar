@@ -327,11 +327,11 @@ const columnExamples = [
 </template>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .example {
   &__hr {
-    margin: $cdr-space-two-x 0;
+    margin: tokens.$cdr-space-two-x 0;
   }
 
   &__container {
@@ -340,7 +340,7 @@ const columnExamples = [
 
   &__content {
     &--color-inverse {
-      color: $cdr-color-text-inverse;
+      color: tokens.$cdr-color-text-inverse;
     }
 
     &--narrow {
