@@ -125,7 +125,7 @@ exports[`CdrRating > with an href > renders correctly 1`] = `
       100
     </span>
     <span>
-        Reviews 
+       Reviews
     </span>
   </span>
   <span
@@ -261,7 +261,7 @@ exports[`CdrRating > with an href > with a count of 0 > renders correctly 1`] = 
       0
     </span>
     <span>
-        Reviews 
+       Reviews
     </span>
   </span>
   <span
@@ -384,7 +384,7 @@ exports[`CdrRating > with an href > with a whole number rating > renders correct
       1
     </span>
     <span>
-        Reviews 
+       Reviews
     </span>
   </span>
   <span
@@ -526,7 +526,7 @@ exports[`CdrRating > with an href > with decimal rating and count 1 > renders co
       1
     </span>
     <span>
-        Reviews 
+       Reviews
     </span>
   </span>
   <span
@@ -668,7 +668,7 @@ exports[`CdrRating > with an href > with string input > renders correctly 1`] = 
       2
     </span>
     <span>
-        Reviews 
+       Reviews
     </span>
   </span>
   <span
@@ -893,7 +893,7 @@ exports[`CdrRating > without an href > with a count of 0 > renders correctly 1`]
       0
     </span>
     <span>
-        Reviews 
+       Reviews
     </span>
   </span>
   <span
@@ -1011,7 +1011,7 @@ exports[`CdrRating > without an href > with a count of 100 > renders correctly 1
       100
     </span>
     <span>
-        Reviews 
+       Reviews
     </span>
   </span>
   <span

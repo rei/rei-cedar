@@ -111,11 +111,11 @@ const boxes: Example[] = [
 </template>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .example {
   &__hr {
-    margin: $cdr-space-two-x 0;
+    margin: tokens.$cdr-space-two-x 0;
   }
 }
 
@@ -129,8 +129,8 @@ const boxes: Example[] = [
   }
 
   &__image-wrapper {
-    background-color: $cdr-color-background-secondary;
-    padding: $cdr-space-inset-one-x;
+    background-color: tokens.$cdr-color-background-secondary;
+    padding: tokens.$cdr-space-inset-one-x;
   }
 
   &__image {

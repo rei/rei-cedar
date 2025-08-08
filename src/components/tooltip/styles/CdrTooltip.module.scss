@@ -1,6 +1,6 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
-@import '../../popup/styles/CdrPopup.module';
+@use '../../popup/styles/CdrPopup.module';
 
 .cdr-tooltip--position {
   position: relative;

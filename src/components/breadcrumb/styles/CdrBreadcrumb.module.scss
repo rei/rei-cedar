@@ -77,7 +77,7 @@
     @include vars.cdr-breadcrumb-xs-text-mixin;
   }
 
-  @include tokens.cdr-md-mq {
+  @include tokens.cdr-md-mq-up {
     &__link,
     &__delimiter,
     &__ellipses {

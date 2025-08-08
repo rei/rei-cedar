@@ -3,18 +3,18 @@
 $modal-animation-duration: 150ms;
 
 .cdr-modal {
-  @supports (-webkit-touch-callout: none) {
-    & * {
-      will-change: transform;
-    }
-  }
-
   inset: 0;
   height: 100%;
   overflow-y: scroll;
   position: fixed;
   visibility: visible;
   z-index: 9999;
+
+  @supports (-webkit-touch-callout: none) {
+    & * {
+      will-change: transform;
+    }
+  }
 
   &__overlay {
     //ITEM_DOC: Background color of the modal overlay

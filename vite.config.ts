@@ -28,6 +28,13 @@ export default defineConfig({
     modules: {
       generateScopedName: (name) => `${name}_${version.replace(/\./g, '-')}`,
     },
+    preprocessorOptions: {
+      scss: {
+        charset: false,
+        quietDeps: true,
+        api: 'modern'
+      }
+    }
   },
   resolve: {
     alias: {

@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "15.6.1-beta.5",
+  "version": "15.6.1-beta.4",
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
@@ -43,6 +43,7 @@
     "pages": "vite build --config vite.pages.config.mts",
     "preview": "vite preview --config vite.pages.config.mts",
     "unit": "vitest run",
+    "unit:update": "vitest --update",
     "watch": "vitest",
     "coverage": "vitest run --coverage",
     "test:playwright": "playwright test",
@@ -100,7 +101,7 @@
     "postcss-calc": "^8.0.0",
     "postcss-pxtorem": "^6.0.0",
     "postcss-scss": "^4.0.9",
-    "sass": "^1.32.11",
+    "sass": "^1.9.0",
     "sinon": "^11.1.0",
     "stylelint": "^16.10.0",
     "stylelint-config-recommended-scss": "^14.1.0",
@@ -131,7 +132,7 @@
     }
   },
   "dependencies": {
-    "@rei/cdr-tokens": "^12.7.1",
+    "@rei/cdr-tokens": "^13.0.0",
     "@vueuse/core": "^12.7.0",
     "radix-vue": "^1.9.17",
     "tabbable": "^4.0.0"

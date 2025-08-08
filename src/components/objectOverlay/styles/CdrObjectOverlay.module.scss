@@ -90,7 +90,7 @@ $light-gradients: (
           }
           // Set unused positions to auto
           @each $side in top, right, bottom, left {
-            @if not map-has-key($properties, $side) {
+            @if not map.has-key($properties, $side) {
               #{$side}: auto;
             }
           }

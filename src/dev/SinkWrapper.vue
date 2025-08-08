@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .sink-wrapper {
   &__radios {
@@ -77,7 +77,7 @@ export default {
   }
 
   &__container {
-    padding: $cdr-space-two-x;
+    padding: tokens.$cdr-space-two-x;
   }
 }
 </style>

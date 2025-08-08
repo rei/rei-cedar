@@ -87,7 +87,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss";
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 .membership-acquisition-imodal {
   // class to override cedar default class to allow background content more visible to user
   &--overlay-lighter {
@@ -95,24 +95,25 @@ export default {
     background-color: rgba(26, 26, 26, 0.6);
   }
   &__wrapper {
-    padding: $cdr-space-one-x;
-    .close-button-wrapper {
+    & {
+      padding: tokens.$cdr-space-one-x;
+    }
+    & .close-button-wrapper {
       position: absolute;
       right: 0;
       z-index: 1;
     }
-    .modal-close-button {
-      fill: $cdr-color-background-label-secondary-active;
-      @include cdr-sm-mq-down {
-        padding-top: $cdr-space-one-x;
+    & .modal-close-button {
+      fill: tokens.$cdr-color-background-label-secondary-active;
+      @include tokens.cdr-sm-mq-down {
+        padding-top: tokens.$cdr-space-one-x;
       }
     }
-    padding: $cdr-space-one-x;
 
     // Target modal container and avoid full screen behaviour on smaller resolutions.
     div[role="dialog"] {
-      @include cdr-sm-mq-down {
-        border-radius: $cdr-radius-softer;
+      @include tokens.cdr-sm-mq-down {
+        border-radius: tokens.$cdr-radius-softer;
         max-width: 315px;
         min-height: auto;
         position: relative;
@@ -122,7 +123,7 @@ export default {
     .content-wrapper {
       display: flex;
       flex-direction: column;
-      @include cdr-sm-mq-up {
+      @include tokens.cdr-sm-mq-up {
         flex-direction: row;
       }
       .image {
@@ -130,12 +131,12 @@ export default {
         background-size: 100% auto;
         background-position: 0% 55%;
         background-repeat: no-repeat;
-        border-radius: $cdr-radius-softer $cdr-radius-softer 0 0;
+        border-radius: tokens.$cdr-radius-softer tokens.$cdr-radius-softer 0 0;
         height: 180px;
-        @include cdr-sm-mq-up {
+        @include tokens.cdr-sm-mq-up {
           flex: 0 50%;
           height: 370px;
-          border-radius: $cdr-radius-softer 0 0 $cdr-radius-softer;
+          border-radius: tokens.$cdr-radius-softer 0 0 tokens.$cdr-radius-softer;
         }
       }
       .eyebrow {
@@ -144,36 +145,36 @@ export default {
         background: url("https://www.rei.com/assets/membership/benefits/modal/co-op-membership-logo/live.svg");
         background-repeat: no-repeat;
         background-size: 250px 8px;
-        margin: $cdr-space-one-and-a-half-x;
+        margin: tokens.$cdr-space-one-and-a-half-x;
         display: block;
         text-align: center;
-        @include cdr-sm-mq-up {
-          margin-top: $cdr-space-two-x;
+        @include tokens.cdr-sm-mq-up {
+          margin-top: tokens.$cdr-space-two-x;
         }
       }
       .content {
         padding: 8px;
-        @include cdr-sm-mq-up {
+        @include tokens.cdr-sm-mq-up {
           flex: 0 50%;
         }
       }
       .content.green {
-        background-color: $cdr-color-background-brand-spruce;
-        color: $cdr-color-background-label-secondary-active;
-        padding: $cdr-space-one-x;
-        border-radius: 0 0 $cdr-radius-softer $cdr-radius-softer;
+        background-color: tokens.$cdr-color-background-brand-spruce;
+        color: tokens.$cdr-color-background-label-secondary-active;
+        padding: tokens.$cdr-space-one-x;
+        border-radius: 0 0 tokens.$cdr-radius-softer tokens.$cdr-radius-softer;
         button {
           text-align: center;
         }
-        @include cdr-sm-mq-up {
-          border-radius: 0 $cdr-radius-softer $cdr-radius-softer 0;
-          padding: $cdr-space-two-x $cdr-space-one-and-a-half-x;
+        @include tokens.cdr-sm-mq-up {
+          border-radius: 0 tokens.$cdr-radius-softer tokens.$cdr-radius-softer 0;
+          padding: tokens.$cdr-space-two-x tokens.$cdr-space-one-and-a-half-x;
           position: relative;
         }
         .subheading {
-          @include cdr-text-body-300;
-          margin-top: $cdr-space-one-x;
-          margin-bottom: $cdr-space-one-x;
+          @include tokens.cdr-text-body-300;
+          margin-top: tokens.$cdr-space-one-x;
+          margin-bottom: tokens.$cdr-space-one-x;
         }
       }
       .nomargin {
@@ -183,7 +184,7 @@ export default {
   }
 }
 .sr-only{
-  @include cdr-display-sr-only;
+  @include tokens.cdr-display-sr-only;
 }
 .icon {
   position: absolute;

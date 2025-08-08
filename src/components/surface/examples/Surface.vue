@@ -3,7 +3,6 @@ import CdrSurface from '../CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
 import CdrButton from '../../button/CdrButton.vue';
-import CdrLink from '../../link/CdrLink.vue';
 import type { surface, HtmlAttributes } from '../../../types/interfaces';
 
 defineOptions({ name: 'Surface' });
@@ -99,21 +98,21 @@ const boxes: Example[] = [
 </template>
 
 <style lang="scss" scoped>
-@import '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss';
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .example {
   &__hr {
-    margin: $cdr-space-two-x 0;
+    margin: tokens.$cdr-space-two-x 0;
   }
 
   &__card {
     display: inline-block;
-    padding: $cdr-space-two-x;
+    padding: tokens.$cdr-space-two-x;
   }
 
   &__pill {
     display: inline-block;
-    padding: $cdr-space-half-x $cdr-space-one-x;
+    padding: tokens.$cdr-space-half-x tokens.$cdr-space-one-x;
   }
 }
 </style>

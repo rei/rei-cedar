@@ -41,13 +41,13 @@
   //ITEM_DOC: Border color of a cdr-quote pull container
   border-color: var(--cdr-quote-pull-container-border-color, var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary}));
 
-  @include tokens.cdr-xs-mq {
+  @include tokens.cdr-xs-mq-up {
     border-width: 0 0 1px;
     padding: tokens.$cdr-space-inset-one-x-stretch;
     margin: 0 0 tokens.$cdr-space-one-x;
   }
 
-  @include tokens.cdr-sm-mq {
+  @include tokens.cdr-sm-mq-up {
     border-width: 0 0 0 1px;
     padding: tokens.$cdr-space-half-x tokens.$cdr-space-one-x tokens.$cdr-space-half-x tokens.$cdr-space-two-x;
     margin: tokens.$cdr-space-one-x 0;
