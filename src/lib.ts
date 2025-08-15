@@ -40,6 +40,7 @@ export { default as CdrSplitSurface } from './components/splitSurface/CdrSplitSu
 export { default as CdrSurface } from './components/surface/CdrSurface.vue';
 export { default as CdrSurfaceSelection } from './components/surfaceSelection/CdrSurfaceSelection.vue';
 export { default as CdrSurfaceNavigation } from './components/surfaceNavigation/CdrSurfaceNavigation.vue';
+export { default as CdrSurfaceScroll } from './components/surfaceScroll/CdrSurfaceScroll.vue';
 export { default as CdrTable } from './components/table/CdrTable.vue';
 export { default as CdrTabPanel } from './components/tabs/CdrTabPanel.vue';
 export { default as CdrTabs } from './components/tabs/CdrTabs.vue';
