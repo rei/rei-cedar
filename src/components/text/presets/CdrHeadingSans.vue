@@ -25,7 +25,8 @@ const typeProperties = computed(() => {
   return {
     '--cdr-heading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
     '--cdr-heading-sans-line-height': 
-      `calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-heading-sans-line-height-ratio))`
+      `var(--cdr-line-height-ratio-heading-sans-${props.scale}, 
+      calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-heading-sans-line-height-ratio)))`
   }
 });
 

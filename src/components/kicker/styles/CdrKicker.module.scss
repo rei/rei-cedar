@@ -5,5 +5,5 @@
 
   color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
   font-size: var(--cdr-type-scale--1);
-  line-height: calc(var(--cdr-type-scale--1) * var(--cdr-heading-display-line-height-ratio));
+  line-height: var(--cdr-line-height-ratio-heading-serif-1);
 }

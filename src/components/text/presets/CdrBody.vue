@@ -27,8 +27,9 @@ const props = withDefaults(defineProps<bodyTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-body-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-body-line-height':
-      `calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-body-line-height-ratio))`,
+    '--cdr-body-line-height': 
+    `var(--cdr-line-height-ratio-body-${props.scale}, 
+    calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-body-line-height-ratio)))`,
     '--cdr-body-font-weight': props.strong ? '600' : '400',
   };
 });
