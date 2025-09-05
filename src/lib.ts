@@ -66,3 +66,4 @@ export * from './types/symbols';
 import './styles/cdr-reset.scss';
 import './styles/cdr-fonts.scss';
 import './styles/cdr-palette.scss';
+import './styles/cdr-fluid-vars.scss';
