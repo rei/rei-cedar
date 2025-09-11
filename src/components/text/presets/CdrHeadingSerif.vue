@@ -26,9 +26,7 @@ const props = withDefaults(defineProps<headingSerifTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-heading-serif-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-serif-line-height': 
-      `var(--cdr-line-height-ratio-heading-serif-${props.scale},
-      calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-heading-serif-line-height-ratio)))`,
+    '--cdr-heading-line-height': `var(--cdr-line-height-ratio-heading-${props.scale})`,
     '--cdr-heading-serif-font-weight': props.strong ? '600' : '400',
 
   }

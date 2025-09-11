@@ -23,9 +23,7 @@ const props = withDefaults(defineProps<subheadingSansTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-subheading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-subheading-sans-line-height': 
-      `var(--cdr-line-height-ratio-subheading-sans-${props.scale},
-      calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-subheading-sans-line-height-ratio)))`,
+    '--cdr-subheading-sans-line-height': `var(--cdr-line-height-ratio-subheading-sans-${props.scale}})`
 
   }
 });
