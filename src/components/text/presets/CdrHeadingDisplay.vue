@@ -24,7 +24,8 @@ const props = withDefaults(defineProps<headingDisplayTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-heading-display-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-display-line-height':`var(--cdr-line-height-ratio-heading-display-${props.scale})`
+    '--cdr-heading-display-line-height': 
+    `var(--cdr-line-height-ratio-heading-display-${props.scale})`
   }
 });
 

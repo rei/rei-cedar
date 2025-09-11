@@ -24,7 +24,8 @@ const props = withDefaults(defineProps<headingSansTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-heading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-line-height': `var(--cdr-line-height-ratio-heading-${props.scale})`
+    '--cdr-heading-line-height': 
+    `var(--cdr-line-height-ratio-heading-${props.scale})`
   }
 });
 

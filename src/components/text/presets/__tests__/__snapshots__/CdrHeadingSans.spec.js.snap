@@ -3,7 +3,7 @@
 exports[`CdrHeadingSans > default configuration > renders correctly 1`] = `
 <h2
   class="cdr-heading-sans"
-  style="--cdr-heading-sans-font-size: var(--cdr-type-scale-3); --cdr-heading-sans-line-height: calc(var(--cdr-type-scale-3) * var(--cdr-heading-sans-line-height-ratio));"
+  style="--cdr-heading-sans-font-size: var(--cdr-type-scale-3); --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-3);"
 >
   
   paragraph
@@ -14,7 +14,7 @@ exports[`CdrHeadingSans > default configuration > renders correctly 1`] = `
 exports[`CdrHeadingSans > passing a scale > renders correctly 1`] = `
 <h2
   class="cdr-heading-sans"
-  style="--cdr-heading-sans-font-size: var(--cdr-type-scale-1); --cdr-heading-sans-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-heading-sans-line-height-ratio));"
+  style="--cdr-heading-sans-font-size: var(--cdr-type-scale-1); --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-1);"
 >
   
   paragraph
