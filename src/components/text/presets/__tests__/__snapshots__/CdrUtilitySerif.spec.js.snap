@@ -3,7 +3,7 @@
 exports[`CdrUtilitySerif > default configuration > renders correctly 1`] = `
 <p
   class="cdr-utility-serif"
-  style="--cdr-utility-serif-font-size: var(--cdr-type-scale-1); --cdr-utility-serif-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-serif-line-height-ratio)); --cdr-utility-serif-font-weight: 400;"
+  style="--cdr-utility-serif-font-size: var(--cdr-type-scale-1); --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility-1); --cdr-utility-serif-font-weight: 400;"
 >
   
   paragraph
@@ -14,7 +14,7 @@ exports[`CdrUtilitySerif > default configuration > renders correctly 1`] = `
 exports[`CdrUtilitySerif > passing a scale > renders correctly 1`] = `
 <p
   class="cdr-utility-serif"
-  style="--cdr-utility-serif-font-size: var(--cdr-type-scale--1); --cdr-utility-serif-line-height: calc(var(--cdr-type-scale--1) * var(--cdr-utility-serif-line-height-ratio)); --cdr-utility-serif-font-weight: 400;"
+  style="--cdr-utility-serif-font-size: var(--cdr-type-scale--1); --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility--1); --cdr-utility-serif-font-weight: 400;"
 >
   
   paragraph
@@ -25,7 +25,7 @@ exports[`CdrUtilitySerif > passing a scale > renders correctly 1`] = `
 exports[`CdrUtilitySerif > setting to strong variant > renders correctly 1`] = `
 <p
   class="cdr-utility-serif"
-  style="--cdr-utility-serif-font-size: var(--cdr-type-scale-1); --cdr-utility-serif-line-height: calc(var(--cdr-type-scale-1) * var(--cdr-utility-serif-line-height-ratio)); --cdr-utility-serif-font-weight: 600;"
+  style="--cdr-utility-serif-font-size: var(--cdr-type-scale-1); --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility-1); --cdr-utility-serif-font-weight: 600;"
 >
   
   paragraph

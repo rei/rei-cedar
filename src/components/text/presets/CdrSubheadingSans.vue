@@ -24,7 +24,7 @@ const typeProperties = computed(() => {
   return {
     '--cdr-subheading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
     '--cdr-subheading-sans-line-height': 
-      `calc(var(--cdr-type-scale-${props.scale}) * var(--cdr-subheading-sans-line-height-ratio))`,
+    `var(--cdr-line-height-ratio-subheading-sans-${props.scale}})`
 
   }
 });

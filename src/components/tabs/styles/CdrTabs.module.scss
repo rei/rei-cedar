@@ -73,7 +73,7 @@
 
     border: none;
     flex-grow: 1;
-    background-color: transparent;
+    background-color: var(--cdr-tabs-tab-background-color, transparent);
     display: block;
 
     //ITEM_DOC: Text color in a tab
