@@ -132,7 +132,7 @@
     }
   },
   "dependencies": {
-    "@rei/cdr-tokens": "^13.1.0",
+    "@rei/cdr-tokens": "^13.2.0",
     "@vueuse/core": "^12.7.0",
     "radix-vue": "^1.9.17",
     "tabbable": "^4.0.0"
