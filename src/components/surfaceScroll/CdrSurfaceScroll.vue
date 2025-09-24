@@ -26,7 +26,7 @@ defineExpose({ viewportRef });
   <ScrollAreaRoot
     v-bind="props.rootProps"
     :class="style['cdr-surface-scroll__root']"
-    type="always"
+    type="auto"
   >
     <ScrollAreaViewport
       ref="viewportRef"
