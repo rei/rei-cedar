@@ -132,7 +132,7 @@ const surfaceScrollRef = ref<typeof CdrSurfaceScroll | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
 
 // Scrollable viewport reference - computed to access the exposed viewportRef
-const viewportRef = computed(() => surfaceScrollRef.value?.viewportRef);
+const viewportRef = computed(() => (surfaceScrollRef.value?.viewportRef));
 
 // List of frame elements (each frame rendered as an <li>)
 const framesItemsRef = ref<Array<HTMLElement> | null>(null);
@@ -375,8 +375,8 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
 }, 100);
 
 onMounted(() => {
-  // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
-  useEventListener(viewportRef, 'scroll', debouncedHandleScroll);
+   // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
+  useEventListener(viewportRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
 
   // Initialize a resize observer to update the container width dynamically.
   const { stop } = useResizeObserver(containerRef, (entries) => {
