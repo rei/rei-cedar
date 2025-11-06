@@ -10,7 +10,6 @@
   border-top: var(--cdr-accordion-border);
   border-bottom: var(--cdr-accordion-border);
   position: relative;
-  z-index: 1;
   list-style: none;
 
   & + & {
@@ -33,7 +32,7 @@
     position: relative;
     text-align: left;
     width: 100%;
-    z-index: 1;
+    // z-index: 1;
 
     &:hover,
     &:focus {
@@ -168,14 +167,5 @@
     .cdr-accordion__content {
       padding: tokens.$cdr-space-quarter-x 0 tokens.$cdr-space-three-quarter-x;
     }
-  }
-
-  &--focused {
-    /*
-      This z-index change is to fix a Chrome-only visual issue with the light blue focus outline. Basically, the bottom
-      line of the outline is usually covered by the accordion immediately below what's currently focuesd. We increase
-      the z-index so that the outline can be correctly seen when the accordion is focused.
-    */
-    z-index: 10;
   }
 }
