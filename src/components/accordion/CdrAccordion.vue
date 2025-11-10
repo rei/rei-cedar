@@ -106,9 +106,6 @@ const compactClass = computed(() => (props.compact
 const borderAlignedClass = computed(() => (props.borderAligned
   ? modifyClassName(baseClass, 'border-aligned')
   : ''));
-const focusedClass = computed(() => (focused.value
-  ? modifyClassName(baseClass, 'focused')
-  : ''));
 const unwrapClass = computed(() => (unwrap.value
   ? modifyClassName(baseClass, 'unwrap')
   : ''));
@@ -161,7 +158,7 @@ onMounted(() => {
 <template>
   <div
     :class="!unwrap
-      ? mapClasses(style, baseClass, compactClass, borderAlignedClass, focusedClass, noSpacingClass)
+      ? mapClasses(style, baseClass, compactClass, borderAlignedClass, noSpacingClass)
       : null"
     :id="`${id}-accordion`"
   >
