@@ -70,7 +70,6 @@ describe('CdrAccordion', () => {
           await wrapper.vm.$nextTick();
         })
         it('should be focused', ()=>{
-          console.log("wrapper: ", wrapper.vm.focused)
           expect(wrapper.vm.focused).toBeTruthy();
         })
         
