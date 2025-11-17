@@ -18216,7 +18216,7 @@ const Qd = /* @__PURE__ */ k({
   name: "CdrFilmstrip",
   __name: "CdrFilmstrip",
   props: {
-    adapter: { type: Function, default: () => (t) => (console.warn("No adapter provided for CdrFilmstrip"), {
+    adapter: { type: Function, default: () => () => (console.warn("No adapter provided for CdrFilmstrip"), {
       frames: [],
       filmstripId: "empty-filmstrip",
       component: mr("div"),
