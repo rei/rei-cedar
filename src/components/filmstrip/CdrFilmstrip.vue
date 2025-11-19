@@ -70,7 +70,7 @@ const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
    * @default defaultAdapter
    */
   adapter: (): CdrFilmstripAdapter<Record<string, unknown>> => {
-    return (_modelData: unknown): CdrFilmstripConfig<Record<string, unknown>> => {
+    return (): CdrFilmstripConfig<Record<string, unknown>> => {
       console.warn(`No adapter provided for CdrFilmstrip`);
       return {
         frames: [],
