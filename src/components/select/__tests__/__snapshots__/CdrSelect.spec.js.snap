@@ -430,8 +430,8 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
       id="renders-error"
       role="status"
     >
-      <div
-        class="cdr-form-error__icon cdr-form-error__icon--active"
+      <span
+        class="cdr-form-error__icon"
       >
         <svg
           aria-hidden="true"
@@ -456,7 +456,7 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
           
           <!--v-if-->
         </svg>
-      </div>
+      </span>
       <div
         aria-atomic="true"
         aria-relevant="all"

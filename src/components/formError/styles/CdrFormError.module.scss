@@ -7,15 +7,10 @@
 
   &__icon {
     @include vars.cdr-form-error-icon-mixin;
-    display: none;
-
-    &--active {
-      display: inline;
-    }
   }
 }
 
 .--active-error {
   height: auto;
-  margin-top: .4rem;
+  padding: 0.4rem;
 }

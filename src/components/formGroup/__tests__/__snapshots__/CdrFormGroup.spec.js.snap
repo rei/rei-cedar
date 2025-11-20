@@ -52,8 +52,8 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
     class="cdr-form-error --active-error"
     id="123-error"
   >
-    <div
-      class="cdr-form-error__icon cdr-form-error__icon--active"
+    <span
+      class="cdr-form-error__icon"
     >
       <svg
         aria-hidden="true"
@@ -78,7 +78,7 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
         
         <!--v-if-->
       </svg>
-    </div>
+    </span>
     <div
       aria-atomic="true"
       aria-relevant="all"
@@ -125,8 +125,8 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
     class="cdr-form-error --active-error"
     id="renders-error"
   >
-    <div
-      class="cdr-form-error__icon cdr-form-error__icon--active"
+    <span
+      class="cdr-form-error__icon"
     >
       <svg
         aria-hidden="true"
@@ -151,7 +151,7 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
         
         <!--v-if-->
       </svg>
-    </div>
+    </span>
     <div
       aria-atomic="true"
       aria-relevant="all"
@@ -331,8 +331,8 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
     class="cdr-form-error --active-error"
     id="123-error"
   >
-    <div
-      class="cdr-form-error__icon cdr-form-error__icon--active"
+    <span
+      class="cdr-form-error__icon"
     >
       <svg
         aria-hidden="true"
@@ -357,7 +357,7 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
         
         <!--v-if-->
       </svg>
-    </div>
+    </span>
     <div
       aria-atomic="true"
       aria-relevant="all"

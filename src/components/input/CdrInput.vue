@@ -311,6 +311,7 @@ const inputModel = computed({
       <cdr-form-error
         :error="error"
         :id="`${uniqueId}-error`"
+        :role="errorRole"
       >
         <template #error>
           <!-- @slot Error messaging text that is displayed when the `error` prop is true. -->
