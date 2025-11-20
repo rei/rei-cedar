@@ -13,10 +13,11 @@ defineProps<{
 const style = useCssModule();
 const baseClass = 'cdr-form-error';
 const iconClass = 'cdr-form-error__icon';
+const activeErrorClass = '--active-error';
 </script>
 
 <template>
-  <div :class="style[baseClass]">
+  <div :class="[style[baseClass], error && style[activeErrorClass]]">
     <span
       :style="{ display: error ? 'inline' : 'none' }"
       :class="style[iconClass]"

@@ -2,8 +2,15 @@
 
 .cdr-form-error {
   @include vars.cdr-form-error-base-mixin;
+  height: 0;
+  margin: 0;
 
   &__icon {
     @include vars.cdr-form-error-icon-mixin;
   }
+}
+
+.--active-error {
+  height: auto;
+  margin-top: .4rem;
 }
