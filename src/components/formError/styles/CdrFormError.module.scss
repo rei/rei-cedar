@@ -7,6 +7,11 @@
 
   &__icon {
     @include vars.cdr-form-error-icon-mixin;
+    display: none;
+
+    &--active {
+      display: inline;
+    }
   }
 }
 

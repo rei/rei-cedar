@@ -4,9 +4,8 @@ exports[`CdrFormError > using an error slot > renders correctly 1`] = `
 <div
   class="cdr-form-error --active-error"
 >
-  <span
-    class="cdr-form-error__icon"
-    style="display: inline;"
+  <div
+    class="cdr-form-error__icon cdr-form-error__icon--active"
   >
     <svg
       aria-hidden="true"
@@ -31,18 +30,18 @@ exports[`CdrFormError > using an error slot > renders correctly 1`] = `
       
       <!--v-if-->
     </svg>
-  </span>
+  </div>
   <div
     aria-atomic="true"
     aria-relevant="all"
     role="status"
     style="display: inline-block;"
   >
-    <span>
+    <div>
       
       whoops
       
-    </span>
+    </div>
   </div>
 </div>
 `;
@@ -51,9 +50,8 @@ exports[`CdrFormError > using just the error prop (no slot) > renders correctly 
 <div
   class="cdr-form-error --active-error"
 >
-  <span
-    class="cdr-form-error__icon"
-    style="display: inline;"
+  <div
+    class="cdr-form-error__icon cdr-form-error__icon--active"
   >
     <svg
       aria-hidden="true"
@@ -78,18 +76,18 @@ exports[`CdrFormError > using just the error prop (no slot) > renders correctly 
       
       <!--v-if-->
     </svg>
-  </span>
+  </div>
   <div
     aria-atomic="true"
     aria-relevant="all"
     role="status"
     style="display: inline-block;"
   >
-    <span>
+    <div>
       
       yahoo!
       
-    </span>
+    </div>
   </div>
 </div>
 `;

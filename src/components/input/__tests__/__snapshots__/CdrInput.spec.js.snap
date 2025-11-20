@@ -47,9 +47,8 @@ exports[`CdrInput >  when error state is inactive > renders correctly 1`] = `
       class="cdr-form-error"
       id="test-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -74,7 +73,7 @@ exports[`CdrInput >  when error state is inactive > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -136,9 +135,8 @@ exports[`CdrInput > basic input component > renders correctly 1`] = `
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -163,7 +161,7 @@ exports[`CdrInput > basic input component > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -225,9 +223,8 @@ exports[`CdrInput > basic input component > when "multiline" is set to true and 
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -252,7 +249,7 @@ exports[`CdrInput > basic input component > when "multiline" is set to true and 
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -314,9 +311,8 @@ exports[`CdrInput > basic input component > when "type" is set to url > renders 
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -341,7 +337,7 @@ exports[`CdrInput > basic input component > when "type" is set to url > renders 
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -406,9 +402,8 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
       class="cdr-form-error --active-error"
       id="renders-error"
     >
-      <span
-        class="cdr-form-error__icon"
-        style="display: inline;"
+      <div
+        class="cdr-form-error__icon cdr-form-error__icon--active"
       >
         <svg
           aria-hidden="true"
@@ -433,18 +428,18 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
         role="status"
         style="display: inline-block;"
       >
-        <span>
+        <div>
           
           Something is wrong!
           
-        </span>
+        </div>
       </div>
     </div>
     
@@ -502,9 +497,8 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
       class="cdr-form-error --active-error"
       id="renders-error"
     >
-      <span
-        class="cdr-form-error__icon"
-        style="display: inline;"
+      <div
+        class="cdr-form-error__icon cdr-form-error__icon--active"
       >
         <svg
           aria-hidden="true"
@@ -529,18 +523,18 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
         role="status"
         style="display: inline-block;"
       >
-        <span>
+        <div>
           
           incorrect!
           
-        </span>
+        </div>
       </div>
     </div>
     
@@ -602,9 +596,8 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -629,7 +622,7 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -698,9 +691,8 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -725,7 +717,7 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -789,9 +781,8 @@ exports[`CdrInput > basic input component > with prop type of "number" > renders
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -816,7 +807,7 @@ exports[`CdrInput > basic input component > with prop type of "number" > renders
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -879,9 +870,8 @@ exports[`CdrInput > basic input component > with the "disabled" prop set to true
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -906,7 +896,7 @@ exports[`CdrInput > basic input component > with the "disabled" prop set to true
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -973,9 +963,8 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1000,7 +989,7 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1061,9 +1050,8 @@ exports[`CdrInput > basic input component > with the "rows" prop set to 2 > rend
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1088,7 +1076,7 @@ exports[`CdrInput > basic input component > with the "rows" prop set to 2 > rend
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1156,9 +1144,8 @@ exports[`CdrInput > components with attributes > renders correctly 1`] = `
       class="cdr-form-error"
       id="test-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1183,7 +1170,7 @@ exports[`CdrInput > components with attributes > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1248,9 +1235,8 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
       class="cdr-form-error --active-error"
       id="test-error"
     >
-      <span
-        class="cdr-form-error__icon"
-        style="display: inline;"
+      <div
+        class="cdr-form-error__icon cdr-form-error__icon--active"
       >
         <svg
           aria-hidden="true"
@@ -1275,21 +1261,21 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
         role="status"
         style="display: inline-block;"
       >
-        <span>
+        <div>
           
           <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
           
           whoops
           
           
-        </span>
+        </div>
       </div>
     </div>
     
@@ -1347,9 +1333,8 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
       class="cdr-form-error --active-error"
       id="test-error"
     >
-      <span
-        class="cdr-form-error__icon"
-        style="display: inline;"
+      <div
+        class="cdr-form-error__icon cdr-form-error__icon--active"
       >
         <svg
           aria-hidden="true"
@@ -1374,21 +1359,21 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
         role="status"
         style="display: inline-block;"
       >
-        <span>
+        <div>
           
           <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
           
           whoops
           
           
-        </span>
+        </div>
       </div>
     </div>
     
@@ -1483,9 +1468,8 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1510,7 +1494,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1582,9 +1566,8 @@ exports[`CdrInput > with "helper-text-bottom" slot > renders correctly 1`] = `
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1609,7 +1592,7 @@ exports[`CdrInput > with "helper-text-bottom" slot > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1678,9 +1661,8 @@ exports[`CdrInput > with a post-icon slot > renders correctly 1`] = `
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1705,7 +1687,7 @@ exports[`CdrInput > with a post-icon slot > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1774,9 +1756,8 @@ exports[`CdrInput > with a pre-icon slot > renders correctly 1`] = `
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1801,7 +1782,7 @@ exports[`CdrInput > with a pre-icon slot > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1883,9 +1864,8 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > ren
       class="cdr-form-error"
       id="aria-test-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -1910,7 +1890,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > ren
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -1992,9 +1972,8 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and a
       class="cdr-form-error"
       id="aria-test-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -2019,7 +1998,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and a
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"
@@ -2090,9 +2069,8 @@ exports[`CdrInput > with info action slot > renders correctly 1`] = `
       class="cdr-form-error"
       id="renders-error"
     >
-      <span
+      <div
         class="cdr-form-error__icon"
-        style="display: none;"
       >
         <svg
           aria-hidden="true"
@@ -2117,7 +2095,7 @@ exports[`CdrInput > with info action slot > renders correctly 1`] = `
           
           <!--v-if-->
         </svg>
-      </span>
+      </div>
       <div
         aria-atomic="true"
         aria-relevant="all"

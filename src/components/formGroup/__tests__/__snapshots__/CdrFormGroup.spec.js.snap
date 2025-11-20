@@ -52,9 +52,8 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
     class="cdr-form-error --active-error"
     id="123-error"
   >
-    <span
-      class="cdr-form-error__icon"
-      style="display: inline;"
+    <div
+      class="cdr-form-error__icon cdr-form-error__icon--active"
     >
       <svg
         aria-hidden="true"
@@ -79,20 +78,20 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
         
         <!--v-if-->
       </svg>
-    </span>
+    </div>
     <div
       aria-atomic="true"
       aria-relevant="all"
       role="status"
       style="display: inline-block;"
     >
-      <span>
+      <div>
         
         
         whoops
         
         
-      </span>
+      </div>
     </div>
   </div>
 </fieldset>
@@ -126,9 +125,8 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
     class="cdr-form-error --active-error"
     id="renders-error"
   >
-    <span
-      class="cdr-form-error__icon"
-      style="display: inline;"
+    <div
+      class="cdr-form-error__icon cdr-form-error__icon--active"
     >
       <svg
         aria-hidden="true"
@@ -153,18 +151,18 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
         
         <!--v-if-->
       </svg>
-    </span>
+    </div>
     <div
       aria-atomic="true"
       aria-relevant="all"
       role="status"
       style="display: inline-block;"
     >
-      <span>
+      <div>
         
         Something is happening?
         
-      </span>
+      </div>
     </div>
   </div>
 </fieldset>
@@ -333,9 +331,8 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
     class="cdr-form-error --active-error"
     id="123-error"
   >
-    <span
-      class="cdr-form-error__icon"
-      style="display: inline;"
+    <div
+      class="cdr-form-error__icon cdr-form-error__icon--active"
     >
       <svg
         aria-hidden="true"
@@ -360,18 +357,18 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
         
         <!--v-if-->
       </svg>
-    </span>
+    </div>
     <div
       aria-atomic="true"
       aria-relevant="all"
       role="status"
       style="display: inline-block;"
     >
-      <span>
+      <div>
         
         false!
         
-      </span>
+      </div>
     </div>
   </div>
 </fieldset>

@@ -12,30 +12,28 @@ defineProps<{
 
 const style = useCssModule();
 const baseClass = 'cdr-form-error';
-const iconClass = 'cdr-form-error__icon';
 const activeErrorClass = '--active-error';
+const iconClass = 'cdr-form-error__icon';
+const activeIconClass = 'cdr-form-error__icon--active';
 </script>
 
 <template>
   <div :class="[style[baseClass], error && style[activeErrorClass]]">
-    <span
-      :style="{ display: error ? 'inline' : 'none' }"
-      :class="style[iconClass]"
-    >
+    <div :class="[style[iconClass], error && style[activeIconClass]]">
       <icon-error-stroke
         size="small"
         inherit-color
       />
-    </span>
+    </div>
     <div
       aria-atomic="true"
       aria-relevant="all"
       role="status"
       style="display: inline-block"
     >
-      <span v-if="error">
+      <div v-if="error">
         <slot name="error">{{ error }}</slot>
-      </span>
+      </div>
     </div>
   </div>
 </template>
