@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h2>
-      Text Inputs
-    </h2>
+    <h2>Text Inputs</h2>
     <div data-backstop="input-target">
       <cdr-input
         label-class="demo-input"
@@ -101,14 +99,10 @@
         </cdr-link>
       </template>
       <template #pre-icon>
-        <cdr-icon
-          use="#twitter"
-        />
+        <cdr-icon use="#twitter" />
       </template>
       <template #post-icon>
-        <cdr-icon
-          use="#check-lg"
-        />
+        <cdr-icon use="#check-lg" />
       </template>
       <template #helper-text>
         This is helper text. Input length: {{ requiredWithIcons.length }}
@@ -127,9 +121,7 @@
         :background="backgroundColor"
       >
         <template #pre-icon>
-          <cdr-icon
-            use="#twitter"
-          />
+          <cdr-icon use="#twitter" />
         </template>
         <template #post-icon>
           <cdr-tooltip
@@ -186,8 +178,9 @@
     <cdr-input
       label-class="demo-input"
       v-model="helperValidationModel"
-      :error="errorFromProps"
-      @blur="validate"
+      :error="validateErrorValue ? 'This error comes from props' : false"
+      @focus="() => (this.validateErrorValue = false)"
+      @blur="validateError"
       label="Top helper with status validation"
       :background="backgroundColor"
     >
@@ -205,21 +198,21 @@
       </template>
     </cdr-input>
     <cdr-input
-        label-class="demo-input"
-        v-model="dateModel"
-        label="Date"
-        :background="backgroundColor"
-        type="date"
-        min="2023-01-01"
-      />
-      <cdr-input
-        label-class="demo-input"
-        v-model="dateTimeModel"
-        label="Datetime-local"
-        :background="backgroundColor"
-        type="datetime-local"
-        min="2023-01-01"
-      />
+      label-class="demo-input"
+      v-model="dateModel"
+      label="Date"
+      :background="backgroundColor"
+      type="date"
+      min="2023-01-01"
+    />
+    <cdr-input
+      label-class="demo-input"
+      v-model="dateTimeModel"
+      label="Datetime-local"
+      :background="backgroundColor"
+      type="datetime-local"
+      min="2023-01-01"
+    />
     <cdr-input
       label-class="demo-input"
       v-model="helperValidationModel"
@@ -309,60 +302,34 @@
     </cdr-input>
 
     <cdr-input
-      class="demo-input "
+      class="demo-input"
       v-model="multiRowModel"
       :rows="10"
       label="Multi Line Input/TextArea"
       :background="backgroundColor"
     />
     <cdr-input
-      class="demo-input "
+      class="demo-input"
       v-model="masterModel"
       @input="onMasterInput"
       label="Master input that overwrites all other inputs on this page"
       :background="backgroundColor"
     />
 
-    <div class="demo-input">
-      Default Input Value = {{ defaultModel }}
-    </div>
-    <div class="demo-input">
-      Required Input Value = {{ requiredModel }}
-    </div>
-    <div class="demo-input">
-      Optional Input Value = {{ optionalModel }}
-    </div>
-    <div class="demo-input">
-      Hidden Input Value = {{ hiddenModel }}
-    </div>
-    <div class="demo-input">
-      Disabled Input Value = {{ disabledModel }}
-    </div>
-    <div class="demo-input">
-      With Icons Input Value = {{ requiredWithIcons }}
-    </div>
-    <div class="demo-input">
-      Form With Buttons Value = {{ formWithButtons }}
-    </div>
-    <div class="demo-input">
-      Date Input Value = {{ dateModel }}
-    </div>
-    <div class="demo-input">
-      Helper/Validation Input Value = {{ helperValidationModel }}
-    </div>
-    <div class="demo-input">
-      Multi Row Input Value = {{ multiRowModel }}
-    </div>
-    <div class="demo-input">
-      Size Inputs Value = {{ sizeModel }}
-    </div>
+    <div class="demo-input">Default Input Value = {{ defaultModel }}</div>
+    <div class="demo-input">Required Input Value = {{ requiredModel }}</div>
+    <div class="demo-input">Optional Input Value = {{ optionalModel }}</div>
+    <div class="demo-input">Hidden Input Value = {{ hiddenModel }}</div>
+    <div class="demo-input">Disabled Input Value = {{ disabledModel }}</div>
+    <div class="demo-input">With Icons Input Value = {{ requiredWithIcons }}</div>
+    <div class="demo-input">Form With Buttons Value = {{ formWithButtons }}</div>
+    <div class="demo-input">Date Input Value = {{ dateModel }}</div>
+    <div class="demo-input">Helper/Validation Input Value = {{ helperValidationModel }}</div>
+    <div class="demo-input">Multi Row Input Value = {{ multiRowModel }}</div>
+    <div class="demo-input">Size Inputs Value = {{ sizeModel }}</div>
 
-    <div class="demo-input">
-      Mega Input Value = {{ megaModel }}
-    </div>
-    <div class="demo-input">
-      Master Inputs Value = {{ masterModel }}
-    </div>
+    <div class="demo-input">Mega Input Value = {{ megaModel }}</div>
+    <div class="demo-input">Master Inputs Value = {{ masterModel }}</div>
   </div>
 </template>
 
@@ -394,6 +361,7 @@ export default {
       megaModel: '',
       megaErr: false,
       backgroundColor: 'primary',
+      validateErrorValue: false,
     };
   },
   watch: {
@@ -408,6 +376,9 @@ export default {
   methods: {
     validate() {
       this.helperValidationError = this.helperValidationModel.length > 4;
+    },
+    validateError() {
+      this.validateErrorValue = this.helperValidationModel.length > 0;
     },
     onMasterInput(value, e) {
       console.log('On Master Input value = ', this.masterModel, ' e = ', e); // eslint-disable-line
@@ -441,7 +412,7 @@ export default {
 };
 </script>
 <style>
-  .demo-input {
-    font-weight: 500;
-  }
+.demo-input {
+  font-weight: 500;
+}
 </style>
