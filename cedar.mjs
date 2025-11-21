@@ -8487,16 +8487,12 @@ const Cj = ["id"], wj = ["id"], Ij = ["aria-controls", "aria-label"], Hj = ["hre
       _: 3
     }, 16));
   }
-}), hA = {
-  role: "status",
-  "aria-atomic": "true",
-  "aria-relevant": "all",
-  style: { display: "inline-block" }
-}, jA = { key: 0 }, AA = "cdr-form-error", TA = "--active-error", PA = "cdr-form-error__icon", RA = /* @__PURE__ */ k({
+}), hA = ["role"], jA = { key: 0 }, AA = "cdr-form-error", TA = "--active-error", PA = "cdr-form-error__icon", RA = /* @__PURE__ */ k({
   name: "CdrFormError",
   __name: "CdrFormError",
   props: {
-    error: { type: [Boolean, String] }
+    error: { type: [Boolean, String] },
+    role: {}
   },
   setup(t) {
     const e = pe();
@@ -8513,13 +8509,18 @@ const Cj = ["id"], wj = ["id"], Ij = ["aria-controls", "aria-label"], Hj = ["hre
       ], 2), [
         [El, r.error]
       ]),
-      l("div", hA, [
+      l("div", {
+        role: r.role || "status",
+        "aria-atomic": "true",
+        "aria-relevant": "all",
+        style: { display: "inline-block" }
+      }, [
         r.error ? (m(), q("div", jA, [
           S(r.$slots, "error", {}, () => [
             g(M(r.error), 1)
           ])
         ])) : fe("", !0)
-      ])
+      ], 8, hA)
     ], 2));
   }
 }), CA = {
