@@ -428,7 +428,6 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
       aria-live="polite"
       class="cdr-form-error --active-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"

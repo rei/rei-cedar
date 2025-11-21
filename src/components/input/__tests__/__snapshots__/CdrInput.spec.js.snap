@@ -46,7 +46,6 @@ exports[`CdrInput >  when error state is inactive > renders correctly 1`] = `
     <div
       class="cdr-form-error"
       id="test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -136,7 +135,6 @@ exports[`CdrInput > basic input component > renders correctly 1`] = `
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -226,7 +224,6 @@ exports[`CdrInput > basic input component > when "multiline" is set to true and 
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -316,7 +313,6 @@ exports[`CdrInput > basic input component > when "type" is set to url > renders 
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -409,7 +405,6 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
     <div
       class="cdr-form-error --active-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -506,7 +501,6 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
     <div
       class="cdr-form-error --active-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -607,7 +601,6 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -704,7 +697,6 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -796,7 +788,6 @@ exports[`CdrInput > basic input component > with prop type of "number" > renders
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -887,7 +878,6 @@ exports[`CdrInput > basic input component > with the "disabled" prop set to true
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -982,7 +972,6 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1071,7 +1060,6 @@ exports[`CdrInput > basic input component > with the "rows" prop set to 2 > rend
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1167,7 +1155,6 @@ exports[`CdrInput > components with attributes > renders correctly 1`] = `
     <div
       class="cdr-form-error"
       id="test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1260,7 +1247,6 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
     <div
       class="cdr-form-error --active-error"
       id="test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1359,7 +1345,6 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
     <div
       class="cdr-form-error --active-error"
       id="test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1495,7 +1480,6 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1595,7 +1579,6 @@ exports[`CdrInput > with "helper-text-bottom" slot > renders correctly 1`] = `
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1692,7 +1675,6 @@ exports[`CdrInput > with a post-icon slot > renders correctly 1`] = `
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1789,7 +1771,6 @@ exports[`CdrInput > with a pre-icon slot > renders correctly 1`] = `
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -1899,7 +1880,6 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > ren
     <div
       class="cdr-form-error"
       id="aria-test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -2009,7 +1989,6 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and a
     <div
       class="cdr-form-error"
       id="aria-test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -2108,7 +2087,6 @@ exports[`CdrInput > with info action slot > renders correctly 1`] = `
     <div
       class="cdr-form-error"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"

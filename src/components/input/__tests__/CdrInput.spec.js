@@ -403,7 +403,7 @@ describe('CdrInput', () => {
     });
 
     it('does not display error slot', () => {
-      expect(wrapper.find('.cdr-form-error').element.style.height).toBe('');
+      expect(wrapper.find('.cdr-form-error').classes()).not.toContain('--active-error');
     });
   });
 

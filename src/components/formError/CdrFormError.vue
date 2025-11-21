@@ -8,6 +8,7 @@ defineOptions({
 
 defineProps<{
   error: boolean | string;
+  role?: string;
 }>();
 
 const style = useCssModule();
@@ -28,7 +29,7 @@ const iconClass = 'cdr-form-error__icon';
       />
     </span>
     <div
-      role="status"
+      :role="role || 'status'"
       aria-atomic="true"
       aria-relevant="all"
       style="display: inline-block"
