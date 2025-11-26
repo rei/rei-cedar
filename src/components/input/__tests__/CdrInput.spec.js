@@ -8,8 +8,8 @@ const baseComponentPattern = {
   propsData: {
     label: 'Label Test',
     id: 'renders',
-  }
-}
+  },
+};
 
 describe('CdrInput', () => {
   describe('basic input component', () => {
@@ -43,13 +43,12 @@ describe('CdrInput', () => {
 
     describe('with prop type of "number"', () => {
       beforeEach(() => {
-        wrapper.setProps({ type: 'number' })
+        wrapper.setProps({ type: 'number' });
       });
 
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
       });
-
 
       it('has a inputmode attribute of "numeric"', () => {
         expect(input.attributes('inputmode')).toBe('numeric');
@@ -58,7 +57,7 @@ describe('CdrInput', () => {
 
     describe('with error prop set', () => {
       beforeEach(() => {
-        wrapper.setProps({ error: 'Something is wrong!' })
+        wrapper.setProps({ error: 'Something is wrong!' });
       });
 
       it('renders correctly', () => {
@@ -68,7 +67,7 @@ describe('CdrInput', () => {
 
     describe('with the "disabled" prop set to true', () => {
       beforeEach(() => {
-        wrapper.setProps({ disabled: true })
+        wrapper.setProps({ disabled: true });
       });
 
       it('renders correctly', () => {
@@ -82,7 +81,7 @@ describe('CdrInput', () => {
 
     describe('with the "required" prop set to true', () => {
       beforeEach(() => {
-        wrapper.setProps({ required: true })
+        wrapper.setProps({ required: true });
       });
 
       it('renders correctly', () => {
@@ -99,7 +98,7 @@ describe('CdrInput', () => {
         wrapper.setProps({
           required: true,
           type: 'number',
-        })
+        });
       });
 
       it('renders correctly', () => {
@@ -118,7 +117,7 @@ describe('CdrInput', () => {
         wrapper.setProps({
           required: true,
           numeric: true,
-        })
+        });
       });
 
       it('renders correctly', () => {
@@ -134,7 +133,7 @@ describe('CdrInput', () => {
 
     describe('with the "rows" prop set to 2', () => {
       beforeEach(() => {
-        wrapper.setProps({ rows: 2 })
+        wrapper.setProps({ rows: 2 });
       });
 
       it('renders correctly', () => {
@@ -150,8 +149,8 @@ describe('CdrInput', () => {
       beforeEach(() => {
         wrapper.setProps({
           multiLine: true,
-          rows: 10
-        })
+          rows: 10,
+        });
       });
 
       it('renders correctly', () => {
@@ -165,7 +164,7 @@ describe('CdrInput', () => {
 
     describe('when "type" is set to url', () => {
       beforeEach(() => {
-        wrapper.setProps({ type: 'url' })
+        wrapper.setProps({ type: 'url' });
       });
 
       it('renders correctly', () => {
@@ -179,7 +178,7 @@ describe('CdrInput', () => {
 
     describe('with error prop set', () => {
       beforeEach(() => {
-        wrapper.setProps({ error: 'incorrect!' })
+        wrapper.setProps({ error: 'incorrect!' });
       });
 
       it('renders correctly', () => {
@@ -207,7 +206,7 @@ describe('CdrInput', () => {
       wrapper = mount(CdrInput, {
         propsData: {
           label: 'Label Test',
-          id: 'test'
+          id: 'test',
         },
         attrs: {
           pizza: 'time',
@@ -219,8 +218,8 @@ describe('CdrInput', () => {
           onBlur: blurSpy,
           onPaste: pasteSpy,
           onKeydown: keydownSpy,
-          onFocus: focusSpy
-        }
+          onFocus: focusSpy,
+        },
       });
       input = wrapper.find('.cdr-input');
     });
@@ -239,30 +238,30 @@ describe('CdrInput', () => {
     });
 
     it('emits a blur event', () => {
-      input.trigger('blur')
+      input.trigger('blur');
       expect(blurSpy.calledOnce).toBeTruthy();
     });
 
     it('emits a paste event', () => {
-      input.trigger('paste')
+      input.trigger('paste');
       expect(pasteSpy.calledOnce).toBeTruthy();
     });
 
     it('emits a keydown event', () => {
-      input.trigger('keydown', { key: 'a' })
+      input.trigger('keydown', { key: 'a' });
       expect(keydownSpy.called).toBeTruthy();
     });
 
     it('emits a focus event', () => {
-      input.trigger('focus')
+      input.trigger('focus');
       expect(focusSpy.calledOnce).toBeTruthy();
-    })
+    });
 
     it('adds focused class to wrapper on input focus and removes it on blur', async () => {
-      input.trigger('focus')
+      input.trigger('focus');
       await wrapper.vm.$nextTick();
       expect(wrapper.find('.cdr-input--focus').exists()).toBeTruthy();
-      input.trigger('blur')
+      input.trigger('blur');
       await wrapper.vm.$nextTick();
       expect(wrapper.find('.cdr-input--focus').exists()).toBeFalsy();
     });
@@ -332,10 +331,7 @@ describe('CdrInput', () => {
       wrapper = mount(CdrInput, {
         ...baseComponentPattern,
         slots: {
-          'post-icon': () => [
-            h(CdrButton),
-            h(CdrButton)
-          ],
+          'post-icon': () => [h(CdrButton), h(CdrButton)],
         },
       });
     });
@@ -374,10 +370,10 @@ describe('CdrInput', () => {
         propsData: {
           id: 'test',
           label: 'test',
-          error: true
+          error: true,
         },
-        slots: { 'error': 'whoops' },
-      })
+        slots: { error: 'whoops' },
+      });
     });
 
     it('renders correctly', () => {
@@ -396,9 +392,9 @@ describe('CdrInput', () => {
         propsData: {
           id: 'test',
           label: 'test',
-          error: false
+          error: false,
         },
-        slots: { 'error': 'whoops' },
+        slots: { error: 'whoops' },
       });
     });
 
@@ -406,8 +402,8 @@ describe('CdrInput', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('does not render error slot', () => {
-      expect(wrapper.find('.cdr-form-error').exists()).toBe(false);
+    it('does not display error slot', () => {
+      expect(wrapper.find('.cdr-form-error').classes()).not.toContain('--active-error');
     });
   });
 
@@ -421,8 +417,8 @@ describe('CdrInput', () => {
           error: true,
         },
         slots: {
-          'error': 'whoops',
-          'helper-text-bottom': 'not me'
+          error: 'whoops',
+          'helper-text-bottom': 'not me',
         },
       });
     });
@@ -457,7 +453,9 @@ describe('CdrInput', () => {
     });
 
     it('helper text slots are linked to input via aria-describedby', () => {
-      expect(wrapper.find('input').attributes('aria-describedby')).toBe('aria-test-helper-text-top aria-test-helper-text-bottom');
+      expect(wrapper.find('input').attributes('aria-describedby')).toBe(
+        'aria-test-helper-text-top aria-test-helper-text-bottom',
+      );
     });
   });
 
@@ -484,7 +482,9 @@ describe('CdrInput', () => {
     });
 
     it('dynamic aria-describedby is merged with native attr', () => {
-      expect(wrapper.find('input').attributes('aria-describedby')).toBe('aria-test-helper-text-top aria-test-helper-text-bottom foo');
+      expect(wrapper.find('input').attributes('aria-describedby')).toBe(
+        'aria-test-helper-text-top aria-test-helper-text-bottom foo',
+      );
     });
   });
 });

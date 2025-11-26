@@ -2,8 +2,7 @@
 
 exports[`CdrFormError > using an error slot > renders correctly 1`] = `
 <div
-  class="cdr-form-error"
-  role="status"
+  class="cdr-form-error --active-error"
 >
   <span
     class="cdr-form-error__icon"
@@ -32,16 +31,24 @@ exports[`CdrFormError > using an error slot > renders correctly 1`] = `
       <!--v-if-->
     </svg>
   </span>
-  
-  whoops
-  
+  <div
+    aria-atomic="true"
+    aria-relevant="all"
+    role="status"
+    style="display: inline-block;"
+  >
+    <div>
+      
+      whoops
+      
+    </div>
+  </div>
 </div>
 `;
 
 exports[`CdrFormError > using just the error prop (no slot) > renders correctly 1`] = `
 <div
-  class="cdr-form-error"
-  role="status"
+  class="cdr-form-error --active-error"
 >
   <span
     class="cdr-form-error__icon"
@@ -70,10 +77,17 @@ exports[`CdrFormError > using just the error prop (no slot) > renders correctly 
       <!--v-if-->
     </svg>
   </span>
-  
-  <span>
-    yahoo!
-  </span>
-  
+  <div
+    aria-atomic="true"
+    aria-relevant="all"
+    role="status"
+    style="display: inline-block;"
+  >
+    <div>
+      
+      yahoo!
+      
+    </div>
+  </div>
 </div>
 `;
