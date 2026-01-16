@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrUtilitySerif',
 });
 
-interface utilitySerifTextProps extends baseTextProps {
+interface UtilitySerifTextProps extends BaseTextProps {
    /** 
    * Sets the type scale
    * @type scaleValue
@@ -17,7 +17,7 @@ interface utilitySerifTextProps extends baseTextProps {
   strong?: boolean,
 }
 
-const props = withDefaults(defineProps<utilitySerifTextProps>(), {
+const props = withDefaults(defineProps<UtilitySerifTextProps>(), {
   tag: 'p',
   scale: '1',
   strong: false,

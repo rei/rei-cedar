@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import { CdrRadiusSoft, CdrRadiusRound, CdrRadiusSofter } from '@rei/cdr-tokens';
-import { baseImageProps } from '../../types/interfaces';
+import { BaseImageProps } from '../../types/interfaces';
 
 /** Media for capturing attention and communicating messages */
 defineOptions({
   name: 'CdrImg',
 });
 
-const props = withDefaults(defineProps<baseImageProps>(), {
+const props = withDefaults(defineProps<BaseImageProps>(), {
   alt: '',
 });
 

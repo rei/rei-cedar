@@ -19,6 +19,7 @@ import type {
   MediaMeasurement,
 } from './other';
 
+// #region Generic Interfaces
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface NameValuePair {
   [key: string]: any;
@@ -35,12 +36,12 @@ export interface HtmlAttributes {
 /**
  * Breadcrumb data object
  *
- * @interface breadcrumbItem
+ * @interface BreadcrumbItem
  * @url {string} The url for the breadcrumb link
  * @name {string} The display name for breadcrumb link
  * @id {string} Optional id
  */
-export interface breadcrumbItem {
+export interface BreadcrumbItem {
   item: {
     url: string;
     name: string;
@@ -51,12 +52,12 @@ export interface breadcrumbItem {
 /**
  * Pagination data object
  *
- * @interface paginationItem
+ * @interface PaginationItem
  * @page {number} The page number, also used as link text
  * @url {string} The url for the pagination link
  * @ellip {boolean} Optional flag to render pagination to truncate pagination links
  */
-export interface paginationItem {
+export interface PaginationItem {
   page: number;
   url: string;
   ellip?: boolean;
@@ -65,11 +66,11 @@ export interface paginationItem {
 /**
  * Select data object
  *
- * @interface selectOption
+ * @interface SelectOption
  * @text {string} The displayed option
  * @value {string} The underlying value for the option
  */
-export interface selectOption {
+export interface SelectOption {
   text: string;
   value: string;
 }
@@ -93,10 +94,10 @@ export interface Choreographer {
 /**
  * Image component properties
  *
- * @interface baseImageProps
+ * @interface BaseImageProps
  *
  */
-export interface baseImageProps {
+export interface BaseImageProps {
   /** The image src */
   src: string;
   /** The image alt. Defaults to empty string. */
@@ -165,11 +166,11 @@ export interface pictureSourceObject {
 
 /**
  * Text component properties
- * @interface baseTextProps
+ * @interface BaseTextProps
  */
-export interface baseTextProps {
+export interface BaseTextProps {
   /** Sets the HTML tag (p, span, h1, h2, etc) */
-  tag?: string;
+  tag?: Tag;
 }
 
 /**
@@ -447,3 +448,51 @@ export interface CdrLinkProps {
  * Interface for the `CdrFilmstrip` component.
  */
 export * from '../components/filmstrip/interfaces';
+
+// #endregion
+
+// #region Component Props Types
+/**
+ * CdrAbstract component properties
+ */
+export type CdrAbstractProps = BaseTextProps;
+
+/**
+ * CdrAccordion component properties
+ */
+export type CdrAccordionProps = {
+  /** The unique id of an accordion */
+  id: string;
+  /** Toggle this value to open/close the accordion */
+  opened?: boolean;
+  /** Sets a compact style */
+  compact?: boolean;
+  /** Sets a border-aligned style */
+  borderAligned?: boolean;
+  /** Sets the heading level */
+  level: string | number;
+  /** Toggles content spacing (padding) */
+  contentSpacing?: boolean;
+  /** Sets the readable text on CdrAccordion button (also can be slotted) */
+  label?: string;
+}
+
+/**
+ * CdrBanner component properties
+ */
+export type CdrBannerProps = {
+  type: 'info' | 'warning' | 'success' | 'error' | 'default';
+}
+
+/**
+ * CdrBreadcrumb component properties
+ */
+export type CdrBreadcrumbProps = {
+  /** Array of breadcrumb items */
+  items: BreadcrumbItem[];
+  /** Enables truncation of breadcrumb items */
+  truncationEnabled?: boolean;
+  /** Unique id for the breadcrumb */
+  id?: string;
+}
+// #endregion

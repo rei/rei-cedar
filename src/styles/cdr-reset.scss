@@ -22,10 +22,6 @@ html {
   box-sizing: inherit;
 }
 
-@viewport {
-  width: device-width;
-}
-
 body {
   /* cdr-text-default */
 
@@ -39,7 +35,7 @@ body {
 
   /* cdr-color-text-primary */
 
-  color: var(--cdr-color-text-primary), rgba(12, 11, 8, 0.75);
+  color: var(--cdr-color-text-primary), rgb(12 11 8 / 0.75);
 
   /* cdr-color-background-primary */
 

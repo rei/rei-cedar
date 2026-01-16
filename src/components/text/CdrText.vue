@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { baseTextProps } from '../../types/interfaces';
+import { BaseTextProps } from '../../types/interfaces';
 
 /** Text container used for any text element such as paragraphs, headings, and lists */
 defineOptions({
   name: 'CdrText',
 });
 
-withDefaults(defineProps<baseTextProps>(), {
+withDefaults(defineProps<BaseTextProps>(), {
   tag: 'p',
 });
 

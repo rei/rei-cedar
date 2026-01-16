@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrHeadingDisplay',
 });
 
-interface headingDisplayTextProps extends baseTextProps {
+interface HeadingDisplayTextProps extends BaseTextProps {
    /** 
    * Sets the type scale
    * @type scaleValue
@@ -16,7 +16,7 @@ interface headingDisplayTextProps extends baseTextProps {
 
 }
 
-const props = withDefaults(defineProps<headingDisplayTextProps>(), {
+const props = withDefaults(defineProps<HeadingDisplayTextProps>(), {
   tag: 'h1',
   scale: '7',
 });

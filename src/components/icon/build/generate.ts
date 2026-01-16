@@ -1,10 +1,15 @@
 /* eslint-disable */
-const path = require('path');
-const glob = require('glob');
-const fs = require('fs-extra');
-const _ = require('lodash');
-const { JSDOM } = require('jsdom');
-const iconData = require('@rei/cedar-icons');
+// @ts-nocheck
+import path from 'path';
+import { glob } from 'glob';
+import fs from 'fs-extra';
+import { upperFirst, camelCase } from 'lodash-es';
+import { JSDOM } from 'jsdom';
+import iconData from '@rei/cedar-icons';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function resolve(dir: string) {
   return path.join(__dirname, '..', dir);
@@ -14,7 +19,7 @@ function resolve(dir: string) {
 const indexArr: string[] = [];
 
 Object.keys(iconData).forEach(function (name) {
-  const pascalName = _.upperFirst(_.camelCase(name));
+  const pascalName = upperFirst(camelCase(name));
   const content = iconData[name];
   const outFile = resolve(`comps/${name}.vue`);
 

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrEyebrow',
 });
 
 
-withDefaults(defineProps<baseTextProps>(), {
+withDefaults(defineProps<BaseTextProps>(), {
   tag: 'span',
 });
 

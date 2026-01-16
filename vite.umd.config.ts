@@ -23,6 +23,14 @@ export default defineConfig({
       external: (id) => ['vue', 'core-js', 'tabbable'].some(
         (dep) => dep === id || id.startsWith(`${dep}/`),
       ),
+      output: {
+        ...options.output,
+        globals: {
+          vue: 'Vue',
+          'core-js': 'core-js',
+          tabbable: 'tabbable',
+        },
+      },
     },
   },
   server: {

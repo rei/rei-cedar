@@ -7,7 +7,7 @@ defineOptions({
   name: 'CdrSplitSurface'
 });
 
-interface splitSurfaceProps {
+interface SplitSurfaceProps {
   /** 
    * Sets the orientation of the surface to the top or bottom slot
    * @demoSelectMultiple false
@@ -18,7 +18,7 @@ interface splitSurfaceProps {
   tag?: string
 }
 
-const props = withDefaults(defineProps<splitSurfaceProps>(), {
+const props = withDefaults(defineProps<SplitSurfaceProps>(), {
   surface: 'bottom',
   tag: 'div'
 });

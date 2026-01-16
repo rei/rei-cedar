@@ -2,7 +2,7 @@
 import {
   useCssModule, ref, watch, onMounted, useSlots
 } from 'vue';
-import tabbable from 'tabbable';
+import { tabbable } from 'tabbable';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 import CdrPopup from '../popup/CdrPopup.vue';
@@ -115,8 +115,11 @@ const addHandlers = () => {
 };
 
 watch(() => props.open, () => {
-  // eslint-disable-next-line no-unused-expressions
-  props.open ? openPopover() : closePopover();
+  if (props.open) {
+    openPopover();
+  } else {
+    closePopover();
+  }
 });
 
 onMounted(() => {

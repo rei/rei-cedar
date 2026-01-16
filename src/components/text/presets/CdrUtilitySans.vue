@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrUtilitySans',
 });
 
-export interface utilitySansTextProps extends baseTextProps {
+export interface UtilitySansTextProps extends BaseTextProps {
    /** 
    * Sets the type scale
    * @type scaleValue
@@ -17,7 +17,7 @@ export interface utilitySansTextProps extends baseTextProps {
   strong?: boolean,
 }
 
-const props = withDefaults(defineProps<utilitySansTextProps>(), {
+const props = withDefaults(defineProps<UtilitySansTextProps>(), {
   tag: 'p',
   scale: '1',
   strong: false,

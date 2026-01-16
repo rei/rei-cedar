@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrHeadingSans',
 });
 
-interface headingSansTextProps extends baseTextProps {
+interface HeadingSansTextProps extends BaseTextProps {
    /** 
      * Sets the type scale
      * @type scaleValue
@@ -16,7 +16,7 @@ interface headingSansTextProps extends baseTextProps {
 
 }
 
-const props = withDefaults(defineProps<headingSansTextProps>(), {
+const props = withDefaults(defineProps<HeadingSansTextProps>(), {
   tag: 'h2',
   scale: '3',
 });

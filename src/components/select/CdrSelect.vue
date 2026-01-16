@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots, useAttrs, type PropType } from 'vue';
-import { selectOption } from '../../types/interfaces';
+import { SelectOption } from '../../types/interfaces';
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
@@ -52,7 +52,7 @@ const props = defineProps({
    * or provide an array of strings ['String'] for simpler setup (value and text will be the same).
   */
   options: {
-    type: Array as PropType<selectOption[] | string[]>,
+    type: Array as PropType<SelectOption[] | string[]>,
   },
   /**
    * Sets the background color the radio button is rendered on
@@ -136,10 +136,10 @@ const describedby = computed(() => {
 });
 
 const computedOpts = computed(() => {
-  const optsArr: Array<selectOption> = [];
+  const optsArr: Array<SelectOption> = [];
   if (props.options) {
     props.options.forEach((o) => {
-      const optObj: selectOption = { text: '', value: ''};
+      const optObj: SelectOption = { text: '', value: ''};
       let text = '';
       let val = '';
       if (typeof o === 'string') {

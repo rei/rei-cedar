@@ -2,7 +2,7 @@
 import {
   useCssModule, computed, ref, watch, nextTick, onMounted, type PropType
 } from 'vue';
-import { paginationItem } from '../../types/interfaces';
+import { PaginationItem } from '../../types/interfaces';
 import mapClasses from '../../utils/mapClasses';
 import propValidator from '../../utils/propValidator';
 import IconCaretLeft from '../icon/comps/caret-left.vue';
@@ -40,17 +40,17 @@ const props = defineProps({
    * Objects must have structure of `{ page: number, url: string }`
    */
   pages: {
-    type: Array as PropType<paginationItem[]>,
+    type: Array as PropType<PaginationItem[]>,
     required: true,
-    validator: (value: paginationItem[]) => {
+    validator: (value: PaginationItem[]) => {
       const result = value.every((obj) => {
         if (!Object.prototype.hasOwnProperty.call(obj, 'page')
         || typeof obj.page !== 'number') {
-          console.error('Property "page" is missing or is not a number', obj); // eslint-disable-line
+          console.error('Property "page" is missing or is not a number', obj);
           return false;
         } if (!Object.prototype.hasOwnProperty.call(obj, 'url')
         || typeof obj.url !== 'string') {
-          console.error('Property "url" is missing or is not a string', obj); // eslint-disable-line
+          console.error('Property "url" is missing or is not a string', obj);
           return false;
         }
         return true;
@@ -137,7 +137,6 @@ const navigate = (pageNum: number, e: Event) => {
       const target = e.currentTarget as HTMLElement || e.target as HTMLElement;
       target?.blur();
     } catch (err) {
-    // eslint-disable-next-line no-console
       console.error(err);
     }
   });
@@ -159,7 +158,7 @@ const paginationData = computed(() => {
   const total = props.pages.length;
   const current = innerValue.value;
   const delta = 1;
-  let range: paginationItem[] = [];
+  let range: PaginationItem[] = [];
   let over5 = true;
   let over5remain = true;
 

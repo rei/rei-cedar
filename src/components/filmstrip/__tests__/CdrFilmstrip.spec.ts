@@ -33,6 +33,15 @@ describe('CdrFilmstrip.vue', () => {
 
   let wrapper: VueWrapper<any>;
 
+  // Helper function to mock window.innerWidth
+  const setWindowWidth = (width: number) => {
+    Object.defineProperty(window, 'innerWidth', {
+      writable: true,
+      configurable: true,
+      value: width,
+    });
+  };
+
   beforeEach(() => {
     wrapper = mount(CdrFilmstrip, {
       props: {
@@ -108,19 +117,19 @@ describe('CdrFilmstrip.vue', () => {
   });
 
   it('updates framesToShow based on window resize (default strategy)', async () => {
-    global.innerWidth = 1024; // Desktop
+    setWindowWidth(1024); // Desktop
     window.dispatchEvent(new Event('resize'));
     await nextTick();
     await wrapper.vm.onResize();
     expect(wrapper.vm.framesToShow).toBe(5);
 
-    global.innerWidth = 768; // Tablet
+    setWindowWidth(768); // Tablet
     window.dispatchEvent(new Event('resize'));
     await nextTick();
     await wrapper.vm.onResize();
     expect(wrapper.vm.framesToShow).toBe(4);
 
-    global.innerWidth = 400; // Mobile
+    setWindowWidth(400); // Mobile
     window.dispatchEvent(new Event('resize'));
     await nextTick();
     await wrapper.vm.onResize();

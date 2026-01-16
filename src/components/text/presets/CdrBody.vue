@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 import { ScaleValue } from '../../../types/other';
 
 defineOptions({
   name: 'CdrBody',
 });
 
-export interface bodyTextProps extends baseTextProps {
+export interface BodyTextProps extends BaseTextProps {
   /**
    * Sets the type scale
    * @type scaleValue
@@ -18,7 +18,7 @@ export interface bodyTextProps extends baseTextProps {
   strong?: boolean;
 }
 
-const props = withDefaults(defineProps<bodyTextProps>(), {
+const props = withDefaults(defineProps<BodyTextProps>(), {
   tag: 'p',
   scale: '0',
   strong: false,

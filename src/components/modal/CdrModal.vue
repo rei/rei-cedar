@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { debounce } from '../../utils/debounce'
-import tabbable from 'tabbable';
+import { tabbable } from 'tabbable';
 import {
   useCssModule,
   computed,
@@ -104,11 +104,11 @@ let lastActive: Element | null;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
 
-interface offsetValues {
+interface OffsetValues {
   x: number | undefined,
   y: number | undefined,
 }
-const offset = ref<offsetValues>({ x: undefined, y: undefined });
+const offset = ref<OffsetValues>({ x: undefined, y: undefined });
 const headerHeight = ref(0);
 const totalHeight = ref(0);
 const scrollHeight = ref(0);
@@ -357,8 +357,11 @@ const textContentStyle = computed(() => ({
 
 watch(() => props.opened, (newValue, oldValue) => {
   if (!!newValue === !!oldValue) return;
-  // eslint-disable-next-line no-unused-expressions
-  newValue ? handleOpened() : handleClosed();
+  if (newValue) {
+    handleOpened();
+  } else {
+    handleClosed();
+  }
 });
 
 onMounted(() => {

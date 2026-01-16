@@ -76,10 +76,10 @@ const style = useCssModule();
     </template>
     <template
       v-for="(value, key) in entry.slots"
+      :key="key"
       #[key]
     >
       <CdrChoreographer
-        :key="key"
         :schema="[value]"
         :components="components"
       />

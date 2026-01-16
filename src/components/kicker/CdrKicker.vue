@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { baseTextProps } from '../../types/interfaces';
+import { BaseTextProps } from '../../types/interfaces';
 
 /** 
  * Content building blocks with pre-defined, fluid styles
@@ -10,7 +10,7 @@ defineOptions({
   name: 'CdrKicker',
 });
 
-withDefaults(defineProps<baseTextProps>(), {
+withDefaults(defineProps<BaseTextProps>(), {
   tag: 'span',
 });
 

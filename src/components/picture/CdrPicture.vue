@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import CdrImg from '../image/CdrImg.vue';
-import { baseImageProps, pictureSourceObject } from '../../types/interfaces';
+import { BaseImageProps, pictureSourceObject } from '../../types/interfaces';
 
 /** 
  * Provides instructions for browsers to use alternative image versions in various scenarios
@@ -11,12 +11,12 @@ defineOptions({
   name: 'CdrPicture',
 });
 
-interface pictureProps extends baseImageProps {
+interface PictureProps extends BaseImageProps {
   /** An object containing 1..n child objects containing HTMLSourceElement attributes */
   sources: pictureSourceObject
 }
 
-withDefaults(defineProps<pictureProps>(), {
+withDefaults(defineProps<PictureProps>(), {
   alt: '',
 });
 

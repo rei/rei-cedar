@@ -1,40 +1,52 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots } from 'vue';
-import propValidator from '../../utils/propValidator';
+import type { CdrBannerProps } from '../../types/interfaces';
 
-/** Provides contextual feedback messages for typical user actions */
-
+/**
+ * CdrBanner - Provides contextual feedback messages for typical user actions
+ * 
+ * Displays informational, warning, success, error, or default messages with optional
+ * icons and action elements. Supports primary messages with expandable message bodies.
+ */
 defineOptions({
   name: 'CdrBanner',
 });
 
-const props = defineProps({
-  /**
-   * Sets the banner style.
-   * @demoSelectMultiple false
-   * @values info, warning, success, error, default
- */
-  type: {
-    type: String,
-    validator: (value: string) => propValidator(
-      value,
-      ['info', 'warning', 'success', 'error', 'default'],
-    ),
-    default: 'default',
-  },
+const props = withDefaults(defineProps<CdrBannerProps>(), {
+  type: 'default',
 });
 
 const slots = useSlots();
 const style = useCssModule();
-const baseClass = 'cdr-banner';
-const typeClass = computed(() => `${baseClass}--${props.type}`);
-const prominenceClass = computed(() => (slots['message-body']
+
+/** Base CSS class for the banner component */
+const baseClass = 'cdr-banner' as const;
+
+/** 
+ * Computed class name for the banner type variant
+ * @returns CSS class string for the current banner type
+ */
+const typeClass = computed<string>(() => `${baseClass}--${props.type}`);
+
+/** 
+ * Computed class name for prominence styling when message body is present
+ * @returns CSS class string for prominence styling or empty string
+ */
+const prominenceClass = computed<string>(() => (slots['message-body']
   ? `${baseClass}__wrapper--prominence`
   : ''));
-const hasIconLeft = slots['icon-left'];
-const hasIconRight = slots['icon-right'];
-const hasMessageBody = slots['message-body'];
-const hasInfoAction = slots['info-action'];
+
+/** Indicates if the icon-left slot has content */
+const hasIconLeft = computed<boolean>(() => !!slots['icon-left']);
+
+/** Indicates if the icon-right slot has content */
+const hasIconRight = computed<boolean>(() => !!slots['icon-right']);
+
+/** Indicates if the message-body slot has content */
+const hasMessageBody = computed<boolean>(() => !!slots['message-body']);
+
+/** Indicates if the info-action slot has content */
+const hasInfoAction = computed<boolean>(() => !!slots['info-action']);
 </script>
 
 <template>
@@ -78,5 +90,4 @@ const hasInfoAction = slots['info-action'];
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrBanner.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrBanner.module.scss" />

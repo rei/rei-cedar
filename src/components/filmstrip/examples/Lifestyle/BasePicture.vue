@@ -210,9 +210,13 @@ const cssVars = computed(() => ({
 }));
 
 const loading = computed(() => (props.lazyLoad ? 'lazy' : undefined));
-const computedFetchPriority = computed(() =>
-  props.fetchPriority?.length ? props.fetchPriority : null,
-);
+const computedFetchPriority = computed<'high' | 'low' | 'auto' | undefined>(() => {
+  if (!props.fetchPriority?.length) {
+    return undefined;
+  }
+  const priority = props.fetchPriority as 'high' | 'low' | 'auto';
+  return priority;
+});
 
 /**
  * Retrieves the appropriate image source based on `useBannerCrop` preference.

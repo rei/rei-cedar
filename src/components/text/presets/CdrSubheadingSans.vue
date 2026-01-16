@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrSubheadingSans',
 });
 
-interface subheadingSansTextProps extends baseTextProps {
+interface SubheadingSansTextProps extends BaseTextProps {
    /** 
      * Sets the type scale
      * @type scaleValue
@@ -15,7 +15,7 @@ interface subheadingSansTextProps extends baseTextProps {
   scale?: '-1' | '0'|'1'|'2',
 }
 
-const props = withDefaults(defineProps<subheadingSansTextProps>(), {
+const props = withDefaults(defineProps<SubheadingSansTextProps>(), {
   tag: 'p',
   scale: '1',
 });

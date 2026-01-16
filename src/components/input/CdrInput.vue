@@ -159,11 +159,11 @@ const describedby = computed(() => {
 });
 
 // Defining an interface for the inputAttrs object because Vue doesn't correctly infer inputmode type
-interface inputAttrsObject extends InputHTMLAttributes {
+interface InputAttrsObject extends InputHTMLAttributes {
   id: string,
 }
 
-const inputAttrs = computed<inputAttrsObject>(() => {
+const inputAttrs = computed<InputAttrsObject>(() => {
   const isNum = props.numeric || props.type === 'number';
   return {
     id: uniqueId,

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrHeadingSerif',
 });
 
-interface headingSerifTextProps extends baseTextProps {
+interface HeadingSerifTextProps extends BaseTextProps {
    /** 
      * Sets the type scale
      * @type scaleValue
@@ -17,7 +17,7 @@ interface headingSerifTextProps extends baseTextProps {
   strong?: boolean,
 }
 
-const props = withDefaults(defineProps<headingSerifTextProps>(), {
+const props = withDefaults(defineProps<HeadingSerifTextProps>(), {
   tag: 'h1',
   scale: '5',
   strong: false

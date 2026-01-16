@@ -93,11 +93,14 @@ $css-vars: (
   // Generate state-based styles
   @each $state in $states {
     @if $state != 'rest' {
-      $selector: if(
-        $state == 'hover',
-        '&:hover:not([aria-pressed="true"], [aria-checked="true"], :disabled)',
-        if($state == 'active', '&:active, &:focus', '&[data-#{$state}="true"]')
-      );
+      $selector: '';
+      @if $state == 'hover' {
+        $selector: '&:hover:not([aria-pressed="true"], [aria-checked="true"], :disabled)';
+      } @else if $state == 'active' {
+        $selector: '&:active, &:focus';
+      } @else {
+        $selector: '&[data-#{$state}="true"]';
+      }
 
       @each $prop, $values in $properties {
         @each $value-name, $value in $values {

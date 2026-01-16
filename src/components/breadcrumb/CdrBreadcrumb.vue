@@ -1,80 +1,74 @@
 <script setup lang="ts">
 import {
-  useCssModule, computed, ref, watch, nextTick, type PropType
+  useCssModule, computed, ref, watch, nextTick,
 } from 'vue';
-import { breadcrumbItem } from '../../types/interfaces';
+import type { CdrBreadcrumbProps, BreadcrumbItem } from '../../types/interfaces';
 import uid from '../../utils/uid';
 
-/** Navigation used to reveal a page's location within the site hierarchy */
+/**
+ * CdrBreadcrumb - Navigation used to reveal a page's location within the site hierarchy
+ * 
+ * Provides a hierarchical navigation trail to help users understand their current location
+ * and navigate back to parent pages. Supports automatic truncation for long breadcrumb trails.
+ */
+
 defineOptions({
   name: 'CdrBreadcrumb',
 });
 
-const props = defineProps({
-   /**
-     * Sets the array of a breadcrumb object containing a 'url' and 'name' property.
-     * @demoIgnore true
-     */
-     items: {
-      type: Array as PropType<breadcrumbItem[]>,
-      default: () => [],
-      validator: (value: breadcrumbItem[]) => {
-        if (value.length && value.length > 0) {
-          for (let i = 0; i < value.length; i += 1) {
-            if (!(typeof value[i].item === 'object')) {
-              console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
-              return false;
-            }
-            if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
-              console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
-              return false;
-            }
-          }
-        }
-        return true;
-      },
-    },
-    /**
-     * Controls the ability to truncate the entire breadcrumb path. If this value is false, truncation will no longer occur.
-     */
-    truncationEnabled: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * Define a custom ID for the `<nav>` element. Randomly generated if no ID provided.
-     * @demoIgnore true
-     */
-    id: {
-      type: String,
-    },
+const props = withDefaults(defineProps<CdrBreadcrumbProps>(), {
+  truncationEnabled: true,
 });
-defineEmits({
-      /**
-     * Emits when a breadcrumb item is clicked. `e.preventDefault()` may be used to override the default link navigation.
-     * @param breadcrumb The breadcrumb data object
-     */
 
-     navigate: null,
-});
+/**
+ * Navigate event emitted when a breadcrumb item is clicked
+ * @event navigate
+ * @param {BreadcrumbItem} breadcrumb - The breadcrumb data object
+ * @param {MouseEvent} event - The click event (preventDefault() can be used to override default navigation)
+ */
+const emit = defineEmits<{
+  navigate: [breadcrumb: BreadcrumbItem, event: MouseEvent];
+}>();
+
 const style = useCssModule();
-const uniqueId = props.id ? props.id : uid();
-const truncate = ref(props.truncationEnabled && props.items.length > 2);
-const itemListEl = ref<HTMLAnchorElement | null>(null);
-const firstAnchorEl = ref<HTMLAnchorElement | null | undefined>(null);
-const ellipsisLabel = computed(() => {
-  const s = (props.items.length - 2) > 1 ? 's' : '';
-  return `show ${props.items.length - 2} more navigation level${s}`;
+
+/** Unique identifier for the breadcrumb navigation element */
+const uniqueId = computed<string>(() => props.id ?? uid());
+
+/** Reactive state controlling whether the breadcrumb list is truncated */
+const truncate = ref<boolean>(props.truncationEnabled && props.items.length > 2);
+
+/** Reference to the breadcrumb list element */
+const itemListEl = ref<HTMLElement | null>(null);
+
+/** Reference to the first anchor element after expanding truncated breadcrumbs */
+const firstAnchorEl = ref<HTMLAnchorElement | null>(null);
+
+/** 
+ * Computed label for the ellipsis button that describes the hidden items
+ * @returns Accessible label text for screen readers
+ */
+const ellipsisLabel = computed<string>(() => {
+  const hiddenCount = props.items.length - 2;
+  const s = hiddenCount > 1 ? 's' : '';
+  return `show ${hiddenCount} more navigation level${s}`;
 });
 
-const handleEllipsisClick = () => {
+/**
+ * Handles click on the ellipsis button to expand the full breadcrumb trail
+ * Expands the breadcrumb list and focuses the first link for keyboard navigation
+ */
+const handleEllipsisClick = (): void => {
   truncate.value = false;
   nextTick(() => {
-    firstAnchorEl.value = itemListEl.value?.querySelector('li a');
+    firstAnchorEl.value = itemListEl.value?.querySelector('li a') ?? null;
     firstAnchorEl.value?.focus();
   });
 };
 
+/**
+ * Watches for changes to the items array and resets truncation state
+ */
 watch(() => props.items, () => {
   truncate.value = props.truncationEnabled && props.items.length > 2;
 });
@@ -82,25 +76,25 @@ watch(() => props.items, () => {
 
 <template>
   <nav
-    :class="style['cdr-breadcrumb']"
     :id="uniqueId"
+    :class="style['cdr-breadcrumb']"
     aria-label="breadcrumbs"
   >
     <ol
       :id="`${uniqueId}List`"
-      :class="style['cdr-breadcrumb__list']"
       ref="itemListEl"
+      :class="style['cdr-breadcrumb__list']"
     >
       <li
         :class="style['cdr-breadcrumb__item']"
         v-if="truncate"
       >
         <button
-          @click="handleEllipsisClick"
-          aria-expanded="false"
           :class="style['cdr-breadcrumb__ellipses']"
           :aria-controls="`${uniqueId}List`"
           :aria-label="ellipsisLabel"
+          aria-expanded="false"
+          @click="handleEllipsisClick"
         >
           <span
             :class="style['cdr-breadcrumb__ellipses-icon']"
@@ -119,9 +113,9 @@ watch(() => props.items, () => {
 
       <li
         v-for="(breadcrumb, index) in items"
-        :class="style['cdr-breadcrumb__item']"
-        :key="breadcrumb.item.id || breadcrumb.item.name.replace(/ /g, '-').toLowerCase()"
+        :key="breadcrumb.item.id ?? breadcrumb.item.name.replace(/ /g, '-').toLowerCase()"
         v-show="!truncate || (index >= items.length - 2)"
+        :class="style['cdr-breadcrumb__item']"
       >
         <slot
           name="link"
@@ -132,7 +126,7 @@ watch(() => props.items, () => {
           <a
             :class="style['cdr-breadcrumb__link']"
             :href="breadcrumb.item.url"
-            @click="(e) => $emit('navigate', breadcrumb, e)"
+            @click="(e: MouseEvent) => emit('navigate', breadcrumb, e)"
           >
             {{ breadcrumb.item.name }}
           </a>
@@ -150,5 +144,4 @@ watch(() => props.items, () => {
   </nav>
 </template>
 
-<style lang="scss" module src="./styles/CdrBreadcrumb.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrBreadcrumb.module.scss" />

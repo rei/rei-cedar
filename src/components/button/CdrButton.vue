@@ -88,22 +88,22 @@ const style = useCssModule();
 const baseClass = 'cdr-button';
 const buttonType = computed(() => (props.tag === 'button' ? props.type : null));
 const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
-const fullWidthClass = computed(() => !props.iconOnly && props.fullWidth
+const fullWidthClass = computed<string>(() => !props.iconOnly && props.fullWidth
   ? buildBooleanClass(baseClass, props.fullWidth, 'full-width')
   : '');
-const sizeClass = computed(() => (!props.iconOnly
+const sizeClass = computed<string>(() => (!props.iconOnly
   ? responsiveModifyClass(baseClass, '', props.size)
   : `cdr-button--icon-only-${props.size}`));
-const iconLeftClass = computed(() => slots['icon-left'] && slots.default
+const iconLeftClass = computed<string>(() => slots['icon-left'] && slots.default
   ? `${baseClass}--has-icon-left`
   : '');
-const iconRightClass = computed(() => slots['icon-right'] && slots.default
+const iconRightClass = computed<string>(() => slots['icon-right'] && slots.default
   ? `${baseClass}--has-icon-right`
   : '');
-const iconOnlyClass = computed(() => props.iconOnly
+const iconOnlyClass = computed<string>(() => props.iconOnly
 ? `${baseClass}--icon-only`
 : '');
-const withBackgroundClass = computed(() => props.iconOnly && props.withBackground
+const withBackgroundClass = computed<string>(() => props.iconOnly && props.withBackground
   ? `${baseClass}--with-background`
   : '');
 

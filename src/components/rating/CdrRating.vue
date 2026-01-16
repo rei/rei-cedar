@@ -102,7 +102,6 @@ const srText = computed(() => {
     return `Rated ${displayRating.value} out of 5 stars`;
   }
   // default
-  // eslint-disable-next-line
   return `${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
 });
 </script>

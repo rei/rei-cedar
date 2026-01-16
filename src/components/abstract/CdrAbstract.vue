@@ -1,31 +1,34 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { baseTextProps } from '../../types/interfaces';
+import type { CdrAbstractProps } from '../../types/interfaces';
+import type { Tag } from '../../types/other';
 
 /** 
- * Content building blocks with pre-defined, fluid styles
- * @preview true
- **/
+ * CdrAbstract - Content building blocks with pre-defined, fluid styles
+ * 
+ * Content building blocks with pre-defined, fluid styles.
+ * Abstract provides a fluid, responsive text style that adapts based on container width.
+ */
 defineOptions({
   name: 'CdrAbstract',
 });
 
-withDefaults(defineProps<baseTextProps>(), {
-  tag: 'p',
+const props = withDefaults(defineProps<CdrAbstractProps>(), {
+  tag: 'p' as Tag,
 });
 
-const baseClass = 'cdr-abstract';
-const style = useCssModule();
+const baseClass: string = 'cdr-abstract';
+const style: Record<string, string> = useCssModule();
 </script>
 
 <template>
   <component
-    :is="tag"
+    :is="props.tag"
     :class="style[baseClass]"
   >
+    <!-- @slot Default slot for abstract content -->
     <slot />
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrAbstract.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrAbstract.module.scss" />

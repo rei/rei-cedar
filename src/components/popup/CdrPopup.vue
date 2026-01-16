@@ -147,7 +147,6 @@ const handleClosed = () => {
   }, 200); // $cdr-duration-2;
 };
 
-// eslint-disable-next-line no-return-assign
 watch(() => props.position, () => pos.value = props.position);
 watch(() => props.opened, () => {
   if (props.opened) {

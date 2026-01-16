@@ -116,7 +116,10 @@ const gradientRightStyle = computed(() => {
     background: gradient,
   };
 });
-const checkIfActive = (index: number, tab: any) => (selectedIndex.value === index && !tab.disabled);
+const checkIfActive = (
+  index: number,
+  tab: { name: string; disabled: boolean; id: string },
+) => (selectedIndex.value === index && !tab.disabled);
 const calculateOverflow = () => {
   let containerWidth = 0;
   if (containerEl.value) {
@@ -278,19 +281,19 @@ onMounted(() => {
           :class="style['cdr-tabs__header']"
         >
           <button
-            :ref="(el: HTMLButtonElement | any) => { tabElements[index] = el }"
+            :ref="(el) => { if (el) tabElements[index as number] = el as HTMLButtonElement }"
             :id="tab.id"
             :disabled="tab.disabled"
-            :aria-selected="checkIfActive(index, tab)"
-            :tabIndex="checkIfActive(index, tab) ? 0 : -1"
+            :aria-selected="checkIfActive(index as number, tab)"
+            :tabIndex="checkIfActive(index as number, tab) ? 0 : -1"
             :class="mapClasses(
               style,
-              checkIfActive(index, tab) ? 'cdr-tabs__header-item-active' : '',
+              checkIfActive(index as number, tab) ? 'cdr-tabs__header-item-active' : '',
               'cdr-tabs__header-item',
               tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
             )"
             role="tab"
-            @click.prevent="selectTab(index)"
+            @click.prevent="selectTab(index as number)"
             @keyup.right="selectTabNext"
             @keyup.left="selectTabPrev"
           >

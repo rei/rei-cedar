@@ -80,9 +80,12 @@ $light-gradients: (
     @include at-breakpoint($breakpoint-suffix) {
       // Position
       @each $position, $properties in $positions {
-        $selector: if($breakpoint-suffix == '', 
-                     '[data-position="#{$position}"]', 
-                     '[data-position#{$breakpoint-suffix}="#{$position}"]');
+        $selector: '';
+        @if $breakpoint-suffix == '' {
+          $selector: '[data-position="#{$position}"]';
+        } @else {
+          $selector: '[data-position#{$breakpoint-suffix}="#{$position}"]';
+        }
                      
         &#{$selector} &__content {
           @each $prop, $value in $properties {
@@ -99,9 +102,12 @@ $light-gradients: (
 
       // Dark theme gradients (default)
       @each $gradient, $direction in $dark-gradients {
-        $selector: if($breakpoint-suffix == '', 
-                     '[data-gradient="#{$gradient}"]', 
-                     '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]');
+        $selector: '';
+        @if $breakpoint-suffix == '' {
+          $selector: '[data-gradient="#{$gradient}"]';
+        } @else {
+          $selector: '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]';
+        }
                      
         &#{$selector}:not([data-gradient-theme="light"])::before {
           background-image: $direction;
@@ -115,9 +121,12 @@ $light-gradients: (
 
       // Light theme gradients
       @each $gradient, $direction in $light-gradients {
-        $selector: if($breakpoint-suffix == '', 
-                     '[data-gradient="#{$gradient}"]', 
-                     '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]');
+        $selector: '';
+        @if $breakpoint-suffix == '' {
+          $selector: '[data-gradient="#{$gradient}"]';
+        } @else {
+          $selector: '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]';
+        }
                      
         &#{$selector}[data-gradient-theme="light"]::before {
           background-image: $direction;
