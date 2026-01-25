@@ -144,9 +144,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,vue,mjs}": "eslint --fix",
-    "*.scss": "stylelint --fix",
-    "*": "prettier --write --ignore-unknown"
+    "src/**/*.{js,ts,vue,mjs}": "eslint --fix",
+    "src/**/*.scss": "stylelint --fix",
+    "src/**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@rei/cdr-tokens": "^13.3.0",

@@ -20,7 +20,7 @@ import type {
 } from './other';
 
 // #region Generic Interfaces
- 
+
 /**
  * Generic key-value pair object allowing any property types
  *
