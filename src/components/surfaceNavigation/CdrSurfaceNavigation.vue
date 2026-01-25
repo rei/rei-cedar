@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import CdrSurface from '../surface/CdrSurface.vue';
-import type { surface } from '../../types/interfaces';
+import type { CdrSurfaceNavigationProps } from '../../types/interfaces';
 import { getSurfaceProps } from '../../utils/surface';
 
 /** Navigation variant of CdrSurface */
-defineOptions({ name: 'CdrSurNavigation' });
+defineOptions({ name: 'CdrSurfaceNavigation' });
 
-const props = withDefaults(defineProps<surface>(), { tag: 'div' });
+const props = withDefaults(defineProps<CdrSurfaceNavigationProps>(), { tag: 'div' });
 
 // Compute surface props
 const surfaceProps = computed(() => getSurfaceProps(props));

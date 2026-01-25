@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, ref, computed, inject } from 'vue';
+import type { CdrToggleButtonProps } from '../../types/interfaces';
 import { selectedToggleKey } from '../../types/symbols';
 
 /** Permits switching two or more options on and off */
@@ -7,20 +8,11 @@ defineOptions({
   name: 'CdrToggleButton',
 });
 
-const props = defineProps({
-  /**
-   * Sets the value and aria-label for the toggle button. Display can be overridden using default slot
-   */
-    toggleValue: {
-    type: String,
-    required: true,
-  },
-});
+const props = defineProps<CdrToggleButtonProps>();
 
 const style = useCssModule();
 const selectedToggle = inject(selectedToggleKey, ref(''));
 const isActive = computed(() => props.toggleValue === selectedToggle.value);
-
 </script>
 
 <template>
@@ -38,10 +30,8 @@ const isActive = computed(() => props.toggleValue === selectedToggle.value);
     >
       <!-- @slot CdrToggleButton label content -->
       <slot>{{ toggleValue }}</slot>
-
     </button>
   </li>
 </template>
 
-<style lang="scss" module src="./styles/CdrToggleButton.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrToggleButton.module.scss" />

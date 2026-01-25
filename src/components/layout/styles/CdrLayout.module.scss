@@ -1,8 +1,8 @@
 @use './vars/CdrLayout.vars.scss' as vars;
 
 .cdr-layout {
-  @include vars.cdr-layout-base-mixin();
+  @include vars.cdr-layout-base-mixin;
   @include vars.cdr-layout-structure-mixin(vars.$layout-component);
-  @include vars.cdr-layout-gap-mixin();
+  @include vars.cdr-layout-gap-mixin;
   @include vars.cdr-layout-flow-mixin(vars.$layout-component);
 }

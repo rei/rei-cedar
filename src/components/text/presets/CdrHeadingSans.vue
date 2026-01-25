@@ -7,13 +7,12 @@ defineOptions({
 });
 
 interface HeadingSansTextProps extends BaseTextProps {
-   /** 
-     * Sets the type scale
-     * @type scaleValue
-     * @values 1,2,3
+  /**
+   * Sets the type scale
+   * @type scaleValue
+   * @values 1,2,3
    */
-  scale?: '1'|'2'|'3',
-
+  scale?: '1' | '2' | '3';
 }
 
 const props = withDefaults(defineProps<HeadingSansTextProps>(), {
@@ -24,9 +23,8 @@ const props = withDefaults(defineProps<HeadingSansTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-heading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-line-height': 
-    `var(--cdr-line-height-ratio-heading-${props.scale})`
-  }
+    '--cdr-heading-line-height': `var(--cdr-line-height-ratio-heading-${props.scale})`,
+  };
 });
 
 const baseClass = 'cdr-heading-sans';
@@ -43,5 +41,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrHeadingSans.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrHeadingSans.module.scss" lang="scss"></style>

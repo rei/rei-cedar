@@ -9,35 +9,31 @@ defineOptions({ name: 'FulfillmentTile' });
 <template>
   <h2>FulfillmentTile</h2>
   <div class="example">
-    <CdrFulfillmentTile class="example__tile" :disabled="true">
-      <template #header>
-        Pick up
-      </template>
+    <CdrFulfillmentTile
+      class="example__tile"
+      :disabled="true"
+    >
+      <template #header>Pick up</template>
       <template #icon-right>
         <CdrFulfillmentTileIcon>
           <IconErrorFill inherit-color />
         </CdrFulfillmentTileIcon>
       </template>
-      <template #body>
-        Not offered
-      </template>
+      <template #body>Not offered</template>
     </CdrFulfillmentTile>
     <CdrFulfillmentTile class="example__tile">
-      <template #header>
-        Ship to address
-      </template>
-      <template #body>
-        Today after 2pm
-      </template>
+      <template #header>Ship to address</template>
+      <template #body>Today after 2pm</template>
       <template #footer>
         <strong>FREE</strong>
         - $60 minimum
       </template>
     </CdrFulfillmentTile>
-    <CdrFulfillmentTile class="example__tile" :checked="true">
-      <template #header>
-        Another option with really long text
-      </template>
+    <CdrFulfillmentTile
+      class="example__tile"
+      :checked="true"
+    >
+      <template #header>Another option with really long text</template>
       <template #icon-right>
         <CdrFulfillmentTileIcon type="success">
           <IconCheckFill inherit-color />
@@ -48,10 +44,11 @@ defineOptions({ name: 'FulfillmentTile' });
         <strong>content</strong>
       </template>
     </CdrFulfillmentTile>
-    <CdrFulfillmentTile class="example__tile" :loading="true">
-      <template #header>
-        Loading option
-      </template>
+    <CdrFulfillmentTile
+      class="example__tile"
+      :loading="true"
+    >
+      <template #header>Loading option</template>
     </CdrFulfillmentTile>
   </div>
 </template>

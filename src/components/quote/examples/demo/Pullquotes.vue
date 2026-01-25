@@ -1,13 +1,10 @@
 <template>
   <div>
-    <h2>
-      Pullquote
-    </h2>
+    <h2>Pullquote</h2>
     <cdr-text modifier="body">
-      Body paragraph: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
+      Body paragraph: Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis
+      reiciendis sapiente delectus commodi eaque sunt aperiam ex aliquam. Temporibus, veritatis
+      laudantium molestiae accusamus asperiores odio fuga reiciendis blanditiis magni?
       <cdr-quote
         tag="aside"
         modifier="pull"
@@ -18,30 +15,24 @@
       ex aliquam. Temporibus, veritatis laudantium molestiae accusamus asperiores
       odio fuga reiciendis blanditiis magni?"
       />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
-      Summary: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis reiciendis sapiente
+      delectus commodi eaque sunt aperiam ex aliquam. Temporibus, veritatis laudantium molestiae
+      accusamus asperiores odio fuga reiciendis blanditiis magni? Summary: Lorem ipsum dolor sit
+      amet consectetur adipisicing elit. At perferendis reiciendis sapiente delectus commodi eaque
+      sunt aperiam ex aliquam. Temporibus, veritatis laudantium molestiae accusamus asperiores odio
+      fuga reiciendis blanditiis magni?
     </cdr-text>
 
     <cdr-text>
-      Default paragraph: Lorem ipsum dolor sit amet
-      consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
+      Default paragraph: Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis
+      reiciendis sapiente delectus commodi eaque sunt aperiam ex aliquam. Temporibus, veritatis
+      laudantium molestiae accusamus asperiores odio fuga reiciendis blanditiis magni? Lorem ipsum
+      dolor sit amet consectetur adipisicing elit. At perferendis reiciendis sapiente delectus
+      commodi eaque sunt aperiam ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
+      asperiores odio fuga reiciendis blanditiis magni? Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam ex
+      aliquam. Temporibus, veritatis laudantium molestiae accusamus asperiores odio fuga reiciendis
+      blanditiis magni?
     </cdr-text>
     <cdr-quote
       tag="aside"
@@ -55,20 +46,16 @@
       odio fuga reiciendis blanditiis magni?"
     />
     <cdr-text>
-      Default paragraph: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
-      Summary: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
-      Summary: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam
-      ex aliquam. Temporibus, veritatis laudantium molestiae accusamus
-      asperiores odio fuga reiciendis blanditiis magni?
+      Default paragraph: Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis
+      reiciendis sapiente delectus commodi eaque sunt aperiam ex aliquam. Temporibus, veritatis
+      laudantium molestiae accusamus asperiores odio fuga reiciendis blanditiis magni? Summary:
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis reiciendis sapiente
+      delectus commodi eaque sunt aperiam ex aliquam. Temporibus, veritatis laudantium molestiae
+      accusamus asperiores odio fuga reiciendis blanditiis magni? Summary: Lorem ipsum dolor sit
+      amet consectetur adipisicing elit. At perferendis reiciendis sapiente delectus commodi eaque
+      sunt aperiam ex aliquam. Temporibus, veritatis laudantium molestiae accusamus asperiores odio
+      fuga reiciendis blanditiis magni?
     </cdr-text>
-
   </div>
 </template>
 
@@ -81,5 +68,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

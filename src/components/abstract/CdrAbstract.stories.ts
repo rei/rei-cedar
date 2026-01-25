@@ -19,7 +19,8 @@ const meta: Meta<typeof CdrAbstract> = {
 export default meta;
 type Story = StoryObj<typeof CdrAbstract>;
 
-const defaultContent = 'Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.';
+const defaultContent =
+  'Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.';
 
 export const Default: Story = {
   render: (args) => ({

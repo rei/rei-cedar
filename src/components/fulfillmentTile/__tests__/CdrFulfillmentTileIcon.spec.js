@@ -40,7 +40,7 @@ describe('CdrFulfillmentTileIcon', () => {
 
   it('renders default slot content', () => {
     const wrapper = mount(CdrFulfillmentTileIcon, {
-      slots: { default: '<svg data-testid="icon-svg"></svg>' }
+      slots: { default: '<svg data-testid="icon-svg"></svg>' },
     });
     expect(wrapper.html()).toContain('data-testid="icon-svg"');
     expect(wrapper.element).toMatchSnapshot();

@@ -14,23 +14,30 @@ import {
   CdrButton,
   CdrContainer,
 } from '../../lib';
-import {
-  Choreographer,
+import type {
+  CdrChoreographerProps,
   ChoreographerComponents,
   ChoreographerSchema,
 } from '../../types/interfaces';
 
-/** Choreographer is in an experimental stage and should be considered unstable */
+/**
+ * CdrChoreographer - Dynamic component renderer based on schema configuration
+ *
+ * Choreographer allows you to define component layouts using a declarative schema.
+ * This is an experimental component and should be considered unstable.
+ * Use it to dynamically render component trees from configuration data.
+ */
 
 defineOptions({
   name: 'CdrChoreographer',
 });
 
-const props = withDefaults(defineProps<Choreographer>(), {
+const props = withDefaults(defineProps<CdrChoreographerProps>(), {
   components: () => ({}),
 });
 
-const componentMap = computed(
+/** Map of available components including built-in Cedar components and custom components */
+const componentMap = computed<ChoreographerComponents>(
   () =>
     ({
       abstract: CdrAbstract,
@@ -46,11 +53,11 @@ const componentMap = computed(
       button: CdrButton,
       container: CdrContainer,
       ...props.components,
-    }) as ChoreographerComponents,
+    } as ChoreographerComponents),
 );
 
-const baseClass = 'cdr-choreographer';
-const style = useCssModule();
+const baseClass: string = 'cdr-choreographer';
+const style: Record<string, string> = useCssModule();
 </script>
 
 <template>
@@ -87,4 +94,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrChoreographer.module.scss"></style>
+<style lang="scss" module src="./styles/CdrChoreographer.module.scss" />

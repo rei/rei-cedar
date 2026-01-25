@@ -32,8 +32,6 @@ Object.keys(iconData).forEach(function (name) {
   });
   const { innerHTML } = fragment;
 
-
-
   // create vue component
   const component = `
   <script setup lang="ts">
@@ -62,8 +60,7 @@ Object.keys(iconData).forEach(function (name) {
 
   // add file to 'index'
   indexArr.push(`export { default as Icon${pascalName} } from './comps/${name}.vue';`);
-
-})
+});
 
 // output the 'index' file
 fs.outputFileSync(

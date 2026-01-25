@@ -3,21 +3,34 @@ import { useCssModule, computed } from 'vue';
 import CdrSurfaceSelection from '../surfaceSelection/CdrSurfaceSelection.vue';
 import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
 import CdrBody from '../text/presets/CdrBody.vue';
-import type { surfaceSelection } from '../../types/interfaces';
+import type { CdrFulfillmentTileProps } from '../../types/interfaces';
 import { getSurfaceProps } from '../../utils/surface';
 
-/** Selection variant of CdrSurfaceSelection with additional interactive states */
+/**
+ * CdrFulfillmentTile - Selection variant of CdrSurfaceSelection with additional interactive states
+ *
+ * Fulfillment tiles present delivery and pickup options in a selectable format.
+ * Use these tiles to display shipping methods, store pickup availability,
+ * or other fulfillment choices with relevant details and pricing.
+ */
+
 defineOptions({ name: 'CdrFulfillmentTile' });
 
-const props = withDefaults(defineProps<surfaceSelection>(), {
+const props = withDefaults(defineProps<CdrFulfillmentTileProps>(), {
   tag: 'div',
   role: 'checkbox',
-  borderRadius: 'soft'
+  borderColor: 'primary',
+  borderStyle: 'solid',
+  borderWidth: 'sixteenth-x',
+  borderRadius: 'soft',
 });
 
-const style = useCssModule();
+const style: Record<string, string> = useCssModule();
 
-// Compute surface props including selection-specific attributes
+/**
+ * Compute surface props including selection-specific attributes
+ * Combines inherited surface properties with ARIA attributes for accessibility
+ */
 const surfaceProps = computed(() => ({
   ...getSurfaceProps(props),
   'aria-checked': props.checked,

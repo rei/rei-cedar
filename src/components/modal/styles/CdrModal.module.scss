@@ -11,14 +11,17 @@ $modal-animation-duration: 150ms;
   z-index: 9999;
 
   @supports (-webkit-touch-callout: none) {
-    & * {
+    * {
       will-change: transform;
     }
   }
 
   &__overlay {
-    //ITEM_DOC: Background color of the modal overlay
-    background-color: var(--cdr-modal-overlay-background-color, var(--cdr-color-background-modal-overlay, #{tokens.$cdr-color-background-modal-overlay}));
+    // ITEM_DOC: Background color of the modal overlay
+    background-color: var(
+      --cdr-modal-overlay-background-color,
+      var(--cdr-color-background-modal-overlay, #{tokens.$cdr-color-background-modal-overlay})
+    );
     backdrop-filter: blur(tokens.$cdr-space-one-x);
     inset: 0;
     opacity: 1;
@@ -38,8 +41,11 @@ $modal-animation-duration: 150ms;
   &__contentWrap {
     align-items: flex-start;
 
-    //ITEM_DOC: Background color of the content wrap
-    background-color: var(--cdr-modal-content-wrap-background-color, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary}));
+    // ITEM_DOC: Background color of the content wrap
+    background-color: var(
+      --cdr-modal-content-wrap-background-color,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    );
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -131,8 +137,7 @@ $modal-animation-duration: 150ms;
 }
 
 .cdr-modal--closed {
-  transition: z-index 0s $modal-animation-duration * 2,
-  visibility 0s $modal-animation-duration * 2;
+  transition: z-index 0s $modal-animation-duration * 2, visibility 0s $modal-animation-duration * 2;
   visibility: hidden;
   z-index: -1;
 
@@ -141,6 +146,7 @@ $modal-animation-duration: 150ms;
     transition: opacity $modal-animation-duration $modal-animation-duration;
   }
 
+  /* stylelint-disable-next-line selector-class-pattern */
   .cdr-modal__contentWrap {
     opacity: 0;
     transition: opacity $modal-animation-duration;

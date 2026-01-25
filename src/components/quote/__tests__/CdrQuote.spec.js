@@ -2,7 +2,6 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrQuote from '../CdrQuote.vue';
 
 describe('CdrQuote', () => {
-
   describe('default component', () => {
     let wrapper;
     beforeEach(() => {
@@ -10,8 +9,8 @@ describe('CdrQuote', () => {
         propsData: {
           tag: 'aside',
           summary: 'This is the summary',
-          citation: 'This is the citation'
-        }
+          citation: 'This is the citation',
+        },
       });
     });
 
@@ -27,8 +26,8 @@ describe('CdrQuote', () => {
         propsData: {
           summary: 'This is the pull summary',
           citation: 'This is the pull citation',
-          modifier: 'pull'
-        }
+          modifier: 'pull',
+        },
       });
     });
 

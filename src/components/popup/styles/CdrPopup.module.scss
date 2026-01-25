@@ -1,5 +1,4 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
-
 @use './vars/CdrPopup.vars' as vars;
 
 .cdr-popup {
@@ -19,11 +18,18 @@
     animation-timing-function: vars.$timing-function;
     animation-fill-mode: forwards;
 
-    //ITEM_DOC: Background color of cdr-popup content
-    background: var(--cdr-popup-content-background, var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary}));
+    // ITEM_DOC: Background color of cdr-popup content
+    background: var(
+      --cdr-popup-content-background,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    );
 
-    //ITEM_DOC: Border color of cdr-popup content
-    border: 1px solid var(--cdr-popup-content-border-color, var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary}));
+    // ITEM_DOC: Border color of cdr-popup content
+    border: 1px solid
+      var(
+        --cdr-popup-content-border-color,
+        var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
+      );
     border-radius: tokens.$cdr-radius-softer;
     box-shadow: tokens.$cdr-prominence-elevated;
     max-width: 286px;
@@ -33,7 +39,8 @@
   }
 
   &__arrow {
-    &::before, &::after {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       margin: auto;
@@ -58,7 +65,9 @@
 
   &--top,
   &--bottom {
-    .cdr-popup__content, .cdr-popup__arrow::before, .cdr-popup__arrow::after  {
+    .cdr-popup__content,
+    .cdr-popup__arrow::before,
+    .cdr-popup__arrow::after {
       left: 50%;
       transform: translateX(-50%);
     }
@@ -73,7 +82,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-enter-down;
           }
@@ -89,7 +99,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-exit-down;
           }
@@ -115,7 +126,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-enter-up;
           }
@@ -131,7 +143,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-exit-up;
           }
@@ -161,7 +174,9 @@
 
   &--left,
   &--right {
-    .cdr-popup__content, .cdr-popup__arrow::before, .cdr-popup__arrow::after {
+    .cdr-popup__content,
+    .cdr-popup__arrow::before,
+    .cdr-popup__arrow::after {
       top: 50%;
       transform: translateY(-50%);
     }
@@ -176,7 +191,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-enter-left;
           }
@@ -192,7 +208,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-exit-left;
           }
@@ -218,7 +235,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-enter-right;
           }
@@ -234,7 +252,8 @@
       }
 
       .cdr-popup__arrow {
-        &::before, &::after {
+        &::before,
+        &::after {
           :global {
             animation-name: popup-arrow-exit-right;
           }

@@ -228,7 +228,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->

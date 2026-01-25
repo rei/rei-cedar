@@ -3,29 +3,21 @@
     <h2>container</h2>
     <h3>container static</h3>
     <cdr-container>
-      <div style="width: 100%; border: 1px solid black;">
-        container
-      </div>
+      <div style="width: 100%; border: 1px solid black">container</div>
     </cdr-container>
-    <br>
+    <br />
     <div class="tokens-container">
-      <div style="width: 100%; border: 1px solid black;">
-        container (mixin)
-      </div>
+      <div style="width: 100%; border: 1px solid black">container (mixin)</div>
     </div>
 
     <h3>container fluid</h3>
     <cdr-container modifier="fluid">
-      <div style="width: 100%; border: 1px solid black;">
-        container fluid
-      </div>
+      <div style="width: 100%; border: 1px solid black">container fluid</div>
     </cdr-container>
 
-    <br>
+    <br />
     <div class="tokens-container-fluid">
-      <div style="width: 100%; border: 1px solid black;">
-        container fluid (mixin)
-      </div>
+      <div style="width: 100%; border: 1px solid black">container fluid (mixin)</div>
     </div>
   </div>
 </template>

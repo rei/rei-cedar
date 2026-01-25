@@ -23,22 +23,22 @@ describe('CdrSurfaceNavigation', () => {
       props: {
         background: {
           rest: 'primary',
-          hover: 'secondary'
+          hover: 'secondary',
         },
         borderColor: {
-          rest: 'primary'
+          rest: 'primary',
         },
         borderStyle: {
-          rest: 'solid'
+          rest: 'solid',
         },
         borderWidth: {
-          rest: 'sixteenth-x'
+          rest: 'sixteenth-x',
         },
         boxShadow: {
           rest: 'flat',
-          hover: 'elevated'
-        }
-      }
+          hover: 'elevated',
+        },
+      },
     });
     expect(wrapper.attributes('data-background')).toBe('primary');
     expect(wrapper.attributes('data-border-color')).toBe('primary');

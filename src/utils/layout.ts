@@ -3,7 +3,49 @@ import type { NameValuePair, Layout } from '../types/interfaces';
 
 const breakpoints: Breakpoint[] = ['xs', 'sm', 'md', 'lg'];
 
-// Converts various columns or rows values to a map of inline CSS variables
+/**
+ * Converts various columns or rows values to a map of inline CSS variables for the Layout component.
+ *
+ * This function handles different structure option types:
+ * - **String**: Direct CSS value (e.g., "100px", "1fr 2fr")
+ * - **Number**: Generates equal-width fractional units (e.g., 2 => "1fr 1fr")
+ * - **Array**: Mix of numbers and strings (e.g., [100px, 1] => "100px 1fr")
+ * - **Object**: Responsive breakpoint configuration
+ *
+ * @param props - Layout configuration object
+ * @param styles - Existing styles object to merge with (optional)
+ * @param structure - The layout structure type ('columns' or 'rows')
+ * @param breakpoint - Specific breakpoint to generate styles for (optional)
+ * @returns Object containing CSS custom property names and their values
+ *
+ * @example
+ * // String input
+ * getStructureStyles({ props: { columns: '100px' }, structure: 'columns' })
+ * // => { '--cdr-layout-columns': '100px' }
+ *
+ * @example
+ * // Number input
+ * getStructureStyles({ props: { columns: 3 }, structure: 'columns' })
+ * // => { '--cdr-layout-columns': '1fr 1fr 1fr' }
+ *
+ * @example
+ * // Array input
+ * getStructureStyles({ props: { columns: ['200px', 1, 2] }, structure: 'columns' })
+ * // => { '--cdr-layout-columns': '200px 1fr 2fr' }
+ *
+ * @example
+ * // Responsive object input
+ * getStructureStyles({
+ *   props: { columns: { xs: 1, sm: 2, md: 3, lg: 4 } },
+ *   structure: 'columns'
+ * })
+ * // => {
+ * //   '--cdr-layout-columns-xs': '1fr',
+ * //   '--cdr-layout-columns-sm': '1fr 1fr',
+ * //   '--cdr-layout-columns-md': '1fr 1fr 1fr',
+ * //   '--cdr-layout-columns-lg': '1fr 1fr 1fr 1fr'
+ * // }
+ */
 export function getStructureStyles({
   props,
   styles: newStyles = {},
@@ -14,7 +56,7 @@ export function getStructureStyles({
   styles?: NameValuePair;
   structure: Structure;
   breakpoint?: Breakpoint;
-}) {  
+}): NameValuePair {
   // This will be assigned a StructureOption.
   // If breakpoint is passed then get the deep value, otherwise use top-level value.
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -23,7 +65,7 @@ export function getStructureStyles({
 
   if (!option) {
     return newStyles;
-  }  
+  }
 
   const styles = { ...newStyles };
 

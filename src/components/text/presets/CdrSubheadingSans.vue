@@ -7,12 +7,12 @@ defineOptions({
 });
 
 interface SubheadingSansTextProps extends BaseTextProps {
-   /** 
-     * Sets the type scale
-     * @type scaleValue
-     * @values 0,1,2
+  /**
+   * Sets the type scale
+   * @type scaleValue
+   * @values 0,1,2
    */
-  scale?: '-1' | '0'|'1'|'2',
+  scale?: '-1' | '0' | '1' | '2';
 }
 
 const props = withDefaults(defineProps<SubheadingSansTextProps>(), {
@@ -23,10 +23,8 @@ const props = withDefaults(defineProps<SubheadingSansTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-subheading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-subheading-sans-line-height': 
-    `var(--cdr-line-height-ratio-subheading-sans-${props.scale}})`
-
-  }
+    '--cdr-subheading-sans-line-height': `var(--cdr-line-height-ratio-subheading-sans-${props.scale}})`,
+  };
 });
 
 const baseClass = 'cdr-subheading-sans';
@@ -43,5 +41,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrSubheadingSans.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrSubheadingSans.module.scss" lang="scss"></style>

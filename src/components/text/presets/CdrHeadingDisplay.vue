@@ -7,13 +7,12 @@ defineOptions({
 });
 
 interface HeadingDisplayTextProps extends BaseTextProps {
-   /** 
+  /**
    * Sets the type scale
    * @type scaleValue
    * @values 2,3,4,5,6,7
    */
-  scale?: '2'|'3'|'4'|'5'|'6'|'7',
-
+  scale?: '2' | '3' | '4' | '5' | '6' | '7';
 }
 
 const props = withDefaults(defineProps<HeadingDisplayTextProps>(), {
@@ -24,9 +23,8 @@ const props = withDefaults(defineProps<HeadingDisplayTextProps>(), {
 const typeProperties = computed(() => {
   return {
     '--cdr-heading-display-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-display-line-height': 
-    `var(--cdr-line-height-ratio-heading-display-${props.scale})`
-  }
+    '--cdr-heading-display-line-height': `var(--cdr-line-height-ratio-heading-display-${props.scale})`,
+  };
 });
 
 const baseClass = 'cdr-heading-display';
@@ -43,5 +41,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrHeadingDisplay.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrHeadingDisplay.module.scss" lang="scss"></style>

@@ -193,7 +193,7 @@ exports[`CdrFormGroup > form group with optional state > renders correctly 1`] =
     <span
       class="cdr-form-group__optional"
     >
-       (optional)
+       (optional) 
     </span>
   </legend>
   <div
@@ -221,7 +221,7 @@ exports[`CdrFormGroup > form group with required and optional state > renders co
     <span
       aria-label="required"
     >
-       *
+       * 
     </span>
     <!--v-if-->
   </legend>
@@ -250,7 +250,7 @@ exports[`CdrFormGroup > form group with required state > renders correctly 1`] =
     <span
       aria-label="required"
     >
-       *
+       * 
     </span>
     <!--v-if-->
   </legend>

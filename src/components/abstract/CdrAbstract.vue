@@ -3,9 +3,9 @@ import { useCssModule } from 'vue';
 import type { CdrAbstractProps } from '../../types/interfaces';
 import type { Tag } from '../../types/other';
 
-/** 
+/**
  * CdrAbstract - Content building blocks with pre-defined, fluid styles
- * 
+ *
  * Content building blocks with pre-defined, fluid styles.
  * Abstract provides a fluid, responsive text style that adapts based on container width.
  */

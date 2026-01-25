@@ -5,7 +5,7 @@
   padding: 0;
   margin: 0;
 
-  & > li + li {
+  > li + li {
     margin-top: tokens.$cdr-space-half-x;
   }
 }
@@ -17,7 +17,7 @@
 }
 
 @mixin cdr-list-compact-mixin() {
-  & > li + li {
+  > li + li {
     margin-top: tokens.$cdr-space-quarter-x;
   }
 }
@@ -31,7 +31,7 @@
   padding-left: 1.5em;
   list-style-position: outside;
 
-  & li {
+  li {
     padding: 0 0 0 tokens.$cdr-space-quarter-x;
   }
 }
@@ -40,15 +40,18 @@
   position: relative;
   padding-left: 1em;
 
-  & > li {
+  > li {
     padding-left: 0;
 
     &::before {
       content: '\2013';
       position: absolute;
 
-      //ITEM_DOC: Color of the nested ordered cdr-list item prefix
-      color: var(--cdr-list-ordered-nested-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+      // ITEM_DOC: Color of the nested ordered cdr-list item prefix
+      color: var(
+        --cdr-list-ordered-nested-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
       left: 0;
     }
   }
@@ -58,14 +61,17 @@
   position: relative;
   padding-left: 1em;
 
-  & > li::before {
+  > li::before {
     content: '\2022';
     position: relative;
     margin-left: -1em;
     padding-right: tokens.$cdr-space-half-x;
 
-    //ITEM_DOC: Color of the unordered cdr-list item prefix
-    color: var(--cdr-list-unordered-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+    // ITEM_DOC: Color of the unordered cdr-list item prefix
+    color: var(
+      --cdr-list-unordered-prefix-color,
+      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+    );
   }
 }
 
@@ -73,15 +79,18 @@
   position: relative;
   padding-left: 1em;
 
-  & > li {
+  > li {
     &::before {
       content: '\2013';
       position: relative;
       margin-left: -1em;
       padding-right: tokens.$cdr-space-half-x;
 
-      //ITEM_DOC: Color of the nested unordered cdr-list item prefix
-      color: var(--cdr-list-unordered-nested-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+      // ITEM_DOC: Color of the nested unordered cdr-list item prefix
+      color: var(
+        --cdr-list-unordered-nested-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
     }
   }
 }

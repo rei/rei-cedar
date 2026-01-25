@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import {
-  useCssModule, computed, watch, onMounted, onBeforeUnmount, ref, inject, nextTick,
+  useCssModule,
+  computed,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+  ref,
+  inject,
+  nextTick,
 } from 'vue';
 import type { Ref } from 'vue';
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import { modifyClassName } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
-import { unwrappedKey } from '../../types/symbols'; 
+import { unwrappedKey } from '../../types/symbols';
 import { CdrAccordionProps } from '../../lib';
 
-/** 
+/**
  * Vertically-stacked list that allows users to expand and collapse additional content
  */
 defineOptions({
@@ -58,44 +65,40 @@ const iconClass = 'cdr-accordion__icon';
 const containerClass = 'cdr-accordion__content-container';
 const contentClass = 'cdr-accordion__content';
 /** Returns button element when collapsed, div when unwrapped */
-const headingContent = computed(() => (unwrap.value
-  ? 'div'
-  : 'button'));
+const headingContent = computed(() => (unwrap.value ? 'div' : 'button'));
 
 /** Returns appropriate CSS classes for heading content */
-const headingContentStyle = computed(() => (unwrap.value
-  ? 'js-cdr-accordion-button'
-  : [style['cdr-accordion__button'], 'js-cdr-accordion-button']));
+const headingContentStyle = computed(() =>
+  unwrap.value
+    ? 'js-cdr-accordion-button'
+    : [style['cdr-accordion__button'], 'js-cdr-accordion-button'],
+);
 
 /** Returns heading class based on unwrap state */
-const headingClass = computed(() => (unwrap.value
-  ? 'cdr-accordion__header--unwrapped'
-  : 'cdr-accordion__header'));
+const headingClass = computed(() =>
+  unwrap.value ? 'cdr-accordion__header--unwrapped' : 'cdr-accordion__header',
+);
 
 /** Returns compact modifier class if compact prop is true */
-const compactClass = computed(() => (props.compact
-  ? modifyClassName(baseClass, 'compact')
-  : ''));
+const compactClass = computed(() => (props.compact ? modifyClassName(baseClass, 'compact') : ''));
 
 /** Returns border-aligned modifier class if borderAligned prop is true */
-const borderAlignedClass = computed(() => (props.borderAligned
-  ? modifyClassName(baseClass, 'border-aligned')
-  : ''));
+const borderAlignedClass = computed(() =>
+  props.borderAligned ? modifyClassName(baseClass, 'border-aligned') : '',
+);
 
 /** Returns unwrap modifier class if accordion is unwrapped */
-const unwrapClass = computed(() => (unwrap.value
-  ? modifyClassName(baseClass, 'unwrap')
-  : ''));
+const unwrapClass = computed(() => (unwrap.value ? modifyClassName(baseClass, 'unwrap') : ''));
 
 /** Returns no-spacing modifier class if contentSpacing is false */
-const noSpacingClass = computed(() => (!props.contentSpacing
-  ? modifyClassName(baseClass, 'no-spacing')
-  : ''));
+const noSpacingClass = computed(() =>
+  !props.contentSpacing ? modifyClassName(baseClass, 'no-spacing') : '',
+);
 
 /** Returns open or closed class based on accordion state */
-const isOpenClass = computed(() => (props.opened || unwrap.value
-  ? 'cdr-accordion--open'
-  : 'cdr-accordion--closed'));
+const isOpenClass = computed(() =>
+  props.opened || unwrap.value ? 'cdr-accordion--open' : 'cdr-accordion--closed',
+);
 
 /**
  * Handles click events on the accordion button
@@ -120,13 +123,15 @@ const onBlur = (): void => {
 };
 
 /** Event listeners for the accordion button (empty when unwrapped) */
-const listeners = computed(() => (unwrap.value
-  ? {}
-  : {
-    click: onClick,
-    focus: onFocus,
-    blur: onBlur,
-  }));
+const listeners = computed(() =>
+  unwrap.value
+    ? {}
+    : {
+        click: onClick,
+        focus: onFocus,
+        blur: onBlur,
+      },
+);
 
 /**
  * Handles the transitionend event to update accordion state after animation
@@ -144,33 +149,36 @@ const handleTransitionEnd = (event: TransitionEvent): void => {
   }
 };
 
-watch(() => props.opened, async (opened) => {
-  if (!accordionContentEl.value || unwrap.value) return;
-  
-  isTransitioning.value = true;
-  
-  if (opened) {
-    // Opening: Set to current height, then animate to actual height
-    maxHeight.value = '0px';
-    await nextTick();
-    // Force reflow
-    void accordionContentEl.value.offsetHeight;
-    maxHeight.value = `${accordionContentEl.value.scrollHeight}px`;
-  } else {
-    // Closing: Set to actual height, then animate to 0
-    maxHeight.value = `${accordionContentEl.value.scrollHeight}px`;
-    await nextTick();
-    // Force reflow
-    void accordionContentEl.value.offsetHeight;
-    maxHeight.value = '0px';
-  }
-});
+watch(
+  () => props.opened,
+  async (opened) => {
+    if (!accordionContentEl.value || unwrap.value) return;
+
+    isTransitioning.value = true;
+
+    if (opened) {
+      // Opening: Set to current height, then animate to actual height
+      maxHeight.value = '0px';
+      await nextTick();
+      // Force reflow
+      void accordionContentEl.value.offsetHeight;
+      maxHeight.value = `${accordionContentEl.value.scrollHeight}px`;
+    } else {
+      // Closing: Set to actual height, then animate to 0
+      maxHeight.value = `${accordionContentEl.value.scrollHeight}px`;
+      await nextTick();
+      // Force reflow
+      void accordionContentEl.value.offsetHeight;
+      maxHeight.value = '0px';
+    }
+  },
+);
 
 onMounted(() => {
   if (props.opened && accordionContentEl.value) {
     maxHeight.value = 'none';
   }
-  
+
   // Add transition end listener
   if (containerEl.value) {
     containerEl.value.addEventListener('transitionend', handleTransitionEnd);
@@ -183,14 +191,15 @@ onBeforeUnmount(() => {
     containerEl.value.removeEventListener('transitionend', handleTransitionEnd);
   }
 });
-
 </script>
 
 <template>
   <div
-    :class="!unwrap
-      ? mapClasses(style, baseClass, compactClass, borderAlignedClass, noSpacingClass)
-      : null"
+    :class="
+      !unwrap
+        ? mapClasses(style, baseClass, compactClass, borderAlignedClass, noSpacingClass)
+        : null
+    "
     :id="`${id}-accordion`"
   >
     <component

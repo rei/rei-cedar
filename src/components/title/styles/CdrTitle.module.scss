@@ -6,7 +6,7 @@
   color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
   margin: 0;
   font-size: var(--cdr-type-scale-4);
-line-height: var(--cdr-line-height-ratio-heading-4);
+  line-height: var(--cdr-line-height-ratio-heading-4);
 
   @container (min-width: 720px) and (max-width: 900px) {
     @include tokens.cdr-text-heading-serif-800;

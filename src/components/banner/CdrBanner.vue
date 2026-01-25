@@ -4,7 +4,7 @@ import type { CdrBannerProps } from '../../types/interfaces';
 
 /**
  * CdrBanner - Provides contextual feedback messages for typical user actions
- * 
+ *
  * Displays informational, warning, success, error, or default messages with optional
  * icons and action elements. Supports primary messages with expandable message bodies.
  */
@@ -22,19 +22,19 @@ const style = useCssModule();
 /** Base CSS class for the banner component */
 const baseClass = 'cdr-banner' as const;
 
-/** 
+/**
  * Computed class name for the banner type variant
  * @returns CSS class string for the current banner type
  */
 const typeClass = computed<string>(() => `${baseClass}--${props.type}`);
 
-/** 
+/**
  * Computed class name for prominence styling when message body is present
  * @returns CSS class string for prominence styling or empty string
  */
-const prominenceClass = computed<string>(() => (slots['message-body']
-  ? `${baseClass}__wrapper--prominence`
-  : ''));
+const prominenceClass = computed<string>(() =>
+  slots['message-body'] ? `${baseClass}__wrapper--prominence` : '',
+);
 
 /** Indicates if the icon-left slot has content */
 const hasIconLeft = computed<boolean>(() => !!slots['icon-left']);

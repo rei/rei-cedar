@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { MediaObject, NameValuePair, HtmlAttributes } from '../../types/interfaces';
+import { CdrMediaObjectProps, NameValuePair, HtmlAttributes } from '../../types/interfaces';
 import type { Breakpoint } from '../../types/other';
 import { modifyClassName } from '../../utils/buildClass';
 import { getLayoutStyling } from '../../utils/mediaObject';
@@ -12,7 +12,7 @@ import { breakpoints, spacing } from '../../utils/other';
 
 defineOptions({ name: 'CdrMediaObject' });
 
-const props = withDefaults(defineProps<MediaObject>(), {
+const props = withDefaults(defineProps<CdrMediaObjectProps>(), {
   align: 'start',
   mediaPosition: 'left',
   mediaWidth: '1fr',
@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<MediaObject>(), {
   overlayRowAlign: 'start',
   overlayColumnAlign: 'start',
   contentPadding: 'zero',
-  queryType: "media",
+  queryType: 'media',
 });
 
 const style = useCssModule();
@@ -126,4 +126,4 @@ const rootProps = computed(() => {
   </CdrLayout>
 </template>
 
-<style lang="scss" module src="./styles/CdrMediaObject.module.scss"></style>
+<style lang="scss" module src="./styles/CdrMediaObject.module.scss" />

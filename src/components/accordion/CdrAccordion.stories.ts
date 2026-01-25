@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import CdrAccordion from './CdrAccordion.vue';
 import CdrAccordionGroup from './CdrAccordionGroup.vue';
 import CdrText from '../text/CdrText.vue';
@@ -56,14 +56,21 @@ export const Default: Story = {
   render: (args) => ({
     components: { CdrAccordion, CdrText },
     setup() {
-      const isOpen = ref(false);
+      const isOpen = ref(args.opened ?? false);
+      watch(
+        () => args.opened,
+        (newVal) => {
+          isOpen.value = newVal ?? false;
+        },
+      );
       const toggle = () => {
         isOpen.value = !isOpen.value;
       };
-      return { args, isOpen, toggle };
+      const { opened, ...restArgs } = args;
+      return { restArgs, isOpen, toggle };
     },
     template: `
-      <CdrAccordion v-bind="args" :opened="isOpen" @accordion-toggle="toggle">
+      <CdrAccordion v-bind="restArgs" :opened="isOpen" @accordion-toggle="toggle">
         <CdrText>
           This is some text. It's in a <strong>CdrText paragraph</strong> element as
           that's how you assign the correct font and line-height for text display on REI.
@@ -84,14 +91,21 @@ export const Compact: Story = {
   render: (args) => ({
     components: { CdrAccordion, CdrList, CdrLink },
     setup() {
-      const isOpen = ref(false);
+      const isOpen = ref(args.opened ?? false);
+      watch(
+        () => args.opened,
+        (newVal) => {
+          isOpen.value = newVal ?? false;
+        },
+      );
       const toggle = () => {
         isOpen.value = !isOpen.value;
       };
-      return { args, isOpen, toggle };
+      const { opened, ...restArgs } = args;
+      return { restArgs, isOpen, toggle };
     },
     template: `
-      <CdrAccordion v-bind="args" :opened="isOpen" @accordion-toggle="toggle">
+      <CdrAccordion v-bind="restArgs" :opened="isOpen" @accordion-toggle="toggle">
         <CdrList modifier="unordered">
           <li><CdrLink href="https://www.rei.com/">REI.com</CdrLink></li>
           <li><CdrLink href="https://www.rei.com/h/adventure-projects">Adventure Projects</CdrLink></li>
@@ -111,14 +125,21 @@ export const BorderAligned: Story = {
   render: (args) => ({
     components: { CdrAccordion },
     setup() {
-      const isOpen = ref(false);
+      const isOpen = ref(args.opened ?? false);
+      watch(
+        () => args.opened,
+        (newVal) => {
+          isOpen.value = newVal ?? false;
+        },
+      );
       const toggle = () => {
         isOpen.value = !isOpen.value;
       };
-      return { args, isOpen, toggle };
+      const { opened, ...restArgs } = args;
+      return { restArgs, isOpen, toggle };
     },
     template: `
-      <CdrAccordion v-bind="args" :opened="isOpen" @accordion-toggle="toggle">
+      <CdrAccordion v-bind="restArgs" :opened="isOpen" @accordion-toggle="toggle">
         <p>Border aligned accordion content.</p>
       </CdrAccordion>
     `,
@@ -189,14 +210,21 @@ export const Opened: Story = {
   render: (args) => ({
     components: { CdrAccordion },
     setup() {
-      const isOpen = ref(true);
+      const isOpen = ref(args.opened);
+      watch(
+        () => args.opened,
+        (newVal) => {
+          isOpen.value = newVal ?? false;
+        },
+      );
       const toggle = () => {
         isOpen.value = !isOpen.value;
       };
-      return { args, isOpen, toggle };
+      const { opened, ...restArgs } = args;
+      return { restArgs, isOpen, toggle };
     },
     template: `
-      <CdrAccordion v-bind="args" :opened="isOpen" @accordion-toggle="toggle">
+      <CdrAccordion v-bind="restArgs" :opened="isOpen" @accordion-toggle="toggle">
         <p>This accordion starts in an open state.</p>
       </CdrAccordion>
     `,
@@ -212,14 +240,21 @@ export const NoContentSpacing: Story = {
   render: (args) => ({
     components: { CdrAccordion, CdrText },
     setup() {
-      const isOpen = ref(true);
+      const isOpen = ref(args.opened ?? false);
+      watch(
+        () => args.opened,
+        (newVal) => {
+          isOpen.value = newVal ?? false;
+        },
+      );
       const toggle = () => {
         isOpen.value = !isOpen.value;
       };
-      return { args, isOpen, toggle };
+      const { opened, ...restArgs } = args;
+      return { restArgs, isOpen, toggle };
     },
     template: `
-      <CdrAccordion v-bind="args" :opened="isOpen" @accordion-toggle="toggle">
+      <CdrAccordion v-bind="restArgs" :opened="isOpen" @accordion-toggle="toggle">
         <CdrText>
           This accordion has no padding around content. This is useful when you want to 
           control spacing with custom layouts or when nesting other components that provide 
@@ -250,7 +285,8 @@ export const BorderAlignedGroup: Story = {
         },
         {
           label: 'And they are also linked',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula, nibh vitae luctus mattis, quam sapien tempus risus, sit amet viverra quam velit a orci.',
+          content:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula, nibh vitae luctus mattis, quam sapien tempus risus, sit amet viverra quam velit a orci.',
           opened: false,
           id: 'linked2',
         },

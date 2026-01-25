@@ -54,7 +54,7 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
                 </div>
                 <button
                   aria-label="Close"
-                  class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
+                  class="cdr-button cdr-button--primary cdr-button--icon-only- cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
                   type="button"
                 >
                   <!-- @slot Icon to the left of text content -->
@@ -90,7 +90,7 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
               <div
                 class="cdr-modal__text-content"
                 role="document"
-                style="max-height: -80px; padding-right: 0px;"
+                style="padding-right: 0px;"
                 tabindex="0"
               >
                 
@@ -163,7 +163,7 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
                 </div>
                 <button
                   aria-label="Close"
-                  class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
+                  class="cdr-button cdr-button--primary cdr-button--icon-only- cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
                   type="button"
                 >
                   <!-- @slot Icon to the left of text content -->
@@ -199,7 +199,7 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
               <div
                 class="cdr-modal__text-content"
                 role="document"
-                style="max-height: 688px; padding-right: 0px;"
+                style="padding-right: 0px;"
                 tabindex="0"
               >
                 
@@ -274,7 +274,7 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
                 </div>
                 <button
                   aria-label="Close"
-                  class="cdr-button cdr-button--primary cdr-button--icon-only-medium cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
+                  class="cdr-button cdr-button--primary cdr-button--icon-only- cdr-button--icon-only cdr-button--with-background cdr-modal__close-button"
                   type="button"
                 >
                   <!-- @slot Icon to the left of text content -->
@@ -310,7 +310,7 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
               <div
                 class="cdr-modal__text-content"
                 role="document"
-                style="max-height: 688px; padding-right: 0px;"
+                style="padding-right: 0px;"
                 tabindex="0"
               >
                 

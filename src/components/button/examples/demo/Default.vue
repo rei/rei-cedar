@@ -9,14 +9,11 @@
       <h3>
         {{ section.title }}
       </h3>
-      <cdr-text v-if="index === 0">
-        Clicks: {{ clickCount }}
-      </cdr-text>
+      <cdr-text v-if="index === 0">Clicks: {{ clickCount }}</cdr-text>
       <cdr-button
         v-for="(button, index2) in section.buttons"
         :key="index2"
         :size="button.size"
-
         :full-width="button.fullWidth"
         :type="button.type"
         :disabled="button.disabled"
@@ -29,9 +26,7 @@
       class="inset"
       data-backstop="cdr-button--anchor"
     >
-      <h3>
-        Primary Anchor
-      </h3>
+      <h3>Primary Anchor</h3>
       <cdr-button
         tag="a"
         href="https://rei.com"
@@ -48,17 +43,9 @@
         Small Link
       </cdr-button>
     </div>
-    <div
-      class="inset"
-    >
-      <h3>
-        Primary Responsive
-      </h3>
-      <cdr-button
-        size="large large@xs medium@sm small@lg"
-      >
-        Responsive
-      </cdr-button>
+    <div class="inset">
+      <h3>Primary Responsive</h3>
+      <cdr-button size="large large@xs medium@sm small@lg">Responsive</cdr-button>
     </div>
   </div>
 </template>

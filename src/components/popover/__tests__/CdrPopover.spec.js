@@ -2,7 +2,6 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrPopover from '../CdrPopover.vue';
 
 describe('CdrPopover', () => {
-
   describe('', () => {
     let wrapper;
     beforeEach(() => {
@@ -13,7 +12,7 @@ describe('CdrPopover', () => {
         slots: {
           trigger: '<button id="popover-trigger"></button>',
           default: 'popover content',
-        }
+        },
       });
     });
 
@@ -51,9 +50,9 @@ describe('CdrPopover', () => {
       });
     });
 
-    describe('when contentClass has been set', ()=>{
-      beforeEach(()=>{
-        wrapper.setProps({ contentClass: 'popover-override'})
+    describe('when contentClass has been set', () => {
+      beforeEach(() => {
+        wrapper.setProps({ contentClass: 'popover-override' });
       });
 
       it('binds the contentClass to content', () => {
@@ -61,6 +60,4 @@ describe('CdrPopover', () => {
       });
     });
   });
-
-
 });

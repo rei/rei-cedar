@@ -10,7 +10,7 @@ const loading = ref(false);
 
 const commonProps = <surfaceSelection>{
   variant: 'selection',
-  role: 'checkbox'
+  role: 'checkbox',
 };
 
 const examples = computed(
@@ -24,7 +24,7 @@ const examples = computed(
       {
         ...commonProps,
         checked: true,
-        loading: loading.value
+        loading: loading.value,
       },
       {
         ...commonProps,
@@ -53,7 +53,7 @@ const examples = computed(
         loading: loading.value,
         class: 'example__wide',
         layout: { columns: ['auto', 1] },
-        variant: 'selection'
+        variant: 'selection',
       },
       {
         ...commonProps,
@@ -144,7 +144,7 @@ const examples = computed(
   }
 
   &__color-row {
-    padding: .2rem .8rem;
+    padding: 0.2rem 0.8rem;
     color: white;
     background: black;
   }

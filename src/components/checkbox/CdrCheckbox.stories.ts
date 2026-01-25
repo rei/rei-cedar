@@ -50,7 +50,8 @@ export const Default: Story = {
       const checked = ref(false);
       return { args, checked };
     },
-    template: '<CdrCheckbox v-bind="args" v-model="checked">Accept terms and conditions</CdrCheckbox>',
+    template:
+      '<CdrCheckbox v-bind="args" v-model="checked">Accept terms and conditions</CdrCheckbox>',
   }),
 };
 
@@ -76,20 +77,6 @@ export const Disabled: Story = {
       return { args, checked };
     },
     template: '<CdrCheckbox v-bind="args" v-model="checked">Disabled checkbox</CdrCheckbox>',
-  }),
-};
-
-export const DisabledChecked: Story = {
-  args: {
-    disabled: true,
-  },
-  render: (args) => ({
-    components: { CdrCheckbox },
-    setup() {
-      const checked = ref(true);
-      return { args, checked };
-    },
-    template: '<CdrCheckbox v-bind="args" v-model="checked">Disabled and checked</CdrCheckbox>',
   }),
 };
 

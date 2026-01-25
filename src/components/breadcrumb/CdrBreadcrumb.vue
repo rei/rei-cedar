@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, watch, nextTick,
-} from 'vue';
+import { useCssModule, computed, ref, watch, nextTick } from 'vue';
 import type { CdrBreadcrumbProps, BreadcrumbItem } from '../../types/interfaces';
 import uid from '../../utils/uid';
 
 /**
  * CdrBreadcrumb - Navigation used to reveal a page's location within the site hierarchy
- * 
+ *
  * Provides a hierarchical navigation trail to help users understand their current location
  * and navigate back to parent pages. Supports automatic truncation for long breadcrumb trails.
  */
@@ -44,7 +42,7 @@ const itemListEl = ref<HTMLElement | null>(null);
 /** Reference to the first anchor element after expanding truncated breadcrumbs */
 const firstAnchorEl = ref<HTMLAnchorElement | null>(null);
 
-/** 
+/**
  * Computed label for the ellipsis button that describes the hidden items
  * @returns Accessible label text for screen readers
  */
@@ -69,9 +67,12 @@ const handleEllipsisClick = (): void => {
 /**
  * Watches for changes to the items array and resets truncation state
  */
-watch(() => props.items, () => {
-  truncate.value = props.truncationEnabled && props.items.length > 2;
-});
+watch(
+  () => props.items,
+  () => {
+    truncate.value = props.truncationEnabled && props.items.length > 2;
+  },
+);
 </script>
 
 <template>
@@ -114,7 +115,7 @@ watch(() => props.items, () => {
       <li
         v-for="(breadcrumb, index) in items"
         :key="breadcrumb.item.id ?? breadcrumb.item.name.replace(/ /g, '-').toLowerCase()"
-        v-show="!truncate || (index >= items.length - 2)"
+        v-show="!truncate || index >= items.length - 2"
         :class="style['cdr-breadcrumb__item']"
       >
         <slot

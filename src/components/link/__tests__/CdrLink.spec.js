@@ -19,7 +19,7 @@ describe('CdrLink', () => {
 
     describe('when target prop is set', () => {
       beforeEach(() => {
-        wrapper.setProps({ target: '_self' })
+        wrapper.setProps({ target: '_self' });
       });
 
       it('renders correctly', () => {
@@ -33,7 +33,7 @@ describe('CdrLink', () => {
 
     describe('with href prop set', () => {
       beforeEach(() => {
-        wrapper.setProps({ href: 'www.rei.com' })
+        wrapper.setProps({ href: 'www.rei.com' });
       });
 
       it('renders correctly', () => {
@@ -47,7 +47,7 @@ describe('CdrLink', () => {
 
     describe('with rel prop set to "nofollow"', () => {
       beforeEach(() => {
-        wrapper.setProps({ rel: 'nofollow' })
+        wrapper.setProps({ rel: 'nofollow' });
       });
 
       it('renders correctly', () => {
@@ -61,7 +61,7 @@ describe('CdrLink', () => {
 
     describe('when the target prop has been set to "_blank"', () => {
       beforeEach(() => {
-        wrapper.setProps({ target: '_blank' })
+        wrapper.setProps({ target: '_blank' });
       });
 
       it('renders correctly', () => {
@@ -75,7 +75,7 @@ describe('CdrLink', () => {
 
     describe('with standalone modifier set', () => {
       beforeEach(() => {
-        wrapper.setProps({ modifier: 'standalone' })
+        wrapper.setProps({ modifier: 'standalone' });
       });
 
       it('computes classes correctly for standalone modifier', () => {
@@ -85,7 +85,7 @@ describe('CdrLink', () => {
 
     describe('when the tag has been set to button', () => {
       beforeEach(() => {
-        wrapper.setProps({ tag: 'button' })
+        wrapper.setProps({ tag: 'button' });
       });
 
       it('renders a link with a button element and no href attribute', () => {
@@ -93,18 +93,18 @@ describe('CdrLink', () => {
       });
     });
 
-    describe('when tag has been set to button', ()=>{
-     let wrapper;
-     let spy; 
+    describe('when tag has been set to button', () => {
+      let wrapper;
+      let spy;
 
-      beforeEach(()=>{
+      beforeEach(() => {
         spy = sinon.spy();
         wrapper = shallowMount(CdrLink, {
           propsData: {
             tag: 'button',
           },
           attrs: {
-            onClick: spy
+            onClick: spy,
           },
         });
       });

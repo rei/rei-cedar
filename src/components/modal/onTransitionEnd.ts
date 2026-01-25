@@ -23,13 +23,10 @@ export default (element: HTMLDivElement | null, callback: () => void, timeout: n
   element.addEventListener(transitionEvent, callback);
   let timeoutId: ReturnType<typeof setTimeout>;
   if (timeout) {
-    timeoutId = setTimeout(
-      () => {
-        element.removeEventListener(transitionEvent, callback);
-        callback();
-      },
-      timeout,
-    );
+    timeoutId = setTimeout(() => {
+      element.removeEventListener(transitionEvent, callback);
+      callback();
+    }, timeout);
   }
   return () => {
     clearTimeout(timeoutId);

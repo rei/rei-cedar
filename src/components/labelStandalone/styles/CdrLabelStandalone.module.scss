@@ -1,14 +1,12 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
-
 @use './vars/CdrLabelStandalone.vars' as vars;
 
 .cdr-label-standalone {
   display: grid;
   grid-template-areas:
-    "label label info"
-    "input input input"
-    "post post post";
-
+    'label label info'
+    'input input input'
+    'post post post';
 
   &__label-wrapper {
     grid-area: label;

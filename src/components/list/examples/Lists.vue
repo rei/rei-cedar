@@ -3,10 +3,7 @@
     class="list-examples"
     data-backstop="lists"
   >
-
-    <h2>
-      List
-    </h2>
+    <h2>List</h2>
 
     <unordered-list class="mega-stack" />
     <ordered-list class="mega-stack" />

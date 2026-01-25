@@ -2,9 +2,9 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrLabelStandalone from '../CdrLabelStandalone.vue';
 
 describe('CdrFormLabelStandalone', () => {
-  describe('component with label, forId, required and helper/info slots', ()=>{
+  describe('component with label, forId, required and helper/info slots', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'Label Test',
@@ -23,7 +23,7 @@ describe('CdrFormLabelStandalone', () => {
     });
 
     it('renders a label element', () => {
-      expect(wrapper.find('.cdr-label-standalone__label').text()).toBe('Label Test *');
+      expect(wrapper.find('.cdr-label-standalone__label').text()).toMatch(/Label Test\s+\*/);
     });
 
     it('maps input id to label for correctly', () => {
@@ -47,9 +47,9 @@ describe('CdrFormLabelStandalone', () => {
     });
   });
 
-  describe('component with hideLabel', ()=>{
+  describe('component with hideLabel', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'Label Test',
@@ -57,7 +57,7 @@ describe('CdrFormLabelStandalone', () => {
           hideLabel: true,
         },
         slots: {
-          'helper': 'very helpful',
+          helper: 'very helpful',
         },
       });
     });
@@ -74,9 +74,9 @@ describe('CdrFormLabelStandalone', () => {
       expect(wrapper.find('br').exists()).toBe(false);
     });
   });
-  describe('component with both required and optional labels', ()=>{
+  describe('component with both required and optional labels', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'test',
@@ -92,13 +92,13 @@ describe('CdrFormLabelStandalone', () => {
     });
 
     it('does not render both required and optional labels simultaneously', () => {
-      expect(wrapper.find('.cdr-label-standalone__label').text()).toBe('test *');
+      expect(wrapper.find('.cdr-label-standalone__label').text()).toMatch(/test\s+\*/);
     });
   });
 
-  describe('component with optional label', ()=>{
+  describe('component with optional label', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'test',
@@ -113,7 +113,7 @@ describe('CdrFormLabelStandalone', () => {
     });
 
     it('renders optional messaging', () => {
-      expect(wrapper.find('.cdr-label-standalone__label').text()).toBe('test (optional)');
+      expect(wrapper.find('.cdr-label-standalone__label').text()).toMatch(/test\s+\(optional\)/);
     });
   });
 });

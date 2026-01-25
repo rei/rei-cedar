@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { BaseTextProps } from '../../types/interfaces';
+import type { CdrKickerProps } from '../../types/interfaces';
 
-/** 
- * Content building blocks with pre-defined, fluid styles
- * @preview true
- **/
+/**
+ * Content building blocks with pre-defined, fluid styles.
+ * Used for small text that appears above larger content.
+ */
 defineOptions({
   name: 'CdrKicker',
 });
 
-withDefaults(defineProps<BaseTextProps>(), {
+withDefaults(defineProps<CdrKickerProps>(), {
   tag: 'span',
 });
 
@@ -27,5 +27,4 @@ const baseClass = 'cdr-kicker';
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrKicker.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrKicker.module.scss" />

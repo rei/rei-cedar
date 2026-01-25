@@ -3,7 +3,7 @@ import type {
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
-} from 'radix-vue'
+} from 'radix-vue';
 import { HtmlAttributes } from '../../lib';
 
 type WithHTMLAttrs<T> = T & HtmlAttributes;

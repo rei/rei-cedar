@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, onMounted, onBeforeUnmount, provide,
-} from 'vue';
+import { useCssModule, computed, ref, onMounted, onBeforeUnmount, provide } from 'vue';
 import type { Ref } from 'vue';
 import { debounce } from '../../utils/debounce';
 import propValidator from '../../utils/propValidator';
@@ -10,7 +8,7 @@ import { unwrappedKey } from '../../types/symbols';
 
 interface CdrAccordionGroupProps {
   /**
-   * A prop that will present accordion content as unwrapped. 
+   * A prop that will present accordion content as unwrapped.
    * All content is expanded at the provided breakpoints.
    */
   unwrap?: string | boolean;
@@ -25,7 +23,10 @@ const props = withDefaults(defineProps<CdrAccordionGroupProps>(), {
 });
 
 // Validate unwrap prop
-if (typeof props.unwrap === 'string' && !propValidator(props.unwrap, ['@xs', '@sm', '@md', '@lg'], false)) {
+if (
+  typeof props.unwrap === 'string' &&
+  !propValidator(props.unwrap, ['@xs', '@sm', '@md', '@lg'], false)
+) {
   console.warn('CdrAccordionGroup: unwrap prop must be one of: @xs, @sm, @md, @lg, or a boolean');
 }
 
@@ -82,7 +83,7 @@ const handleKeyDown = (e: KeyboardEvent): void => {
 
   const { key } = e;
   const buttons = getAccordionButtonArray.value;
-  
+
   switch (key) {
     case 'Home':
       e.preventDefault();
@@ -102,7 +103,7 @@ const handleKeyDown = (e: KeyboardEvent): void => {
       e.preventDefault();
       buttons[prevIdx.value]?.focus();
       break;
-    default: 
+    default:
       break;
   }
 };
@@ -118,16 +119,16 @@ const focusin = (e: FocusEvent): void => {
 
 onMounted(() => {
   accordionButtons.value = accordionGroupEl.value?.querySelectorAll('.js-cdr-accordion-button');
-  
+
   if (typeof props.unwrap === 'string') {
     unwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
-    
+
     resizeHandler.value = debounce(() => {
       if (typeof props.unwrap === 'string') {
         unwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
       }
     }, 300);
-    
+
     window.addEventListener('resize', resizeHandler.value);
   }
 });
@@ -138,7 +139,6 @@ onBeforeUnmount(() => {
     window.removeEventListener('resize', resizeHandler.value);
   }
 });
-
 </script>
 
 <template>
@@ -153,5 +153,4 @@ onBeforeUnmount(() => {
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrAccordionGroup.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrAccordionGroup.module.scss"></style>

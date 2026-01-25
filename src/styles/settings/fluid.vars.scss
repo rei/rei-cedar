@@ -7,9 +7,8 @@
 
 /* TODO our rem is still base 10 set via reset font-size: 62.5%; at some point this should be removed and rem values recaculated */
 
-
 // the clamp is comprized of 3 numbers representing the min value, the preferred size expression, and the max value
-// in order the valuse are: min spacing | base spacing + container-growth | max spacing 
+// in order the valuse are: min spacing | base spacing + container-growth | max spacing
 
 :root {
   --cdr-type-scale--2: var(--cdr-type-scale-minus-2);

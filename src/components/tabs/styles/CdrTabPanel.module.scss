@@ -6,6 +6,7 @@
   padding-top: tokens.$cdr-space-eighth-x;
 }
 
+/* stylelint-disable keyframes-name-pattern */
 @keyframes :global(exit-left) {
   from {
     transform: translateX(0);

@@ -1,15 +1,14 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
 import CdrUtilitySans from '../CdrUtilitySans.vue';
 
-
 describe('CdrUtilitySans', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrUtilitySans, {
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
@@ -23,8 +22,8 @@ describe('CdrUtilitySans', () => {
       wrapper = mount(CdrUtilitySans, {
         props: { scale: '-1' },
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
@@ -38,13 +37,12 @@ describe('CdrUtilitySans', () => {
       wrapper = mount(CdrUtilitySans, {
         props: { strong: true },
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
   });
-
 });

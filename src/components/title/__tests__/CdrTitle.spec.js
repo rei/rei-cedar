@@ -5,10 +5,9 @@ describe('CdrTitle', () => {
   it('matches snapshot', () => {
     const wrapper = shallowMount(CdrTitle, {
       slots: {
-        default: 'This is a title'
-      }
+        default: 'This is a title',
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });
-
 });

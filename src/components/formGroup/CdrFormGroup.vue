@@ -1,50 +1,40 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
+import type { CdrFormGroupProps } from '../../types/interfaces';
 import mapClasses from '../../utils/mapClasses';
 import CdrFormError from '../formError/CdrFormError.vue';
 import uid from '../../utils/uid';
 
-/** Groups related input elements together */
+/**
+ * CdrFormGroup - Groups related input elements together
+ *
+ * Form groups organize related form controls and provide a shared label.
+ * Use form groups to collect related information and show validation errors
+ * that apply to the entire group.
+ */
+
 defineOptions({
   name: 'CdrFormGroup',
 });
 
-const props = defineProps({
-  /**
-   * Custom ID that is mapped to the form error. If this value is not set, it will be randomly generated.
-   * @demoIgnore true
-   */
-  id: String,
-  /**
-   * Sets the label/legend for the form group. Applies default text styles to this label.
-   * To override that default text style or apply other customization, use the `label` slot.
-   * @demoIgnore true
-   */
-  label: {
-    type: String,
-    default: '',
-  },
-  /**
-   * Sets the form group to an error state, displays the `error` slot if one is present.
-   */
-  error: {
-    type: [Boolean, String],
-    default: false,
-  },
-  /** Adds required label to the form group. */
-  required: Boolean,
-  /** Adds optional label to the form group. */
-  optional: Boolean,
-  /** Renders form group in a disabled state. */
-  disabled: { type: Boolean, default: undefined },
+const props = withDefaults(defineProps<CdrFormGroupProps>(), {
+  label: '',
+  error: false,
+  required: false,
+  optional: false,
 });
 
-const uniqueId = props.id ? props.id : uid();
-const style = useCssModule();
-const baseClass = 'cdr-form-group';
-const errorClass = computed(() => props.error ? 'cdr-form-group--error' : '');
-const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled' : '');
+/** Unique identifier for the form group, generated if not provided */
+const uniqueId: string = props.id ? props.id : uid();
 
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-form-group';
+
+/** Computed class for error state */
+const errorClass = computed<string>(() => (props.error ? 'cdr-form-group--error' : ''));
+
+/** Computed class for disabled state */
+const disabledClass = computed<string>(() => (props.disabled ? 'cdr-form-group--disabled' : ''));
 </script>
 
 <template>
@@ -63,11 +53,15 @@ const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled'
       <span
         v-if="required"
         aria-label="required"
-      > *</span>
+      >
+        *
+      </span>
       <span
         v-if="optional && !required"
         :class="style['cdr-form-group__optional']"
-      > (optional)</span>
+      >
+        (optional)
+      </span>
     </legend>
     <div :class="mapClasses(style, 'cdr-form-group__wrapper', errorClass)">
       <!-- @slot CdrFormGroup content (form elements) -->
@@ -87,5 +81,4 @@ const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled'
   </fieldset>
 </template>
 
-<style lang="scss" module src="./styles/CdrFormGroup.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrFormGroup.module.scss" />

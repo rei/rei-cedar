@@ -52,15 +52,14 @@ $properties: (
     lifted: var(--cdr-prominence-lifted),
   ),
 );
-
 $states: (rest, hover, active, checked, loading, disabled, visited);
 $css-vars: (
-  background: --cdr-surface-background,
-  border-color: --cdr-surface-border-color,
-  border-width: --cdr-surface-border-width,
-  border-style: --cdr-surface-border-style,
-  border-radius: --cdr-surface-border-radius,
-  box-shadow: --cdr-surface-box-shadow,
+  background: '--cdr-surface-background',
+  border-color: '--cdr-surface-border-color',
+  border-width: '--cdr-surface-border-width',
+  border-style: '--cdr-surface-border-style',
+  border-radius: '--cdr-surface-border-radius',
+  box-shadow: '--cdr-surface-box-shadow',
 );
 
 .cdr-surface {
@@ -94,6 +93,7 @@ $css-vars: (
   @each $state in $states {
     @if $state != 'rest' {
       $selector: '';
+
       @if $state == 'hover' {
         $selector: '&:hover:not([aria-pressed="true"], [aria-checked="true"], :disabled)';
       } @else if $state == 'active' {
@@ -119,7 +119,8 @@ $css-vars: (
   box-shadow: var(--cdr-surface-box-shadow);
 
   &::before {
-    border: var(--cdr-surface-border-width) var(--cdr-surface-border-style) var(--cdr-surface-border-color);
+    border: var(--cdr-surface-border-width) var(--cdr-surface-border-style)
+      var(--cdr-surface-border-color);
     border-radius: inherit;
     content: '';
     inset: 0;
@@ -130,8 +131,7 @@ $css-vars: (
     z-index: 0;
   }
 
-  transition:
-    background var(--cdr-duration-3-x) var(--cdr-timing-function-ease),
+  transition: background var(--cdr-duration-3-x) var(--cdr-timing-function-ease),
     box-shadow var(--cdr-duration-3-x) var(--cdr-timing-function-ease);
 
   &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {

@@ -385,7 +385,7 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -440,7 +440,7 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -594,7 +594,7 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -950,7 +950,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
         <!-- @slot Icon after text within the input field -->
         
         <button
-          class="cdr-button cdr-button--primary cdr-button--medium"
+          class="cdr-button cdr-button--primary cdr-button--"
           type="button"
         >
           <!-- @slot Icon to the left of text content -->
@@ -967,7 +967,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
           
         </button>
         <button
-          class="cdr-button cdr-button--primary cdr-button--medium"
+          class="cdr-button cdr-button--primary cdr-button--"
           type="button"
         >
           <!-- @slot Icon to the left of text content -->

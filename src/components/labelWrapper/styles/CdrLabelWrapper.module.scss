@@ -1,5 +1,4 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
-
 @use './vars/CdrLabelWrapper.vars' as vars;
 
 .cdr-label-wrapper {
@@ -49,16 +48,14 @@
   &--hide-figure {
     padding-left: 0;
 
-    & > .cdr-label-wrapper__figure {
+    > .cdr-label-wrapper__figure {
       display: none;
     }
 
-    & > .cdr-checkbox__svg-box svg {
+    > .cdr-checkbox__svg-box svg {
       fill: transparent !important;
     }
   }
-
-
 
   /* Sizes
     ========================================================================== */

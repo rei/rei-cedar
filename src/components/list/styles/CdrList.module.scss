@@ -6,7 +6,7 @@
 
   /* nesting
     ---------- */
-  & li > .cdr-list {
+  li > .cdr-list {
     @include vars.cdr-list-base-nested-mixin;
   }
 
@@ -20,7 +20,7 @@
 
     /* nesting
       ---------- */
-    & li > .cdr-list {
+    li > .cdr-list {
       @include vars.cdr-list-compact-nested-mixin;
     }
   }
@@ -30,10 +30,10 @@
   &--ordered {
     @include vars.cdr-list-ordered-mixin;
 
-    & li {
+    li {
       /* nesting
       ---------- */
-      & > .cdr-list {
+      > .cdr-list {
         @include vars.cdr-list-ordered-nested-mixin;
       }
     }
@@ -46,7 +46,7 @@
 
     /* nesting
       ---------- */
-    & li > .cdr-list {
+    li > .cdr-list {
       @include vars.cdr-list-unordered-nested-mixin;
     }
   }
@@ -59,10 +59,10 @@
     list-style-type: none;
     padding-left: 0;
 
-    & > li {
+    > li {
       display: block;
 
-      & + li {
+      + li {
         margin-top: 0;
         padding-left: 1em;
       }
@@ -79,10 +79,10 @@
     &.cdr-list--unordered {
       left: 0;
 
-      & > li {
+      > li {
         position: relative;
 
-        & + li {
+        + li {
           padding-left: 1.5em;
         }
 
@@ -93,8 +93,11 @@
         &::before {
           content: '\2022';
 
-          //ITEM_DOC: Color of the unordered inline list item prefix
-          color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+          // ITEM_DOC: Color of the unordered inline list item prefix
+          color: var(
+            --cdr-list-inline-text-color,
+            var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+          );
           display: block;
           position: absolute;
           top: 50%;
@@ -111,7 +114,7 @@
       /* inline - unordered - compact
       ---------- */
       &.cdr-list--compact {
-        & > li + li {
+        > li + li {
           padding-left: 1em;
 
           &::before {

@@ -1,47 +1,55 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, onMounted,
-} from 'vue';
+import { useCssModule, computed, ref, onMounted } from 'vue';
+import type { CdrChipGroupProps } from '../../types/interfaces';
+
+/**
+ * CdrChipGroup - Groups multiple chips together with keyboard navigation support
+ *
+ * ChipGroups organize related chips and provide keyboard navigation between them.
+ * Use chip groups to present a set of related options or filters that users can
+ * interact with using keyboard or mouse.
+ */
 
 defineOptions({
   name: 'CdrChipGroup',
 });
 
-const props = defineProps({
- /**
-     * Sets a label that describes the chip group and what it is selecting. By default this label is visually hidden and only made available to screen readers.
-     */
-     label: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Visually hides the chip group label but makes it accessible to screen readers.
-     */
-    hideLabel: {
-      type: Boolean,
-      default: true,
-    },
+const props = withDefaults(defineProps<CdrChipGroupProps>(), {
+  hideLabel: true,
 });
 
-const style = useCssModule();
-const baseClass = 'cdr-chip-group';
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-chip-group';
+
+/** Reference to the chips container element */
 const chipsEl = ref<HTMLElement | null>(null);
+
+/** Array of chip elements for keyboard navigation */
 const chips = ref<HTMLElement[]>([]);
-const currentIdx = ref(0);
-const nextIdx = computed(() => {
+
+/** Index of currently focused chip */
+const currentIdx = ref<number>(0);
+
+/** Computed index of next chip in navigation order */
+const nextIdx = computed<number>(() => {
   const idx = currentIdx.value + 1;
   return idx >= chips.value.length ? 0 : idx;
 });
-const prevIdx = computed(() => {
-  const idx = currentIdx.value - 1;
-  return idx <= -1 ? (chips.value.length - 1) : idx;
-});
-const legendClass = computed(() => (props.hideLabel
-  ? 'cdr-chip-group__legend--hidden'
-  : 'cdr-chip-group__legend'
-));
 
+/** Computed index of previous chip in navigation order */
+const prevIdx = computed<number>(() => {
+  const idx = currentIdx.value - 1;
+  return idx <= -1 ? chips.value.length - 1 : idx;
+});
+
+/** Computed class for legend visibility */
+const legendClass = computed<string>(() =>
+  props.hideLabel ? 'cdr-chip-group__legend--hidden' : 'cdr-chip-group__legend',
+);
+
+/**
+ * Initialize chips array on mount and find checked chip index
+ */
 onMounted(() => {
   chips.value = Array.prototype.filter.call(
     chipsEl.value?.children,
@@ -53,7 +61,10 @@ onMounted(() => {
   );
 });
 
-const handleKeyDown = (e: KeyboardEvent) => {
+/**
+ * Handle keyboard navigation between chips
+ */
+const handleKeyDown = (e: KeyboardEvent): void => {
   // something besides the button is focused
   if (currentIdx.value === -1) return;
 
@@ -77,14 +88,18 @@ const handleKeyDown = (e: KeyboardEvent) => {
       e.preventDefault();
       chips.value[prevIdx.value].focus();
       break;
-    default: break;
+    default:
+      break;
   }
 };
-    const handleFocusIn = (e: Event) => {
-      // find out which, if any, button is focused
-      currentIdx.value = Array.prototype.indexOf.call(chips.value, e.target);
-    };
 
+/**
+ * Track which chip receives focus for keyboard navigation
+ */
+const handleFocusIn = (e: Event): void => {
+  // find out which, if any, button is focused
+  currentIdx.value = Array.prototype.indexOf.call(chips.value, e.target);
+};
 </script>
 
 <template>
@@ -109,5 +124,4 @@ const handleKeyDown = (e: KeyboardEvent) => {
   </fieldset>
 </template>
 
-<style lang="scss" module src="./styles/CdrChipGroup.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrChipGroup.module.scss" />

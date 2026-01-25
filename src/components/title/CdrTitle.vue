@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { BaseTextProps } from '../../types/interfaces';
+import { CdrTitleProps } from '../../types/interfaces';
 
-/** 
+/**
  * Content building blocks with pre-defined, fluid styles
  * @preview true
  **/
 defineOptions({
-  name: 'CdrTitle'
+  name: 'CdrTitle',
 });
 
-withDefaults(defineProps<BaseTextProps>(), {
+withDefaults(defineProps<CdrTitleProps>(), {
   tag: 'h1',
 });
 

@@ -20,9 +20,8 @@ export default defineConfig({
     },
     rollupOptions: {
       ...options,
-      external: (id) => ['vue', 'core-js', 'tabbable'].some(
-        (dep) => dep === id || id.startsWith(`${dep}/`),
-      ),
+      external: (id) =>
+        ['vue', 'core-js', 'tabbable'].some((dep) => dep === id || id.startsWith(`${dep}/`)),
       output: {
         ...options.output,
         globals: {
@@ -44,17 +43,15 @@ export default defineConfig({
       scss: {
         charset: false,
         quietDeps: true,
-        api: 'modern'
-      }
-    }
+        api: 'modern',
+      },
+    },
   },
   resolve: {
     alias: {
       srcdir: fileURLToPath(new URL('./src', import.meta.url)),
       cssdir: fileURLToPath(new URL('./src/css', import.meta.url)),
-      componentsdir: fileURLToPath(
-        new URL('./src/components', import.meta.url),
-      ),
+      componentsdir: fileURLToPath(new URL('./src/components', import.meta.url)),
       mixinsdir: fileURLToPath(new URL('./src/mixins', import.meta.url)),
       '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
     },

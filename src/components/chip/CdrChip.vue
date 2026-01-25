@@ -1,19 +1,27 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
+import type { CdrChipProps } from '../../types/interfaces';
 
-/** Allows people to make selections, filter content, or trigger actions */
+/**
+ * CdrChip - Allows people to make selections, filter content, or trigger actions
+ *
+ * Chips represent discrete pieces of information or actions. Use chips for tags,
+ * filters, or selections that users can interact with. Chips can contain text,
+ * icons, or both, and can be dismissible.
+ */
+
 defineOptions({
   name: 'CdrChip',
 });
 
-const style = useCssModule();
-const baseClass = 'cdr-chip';
+const props = defineProps<CdrChipProps>();
+
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-chip';
 </script>
 
 <template>
-  <button
-    :class="style[baseClass]"
-  >
+  <button :class="style[baseClass]">
     <span
       v-if="$slots['icon-left']"
       :class="style['cdr-chip__icon-left']"
@@ -35,5 +43,4 @@ const baseClass = 'cdr-chip';
   </button>
 </template>
 
-<style lang="scss" module src="./styles/CdrChip.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrChip.module.scss" />

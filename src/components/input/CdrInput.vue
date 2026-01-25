@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, useSlots, useAttrs
-} from 'vue';
-import type { InputHTMLAttributes } from 'vue'
+import { useCssModule, computed, ref, useSlots, useAttrs } from 'vue';
+import type { InputHTMLAttributes } from 'vue';
 import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
@@ -30,18 +28,26 @@ const props = defineProps({
    *  The increment/decrement webkit psuedo element is hidden for number.
    *  @demoSelectMultiple false
    *  @values text, email, number, password, search, url, tel, date, datetime-local
-  */
+   */
   type: {
     type: [String],
     default: 'text',
-    validator: (value: string) => propValidator(
-      value,
-      ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date', 'datetime-local'],
-    ),
+    validator: (value: string) =>
+      propValidator(value, [
+        'text',
+        'email',
+        'number',
+        'password',
+        'search',
+        'url',
+        'tel',
+        'date',
+        'datetime-local',
+      ]),
   },
   /**
    * Sets the text value for the input label. Required for a11y compliance. Use ‘hideLabel’ if the label display is not desired. Required.
-  */
+   */
   label: {
     type: String,
     required: true,
@@ -55,11 +61,11 @@ const props = defineProps({
   },
   /**
    * Removes the label element but sets the input `aria-label` to `label` text for a11y.
-  */
+   */
   hideLabel: Boolean,
   /**
    * Number of rows for input. Converts component to text-area if rows greater than 1.
-  */
+   */
   rows: {
     type: Number,
     default: 1,
@@ -71,9 +77,9 @@ const props = defineProps({
   background: backgroundProps,
   /**
    * Sets the input field size
-  * @demoSelectMultiple true
-  * @values large
-  */
+   * @demoSelectMultiple true
+   * @values large
+   */
   size: String,
 
   /**
@@ -108,16 +114,15 @@ const props = defineProps({
   /** Adds a custom class to the cdr-label-standalone container div */
   inputContainerClass: String,
   /** Passes a custom class to the label for custom styles */
-  labelClass: String
-
+  labelClass: String,
 });
 
 const emits = defineEmits({
-      /**
-     * Event emitted by v-model on the <input> element
-     * @param modelValue
-     */
-     'update:modelValue': null,
+  /**
+   * Event emitted by v-model on the <input> element
+   * @param modelValue
+   */
+  'update:modelValue': null,
 });
 
 const slots = useSlots();
@@ -130,26 +135,28 @@ const hasHelperTop = slots['helper-text-top'];
 const hasHelperBottom = slots['helper-text-bottom'];
 const hasPreIcon = slots['pre-icon'];
 const hasPostIcon = computed(() => slots['post-icon']);
-const hasPostIcons = computed(() => slots['post-icon'] ? slots['post-icon']().length > 1 : false);
+const hasPostIcons = computed(() => (slots['post-icon'] ? slots['post-icon']().length > 1 : false));
 const hasInfo = slots.info;
 const hasInfoAction = slots['info-action'];
 
 const uniqueId = props.id ? props.id : uid();
-const multilineClass = computed(() => props.rows > 1 ? 'cdr-input--multiline' : '');
-const preIconClass = computed(() => hasPreIcon ? 'cdr-input--preicon' : '');
-const postIconClass = computed(() => hasPostIcon.value ? 'cdr-input--posticon' : '');
-const postIconsClass = computed(() => hasPostIcons.value ? 'cdr-input--posticons' : '');
-const errorClass = computed(() => props.error ? 'cdr-input--error' : '');
+const multilineClass = computed(() => (props.rows > 1 ? 'cdr-input--multiline' : ''));
+const preIconClass = computed(() => (hasPreIcon ? 'cdr-input--preicon' : ''));
+const postIconClass = computed(() => (hasPostIcon.value ? 'cdr-input--posticon' : ''));
+const postIconsClass = computed(() => (hasPostIcons.value ? 'cdr-input--posticons' : ''));
+const errorClass = computed(() => (props.error ? 'cdr-input--error' : ''));
 const backgroundClass = computed(() => `cdr-input--${props.background}`);
-const sizeClass = computed(() => props.size ? `${baseClass}--${props.size}` : '');
-const focusedClass = computed(() => isFocused.value ? 'cdr-input--focus': '');
+const sizeClass = computed(() => (props.size ? `${baseClass}--${props.size}` : ''));
+const focusedClass = computed(() => (isFocused.value ? 'cdr-input--focus' : ''));
 
 const describedby = computed(() => {
   const helperText = [
     slots['helper-text-top'] ? `${uniqueId}-helper-text-top` : '',
     slots['helper-text-bottom'] ? `${uniqueId}-helper-text-bottom` : '',
     attrs['aria-describedby'],
-  ].filter((x) => x).join(' ');
+  ]
+    .filter((x) => x)
+    .join(' ');
 
   if (props.error) {
     return `${uniqueId}-error`;
@@ -160,7 +167,7 @@ const describedby = computed(() => {
 
 // Defining an interface for the inputAttrs object because Vue doesn't correctly infer inputmode type
 interface InputAttrsObject extends InputHTMLAttributes {
-  id: string,
+  id: string;
 }
 
 const inputAttrs = computed<InputAttrsObject>(() => {
@@ -181,7 +188,6 @@ const inputModel = computed({
     emits('update:modelValue', newValue);
   },
 });
-
 </script>
 
 <template>
@@ -214,16 +220,19 @@ const inputModel = computed({
       <textarea
         v-if="rows && rows > 1"
         :rows="rows"
-        :class="mapClasses(style,
-                           baseClass,
-                           multilineClass,
-                           preIconClass,
-                           postIconClass,
-                           postIconsClass,
-                           errorClass,
-                           backgroundClass,
-                           sizeClass,
-        )"
+        :class="
+          mapClasses(
+            style,
+            baseClass,
+            multilineClass,
+            preIconClass,
+            postIconClass,
+            postIconsClass,
+            errorClass,
+            backgroundClass,
+            sizeClass,
+          )
+        "
         :id="uniqueId"
         :disabled="disabled"
         :aria-required="required || undefined"
@@ -238,15 +247,18 @@ const inputModel = computed({
       <input
         v-else
         :type="type"
-        :class="mapClasses(style,
-                           baseClass,
-                           preIconClass,
-                           postIconClass,
-                           postIconsClass,
-                           errorClass,
-                           backgroundClass,
-                           sizeClass,
-        )"
+        :class="
+          mapClasses(
+            style,
+            baseClass,
+            preIconClass,
+            postIconClass,
+            postIconsClass,
+            errorClass,
+            backgroundClass,
+            sizeClass,
+          )
+        "
         :disabled="disabled"
         :aria-required="required || undefined"
         :aria-invalid="!!error || undefined"
@@ -256,7 +268,7 @@ const inputModel = computed({
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"
-      >
+      />
       <span
         v-if="hasPreIcon"
         :class="style['cdr-input__pre-icon']"
@@ -314,5 +326,4 @@ const inputModel = computed({
   </cdr-label-standalone>
 </template>
 
-<style lang="scss" module src="./styles/CdrInput.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrInput.module.scss" />

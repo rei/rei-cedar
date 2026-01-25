@@ -138,11 +138,6 @@
   "engines": {
     "node": ">= 22.0.0"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "husky": {
     "hooks": {
       "pre-push": "npm run prepush"

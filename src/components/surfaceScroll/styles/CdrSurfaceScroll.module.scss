@@ -1,11 +1,8 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as *;
 
-$prominence-03:
-  30px 37px 13px 0px rgba(75, 74, 72, 0),
-  19px 24px 12px 0px rgba(75, 74, 72, 0.02),
-  11px 13px 10px 0px rgba(75, 74, 72, 0.07),
-  5px 6px 8px 0px rgba(75, 74, 72, 0.12),
-  1px 1px 4px 0px rgba(75, 74, 72, 0.14);
+$prominence-03: 30px 37px 13px 0px rgb(75, 74, 72, 0), 19px 24px 12px 0px rgb(75, 74, 72, 0.02),
+  11px 13px 10px 0px rgb(75, 74, 72, 0.07), 5px 6px 8px 0px rgb(75, 74, 72, 0.12),
+  1px 1px 4px 0px rgb(75, 74, 72, 0.14);
 
 .cdr-surface-scroll {
   &__root {
@@ -36,6 +33,7 @@ $prominence-03:
     --scrollbar-size: 2.4rem;
     --track-size: 0.2rem;
     --control-size: 0.4rem;
+
     display: flex;
     user-select: none;
     touch-action: none;
@@ -46,7 +44,7 @@ $prominence-03:
       cursor: grabbing;
     }
 
-    &:after {
+    &::after {
       background-color: #e8e0ce;
     }
 
@@ -57,7 +55,7 @@ $prominence-03:
       margin-top: $cdr-space-half-x;
       position: relative !important;
 
-      &:after {
+      &::after {
         height: var(--track-size);
         position: absolute;
         content: '';
@@ -68,9 +66,10 @@ $prominence-03:
 
       .cdr-surface-scroll__thumb {
         --radix-scroll-area-thumb-height: var(--scrollbar-size);
+
         height: var(--track-size);
 
-        &:after {
+        &::after {
           width: 100%;
           height: var(--track-size);
         }
@@ -78,7 +77,7 @@ $prominence-03:
 
       &:hover {
         .cdr-surface-scroll__thumb {
-          &:after {
+          &::after {
             height: var(--control-size);
           }
         }
@@ -89,7 +88,7 @@ $prominence-03:
       flex-direction: row;
       width: var(--scrollbar-size);
 
-      &:after {
+      &::after {
         width: var(--track-size);
         position: absolute;
         content: '';
@@ -100,9 +99,10 @@ $prominence-03:
 
       .cdr-surface-scroll__thumb {
         --radix-scroll-area-thumb-width: var(--scrollbar-size);
+
         width: var(--track-size);
 
-        &:after {
+        &::after {
           height: calc(100% - 1px);
           transform: translateX(calc(var(--scrollbar-size) / 2 - var(--track-size) / 2));
           width: var(--track-size);
@@ -111,7 +111,7 @@ $prominence-03:
 
       &:hover {
         .cdr-surface-scroll__thumb {
-          &:after {
+          &::after {
             transform: translateX(calc(var(--scrollbar-size) / 2 - var(--control-size) / 2));
             width: var(--control-size);
           }
@@ -121,7 +121,7 @@ $prominence-03:
 
     &:hover {
       .cdr-surface-scroll__thumb {
-        &:after {
+        &::after {
           box-shadow: $prominence-03;
         }
       }
@@ -134,7 +134,7 @@ $prominence-03:
     display: flex;
     align-items: center;
 
-    &:after {
+    &::after {
       content: '';
       background: #454441;
       border-radius: $cdr-radius-round;

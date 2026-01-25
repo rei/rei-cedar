@@ -7,8 +7,11 @@
   width: tokens.$cdr-icon-size;
   height: tokens.$cdr-icon-size;
 
-  //ITEM_DOC: Fill color of an icon
-  fill: var(--cdr-icon-fill-default, var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default}));
+  // ITEM_DOC: Fill color of an icon
+  fill: var(
+    --cdr-icon-fill-default,
+    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+  );
 
   &--small {
     width: tokens.$cdr-icon-size-sm;

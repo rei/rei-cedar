@@ -1,6 +1,6 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrIcon from '../CdrIcon.vue';
-import IconCaretDown from '../comps/caret-down.vue'
+import IconCaretDown from '../comps/caret-down.vue';
 
 describe('CdrIcon', () => {
   describe('default configuration', () => {
@@ -16,7 +16,7 @@ describe('CdrIcon', () => {
     it('sets aria-hidden by default', () => {
       expect(wrapper.attributes()['aria-hidden']).toBe('true');
     });
-  })
+  });
 
   describe('single icon component', () => {
     let wrapper;
@@ -27,7 +27,7 @@ describe('CdrIcon', () => {
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
-  })
+  });
 
   describe('with the inheritColor prop set to true', () => {
     let wrapper;
@@ -46,15 +46,15 @@ describe('CdrIcon', () => {
     it('adds inherit color class correctly', () => {
       expect(wrapper.classes()).toContain('cdr-icon--inherit-color');
     });
-  })
+  });
 
   describe('when an aria-label attribute has been passed', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = shallowMount(CdrIcon, {
         attrs: {
-          'aria-label': 'foo'
-        }
+          'aria-label': 'foo',
+        },
       });
     });
 
@@ -65,15 +65,15 @@ describe('CdrIcon', () => {
     it('does not set aria-hidden', () => {
       expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
     });
-  })
+  });
 
   describe('when an aria-labelledby attribute has been passed', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = shallowMount(CdrIcon, {
         attrs: {
-          'aria-labelledby': 'foo'
-        }
+          'aria-labelledby': 'foo',
+        },
       });
     });
 
@@ -84,15 +84,15 @@ describe('CdrIcon', () => {
     it('does not set aria-hidden', () => {
       expect(wrapper.attributes()['aria-hidden']).toBe(undefined);
     });
-  })
+  });
 
   describe('when a single icon component has been passed aria-labelledby', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(IconCaretDown, {
         attrs: {
-          'aria-labelledby': 'foo'
-        }
+          'aria-labelledby': 'foo',
+        },
       });
     });
 
@@ -107,7 +107,7 @@ describe('CdrIcon', () => {
     it('sets aria-labelledby', () => {
       expect(wrapper.attributes()['aria-labelledby']).toBe('foo');
     });
-  })
+  });
 
   describe('when size props are passed to the component', () => {
     let wrapper;
@@ -127,7 +127,7 @@ describe('CdrIcon', () => {
       expect(wrapper.classes()).toContain('cdr-icon--small');
       expect(wrapper.classes()).toContain('cdr-icon--large@lg');
     });
-  })
+  });
 
   describe('when size props are passed to the single icon component', () => {
     let wrapper;
@@ -146,7 +146,7 @@ describe('CdrIcon', () => {
     it('size prop is passed through to CdrIcon', () => {
       expect(wrapper.find('.cdr-icon--small').exists()).toBe(true);
     });
-  })
+  });
 
   // TODO: is this even possible anymore? Depends on vnode stuff
   // it('accepts full SVG in slot', () => {
@@ -167,5 +167,4 @@ describe('CdrIcon', () => {
   //   expect(wrapper.attributes('data-test')).toBe('testing'); // merges attributes
   //   expect(wrapper.attributes('viewBox')).toBe('0 0 24 24'); // doesn't override 'default' attributes
   // });
-
 });

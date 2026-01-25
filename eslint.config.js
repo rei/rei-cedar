@@ -18,6 +18,7 @@ module.exports = [
       'src/**/dist/*.js',
       'src/**/examples/',
       'src/components/icon/comps/*',
+      'templates/',
     ],
   },
   js.configs.recommended,
@@ -48,10 +49,18 @@ module.exports = [
       'vue/no-multiple-template-root': 0,
       'vue/multiline-html-element-content-newline': 0,
       '@typescript-eslint/no-explicit-any': 0,
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
       camelcase: 'off',
       '@typescript-eslint/naming-convention': 'off',
       'no-undef': 'off',
-      camelcase: 'off',
       '@typescript-eslint/naming-convention': [
         'error',
         {

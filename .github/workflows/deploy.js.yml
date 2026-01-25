@@ -2,11 +2,10 @@ name: Deploy
 
 on:
   push:
-    branches: [ next, main ]
+    branches: [next, main]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:

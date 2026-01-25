@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { BaseTextProps } from '../../../types/interfaces';
+import { CdrTextProps } from '../../../types/interfaces';
 
 defineOptions({
   name: 'CdrEyebrow',
 });
 
-
-withDefaults(defineProps<BaseTextProps>(), {
+withDefaults(defineProps<CdrTextProps>(), {
   tag: 'span',
 });
 
@@ -24,5 +23,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrEyebrow.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrEyebrow.module.scss" lang="scss"></style>

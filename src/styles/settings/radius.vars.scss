@@ -15,6 +15,7 @@ $radii: (
     --cdr-#{$component}-radius,
     var(--cdr-radius-#{$key}, #{map.get($radii, $key)})
   );
+
   border-radius: var(--cdr-#{$component}-radius-default);
   overflow: hidden;
 }

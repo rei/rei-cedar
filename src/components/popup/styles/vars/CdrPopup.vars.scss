@@ -16,6 +16,7 @@ $timing-function: tokens.$cdr-timing-function-ease-out;
   }
 }
 
+/* stylelint-disable keyframes-name-pattern */
 @keyframes :global(popup-exit-down) {
   from {
     top: $content-spacing;

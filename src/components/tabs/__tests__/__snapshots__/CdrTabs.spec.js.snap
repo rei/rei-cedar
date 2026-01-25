@@ -10,6 +10,7 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
   >
     <div
       class="cdr-tabs__gradient cdr-tabs__gradient--left"
+      style="background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(255, 255, 255));"
     />
     <ul
       class="cdr-tabs__header-container"
@@ -74,6 +75,7 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     </ul>
     <div
       class="cdr-tabs__gradient cdr-tabs__gradient--right cdr-tabs__gradient--active"
+      style="background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255));"
     />
     <div
       class="cdr-tabs__underline"

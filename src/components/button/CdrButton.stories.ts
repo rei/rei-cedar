@@ -96,9 +96,6 @@ export const Dark: Story = {
   args: {
     modifier: 'dark',
   },
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
   render: (args) => ({
     components: { CdrButton },
     setup() {
@@ -157,8 +154,6 @@ export const AllVariants: Story = {
           <CdrButton modifier="secondary">Secondary</CdrButton>
           <CdrButton modifier="sale">Sale</CdrButton>
           <CdrButton modifier="link">Link</CdrButton>
-        </div>
-        <div class="story-spacing" style="background: #292929; padding: 16px; border-radius: 4px;">
           <CdrButton modifier="dark">Dark</CdrButton>
         </div>
       </div>

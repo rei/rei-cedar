@@ -24,7 +24,7 @@ const SUPPORTED_COMPONENTS = [
   'CdrSelect.vars.scss',
   'CdrSkeleton.vars.scss',
   'CdrList.vars.scss',
-  'CdrTable.vars.scss'
+  'CdrTable.vars.scss',
 ];
 
 const destMixinsDir = path.join(__dirname, `../../${DEST_REPO_NAME + path.sep + DEST_PATH}`);
@@ -38,12 +38,14 @@ files.forEach((f) => {
   if (!SUPPORTED_COMPONENTS.includes(fname)) return console.log(`skipping ${fname}`);
   const outDest = `${destMixinsDir}/${fname}`;
   fs.copySync(f, outDest);
-  console.log(`copied ${fname} to ${outDest}`)
+  console.log(`copied ${fname} to ${outDest}`);
 });
 
 /* iterate over SUPPORTED_COMPONENTS to ensure that vars are loaded in correct order */
-const indexFile = SUPPORTED_COMPONENTS.map(fname => `@import "./${fname}";`).join('\n');
-const singleFile = SUPPORTED_COMPONENTS.map(fname => fs.readFileSync(`${destMixinsDir}/${fname}`, 'utf8')).join('\n');
+const indexFile = SUPPORTED_COMPONENTS.map((fname) => `@import "./${fname}";`).join('\n');
+const singleFile = SUPPORTED_COMPONENTS.map((fname) =>
+  fs.readFileSync(`${destMixinsDir}/${fname}`, 'utf8'),
+).join('\n');
 
 fs.outputFileSync(`${destMixinsDir}/index.scss`, indexFile);
 fs.outputFileSync(`${destMixinsDir}/cedar-component-variables.scss`, singleFile);

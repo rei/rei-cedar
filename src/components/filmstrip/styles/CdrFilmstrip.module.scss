@@ -22,18 +22,22 @@
 
   &__arrow {
     @include vars.arrow-vars;
+
     box-shadow: vars.$prominence-02;
     pointer-events: all;
+
     --button-half: #{tokens.$cdr-space-one-and-a-half-x};
+
     position: absolute;
-    top: var(--cdr-filmstrip-arrow-top, calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x));
+    top: var(
+      --cdr-filmstrip-arrow-top,
+      calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x)
+    );
     z-index: 1;
 
     &:active,
     &:focus {
-      box-shadow:
-        inset 0 0 0 tokens.$cdr-space-eighth-x #2e2e2b,
-        vars.$prominence-02;
+      box-shadow: inset 0 0 0 tokens.$cdr-space-eighth-x #2e2e2b, vars.$prominence-02;
     }
 
     @include tokens.cdr-sm-mq-down {
@@ -51,6 +55,7 @@
     &--right {
       --extra-frame-width: calc(1px * ((var(--frame-width) * var(--frame-extra))));
       --half-gap: calc(var(--frames-gap) / 2 * 1px);
+
       right: calc(var(--extra-frame-width) + var(--half-gap) - var(--button-half));
     }
 

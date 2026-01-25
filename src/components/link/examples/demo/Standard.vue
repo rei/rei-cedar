@@ -4,13 +4,9 @@
     class="link-examples"
     data-backstop="all-links"
   >
-    <h2>
-      Links
-    </h2>
+    <h2>Links</h2>
 
-    <h3>
-      Default Link, No props
-    </h3>
+    <h3>Default Link, No props</h3>
     <div class="anchor-example">
       <cdr-link
         href="#baz"
@@ -27,18 +23,10 @@
     </div>
 
     <h3>Link, href set, spacing class applied</h3>
-    <cdr-link
-      href="https://www.rei.com/"
-    >
-      REI.com
-    </cdr-link>
+    <cdr-link href="https://www.rei.com/">REI.com</cdr-link>
 
     <h3>Link, href set</h3>
-    <cdr-link
-      href="https://www.example.com/"
-    >
-      example.com
-    </cdr-link>
+    <cdr-link href="https://www.example.com/">example.com</cdr-link>
     <h3>Standalone Link (No underline)</h3>
     <cdr-link
       modifier="standalone"
@@ -58,7 +46,7 @@
     </cdr-link>
 
     <h3>Standalone + Inherit Color (Combined props)</h3>
-    <div style="color: blue;">
+    <div style="color: blue">
       <cdr-link
         modifier="standalone"
         href="#bar"
@@ -79,7 +67,7 @@
     </cdr-link>
 
     <h3>Inherit Color Only (Prop usage)</h3>
-    <div style="color: orange;">
+    <div style="color: orange">
       <cdr-link
         href="#bar"
         inherit-color
@@ -130,14 +118,15 @@
     </cdr-list>
 
     <h3>Links, with inherited color</h3>
-    <div style="color: darkgreen; fill: darkgreen;">
+    <div style="color: darkgreen; fill: darkgreen">
       <cdr-link
         inherit-color
         href="rei.com"
       >
         inherit-color plain example
       </cdr-link>
-      <br><br>
+      <br />
+      <br />
       <cdr-link
         inherit-color
         href="#qux"
@@ -150,18 +139,22 @@
         cdr-link icon inherit
       </cdr-link>
     </div>
-    <br><br>
+    <br />
+    <br />
     <h3>Button Links</h3>
 
     <h4>Link using a &lt;button&gt; element inline</h4>
     <div class="anchor-example stack">
-      hey there <cdr-link
+      hey there
+      <cdr-link
         tag="button"
         data-backstop="cdr-link--button"
         @click="clicked"
-      >I'm a button!</cdr-link> wow!
+      >
+        I'm a button!
+      </cdr-link>
+      wow!
     </div>
-
   </div>
 </template>
 

@@ -10,7 +10,10 @@ import {
 } from '../types/other';
 import { breakpoints } from '../utils/other';
 
-// Determines how grid will be setup for mediaPosition values
+/**
+ * Maps media position values to CSS Grid template areas.
+ * Defines how the media and content should be arranged in the grid.
+ */
 const gridForMediaPosition: { [key in PositionValue]: string } = {
   left: "'media content'",
   right: "'content media'",
@@ -18,17 +21,26 @@ const gridForMediaPosition: { [key in PositionValue]: string } = {
   top: "'media' 'content'",
 };
 
+/**
+ * Function signature for layout generation algorithms.
+ * Takes a measurement value and returns a structure configuration.
+ */
 interface LayoutGenerator {
   (measurement: StructureValue): StructureValue | StructureValue[];
 }
 
-// Various ways to fill out the structure for the layout of columns and rows.
-// The output gets mapped into a StructureArray for Layout.
+/**
+ * Layout generation algorithms for different media positions.
+ * Each algorithm determines how to structure the columns and rows.
+ */
 const passThrough: LayoutGenerator = (measurement) => measurement;
 const oneToX: LayoutGenerator = (measurement) => [1, measurement];
 const xToOne: LayoutGenerator = (measurement) => [measurement, 1];
 
-// Depending on mediaPosition value, these are the props that will be passed on to Layout
+/**
+ * Defines fill algorithms for rows and columns based on media position.
+ * Maps each position to appropriate column and row generation strategies.
+ */
 const fillAlgorithmsByPosition: {
   [key in PositionValue]: { rows: LayoutGenerator; columns: LayoutGenerator };
 } = {
@@ -38,11 +50,27 @@ const fillAlgorithmsByPosition: {
   bottom: { columns: passThrough, rows: oneToX },
 };
 
-// Creates the rows or columns structure that will be passed on to Layout
+/**
+ * Creates the rows or columns structure configuration for the Layout component.
+ * Handles both static and responsive media measurements.
+ *
+ * @param mediaMeasurement - The width or height value, either static string or responsive object
+ * @param fillAlgorithm - Algorithm function to generate the structure
+ * @returns Layout structure option (string, array, or responsive object)
+ *
+ * @example
+ * // Static measurement
+ * getStructure('200px', oneToX) // => [1, '200px']
+ *
+ * @example
+ * // Responsive measurement
+ * getStructure({ xs: '100px', sm: '200px' }, xToOne)
+ * // => { xs: ['100px', 1], sm: ['200px', 1] }
+ */
 const getStructure = (
   mediaMeasurement: MediaMeasurement | undefined,
   fillAlgorithm: (mesurement: string) => StructureOption,
-) => {
+): StructureOption => {
   if (!mediaMeasurement) {
     return 'auto';
   }
@@ -64,8 +92,22 @@ const getStructure = (
   return structure;
 };
 
-// Returns the provided width or height that will be used for media width or height
-const getMeasurementValue = (mediaMeasurement: MediaMeasurement, breakpoint: Breakpoint) => {
+/**
+ * Retrieves the media measurement value for a specific breakpoint.
+ *
+ * @param mediaMeasurement - Static string or responsive object with breakpoint values
+ * @param breakpoint - The breakpoint to get the value for
+ * @returns The measurement value for the given breakpoint or 'auto'
+ *
+ * @example
+ * getMeasurementValue('200px', 'sm') // => '200px'
+ * getMeasurementValue({ xs: '100px', sm: '200px' }, 'sm') // => '200px'
+ * getMeasurementValue(undefined, 'md') // => 'auto'
+ */
+const getMeasurementValue = (
+  mediaMeasurement: MediaMeasurement,
+  breakpoint: Breakpoint,
+): string => {
   if (!mediaMeasurement) {
     return 'auto';
   }
@@ -77,13 +119,40 @@ const getMeasurementValue = (mediaMeasurement: MediaMeasurement, breakpoint: Bre
   }
 };
 
-// Creates inline styles for mediaPosition, which could be a string or object.
-// Creates rows and columns props that will be passed along to Layout.
+/**
+ * Generates layout styling configuration for media object components.
+ *
+ * Creates the necessary CSS Grid properties and inline styles to position
+ * media content relative to text content. Supports both static and responsive
+ * positioning with configurable media dimensions.
+ *
+ * @param mediaPosition - Where the media should be positioned ('left', 'right', 'top', 'bottom') or responsive object
+ * @param mediaWidth - Width of the media element, static or responsive
+ * @param mediaHeight - Height of the media element, static or responsive
+ * @returns Object containing layout props and inline CSS styles
+ *
+ * @example
+ * // Static positioning
+ * getLayoutStyling('left', '200px', 'auto')
+ * // => {
+ * //   props: { columns: ['200px', 1], rows: 'auto' },
+ * //   inlineStyles: { '--cdr-media-object-media-position': "'media content'" }
+ * // }
+ *
+ * @example
+ * // Responsive positioning
+ * getLayoutStyling(
+ *   { xs: 'top', sm: 'left', md: 'left', lg: 'left' },
+ *   { xs: '100%', sm: '200px', md: '300px', lg: '400px' },
+ *   'auto'
+ * )
+ * // Returns responsive grid configuration with breakpoint-specific styles
+ */
 export const getLayoutStyling = (
   mediaPosition: Position,
   mediaWidth: MediaMeasurement,
   mediaHeight: MediaMeasurement,
-) => {
+): { props: Layout; inlineStyles: NameValuePair } => {
   const props: Layout = {};
   const inlineStyles: NameValuePair = {};
 

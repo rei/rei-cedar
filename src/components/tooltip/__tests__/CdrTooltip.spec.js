@@ -2,7 +2,7 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrTooltip from '../CdrTooltip.vue';
 
 function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 describe('CdrTooltip', () => {
@@ -11,14 +11,14 @@ describe('CdrTooltip', () => {
     beforeEach(() => {
       wrapper = mount(CdrTooltip, {
         propsData: {
-          id: 'tooltip-test'
+          id: 'tooltip-test',
         },
         slots: {
           trigger: '<button id="tooltip-trigger"></button>',
           default: 'tooltip content',
-        }
+        },
       });
-    })
+    });
 
     it('matches snapshot', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -41,11 +41,11 @@ describe('CdrTooltip', () => {
 
     describe('with contentClass', () => {
       beforeEach(() => {
-        wrapper.setProps({ contentClass: 'tooltip-override' })
-      })
+        wrapper.setProps({ contentClass: 'tooltip-override' });
+      });
       it('binds contentClass to content', () => {
         expect(wrapper.find('.tooltip-override').exists()).toBe(true);
       });
-    })
-  })
+    });
+  });
 });

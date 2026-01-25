@@ -1,38 +1,32 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
+import type { CdrContainerProps } from '../../types/interfaces';
+import type { Tag } from '../../types/other';
 import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
-/** Provides base margins and responsive layout logic for pages */
+/**
+ * CdrContainer - Provides base margins and responsive layout logic for pages
+ *
+ * Containers define the maximum width of page content and provide consistent
+ * horizontal spacing. Use containers to create well-structured, responsive
+ * layouts that adapt to different screen sizes.
+ */
+
 defineOptions({
   name: 'CdrContainer',
 });
 
-const props = defineProps({
-  /** Sets the HTML tag for the container element */
-  tag: {
-    type: String,
-    default: 'div',
-  },
-  /**
-   * Controls whether container is static or fluid width.
-   * @demoSelectMultiple false
-   * @values static, fluid
- */
-  modifier: {
-    type: String,
-    default: 'static',
-    validator: (value: string) => propValidator(
-      value,
-      ['static', 'fluid'],
-      false,
-    ),
-  },
+const props = withDefaults(defineProps<CdrContainerProps>(), {
+  tag: 'div' as Tag,
+  modifier: 'static',
 });
 
-const style = useCssModule();
-const baseClass = 'cdr-container';
-const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-container';
+
+/** Computed modifier class for container variant */
+const modifierClass = computed<string>(() => `${baseClass}--${props.modifier}`);
 </script>
 
 <template>
@@ -45,5 +39,4 @@ const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrContainer.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrContainer.module.scss" />

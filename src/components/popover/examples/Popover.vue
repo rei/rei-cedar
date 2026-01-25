@@ -6,22 +6,30 @@
         name="position"
         custom-value="top"
         v-model="position"
-      >top</cdr-radio>
+      >
+        top
+      </cdr-radio>
       <cdr-radio
         name="position"
         custom-value="bottom"
         v-model="position"
-      >bottom</cdr-radio>
+      >
+        bottom
+      </cdr-radio>
       <cdr-radio
         name="position"
         custom-value="left"
         v-model="position"
-      >left</cdr-radio>
+      >
+        left
+      </cdr-radio>
       <cdr-radio
         name="position"
         custom-value="right"
         v-model="position"
-      >right</cdr-radio>
+      >
+        right
+      </cdr-radio>
     </cdr-form-group>
 
     <cdr-form-group label="auto position">
@@ -29,12 +37,16 @@
         name="autoPos"
         :custom-value="true"
         v-model="autoPos"
-      >true</cdr-radio>
+      >
+        true
+      </cdr-radio>
       <cdr-radio
         name="autoPos"
         :custom-value="false"
         v-model="autoPos"
-      >false</cdr-radio>
+      >
+        false
+      </cdr-radio>
     </cdr-form-group>
 
     <cdr-form-group label="trigger position">
@@ -42,17 +54,23 @@
         name="trigger"
         custom-value="left"
         v-model="trigger"
-      >left</cdr-radio>
+      >
+        left
+      </cdr-radio>
       <cdr-radio
         name="trigger"
         custom-value="center"
         v-model="trigger"
-      >center</cdr-radio>
+      >
+        center
+      </cdr-radio>
       <cdr-radio
         name="trigger"
         custom-value="right"
         v-model="trigger"
-      >right</cdr-radio>
+      >
+        right
+      </cdr-radio>
     </cdr-form-group>
 
     <cdr-form-group label="title">
@@ -60,17 +78,23 @@
         name="title"
         custom-value="Hello my name is popover"
         v-model="title"
-      >short title</cdr-radio>
+      >
+        short title
+      </cdr-radio>
       <cdr-radio
         name="title"
         custom-value=""
         v-model="title"
-      >no title</cdr-radio>
+      >
+        no title
+      </cdr-radio>
       <cdr-radio
         name="title"
         custom-value="Hi i am a popover. Hello. Hows it going. Doing well i hope."
         v-model="title"
-      >long title</cdr-radio>
+      >
+        long title
+      </cdr-radio>
     </cdr-form-group>
 
     <div style="clear: both" />
@@ -90,19 +114,19 @@
           aria-label="information"
         >
           <icon-information-fill />
-      </cdr-button>
-  </template>
+        </cdr-button>
+      </template>
 
       <cdr-text>
         Thanks for stopping by. What a lovely day it is today. Please come back again soon.
       </cdr-text>
     </cdr-popover>
 
-    <hr>
+    <hr />
 
     <div style="clear: both" />
     <div
-      style="position: relative; width: max-content;"
+      style="position: relative; width: max-content"
       :class="containerClass"
     >
       <cdr-button
@@ -168,7 +192,6 @@ export default {
 
 <style scoped>
 .popover-override {
-
 }
 
 .popover-container--center {

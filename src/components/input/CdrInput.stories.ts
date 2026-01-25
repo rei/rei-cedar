@@ -8,7 +8,17 @@ const meta: Meta<typeof CdrInput> = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['text', 'email', 'number', 'password', 'search', 'url', 'tel', 'date', 'datetime-local'],
+      options: [
+        'text',
+        'email',
+        'number',
+        'password',
+        'search',
+        'url',
+        'tel',
+        'date',
+        'datetime-local',
+      ],
       description: 'Type attribute for the input',
     },
     label: {

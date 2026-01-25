@@ -1,11 +1,14 @@
 @use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
-
 @use '../../icon/styles/CdrIcon.module';
 @use './CdrAccordionGroup.module';
 
 .cdr-accordion {
-  //ITEM_DOC: Border color of cdr-accordion
-  --cdr-accordion-border: 1px solid var(--cdr-accordion-border-color, var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary}));
+  // ITEM_DOC: Border color of cdr-accordion
+  --cdr-accordion-border: 1px solid
+    var(
+      --cdr-accordion-border-color,
+      var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
+    );
 
   border-top: var(--cdr-accordion-border);
   border-bottom: var(--cdr-accordion-border);
@@ -19,12 +22,15 @@
   &__button {
     @include tokens.cdr-text-utility-sans-strong-300;
 
-    //ITEM_DOC: Background color of a cdr-accordion header button
+    // ITEM_DOC: Background color of a cdr-accordion header button
     background-color: var(--cdr-accordion-button-background-color, transparent);
     border: none;
 
-    //ITEM_DOC: Text color of a cdr-accordion header button
-    color: var(--cdr-accordion-button-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
+    // ITEM_DOC: Text color of a cdr-accordion header button
+    color: var(
+      --cdr-accordion-button-color,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    );
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -32,12 +38,16 @@
     position: relative;
     text-align: left;
     width: 100%;
+
     // z-index: 1;
 
     &:hover,
     &:focus {
-      //ITEM_DOC: Background color of a cdr-accordion header button on focus and hover
-      background-color: var(--cdr-accordion-button-background-color-hover, var(--cdr-color-background-accordion-hover, #{tokens.$cdr-color-background-accordion-hover}));
+      // ITEM_DOC: Background color of a cdr-accordion header button on focus and hover
+      background-color: var(
+        --cdr-accordion-button-background-color-hover,
+        var(--cdr-color-background-accordion-hover, #{tokens.$cdr-color-background-accordion-hover})
+      );
     }
   }
 
@@ -62,8 +72,11 @@
   &__icon {
     margin-left: tokens.$cdr-space-one-x;
 
-    //ITEM_DOC: Fill color of icons on a cdr-accordion. This is used for the caret which changes orientation when the accordion collapses and expands
-    fill: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default}));
+    // ITEM_DOC: Fill color of icons on a cdr-accordion. This is used for the caret which changes orientation when the accordion collapses and expands
+    fill: var(
+      --cdr-accordion-icon-fill,
+      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+    );
     transition: transform tokens.$cdr-duration-3-x tokens.$cdr-timing-function-ease-out;
 
     &.cdr-accordion--open {
@@ -85,16 +98,19 @@
   &__content {
     @include tokens.cdr-text-body-300;
 
-    //ITEM_DOC: Background color of cdr-accordion content
-    background-color:  var(--cdr-accordion-content-background-color, transparent);
+    // ITEM_DOC: Background color of cdr-accordion content
+    background-color: var(--cdr-accordion-content-background-color, transparent);
 
-    //ITEM_DOC: Text color of cdr-accordion content
-    color: var(--cdr-accordion-content-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
+    // ITEM_DOC: Text color of cdr-accordion content
+    color: var(
+      --cdr-accordion-content-text-color,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    );
     padding: tokens.$cdr-space-half-x tokens.$cdr-space-one-x tokens.$cdr-space-one-x;
     transition: opacity tokens.$cdr-duration-1-x linear;
     opacity: 0;
 
-    & > * {
+    > * {
       @include tokens.cdr-text-body-300;
     }
 
@@ -148,9 +164,10 @@
     .cdr-accordion__content {
       @include tokens.cdr-text-utility-sans-200;
 
-      padding: tokens.$cdr-space-quarter-x tokens.$cdr-space-three-quarter-x tokens.$cdr-space-three-quarter-x;
+      padding: tokens.$cdr-space-quarter-x tokens.$cdr-space-three-quarter-x
+        tokens.$cdr-space-three-quarter-x;
 
-      & > * {
+      > * {
         @include tokens.cdr-text-utility-sans-200;
       }
     }

@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import {
-  useCssModule, ref, onMounted, watch, useSlots,
-} from 'vue';
+import { useCssModule, ref, onMounted, watch, useSlots } from 'vue';
+import type { CdrTooltipProps } from '../../types/interfaces';
 import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
-import propValidator from '../../utils/propValidator';
 import uid from '../../utils/uid';
 
 /** Floating label used to clarify interface actions */
@@ -12,47 +10,10 @@ defineOptions({
   name: 'CdrTooltip',
 });
 
-const props = defineProps({
-  /**
-   * Sets the position where the tooltip will render relative to the trigger element.
-   * @demoSelectMultiple false
-   * @values top, bottom, left, right
-   */
-    position: {
-    type: String,
-    required: false,
-    default: 'top',
-    validator: (value: string) => propValidator(
-      value,
-      ['top', 'bottom', 'left', 'right'],
-    ),
-  },
-  /**
-   * If set to `true`, tooltip will attempt to dynamically set it's position to
-   * ensure it renders within the visible browser window.
-   * If `false` the tooltip will always render in the provided `position`.
-   */
-  autoPosition: {
-    type: Boolean,
-    default: true,
-  },
-  /** ID for the tooltip element, required for accessibility */
-  id: {
-    type: String,
-  },
-  /** Add custom class to the tooltip content wrapper. Allows for overriding size, styling, etc. */
-  contentClass: {
-    type: String,
-    required: false,
-  },
-  /**
-   * Used to programmatically control the tooltip state. Does not need to be set if you are using the `trigger` slot.
-   * @demoIgnore true
-   */
-  open: {
-    type: Boolean,
-    default: false,
-  },
+const props = withDefaults(defineProps<CdrTooltipProps>(), {
+  position: 'top',
+  autoPosition: true,
+  open: false,
 });
 
 const emits = defineEmits({
@@ -98,23 +59,21 @@ const addHandlers = () => {
   }
 };
 
-watch(() => props.open, () => (props.open ? openTooltip() : closeTooltip()));
+watch(
+  () => props.open,
+  () => (props.open ? openTooltip() : closeTooltip()),
+);
 
 onMounted(() => {
   addHandlers();
   const trigger = triggerEl.value?.children[0];
   if (trigger) trigger.setAttribute('aria-describedby', uniqueId);
 });
-
 </script>
 
 <template>
   <div
-    :class="mapClasses(
-      style,
-      'cdr-tooltip--wrapper',
-      hasTrigger ? 'cdr-tooltip--position' : ''
-    )"
+    :class="mapClasses(style, 'cdr-tooltip--wrapper', hasTrigger ? 'cdr-tooltip--position' : '')"
   >
     <div ref="triggerEl">
       <!-- @slot  Slot for the element that triggers the tooltip.
@@ -138,5 +97,4 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrTooltip.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrTooltip.module.scss" />

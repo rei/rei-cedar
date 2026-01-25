@@ -25,7 +25,7 @@ describe('CdrFulfillmentTile', () => {
 
   it('renders header slot', () => {
     const wrapper = mount(CdrFulfillmentTile, {
-      slots: { header: 'Header Content' }
+      slots: { header: 'Header Content' },
     });
     expect(wrapper.find('.cdr-fulfillment-tile__header').exists()).toBe(true);
     expect(wrapper.text()).toContain('Header Content');
@@ -34,7 +34,7 @@ describe('CdrFulfillmentTile', () => {
 
   it('renders body slot', () => {
     const wrapper = mount(CdrFulfillmentTile, {
-      slots: { body: 'Body Content' }
+      slots: { body: 'Body Content' },
     });
     expect(wrapper.find('.cdr-fulfillment-tile__main').exists()).toBe(true);
     expect(wrapper.text()).toContain('Body Content');
@@ -43,7 +43,7 @@ describe('CdrFulfillmentTile', () => {
 
   it('renders footer slot', () => {
     const wrapper = mount(CdrFulfillmentTile, {
-      slots: { footer: 'Footer Content' }
+      slots: { footer: 'Footer Content' },
     });
     expect(wrapper.find('.cdr-fulfillment-tile__main').exists()).toBe(true);
     expect(wrapper.text()).toContain('Footer Content');
@@ -52,10 +52,10 @@ describe('CdrFulfillmentTile', () => {
 
   it('renders icon-left slot', () => {
     const wrapper = mount(CdrFulfillmentTile, {
-      slots: { 
+      slots: {
         header: 'Header Content',
-        'icon-left': '<span data-testid="left-icon">Icon</span>' 
-      }
+        'icon-left': '<span data-testid="left-icon">Icon</span>',
+      },
     });
     expect(wrapper.html()).toContain('data-testid="left-icon"');
     expect(wrapper.element).toMatchSnapshot();
@@ -63,10 +63,10 @@ describe('CdrFulfillmentTile', () => {
 
   it('renders icon-right slot', () => {
     const wrapper = mount(CdrFulfillmentTile, {
-      slots: { 
+      slots: {
         header: 'Header Content',
-        'icon-right': '<span data-testid="right-icon">Icon</span>' 
-      }
+        'icon-right': '<span data-testid="right-icon">Icon</span>',
+      },
     });
     expect(wrapper.html()).toContain('data-testid="right-icon"');
     expect(wrapper.element).toMatchSnapshot();
@@ -95,8 +95,8 @@ describe('CdrFulfillmentTile', () => {
       props: {
         checked: true,
         disabled: true,
-        loading: true
-      }
+        loading: true,
+      },
     });
     expect(wrapper.attributes('aria-checked')).toBe('true');
     expect(wrapper.attributes('aria-disabled')).toBe('true');
