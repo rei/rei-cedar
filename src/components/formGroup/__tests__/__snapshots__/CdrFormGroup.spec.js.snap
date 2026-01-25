@@ -49,9 +49,8 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
   </div>
   <div
     aria-live="polite"
-    class="cdr-form-error"
+    class="cdr-form-error cdr-form-error--active"
     id="123-error"
-    role="status"
   >
     <span
       class="cdr-form-error__icon"
@@ -80,11 +79,20 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
         <!--v-if-->
       </svg>
     </span>
-    
-    
-    whoops
-    
-    
+    <div
+      aria-atomic="true"
+      aria-relevant="all"
+      role="status"
+      style="display: inline-block;"
+    >
+      <div>
+        
+        
+        whoops
+        
+        
+      </div>
+    </div>
   </div>
 </fieldset>
 `;
@@ -114,9 +122,8 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
   </div>
   <div
     aria-live="polite"
-    class="cdr-form-error"
+    class="cdr-form-error cdr-form-error--active"
     id="renders-error"
-    role="status"
   >
     <span
       class="cdr-form-error__icon"
@@ -145,11 +152,18 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
         <!--v-if-->
       </svg>
     </span>
-    
-    <span>
-      Something is happening?
-    </span>
-    
+    <div
+      aria-atomic="true"
+      aria-relevant="all"
+      role="status"
+      style="display: inline-block;"
+    >
+      <div>
+        
+        Something is happening?
+        
+      </div>
+    </div>
   </div>
 </fieldset>
 `;
@@ -314,9 +328,8 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
   </div>
   <div
     aria-live="polite"
-    class="cdr-form-error"
+    class="cdr-form-error cdr-form-error--active"
     id="123-error"
-    role="status"
   >
     <span
       class="cdr-form-error__icon"
@@ -345,11 +358,18 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
         <!--v-if-->
       </svg>
     </span>
-    
-    <span>
-      false!
-    </span>
-    
+    <div
+      aria-atomic="true"
+      aria-relevant="all"
+      role="status"
+      style="display: inline-block;"
+    >
+      <div>
+        
+        false!
+        
+      </div>
+    </div>
   </div>
 </fieldset>
 `;

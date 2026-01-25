@@ -268,7 +268,7 @@ const inputModel = computed({
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"
-      />
+      >
       <span
         v-if="hasPreIcon"
         :class="style['cdr-input__pre-icon']"
@@ -307,15 +307,11 @@ const inputModel = computed({
       </span>
     </template>
 
-    <template
-      #error
-      v-if="error"
-    >
+    <template #error>
       <cdr-form-error
         :error="error"
-        :role="errorRole"
         :id="`${uniqueId}-error`"
-        v-if="error"
+        :role="errorRole"
       >
         <template #error>
           <!-- @slot Error messaging text that is displayed when the `error` prop is true. -->

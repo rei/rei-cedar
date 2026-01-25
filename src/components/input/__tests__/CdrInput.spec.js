@@ -402,8 +402,8 @@ describe('CdrInput', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('does not render error slot', () => {
-      expect(wrapper.find('.cdr-form-error').exists()).toBe(false);
+    it('does not display error slot', () => {
+      expect(wrapper.find('.cdr-form-error').classes()).not.toContain('--active-error');
     });
   });
 

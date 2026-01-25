@@ -15,27 +15,37 @@ defineOptions({
   name: 'CdrFormError',
 });
 
-const props = defineProps<CdrFormErrorProps>();
+defineProps<CdrFormErrorProps>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-form-error';
 const iconClass: string = 'cdr-form-error__icon';
+const activeErrorClass = 'cdr-form-error--active';
 </script>
 
 <template>
-  <div
-    :class="style[baseClass]"
-    role="status"
-  >
-    <span :class="style[iconClass]">
+  <div :class="[style[baseClass], error && style[activeErrorClass]]">
+    <span
+      :class="style[iconClass]"
+      v-show="error"
+    >
       <icon-error-stroke
         size="small"
         inherit-color
       />
     </span>
-    <slot name="error">
-      <span>{{ error }}</span>
-    </slot>
+    <div
+      :role="role || 'status'"
+      aria-atomic="true"
+      aria-relevant="all"
+      style="display: inline-block"
+    >
+      <div v-if="error">
+        <slot name="error">
+          {{ error }}
+        </slot>
+      </div>
+    </div>
   </div>
 </template>
 

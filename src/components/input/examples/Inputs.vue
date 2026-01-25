@@ -178,8 +178,9 @@
     <cdr-input
       label-class="demo-input"
       v-model="helperValidationModel"
-      :error="errorFromProps"
-      @blur="validate"
+      :error="validateErrorValue ? 'This error comes from props' : false"
+      @focus="() => (this.validateErrorValue = false)"
+      @blur="validateError"
       label="Top helper with status validation"
       :background="backgroundColor"
     >
@@ -360,6 +361,7 @@ export default {
       megaModel: '',
       megaErr: false,
       backgroundColor: 'primary',
+      validateErrorValue: false,
     };
   },
   watch: {
@@ -374,6 +376,9 @@ export default {
   methods: {
     validate() {
       this.helperValidationError = this.helperValidationModel.length > 4;
+    },
+    validateError() {
+      this.validateErrorValue = this.helperValidationModel.length > 0;
     },
     onMasterInput(value, e) {
       console.log('On Master Input value = ', this.masterModel, ' e = ', e); // eslint-disable-line

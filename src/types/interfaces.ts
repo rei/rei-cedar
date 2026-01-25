@@ -20,7 +20,7 @@ import type {
 } from './other';
 
 // #region Generic Interfaces
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /**
  * Generic key-value pair object allowing any property types
  *
@@ -672,6 +672,8 @@ export type CdrContainerProps = {
 export type CdrFormErrorProps = {
   /** Error message to display, can be boolean or string */
   error?: boolean | string;
+  /** Sets the ARIA role attribute for the error message container */
+  role?: string;
 };
 
 /**
