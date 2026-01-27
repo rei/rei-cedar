@@ -14,7 +14,7 @@ defineOptions({
   name: 'CdrCaption',
 });
 
-const props = defineProps<CdrCaptionProps>();
+defineProps<CdrCaptionProps>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-caption';

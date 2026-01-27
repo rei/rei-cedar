@@ -14,7 +14,7 @@ defineOptions({
   name: 'CdrChip',
 });
 
-const props = defineProps<CdrChipProps>();
+defineProps<CdrChipProps>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-chip';

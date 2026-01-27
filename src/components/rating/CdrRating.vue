@@ -62,7 +62,7 @@ const srText = computed(() => {
       return `View the reviews with an average rating of ${displayRating.value} out of 5 stars`;
     }
     // default
-    return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`; // eslint-disable-line max-len
+    return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
   }
 
   // non-linked

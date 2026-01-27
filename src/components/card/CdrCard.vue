@@ -15,7 +15,7 @@ defineOptions({
   name: 'CdrCard',
 });
 
-const props = withDefaults(defineProps<CdrCardProps>(), {
+withDefaults(defineProps<CdrCardProps>(), {
   tag: 'article' as Tag,
 });
 
