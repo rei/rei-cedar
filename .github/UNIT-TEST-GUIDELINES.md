@@ -2,7 +2,7 @@
 
 - Add tests any time a bug is discovered
 - Test one thing at a time
-- Jest snapshot
+- Vitest snapshot
 - Default values
 - Both positive and negative
 - Improper or inconsistent typing
@@ -14,6 +14,8 @@
   - Nulls
   - etc.
 - Emitted events and values
+- Accessibility tests
+  - axe checks for violations
 
 ## "CORRECT" Boundary Conditions
 
