@@ -3,7 +3,6 @@ import { useCssModule, computed, useAttrs, type SVGAttributes } from 'vue';
 import type { CdrIconProps } from '../../types/interfaces';
 import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
 
 /**
  * CdrIcon - Communicates meaning through graphics representing simple and complex ideas

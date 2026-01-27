@@ -4,7 +4,6 @@ import type { Directive } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
 import sizeProps from '../../props/size';
 import propValidator from '../../utils/propValidator';
-import backgroundProps from '../../props/background';
 
 /** Allows selecting one or more items from a list */
 defineOptions({
@@ -57,7 +56,10 @@ const props = defineProps({
    * Sets the background color the input is rendered on
    * @values primary, secondary
    */
-  background: backgroundProps,
+  background: {
+    type: String as () => 'primary' | 'secondary' | undefined,
+    default: 'primary',
+  },
   /**
    * @demoSelectMultiple false
    * @values small, medium, large
@@ -140,7 +142,7 @@ const checkboxModel = computed({
         :value="customValue"
         v-indeterminate="indeterminate"
         v-model.lazy="checkboxModel"
-      />
+      >
     </template>
     <template #svgs>
       <div :class="style['cdr-checkbox__svg-box']">

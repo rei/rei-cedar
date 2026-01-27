@@ -254,8 +254,8 @@ const handleClosed = () => {
 
 const dialogAttrs = computed(() => ({
   ...attrs,
-  'aria-describedby': props.ariaDescribedby,
-  id: props.id,
+  'aria-describedby': props.ariaDescribedby || undefined,
+  id: props.id || undefined,
 }));
 
 const verticalSpace = computed(() => {

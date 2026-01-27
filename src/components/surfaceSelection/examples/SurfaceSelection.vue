@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
-import type { surfaceSelection } from '../../../types/interfaces';
+import type { SurfaceSelection } from '../../../types/interfaces';
 import CdrSwitch from '../../switch/CdrSwitch.vue';
 
 defineOptions({ name: 'SurfaceSelection' });
 
 const loading = ref(false);
 
-const commonProps = <surfaceSelection>{
+const commonProps = <SurfaceSelection>{
   variant: 'selection',
   role: 'checkbox',
 };

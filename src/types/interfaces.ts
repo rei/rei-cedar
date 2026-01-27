@@ -1140,7 +1140,7 @@ export type CdrRadioProps = {
   /** Sets the radio size; values can target responsive breakpoints */
   size?: string;
   /** Sets the background color the radio button is rendered on */
-  background?: Background;
+  background?: 'primary' | 'secondary';
   /** Sets the value of the radio */
   customValue?: string | number | boolean | object | unknown[] | symbol | ((...args: any[]) => any);
   /** v-model binding */

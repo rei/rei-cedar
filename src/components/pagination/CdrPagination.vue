@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, ref, watch, nextTick, onMounted } from 'vue';
-import type { CdrPaginationProps } from '../../types/interfaces';
+import type { CdrPaginationProps, PaginationItem } from '../../types/interfaces';
 import mapClasses from '../../utils/mapClasses';
 import IconCaretLeft from '../icon/comps/caret-left.vue';
 import IconCaretRight from '../icon/comps/caret-right.vue';

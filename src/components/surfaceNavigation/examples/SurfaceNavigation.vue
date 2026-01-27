@@ -6,7 +6,7 @@ import CdrSubheadingSans from '../../text/presets/CdrSubheadingSans.vue';
 import CdrMediaObject from '../../mediaObject/CdrMediaObject.vue';
 import CdrImg from '../../image/CdrImg.vue';
 import CdrRating from '../../rating/CdrRating.vue';
-import type { surface, HtmlAttributes, MediaObject } from '../../../types/interfaces';
+import type { Surface, HtmlAttributes, MediaObject } from '../../../types/interfaces';
 
 import tileImage from '../../../dev/static/tile-image.jpg';
 

@@ -2,7 +2,6 @@
 import { useCssModule, computed } from 'vue';
 import type { CdrContainerProps } from '../../types/interfaces';
 import type { Tag } from '../../types/other';
-import propValidator from '../../utils/propValidator';
 import mapClasses from '../../utils/mapClasses';
 
 /**

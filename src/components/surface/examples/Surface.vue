@@ -3,14 +3,14 @@ import CdrSurface from '../CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
 import CdrButton from '../../button/CdrButton.vue';
-import type { surface, HtmlAttributes } from '../../../types/interfaces';
+import type { Surface, HtmlAttributes } from '../../../types/interfaces';
 
 defineOptions({ name: 'Surface' });
 
 export interface Example {
   label: string;
   title: string;
-  props: surface | HtmlAttributes;
+  props: Surface | HtmlAttributes;
 }
 
 const boxes: Example[] = [

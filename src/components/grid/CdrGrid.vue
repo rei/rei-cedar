@@ -4,7 +4,6 @@ import type { CdrGridProps } from '../../types/interfaces';
 import type { Tag } from '../../types/other';
 import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
 
 /**
  * CdrGrid - Simple wrapper for working with CSS grid

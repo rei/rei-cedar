@@ -99,7 +99,7 @@ const handleOpened = () => {
         innerHeight,
         props.position,
       );
-      pos.value = calculated.pos;
+      pos.value = calculated.pos as 'top' | 'bottom' | 'left' | 'right';
       corner.value = calculated.corner;
     });
   }
