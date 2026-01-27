@@ -29,7 +29,7 @@ export interface Example {
     compact: boolean;
     size: string;
   };
-  props: surface | HtmlAttributes;
+  props: Surface | HtmlAttributes;
   mediaObjectProps: MediaObject;
 }
 

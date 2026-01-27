@@ -15,7 +15,7 @@ const commonProps = <SurfaceSelection>{
 
 const examples = computed(
   () =>
-    <surfaceSelection[]>[
+    <SurfaceSelection[]>[
       {
         ...commonProps,
         checked: false,
