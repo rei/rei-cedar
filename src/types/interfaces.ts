@@ -3,6 +3,7 @@ import type {
   Tag,
   Space,
   SpaceFixed,
+  SpaceOption,
   Shadow,
   Radius,
   BorderColor,
@@ -436,7 +437,7 @@ export interface MediaObject extends Layout {
    * @demoSelectMultiple false
    * @values zero, one-x, two-x
    */
-  contentPadding?: SpaceFixed;
+  contentPadding?: SpaceOption;
 }
 
 /**
@@ -546,7 +547,7 @@ export type CdrAccordionProps = {
  * CdrBanner component properties
  */
 export type CdrBannerProps = {
-  type: 'info' | 'warning' | 'success' | 'error' | 'default';
+  type?: 'info' | 'warning' | 'success' | 'error' | 'default';
 };
 
 /**
@@ -997,7 +998,7 @@ export type CdrMediaObjectProps = {
   /** The alignment of the content along the y axis */
   overlayColumnAlign?: AlignmentValue;
   /** The spacing token to use for padding around the content */
-  contentPadding?: SpaceFixed;
+  contentPadding?: SpaceOption;
   /** Additional properties allowed */
   [key: string]: any;
 };
