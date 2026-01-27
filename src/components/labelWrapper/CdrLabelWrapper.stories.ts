@@ -4,41 +4,7 @@ import CdrLabelWrapper from './CdrLabelWrapper.vue';
 const meta: Meta<typeof CdrLabelWrapper> = {
   title: 'Components/CdrLabelWrapper',
   component: CdrLabelWrapper,
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Wrapper component for custom form controls like checkboxes and radio buttons. Provides consistent styling and layout for labeled form elements.',
-      },
-    },
-  },
-  argTypes: {
-    labelClass: {
-      control: 'text',
-      description: 'Custom CSS class for the label element',
-    },
-    contentClass: {
-      control: 'text',
-      description: 'Custom CSS class for the content element',
-    },
-    background: {
-      control: 'select',
-      options: ['primary', 'secondary'],
-      description: 'Sets the background color',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets the disabled state',
-    },
-    modifier: {
-      control: 'text',
-      description: 'Sets a modifier class',
-    },
-    size: {
-      control: 'text',
-      description: 'Sets the size, supports responsive values',
-    },
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;

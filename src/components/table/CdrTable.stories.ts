@@ -5,33 +5,6 @@ const meta: Meta<typeof CdrTable> = {
   title: 'Components/Table',
   component: CdrTable,
   tags: ['autodocs'],
-  argTypes: {
-    striped: {
-      control: 'boolean',
-      description: 'Sets row colors to alternate between darker and lighter backgrounds',
-    },
-    border: {
-      control: 'boolean',
-      description: 'Adds borders between rows',
-    },
-    fullWidth: {
-      control: 'boolean',
-      description: 'Sets the width to 100%',
-    },
-    responsive: {
-      control: 'boolean',
-      description: 'Makes the table scroll horizontally when it would overflow its container',
-    },
-    hover: {
-      control: 'boolean',
-      description: 'Adds a darker background on row hover',
-    },
-    size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
-      description: 'Sets the table size (cell padding)',
-    },
-  },
 };
 
 export default meta;

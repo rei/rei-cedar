@@ -6,17 +6,6 @@ const meta: Meta<typeof CdrBreadcrumb> = {
   title: 'Components/Breadcrumb',
   component: CdrBreadcrumb,
   tags: ['autodocs'],
-  argTypes: {
-    items: {
-      control: 'object',
-    },
-    truncationEnabled: {
-      control: 'boolean',
-    },
-    id: {
-      control: 'text',
-    },
-  },
   args: {
     truncationEnabled: true,
   },

@@ -6,12 +6,6 @@ const meta: Meta<typeof CdrSkeleton> = {
   title: 'Components/Skeleton',
   component: CdrSkeleton,
   tags: ['autodocs'],
-  argTypes: {
-    motion: {
-      control: 'boolean',
-      description: 'Toggle animation on/off',
-    },
-  },
 };
 
 export default meta;

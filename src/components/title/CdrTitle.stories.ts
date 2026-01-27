@@ -5,13 +5,6 @@ const meta: Meta<typeof CdrTitle> = {
   title: 'Components/Title',
   component: CdrTitle,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      description: 'Determines which HTML heading tag to use',
-    },
-  },
 };
 
 export default meta;

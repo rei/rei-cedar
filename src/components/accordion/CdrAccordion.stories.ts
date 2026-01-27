@@ -10,30 +10,6 @@ const meta = {
   title: 'Components/Accordion',
   component: CdrAccordion,
   tags: ['autodocs'],
-  argTypes: {
-    id: {
-      control: 'text',
-    },
-    level: {
-      control: 'select',
-      options: [1, 2, 3, 4, 5, 6],
-    },
-    compact: {
-      control: 'boolean',
-    },
-    borderAligned: {
-      control: 'boolean',
-    },
-    contentSpacing: {
-      control: 'boolean',
-    },
-    label: {
-      control: 'text',
-    },
-    opened: {
-      control: 'boolean',
-    },
-  },
   args: {
     id: 'accordion-1',
     level: 3,

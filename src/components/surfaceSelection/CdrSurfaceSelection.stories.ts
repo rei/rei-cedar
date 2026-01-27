@@ -6,37 +6,6 @@ const meta: Meta<typeof CdrSurfaceSelection> = {
   title: 'Components/SurfaceSelection',
   component: CdrSurfaceSelection,
   tags: ['autodocs'],
-  argTypes: {
-    checked: {
-      control: 'boolean',
-      description: 'Determines if the surface is in a checked state',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Determines if the surface is in a disabled state',
-    },
-    loading: {
-      control: 'boolean',
-      description: 'Determines if the surface is in a loading state',
-    },
-    role: {
-      control: 'select',
-      options: ['checkbox', 'radio'],
-      description: 'Determines the ARIA role of the surface',
-    },
-    background: {
-      control: 'text',
-      description: "Adds in a background color based on the current palette's tokens",
-    },
-    borderRadius: {
-      control: 'text',
-      description: 'Adds in a border radius based on the token options within Cedar',
-    },
-    tag: {
-      control: 'text',
-      description: 'Determines which HTML tag to use',
-    },
-  },
 };
 
 export default meta;

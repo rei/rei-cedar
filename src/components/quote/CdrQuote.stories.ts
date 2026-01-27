@@ -5,22 +5,6 @@ const meta = {
   title: 'Components/Quote',
   component: CdrQuote,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['blockquote', 'aside', 'q', 'div'],
-    },
-    modifier: {
-      control: 'select',
-      options: ['', 'pull'],
-    },
-    summary: {
-      control: 'text',
-    },
-    citation: {
-      control: 'text',
-    },
-  },
   args: {
     tag: 'blockquote',
     modifier: '',

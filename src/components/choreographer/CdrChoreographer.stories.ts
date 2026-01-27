@@ -5,14 +5,6 @@ const meta: Meta<typeof CdrChoreographer> = {
   title: 'Components/Choreographer',
   component: CdrChoreographer,
   tags: ['autodocs'],
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Choreographer is an experimental component for dynamically rendering component trees from schema configuration. Use with caution as the API may change.',
-      },
-    },
-  },
 };
 
 export default meta;

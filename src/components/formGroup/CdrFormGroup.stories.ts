@@ -9,23 +9,6 @@ const meta: Meta<typeof CdrFormGroup> = {
   title: 'Components/FormGroup',
   component: CdrFormGroup,
   tags: ['autodocs'],
-  argTypes: {
-    label: {
-      control: 'text',
-    },
-    error: {
-      control: 'text',
-    },
-    required: {
-      control: 'boolean',
-    },
-    optional: {
-      control: 'boolean',
-    },
-    disabled: {
-      control: 'boolean',
-    },
-  },
   args: {
     label: 'Form Group Label',
     required: false,

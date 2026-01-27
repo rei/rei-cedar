@@ -4,44 +4,7 @@ import CdrLabelStandalone from './CdrLabelStandalone.vue';
 const meta: Meta<typeof CdrLabelStandalone> = {
   title: 'Components/CdrLabelStandalone',
   component: CdrLabelStandalone,
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Standalone label component for form elements. Provides accessible labeling with support for helper text, required/optional indicators, and error states.',
-      },
-    },
-  },
-  argTypes: {
-    forId: {
-      control: 'text',
-      description: 'The ID of the form element this label is associated with',
-    },
-    label: {
-      control: 'text',
-      description: 'The label text',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets the disabled state for the label styling',
-    },
-    required: {
-      control: 'boolean',
-      description: 'Adds required indicator to the label',
-    },
-    optional: {
-      control: 'boolean',
-      description: 'Adds optional indicator to the label',
-    },
-    hideLabel: {
-      control: 'boolean',
-      description: 'Visually hides the label but keeps it accessible',
-    },
-    labelClass: {
-      control: 'text',
-      description: 'Custom CSS class for the label element',
-    },
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;

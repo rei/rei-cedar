@@ -5,14 +5,6 @@ const meta: Meta<typeof CdrCaption> = {
   title: 'Components/Caption',
   component: CdrCaption,
   tags: ['autodocs'],
-  argTypes: {
-    summary: {
-      control: 'text',
-    },
-    credit: {
-      control: 'text',
-    },
-  },
   args: {
     summary:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis reiciendis sapiente delectus commodi eaque sunt aperiam ex aliquam.',

@@ -8,13 +8,6 @@ const meta: Meta<typeof CdrCard> = {
   title: 'Components/Card',
   component: CdrCard,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['article', 'div', 'section', 'aside'],
-      description: 'Sets valid HTML container element tag',
-    },
-  },
   args: {
     tag: 'article',
   },

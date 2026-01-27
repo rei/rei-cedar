@@ -7,15 +7,6 @@ const meta = {
   title: 'Components/Pagination',
   component: CdrPagination,
   tags: ['autodocs'],
-  argTypes: {
-    linkTag: {
-      control: 'select',
-      options: ['a', 'button'],
-    },
-    totalPages: {
-      control: 'number',
-    },
-  },
   args: {
     linkTag: 'a',
   },

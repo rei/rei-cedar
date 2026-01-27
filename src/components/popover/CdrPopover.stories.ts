@@ -9,21 +9,6 @@ const meta = {
   title: 'Components/Popover',
   component: CdrPopover,
   tags: ['autodocs'],
-  argTypes: {
-    position: {
-      control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
-    },
-    autoPosition: {
-      control: 'boolean',
-    },
-    label: {
-      control: 'text',
-    },
-    id: {
-      control: 'text',
-    },
-  },
   args: {
     position: 'top',
     autoPosition: true,

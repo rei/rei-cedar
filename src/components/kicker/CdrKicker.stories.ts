@@ -4,21 +4,7 @@ import { CdrKicker } from '../../lib';
 const meta: Meta<typeof CdrKicker> = {
   title: 'Components/CdrKicker',
   component: CdrKicker,
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Content building blocks with pre-defined, fluid styles. Used for small text that appears above larger content.',
-      },
-    },
-  },
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['span', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      description: 'Sets the HTML tag for the kicker element',
-    },
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;

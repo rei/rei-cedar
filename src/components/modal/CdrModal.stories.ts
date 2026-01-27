@@ -8,21 +8,6 @@ const meta = {
   title: 'Components/Modal',
   component: CdrModal,
   tags: ['autodocs'],
-  argTypes: {
-    opened: {
-      control: 'boolean',
-    },
-    label: {
-      control: 'text',
-    },
-    showTitle: {
-      control: 'boolean',
-    },
-    role: {
-      control: 'select',
-      options: ['dialog', 'alertdialog'],
-    },
-  },
   args: {
     label: 'Modal Title',
     showTitle: true,

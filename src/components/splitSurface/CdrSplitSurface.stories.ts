@@ -5,17 +5,6 @@ const meta: Meta<typeof CdrSplitSurface> = {
   title: 'Components/SplitSurface',
   component: CdrSplitSurface,
   tags: ['autodocs'],
-  argTypes: {
-    surface: {
-      control: 'select',
-      options: ['top', 'bottom'],
-      description: 'Sets the orientation of the surface to the top or bottom slot',
-    },
-    tag: {
-      control: 'text',
-      description: 'Sets the HTML tag for the split-surface element',
-    },
-  },
 };
 
 export default meta;

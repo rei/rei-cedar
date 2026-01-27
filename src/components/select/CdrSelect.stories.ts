@@ -6,34 +6,6 @@ const meta: Meta<typeof CdrSelect> = {
   title: 'Components/Select',
   component: CdrSelect,
   tags: ['autodocs'],
-  argTypes: {
-    label: {
-      control: 'text',
-      description: 'Sets the text value for the select label',
-    },
-    hideLabel: {
-      control: 'boolean',
-      description: 'Visually hides the label element',
-    },
-    prompt: {
-      control: 'text',
-      description: 'Placeholder text shown when no option is selected',
-    },
-    background: {
-      control: 'select',
-      options: ['primary', 'secondary'],
-      description: 'Sets the background color the select is rendered on',
-    },
-    size: {
-      control: 'select',
-      options: ['', 'large'],
-      description: 'Sets the component size',
-    },
-    error: {
-      control: 'boolean',
-      description: 'Sets the select to an error state',
-    },
-  },
   args: {
     label: 'Select Label',
     hideLabel: false,

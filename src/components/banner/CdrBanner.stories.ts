@@ -6,12 +6,6 @@ const meta: Meta<typeof CdrBanner> = {
   title: 'Components/Banner',
   component: CdrBanner,
   tags: ['autodocs'],
-  argTypes: {
-    type: {
-      control: 'select',
-      options: ['default', 'info', 'warning', 'success', 'error'],
-    },
-  },
   args: {
     type: 'default',
   },

@@ -5,31 +5,6 @@ const meta: Meta<typeof CdrLink> = {
   title: 'Components/Link',
   component: CdrLink,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['a', 'button'],
-      description: 'Renders CdrLink as an <a> or <button> element',
-    },
-    href: {
-      control: 'text',
-      description: 'The URL the link points to',
-    },
-    modifier: {
-      control: 'select',
-      options: ['', 'standalone'],
-      description: 'Modifier for link styling',
-    },
-    inheritColor: {
-      control: 'boolean',
-      description: 'Inherit color from parent element',
-    },
-    target: {
-      control: 'select',
-      options: ['', '_blank', '_self', '_parent', '_top'],
-      description: 'Where to open the linked document',
-    },
-  },
   args: {
     tag: 'a',
     href: '#',

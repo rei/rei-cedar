@@ -4,36 +4,7 @@ import { CdrLandingLead } from '../../lib';
 const meta: Meta<typeof CdrLandingLead> = {
   title: 'Components/CdrLandingLead',
   component: CdrLandingLead,
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Displays a full-width image and heading at the top of a page. Combines a hero image with heading and subheading text using CdrSplitSurface layout.',
-      },
-    },
-  },
-  argTypes: {
-    imgSrc: {
-      control: 'text',
-      description: "Sets the landing lead's image source",
-    },
-    imgSrcset: {
-      control: 'text',
-      description: 'Comma-separated list of img srcsets',
-    },
-    imgAlt: {
-      control: 'text',
-      description: "Sets the landing lead's image alt",
-    },
-    heading: {
-      control: 'text',
-      description: "Sets the landing lead's heading",
-    },
-    subheading: {
-      control: 'text',
-      description: "Sets the landing lead's subheading",
-    },
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;

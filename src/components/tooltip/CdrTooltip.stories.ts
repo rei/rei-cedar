@@ -6,31 +6,6 @@ const meta: Meta<typeof CdrTooltip> = {
   title: 'Components/Tooltip',
   component: CdrTooltip,
   tags: ['autodocs'],
-  argTypes: {
-    position: {
-      control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
-      description:
-        'Sets the position where the tooltip will render relative to the trigger element',
-    },
-    autoPosition: {
-      control: 'boolean',
-      description:
-        'Dynamically sets position to ensure tooltip renders within the visible browser window',
-    },
-    id: {
-      control: 'text',
-      description: 'ID for the tooltip element, required for accessibility',
-    },
-    contentClass: {
-      control: 'text',
-      description: 'Add custom class to the tooltip content wrapper',
-    },
-    open: {
-      control: 'boolean',
-      description: 'Used to programmatically control the tooltip state',
-    },
-  },
 };
 
 export default meta;

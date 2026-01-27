@@ -4,57 +4,7 @@ import { CdrLayout } from '../../lib';
 const meta: Meta<typeof CdrLayout> = {
   title: 'Components/CdrLayout',
   component: CdrLayout,
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Foundational container for creating structured layouts. Provides a CSS Grid-based layout system with responsive columns, rows, and gap controls.',
-      },
-    },
-  },
-  argTypes: {
-    columns: {
-      control: 'text',
-      description: 'Determines the number of columns at various breakpoints',
-    },
-    rows: {
-      control: 'text',
-      description: 'Determines the number of rows at various breakpoints',
-    },
-    gap: {
-      control: 'select',
-      options: ['zero', 'one-x', 'two-x', 'scale-4', 'scale-3--5'],
-      description: 'Specifies a gap based on the token options within Cedar',
-    },
-    rowGap: {
-      control: 'select',
-      options: ['zero', 'one-x', 'two-x', 'scale-4', 'scale-3--5'],
-      description: 'Specifies a row gap based on the token options within Cedar',
-    },
-    columnGap: {
-      control: 'select',
-      options: ['zero', 'one-x', 'two-x', 'scale-4', 'scale-3--5'],
-      description: 'Specifies a column gap based on the token options within Cedar',
-    },
-    flow: {
-      control: 'select',
-      options: ['row', 'column'],
-      description: 'Specifies the auto-placement behavior',
-    },
-    flowValue: {
-      control: 'text',
-      description: 'Specifies how auto-generated tracks will be created',
-    },
-    queryType: {
-      control: 'select',
-      options: ['container', 'media'],
-      description: 'Determines if the layout uses container or media queries',
-    },
-    as: {
-      control: 'text',
-      description: 'The component or HTML tag to render at the root level',
-    },
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;

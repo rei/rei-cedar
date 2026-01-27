@@ -5,57 +5,6 @@ const meta: Meta<typeof CdrInput> = {
   title: 'Components/Input',
   component: CdrInput,
   tags: ['autodocs'],
-  argTypes: {
-    type: {
-      control: 'select',
-      options: [
-        'text',
-        'email',
-        'number',
-        'password',
-        'search',
-        'url',
-        'tel',
-        'date',
-        'datetime-local',
-      ],
-      description: 'Type attribute for the input',
-    },
-    label: {
-      control: 'text',
-      description: 'Sets the text value for the input label',
-    },
-    hideLabel: {
-      control: 'boolean',
-      description: 'Removes the label element but sets aria-label',
-    },
-    background: {
-      control: 'select',
-      options: ['primary', 'secondary'],
-      description: 'Sets the background color the input is rendered on',
-    },
-    size: {
-      control: 'select',
-      options: ['', 'large'],
-      description: 'Sets the input field size',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets the disabled state',
-    },
-    required: {
-      control: 'boolean',
-      description: 'Sets aria-required and displays an asterisk',
-    },
-    error: {
-      control: 'boolean',
-      description: 'Sets the input to an error state',
-    },
-    rows: {
-      control: 'number',
-      description: 'Number of rows (converts to textarea if > 1)',
-    },
-  },
   args: {
     type: 'text',
     label: 'Input Label',

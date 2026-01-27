@@ -13,12 +13,6 @@ const meta: Meta<typeof CdrText> = {
   title: 'Components/Text',
   component: CdrText,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'text',
-      description: 'Determines which HTML tag to use',
-    },
-  },
 };
 
 export default meta;

@@ -5,16 +5,6 @@ const meta: Meta<typeof CdrGrid> = {
   title: 'Components/Grid',
   component: CdrGrid,
   tags: ['autodocs'],
-  argTypes: {
-    gutter: {
-      control: 'select',
-      options: ['none', 'small', 'medium', 'large', 'none@xs small@sm medium@md large@lg'],
-    },
-    tag: {
-      control: 'select',
-      options: ['div', 'ul', 'section'],
-    },
-  },
   args: {
     gutter: 'medium@xs medium@sm large@md large@lg',
     tag: 'div',

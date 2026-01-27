@@ -5,21 +5,6 @@ const meta = {
   title: 'Components/Picture',
   component: CdrPicture,
   tags: ['autodocs'],
-  argTypes: {
-    src: {
-      control: 'text',
-    },
-    alt: {
-      control: 'text',
-    },
-    ratio: {
-      control: 'text',
-    },
-    fit: {
-      control: 'select',
-      options: ['contain', 'cover', 'fill', 'none', 'scale-down'],
-    },
-  },
   args: {
     alt: 'Outdoor adventure',
   },

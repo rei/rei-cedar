@@ -5,29 +5,6 @@ const meta: Meta<typeof CdrRating> = {
   title: 'Components/Rating',
   component: CdrRating,
   tags: ['autodocs'],
-  argTypes: {
-    rating: {
-      control: 'number',
-      description: 'Sets the rating values between 0 and 5',
-    },
-    count: {
-      control: 'number',
-      description: 'Sets the total number of ratings',
-    },
-    compact: {
-      control: 'boolean',
-      description: 'Hides the word "reviews" if true',
-    },
-    href: {
-      control: 'text',
-      description: 'Sets the rating component to display inline and wraps them in an anchor tag',
-    },
-    size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
-      description: 'Sets the rating size',
-    },
-  },
 };
 
 export default meta;

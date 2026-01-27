@@ -6,24 +6,6 @@ const meta = {
   title: 'Components/Radio',
   component: CdrRadio,
   tags: ['autodocs'],
-  argTypes: {
-    name: {
-      control: 'text',
-    },
-    modifier: {
-      control: 'text',
-    },
-    size: {
-      control: 'text',
-    },
-    background: {
-      control: 'select',
-      options: ['primary', 'secondary'],
-    },
-    disabled: {
-      control: 'boolean',
-    },
-  },
   args: {
     name: 'radio-group',
     disabled: false,

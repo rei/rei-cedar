@@ -5,41 +5,6 @@ const meta: Meta<typeof CdrSurfaceNavigation> = {
   title: 'Components/SurfaceNavigation',
   component: CdrSurfaceNavigation,
   tags: ['autodocs'],
-  argTypes: {
-    background: {
-      control: 'text',
-      description: "Adds in a background color based on the current palette's tokens",
-    },
-    borderColor: {
-      control: 'text',
-      description: 'Specifies a border color based on the token options within Cedar',
-    },
-    borderStyle: {
-      control: 'text',
-      description: 'Specifies a border style based on the token options within Cedar',
-    },
-    borderWidth: {
-      control: 'text',
-      description: 'Specifies a border width based on the token options within Cedar',
-    },
-    borderRadius: {
-      control: 'text',
-      description: 'Adds in a border radius based on the token options within Cedar',
-    },
-    boxShadow: {
-      control: 'text',
-      description: 'Adds a shadow based on the token options within Cedar',
-    },
-    tag: {
-      control: 'text',
-      description: 'Determines which HTML tag to use',
-    },
-    palette: {
-      control: 'select',
-      options: ['default', 'sandstone', 'membership-subtle', 'membership-vibrant'],
-      description: "Defines a palette for the component's style variations",
-    },
-  },
 };
 
 export default meta;

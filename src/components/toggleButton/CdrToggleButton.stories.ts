@@ -7,17 +7,6 @@ const meta: Meta<typeof CdrToggleGroup> = {
   title: 'Components/ToggleButton',
   component: CdrToggleGroup,
   tags: ['autodocs'],
-  argTypes: {
-    modelValue: {
-      control: 'text',
-      description: 'v-model binding',
-    },
-    size: {
-      control: 'select',
-      options: ['medium', 'large'],
-      description: 'Sets toggle button size',
-    },
-  },
 };
 
 export default meta;

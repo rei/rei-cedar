@@ -33,8 +33,7 @@
   "scripts": {
     "prepare": "husky",
     "prepublishOnly": "npm-run-all lint build",
-    "dev": "storybook dev -p 6006",
-    "dev:vite": "vite",
+    "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "vue-tsc && vite build && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",

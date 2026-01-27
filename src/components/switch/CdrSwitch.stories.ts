@@ -6,25 +6,6 @@ const meta: Meta<typeof CdrSwitch> = {
   title: 'Components/Switch',
   component: CdrSwitch,
   tags: ['autodocs'],
-  argTypes: {
-    id: {
-      control: 'text',
-      description: 'Sets a custom ID for the switch',
-    },
-    size: {
-      control: 'select',
-      options: ['medium', 'large'],
-      description: 'Sets the size of the switch',
-    },
-    fullWidth: {
-      control: 'boolean',
-      description: 'Sets the label and switch to expand to the full width of its container',
-    },
-    modelValue: {
-      control: 'boolean',
-      description: 'v-model binding',
-    },
-  },
 };
 
 export default meta;

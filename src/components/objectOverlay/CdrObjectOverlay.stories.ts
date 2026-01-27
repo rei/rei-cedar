@@ -8,32 +8,6 @@ const meta = {
   title: 'Components/ObjectOverlay',
   component: CdrObjectOverlay,
   tags: ['autodocs'],
-  argTypes: {
-    position: {
-      control: 'select',
-      options: [
-        'left-top',
-        'center-top',
-        'right-top',
-        'left-center',
-        'center-center',
-        'right-center',
-        'left-bottom',
-        'center-bottom',
-        'right-bottom',
-      ],
-    },
-    margin: {
-      control: 'text',
-    },
-    tag: {
-      control: 'text',
-    },
-    gradientTheme: {
-      control: 'select',
-      options: ['dark', 'light'],
-    },
-  },
   args: {
     position: 'center-center',
     margin: 'zero',

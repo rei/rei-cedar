@@ -5,16 +5,6 @@ const meta: Meta<typeof CdrContainer> = {
   title: 'Components/Container',
   component: CdrContainer,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['div', 'section', 'article', 'main'],
-    },
-    modifier: {
-      control: 'select',
-      options: ['static', 'fluid'],
-    },
-  },
   args: {
     tag: 'div',
     modifier: 'static',

@@ -8,17 +8,6 @@ const meta: Meta<typeof CdrFulfillmentTile> = {
   title: 'Components/FulfillmentTile',
   component: CdrFulfillmentTile,
   tags: ['autodocs'],
-  argTypes: {
-    checked: {
-      control: 'boolean',
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    loading: {
-      control: 'boolean',
-    },
-  },
   args: {
     checked: false,
     disabled: false,

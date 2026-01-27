@@ -5,12 +5,6 @@ const meta: Meta<typeof CdrAbstract> = {
   title: 'Components/Abstract',
   component: CdrAbstract,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['p', 'span', 'h1'],
-    },
-  },
   args: {
     tag: 'p',
   },

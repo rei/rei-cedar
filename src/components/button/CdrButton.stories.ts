@@ -5,40 +5,6 @@ const meta: Meta<typeof CdrButton> = {
   title: 'Components/Button',
   component: CdrButton,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['button', 'a'],
-      description: 'Renders CdrButton as a <button> or <a> element',
-    },
-    type: {
-      control: 'select',
-      options: ['button', 'submit', 'reset'],
-      description: 'Sets the button type (only applies when tag is "button")',
-    },
-    modifier: {
-      control: 'select',
-      options: ['primary', 'secondary', 'sale', 'dark', 'link'],
-      description: 'Modifies the style variant for this component',
-    },
-    size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
-      description: 'Sets the button size',
-    },
-    fullWidth: {
-      control: 'boolean',
-      description: 'Sets button width to 100% of the parent container',
-    },
-    iconOnly: {
-      control: 'boolean',
-      description: 'Renders an icon-only button',
-    },
-    withBackground: {
-      control: 'boolean',
-      description: 'Renders an icon-only button with background (must be used with iconOnly)',
-    },
-  },
   args: {
     tag: 'button',
     type: 'button',

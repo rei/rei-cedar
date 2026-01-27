@@ -8,31 +8,6 @@ const meta = {
   title: 'Components/MediaObject',
   component: CdrMediaObject,
   tags: ['autodocs'],
-  argTypes: {
-    align: {
-      control: 'select',
-      options: ['start', 'center', 'end', 'stretch'],
-    },
-    mediaPosition: {
-      control: 'select',
-      options: ['left', 'right', 'top', 'bottom'],
-    },
-    mediaWidth: {
-      control: 'text',
-    },
-    mediaHeight: {
-      control: 'text',
-    },
-    mediaCover: {
-      control: 'boolean',
-    },
-    overlay: {
-      control: 'boolean',
-    },
-    contentPadding: {
-      control: 'text',
-    },
-  },
   args: {
     align: 'start',
     mediaPosition: 'left',

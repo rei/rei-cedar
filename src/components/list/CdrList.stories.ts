@@ -6,15 +6,6 @@ const meta = {
   title: 'Components/List',
   component: CdrList,
   tags: ['autodocs'],
-  argTypes: {
-    tag: {
-      control: 'select',
-      options: ['ul', 'ol'],
-    },
-    modifier: {
-      control: 'text',
-    },
-  },
   args: {
     tag: 'ul',
   },

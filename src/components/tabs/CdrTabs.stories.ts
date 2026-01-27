@@ -6,29 +6,6 @@ const meta: Meta<typeof CdrTabs> = {
   title: 'Components/Tabs',
   component: CdrTabs,
   tags: ['autodocs'],
-  argTypes: {
-    height: {
-      control: 'text',
-      description: 'Sets height of the tabs container element',
-    },
-    activeTab: {
-      control: 'number',
-      description: 'Sets the index of the tab that should be active on initial page load',
-    },
-    modifier: {
-      control: 'text',
-      description: 'Modifies the style variants for this component',
-    },
-    size: {
-      control: 'select',
-      options: ['small', 'medium'],
-      description: 'Use small to reduce spacing around the tabs',
-    },
-    backgroundColor: {
-      control: 'color',
-      description: 'Sets the background color of the tab',
-    },
-  },
 };
 
 export default meta;

@@ -5,33 +5,6 @@ const meta: Meta<typeof CdrImg> = {
   title: 'Components/Img',
   component: CdrImg,
   tags: ['autodocs'],
-  argTypes: {
-    src: {
-      control: 'text',
-    },
-    alt: {
-      control: 'text',
-    },
-    fit: {
-      control: 'select',
-      options: ['none', 'contain', 'cover', 'fill', 'scale-down'],
-    },
-    position: {
-      control: 'text',
-    },
-    radius: {
-      control: 'select',
-      options: ['unset', 'soft', 'softer', 'round', '10%', '33%'],
-    },
-    ratio: {
-      control: 'select',
-      options: ['auto', '1/1', '1/2', '3/4', '9/16', '2/1', '4/3', '16/9'],
-    },
-    loading: {
-      control: 'select',
-      options: ['lazy', 'eager'],
-    },
-  },
   args: {
     src: 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md',
     alt: 'Outdoor landscape',

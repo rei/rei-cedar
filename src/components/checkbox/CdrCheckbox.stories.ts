@@ -6,31 +6,6 @@ const meta: Meta<typeof CdrCheckbox> = {
   title: 'Components/Checkbox',
   component: CdrCheckbox,
   tags: ['autodocs'],
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
-      description: 'Sets the checkbox size',
-    },
-    background: {
-      control: 'select',
-      options: ['primary', 'secondary'],
-      description: 'Sets the background color the input is rendered on',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Disables the checkbox',
-    },
-    indeterminate: {
-      control: 'boolean',
-      description: 'Show checkbox in indeterminate state',
-    },
-    modifier: {
-      control: 'select',
-      options: ['', 'hide-figure'],
-      description: 'Use hide-figure to hide the checkbox',
-    },
-  },
   args: {
     size: 'medium',
     background: 'primary',
