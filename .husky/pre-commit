@@ -1,1 +1,1 @@
-pnpm format && pnpm unit && pnpm lint-staged
+pnpm unit && pnpm lint-staged
