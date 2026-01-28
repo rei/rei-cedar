@@ -9,6 +9,7 @@
     <ordered-list class="mega-stack" />
     <bare-list class="mega-stack" />
     <resilience-test class="mega-stack" />
+    <block-children-demo class="mega-stack" />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import unorderedList from 'componentsdir/list/examples/demo/Unordered.vue';
 import orderedList from 'componentsdir/list/examples/demo/Ordered.vue';
 import bareList from 'componentsdir/list/examples/demo/Bare.vue';
 import resilienceTest from 'componentsdir/list/examples/demo/Resilience.vue';
+import blockChildrenDemo from 'componentsdir/list/examples/demo/BlockChildren.vue';
 
 export default {
   name: 'Lists',
@@ -25,6 +27,7 @@ export default {
     orderedList,
     bareList,
     resilienceTest,
+    blockChildrenDemo,
   },
 };
 </script>

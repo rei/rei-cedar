@@ -39,20 +39,30 @@
 @mixin cdr-list-ordered-nested-mixin() {
   position: relative;
   padding-left: 1em;
+  list-style-type: none;
 
   > li {
+    position: relative;
     padding-left: 0;
+
+    // Collapse margins on first block child to align marker with text
+    > :first-child {
+      margin-block-start: 0;
+    }
 
     &::before {
       content: '\2013';
       position: absolute;
+      left: -1em;
+      top: 0;
+      width: 1em;
+      line-height: inherit;
 
       // ITEM_DOC: Color of the nested ordered cdr-list item prefix
       color: var(
         --cdr-list-ordered-nested-prefix-color,
         var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
       );
-      left: 0;
     }
   }
 }
@@ -61,17 +71,28 @@
   position: relative;
   padding-left: 1em;
 
-  > li::before {
-    content: '\2022';
+  > li {
     position: relative;
-    margin-left: -1em;
-    padding-right: tokens.$cdr-space-half-x;
 
-    // ITEM_DOC: Color of the unordered cdr-list item prefix
-    color: var(
-      --cdr-list-unordered-prefix-color,
-      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
-    );
+    // Collapse margins on first block child to align marker with text
+    > :first-child {
+      margin-block-start: 0;
+    }
+
+    &::before {
+      content: '\2022';
+      position: absolute;
+      left: -1em;
+      top: 0;
+      width: 1em;
+      line-height: inherit;
+
+      // ITEM_DOC: Color of the unordered cdr-list item prefix
+      color: var(
+        --cdr-list-unordered-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
+    }
   }
 }
 
@@ -80,11 +101,20 @@
   padding-left: 1em;
 
   > li {
+    position: relative;
+
+    // Collapse margins on first block child to align marker with text
+    > :first-child {
+      margin-block-start: 0;
+    }
+
     &::before {
       content: '\2013';
-      position: relative;
-      margin-left: -1em;
-      padding-right: tokens.$cdr-space-half-x;
+      position: absolute;
+      left: -1em;
+      top: 0;
+      width: 1em;
+      line-height: inherit;
 
       // ITEM_DOC: Color of the nested unordered cdr-list item prefix
       color: var(
