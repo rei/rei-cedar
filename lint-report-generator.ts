@@ -1,19 +1,38 @@
 /* eslint-env node */
 
-// lint-report-generator.mjs
+// lint-report-generator.ts
 import stylelint from 'stylelint';
 import fs from 'fs';
-import { join, relative } from 'path';
+import { join, relative, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+interface StyleWarning {
+  line: number;
+  column: number;
+  rule: string;
+  text: string;
+  severity: string;
+}
+
+interface FileWarnings {
+  file: string;
+  warnings: StyleWarning[];
+}
+
+interface ReportSummary {
+  totalFiles: number;
+  totalWarnings: number;
+  reportPath: string;
+  jsonReportPath: string;
+}
+
 /**
  * Formats the current date as YYYY-MM-DD
  */
-const getFormattedDate = () => {
+const getFormattedDate = (): string => {
   const date = new Date();
   return date.toISOString().split('T')[0];
 };
@@ -21,7 +40,7 @@ const getFormattedDate = () => {
 /**
  * Creates directory if it doesn't exist
  */
-const ensureDirectoryExists = (dirPath) => {
+const ensureDirectoryExists = (dirPath: string): void => {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, { recursive: true });
   }
@@ -30,10 +49,10 @@ const ensureDirectoryExists = (dirPath) => {
 /**
  * Processes stylelint results into a structured format
  */
-const processStylelintResults = (styleResults) => {
-  return styleResults.results.reduce((acc, file) => {
+const processStylelintResults = (styleResults: stylelint.LinterResult): FileWarnings[] => {
+  return styleResults.results.reduce<FileWarnings[]>((acc, file) => {
     if (file.warnings.length > 0) {
-      const relativePath = relative(process.cwd(), file.source);
+      const relativePath = relative(process.cwd(), file.source || '');
       acc.push({
         file: relativePath,
         warnings: file.warnings.map((w) => ({
@@ -52,7 +71,7 @@ const processStylelintResults = (styleResults) => {
 /**
  * Generates markdown content from warnings
  */
-const generateMarkdownContent = (styleWarnings, reportDate) => {
+const generateMarkdownContent = (styleWarnings: FileWarnings[], reportDate: string): string => {
   let mdReport = `# Stylelint Warning Report (${reportDate})\n\n`;
   mdReport += `## Summary\n\n`;
 
@@ -87,7 +106,7 @@ const generateMarkdownContent = (styleWarnings, reportDate) => {
 /**
  * Main function to generate lint reports
  */
-const generateLintReport = async () => {
+const generateLintReport = async (): Promise<ReportSummary> => {
   try {
     const reportDate = getFormattedDate();
     const reportDir = join(process.cwd(), 'reports');
@@ -118,7 +137,7 @@ const generateLintReport = async () => {
       ),
     );
 
-    const summary = {
+    const summary: ReportSummary = {
       totalFiles: styleWarnings.length,
       totalWarnings: styleWarnings.reduce((sum, file) => sum + file.warnings.length, 0),
       reportPath,

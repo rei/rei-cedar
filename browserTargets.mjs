@@ -1,1 +1,1 @@
-export default ['Chrome >= 111', 'Firefox >= 121', 'iOS >= 15.6', 'Safari >= 15.6', 'Edge >= 120'];
+export default ['Chrome >= 125', 'Firefox >= 130', 'iOS >= 17', 'Safari >= 17', 'Edge >= 125'];

@@ -1,16 +1,23 @@
 import fs from 'fs-extra';
-import postcss from 'postcss-scss';
+import postcssScss from 'postcss-scss';
+import type { Declaration, Node, Comment } from 'postcss';
 
-function extractCssVariables(rule, prevNode) {
+interface CSSProperty {
+  name: string;
+  defaultValue: string;
+  description: string | null;
+}
+
+function extractCssVariables(rule: Declaration, prevNode: Node | null): CSSProperty[] | null {
   const varUsageMatches = Array.from(
     rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)(?:, #\{\$[\w-]+\})?\)/g),
   );
 
-  const cssProperties = [];
-  const uniqueNames = new Set(); // Track unique CSS variable names
+  const cssProperties: CSSProperty[] = [];
+  const uniqueNames = new Set<string>(); // Track unique CSS variable names
 
   if (prevNode && prevNode.type === 'comment') {
-    const commentParts = prevNode.text.split('ITEM_DOC:').slice(1);
+    const commentParts = (prevNode as Comment).text.split('ITEM_DOC:').slice(1);
 
     varUsageMatches.forEach((match, index) => {
       const name = match[1];
@@ -28,7 +35,7 @@ function extractCssVariables(rule, prevNode) {
       }
 
       // Get description and remove any trailing '//'
-      let description = commentParts[index] ? commentParts[index].trim() : null;
+      let description: string | null = commentParts[index] ? commentParts[index].trim() : null;
       if (description && description.endsWith('//')) {
         description = description.slice(0, -2).trim();
       }
@@ -44,22 +51,23 @@ function extractCssVariables(rule, prevNode) {
   return cssProperties.length > 0 ? cssProperties : null;
 }
 
-async function parseSCSS(filePath) {
+async function parseSCSS(filePath: string): Promise<CSSProperty[]> {
   try {
     const css = await fs.readFile(filePath, 'utf-8');
 
-    const root = postcss.parse(css.toString());
-    let prevNode = null;
+    const root = postcssScss.parse(css.toString());
+    let prevNode: Node | null = null;
 
-    let properties = [];
+    let properties: CSSProperty[] = [];
 
     root.walk((node) => {
       if (node.type === 'decl') {
         // Handle multiline CSS properties
-        const singleLineValue = node.value.replace(/\s+/g, ' ');
-        node.value = singleLineValue;
+        const declNode = node as Declaration;
+        const singleLineValue = declNode.value.replace(/\s+/g, ' ');
+        declNode.value = singleLineValue;
 
-        const cssProperties = extractCssVariables(node, prevNode);
+        const cssProperties = extractCssVariables(declNode, prevNode);
         if (cssProperties) {
           properties = properties.concat(cssProperties);
         }

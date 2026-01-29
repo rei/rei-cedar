@@ -9,9 +9,5 @@
     "strict": false,
     "noEmit": false
   },
-  "include": ["generate.ts"],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  }
+  "include": ["generate.ts"]
 }
