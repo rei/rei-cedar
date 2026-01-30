@@ -22,7 +22,7 @@ const style = useCssModule();
 const slots = useSlots();
 
 const slottedTabs = computed<any>(() =>
-  slots.default?.()[0]?.children?.length ? slots.default?.()[0]?.children : slots.default?.(),
+  slots.default?.({})[0]?.children?.length ? slots.default?.({})[0]?.children : slots.default?.({}),
 );
 
 const baseClass = 'cdr-tabs';

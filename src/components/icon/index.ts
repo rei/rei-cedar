@@ -1,5 +1,5 @@
 // file created by generate.ts
-
+ 
 export { default as IconAccountProfileFill } from './comps/account-profile-fill.vue';
 export { default as IconAccountProfile } from './comps/account-profile.vue';
 export { default as IconArrowDown } from './comps/arrow-down.vue';

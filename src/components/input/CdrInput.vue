@@ -135,7 +135,9 @@ const hasHelperTop = slots['helper-text-top'];
 const hasHelperBottom = slots['helper-text-bottom'];
 const hasPreIcon = slots['pre-icon'];
 const hasPostIcon = computed(() => slots['post-icon']);
-const hasPostIcons = computed(() => (slots['post-icon'] ? slots['post-icon']().length > 1 : false));
+const hasPostIcons = computed(() =>
+  slots['post-icon'] ? slots['post-icon']({}).length > 1 : false,
+);
 const hasInfo = slots.info;
 const hasInfoAction = slots['info-action'];
 

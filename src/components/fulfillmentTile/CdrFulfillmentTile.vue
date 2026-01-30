@@ -48,17 +48,17 @@ const surfaceProps = computed(() => ({
   >
     <div :class="style['cdr-fulfillment-tile__content']">
       <div
-        v-if="$slots.header"
+        v-if="!!$slots.header"
         :class="style['cdr-fulfillment-tile__header']"
       >
         <span
-          v-if="$slots['icon-left']"
+          v-if="!!$slots['icon-left']"
           :class="style['cdr-fulfillment-tile-header__icon']"
         >
           <!-- @slot Icon to display on the left of the header. -->
           <slot name="icon-left" />
         </span>
-        <div v-if="$slots.header">
+        <div v-if="!!$slots.header">
           <CdrSubheadingSans
             :strong="true"
             scale="-1"
@@ -69,7 +69,7 @@ const surfaceProps = computed(() => ({
           </CdrSubheadingSans>
         </div>
         <span
-          v-if="$slots['icon-right']"
+          v-if="!!$slots['icon-right']"
           :class="style['cdr-fulfillment-tile-header__icon']"
         >
           <!-- @slot Icon to display on the right of the header. -->
@@ -78,12 +78,12 @@ const surfaceProps = computed(() => ({
       </div>
       <div
         :class="style['cdr-fulfillment-tile__main']"
-        v-if="$slots['body'] || $slots['footer']"
+        v-if="!!$slots['body'] || !!$slots['footer']"
       >
         <CdrBody
           tag="div"
           scale="-2"
-          v-if="$slots['body']"
+          v-if="!!$slots['body']"
         >
           <!-- @slot Default font size is a step down. Placed just below the header. -->
           <slot name="body" />
@@ -91,7 +91,7 @@ const surfaceProps = computed(() => ({
         <CdrBody
           tag="div"
           scale="-1"
-          v-if="$slots['footer']"
+          v-if="!!$slots['footer']"
         >
           <!-- @slot Footer content will be at the bottom of the component. -->
           <slot name="footer" />

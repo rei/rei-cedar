@@ -27,10 +27,10 @@ const emits = defineEmits({
 });
 
 const style = useCssModule();
-const slots = useSlots();
+const slots: ReturnType<typeof useSlots> = useSlots();
 
 const baseClass = 'cdr-toast';
-const hasIconLeft = slots['icon-left'];
+const hasIconLeft = !!slots['icon-left'];
 const opened = ref(false);
 const toastEl = ref<HTMLDivElement | null>(null);
 let timeout: ReturnType<typeof setTimeout>;

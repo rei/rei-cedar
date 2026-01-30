@@ -23,7 +23,7 @@ export const Primary: Story = {
   args: {
     modifier: 'primary',
   },
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrButton },
     setup() {
       return { args };
@@ -36,7 +36,7 @@ export const Secondary: Story = {
   args: {
     modifier: 'secondary',
   },
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrButton },
     setup() {
       return { args };
@@ -49,7 +49,7 @@ export const Sale: Story = {
   args: {
     modifier: 'sale',
   },
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrButton },
     setup() {
       return { args };
@@ -62,7 +62,7 @@ export const Dark: Story = {
   args: {
     modifier: 'dark',
   },
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrButton },
     setup() {
       return { args };
@@ -75,7 +75,7 @@ export const LinkStyle: Story = {
   args: {
     modifier: 'link',
   },
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrButton },
     setup() {
       return { args };
@@ -101,7 +101,7 @@ export const FullWidth: Story = {
   args: {
     fullWidth: true,
   },
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrButton },
     setup() {
       return { args };
@@ -132,7 +132,7 @@ export const AsAnchor: Story = {
     tag: 'a',
     modifier: 'primary',
   },
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrButton },
     setup() {
       return { args };

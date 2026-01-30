@@ -17,7 +17,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrToast, CdrButton },
     setup() {
       const isOpen = ref(false);
@@ -41,7 +41,7 @@ export const Default: Story = {
 };
 
 export const Info: Story = {
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrToast, CdrButton, IconInformationFill },
     setup() {
       const isOpen = ref(false);
@@ -68,7 +68,7 @@ export const Info: Story = {
 };
 
 export const Success: Story = {
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrToast, CdrButton, IconCheckFill },
     setup() {
       const isOpen = ref(false);
@@ -95,7 +95,7 @@ export const Success: Story = {
 };
 
 export const Warning: Story = {
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrToast, CdrButton, IconWarningFill },
     setup() {
       const isOpen = ref(false);
@@ -122,7 +122,7 @@ export const Warning: Story = {
 };
 
 export const Error: Story = {
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrToast, CdrButton, IconErrorFill },
     setup() {
       const isOpen = ref(false);
@@ -149,7 +149,7 @@ export const Error: Story = {
 };
 
 export const NoAutoDismiss: Story = {
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrToast, CdrButton },
     setup() {
       const isOpen = ref(false);
@@ -173,7 +173,7 @@ export const NoAutoDismiss: Story = {
 };
 
 export const CustomDelay: Story = {
-  render: (args) => ({
+  render: (args: typeof meta.args) => ({
     components: { CdrToast, CdrButton },
     setup() {
       const isOpen = ref(false);

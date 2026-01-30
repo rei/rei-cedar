@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<CdrButtonProps>(), {
   withBackground: false,
 });
 
-const slots = useSlots();
+const slots: ReturnType<typeof useSlots> = useSlots();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-button';
