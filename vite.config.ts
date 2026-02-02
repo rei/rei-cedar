@@ -55,5 +55,12 @@ export default defineConfig({
       },
     },
   },
-  plugins: [vue(), cssNameNormalizer(), dts({ rollupTypes: true })],
+  plugins: [
+    vue(),
+    cssNameNormalizer(),
+    dts({
+      tsconfigPath: './tsconfig.build.json',
+      rollupTypes: true,
+    }),
+  ],
 });

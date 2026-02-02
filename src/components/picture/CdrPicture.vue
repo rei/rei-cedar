@@ -25,7 +25,7 @@ const style = useCssModule();
       v-for="(source, i) in sources"
       :key="`${source.media}--${i}`"
       v-bind="source"
-    />
+    >
     <CdrImg
       :src="src"
       :alt="alt"

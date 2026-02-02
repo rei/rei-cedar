@@ -36,7 +36,7 @@
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "vue-tsc && vite build && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",
+    "build": "vue-tsc -p tsconfig.build.json --noEmit && vite build && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",
     "build:docgen": "tsx docgen.ts",
     "build:icons": "tsx src/components/icon/build/generate.ts",
     "build:copycss": "tsx build/copy-css.ts",

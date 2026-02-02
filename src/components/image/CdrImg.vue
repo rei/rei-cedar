@@ -62,7 +62,7 @@ const imageProperties = computed<Record<string, string | undefined>>(() => {
     :loading="loading"
     :decoding="decoding"
     :fetchpriority="fetchpriority"
-  />
+  >
 </template>
 
 <style lang="scss" module src="./styles/CdrImg.module.scss" />

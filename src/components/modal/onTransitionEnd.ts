@@ -1,4 +1,4 @@
-/* eslint-env browser */
+/* global document */
 const transitions = {
   transition: 'transitionend',
   WebkitTransition: 'webkitTransitionEnd',

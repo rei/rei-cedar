@@ -54,7 +54,7 @@ const radioModel = computed({
         v-bind="$attrs"
         :disabled="disabled"
         v-model="radioModel"
-      />
+      >
     </template>
     <slot />
   </cdr-label-wrapper>

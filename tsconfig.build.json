@@ -1,0 +1,32 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true
+  },
+  "include": [
+    "src/lib.ts",
+    "src/types/**/*.ts",
+    "src/props/**/*.ts",
+    "src/utils/**/*.ts",
+    "src/mixins/**/*.ts",
+    "src/vite-env.d.ts",
+    "src/components/*/Cdr*.vue",
+    "src/components/*/index.ts",
+    "src/components/*/interfaces.ts",
+    "src/components/icon/comps/*.vue",
+    "src/components/text/presets/*.vue",
+    "src/components/text/presets/*.ts"
+  ],
+  "exclude": [
+    "src/dev/**",
+    "src/components/**/examples/**",
+    "src/components/examples.js",
+    "src/components/icon/build/**",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/__tests__/**"
+  ]
+}

@@ -62,7 +62,7 @@ const inputSpacingClass = computed(() =>
         </span>
       </label>
 
-      <br v-if="!hideLabel && hasHelper" />
+      <br v-if="!hideLabel && hasHelper">
       <span
         :class="style['cdr-label-standalone__helper']"
         :id="`${forId}-helper-text-top`"
