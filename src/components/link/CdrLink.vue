@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useAttrs } from 'vue';
-import type { CdrLinkProps } from '../../types/interfaces';
+import type { CdrLinkProps } from './types';
 
 /** Clickable text elements used for navigating to other pages or sections */
 defineOptions({ name: 'CdrLink' });
@@ -11,6 +11,11 @@ const props = withDefaults(defineProps<CdrLinkProps>(), {
   inheritColor: false,
   modifier: '',
 });
+
+defineSlots<{
+  /** Readable text of the link */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 const attrs = useAttrs();

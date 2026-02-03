@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, inject, ref } from 'vue';
-import type { CdrSkeletonBoneProps } from '../../types/interfaces';
+import type { CdrSkeletonBoneProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import { motionKey } from '../../types/symbols';
 

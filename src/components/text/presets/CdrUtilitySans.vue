@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { BaseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
 
 defineOptions({
   name: 'CdrUtilitySans',
@@ -22,6 +22,10 @@ const props = withDefaults(defineProps<UtilitySansTextProps>(), {
   scale: '1',
   strong: false,
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const typeProperties = computed(() => {
   return {

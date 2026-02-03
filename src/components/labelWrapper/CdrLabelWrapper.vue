@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrLabelWrapperProps } from '../../types/interfaces';
+import type { CdrLabelWrapperProps } from './types';
 import { responsiveModifyClass } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
 
@@ -13,6 +13,12 @@ defineOptions({
 });
 
 const props = defineProps<CdrLabelWrapperProps>();
+
+defineSlots<{
+  'input'(props: Record<string, never>): any;
+  'svgs'(props: Record<string, never>): any;
+  'default'(props: Record<string, never>): any;
+}>();
 const style = useCssModule();
 const baseClass = 'cdr-label-wrapper';
 const modifierClass = computed(() => (props.modifier ? `${baseClass}--${props.modifier}` : ''));

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import { CdrRadiusSoft, CdrRadiusRound, CdrRadiusSofter } from '@rei/cdr-tokens';
-import type { BaseImageProps } from '../../types/interfaces';
+import type { BaseImageProps } from './types';
 
 /**
  * CdrImg - Media for capturing attention and communicating messages
@@ -62,7 +62,7 @@ const imageProperties = computed<Record<string, string | undefined>>(() => {
     :loading="loading"
     :decoding="decoding"
     :fetchpriority="fetchpriority"
-  >
+  />
 </template>
 
 <style lang="scss" module src="./styles/CdrImg.module.scss" />

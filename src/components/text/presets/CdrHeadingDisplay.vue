@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { BaseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
 
 defineOptions({
   name: 'CdrHeadingDisplay',
@@ -19,6 +19,10 @@ const props = withDefaults(defineProps<HeadingDisplayTextProps>(), {
   tag: 'h1',
   scale: '7',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const typeProperties = computed(() => {
   return {

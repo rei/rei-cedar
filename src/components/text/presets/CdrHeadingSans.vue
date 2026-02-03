@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { BaseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
 
 defineOptions({
   name: 'CdrHeadingSans',
@@ -19,6 +19,10 @@ const props = withDefaults(defineProps<HeadingSansTextProps>(), {
   tag: 'h2',
   scale: '3',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const typeProperties = computed(() => {
   return {

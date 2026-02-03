@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { CdrAbstractProps } from '../../types/interfaces';
+import type { CdrAbstractProps } from './types';
 import type { Tag } from '../../types/other';
 
 /**
@@ -16,6 +16,11 @@ defineOptions({
 const props = withDefaults(defineProps<CdrAbstractProps>(), {
   tag: 'p' as Tag,
 });
+
+defineSlots<{
+  /** Default slot for abstract content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const baseClass: string = 'cdr-abstract';
 const style: Record<string, string> = useCssModule();

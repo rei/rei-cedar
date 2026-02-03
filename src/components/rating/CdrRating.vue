@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrRatingProps } from '../../types/interfaces';
+import type { CdrRatingProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import CdrStar100 from './components/CdrStar100.vue';
 import CdrStar75 from './components/CdrStar75.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrFormGroupProps } from '../../types/interfaces';
+import type { CdrFormGroupProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import CdrFormError from '../formError/CdrFormError.vue';
 import uid from '../../utils/uid';
@@ -23,6 +23,14 @@ const props = withDefaults(defineProps<CdrFormGroupProps>(), {
   required: false,
   optional: false,
 });
+
+defineSlots<{
+  /** Overrides CdrFormGroup label/legend. Should be a text element */
+  'label'(props: Record<string, never>): any;
+  /** CdrFormGroup content (form elements) */
+  'default'(props: Record<string, never>): any;
+  'error'(props: Record<string, never>): any;
+}>();
 
 /** Unique identifier for the form group, generated if not provided */
 const uniqueId: string = props.id ? props.id : uid();

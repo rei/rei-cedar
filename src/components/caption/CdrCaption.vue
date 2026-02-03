@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { CdrCaptionProps } from '../../types/interfaces';
+import type { CdrCaptionProps } from './types';
 
 /**
  * CdrCaption - Provides context and credit for an asset such as an image, video, or chart

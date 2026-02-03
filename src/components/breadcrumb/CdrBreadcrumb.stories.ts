@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrBreadcrumb from './CdrBreadcrumb.vue';
-import type { BreadcrumbItem } from '../../types/interfaces';
+import type { BreadcrumbItem } from './types';
 
 const meta: Meta<typeof CdrBreadcrumb> = {
   title: 'Components/Breadcrumb',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrGridProps } from '../../types/interfaces';
+import type { CdrGridProps } from './types';
 import type { Tag } from '../../types/other';
 import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../../utils/buildClass';
@@ -21,6 +21,11 @@ const props = withDefaults(defineProps<CdrGridProps>(), {
   gutter: 'medium@xs medium@sm large@md large@lg',
   tag: 'div' as Tag,
 });
+
+defineSlots<{
+  /** CdrGrid content (grid child elements) */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-grid';

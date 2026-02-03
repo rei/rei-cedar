@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots, useAttrs, type PropType } from 'vue';
-import { SelectOption } from '../../types/interfaces';
+import { SelectOption } from './types';
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
@@ -93,6 +93,20 @@ const props = defineProps({
    */
   multipleSize: Number,
 });
+
+defineSlots<{
+  /** Helper text above the select field */
+  'helper-text'(props: Record<string, never>): any;
+  /** Link or icon to the right above the select field. */
+  'info'(props: Record<string, never>): any;
+  /** Icon preceding text within the select field */
+  'pre-icon'(props: Record<string, never>): any;
+  /** CdrSelect content (<option> tags). Leave empty if using the `options` prop. */
+  'default'(props: Record<string, never>): any;
+  'info-action'(props: Record<string, never>): any;
+  /** Error messaging text that is displayed when the `error` prop is true. */
+  'error'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /**

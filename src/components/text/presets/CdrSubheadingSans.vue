@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { BaseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
 
 defineOptions({
   name: 'CdrSubheadingSans',
@@ -19,6 +19,10 @@ const props = withDefaults(defineProps<SubheadingSansTextProps>(), {
   tag: 'p',
   scale: '1',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const typeProperties = computed(() => {
   return {

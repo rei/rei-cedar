@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, ref, watch, nextTick } from 'vue';
-import type { CdrBreadcrumbProps, BreadcrumbItem } from '../../types/interfaces';
+import type { CdrBreadcrumbProps, BreadcrumbItem } from './types';
 import uid from '../../utils/uid';
 
 /**
@@ -17,6 +17,10 @@ defineOptions({
 const props = withDefaults(defineProps<CdrBreadcrumbProps>(), {
   truncationEnabled: true,
 });
+
+defineSlots<{
+  'link'(props: { class: string; href: string; content: string }): any;
+}>();
 
 /**
  * Navigate event emitted when a breadcrumb item is clicked

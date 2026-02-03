@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import type { CdrQuoteProps } from '../../types/interfaces';
+import type { CdrQuoteProps } from './types';
 
 /** Short excerpt used to emphasize content or break up a large body of text */
 defineOptions({
@@ -12,6 +12,10 @@ const props = withDefaults(defineProps<CdrQuoteProps>(), {
   tag: 'blockquote',
   modifier: '',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 const baseClass = 'cdr-quote';

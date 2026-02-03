@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { FulfillmentTileIcon } from '../../types/interfaces';
+import type { FulfillmentTileIcon } from './types';
 
 /**
  * CdrFulfillmentTileIcon - Stylized icon to display a status for fulfillment tile
@@ -14,6 +14,11 @@ defineOptions({ name: 'CdrFulfillmentTileIcon' });
 const props = withDefaults(defineProps<FulfillmentTileIcon>(), {
   type: 'default',
 });
+
+defineSlots<{
+  /** Where all default content should be placed. */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-fulfillment-tile-icon';

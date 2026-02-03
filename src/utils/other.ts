@@ -1,6 +1,6 @@
 import * as tokens from '@rei/cdr-tokens';
 import { Breakpoint, Space } from '../types/other';
-import { NameValuePair } from '../types/interfaces';
+import { NameValuePair } from '../components/layout/types';
 
 /**
  * Capitalizes the first letter of a string.

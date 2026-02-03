@@ -2,7 +2,8 @@
 import CdrLayout from '../CdrLayout.vue';
 import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
-import type { Layout, HtmlAttributes } from '../../../types/interfaces';
+import type { Layout } from '../types';
+import type { HtmlAttributes } from '../../mediaObject/types';
 
 defineOptions({ name: 'Layout' });
 

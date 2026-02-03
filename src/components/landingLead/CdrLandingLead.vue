@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { CdrLandingLeadProps } from '../../types/interfaces';
+import type { CdrLandingLeadProps } from './types';
 import { CdrImg, CdrSplitSurface } from '../../lib';
 import CdrHeadingSubheadingBlock from './components/CdrHeadingSubheadingBlock.vue';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, ref, onMounted } from 'vue';
-import type { CdrChipGroupProps } from '../../types/interfaces';
+import type { CdrChipGroupProps } from './types';
 
 /**
  * CdrChipGroup - Groups multiple chips together with keyboard navigation support
@@ -17,6 +17,13 @@ defineOptions({
 const props = withDefaults(defineProps<CdrChipGroupProps>(), {
   hideLabel: true,
 });
+
+defineSlots<{
+  /** Override CdrChip label content with a custom element */
+  'label'(props: Record<string, never>): any;
+  /** CdrChipGroup content (CdrChip components) */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-chip-group';

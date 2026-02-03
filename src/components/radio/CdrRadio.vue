@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
-import type { CdrRadioProps } from '../../types/interfaces';
+import type { CdrRadioProps } from './types';
 
 /** Permits the selection of only one option from a list of two or more */
 defineOptions({
@@ -13,6 +13,10 @@ defineOptions({
 const props = withDefaults(defineProps<CdrRadioProps>(), {
   modifier: '',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /**
@@ -54,7 +58,7 @@ const radioModel = computed({
         v-bind="$attrs"
         :disabled="disabled"
         v-model="radioModel"
-      >
+      />
     </template>
     <slot />
   </cdr-label-wrapper>

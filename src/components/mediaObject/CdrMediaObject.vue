@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
-import { CdrMediaObjectProps, NameValuePair, HtmlAttributes } from '../../types/interfaces';
+import { CdrMediaObjectProps, NameValuePair, HtmlAttributes } from './types';
 import type { Breakpoint } from '../../types/other';
 import { modifyClassName } from '../../utils/buildClass';
 import { getLayoutStyling } from '../../utils/mediaObject';
@@ -24,6 +24,13 @@ const props = withDefaults(defineProps<CdrMediaObjectProps>(), {
   contentPadding: 'zero',
   queryType: 'media',
 });
+
+defineSlots<{
+  /** Where the media should be placed. Should be a single node. */
+  'media'(props: Record<string, never>): any;
+  /** Where all content should be placed. Can be multiple nodes. */
+  'content'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 

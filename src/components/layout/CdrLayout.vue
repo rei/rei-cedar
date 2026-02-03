@@ -2,7 +2,7 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { getStructureStyles } from '../../utils/layout';
-import type { CdrLayoutProps, NameValuePair } from '../../types/interfaces';
+import type { CdrLayoutProps, NameValuePair } from './types';
 import type { Structure } from '../../types/other';
 import { modifyClassName } from '../../utils/buildClass';
 import CdrSurface from '../surface/CdrSurface.vue';
@@ -24,6 +24,11 @@ const props = withDefaults(defineProps<CdrLayoutProps>(), {
   flow: undefined,
   flowValue: 'auto',
 });
+
+defineSlots<{
+  /** Where all default content should be placed. */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 

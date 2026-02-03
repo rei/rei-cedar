@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, inject, useCssModule, watch } from 'vue';
-import type { CdrTabPanelProps } from '../../types/interfaces';
+import type { CdrTabPanelProps } from './types';
 import kebabCase from '../../utils/kebabCase';
 import { selectedTabKey } from '../../types/symbols';
 
@@ -9,6 +9,11 @@ defineOptions({
 });
 
 const props = defineProps<CdrTabPanelProps>();
+
+defineSlots<{
+  /** CdrTabPanel content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /**

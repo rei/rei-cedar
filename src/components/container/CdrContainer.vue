@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrContainerProps } from '../../types/interfaces';
+import type { CdrContainerProps } from './types';
 import type { Tag } from '../../types/other';
 import mapClasses from '../../utils/mapClasses';
 
@@ -20,6 +20,11 @@ const props = withDefaults(defineProps<CdrContainerProps>(), {
   tag: 'div' as Tag,
   modifier: 'static',
 });
+
+defineSlots<{
+  /** CdrContainer content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-container';

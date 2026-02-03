@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { CdrFormErrorProps } from '../../types/interfaces';
+import type { CdrFormErrorProps } from './types';
 import IconErrorStroke from '../icon/comps/error-stroke.vue';
 
 /**
@@ -16,6 +16,10 @@ defineOptions({
 });
 
 defineProps<CdrFormErrorProps>();
+
+defineSlots<{
+  'error'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-form-error';

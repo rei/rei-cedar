@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, provide, onMounted, nextTick, computed, useCssModule, useSlots } from 'vue';
 import type { ComponentInternalInstance } from 'vue';
-import type { CdrTabsProps } from '../../types/interfaces';
+import type { CdrTabsProps } from './types';
 import { debounce } from '../../utils/debounce';
 import { CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX } from '@rei/cdr-tokens';
 import mapClasses from '../../utils/mapClasses';
@@ -18,6 +18,11 @@ const props = withDefaults(defineProps<CdrTabsProps>(), {
   activeTab: 0,
   backgroundColor: CdrColorBackgroundPrimary,
 });
+
+defineSlots<{
+  /** CdrTabs content (CdrTabPanel components) */
+  'default'(props: Record<string, never>): any;
+}>();
 const style = useCssModule();
 const slots = useSlots();
 

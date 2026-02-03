@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrListProps } from '../../types/interfaces';
+import type { CdrListProps } from './types';
 
 /** Groups related content items together either vertically or horizontally */
 defineOptions({
@@ -10,6 +10,10 @@ defineOptions({
 const props = withDefaults(defineProps<CdrListProps>(), {
   tag: 'ul',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 

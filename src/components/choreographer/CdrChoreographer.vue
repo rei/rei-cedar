@@ -14,11 +14,7 @@ import {
   CdrButton,
   CdrContainer,
 } from '../../lib';
-import type {
-  CdrChoreographerProps,
-  ChoreographerComponents,
-  ChoreographerSchema,
-} from '../../types/interfaces';
+import type { CdrChoreographerProps, ChoreographerComponents, ChoreographerSchema } from './types';
 
 /**
  * CdrChoreographer - Dynamic component renderer based on schema configuration

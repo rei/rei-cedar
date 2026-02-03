@@ -16,6 +16,7 @@
     "src/components/*/Cdr*.vue",
     "src/components/*/index.ts",
     "src/components/*/interfaces.ts",
+    "src/components/*/types.ts",
     "src/components/icon/comps/*.vue",
     "src/components/text/presets/*.vue",
     "src/components/text/presets/*.ts"

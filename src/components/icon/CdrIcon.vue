@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useAttrs, type SVGAttributes } from 'vue';
-import type { CdrIconProps } from '../../types/interfaces';
+import type { CdrIconProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass } from '../../utils/buildClass';
 
@@ -19,6 +19,10 @@ defineOptions({
 const props = withDefaults(defineProps<CdrIconProps>(), {
   inheritColor: false,
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const attrs = useAttrs();

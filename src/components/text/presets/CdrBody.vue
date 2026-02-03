@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { BaseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
 import { ScaleValue } from '../../../types/other';
 
 defineOptions({
@@ -23,6 +23,10 @@ const props = withDefaults(defineProps<BodyTextProps>(), {
   scale: '0',
   strong: false,
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const typeProperties = computed(() => {
   return {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, ref, onMounted, nextTick } from 'vue';
-import type { CdrObjectOverlayProps } from '../../types/interfaces';
+import type { CdrObjectOverlayProps } from './types';
 
 /** Component for positioning content in 9 different positions relative to a container */
 
@@ -12,6 +12,13 @@ const props = withDefaults(defineProps<CdrObjectOverlayProps>(), {
   tag: 'div',
   gradientTheme: 'dark',
 });
+
+defineSlots<{
+  /** Container content that the overlay will be positioned relative to */
+  'container'(props: Record<string, never>): any;
+  /** Content to be positioned */
+  'content'(props: Record<string, never>): any;
+}>();
 
 // Refs for DOM elements
 const containerRef = ref<HTMLElement | null>(null);

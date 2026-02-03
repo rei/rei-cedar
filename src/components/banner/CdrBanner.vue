@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots } from 'vue';
-import type { CdrBannerProps } from '../../types/interfaces';
+import type { CdrBannerProps } from './types';
 
 /**
  * CdrBanner - Provides contextual feedback messages for typical user actions
@@ -15,6 +15,18 @@ defineOptions({
 const props = withDefaults(defineProps<CdrBannerProps>(), {
   type: 'default',
 });
+
+defineSlots<{
+  /** Icon matching banner type */
+  'icon-left'(props: Record<string, never>): any;
+  /** Primary message content */
+  'default'(props: Record<string, never>): any;
+  /** Additional icon */
+  'icon-right'(props: Record<string, never>): any;
+  /** Additional content about the message */
+  'message-body'(props: Record<string, never>): any;
+  'info-action'(props: Record<string, never>): any;
+}>();
 
 const slots = useSlots();
 const style = useCssModule();

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, ref, computed, inject } from 'vue';
-import type { CdrToggleButtonProps } from '../../types/interfaces';
+import type { CdrToggleButtonProps } from './types';
 import { selectedToggleKey } from '../../types/symbols';
 
 /** Permits switching two or more options on and off */
@@ -9,6 +9,11 @@ defineOptions({
 });
 
 const props = defineProps<CdrToggleButtonProps>();
+
+defineSlots<{
+  /** CdrToggleButton label content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 const selectedToggle = inject(selectedToggleKey, ref(''));

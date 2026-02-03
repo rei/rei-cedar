@@ -1,5 +1,5 @@
 import type { Breakpoint, Structure, StructureOption } from '../types/other';
-import type { NameValuePair, Layout } from '../types/interfaces';
+import type { NameValuePair, Layout } from '../components/layout/types';
 
 const breakpoints: Breakpoint[] = ['xs', 'sm', 'md', 'lg'];
 

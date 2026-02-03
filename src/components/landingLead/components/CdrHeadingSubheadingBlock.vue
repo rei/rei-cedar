@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { CdrHeadingSubheadingBlockProps } from '../../../types/interfaces';
+import type { CdrHeadingSubheadingBlockProps } from '../types';
 import { CdrHeadingDisplay, CdrSubheadingSans } from '../../../lib';
 
 /**
@@ -10,6 +10,11 @@ import { CdrHeadingDisplay, CdrSubheadingSans } from '../../../lib';
 withDefaults(defineProps<CdrHeadingSubheadingBlockProps>(), {
   headingTag: 'h1',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+  'subheading'(props: Record<string, never>): any;
+}>();
 
 const baseClass = 'cdr-heading-subheading-block';
 const style = useCssModule();

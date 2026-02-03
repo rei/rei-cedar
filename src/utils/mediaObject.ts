@@ -1,4 +1,4 @@
-import { Layout, NameValuePair } from '../types/interfaces';
+import { Layout, NameValuePair } from '../components/layout/types';
 import {
   Breakpoint,
   StructureOption,

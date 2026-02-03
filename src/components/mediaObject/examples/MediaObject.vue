@@ -6,7 +6,7 @@ import CdrSurface from '../../surface/CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
 import CdrBody from '../../text/presets/CdrBody.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
-import type { MediaObject, HtmlAttributes } from '../../../types/interfaces';
+import type { MediaObject, HtmlAttributes } from '../types';
 import cedarImage from '../../../dev/static/cedar-1920x1080.jpg';
 import cedarSmallImage from '../../../dev/static/cedar-50x50.jpg';
 

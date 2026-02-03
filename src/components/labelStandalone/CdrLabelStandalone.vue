@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots } from 'vue';
-import type { CdrLabelStandaloneProps } from '../../types/interfaces';
+import type { CdrLabelStandaloneProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 
 /**
@@ -14,6 +14,15 @@ defineOptions({
 const props = withDefaults(defineProps<CdrLabelStandaloneProps>(), {
   labelClass: '',
 });
+
+defineSlots<{
+  'helper'(props: Record<string, never>): any;
+  'default'(props: Record<string, never>): any;
+  'info-action'(props: Record<string, never>): any;
+  'info'(props: Record<string, never>): any;
+  'helper-text-bottom'(props: Record<string, never>): any;
+  'error'(props: Record<string, never>): any;
+}>();
 const slots = useSlots();
 const style = useCssModule();
 
@@ -62,7 +71,7 @@ const inputSpacingClass = computed(() =>
         </span>
       </label>
 
-      <br v-if="!hideLabel && hasHelper">
+      <br v-if="!hideLabel && hasHelper" />
       <span
         :class="style['cdr-label-standalone__helper']"
         :id="`${forId}-helper-text-top`"

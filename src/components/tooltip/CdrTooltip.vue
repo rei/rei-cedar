@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, ref, onMounted, watch, useSlots } from 'vue';
-import type { CdrTooltipProps } from '../../types/interfaces';
+import type { CdrTooltipProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
 import uid from '../../utils/uid';
@@ -15,6 +15,15 @@ const props = withDefaults(defineProps<CdrTooltipProps>(), {
   autoPosition: true,
   open: false,
 });
+
+defineSlots<{
+  /** Slot for the element that triggers the tooltip.
+        Element should be a button and must be the first and only child of this slot.
+        Event handlers are bound to this element automatically. */
+  'trigger'(props: Record<string, never>): any;
+  /** CdrTooltip content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /** Emits when tooltip is opened */

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrSurfaceProps } from '../../types/interfaces';
+import type { CdrSurfaceProps } from './types';
 import { getSurfaceProps } from '../../utils/surface';
 
 /** Foundational container for creating structured layouts */
@@ -9,6 +9,10 @@ defineOptions({ name: 'CdrSurface' });
 const props = withDefaults(defineProps<CdrSurfaceProps>(), {
   tag: 'div',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 

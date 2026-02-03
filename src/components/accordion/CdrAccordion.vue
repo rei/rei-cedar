@@ -14,7 +14,7 @@ import IconCaretDown from '../icon/comps/caret-down.vue';
 import { modifyClassName } from '../../utils/buildClass';
 import mapClasses from '../../utils/mapClasses';
 import { unwrappedKey } from '../../types/symbols';
-import { CdrAccordionProps } from '../../lib';
+import { CdrAccordionProps } from './types';
 
 /**
  * Vertically-stacked list that allows users to expand and collapse additional content
@@ -29,6 +29,13 @@ const props = withDefaults(defineProps<CdrAccordionProps>(), {
   borderAligned: false,
   contentSpacing: true,
 });
+
+defineSlots<{
+  /** Sets the readable text on the CdrAccordion button */
+  'label'(props: Record<string, never>): any;
+  /** CdrAccordion content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits<{
   /** Emits on accordion open/close */

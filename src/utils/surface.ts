@@ -1,9 +1,7 @@
-import type {
-  CdrSurfaceProps,
-  CdrSurfaceNavigationProps,
-  CdrSurfaceSelectionProps,
-  Layout,
-} from '../types/interfaces';
+import type { CdrSurfaceProps } from '../components/surface/types';
+import type { CdrSurfaceNavigationProps } from '../components/surfaceNavigation/types';
+import type { CdrSurfaceSelectionProps } from '../components/surfaceSelection/types';
+import type { Layout } from '../components/layout/types';
 
 /**
  * Converts camelCase property names to kebab-case (snake-case with hyphens).

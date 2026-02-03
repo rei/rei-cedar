@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
-import type { SurfaceSelection } from '../../../types/interfaces';
+import type { SurfaceSelection } from '../types';
 import CdrSwitch from '../../switch/CdrSwitch.vue';
 
 defineOptions({ name: 'SurfaceSelection' });

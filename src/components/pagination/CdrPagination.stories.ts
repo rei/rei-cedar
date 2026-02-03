@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref, watch } from 'vue';
 import CdrPagination from './CdrPagination.vue';
-import type { PaginationItem } from '../../types/interfaces';
+import type { PaginationItem } from './types';
 
 const meta = {
   title: 'Components/Pagination',

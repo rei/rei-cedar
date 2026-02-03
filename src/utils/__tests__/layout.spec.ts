@@ -1,5 +1,5 @@
 import { getStructureStyles } from '../layout';
-import type { Layout } from '../../types/interfaces';
+import type { Layout } from '../../components/layout/types';
 
 describe('getStructureStyles', () => {
   describe('string structure', () => {

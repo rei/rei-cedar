@@ -22,6 +22,11 @@ const props = withDefaults(defineProps<CdrAccordionGroupProps>(), {
   unwrap: false,
 });
 
+defineSlots<{
+  /** CdrAccordionGroup content (i.e. CdrAccordion components) */
+  'default'(props: Record<string, never>): any;
+}>();
+
 // Validate unwrap prop
 if (
   typeof props.unwrap === 'string' &&

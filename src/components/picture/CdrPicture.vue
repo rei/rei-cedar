@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import CdrImg from '../image/CdrImg.vue';
-import type { CdrPictureProps } from '../../types/interfaces';
+import type { CdrPictureProps } from './types';
 
 /**
  * Provides instructions for browsers to use alternative image versions in various scenarios
@@ -25,7 +25,7 @@ const style = useCssModule();
       v-for="(source, i) in sources"
       :key="`${source.media}--${i}`"
       v-bind="source"
-    >
+    />
     <CdrImg
       :src="src"
       :alt="alt"

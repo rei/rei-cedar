@@ -117,6 +117,22 @@ const props = defineProps({
   labelClass: String,
 });
 
+defineSlots<{
+  /** Helper text above the input field */
+  'helper-text-top'(props: Record<string, never>): any;
+  /** Link or icon to the right above the input field. */
+  'info'(props: Record<string, never>): any;
+  /** Icon preceding text within the input field */
+  'pre-icon'(props: Record<string, never>): any;
+  /** Icon after text within the input field */
+  'post-icon'(props: Record<string, never>): any;
+  'info-action'(props: Record<string, never>): any;
+  /** Helper text below the input field */
+  'helper-text-bottom'(props: Record<string, never>): any;
+  /** Error messaging text that is displayed when the `error` prop is true. */
+  'error'(props: Record<string, never>): any;
+}>();
+
 const emits = defineEmits({
   /**
    * Event emitted by v-model on the <input> element
@@ -270,7 +286,7 @@ const inputModel = computed({
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"
-      >
+      />
       <span
         v-if="hasPreIcon"
         :class="style['cdr-input__pre-icon']"

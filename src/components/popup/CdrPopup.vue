@@ -3,7 +3,7 @@ import { useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted } 
 import { debounce } from '../../utils/debounce';
 import calculatePlacement from './calculatePlacement';
 import mapClasses from '../../utils/mapClasses';
-import type { CdrPopupProps } from '../../types/interfaces';
+import type { CdrPopupProps } from './types';
 
 /** An internal helper component used by Popover and Tooltip */
 defineOptions({
@@ -17,6 +17,10 @@ const props = withDefaults(defineProps<CdrPopupProps>(), {
   position: 'top',
   autoPosition: true,
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   closed: null,

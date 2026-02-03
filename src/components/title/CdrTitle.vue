@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { CdrTitleProps } from '../../types/interfaces';
+import { CdrTitleProps } from './types';
 
 /**
  * Content building blocks with pre-defined, fluid styles
@@ -13,6 +13,10 @@ defineOptions({
 withDefaults(defineProps<CdrTitleProps>(), {
   tag: 'h1',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 const baseClass = 'cdr-title';

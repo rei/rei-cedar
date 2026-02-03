@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrTableProps } from '../../types/interfaces';
+import type { CdrTableProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import { buildBooleanClass } from '../../utils/buildClass';
 
@@ -16,6 +16,11 @@ const props = withDefaults(defineProps<CdrTableProps>(), {
   responsive: true,
   hover: false,
 });
+
+defineSlots<{
+  /** CdrTable content (Valid table elements <th>, <tbody>, <tr>, <td>, etc.) */
+  'default'(props: Record<string, never>): any;
+}>();
 const style = useCssModule();
 const baseClass = 'cdr-table';
 const sizeClass = computed(() => (props.size ? `${baseClass}--${props.size}` : ''));

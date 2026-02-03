@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, provide, toRef } from 'vue';
-import type { CdrSkeletonProps } from '../../types/interfaces';
+import type { CdrSkeletonProps } from './types';
 import { motionKey } from '../../types/symbols';
 
 /** Visually communicates content is in the process of loading */
@@ -11,6 +11,11 @@ defineOptions({
 const props = withDefaults(defineProps<CdrSkeletonProps>(), {
   motion: true,
 });
+
+defineSlots<{
+  /** CdrSkeleton content (CdrSkeletonBone components) */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const baseClass = 'cdr-skeleton';
 const style = useCssModule();

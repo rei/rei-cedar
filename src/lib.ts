@@ -56,8 +56,86 @@ export { default as CdrTooltip } from './components/tooltip/CdrTooltip.vue';
 export * from './components/icon/index';
 export * from './components/text/presets/textPresets';
 
-/** Type exports */
-export * from './types/interfaces';
+/** Type exports - per-component types */
+export type { CdrAbstractProps } from './components/abstract/types';
+export type { CdrAccordionProps, CdrAccordionGroupProps } from './components/accordion/types';
+export type { CdrBannerProps } from './components/banner/types';
+export type { CdrBreadcrumbProps, BreadcrumbItem } from './components/breadcrumb/types';
+export type { CdrButtonProps } from './components/button/types';
+export type { CdrCaptionProps } from './components/caption/types';
+export type { CdrCardProps } from './components/card/types';
+export type { CdrCheckboxProps } from './components/checkbox/types';
+export type { CdrChipProps, CdrChipGroupProps } from './components/chip/types';
+export type {
+  CdrChoreographerProps,
+  ChoreographerSchema,
+  ChoreographerComponents,
+} from './components/choreographer/types';
+export type { CdrContainerProps } from './components/container/types';
+export type { CdrFormErrorProps } from './components/formError/types';
+export type { CdrFormGroupProps } from './components/formGroup/types';
+export type {
+  CdrFulfillmentTileProps,
+  CdrFulfillmentTileIconProps,
+  FulfillmentTileContent,
+  FulfillmentTileIcon,
+  StateConfig,
+} from './components/fulfillmentTile/types';
+export type { CdrGridProps } from './components/grid/types';
+export type { CdrIconProps } from './components/icon/types';
+export type { CdrImgProps, BaseImageProps } from './components/image/types';
+export type { CdrInputProps } from './components/input/types';
+export type { CdrKickerProps } from './components/kicker/types';
+export type { CdrLabelStandaloneProps } from './components/labelStandalone/types';
+export type { CdrLabelWrapperProps } from './components/labelWrapper/types';
+export type { CdrLandingLeadProps } from './components/landingLead/types';
+export type { CdrLayoutProps, Layout, NameValuePair } from './components/layout/types';
+export type { CdrLinkProps, CdrLinkTag } from './components/link/types';
+export type { CdrListProps } from './components/list/types';
+export type {
+  CdrMediaObjectProps,
+  MediaObject,
+  HtmlAttributes,
+} from './components/mediaObject/types';
+export type { CdrModalProps } from './components/modal/types';
+export type {
+  CdrObjectOverlayProps,
+  ObjectPosition,
+  ResponsivePosition,
+  SpaceTuple,
+  Spacing,
+  ResponsiveSpace,
+} from './components/objectOverlay/types';
+export type { CdrPaginationProps, PaginationItem } from './components/pagination/types';
+export type { CdrPictureProps, PictureSourceObject } from './components/picture/types';
+export type { CdrPopoverProps } from './components/popover/types';
+export type { CdrPopupProps } from './components/popup/types';
+export type { CdrQuoteProps } from './components/quote/types';
+export type { CdrRadioProps } from './components/radio/types';
+export type { CdrRatingProps } from './components/rating/types';
+export type { CdrSelectProps, SelectOption } from './components/select/types';
+export type { CdrSkeletonProps, CdrSkeletonBoneProps } from './components/skeleton/types';
+export type { CdrSplitSurfaceProps } from './components/splitSurface/types';
+export type { CdrSurfaceProps } from './components/surface/types';
+export type { CdrSurfaceNavigationProps } from './components/surfaceNavigation/types';
+export type { CdrSurfaceScrollProps } from './components/surfaceScroll/types';
+export type {
+  CdrSurfaceSelectionProps,
+  SurfaceSelectionLayout,
+} from './components/surfaceSelection/types';
+export type { CdrSwitchProps } from './components/switch/types';
+export type { CdrTableProps } from './components/table/types';
+export type { CdrTabsProps, CdrTabPanelProps } from './components/tabs/types';
+export type { CdrTextProps } from './components/text/types';
+export type { CdrTitleProps } from './components/title/types';
+export type { CdrToastProps } from './components/toast/types';
+export type { CdrToggleButtonProps, CdrToggleGroupProps } from './components/toggleButton/types';
+export type { CdrTooltipProps } from './components/tooltip/types';
+
+/** Filmstrip types (already in separate file) */
+export * from './components/filmstrip/interfaces';
+
+/** Shared type exports */
 export * from './types/other';
 export * from './types/symbols';
 

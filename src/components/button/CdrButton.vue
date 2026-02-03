@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots } from 'vue';
-import type { CdrButtonProps } from '../../types/interfaces';
+import type { CdrButtonProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import { responsiveModifyClass, buildBooleanClass } from '../../utils/buildClass';
 
@@ -24,6 +24,15 @@ const props = withDefaults(defineProps<CdrButtonProps>(), {
   iconOnly: false,
   withBackground: false,
 });
+
+defineSlots<{
+  /** Icon to the left of text content */
+  'icon-left'(props: Record<string, never>): any;
+  'icon'(props: Record<string, never>): any;
+  'default'(props: Record<string, never>): any;
+  /** Icon to the right of text content */
+  'icon-right'(props: Record<string, never>): any;
+}>();
 
 const slots: ReturnType<typeof useSlots> = useSlots();
 

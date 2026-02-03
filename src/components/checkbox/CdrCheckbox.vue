@@ -80,6 +80,11 @@ const props = defineProps({
     type: [String, Number, Boolean, Object, Array, Symbol, Function],
   },
 });
+
+defineSlots<{
+  /** Readable text for the label element */
+  'default'(props: Record<string, never>): any;
+}>();
 const emits = defineEmits({
   /**
    * Event emitted by v-model on the <input> element
@@ -142,7 +147,7 @@ const checkboxModel = computed({
         :value="customValue"
         v-indeterminate="indeterminate"
         v-model.lazy="checkboxModel"
-      >
+      />
     </template>
     <template #svgs>
       <div :class="style['cdr-checkbox__svg-box']">

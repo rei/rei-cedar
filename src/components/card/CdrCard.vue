@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { CdrCardProps } from '../../types/interfaces';
+import type { CdrCardProps } from './types';
 import type { Tag } from '../../types/other';
 
 /**
@@ -18,6 +18,11 @@ defineOptions({
 withDefaults(defineProps<CdrCardProps>(), {
   tag: 'article' as Tag,
 });
+
+defineSlots<{
+  /** CdrCard content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-card';

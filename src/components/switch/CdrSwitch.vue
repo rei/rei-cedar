@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import type { CdrSwitchProps } from '../../types/interfaces';
+import type { CdrSwitchProps } from './types';
 import { buildBooleanClass } from '../../utils/buildClass';
 import IconCheckSm from '../icon/comps/check-sm.vue';
 import IconXSm from '../icon/comps/x-sm.vue';
@@ -19,6 +19,11 @@ const props = withDefaults(defineProps<CdrSwitchProps>(), {
   size: 'medium',
   fullWidth: false,
 });
+
+defineSlots<{
+  /** The label for the switch */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /**

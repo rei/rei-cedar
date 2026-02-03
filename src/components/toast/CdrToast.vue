@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, ref, watch, onUpdated, useSlots } from 'vue';
-import type { CdrToastProps } from '../../types/interfaces';
+import type { CdrToastProps } from './types';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 
@@ -18,6 +18,14 @@ const props = withDefaults(defineProps<CdrToastProps>(), {
   autoDismiss: true,
   dismissDelay: 5000,
 });
+
+defineSlots<{
+  /** Icon matching toast messaging type */
+  'icon-left'(props: Record<string, never>): any;
+  /** CdrToast content */
+  'default'(props: Record<string, never>): any;
+  'icon'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /** Emits when toast opens */

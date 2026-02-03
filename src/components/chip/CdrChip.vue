@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { CdrChipProps } from '../../types/interfaces';
+import type { CdrChipProps } from './types';
 
 /**
  * CdrChip - Allows people to make selections, filter content, or trigger actions
@@ -15,6 +15,15 @@ defineOptions({
 });
 
 defineProps<CdrChipProps>();
+
+defineSlots<{
+  /** Icon to the left of the content */
+  'icon-left'(props: Record<string, never>): any;
+  /** Icon to the right of the content */
+  'icon-right'(props: Record<string, never>): any;
+  /** Primary CdrChip content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 const baseClass: string = 'cdr-chip';

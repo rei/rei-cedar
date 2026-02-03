@@ -72,6 +72,11 @@ const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
   adapter: (): CdrFilmstripAdapter<Record<string, unknown>> => {
     return (): CdrFilmstripConfig<Record<string, unknown>> => {
       console.warn(`No adapter provided for CdrFilmstrip`);
+
+      defineSlots<{
+        /** Optional injection of a heading element for the filmstrip */
+        'heading'(props: Record<string, never>): any;
+      }>();
       return {
         frames: [],
         filmstripId: 'empty-filmstrip',

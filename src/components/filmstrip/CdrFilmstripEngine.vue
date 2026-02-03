@@ -106,6 +106,16 @@ const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
   viewportTabindex: '-1',
 });
 
+defineSlots<{
+  'frame'(props: { index: number; tabindex: string; [key: string]: any }): any;
+  'arrow'(props: {
+    attributes: Record<string, any>;
+    direction: string;
+    icon: any;
+    onClick: (e: Event) => void;
+  }): any;
+}>();
+
 /**
  * Retrieves the component's attributes.
  */

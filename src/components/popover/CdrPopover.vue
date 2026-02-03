@@ -5,7 +5,7 @@ import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 import CdrPopup from '../popup/CdrPopup.vue';
 import mapClasses from '../../utils/mapClasses';
-import type { CdrPopoverProps } from '../../types/interfaces';
+import type { CdrPopoverProps } from './types';
 
 /**
  * Small overlay used to display contextual information
@@ -20,6 +20,17 @@ const props = withDefaults(defineProps<CdrPopoverProps>(), {
   autoPosition: true,
   open: false,
 });
+
+defineSlots<{
+  /** Slot for the element that triggers the popover.
+        Element should be a button and must be the first and only child of this slot.
+        Event handlers are bound to this element automatically. */
+  'trigger'(props: Record<string, never>): any;
+  /** Sets the title for the popover. Can also be set with `label` prop */
+  'title'(props: Record<string, never>): any;
+  'default'(props: Record<string, never>): any;
+  'icon'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /** Emits when popover is opened */

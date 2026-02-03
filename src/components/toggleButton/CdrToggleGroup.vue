@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, provide, computed, useCssModule } from 'vue';
-import type { CdrToggleGroupProps } from '../../types/interfaces';
+import type { CdrToggleGroupProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import { selectedToggleKey } from '../../types/symbols';
 
@@ -11,6 +11,11 @@ defineOptions({
 const props = withDefaults(defineProps<CdrToggleGroupProps>(), {
   size: 'medium',
 });
+
+defineSlots<{
+  /** CdrToggleGroup content (CdrToggleButton components) */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /**

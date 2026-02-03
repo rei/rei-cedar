@@ -16,7 +16,7 @@ import onTransitionEnd from './onTransitionEnd';
 import CdrButton from '../button/CdrButton.vue';
 import IconXLg from '../icon/comps/x-lg.vue';
 import mapClasses from '../../utils/mapClasses';
-import type { CdrModalProps } from '../../types/interfaces';
+import type { CdrModalProps } from './types';
 
 /**
  * Disruptive, action-blocking overlays used to display important information
@@ -34,6 +34,16 @@ const props = withDefaults(defineProps<CdrModalProps>(), {
   id: null,
   animationDuration: 300,
 });
+
+defineSlots<{
+  /** Use to override the entire CdrModal content container.
+          You must provide an explicit way to close the modal
+          to meet UX and accessibility standards */
+  'modal'(props: Record<string, never>): any;
+  /** Use to override the default title */
+  'title'(props: Record<string, never>): any;
+  'default'(props: Record<string, never>): any;
+}>();
 
 /** Fires when modal is closed */
 const emits = defineEmits({ closed: null });

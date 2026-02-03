@@ -6,13 +6,17 @@ import {
   ScrollAreaThumb,
   ScrollAreaViewport,
 } from 'radix-vue';
-import type { CdrSurfaceScroll } from '../../types/interfaces';
+import type { CdrSurfaceScrollProps } from './types';
 
 /** A scrollable surface component that provides custom scrollbars and smooth scrolling behavior */
 defineOptions({
   name: 'CdrSurfaceScroll',
 });
-const props = defineProps<CdrSurfaceScroll>();
+const props = defineProps<CdrSurfaceScrollProps>();
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 

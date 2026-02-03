@@ -1,5 +1,5 @@
 import { getSurfaceProps, getDefaultLayout } from '../surface';
-import type { CdrSurfaceProps } from '../../types/interfaces';
+import type { CdrSurfaceProps } from '../../components/surface/types';
 
 describe('surface utilities', () => {
   describe('getSurfaceProps', () => {

@@ -3,7 +3,7 @@ import { useCssModule, computed } from 'vue';
 import CdrSurfaceSelection from '../surfaceSelection/CdrSurfaceSelection.vue';
 import CdrSubheadingSans from '../text/presets/CdrSubheadingSans.vue';
 import CdrBody from '../text/presets/CdrBody.vue';
-import type { CdrFulfillmentTileProps } from '../../types/interfaces';
+import type { CdrFulfillmentTileProps } from './types';
 import { getSurfaceProps } from '../../utils/surface';
 
 /**
@@ -24,6 +24,19 @@ const props = withDefaults(defineProps<CdrFulfillmentTileProps>(), {
   borderWidth: 'sixteenth-x',
   borderRadius: 'soft',
 });
+
+defineSlots<{
+  /** Icon to display on the left of the header. */
+  'icon-left'(props: Record<string, never>): any;
+  /** Header content that is still visible during loading. */
+  'header'(props: Record<string, never>): any;
+  /** Icon to display on the right of the header. */
+  'icon-right'(props: Record<string, never>): any;
+  /** Default font size is a step down. Placed just below the header. */
+  'body'(props: Record<string, never>): any;
+  /** Footer content will be at the bottom of the component. */
+  'footer'(props: Record<string, never>): any;
+}>();
 
 const style: Record<string, string> = useCssModule();
 
