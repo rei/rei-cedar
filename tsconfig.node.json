@@ -4,10 +4,13 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true
   },
   "include": [
     "vite.config.ts",
+    "vite.umd.config.ts",
+    "vite.pages.config.mts",
     "vite-plugin-css-name-normalizer.ts",
     "build/*.ts",
     "lint-report-generator.ts",

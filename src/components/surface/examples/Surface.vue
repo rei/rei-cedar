@@ -4,7 +4,7 @@ import CdrText from '../../text/CdrText.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
 import CdrButton from '../../button/CdrButton.vue';
 import type { Surface } from '../types';
-import type { HtmlAttributes, NameValuePair } from '../../mediaObject/types';
+import type { HtmlAttributes } from '../../mediaObject/types';
 
 defineOptions({ name: 'Surface' });
 

@@ -1,33 +1,23 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "allowJs": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/lib.ts",
-    "src/types/**/*.ts",
-    "src/props/**/*.ts",
-    "src/utils/**/*.ts",
-    "src/mixins/**/*.ts",
-    "src/vite-env.d.ts",
-    "src/components/*/Cdr*.vue",
-    "src/components/*/index.ts",
-    "src/components/*/interfaces.ts",
-    "src/components/*/types.ts",
-    "src/components/icon/comps/*.vue",
-    "src/components/text/presets/*.vue",
-    "src/components/text/presets/*.ts"
-  ],
-  "exclude": [
-    "src/dev/**",
-    "src/components/**/examples/**",
-    "src/components/examples.js",
-    "src/components/icon/build/**",
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "**/__tests__/**"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
+  "exclude": ["src/dev/*", "src/components/icon/build/*", "**/*.spec.ts", "**/*.test.ts", "**/__tests__/**"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
