@@ -34,7 +34,7 @@ export const Default: Story = {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in sampleData" :key="index">
+          <tr v-for="(item, index) in sampleData" :key="item.name">
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.stock }}</td>
@@ -66,7 +66,7 @@ export const Striped: Story = {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in sampleData" :key="index">
+          <tr v-for="(item, index) in sampleData" :key="item.name">
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.stock }}</td>
@@ -99,7 +99,7 @@ export const WithHover: Story = {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in sampleData" :key="index">
+          <tr v-for="(item, index) in sampleData" :key="item.name">
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.stock }}</td>
@@ -132,7 +132,7 @@ export const Small: Story = {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in sampleData" :key="index">
+          <tr v-for="(item, index) in sampleData" :key="item.name">
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.stock }}</td>
@@ -164,7 +164,7 @@ export const Large: Story = {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in sampleData" :key="index">
+          <tr v-for="(item, index) in sampleData" :key="item.name">
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.stock }}</td>

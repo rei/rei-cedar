@@ -201,7 +201,7 @@ const columnExamples = [
         <div>
           <CdrText>
             <code>
-              <strong v-html="label" />
+              <strong>{{ label }}</strong>
               <br />
               {{ JSON.stringify(props) }}
             </code>
@@ -273,7 +273,7 @@ const columnExamples = [
         <div>
           <CdrText>
             <code>
-              <strong v-html="label" />
+              <strong>{{ label }}</strong>
               <br />
               {{ JSON.stringify(props) }}
             </code>

@@ -3,7 +3,7 @@
     <div
       class="button-example inset"
       v-for="(section, index) in data"
-      :key="index"
+      :key="section.title"
       :data-backstop="section.backstop ? section.backstop : null"
     >
       <h3>
@@ -11,7 +11,7 @@
       </h3>
       <cdr-button
         v-for="(button, index2) in section.buttons"
-        :key="index2"
+        :key="button.label + '-' + button.size"
         :size="button.size"
         :full-width="button.fullWidth"
         :modifier="button.modifier"

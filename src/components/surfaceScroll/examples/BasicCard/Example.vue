@@ -6,7 +6,7 @@
     <div class="card-container">
       <div
         v-for="(card, index) in cards"
-        :key="index"
+        :key="card.title"
         class="card"
       >
         <CdrText

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, provide, computed, useCssModule } from 'vue';
+import { ref, watch, provide, computed, useCssModule } from 'vue';
 import type { CdrToggleGroupProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import { selectedToggleKey } from '../../types/symbols';
@@ -36,13 +36,14 @@ const sizeClass = computed(() =>
   props.size ? `cdr-toggle-group--${props.size}` : 'cdr-toggle-group--medium',
 );
 
-let toggleButtonElements: HTMLButtonElement[];
-
-onMounted(() => {
-  if (toggleGroup.value) {
-    toggleButtonElements = Array.from(toggleGroup.value.querySelectorAll('button'));
-  }
-});
+/**
+ * Gets all button elements within the toggle group
+ * @returns Array of button elements
+ */
+const getToggleButtons = (): HTMLButtonElement[] => {
+  if (!toggleGroup.value) return [];
+  return Array.from(toggleGroup.value.querySelectorAll('button'));
+};
 
 watch(
   () => props.modelValue,
@@ -64,6 +65,7 @@ const selectToggleButton = (e: Event) => {
 };
 
 const focusNext = (e: KeyboardEvent) => {
+  const toggleButtonElements = getToggleButtons();
   const currentButton = e.target as HTMLButtonElement;
   const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
   const isLastButton = currentButtonIndex === toggleButtonElements.length - 1;
@@ -77,6 +79,7 @@ const focusNext = (e: KeyboardEvent) => {
 };
 
 const focusPrev = (e: KeyboardEvent) => {
+  const toggleButtonElements = getToggleButtons();
   const currentButton = e.target as HTMLButtonElement;
   const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
   const isFirstButton = currentButtonIndex === 0;

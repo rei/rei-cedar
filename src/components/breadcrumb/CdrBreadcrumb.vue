@@ -40,11 +40,8 @@ const uniqueId = computed<string>(() => props.id ?? uid());
 /** Reactive state controlling whether the breadcrumb list is truncated */
 const truncate = ref<boolean>(props.truncationEnabled && props.items.length > 2);
 
-/** Reference to the breadcrumb list element */
-const itemListEl = ref<HTMLElement | null>(null);
-
-/** Reference to the first anchor element after expanding truncated breadcrumbs */
-const firstAnchorEl = ref<HTMLAnchorElement | null>(null);
+/** References to all link elements in the breadcrumb */
+const linkRefs = ref<HTMLAnchorElement[]>([]);
 
 /**
  * Computed label for the ellipsis button that describes the hidden items
@@ -63,8 +60,11 @@ const ellipsisLabel = computed<string>(() => {
 const handleEllipsisClick = (): void => {
   truncate.value = false;
   nextTick(() => {
-    firstAnchorEl.value = itemListEl.value?.querySelector('li a') ?? null;
-    firstAnchorEl.value?.focus();
+    // Focus the first link after expansion (items.length - 2 is the first visible item)
+    const firstVisibleIndex = props.items.length - 2;
+    if (linkRefs.value[firstVisibleIndex]) {
+      linkRefs.value[firstVisibleIndex].focus();
+    }
   });
 };
 
@@ -87,7 +87,6 @@ watch(
   >
     <ol
       :id="`${uniqueId}List`"
-      ref="itemListEl"
       :class="style['cdr-breadcrumb__list']"
     >
       <li
@@ -129,6 +128,7 @@ watch(
           :content="breadcrumb.item.name"
         >
           <a
+            :ref="(el) => { if (el) linkRefs[index] = el as HTMLAnchorElement; }"
             :class="style['cdr-breadcrumb__link']"
             :href="breadcrumb.item.url"
             @click="(e: MouseEvent) => emit('navigate', breadcrumb, e)"

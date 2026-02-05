@@ -3,7 +3,7 @@
     <div
       class="inset"
       v-for="(section, index) in data"
-      :key="index"
+      :key="section.title"
       :data-backstop="section.backstop ? section.backstop : null"
     >
       <h3>
@@ -12,7 +12,7 @@
       <cdr-text v-if="index === 0">Clicks: {{ clickCount }}</cdr-text>
       <cdr-button
         v-for="(button, index2) in section.buttons"
-        :key="index2"
+        :key="button.label + '-' + button.size"
         :size="button.size"
         :full-width="button.fullWidth"
         :type="button.type"

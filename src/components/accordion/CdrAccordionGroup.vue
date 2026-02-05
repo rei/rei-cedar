@@ -3,7 +3,7 @@ import { useCssModule, computed, ref, onMounted, onBeforeUnmount, provide } from
 import type { Ref } from 'vue';
 import { debounce } from '../../utils/debounce';
 import propValidator from '../../utils/propValidator';
-import getCurrentBreakpoint from '../../mixins/breakpoints';
+import { getCurrentBreakpoint } from '../../composables/useBreakpoint';
 import { unwrappedKey } from '../../types/symbols';
 
 interface CdrAccordionGroupProps {
@@ -43,9 +43,6 @@ const baseClass = 'cdr-accordion-group';
 /** Current index of the focused accordion button */
 const currentIdx = ref<number>(0);
 
-/** NodeList of all accordion buttons in the group */
-const accordionButtons = ref<NodeListOf<HTMLElement>>();
-
 /** Reference to the accordion group container element */
 const accordionGroupEl = ref<HTMLDivElement | null>(null);
 
@@ -57,12 +54,19 @@ const resizeHandler = ref<(() => void) | null>(null);
 
 provide<Ref<boolean>>(unwrappedKey, unwrapped);
 
-/** Returns array of accordion buttons from NodeList */
+/**
+ * Gets all accordion button elements within the group
+ * @returns Array of accordion button elements
+ */
+const getAccordionButtons = (): HTMLElement[] => {
+  if (!accordionGroupEl.value) return [];
+  const buttons = accordionGroupEl.value.querySelectorAll('.js-cdr-accordion-button');
+  return Array.from(buttons) as HTMLElement[];
+};
+
+/** Returns array of accordion buttons */
 const getAccordionButtonArray = computed<HTMLElement[]>(() => {
-  if (accordionButtons.value) {
-    return [...accordionButtons.value];
-  }
-  return [];
+  return getAccordionButtons();
 });
 
 /** Calculates the index of the next accordion button (wraps to 0) */
@@ -123,8 +127,6 @@ const focusin = (e: FocusEvent): void => {
 };
 
 onMounted(() => {
-  accordionButtons.value = accordionGroupEl.value?.querySelectorAll('.js-cdr-accordion-button');
-
   if (typeof props.unwrap === 'string') {
     unwrapped.value = props.unwrap.indexOf(getCurrentBreakpoint()) !== -1;
 
