@@ -27,9 +27,9 @@ const slots = useSlots();
 const style = useCssModule();
 
 const baseClass = 'cdr-label-standalone';
-const hasHelper = slots.helper;
-const hasInfo = slots.info;
-const hasInfoAction = slots['info-action'];
+const hasHelper = computed(() => !!slots.helper);
+const hasInfo = computed(() => !!slots.info);
+const hasInfoAction = computed(() => !!slots['info-action']);
 const disabledLabelClass = computed(() =>
   props.disabled ? 'cdr-label-standalone__label--disabled' : '',
 );
@@ -37,7 +37,7 @@ const srOnlyLabelClass = computed(() =>
   props.hideLabel ? 'cdr-label-standalone__label--sr-only' : '',
 );
 const inputSpacingClass = computed(() =>
-  !props.hideLabel || hasHelper || hasInfo ? 'cdr-label-standalone__input-spacing' : '',
+  !props.hideLabel || hasHelper.value || hasInfo.value ? 'cdr-label-standalone__input-spacing' : '',
 );
 </script>
 
@@ -71,7 +71,7 @@ const inputSpacingClass = computed(() =>
         </span>
       </label>
 
-      <br v-if="!hideLabel && hasHelper" />
+      <br v-if="!hideLabel && hasHelper">
       <span
         :class="style['cdr-label-standalone__helper']"
         :id="`${forId}-helper-text-top`"

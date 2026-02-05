@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, ref, onMounted, watch, useSlots } from 'vue';
+import { useCssModule, ref, computed, onMounted, watch, useSlots } from 'vue';
 import type { CdrTooltipProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
@@ -41,7 +41,7 @@ const isOpen = ref(false);
 let timeout: ReturnType<typeof setTimeout>;
 const popupEl = ref<InstanceType<typeof CdrPopup> | null>(null);
 const triggerEl = ref<HTMLDivElement | null>(null);
-const hasTrigger = slots.trigger;
+const hasTrigger = computed(() => !!slots.trigger);
 
 const openTooltip = (e?: Event) => {
   if (timeout) clearTimeout(timeout);

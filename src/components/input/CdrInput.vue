@@ -147,19 +147,19 @@ const style = useCssModule();
 
 const baseClass = 'cdr-input';
 const isFocused = ref(false);
-const hasHelperTop = slots['helper-text-top'];
-const hasHelperBottom = slots['helper-text-bottom'];
-const hasPreIcon = slots['pre-icon'];
-const hasPostIcon = computed(() => slots['post-icon']);
+const hasHelperTop = computed(() => !!slots['helper-text-top']);
+const hasHelperBottom = computed(() => !!slots['helper-text-bottom']);
+const hasPreIcon = computed(() => !!slots['pre-icon']);
+const hasPostIcon = computed(() => !!slots['post-icon']);
 const hasPostIcons = computed(() =>
   slots['post-icon'] ? slots['post-icon']({}).length > 1 : false,
 );
-const hasInfo = slots.info;
-const hasInfoAction = slots['info-action'];
+const hasInfo = computed(() => !!slots.info);
+const hasInfoAction = computed(() => !!slots['info-action']);
 
 const uniqueId = props.id ? props.id : uid();
 const multilineClass = computed(() => (props.rows > 1 ? 'cdr-input--multiline' : ''));
-const preIconClass = computed(() => (hasPreIcon ? 'cdr-input--preicon' : ''));
+const preIconClass = computed(() => (hasPreIcon.value ? 'cdr-input--preicon' : ''));
 const postIconClass = computed(() => (hasPostIcon.value ? 'cdr-input--posticon' : ''));
 const postIconsClass = computed(() => (hasPostIcons.value ? 'cdr-input--posticons' : ''));
 const errorClass = computed(() => (props.error ? 'cdr-input--error' : ''));
@@ -286,7 +286,7 @@ const inputModel = computed({
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"
-      />
+      >
       <span
         v-if="hasPreIcon"
         :class="style['cdr-input__pre-icon']"

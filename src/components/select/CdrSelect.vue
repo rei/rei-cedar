@@ -121,15 +121,15 @@ const slots = useSlots();
 const attrs = useAttrs();
 
 const baseClass = 'cdr-select';
-const hasHelper = slots['helper-text'];
-const hasInfo = slots.info;
-const hasInfoAction = slots['info-action'];
-const hasPreIcon = slots['pre-icon'];
+const hasHelper = computed(() => !!slots['helper-text']);
+const hasInfo = computed(() => !!slots.info);
+const hasInfoAction = computed(() => !!slots['info-action']);
+const hasPreIcon = computed(() => !!slots['pre-icon']);
 const uniqueId = props.id ? props.id : uid();
 
 const multipleClass = computed(() => (props.multiple ? 'cdr-select--multiple' : ''));
 const promptClass = computed(() => (!props.modelValue ? 'cdr-select__prompt' : ''));
-const preIconClass = computed(() => (hasPreIcon ? 'cdr-select--preicon' : ''));
+const preIconClass = computed(() => (hasPreIcon.value ? 'cdr-select--preicon' : ''));
 const errorClass = computed(() => (props.error ? 'cdr-select--error' : ''));
 const backgroundClass = computed(() => `cdr-select--${props.background}`);
 const sizeClass = computed(() => (props.size ? `${baseClass}--${props.size}` : ''));

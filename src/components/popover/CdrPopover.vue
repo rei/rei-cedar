@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, ref, watch, onMounted, useSlots } from 'vue';
+import { useCssModule, ref, computed, watch, onMounted, useSlots } from 'vue';
 import { tabbable } from 'tabbable';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
@@ -47,8 +47,8 @@ let lastActive: Element | null;
 const triggerEl = ref<HTMLDivElement | null>(null);
 const popupEl = ref<InstanceType<typeof CdrPopup> | null>(null);
 
-const hasTrigger = slots.trigger;
-const hasTitle = slots.title || props.label;
+const hasTrigger = computed(() => !!slots.trigger);
+const hasTitle = computed(() => !!slots.title || !!props.label);
 
 const openPopover = (e?: Event) => {
   if (isOpen.value === true) {
