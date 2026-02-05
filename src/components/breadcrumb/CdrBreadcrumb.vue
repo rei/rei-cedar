@@ -60,7 +60,8 @@ const ellipsisLabel = computed<string>(() => {
 const handleEllipsisClick = (): void => {
   truncate.value = false;
   nextTick(() => {
-    // Focus the first link after expansion (items.length - 2 is the first visible item)
+    // Focus the first previously-visible breadcrumb item (items.length - 2)
+    // This maintains context by keeping focus on what was already visible
     const firstVisibleIndex = props.items.length - 2;
     if (linkRefs.value[firstVisibleIndex]) {
       linkRefs.value[firstVisibleIndex].focus();

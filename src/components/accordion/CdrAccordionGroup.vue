@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useCssModule, computed, ref, onMounted, onBeforeUnmount, provide } from 'vue';
+import { useCssModule, computed, ref, onMounted, provide } from 'vue';
 import type { Ref } from 'vue';
+import { useEventListener } from '@vueuse/core';
 import { debounce } from '../../utils/debounce';
 import propValidator from '../../utils/propValidator';
 import { getCurrentBreakpoint } from '../../composables/useBreakpoint';
@@ -136,14 +137,7 @@ onMounted(() => {
       }
     }, 300);
 
-    window.addEventListener('resize', resizeHandler.value);
-  }
-});
-
-onBeforeUnmount(() => {
-  // Clean up resize listener
-  if (resizeHandler.value) {
-    window.removeEventListener('resize', resizeHandler.value);
+    useEventListener(window, 'resize', resizeHandler.value);
   }
 });
 </script>

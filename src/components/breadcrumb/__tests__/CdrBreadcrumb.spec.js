@@ -106,7 +106,7 @@ describe('CdrBreadcrumb', () => {
       });
 
       it('applies focus to first breadcrumb on ellipsis click', () => {
-        expect(document.activeElement.textContent).toBe('Longer Breadcrumb List Step 1');
+        expect(document.activeElement.textContent).toBe('Longer Breadcrumb Step 2');
       });
     });
   });

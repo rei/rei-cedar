@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, ref, onMounted, nextTick } from 'vue';
+import { useMutationObserver } from '@vueuse/core';
 import type { CdrObjectOverlayProps } from './types';
 
 /** Component for positioning content in 9 different positions relative to a container */
@@ -198,13 +199,16 @@ onMounted(() => {
 
   // Set up MutationObserver to detect when children are added/changed
   if (containerRef.value) {
-    const observer = new MutationObserver(inheritBorderRadius);
-    observer.observe(containerRef.value, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['style', 'class'],
-    });
+    useMutationObserver(
+      containerRef,
+      () => inheritBorderRadius(),
+      {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['style', 'class'],
+      },
+    );
   }
 });
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useCssModule, ref, computed, watch, onMounted, onBeforeUnmount, useSlots } from 'vue';
+import { useCssModule, ref, computed, watch, onMounted, useSlots } from 'vue';
+import { useEventListener } from '@vueuse/core';
 import { tabbable } from 'tabbable';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
@@ -74,7 +75,7 @@ const closePopover = (e?: Event) => {
 const addHandlers = () => {
   const triggerElement = triggerEl.value?.children[0];
   if (triggerElement) {
-    triggerElement.addEventListener('click', openPopover);
+    useEventListener(triggerElement, 'click', openPopover);
   }
 };
 
@@ -96,13 +97,6 @@ onMounted(() => {
   if (trigger) {
     trigger.setAttribute('aria-controls', props.id);
     trigger.setAttribute('aria-haspopup', 'dialog');
-  }
-});
-
-onBeforeUnmount(() => {
-  const triggerElement = triggerEl.value?.children[0];
-  if (triggerElement) {
-    triggerElement.removeEventListener('click', openPopover);
   }
 });
 </script>

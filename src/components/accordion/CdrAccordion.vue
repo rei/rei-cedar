@@ -4,11 +4,11 @@ import {
   computed,
   watch,
   onMounted,
-  onBeforeUnmount,
   ref,
   inject,
   nextTick,
 } from 'vue';
+import { useEventListener } from '@vueuse/core';
 import type { Ref } from 'vue';
 import IconCaretDown from '../icon/comps/caret-down.vue';
 import { modifyClassName } from '../../utils/buildClass';
@@ -188,14 +188,7 @@ onMounted(() => {
 
   // Add transition end listener
   if (containerEl.value) {
-    containerEl.value.addEventListener('transitionend', handleTransitionEnd);
-  }
-});
-
-onBeforeUnmount(() => {
-  // Clean up event listener
-  if (containerEl.value) {
-    containerEl.value.removeEventListener('transitionend', handleTransitionEnd);
+    useEventListener(containerEl.value, 'transitionend', handleTransitionEnd);
   }
 });
 </script>

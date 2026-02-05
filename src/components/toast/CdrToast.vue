@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, ref, watch, onUpdated, useSlots } from 'vue';
+import { useEventListener } from '@vueuse/core';
 import type { CdrToastProps } from './types';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
@@ -59,14 +60,12 @@ const openToast = (e?: Event) => {
 };
 
 const closeToast = (e?: Event) => {
-  removeHandlers();
   opened.value = false;
   emits('closed', e);
 };
 
 const closeToastWithDelay = (e?: Event) => {
   timeout = setTimeout(() => {
-    removeHandlers();
     opened.value = false;
     emits('closed', e);
   }, props.dismissDelay);
@@ -75,15 +74,8 @@ const closeToastWithDelay = (e?: Event) => {
 const addHandlers = () => {
   toastElement = toastEl.value;
   if (toastElement) {
-    toastElement.addEventListener('mouseover', openToast);
-    toastElement.addEventListener('mouseleave', closeToastWithDelay);
-  }
-};
-
-const removeHandlers = () => {
-  if (toastElement) {
-    toastElement.removeEventListener('mouseover', openToast);
-    toastElement.removeEventListener('mouseleave', closeToastWithDelay);
+    useEventListener(toastElement, 'mouseover', openToast);
+    useEventListener(toastElement, 'mouseleave', closeToastWithDelay);
   }
 };
 

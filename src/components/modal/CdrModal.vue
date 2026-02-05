@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { debounce } from '../../utils/debounce';
 import { tabbable } from 'tabbable';
+import { useEventListener } from '@vueuse/core';
 import {
   useCssModule,
   computed,
@@ -8,7 +9,6 @@ import {
   watch,
   onMounted,
   nextTick,
-  onUnmounted,
   useAttrs,
 } from 'vue';
 import { CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX } from '@rei/cdr-tokens';
@@ -152,8 +152,8 @@ const removeNoScroll = () => {
 };
 
 const addHandlers = () => {
-  document.addEventListener('focusin', handleFocus, true);
-  document.addEventListener('keydown', handleKeyDown);
+  useEventListener(document, 'focusin', handleFocus, { capture: true });
+  useEventListener(document, 'keydown', handleKeyDown);
 };
 
 /**
@@ -235,8 +235,6 @@ const handleOpened = () => {
 const handleClosed = () => {
   ariaShowBackgroundContent();
   const { documentElement } = document;
-  document.removeEventListener('keydown', handleKeyDown);
-  document.removeEventListener('focusin', handleFocus, true);
   isOpening.value = false;
 
   unsubscribe = onTransitionEnd(
@@ -314,11 +312,7 @@ onMounted(() => {
   if (props.opened) {
     handleOpened();
   }
-  window.addEventListener('resize', handleResize);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize);
+  useEventListener(window, 'resize', handleResize);
 });
 </script>
 
