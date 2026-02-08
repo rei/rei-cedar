@@ -5,6 +5,17 @@ const meta: Meta<typeof CdrTable> = {
   title: 'Components/Table',
   component: CdrTable,
   tags: ['autodocs'],
+  argTypes: {
+    fullWidth: {
+      control: 'radio',
+      options: [false, true, '@sm @lg'],
+      description: 'Sets the width to 100%. Also accepts space separated strings for breakpoints',
+      table: {
+        type: { summary: 'boolean | string' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
 };
 
 export default meta;

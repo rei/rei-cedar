@@ -5,6 +5,48 @@ const meta: Meta<typeof CdrSurface> = {
   title: 'Components/Surface',
   component: CdrSurface,
   tags: ['autodocs'],
+  argTypes: {
+    background: {
+      control: 'select',
+      options: ['primary', 'secondary', 'brand', 'sale'],
+      description: 'Adds in a background color based on the current palette tokens',
+      table: {
+        type: { summary: 'primary | secondary | brand | sale' },
+      },
+    },
+    borderColor: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'warning', 'error', 'info'],
+      description: 'Specifies a border color based on the token options within Cedar',
+      table: {
+        type: { summary: 'primary | secondary | success | warning | error | info' },
+      },
+    },
+    borderStyle: {
+      control: 'select',
+      options: ['solid', 'dotted', 'dashed'],
+      description: 'Specifies a border style based on the token options within Cedar',
+      table: {
+        type: { summary: 'solid | dotted | dashed' },
+      },
+    },
+    borderRadius: {
+      control: 'select',
+      options: ['sharp', 'soft', 'softer', 'softest', 'round'],
+      description: 'Adds in a border radius based on the token options within Cedar',
+      table: {
+        type: { summary: 'sharp | soft | softer | softest | round' },
+      },
+    },
+    boxShadow: {
+      control: 'select',
+      options: ['flat', 'raised', 'elevated', 'floating', 'lifted'],
+      description: 'Adds a shadow based on the token options within Cedar',
+      table: {
+        type: { summary: 'flat | raised | elevated | floating | lifted' },
+      },
+    },
+  },
 };
 
 export default meta;

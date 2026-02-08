@@ -9,6 +9,17 @@ const meta: Meta<typeof CdrContainer> = {
     tag: 'div',
     modifier: 'static',
   },
+  argTypes: {
+    modifier: {
+      control: 'select',
+      options: ['static', 'fluid'],
+      description: 'Controls whether container is static or fluid width',
+      table: {
+        type: { summary: 'static | fluid' },
+        defaultValue: { summary: 'static' },
+      },
+    },
+  },
 };
 
 export default meta;

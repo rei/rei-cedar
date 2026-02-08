@@ -14,6 +14,59 @@ const meta: Meta<typeof CdrButton> = {
     iconOnly: false,
     withBackground: false,
   },
+  argTypes: {
+    tag: {
+      control: 'select',
+      options: ['button', 'a'],
+      description: 'Renders CdrButton as a button or a element',
+      table: {
+        type: { summary: 'button | a' },
+        defaultValue: { summary: 'button' },
+      },
+    },
+    type: {
+      control: 'select',
+      options: ['button', 'submit', 'reset'],
+      description: 'Sets the button type',
+      table: {
+        type: { summary: 'button | submit | reset' },
+        defaultValue: { summary: 'button' },
+      },
+    },
+    modifier: {
+      control: 'select',
+      options: ['primary', 'secondary', 'sale', 'dark', 'link'],
+      description: 'Modifies the style variant for this component',
+      table: {
+        type: { summary: 'primary | secondary | sale | dark | link' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Sets button width to 100%',
+      table: {
+        type: { summary: 'boolean | string' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    iconOnly: {
+      control: 'boolean',
+      description: 'Renders an icon-only button',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    withBackground: {
+      control: 'boolean',
+      description: 'Renders an icon-only button with a background color and border',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
 };
 
 export default meta;

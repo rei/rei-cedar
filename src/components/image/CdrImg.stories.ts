@@ -10,6 +10,33 @@ const meta: Meta<typeof CdrImg> = {
     alt: 'Outdoor landscape',
     loading: 'lazy',
   },
+  argTypes: {
+    fit: {
+      control: 'select',
+      options: ['contain', 'cover', 'fill', 'none', 'scale-down'],
+      description: 'Object fit of the image, passes value to CSS object-fit property',
+      table: {
+        type: { summary: 'contain | cover | fill | none | scale-down' },
+      },
+    },
+    radius: {
+      control: 'select',
+      options: ['soft', 'softer', 'round'],
+      description: 'Border radius of the image',
+      table: {
+        type: { summary: 'soft | softer | round | string' },
+      },
+    },
+    loading: {
+      control: 'select',
+      options: ['lazy', 'eager'],
+      description: 'Value for loading attribute',
+      table: {
+        type: { summary: 'lazy | eager' },
+        defaultValue: { summary: 'lazy' },
+      },
+    },
+  },
 };
 
 export default meta;

@@ -15,6 +15,17 @@ const meta: Meta<typeof CdrFormGroup> = {
     optional: false,
     disabled: false,
   },
+  argTypes: {
+    error: {
+      control: 'radio',
+      options: [false, true, 'Error message'],
+      description: 'Sets the form group to an error state',
+      table: {
+        type: { summary: 'boolean | string' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
 };
 
 export default meta;

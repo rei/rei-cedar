@@ -6,6 +6,17 @@ const meta: Meta<typeof CdrSwitch> = {
   title: 'Components/Switch',
   component: CdrSwitch,
   tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['medium', 'large'],
+      description: 'Sets the size of the switch',
+      table: {
+        type: { summary: 'medium | large' },
+        defaultValue: { summary: 'medium' },
+      },
+    },
+  },
 };
 
 export default meta;

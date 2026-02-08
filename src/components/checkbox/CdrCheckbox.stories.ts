@@ -13,6 +13,34 @@ const meta: Meta<typeof CdrCheckbox> = {
     indeterminate: false,
     modifier: '',
   },
+  argTypes: {
+    background: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+      description: 'Sets the background color the checkbox is rendered on',
+      table: {
+        type: { summary: 'primary | secondary' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    modifier: {
+      control: 'select',
+      options: ['', 'hide-figure'],
+      description: 'Modifies the component style variant',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '' },
+      },
+    },
+    indeterminate: {
+      control: 'boolean',
+      description: 'Show checkbox in indeterminate state',
+      table: {
+        type: { summary: 'boolean | string' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
 };
 
 export default meta;

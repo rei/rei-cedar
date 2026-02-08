@@ -15,6 +15,53 @@ const meta: Meta<typeof CdrInput> = {
     error: false,
     rows: 1,
   },
+  argTypes: {
+    type: {
+      control: 'select',
+      options: [
+        'text',
+        'email',
+        'number',
+        'password',
+        'search',
+        'url',
+        'tel',
+        'date',
+        'datetime-local',
+      ],
+      description: 'Type attribute for the input',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'text' },
+      },
+    },
+    background: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+      description: 'Sets the background color the input is rendered on',
+      table: {
+        type: { summary: 'primary | secondary' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    error: {
+      control: 'radio',
+      options: [false, true, 'error message'],
+      description: 'Sets the input to an error state, displays the error slot if one is present',
+      table: {
+        type: { summary: 'boolean | string' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    size: {
+      control: 'select',
+      options: [undefined, 'large'],
+      description: 'Sets the input field size',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+  },
 };
 
 export default meta;

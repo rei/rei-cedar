@@ -12,6 +12,34 @@ const meta: Meta<typeof CdrSelect> = {
     background: 'primary',
     error: false,
   },
+  argTypes: {
+    background: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+      description: 'Sets the background color the select is rendered on',
+      table: {
+        type: { summary: 'primary | secondary' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    error: {
+      control: 'radio',
+      options: [false, true, 'error message'],
+      description: 'Sets the select to an error state, displays the error slot if one is present',
+      table: {
+        type: { summary: 'boolean | string' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    size: {
+      control: 'select',
+      options: [undefined, 'large'],
+      description: 'Sets the component size',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+  },
 };
 
 export default meta;

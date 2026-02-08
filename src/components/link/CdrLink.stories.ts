@@ -11,6 +11,26 @@ const meta: Meta<typeof CdrLink> = {
     modifier: '',
     inheritColor: false,
   },
+  argTypes: {
+    tag: {
+      control: 'select',
+      options: ['a', 'button'],
+      description: 'Sets valid HTML element tag',
+      table: {
+        type: { summary: 'a | button' },
+        defaultValue: { summary: 'a' },
+      },
+    },
+    modifier: {
+      control: 'select',
+      options: ['', 'standalone'],
+      description: 'Modifies the style variant for this component',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '' },
+      },
+    },
+  },
 };
 
 export default meta;

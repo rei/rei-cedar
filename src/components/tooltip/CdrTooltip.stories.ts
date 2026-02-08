@@ -6,6 +6,18 @@ const meta: Meta<typeof CdrTooltip> = {
   title: 'Components/Tooltip',
   component: CdrTooltip,
   tags: ['autodocs'],
+  argTypes: {
+    position: {
+      control: 'select',
+      options: ['top', 'bottom', 'left', 'right'],
+      description:
+        'Sets the position where the tooltip will render relative to the trigger element',
+      table: {
+        type: { summary: 'top | bottom | left | right' },
+        defaultValue: { summary: 'top' },
+      },
+    },
+  },
 };
 
 export default meta;

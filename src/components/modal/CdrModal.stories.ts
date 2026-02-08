@@ -13,6 +13,17 @@ const meta = {
     showTitle: true,
     role: 'dialog',
   },
+  argTypes: {
+    role: {
+      control: 'select',
+      options: ['dialog', 'alertdialog'],
+      description: 'Sets the role attribute on the modal content element',
+      table: {
+        type: { summary: 'dialog | alertdialog' },
+        defaultValue: { summary: 'dialog' },
+      },
+    },
+  },
 } satisfies Meta<typeof CdrModal>;
 
 export default meta;

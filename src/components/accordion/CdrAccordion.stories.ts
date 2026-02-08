@@ -19,6 +19,17 @@ const meta = {
     label: 'Accordion Label',
     opened: false,
   },
+  argTypes: {
+    level: {
+      control: 'select',
+      options: [1, 2, 3, 4, 5, 6],
+      description: 'Sets the heading level',
+      table: {
+        type: { summary: 'string | number' },
+        defaultValue: { summary: '3' },
+      },
+    },
+  },
 } satisfies Meta<typeof CdrAccordion>;
 
 export default meta;

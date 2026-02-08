@@ -9,6 +9,17 @@ const meta = {
   args: {
     tag: 'ul',
   },
+  argTypes: {
+    tag: {
+      control: 'select',
+      options: ['ul', 'ol'],
+      description: 'Sets list type and HTML element as "unordered" or "ordered"',
+      table: {
+        type: { summary: 'ul | ol' },
+        defaultValue: { summary: 'ul' },
+      },
+    },
+  },
 } satisfies Meta<typeof CdrList>;
 
 export default meta;

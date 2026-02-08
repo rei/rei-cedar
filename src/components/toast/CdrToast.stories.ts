@@ -11,6 +11,41 @@ const meta: Meta<typeof CdrToast> = {
   title: 'Components/Toast',
   component: CdrToast,
   tags: ['autodocs'],
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['default', 'info', 'warning', 'success', 'error'],
+      description: 'Sets the toast type',
+      table: {
+        type: { summary: 'info | warning | success | error | default' },
+        defaultValue: { summary: 'default' },
+      },
+    },
+    open: {
+      control: 'boolean',
+      description: 'Used to programmatically control the toast open/close state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    autoDismiss: {
+      control: 'boolean',
+      description: 'Set to false to disable automatic closing after the dismissDelay',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
+    },
+    dismissDelay: {
+      control: 'number',
+      description: 'Sets the interval (in milliseconds) before the toast automatically closes',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '5000' },
+      },
+    },
+  },
 };
 
 export default meta;

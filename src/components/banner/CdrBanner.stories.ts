@@ -9,6 +9,17 @@ const meta: Meta<typeof CdrBanner> = {
   args: {
     type: 'default',
   },
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['default', 'info', 'warning', 'success', 'error'],
+      description: 'Sets the banner type',
+      table: {
+        type: { summary: 'info | warning | success | error | default' },
+        defaultValue: { summary: 'default' },
+      },
+    },
+  },
 };
 
 export default meta;

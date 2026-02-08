@@ -14,6 +14,18 @@ const meta = {
     autoPosition: true,
     id: 'popover-1',
   },
+  argTypes: {
+    position: {
+      control: 'select',
+      options: ['top', 'bottom', 'left', 'right'],
+      description:
+        'Sets the position where the popover will render relative to the trigger element',
+      table: {
+        type: { summary: 'top | bottom | left | right' },
+        defaultValue: { summary: 'top' },
+      },
+    },
+  },
 } satisfies Meta<typeof CdrPopover>;
 
 export default meta;
