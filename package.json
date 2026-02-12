@@ -21,6 +21,10 @@
       "import": "./dist/lib.mjs",
       "require": "./dist/cedar.umd.js"
     },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.mjs"
+    },
     "./dist/": "./dist/"
   },
   "files": [

@@ -46,6 +46,7 @@ coverage/
 # Build assets
 **/dist/*
 src/**/styles/themes/*
+src/entrypoints/
 
 src/**/package-lock\.json
 unmigrated/
