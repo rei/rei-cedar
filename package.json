@@ -94,7 +94,6 @@
     "fs-extra": "^11.3.3",
     "glob": "^13.0.0",
     "husky": "^9.1.7",
-    "inquirer": "^13.2.0",
     "jsdom": "^27.4.0",
     "jsdom-global": "^3.0.2",
     "klaw-sync": "^6.0.0",
