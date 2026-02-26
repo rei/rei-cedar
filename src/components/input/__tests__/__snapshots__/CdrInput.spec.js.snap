@@ -26,7 +26,7 @@ exports[`CdrInput >  when error state is inactive > renders correctly 1`] = `
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="test"
         type="text"
       />
@@ -115,7 +115,7 @@ exports[`CdrInput > basic input component > renders correctly 1`] = `
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -203,7 +203,7 @@ exports[`CdrInput > basic input component > when "multiline" is set to true and 
       class="cdr-input-wrap"
     >
       <textarea
-        class="cdr-input cdr-input--multiline cdr-input--primary"
+        class="cdr-input cdr-input--multiline cdr-input--undefined"
         id="renders"
         multiline="true"
         rows="10"
@@ -293,7 +293,7 @@ exports[`CdrInput > basic input component > when "type" is set to url > renders 
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         type="url"
       />
@@ -385,7 +385,7 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
         aria-errormessage="renders-error"
         aria-invalid="true"
         autocomplete="off"
-        class="cdr-input cdr-input--error cdr-input--primary"
+        class="cdr-input cdr-input--error cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -481,7 +481,7 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
         aria-errormessage="renders-error"
         aria-invalid="true"
         autocomplete="off"
-        class="cdr-input cdr-input--error cdr-input--primary"
+        class="cdr-input cdr-input--error cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -579,7 +579,7 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
       <input
         aria-required="true"
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         inputmode="numeric"
         pattern="[0-9]*"
@@ -675,7 +675,7 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
       <input
         aria-required="true"
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         inputmode="numeric"
         pattern="[0-9]*"
@@ -766,7 +766,7 @@ exports[`CdrInput > basic input component > with prop type of "number" > renders
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         inputmode="numeric"
         pattern="[0-9]*"
@@ -857,7 +857,7 @@ exports[`CdrInput > basic input component > with the "disabled" prop set to true
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         disabled=""
         id="renders"
         type="text"
@@ -952,7 +952,7 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
       <input
         aria-required="true"
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -1040,7 +1040,7 @@ exports[`CdrInput > basic input component > with the "rows" prop set to 2 > rend
       class="cdr-input-wrap"
     >
       <textarea
-        class="cdr-input cdr-input--multiline cdr-input--primary"
+        class="cdr-input cdr-input--multiline cdr-input--undefined"
         id="renders"
         rows="2"
       />
@@ -1130,7 +1130,7 @@ exports[`CdrInput > components with attributes > renders correctly 1`] = `
       <input
         autocomplete="off"
         autofocus=""
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="test"
         maxlength="20"
         name="testName"
@@ -1227,7 +1227,7 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
         aria-errormessage="test-error"
         aria-invalid="true"
         autocomplete="off"
-        class="cdr-input cdr-input--error cdr-input--primary"
+        class="cdr-input cdr-input--error cdr-input--undefined"
         id="test"
         type="text"
       />
@@ -1325,7 +1325,7 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
         aria-errormessage="test-error"
         aria-invalid="true"
         autocomplete="off"
-        class="cdr-input cdr-input--error cdr-input--primary"
+        class="cdr-input cdr-input--error cdr-input--undefined"
         id="test"
         type="text"
       />
@@ -1420,7 +1420,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--posticon cdr-input--posticons cdr-input--primary"
+        class="cdr-input cdr-input--posticon cdr-input--posticons cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -1550,7 +1550,7 @@ exports[`CdrInput > with "helper-text-bottom" slot > renders correctly 1`] = `
       <input
         aria-describedby="renders-helper-text-bottom"
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -1648,7 +1648,7 @@ exports[`CdrInput > with a post-icon slot > renders correctly 1`] = `
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--posticon cdr-input--primary"
+        class="cdr-input cdr-input--posticon cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -1744,7 +1744,7 @@ exports[`CdrInput > with a pre-icon slot > renders correctly 1`] = `
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--preicon cdr-input--primary"
+        class="cdr-input cdr-input--preicon cdr-input--undefined"
         id="renders"
         type="text"
       />
@@ -1851,7 +1851,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > ren
       <input
         aria-describedby="aria-test-helper-text-top aria-test-helper-text-bottom"
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="aria-test"
         type="text"
       />
@@ -1960,7 +1960,7 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and a
       <input
         aria-describedby="aria-test-helper-text-top aria-test-helper-text-bottom foo"
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="aria-test"
         type="text"
       />
@@ -2058,7 +2058,7 @@ exports[`CdrInput > with info action slot > renders correctly 1`] = `
     >
       <input
         autocomplete="off"
-        class="cdr-input cdr-input--primary"
+        class="cdr-input cdr-input--undefined"
         id="renders"
         type="text"
       />

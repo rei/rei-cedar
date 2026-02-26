@@ -1,6 +1,6 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import sinon from 'sinon';
-import { h } from '@vue/runtime-core';
+import { h } from 'vue';
 import CdrInput from '../CdrInput.vue';
 import CdrButton from '../../button/CdrButton.vue';
 

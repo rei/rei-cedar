@@ -1,5 +1,5 @@
 import { expect } from 'vitest';
-import { merge } from 'lodash';
+import { merge } from 'lodash-es';
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrBanner from '../CdrBanner.vue';
 
