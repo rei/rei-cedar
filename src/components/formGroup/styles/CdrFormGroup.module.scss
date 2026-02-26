@@ -13,7 +13,8 @@
   &--disabled {
     @include vars.cdr-form-group-disabled-mixin;
 
-    .cdr-form-group__optional, .cdr-form-group__required {
+    .cdr-form-group__optional,
+    .cdr-form-group__required {
       color: tokens.$cdr-color-text-disabled;
     }
   }

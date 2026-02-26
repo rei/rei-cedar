@@ -2,90 +2,36 @@
 import { useCssModule, computed } from 'vue';
 import type { Directive } from 'vue';
 import CdrLabelWrapper from '../labelWrapper/CdrLabelWrapper.vue';
-import sizeProps from '../../props/size';
-import propValidator from '../../utils/propValidator';
-import backgroundProps from '../../props/background';
+import type { CdrCheckboxProps } from './types';
 
 /** Allows selecting one or more items from a list */
 defineOptions({
   name: 'CdrCheckbox',
   inheritAttrs: false,
-  customOptions: {},
 });
 
-const props = defineProps({
-/**
-     * Passes a CSS class to the label for custom styles
-     */
-     labelClass: String,
-    /**
-     * Passes a CSS class to the input for custom styles
-     */
-    inputClass: String,
-    /**
-     * Passes a CSS class to the slot wrapper for custom styles
-     */
-    contentClass: String,
-    /**
-     * Show checkbox in indeterminate state. (NOTE: this is a visual-only state and there is no logic for when to show it)
-     */
-    indeterminate: {
-      type: [Boolean, String],
-      default: false,
-    },
-    /** Disables the checkbox */
-    disabled: Boolean,
-    /**
-     * The value when checked.
-     */
-    trueValue: {
-      type: [String, Number, Boolean, Object, Array, Symbol, Function],
-      default: true,
-    },
-    /**
-     * The value when unchecked.
-     */
-    falseValue: {
-      type: [String, Number, Boolean, Object, Array, Symbol, Function],
-      default: false,
-    },
-    /**
-     * The value when used in a checkbox group. Replaces `trueValue` and `falseValue`.
-     */
-    customValue: [String, Number, Boolean, Object, Array, Symbol, Function],
-    /**
-     * Sets the background color the input is rendered on
-     * @values primary, secondary
-     */
-    background: backgroundProps,
-    /**
-     * @demoSelectMultiple false
-     * @values small, medium, large
-    */
-    size: sizeProps,
-    /**
-     * Use `hide-figure` to hide the checkbox, which leaves the text label as the clickable element.
-     * Add appropriate custom styles to convey selected and unselected states.
-     * @values hide-figure
-     */
-    modifier: {
-      type: String,
-      default: '',
-      validator: (value: string) => propValidator(value, ['', 'hide-figure']),
-    },
-    /** @ignore */
-    modelValue: {
-      type: [String, Number, Boolean, Object, Array, Symbol, Function],
-    },  
+const props = withDefaults(defineProps<CdrCheckboxProps>(), {
+  indeterminate: false,
+  trueValue: true,
+  falseValue: false,
+  background: 'primary',
+  modifier: '',
 });
+
+defineSlots<{
+  /** Readable text for the label element */
+  'default'(props: Record<string, never>): any;
+}>();
 const emits = defineEmits({
-      /**
-     * Event emitted by v-model on the <input> element
-     * @param modelValue
-     */
-     'update:modelValue': null,
+  /**
+   * Event emitted by v-model on the <input> element
+   * @param modelValue
+   */
+  'update:modelValue': null,
 });
-
+/**
+ * Custom directive to manage indeterminate state on checkbox input
+ */
 const vIndeterminate: Directive<HTMLElement> = {
   mounted(el, binding) {
     if (binding.value) {
@@ -102,9 +48,11 @@ const vIndeterminate: Directive<HTMLElement> = {
     el.removeAttribute('indeterminate');
   },
 };
-const style = useCssModule();
-const baseClass = 'cdr-checkbox';
 
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-checkbox';
+
+/** Computed two-way binding for checkbox value */
 const checkboxModel = computed({
   get() {
     return props.modelValue;
@@ -113,7 +61,6 @@ const checkboxModel = computed({
     emits('update:modelValue', newValue);
   },
 });
-
 </script>
 
 <template>
@@ -137,7 +84,7 @@ const checkboxModel = computed({
         :value="customValue"
         v-indeterminate="indeterminate"
         v-model.lazy="checkboxModel"
-      >
+      />
     </template>
     <template #svgs>
       <div :class="style['cdr-checkbox__svg-box']">
@@ -158,5 +105,4 @@ const checkboxModel = computed({
   </cdr-label-wrapper>
 </template>
 
-<style lang="scss" module src="./styles/CdrCheckbox.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrCheckbox.module.scss" />

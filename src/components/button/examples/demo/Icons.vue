@@ -4,12 +4,8 @@
       class="button-example inset"
       data-backstop="cdr-button--icon"
     >
-      <h3>
-        CdrButton + CdrIcon Comps
-      </h3>
-      <cdr-button
-        size="large"
-      >
+      <h3>CdrButton + CdrIcon Comps</h3>
+      <cdr-button size="large">
         <icon-check-lg
           inherit-color
           v-slot:icon-left
@@ -28,18 +24,14 @@
         Anchor and Icon
       </cdr-button>
 
-      <cdr-button
-        size="medium"
-      >
+      <cdr-button size="medium">
         <icon-check-lg
           inherit-color
           v-slot:icon-left
         />
         Medium and Icon
       </cdr-button>
-      <cdr-button
-        size="small"
-      >
+      <cdr-button size="small">
         <icon-check-lg
           inherit-color
           v-slot:icon-left
@@ -47,9 +39,7 @@
         />
         Small and Icon
       </cdr-button>
-      <cdr-button
-        size="small"
-      >
+      <cdr-button size="small">
         <icon-check-sm
           inherit-color
           v-slot:icon-left
@@ -57,11 +47,9 @@
         Small (different) Icon
       </cdr-button>
 
-      <br>
+      <br />
 
-      <cdr-button
-        size="large"
-      >
+      <cdr-button size="large">
         <icon-check-lg
           inherit-color
           v-slot:icon-right
@@ -80,18 +68,14 @@
         Anchor and Icon
       </cdr-button>
 
-      <cdr-button
-        size="medium"
-      >
+      <cdr-button size="medium">
         <icon-check-lg
           inherit-color
           v-slot:icon-right
         />
         Medium and Icon
       </cdr-button>
-      <cdr-button
-        size="small"
-      >
+      <cdr-button size="small">
         <icon-check-lg
           inherit-color
           v-slot:icon-right
@@ -99,9 +83,7 @@
         />
         Small and Icon
       </cdr-button>
-      <cdr-button
-        size="small"
-      >
+      <cdr-button size="small">
         <icon-check-sm
           inherit-color
           v-slot:icon-right
@@ -109,11 +91,9 @@
         Small (different) Icon
       </cdr-button>
 
-      <br>
+      <br />
 
-      <cdr-button
-        size="large"
-      >
+      <cdr-button size="large">
         <icon-check-lg
           inherit-color
           v-slot:icon-left
@@ -121,9 +101,7 @@
         Large and left Icon
       </cdr-button>
 
-      <cdr-button
-        size="large"
-      >
+      <cdr-button size="large">
         <icon-check-lg
           inherit-color
           v-slot:icon-right
@@ -132,12 +110,9 @@
       </cdr-button>
     </div>
     <div class="button-example inset">
-      <h3>
-        Using a sprite
-      </h3>
+      <h3>Using a sprite</h3>
       <cdr-button
         size="large"
-
         modifier="secondary"
       >
         <cdr-icon
@@ -149,7 +124,6 @@
       </cdr-button>
       <cdr-button
         size="large"
-
         modifier="secondary"
         disabled
       >
@@ -162,7 +136,6 @@
       </cdr-button>
       <cdr-button
         size="medium"
-
         modifier="secondary"
       >
         <cdr-icon
@@ -185,9 +158,7 @@
       </cdr-button>
     </div>
     <div class="button-example inset">
-      <cdr-button
-        size="large large@xs medium@sm small@lg"
-      >
+      <cdr-button size="large large@xs medium@sm small@lg">
         <cdr-icon
           use="#clock"
           inherit-color
@@ -196,9 +167,7 @@
         Responsive Left
       </cdr-button>
 
-      <cdr-button
-        size="large large@xs medium@sm small@lg"
-      >
+      <cdr-button size="large large@xs medium@sm small@lg">
         Responsive Right
         <cdr-icon
           use="#clock"
@@ -235,7 +204,7 @@
     <div class="button-example inset">
       <div
         class="button-text-wrap"
-        style="max-width: 300px;"
+        style="max-width: 300px"
       >
         <cdr-button
           size="medium"
@@ -266,9 +235,7 @@
       </div>
     </div>
     <div class="button-example inset">
-      <h3>
-        Icon only button
-      </h3>
+      <h3>Icon only button</h3>
       <cdr-button
         :icon-only="true"
         :full-width="true"

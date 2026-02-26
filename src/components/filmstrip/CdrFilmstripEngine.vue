@@ -11,10 +11,10 @@
       ref="surfaceScrollRef"
       :viewport-props="{
         'aria-label': description || `${frames.length} items`,
-        tabindex: viewportTabindex
+        tabindex: viewportTabindex,
       }"
       :scrollbar-props="{
-        orientation: 'horizontal'
+        orientation: 'horizontal',
       }"
     >
       <ul
@@ -132,7 +132,7 @@ const surfaceScrollRef = ref<typeof CdrSurfaceScroll | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
 
 // Scrollable viewport reference - computed to access the exposed viewportRef
-const viewportRef = computed(() => (surfaceScrollRef.value?.viewportRef));
+const viewportRef = computed(() => surfaceScrollRef.value?.viewportRef);
 
 // List of frame elements (each frame rendered as an <li>)
 const framesItemsRef = ref<Array<HTMLElement> | null>(null);
@@ -374,22 +374,24 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
   isProgrammaticScroll.value = false;
 }, 100);
 
+// Initialize a resize observer to update the container width dynamically.
+const { stop: stopResizeObserver } = useResizeObserver(containerRef, (entries) => {
+  entries.forEach((entry) => {
+    containerWidth.value = entry.contentRect.width;
+  });
+});
+
 onMounted(() => {
-   // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
+  // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
   useEventListener(viewportRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
 
-  // Initialize a resize observer to update the container width dynamically.
-  const { stop } = useResizeObserver(containerRef, (entries) => {
-    entries.forEach((entry) => {
-      containerWidth.value = entry.contentRect.width;
-    });
-  });
-  onUnmounted(() => {
-    // Clean up the resize observer when the component is unmounted.
-    stop();
-  });
   // Set the initial container width.
   containerWidth.value = containerRef.value?.offsetWidth ?? 0;
+});
+
+onUnmounted(() => {
+  // Clean up the resize observer when the component is unmounted.
+  stopResizeObserver();
 });
 </script>
 

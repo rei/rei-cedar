@@ -12,7 +12,6 @@ function kebabCase(str) {
     .toLowerCase();
 }
 
-
 /**
  * Setting `cssCodeSplit = true` enables chunked
  * CSS generated from each [cdr-component].module.scss.

@@ -1,121 +1,41 @@
 <script setup lang="ts">
-import { useCssModule, computed, ref, useSlots, useAttrs } from 'vue';
+import { useCssModule, computed, shallowRef, useSlots, useAttrs } from 'vue';
 import type { InputHTMLAttributes } from 'vue';
-import propValidator from '../../utils/propValidator';
 import CdrLabelStandalone from '../labelStandalone/CdrLabelStandalone.vue';
 import CdrFormError from '../formError/CdrFormError.vue';
-import backgroundProps from '../../props/background';
 import mapClasses from '../../utils/mapClasses';
 import uid from '../../utils/uid';
+import type { CdrInputProps } from './types';
 
 /** Allows for data entry, editing, and search */
 defineOptions({
   name: 'CdrInput',
   inheritAttrs: false,
-  customOptions: {},
 });
 
-const props = defineProps({
-  /**
-   * Custom ID that is mapped to the label ‘for’ attribute. If this value is not set, it will be randomly generated.
-   */
-  id: {
-    type: String,
-  },
-  /**
-   *  'type' attribute for the input as defined by w3c.
-   *  Only supporting text|email|number|password|search|url|date|datetime-local.
-   *  The increment/decrement webkit psuedo element is hidden for number.
-   *  @demoSelectMultiple false
-   *  @values text, email, number, password, search, url, tel, date, datetime-local
-   */
-  type: {
-    type: [String],
-    default: 'text',
-    validator: (value: string) =>
-      propValidator(value, [
-        'text',
-        'email',
-        'number',
-        'password',
-        'search',
-        'url',
-        'tel',
-        'date',
-        'datetime-local',
-      ]),
-  },
-  /**
-   * Sets the text value for the input label. Required for a11y compliance. Use ‘hideLabel’ if the label display is not desired. Required.
-   */
-  label: {
-    type: String,
-    required: true,
-  },
-  /**
-   * Sets default attributes for an input that should launch a numeric keyboard but is not strictly a 'number' (credit card, security code, postal code, etc.). Should be used in conjunction with the default text type input. An `input` listener can be used to fully restrict input values to numerical characters only
-   */
-  numeric: {
-    type: Boolean,
-    default: false,
-  },
-  /**
-   * Removes the label element but sets the input `aria-label` to `label` text for a11y.
-   */
-  hideLabel: Boolean,
-  /**
-   * Number of rows for input. Converts component to text-area if rows greater than 1.
-   */
-  rows: {
-    type: Number,
-    default: 1,
-  },
-  /**
-   * Sets the background color the input is rendered on
-   * @values primary, secondary
-   */
-  background: backgroundProps,
-  /**
-   * Sets the input field size
-   * @demoSelectMultiple true
-   * @values large
-   */
-  size: String,
-
-  /**
-   * Sets the `role` attribute for the embedded error state messaging.
-   */
-  errorRole: {
-    type: String,
-    required: false,
-    default: 'status',
-  },
-  /** Sets the input to an error state, displays the `error` slot if one is present. */
-  error: {
-    type: [Boolean, String],
-    default: false,
-  },
-  /**
-   * Sets the disabled state for the input field and label styling. Also, restricts user input.
-   */
-  disabled: Boolean,
-  /**
-   * Sets aria-required on the input field and displays an asterisk next to the input label.
-   */
-  required: Boolean,
-  /**
-   * Displays '(optional)' text next to the input label.
-   */
-  optional: Boolean,
-  /** @ignore */
-  modelValue: {
-    type: [String, Number],
-  },
-  /** Adds a custom class to the cdr-label-standalone container div */
-  inputContainerClass: String,
-  /** Passes a custom class to the label for custom styles */
-  labelClass: String,
+const props = withDefaults(defineProps<CdrInputProps>(), {
+  type: 'text',
+  numeric: false,
+  rows: 1,
+  errorRole: 'status',
+  error: false,
 });
+
+defineSlots<{
+  /** Helper text above the input field */
+  'helper-text-top'(props: Record<string, never>): any;
+  /** Link or icon to the right above the input field. */
+  'info'(props: Record<string, never>): any;
+  /** Icon preceding text within the input field */
+  'pre-icon'(props: Record<string, never>): any;
+  /** Icon after text within the input field */
+  'post-icon'(props: Record<string, never>): any;
+  'info-action'(props: Record<string, never>): any;
+  /** Helper text below the input field */
+  'helper-text-bottom'(props: Record<string, never>): any;
+  /** Error messaging text that is displayed when the `error` prop is true. */
+  'error'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /**
@@ -130,18 +50,20 @@ const attrs = useAttrs();
 const style = useCssModule();
 
 const baseClass = 'cdr-input';
-const isFocused = ref(false);
-const hasHelperTop = slots['helper-text-top'];
-const hasHelperBottom = slots['helper-text-bottom'];
-const hasPreIcon = slots['pre-icon'];
-const hasPostIcon = computed(() => slots['post-icon']);
-const hasPostIcons = computed(() => (slots['post-icon'] ? slots['post-icon']().length > 1 : false));
-const hasInfo = slots.info;
-const hasInfoAction = slots['info-action'];
+const isFocused = shallowRef(false);
+const hasHelperTop = computed(() => !!slots['helper-text-top']);
+const hasHelperBottom = computed(() => !!slots['helper-text-bottom']);
+const hasPreIcon = computed(() => !!slots['pre-icon']);
+const hasPostIcon = computed(() => !!slots['post-icon']);
+const hasPostIcons = computed(() =>
+  slots['post-icon'] ? slots['post-icon']({}).length > 1 : false,
+);
+const hasInfo = computed(() => !!slots.info);
+const hasInfoAction = computed(() => !!slots['info-action']);
 
 const uniqueId = props.id ? props.id : uid();
 const multilineClass = computed(() => (props.rows > 1 ? 'cdr-input--multiline' : ''));
-const preIconClass = computed(() => (hasPreIcon ? 'cdr-input--preicon' : ''));
+const preIconClass = computed(() => (hasPreIcon.value ? 'cdr-input--preicon' : ''));
 const postIconClass = computed(() => (hasPostIcon.value ? 'cdr-input--posticon' : ''));
 const postIconsClass = computed(() => (hasPostIcons.value ? 'cdr-input--posticons' : ''));
 const errorClass = computed(() => (props.error ? 'cdr-input--error' : ''));
@@ -166,11 +88,11 @@ const describedby = computed(() => {
 });
 
 // Defining an interface for the inputAttrs object because Vue doesn't correctly infer inputmode type
-interface inputAttrsObject extends InputHTMLAttributes {
+interface InputAttrsObject extends InputHTMLAttributes {
   id: string;
 }
 
-const inputAttrs = computed<inputAttrsObject>(() => {
+const inputAttrs = computed<InputAttrsObject>(() => {
   const isNum = props.numeric || props.type === 'number';
   return {
     id: uniqueId,
@@ -322,4 +244,4 @@ const inputModel = computed({
   </cdr-label-standalone>
 </template>
 
-<style lang="scss" module src="./styles/CdrInput.module.scss"></style>
+<style lang="scss" module src="./styles/CdrInput.module.scss" />

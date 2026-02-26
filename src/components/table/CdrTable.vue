@@ -13,7 +13,7 @@ const props = defineProps({
   /** Sets row colors to alternate between darker and lighter backgrounds.
    * Striping will not apply when `border` is true
    */
-    striped: {
+  striped: {
     type: Boolean,
     default: false,
   },
@@ -41,43 +41,41 @@ const props = defineProps({
    * Sets the table size (cell padding); values can target responsive breakpoints. Example `small@lg`.
    * @demoSelectMultiple false
    * @values small, medium, large
-  */
+   */
   size: sizeProps,
 });
 const style = useCssModule();
 const baseClass = 'cdr-table';
-const sizeClass = computed(() => props.size ? `${baseClass}--${props.size}` : '');
-const stripedClass = computed(() => props.striped ? `${baseClass}--striped` : '');
-const hoverClass = computed(() => props.hover ? `${baseClass}--hover` : '');
-const borderClass = computed(() => props.border && !props.striped
-  ? `${baseClass}--border`
-  : '');
-const fullWidthClass = computed(() => props.fullWidth
-  ? buildBooleanClass(baseClass, props.fullWidth, 'full-width')
-  : '');
-const wrapperClass = computed(() => props.responsive ? `${baseClass}--responsive` : '');
-
+const sizeClass = computed(() => (props.size ? `${baseClass}--${props.size}` : ''));
+const stripedClass = computed(() => (props.striped ? `${baseClass}--striped` : ''));
+const hoverClass = computed(() => (props.hover ? `${baseClass}--hover` : ''));
+const borderClass = computed(() => (props.border && !props.striped ? `${baseClass}--border` : ''));
+const fullWidthClass = computed(() =>
+  props.fullWidth ? buildBooleanClass(baseClass, props.fullWidth, 'full-width') : '',
+);
+const wrapperClass = computed(() => (props.responsive ? `${baseClass}--responsive` : ''));
 </script>
 
 <template>
   <div :class="style[wrapperClass]">
     <table
       v-bind="$attrs"
-      :class="mapClasses(style,
-                         baseClass,
-                         sizeClass,
-                         stripedClass,
-                         hoverClass,
-                         borderClass,
-                         fullWidthClass,
-      )"
+      :class="
+        mapClasses(
+          style,
+          baseClass,
+          sizeClass,
+          stripedClass,
+          hoverClass,
+          borderClass,
+          fullWidthClass,
+        )
+      "
     >
       <!-- @slot CdrTable content (Valid table elements <th>, <tbody>, <tr>, <td>, etc.) -->
       <slot />
     </table>
   </div>
-
 </template>
 
-<style lang="scss" module src="./styles/CdrTable.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrTable.module.scss"></style>

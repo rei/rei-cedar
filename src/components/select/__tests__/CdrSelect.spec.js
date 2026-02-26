@@ -13,9 +13,9 @@ describe('CdrSelect', () => {
         },
         attrs: {
           name: 'testing',
-        }
+        },
       });
-    })
+    });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
@@ -26,8 +26,8 @@ describe('CdrSelect', () => {
 
     describe('with an error state', () => {
       beforeEach(() => {
-        wrapper.setProps({ error: 'What happened?' })
-      })
+        wrapper.setProps({ error: 'What happened?' });
+      });
 
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
@@ -40,8 +40,8 @@ describe('CdrSelect', () => {
 
     describe('with a hide-label prop', () => {
       beforeEach(() => {
-        wrapper.setProps({ hideLabel: true })
-      })
+        wrapper.setProps({ hideLabel: true });
+      });
 
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
@@ -54,8 +54,8 @@ describe('CdrSelect', () => {
 
     describe('with a prompt prop', () => {
       beforeEach(() => {
-        wrapper.setProps({ prompt: 'what is it' })
-      })
+        wrapper.setProps({ prompt: 'what is it' });
+      });
 
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
@@ -66,11 +66,10 @@ describe('CdrSelect', () => {
       });
     });
 
-
     describe('with a required prop', () => {
       beforeEach(() => {
-        wrapper.setProps({ modelValue: [], required: true })
-      })
+        wrapper.setProps({ modelValue: [], required: true });
+      });
 
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
@@ -84,9 +83,9 @@ describe('CdrSelect', () => {
       beforeEach(() => {
         wrapper.setProps({
           multiple: true,
-          modelValue: []
-        })
-      })
+          modelValue: [],
+        });
+      });
 
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
@@ -96,7 +95,7 @@ describe('CdrSelect', () => {
         expect(wrapper.find('select').attributes('multiple')).toBe('');
       });
     });
-  })
+  });
 
   describe('with "disabled" set to true', () => {
     let wrapper;
@@ -104,13 +103,13 @@ describe('CdrSelect', () => {
       wrapper = mount(CdrSelect, {
         propsData: {
           label: 'Label Test',
-          id: 'renders'
+          id: 'renders',
         },
         attrs: {
           disabled: true,
-        }
+        },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -124,7 +123,7 @@ describe('CdrSelect', () => {
       const caret = wrapper.find('svg');
       expect(caret.classes()).toContain('cdr-select__caret--disabled');
     });
-  })
+  });
 
   describe('with "autofocus" set to true', () => {
     let wrapper;
@@ -132,13 +131,13 @@ describe('CdrSelect', () => {
       wrapper = mount(CdrSelect, {
         propsData: {
           label: 'Label Test',
-          id: 'renders'
+          id: 'renders',
         },
         attrs: {
           autofocus: true,
-        }
+        },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -147,7 +146,7 @@ describe('CdrSelect', () => {
     it('sets select autofocus attribute correctly', () => {
       expect(wrapper.find('select').attributes('autofocus')).toBe('');
     });
-  })
+  });
 
   describe('using the error slot', () => {
     let wrapper;
@@ -158,10 +157,10 @@ describe('CdrSelect', () => {
           id: 'test',
         },
         slots: {
-          'error': 'whoops',
+          error: 'whoops',
         },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -178,7 +177,7 @@ describe('CdrSelect', () => {
       await wrapper.vm.$nextTick();
       expect(wrapper.find('.cdr-form-error').text()).toBe('whoops');
     });
-  })
+  });
 
   describe('component with options and values set', () => {
     let wrapper;
@@ -196,7 +195,7 @@ describe('CdrSelect', () => {
       });
       select = wrapper.find('select');
       options = select.findAll('option');
-    })
+    });
 
     it('has the expected initial state', async () => {
       expect(select.element.value).toBe('4');
@@ -209,7 +208,7 @@ describe('CdrSelect', () => {
       expect(select.element.value).toBe('3');
       expect(options[0].element.selected).toBeTruthy();
     });
-  })
+  });
 
   describe('with info action slot', () => {
     let wrapper;
@@ -217,7 +216,7 @@ describe('CdrSelect', () => {
       wrapper = mount(CdrSelect, {
         propsData: {
           label: 'test',
-          id: 'info-action'
+          id: 'info-action',
         },
         slots: {
           'info-action': '🤠',
@@ -232,7 +231,7 @@ describe('CdrSelect', () => {
     it('renders info action slot', () => {
       expect(wrapper.find('.cdr-label-standalone__info-action').text()).toBe('🤠');
     });
-  })
+  });
 
   describe('with helper text slot', () => {
     let wrapper;
@@ -240,7 +239,7 @@ describe('CdrSelect', () => {
       wrapper = mount(CdrSelect, {
         propsData: {
           label: 'test',
-          id: 'aria-test'
+          id: 'aria-test',
         },
         slots: {
           'helper-text': 'yee haw',
@@ -257,9 +256,11 @@ describe('CdrSelect', () => {
     });
 
     it('helper text slots are linked to select via aria-describedby', () => {
-      expect(wrapper.find('select').attributes('aria-describedby')).toBe('aria-test-helper-text-top');
+      expect(wrapper.find('select').attributes('aria-describedby')).toBe(
+        'aria-test-helper-text-top',
+      );
     });
-  })
+  });
 
   describe('with info slot', () => {
     let wrapper;
@@ -270,7 +271,7 @@ describe('CdrSelect', () => {
           id: 'info-action',
         },
         slots: {
-          'info': 'howdy',
+          info: 'howdy',
         },
       });
     });
@@ -282,7 +283,7 @@ describe('CdrSelect', () => {
     it('renders info action slot', () => {
       expect(wrapper.find('.cdr-label-standalone__info').text()).toBe('howdy');
     });
-  })
+  });
 
   describe('with pre-icon slot', () => {
     let wrapper;
@@ -305,7 +306,7 @@ describe('CdrSelect', () => {
     it('renders info action slot', () => {
       expect(wrapper.find('.cdr-select__pre-icon').text()).toBe('🤠');
     });
-  })
+  });
 
   describe('with aria-describedby and id provided', () => {
     let wrapper;
@@ -319,7 +320,7 @@ describe('CdrSelect', () => {
           'aria-describedby': 'foo',
         },
         slots: {
-          'helper-text': 'extremely helpful'
+          'helper-text': 'extremely helpful',
         },
       });
     });
@@ -329,9 +330,11 @@ describe('CdrSelect', () => {
     });
 
     it('dynamic aria-describedby is merged with native attr', () => {
-      expect(wrapper.find('select').attributes('aria-describedby')).toBe('aria-test-helper-text-top foo');
+      expect(wrapper.find('select').attributes('aria-describedby')).toBe(
+        'aria-test-helper-text-top foo',
+      );
     });
-  })
+  });
 
   describe('with no attr or helper slots', () => {
     let wrapper;
@@ -351,5 +354,5 @@ describe('CdrSelect', () => {
     it('does not apply aria-describedby', () => {
       expect(wrapper.find('select').attributes('aria-describedby')).toBe(undefined);
     });
-  })
+  });
 });

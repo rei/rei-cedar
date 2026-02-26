@@ -48,7 +48,10 @@
       position: absolute;
 
       //ITEM_DOC: Color of the nested ordered cdr-list item prefix
-      color: var(--cdr-list-ordered-nested-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+      color: var(
+        --cdr-list-ordered-nested-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
       left: 0;
     }
   }
@@ -65,7 +68,10 @@
     padding-right: tokens.$cdr-space-half-x;
 
     //ITEM_DOC: Color of the unordered cdr-list item prefix
-    color: var(--cdr-list-unordered-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+    color: var(
+      --cdr-list-unordered-prefix-color,
+      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+    );
   }
 }
 
@@ -81,7 +87,10 @@
       padding-right: tokens.$cdr-space-half-x;
 
       //ITEM_DOC: Color of the nested unordered cdr-list item prefix
-      color: var(--cdr-list-unordered-nested-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+      color: var(
+        --cdr-list-unordered-nested-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
     }
   }
 }

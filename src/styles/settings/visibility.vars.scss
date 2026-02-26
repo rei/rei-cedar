@@ -4,7 +4,7 @@
 }
 
 @mixin cdr-display-hidden-mixin() {
-  visibility: hidden !important
+  visibility: hidden !important;
 }
 
 @mixin cdr-display-block-mixin() {

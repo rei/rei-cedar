@@ -30,10 +30,16 @@
     & ~ .cdr-checkbox__svg-box {
       svg {
         //ITEM_DOC: Fill color of the checkbox check icon when checked
-        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected, #{tokens.$cdr-color-icon-checkbox-default-selected}));
+        fill: var(
+          --cdr-form-figure-checkbox-fill-checked,
+          var(
+            --cdr-color-icon-checkbox-default-selected,
+            #{tokens.$cdr-color-icon-checkbox-default-selected}
+          )
+        );
       }
     }
-  } 
+  }
 
   //cdr-checkbox__svg-box
   &__input[indeterminate] ~ .cdr-label-wrapper__figure {
@@ -51,7 +57,7 @@
       border-radius: tokens.$cdr-radius-soft;
     }
   }
-  
+
   &:hover {
     .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-checkbox-hover-mixin;
@@ -66,7 +72,13 @@
 
       &:checked ~ .cdr-checkbox__svg-box svg {
         //ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
-        fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover, #{tokens.$cdr-color-icon-checkbox-default-selected-hover}));
+        fill: var(
+          --cdr-form-figure-checkbox-fill-checked-hover,
+          var(
+            --cdr-color-icon-checkbox-default-selected-hover,
+            #{tokens.$cdr-color-icon-checkbox-default-selected-hover}
+          )
+        );
       }
 
       /* Hover + Indeterminate
@@ -128,14 +140,18 @@
   /* Active
   ========== */
   &:active {
-    .cdr-label-wrapper__figure, .cdr-checkbox__input:checked ~ .cdr-label-wrapper__figure  {
+    .cdr-label-wrapper__figure,
+    .cdr-checkbox__input:checked ~ .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-checkbox-active-mixin;
     }
 
-   .cdr-checkbox__svg-box {
+    .cdr-checkbox__svg-box {
       svg {
         //ITEM_DOC: Fill color of the checkbox check icon when active
-        fill: var(--cdr-form-figure-checkbox-fill-active , var(--cdr-color-icon-checkbox-default-selected-active))
+        fill: var(
+          --cdr-form-figure-checkbox-fill-active,
+          var(--cdr-color-icon-checkbox-default-selected-active)
+        );
       }
     }
 

@@ -18,15 +18,11 @@ const props = defineProps({
    * Controls whether container is static or fluid width.
    * @demoSelectMultiple false
    * @values static, fluid
- */
+   */
   modifier: {
     type: String,
     default: 'static',
-    validator: (value: string) => propValidator(
-      value,
-      ['static', 'fluid'],
-      false,
-    ),
+    validator: (value: string) => propValidator(value, ['static', 'fluid'], false),
   },
 });
 
@@ -45,5 +41,4 @@ const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrContainer.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrContainer.module.scss"></style>

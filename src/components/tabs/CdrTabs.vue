@@ -1,63 +1,49 @@
 <script setup lang="ts">
 import {
-  ref, provide, onMounted, nextTick, computed, useCssModule, useSlots,
+  ref,
+  shallowRef,
+  provide,
+  onMounted,
+  onUnmounted,
+  nextTick,
+  computed,
+  useCssModule,
+  useSlots,
 } from 'vue';
-import type { ComponentInternalInstance } from 'vue';
-import { debounce } from '../../utils/debounce'
-import {
-  CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX,
-} from '@rei/cdr-tokens';
+import type { VNode } from 'vue';
+import type { CdrTabsProps } from './types';
+import { debounce } from '../../utils/debounce';
+import { CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX } from '@rei/cdr-tokens';
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
 import { selectedTabKey } from '../../types/symbols';
 
 /** Organizes related content into groups for people to navigate between */
 defineOptions({
-  name: 'CdrTabs'
+  name: 'CdrTabs',
 });
 
-const props = defineProps({
-  /**
-   * Sets height of the tabs container element.
-   * Passing a `px` value will render tabs with a static height,
-   * passing `auto` will render tabs with variable height based on content size.
-   */
-    height: {
-    type: String,
-    default: '240px',
-  },
-  /** Sets the index of the tab that should be active on initial page load. Note that this property is zero-indexed. */
-  activeTab: {
-    type: Number,
-    default: 0,
-  },
-  /**
-   * Modifies the style variants for this component
-   * @values centered, compact, full-width, no-border
-   */
-  modifier: String,
-  /**
-   * Use `small` to reduce spacing around the tabs for a denser visual design
-   * @demoSelectMultiple true
-   * @values small
-  */
-  size: String,
-  /**
-   * Sets the background color of the tab.
-   * For CdrTabs that are rendered on non-primary backgrounds.
-   * Pass the background-color into the component to ensure that the scrolling gradients render correctly.
-   */
-  backgroundColor: {
-    type: String,
-    default: CdrColorBackgroundPrimary,
-  },
+const props = withDefaults(defineProps<CdrTabsProps>(), {
+  height: '240px',
+  activeTab: 0,
+  backgroundColor: CdrColorBackgroundPrimary,
 });
+
+defineSlots<{
+  /** CdrTabs content (CdrTabPanel components) */
+  'default'(props: Record<string, never>): any;
+}>();
 const style = useCssModule();
 const slots = useSlots();
 
-const slottedTabs = computed<any>(() => slots.default?.()[0]?.children?.length
-  ? slots.default?.()[0]?.children
-  : slots.default?.());
+const slottedTabs = computed<VNode[]>(() => {
+  const defaultSlot = slots.default?.({}) ?? [];
+  const firstChild = defaultSlot[0];
+  // Unwrap fragment wrapper (e.g. v-for inside a template)
+  return Array.isArray(firstChild?.children) && firstChild.children.length > 0
+    ? (firstChild.children as VNode[])
+    : defaultSlot;
+});
 
 const baseClass = 'cdr-tabs';
 
@@ -70,19 +56,18 @@ const baseClass = 'cdr-tabs';
 
 const tabs = computed(() => {
   if (slottedTabs.value) {
-    return slottedTabs.value.map((tab: ComponentInternalInstance) => ({
-      name: tab.props.name,
-      disabled: tab.props.disabled,
-      id: tab.props['aria-labelledby'],
+    return slottedTabs.value.map((tab: VNode) => ({
+      name: tab.props?.name,
+      disabled: tab.props?.disabled,
+      id: tab.props?.['aria-labelledby'],
     }));
   } else {
     return []; // Return an empty array if there are no slottedTabs
   }
 });
 
-const selectedTabName = ref(null);
+const selectedTabName = shallowRef<string | null>(null);
 const selectedIndex = ref<number | null>(null);
-// const selectedIndex = ref(0);
 const headerOverflow = ref(false);
 const headerWidth = ref(0);
 const tabElements = ref<HTMLButtonElement[]>([]);
@@ -96,9 +81,10 @@ const underlineWidth = ref(0);
 provide(selectedTabKey, selectedTabName);
 
 // Computed
-const modifierClass = computed(() => props.modifier
-  ? modifyClassName('cdr-tabs', props.modifier) : '');
-const sizeClass = computed(() => props.size ? modifyClassName('cdr-tabs', props.size) : '');
+const modifierClass = computed(() =>
+  props.modifier ? modifyClassName('cdr-tabs', props.modifier) : '',
+);
+const sizeClass = computed(() => (props.size ? modifyClassName('cdr-tabs', props.size) : ''));
 const underlineStyle = computed(() => ({
   transform: `translateX(${underlineOffsetX.value}px)`,
   width: `${underlineWidth.value}px`,
@@ -116,7 +102,8 @@ const gradientRightStyle = computed(() => {
     background: gradient,
   };
 });
-const checkIfActive = (index: number, tab: any) => (selectedIndex.value === index && !tab.disabled);
+const checkIfActive = (index: number, tab: { name: string; disabled: boolean; id: string }) =>
+  selectedIndex.value === index && !tab.disabled;
 const calculateOverflow = () => {
   let containerWidth = 0;
   if (containerEl.value) {
@@ -127,8 +114,7 @@ const calculateOverflow = () => {
     // Get Scroll Position
     const scrollX = tablist.value?.scrollLeft ?? 0;
     overflowLeft.value = scrollX > 1;
-    overflowRight.value = (scrollX + 1) < (headerWidth.value - containerWidth);
-    
+    overflowRight.value = scrollX + 1 < headerWidth.value - containerWidth;
   } else {
     overflowLeft.value = false;
     overflowRight.value = false;
@@ -153,7 +139,7 @@ const getHeaderWidth = () => {
 
 const updateUnderline = () => {
   if (tabElements.value.length > 0) {
-    const activeTab = tabElements.value[selectedIndex.value || 0];
+    const activeTab = tabElements.value[selectedIndex.value ?? 0];
     const activeRect = (activeTab as HTMLElement).getBoundingClientRect();
     const parentRect = tablist.value?.getBoundingClientRect();
     const offset = parentRect ? activeRect.x - parentRect.x : 0;
@@ -181,18 +167,17 @@ const selectTab = async (index: number) => {
 };
 
 const selectTabNext = () => {
-
-  const isLastTab = (selectedIndex.value === tabElements.value.length - 1);
+  const isLastTab = selectedIndex.value === tabElements.value.length - 1;
   if (isLastTab) {
     return;
   }
 
-  let nextIndex = (selectedIndex.value || 0) + 1;
+  let nextIndex = (selectedIndex.value ?? 0) + 1;
   if (tabElements.value[nextIndex].disabled) {
     nextIndex += 1;
   }
 
-  const nextIndexExists = (nextIndex <= tabElements.value.length - 1);
+  const nextIndexExists = nextIndex <= tabElements.value.length - 1;
   if (!nextIndexExists) {
     return;
   }
@@ -201,17 +186,17 @@ const selectTabNext = () => {
 };
 
 const selectTabPrev = () => {
-  const isFirstTab = (selectedIndex.value && selectedIndex.value <= 0);
+  const isFirstTab = selectedIndex.value === null || selectedIndex.value <= 0;
   if (isFirstTab) {
     return;
   }
 
-  let prevIndex = (selectedIndex.value || 0) - 1;
+  let prevIndex = (selectedIndex.value ?? 0) - 1;
   if (tabElements.value[prevIndex].disabled) {
     prevIndex -= 1;
   }
 
-  const previousIndexExists = (prevIndex >= 0);
+  const previousIndexExists = prevIndex >= 0;
   if (!previousIndexExists) {
     return;
   }
@@ -227,6 +212,17 @@ const setInitialTabStates = () => {
   });
 };
 
+const handleResize = debounce(() => {
+  headerWidth.value = getHeaderWidth();
+  calculateOverflow();
+  updateUnderline();
+}, 250);
+
+const handleScroll = debounce(() => {
+  calculateOverflow();
+  updateUnderline();
+}, 50);
+
 onMounted(() => {
   setInitialTabStates();
   headerWidth.value = getHeaderWidth();
@@ -234,18 +230,14 @@ onMounted(() => {
   setTimeout(() => {
     updateUnderline();
   }, 250);
-  window.addEventListener('resize', debounce(() => {
-    headerWidth.value = getHeaderWidth();
-    calculateOverflow();
-    updateUnderline();
-  }, 250));
-  tablist.value?.addEventListener('scroll', debounce(() => {
-    calculateOverflow();
-    updateUnderline();
-  }, 50));
+  window.addEventListener('resize', handleResize);
+  tablist.value?.addEventListener('scroll', handleScroll);
 });
 
-
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+  tablist.value?.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
@@ -254,16 +246,16 @@ onMounted(() => {
     ref="containerEl"
     :style="{ height }"
   >
-    <div
-      :class="style['cdr-tabs__gradient-container']"
-    >
+    <div :class="style['cdr-tabs__gradient-container']">
       <div
-        :class="mapClasses(
-          style,
-          'cdr-tabs__gradient',
-          'cdr-tabs__gradient--left',
-          overflowLeft ? 'cdr-tabs__gradient--active' : ''
-        )"
+        :class="
+          mapClasses(
+            style,
+            'cdr-tabs__gradient',
+            'cdr-tabs__gradient--left',
+            overflowLeft ? 'cdr-tabs__gradient--active' : '',
+          )
+        "
         :style="gradientLeftStyle"
       />
       <ul
@@ -278,19 +270,25 @@ onMounted(() => {
           :class="style['cdr-tabs__header']"
         >
           <button
-            :ref="(el: HTMLButtonElement | any) => { tabElements[index] = el }"
+            :ref="
+              (el) => {
+                if (el) tabElements[index as number] = el as HTMLButtonElement;
+              }
+            "
             :id="tab.id"
             :disabled="tab.disabled"
-            :aria-selected="checkIfActive(index, tab)"
-            :tabIndex="checkIfActive(index, tab) ? 0 : -1"
-            :class="mapClasses(
-              style,
-              checkIfActive(index, tab) ? 'cdr-tabs__header-item-active' : '',
-              'cdr-tabs__header-item',
-              tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
-            )"
+            :aria-selected="checkIfActive(index as number, tab)"
+            :tabIndex="checkIfActive(index as number, tab) ? 0 : -1"
+            :class="
+              mapClasses(
+                style,
+                checkIfActive(index as number, tab) ? 'cdr-tabs__header-item-active' : '',
+                'cdr-tabs__header-item',
+                tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
+              )
+            "
             role="tab"
-            @click.prevent="selectTab(index)"
+            @click.prevent="selectTab(index as number)"
             @keyup.right="selectTabNext"
             @keyup.left="selectTabPrev"
           >
@@ -299,12 +297,14 @@ onMounted(() => {
         </li>
       </ul>
       <div
-        :class="mapClasses(
-          style,
-          'cdr-tabs__gradient',
-          'cdr-tabs__gradient--right',
-          overflowRight ? 'cdr-tabs__gradient--active' : '',
-        )"
+        :class="
+          mapClasses(
+            style,
+            'cdr-tabs__gradient',
+            'cdr-tabs__gradient--right',
+            overflowRight ? 'cdr-tabs__gradient--active' : '',
+          )
+        "
         :style="gradientRightStyle"
       />
       <div
@@ -317,5 +317,4 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrTabs.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrTabs.module.scss" />

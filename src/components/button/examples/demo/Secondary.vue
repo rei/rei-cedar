@@ -13,25 +13,26 @@
         v-for="(button, index2) in section.buttons"
         :key="index2"
         :size="button.size"
-
         :full-width="button.fullWidth"
         :modifier="button.modifier"
         :type="button.type"
         :disabled="button.disabled"
         :data-backstop="button.backstop ? button.backstop : null"
-      >{{ button.label }}</cdr-button>
+      >
+        {{ button.label }}
+      </cdr-button>
     </div>
     <div class="button-example inset">
-      <h3>
-        Secondary Anchor
-      </h3>
+      <h3>Secondary Anchor</h3>
       <cdr-button
         tag="a"
         href="https://rei.com"
         size="small"
         modifier="secondary"
         data-backstop="cdr-button--size"
-      >Link <span>text in span</span>
+      >
+        Link
+        <span>text in span</span>
       </cdr-button>
     </div>
   </div>

@@ -3,7 +3,7 @@ import { useCssModule } from 'vue';
 import CdrImg from '../image/CdrImg.vue';
 import { baseImageProps, pictureSourceObject } from '../../types/interfaces';
 
-/** 
+/**
  * Provides instructions for browsers to use alternative image versions in various scenarios
  * @uses CdrImg
  **/
@@ -13,7 +13,7 @@ defineOptions({
 
 interface pictureProps extends baseImageProps {
   /** An object containing 1..n child objects containing HTMLSourceElement attributes */
-  sources: pictureSourceObject
+  sources: pictureSourceObject;
 }
 
 withDefaults(defineProps<pictureProps>(), {
@@ -25,14 +25,12 @@ const style = useCssModule();
 </script>
 
 <template>
-  <picture
-    :class="style[baseClass]"
-  >
-    <source 
+  <picture :class="style[baseClass]">
+    <source
       v-for="(source, i) in sources"
       :key="`${source.media}--${i}`"
       v-bind="source"
-    >
+    />
     <CdrImg
       :src="src"
       :alt="alt"
@@ -46,5 +44,4 @@ const style = useCssModule();
   </picture>
 </template>
 
-<style lang="scss" module src="./styles/CdrPicture.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrPicture.module.scss"></style>

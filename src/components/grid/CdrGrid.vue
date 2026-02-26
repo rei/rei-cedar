@@ -15,12 +15,9 @@ const props = defineProps({
    * @demoSelectMultiple false
    * @values none, small, medium, large
    */
-   gutter: {
+  gutter: {
     type: String,
-    validator: (value: string) => propValidator(
-      value,
-      ['none', 'small', 'medium', 'large'],
-    ),
+    validator: (value: string) => propValidator(value, ['none', 'small', 'medium', 'large']),
     default: 'medium@xs medium@sm large@md large@lg',
   },
   /** Sets the HTML tag for the grid element */
@@ -32,9 +29,9 @@ const props = defineProps({
 
 const style = useCssModule();
 const baseClass = 'cdr-grid';
-const gutterClass = computed(() => (props.gutter
-  ? responsiveModifyClass(baseClass, 'gutter-', props.gutter)
-  : ''));
+const gutterClass = computed(() =>
+  props.gutter ? responsiveModifyClass(baseClass, 'gutter-', props.gutter) : '',
+);
 </script>
 
 <template>
@@ -47,5 +44,4 @@ const gutterClass = computed(() => (props.gutter
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrGrid.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrGrid.module.scss"></style>

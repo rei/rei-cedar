@@ -310,12 +310,8 @@
       <cdr-table>
         <thead>
           <tr>
-            <th colspan="2">
-              Test head
-            </th>
-            <th colspan="2">
-              Test head
-            </th>
+            <th colspan="2">Test head</th>
+            <th colspan="2">Test head</th>
           </tr>
           <tr>
             <th>Test head</th>
@@ -380,7 +376,6 @@
     </div>
 
     <div data-backstop="horizontal-tables">
-
       <p>Horizontal table</p>
       <cdr-table>
         <tbody>
@@ -434,12 +429,8 @@
         <thead>
           <tr>
             <th>-</th>
-            <th>
-              Test head
-            </th>
-            <th colspan="2">
-              Test head
-            </th>
+            <th>Test head</th>
+            <th colspan="2">Test head</th>
           </tr>
           <tr>
             <th>-</th>
@@ -534,5 +525,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

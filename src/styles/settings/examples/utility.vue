@@ -1,8 +1,13 @@
 <template>
   <div>
     <h2>Utility Classes Demo</h2>
-    <cdr-grid class="grid-2-example" style="grid-template-areas: 'alignment display spacing type' 'content content content content';">
-      <div style="grid-area: alignment;">
+    <cdr-grid
+      class="grid-2-example"
+      style="
+        grid-template-areas: 'alignment display spacing type' 'content content content content';
+      "
+    >
+      <div style="grid-area: alignment">
         <cdr-select
           id="alignment"
           label="Text Alignment:"
@@ -17,7 +22,7 @@
           <option value="cdr-align-center-block">Center Block</option>
         </cdr-select>
       </div>
-      <div style="grid-area: display;">
+      <div style="grid-area: display">
         <cdr-select
           id="display"
           label="Display:"
@@ -34,7 +39,7 @@
           <option value="cdr-display-inline-flex">Inline Flex</option>
         </cdr-select>
       </div>
-      <div style="grid-area: spacing;">
+      <div style="grid-area: spacing">
         <cdr-select
           id="space"
           label="Space Scale:"
@@ -56,7 +61,7 @@
           <option value="cdr-space-scale-3--5">Scale 3-5</option>
         </cdr-select>
       </div>
-      <div style="grid-area: type;">
+      <div style="grid-area: type">
         <cdr-select
           id="type"
           label="Type Scale:"
@@ -75,61 +80,117 @@
           <option value="cdr-type-scale-7">7</option>
         </cdr-select>
       </div>
-      <div class="grid-demo" style="grid-area: content;">
-        <cdr-title :class="[selectedAlignment, selectedDisplay]" :style="textStyle">
+      <div
+        class="grid-demo"
+        style="grid-area: content"
+      >
+        <cdr-title
+          :class="[selectedAlignment, selectedDisplay]"
+          :style="textStyle"
+        >
           This is a sample text to demonstrate utility classes.
         </cdr-title>
       </div>
     </cdr-grid>
   </div>
 
-  <hr class="icon-hr">
+  <hr class="icon-hr" />
 
   <h2>Fluid space variables</h2>
   <cdr-table size="large">
     <caption>A sample table</caption>
     <thead>
       <tr>
-        <th id="fluid-value" scope="col">Test head</th>
-        <th id="scale" scope="col">Test head</th>
+        <th
+          id="fluid-value"
+          scope="col"
+        >
+          Test head
+        </th>
+        <th
+          id="scale"
+          scope="col"
+        >
+          Test head
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(row, index) in tableData" :key="index">
+      <tr
+        v-for="(row, index) in tableData"
+        :key="index"
+      >
         <td :headers="row.headerId">{{ row.fluidValue }}</td>
         <td :headers="row.scaleId">
-          <div class="spaces" :style="{ 'grid-template-columns': '120px 1fr 120px' }">
-            <template v-for="(space, sIndex) in row.spaces" :key="sIndex">
+          <div
+            class="spaces"
+            :style="{ 'grid-template-columns': '120px 1fr 120px' }"
+          >
+            <template
+              v-for="(space, sIndex) in row.spaces"
+              :key="sIndex"
+            >
               <div class="space space--with-square">
                 <output>{{ space.output }}</output>
-                <span class="space__square" :style="{ width: space.output }"></span>
+                <span
+                  class="space__square"
+                  :style="{ width: space.output }"
+                ></span>
               </div>
               <span v-if="sIndex < row.spaces.length - 1"></span>
             </template>
-            <div class="spaces__bg" :style="{ 'clip-path': row.bgClipPath }"></div>
+            <div
+              class="spaces__bg"
+              :style="{ 'clip-path': row.bgClipPath }"
+            ></div>
           </div>
         </td>
       </tr>
     </tbody>
     <thead>
       <tr>
-        <th id="fluid-value" scope="col">range</th>
-        <th id="scale" scope="col">range value</th>
+        <th
+          id="fluid-value"
+          scope="col"
+        >
+          range
+        </th>
+        <th
+          id="scale"
+          scope="col"
+        >
+          range value
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(rangeRow, rangeIndex) in rangeTableData" :key="rangeIndex">
+      <tr
+        v-for="(rangeRow, rangeIndex) in rangeTableData"
+        :key="rangeIndex"
+      >
         <td :headers="rangeRow.headerId">{{ rangeRow.fluidValue }}</td>
         <td :headers="rangeRow.scaleId">
-          <div class="spaces" :style="{ 'grid-template-columns': '120px 1fr 120px' }">
-            <template v-for="(rangeSpace, rsIndex) in rangeRow.spaces" :key="rsIndex">
+          <div
+            class="spaces"
+            :style="{ 'grid-template-columns': '120px 1fr 120px' }"
+          >
+            <template
+              v-for="(rangeSpace, rsIndex) in rangeRow.spaces"
+              :key="rsIndex"
+            >
               <div class="space space--with-square">
                 <output>{{ rangeSpace.output }}</output>
-                <span class="space__square" :style="{ width: rangeSpace.output }"></span>
+                <span
+                  class="space__square"
+                  :style="{ width: rangeSpace.output }"
+                ></span>
               </div>
               <span v-if="rsIndex < rangeRow.spaces.length - 1"></span>
             </template>
-            <div class="spaces__bg" :style="{ 'clip-path': rangeRow.bgClipPath }"></div>
+            <div
+              class="spaces__bg"
+              :style="{ 'clip-path': rangeRow.bgClipPath }"
+            ></div>
           </div>
         </td>
       </tr>
@@ -156,125 +217,95 @@ export default {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-0',
-          spaces: [
-            { output: '0.2rem' },
-            { output: '0.3rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 0.2rem, calc(100% - 120px) 0.3rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '0.2rem' }, { output: '0.3rem' }],
+          bgClipPath:
+            'polygon(0px 0px, 0% 0.2rem, calc(100% - 120px) 0.3rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-1',
-          spaces: [
-            { output: '0.3rem' },
-            { output: '0.4rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 0.3rem, calc(100% - 120px) 0.4rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '0.3rem' }, { output: '0.4rem' }],
+          bgClipPath:
+            'polygon(0px 0px, 0% 0.3rem, calc(100% - 120px) 0.4rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-2',
-          spaces: [
-            { output: '0.4rem' },
-            { output: '0.5rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 0.4rem, calc(100% - 120px) 0.5rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '0.4rem' }, { output: '0.5rem' }],
+          bgClipPath:
+            'polygon(0px 0px, 0% 0.4rem, calc(100% - 120px) 0.5rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-3',
-          spaces: [
-            { output: '0.8rem' },
-            { output: '1rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 0.8rem, calc(100% - 120px) 1rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '0.8rem' }, { output: '1rem' }],
+          bgClipPath: 'polygon(0px 0px, 0% 0.8rem, calc(100% - 120px) 1rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-4',
-          spaces: [
-            { output: '1.2rem' },
-            { output: '1.5rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 1.2rem, calc(100% - 120px) 1.5rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '1.2rem' }, { output: '1.5rem' }],
+          bgClipPath:
+            'polygon(0px 0px, 0% 1.2rem, calc(100% - 120px) 1.5rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-5',
-          spaces: [
-            { output: '1.6rem' },
-            { output: '2rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 1.6rem, calc(100% - 120px) 2rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '1.6rem' }, { output: '2rem' }],
+          bgClipPath: 'polygon(0px 0px, 0% 1.6rem, calc(100% - 120px) 2rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-6',
-          spaces: [
-            { output: '2.4rem' },
-            { output: '3rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 2.4rem, calc(100% - 120px) 3rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '2.4rem' }, { output: '3rem' }],
+          bgClipPath: 'polygon(0px 0px, 0% 2.4rem, calc(100% - 120px) 3rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-7',
-          spaces: [
-            { output: '3.2rem' },
-            { output: '4rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 3.2rem, calc(100% - 120px) 4rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '3.2rem' }, { output: '4rem' }],
+          bgClipPath: 'polygon(0px 0px, 0% 3.2rem, calc(100% - 120px) 4rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-8',
-          spaces: [
-            { output: '4.8rem' },
-            { output: '6rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 4.8rem, calc(100% - 120px) 6rem, calc(100% - 120px) 0%)'
-        }
+          spaces: [{ output: '4.8rem' }, { output: '6rem' }],
+          bgClipPath: 'polygon(0px 0px, 0% 4.8rem, calc(100% - 120px) 6rem, calc(100% - 120px) 0%)',
+        },
       ],
       rangeTableData: [
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-0--1',
-          spaces: [
-            { output: '0.2rem' },
-            { output: '0.4rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 0.2rem, calc(100% - 120px) 0.4rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '0.2rem' }, { output: '0.4rem' }],
+          bgClipPath:
+            'polygon(0px 0px, 0% 0.2rem, calc(100% - 120px) 0.4rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-3--4',
-          spaces: [
-            { output: '0.4rem' },
-            { output: '1rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 0.4rem, calc(100% - 120px) 1rem, calc(100% - 120px) 0%)'
+          spaces: [{ output: '0.4rem' }, { output: '1rem' }],
+          bgClipPath: 'polygon(0px 0px, 0% 0.4rem, calc(100% - 120px) 1rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
           fluidValue: '--cdr-space-scale-3--5',
-          spaces: [
-            { output: '0.8rem' },
-            { output: '1.6rem' }
-          ],
-          bgClipPath: 'polygon(0px 0px, 0% 0.8rem, calc(100% - 120px) 1.6rem, calc(100% - 120px) 0%)'
-        }
-      ]
+          spaces: [{ output: '0.8rem' }, { output: '1.6rem' }],
+          bgClipPath:
+            'polygon(0px 0px, 0% 0.8rem, calc(100% - 120px) 1.6rem, calc(100% - 120px) 0%)',
+        },
+      ],
     };
   },
   computed: {
@@ -283,7 +314,7 @@ export default {
         '--cdr-type-scale': `var(--${this.selectedTypeScale})`,
         '--cdr-space-scale': `var(--${this.selectedSpaceScale})`,
         fontSize: 'var(--cdr-type-scale)',
-        margin: 'var(--cdr-space-scale)'
+        margin: 'var(--cdr-space-scale)',
       };
     },
   },
@@ -293,7 +324,8 @@ export default {
 @use '../alignment.vars.scss' as *;
 @use '../visibility.vars.scss' as *;
 
-.spaces, .spaces-heading {
+.spaces,
+.spaces-heading {
   display: grid;
   grid-gap: var(--space);
   position: relative;
@@ -316,10 +348,10 @@ export default {
 .space__square {
   display: -webkit-box;
   display: flex;
-  background: linear-gradient(135deg, rgba(169, 67, 154, .5), rgba(169, 67, 154, .4));
+  background: linear-gradient(135deg, rgba(169, 67, 154, 0.5), rgba(169, 67, 154, 0.4));
   border: none;
-  -webkit-transition: all .25s ease-in-out;
-  transition: all .25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   aspect-ratio: 1;
   max-width: 200px;
 }
@@ -330,12 +362,14 @@ export default {
   height: calc(100% - 28px);
   left: 0;
   top: 28px;
-  background: linear-gradient(135deg, rgba(169, 67, 154, .5), rgba(169, 67, 154, .4));
-  opacity: .5;
-  -webkit-transition: -webkit-clip-path .25s ease-in-out;
-  transition: -webkit-clip-path .25s ease-in-out;
-  transition: clip-path .25s ease-in-out;
-  transition: clip-path .25s ease-in-out, -webkit-clip-path .25s ease-in-out;
+  background: linear-gradient(135deg, rgba(169, 67, 154, 0.5), rgba(169, 67, 154, 0.4));
+  opacity: 0.5;
+  -webkit-transition: -webkit-clip-path 0.25s ease-in-out;
+  transition: -webkit-clip-path 0.25s ease-in-out;
+  transition: clip-path 0.25s ease-in-out;
+  transition:
+    clip-path 0.25s ease-in-out,
+    -webkit-clip-path 0.25s ease-in-out;
 }
 
 // Apply the mixins as classes
@@ -388,6 +422,6 @@ export default {
 }
 
 .grid-demo {
-  background: linear-gradient(135deg, rgba(169, 67, 154, .5), rgba(169, 67, 154, .4));
+  background: linear-gradient(135deg, rgba(169, 67, 154, 0.5), rgba(169, 67, 154, 0.4));
 }
 </style>

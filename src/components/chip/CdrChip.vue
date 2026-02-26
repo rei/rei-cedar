@@ -11,9 +11,7 @@ const baseClass = 'cdr-chip';
 </script>
 
 <template>
-  <button
-    :class="style[baseClass]"
-  >
+  <button :class="style[baseClass]">
     <span
       v-if="$slots['icon-left']"
       :class="style['cdr-chip__icon-left']"
@@ -35,5 +33,4 @@ const baseClass = 'cdr-chip';
   </button>
 </template>
 
-<style lang="scss" module src="./styles/CdrChip.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrChip.module.scss"></style>

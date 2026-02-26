@@ -14,7 +14,7 @@ export function getStructureStyles({
   styles?: NameValuePair;
   structure: Structure;
   breakpoint?: Breakpoint;
-}) {  
+}) {
   // This will be assigned a StructureOption.
   // If breakpoint is passed then get the deep value, otherwise use top-level value.
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -23,7 +23,7 @@ export function getStructureStyles({
 
   if (!option) {
     return newStyles;
-  }  
+  }
 
   const styles = { ...newStyles };
 

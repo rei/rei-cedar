@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, onMounted,
-} from 'vue';
+import { useCssModule, computed, ref, onMounted } from 'vue';
 
 defineOptions({
   name: 'CdrChipGroup',
 });
 
 const props = defineProps({
- /**
-     * Sets a label that describes the chip group and what it is selecting. By default this label is visually hidden and only made available to screen readers.
-     */
-     label: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Visually hides the chip group label but makes it accessible to screen readers.
-     */
-    hideLabel: {
-      type: Boolean,
-      default: true,
-    },
+  /**
+   * Sets a label that describes the chip group and what it is selecting. By default this label is visually hidden and only made available to screen readers.
+   */
+  label: {
+    type: String,
+    required: true,
+  },
+  /**
+   * Visually hides the chip group label but makes it accessible to screen readers.
+   */
+  hideLabel: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const style = useCssModule();
@@ -35,12 +33,11 @@ const nextIdx = computed(() => {
 });
 const prevIdx = computed(() => {
   const idx = currentIdx.value - 1;
-  return idx <= -1 ? (chips.value.length - 1) : idx;
+  return idx <= -1 ? chips.value.length - 1 : idx;
 });
-const legendClass = computed(() => (props.hideLabel
-  ? 'cdr-chip-group__legend--hidden'
-  : 'cdr-chip-group__legend'
-));
+const legendClass = computed(() =>
+  props.hideLabel ? 'cdr-chip-group__legend--hidden' : 'cdr-chip-group__legend',
+);
 
 onMounted(() => {
   chips.value = Array.prototype.filter.call(
@@ -48,7 +45,7 @@ onMounted(() => {
     (chip) => !(chip.getAttribute('disabled') === '' || chip.getAttribute('aria-disabled')),
   );
   currentIdx.value = Array.prototype.findIndex.call(
-    chips,
+    chips.value,
     (chip) => chip.getAttribute('aria-checked') === 'true',
   );
 });
@@ -77,14 +74,14 @@ const handleKeyDown = (e: KeyboardEvent) => {
       e.preventDefault();
       chips.value[prevIdx.value].focus();
       break;
-    default: break;
+    default:
+      break;
   }
 };
-    const handleFocusIn = (e: Event) => {
-      // find out which, if any, button is focused
-      currentIdx.value = Array.prototype.indexOf.call(chips.value, e.target);
-    };
-
+const handleFocusIn = (e: Event) => {
+  // find out which, if any, button is focused
+  currentIdx.value = Array.prototype.indexOf.call(chips.value, e.target);
+};
 </script>
 
 <template>
@@ -109,5 +106,4 @@ const handleKeyDown = (e: KeyboardEvent) => {
   </fieldset>
 </template>
 
-<style lang="scss" module src="./styles/CdrChipGroup.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrChipGroup.module.scss"></style>

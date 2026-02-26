@@ -1,13 +1,11 @@
 <template>
   <div>
-
-    <h3>
-      Bare list
-    </h3>
+    <h3>Bare list</h3>
 
     <cdr-list>
       <li>List item text</li>
-      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
         <cdr-list>
           <li>List item text</li>
           <li>List item text</li>
@@ -16,9 +14,7 @@
       <li>List item text</li>
     </cdr-list>
 
-    <h4>
-      Typography validation - text wrapping list
-    </h4>
+    <h4>Typography validation - text wrapping list</h4>
 
     <cdr-text
       tag="h4"
@@ -26,7 +22,8 @@
     >
       <cdr-list>
         <li>List item text</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
+        <li>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
           <cdr-list>
             <li>List item text</li>
             <li>List item text</li>
@@ -36,15 +33,12 @@
       </cdr-list>
     </cdr-text>
 
-    <h4>
-      Compact bare list
-    </h4>
+    <h4>Compact bare list</h4>
 
-    <cdr-list
-      modifier="compact"
-    >
+    <cdr-list modifier="compact">
       <li>List item text</li>
-      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
         <cdr-list>
           <li>List item text</li>
           <li>List item text</li>
@@ -53,25 +47,17 @@
       <li>List item text</li>
     </cdr-list>
 
-    <h4>
-      Inline bare list
-    </h4>
+    <h4>Inline bare list</h4>
 
-    <cdr-list
-      modifier="inline"
-    >
+    <cdr-list modifier="inline">
       <li>List item text</li>
       <li>List item text</li>
       <li>List item text</li>
     </cdr-list>
 
-    <h4>
-      Inline compact bare list
-    </h4>
+    <h4>Inline compact bare list</h4>
 
-    <cdr-list
-      modifier="inline compact"
-    >
+    <cdr-list modifier="inline compact">
       <li>List item text</li>
       <li>List item text</li>
       <li>List item text</li>
@@ -88,6 +74,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

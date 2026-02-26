@@ -1,11 +1,10 @@
 import mapClasses from '../mapClasses';
 
-
 const fakeStyle = {
   a: 'a1',
   b: 'b2',
   c: 'c3',
-}
+};
 
 describe('mapClasses', () => {
   it('converts classnames to css modules', () => {
@@ -22,5 +21,4 @@ describe('mapClasses', () => {
     const classes = mapClasses(fakeStyle, 'a', false, 'c undefined a', null, 'b');
     expect(classes).toBe('a1 c3 a1 b2');
   });
-
 });

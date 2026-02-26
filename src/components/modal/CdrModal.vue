@@ -1,27 +1,26 @@
 <script setup lang="ts">
-import { debounce } from '../../utils/debounce'
-import tabbable from 'tabbable';
+import { debounce } from '../../utils/debounce';
+import { tabbable } from 'tabbable';
 import {
   useCssModule,
   computed,
   ref,
+  reactive,
+  shallowRef,
   watch,
   onMounted,
   nextTick,
   onUnmounted,
   useAttrs,
 } from 'vue';
-import {
-  CdrBreakpointSm,
-  CdrSpaceOneX,
-  CdrSpaceTwoX,
-} from '@rei/cdr-tokens';
+import { CdrBreakpointSm, CdrSpaceOneX, CdrSpaceTwoX } from '@rei/cdr-tokens';
 import onTransitionEnd from './onTransitionEnd';
 import CdrButton from '../button/CdrButton.vue';
 import IconXLg from '../icon/comps/x-lg.vue';
 import mapClasses from '../../utils/mapClasses';
+import type { CdrModalProps } from './types';
 
-/** 
+/**
  * Disruptive, action-blocking overlays used to display important information
  * @uses CdrButton, CdrIcon
  **/
@@ -30,67 +29,23 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps({
-  /**
-   * Toggles the state of the modal
-   * @demoIgnore true
-   */
-  opened: {
-    type: Boolean,
-    required: true,
-  },
-  /**
-   * Sets `aria-label` and modal title text. Can also use title slot to set title.
-   */
-  label: {
-    type: String,
-    required: true,
-  },
-  /**
-   * Toggles the modal title text, which comes from `label` prop or `title` slot.
-   */
-  showTitle: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  /**
-   * Text for aria-describedby attribute. Applied to modal content element
-   */
-  ariaDescribedby: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  /**
-   * Sets the `role` attribute on the modal content element
-   * @values dialog, alertDialog
-   */
-  role: {
-    type: String,
-    required: false,
-    default: 'dialog',
-  },
-  /**
-   * Sets unique `id` for modal
-   */
-  id: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  /** Adds custom class to the `cdr-modal__overlay` div */
-  overlayClass: String,
-  /** Adds custom class to the `cdr-modal__outerWrap` div */
-  wrapperClass: String,
-  /** Adds custom class to the `cdr-modal__innerWrap` div */
-  contentClass: String,
-  /** Sets duration for modal's close animation */
-  animationDuration: {
-    type: Number,
-    default: 300,
-  },
+const props = withDefaults(defineProps<CdrModalProps>(), {
+  showTitle: true,
+  ariaDescribedby: null,
+  role: 'dialog',
+  id: null,
+  animationDuration: 300,
 });
+
+defineSlots<{
+  /** Use to override the entire CdrModal content container.
+          You must provide an explicit way to close the modal
+          to meet UX and accessibility standards */
+  'modal'(props: Record<string, never>): any;
+  /** Use to override the default title */
+  'title'(props: Record<string, never>): any;
+  'default'(props: Record<string, never>): any;
+}>();
 
 /** Fires when modal is closed */
 const emits = defineEmits({ closed: null });
@@ -99,39 +54,43 @@ const attrs = useAttrs();
 const style = useCssModule();
 
 const baseClass = 'cdr-modal';
+/** Non-reactive: unsubscribe callback for the transition-end listener; replaced each open/close cycle */
 let unsubscribe: (() => void) | undefined;
+/** Non-reactive: DOM reference to the element focused before the modal opened; restored on close */
 let lastActive: Element | null;
-const modalClosed = ref(!props.opened);
-const isOpening = ref(false);
+const modalClosed = shallowRef(!props.opened);
+const isOpening = shallowRef(false);
 
-interface offsetValues {
-  x: number | undefined,
-  y: number | undefined,
+interface OffsetValues {
+  x: number | undefined;
+  y: number | undefined;
 }
-const offset = ref<offsetValues>({ x: undefined, y: undefined });
-const headerHeight = ref(0);
-const totalHeight = ref(0);
-const scrollHeight = ref(0);
-const offsetHeight = ref(0);
-const offsetWidth = ref(0);
-const clientWidth = ref(0);
-const fullscreen = ref(false);
+const offset = ref<OffsetValues>({ x: undefined, y: undefined });
+/** Grouped DOM measurement values used to compute scroll/overflow styles */
+const measurements = reactive({
+  headerHeight: 0,
+  totalHeight: 0,
+  scrollHeight: 0,
+  offsetHeight: 0,
+  offsetWidth: 0,
+  clientWidth: 0,
+  fullscreen: false,
+});
 
 const modalEl = ref<HTMLDivElement | Element | null>(null);
 const wrapperEl = ref<HTMLDivElement | null>(null);
 const contentEl = ref<HTMLDivElement | null>(null);
 const headerEl = ref<HTMLDivElement | null>(null);
 
-const measureContent = () => {
-  nextTick(() => {
-    totalHeight.value = window.innerHeight;
-    fullscreen.value = window.innerWidth < +CdrBreakpointSm;
-    headerHeight.value = headerEl.value?.offsetHeight || 0;
-    scrollHeight.value = contentEl.value?.scrollHeight || 0;
-    offsetHeight.value = contentEl.value?.offsetHeight || 0;
-    offsetWidth.value = contentEl.value?.offsetWidth || 0;
-    clientWidth.value = contentEl.value?.clientWidth || 0;
-  });
+const measureContent = async () => {
+  await nextTick();
+  measurements.totalHeight = window.innerHeight;
+  measurements.fullscreen = window.innerWidth < +CdrBreakpointSm;
+  measurements.headerHeight = headerEl.value?.offsetHeight || 0;
+  measurements.scrollHeight = contentEl.value?.scrollHeight || 0;
+  measurements.offsetHeight = contentEl.value?.offsetHeight || 0;
+  measurements.offsetWidth = contentEl.value?.offsetWidth || 0;
+  measurements.clientWidth = contentEl.value?.clientWidth || 0;
 };
 
 const onClick = (e?: Event) => {
@@ -144,7 +103,8 @@ const handleKeyDown = ({ key }: { key: string }) => {
     case 'Esc':
       onClick();
       break;
-    default: break;
+    default:
+      break;
   }
 };
 
@@ -167,14 +127,8 @@ const handleResize = debounce(() => {
 const addNoScroll = () => {
   const { documentElement, body } = document;
   offset.value = {
-    x: window.scrollX
-      || (documentElement || {}).scrollLeft
-      || (body || {}).scrollLeft
-      || 0,
-    y: window.scrollY
-      || (documentElement || {}).scrollTop
-      || (body || {}).scrollTop
-      || 0,
+    x: window.scrollX || (documentElement || {}).scrollLeft || (body || {}).scrollLeft || 0,
+    y: window.scrollY || (documentElement || {}).scrollTop || (body || {}).scrollTop || 0,
   };
 
   if (documentElement) {
@@ -221,26 +175,22 @@ let backgroundNodesDiscovered = false;
  */
 const findBackgroundContentNodes = () => {
   // initial selector is complex, breaking it down
-  const notSelectors = [
-    'body > *',
-    ':not(script)',
-    ':not(style)',
-    ':not([aria-hidden=true])',
-  ]
-  const contentBodyChildren: NodeListOf<HTMLElement> =
-    document.querySelectorAll(notSelectors.join(''));
+  const notSelectors = ['body > *', ':not(script)', ':not(style)', ':not([aria-hidden=true])'];
+  const contentBodyChildren: NodeListOf<HTMLElement> = document.querySelectorAll(
+    notSelectors.join(''),
+  );
 
   contentBodyChildren.forEach((el) => {
     // if it's not this modal, or display: none
-    const shouldAddEl = el !== wrapperEl.value
-      && getComputedStyle(el).getPropertyValue('display') !== 'none';
+    const shouldAddEl =
+      el !== wrapperEl.value && getComputedStyle(el).getPropertyValue('display') !== 'none';
     if (shouldAddEl) {
       // save it to the list of nodes to show/hide
       backgroundContentNodes.push(el);
     }
   });
   backgroundNodesDiscovered = true;
-}
+};
 
 /**
  * Find the nodes to show/hide on first open,
@@ -300,8 +250,8 @@ const handleClosed = () => {
     () => {
       if (isOpening.value) return;
       if (unsubscribe) unsubscribe();
+      unsubscribe = undefined;
       removeNoScroll();
-      // unsubscribe = null;
       modalClosed.value = true;
 
       // handle scroll-behavior: smooth
@@ -320,8 +270,8 @@ const handleClosed = () => {
 
 const dialogAttrs = computed(() => ({
   ...attrs,
-  'aria-describedby': props.ariaDescribedby,
-  id: props.id,
+  'aria-describedby': props.ariaDescribedby || undefined,
+  id: props.id || undefined,
 }));
 
 const verticalSpace = computed(() => {
@@ -329,22 +279,21 @@ const verticalSpace = computed(() => {
   const fullscreenSpace = Number(CdrSpaceTwoX);
   const windowedSpace = Number(CdrSpaceTwoX) + Number(CdrSpaceOneX);
 
-  return fullscreen.value
-    ? fullscreenSpace
-    : windowedSpace + fullscreenSpace;
+  return measurements.fullscreen ? fullscreenSpace : windowedSpace + fullscreenSpace;
   // fullscreen, here, would account for outerWrap padding, which is the same CdrSpaceTwoX
 });
 
-const scrollMaxHeight = computed(() => totalHeight.value
-  - headerHeight.value
-  - verticalSpace.value);
+const scrollMaxHeight = computed(
+  () => measurements.totalHeight - measurements.headerHeight - verticalSpace.value,
+);
 
 const scrollPadding = computed(() => {
-  const isScrolling = scrollHeight.value > offsetHeight.value;
-  const hasScrollbar = offsetWidth.value - clientWidth.value > 0;
+  const isScrolling = measurements.scrollHeight > measurements.offsetHeight;
+  const hasScrollbar = measurements.offsetWidth - measurements.clientWidth > 0;
   if (isScrolling && hasScrollbar) {
     return 4;
-  } if (isScrolling) {
+  }
+  if (isScrolling) {
     return 12;
   }
   return 0;
@@ -355,11 +304,17 @@ const textContentStyle = computed(() => ({
   paddingRight: `${scrollPadding.value}px`,
 }));
 
-watch(() => props.opened, (newValue, oldValue) => {
-  if (!!newValue === !!oldValue) return;
-  // eslint-disable-next-line no-unused-expressions
-  newValue ? handleOpened() : handleClosed();
-});
+watch(
+  () => props.opened,
+  (newValue, oldValue) => {
+    if (!!newValue === !!oldValue) return;
+    if (newValue) {
+      handleOpened();
+    } else {
+      handleClosed();
+    }
+  },
+);
 
 onMounted(() => {
   if (props.opened) {
@@ -389,7 +344,7 @@ onUnmounted(() => {
            content outside the modal is not properly obscured when opened using certain readers.
            Once more browsers catch up to the spec, this hack can probably be removed.
            https://a11ysupport.io/tests/apg__modal-dialog-example -->
-        <div :tabIndex="opened ? '0' : undefined" />
+        <div :tabIndex="opened ? 0 : undefined" />
         <div
           ref="modalEl"
           :class="mapClasses(style, 'cdr-modal__contentWrap', 'cdr-modal__dialog')"
@@ -448,14 +403,12 @@ onUnmounted(() => {
                 </div>
               </section>
             </div>
-
           </slot>
         </div>
-        <div :tabIndex="opened ? '0' : undefined" />
+        <div :tabIndex="opened ? 0 : undefined" />
       </div>
     </div>
   </Teleport>
 </template>
 
-<style lang="scss" module src="./styles/CdrModal.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrModal.module.scss" />

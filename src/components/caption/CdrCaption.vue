@@ -27,7 +27,6 @@ const style = useCssModule();
 const baseClass = 'cdr-caption';
 const summaryClass = 'cdr-caption__summary';
 const citeClass = 'cdr-caption__cite';
-
 </script>
 
 <template>
@@ -47,5 +46,4 @@ const citeClass = 'cdr-caption__cite';
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrCaption.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrCaption.module.scss"></style>

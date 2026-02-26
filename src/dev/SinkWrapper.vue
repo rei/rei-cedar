@@ -45,7 +45,7 @@ export default {
       immediate: true,
       handler(newValue) {
         this.palette = newValue || 'default';
-      }
+      },
     },
     palette() {
       this.$router.replace({

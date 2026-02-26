@@ -1,6 +1,9 @@
 <template>
   <div>
-    <cdr-button @click="modalOpened = true" aria-haspopup="dialog">
+    <cdr-button
+      @click="modalOpened = true"
+      aria-haspopup="dialog"
+    >
       Open long Modal
     </cdr-button>
     <cdr-modal
@@ -13,7 +16,7 @@
           tag="h3"
           class="cdr-text-dev--heading-serif-600"
         >
-        I am a modal with a really really really loooooooong title
+          I am a modal with a really really really loooooooong title
         </cdr-text>
       </template>
       <cdr-text>So loooooong</cdr-text>

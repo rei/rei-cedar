@@ -7,28 +7,20 @@ function camelToSnakeCase(str: string) {
 export function getSurfaceProps(props: surface) {
   const attrs: Record<string, any> = { 'data-palette': props.palette || undefined };
 
-  const states = [
-    'rest',
-    'hover',
-    'active',
-    'checked',
-    'loading',
-    'disabled',
-    'visited'
-  ];
+  const states = ['rest', 'hover', 'active', 'checked', 'loading', 'disabled', 'visited'];
   const properties = [
     'background',
     'borderColor',
     'borderStyle',
     'borderWidth',
     'borderRadius',
-    'boxShadow'
+    'boxShadow',
   ];
 
   properties.forEach((prop) => {
     const propName = camelToSnakeCase(prop);
     const propValue = props[prop as keyof surface];
-  
+
     if (typeof propValue === 'string') {
       // Handle single string value (default state)
       attrs[`data-${propName}`] = propValue;

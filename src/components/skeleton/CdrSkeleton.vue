@@ -9,11 +9,11 @@ defineOptions({
 
 const props = defineProps({
   /**
-     * Toggle animation on/off.
-     * When `true`, animated gradient will be used while loading.
-     * When `false` a static background color will be used.
-     * Automatically disabled if `prefers-reduced-motion` is set by user.
-  */
+   * Toggle animation on/off.
+   * When `true`, animated gradient will be used while loading.
+   * When `false` a static background color will be used.
+   * Automatically disabled if `prefers-reduced-motion` is set by user.
+   */
   motion: { type: Boolean, default: true },
 });
 
@@ -22,7 +22,6 @@ const style = useCssModule();
 
 const motionSetting = toRef(props, 'motion');
 provide(motionKey, motionSetting);
-
 </script>
 
 <template>
@@ -36,5 +35,4 @@ provide(motionKey, motionSetting);
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrSkeleton.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrSkeleton.module.scss"></style>

@@ -6,8 +6,8 @@ describe('CdrSplitSurface', () => {
     const wrapper = shallowMount(CdrSplitSurface, {
       slots: {
         top: 'Top slot',
-        bottom: 'Bottom slot'
-      }
+        bottom: 'Bottom slot',
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });
@@ -15,12 +15,12 @@ describe('CdrSplitSurface', () => {
     const wrapper = shallowMount(CdrSplitSurface, {
       slots: {
         top: 'Top slot',
-        bottom: 'Bottom slot'
-      }
+        bottom: 'Bottom slot',
+      },
     });
     wrapper.setProps({
-      surface: 'top'
-    })
+      surface: 'top',
+    });
     expect(wrapper.element).toMatchSnapshot();
   });
 });

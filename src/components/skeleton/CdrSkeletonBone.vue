@@ -13,20 +13,12 @@ const props = defineProps({
    * Sets the type of content placeholder
    * @demoSelectMultiple false
    * @values default, heading, line, rectangle, square
-  */
+   */
   type: {
     type: String,
     default: 'default',
-    validator: (value: string) => propValidator(
-      value,
-      [
-        'default',
-        'heading',
-        'line',
-        'rectangle',
-        'square',
-      ],
-    ),
+    validator: (value: string) =>
+      propValidator(value, ['default', 'heading', 'line', 'rectangle', 'square']),
   },
 });
 
@@ -36,12 +28,10 @@ const typeClass = computed(() => `${baseClass}--${props.type}`);
 
 const motionToggle = inject(motionKey, ref(true));
 const motionClass = computed(() => (motionToggle.value ? `${baseClass}__shimmer` : ''));
-
 </script>
 
 <template>
   <div :class="mapClasses(style, baseClass, typeClass, motionClass)" />
 </template>
 
-<style lang="scss" module src="./styles/CdrSkeletonBone.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrSkeletonBone.module.scss"></style>

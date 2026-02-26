@@ -68,8 +68,8 @@ describe('CdrSurface', () => {
         borderWidth: 'one-x',
         borderStyle: 'solid',
         borderRadius: 'soft',
-        boxShadow: 'raised'
-      }
+        boxShadow: 'raised',
+      },
     });
     expect(wrapper.attributes('data-background')).toBe('secondary');
     expect(wrapper.attributes('data-border-color')).toBe('primary');
@@ -85,28 +85,28 @@ describe('CdrSurface', () => {
       props: {
         background: {
           rest: 'primary',
-          hover: 'secondary'
-        }
-      }
+          hover: 'secondary',
+        },
+      },
     });
     expect(wrapper.attributes('data-background')).toBe('primary');
     expect(wrapper.element).toMatchSnapshot();
   });
 
   it('applies loading state', () => {
-    const wrapper = mount(CdrSurface, { 
-      attrs: { 'data-loading': 'true' }
+    const wrapper = mount(CdrSurface, {
+      attrs: { 'data-loading': 'true' },
     });
     expect(wrapper.attributes('data-loading')).toBe('true');
     expect(wrapper.element).toMatchSnapshot();
   });
 
   it('applies palette property', () => {
-    const wrapper = mount(CdrSurface, { 
-      props: { 
+    const wrapper = mount(CdrSurface, {
+      props: {
         palette: 'membership-subtle',
-        background: 'primary'
-      } 
+        background: 'primary',
+      },
     });
     expect(wrapper.attributes('data-palette')).toBe('membership-subtle');
     expect(wrapper.attributes('data-background')).toBe('primary');

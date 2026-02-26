@@ -4,7 +4,7 @@ import propValidator from '../../utils/propValidator';
 
 /** Groups related content items together either vertically or horizontally */
 defineOptions({
-  name: 'CdrList'
+  name: 'CdrList',
 });
 
 const props = defineProps({
@@ -12,7 +12,7 @@ const props = defineProps({
    * Sets list type and HTML element as "unordered" or "ordered"
    * @values ul, ol
    */
-    tag: {
+  tag: {
     type: String,
     default: 'ul',
     validator: (value: string) => propValidator(value, ['ul', 'ol']),
@@ -25,25 +25,21 @@ const props = defineProps({
   modifier: {
     type: String,
     default: undefined,
-    validator: (value: string) => propValidator(
-      value,
-      ['ordered', 'unordered', 'compact', 'inline']
-    ),
+    validator: (value: string) =>
+      propValidator(value, ['ordered', 'unordered', 'compact', 'inline']),
   },
 });
 
 const style = useCssModule();
 
 const baseClass = 'cdr-list';
-const modifierClasses = computed(() => props.modifier
-  ? props.modifier.split(' ').map((mod) => style[`${baseClass}--${mod}`])
-  : ''
-)
+const modifierClasses = computed(() =>
+  props.modifier ? props.modifier.split(' ').map((mod) => style[`${baseClass}--${mod}`]) : '',
+);
 // const modifierClasses = computed(() => {
 //   const modifiers = props.modifier.split(' ');
 //   return modifiers.map((mod) => style[`${baseClass}--${mod}`]);
 // });
-
 </script>
 
 <template>
@@ -56,5 +52,4 @@ const modifierClasses = computed(() => props.modifier
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrList.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrList.module.scss"></style>

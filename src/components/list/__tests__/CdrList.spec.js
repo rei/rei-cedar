@@ -6,12 +6,12 @@ describe('CdrList', () => {
     const wrapper = mount(CdrList);
     expect(wrapper.element).toMatchSnapshot();
   });
-  
+
   it('renders an ol', () => {
     const wrapper = mount(CdrList, {
       propsData: {
         tag: 'ol',
-      }
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });

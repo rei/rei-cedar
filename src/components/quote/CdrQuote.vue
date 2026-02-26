@@ -13,7 +13,7 @@ const props = defineProps({
    * Sets the semantic HTML element for the quote.
    * @values blockquote, aside, q, div
    */
-    tag: {
+  tag: {
     type: String,
     default: 'blockquote',
     validator: (value: string) => propValidator(value, ['blockquote', 'aside', 'q', 'div']),
@@ -33,12 +33,11 @@ const props = defineProps({
   citation: String,
 });
 
-const style = useCssModule()
+const style = useCssModule();
 const baseClass = 'cdr-quote';
 const summaryClass = 'cdr-quote__summary';
 const citationClass = 'cdr-quote__citation';
-const modifierClass = computed(() => props.modifier ? `${baseClass}--${props.modifier}` : '');
-
+const modifierClass = computed(() => (props.modifier ? `${baseClass}--${props.modifier}` : ''));
 </script>
 
 <template>
@@ -63,5 +62,4 @@ const modifierClass = computed(() => props.modifier ? `${baseClass}--${props.mod
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrQuote.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrQuote.module.scss"></style>

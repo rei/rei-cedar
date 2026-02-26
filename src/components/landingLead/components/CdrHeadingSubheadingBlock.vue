@@ -6,7 +6,7 @@ defineProps({
   headingTag: { type: String, default: 'h1' },
 });
 
-const baseClass = 'cdr-heading-subheading-block'
+const baseClass = 'cdr-heading-subheading-block';
 const style = useCssModule();
 </script>
 
@@ -26,7 +26,6 @@ const style = useCssModule();
       <slot name="subheading" />
     </CdrSubheadingSans>
   </header>
-
 </template>
 
 <style lang="scss" module src="../styles/CdrHeadingSubheadingBlock.module.scss" />

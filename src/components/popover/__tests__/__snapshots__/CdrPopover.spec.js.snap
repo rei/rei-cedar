@@ -4,7 +4,10 @@ exports[`CdrPopover > renders correctly 1`] = `
 <div
   class="cdr-popover--wrapper cdr-popover--position"
 >
-  <div>
+  <div
+    aria-controls="popover-test"
+    aria-haspopup="dialog"
+  >
     <!-- @slot  Slot for the element that triggers the popover.
         Element should be a button and must be the first and only child of this slot.
         Event handlers are bound to this element automatically.-->

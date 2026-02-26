@@ -145,7 +145,7 @@ exports[`CdrPagination > pagination component with 20 pages > renders correctly 
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--primary"
+              class="cdr-select cdr-select--undefined"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -392,7 +392,7 @@ exports[`CdrPagination > pagination component with 20 pages > with "forLabel" pr
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--primary"
+              class="cdr-select cdr-select--undefined"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -633,7 +633,7 @@ exports[`CdrPagination > pagination component with 20 pages > with button pagina
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--primary"
+              class="cdr-select cdr-select--undefined"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -822,7 +822,7 @@ exports[`CdrPagination > when at first page > renders correctly 1`] = `
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--primary"
+              class="cdr-select cdr-select--undefined"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -991,7 +991,7 @@ exports[`CdrPagination > when on the last page > renders correctly 1`] = `
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--primary"
+              class="cdr-select cdr-select--undefined"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -1173,7 +1173,7 @@ exports[`CdrPagination > when the active page is in the middle > renders correct
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--primary"
+              class="cdr-select cdr-select--undefined"
               id="pagination-select-test"
             >
               <!--v-if-->
@@ -1384,7 +1384,7 @@ exports[`CdrPagination > with 5 pages > renders correctly 1`] = `
           >
             <!--v-if-->
             <select
-              class="cdr-select cdr-select--primary"
+              class="cdr-select cdr-select--undefined"
               id="pagination-select-test"
             >
               <!--v-if-->

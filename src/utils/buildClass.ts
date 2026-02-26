@@ -1,4 +1,3 @@
-
 /**
  * Returns a modified base class
  */
@@ -24,28 +23,22 @@ const modifyClassName = (base: string, modifier: string) => `${base}--${modifier
  * This takes that and returns classes of "cdr-table--full-width@sm cdr-table--full-width@lg"
  */
 
-
-const responsiveModifyClass = (base: string, modifier: string, prop: string|boolean) => {
+const responsiveModifyClass = (base: string, modifier: string, prop: string | boolean) => {
   if (typeof prop === 'string') {
-    return prop.split(' ')
+    return prop
+      .split(' ')
       .map((bp) => modifyClassName(base, `${modifier}${bp}`))
       .join(' ');
   }
   return modifyClassName(base, modifier);
 };
 
-const buildBooleanClass = (baseClass: string, prop: string|boolean, name: string) => {
+const buildBooleanClass = (baseClass: string, prop: string | boolean, name: string) => {
   if (typeof prop === 'boolean') {
-    return prop
-      ? modifyClassName(baseClass, name)
-      : '';
+    return prop ? modifyClassName(baseClass, name) : '';
   }
 
   return responsiveModifyClass(baseClass, name, prop);
 };
 
-export {
-  modifyClassName,
-  responsiveModifyClass,
-  buildBooleanClass,
-};
+export { modifyClassName, responsiveModifyClass, buildBooleanClass };

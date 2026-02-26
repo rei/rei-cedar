@@ -2,9 +2,9 @@ import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrLabelStandalone from '../CdrLabelStandalone.vue';
 
 describe('CdrFormLabelStandalone', () => {
-  describe('component with label, forId, required and helper/info slots', ()=>{
+  describe('component with label, forId, required and helper/info slots', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'Label Test',
@@ -47,9 +47,9 @@ describe('CdrFormLabelStandalone', () => {
     });
   });
 
-  describe('component with hideLabel', ()=>{
+  describe('component with hideLabel', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'Label Test',
@@ -57,7 +57,7 @@ describe('CdrFormLabelStandalone', () => {
           hideLabel: true,
         },
         slots: {
-          'helper': 'very helpful',
+          helper: 'very helpful',
         },
       });
     });
@@ -74,9 +74,9 @@ describe('CdrFormLabelStandalone', () => {
       expect(wrapper.find('br').exists()).toBe(false);
     });
   });
-  describe('component with both required and optional labels', ()=>{
+  describe('component with both required and optional labels', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'test',
@@ -96,9 +96,9 @@ describe('CdrFormLabelStandalone', () => {
     });
   });
 
-  describe('component with optional label', ()=>{
+  describe('component with optional label', () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
         propsData: {
           label: 'test',

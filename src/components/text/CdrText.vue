@@ -24,5 +24,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrText.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrText.module.scss"></style>

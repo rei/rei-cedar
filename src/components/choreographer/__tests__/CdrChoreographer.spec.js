@@ -6,5 +6,4 @@ describe('CdrChoreographer', () => {
     const wrapper = shallowMount(CdrChoreographer);
     expect(wrapper.element).toMatchSnapshot();
   });
-
 });

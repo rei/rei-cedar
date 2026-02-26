@@ -3,9 +3,9 @@ import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
-import dts from 'vite-plugin-dts'
+import dts from 'vite-plugin-dts';
 import options from './rollupOptions.mjs';
-import cssNameNormalizer  from './vite-plugin-css-name-normalizer';
+import cssNameNormalizer from './vite-plugin-css-name-normalizer';
 
 const version = process.env.npm_package_version;
 
@@ -32,9 +32,9 @@ export default defineConfig({
       scss: {
         charset: false,
         quietDeps: true,
-        api: 'modern'
-      }
-    }
+        api: 'modern',
+      },
+    },
   },
   resolve: {
     alias: {
@@ -51,13 +51,9 @@ export default defineConfig({
     environment: 'jsdom',
     css: {
       modules: {
-        classNameStrategy: 'non-scoped'
+        classNameStrategy: 'non-scoped',
       },
     },
   },
-  plugins: [
-    vue(),
-    cssNameNormalizer(),
-    dts({ rollupTypes: true }),
-  ],
+  plugins: [vue(), cssNameNormalizer(), dts({ rollupTypes: true })],
 });

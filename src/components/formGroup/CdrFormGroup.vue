@@ -42,9 +42,8 @@ const props = defineProps({
 const uniqueId = props.id ? props.id : uid();
 const style = useCssModule();
 const baseClass = 'cdr-form-group';
-const errorClass = computed(() => props.error ? 'cdr-form-group--error' : '');
-const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled' : '');
-
+const errorClass = computed(() => (props.error ? 'cdr-form-group--error' : ''));
+const disabledClass = computed(() => (props.disabled ? 'cdr-form-group--disabled' : ''));
 </script>
 
 <template>
@@ -63,11 +62,15 @@ const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled'
       <span
         v-if="required"
         aria-label="required"
-      > *</span>
+      >
+        *
+      </span>
       <span
         v-if="optional && !required"
         :class="style['cdr-form-group__optional']"
-      > (optional)</span>
+      >
+        (optional)
+      </span>
     </legend>
     <div :class="mapClasses(style, 'cdr-form-group__wrapper', errorClass)">
       <!-- @slot CdrFormGroup content (form elements) -->
@@ -87,5 +90,4 @@ const disabledClass = computed(() => props.disabled ? 'cdr-form-group--disabled'
   </fieldset>
 </template>
 
-<style lang="scss" module src="./styles/CdrFormGroup.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrFormGroup.module.scss"></style>

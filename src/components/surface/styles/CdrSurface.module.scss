@@ -116,7 +116,8 @@ $css-vars: (
   box-shadow: var(--cdr-surface-box-shadow);
 
   &::before {
-    border: var(--cdr-surface-border-width) var(--cdr-surface-border-style) var(--cdr-surface-border-color);
+    border: var(--cdr-surface-border-width) var(--cdr-surface-border-style)
+      var(--cdr-surface-border-color);
     border-radius: inherit;
     content: '';
     inset: 0;

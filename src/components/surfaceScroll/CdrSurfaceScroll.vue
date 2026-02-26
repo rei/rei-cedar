@@ -22,7 +22,7 @@ const viewportRef = ref<typeof ScrollAreaViewport | null>(null);
 defineExpose({ viewportRef });
 </script>
 
-<template> 
+<template>
   <ScrollAreaRoot
     v-bind="props.rootProps"
     :class="style['cdr-surface-scroll__root']"
@@ -35,7 +35,7 @@ defineExpose({ viewportRef });
     >
       <slot />
     </ScrollAreaViewport>
-    
+
     <ScrollAreaScrollbar
       v-bind="props.scrollbarProps"
       :class="style['cdr-surface-scroll__bar']"

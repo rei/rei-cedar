@@ -1,15 +1,14 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
 import CdrBody from '../CdrBody.vue';
 
-
 describe('CdrBody', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrBody, {
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
@@ -23,8 +22,8 @@ describe('CdrBody', () => {
       wrapper = mount(CdrBody, {
         props: { scale: '1' },
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
@@ -38,13 +37,12 @@ describe('CdrBody', () => {
       wrapper = mount(CdrBody, {
         props: { strong: true },
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
   });
-
 });

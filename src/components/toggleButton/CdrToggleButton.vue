@@ -11,7 +11,7 @@ const props = defineProps({
   /**
    * Sets the value and aria-label for the toggle button. Display can be overridden using default slot
    */
-    toggleValue: {
+  toggleValue: {
     type: String,
     required: true,
   },
@@ -20,7 +20,6 @@ const props = defineProps({
 const style = useCssModule();
 const selectedToggle = inject(selectedToggleKey, ref(''));
 const isActive = computed(() => props.toggleValue === selectedToggle.value);
-
 </script>
 
 <template>
@@ -38,10 +37,8 @@ const isActive = computed(() => props.toggleValue === selectedToggle.value);
     >
       <!-- @slot CdrToggleButton label content -->
       <slot>{{ toggleValue }}</slot>
-
     </button>
   </li>
 </template>
 
-<style lang="scss" module src="./styles/CdrToggleButton.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrToggleButton.module.scss"></style>

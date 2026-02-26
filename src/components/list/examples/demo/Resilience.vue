@@ -1,14 +1,9 @@
 <template>
   <div>
+    <h3>Resilience Tests</h3>
 
-    <h3>
-      Resilience Tests
-    </h3>
-
-    <h4>
-      List in small container
-    </h4>
-    <div style="width: 50px;">
+    <h4>List in small container</h4>
+    <div style="width: 50px">
       <cdr-list modifier="unordered">
         <li>foofofofofofofofofofofofofo</li>
         <li>
@@ -21,9 +16,7 @@
         <li>zoo</li>
       </cdr-list>
     </div>
-    <h4>
-      Typography validation - text wrapping lists
-    </h4>
+    <h4>Typography validation - text wrapping lists</h4>
 
     <cdr-text
       v-for="p1 in paragraphs"
@@ -32,7 +25,8 @@
     >
       <cdr-list>
         <li>List item text</li>
-        <li>Lorem ipsum dolor
+        <li>
+          Lorem ipsum dolor
           <cdr-text
             tag="span"
             :class="`cdr-text-dev--body-strong-${p1}`"
@@ -59,8 +53,9 @@
         :key="l1"
         :modifier="`${l1}`"
       >
-        <li>utility-sans {{ utility }} in list {{ l1 }} </li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
+        <li>utility-sans {{ utility }} in list {{ l1 }}</li>
+        <li>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodList ordered
           <cdr-list>
             <li>List item text</li>
             <li>List item text</li>
@@ -184,12 +179,9 @@ export default {
       paragraphs: ['300', '400', '500'],
       utilities: ['100', '200', '300', '400', '500', '600', '700', '800'],
       lists: ['bare', 'unordered', 'ordered'],
-
     };
   },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

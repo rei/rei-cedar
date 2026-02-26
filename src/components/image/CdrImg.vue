@@ -13,20 +13,19 @@ const props = withDefaults(defineProps<baseImageProps>(), {
 });
 
 /** Maps prop input to relevant CdrToken */
-const radiusTokens = 
-  new Map
-    <string | undefined, typeof CdrRadiusSoft | typeof CdrRadiusSofter | typeof CdrRadiusRound>
-      ([
-        ['soft', CdrRadiusSoft],
-        ['softer', CdrRadiusSofter],
-        ['round', CdrRadiusRound]
-      ]); 
+const radiusTokens = new Map<
+  string | undefined,
+  typeof CdrRadiusSoft | typeof CdrRadiusSofter | typeof CdrRadiusRound
+>([
+  ['soft', CdrRadiusSoft],
+  ['softer', CdrRadiusSofter],
+  ['round', CdrRadiusRound],
+]);
 
 /** Checks prop against radiusTokens map for token shorthand and returns if found.
- *  Otherwise passes value to CSS property */      
-const getRadius = computed(() => radiusTokens.get(props.radius)
-  ? `${radiusTokens.get(props.radius)}rem`
-  : props.radius
+ *  Otherwise passes value to CSS property */
+const getRadius = computed(() =>
+  radiusTokens.get(props.radius) ? `${radiusTokens.get(props.radius)}rem` : props.radius,
 );
 
 const imageProperties = computed(() => {
@@ -35,12 +34,11 @@ const imageProperties = computed(() => {
     '--cdr-img-object-position': props.position,
     '--cdr-img-object-fit': props.fit,
     '--cdr-img-border-radius': getRadius.value,
-  }
+  };
 });
 
 const baseClass = 'cdr-image';
 const style = useCssModule();
-
 </script>
 
 <template>
@@ -54,8 +52,7 @@ const style = useCssModule();
     :loading="loading"
     :decoding="decoding"
     :fetchpriority="fetchpriority"
-  >
+  />
 </template>
 
-<style lang="scss" module src="./styles/CdrImg.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrImg.module.scss"></style>

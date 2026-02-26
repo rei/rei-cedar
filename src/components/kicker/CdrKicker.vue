@@ -2,7 +2,7 @@
 import { useCssModule } from 'vue';
 import { baseTextProps } from '../../types/interfaces';
 
-/** 
+/**
  * Content building blocks with pre-defined, fluid styles
  * @preview true
  **/
@@ -27,5 +27,4 @@ const baseClass = 'cdr-kicker';
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrKicker.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrKicker.module.scss"></style>

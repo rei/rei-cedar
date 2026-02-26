@@ -3,13 +3,13 @@
 $media-object-component: 'media-object';
 
 @mixin cdr-media-object-media-mixin() {
-  &>*:first-child {
+  & > *:first-child {
     @content;
   }
 }
 
 @mixin cdr-media-object-content-mixin() {
-  &>*:last-child {
+  & > *:last-child {
     @content;
   }
 }
@@ -20,9 +20,9 @@ $media-object-component: 'media-object';
     grid-area: media;
     width: 100%;
 
-    &>img,
-    &>picture,
-    &>video {
+    & > img,
+    & > picture,
+    & > video {
       display: block;
     }
   }
@@ -56,7 +56,7 @@ $media-object-component: 'media-object';
     display: flex;
     position: relative;
 
-    &> :first-child {
+    & > :first-child {
       position: absolute;
       left: 0;
       right: 0;
@@ -72,7 +72,7 @@ $media-object-component: 'media-object';
     grid-template-areas: 'media';
     position: relative;
   }
-  
+
   @include cdr-media-object-cover-mixin($component);
 
   @include cdr-media-object-content-mixin {

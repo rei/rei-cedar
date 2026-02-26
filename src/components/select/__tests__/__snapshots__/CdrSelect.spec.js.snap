@@ -26,7 +26,7 @@ exports[`CdrSelect > default configuration with a name attribute > renders corre
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="renders"
         name="testing"
       >
@@ -95,7 +95,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a hide-l
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="renders"
         name="testing"
       >
@@ -164,7 +164,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a prompt
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="renders"
         name="testing"
       >
@@ -244,7 +244,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
       <!--v-if-->
       <select
         aria-required="true"
-        class="cdr-select cdr-select--primary"
+        class="cdr-select cdr-select--undefined"
         id="renders"
         name="testing"
       >
@@ -313,7 +313,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select--multiple cdr-select--primary"
+        class="cdr-select cdr-select--multiple cdr-select--undefined"
         id="renders"
         multiple=""
         name="testing"
@@ -386,7 +386,7 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
         aria-describedby="renders-error"
         aria-errormessage="renders-error"
         aria-invalid="true"
-        class="cdr-select cdr-select__prompt cdr-select--primary cdr-select--error"
+        class="cdr-select cdr-select__prompt cdr-select--undefined cdr-select--error"
         id="renders"
         name="testing"
       >
@@ -500,7 +500,7 @@ exports[`CdrSelect > using the error slot > renders correctly 1`] = `
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="test"
       >
         <!--v-if-->
@@ -569,7 +569,7 @@ exports[`CdrSelect > with "autofocus" set to true > renders correctly 1`] = `
       <!--v-if-->
       <select
         autofocus=""
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="renders"
       >
         <!--v-if-->
@@ -637,7 +637,7 @@ exports[`CdrSelect > with "disabled" set to true > renders correctly 1`] = `
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         disabled=""
         id="renders"
       >
@@ -717,7 +717,7 @@ exports[`CdrSelect > with aria-describedby and id provided > renders correctly 1
       <!--v-if-->
       <select
         aria-describedby="aria-test-helper-text-top foo"
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="aria-test"
       >
         <!--v-if-->
@@ -796,7 +796,7 @@ exports[`CdrSelect > with helper text slot > renders correctly 1`] = `
       <!--v-if-->
       <select
         aria-describedby="aria-test-helper-text-top"
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="aria-test"
       >
         <!--v-if-->
@@ -864,7 +864,7 @@ exports[`CdrSelect > with info action slot > renders correctly 1`] = `
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="info-action"
       >
         <!--v-if-->
@@ -941,7 +941,7 @@ exports[`CdrSelect > with info slot > renders correctly 1`] = `
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="info-action"
       >
         <!--v-if-->
@@ -1018,7 +1018,7 @@ exports[`CdrSelect > with no attr or helper slots > renders correctly 1`] = `
     >
       <!--v-if-->
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary"
+        class="cdr-select cdr-select__prompt cdr-select--undefined"
         id="aria-test"
       >
         <!--v-if-->
@@ -1093,7 +1093,7 @@ exports[`CdrSelect > with pre-icon slot > renders correctly 1`] = `
         
       </span>
       <select
-        class="cdr-select cdr-select__prompt cdr-select--primary cdr-select--preicon"
+        class="cdr-select cdr-select__prompt cdr-select--undefined cdr-select--preicon"
         id="test"
       >
         <!--v-if-->

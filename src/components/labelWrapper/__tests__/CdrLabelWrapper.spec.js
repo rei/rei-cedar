@@ -10,16 +10,15 @@ describe('CdrLabelWrapper', () => {
         contentClass: 'custom-content-class',
         name: 'testName',
         modifier: 'hide-figure',
-        size: 'medium'
+        size: 'medium',
       },
       attrs: {
         class: 'foo',
         'data-ui': 'wrapper',
-
       },
       slots: {
         default: 'Label Wrapper Test',
-        input: h('input', { type: 'checkbox' })
+        input: h('input', { type: 'checkbox' }),
       },
     });
     expect(wrapper.element).toMatchSnapshot();

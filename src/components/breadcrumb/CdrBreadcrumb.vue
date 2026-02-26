@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, watch, nextTick, type PropType
-} from 'vue';
+import { useCssModule, computed, ref, watch, nextTick, type PropType } from 'vue';
 import { breadcrumbItem } from '../../types/interfaces';
 import uid from '../../utils/uid';
 
@@ -11,51 +9,51 @@ defineOptions({
 });
 
 const props = defineProps({
-   /**
-     * Sets the array of a breadcrumb object containing a 'url' and 'name' property.
-     * @demoIgnore true
-     */
-     items: {
-      type: Array as PropType<breadcrumbItem[]>,
-      default: () => [],
-      validator: (value: breadcrumbItem[]) => {
-        if (value.length && value.length > 0) {
-          for (let i = 0; i < value.length; i += 1) {
-            if (!(typeof value[i].item === 'object')) {
-              console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
-              return false;
-            }
-            if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
-              console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
-              return false;
-            }
+  /**
+   * Sets the array of a breadcrumb object containing a 'url' and 'name' property.
+   * @demoIgnore true
+   */
+  items: {
+    type: Array as PropType<breadcrumbItem[]>,
+    default: () => [],
+    validator: (value: breadcrumbItem[]) => {
+      if (value.length && value.length > 0) {
+        for (let i = 0; i < value.length; i += 1) {
+          if (!(typeof value[i].item === 'object')) {
+            console.error('Breadcrumb items array missing item key at index ', i); // eslint-disable-line no-console
+            return false;
+          }
+          if (!Object.hasOwnProperty.call(value[i].item, 'name')) {
+            console.error('Breadcrumb items array is missing item.name value at index ', i); // eslint-disable-line no-console
+            return false;
           }
         }
-        return true;
-      },
+      }
+      return true;
     },
-    /**
-     * Controls the ability to truncate the entire breadcrumb path. If this value is false, truncation will no longer occur.
-     */
-    truncationEnabled: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * Define a custom ID for the `<nav>` element. Randomly generated if no ID provided.
-     * @demoIgnore true
-     */
-    id: {
-      type: String,
-    },
+  },
+  /**
+   * Controls the ability to truncate the entire breadcrumb path. If this value is false, truncation will no longer occur.
+   */
+  truncationEnabled: {
+    type: Boolean,
+    default: true,
+  },
+  /**
+   * Define a custom ID for the `<nav>` element. Randomly generated if no ID provided.
+   * @demoIgnore true
+   */
+  id: {
+    type: String,
+  },
 });
 defineEmits({
-      /**
-     * Emits when a breadcrumb item is clicked. `e.preventDefault()` may be used to override the default link navigation.
-     * @param breadcrumb The breadcrumb data object
-     */
+  /**
+   * Emits when a breadcrumb item is clicked. `e.preventDefault()` may be used to override the default link navigation.
+   * @param breadcrumb The breadcrumb data object
+   */
 
-     navigate: null,
+  navigate: null,
 });
 const style = useCssModule();
 const uniqueId = props.id ? props.id : uid();
@@ -63,7 +61,7 @@ const truncate = ref(props.truncationEnabled && props.items.length > 2);
 const itemListEl = ref<HTMLAnchorElement | null>(null);
 const firstAnchorEl = ref<HTMLAnchorElement | null | undefined>(null);
 const ellipsisLabel = computed(() => {
-  const s = (props.items.length - 2) > 1 ? 's' : '';
+  const s = props.items.length - 2 > 1 ? 's' : '';
   return `show ${props.items.length - 2} more navigation level${s}`;
 });
 
@@ -75,9 +73,12 @@ const handleEllipsisClick = () => {
   });
 };
 
-watch(() => props.items, () => {
-  truncate.value = props.truncationEnabled && props.items.length > 2;
-});
+watch(
+  () => props.items,
+  () => {
+    truncate.value = props.truncationEnabled && props.items.length > 2;
+  },
+);
 </script>
 
 <template>
@@ -121,7 +122,7 @@ watch(() => props.items, () => {
         v-for="(breadcrumb, index) in items"
         :class="style['cdr-breadcrumb__item']"
         :key="breadcrumb.item.id || breadcrumb.item.name.replace(/ /g, '-').toLowerCase()"
-        v-show="!truncate || (index >= items.length - 2)"
+        v-show="!truncate || index >= items.length - 2"
       >
         <slot
           name="link"
@@ -150,5 +151,4 @@ watch(() => props.items, () => {
   </nav>
 </template>
 
-<style lang="scss" module src="./styles/CdrBreadcrumb.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrBreadcrumb.module.scss"></style>

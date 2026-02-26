@@ -4,10 +4,10 @@
 @use '../../button/styles/CdrButton.module';
 @use '../../icon/styles/CdrIcon.module';
 
-.cdr-popover{
+.cdr-popover {
   &--position {
     position: relative;
-}
+  }
 
   &--wrapper {
     width: max-content;

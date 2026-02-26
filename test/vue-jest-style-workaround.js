@@ -1,8 +1,7 @@
 import { shallowMount, mount } from '@vue/test-utils';
 
-const styleHandler = {get: (target, prop) => prop }
+const styleHandler = { get: (target, prop) => prop };
 const styleProxy = new Proxy({}, styleHandler);
-
 
 const shallowMountWithStyle = (comp, options = {}) => {
   let opts = options;
@@ -12,10 +11,9 @@ const shallowMountWithStyle = (comp, options = {}) => {
   return shallowMount(comp, {
     ...opts,
   });
-}
+};
 
 const mountWithStyle = (comp, options = {}) => {
-
   let opts = options;
   opts.global = options.global || {};
   opts.global.mocks = options.global.mocks || {};
@@ -23,9 +21,6 @@ const mountWithStyle = (comp, options = {}) => {
   return mount(comp, {
     ...opts,
   });
-}
+};
 
-export {
-  shallowMountWithStyle as shallowMount,
-  mountWithStyle as mount,
-}
+export { shallowMountWithStyle as shallowMount, mountWithStyle as mount };

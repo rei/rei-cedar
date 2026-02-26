@@ -1,6 +1,9 @@
 <template>
   <div data-backstop="form-group-multi">
-    <cdr-form-group label="Party time." id="party-time">
+    <cdr-form-group
+      label="Party time."
+      id="party-time"
+    >
       <cdr-input
         v-model="inputModel"
         label="Is it?"
@@ -12,36 +15,34 @@
         prompt="Choose one"
         id="party-time-confirmation"
       >
-        <option value="yes">
-          yes
-        </option>
-        <option value="yeah">
-          yeah
-        </option>
-        <option value="YEP">
-          YEP
-        </option>
+        <option value="yes">yes</option>
+        <option value="yeah">yeah</option>
+        <option value="YEP">YEP</option>
       </cdr-select>
       <cdr-checkbox
         custom-value="PARTY"
         v-model="checkboxModel"
-      >PARTY</cdr-checkbox>
+      >
+        PARTY
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="TIME"
         v-model="checkboxModel"
-      >TIME</cdr-checkbox>
+      >
+        TIME
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="ALRIGHT!"
         v-model="checkboxModel"
-      >ALRIGHT!</cdr-checkbox>
+      >
+        ALRIGHT!
+      </cdr-checkbox>
     </cdr-form-group>
   </div>
 </template>
 
 <script>
-import {
-  CdrFormGroup, CdrCheckbox, CdrInput, CdrSelect,
-} from 'srcdir/lib';
+import { CdrFormGroup, CdrCheckbox, CdrInput, CdrSelect } from 'srcdir/lib';
 
 export default {
   name: 'ParagraphsDemo',
@@ -61,6 +62,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

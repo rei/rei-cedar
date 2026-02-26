@@ -6,7 +6,6 @@ defineOptions({
   name: 'CdrEyebrow',
 });
 
-
 withDefaults(defineProps<baseTextProps>(), {
   tag: 'span',
 });
@@ -24,5 +23,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrEyebrow.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrEyebrow.module.scss" lang="scss"></style>

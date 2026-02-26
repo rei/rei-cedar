@@ -6,7 +6,7 @@
   font-family: tokens.$cdr-font-family-sans;
   font-style: normal;
   font-weight: inherit;
-  letter-spacing: -.08px;
+  letter-spacing: -0.08px;
   font-size: 1.6rem;
   line-height: 2.2rem;
 }
@@ -15,7 +15,7 @@
   font-family: tokens.$cdr-font-family-sans;
   font-style: normal;
   font-weight: inherit;
-  letter-spacing: -.08px;
+  letter-spacing: -0.08px;
   font-size: 1.4rem;
   line-height: 1.8rem;
 }
@@ -35,8 +35,8 @@
 
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgba(0, 0, 0, .5);
-    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
   }
 
   &__header-container {
@@ -46,10 +46,17 @@
     padding: 0;
 
     //ITEM_DOC: Keyline color of the cdr-tabs header container
-    border-bottom: 1px solid var(--cdr-tabs-header-container-keyline-color, var(--cdr-color-border-tab-keyline-rest, #{tokens.$cdr-color-border-tab-keyline-rest}));
+    border-bottom: 1px solid
+      var(
+        --cdr-tabs-header-container-keyline-color,
+        var(--cdr-color-border-tab-keyline-rest, #{tokens.$cdr-color-border-tab-keyline-rest})
+      );
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    &::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
+    &::-webkit-scrollbar {
+      width: 0 !important;
+      height: 0 !important;
+    }
   }
 
   &__header {
@@ -77,7 +84,10 @@
     display: block;
 
     //ITEM_DOC: Text color in a tab
-    color: var(--cdr-tabs-tab-text-color, var(--cdr-color-text-tab-rest, #{tokens.$cdr-color-text-tab-rest}));
+    color: var(
+      --cdr-tabs-tab-text-color,
+      var(--cdr-color-text-tab-rest, #{tokens.$cdr-color-text-tab-rest})
+    );
     font-weight: 300;
     text-decoration: none;
     padding: tokens.$cdr-space-inset-half-x-stretch;
@@ -86,7 +96,10 @@
 
     &-active {
       //ITEM_DOC: Text color of an active tab
-      color: var(--cdr-tabs-tab-text-color-active, var(--cdr-color-text-tab-active, #{tokens.$cdr-color-text-tab-active}));
+      color: var(
+        --cdr-tabs-tab-text-color-active,
+        var(--cdr-color-text-tab-active, #{tokens.$cdr-color-text-tab-active})
+      );
       font-weight: 500;
     }
 
@@ -106,7 +119,10 @@
       text-decoration: none;
 
       //ITEM_DOC: Text color of a tab on active, focus, or hover
-      color: var(--cdr-tabs-tab-text-color-interaction, var(--cdr-color-text-tab-hover, #{tokens.$cdr-color-text-tab-hover}));
+      color: var(
+        --cdr-tabs-tab-text-color-interaction,
+        var(--cdr-color-text-tab-hover, #{tokens.$cdr-color-text-tab-hover})
+      );
     }
 
     &--disabled {
@@ -114,12 +130,18 @@
       background-color: transparent;
 
       //ITEM_DOC: Text color of a disabled tab
-      color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled}));
+      color: var(
+        --cdr-tabs-tab-text-color-disabled,
+        var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled})
+      );
 
       &:active,
       &:hover,
       &:focus {
-        color: var(--cdr-tabs-tab-text-color-disabled, var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled}));
+        color: var(
+          --cdr-tabs-tab-text-color-disabled,
+          var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled})
+        );
         cursor: not-allowed;
       }
     }
@@ -164,7 +186,10 @@
     border: none;
 
     //ITEM_DOC: Background color of the cdr-tabs keyline
-    background-color: var(--cdr-tabs-keyline-background-color, var(--cdr-color-border-tab-keyline-active, #{tokens.$cdr-color-border-tab-keyline-active}));
+    background-color: var(
+      --cdr-tabs-keyline-background-color,
+      var(--cdr-color-border-tab-keyline-active, #{tokens.$cdr-color-border-tab-keyline-active})
+    );
     transition: tokens.$cdr-duration-4-x tokens.$cdr-timing-function-ease-out;
   }
 
@@ -184,15 +209,14 @@
     opacity: 0;
   }
 
-
   /* Compact
     ========== */
-  &--compact, &--small {
+  &--compact,
+  &--small {
     .cdr-tabs__header-item-label {
       @include cdr-tabs-small-header-item-label;
 
       padding: tokens.$cdr-space-inset-three-quarter-x-squish;
-
     }
 
     .cdr-tabs__header-item {
@@ -219,7 +243,7 @@
       flex-grow: 1;
     }
   }
-  
+
   /* Centered
     ========== */
   &--centered {

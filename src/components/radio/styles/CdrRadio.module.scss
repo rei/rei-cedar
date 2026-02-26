@@ -59,7 +59,8 @@
   /* Active
   ========== */
   &:active {
-    .cdr-label-wrapper__figure, .cdr-radio__input:checked ~ .cdr-label-wrapper__figure {
+    .cdr-label-wrapper__figure,
+    .cdr-radio__input:checked ~ .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-radio-active-mixin;
     }
   }

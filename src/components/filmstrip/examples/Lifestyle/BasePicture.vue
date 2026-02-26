@@ -1,5 +1,9 @@
 <template>
-  <picture class="base-picture" data-ui="base-picture" :style="cssVars">
+  <picture
+    class="base-picture"
+    data-ui="base-picture"
+    :style="cssVars"
+  >
     <!-- XS (always high res) -->
     <source
       :media="`(max-width: 767px)${dprQuery}`"
@@ -83,11 +87,7 @@ const sizes = {
  * @param {boolean} [isLowDensity=false] - Whether to generate a low-density variant.
  * @returns {string} - The generated `srcset` attribute value.
  */
-const generateResizeSrcSet = (
-  sizes: number[],
-  src?: string,
-  isLowDensity = false,
-) =>
+const generateResizeSrcSet = (sizes: number[], src?: string, isLowDensity = false) =>
   sizes.reduce(
     (acc, size) =>
       `${acc}${src}?im=Resize,width=${size}${isLowDensity ? '&density=1x' : ''} ${size}w,`,
@@ -231,48 +231,30 @@ const imageMd = computed(() => getImage('md'));
 const imageLg = computed(() => getImage('lg'));
 
 const xsSrcSet = computed(() =>
-  props.useResizing
-    ? generateResizeSrcSet(sizes.xs, imageXs.value)
-    : imageXs.value,
+  props.useResizing ? generateResizeSrcSet(sizes.xs, imageXs.value) : imageXs.value,
 );
 const smSrcSet = computed(() =>
-  props.useResizing
-    ? generateResizeSrcSet(sizes.sm, imageSm.value)
-    : imageSm.value,
+  props.useResizing ? generateResizeSrcSet(sizes.sm, imageSm.value) : imageSm.value,
 );
 const mdSrcSet = computed(() =>
-  props.useResizing
-    ? generateResizeSrcSet(sizes.md, imageMd.value)
-    : imageMd.value,
+  props.useResizing ? generateResizeSrcSet(sizes.md, imageMd.value) : imageMd.value,
 );
 const lgSrcSet = computed(() =>
-  props.useResizing
-    ? generateResizeSrcSet(sizes.lg, imageLg.value)
-    : imageLg.value,
+  props.useResizing ? generateResizeSrcSet(sizes.lg, imageLg.value) : imageLg.value,
 );
 
 const lowDensitySmSrcSet = computed(() =>
-  props.useResizing
-    ? generateResizeSrcSet(sizes.sm, imageSm.value, true)
-    : imageSm.value,
+  props.useResizing ? generateResizeSrcSet(sizes.sm, imageSm.value, true) : imageSm.value,
 );
 const lowDensityMdSrcSet = computed(() =>
-  props.useResizing
-    ? generateResizeSrcSet(sizes.md, imageMd.value, true)
-    : imageMd.value,
+  props.useResizing ? generateResizeSrcSet(sizes.md, imageMd.value, true) : imageMd.value,
 );
 const lowDensityLgSrcSet = computed(() =>
-  props.useResizing
-    ? generateResizeSrcSet(sizes.lg, imageLg.value, true)
-    : imageLg.value,
+  props.useResizing ? generateResizeSrcSet(sizes.lg, imageLg.value, true) : imageLg.value,
 );
 
-const renderedSizeMobile = computed(
-  () => props.renderedSizes?.mobile || '100vw',
-);
-const renderedSizeDesktop = computed(
-  () => props.renderedSizes?.desktop || '100vw',
-);
+const renderedSizeMobile = computed(() => props.renderedSizes?.mobile || '100vw');
+const renderedSizeDesktop = computed(() => props.renderedSizes?.desktop || '100vw');
 const dprQuery = computed(() =>
   props.useResizing ? ' and (-webkit-min-device-pixel-ratio: 1.5)' : '',
 );

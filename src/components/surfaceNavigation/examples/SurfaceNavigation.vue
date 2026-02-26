@@ -19,7 +19,7 @@ export interface Example {
     alt: string;
     width: number;
     height: number;
-  }
+  };
   label: string;
   title: string;
   price: string;
@@ -40,29 +40,29 @@ const boxes: Example[] = [
       src: tileImage,
       alt: 'placeholder image',
       width: 150,
-      height: 150
+      height: 150,
     },
-    label: 'Arc\'teryx',
-    title: 'Beta SL Jacket - Men\'s',
+    label: "Arc'teryx",
+    title: "Beta SL Jacket - Men's",
     price: '$299.00',
     props: {
       background: {
         rest: 'primary',
-        hover: 'secondary'
+        hover: 'secondary',
       },
       borderColor: {
-        rest: 'primary'
+        rest: 'primary',
       },
       borderStyle: {
-        rest: 'solid'
+        rest: 'solid',
       },
       borderWidth: {
-        rest: 'sixteenth-x'
+        rest: 'sixteenth-x',
       },
       boxShadow: {
         rest: 'flat',
         hover: 'elevated',
-      }
+      },
     },
     ratingProps: {
       rating: 4.5,
@@ -73,8 +73,8 @@ const boxes: Example[] = [
     mediaObjectProps: {
       contentPadding: 'one-x',
       mediaPosition: 'top',
-    }
-  }
+    },
+  },
 ];
 </script>
 
@@ -82,18 +82,33 @@ const boxes: Example[] = [
   <div class="example">
     <h2>Surface Navigation</h2>
     <template
-      v-for="{ exampleName, label, title, image, props, ratingProps, price, mediaObjectProps } in boxes"
+      v-for="{
+        exampleName,
+        label,
+        title,
+        image,
+        props,
+        ratingProps,
+        price,
+        mediaObjectProps,
+      } in boxes"
       :key="label"
     >
       <hr class="example__hr" />
       <h3>
         {{ exampleName }}
       </h3>
-      <CdrSurfaceNavigation v-bind="props" class="card">
+      <CdrSurfaceNavigation
+        v-bind="props"
+        class="card"
+      >
         <CdrMediaObject v-bind="mediaObjectProps">
           <template #media>
             <div class="card__image-wrapper">
-              <CdrImg v-bind="image" class="card__image" />
+              <CdrImg
+                v-bind="image"
+                class="card__image"
+              />
             </div>
           </template>
           <template #content>

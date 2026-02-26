@@ -44,7 +44,7 @@ const getModifierClasses = (modifier: string) => {
       baseClass,
       ...getModifierClasses(props.modifier),
       props.inheritColor && style['cdr-link--inherit-color'],
-      ...(attrs.class ? [attrs.class] : [])
+      ...(attrs.class ? [attrs.class] : []),
     ]"
     :href="computedHref"
     :rel="computedRel"

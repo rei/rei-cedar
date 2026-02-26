@@ -16,7 +16,6 @@ defineProps({
 
 const style = useCssModule();
 const baseClass = 'cdr-card';
-
 </script>
 
 <template>
@@ -29,5 +28,4 @@ const baseClass = 'cdr-card';
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrCard.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrCard.module.scss"></style>

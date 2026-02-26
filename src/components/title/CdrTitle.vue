@@ -2,12 +2,12 @@
 import { useCssModule } from 'vue';
 import { baseTextProps } from '../../types/interfaces';
 
-/** 
+/**
  * Content building blocks with pre-defined, fluid styles
  * @preview true
  **/
 defineOptions({
-  name: 'CdrTitle'
+  name: 'CdrTitle',
 });
 
 withDefaults(defineProps<baseTextProps>(), {

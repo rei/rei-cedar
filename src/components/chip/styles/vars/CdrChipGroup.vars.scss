@@ -13,7 +13,7 @@
 }
 
 @mixin cdr-chip-group-content-mixin() {
-  & > button:not(:last-child)  {
+  & > button:not(:last-child) {
     margin-right: tokens.$cdr-space-half-x;
     margin-bottom: tokens.$cdr-space-half-x;
   }

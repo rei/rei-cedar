@@ -1,9 +1,9 @@
 <template>
   <div data-backstop="simple-card">
     <simple-card />
-    <hr>
+    <hr />
     <complex-card />
-    <hr>
+    <hr />
     <filmstrip-cards />
   </div>
 </template>

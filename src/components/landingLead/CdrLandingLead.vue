@@ -3,13 +3,13 @@ import { useCssModule } from 'vue';
 import { CdrImg, CdrSplitSurface } from '.././../lib';
 import CdrHeadingSubheadingBlock from './components/CdrHeadingSubheadingBlock.vue';
 
-/** 
+/**
  * Displays a full-width image and heading at the top of a page
  * @preview true
  * @uses CdrSplitSurface, CdrImg, CdrHeadingDisplay, CdrSubheadingSans
  **/
 defineOptions({
-  name: 'CdrLandingLead'
+  name: 'CdrLandingLead',
 });
 
 defineProps({
@@ -22,17 +22,17 @@ defineProps({
   /** Sets the landing lead's heading  */
   heading: { type: String, required: true },
   /** Sets the landing lead's subheading  */
-  subheading: { type: String, default: undefined }
+  subheading: { type: String, default: undefined },
 });
 
 const style = useCssModule();
-const baseClass = 'cdr-landing-lead'
+const baseClass = 'cdr-landing-lead';
 </script>
 
 <template>
   <CdrSplitSurface :class="style[baseClass]">
     <template #top>
-      <CdrImg 
+      <CdrImg
         :src="imgSrc"
         :srcset="imgSrcset"
         :alt="imgAlt"
@@ -50,5 +50,4 @@ const baseClass = 'cdr-landing-lead'
   </CdrSplitSurface>
 </template>
 
-<style lang="scss" module src="./styles/CdrLandingLead.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrLandingLead.module.scss"></style>

@@ -29,7 +29,7 @@
   &__main {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-areas: "icon-left message close-button";
+    grid-template-areas: 'icon-left message close-button';
     min-height: 3.2rem;
   }
 
@@ -46,7 +46,6 @@
       stroke-width: 0.4rem;
       paint-order: stroke fill;
       margin: tokens.$cdr-space-quarter-x;
-  
     }
   }
 
@@ -68,7 +67,10 @@
       width: 2.2rem;
 
       //ITEM_DOC: Fill color of the cdr-toast close button icon
-      fill: var(--cdr-toast-close-button-fill, var(--cdr-color-text-emphasis, #{tokens.$cdr-color-text-emphasis})) !important;
+      fill: var(
+        --cdr-toast-close-button-fill,
+        var(--cdr-color-text-emphasis, #{tokens.$cdr-color-text-emphasis})
+      ) !important;
     }
   }
 
@@ -77,15 +79,24 @@
       @include vars.cdr-toast-default-mixin;
 
       & .cdr-toast__icon-left {
-          //ITEM_DOC: Default background color of the cdr-toast icon-left
-          background-color: var(--cdr-toast-icon-left-background-color-default, var(--cdr-color-background-message-default-02, #{tokens.$cdr-color-background-message-default-02}));
+        //ITEM_DOC: Default background color of the cdr-toast icon-left
+        background-color: var(
+          --cdr-toast-icon-left-background-color-default,
+          var(
+            --cdr-color-background-message-default-02,
+            #{tokens.$cdr-color-background-message-default-02}
+          )
+        );
 
-          svg {
-            //ITEM_DOC: Default fill color of the cdr-toast icon-left
-            fill: var(--cdr-toast-icon-left-fill-default, var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default}));
-          }
+        svg {
+          //ITEM_DOC: Default fill color of the cdr-toast icon-left
+          fill: var(
+            --cdr-toast-icon-left-fill-default,
+            var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default})
+          );
         }
       }
+    }
 
     border-left-color: tokens.$cdr-color-border-message-default-01;
   }
@@ -96,17 +107,29 @@
 
       & .cdr-toast__icon-left {
         //ITEM_DOC: Info background color of the cdr-toast icon-left
-        background-color: var(--cdr-toast-icon-left-background-color-info, var(--cdr-color-background-message-info-02, #{tokens.$cdr-color-background-message-info-02}));
+        background-color: var(
+          --cdr-toast-icon-left-background-color-info,
+          var(
+            --cdr-color-background-message-info-02,
+            #{tokens.$cdr-color-background-message-info-02}
+          )
+        );
 
         svg {
           //ITEM_DOC: Info fill color of the cdr-toast icon-left
-          fill: var(--cdr-toast-icon-left-fill-info, var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info}));
+          fill: var(
+            --cdr-toast-icon-left-fill-info,
+            var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info})
+          );
         }
       }
     }
 
     //ITEM_DOC: Info border-left color of the cdr-toast
-    border-left-color: var(--cdr-toast-border-left-color-info, var(--cdr-color-border-message-info-01, #{tokens.$cdr-color-border-message-info-01}));
+    border-left-color: var(
+      --cdr-toast-border-left-color-info,
+      var(--cdr-color-border-message-info-01, #{tokens.$cdr-color-border-message-info-01})
+    );
   }
 
   &--warning {
@@ -115,17 +138,29 @@
 
       & .cdr-toast__icon-left {
         //ITEM_DOC: Warning background color of the cdr-toast icon-left
-        background-color: var(--cdr-toast-icon-left-background-color-warning, var(--cdr-color-background-message-warning-02, #{tokens.$cdr-color-background-message-warning-02}));
+        background-color: var(
+          --cdr-toast-icon-left-background-color-warning,
+          var(
+            --cdr-color-background-message-warning-02,
+            #{tokens.$cdr-color-background-message-warning-02}
+          )
+        );
 
         svg {
           //ITEM_DOC: Warning fill color of the cdr-toast icon-left
-          fill: var(--cdr-toast-icon-left-fill-warning, var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning}));
+          fill: var(
+            --cdr-toast-icon-left-fill-warning,
+            var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning})
+          );
         }
       }
     }
 
     //ITEM_DOC: Warning border-left color of the cdr-toast
-    border-left-color: var(--cdr-toast-border-left-color-warning, var(--cdr-color-border-message-warning-01, #{tokens.$cdr-color-border-message-warning-01}));
+    border-left-color: var(
+      --cdr-toast-border-left-color-warning,
+      var(--cdr-color-border-message-warning-01, #{tokens.$cdr-color-border-message-warning-01})
+    );
   }
 
   &--success {
@@ -134,17 +169,29 @@
 
       & .cdr-toast__icon-left {
         //ITEM_DOC: Success background color of the cdr-toast icon-left
-        background-color: var(--cdr-toast-icon-left-background-color-success, var(--cdr-color-background-message-success-02, #{tokens.$cdr-color-background-message-success-02}));
+        background-color: var(
+          --cdr-toast-icon-left-background-color-success,
+          var(
+            --cdr-color-background-message-success-02,
+            #{tokens.$cdr-color-background-message-success-02}
+          )
+        );
 
         svg {
           //ITEM_DOC: Success fill color of the cdr-toast icon-left
-          fill: var(--cdr-toast-icon-left-fill-success, var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success}));
+          fill: var(
+            --cdr-toast-icon-left-fill-success,
+            var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success})
+          );
         }
       }
     }
 
     //ITEM_DOC: Success border-left color of the cdr-toast
-    border-left-color: var(--cdr-toast-border-left-color-success, var(--cdr-color-border-message-success-01, #{tokens.$cdr-color-border-message-success-01}));
+    border-left-color: var(
+      --cdr-toast-border-left-color-success,
+      var(--cdr-color-border-message-success-01, #{tokens.$cdr-color-border-message-success-01})
+    );
   }
 
   &--error {
@@ -153,16 +200,28 @@
 
       & .cdr-toast__icon-left {
         //ITEM_DOC: Error background color of the cdr-toast icon-left
-        background-color: var(--cdr-toast-icon-left-background-color-error, var(--cdr-color-background-message-error-02, #{tokens.$cdr-color-background-message-error-02}));
+        background-color: var(
+          --cdr-toast-icon-left-background-color-error,
+          var(
+            --cdr-color-background-message-error-02,
+            #{tokens.$cdr-color-background-message-error-02}
+          )
+        );
 
         svg {
           //ITEM_DOC: Error fill color of the cdr-toast icon-left
-          fill: var(--cdr-toast-icon-left-fill-error, var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error}));
+          fill: var(
+            --cdr-toast-icon-left-fill-error,
+            var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error})
+          );
         }
       }
     }
 
     //ITEM_DOC: Error border-left color of the cdr-toast
-    border-left-color: var(--cdr-toast-border-left-color-error, var(--cdr-color-border-message-error-01, #{tokens.$cdr-color-border-message-error-01}));
+    border-left-color: var(
+      --cdr-toast-border-left-color-error,
+      var(--cdr-color-border-message-error-01, #{tokens.$cdr-color-border-message-error-01})
+    );
   }
 }

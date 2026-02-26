@@ -13,13 +13,11 @@ const props = defineProps({
    * Sets the banner style.
    * @demoSelectMultiple false
    * @values info, warning, success, error, default
- */
+   */
   type: {
     type: String,
-    validator: (value: string) => propValidator(
-      value,
-      ['info', 'warning', 'success', 'error', 'default'],
-    ),
+    validator: (value: string) =>
+      propValidator(value, ['info', 'warning', 'success', 'error', 'default']),
     default: 'default',
   },
 });
@@ -28,9 +26,9 @@ const slots = useSlots();
 const style = useCssModule();
 const baseClass = 'cdr-banner';
 const typeClass = computed(() => `${baseClass}--${props.type}`);
-const prominenceClass = computed(() => (slots['message-body']
-  ? `${baseClass}__wrapper--prominence`
-  : ''));
+const prominenceClass = computed(() =>
+  slots['message-body'] ? `${baseClass}__wrapper--prominence` : '',
+);
 const hasIconLeft = slots['icon-left'];
 const hasIconRight = slots['icon-right'];
 const hasMessageBody = slots['message-body'];
@@ -78,5 +76,4 @@ const hasInfoAction = slots['info-action'];
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrBanner.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrBanner.module.scss"></style>

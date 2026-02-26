@@ -26,7 +26,10 @@
     pointer-events: all;
     --button-half: #{tokens.$cdr-space-one-and-a-half-x};
     position: absolute;
-    top: var(--cdr-filmstrip-arrow-top, calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x));
+    top: var(
+      --cdr-filmstrip-arrow-top,
+      calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x)
+    );
     z-index: 1;
 
     &:active,

@@ -6,7 +6,7 @@ import CdrChip from '../CdrChip.vue';
 
 describe('CdrChipGroup', () => {
   let wrapper;
-  let chips
+  let chips;
   describe('default configuration', () => {
     beforeEach(() => {
       wrapper = mount(CdrChipGroup, {
@@ -15,15 +15,27 @@ describe('CdrChipGroup', () => {
         },
         slots: {
           default: [
-            h(CdrChip, { 'aria-checked': 'true', tabindex: 0, role: 'radio' }, { default: () => 'chip 1' }),
-            h(CdrChip, { 'aria-checked': 'false', tabindex: -1, role: 'radio' }, { default: () => 'chip 2' }),
-            h(CdrChip, { 'aria-checked': 'false', tabindex: -1, role: 'radio' }, { default: () => 'chip 3' }),
+            h(
+              CdrChip,
+              { 'aria-checked': 'true', tabindex: 0, role: 'radio' },
+              { default: () => 'chip 1' },
+            ),
+            h(
+              CdrChip,
+              { 'aria-checked': 'false', tabindex: -1, role: 'radio' },
+              { default: () => 'chip 2' },
+            ),
+            h(
+              CdrChip,
+              { 'aria-checked': 'false', tabindex: -1, role: 'radio' },
+              { default: () => 'chip 3' },
+            ),
           ],
         },
-        attachTo: document.body
-      })
-      chips = wrapper.findAll('.cdr-chip').map(domWrapper => domWrapper.element);
-    })
+        attachTo: document.body,
+      });
+      chips = wrapper.findAll('.cdr-chip').map((domWrapper) => domWrapper.element);
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -57,23 +69,35 @@ describe('CdrChipGroup', () => {
         await wrapper.vm.$nextTick();
         expect(chips[0]).toBe(document.activeElement);
       });
-    })
+    });
   });
 
   describe('when label is visible', () => {
     beforeEach(() => {
-      wrapper = mount(h(CdrChipGroup, {
-        label: 'test',
-        hideLabel: false,
-      },
-        {
-          default: () => [
-            h(CdrChip, { 'aria-checked': true, tabindex: 0, role: 'radio' }, { default: () => 'chip 1' }),
-            h(CdrChip, { 'aria-checked': false, tabindex: -1, role: 'radio' }, { default: () => 'chip 2' }),
-          ]
-        },
-      ));
-    })
+      wrapper = mount(
+        h(
+          CdrChipGroup,
+          {
+            label: 'test',
+            hideLabel: false,
+          },
+          {
+            default: () => [
+              h(
+                CdrChip,
+                { 'aria-checked': true, tabindex: 0, role: 'radio' },
+                { default: () => 'chip 1' },
+              ),
+              h(
+                CdrChip,
+                { 'aria-checked': false, tabindex: -1, role: 'radio' },
+                { default: () => 'chip 2' },
+              ),
+            ],
+          },
+        ),
+      );
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -82,19 +106,31 @@ describe('CdrChipGroup', () => {
 
   describe('with label slot', () => {
     beforeEach(() => {
-      wrapper = mount(h(CdrChipGroup, {
-        label: 'test',
-        hideLabel: false,
-      },
-        {
-          default: () => [
-            h(CdrChip, { 'aria-checked': true, tabindex: 0, role: 'radio' }, { default: () => 'chip 1' }),
-            h(CdrChip, { 'aria-checked': false, tabindex: -1, role: 'radio' }, { default: () => 'chip 2' }),
-          ],
-          label: () => 'hey im overriding here!!!',
-        },
-      ));
-    })
+      wrapper = mount(
+        h(
+          CdrChipGroup,
+          {
+            label: 'test',
+            hideLabel: false,
+          },
+          {
+            default: () => [
+              h(
+                CdrChip,
+                { 'aria-checked': true, tabindex: 0, role: 'radio' },
+                { default: () => 'chip 1' },
+              ),
+              h(
+                CdrChip,
+                { 'aria-checked': false, tabindex: -1, role: 'radio' },
+                { default: () => 'chip 2' },
+              ),
+            ],
+            label: () => 'hey im overriding here!!!',
+          },
+        ),
+      );
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -109,13 +145,20 @@ describe('CdrChipGroup', () => {
         },
         slots: {
           default: [
-            h(CdrChip, { 'aria-checked': 'false', tabindex: -1, role: 'radio' }, { default: () => 'chip 1' }),
-            h(CdrChip, { 'aria-checked': 'true', tabindex: 0, role: 'radio' }, { default: () => 'chip 2' }),
+            h(
+              CdrChip,
+              { 'aria-checked': 'false', tabindex: -1, role: 'radio' },
+              { default: () => 'chip 1' },
+            ),
+            h(
+              CdrChip,
+              { 'aria-checked': 'true', tabindex: 0, role: 'radio' },
+              { default: () => 'chip 2' },
+            ),
           ],
         },
-      },
-      );
-    })
+      });
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
