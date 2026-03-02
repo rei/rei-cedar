@@ -75,12 +75,10 @@
     "@playwright/test": "^1.57.0",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.1.0",
-    "@storybook/addon-a11y": "^8.6.15",
-    "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/addon-links": "^8.6.15",
-    "@storybook/blocks": "^8.6.14",
-    "@storybook/vue3": "^8.6.15",
-    "@storybook/vue3-vite": "^8.6.15",
+    "@storybook/addon-a11y": "^10.2.14",
+    "@storybook/addon-links": "^10.2.14",
+    "@storybook/vue3": "^10.2.14",
+    "@storybook/vue3-vite": "^10.2.14",
     "@types/fs-extra": "^11.0.4",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/test-utils": "^2.4.6",
@@ -110,7 +108,7 @@
     "postcss-scss": "^4.0.9",
     "sass": "^1.97.2",
     "sinon": "^21.0.1",
-    "storybook": "^8.6.15",
+    "storybook": "^10.2.14",
     "stylelint": "^16.26.1",
     "stylelint-config-recommended-scss": "^16.0.2",
     "stylelint-config-standard-scss": "^16.0.0",
@@ -129,6 +127,7 @@
   "engines": {
     "node": ">= 22.0.0"
   },
+  "packageManager": "pnpm@10.23.0",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
