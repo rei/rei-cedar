@@ -1,18 +1,18 @@
 import { parse } from 'vue-docgen-api';
 import fs from 'fs-extra';
-import glob from 'glob';
+import { sync as globSync } from 'glob';
 import _ from 'lodash-es';
 import path from 'path';
 import parseSCSS from './docgen-scss.mjs';
 
-const componentFiles = glob.sync('./src/components/**/*.vue', {
+const componentFiles = globSync('./src/components/**/*.vue', {
   ignore: [
     './src/components/**/examples/**/*',
     './src/components/**/components/*',
     './src/components/icon/comps/*.vue',
   ],
 });
-const iconFiles = glob.sync('./src/components/icon/comps/*.vue');
+const iconFiles = globSync('./src/components/icon/comps/*.vue');
 const componentObj = {};
 const iconComponentsObj = {};
 
@@ -73,7 +73,7 @@ for (const component in componentObj) {
   const scssFilePathPattern = path.join(componentDir, 'styles', '**', `${component}.*.scss`);
 
   // Use glob to find matching files
-  const matchingFiles = glob.sync(scssFilePathPattern);
+  const matchingFiles = globSync(scssFilePathPattern);
 
   // Iterate over the matching files
   for (const matchingFile of matchingFiles) {

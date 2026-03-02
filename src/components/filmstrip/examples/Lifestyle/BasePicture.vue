@@ -211,7 +211,7 @@ const cssVars = computed(() => ({
 
 const loading = computed(() => (props.lazyLoad ? 'lazy' : undefined));
 const computedFetchPriority = computed(() =>
-  props.fetchPriority?.length ? props.fetchPriority : null,
+  props.fetchPriority?.length ? (props.fetchPriority as 'auto' | 'high' | 'low') : undefined,
 );
 
 /**

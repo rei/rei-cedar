@@ -9,6 +9,13 @@ import CdrStar25 from './components/CdrStar25.vue';
 import CdrStar00 from './components/CdrStar00.vue';
 import CdrStarNull from './components/CdrStarNull.vue';
 
+// Lookup map for dynamic star components resolved by remainder value
+const starComponentMap: Record<string, object> = {
+  '75': CdrStar75,
+  '50': CdrStar50,
+  '25': CdrStar25,
+};
+
 /** Provides insight into user opinions for products, experiences, and more */
 defineOptions({
   name: 'CdrRating',
@@ -86,14 +93,14 @@ const srText = computed(() => {
       />
       <component
         v-if="remainder !== '00'"
-        :is="`CdrStar${remainder}`"
+        :is="starComponentMap[remainder]"
         :size="size"
         aria-hidden="true"
       />
 
       <component
         v-for="empty in Array(empties).keys()"
-        :is="hasReviews ? 'CdrStar00' : 'CdrStarNull'"
+        :is="hasReviews ? CdrStar00 : CdrStarNull"
         :size="size"
         :key="`rating-empty-${empty}`"
         aria-hidden="true"
