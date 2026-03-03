@@ -4,7 +4,7 @@ import { selectedTabKey } from '../../../types/symbols';
 
 function mountTabPanel(selectedTabName) {
   return mount(CdrTabPanel, {
-    propsData: { name: 'test' },
+    props: { name: 'test' },
     global: {
       provide: {
         [selectedTabKey]: {

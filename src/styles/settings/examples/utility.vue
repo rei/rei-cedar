@@ -367,7 +367,9 @@ export default {
   -webkit-transition: -webkit-clip-path 0.25s ease-in-out;
   transition: -webkit-clip-path 0.25s ease-in-out;
   transition: clip-path 0.25s ease-in-out;
-  transition: clip-path 0.25s ease-in-out, -webkit-clip-path 0.25s ease-in-out;
+  transition:
+    clip-path 0.25s ease-in-out,
+    -webkit-clip-path 0.25s ease-in-out;
 }
 
 // Apply the mixins as classes

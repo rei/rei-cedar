@@ -63,7 +63,7 @@ onMounted(() => {
     (chip) => !(chip.getAttribute('disabled') === '' || chip.getAttribute('aria-disabled')),
   );
   currentIdx.value = Array.prototype.findIndex.call(
-    chips,
+    chips.value,
     (chip) => chip.getAttribute('aria-checked') === 'true',
   );
 });

@@ -37,7 +37,6 @@ watch(isActive, (state) => {
   <section
     v-show="isActive"
     tabindex="0"
-    :aria-hidden="!isActive"
     role="tabpanel"
     :class="style['cdr-tab-panel']"
     :id="panelId"

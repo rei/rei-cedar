@@ -255,8 +255,8 @@ const columnExamples = [
                   flags && (flags.includes('image-cover') || flags.includes('image-1/1'))
                     ? 'cover'
                     : flags && flags.includes('image-center')
-                    ? 'none'
-                    : undefined
+                      ? 'none'
+                      : undefined
                 "
                 :position="
                   flags && (flags.includes('image-cover') || flags.includes('image-center'))
@@ -307,8 +307,8 @@ const columnExamples = [
                     flags && (flags.includes('image-cover') || flags.includes('image-1/1'))
                       ? 'cover'
                       : flags && flags.includes('image-center')
-                      ? 'none'
-                      : undefined
+                        ? 'none'
+                        : undefined
                   "
                   :position="
                     flags && (flags.includes('image-cover') || flags.includes('image-center'))

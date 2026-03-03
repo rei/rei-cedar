@@ -77,7 +77,7 @@ console.log(routes);
         </router-link>
       </li>
     </ul>
-    <hr>
+    <hr />
     <h1
       id="content"
       ref="focusTarget"

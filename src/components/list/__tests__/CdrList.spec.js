@@ -9,7 +9,7 @@ describe('CdrList', () => {
 
   it('renders an ol', () => {
     const wrapper = mount(CdrList, {
-      propsData: {
+      props: {
         tag: 'ol',
       },
     });

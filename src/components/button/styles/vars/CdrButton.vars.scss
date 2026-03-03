@@ -34,7 +34,8 @@
   text-decoration: none;
   text-transform: none;
   vertical-align: middle;
-  transition: box-shadow tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease,
+  transition:
+    box-shadow tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease,
     background-color tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease,
     color tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease,
     fill tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease;
@@ -110,7 +111,8 @@
     );
 
     // ITEM_DOC: Primary button's box shadow when hovered or focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-primary-box-shadow-color-interaction,
           var(
@@ -144,7 +146,8 @@
     );
 
     // ITEM_DOC: Primary button's box shadow when active. //ITEM_DOC: Primary button's inset box shadow when active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-primary-box-shadow-color-active,
           var(
@@ -258,7 +261,8 @@
     );
 
     // ITEM_DOC: Secondary button's box shadow when hovered or focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-secondary-box-shadow-color-interaction,
           var(
@@ -298,7 +302,8 @@
     );
 
     // ITEM_DOC: Secondary button's box shadow when active. //ITEM_DOC: Secondary button's inset box shadow when active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-secondary-box-shadow-color-active,
           var(
@@ -406,7 +411,8 @@
     );
 
     // ITEM_DOC: Dark button's box shadow when hovered or focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-dark-box-shadow-color-interaction,
           var(--cdr-color-border-button-dark-hover, #{tokens.$cdr-color-border-button-dark-hover})
@@ -437,7 +443,8 @@
     );
 
     // ITEM_DOC: Dark button's box shadow when active. The box shadow serves as a border. //ITEM_DOC: Dark button's inset box shadow when active. The box shadow serves as a border
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-dark-box-shadow-color-active,
           var(--cdr-color-border-button-dark-active, #{tokens.$cdr-color-border-button-dark-active})
@@ -536,7 +543,8 @@
     );
 
     // ITEM_DOC: Sale button's box shadow when hovered or focused. The box shadow serves as a border
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-sale-box-shadow-color-interaction,
           var(--cdr-color-border-button-sale-hover, #{tokens.$cdr-color-border-button-sale-hover})
@@ -567,7 +575,8 @@
     );
 
     // ITEM_DOC: Sale button's box shadow when active. The box shadow serves as a border. //ITEM_DOC: Sale button's inset box shadow when active. The box shadow serves as a border
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-sale-box-shadow-color-active,
           var(--cdr-color-border-button-sale-active, #{tokens.$cdr-color-border-button-sale-active})
@@ -661,7 +670,8 @@
 
 @mixin cdr-button-secondary-elevated-mixin() {
   // ITEM_DOC: Box shadow color of a secondary elevated cdr-button
-  box-shadow: inset 0 0 0 1px
+  box-shadow:
+    inset 0 0 0 1px
       var(
         --cdr-button-secondary-box-shadow,
         var(
@@ -674,7 +684,8 @@
   &:hover,
   &:focus {
     // ITEM_DOC: Box shadow color of a secondary elevated cdr-button when hovered or focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-secondary-interaction-box-shadow,
           var(
@@ -687,7 +698,8 @@
 
   &:active {
     // ITEM_DOC: Box shadow color of a secondary elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a secondary elevated cdr-button when active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-secondary-active-box-shadow,
           var(
@@ -709,7 +721,8 @@
 
 @mixin cdr-button-primary-elevated-mixin() {
   // ITEM_DOC: Box shadow color of a primary elevated cdr-button
-  box-shadow: inset 0 0 0 1px
+  box-shadow:
+    inset 0 0 0 1px
       var(
         --cdr-button-primary-box-shadow,
         var(--cdr-color-border-button-primary-rest, #{tokens.$cdr-color-border-button-primary-rest})
@@ -719,7 +732,8 @@
   &:hover,
   &:focus {
     // ITEM_DOC: Box shadow color of a primary elevated cdr-button when hovered or focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-primary-hover-focus-box-shadow,
           var(
@@ -732,7 +746,8 @@
 
   &:active {
     // ITEM_DOC: Box shadow color of a primary elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a primary elevated cdr-button when active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-primary-active-box-shadow,
           var(
@@ -754,7 +769,8 @@
 
 @mixin cdr-button-dark-elevated-mixin() {
   // ITEM_DOC: Box shadow color of a dark elevated cdr-button
-  box-shadow: inset 0 0 0 1px
+  box-shadow:
+    inset 0 0 0 1px
       var(
         --cdr-button-dark-box-shadow-rest,
         var(--cdr-color-border-button-dark-rest, #{tokens.$cdr-color-border-button-dark-rest})
@@ -764,7 +780,8 @@
   &:hover,
   &:focus {
     // ITEM_DOC: Box shadow color of a dark elevated cdr-button when hovered or focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-dark-box-shadow-interaction,
           var(--cdr-color-border-button-dark-hover, #{tokens.$cdr-color-border-button-dark-hover})
@@ -774,7 +791,8 @@
 
   &:active {
     // ITEM_DOC: Box shadow color of a dark elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a dark elevated cdr-button when active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-dark-box-shadow-active,
           var(--cdr-color-border-button-dark-active, #{tokens.$cdr-color-border-button-dark-active})
@@ -793,7 +811,8 @@
 
 @mixin cdr-button-sale-elevated-mixin() {
   // ITEM_DOC: Box shadow color of a sale elevated cdr-button
-  box-shadow: inset 0 0 0 1px
+  box-shadow:
+    inset 0 0 0 1px
       var(
         --cdr-button-sale-box-shadow-rest,
         var(--cdr-color-border-button-sale-rest, #{tokens.$cdr-color-border-button-sale-rest})
@@ -803,7 +822,8 @@
   &:hover,
   &:focus {
     // ITEM_DOC: Box shadow color of a sale elevated cdr-button when hovered or focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-sale-box-shadow-interaction,
           var(--cdr-color-border-button-sale-hover, #{tokens.$cdr-color-border-button-sale-hover})
@@ -813,7 +833,8 @@
 
   &:active {
     // ITEM_DOC: Box shadow color of a sale elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a sale elevated cdr-button when active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-sale-box-shadow-active,
           var(--cdr-color-border-button-sale-active, #{tokens.$cdr-color-border-button-sale-active})
@@ -947,7 +968,8 @@
     );
 
     // ITEM_DOC: Box shadow color of a cdr-button with background during interaction
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-with-background-box-shadow-interaction,
           var(
@@ -991,7 +1013,8 @@
     );
 
     // ITEM_DOC: Box shadow color of an active cdr-button with background
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-button-with-background-box-shadow-active,
           var(

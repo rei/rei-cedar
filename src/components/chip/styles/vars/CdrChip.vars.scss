@@ -39,7 +39,8 @@
   line-height: 15px;
   font-weight: 400;
   letter-spacing: -0.08px;
-  transition: color tokens.$cdr-duration-1-x tokens.$cdr-timing-function-ease,
+  transition:
+    color tokens.$cdr-duration-1-x tokens.$cdr-timing-function-ease,
     fill tokens.$cdr-duration-1-x tokens.$cdr-timing-function-ease,
     background-color tokens.$cdr-duration-1-x tokens.$cdr-timing-function-ease,
     box-shadow tokens.$cdr-duration-1-x tokens.$cdr-timing-function-ease;
@@ -107,7 +108,8 @@
     );
 
     // ITEM_DOC: Box-shadow color of a cdr-chip on focus
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-chip-box-shadow-color-focus,
           var(--cdr-color-border-chip-default-focus, #{tokens.$cdr-color-border-chip-default-focus})
@@ -126,7 +128,8 @@
     );
 
     // ITEM_DOC: Box-shadow color of a cdr-chip when active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-chip-box-shadow-color-active,
           var(
@@ -195,7 +198,8 @@
     );
 
     // ITEM_DOC: Box-shadow color of a cdr-chip when selected and focused
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-chip-box-shadow-color-selected-focus,
           var(
@@ -218,7 +222,8 @@
     );
 
     // ITEM_DOC: Box-shadow color of a cdr-chip when selected and active
-    box-shadow: inset 0 0 0 3px
+    box-shadow:
+      inset 0 0 0 3px
         var(
           --cdr-chip-box-shadow-color-selected-focus,
           var(

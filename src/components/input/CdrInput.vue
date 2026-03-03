@@ -286,7 +286,7 @@ const inputModel = computed({
         @focus="isFocused = true"
         @blur="isFocused = false"
         v-model="inputModel"
-      >
+      />
       <span
         v-if="hasPreIcon"
         :class="style['cdr-input__pre-icon']"

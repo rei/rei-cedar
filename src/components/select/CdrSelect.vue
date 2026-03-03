@@ -137,14 +137,14 @@ const caretDisabledClass = computed(() => (props.disabled ? 'cdr-select__caret--
 
 const describedby = computed(() => {
   const helperText = [
-    slots['helper-text'] ? `${props.id}-helper-text-top` : '',
+    slots['helper-text'] ? `${uniqueId}-helper-text-top` : '',
     attrs['aria-describedby'],
   ]
     .filter((x) => x)
     .join(' ');
 
   if (props.error) {
-    return `${props.id}-error`;
+    return `${uniqueId}-error`;
   }
 
   return helperText;

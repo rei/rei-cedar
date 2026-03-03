@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, computed, ref, watch, onUpdated, useSlots } from 'vue';
+import { useCssModule, computed, ref, watch, onUpdated, onUnmounted, useSlots } from 'vue';
 import type { CdrToastProps } from './types';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
@@ -38,7 +38,7 @@ const style = useCssModule();
 const slots: ReturnType<typeof useSlots> = useSlots();
 
 const baseClass = 'cdr-toast';
-const hasIconLeft = !!slots['icon-left'];
+const hasIconLeft = computed(() => !!slots['icon-left']);
 const opened = ref(false);
 const toastEl = ref<HTMLDivElement | null>(null);
 let timeout: ReturnType<typeof setTimeout>;
@@ -95,7 +95,15 @@ watch(
 );
 
 onUpdated(() => {
-  if (props.autoDismiss) addHandlers();
+  if (props.autoDismiss) {
+    removeHandlers();
+    addHandlers();
+  }
+});
+
+onUnmounted(() => {
+  if (timeout) clearTimeout(timeout);
+  removeHandlers();
 });
 </script>
 

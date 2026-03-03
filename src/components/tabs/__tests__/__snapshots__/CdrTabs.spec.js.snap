@@ -85,7 +85,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
   <!-- @slot CdrTabs content (CdrTabPanel components) -->
   
   <section
-    aria-hidden="false"
     aria-labelledby="tab1"
     class="cdr-tab-panel"
     id="tab1-panel"
@@ -98,7 +97,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     
   </section>
   <section
-    aria-hidden="true"
     aria-labelledby="tab2"
     class="cdr-tab-panel"
     id="tab2-panel"
@@ -111,7 +109,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     
   </section>
   <section
-    aria-hidden="true"
     aria-labelledby="tab3"
     class="cdr-tab-panel"
     disabled="true"
@@ -125,7 +122,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     
   </section>
   <section
-    aria-hidden="true"
     aria-labelledby="tab4"
     class="cdr-tab-panel"
     id="tab4-panel"

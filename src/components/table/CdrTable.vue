@@ -30,11 +30,14 @@ const borderClass = computed(() => (props.border && !props.striped ? `${baseClas
 const fullWidthClass = computed(() =>
   props.fullWidth ? buildBooleanClass(baseClass, props.fullWidth, 'full-width') : '',
 );
-const wrapperClass = computed(() => (props.responsive ? `${baseClass}--responsive` : ''));
+/** Resolved CSS module class for the responsive wrapper div */
+const wrapperClass = computed(() =>
+  props.responsive ? style[`${baseClass}--responsive`] : undefined,
+);
 </script>
 
 <template>
-  <div :class="style[wrapperClass]">
+  <div :class="wrapperClass">
     <table
       v-bind="$attrs"
       :class="

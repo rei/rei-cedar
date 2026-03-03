@@ -3,7 +3,7 @@ import CdrAccordion from '../CdrAccordion.vue';
 import { unwrappedKey } from '../../../types/symbols';
 
 const baseComponentPattern = {
-  propsData: {
+  props: {
     id: 'test',
     level: '2',
   },
@@ -122,7 +122,7 @@ describe('CdrAccordion', () => {
       });
 
       it('emits an "accordion-toggle" event', () => {
-        expect(wrapper.emitted('accordion-toggle'));
+        expect(wrapper.emitted('accordion-toggle')).toBeTruthy();
       });
       describe('a11y requirements', () => {
         it('has the expected "aria-expanded" value', () => {

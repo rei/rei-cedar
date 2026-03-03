@@ -12,7 +12,7 @@ describe('CdrPopup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPopup, {
-        propsData: {
+        props: {
           position: 'top',
           autoPosition: true,
         },

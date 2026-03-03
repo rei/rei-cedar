@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { ref, provide, onMounted, nextTick, computed, useCssModule, useSlots } from 'vue';
+import {
+  ref,
+  provide,
+  onMounted,
+  onUnmounted,
+  nextTick,
+  computed,
+  useCssModule,
+  useSlots,
+} from 'vue';
 import type { ComponentInternalInstance } from 'vue';
 import type { CdrTabsProps } from './types';
 import { debounce } from '../../utils/debounce';
@@ -172,7 +181,7 @@ const selectTabNext = () => {
 };
 
 const selectTabPrev = () => {
-  const isFirstTab = selectedIndex.value && selectedIndex.value <= 0;
+  const isFirstTab = selectedIndex.value !== null && selectedIndex.value <= 0;
   if (isFirstTab) {
     return;
   }
@@ -198,28 +207,35 @@ const setInitialTabStates = () => {
   });
 };
 
+// Store debounced handler references so they can be removed on unmount.
+const resizeHandler = debounce(() => {
+  headerWidth.value = getHeaderWidth();
+  calculateOverflow();
+  updateUnderline();
+}, 250);
+
+const scrollHandler = debounce(() => {
+  calculateOverflow();
+  updateUnderline();
+}, 50);
+
+let underlineTimeoutId: ReturnType<typeof setTimeout> | undefined;
+
 onMounted(() => {
   setInitialTabStates();
   headerWidth.value = getHeaderWidth();
   calculateOverflow();
-  setTimeout(() => {
+  underlineTimeoutId = setTimeout(() => {
     updateUnderline();
   }, 250);
-  window.addEventListener(
-    'resize',
-    debounce(() => {
-      headerWidth.value = getHeaderWidth();
-      calculateOverflow();
-      updateUnderline();
-    }, 250),
-  );
-  tablist.value?.addEventListener(
-    'scroll',
-    debounce(() => {
-      calculateOverflow();
-      updateUnderline();
-    }, 50),
-  );
+  window.addEventListener('resize', resizeHandler);
+  tablist.value?.addEventListener('scroll', scrollHandler);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', resizeHandler);
+  tablist.value?.removeEventListener('scroll', scrollHandler);
+  if (underlineTimeoutId !== undefined) clearTimeout(underlineTimeoutId);
 });
 </script>
 
@@ -253,17 +269,23 @@ onMounted(() => {
           :class="style['cdr-tabs__header']"
         >
           <button
-            :ref="(el) => { if (el) tabElements[index as number] = el as HTMLButtonElement }"
+            :ref="
+              (el) => {
+                if (el) tabElements[index as number] = el as HTMLButtonElement;
+              }
+            "
             :id="tab.id"
             :disabled="tab.disabled"
             :aria-selected="checkIfActive(index as number, tab)"
             :tabIndex="checkIfActive(index as number, tab) ? 0 : -1"
-            :class="mapClasses(
-              style,
-              checkIfActive(index as number, tab) ? 'cdr-tabs__header-item-active' : '',
-              'cdr-tabs__header-item',
-              tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
-            )"
+            :class="
+              mapClasses(
+                style,
+                checkIfActive(index as number, tab) ? 'cdr-tabs__header-item-active' : '',
+                'cdr-tabs__header-item',
+                tab.disabled ? 'cdr-tabs__header-item--disabled' : '',
+              )
+            "
             role="tab"
             @click.prevent="selectTab(index as number)"
             @keyup.right="selectTabNext"

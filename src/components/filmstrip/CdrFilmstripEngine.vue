@@ -70,7 +70,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
-import { useResizeObserver, useElementHover, useDebounceFn, useEventListener } from '@vueuse/core';
+import { useResizeObserver, useElementHover, useDebounceFn } from '@vueuse/core';
 
 import mapClasses from '../../utils/mapClasses';
 import CdrButton from '../button/CdrButton.vue';
@@ -384,22 +384,33 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
   isProgrammaticScroll.value = false;
 }, 100);
 
+// Initialize a resize observer at setup time so its stop handle is available for cleanup.
+const { stop: stopResizeObserver } = useResizeObserver(containerRef, (entries) => {
+  entries.forEach((entry) => {
+    containerWidth.value = entry.contentRect.width;
+  });
+});
+
 onMounted(() => {
   // Listen for scroll events on the viewport and handle them using the debounced scroll handler.
-  useEventListener(viewportRef.value?.viewportElement, 'scroll', debouncedHandleScroll);
-
-  // Initialize a resize observer to update the container width dynamically.
-  const { stop } = useResizeObserver(containerRef, (entries) => {
-    entries.forEach((entry) => {
-      containerWidth.value = entry.contentRect.width;
-    });
-  });
-  onUnmounted(() => {
-    // Clean up the resize observer when the component is unmounted.
-    stop();
-  });
+  // Use raw addEventListener/removeEventListener because viewportRef is only available post-mount;
+  // calling useEventListener inside onMounted registers cleanup at the wrong scope.
+  const viewportEl = viewportRef.value?.viewportElement;
+  if (viewportEl) {
+    viewportEl.addEventListener('scroll', debouncedHandleScroll);
+  }
   // Set the initial container width.
   containerWidth.value = containerRef.value?.offsetWidth ?? 0;
+});
+
+onUnmounted(() => {
+  // Clean up the scroll listener added in onMounted.
+  const viewportEl = viewportRef.value?.viewportElement;
+  if (viewportEl) {
+    viewportEl.removeEventListener('scroll', debouncedHandleScroll);
+  }
+  // Clean up the resize observer when the component is unmounted.
+  stopResizeObserver();
 });
 </script>
 

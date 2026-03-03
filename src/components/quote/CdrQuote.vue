@@ -39,7 +39,6 @@ const modifierClass = computed(() => (props.modifier ? `${baseClass}--${props.mo
     <cite
       v-if="citation"
       :class="style[citationClass]"
-      tag="cite"
     >
       {{ citation }}
     </cite>

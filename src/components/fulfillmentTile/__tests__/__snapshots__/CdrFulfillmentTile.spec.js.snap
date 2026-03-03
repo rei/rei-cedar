@@ -504,7 +504,7 @@ exports[`CdrFulfillmentTile > renders header slot 1`] = `
             <span
               class="cdr-subheading-sans"
               strong="true"
-              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans--1});"
+              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans--1);"
             >
               
               <!-- @slot Header content that is still visible during loading. -->
@@ -589,7 +589,7 @@ exports[`CdrFulfillmentTile > renders icon-left slot 1`] = `
             <span
               class="cdr-subheading-sans"
               strong="true"
-              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans--1});"
+              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans--1);"
             >
               
               <!-- @slot Header content that is still visible during loading. -->
@@ -663,7 +663,7 @@ exports[`CdrFulfillmentTile > renders icon-right slot 1`] = `
             <span
               class="cdr-subheading-sans"
               strong="true"
-              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans--1});"
+              style="--cdr-subheading-sans-font-size: var(--cdr-type-scale--1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans--1);"
             >
               
               <!-- @slot Header content that is still visible during loading. -->

@@ -314,6 +314,7 @@ exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
                 tabindex="0"
               >
                 
+                Main content
                 
               </div>
             </div>

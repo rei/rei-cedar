@@ -131,7 +131,8 @@ $css-vars: (
     z-index: 0;
   }
 
-  transition: background var(--cdr-duration-3-x) var(--cdr-timing-function-ease),
+  transition:
+    background var(--cdr-duration-3-x) var(--cdr-timing-function-ease),
     box-shadow var(--cdr-duration-3-x) var(--cdr-timing-function-ease);
 
   &:hover:not([aria-pressed='true'], [aria-checked='true'], :disabled) {

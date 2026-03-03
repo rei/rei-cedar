@@ -28,9 +28,6 @@ const style: Record<string, string> = useCssModule();
 const attrs = useAttrs();
 const baseClass: string = 'cdr-icon';
 
-/** Check if aria-label or aria-labelledby is present, hide from screen readers if not */
-const hideSr: boolean = !attrs['aria-label'] && !attrs['aria-labelledby'];
-
 /** Computed class for inheriting parent color */
 const inheritColorClass = computed<string>(() =>
   props.inheritColor ? `${baseClass}--inherit-color` : '',
@@ -41,19 +38,18 @@ const sizeClass = computed<string>(() =>
   props.size ? responsiveModifyClass(baseClass, '', props.size) : '',
 );
 
-/** SVG data attributes for accessibility */
-const dataObj: SVGAttributes = {
+/** SVG data attributes for accessibility — computed so aria-hidden reacts to attrs changes */
+const dataObj = computed<SVGAttributes>(() => ({
   xmlns: 'http://www.w3.org/2000/svg',
   viewBox: '0 0 24 24',
-  'aria-hidden': undefined,
-};
-if (hideSr) dataObj['aria-hidden'] = 'true';
+  'aria-hidden': !attrs['aria-label'] && !attrs['aria-labelledby'] ? 'true' : undefined,
+}));
 
 /** Attributes for the use element when using SVG sprite */
-const hrefAttrs = {
+const hrefAttrs = computed(() => ({
   href: props.use,
   'xlink:href': props.use,
-};
+}));
 </script>
 
 <template>

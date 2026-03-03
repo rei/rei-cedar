@@ -100,7 +100,7 @@ describe('CdrLink', () => {
       beforeEach(() => {
         spy = sinon.spy();
         wrapper = shallowMount(CdrLink, {
-          propsData: {
+          props: {
             tag: 'button',
           },
           attrs: {

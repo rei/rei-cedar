@@ -50,7 +50,8 @@
     outline: none;
 
     // ITEM_DOC: Box shadow of a focused or active cdr-input
-    box-shadow: inset 0 0 0 2px
+    box-shadow:
+      inset 0 0 0 2px
         var(
           --cdr-input-box-shadow-focus,
           var(

@@ -35,7 +35,7 @@ const emit = defineEmits<{
 const style = useCssModule();
 
 /** Unique identifier for the breadcrumb navigation element */
-const uniqueId = computed<string>(() => props.id ?? uid());
+const uniqueId = props.id ? props.id : uid();
 
 /** Reactive state controlling whether the breadcrumb list is truncated */
 const truncate = ref<boolean>(props.truncationEnabled && props.items.length > 2);

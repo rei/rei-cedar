@@ -5,7 +5,7 @@ import { h } from 'vue';
 describe('CdrLabelWrapper', () => {
   it('matches snapshot', () => {
     const wrapper = mount(CdrLabelWrapper, {
-      propsData: {
+      props: {
         labelClass: 'custom-label-class',
         contentClass: 'custom-content-class',
         name: 'testName',

@@ -36,9 +36,11 @@ async function createDocgenObj(filePath: string, docgenObj: DocgenObject): Promi
         prop.defaultValue!.value = trimApostrophes(prop.defaultValue!.value as string);
       }
       if (prop.tags && prop.tags.values && prop.tags.values[0].description) {
-        (prop as Record<string, unknown>).values = prop.tags.values[0].description.split(',').map((value: string) => {
-          return value.trim();
-        });
+        (prop as Record<string, unknown>).values = prop.tags.values[0].description
+          .split(',')
+          .map((value: string) => {
+            return value.trim();
+          });
         delete prop.tags.values;
       }
     });

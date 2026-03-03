@@ -20,7 +20,7 @@ describe('CdrText', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrText, {
-        propsData: {
+        props: {
           tag: 'h1',
         },
         slots: {

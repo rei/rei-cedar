@@ -105,7 +105,7 @@ describe('CdrCheckbox', () => {
   describe('change events', () => {
     it('emits change events with correct values for custom checkbox', () => {
       const wrapper = mount(CdrCheckbox, {
-        propsData: {
+        props: {
           trueValue: 'checked',
           falseValue: 'unchecked',
           modelValue: '',
@@ -122,7 +122,7 @@ describe('CdrCheckbox', () => {
 
     it('emits change events with correct values for group checkbox', async () => {
       const wrapper = mount(CdrCheckbox, {
-        propsData: {
+        props: {
           customValue: 'b',
           modelValue: ['a'],
         },

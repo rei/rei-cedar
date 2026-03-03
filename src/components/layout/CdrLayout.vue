@@ -81,7 +81,7 @@ const rootProps = computed(() => {
   return { class: mapClasses(style, ...classes) || undefined, style: inlineStyles };
 });
 
-const componentIs = props.as === 'CdrSurface' ? CdrSurface : props.as;
+const componentIs = computed(() => (props.as === 'CdrSurface' ? CdrSurface : props.as));
 </script>
 
 <template>

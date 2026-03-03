@@ -137,7 +137,9 @@ $modal-animation-duration: 150ms;
 }
 
 .cdr-modal--closed {
-  transition: z-index 0s $modal-animation-duration * 2, visibility 0s $modal-animation-duration * 2;
+  transition:
+    z-index 0s $modal-animation-duration * 2,
+    visibility 0s $modal-animation-duration * 2;
   visibility: hidden;
   z-index: -1;
 

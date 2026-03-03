@@ -76,8 +76,8 @@ const isMedia = (media: Media | LegacyMedia): media is Media => {
  * Props for the LifestyleFrame component.
  */
 const props = withDefaults(defineProps<LifestyleFrameExtended>(), {
-  cta: () => ({} as Cta),
-  media: () => ({} as Media | LegacyMedia),
+  cta: () => ({}) as Cta,
+  media: () => ({}) as Media | LegacyMedia,
   frameStyle: 'lifestyle-portrait',
   lastFrame: false,
 });

@@ -51,7 +51,7 @@ const innerValue = computed({
   },
 });
 
-const currentUrl = computed(() => props.pages[currentIdx.value].url);
+const currentUrl = computed(() => props.pages[currentIdx.value]?.url);
 
 const navigate = (pageNum: number, e: Event) => {
   // Dont do anything if clicking the current active page
@@ -197,7 +197,11 @@ watch(
           "
           :aria-current="n.page === innerValue ? 'page' : null"
           :href="(linkTag === 'a' && n.url) || undefined"
-          :ref="(el: HTMLElement) => { linkRefs[i] = el }"
+          :ref="
+            (el: HTMLElement) => {
+              linkRefs[i] = el;
+            }
+          "
           @click="(e: Event) => navigate(n.page, e)"
         >
           {{ n.page }}

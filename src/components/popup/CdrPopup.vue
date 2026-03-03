@@ -77,16 +77,17 @@ const measurePopup = () => {
   });
 };
 
-const handleResize = () => {
-  debounce(() => {
-    measurePopup();
-  }, 300);
-};
+const handleResize = debounce(() => {
+  measurePopup();
+}, 300);
 
 const addHandlers = () => {
   document.addEventListener('keydown', handleKeydown);
   document.addEventListener('click', handleClick);
 };
+
+let openedTimeoutId: ReturnType<typeof setTimeout> | undefined;
+let exitingTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
 const handleOpened = () => {
   pos.value = props.position;
@@ -110,7 +111,7 @@ const handleOpened = () => {
 
   closed.value = false;
 
-  setTimeout(() => {
+  openedTimeoutId = setTimeout(() => {
     addHandlers();
   }, 1);
 };
@@ -120,7 +121,7 @@ const handleClosed = () => {
   document.removeEventListener('keydown', handleKeydown);
   document.removeEventListener('click', handleClick);
   exiting.value = true;
-  setTimeout(() => {
+  exitingTimeoutId = setTimeout(() => {
     exiting.value = false;
   }, 200); // $cdr-duration-2;
 };
@@ -148,6 +149,8 @@ onUnmounted(() => {
   document.removeEventListener('keydown', handleKeydown);
   document.removeEventListener('click', handleClick);
   window.removeEventListener('resize', handleResize);
+  if (openedTimeoutId !== undefined) clearTimeout(openedTimeoutId);
+  if (exitingTimeoutId !== undefined) clearTimeout(exitingTimeoutId);
 });
 </script>
 <template>

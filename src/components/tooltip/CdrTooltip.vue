@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, ref, computed, onMounted, watch, useSlots } from 'vue';
+import { useCssModule, ref, computed, onMounted, onUnmounted, watch, useSlots } from 'vue';
 import type { CdrTooltipProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import CdrPopup from '../popup/CdrPopup.vue';
@@ -68,6 +68,20 @@ const addHandlers = () => {
   }
 };
 
+const removeHandlers = () => {
+  const triggerElement = triggerEl.value?.children[0];
+  if (triggerElement) {
+    triggerElement.removeEventListener('mouseover', openTooltip);
+    triggerElement.removeEventListener('focus', openTooltip);
+
+    triggerElement.removeEventListener('mouseleave', closeTooltip);
+    triggerElement.removeEventListener('blur', closeTooltip);
+
+    popupEl.value?.$el?.removeEventListener('mouseover', openTooltip);
+    popupEl.value?.$el?.removeEventListener('mouseleave', closeTooltip);
+  }
+};
+
 watch(
   () => props.open,
   () => (props.open ? openTooltip() : closeTooltip()),
@@ -77,6 +91,11 @@ onMounted(() => {
   addHandlers();
   const trigger = triggerEl.value?.children[0];
   if (trigger) trigger.setAttribute('aria-describedby', uniqueId);
+});
+
+onUnmounted(() => {
+  removeHandlers();
+  if (timeout) clearTimeout(timeout);
 });
 </script>
 

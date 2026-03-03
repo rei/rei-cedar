@@ -38,16 +38,16 @@ const baseClass: string = 'cdr-chip';
       <!-- @slot Icon to the left of the content -->
       <slot name="icon-left" />
     </span>
+    <span :class="style['cdr-chip__content']">
+      <!-- @slot Primary CdrChip content -->
+      <slot />
+    </span>
     <span
       v-if="$slots['icon-right']"
       :class="style['cdr-chip__icon-right']"
     >
       <!-- @slot Icon to the right of the content -->
       <slot name="icon-right" />
-    </span>
-    <span :class="style['cdr-chip__content']">
-      <!-- @slot Primary CdrChip content -->
-      <slot />
     </span>
   </button>
 </template>

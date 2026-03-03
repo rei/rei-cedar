@@ -6,7 +6,7 @@ describe('CdrFormError', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormError, {
-        propsData: {
+        props: {
           error: 'yahoo!',
         },
       });
@@ -25,7 +25,7 @@ describe('CdrFormError', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormError, {
-        propsData: {
+        props: {
           error: true,
         },
         slots: {

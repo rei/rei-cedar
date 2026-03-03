@@ -7,7 +7,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'Label Test',
           id: 'renders',
         },
@@ -101,7 +101,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'Label Test',
           id: 'renders',
         },
@@ -129,7 +129,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'Label Test',
           id: 'renders',
         },
@@ -152,7 +152,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'test',
         },
@@ -185,7 +185,7 @@ describe('CdrSelect', () => {
     let options;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           value: '4',
           id: 'test',
@@ -214,7 +214,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'info-action',
         },
@@ -237,7 +237,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'aria-test',
         },
@@ -266,7 +266,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'info-action',
         },
@@ -289,7 +289,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'test',
         },
@@ -312,7 +312,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'aria-test',
         },
@@ -340,7 +340,7 @@ describe('CdrSelect', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrSelect, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'aria-test',
         },

@@ -65,29 +65,25 @@ $dark-gradients: (
 
 // Light theme gradients
 $light-gradients: (
-  'to-top':
-    linear-gradient(
+  'to-top': linear-gradient(
       to top,
       white 0%,
       rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
       transparent 40%
     ),
-  'to-bottom':
-    linear-gradient(
+  'to-bottom': linear-gradient(
       to bottom,
       white 0%,
       rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
       transparent 40%
     ),
-  'to-left':
-    linear-gradient(
+  'to-left': linear-gradient(
       to left,
       white 0%,
       rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
       transparent 40%
     ),
-  'to-right':
-    linear-gradient(
+  'to-right': linear-gradient(
       to right,
       white 0%,
       rgba(tokens.$cdr-color-background-primary, 0.5) 20%,

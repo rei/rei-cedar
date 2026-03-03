@@ -23,7 +23,7 @@ describe('CdrGrid', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrGrid, {
-        propsData: {
+        props: {
           gutter: 'none@xs large@sm medium@md small@sm',
           tag: 'ul',
         },

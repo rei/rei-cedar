@@ -58,7 +58,7 @@ describe('CdrBreadcrumb', () => {
     let ellipse;
     beforeEach(() => {
       wrapper = mount(CdrBreadcrumb, {
-        propsData: {
+        props: {
           id: 'bc-test',
           items: itemsA,
         },
@@ -115,7 +115,7 @@ describe('CdrBreadcrumb', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrBreadcrumb, {
-        propsData: {
+        props: {
           id: 'bc-test',
           items: itemsB,
         },

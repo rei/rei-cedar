@@ -33,7 +33,7 @@ describe('CdrIcon', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = shallowMount(CdrIcon, {
-        propsData: {
+        props: {
           inheritColor: true,
         },
       });
@@ -113,7 +113,7 @@ describe('CdrIcon', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = shallowMount(CdrIcon, {
-        propsData: {
+        props: {
           size: 'small large@lg',
         },
       });
@@ -133,7 +133,7 @@ describe('CdrIcon', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(IconCaretDown, {
-        propsData: {
+        props: {
           size: 'small',
         },
       });

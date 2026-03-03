@@ -7,7 +7,7 @@ describe('CdrImg', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrImg, {
-        propsData: {
+        props: {
           src: '/src/dev/static/cedar-350x150.jpg',
           alt: 'test alt',
         },
@@ -27,7 +27,7 @@ describe('CdrImg', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrImg, {
-        propsData: {
+        props: {
           ratio: '1/1',
           radius: 'softer',
           modifier: 'responsive',
@@ -48,7 +48,7 @@ describe('CdrImg', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrImg, {
-        propsData: {
+        props: {
           src: '/src/dev/static/cedar-350x150.jpg',
           loading: 'lazy',
           ratio: '1/1',
@@ -71,7 +71,7 @@ describe('CdrImg', () => {
     beforeEach(() => {
       spy = sinon.spy();
       wrapper = shallowMount(CdrImg, {
-        propsData: {
+        props: {
           src: 'localhost:8000/nothing-to-see-here.png',
           onError: spy,
         },

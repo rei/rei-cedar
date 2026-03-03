@@ -284,7 +284,8 @@
           #{tokens.$cdr-color-background-switch-handle-default-rest}
         )
       );
-      transition: left tokens.$cdr-duration-3-x tokens.$cdr-timing-function-ease-out,
+      transition:
+        left tokens.$cdr-duration-3-x tokens.$cdr-timing-function-ease-out,
         right tokens.$cdr-duration-3-x tokens.$cdr-timing-function-ease-out;
     }
   }

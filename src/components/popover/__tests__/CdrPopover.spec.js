@@ -6,7 +6,7 @@ describe('CdrPopover', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPopover, {
-        propsData: {
+        props: {
           id: 'popover-test',
         },
         slots: {

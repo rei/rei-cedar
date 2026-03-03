@@ -6,7 +6,7 @@ describe('CdrQuote', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrQuote, {
-        propsData: {
+        props: {
           tag: 'aside',
           summary: 'This is the summary',
           citation: 'This is the citation',
@@ -23,7 +23,7 @@ describe('CdrQuote', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrQuote, {
-        propsData: {
+        props: {
           summary: 'This is the pull summary',
           citation: 'This is the pull citation',
           modifier: 'pull',

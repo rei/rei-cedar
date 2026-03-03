@@ -6,7 +6,7 @@ describe('CdrFormLabelStandalone', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
-        propsData: {
+        props: {
           label: 'Label Test',
           forId: 'test',
           required: true,
@@ -51,7 +51,7 @@ describe('CdrFormLabelStandalone', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
-        propsData: {
+        props: {
           label: 'Label Test',
           forId: 'test',
           hideLabel: true,
@@ -78,7 +78,7 @@ describe('CdrFormLabelStandalone', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
-        propsData: {
+        props: {
           label: 'test',
           required: true,
           optional: true,
@@ -100,7 +100,7 @@ describe('CdrFormLabelStandalone', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrLabelStandalone, {
-        propsData: {
+        props: {
           label: 'test',
           optional: true,
           forId: 'test',

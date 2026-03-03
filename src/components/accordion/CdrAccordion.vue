@@ -63,7 +63,7 @@ const maxHeight = ref<string>(props.opened ? 'none' : '0px');
 const isTransitioning = ref<boolean>(false);
 
 /** Dynamic heading tag based on level prop */
-const headingTag = `h${props.level}`;
+const headingTag = computed(() => `h${props.level}`);
 
 /** CSS class names */
 const labelClass = 'cdr-accordion__label';
@@ -81,9 +81,9 @@ const headingContentStyle = computed(() =>
     : [style['cdr-accordion__button'], 'js-cdr-accordion-button'],
 );
 
-/** Returns heading class based on unwrap state */
+/** Returns resolved CSS module heading class based on unwrap state */
 const headingClass = computed(() =>
-  unwrap.value ? 'cdr-accordion__header--unwrapped' : 'cdr-accordion__header',
+  unwrap.value ? style['cdr-accordion__header--unwrapped'] : style['cdr-accordion__header'],
 );
 
 /** Returns compact modifier class if compact prop is true */
@@ -211,7 +211,7 @@ onBeforeUnmount(() => {
   >
     <component
       :is="headingTag"
-      :class="style[headingClass]"
+      :class="headingClass"
     >
       <!--
         Triggered on accordion open/close

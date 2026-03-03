@@ -14,7 +14,7 @@ describe('CdrModal.vue', () => {
         document.body.appendChild(elem);
       }
       wrapper = mount(CdrModal, {
-        propsData: {
+        props: {
           opened: true,
           label: 'Label is the modal title',
         },
@@ -76,7 +76,7 @@ describe('CdrModal.vue', () => {
         document.body.appendChild(styleEl);
       }
       wrapper = mount(CdrModal, {
-        propsData: {
+        props: {
           opened: true,
           label: 'Label is the modal title',
         },
@@ -88,34 +88,34 @@ describe('CdrModal.vue', () => {
     });
 
     it('aria-hides elements that should be hidden', () => {
-      expect(modalEl.getAttribute('aria-hidden')).to.equal('true');
+      expect(modalEl.getAttribute('aria-hidden')).toBe('true');
     });
 
     it('does not show/hide script elements', () => {
-      expect(scriptEl.hasAttribute('aria-hidden')).to.be.false;
+      expect(scriptEl.hasAttribute('aria-hidden')).toBe(false);
     });
 
     it('does not show/hide style elements', () => {
-      expect(styleEl.hasAttribute('aria-hidden')).to.be.false;
+      expect(styleEl.hasAttribute('aria-hidden')).toBe(false);
     });
 
     it('does not hide itself', () => {
-      const thisModal = wrapper.find({ ref: 'wrapperEl' });
+      const thisModal = wrapper.find('.cdr-modal');
       expect(thisModal.attributes('aria-hidden')).toBeUndefined();
     });
 
     it('does not show/hide elements that are display: none', () => {
-      expect(displayNoneEl.hasAttribute('aria-hidden')).to.be.false;
+      expect(displayNoneEl.hasAttribute('aria-hidden')).toBe(false);
     });
 
     it('does not remove aria-hidden from elements that were aria-hidden on page load', () => {
       wrapper.setProps({ opened: false });
-      expect(ariaHiddenEl.getAttribute('aria-hidden')).to.equal('true');
+      expect(ariaHiddenEl.getAttribute('aria-hidden')).toBe('true');
     });
 
     it('removes aria-hidden from the elements it added them to on modal close', () => {
       wrapper.setProps({ opened: false });
-      expect(modalEl.hasAttribute('aria-hidden')).to.be.false;
+      expect(modalEl.hasAttribute('aria-hidden')).toBe(false);
     });
   });
 
@@ -129,7 +129,7 @@ describe('CdrModal.vue', () => {
         document.body.appendChild(elem);
       }
       wrapper = mount(CdrModal, {
-        propsData: {
+        props: {
           opened: true,
           label: 'Label is the modal title',
           ariaDescribedby: 'some-selector',
@@ -146,35 +146,35 @@ describe('CdrModal.vue', () => {
         },
         attachTo: elem,
       });
-      dialogEl = wrapper.find({ ref: 'modalEl' });
+      dialogEl = wrapper.find('[role="alertdialog"]');
     });
 
     it('hides title', async () => {
-      expect(wrapper.text()).to.include('Label is the modal title', 'it should be there on mount');
+      expect(wrapper.text()).toContain('Label is the modal title');
       await wrapper.setProps({ showTitle: false });
-      expect(wrapper.text()).to.not.include('Label is the modal title', 'now it should be gone');
+      expect(wrapper.text()).not.toContain('Label is the modal title');
     });
 
     it('passes aria-describedby to the dialog element', () => {
-      expect(dialogEl.attributes('aria-describedby')).to.equal('some-selector');
+      expect(dialogEl.attributes('aria-describedby')).toBe('some-selector');
     });
 
     it('passes id to the dialog element', () => {
-      expect(dialogEl.attributes('id')).to.equal('some-id');
+      expect(dialogEl.attributes('id')).toBe('some-id');
     });
 
     it('sets the role of the dialog if alertdialog', () => {
-      expect(dialogEl.attributes('role')).to.equal('alertdialog');
+      expect(dialogEl.attributes('role')).toBe('alertdialog');
     });
 
     it('sets the dialog class', () => {
       const innerWrapEl = dialogEl.find('.cdr-modal__innerWrap');
-      expect(innerWrapEl.classes('content-class')).to.be.true;
+      expect(innerWrapEl.classes('content-class')).toBe(true);
     });
 
     it('sets the wrapper class', () => {
       const outerwrap = wrapper.find('.cdr-modal__outerWrap');
-      expect(outerwrap.classes('wrapper-class')).to.be.true;
+      expect(outerwrap.classes('wrapper-class')).toBe(true);
     });
   });
 
@@ -189,7 +189,7 @@ describe('CdrModal.vue', () => {
 
     it('should pass non-prop attributes to the proper child', () => {
       const wrapper = mount(CdrModal, {
-        propsData: {
+        props: {
           opened: true,
           label: 'Label is the modal title',
         },
@@ -198,9 +198,8 @@ describe('CdrModal.vue', () => {
         },
         attachTo: elem,
       });
-      const dialog = wrapper.find({ ref: 'modalEl' });
-
-      expect(dialog.attributes('data-ui')).to.equal('my-modal');
+      const dialog = wrapper.find('[role="dialog"]');
+      expect(dialog.attributes('data-ui')).toBe('my-modal');
     });
   });
 
@@ -213,7 +212,7 @@ describe('CdrModal.vue', () => {
         document.body.appendChild(elem);
       }
       wrapper = mount(CdrModal, {
-        propsData: {
+        props: {
           opened: false,
           label: 'Label is the modal title',
         },
@@ -238,17 +237,12 @@ describe('CdrModal.vue', () => {
         document.body.appendChild(elem);
       }
       wrapper = mount(CdrModal, {
-        propsData: {
+        props: {
           opened: true,
           label: 'Label is the modal title',
         },
-        data() {
-          return {
-            fullscreen: true,
-          };
-        },
         slots: {
-          scrollingContentSlot: 'Main content',
+          default: 'Main content',
         },
         attachTo: elem,
       });

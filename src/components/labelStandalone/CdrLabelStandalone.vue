@@ -55,14 +55,13 @@ const inputSpacingClass = computed(() =>
         "
         :for="forId"
       >
-        {{ label }}{{ required || optional ? '' : '' }}
+        {{ label }}
         <span
           v-if="required"
           aria-hidden="true"
         >
           *
         </span>
-
         <span
           v-else-if="optional"
           :class="style['cdr-label-standalone__optional']"
@@ -71,7 +70,7 @@ const inputSpacingClass = computed(() =>
         </span>
       </label>
 
-      <br v-if="!hideLabel && hasHelper">
+      <br v-if="!hideLabel && hasHelper" />
       <span
         :class="style['cdr-label-standalone__helper']"
         :id="`${forId}-helper-text-top`"

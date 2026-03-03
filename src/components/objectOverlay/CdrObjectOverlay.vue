@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, computed, ref, onMounted, nextTick } from 'vue';
+import { useCssModule, computed, ref, onMounted, onUnmounted, nextTick } from 'vue';
 import type { CdrObjectOverlayProps } from './types';
 
 /** Component for positioning content in 9 different positions relative to a container */
@@ -193,19 +193,25 @@ const inheritBorderRadius = () => {
 };
 
 // Apply border radius after component is mounted and when it updates
+let mutationObserver: MutationObserver | undefined;
+
 onMounted(() => {
   nextTick(inheritBorderRadius);
 
   // Set up MutationObserver to detect when children are added/changed
   if (containerRef.value) {
-    const observer = new MutationObserver(inheritBorderRadius);
-    observer.observe(containerRef.value, {
+    mutationObserver = new MutationObserver(inheritBorderRadius);
+    mutationObserver.observe(containerRef.value, {
       childList: true,
       subtree: true,
       attributes: true,
       attributeFilter: ['style', 'class'],
     });
   }
+});
+
+onUnmounted(() => {
+  mutationObserver?.disconnect();
 });
 
 const styles = useCssModule();

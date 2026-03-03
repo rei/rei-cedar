@@ -80,8 +80,8 @@ Additionally, git hooks are part of the enforcement path via Husky, especially p
 - Node.js version must satisfy `engines.node` (`>=22.0.0`).
 - Use pnpm for all package/script workflows.
 - Optionally enable Corepack for consistent pnpm invocation:
-	- `corepack enable`
-	- `corepack prepare pnpm@latest --activate` (optional if pnpm already available and compatible)
+  - `corepack enable`
+  - `corepack prepare pnpm@latest --activate` (optional if pnpm already available and compatible)
 
 ### First-time setup
 
@@ -107,9 +107,9 @@ Additionally, git hooks are part of the enforcement path via Husky, especially p
 - The pre-commit hook runs: `pnpm unit && pnpm lint-staged`.
 - This means each commit must pass unit tests and staged-file lint/format checks before commit creation.
 - `lint-staged` currently applies:
-	- ESLint autofix on staged `src/**/*.{js,ts,vue,mjs}`
-	- Stylelint autofix on staged `src/**/*.scss`
-	- Prettier write on staged `src/**/*`
+  - ESLint autofix on staged `src/**/*.{js,ts,vue,mjs}`
+  - Stylelint autofix on staged `src/**/*.scss`
+  - Prettier write on staged `src/**/*`
 - If the hook fails, fix issues and re-stage updated files before retrying commit.
 - To avoid repeated failures, run `pnpm unit` and `pnpm lint` proactively before committing larger changes.
 
@@ -125,15 +125,15 @@ Additionally, git hooks are part of the enforcement path via Husky, especially p
 ## Breaking changes / behavior changes
 
 1. **Package manager standardization:** pnpm is now the expected package manager for lockfile and automation consistency.
-	- Impact: contributors using npm/yarn need to switch commands and avoid generating additional lockfiles.
+   - Impact: contributors using npm/yarn need to switch commands and avoid generating additional lockfiles.
 2. **Unit test runner behavior:** Jest-specific assumptions or CLI flags may no longer apply; use Vitest scripts.
-	- Impact: local aliases and IDE test configurations may need updates to Vitest commands.
+   - Impact: local aliases and IDE test configurations may need updates to Vitest commands.
 3. **Lint configuration model:** legacy ESLint config file patterns are superseded by flat config (`eslint.config.js`).
-	- Impact: lint rule edits should be made in flat config format only.
+   - Impact: lint rule edits should be made in flat config format only.
 4. **Node runtime floor:** contributors and CI must run Node 22+.
-	- Impact: older local Node versions will fail installs/scripts.
+   - Impact: older local Node versions will fail installs/scripts.
 5. **Commit-time quality gate:** Husky pre-commit now enforces unit + staged lint/format checks.
-	- Impact: commits can be blocked until local quality issues are resolved.
+   - Impact: commits can be blocked until local quality issues are resolved.
 
 ## Rollback / mitigation
 

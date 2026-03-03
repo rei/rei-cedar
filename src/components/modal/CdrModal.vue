@@ -54,6 +54,7 @@ const style = useCssModule();
 const baseClass = 'cdr-modal';
 let unsubscribe: (() => void) | undefined;
 let lastActive: Element | null;
+let openedTimeoutId: ReturnType<typeof setTimeout> | undefined;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
 
@@ -220,7 +221,7 @@ const handleOpened = () => {
     measureContent();
     addHandlers();
 
-    setTimeout(() => {
+    openedTimeoutId = setTimeout(() => {
       // for some reason Safari scrolls the wrapper down a bit?
       // doesn't work without setTimeout for some unknown reason
       if (wrapperEl.value) wrapperEl.value.scrollTop = 0;
@@ -319,6 +320,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
+  if (openedTimeoutId !== undefined) clearTimeout(openedTimeoutId);
+  // Clean up document-level handlers in case the modal unmounts while open
+  document.removeEventListener('focusin', handleFocus, true);
+  document.removeEventListener('keydown', handleKeyDown);
 });
 </script>
 

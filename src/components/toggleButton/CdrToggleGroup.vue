@@ -36,11 +36,11 @@ const sizeClass = computed(() =>
   props.size ? `cdr-toggle-group--${props.size}` : 'cdr-toggle-group--medium',
 );
 
-let toggleButtonElements: HTMLButtonElement[];
+const toggleButtonElements = ref<HTMLButtonElement[]>([]);
 
 onMounted(() => {
   if (toggleGroup.value) {
-    toggleButtonElements = Array.from(toggleGroup.value.querySelectorAll('button'));
+    toggleButtonElements.value = Array.from(toggleGroup.value.querySelectorAll('button'));
   }
 });
 
@@ -65,27 +65,27 @@ const selectToggleButton = (e: Event) => {
 
 const focusNext = (e: KeyboardEvent) => {
   const currentButton = e.target as HTMLButtonElement;
-  const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
-  const isLastButton = currentButtonIndex === toggleButtonElements.length - 1;
+  const currentButtonIndex = toggleButtonElements.value.indexOf(currentButton);
+  const isLastButton = currentButtonIndex === toggleButtonElements.value.length - 1;
 
   if (isLastButton) {
     return;
   }
 
-  const nextButton = toggleButtonElements[currentButtonIndex + 1];
+  const nextButton = toggleButtonElements.value[currentButtonIndex + 1];
   nextButton.focus();
 };
 
 const focusPrev = (e: KeyboardEvent) => {
   const currentButton = e.target as HTMLButtonElement;
-  const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
+  const currentButtonIndex = toggleButtonElements.value.indexOf(currentButton);
   const isFirstButton = currentButtonIndex === 0;
 
   if (isFirstButton) {
     return;
   }
 
-  const nextButton = toggleButtonElements[currentButtonIndex - 1];
+  const nextButton = toggleButtonElements.value[currentButtonIndex - 1];
   nextButton.focus();
 };
 </script>

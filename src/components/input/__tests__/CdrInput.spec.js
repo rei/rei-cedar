@@ -5,7 +5,7 @@ import CdrInput from '../CdrInput.vue';
 import CdrButton from '../../button/CdrButton.vue';
 
 const baseComponentPattern = {
-  propsData: {
+  props: {
     label: 'Label Test',
     id: 'renders',
   },
@@ -204,7 +204,7 @@ describe('CdrInput', () => {
       keydownSpy = sinon.spy();
       focusSpy = sinon.spy();
       wrapper = mount(CdrInput, {
-        propsData: {
+        props: {
           label: 'Label Test',
           id: 'test',
         },
@@ -367,7 +367,7 @@ describe('CdrInput', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrInput, {
-        propsData: {
+        props: {
           id: 'test',
           label: 'test',
           error: true,
@@ -389,7 +389,7 @@ describe('CdrInput', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrInput, {
-        propsData: {
+        props: {
           id: 'test',
           label: 'test',
           error: false,
@@ -411,7 +411,7 @@ describe('CdrInput', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrInput, {
-        propsData: {
+        props: {
           id: 'test',
           label: 'test',
           error: true,
@@ -437,7 +437,7 @@ describe('CdrInput', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrInput, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'aria-test',
         },
@@ -463,7 +463,7 @@ describe('CdrInput', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrInput, {
-        propsData: {
+        props: {
           label: 'test',
           id: 'aria-test',
         },

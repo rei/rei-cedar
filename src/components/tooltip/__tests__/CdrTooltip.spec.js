@@ -10,7 +10,7 @@ describe('CdrTooltip', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrTooltip, {
-        propsData: {
+        props: {
           id: 'tooltip-test',
         },
         slots: {

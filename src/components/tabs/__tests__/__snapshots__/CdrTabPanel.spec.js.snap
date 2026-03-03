@@ -2,7 +2,6 @@
 
 exports[`CdrTabPanel > default config > renders as expected 1`] = `
 <section
-  aria-hidden="true"
   aria-labelledby="test"
   class="cdr-tab-panel"
   id="test-panel"
@@ -18,7 +17,6 @@ exports[`CdrTabPanel > default config > renders as expected 1`] = `
 
 exports[`CdrTabPanel > when the selectedTabName is NOT the same as the tabPanel name > renders as expected 1`] = `
 <section
-  aria-hidden="true"
   aria-labelledby="test"
   class="cdr-tab-panel"
   id="test-panel"
@@ -34,7 +32,6 @@ exports[`CdrTabPanel > when the selectedTabName is NOT the same as the tabPanel 
 
 exports[`CdrTabPanel > when the selectedTabName is the same as the tabPanel name > renders as expected 1`] = `
 <section
-  aria-hidden="true"
   aria-labelledby="test"
   class="cdr-tab-panel"
   id="test-panel"

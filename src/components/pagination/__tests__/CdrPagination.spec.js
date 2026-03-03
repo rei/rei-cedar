@@ -58,7 +58,7 @@ describe('CdrPagination', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(20),
           modelValue: 1,
@@ -130,7 +130,7 @@ describe('CdrPagination', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(5),
           modelValue: 1,
@@ -161,7 +161,7 @@ describe('CdrPagination', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(getPrevNextPages(5), 3),
           modelValue: 5,
@@ -187,7 +187,7 @@ describe('CdrPagination', () => {
     let disabledPrev;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(getPrevNextPages(1), -1),
           modelValue: 1,
@@ -219,7 +219,7 @@ describe('CdrPagination', () => {
     let disabledNext;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(getPrevNextPages(10), 8),
           modelValue: 10,

@@ -31,6 +31,12 @@ const computedRel = computed(() => {
   return props.rel;
 });
 
+/** attrs without `class` — class is handled by the `:class` binding to avoid duplication */
+const attrsWithoutClass = computed(() => {
+  const { class: _class, ...rest } = attrs;
+  return rest;
+});
+
 const getModifierClasses = (modifier: string) => {
   if (!modifier) return [];
   return modifier
@@ -54,7 +60,7 @@ const getModifierClasses = (modifier: string) => {
     :href="computedHref"
     :rel="computedRel"
     :target="props.target"
-    v-bind="attrs"
+    v-bind="attrsWithoutClass"
   >
     <!-- @slot Readable text of the link  -->
     <slot />

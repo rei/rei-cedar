@@ -6,7 +6,7 @@ describe('CdrRadio', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrRadio, {
-        propsData: {
+        props: {
           customValue: 'A',
           name: 'testName',
         },
@@ -30,7 +30,7 @@ describe('CdrRadio', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrRadio, {
-        propsData: {
+        props: {
           labelClass: 'custom-label-class',
           inputClass: 'custom-input-class',
           contentClass: 'custom-content-class',
@@ -107,7 +107,7 @@ describe('CdrRadio', () => {
   // const options = {foo: {test: 'b', arr: [1,2,3]}}, etc.
   // xit('evaluates complex group checked state correctly', () => {
   //   const wrapper = mount(CdrRadio, {
-  //     propsData: {
+  //     props: {
   //       customValue: {test: 'B', arr: [1,2,3]},
   //       name: 'testName',
   //       modelValue: {test: 'B', arr: [1,2,3]},

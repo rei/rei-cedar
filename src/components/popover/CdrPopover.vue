@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCssModule, ref, computed, watch, onMounted, useSlots } from 'vue';
+import { useCssModule, ref, computed, watch, onMounted, onUnmounted, useSlots } from 'vue';
 import { tabbable } from 'tabbable';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
@@ -43,6 +43,7 @@ const style = useCssModule();
 
 const isOpen = ref(false);
 let lastActive: Element | null;
+let focusTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
 const triggerEl = ref<HTMLDivElement | null>(null);
 const popupEl = ref<InstanceType<typeof CdrPopup> | null>(null);
@@ -59,7 +60,7 @@ const openPopover = (e?: Event) => {
   lastActive = activeElement;
   isOpen.value = true;
   emits('opened', e);
-  setTimeout(() => {
+  focusTimeoutId = setTimeout(() => {
     const tabbables = tabbable(popupEl.value?.$el);
     if (tabbables[0]) tabbables[0].focus();
   }, 50);
@@ -78,6 +79,13 @@ const addHandlers = () => {
   }
 };
 
+const removeHandlers = () => {
+  const triggerElement = triggerEl.value?.children[0];
+  if (triggerElement) {
+    triggerElement.removeEventListener('click', openPopover);
+  }
+};
+
 watch(
   () => props.open,
   () => {
@@ -87,6 +95,7 @@ watch(
       closePopover();
     }
   },
+  { immediate: true },
 );
 
 onMounted(() => {
@@ -97,6 +106,11 @@ onMounted(() => {
     trigger.setAttribute('aria-controls', props.id);
     trigger.setAttribute('aria-haspopup', 'dialog');
   }
+});
+
+onUnmounted(() => {
+  removeHandlers();
+  if (focusTimeoutId) clearTimeout(focusTimeoutId);
 });
 </script>
 

@@ -6,7 +6,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           label: 'hey',
         },
         slots: {
@@ -24,7 +24,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: 'renders',
           label: 'hey',
           error: 'Something is happening?',
@@ -44,7 +44,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           label: 'hey',
           required: true,
         },
@@ -67,7 +67,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           label: 'hey',
           optional: true,
         },
@@ -90,7 +90,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           label: 'hey',
           required: true,
           optional: true,
@@ -114,7 +114,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: '123',
           error: true,
         },
@@ -141,7 +141,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           disabled: true,
         },
       });
@@ -160,7 +160,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: '123',
           error: 'false!',
         },
@@ -184,7 +184,7 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: '123',
           error: false,
         },

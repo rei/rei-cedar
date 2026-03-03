@@ -6,7 +6,7 @@ describe('CdrRating', () => {
   describe('with an href', () => {
     beforeEach(() => {
       wrapper = mount(CdrRating, {
-        propsData: {
+        props: {
           rating: 3.2323,
           count: 100,
           href: 'rei.com',
@@ -115,7 +115,7 @@ describe('CdrRating', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrRating, {
-        propsData: {
+        props: {
           rating: 3,
         },
       });

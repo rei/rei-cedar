@@ -49,7 +49,7 @@ const componentMap = computed<ChoreographerComponents>(
       button: CdrButton,
       container: CdrContainer,
       ...props.components,
-    } as ChoreographerComponents),
+    }) as ChoreographerComponents,
 );
 
 const baseClass: string = 'cdr-choreographer';
