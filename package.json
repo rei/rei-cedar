@@ -1,17 +1,21 @@
 {
   "name": "@rei/cedar",
   "version": "16.3.1",
+  "private": false,
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
   "license": "MIT",
-  "private": false,
+  "author": "REI Software Engineering",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rei/rei-cedar.git"
+  },
+  "files": [
+    "dist"
+  ],
   "sideEffects": [
     "*.css"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "REI Software Engineering",
   "main": "./dist/cedar.umd.js",
   "module": "./dist/lib.mjs",
   "types": "./dist/lib.d.ts",
@@ -27,12 +31,8 @@
     },
     "./dist/": "./dist/"
   },
-  "files": [
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rei/rei-cedar.git"
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "prepare": "husky",
@@ -56,20 +56,26 @@
     "test": "npm-run-all unit test:playwright",
     "clean": "rm -rf dist",
     "lint": "npm-run-all --continue-on-error lint:js lint:styles lint:types lint:report",
-    "lint:js": "eslint src --ext .js,.vue,.ts,.mjs",
-    "lint:js:fix": "eslint src --ext .js,.vue,.ts,.mjs --fix",
+    "lint:js": "oxlint src",
+    "lint:js:fix": "oxlint src --fix",
     "lint:styles": "stylelint src/**/*.scss",
     "lint:styles:fix": "stylelint 'src/**/*.scss' --fix",
     "lint:styles:report": "stylelint src/**/*.scss --custom-formatter=./stylelint-report-formatter.js",
     "lint:types": "vue-tsc --noEmit",
     "lint:report": "tsx lint-report-generator.ts",
     "lint:full": "npm-run-all lint lint:report",
-    "format": "prettier --write .",
-    "format:staged": "prettier --write",
+    "format": "oxfmt",
+    "format:staged": "oxfmt",
     "lint-staged": "lint-staged",
     "prepush": "npm-run-all lint unit",
     "create": "node generator.js",
     "prerelease": "npm-publish-prerelease"
+  },
+  "dependencies": {
+    "@rei/cdr-tokens": "^13.3.0",
+    "@vueuse/core": "^14.1.0",
+    "radix-vue": "^1.9.17",
+    "tabbable": "^6.4.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
@@ -77,7 +83,6 @@
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@emotion/is-prop-valid": "^1.4.0",
-    "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.57.0",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.1.0",
@@ -88,10 +93,7 @@
     "@storybook/vue3": "^8.6.15",
     "@storybook/vue3-vite": "^8.6.15",
     "@types/fs-extra": "^11.0.4",
-    "@typescript-eslint/eslint-plugin": "^8.53.0",
-    "@typescript-eslint/parser": "^8.53.0",
     "@vitejs/plugin-vue": "^6.0.3",
-    "@vue/eslint-config-typescript": "^14.6.0",
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.23",
     "c8": "^10.1.3",
@@ -99,13 +101,6 @@
     "concat": "^1.0.3",
     "cross-env": "^10.1.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-tree-shaking": "^1.12.2",
-    "eslint-plugin-vue": "^10.6.2",
     "fs-extra": "^11.3.3",
     "glob": "^13.0.0",
     "husky": "^9.1.7",
@@ -117,6 +112,8 @@
     "lodash-es": "^4.17.22",
     "npm-publish-prerelease": "^1.0.2",
     "npm-run-all": "^4.1.5",
+    "oxfmt": "^0.36.0",
+    "oxlint": "^1.51.0",
     "postcss": "^8.5.6",
     "postcss-calc": "^10.1.1",
     "postcss-pxtorem": "^6.1.0",
@@ -130,18 +127,17 @@
     "stylelint-scss": "^6.14.0",
     "tsx": "^4.19.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "^8.53.0",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.17",
     "vue-docgen-api": "^4.79.2",
     "vue-docgen-cli": "^4.79.0",
-    "vue-eslint-parser": "^10.2.0",
     "vue-router": "^4.6.4",
     "vue-tsc": "3.2.2"
   },
-  "engines": {
-    "node": ">= 22.0.0"
+  "peerDependencies": {
+    "core-js": "^3.22.7",
+    "vue": "^3.3.4"
   },
   "husky": {
     "hooks": {
@@ -149,18 +145,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,ts,vue,mjs}": "eslint --fix",
+    "src/**/*.{js,ts,vue,mjs}": "oxlint --fix",
     "src/**/*.scss": "stylelint --fix",
-    "src/**/*": "prettier --write --ignore-unknown"
+    "src/**/*": "oxfmt --no-error-on-unmatched-pattern"
   },
-  "dependencies": {
-    "@rei/cdr-tokens": "^13.3.0",
-    "@vueuse/core": "^14.1.0",
-    "radix-vue": "^1.9.17",
-    "tabbable": "^6.4.0"
-  },
-  "peerDependencies": {
-    "core-js": "^3.22.7",
-    "vue": "^3.3.4"
+  "engines": {
+    "node": ">= 22.0.0"
   }
 }
