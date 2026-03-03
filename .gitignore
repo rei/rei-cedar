@@ -65,3 +65,6 @@ pages
 # AGENTS.md
 # .agents/skills/
 # .skills-lock.json
+.agents/
+skills-lock.json
+AGENTS.md
