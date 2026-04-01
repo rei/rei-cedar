@@ -47,12 +47,14 @@ coverage/
 **/dist/*
 src/**/styles/themes/*
 src/entrypoints/
+*.tsbuildinfo
 
 src/**/package-lock\.json
 unmigrated/
 
 ## Dev output for hosting
 pages
+storybook-static
 
 # Ignore reports directory
 /reports/

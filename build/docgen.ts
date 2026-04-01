@@ -1,7 +1,7 @@
-import { parse, ComponentDoc } from 'vue-docgen-api';
+import { parse } from 'vue-docgen-api';
+import type { ComponentDoc, PropDescriptor } from 'vue-docgen-api';
 import fs from 'fs-extra';
 import { globSync } from 'glob';
-import _ from 'lodash-es';
 import path from 'path';
 import parseSCSS from './docgen-scss';
 
@@ -17,41 +17,57 @@ interface ExtendedComponentDoc extends ComponentDoc {
 
 type DocgenObject = Record<string, ExtendedComponentDoc>;
 
+type DocgenDefaultValue = string | boolean | unknown[];
+
+function normalizeDefaultValue(value: string): DocgenDefaultValue {
+  if (value === 'false') return false;
+  if (value === 'true') return true;
+  if (value === '[]') return [];
+
+  return trimApostrophes(value);
+}
+
 async function createDocgenObj(filePath: string, docgenObj: DocgenObject): Promise<void> {
   const parsedComponentFile = await parse(filePath);
   docgenObj[parsedComponentFile.displayName] = parsedComponentFile;
 
-  _.forIn(docgenObj, (component) => {
-    component.props?.forEach((prop) => {
-      if (_.has(prop, 'defaultValue.value')) {
-        if (prop.defaultValue!.value === 'false') {
-          (prop.defaultValue!.value as unknown) = false;
-        }
-        if (prop.defaultValue!.value === 'true') {
-          (prop.defaultValue!.value as unknown) = true;
-        }
-        if (prop.defaultValue!.value === '[]') {
-          (prop.defaultValue!.value as unknown) = [];
-        }
-        prop.defaultValue!.value = trimApostrophes(prop.defaultValue!.value as string);
+  Object.values(docgenObj).forEach((component) => {
+    component.props?.forEach((prop: PropDescriptor) => {
+      const defaultValue = prop.defaultValue?.value;
+
+      if (typeof defaultValue === 'string') {
+        (prop.defaultValue as { value: DocgenDefaultValue }).value = normalizeDefaultValue(
+          defaultValue,
+        );
       }
-      if (prop.tags && prop.tags.values && prop.tags.values[0].description) {
-        (prop as Record<string, unknown>).values = prop.tags.values[0].description
+
+      const valuesDescription = getTagDescription(prop.tags?.values?.[0]);
+
+      if (valuesDescription) {
+        (prop as PropDescriptor & { values?: string[] }).values = valuesDescription
           .split(',')
           .map((value: string) => {
             return value.trim();
           });
-        delete prop.tags.values;
+        delete prop.tags?.values;
       }
     });
   });
 }
 
-function trimApostrophes(str: string | boolean | unknown[]): string | boolean | unknown[] {
+function trimApostrophes(str: DocgenDefaultValue): DocgenDefaultValue {
   if (typeof str === 'string' && str[0] === "'" && str[str.length - 1] === "'") {
     return str.slice(1, -1);
   }
   return str;
+}
+
+function getTagDescription(tag: unknown): string | undefined {
+  if (tag && typeof tag === 'object' && 'description' in tag) {
+    return typeof tag.description === 'string' ? tag.description : undefined;
+  }
+
+  return undefined;
 }
 
 async function main(): Promise<void> {

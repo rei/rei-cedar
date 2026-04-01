@@ -5,7 +5,7 @@ import path from 'node:path';
  * Converts a string to kebab case.
  * @param {*} str
  */
-function kebabCase(str) {
+function kebabCase(str: string) {
   return str
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[\s_]+/g, '-')
@@ -27,10 +27,10 @@ export default async function cssNameNormalizer(): Promise<Plugin> {
     name: 'css-name-normalizer',
     apply(config, { command }) {
       // apply only on build but not for SSR
-      return command === 'build' && !config.build.ssr;
+      return command === 'build' && !config.build?.ssr;
     },
     enforce: 'post',
-    async generateBundle(obj, bundle) {
+    async generateBundle(_obj, bundle) {
       Object.keys(bundle)
         .filter((key) => {
           const { ext } = path.parse(key);
@@ -38,8 +38,15 @@ export default async function cssNameNormalizer(): Promise<Plugin> {
         })
         .forEach((key) => {
           const entry = bundle[key];
-          const filePath = kebabCase(key.split('.').shift());
+          const baseName = key.split('.').shift();
+
+          if (!baseName || !('fileName' in entry)) return;
+
+          const filePath = kebabCase(baseName);
           const fileName = filePath.split('/').pop();
+
+          if (!fileName) return;
+
           entry.fileName = `style/${fileName}.css`;
         });
     },

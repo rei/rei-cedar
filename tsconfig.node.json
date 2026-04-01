@@ -8,13 +8,12 @@
     "strict": true
   },
   "include": [
+    "*.d.ts",
     "vite.config.ts",
     "vite.umd.config.ts",
     "vite.pages.config.mts",
-    "vite-plugin-css-name-normalizer.ts",
-    "build/*.ts",
-    "lint-report-generator.ts",
-    "docgen.ts",
-    "docgen-scss.ts"
+    "build/**/*.ts",
+    "build/**/*.mts",
+    "build/**/*.mjs"
   ]
 }

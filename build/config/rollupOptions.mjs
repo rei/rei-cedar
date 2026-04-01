@@ -14,7 +14,7 @@ export default {
     preserveModules: true,
     assetFileNames: (assetInfo) => {
       if (assetInfo.name === 'style.css') return 'cdr-style.css';
-      return assetInfo.name;
+      return assetInfo.name ?? 'assets/[name]-[hash][extname]';
     },
   },
   plugins: [
