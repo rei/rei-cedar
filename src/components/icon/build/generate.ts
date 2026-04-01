@@ -66,5 +66,6 @@ Object.keys(iconData).forEach(function (name) {
 fs.outputFileSync(
   resolve('index.ts'),
   `// file created by generate.ts
-${indexArr.join('\n')}`,
+${indexArr.join('\n')}
+`,
 );
