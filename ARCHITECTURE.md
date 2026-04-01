@@ -77,7 +77,7 @@ Additionally, git hooks are part of the enforcement path via Husky, especially p
 
 ### Prerequisites
 
-- Node.js version must satisfy `engines.node` (`>=22.0.0`).
+- Node.js version must satisfy `engines.node` (`>=20.19.0 <21 || >=22.12.0`).
 - Use pnpm for all package/script workflows.
 - Optionally enable Corepack for consistent pnpm invocation:
   - `corepack enable`
@@ -130,8 +130,8 @@ Additionally, git hooks are part of the enforcement path via Husky, especially p
    - Impact: local aliases and IDE test configurations may need updates to Vitest commands.
 3. **Lint configuration model:** legacy ESLint config file patterns are superseded by flat config (`eslint.config.js`).
    - Impact: lint rule edits should be made in flat config format only.
-4. **Node runtime floor:** contributors and CI must run Node 22+.
-   - Impact: older local Node versions will fail installs/scripts.
+4. **Node runtime floor:** contributors and CI must run a supported Node version matching `engines.node` (`>=20.19.0 <21 || >=22.12.0`).
+   - Impact: older local Node versions and unsupported Node 21 / early Node 22 releases will fail installs/scripts.
 5. **Commit-time quality gate:** Husky pre-commit now enforces unit + staged lint/format checks.
    - Impact: commits can be blocked until local quality issues are resolved.
 

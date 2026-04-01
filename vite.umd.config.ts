@@ -2,11 +2,11 @@
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import options from './rollupOptions.mjs';
+import options from './build/config/rollupOptions.mjs';
 
-options.output.preserveModules = false;
+const output = Array.isArray(options.output) ? options.output[0] : options.output;
 
-const version = process.env.npm_package_version;
+const version = process.env.npm_package_version ?? '0.0.0';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,13 +18,15 @@ export default defineConfig({
       formats: ['umd'],
       name: 'cedar',
     },
-    rollupOptions: {
+    rolldownOptions: {
       ...options,
-      external: (id) =>
+      external: (id: string) =>
         ['vue', 'core-js', 'tabbable'].some((dep) => dep === id || id.startsWith(`${dep}/`)),
       output: {
-        ...options.output,
+        ...output,
+        preserveModules: false,
         globals: {
+          ...output?.globals,
           vue: 'Vue',
           'core-js': 'core-js',
           tabbable: 'tabbable',
@@ -44,7 +46,7 @@ export default defineConfig({
         charset: false,
         quietDeps: true,
         api: 'modern',
-      },
+      } as never,
     },
   },
   resolve: {

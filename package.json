@@ -25,11 +25,21 @@
       "import": "./dist/lib.mjs",
       "require": "./dist/cedar.umd.js"
     },
+    "./_virtual/*": null,
+    "./components/*": null,
+    "./entrypoints/*": null,
+    "./mixins/*": null,
+    "./props/*": null,
+    "./svg/*": null,
+    "./types/*": null,
+    "./utils/*": null,
     "./*": {
       "types": "./dist/*.d.ts",
       "import": "./dist/*.mjs"
     },
-    "./dist/": "./dist/"
+    "./dist/*.css": "./dist/*.css",
+    "./dist/style/*": "./dist/style/*",
+    "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
@@ -40,8 +50,10 @@
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "vue-tsc -p tsconfig.build.json --noEmit && vite build && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",
-    "build:docgen": "tsx docgen.ts",
+    "build": "npm run build:entrypoints && vue-tsc -p tsconfig.build.json --noEmit && vite build && npm run build:entrypoint-types && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",
+    "build:entrypoints": "tsx build/generate-entrypoints.ts",
+    "build:entrypoint-types": "tsx build/generate-entrypoint-dts.ts",
+    "build:docgen": "tsx build/docgen.ts",
     "build:icons": "tsx src/components/icon/build/generate.ts",
     "build:copycss": "tsx build/copy-css.ts",
     "build:umd": "vite build --config vite.umd.config.ts",
@@ -62,7 +74,7 @@
     "lint:styles:fix": "stylelint 'src/**/*.scss' --fix",
     "lint:styles:report": "stylelint src/**/*.scss --custom-formatter=./stylelint-report-formatter.js",
     "lint:types": "vue-tsc --noEmit",
-    "lint:report": "tsx lint-report-generator.ts",
+    "lint:report": "tsx build/lint-report-generator.ts",
     "lint:full": "npm-run-all lint lint:report",
     "format": "oxfmt",
     "format:staged": "oxfmt",
@@ -86,14 +98,13 @@
     "@playwright/test": "^1.57.0",
     "@rei/cedar-icons": "^2.6.1",
     "@rollup/plugin-babel": "^6.1.0",
-    "@storybook/addon-a11y": "^8.6.15",
-    "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/addon-links": "^8.6.15",
-    "@storybook/blocks": "^8.6.14",
-    "@storybook/vue3": "^8.6.15",
-    "@storybook/vue3-vite": "^8.6.15",
+    "@storybook/addon-a11y": "^10.3.3",
+    "@storybook/addon-docs": "^10.3.3",
+    "@storybook/addon-links": "^10.3.3",
+    "@storybook/vue3": "^10.3.3",
+    "@storybook/vue3-vite": "^10.3.3",
     "@types/fs-extra": "^11.0.4",
-    "@vitejs/plugin-vue": "^6.0.3",
+    "@vitejs/plugin-vue": "^6.0.5",
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.23",
     "c8": "^10.1.3",
@@ -101,6 +112,7 @@
     "concat": "^1.0.3",
     "cross-env": "^10.1.0",
     "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.27.4",
     "fs-extra": "^11.3.3",
     "glob": "^13.0.0",
     "husky": "^9.1.7",
@@ -120,16 +132,16 @@
     "postcss-scss": "^4.0.9",
     "sass": "^1.97.2",
     "sinon": "^21.0.1",
-    "storybook": "^8.6.15",
+    "storybook": "^10.3.3",
     "stylelint": "^16.26.1",
     "stylelint-config-recommended-scss": "^16.0.2",
     "stylelint-config-standard-scss": "^16.0.0",
     "stylelint-scss": "^6.14.0",
     "tsx": "^4.19.0",
     "typescript": "5.9.3",
-    "vite": "^7.3.1",
+    "vite": "^8.0.3",
     "vite-plugin-dts": "^4.5.4",
-    "vitest": "^4.0.17",
+    "vitest": "^4.1.2",
     "vue-docgen-api": "^4.79.2",
     "vue-docgen-cli": "^4.79.0",
     "vue-router": "^4.6.4",
@@ -150,6 +162,6 @@
     "src/**/*": "oxfmt --no-error-on-unmatched-pattern"
   },
   "engines": {
-    "node": ">= 22.0.0"
+    "node": ">=20.19.0 <21 || >=22.12.0"
   }
 }

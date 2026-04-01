@@ -6,65 +6,13 @@ import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
-import options from './rollupOptions.mjs';
-import cssNameNormalizer from './vite-plugin-css-name-normalizer';
+import options from './build/config/rollupOptions.mjs';
+import { generateComponentEntrypoints } from './build/generate-entrypoints';
+import cssNameNormalizer from './build/plugins/vite-plugin-css-name-normalizer';
 
-const version = process.env.npm_package_version;
-const componentsDir = fileURLToPath(new URL('./src/components', import.meta.url));
-const componentEntrypointsDir = fileURLToPath(new URL('./src/entrypoints', import.meta.url));
-
-const toKebabCase = (value: string) =>
-  value
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
-    .toLowerCase();
-
-const getComponentEntries = () => {
-  const entries: Record<string, string> = {};
-
-  fs.mkdirSync(componentEntrypointsDir, { recursive: true });
-
-  const existingEntrypoints = fs
-    .readdirSync(componentEntrypointsDir)
-    .filter((fileName) => fileName.endsWith('.ts'));
-
-  existingEntrypoints.forEach((fileName) => {
-    fs.unlinkSync(path.join(componentEntrypointsDir, fileName));
-  });
-
-  fs.readdirSync(componentsDir, { withFileTypes: true }).forEach((dirEntry) => {
-    if (!dirEntry.isDirectory()) return;
-
-    const componentPath = path.join(componentsDir, dirEntry.name);
-    const vueEntries = fs
-      .readdirSync(componentPath)
-      .filter((fileName) => fileName.endsWith('.vue') && fileName.startsWith('Cdr'));
-    const typeSource = fs.existsSync(path.join(componentPath, 'types.ts'))
-      ? 'types'
-      : fs.existsSync(path.join(componentPath, 'interfaces.ts'))
-        ? 'interfaces'
-        : null;
-
-    vueEntries.forEach((fileName) => {
-      const componentName = fileName.replace(/^Cdr/, '').replace(/\.vue$/, '');
-      const entryName = toKebabCase(componentName);
-      const entryFilePath = path.join(componentEntrypointsDir, `${entryName}.ts`);
-      const entryFileContents = [
-        `export { default as ${fileName.replace(/\.vue$/, '')} } from '../components/${dirEntry.name}/${fileName}';`,
-        typeSource ? `export type * from '../components/${dirEntry.name}/${typeSource}';` : '',
-      ]
-        .filter(Boolean)
-        .join('\n');
-
-      fs.writeFileSync(entryFilePath, `${entryFileContents}\n`);
-      entries[entryName] = `./src/entrypoints/${entryName}.ts`;
-    });
-  });
-
-  return entries;
-};
-
-const componentEntries = getComponentEntries();
+const version = process.env.npm_package_version ?? '0.0.0';
+const componentEntries = generateComponentEntrypoints();
+const shouldGenerateDeclarations = process.env.STORYBOOK !== 'true';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -79,7 +27,7 @@ export default defineConfig({
       formats: ['es'],
       fileName: (_format, entryName) => `${entryName}.mjs`,
     },
-    rollupOptions: options,
+    rolldownOptions: options,
   },
   server: {
     port: 3000,
@@ -93,7 +41,7 @@ export default defineConfig({
         charset: false,
         quietDeps: true,
         api: 'modern',
-      },
+      } as never,
     },
   },
   resolve: {
@@ -118,9 +66,14 @@ export default defineConfig({
   plugins: [
     vue(),
     cssNameNormalizer(),
-    dts({
-      tsconfigPath: './tsconfig.build.json',
-      rollupTypes: true,
-    }),
+    ...(shouldGenerateDeclarations
+      ? [
+          dts({
+            tsconfigPath: './tsconfig.build.json',
+            rollupTypes: false,
+            exclude: ['src/**/*.stories.ts', 'src/**/examples/**'],
+          }),
+        ]
+      : []),
   ],
 });
