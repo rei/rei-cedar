@@ -6,6 +6,7 @@ const entrypointsDir = path.join(distDir, 'entrypoints');
 const internalDeclarationPatterns = [/\.stories\.d\.ts$/, /\/examples\//];
 
 const toPosixPath = (value: string) => value.replace(/\\/g, '/');
+const normalizeDeclarationContents = (contents: string) => contents.replace(/export type \* from/g, 'export * from');
 
 const writeProxyDeclaration = (targetPath: string, sourcePath: string) => {
   fs.mkdirSync(path.dirname(targetPath), { recursive: true });
@@ -15,7 +16,7 @@ const writeProxyDeclaration = (targetPath: string, sourcePath: string) => {
     '',
   );
   const specifier = relativeImportPath.startsWith('.') ? relativeImportPath : `./${relativeImportPath}`;
-  const sourceContents = fs.readFileSync(sourcePath, 'utf8');
+  const sourceContents = normalizeDeclarationContents(fs.readFileSync(sourcePath, 'utf8'));
   const proxyContents = [
     sourceContents.includes('export { default') ? `export { default } from '${specifier}';` : '',
     `export * from '${specifier}';`,
@@ -24,6 +25,26 @@ const writeProxyDeclaration = (targetPath: string, sourcePath: string) => {
     .join('\n');
 
   fs.writeFileSync(targetPath, `${proxyContents}\n`);
+};
+
+const normalizeDeclarations = (currentDir: string) => {
+  fs.readdirSync(currentDir, { withFileTypes: true }).forEach((dirent) => {
+    const currentPath = path.join(currentDir, dirent.name);
+
+    if (dirent.isDirectory()) {
+      normalizeDeclarations(currentPath);
+      return;
+    }
+
+    if (!dirent.name.endsWith('.d.ts')) return;
+
+    const contents = fs.readFileSync(currentPath, 'utf8');
+    const normalizedContents = normalizeDeclarationContents(contents);
+
+    if (contents !== normalizedContents) {
+      fs.writeFileSync(currentPath, normalizedContents);
+    }
+  });
 };
 
 const copyEntrypointDeclarations = (currentDir: string) => {
@@ -74,5 +95,6 @@ if (fs.existsSync(entrypointsDir)) {
 }
 
 if (fs.existsSync(distDir)) {
+  normalizeDeclarations(distDir);
   removeInternalDeclarations(distDir);
 }
