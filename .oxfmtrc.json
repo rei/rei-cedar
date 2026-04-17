@@ -14,5 +14,14 @@
   "vueIndentScriptAndStyle": false,
   "endOfLine": "lf",
   "singleAttributePerLine": true,
-  "ignorePatterns": ["dist/", "node_modules/", "templates/", "src/components/icon/comps/"]
+  "ignorePatterns": [
+    "dist/",
+    "node_modules/",
+    "templates/",
+    "src/components/icon/comps/",
+    "coverage/",
+    "storybook-static/",
+    "*.log",
+    ".DS_Store"
+  ]
 }
