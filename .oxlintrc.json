@@ -132,7 +132,6 @@
       "files": ["**/*.{js,mjs,ts,vue}"],
       "rules": {
         "no-use-before-define": "off",
-        "camelcase": "off",
         "no-undef": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "no-unused-vars": [

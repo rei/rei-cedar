@@ -36,9 +36,8 @@ async function createDocgenObj(filePath: string, docgenObj: DocgenObject): Promi
       const defaultValue = prop.defaultValue?.value;
 
       if (typeof defaultValue === 'string') {
-        (prop.defaultValue as { value: DocgenDefaultValue }).value = normalizeDefaultValue(
-          defaultValue,
-        );
+        (prop.defaultValue as { value: DocgenDefaultValue }).value =
+          normalizeDefaultValue(defaultValue);
       }
 
       const valuesDescription = getTagDescription(prop.tags?.values?.[0]);

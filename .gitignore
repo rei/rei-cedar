@@ -26,7 +26,8 @@
 *.sublime-workspace
 nbproject
 Thumbs.db
-.vscode
+.vscode/*
+!.vscode/extensions.json
 jsconfig.json
 
 # Folders to ignore
