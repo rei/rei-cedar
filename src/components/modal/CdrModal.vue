@@ -108,7 +108,9 @@ const handleKeyDown = ({ key }: { key: string }) => {
 
 const handleFocus = (e: Event) => {
   const { documentElement } = document;
-  if (modalEl.value?.contains(e.target as HTMLElement) || !documentElement) return;
+  if (!modalEl.value || modalEl.value.contains(e.target as HTMLElement) || !documentElement) {
+    return;
+  }
 
   const tabbables = tabbable(documentElement);
   const these = tabbable(modalEl.value as Element);

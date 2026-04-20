@@ -5,11 +5,17 @@ import { config } from '@vue/test-utils';
 config.global.stubs['Teleport'] = true;
 let teleportTimingDialogIdCounter = 0;
 
+const waitForOpenEffects = async (wrapper) => {
+  await wrapper.vm.$nextTick();
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  await wrapper.vm.$nextTick();
+};
+
 describe('CdrModal.vue', () => {
   describe('default open', () => {
     let wrapper;
     let elem;
-    beforeEach(() => {
+    beforeEach(async () => {
       elem = document.createElement('div');
       if (document.body) {
         document.body.appendChild(elem);
@@ -24,6 +30,7 @@ describe('CdrModal.vue', () => {
         },
         attachTo: elem,
       });
+      await waitForOpenEffects(wrapper);
     });
 
     it('renders correctly', () => {
@@ -35,22 +42,16 @@ describe('CdrModal.vue', () => {
     });
 
     it('handleKeyDown', async () => {
-      wrapper.trigger('keydown', {
-        key: 'a',
-      });
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
       await wrapper.vm.$nextTick();
 
-      wrapper.trigger('keydown', {
-        key: 'Esc',
-      });
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
       await wrapper.vm.$nextTick();
 
-      wrapper.trigger('keydown', {
-        key: 'Escape',
-      });
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.emitted().closed.length).toBe(2);
+      expect(wrapper.emitted().closed?.length || 0).toBe(2);
     });
   });
 
@@ -61,7 +62,7 @@ describe('CdrModal.vue', () => {
     let displayNoneEl;
     let scriptEl;
     let styleEl;
-    beforeAll(() => {
+    beforeAll(async () => {
       modalEl = document.createElement('div');
       ariaHiddenEl = document.createElement('div');
       ariaHiddenEl.setAttribute('aria-hidden', 'true');
@@ -86,6 +87,7 @@ describe('CdrModal.vue', () => {
         },
         attachTo: modalEl,
       });
+      await waitForOpenEffects(wrapper);
     });
 
     it('aria-hides elements that should be hidden', () => {
@@ -277,7 +279,7 @@ describe('CdrModal.vue', () => {
   describe('fullscreen snapshot', () => {
     let wrapper;
     let elem;
-    beforeEach(() => {
+    beforeEach(async () => {
       elem = document.createElement('div');
       if (document.body) {
         document.body.appendChild(elem);
@@ -292,6 +294,7 @@ describe('CdrModal.vue', () => {
         },
         attachTo: elem,
       });
+      await waitForOpenEffects(wrapper);
     });
 
     it('renders correctly', () => {
