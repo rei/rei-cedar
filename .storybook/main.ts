@@ -12,7 +12,12 @@ const config: StorybookConfig = {
   docs: {},
   viteFinal: async (config) => {
     config.plugins = (config.plugins ?? []).filter((plugin) => {
-      return !(plugin && typeof plugin === 'object' && 'name' in plugin && plugin.name === 'vite:dts');
+      return !(
+        plugin &&
+        typeof plugin === 'object' &&
+        'name' in plugin &&
+        plugin.name === 'vite:dts'
+      );
     });
 
     return mergeConfig(config, {

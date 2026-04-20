@@ -6,16 +6,18 @@ const entrypointsDir = path.join(distDir, 'entrypoints');
 const internalDeclarationPatterns = [/\.stories\.d\.ts$/, /\/examples\//];
 
 const toPosixPath = (value: string) => value.replace(/\\/g, '/');
-const normalizeDeclarationContents = (contents: string) => contents.replace(/export type \* from/g, 'export * from');
+const normalizeDeclarationContents = (contents: string) =>
+  contents.replace(/export type \* from/g, 'export * from');
 
 const writeProxyDeclaration = (targetPath: string, sourcePath: string) => {
   fs.mkdirSync(path.dirname(targetPath), { recursive: true });
 
-  const relativeImportPath = toPosixPath(path.relative(path.dirname(targetPath), sourcePath)).replace(
-    /\.d\.ts$/,
-    '',
-  );
-  const specifier = relativeImportPath.startsWith('.') ? relativeImportPath : `./${relativeImportPath}`;
+  const relativeImportPath = toPosixPath(
+    path.relative(path.dirname(targetPath), sourcePath),
+  ).replace(/\.d\.ts$/, '');
+  const specifier = relativeImportPath.startsWith('.')
+    ? relativeImportPath
+    : `./${relativeImportPath}`;
   const sourceContents = normalizeDeclarationContents(fs.readFileSync(sourcePath, 'utf8'));
   const proxyContents = [
     sourceContents.includes('export { default') ? `export { default } from '${specifier}';` : '',

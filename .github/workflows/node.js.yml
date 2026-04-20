@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -20,6 +22,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+      - name: Check formatting
+        run: pnpm run format:check
       - run: pnpm run build --if-present
       - run: pnpm run lint
       - run: pnpm run unit
