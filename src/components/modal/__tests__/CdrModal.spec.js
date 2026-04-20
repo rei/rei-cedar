@@ -227,11 +227,13 @@ describe('CdrModal.vue', () => {
       });
 
       await wrapper.setProps({ opened: true });
-      await wrapper.vm.$nextTick();
-      await wrapper.vm.$nextTick();
-      await wrapper.vm.$nextTick();
+      let modalEl = null;
+      for (let i = 0; i < 10; i += 1) {
+        await wrapper.vm.$nextTick();
+        modalEl = document.body.querySelector('.cdr-modal');
+        if (modalEl) break;
+      }
 
-      const modalEl = document.body.querySelector('.cdr-modal');
       expect(modalEl).not.toBeNull();
       expect(modalEl.closest('[aria-hidden="true"]')).toBeNull();
 

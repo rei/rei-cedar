@@ -269,7 +269,7 @@ const handleClosed = () => {
 const openAfterTeleportReady = async () => {
   const openToken = ++pendingOpenToken;
 
-  if (!teleportDisabled.value) {
+  if (!teleportDisabled.value && wrapperEl.value?.parentElement !== document.body) {
     // Wait for Teleport to move content to body before aria-hiding background.
     for (let i = 0; i < 3; i += 1) {
       await nextTick();
@@ -334,7 +334,7 @@ watch(
   },
 );
 
-onMounted(async () => {
+onMounted(() => {
   // Keep Teleport inline for SSR + hydration, then move to body on client.
   teleportDisabled.value = false;
   window.addEventListener('resize', handleResize);
