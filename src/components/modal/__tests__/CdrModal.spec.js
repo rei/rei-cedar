@@ -3,6 +3,7 @@ import CdrModal from '../CdrModal.vue';
 import { config } from '@vue/test-utils';
 
 config.global.stubs['Teleport'] = true;
+let teleportTimingDialogIdCounter = 0;
 
 describe('CdrModal.vue', () => {
   describe('default open', () => {
@@ -205,7 +206,8 @@ describe('CdrModal.vue', () => {
 
   describe('teleport timing behavior', () => {
     it('does not leave the modal inside an aria-hidden ancestor when opening right after mount', async () => {
-      const testDialogId = `teleport-timing-dialog-${Math.random().toString(36).slice(2)}`;
+      teleportTimingDialogIdCounter += 1;
+      const testDialogId = `teleport-timing-dialog-${teleportTimingDialogIdCounter}`;
       const elem = document.createElement('div');
       if (document.body) {
         document.body.appendChild(elem);

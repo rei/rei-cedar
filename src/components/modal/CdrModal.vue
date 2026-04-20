@@ -56,6 +56,7 @@ let unsubscribe: (() => void) | undefined;
 let lastActive: Element | null;
 let openedTimeoutId: ReturnType<typeof setTimeout> | undefined;
 let pendingOpenToken = 0;
+let isUnmounted = false;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
 const teleportDisabled = ref(true);
@@ -271,15 +272,25 @@ const openAfterTeleportReady = async () => {
 
   if (!teleportDisabled.value && wrapperEl.value?.parentElement !== document.body) {
     // Wait for Teleport to move content to body before aria-hiding background.
-    for (let i = 0; i < 3; i += 1) {
+    // Use both a tick cap and a short time cap so we don't wait indefinitely.
+    const maxWaitTicks = 20;
+    const maxWaitMs = 150;
+    const startTime = Date.now();
+
+    for (let i = 0; i < maxWaitTicks && Date.now() - startTime < maxWaitMs; i += 1) {
       await nextTick();
+
+      if (openToken !== pendingOpenToken || !props.opened || isUnmounted) {
+        return;
+      }
+
       if (wrapperEl.value?.parentElement === document.body) {
         break;
       }
     }
   }
 
-  if (openToken !== pendingOpenToken || !props.opened) {
+  if (openToken !== pendingOpenToken || !props.opened || isUnmounted) {
     return;
   }
 
@@ -336,6 +347,7 @@ watch(
 
 onMounted(() => {
   // Keep Teleport inline for SSR + hydration, then move to body on client.
+  isUnmounted = false;
   teleportDisabled.value = false;
   window.addEventListener('resize', handleResize);
 
@@ -345,6 +357,8 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  isUnmounted = true;
+  pendingOpenToken += 1;
   window.removeEventListener('resize', handleResize);
   if (openedTimeoutId !== undefined) clearTimeout(openedTimeoutId);
   // Clean up document-level handlers in case the modal unmounts while open
