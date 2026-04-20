@@ -205,6 +205,7 @@ describe('CdrModal.vue', () => {
 
   describe('teleport timing behavior', () => {
     it('does not leave the modal inside an aria-hidden ancestor when opening right after mount', async () => {
+      const testDialogId = `teleport-timing-dialog-${Math.random().toString(36).slice(2)}`;
       const elem = document.createElement('div');
       if (document.body) {
         document.body.appendChild(elem);
@@ -214,6 +215,7 @@ describe('CdrModal.vue', () => {
         props: {
           opened: false,
           label: 'Label is the modal title',
+          id: testDialogId,
         },
         slots: {
           default: 'Sticky content',
@@ -227,13 +229,16 @@ describe('CdrModal.vue', () => {
       });
 
       await wrapper.setProps({ opened: true });
+      let dialogEl = null;
       let modalEl = null;
       for (let i = 0; i < 10; i += 1) {
         await wrapper.vm.$nextTick();
-        modalEl = document.body.querySelector('.cdr-modal');
-        if (modalEl) break;
+        dialogEl = document.getElementById(testDialogId);
+        modalEl = dialogEl?.closest('.cdr-modal') || null;
+        if (modalEl && dialogEl) break;
       }
 
+      expect(dialogEl).not.toBeNull();
       expect(modalEl).not.toBeNull();
       expect(modalEl.closest('[aria-hidden="true"]')).toBeNull();
 
