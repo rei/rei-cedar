@@ -57,6 +57,7 @@ let lastActive: Element | null;
 let openedTimeoutId: ReturnType<typeof setTimeout> | undefined;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
+const teleportDisabled = ref(true);
 
 interface OffsetValues {
   x: number | undefined;
@@ -311,11 +312,16 @@ watch(
   },
 );
 
-onMounted(() => {
+onMounted(async () => {
+  // Keep Teleport inline for SSR + hydration, then move to body on client.
+  teleportDisabled.value = false;
+  window.addEventListener('resize', handleResize);
+
   if (props.opened) {
+    // Ensure Teleport has moved content to body before opening side effects run.
+    await nextTick();
     handleOpened();
   }
-  window.addEventListener('resize', handleResize);
 });
 
 onUnmounted(() => {
@@ -328,7 +334,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Teleport to="body">
+  <Teleport
+    to="body"
+    :disabled="teleportDisabled"
+  >
     <div
       :class="mapClasses(style, baseClass, !opened ? 'cdr-modal--closed' : '')"
       ref="wrapperEl"
