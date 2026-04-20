@@ -203,6 +203,43 @@ describe('CdrModal.vue', () => {
     });
   });
 
+  describe('teleport timing behavior', () => {
+    it('does not leave the modal inside an aria-hidden ancestor when opening right after mount', async () => {
+      const elem = document.createElement('div');
+      if (document.body) {
+        document.body.appendChild(elem);
+      }
+
+      const wrapper = mount(CdrModal, {
+        props: {
+          opened: false,
+          label: 'Label is the modal title',
+        },
+        slots: {
+          default: 'Sticky content',
+        },
+        attachTo: elem,
+        global: {
+          stubs: {
+            Teleport: false,
+          },
+        },
+      });
+
+      await wrapper.setProps({ opened: true });
+      await wrapper.vm.$nextTick();
+      await wrapper.vm.$nextTick();
+      await wrapper.vm.$nextTick();
+
+      const modalEl = document.body.querySelector('.cdr-modal');
+      expect(modalEl).not.toBeNull();
+      expect(modalEl.closest('[aria-hidden="true"]')).toBeNull();
+
+      wrapper.unmount();
+      elem.remove();
+    });
+  });
+
   describe('default closed', () => {
     let wrapper;
     let elem;

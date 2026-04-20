@@ -55,6 +55,7 @@ const baseClass = 'cdr-modal';
 let unsubscribe: (() => void) | undefined;
 let lastActive: Element | null;
 let openedTimeoutId: ReturnType<typeof setTimeout> | undefined;
+let pendingOpenToken = 0;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
 const teleportDisabled = ref(true);
@@ -235,6 +236,7 @@ const handleOpened = () => {
 };
 
 const handleClosed = () => {
+  pendingOpenToken += 1;
   ariaShowBackgroundContent();
   const { documentElement } = document;
   document.removeEventListener('keydown', handleKeyDown);
@@ -262,6 +264,26 @@ const handleClosed = () => {
     },
     props.animationDuration + 16,
   );
+};
+
+const openAfterTeleportReady = async () => {
+  const openToken = ++pendingOpenToken;
+
+  if (!teleportDisabled.value) {
+    // Wait for Teleport to move content to body before aria-hiding background.
+    for (let i = 0; i < 3; i += 1) {
+      await nextTick();
+      if (wrapperEl.value?.parentElement === document.body) {
+        break;
+      }
+    }
+  }
+
+  if (openToken !== pendingOpenToken || !props.opened) {
+    return;
+  }
+
+  handleOpened();
 };
 
 const dialogAttrs = computed(() => ({
@@ -305,7 +327,7 @@ watch(
   (newValue, oldValue) => {
     if (!!newValue === !!oldValue) return;
     if (newValue) {
-      handleOpened();
+      void openAfterTeleportReady();
     } else {
       handleClosed();
     }
@@ -318,9 +340,7 @@ onMounted(async () => {
   window.addEventListener('resize', handleResize);
 
   if (props.opened) {
-    // Ensure Teleport has moved content to body before opening side effects run.
-    await nextTick();
-    handleOpened();
+    void openAfterTeleportReady();
   }
 });
 
