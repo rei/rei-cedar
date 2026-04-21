@@ -2,6 +2,7 @@
 
 exports[`CdrModal.vue > default closed > renders correctly 1`] = `
 <teleport-stub
+  disabled="false"
   to="body"
 >
   <div
@@ -110,6 +111,7 @@ exports[`CdrModal.vue > default closed > renders correctly 1`] = `
 
 exports[`CdrModal.vue > default open > renders correctly 1`] = `
 <teleport-stub
+  disabled="false"
   to="body"
 >
   <div
@@ -221,6 +223,7 @@ exports[`CdrModal.vue > default open > renders correctly 1`] = `
 
 exports[`CdrModal.vue > fullscreen snapshot > renders correctly 1`] = `
 <teleport-stub
+  disabled="false"
   to="body"
 >
   <div

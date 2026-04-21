@@ -55,8 +55,11 @@ const baseClass = 'cdr-modal';
 let unsubscribe: (() => void) | undefined;
 let lastActive: Element | null;
 let openedTimeoutId: ReturnType<typeof setTimeout> | undefined;
+let pendingOpenToken = 0;
+let isUnmounted = false;
 const modalClosed = ref(!props.opened);
 const isOpening = ref(false);
+const teleportDisabled = ref(true);
 
 interface OffsetValues {
   x: number | undefined;
@@ -105,7 +108,9 @@ const handleKeyDown = ({ key }: { key: string }) => {
 
 const handleFocus = (e: Event) => {
   const { documentElement } = document;
-  if (modalEl.value?.contains(e.target as HTMLElement) || !documentElement) return;
+  if (!modalEl.value || modalEl.value.contains(e.target as HTMLElement) || !documentElement) {
+    return;
+  }
 
   const tabbables = tabbable(documentElement);
   const these = tabbable(modalEl.value as Element);
@@ -234,6 +239,7 @@ const handleOpened = () => {
 };
 
 const handleClosed = () => {
+  pendingOpenToken += 1;
   ariaShowBackgroundContent();
   const { documentElement } = document;
   document.removeEventListener('keydown', handleKeyDown);
@@ -261,6 +267,36 @@ const handleClosed = () => {
     },
     props.animationDuration + 16,
   );
+};
+
+const openAfterTeleportReady = async () => {
+  const openToken = ++pendingOpenToken;
+
+  if (!teleportDisabled.value && wrapperEl.value?.parentElement !== document.body) {
+    // Wait for Teleport to move content to body before aria-hiding background.
+    // Use both a tick cap and a short time cap so we don't wait indefinitely.
+    const maxWaitTicks = 20;
+    const maxWaitMs = 150;
+    const startTime = Date.now();
+
+    for (let i = 0; i < maxWaitTicks && Date.now() - startTime < maxWaitMs; i += 1) {
+      await nextTick();
+
+      if (openToken !== pendingOpenToken || !props.opened || isUnmounted) {
+        return;
+      }
+
+      if (wrapperEl.value?.parentElement === document.body) {
+        break;
+      }
+    }
+  }
+
+  if (openToken !== pendingOpenToken || !props.opened || isUnmounted) {
+    return;
+  }
+
+  handleOpened();
 };
 
 const dialogAttrs = computed(() => ({
@@ -304,7 +340,7 @@ watch(
   (newValue, oldValue) => {
     if (!!newValue === !!oldValue) return;
     if (newValue) {
-      handleOpened();
+      void openAfterTeleportReady();
     } else {
       handleClosed();
     }
@@ -312,13 +348,19 @@ watch(
 );
 
 onMounted(() => {
-  if (props.opened) {
-    handleOpened();
-  }
+  // Keep Teleport inline for SSR + hydration, then move to body on client.
+  isUnmounted = false;
+  teleportDisabled.value = false;
   window.addEventListener('resize', handleResize);
+
+  if (props.opened) {
+    void openAfterTeleportReady();
+  }
 });
 
 onUnmounted(() => {
+  isUnmounted = true;
+  pendingOpenToken += 1;
   window.removeEventListener('resize', handleResize);
   if (openedTimeoutId !== undefined) clearTimeout(openedTimeoutId);
   // Clean up document-level handlers in case the modal unmounts while open
@@ -328,7 +370,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Teleport to="body">
+  <Teleport
+    to="body"
+    :disabled="teleportDisabled"
+  >
     <div
       :class="mapClasses(style, baseClass, !opened ? 'cdr-modal--closed' : '')"
       ref="wrapperEl"
