@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/vue3';
 
 // Import Cedar tokens CSS (provides CSS variables)
-import '@rei/cdr-tokens/dist/rei-dot-com/css/cdr-tokens.css';
+import '@rei/cdr-tokens/rei-dot-com/css/cdr-tokens.css';
 
 // Import Cedar styles
 import '../src/styles/cdr-reset.scss';

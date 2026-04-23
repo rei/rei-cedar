@@ -1,5 +1,5 @@
 import * as tokens from '@rei/cdr-tokens';
-import { Breakpoint, Space } from '../types/other';
+import { Breakpoint, Space, spaceFixedOptions } from '../types/other';
 import { NameValuePair } from '../components/layout/types';
 
 /**
@@ -50,21 +50,7 @@ export const breakpoints: Breakpoint[] = ['xs', 'sm', 'md', 'lg'];
  * style.gap = gap;
  */
 export const spacing = {
-  ...[
-    'zero',
-    'sixteenth-x',
-    'eighth-x',
-    'three-sixteenth-x',
-    'quarter-x',
-    'three-eighth-x',
-    'half-x',
-    'three-quarter-x',
-    'one-x',
-    'one-and-a-half-x',
-    'two-x',
-    'three-x',
-    'four-x',
-  ].reduce((acc: NameValuePair, cur) => {
+  ...spaceFixedOptions.reduce((acc: NameValuePair, cur) => {
     const name = `CdrSpace${cur.split('-').map(capitalize).join('')}` as keyof typeof tokens;
     const token = `${tokens[name]}px`;
     acc[cur] = token;
