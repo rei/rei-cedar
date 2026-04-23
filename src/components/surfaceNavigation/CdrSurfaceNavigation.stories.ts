@@ -54,9 +54,9 @@ export const WithBorder: Story = {
   }),
   args: {
     background: 'secondary',
-    borderColor: 'primary' as any,
+    borderColor: 'primary',
     borderStyle: 'solid',
-    borderWidth: 'one-x' as any,
+    borderWidth: 'one-x',
   },
 };
 
@@ -81,7 +81,7 @@ export const WithShadow: Story = {
   }),
   args: {
     background: 'primary',
-    boxShadow: 'raised-200' as any,
+    boxShadow: 'elevated',
   },
 };
 

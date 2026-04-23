@@ -6,6 +6,7 @@ import type {
   SpaceFixed,
   Radius,
   Shadow,
+  SurfacePalette,
 } from '../../types/other';
 
 /**
@@ -65,7 +66,7 @@ export interface Surface {
   /**
    * Defines a palette for the component's style variations.
    */
-  palette?: 'default' | 'sandstone' | 'membership-subtle' | 'membership-vibrant';
+  palette?: SurfacePalette;
 }
 
 /**

@@ -5,6 +5,7 @@ import CdrAccordionGroup from './CdrAccordionGroup.vue';
 import CdrText from '../text/CdrText.vue';
 import CdrList from '../list/CdrList.vue';
 import CdrLink from '../link/CdrLink.vue';
+import { headingLevelOptions } from '../../types/other';
 
 const meta = {
   title: 'Components/Accordion',
@@ -22,10 +23,10 @@ const meta = {
   argTypes: {
     level: {
       control: 'select',
-      options: [1, 2, 3, 4, 5, 6],
+      options: headingLevelOptions,
       description: 'Sets the heading level',
       table: {
-        type: { summary: 'string | number' },
+        type: { summary: headingLevelOptions.join(' | ') },
         defaultValue: { summary: '3' },
       },
     },

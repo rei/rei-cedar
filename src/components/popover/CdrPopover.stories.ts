@@ -4,6 +4,7 @@ import CdrPopover from './CdrPopover.vue';
 import CdrButton from '../button/CdrButton.vue';
 import CdrText from '../text/CdrText.vue';
 import CdrLink from '../link/CdrLink.vue';
+import { positionValueOptions } from '../../types/other';
 
 const meta = {
   title: 'Components/Popover',
@@ -17,11 +18,11 @@ const meta = {
   argTypes: {
     position: {
       control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
+      options: positionValueOptions,
       description:
         'Sets the position where the popover will render relative to the trigger element',
       table: {
-        type: { summary: 'top | bottom | left | right' },
+        type: { summary: positionValueOptions.join(' | ') },
         defaultValue: { summary: 'top' },
       },
     },

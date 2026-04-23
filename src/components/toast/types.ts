@@ -1,10 +1,12 @@
+import type { StatusType } from '../../types/other';
+
 /**
  * CdrToast component properties
  * Non-modal dialog used to communicate the status of a task or process
  */
 export type CdrToastProps = {
   /** Sets the toast type */
-  type?: 'info' | 'warning' | 'success' | 'error' | 'default';
+  type?: StatusType;
   /** Used to programmatically control the toast open/close state */
   open?: boolean;
   /** Set to false to disable automatic closing after the dismissDelay */

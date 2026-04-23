@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrTable from './CdrTable.vue';
+import { responsiveBooleanOptions } from '../../types/other';
 
 const meta: Meta<typeof CdrTable> = {
   title: 'Components/Table',
@@ -8,7 +9,7 @@ const meta: Meta<typeof CdrTable> = {
   argTypes: {
     fullWidth: {
       control: 'radio',
-      options: [false, true, '@sm @lg'],
+      options: responsiveBooleanOptions,
       description: 'Sets the width to 100%. Also accepts space separated strings for breakpoints',
       table: {
         type: { summary: 'boolean | string' },

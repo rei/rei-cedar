@@ -49,7 +49,7 @@ import CdrText from '../../../text/CdrText.vue';
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
+@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as *;
 
 .text-content-scroll {
   width: 100%;

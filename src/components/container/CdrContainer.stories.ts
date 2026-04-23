@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrContainer from './CdrContainer.vue';
+import { containerModifierOptions } from '../../types/other';
 
 const meta: Meta<typeof CdrContainer> = {
   title: 'Components/Container',
@@ -12,10 +13,10 @@ const meta: Meta<typeof CdrContainer> = {
   argTypes: {
     modifier: {
       control: 'select',
-      options: ['static', 'fluid'],
+      options: containerModifierOptions,
       description: 'Controls whether container is static or fluid width',
       table: {
-        type: { summary: 'static | fluid' },
+        type: { summary: containerModifierOptions.join(' | ') },
         defaultValue: { summary: 'static' },
       },
     },

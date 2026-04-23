@@ -1,4 +1,4 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .cdr-kicker {
   @include tokens.cdr-text-eyebrow-100;

@@ -1,3 +1,5 @@
+import type { ImageFit, ImageLoading, ImageRadius } from '../../types/other';
+
 /**
  * Base properties for image components (CdrImg, CdrPicture)
  * Provides common image attributes and styling options
@@ -16,7 +18,7 @@ export interface BaseImageProps {
    * @demoSelectMultiple false
    * @values none,contain,cover,fill,scale-down
    */
-  fit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
+  fit?: ImageFit;
   /**
    * Object position of the image, passes value to CSS object-position property.
    * @demoSelectMultiple true
@@ -28,7 +30,7 @@ export interface BaseImageProps {
    * @demoSelectMultiple false
    * @values unset, soft, softer, round, 10%
    */
-  radius?: 'soft' | 'softer' | 'round' | string;
+  radius?: ImageRadius | string;
   /**
    * Aspect ratio of the image, passes to the CSS aspect-ratio property.
    * @demoSelectMultiple false
@@ -39,7 +41,7 @@ export interface BaseImageProps {
    * Value for loading attribute ("lazy", "eager", "auto")
    * @demoIgnore
    */
-  loading?: 'lazy' | 'eager';
+  loading?: ImageLoading;
   /**
    * value for decoding attribute ()
    * @demoIgnore

@@ -10,6 +10,11 @@ import type {
   AlignmentValue,
   MediaMeasurement,
 } from '../../types/other';
+import {
+  alignmentValueOptions,
+  mediaObjectContentPaddingDemoOptions,
+  positionValueOptions,
+} from '../../types/other';
 
 /**
  * Generic key-value pair object allowing any property types
@@ -120,3 +125,7 @@ export interface MediaObject {
  * Component that pairs images or videos with related text in a consistent way
  */
 export type CdrMediaObjectProps = MediaObject;
+
+export const cdrMediaObjectAlignmentOptions = alignmentValueOptions;
+export const cdrMediaObjectPositionOptions = positionValueOptions;
+export const cdrMediaObjectContentPaddingOptions = mediaObjectContentPaddingDemoOptions;

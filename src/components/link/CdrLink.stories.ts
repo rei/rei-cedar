@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrLink from './CdrLink.vue';
+import { linkModifierOptions, linkTagOptions } from '../../types/other';
 
 const meta: Meta<typeof CdrLink> = {
   title: 'Components/Link',
@@ -14,19 +15,19 @@ const meta: Meta<typeof CdrLink> = {
   argTypes: {
     tag: {
       control: 'select',
-      options: ['a', 'button'],
+      options: linkTagOptions,
       description: 'Sets valid HTML element tag',
       table: {
-        type: { summary: 'a | button' },
+        type: { summary: linkTagOptions.join(' | ') },
         defaultValue: { summary: 'a' },
       },
     },
     modifier: {
       control: 'select',
-      options: ['', 'standalone'],
+      options: linkModifierOptions,
       description: 'Modifies the style variant for this component',
       table: {
-        type: { summary: 'string' },
+        type: { summary: linkModifierOptions.map((option) => option || '""').join(' | ') },
         defaultValue: { summary: '' },
       },
     },

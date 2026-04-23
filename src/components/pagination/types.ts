@@ -1,3 +1,5 @@
+import type { LinkTag } from '../../types/other';
+
 /**
  * Pagination navigation item data structure
  */
@@ -21,7 +23,7 @@ export type CdrPaginationProps = {
   /** Array of objects containing pagination data */
   pages: PaginationItem[];
   /** Sets which tag type is used to render pagination elements */
-  linkTag?: 'a' | 'button';
+  linkTag?: LinkTag;
   /** Used to customize the aria-label for the root pagination element */
   forLabel?: string;
   /** Used for binding v-model, represents the current page */

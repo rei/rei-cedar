@@ -1,5 +1,100 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
+import surfaceTokenMetadata from '@rei/cdr-tokens/docsite/json/components/cdr-surface.json';
+import radiusTokenMetadata from '@rei/cdr-tokens/docsite/json/foundations/cdr-radius.json';
+import prominenceTokenMetadata from '@rei/cdr-tokens/docsite/json/foundations/cdr-prominence.json';
+import spacingTokenMetadata from '@rei/cdr-tokens/docsite/json/foundations/cdr-space.json';
 import CdrSurface from './CdrSurface.vue';
+import {
+  borderStyleOptions,
+  surfaceBackgroundOptions,
+  surfaceBackgroundTokens,
+  surfaceBorderColorOptions,
+  surfaceBorderColorTokens,
+  surfacePaletteOptions,
+  surfaceRadiusOptions,
+  surfaceRadiusTokens,
+  surfaceShadowOptions,
+  surfaceShadowTokens,
+  spaceFixedOptions,
+  spaceFixedTokens,
+} from '../../types/other';
+
+type TokenDescription = string | { what?: string; when?: string };
+type TokenMetadata = {
+  docs?: { description?: TokenDescription };
+  attributes?: { item?: string; type?: string; subitem?: string };
+};
+
+function formatDescription(description: TokenDescription | undefined): string | undefined {
+  if (!description) return undefined;
+
+  if (typeof description === 'string') return description;
+
+  return [description.what, description.when].filter(Boolean).join(' ');
+}
+
+function getTokenDescriptions(
+  options: readonly string[],
+  tokenMap: Record<string, string>,
+  matcher: (option: string) => TokenMetadata | undefined,
+): string {
+  return options
+    .map((option) => {
+      const tokenName = tokenMap[option];
+      const match = matcher(option);
+      const description = formatDescription(match?.docs?.description);
+
+      return description ? `${option} (${tokenName}): ${description}` : `${option} (${tokenName})`;
+    })
+    .join('\n');
+}
+
+const surfaceColorMetadata = surfaceTokenMetadata.colors as TokenMetadata[];
+const surfaceRadiusMetadata = radiusTokenMetadata.radius as TokenMetadata[];
+const surfaceProminenceMetadata = prominenceTokenMetadata.prominence as TokenMetadata[];
+const surfaceSpacingMetadata = spacingTokenMetadata.spacing as TokenMetadata[];
+
+const backgroundSummary = getTokenDescriptions(
+  surfaceBackgroundOptions,
+  surfaceBackgroundTokens,
+  (option) =>
+    surfaceColorMetadata.find(
+      (token) =>
+        token.attributes?.item === 'surface' &&
+        token.attributes?.type === 'background' &&
+        token.attributes?.subitem === tokenMapBrand(option),
+    ),
+);
+
+const borderColorSummary = getTokenDescriptions(
+  surfaceBorderColorOptions,
+  surfaceBorderColorTokens,
+  (option) =>
+    surfaceColorMetadata.find(
+      (token) =>
+        token.attributes?.item === 'surface' &&
+        token.attributes?.type === 'border' &&
+        token.attributes?.subitem === option,
+    ),
+);
+
+const borderRadiusSummary = getTokenDescriptions(
+  surfaceRadiusOptions,
+  surfaceRadiusTokens,
+  (option) => surfaceRadiusMetadata.find((token) => token.attributes?.type === option),
+);
+
+const boxShadowSummary = getTokenDescriptions(surfaceShadowOptions, surfaceShadowTokens, (option) =>
+  surfaceProminenceMetadata.find((token) => token.attributes?.type === option),
+);
+
+const borderWidthSummary = getTokenDescriptions(spaceFixedOptions, spaceFixedTokens, (option) =>
+  surfaceSpacingMetadata.find((token) => token.attributes?.type === option),
+);
+
+function tokenMapBrand(option: string): string {
+  return option === 'brand' ? 'brand-spruce' : option;
+}
 
 const meta: Meta<typeof CdrSurface> = {
   title: 'Components/Surface',
@@ -8,42 +103,58 @@ const meta: Meta<typeof CdrSurface> = {
   argTypes: {
     background: {
       control: 'select',
-      options: ['primary', 'secondary', 'brand', 'sale'],
-      description: 'Adds in a background color based on the current palette tokens',
+      options: surfaceBackgroundOptions,
+      description: 'Adds in a background color based on the current palette tokens.',
       table: {
-        type: { summary: 'primary | secondary | brand | sale' },
+        type: { summary: backgroundSummary },
       },
     },
     borderColor: {
       control: 'select',
-      options: ['primary', 'secondary', 'success', 'warning', 'error', 'info'],
-      description: 'Specifies a border color based on the token options within Cedar',
+      options: surfaceBorderColorOptions,
+      description: 'Specifies a border color based on the surface border tokens.',
       table: {
-        type: { summary: 'primary | secondary | success | warning | error | info' },
+        type: { summary: borderColorSummary },
       },
     },
     borderStyle: {
       control: 'select',
-      options: ['solid', 'dotted', 'dashed'],
+      options: borderStyleOptions,
       description: 'Specifies a border style based on the token options within Cedar',
       table: {
-        type: { summary: 'solid | dotted | dashed' },
+        type: { summary: borderStyleOptions.join(' | ') },
+      },
+    },
+    borderWidth: {
+      control: 'select',
+      options: spaceFixedOptions,
+      description: 'Specifies a border width based on the space token options used by Surface.',
+      table: {
+        type: { summary: borderWidthSummary },
       },
     },
     borderRadius: {
       control: 'select',
-      options: ['sharp', 'soft', 'softer', 'softest', 'round'],
-      description: 'Adds in a border radius based on the token options within Cedar',
+      options: surfaceRadiusOptions,
+      description: 'Adds in a border radius based on the radius tokens.',
       table: {
-        type: { summary: 'sharp | soft | softer | softest | round' },
+        type: { summary: borderRadiusSummary },
       },
     },
     boxShadow: {
       control: 'select',
-      options: ['flat', 'raised', 'elevated', 'floating', 'lifted'],
-      description: 'Adds a shadow based on the token options within Cedar',
+      options: surfaceShadowOptions,
+      description: 'Adds a shadow based on the prominence tokens.',
       table: {
-        type: { summary: 'flat | raised | elevated | floating | lifted' },
+        type: { summary: boxShadowSummary },
+      },
+    },
+    palette: {
+      control: 'select',
+      options: surfacePaletteOptions,
+      description: 'Defines a palette for the component style variations.',
+      table: {
+        type: { summary: surfacePaletteOptions.join(' | ') },
       },
     },
   },
@@ -89,9 +200,9 @@ export const WithBorder: Story = {
   }),
   args: {
     background: 'secondary',
-    borderColor: 'primary' as any,
+    borderColor: 'primary',
     borderStyle: 'solid',
-    borderWidth: 'one-x' as any,
+    borderWidth: 'one-x',
   },
 };
 
@@ -112,7 +223,7 @@ export const WithShadow: Story = {
   }),
   args: {
     background: 'primary',
-    boxShadow: 'raised-100' as any,
+    boxShadow: 'raised',
   },
 };
 
@@ -216,6 +327,6 @@ export const AsSection: Story = {
     tag: 'section',
     background: 'primary',
     borderRadius: 'soft',
-    boxShadow: 'raised-200' as any,
+    boxShadow: 'elevated',
   },
 };

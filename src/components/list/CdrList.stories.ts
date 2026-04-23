@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrList from './CdrList.vue';
 import CdrLink from '../link/CdrLink.vue';
+import { listTagOptions } from '../../types/other';
 
 const meta = {
   title: 'Components/List',
@@ -12,10 +13,10 @@ const meta = {
   argTypes: {
     tag: {
       control: 'select',
-      options: ['ul', 'ol'],
-      description: 'Sets list type and HTML element as "unordered" or "ordered"',
+      options: listTagOptions,
+      description: 'Sets the HTML list element used to render the component',
       table: {
-        type: { summary: 'ul | ol' },
+        type: { summary: listTagOptions.join(' | ') },
         defaultValue: { summary: 'ul' },
       },
     },

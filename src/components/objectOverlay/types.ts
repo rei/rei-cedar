@@ -1,4 +1,4 @@
-import type { SpaceFixed } from '../../types/other';
+import type { ResponsiveSpace, Spacing } from '../../types/other';
 
 /**
  * Object position values for positioning content within a container
@@ -22,30 +22,6 @@ export type ResponsivePosition = {
   sm?: ObjectPosition;
   md?: ObjectPosition;
   lg?: ObjectPosition;
-};
-
-/**
- * Tuple of spacing values following CSS shorthand pattern (1-4 values)
- */
-export type SpaceTuple =
-  | [SpaceFixed]
-  | [SpaceFixed, SpaceFixed]
-  | [SpaceFixed, SpaceFixed, SpaceFixed]
-  | [SpaceFixed, SpaceFixed, SpaceFixed, SpaceFixed];
-
-/**
- * Spacing value - either a single token or a tuple for directional spacing
- */
-export type Spacing = SpaceFixed | SpaceTuple;
-
-/**
- * Responsive spacing values mapped to Cedar breakpoints
- */
-export type ResponsiveSpace = {
-  xs?: Spacing;
-  sm?: Spacing;
-  md?: Spacing;
-  lg?: Spacing;
 };
 
 /**

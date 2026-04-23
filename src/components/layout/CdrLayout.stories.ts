@@ -1,10 +1,53 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { CdrLayout } from '../../lib';
+import { cdrLayoutFlowOptions, cdrLayoutGapOptions, cdrLayoutQueryTypeOptions } from './types';
 
 const meta: Meta<typeof CdrLayout> = {
   title: 'Components/CdrLayout',
   component: CdrLayout,
   tags: ['autodocs'],
+  argTypes: {
+    queryType: {
+      control: 'select',
+      options: cdrLayoutQueryTypeOptions,
+      description: 'Chooses whether the layout responds to container or media queries.',
+      table: {
+        type: { summary: cdrLayoutQueryTypeOptions.join(' | ') },
+      },
+    },
+    flow: {
+      control: 'select',
+      options: cdrLayoutFlowOptions,
+      description: 'Controls whether auto-placement flows by row or by column.',
+      table: {
+        type: { summary: cdrLayoutFlowOptions.join(' | ') },
+      },
+    },
+    gap: {
+      control: 'select',
+      options: cdrLayoutGapOptions,
+      description: 'Sets the gap between rows and columns using Cedar space tokens.',
+      table: {
+        type: { summary: cdrLayoutGapOptions.join(' | ') },
+      },
+    },
+    rowGap: {
+      control: 'select',
+      options: cdrLayoutGapOptions,
+      description: 'Sets the row gap using Cedar space tokens.',
+      table: {
+        type: { summary: cdrLayoutGapOptions.join(' | ') },
+      },
+    },
+    columnGap: {
+      control: 'select',
+      options: cdrLayoutGapOptions,
+      description: 'Sets the column gap using Cedar space tokens.',
+      table: {
+        type: { summary: cdrLayoutGapOptions.join(' | ') },
+      },
+    },
+  },
 };
 
 export default meta;

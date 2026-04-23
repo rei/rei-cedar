@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss">
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .tokens-container {
   @include tokens.cdr-container;

@@ -1,5 +1,6 @@
 import type { Component } from 'vue';
 import type { Space, Flow, StructureOption, QueryType } from '../../types/other';
+import { layoutGapDemoOptions, flowOptions, queryTypeOptions } from '../../types/other';
 
 /**
  * Generic key-value pair object allowing any property types
@@ -68,3 +69,7 @@ export interface Layout {
  * Foundational layout container using CSS Grid with responsive configuration
  */
 export type CdrLayoutProps = Layout;
+
+export const cdrLayoutQueryTypeOptions = queryTypeOptions;
+export const cdrLayoutFlowOptions = flowOptions;
+export const cdrLayoutGapOptions = layoutGapDemoOptions;

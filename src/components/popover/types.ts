@@ -1,9 +1,11 @@
+import type { PositionValue } from '../../types/other';
+
 /**
  * CdrPopover component properties
  */
 export type CdrPopoverProps = {
   /** Sets the position where the popover will render relative to the trigger element */
-  position?: 'top' | 'bottom' | 'left' | 'right';
+  position?: PositionValue;
   /** If set to true, popover will attempt to dynamically set its position */
   autoPosition?: boolean;
   /** Sets the title for the popover content. Can also be provided via the title slot */

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref, watch } from 'vue';
 import CdrSwitch from './CdrSwitch.vue';
+import { switchSizeOptions } from '../../types/other';
 
 const meta: Meta<typeof CdrSwitch> = {
   title: 'Components/Switch',
@@ -9,10 +10,10 @@ const meta: Meta<typeof CdrSwitch> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['medium', 'large'],
+      options: switchSizeOptions,
       description: 'Sets the size of the switch',
       table: {
-        type: { summary: 'medium | large' },
+        type: { summary: switchSizeOptions.join(' | ') },
         defaultValue: { summary: 'medium' },
       },
     },

@@ -157,7 +157,7 @@ const layouts: LayoutExample[] = [
 </template>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as tokens;
 
 .example {
   &__hr {

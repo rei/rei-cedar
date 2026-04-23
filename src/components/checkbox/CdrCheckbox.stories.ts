@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 import CdrCheckbox from './CdrCheckbox.vue';
+import { checkboxModifierOptions, primarySecondaryOptions } from '../../types/other';
 
 const meta: Meta<typeof CdrCheckbox> = {
   title: 'Components/Checkbox',
@@ -16,27 +17,27 @@ const meta: Meta<typeof CdrCheckbox> = {
   argTypes: {
     background: {
       control: 'select',
-      options: ['primary', 'secondary'],
+      options: primarySecondaryOptions,
       description: 'Sets the background color the checkbox is rendered on',
       table: {
-        type: { summary: 'primary | secondary' },
+        type: { summary: primarySecondaryOptions.join(' | ') },
         defaultValue: { summary: 'primary' },
       },
     },
     modifier: {
       control: 'select',
-      options: ['', 'hide-figure'],
+      options: checkboxModifierOptions,
       description: 'Modifies the component style variant',
       table: {
-        type: { summary: 'string' },
+        type: { summary: checkboxModifierOptions.map((option) => option || '""').join(' | ') },
         defaultValue: { summary: '' },
       },
     },
     indeterminate: {
       control: 'boolean',
-      description: 'Show checkbox in indeterminate state',
+      description: 'Shows the checkbox in an indeterminate state',
       table: {
-        type: { summary: 'boolean | string' },
+        type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },

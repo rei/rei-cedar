@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrInput from './CdrInput.vue';
+import {
+  errorStateOptions,
+  inputTypeOptions,
+  largeSizeOptions,
+  primarySecondaryOptions,
+} from '../../types/other';
 
 const meta: Meta<typeof CdrInput> = {
   title: 'Components/Input',
@@ -18,35 +24,25 @@ const meta: Meta<typeof CdrInput> = {
   argTypes: {
     type: {
       control: 'select',
-      options: [
-        'text',
-        'email',
-        'number',
-        'password',
-        'search',
-        'url',
-        'tel',
-        'date',
-        'datetime-local',
-      ],
+      options: inputTypeOptions,
       description: 'Type attribute for the input',
       table: {
-        type: { summary: 'string' },
+        type: { summary: inputTypeOptions.join(' | ') },
         defaultValue: { summary: 'text' },
       },
     },
     background: {
       control: 'select',
-      options: ['primary', 'secondary'],
+      options: primarySecondaryOptions,
       description: 'Sets the background color the input is rendered on',
       table: {
-        type: { summary: 'primary | secondary' },
+        type: { summary: primarySecondaryOptions.join(' | ') },
         defaultValue: { summary: 'primary' },
       },
     },
     error: {
       control: 'radio',
-      options: [false, true, 'error message'],
+      options: errorStateOptions,
       description: 'Sets the input to an error state, displays the error slot if one is present',
       table: {
         type: { summary: 'boolean | string' },
@@ -55,10 +51,10 @@ const meta: Meta<typeof CdrInput> = {
     },
     size: {
       control: 'select',
-      options: [undefined, 'large'],
+      options: largeSizeOptions,
       description: 'Sets the input field size',
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'large' },
       },
     },
   },

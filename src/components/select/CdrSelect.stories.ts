@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 import CdrSelect from './CdrSelect.vue';
+import { errorStateOptions, largeSizeOptions, primarySecondaryOptions } from '../../types/other';
 
 const meta: Meta<typeof CdrSelect> = {
   title: 'Components/Select',
@@ -15,16 +16,16 @@ const meta: Meta<typeof CdrSelect> = {
   argTypes: {
     background: {
       control: 'select',
-      options: ['primary', 'secondary'],
+      options: primarySecondaryOptions,
       description: 'Sets the background color the select is rendered on',
       table: {
-        type: { summary: 'primary | secondary' },
+        type: { summary: primarySecondaryOptions.join(' | ') },
         defaultValue: { summary: 'primary' },
       },
     },
     error: {
       control: 'radio',
-      options: [false, true, 'error message'],
+      options: errorStateOptions,
       description: 'Sets the select to an error state, displays the error slot if one is present',
       table: {
         type: { summary: 'boolean | string' },
@@ -33,10 +34,10 @@ const meta: Meta<typeof CdrSelect> = {
     },
     size: {
       control: 'select',
-      options: [undefined, 'large'],
+      options: largeSizeOptions,
       description: 'Sets the component size',
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'large' },
       },
     },
   },
