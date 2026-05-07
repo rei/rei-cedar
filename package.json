@@ -50,12 +50,15 @@
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "npm run build:entrypoints && vue-tsc -p tsconfig.build.json --noEmit && vite build && npm run build:entrypoint-types && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",
+    "build": "npm run build:entrypoints && vue-tsc -p tsconfig.build.json --noEmit && vite build && npm run build:entrypoint-types && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss && npm run contract:check",
     "build:entrypoints": "tsx build/generate-entrypoints.ts",
     "build:entrypoint-types": "tsx build/generate-entrypoint-dts.ts",
     "build:docgen": "tsx build/docgen.ts",
     "build:icons": "tsx src/components/icon/build/generate.ts",
     "build:copycss": "tsx build/copy-css.ts",
+    "contract:check": "npm-run-all contract:check:exports contract:check:docgen",
+    "contract:check:exports": "tsx build/validate-consumer-contract.ts",
+    "contract:check:docgen": "tsx build/validate-docgen-contract.ts",
     "build:umd": "vite build --config vite.umd.config.ts",
     "build:variables": "tsx build/component-variables-transfer.ts",
     "pages": "vite build --config vite.pages.config.mts",
@@ -85,7 +88,7 @@
     "prerelease": "npm-publish-prerelease"
   },
   "dependencies": {
-    "@rei/cdr-tokens": "^13.3.0",
+    "@rei/cdr-tokens": "14.0.0-alpha.2",
     "@vueuse/core": "^14.1.0",
     "radix-vue": "^1.9.17",
     "tabbable": "^6.4.0"

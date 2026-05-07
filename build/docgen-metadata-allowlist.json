@@ -1,0 +1,40 @@
+{
+  "componentsMissingDescription": [
+    "CdrUtilitySerif",
+    "CdrUtilitySans",
+    "CdrSubheadingSans",
+    "CdrHeadingSerif",
+    "CdrHeadingSans",
+    "CdrHeadingDisplay",
+    "CdrEyebrow",
+    "CdrTabPanel",
+    "CdrBody",
+    "CdrSkeletonBone",
+    "CdrToggleGroup",
+    "CdrAccordionGroup"
+  ],
+  "propsMissingDescription": [
+    "CdrSelect.modelValue",
+    "CdrPicture.alt",
+    "CdrMediaObject.queryType",
+    "CdrLink.target",
+    "CdrLink.rel",
+    "CdrInput.modelValue",
+    "CdrFilmstrip.adapter",
+    "CdrFilmstrip.model",
+    "CdrFilmstripEngine.id",
+    "CdrFilmstripEngine.description",
+    "CdrFilmstripEngine.dataUi",
+    "CdrFilmstripEngine.isShowingArrows",
+    "CdrFilmstripEngine.frames",
+    "CdrFilmstripEngine.framesToShow",
+    "CdrFilmstripEngine.framesToScroll",
+    "CdrFilmstripEngine.framesGap",
+    "CdrFilmstripEngine.frameExtra",
+    "CdrFilmstripEngine.focusSelector",
+    "CdrFilmstripEngine.viewportTabindex",
+    "CdrCheckbox.size",
+    "CdrCheckbox.modelValue",
+    "CdrBanner.type"
+  ]
+}
