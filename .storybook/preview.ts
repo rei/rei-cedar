@@ -7,7 +7,6 @@ import '@rei/cdr-tokens/rei-dot-com/css/cdr-tokens.css';
 import '../src/styles/cdr-reset.scss';
 import '../src/styles/cdr-fonts.scss';
 import '../src/styles/cdr-palette.scss';
-import '../src/styles/cdr-fluid-vars.scss';
 
 // Custom styles for Storybook
 import './storybook.scss';
