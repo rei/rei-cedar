@@ -20,7 +20,7 @@ describe('CdrBody', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrBody, {
-        props: { scale: '1' },
+        props: { scale: 'scale-1' },
         slots: {
           default: 'paragraph',
         },

@@ -42,7 +42,7 @@ const layouts: LayoutExample[] = [
   {
     label: 'Container query columns',
     props: {
-      gap: 'scale-3--5',
+      gap: '35',
       columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
     },
     children: 2,

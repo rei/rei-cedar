@@ -74,7 +74,7 @@ const surfaceProps = computed(() => ({
         <div v-if="!!$slots.header">
           <CdrSubheadingSans
             :strong="true"
-            scale="-1"
+            scale="scale-minus-1"
             tag="span"
           >
             <!-- @slot Header content that is still visible during loading. -->
@@ -95,7 +95,7 @@ const surfaceProps = computed(() => ({
       >
         <CdrBody
           tag="div"
-          scale="-2"
+          scale="scale-minus-2"
           v-if="!!$slots['body']"
         >
           <!-- @slot Default font size is a step down. Placed just below the header. -->
@@ -103,7 +103,7 @@ const surfaceProps = computed(() => ({
         </CdrBody>
         <CdrBody
           tag="div"
-          scale="-1"
+          scale="scale-minus-1"
           v-if="!!$slots['footer']"
         >
           <!-- @slot Footer content will be at the bottom of the component. -->

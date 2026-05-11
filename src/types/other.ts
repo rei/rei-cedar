@@ -1,21 +1,53 @@
+import type { CdrBreakpointKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-breakpoint.keys';
 import type { CdrColorBackgroundTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-background';
+import type { CdrColorBackgroundKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-background.keys';
 import type { CdrColorBorderTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-border';
+import type { CdrColorBorderKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-border.keys';
 import type { CdrProminenceTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-prominence';
+import type { CdrProminenceKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-prominence.keys';
 import type { CdrRadiusTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-radius';
+import type { CdrRadiusKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-radius.keys';
 import type { CdrSpaceTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space';
+import type { CdrSpaceKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space.keys';
+import type { CdrSpaceScaleTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space-scale';
+import type { CdrSpaceScaleKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space-scale.keys';
+import type { CedarTypeScale } from '../tokens/adapters';
 
-export type Tag = keyof HTMLElementTagNameMap;
+// Types whose values originate from @rei/cdr-tokens key types.
+export type Breakpoint = CdrBreakpointKey;
+export type SpaceFixed = CdrSpaceKey;
+type SpaceScaleRangeKey = Extract<CdrSpaceScaleKey, '01' | '34' | '35'>;
+type SpaceScaleSingleKey = Exclude<CdrSpaceScaleKey, SpaceScaleRangeKey>;
+type CedarSpaceScaleRangeMap = {
+  '01': 'scale-0--1';
+  '34': 'scale-3--4';
+  '35': 'scale-3--5';
+};
+export type SpaceFluid = `scale-${SpaceScaleSingleKey}`;
+export type SpaceScale = CedarSpaceScaleRangeMap[SpaceScaleRangeKey];
+export type Space = SpaceFixed | SpaceFluid | SpaceScale;
+export type TypeScale = CedarTypeScale;
+export type Background = CdrColorBackgroundKey;
+export type BorderColor = CdrColorBorderKey;
+export type Radius = CdrRadiusKey;
+export type CdrProminenceBaseKey = Extract<
+  CdrProminenceKey,
+  'flat' | 'raised' | 'elevated' | 'floating' | 'lifted'
+>;
+export type Shadow = CdrProminenceBaseKey;
 
-/**
- * Cedar surface options mapped to their canonical tokens. These maps are the
- * migration source of truth for Storybook controls and component prop unions.
- */
+// Maps Cedar semantic names to canonical token names.
 export const surfaceBackgroundTokens = {
   primary: 'CdrColorBackgroundPrimary',
   secondary: 'CdrColorBackgroundSecondary',
-  brand: 'CdrColorBackgroundBrandSpruce',
+  'brand-spruce': 'CdrColorBackgroundBrandSpruce',
   sale: 'CdrColorBackgroundSale',
-} as const satisfies Record<string, keyof CdrColorBackgroundTokens>;
+  error: 'CdrColorBackgroundError',
+  info: 'CdrColorBackgroundInfo',
+  success: 'CdrColorBackgroundSuccess',
+  transparent: 'CdrColorBackgroundTransparent',
+  warning: 'CdrColorBackgroundWarning',
+} as const satisfies Record<CdrColorBackgroundKey, keyof CdrColorBackgroundTokens>;
 
 export const surfaceBorderColorTokens = {
   primary: 'CdrColorBorderPrimary',
@@ -24,7 +56,8 @@ export const surfaceBorderColorTokens = {
   warning: 'CdrColorBorderWarning',
   error: 'CdrColorBorderError',
   info: 'CdrColorBorderInfo',
-} as const satisfies Record<string, keyof CdrColorBorderTokens>;
+  transparent: 'CdrColorBorderTransparent',
+} as const satisfies Record<CdrColorBorderKey, keyof CdrColorBorderTokens>;
 
 export const surfaceRadiusTokens = {
   sharp: 'CdrRadiusSharp',
@@ -32,7 +65,7 @@ export const surfaceRadiusTokens = {
   softer: 'CdrRadiusSofter',
   softest: 'CdrRadiusSoftest',
   round: 'CdrRadiusRound',
-} as const satisfies Record<string, keyof CdrRadiusTokens>;
+} as const satisfies Record<CdrRadiusKey, keyof CdrRadiusTokens>;
 
 export const surfaceShadowTokens = {
   flat: 'CdrProminenceFlat',
@@ -40,7 +73,7 @@ export const surfaceShadowTokens = {
   elevated: 'CdrProminenceElevated',
   floating: 'CdrProminenceFloating',
   lifted: 'CdrProminenceLifted',
-} as const satisfies Record<string, keyof CdrProminenceTokens>;
+} as const satisfies Record<CdrProminenceBaseKey, keyof CdrProminenceTokens>;
 
 export const spaceFixedTokens = {
   zero: 'CdrSpaceZero',
@@ -56,7 +89,7 @@ export const spaceFixedTokens = {
   'two-x': 'CdrSpaceTwoX',
   'three-x': 'CdrSpaceThreeX',
   'four-x': 'CdrSpaceFourX',
-} as const satisfies Record<string, keyof CdrSpaceTokens>;
+} as const satisfies Record<CdrSpaceKey, keyof CdrSpaceTokens>;
 
 export const spaceFluidTokens = {
   'scale-0': 'CdrSpaceScale0',
@@ -68,18 +101,29 @@ export const spaceFluidTokens = {
   'scale-6': 'CdrSpaceScale6',
   'scale-7': 'CdrSpaceScale7',
   'scale-8': 'CdrSpaceScale8',
-} as const satisfies Record<string, keyof CdrSpaceTokens>;
+} as const satisfies Record<SpaceFluid, keyof CdrSpaceScaleTokens>;
 
 export const spaceScaleTokens = {
   'scale-0--1': 'CdrSpaceScale01',
   'scale-3--4': 'CdrSpaceScale34',
   'scale-3--5': 'CdrSpaceScale35',
-} as const satisfies Record<string, keyof CdrSpaceTokens>;
+} as const satisfies Record<SpaceScale, keyof CdrSpaceScaleTokens>;
 
 export const surfaceBackgroundOptions = Object.keys(surfaceBackgroundTokens) as Background[];
 export const surfaceBorderColorOptions = Object.keys(surfaceBorderColorTokens) as BorderColor[];
 export const surfaceRadiusOptions = Object.keys(surfaceRadiusTokens) as Radius[];
 export const surfaceShadowOptions = Object.keys(surfaceShadowTokens) as Shadow[];
+export const spaceFixedOptions = Object.keys(spaceFixedTokens) as SpaceFixed[];
+export const spaceFluidOptions = Object.keys(spaceFluidTokens) as SpaceFluid[];
+export const spaceScaleOptions = Object.keys(spaceScaleTokens) as SpaceScale[];
+export const spaceOptions = [
+  ...spaceFixedOptions,
+  ...spaceFluidOptions,
+  ...spaceScaleOptions,
+] as const satisfies readonly string[];
+
+// Cedar-specific semantic values that do not exist in cdr-tokens.
+export type Tag = keyof HTMLElementTagNameMap;
 export const surfacePaletteOptions = [
   'default',
   'sandstone',
@@ -133,40 +177,16 @@ export const linkModifierOptions = ['', 'standalone'] as const;
 export const listTagOptions = ['ul', 'ol'] as const;
 export const modalRoleOptions = ['dialog', 'alertdialog'] as const;
 export const switchSizeOptions = ['medium', 'large'] as const;
-export const spaceFixedOptions = Object.keys(spaceFixedTokens) as SpaceFixed[];
-export const spaceFluidOptions = Object.keys(spaceFluidTokens) as SpaceFluid[];
-export const spaceScaleOptions = Object.keys(spaceScaleTokens) as SpaceScale[];
-export const spaceOptions = [
-  ...spaceFixedOptions,
-  ...spaceFluidOptions,
-  ...spaceScaleOptions,
-] as const satisfies readonly string[];
 
-export type SpaceFixed = keyof typeof spaceFixedTokens;
-export type SpaceFluid = keyof typeof spaceFluidTokens;
-export type SpaceScale = keyof typeof spaceScaleTokens;
-export type Space = SpaceFixed | SpaceFluid | SpaceScale;
-export type SpaceTuple =
-  | [SpaceFixed]
-  | [SpaceFixed, SpaceFixed]
-  | [SpaceFixed, SpaceFixed, SpaceFixed]
-  | [SpaceFixed, SpaceFixed, SpaceFixed, SpaceFixed];
-export type Spacing = SpaceFixed | SpaceTuple;
-export type SpaceObject = { [key in Breakpoint]: Space };
-export type SpaceOption = Space | SpaceObject;
-export type ResponsiveSpace = { [key in Breakpoint]?: Spacing };
-export type Shadow = keyof typeof surfaceShadowTokens;
-export type Background = keyof typeof surfaceBackgroundTokens;
-export type Radius = keyof typeof surfaceRadiusTokens;
-export type BorderColor = keyof typeof surfaceBorderColorTokens;
+/** @semantic Cedar palette names for surface theming */
 export type SurfacePalette = (typeof surfacePaletteOptions)[number];
 export type CheckboxModifier = (typeof checkboxModifierOptions)[number];
 export type HeadingLevel = (typeof headingLevelOptions)[number];
 export type ImageFit = (typeof imageFitOptions)[number];
 export type ImageLoading = (typeof imageLoadingOptions)[number];
+export type ImageRadius = (typeof imageRadiusOptions)[number];
 export type InputType = (typeof inputTypeOptions)[number];
 export type PrimarySecondary = (typeof primarySecondaryOptions)[number];
-export type ImageRadius = (typeof imageRadiusOptions)[number];
 export type BorderStyle = (typeof borderStyleOptions)[number];
 export type ButtonTag = (typeof buttonTagOptions)[number];
 export type ButtonType = (typeof buttonTypeOptions)[number];
@@ -181,12 +201,23 @@ export type Flow = (typeof flowOptions)[number];
 export type Structure = 'rows' | 'columns';
 export type StatusType = (typeof statusTypeOptions)[number];
 export type SwitchSize = (typeof switchSizeOptions)[number];
-export type ScaleValue = '-2' | '-1' | '0' | '1';
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
+
+// Types derived from combinations of token and semantic types.
 export type StructureValue = number | string;
 export type StructureArray = StructureValue[];
 export type StructureObject = { [key in Breakpoint]: StructureValue | StructureArray };
 export type StructureOption = StructureValue | StructureArray | StructureObject;
+
+export type SpaceTuple =
+  | [SpaceFixed]
+  | [SpaceFixed, SpaceFixed]
+  | [SpaceFixed, SpaceFixed, SpaceFixed]
+  | [SpaceFixed, SpaceFixed, SpaceFixed, SpaceFixed];
+export type Spacing = SpaceFixed | SpaceTuple;
+export type SpaceObject = { [key in Breakpoint]: Space };
+export type SpaceOption = Space | SpaceObject;
+export type ResponsiveSpace = { [key in Breakpoint]?: Spacing };
+
 export type QueryType = (typeof queryTypeOptions)[number];
 export type PositionValue = (typeof positionValueOptions)[number];
 export type PositionObject = { [key in Breakpoint]: PositionValue };

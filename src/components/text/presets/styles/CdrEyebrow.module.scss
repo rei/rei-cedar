@@ -5,6 +5,6 @@
   @include vars.cdr-text-base-mixin;
   @include tokens.cdr-text-eyebrow-100;
 
-  font-size: var(--cdr-type-scale--1);
+  font-size: var(--cdr-type-scale-minus-1);
   line-height: var(--cdr-eyebrow-line-height-ratio);
 }

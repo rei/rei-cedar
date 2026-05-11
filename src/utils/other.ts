@@ -1,6 +1,19 @@
-import * as tokens from '@rei/cdr-tokens';
-import { Breakpoint, Space, spaceFixedOptions } from '../types/other';
-import { NameValuePair } from '../components/layout/types';
+import {
+  CdrSpaceZero,
+  CdrSpaceSixteenthX,
+  CdrSpaceEighthX,
+  CdrSpaceThreeSixteenthX,
+  CdrSpaceQuarterX,
+  CdrSpaceThreeEighthX,
+  CdrSpaceHalfX,
+  CdrSpaceThreeQuarterX,
+  CdrSpaceOneX,
+  CdrSpaceOneAndAHalfX,
+  CdrSpaceTwoX,
+  CdrSpaceThreeX,
+  CdrSpaceFourX,
+} from '@rei/cdr-tokens/tokens';
+import type { Breakpoint, Space } from '../types/other';
 
 /**
  * Capitalizes the first letter of a string.
@@ -50,12 +63,19 @@ export const breakpoints: Breakpoint[] = ['xs', 'sm', 'md', 'lg'];
  * style.gap = gap;
  */
 export const spacing = {
-  ...spaceFixedOptions.reduce((acc: NameValuePair, cur) => {
-    const name = `CdrSpace${cur.split('-').map(capitalize).join('')}` as keyof typeof tokens;
-    const token = `${tokens[name]}px`;
-    acc[cur] = token;
-    return acc;
-  }, {}),
+  zero: `${CdrSpaceZero}px`,
+  'sixteenth-x': `${CdrSpaceSixteenthX}px`,
+  'eighth-x': `${CdrSpaceEighthX}px`,
+  'three-sixteenth-x': `${CdrSpaceThreeSixteenthX}px`,
+  'quarter-x': `${CdrSpaceQuarterX}px`,
+  'three-eighth-x': `${CdrSpaceThreeEighthX}px`,
+  'half-x': `${CdrSpaceHalfX}px`,
+  'three-quarter-x': `${CdrSpaceThreeQuarterX}px`,
+  'one-x': `${CdrSpaceOneX}px`,
+  'one-and-a-half-x': `${CdrSpaceOneAndAHalfX}px`,
+  'two-x': `${CdrSpaceTwoX}px`,
+  'three-x': `${CdrSpaceThreeX}px`,
+  'four-x': `${CdrSpaceFourX}px`,
   'scale-0': 'var(--cdr-space-scale-0)',
   'scale-1': 'var(--cdr-space-scale-1)',
   'scale-2': 'var(--cdr-space-scale-2)',
@@ -65,7 +85,7 @@ export const spacing = {
   'scale-6': 'var(--cdr-space-scale-6)',
   'scale-7': 'var(--cdr-space-scale-7)',
   'scale-8': 'var(--cdr-space-scale-8)',
-  'scale-0--1': 'var(--cdr-space-scale-0--1)',
-  'scale-3--4': 'var(--cdr-space-scale-3--4)',
-  'scale-3--5': 'var(--cdr-space-scale-3--5)',
+  'scale-0--1': 'var(--cdr-space-scale-0-1)',
+  'scale-3--4': 'var(--cdr-space-scale-3-4)',
+  'scale-3--5': 'var(--cdr-space-scale-3-5)',
 } as { [key in Space]: string };

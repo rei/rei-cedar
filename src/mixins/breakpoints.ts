@@ -1,4 +1,4 @@
-import { CdrBreakpointSm, CdrBreakpointMd, CdrBreakpointLg } from '@rei/cdr-tokens';
+import { CdrBreakpointSm, CdrBreakpointMd, CdrBreakpointLg } from '@rei/cdr-tokens/tokens';
 
 export default function getCurrentBreakpoint() {
   const screenWidth = (window && window.innerWidth) || 0;

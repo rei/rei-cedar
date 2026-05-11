@@ -20,7 +20,7 @@ describe('CdrHeadingDisplay', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrHeadingDisplay, {
-        props: { scale: '4' },
+        props: { scale: 'scale-4' },
         slots: {
           default: 'paragraph',
         },

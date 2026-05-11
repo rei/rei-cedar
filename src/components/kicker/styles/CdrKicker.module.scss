@@ -4,6 +4,6 @@
   @include tokens.cdr-text-eyebrow-100;
 
   color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
-  font-size: var(--cdr-type-scale--1);
+  font-size: var(--cdr-type-scale-minus-1);
   line-height: var(--cdr-line-height-ratio-heading-serif-1);
 }

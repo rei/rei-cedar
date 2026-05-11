@@ -3,7 +3,7 @@
     <CdrHeadingSerif
       class="showcase__heading"
       tag="h2"
-      scale="4"
+      scale="scale-4"
     >
       Filmstrip showcase
     </CdrHeadingSerif>

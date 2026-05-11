@@ -62,7 +62,7 @@ const backgroundSummary = getTokenDescriptions(
       (token) =>
         token.attributes?.item === 'surface' &&
         token.attributes?.type === 'background' &&
-        token.attributes?.subitem === tokenMapBrand(option),
+        token.attributes?.subitem === option,
     ),
 );
 
@@ -91,10 +91,6 @@ const boxShadowSummary = getTokenDescriptions(surfaceShadowOptions, surfaceShado
 const borderWidthSummary = getTokenDescriptions(spaceFixedOptions, spaceFixedTokens, (option) =>
   surfaceSpacingMetadata.find((token) => token.attributes?.type === option),
 );
-
-function tokenMapBrand(option: string): string {
-  return option === 'brand' ? 'brand-spruce' : option;
-}
 
 const meta: Meta<typeof CdrSurface> = {
   title: 'Components/Surface',

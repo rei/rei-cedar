@@ -24,7 +24,7 @@ const style = useCssModule();
   <header :class="style[baseClass]">
     <CdrHeadingDisplay
       :tag="headingTag as keyof HTMLElementTagNameMap"
-      scale="4"
+      scale="scale-4"
       :class="style[`${baseClass}__heading`]"
     >
       <slot />
