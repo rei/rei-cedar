@@ -49,9 +49,9 @@ describe('other utilities', () => {
     });
 
     it('contains compound scale tokens', () => {
-      expect(spacing['scale-0--1']).toBe('var(--cdr-space-scale-0--1)');
-      expect(spacing['scale-3--4']).toBe('var(--cdr-space-scale-3--4)');
-      expect(spacing['scale-3--5']).toBe('var(--cdr-space-scale-3--5)');
+      expect(spacing['scale-0--1']).toBe('var(--cdr-space-scale-0-1)');
+      expect(spacing['scale-3--4']).toBe('var(--cdr-space-scale-3-4)');
+      expect(spacing['scale-3--5']).toBe('var(--cdr-space-scale-3-5)');
     });
 
     it('fixed spacing values end with px', () => {
