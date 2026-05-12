@@ -1,16 +1,16 @@
-import type { CdrBreakpointKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-breakpoint.keys';
-import type { CdrColorBackgroundTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-background';
-import type { CdrColorBackgroundKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-background.keys';
-import type { CdrColorBorderTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-border';
-import type { CdrColorBorderKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-color-border.keys';
-import type { CdrProminenceTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-prominence';
-import type { CdrProminenceKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-prominence.keys';
-import type { CdrRadiusTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-radius';
-import type { CdrRadiusKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-radius.keys';
-import type { CdrSpaceTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space';
-import type { CdrSpaceKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space.keys';
-import type { CdrSpaceScaleTokens } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space-scale';
-import type { CdrSpaceScaleKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-space-scale.keys';
+import { CdrColorBackground } from '@rei/cdr-tokens/types/color-background';
+import { CdrColorBorder } from '@rei/cdr-tokens/types/color-border';
+import { CdrProminence } from '@rei/cdr-tokens/types/prominence';
+import { CdrRadius } from '@rei/cdr-tokens/types/radius';
+import { CdrSpace } from '@rei/cdr-tokens/types/space';
+import { CdrSpaceScale } from '@rei/cdr-tokens/types/space-scale';
+import type { CdrBreakpointKey } from '@rei/cdr-tokens/types/breakpoint.keys';
+import type { CdrColorBackgroundKey } from '@rei/cdr-tokens/types/color-background.keys';
+import type { CdrColorBorderKey } from '@rei/cdr-tokens/types/color-border.keys';
+import type { CdrProminenceKey } from '@rei/cdr-tokens/types/prominence.keys';
+import type { CdrRadiusKey } from '@rei/cdr-tokens/types/radius.keys';
+import type { CdrSpaceKey } from '@rei/cdr-tokens/types/space.keys';
+import type { CdrSpaceScaleKey } from '@rei/cdr-tokens/types/space-scale.keys';
 import type { CedarTypeScale } from '../tokens/adapters';
 
 // Types whose values originate from @rei/cdr-tokens key types.
@@ -36,78 +36,83 @@ export type CdrProminenceBaseKey = Extract<
 >;
 export type Shadow = CdrProminenceBaseKey;
 
-// Maps Cedar semantic names to canonical token names.
-export const surfaceBackgroundTokens = {
-  primary: 'CdrColorBackgroundPrimary',
-  secondary: 'CdrColorBackgroundSecondary',
-  'brand-spruce': 'CdrColorBackgroundBrandSpruce',
-  sale: 'CdrColorBackgroundSale',
-  error: 'CdrColorBackgroundError',
-  info: 'CdrColorBackgroundInfo',
-  success: 'CdrColorBackgroundSuccess',
-  transparent: 'CdrColorBackgroundTransparent',
-  warning: 'CdrColorBackgroundWarning',
-} as const satisfies Record<CdrColorBackgroundKey, keyof CdrColorBackgroundTokens>;
+type TokenNameMap<T extends string> = Record<T, string>;
 
-export const surfaceBorderColorTokens = {
-  primary: 'CdrColorBorderPrimary',
-  secondary: 'CdrColorBorderSecondary',
-  success: 'CdrColorBorderSuccess',
-  warning: 'CdrColorBorderWarning',
-  error: 'CdrColorBorderError',
-  info: 'CdrColorBorderInfo',
-  transparent: 'CdrColorBorderTransparent',
-} as const satisfies Record<CdrColorBorderKey, keyof CdrColorBorderTokens>;
+function pascalToKebab(value: string): string {
+  return value
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/([A-Za-z])([0-9])/g, '$1-$2')
+    .toLowerCase();
+}
 
-export const surfaceRadiusTokens = {
-  sharp: 'CdrRadiusSharp',
-  soft: 'CdrRadiusSoft',
-  softer: 'CdrRadiusSofter',
-  softest: 'CdrRadiusSoftest',
-  round: 'CdrRadiusRound',
-} as const satisfies Record<CdrRadiusKey, keyof CdrRadiusTokens>;
+function mapTokenNames<T extends string>(
+  tokens: object,
+  prefix: string,
+  toKey: (suffix: string) => T,
+  filter: (key: T) => boolean = () => true,
+): TokenNameMap<T> {
+  return Object.keys(tokens).reduce((acc, tokenName) => {
+    const key = toKey(tokenName.replace(prefix, ''));
 
-export const surfaceShadowTokens = {
-  flat: 'CdrProminenceFlat',
-  raised: 'CdrProminenceRaised',
-  elevated: 'CdrProminenceElevated',
-  floating: 'CdrProminenceFloating',
-  lifted: 'CdrProminenceLifted',
-} as const satisfies Record<CdrProminenceBaseKey, keyof CdrProminenceTokens>;
+    if (filter(key)) {
+      acc[key] = tokenName;
+    }
 
-export const spaceFixedTokens = {
-  zero: 'CdrSpaceZero',
-  'sixteenth-x': 'CdrSpaceSixteenthX',
-  'eighth-x': 'CdrSpaceEighthX',
-  'three-sixteenth-x': 'CdrSpaceThreeSixteenthX',
-  'quarter-x': 'CdrSpaceQuarterX',
-  'three-eighth-x': 'CdrSpaceThreeEighthX',
-  'half-x': 'CdrSpaceHalfX',
-  'three-quarter-x': 'CdrSpaceThreeQuarterX',
-  'one-x': 'CdrSpaceOneX',
-  'one-and-a-half-x': 'CdrSpaceOneAndAHalfX',
-  'two-x': 'CdrSpaceTwoX',
-  'three-x': 'CdrSpaceThreeX',
-  'four-x': 'CdrSpaceFourX',
-} as const satisfies Record<CdrSpaceKey, keyof CdrSpaceTokens>;
+    return acc;
+  }, {} as TokenNameMap<T>);
+}
 
-export const spaceFluidTokens = {
-  'scale-0': 'CdrSpaceScale0',
-  'scale-1': 'CdrSpaceScale1',
-  'scale-2': 'CdrSpaceScale2',
-  'scale-3': 'CdrSpaceScale3',
-  'scale-4': 'CdrSpaceScale4',
-  'scale-5': 'CdrSpaceScale5',
-  'scale-6': 'CdrSpaceScale6',
-  'scale-7': 'CdrSpaceScale7',
-  'scale-8': 'CdrSpaceScale8',
-} as const satisfies Record<SpaceFluid, keyof CdrSpaceScaleTokens>;
+function spaceScaleKey(suffix: string): SpaceFluid | SpaceScale {
+  if (suffix.length === 1) return `scale-${suffix}` as SpaceFluid;
 
-export const spaceScaleTokens = {
-  'scale-0--1': 'CdrSpaceScale01',
-  'scale-3--4': 'CdrSpaceScale34',
-  'scale-3--5': 'CdrSpaceScale35',
-} as const satisfies Record<SpaceScale, keyof CdrSpaceScaleTokens>;
+  return `scale-${suffix.split('').join('--')}` as SpaceScale;
+}
+
+export const surfaceBackgroundTokens = mapTokenNames<CdrColorBackgroundKey>(
+  CdrColorBackground,
+  'CdrColorBackground',
+  (suffix) => pascalToKebab(suffix) as CdrColorBackgroundKey,
+);
+
+export const surfaceBorderColorTokens = mapTokenNames<CdrColorBorderKey>(
+  CdrColorBorder,
+  'CdrColorBorder',
+  (suffix) => pascalToKebab(suffix) as CdrColorBorderKey,
+);
+
+export const surfaceRadiusTokens = mapTokenNames<CdrRadiusKey>(
+  CdrRadius,
+  'CdrRadius',
+  (suffix) => pascalToKebab(suffix) as CdrRadiusKey,
+);
+
+export const surfaceShadowTokens = mapTokenNames<CdrProminenceBaseKey>(
+  CdrProminence,
+  'CdrProminence',
+  (suffix) => pascalToKebab(suffix) as CdrProminenceBaseKey,
+  (key) => !key.includes('-'),
+);
+
+export const spaceFixedTokens = mapTokenNames<CdrSpaceKey>(
+  CdrSpace,
+  'CdrSpace',
+  (suffix) => pascalToKebab(suffix) as CdrSpaceKey,
+);
+
+const allSpaceScaleTokens = mapTokenNames<SpaceFluid | SpaceScale>(
+  CdrSpaceScale,
+  'CdrSpaceScale',
+  spaceScaleKey,
+);
+
+export const spaceFluidTokens = Object.fromEntries(
+  Object.entries(allSpaceScaleTokens).filter(([key]) => !key.includes('--')),
+) as TokenNameMap<SpaceFluid>;
+
+export const spaceScaleTokens = Object.fromEntries(
+  Object.entries(allSpaceScaleTokens).filter(([key]) => key.includes('--')),
+) as TokenNameMap<SpaceScale>;
 
 export const surfaceBackgroundOptions = Object.keys(surfaceBackgroundTokens) as Background[];
 export const surfaceBorderColorOptions = Object.keys(surfaceBorderColorTokens) as BorderColor[];

@@ -1,4 +1,4 @@
-import type { LinkTag } from '../../types/other';
+import type { LinkTag } from '../../types/componentOptions';
 
 /**
  * Pagination navigation item data structure

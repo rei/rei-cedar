@@ -1,4 +1,4 @@
-import type { ListTag } from '../../types/other';
+import type { ListTag } from '../../types/componentOptions';
 
 /**
  * CdrList component properties

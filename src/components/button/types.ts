@@ -1,4 +1,4 @@
-import type { ButtonModifier, ButtonTag, ButtonType } from '../../types/other';
+import type { ButtonModifier, ButtonTag, ButtonType } from '../../types/componentOptions';
 
 /**
  * CdrButton component properties

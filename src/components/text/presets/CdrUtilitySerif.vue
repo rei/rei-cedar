@@ -2,7 +2,7 @@
 import { useCssModule, computed } from 'vue';
 import { BaseTextProps } from '../types';
 import { typeScaleCssSuffix } from '../../../tokens/adapters';
-import type { TypeScale } from '../../../types/other';
+import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrUtilitySerif',

@@ -1,4 +1,4 @@
-import type { PrimarySecondary } from '../../types/other';
+import type { PrimarySecondary } from '../../types/componentOptions';
 
 /**
  * CdrRadio component properties

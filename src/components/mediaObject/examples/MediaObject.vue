@@ -327,7 +327,7 @@ const columnExamples = [
 </template>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .example {
   &__hr {

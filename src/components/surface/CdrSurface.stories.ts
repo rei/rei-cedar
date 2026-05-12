@@ -17,7 +17,7 @@ import {
   surfaceShadowTokens,
   spaceFixedOptions,
   spaceFixedTokens,
-} from '../../types/other';
+} from '../../types/componentOptions';
 
 type TokenDescription = string | { what?: string; when?: string };
 type TokenMetadata = {

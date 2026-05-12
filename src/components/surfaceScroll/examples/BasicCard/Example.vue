@@ -59,7 +59,7 @@ const cards = [
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as *;
+@use '@rei/cdr-tokens/scss' as *;
 
 .basic-card-scroll {
   width: 100%;

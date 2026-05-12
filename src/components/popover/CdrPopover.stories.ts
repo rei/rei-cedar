@@ -4,7 +4,7 @@ import CdrPopover from './CdrPopover.vue';
 import CdrButton from '../button/CdrButton.vue';
 import CdrText from '../text/CdrText.vue';
 import CdrLink from '../link/CdrLink.vue';
-import { positionValueOptions } from '../../types/other';
+import { positionValueOptions } from '../../types/componentOptions';
 
 const meta = {
   title: 'Components/Popover',

@@ -1,5 +1,5 @@
 import type { Component } from 'vue';
-import type { TypeScale, StatusType } from '../../types/other';
+import type { TypeScale, StatusType } from '../../types/componentOptions';
 import type { CdrSurfaceSelectionProps } from '../surfaceSelection/types';
 
 /**

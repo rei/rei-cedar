@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrLink from './CdrLink.vue';
-import { linkModifierOptions, linkTagOptions } from '../../types/other';
+import { linkModifierOptions, linkTagOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrLink> = {
   title: 'Components/Link',

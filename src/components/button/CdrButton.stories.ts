@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrButton from './CdrButton.vue';
-import { buttonModifierOptions, buttonTagOptions, buttonTypeOptions } from '../../types/other';
+import {
+  buttonModifierOptions,
+  buttonTagOptions,
+  buttonTypeOptions,
+} from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrButton> = {
   title: 'Components/Button',

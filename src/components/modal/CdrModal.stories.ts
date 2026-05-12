@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import CdrModal from './CdrModal.vue';
 import CdrButton from '../button/CdrButton.vue';
 import CdrText from '../text/CdrText.vue';
-import { modalRoleOptions } from '../../types/other';
+import { modalRoleOptions } from '../../types/componentOptions';
 
 const meta = {
   title: 'Components/Modal',

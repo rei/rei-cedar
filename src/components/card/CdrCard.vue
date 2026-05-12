@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import type { CdrCardProps } from './types';
-import type { Tag } from '../../types/other';
+import type { Tag } from '../../types/componentOptions';
 
 /**
  * CdrCard - Related, interactive containers linking to a single subject or destination

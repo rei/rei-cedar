@@ -1,4 +1,4 @@
-import type { LinkModifier, LinkTag as SharedLinkTag } from '../../types/other';
+import type { LinkModifier, LinkTag as SharedLinkTag } from '../../types/componentOptions';
 
 /**
  * Valid HTML tag types for CdrLink component

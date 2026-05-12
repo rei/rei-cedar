@@ -1,5 +1,5 @@
 import propValidator from '../utils/propValidator';
-import { primarySecondaryOptions } from '../types/other';
+import { primarySecondaryOptions } from '../types/componentOptions';
 
 export default {
   type: [String],

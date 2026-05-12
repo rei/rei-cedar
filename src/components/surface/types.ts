@@ -7,7 +7,7 @@ import type {
   Radius,
   Shadow,
   SurfacePalette,
-} from '../../types/other';
+} from '../../types/componentOptions';
 
 /**
  * Configuration object for state-based property values.

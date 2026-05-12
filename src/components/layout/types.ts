@@ -1,6 +1,6 @@
 import type { Component } from 'vue';
-import type { Space, Flow, StructureOption, QueryType } from '../../types/other';
-import { layoutGapDemoOptions, flowOptions, queryTypeOptions } from '../../types/other';
+import type { Space, Flow, StructureOption, QueryType } from '../../types/componentOptions';
+import { layoutGapDemoOptions, flowOptions, queryTypeOptions } from '../../types/componentOptions';
 
 /**
  * Generic key-value pair object allowing any property types

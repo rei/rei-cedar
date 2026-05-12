@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrContainer from './CdrContainer.vue';
-import { containerModifierOptions } from '../../types/other';
+import { containerModifierOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrContainer> = {
   title: 'Components/Container',

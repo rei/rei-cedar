@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrTable from './CdrTable.vue';
-import { responsiveBooleanOptions } from '../../types/other';
+import { responsiveBooleanOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrTable> = {
   title: 'Components/Table',

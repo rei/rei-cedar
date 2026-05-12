@@ -9,12 +9,12 @@ import type {
   Alignment,
   AlignmentValue,
   MediaMeasurement,
-} from '../../types/other';
+} from '../../types/componentOptions';
 import {
   alignmentValueOptions,
   mediaObjectContentPaddingDemoOptions,
   positionValueOptions,
-} from '../../types/other';
+} from '../../types/componentOptions';
 
 /**
  * Generic key-value pair object allowing any property types

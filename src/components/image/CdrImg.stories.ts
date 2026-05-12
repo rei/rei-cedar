@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrImg from './CdrImg.vue';
-import { imageFitOptions, imageLoadingOptions, imageRadiusOptions } from '../../types/other';
+import {
+  imageFitOptions,
+  imageLoadingOptions,
+  imageRadiusOptions,
+} from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrImg> = {
   title: 'Components/Img',

@@ -63,7 +63,7 @@ const getSalePriceClass = (price: string) =>
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as *;
+@use '@rei/cdr-tokens/scss' as *;
 
 .product-recommendation__price {
   @include cdr-text-utility-sans-200;

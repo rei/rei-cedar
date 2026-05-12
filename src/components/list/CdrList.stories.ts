@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrList from './CdrList.vue';
 import CdrLink from '../link/CdrLink.vue';
-import { listTagOptions } from '../../types/other';
+import { listTagOptions } from '../../types/componentOptions';
 
 const meta = {
   title: 'Components/List',

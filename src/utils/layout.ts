@@ -1,7 +1,6 @@
-import type { Breakpoint, Structure, StructureOption } from '../types/other';
 import type { NameValuePair, Layout } from '../components/layout/types';
-
-const breakpoints: Breakpoint[] = ['xs', 'sm', 'md', 'lg'];
+import { breakpoints } from './styleTokens';
+import type { Breakpoint, Structure, StructureOption } from '../types/componentOptions';
 
 /**
  * Converts various columns or rows values to a map of inline CSS variables for the Layout component.

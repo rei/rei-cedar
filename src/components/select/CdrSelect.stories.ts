@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 import CdrSelect from './CdrSelect.vue';
-import { errorStateOptions, largeSizeOptions, primarySecondaryOptions } from '../../types/other';
+import {
+  errorStateOptions,
+  largeSizeOptions,
+  primarySecondaryOptions,
+} from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrSelect> = {
   title: 'Components/Select',

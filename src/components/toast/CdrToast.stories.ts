@@ -6,7 +6,7 @@ import IconInformationFill from '../icon/comps/information-fill.vue';
 import IconCheckFill from '../icon/comps/check-fill.vue';
 import IconWarningFill from '../icon/comps/warning-fill.vue';
 import IconErrorFill from '../icon/comps/error-fill.vue';
-import { statusTypeOptions } from '../../types/other';
+import { statusTypeOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrToast> = {
   title: 'Components/Toast',

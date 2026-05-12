@@ -1,4 +1,4 @@
-import type { CheckboxModifier, PrimarySecondary } from '../../types/other';
+import type { CheckboxModifier, PrimarySecondary } from '../../types/componentOptions';
 
 /**
  * CdrCheckbox component properties

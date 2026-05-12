@@ -1,4 +1,4 @@
-import type { ResponsiveSpace, Spacing } from '../../types/other';
+import type { ResponsiveSpace, Spacing } from '../../types/componentOptions';
 
 /**
  * Object position values for positioning content within a container

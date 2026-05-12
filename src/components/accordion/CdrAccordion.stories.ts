@@ -5,7 +5,7 @@ import CdrAccordionGroup from './CdrAccordionGroup.vue';
 import CdrText from '../text/CdrText.vue';
 import CdrList from '../list/CdrList.vue';
 import CdrLink from '../link/CdrLink.vue';
-import { headingLevelOptions } from '../../types/other';
+import { headingLevelOptions } from '../../types/componentOptions';
 
 const meta = {
   title: 'Components/Accordion',

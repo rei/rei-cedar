@@ -1,4 +1,4 @@
-import type { Tag } from '../../types/other';
+import type { Tag } from '../../types/componentOptions';
 
 /**
  * CdrCard component properties

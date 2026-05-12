@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrTooltip from './CdrTooltip.vue';
 import CdrButton from '../button/CdrButton.vue';
-import { positionValueOptions } from '../../types/other';
+import { positionValueOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrTooltip> = {
   title: 'Components/Tooltip',

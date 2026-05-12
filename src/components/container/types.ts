@@ -1,4 +1,4 @@
-import type { ContainerModifier, Tag } from '../../types/other';
+import type { ContainerModifier, Tag } from '../../types/componentOptions';
 
 /**
  * CdrContainer component properties

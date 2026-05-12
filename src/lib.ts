@@ -103,7 +103,7 @@ export type {
   ObjectPosition,
   ResponsivePosition,
 } from './components/objectOverlay/types';
-export type { ResponsiveSpace, Spacing, SpaceTuple } from './types/other';
+export type { ResponsiveSpace, Spacing, SpaceTuple } from './types/componentOptions';
 export type { CdrPaginationProps, PaginationItem } from './components/pagination/types';
 export type { CdrPictureProps, PictureSourceObject } from './components/picture/types';
 export type { CdrPopoverProps } from './components/popover/types';
@@ -134,7 +134,7 @@ export type { CdrTooltipProps } from './components/tooltip/types';
 export * from './components/filmstrip/interfaces';
 
 /** Shared type exports */
-export * from './types/other';
+export * from './types/componentOptions';
 export * from './types/symbols';
 
 /** Compile into dist/style folder */

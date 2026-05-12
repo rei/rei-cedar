@@ -1,4 +1,4 @@
-import type { ModalRole } from '../../types/other';
+import type { ModalRole } from '../../types/componentOptions';
 
 /**
  * CdrModal component properties

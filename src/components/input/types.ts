@@ -1,4 +1,4 @@
-import type { InputType, PrimarySecondary } from '../../types/other';
+import type { InputType, PrimarySecondary } from '../../types/componentOptions';
 
 /**
  * CdrInput component properties

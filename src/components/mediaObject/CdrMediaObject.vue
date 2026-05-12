@@ -2,11 +2,11 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { CdrMediaObjectProps, NameValuePair, HtmlAttributes } from './types';
-import type { Breakpoint } from '../../types/other';
+import type { Breakpoint } from '../../types/componentOptions';
 import { modifyClassName } from '../../utils/buildClass';
 import { getLayoutStyling } from '../../utils/mediaObject';
 import CdrLayout from '../layout/CdrLayout.vue';
-import { breakpoints, spacing } from '../../utils/other';
+import { breakpoints, spacing } from '../../utils/styleTokens';
 
 /** Component that pairs images or videos with related text in a consistent way */
 

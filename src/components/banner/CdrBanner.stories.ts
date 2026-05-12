@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrBanner from './CdrBanner.vue';
 import CdrButton from '../button/CdrButton.vue';
-import { statusTypeOptions } from '../../types/other';
+import { statusTypeOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrBanner> = {
   title: 'Components/Banner',

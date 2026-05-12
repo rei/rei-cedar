@@ -5,7 +5,7 @@ import {
   inputTypeOptions,
   largeSizeOptions,
   primarySecondaryOptions,
-} from '../../types/other';
+} from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrInput> = {
   title: 'Components/Input',

@@ -1,4 +1,4 @@
-import type { SwitchSize } from '../../types/other';
+import type { SwitchSize } from '../../types/componentOptions';
 
 /**
  * CdrSwitch component properties

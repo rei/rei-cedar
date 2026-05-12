@@ -1,4 +1,4 @@
-import type { PrimarySecondary } from '../../types/other';
+import type { PrimarySecondary } from '../../types/componentOptions';
 
 /**
  * Option data structure for select/dropdown components

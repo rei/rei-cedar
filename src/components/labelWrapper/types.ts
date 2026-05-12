@@ -1,4 +1,4 @@
-import type { PrimarySecondary } from '../../types/other';
+import type { PrimarySecondary } from '../../types/componentOptions';
 
 /**
  * CdrLabelWrapper component properties

@@ -1,4 +1,4 @@
-import type { StatusType } from '../../types/other';
+import type { StatusType } from '../../types/componentOptions';
 
 /**
  * CdrToast component properties

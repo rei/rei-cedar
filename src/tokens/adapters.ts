@@ -1,4 +1,4 @@
-import type { CdrTypeKey } from '@rei/cdr-tokens/rei-dot-com/types/foundations/cdr-type.keys';
+import type { CdrTypeKey } from '@rei/cdr-tokens/types/type.keys';
 
 type TypeScaleFromToken<T extends string> = T extends `scale-minus${infer Value}`
   ? `scale-minus-${Value}`

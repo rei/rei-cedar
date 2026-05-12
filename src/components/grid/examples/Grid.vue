@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss">
-@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 .custom-grid {
   // 3 column at md or lg
   grid-template-columns: 1fr 1fr 1fr;

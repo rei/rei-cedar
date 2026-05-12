@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref, watch } from 'vue';
 import CdrSwitch from './CdrSwitch.vue';
-import { switchSizeOptions } from '../../types/other';
+import { switchSizeOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrSwitch> = {
   title: 'Components/Switch',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 import CdrCheckbox from './CdrCheckbox.vue';
-import { checkboxModifierOptions, primarySecondaryOptions } from '../../types/other';
+import { checkboxModifierOptions, primarySecondaryOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrCheckbox> = {
   title: 'Components/Checkbox',

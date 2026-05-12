@@ -1,4 +1,4 @@
-import type { ImageFit, ImageLoading, ImageRadius } from '../../types/other';
+import type { ImageFit, ImageLoading, ImageRadius } from '../../types/componentOptions';
 
 /**
  * Base properties for image components (CdrImg, CdrPicture)

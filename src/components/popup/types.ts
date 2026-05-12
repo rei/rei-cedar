@@ -1,4 +1,4 @@
-import type { PositionValue } from '../../types/other';
+import type { PositionValue } from '../../types/componentOptions';
 
 /**
  * CdrPopup component properties (internal helper component)

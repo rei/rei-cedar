@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .sink-wrapper {
   &__radios {

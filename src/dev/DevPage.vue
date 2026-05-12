@@ -94,10 +94,10 @@ console.log(routes);
 </template>
 
 <style lang="scss">
-@use '@rei/cdr-tokens/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 @use '../styles/main.scss' as main;
-@use '@rei/cdr-tokens/rei-dot-com/css/cdr-tokens.css';
+@use '@rei/cdr-tokens/css';
 
 .stack {
   margin-top: tokens.$cdr-space-one-x;
