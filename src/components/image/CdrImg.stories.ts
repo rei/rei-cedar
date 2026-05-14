@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrImg from './CdrImg.vue';
+import {
+  imageFitOptions,
+  imageLoadingOptions,
+  imageRadiusOptions,
+} from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrImg> = {
   title: 'Components/Img',
@@ -13,26 +18,26 @@ const meta: Meta<typeof CdrImg> = {
   argTypes: {
     fit: {
       control: 'select',
-      options: ['contain', 'cover', 'fill', 'none', 'scale-down'],
+      options: imageFitOptions,
       description: 'Object fit of the image, passes value to CSS object-fit property',
       table: {
-        type: { summary: 'contain | cover | fill | none | scale-down' },
+        type: { summary: imageFitOptions.join(' | ') },
       },
     },
     radius: {
       control: 'select',
-      options: ['soft', 'softer', 'round'],
+      options: imageRadiusOptions,
       description: 'Border radius of the image',
       table: {
-        type: { summary: 'soft | softer | round | string' },
+        type: { summary: `${imageRadiusOptions.join(' | ')} | string` },
       },
     },
     loading: {
       control: 'select',
-      options: ['lazy', 'eager'],
+      options: imageLoadingOptions,
       description: 'Value for loading attribute',
       table: {
-        type: { summary: 'lazy | eager' },
+        type: { summary: imageLoadingOptions.join(' | ') },
         defaultValue: { summary: 'lazy' },
       },
     },

@@ -1,3 +1,5 @@
+import type { ModalRole } from '../../types/componentOptions';
+
 /**
  * CdrModal component properties
  */
@@ -11,7 +13,7 @@ export type CdrModalProps = {
   /** Text for aria-describedby attribute. Applied to modal content element */
   ariaDescribedby?: string | null;
   /** Sets the `role` attribute on the modal content element */
-  role?: 'dialog' | 'alertdialog';
+  role?: ModalRole;
   /** Sets unique `id` for modal */
   id?: string | null;
   /** Adds custom class to the `cdr-modal__overlay` div */

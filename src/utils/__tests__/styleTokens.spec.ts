@@ -1,25 +1,6 @@
-import { capitalize, breakpoints, spacing } from '../other';
+import { breakpoints, spacing } from '../styleTokens';
 
-describe('other utilities', () => {
-  describe('capitalize', () => {
-    it('capitalizes first letter of string', () => {
-      expect(capitalize('hello')).toBe('Hello');
-      expect(capitalize('world')).toBe('World');
-    });
-
-    it('handles already capitalized strings', () => {
-      expect(capitalize('Hello')).toBe('Hello');
-    });
-
-    it('handles single character', () => {
-      expect(capitalize('a')).toBe('A');
-    });
-
-    it('only capitalizes first letter', () => {
-      expect(capitalize('hello world')).toBe('Hello world');
-    });
-  });
-
+describe('style token utilities', () => {
   describe('breakpoints', () => {
     it('contains all Cedar breakpoints in order', () => {
       expect(breakpoints).toEqual(['xs', 'sm', 'md', 'lg']);
@@ -49,9 +30,9 @@ describe('other utilities', () => {
     });
 
     it('contains compound scale tokens', () => {
-      expect(spacing['scale-0--1']).toBe('var(--cdr-space-scale-0--1)');
-      expect(spacing['scale-3--4']).toBe('var(--cdr-space-scale-3--4)');
-      expect(spacing['scale-3--5']).toBe('var(--cdr-space-scale-3--5)');
+      expect(spacing['scale-0--1']).toBe('var(--cdr-space-scale-0-1)');
+      expect(spacing['scale-3--4']).toBe('var(--cdr-space-scale-3-4)');
+      expect(spacing['scale-3--5']).toBe('var(--cdr-space-scale-3-5)');
     });
 
     it('fixed spacing values end with px', () => {

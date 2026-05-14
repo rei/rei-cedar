@@ -1,6 +1,8 @@
+import type { StatusType } from '../../types/componentOptions';
+
 /**
  * CdrBanner component properties
  */
 export type CdrBannerProps = {
-  type?: 'info' | 'warning' | 'success' | 'error' | 'default';
+  type?: StatusType;
 };

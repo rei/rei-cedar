@@ -20,7 +20,7 @@ describe('CdrUtilitySans', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrUtilitySans, {
-        props: { scale: '-1' },
+        props: { scale: 'scale-minus-1' },
         slots: {
           default: 'paragraph',
         },

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@rei/cdr-tokens':
-        specifier: ^13.3.0
-        version: 13.3.0
+        specifier: 14.0.0-alpha.7
+        version: 14.0.0-alpha.7
       '@vueuse/core':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -1635,9 +1635,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@rei/cdr-tokens@13.3.0':
-    resolution: {integrity: sha512-eErXeYS2273/We6sgrNnrQZEgkpeKbjbJOM8OgR5I4O3/HIBNo0Y6mZBRwJZM2IcOzbIPBYepqLfFOGQuKzQRA==}
-    engines: {node: '>= 20.0.0', npm: '>= 10.0.0'}
+  '@rei/cdr-tokens@14.0.0-alpha.7':
+    resolution: {integrity: sha512-dV/XYYQbRxUM53Pshkp/ODOmuYtS5sSXG0lBrY72RkHpllq9Y8knXPlFKZCNaNfZLzgnLgAnWD+YJzDSjL+MHg==}
+    engines: {node: '>= 22.0.0', pnpm: '>= 10.0.0'}
 
   '@rei/cedar-icons@2.6.1':
     resolution: {integrity: sha512-rkV5kQra0nYmd82zIFDqWGIU6VNE6y+DyP6i3oeJUo0OFjsdFKqtt3e/PSGjCKmmIOEBop62FBDc5DzSU0+VKA==}
@@ -4933,8 +4933,8 @@ packages:
   vue-component-type-helpers@2.2.12:
     resolution: {integrity: sha512-YbGqHZ5/eW4SnkPNR44mKVc6ZKQoRs/Rux1sxC6rdwXb4qpbOSYfDr9DsTHolOTGmIKgM9j141mZbBeg05R1pw==}
 
-  vue-component-type-helpers@3.2.6:
-    resolution: {integrity: sha512-O02tnvIfOQVmnvoWwuSydwRoHjZVt8UEBR+2p4rT35p8GAy5VTlWP8o5qXfJR/GWCN0nVZoYWsVUvx2jwgdBmQ==}
+  vue-component-type-helpers@3.2.8:
+    resolution: {integrity: sha512-9689efAXhN/EV86plgkL/XFiJSXhGtWPG6JDboZ+QnjlUWUUQrQ0ILKQtw4iQsuwIwu5k6Aw+JnehDe7161e7A==}
 
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
@@ -6567,7 +6567,7 @@ snapshots:
     dependencies:
       playwright: 1.57.0
 
-  '@rei/cdr-tokens@13.3.0': {}
+  '@rei/cdr-tokens@14.0.0-alpha.7': {}
 
   '@rei/cedar-icons@2.6.1': {}
 
@@ -6857,7 +6857,7 @@ snapshots:
       storybook: 10.3.3(@testing-library/dom@10.4.0)(prettier@2.8.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       type-fest: 2.19.0
       vue: 3.5.26(typescript@5.9.3)
-      vue-component-type-helpers: 3.2.6
+      vue-component-type-helpers: 3.2.8
 
   '@swc/helpers@0.5.18':
     dependencies:
@@ -10066,7 +10066,7 @@ snapshots:
 
   vue-component-type-helpers@2.2.12: {}
 
-  vue-component-type-helpers@3.2.6: {}
+  vue-component-type-helpers@3.2.8: {}
 
   vue-demi@0.14.10(vue@3.5.26(typescript@5.9.3)):
     dependencies:

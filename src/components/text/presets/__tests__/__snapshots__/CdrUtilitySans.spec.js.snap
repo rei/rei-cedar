@@ -14,7 +14,7 @@ exports[`CdrUtilitySans > default configuration > renders correctly 1`] = `
 exports[`CdrUtilitySans > passing a scale > renders correctly 1`] = `
 <p
   class="cdr-utility-sans"
-  style="--cdr-utility-sans-font-size: var(--cdr-type-scale--1); --cdr-utility-sans-line-height: var(--cdr-line-height-ratio-utility--1); --cdr-utility-sans-font-weight: 400;"
+  style="--cdr-utility-sans-font-size: var(--cdr-type-scale-minus-1); --cdr-utility-sans-line-height: var(--cdr-line-height-ratio-utility-minus-1); --cdr-utility-sans-font-weight: 400;"
 >
   
   paragraph

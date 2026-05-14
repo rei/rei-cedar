@@ -12,7 +12,7 @@ import {
 import type { ComponentInternalInstance } from 'vue';
 import type { CdrTabsProps } from './types';
 import { debounce } from '../../utils/debounce';
-import { CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX } from '@rei/cdr-tokens';
+import { CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX } from '@rei/cdr-tokens/tokens';
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
 import { selectedTabKey } from '../../types/symbols';

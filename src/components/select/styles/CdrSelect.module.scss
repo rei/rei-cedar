@@ -1,4 +1,4 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrSelect.vars' as vars;
 @use '../../icon/styles/CdrIcon.module';
 @use '../../labelStandalone/styles/CdrLabelStandalone.module';

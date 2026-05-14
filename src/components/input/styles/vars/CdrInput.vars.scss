@@ -1,4 +1,4 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-input-base-mixin() {
   @include tokens.cdr-text-utility-sans-300;
@@ -176,12 +176,12 @@
 @mixin cdr-input-large-mixin() {
   @include tokens.cdr-text-utility-sans-400;
 
-  line-height: tokens.$cdr-space-half-x + tokens.$cdr-text-utility-sans-400-height;
+  line-height: tokens.$cdr-space-half-x + tokens.$cdr-text-utility-sans-400-line-height;
   padding-left: tokens.$cdr-space-half-x;
   height: tokens.$cdr-form-input-height-large;
 
   &::placeholder {
-    line-height: tokens.$cdr-space-half-x + tokens.$cdr-text-utility-sans-400-height;
+    line-height: tokens.$cdr-space-half-x + tokens.$cdr-text-utility-sans-400-line-height;
   }
 }
 

@@ -1,3 +1,5 @@
+import type { PrimarySecondary } from '../../types/componentOptions';
+
 /**
  * Option data structure for select/dropdown components
  */
@@ -24,7 +26,7 @@ export type CdrSelectProps = {
   /** Build options programmatically with data. Provide an array of objects or an array of strings */
   options?: SelectOption[] | string[];
   /** Sets the background color the select is rendered on */
-  background?: string;
+  background?: PrimarySecondary;
   /** Sets the component's size; values can target responsive breakpoints */
   size?: string;
   /** Sets the select to an error state, displays the error slot if one is present */

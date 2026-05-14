@@ -20,7 +20,7 @@ describe('CdrUtilitySerif', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrUtilitySerif, {
-        props: { scale: '-1' },
+        props: { scale: 'scale-minus-1' },
         slots: {
           default: 'paragraph',
         },

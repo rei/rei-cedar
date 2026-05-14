@@ -126,7 +126,7 @@ const onFrameClick = (event: Event) => {
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
+@use '@rei/cdr-tokens/scss' as *;
 
 .lifestyle-frame {
   position: relative;

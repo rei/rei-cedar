@@ -56,9 +56,9 @@
           <option value="cdr-space-scale-6">Scale 6</option>
           <option value="cdr-space-scale-7">Scale 7</option>
           <option value="cdr-space-scale-8">Scale 8</option>
-          <option value="cdr-space-scale-0--1">Scale 0-1</option>
-          <option value="cdr-space-scale-3--4">Scale 3-4</option>
-          <option value="cdr-space-scale-3--5">Scale 3-5</option>
+          <option value="cdr-space-scale-0-1">Scale 0-1</option>
+          <option value="cdr-space-scale-3-4">Scale 3-4</option>
+          <option value="cdr-space-scale-3-5">Scale 3-5</option>
         </cdr-select>
       </div>
       <div style="grid-area: type">
@@ -285,7 +285,7 @@ export default {
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
-          fluidValue: '--cdr-space-scale-0--1',
+          fluidValue: '--cdr-space-scale-0-1',
           spaces: [{ output: '0.2rem' }, { output: '0.4rem' }],
           bgClipPath:
             'polygon(0px 0px, 0% 0.2rem, calc(100% - 120px) 0.4rem, calc(100% - 120px) 0%)',
@@ -293,14 +293,14 @@ export default {
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
-          fluidValue: '--cdr-space-scale-3--4',
+          fluidValue: '--cdr-space-scale-3-4',
           spaces: [{ output: '0.4rem' }, { output: '1rem' }],
           bgClipPath: 'polygon(0px 0px, 0% 0.4rem, calc(100% - 120px) 1rem, calc(100% - 120px) 0%)',
         },
         {
           headerId: 'fluid-value',
           scaleId: 'scale',
-          fluidValue: '--cdr-space-scale-3--5',
+          fluidValue: '--cdr-space-scale-3-5',
           spaces: [{ output: '0.8rem' }, { output: '1.6rem' }],
           bgClipPath:
             'polygon(0px 0px, 0% 0.8rem, calc(100% - 120px) 1.6rem, calc(100% - 120px) 0%)',
@@ -334,7 +334,7 @@ export default {
 
 .space {
   grid-template-rows: 28px auto;
-  font-size: var(--cdr-type-scale--1);
+  font-size: var(--cdr-type-scale-minus-1);
   display: grid;
   grid-gap: 0;
   min-width: 40px;

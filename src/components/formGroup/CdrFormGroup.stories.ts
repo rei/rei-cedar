@@ -4,6 +4,7 @@ import CdrFormGroup from './CdrFormGroup.vue';
 import CdrCheckbox from '../checkbox/CdrCheckbox.vue';
 import CdrRadio from '../radio/CdrRadio.vue';
 import CdrInput from '../input/CdrInput.vue';
+import { errorStateOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrFormGroup> = {
   title: 'Components/FormGroup',
@@ -18,7 +19,7 @@ const meta: Meta<typeof CdrFormGroup> = {
   argTypes: {
     error: {
       control: 'radio',
-      options: [false, true, 'Error message'],
+      options: errorStateOptions,
       description: 'Sets the form group to an error state',
       table: {
         type: { summary: 'boolean | string' },

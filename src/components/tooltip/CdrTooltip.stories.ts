@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrTooltip from './CdrTooltip.vue';
 import CdrButton from '../button/CdrButton.vue';
+import { positionValueOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrTooltip> = {
   title: 'Components/Tooltip',
@@ -9,11 +10,11 @@ const meta: Meta<typeof CdrTooltip> = {
   argTypes: {
     position: {
       control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
+      options: positionValueOptions,
       description:
         'Sets the position where the tooltip will render relative to the trigger element',
       table: {
-        type: { summary: 'top | bottom | left | right' },
+        type: { summary: positionValueOptions.join(' | ') },
         defaultValue: { summary: 'top' },
       },
     },

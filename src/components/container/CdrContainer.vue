@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
 import type { CdrContainerProps } from './types';
-import type { Tag } from '../../types/other';
+import type { Tag } from '../../types/componentOptions';
 import mapClasses from '../../utils/mapClasses';
 
 /**

@@ -3,6 +3,11 @@ import CdrMediaObject from './CdrMediaObject.vue';
 import CdrImg from '../image/CdrImg.vue';
 import CdrText from '../text/CdrText.vue';
 import CdrButton from '../button/CdrButton.vue';
+import {
+  cdrMediaObjectAlignmentOptions,
+  cdrMediaObjectContentPaddingOptions,
+  cdrMediaObjectPositionOptions,
+} from './types';
 
 const meta = {
   title: 'Components/MediaObject',
@@ -16,6 +21,48 @@ const meta = {
     mediaCover: false,
     overlay: false,
     contentPadding: 'zero',
+  },
+  argTypes: {
+    align: {
+      control: 'select',
+      options: cdrMediaObjectAlignmentOptions,
+      description: 'Controls the cross-axis alignment of the media and content.',
+      table: {
+        type: { summary: cdrMediaObjectAlignmentOptions.join(' | ') },
+      },
+    },
+    mediaPosition: {
+      control: 'select',
+      options: cdrMediaObjectPositionOptions,
+      description: 'Sets where the media appears relative to the content.',
+      table: {
+        type: { summary: cdrMediaObjectPositionOptions.join(' | ') },
+      },
+    },
+    overlayRowAlign: {
+      control: 'select',
+      options: cdrMediaObjectAlignmentOptions,
+      description: 'Controls row alignment for overlay content.',
+      table: {
+        type: { summary: cdrMediaObjectAlignmentOptions.join(' | ') },
+      },
+    },
+    overlayColumnAlign: {
+      control: 'select',
+      options: cdrMediaObjectAlignmentOptions,
+      description: 'Controls column alignment for overlay content.',
+      table: {
+        type: { summary: cdrMediaObjectAlignmentOptions.join(' | ') },
+      },
+    },
+    contentPadding: {
+      control: 'select',
+      options: cdrMediaObjectContentPaddingOptions,
+      description: 'Sets content padding using Cedar space tokens.',
+      table: {
+        type: { summary: cdrMediaObjectContentPaddingOptions.join(' | ') },
+      },
+    },
   },
 } satisfies Meta<typeof CdrMediaObject>;
 

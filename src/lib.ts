@@ -79,8 +79,8 @@ export type {
   CdrFulfillmentTileIconProps,
   FulfillmentTileContent,
   FulfillmentTileIcon,
-  StateConfig,
 } from './components/fulfillmentTile/types';
+export type { StateConfig } from './components/surface/types';
 export type { CdrGridProps } from './components/grid/types';
 export type { CdrIconProps } from './components/icon/types';
 export type { CdrImgProps, BaseImageProps } from './components/image/types';
@@ -102,10 +102,8 @@ export type {
   CdrObjectOverlayProps,
   ObjectPosition,
   ResponsivePosition,
-  SpaceTuple,
-  Spacing,
-  ResponsiveSpace,
 } from './components/objectOverlay/types';
+export type { ResponsiveSpace, Spacing, SpaceTuple } from './types/componentOptions';
 export type { CdrPaginationProps, PaginationItem } from './components/pagination/types';
 export type { CdrPictureProps, PictureSourceObject } from './components/picture/types';
 export type { CdrPopoverProps } from './components/popover/types';
@@ -136,11 +134,10 @@ export type { CdrTooltipProps } from './components/tooltip/types';
 export * from './components/filmstrip/interfaces';
 
 /** Shared type exports */
-export * from './types/other';
+export * from './types/componentOptions';
 export * from './types/symbols';
 
 /** Compile into dist/style folder */
 import './styles/cdr-reset.scss';
 import './styles/cdr-fonts.scss';
 import './styles/cdr-palette.scss';
-import './styles/cdr-fluid-vars.scss';

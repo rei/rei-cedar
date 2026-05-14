@@ -6,6 +6,7 @@ import IconInformationFill from '../icon/comps/information-fill.vue';
 import IconCheckFill from '../icon/comps/check-fill.vue';
 import IconWarningFill from '../icon/comps/warning-fill.vue';
 import IconErrorFill from '../icon/comps/error-fill.vue';
+import { statusTypeOptions } from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrToast> = {
   title: 'Components/Toast',
@@ -14,10 +15,10 @@ const meta: Meta<typeof CdrToast> = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['default', 'info', 'warning', 'success', 'error'],
+      options: statusTypeOptions,
       description: 'Sets the toast type',
       table: {
-        type: { summary: 'info | warning | success | error | default' },
+        type: { summary: statusTypeOptions.join(' | ') },
         defaultValue: { summary: 'default' },
       },
     },

@@ -1,4 +1,4 @@
-import type { Background } from '../../types/other';
+import type { CheckboxModifier, PrimarySecondary } from '../../types/componentOptions';
 
 /**
  * CdrCheckbox component properties
@@ -21,11 +21,11 @@ export type CdrCheckboxProps = {
   /** The value when used in a checkbox group */
   customValue?: string | number | boolean | object | unknown[] | symbol | ((...args: any[]) => any);
   /** Sets the background color the input is rendered on */
-  background?: Background;
+  background?: PrimarySecondary;
   /** Sets the checkbox size */
   size?: string;
   /** Modifies the component style variant */
-  modifier?: '' | 'hide-figure';
+  modifier?: CheckboxModifier;
   /** Model value for v-model binding */
   modelValue?: string | number | boolean | object | unknown[] | symbol | ((...args: any[]) => any);
 };

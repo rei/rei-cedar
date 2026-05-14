@@ -1,3 +1,5 @@
+import type { PrimarySecondary } from '../../types/componentOptions';
+
 /**
  * CdrLabelWrapper component properties
  */
@@ -7,7 +9,7 @@ export type CdrLabelWrapperProps = {
   /** Custom CSS class for the content element */
   contentClass?: string;
   /** Sets the background color */
-  background?: 'primary' | 'secondary';
+  background?: PrimarySecondary;
   /** Sets the disabled state */
   disabled?: boolean;
   /** Sets a modifier class */

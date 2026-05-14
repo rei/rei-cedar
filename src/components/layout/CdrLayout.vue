@@ -3,7 +3,7 @@ import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { getStructureStyles } from '../../utils/layout';
 import type { CdrLayoutProps, NameValuePair } from './types';
-import type { Structure } from '../../types/other';
+import type { Structure } from '../../types/componentOptions';
 import { modifyClassName } from '../../utils/buildClass';
 import CdrSurface from '../surface/CdrSurface.vue';
 

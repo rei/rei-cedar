@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrButton from './CdrButton.vue';
+import {
+  buttonModifierOptions,
+  buttonTagOptions,
+  buttonTypeOptions,
+} from '../../types/componentOptions';
 
 const meta: Meta<typeof CdrButton> = {
   title: 'Components/Button',
@@ -17,28 +22,28 @@ const meta: Meta<typeof CdrButton> = {
   argTypes: {
     tag: {
       control: 'select',
-      options: ['button', 'a'],
-      description: 'Renders CdrButton as a button or a element',
+      options: buttonTagOptions,
+      description: 'Renders CdrButton as a button or anchor element',
       table: {
-        type: { summary: 'button | a' },
+        type: { summary: buttonTagOptions.join(' | ') },
         defaultValue: { summary: 'button' },
       },
     },
     type: {
       control: 'select',
-      options: ['button', 'submit', 'reset'],
+      options: buttonTypeOptions,
       description: 'Sets the button type',
       table: {
-        type: { summary: 'button | submit | reset' },
+        type: { summary: buttonTypeOptions.join(' | ') },
         defaultValue: { summary: 'button' },
       },
     },
     modifier: {
       control: 'select',
-      options: ['primary', 'secondary', 'sale', 'dark', 'link'],
+      options: buttonModifierOptions,
       description: 'Modifies the style variant for this component',
       table: {
-        type: { summary: 'primary | secondary | sale | dark | link' },
+        type: { summary: buttonModifierOptions.join(' | ') },
         defaultValue: { summary: 'primary' },
       },
     },

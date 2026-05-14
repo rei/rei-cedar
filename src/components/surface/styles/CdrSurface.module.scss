@@ -1,21 +1,20 @@
 @use 'sass:map';
 
 // Property maps
-// TODO: Add ang get these from Cedar Tokens
 $properties: (
   background: (
-    primary: var(--cdr-color-background-primary),
-    secondary: var(--cdr-color-background-secondary),
-    brand: var(--cdr-color-background-brand-spruce),
-    sale: var(--cdr-color-background-sale),
+    primary: var(--cdr-color-background-surface-primary),
+    secondary: var(--cdr-color-background-surface-secondary),
+    brand: var(--cdr-color-background-surface-brand-spruce),
+    sale: var(--cdr-color-background-surface-sale),
   ),
   border-color: (
-    primary: var(--cdr-color-border-primary),
-    secondary: var(--cdr-color-border-secondary),
-    success: var(--cdr-color-border-success),
-    warning: var(--cdr-color-border-warning),
-    error: var(--cdr-color-border-error),
-    info: var(--cdr-color-border-info),
+    primary: var(--cdr-color-border-surface-primary),
+    secondary: var(--cdr-color-border-surface-secondary),
+    success: var(--cdr-color-border-surface-success),
+    warning: var(--cdr-color-border-surface-warning),
+    error: var(--cdr-color-border-surface-error),
+    info: var(--cdr-color-border-surface-info),
   ),
   border-width: (
     zero: var(--cdr-space-zero),

@@ -42,7 +42,7 @@ const layouts: LayoutExample[] = [
   {
     label: 'Container query columns',
     props: {
-      gap: 'scale-3--5',
+      gap: '35',
       columns: { xs: 1, sm: ['100px', 1], md: ['400px', 1], lg: ['800px', 1] },
     },
     children: 2,
@@ -157,7 +157,7 @@ const layouts: LayoutExample[] = [
 </template>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .example {
   &__hr {

@@ -1,10 +1,10 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 @use '../../styles/vars/CdrText.vars.scss' as vars;
 
 .cdr-eyebrow {
   @include vars.cdr-text-base-mixin;
   @include tokens.cdr-text-eyebrow-100;
 
-  font-size: var(--cdr-type-scale--1);
+  font-size: var(--cdr-type-scale-minus-1);
   line-height: var(--cdr-eyebrow-line-height-ratio);
 }

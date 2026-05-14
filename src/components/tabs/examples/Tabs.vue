@@ -156,7 +156,7 @@
 </template>
 
 <script>
-import { CdrColorBackgroundPrimary, CdrColorBackgroundSecondary } from '@rei/cdr-tokens';
+import { CdrColorBackgroundPrimary, CdrColorBackgroundSecondary } from '@rei/cdr-tokens/tokens';
 import * as Components from 'srcdir/lib';
 import tabsDefault from 'componentsdir/tabs/examples/demo/TabsDefault.vue';
 

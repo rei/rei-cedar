@@ -1,13 +1,15 @@
+import type { ButtonModifier, ButtonTag, ButtonType } from '../../types/componentOptions';
+
 /**
  * CdrButton component properties
  */
 export type CdrButtonProps = {
   /** Renders CdrButton as a button or a element */
-  tag?: 'button' | 'a';
+  tag?: ButtonTag;
   /** Sets the button type */
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
   /** Modifies the style variant for this component */
-  modifier?: 'primary' | 'secondary' | 'sale' | 'dark' | 'link';
+  modifier?: ButtonModifier;
   /** Sets the button size; values can target responsive breakpoints */
   size?: string;
   /** Sets button width to 100% */

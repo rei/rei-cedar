@@ -1,4 +1,4 @@
-import { CdrSpaceThreeQuarterX } from '@rei/cdr-tokens';
+import { CdrSpaceThreeQuarterX } from '@rei/cdr-tokens/tokens';
 import type { Lifestyle, LifestyleFrameExtended } from '.';
 import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from '../../interfaces';
 import FrameComponent from './LifestyleFrame.vue';

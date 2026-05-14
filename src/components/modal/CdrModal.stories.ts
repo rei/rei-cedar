@@ -3,6 +3,7 @@ import { ref, watch } from 'vue';
 import CdrModal from './CdrModal.vue';
 import CdrButton from '../button/CdrButton.vue';
 import CdrText from '../text/CdrText.vue';
+import { modalRoleOptions } from '../../types/componentOptions';
 
 const meta = {
   title: 'Components/Modal',
@@ -16,10 +17,10 @@ const meta = {
   argTypes: {
     role: {
       control: 'select',
-      options: ['dialog', 'alertdialog'],
+      options: modalRoleOptions,
       description: 'Sets the role attribute on the modal content element',
       table: {
-        type: { summary: 'dialog | alertdialog' },
+        type: { summary: modalRoleOptions.join(' | ') },
         defaultValue: { summary: 'dialog' },
       },
     },

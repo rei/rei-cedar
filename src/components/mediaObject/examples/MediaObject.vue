@@ -147,7 +147,7 @@ const examples: MediaObjectExample[] = [
   {
     label: 'pass down props to Layout and Surface',
     props: {
-      background: 'brand',
+      background: 'brand-spruce',
       gap: 'two-x',
       contentPadding: 'zero',
     },
@@ -327,7 +327,7 @@ const columnExamples = [
 </template>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .example {
   &__hr {

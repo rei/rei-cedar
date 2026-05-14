@@ -54,7 +54,7 @@ describe('surface utilities', () => {
         background: {
           rest: 'primary',
           hover: 'secondary',
-          active: 'brand',
+          active: 'brand-spruce',
         },
         borderColor: {
           rest: 'primary',
@@ -68,7 +68,7 @@ describe('surface utilities', () => {
       expect(result).toMatchObject({
         'data-background': 'primary',
         'data-background-hover': 'secondary',
-        'data-background-active': 'brand',
+        'data-background-active': 'brand-spruce',
         'data-border-color': 'primary',
         'data-border-color-hover': 'info',
       });

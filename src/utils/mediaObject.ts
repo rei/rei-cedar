@@ -7,8 +7,8 @@ import {
   MediaMeasurement,
   Position,
   PositionValue,
-} from '../types/other';
-import { breakpoints } from '../utils/other';
+} from '../types/componentOptions';
+import { breakpoints } from './styleTokens';
 
 /**
  * Maps media position values to CSS Grid template areas.

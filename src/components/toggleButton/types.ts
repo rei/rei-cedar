@@ -1,3 +1,5 @@
+import type { SwitchSize } from '../../types/componentOptions';
+
 /**
  * CdrToggleButton component properties
  * Permits switching two or more options on and off
@@ -15,5 +17,5 @@ export type CdrToggleGroupProps = {
   /** v-model binding */
   modelValue: string | number | boolean | object | unknown[];
   /** Sets toggle button size */
-  size?: 'medium' | 'large';
+  size?: SwitchSize;
 };

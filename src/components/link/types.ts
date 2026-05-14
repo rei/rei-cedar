@@ -1,7 +1,9 @@
+import type { LinkModifier, LinkTag as SharedLinkTag } from '../../types/componentOptions';
+
 /**
  * Valid HTML tag types for CdrLink component
  */
-export type CdrLinkTag = 'a' | 'button';
+export type CdrLinkTag = SharedLinkTag;
 
 /**
  * CdrLink component properties
@@ -15,7 +17,7 @@ export type CdrLinkProps = {
   /** Sets color and fill */
   inheritColor?: boolean;
   /** Modifies the style variant for this component. */
-  modifier?: '' | 'standalone';
+  modifier?: LinkModifier;
   /** @ignore */
   target?: string;
   /** @ignore */

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { CdrRadiusSoft, CdrRadiusRound, CdrRadiusSofter } from '@rei/cdr-tokens';
+import { CdrRadiusSoft, CdrRadiusRound, CdrRadiusSofter } from '@rei/cdr-tokens/tokens';
 import type { BaseImageProps } from './types';
 
 /**

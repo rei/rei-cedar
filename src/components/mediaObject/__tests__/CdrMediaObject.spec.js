@@ -83,7 +83,7 @@ export const examples = [
   {
     label: 'pass down props to Layout and Surface',
     props: {
-      background: 'brand',
+      background: 'brand-spruce',
       as: CdrSurfaceRaw,
     },
   },

@@ -1,4 +1,4 @@
-import type { Tag } from '../../types/other';
+import type { Tag } from '../../types/componentOptions';
 
 /**
  * Base properties for text components

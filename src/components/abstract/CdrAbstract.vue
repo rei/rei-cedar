@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import type { CdrAbstractProps } from './types';
-import type { Tag } from '../../types/other';
+import type { Tag } from '../../types/componentOptions';
 
 /**
  * CdrAbstract - Content building blocks with pre-defined, fluid styles
