@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BneVvdWh.js";function t(e,...t){return t.flatMap(e=>typeof e==`string`?e.split(` `):[]).map(t=>e[t]).filter(Boolean).join(` `)}var n=e((()=>{}));export{t as n,n as t};

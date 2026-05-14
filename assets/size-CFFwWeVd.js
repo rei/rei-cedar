@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{n as t,t as n}from"./propValidator-Ce8ufO7V.js";var r,i=e((()=>{n(),r={type:String,default:`medium`,validator:e=>t(e,[`small`,`medium`,`large`])}}));export{r as n,i as t};

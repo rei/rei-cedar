@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BneVvdWh.js";var t,n,r,i=e((()=>{t=(e,t)=>`${e}--${t}`,n=(e,n,r)=>typeof r==`string`?r.split(` `).map(r=>t(e,`${n}${r}`)).join(` `):t(e,n),r=(e,r,i)=>typeof r==`boolean`?r?t(e,i):``:n(e,i,r)}));export{n as i,i as n,t as r,r as t};

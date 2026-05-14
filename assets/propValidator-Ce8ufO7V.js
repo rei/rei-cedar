@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BneVvdWh.js";function t(e,t,n=!0,r=null){return e.split(` `).every(e=>{let i=t.some(t=>n?e===t||e===`${t}@xs`||e===`${t}@sm`||e===`${t}@md`||e===`${t}@lg`:e===t);return i||(r?r(`Invalid prop value: ${e}`):console.error(`Invalid prop value: ${e}`)),i})}var n=e((()=>{}));export{t as n,n as t};

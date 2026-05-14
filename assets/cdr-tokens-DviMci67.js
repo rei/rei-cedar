@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BneVvdWh.js";var t,n,r,i=e((()=>{t=`#ffffff`,n=`9999`,r=`1232`}));export{i,t as n,n as r,r as t};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BneVvdWh.js";function t(){return`cdr-id-${Math.floor((1+Math.random())*16777216).toString(16).substring(1)}`}var n=e((()=>{}));export{n,t};
