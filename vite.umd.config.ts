@@ -20,7 +20,8 @@ export default defineConfig({
     },
     rolldownOptions: {
       ...options,
-      external: (id: string) => ['vue', 'tabbable'].some((dep) => dep === id || id.startsWith(`${dep}/`)),
+      external: (id: string) =>
+        ['vue', 'tabbable'].some((dep) => dep === id || id.startsWith(`${dep}/`)),
       output: {
         ...output,
         preserveModules: false,
@@ -48,13 +49,13 @@ export default defineConfig({
     },
   },
   resolve: {
-      alias: {
-        srcdir: fileURLToPath(new URL('./src', import.meta.url)),
-        cssdir: fileURLToPath(new URL('./src/css', import.meta.url)),
-        componentsdir: fileURLToPath(new URL('./src/components', import.meta.url)),
-        mixinsdir: fileURLToPath(new URL('./src/mixins', import.meta.url)),
-        '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
-      },
+    alias: {
+      srcdir: fileURLToPath(new URL('./src', import.meta.url)),
+      cssdir: fileURLToPath(new URL('./src/css', import.meta.url)),
+      componentsdir: fileURLToPath(new URL('./src/components', import.meta.url)),
+      mixinsdir: fileURLToPath(new URL('./src/mixins', import.meta.url)),
+      '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
     },
+  },
   plugins: [vue()],
 });

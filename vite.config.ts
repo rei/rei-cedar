@@ -1,6 +1,4 @@
 /// <reference types="vitest" />
-import fs from 'fs';
-import path from 'path';
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
@@ -45,14 +43,14 @@ export default defineConfig({
     },
   },
   resolve: {
-      alias: {
-        srcdir: fileURLToPath(new URL('./src', import.meta.url)),
-        cssdir: fileURLToPath(new URL('./src/css', import.meta.url)),
-        componentsdir: fileURLToPath(new URL('./src/components', import.meta.url)),
-        mixinsdir: fileURLToPath(new URL('./src/mixins', import.meta.url)),
-        '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
-      },
+    alias: {
+      srcdir: fileURLToPath(new URL('./src', import.meta.url)),
+      cssdir: fileURLToPath(new URL('./src/css', import.meta.url)),
+      componentsdir: fileURLToPath(new URL('./src/components', import.meta.url)),
+      mixinsdir: fileURLToPath(new URL('./src/mixins', import.meta.url)),
+      '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
     },
+  },
   test: {
     globals: true,
     exclude: [...configDefaults.exclude, '**/test/playwright', '**/templates/__tests__'],
