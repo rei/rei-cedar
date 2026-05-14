@@ -1,6 +1,11 @@
 <template>
   <div>
-    <cdr-button @click="modalOpened = true" aria-haspopup="dialog">Open fancy modal</cdr-button>
+    <cdr-button
+      @click="modalOpened = true"
+      aria-haspopup="dialog"
+    >
+      Open fancy modal
+    </cdr-button>
     <cdr-modal
       label="Become a member of REI Co-op."
       :opened="modalOpened"
@@ -34,27 +39,28 @@
             role="document"
           >
             <div class="icon">
-              <cdr-tooltip id="fancy-tooltip" position="left">
+              <cdr-tooltip
+                id="fancy-tooltip"
+                position="left"
+              >
                 <template #trigger>
                   <membership-icon />
                 </template>
                 Hey look at me, I'm an absolutely positoned and transformed icon!
-              </cdr-tooltip> 
+              </cdr-tooltip>
             </div>
             <cdr-text
               tag="h3"
               class="cdr-text-dev--heading-serif-600"
               data-ui="signup-modal-title"
             >
-              <p class="nomargin">
-                You belong here.
-              </p>
-              <p class="nomargin">
-                And out there.
-              </p>
+              <p class="nomargin">You belong here.</p>
+              <p class="nomargin">And out there.</p>
             </cdr-text>
             <p class="subheading">
-              Be a part of REI Co-op, a community of 20 million people making a different type of outdoor company. Together we're sharing, exploring and protecting the place we love. For today and every day.
+              Be a part of REI Co-op, a community of 20 million people making a different type of
+              outdoor company. Together we're sharing, exploring and protecting the place we love.
+              For today and every day.
             </p>
             <cdr-button
               :full-width="true"
@@ -78,7 +84,7 @@ export default {
   components: {
     ...Components,
     MembershipIcon,
-},
+  },
   data() {
     return {
       modalOpened: false,
@@ -87,7 +93,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 .membership-acquisition-imodal {
   // class to override cedar default class to allow background content more visible to user
   &--overlay-lighter {
@@ -111,7 +117,7 @@ export default {
     }
 
     // Target modal container and avoid full screen behaviour on smaller resolutions.
-    div[role="dialog"] {
+    div[role='dialog'] {
       @include tokens.cdr-sm-mq-down {
         border-radius: tokens.$cdr-radius-softer;
         max-width: 315px;
@@ -127,7 +133,7 @@ export default {
         flex-direction: row;
       }
       .image {
-        background-image: url("https://www.rei.com/assets/membership/benefits/modal/parenting/live.jpg");
+        background-image: url('https://www.rei.com/assets/membership/benefits/modal/parenting/live.jpg');
         background-size: 100% auto;
         background-position: 0% 55%;
         background-repeat: no-repeat;
@@ -142,7 +148,7 @@ export default {
       .eyebrow {
         width: 250px;
         height: 8px;
-        background: url("https://www.rei.com/assets/membership/benefits/modal/co-op-membership-logo/live.svg");
+        background: url('https://www.rei.com/assets/membership/benefits/modal/co-op-membership-logo/live.svg');
         background-repeat: no-repeat;
         background-size: 250px 8px;
         margin: tokens.$cdr-space-one-and-a-half-x;
@@ -183,7 +189,7 @@ export default {
     }
   }
 }
-.sr-only{
+.sr-only {
   @include tokens.cdr-display-sr-only;
 }
 .icon {

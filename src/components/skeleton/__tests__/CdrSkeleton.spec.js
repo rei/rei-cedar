@@ -10,12 +10,9 @@ describe('CdrSkeleton', () => {
     beforeEach(() => {
       wrapper = mount(CdrSkeleton, {
         slots: {
-          default: [
-            h(CdrSkeletonBone, { type: 'heading'}),
-            h(CdrSkeletonBone, { type: 'line'}),
-          ],
+          default: [h(CdrSkeletonBone, { type: 'heading' }), h(CdrSkeletonBone, { type: 'line' })],
         },
-        attachTo: document.body
+        attachTo: document.body,
       });
     });
 

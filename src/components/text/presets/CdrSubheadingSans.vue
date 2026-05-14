@@ -1,32 +1,38 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
+import { typeScaleCssSuffix } from '../../../tokens/adapters';
+import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrSubheadingSans',
 });
 
-interface subheadingSansTextProps extends baseTextProps {
-   /** 
-     * Sets the type scale
-     * @type scaleValue
-     * @values 0,1,2
+interface SubheadingSansTextProps extends BaseTextProps {
+  /**
+   * Sets the type scale using Cedar values derived from cdr-tokens CdrTypeKey values.
+   * @type TypeScale
+   * @values scale-minus-1, scale-0, scale-1, scale-2
    */
-  scale?: '-1' | '0'|'1'|'2',
+  scale?: Extract<TypeScale, 'scale-minus-1' | 'scale-0' | 'scale-1' | 'scale-2'>;
 }
 
-const props = withDefaults(defineProps<subheadingSansTextProps>(), {
+const props = withDefaults(defineProps<SubheadingSansTextProps>(), {
   tag: 'p',
-  scale: '1',
+  scale: 'scale-1',
 });
 
-const typeProperties = computed(() => {
-  return {
-    '--cdr-subheading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-subheading-sans-line-height': 
-    `var(--cdr-line-height-ratio-subheading-sans-${props.scale}})`
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
-  }
+const typeProperties = computed(() => {
+  const suffix = typeScaleCssSuffix(props.scale!);
+  const lineHeightSuffix = props.scale === 'scale-minus-1' ? '0' : suffix;
+  return {
+    '--cdr-subheading-sans-font-size': `var(--cdr-type-scale-${suffix})`,
+    '--cdr-subheading-sans-line-height': `var(--cdr-line-height-ratio-subheading-sans-${lineHeightSuffix})`,
+  };
 });
 
 const baseClass = 'cdr-subheading-sans';
@@ -43,5 +49,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrSubheadingSans.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrSubheadingSans.module.scss" lang="scss"></style>

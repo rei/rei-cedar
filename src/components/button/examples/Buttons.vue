@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h2>
-      Buttons
-    </h2>
+    <h2>Buttons</h2>
 
     <default-buttons />
     <secondary-buttons />
@@ -32,7 +30,7 @@ export default {
 </script>
 
 <style>
-  .button-example {
-    padding: 10px;
-  }
+.button-example {
+  padding: 10px;
+}
 </style>

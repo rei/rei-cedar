@@ -36,7 +36,7 @@ exports[`CdrLandingLead > renders correctly when presented with correct data 1`]
       </h1>
       <span
         class="cdr-subheading-sans cdr-heading-subheading-block__subheading"
-        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale-1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-1});"
+        style="--cdr-subheading-sans-font-size: var(--cdr-type-scale-1); --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-1);"
       >
         
         

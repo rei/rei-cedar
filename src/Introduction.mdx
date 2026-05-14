@@ -1,0 +1,139 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# REI Cedar Component Library
+
+Welcome to the **REI Cedar Design System** Storybook! Cedar is REI's open-source design system, providing a set of reusable Vue.js components for building consistent user experiences.
+
+## Getting Started
+
+Browse the components in the sidebar to explore the available UI components. Each component includes:
+
+- **Interactive demos** - Play with props and see changes in real-time
+- **Auto-generated documentation** - Props, slots, and events documented automatically
+- **Code examples** - Copy and use in your own projects
+
+## Component Categories
+
+### Form Components
+
+- **Input** - Text input fields for data entry
+- **Checkbox** - Single or multiple selection options
+- **Radio** - Mutually exclusive options
+- **Select** - Dropdown menus
+- **Toggle/Switch** - Binary on/off controls
+
+### Actions
+
+- **Button** - Primary actions and CTAs
+- **Link** - Navigation and inline links
+- **Chip** - Filter toggles and compact actions
+
+### Navigation
+
+- **Breadcrumb** - Page hierarchy navigation
+- **Pagination** - Multi-page content navigation
+- **Tabs** - Content organization
+
+### Layout
+
+- **Grid** - Responsive grid system
+- **Container** - Content width management
+- **Surface** - Background and elevation
+- **Card** - Content containers
+- **Layout** - Flexible grid layouts with responsive controls
+
+### Feedback
+
+- **Modal** - Dialogs and overlays
+- **Toast** - Temporary notifications
+- **Banner** - Persistent messages
+- **Tooltip** - Contextual information
+
+### Content
+
+- **Accordion** - Expandable content sections
+- **Text** - Typography presets
+- **List** - Ordered and unordered lists
+- **Quote** - Pull quotes and blockquotes
+
+## Utilities
+
+Cedar provides a comprehensive set of utility functions to support component development and application logic:
+
+### String & Formatting
+
+- **`kebabCase(str)`** - Convert strings to kebab-case format
+- **`capitalize(text)`** - Capitalize the first letter of a string
+- **`generateUid()`** - Generate unique component IDs
+
+### Class Management
+
+- **`modifyClassName(base, modifier)`** - Create BEM-style modifier classes
+- **`responsiveModifyClass(base, modifier, prop)`** - Generate responsive modifier classes
+- **`buildBooleanClass(baseClass, prop, name)`** - Build conditional modifier classes
+- **`mapClasses(style, ...classes)`** - Map class names to CSS modules
+
+### Layout & Styling
+
+- **`getStructureStyles(options)`** - Convert layout props to CSS custom properties
+- **`getSurfaceProps(props)`** - Generate data attributes for surface styling
+- **`getDefaultLayout(defaults)`** - Create default layout configurations
+- **`getLayoutStyling(mediaPosition, mediaWidth, mediaHeight)`** - Calculate media object layouts
+
+### Performance
+
+- **`debounce(callback, ms)`** - Debounce function calls for performance optimization
+
+### Validation
+
+- **`validateProp(propValue, validArr, responsive, handler)`** - Validate component props against allowed values
+
+### Tokens & Constants
+
+- **`breakpoints`** - Cedar responsive breakpoint tokens: `['xs', 'sm', 'md', 'lg']`
+- **`spacing`** - Cedar spacing scale tokens mapped to CSS values
+
+All utilities are fully typed with TypeScript and include comprehensive JSDoc documentation. Import them from `@rei/cedar/utils` or the specific utility module.
+
+## Resources
+
+- [Cedar Documentation](https://rei.github.io/rei-cedar/)
+- [GitHub Repository](https://github.com/rei/rei-cedar)
+- [NPM Package](https://www.npmjs.com/package/@rei/cedar)
+
+## Usage
+
+```bash
+npm install @rei/cedar
+```
+
+### Component Usage
+
+```vue
+<script setup>
+import { CdrButton } from '@rei/cedar';
+</script>
+
+<template>
+  <CdrButton>Add to Cart</CdrButton>
+</template>
+```
+
+### Utility Usage
+
+```typescript
+import { debounce, kebabCase, generateUid } from '@rei/cedar/utils';
+
+// Debounce expensive operations
+const handleSearch = debounce((query: string) => {
+  fetchResults(query);
+}, 300);
+
+// Format strings
+const className = kebabCase('backgroundColor'); // => 'background-color'
+
+// Generate unique IDs
+const inputId = generateUid(); // => 'cdr-id-a3f2b9'
+```

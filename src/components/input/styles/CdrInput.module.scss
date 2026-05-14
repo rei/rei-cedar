@@ -1,6 +1,5 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrInput.vars' as vars;
-
 @use '../../labelStandalone/styles/CdrLabelStandalone.module';
 @use '../../formError/styles/CdrFormError.module';
 
@@ -18,7 +17,7 @@
     &::before {
       content: '';
 
-      //ITEM_DOC: Background color of the cdr-button label
+      // ITEM_DOC: Background color of the cdr-button label
       background-color: var(
         --cdr-input-label-background-color,
         var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
@@ -36,7 +35,7 @@
   &:active,
   &:focus,
   &:focus-within {
-    //ITEM_DOC: Background color of the cdr-input label in hover, active, focus, and focus-within states
+    // ITEM_DOC: Background color of the cdr-input label in hover, active, focus, and focus-within states
     background-color: var(
       --cdr-input-label-background-interaction,
       var(
@@ -45,7 +44,7 @@
       )
     );
 
-    //ITEM_DOC: Box-shadow color of the cdr-input label in hover, active, focus, and focus-within states
+    // ITEM_DOC: Box-shadow color of the cdr-input label in hover, active, focus, and focus-within states
     box-shadow: inset 0 0 0 2px
       var(
         --cdr-input-label-box-shadow-interaction,
@@ -53,7 +52,7 @@
       );
     outline: none;
 
-    //ITEM_DOC: Fill color of the cdr-input label in hover, active, focus, and focus-within states
+    // ITEM_DOC: Fill color of the cdr-input label in hover, active, focus, and focus-within states
     fill: var(
       --cdr-input-label-fill-interaction,
       var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
@@ -91,7 +90,7 @@
 
   &--focus {
     svg {
-      //ITEM_DOC: Fill color of the cdr-input SVG when the parent is focused
+      // ITEM_DOC: Fill color of the cdr-input SVG when the parent is focused
       fill: var(
         --cdr-input-svg-fill-focus,
         var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
@@ -209,7 +208,7 @@
   position: relative;
   flex-grow: 1;
 
-  //ITEM_DOC: Fill color of the cdr-input wrapper
+  // ITEM_DOC: Fill color of the cdr-input wrapper
   fill: var(
     --cdr-input-wrap-fill,
     var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})

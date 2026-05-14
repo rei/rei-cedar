@@ -1,21 +1,20 @@
 @use 'sass:map';
 
 // Property maps
-// TODO: Add ang get these from Cedar Tokens
 $properties: (
   background: (
-    primary: var(--cdr-color-background-primary),
-    secondary: var(--cdr-color-background-secondary),
-    brand: var(--cdr-color-background-brand-spruce),
-    sale: var(--cdr-color-background-sale),
+    primary: var(--cdr-color-background-surface-primary),
+    secondary: var(--cdr-color-background-surface-secondary),
+    brand: var(--cdr-color-background-surface-brand-spruce),
+    sale: var(--cdr-color-background-surface-sale),
   ),
   border-color: (
-    primary: var(--cdr-color-border-primary),
-    secondary: var(--cdr-color-border-secondary),
-    success: var(--cdr-color-border-success),
-    warning: var(--cdr-color-border-warning),
-    error: var(--cdr-color-border-error),
-    info: var(--cdr-color-border-info),
+    primary: var(--cdr-color-border-surface-primary),
+    secondary: var(--cdr-color-border-surface-secondary),
+    success: var(--cdr-color-border-surface-success),
+    warning: var(--cdr-color-border-surface-warning),
+    error: var(--cdr-color-border-surface-error),
+    info: var(--cdr-color-border-surface-info),
   ),
   border-width: (
     zero: var(--cdr-space-zero),
@@ -52,15 +51,14 @@ $properties: (
     lifted: var(--cdr-prominence-lifted),
   ),
 );
-
 $states: (rest, hover, active, checked, loading, disabled, visited);
 $css-vars: (
-  background: --cdr-surface-background,
-  border-color: --cdr-surface-border-color,
-  border-width: --cdr-surface-border-width,
-  border-style: --cdr-surface-border-style,
-  border-radius: --cdr-surface-border-radius,
-  box-shadow: --cdr-surface-box-shadow,
+  background: '--cdr-surface-background',
+  border-color: '--cdr-surface-border-color',
+  border-width: '--cdr-surface-border-width',
+  border-style: '--cdr-surface-border-style',
+  border-radius: '--cdr-surface-border-radius',
+  box-shadow: '--cdr-surface-box-shadow',
 );
 
 .cdr-surface {
@@ -93,11 +91,15 @@ $css-vars: (
   // Generate state-based styles
   @each $state in $states {
     @if $state != 'rest' {
-      $selector: if(
-        $state == 'hover',
-        '&:hover:not([aria-pressed="true"], [aria-checked="true"], :disabled)',
-        if($state == 'active', '&:active, &:focus', '&[data-#{$state}="true"]')
-      );
+      $selector: '';
+
+      @if $state == 'hover' {
+        $selector: '&:hover:not([aria-pressed="true"], [aria-checked="true"], :disabled)';
+      } @else if $state == 'active' {
+        $selector: '&:active, &:focus';
+      } @else {
+        $selector: '&[data-#{$state}="true"]';
+      }
 
       @each $prop, $values in $properties {
         @each $value-name, $value in $values {
@@ -116,7 +118,8 @@ $css-vars: (
   box-shadow: var(--cdr-surface-box-shadow);
 
   &::before {
-    border: var(--cdr-surface-border-width) var(--cdr-surface-border-style) var(--cdr-surface-border-color);
+    border: var(--cdr-surface-border-width) var(--cdr-surface-border-style)
+      var(--cdr-surface-border-color);
     border-radius: inherit;
     content: '';
     inset: 0;

@@ -6,45 +6,45 @@ describe('CdrFormGroup', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
-          label: 'hey'
+        props: {
+          label: 'hey',
         },
         slots: {
           default: 'form elements!',
         },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
-  })
+  });
 
   describe('form group with error state', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: 'renders',
           label: 'hey',
-          error: 'Something is happening?'
+          error: 'Something is happening?',
         },
         slots: {
-          'default': 'form elements!',
+          default: 'form elements!',
         },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
-  })
+  });
 
   describe('form group with required state', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           label: 'hey',
           required: true,
         },
@@ -52,7 +52,7 @@ describe('CdrFormGroup', () => {
           default: 'form elements!',
         },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -60,14 +60,14 @@ describe('CdrFormGroup', () => {
 
     it('has appended the expected asterisk to the legend', () => {
       expect(wrapper.find('legend').text()).toBe('hey *');
-    })
-  })
+    });
+  });
 
   describe('form group with optional state', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           label: 'hey',
           optional: true,
         },
@@ -84,13 +84,13 @@ describe('CdrFormGroup', () => {
     it('has appended the expected "(optional)" text to the legend', () => {
       expect(wrapper.find('legend').text()).toBe('hey (optional)');
     });
-  })
+  });
 
   describe('form group with required and optional state', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           label: 'hey',
           required: true,
           optional: true,
@@ -99,7 +99,7 @@ describe('CdrFormGroup', () => {
           default: 'form elements!',
         },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -107,16 +107,16 @@ describe('CdrFormGroup', () => {
 
     it('overrides the optional property and appends the expected asterisk to the legend', () => {
       expect(wrapper.find('legend').text()).toBe('hey *');
-    })
+    });
   });
 
   describe('form group with error slot', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: '123',
-          error: true
+          error: true,
         },
         slots: {
           error: 'whoops',
@@ -135,14 +135,14 @@ describe('CdrFormGroup', () => {
     it('the error has the expected text', () => {
       expect(wrapper.find('.cdr-form-error').text()).toBe('whoops');
     });
-  })
+  });
 
   describe('disabled form group', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
-          disabled: true
+        props: {
+          disabled: true,
         },
       });
     });
@@ -154,15 +154,15 @@ describe('CdrFormGroup', () => {
     it('has the expected disabled class', () => {
       expect(wrapper.find('.cdr-form-group--disabled').exists()).toBe(true);
     });
-  })
+  });
 
   describe('when text is passed as error prop', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: '123',
-          error: 'false!'
+          error: 'false!',
         },
       });
     });
@@ -178,15 +178,15 @@ describe('CdrFormGroup', () => {
     it('has the expected error text', () => {
       expect(wrapper.find('.cdr-form-error').text()).toBe('false!');
     });
-  })
+  });
 
   describe('when error state is inactive', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormGroup, {
-        propsData: {
+        props: {
           id: '123',
-          error: false
+          error: false,
         },
         slots: {
           error: 'whoops',

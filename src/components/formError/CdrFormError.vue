@@ -1,20 +1,30 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
+import type { CdrFormErrorProps } from './types';
 import IconErrorStroke from '../icon/comps/error-stroke.vue';
+
+/**
+ * CdrFormError - Displays error messages for form inputs
+ *
+ * Form errors provide feedback to users when input validation fails.
+ * Use form errors to clearly communicate what went wrong and how to fix it.
+ * Always pair error messages with visual indicators.
+ */
 
 defineOptions({
   name: 'CdrFormError',
 });
 
-defineProps<{
-  error: boolean | string;
-  role?: string;
+defineProps<CdrFormErrorProps>();
+
+defineSlots<{
+  'error'(props: Record<string, never>): any;
 }>();
 
-const style = useCssModule();
-const baseClass = 'cdr-form-error';
-const activeErrorClass = '--active-error';
-const iconClass = 'cdr-form-error__icon';
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-form-error';
+const iconClass: string = 'cdr-form-error__icon';
+const activeErrorClass = 'cdr-form-error--active';
 </script>
 
 <template>
@@ -35,10 +45,12 @@ const iconClass = 'cdr-form-error__icon';
       style="display: inline-block"
     >
       <div v-if="error">
-        <slot name="error">{{ error }}</slot>
+        <slot name="error">
+          {{ error }}
+        </slot>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrFormError.module.scss"></style>
+<style lang="scss" module src="./styles/CdrFormError.module.scss" />

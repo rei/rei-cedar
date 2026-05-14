@@ -1,6 +1,11 @@
 <template>
   <div>
-    <cdr-button @click="handleOpen" aria-haspopup="dialog">Open async modal</cdr-button>
+    <cdr-button
+      @click="handleOpen"
+      aria-haspopup="dialog"
+    >
+      Open async modal
+    </cdr-button>
     <cdr-modal
       label="Cat facts!"
       :opened="modalOpened"
@@ -35,15 +40,14 @@ export default {
   },
   methods: {
     async getCatFact() {
-      await fetch("https://cat-fact.herokuapp.com/facts")
-        .then(response => response.json())
-        .then(data => (this.catFact = data[Math.floor(Math.random() * (4 - 0) + 0)].text));
+      await fetch('https://cat-fact.herokuapp.com/facts')
+        .then((response) => response.json())
+        .then((data) => (this.catFact = data[Math.floor(Math.random() * (4 - 0) + 0)].text));
     },
     handleOpen() {
       this.getCatFact();
       this.modalOpened = true;
     },
-
-  }
+  },
 };
 </script>

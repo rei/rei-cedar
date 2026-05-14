@@ -1,10 +1,6 @@
 <template>
-  <div
-    class="rating-reset"
-  >
-    <h2>
-      Ratings
-    </h2>
+  <div class="rating-reset">
+    <h2>Ratings</h2>
     <cdr-rating
       rating="3.3"
       count="16"
@@ -78,26 +74,18 @@
       />
     </div>
 
-    <cdr-text>
-      0 String Count
-    </cdr-text>
+    <cdr-text>0 String Count</cdr-text>
     <cdr-rating
       rating="1.2"
       count="0"
     />
-    <cdr-text>
-      0 Num Count
-    </cdr-text>
+    <cdr-text>0 Num Count</cdr-text>
     <cdr-rating
       rating="1.2"
       :count="0"
     />
-    <cdr-text>
-      no Count
-    </cdr-text>
-    <cdr-rating
-      rating="1.2"
-    />
+    <cdr-text>no Count</cdr-text>
+    <cdr-rating rating="1.2" />
     <!-- Default Size -->
     <cdr-rating
       rating="1.2"
@@ -134,17 +122,13 @@
     />
 
     <!-- Responsive Size -->
-    <cdr-text>
-      Responsive Growing
-    </cdr-text>
+    <cdr-text>Responsive Growing</cdr-text>
     <cdr-rating
       rating="2"
       count="9"
       size="small@xs medium@md large@lg"
     />
-    <cdr-text>
-      Responsive Inverse
-    </cdr-text>
+    <cdr-text>Responsive Inverse</cdr-text>
     <cdr-rating
       rating="3"
       count="100"

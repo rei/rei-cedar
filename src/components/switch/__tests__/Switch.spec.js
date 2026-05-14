@@ -8,15 +8,15 @@ describe('CdrSwitch', () => {
     wrapper = mount(CdrSwitch, {
       props: {
         id: 'id-123',
-        modelValue: false
+        modelValue: false,
       },
       attachTo: document.body,
       slots: {
-        default: ' <span class="custom-text-style">Pull the lever Kronk!</span>'
-      }
+        default: ' <span class="custom-text-style">Pull the lever Kronk!</span>',
+      },
     });
     button = wrapper.find('button');
-  })
+  });
 
   it('matches snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
@@ -40,13 +40,13 @@ describe('CdrSwitch', () => {
     });
 
     it('emits the expected value', () => {
-      expect(wrapper.emitted()['update:modelValue'][0][0]).toBe(true)
+      expect(wrapper.emitted()['update:modelValue'][0][0]).toBe(true);
     });
-  })
+  });
 
   describe('when the "checked" property is set to true', () => {
     beforeEach(async () => {
-      wrapper.setProps({ modelValue: true })
+      wrapper.setProps({ modelValue: true });
     });
 
     it('matches snapshot', () => {
@@ -59,12 +59,12 @@ describe('CdrSwitch', () => {
 
     describe('after a click', () => {
       beforeEach(async () => {
-        await button.trigger('click')
+        await button.trigger('click');
       });
 
       it('emits the expected value', () => {
-        expect(wrapper.emitted()['update:modelValue'][0][0]).toBe(false)
+        expect(wrapper.emitted()['update:modelValue'][0][0]).toBe(false);
       });
-    })
-  })
+    });
+  });
 });

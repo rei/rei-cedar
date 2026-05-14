@@ -1,5 +1,7 @@
-name: GitHub Pages
-on: [push]
+name: Deploy Storybook to GitHub Pages
+on:
+  push:
+    branches: [main]
 permissions:
   contents: write
 jobs:
@@ -8,16 +10,20 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - name: Node version
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Install and Build 🔧
+          node-version: 22
+          cache: 'pnpm'
+      - name: Install and Build Storybook 🔧
         run: |
-          npm ci
-          npm run pages
+          pnpm install
+          pnpm run build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: pages
+          folder: storybook-static
           clean: true

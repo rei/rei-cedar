@@ -1,6 +1,6 @@
 import type { CdrFilmstripArrowClickPayload, CdrFilmstripResizePayload } from '../../interfaces';
 import type { Lifestyle, LifestyleFrameClickPayload } from '.';
-import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens';
+import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens/tokens';
 
 /**
  * Handles frame click events in the filmstrip and logs analytics data.

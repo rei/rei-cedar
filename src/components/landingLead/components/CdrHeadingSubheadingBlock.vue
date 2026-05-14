@@ -1,20 +1,30 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
+import type { CdrHeadingSubheadingBlockProps } from '../types';
 import { CdrHeadingDisplay, CdrSubheadingSans } from '../../../lib';
 
-defineProps({
-  headingTag: { type: String, default: 'h1' },
+/**
+ * Internal component for combining a heading and subheading.
+ * Used within CdrLandingLead to structure text content.
+ */
+withDefaults(defineProps<CdrHeadingSubheadingBlockProps>(), {
+  headingTag: 'h1',
 });
 
-const baseClass = 'cdr-heading-subheading-block'
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+  'subheading'(props: Record<string, never>): any;
+}>();
+
+const baseClass = 'cdr-heading-subheading-block';
 const style = useCssModule();
 </script>
 
 <template>
   <header :class="style[baseClass]">
     <CdrHeadingDisplay
-      :tag="headingTag"
-      scale="4"
+      :tag="headingTag as keyof HTMLElementTagNameMap"
+      scale="scale-4"
       :class="style[`${baseClass}__heading`]"
     >
       <slot />
@@ -26,7 +36,6 @@ const style = useCssModule();
       <slot name="subheading" />
     </CdrSubheadingSans>
   </header>
-
 </template>
 
 <style lang="scss" module src="../styles/CdrHeadingSubheadingBlock.module.scss" />

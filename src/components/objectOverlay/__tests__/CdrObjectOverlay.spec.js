@@ -100,11 +100,11 @@ describe('CdrObjectOverlay.vue', () => {
 
     it('handles responsive position values', () => {
       const wrapper = mount(CdrObjectOverlay, {
-        props: { 
-          position: { 
-            xs: 'center-center', 
-            lg: 'bottom-right' 
-          } 
+        props: {
+          position: {
+            xs: 'center-center',
+            lg: 'bottom-right',
+          },
         },
         slots: {
           container: '<div>Container</div>',
@@ -118,11 +118,11 @@ describe('CdrObjectOverlay.vue', () => {
 
     it('handles responsive margin values', () => {
       const wrapper = mount(CdrObjectOverlay, {
-        props: { 
-          margin: { 
-            xs: 'zero', 
-            lg: 'half-x' 
-          } 
+        props: {
+          margin: {
+            xs: 'zero',
+            lg: 'half-x',
+          },
         },
         slots: {
           container: '<div>Container</div>',
@@ -150,9 +150,9 @@ describe('CdrObjectOverlay.vue', () => {
     // New tests for gradientTheme
     it('applies dark gradient theme by default when withGradient is true', () => {
       const wrapper = mount(CdrObjectOverlay, {
-        props: { 
+        props: {
           withGradient: true,
-          position: 'left-top'
+          position: 'left-top',
         },
         slots: {
           container: '<div>Container</div>',
@@ -166,10 +166,10 @@ describe('CdrObjectOverlay.vue', () => {
 
     it('applies light gradient theme when specified', () => {
       const wrapper = mount(CdrObjectOverlay, {
-        props: { 
+        props: {
           withGradient: true,
           gradientTheme: 'light',
-          position: 'left-top'
+          position: 'left-top',
         },
         slots: {
           container: '<div>Container</div>',
@@ -195,10 +195,10 @@ describe('CdrObjectOverlay.vue', () => {
 
       positionsAndDirections.forEach(({ position, direction }) => {
         const wrapper = mount(CdrObjectOverlay, {
-          props: { 
+          props: {
             withGradient: true,
             gradientTheme: 'light',
-            position
+            position,
           },
           slots: {
             container: '<div>Container</div>',
@@ -213,9 +213,9 @@ describe('CdrObjectOverlay.vue', () => {
 
     it('does not apply gradient when position is center-center', () => {
       const wrapper = mount(CdrObjectOverlay, {
-        props: { 
+        props: {
           withGradient: true,
-          position: 'center-center'
+          position: 'center-center',
         },
         slots: {
           container: '<div>Container</div>',

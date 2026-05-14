@@ -1,8 +1,11 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-breadcrumb-item-mixin() {
-  //ITEM_DOC: Breadcrumb item color
-  color: var(--cdr-breadcrumb-item-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+  // ITEM_DOC: Breadcrumb item color
+  color: var(
+    --cdr-breadcrumb-item-color,
+    var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+  );
 }
 
 @mixin cdr-breadcrumb-item-linked-mixin() {
@@ -12,8 +15,11 @@
   &:hover,
   &:active,
   &:focus {
-    //ITEM_DOC: Breadcrumb item linked hover, active and focus color
-    color: var(--cdr-breadcrumb-item-linked-highlight-color, var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover}));
+    // ITEM_DOC: Breadcrumb item linked hover, active and focus color
+    color: var(
+      --cdr-breadcrumb-item-linked-highlight-color,
+      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+    );
     text-decoration: underline;
   }
 }

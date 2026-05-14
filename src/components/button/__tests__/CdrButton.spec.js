@@ -1,17 +1,17 @@
 import { shallowMount, mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrButton from '../CdrButton.vue';
-import sinon from 'sinon'
+import sinon from 'sinon';
 
 describe('CdrButton', () => {
   describe('snapshot test', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrButton);
-    })
+    });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
-  })
+  });
 
   describe('component unit tests', () => {
     let wrapper;
@@ -30,7 +30,7 @@ describe('CdrButton', () => {
       it('does not add icon class when slot is unused', () => {
         expect(wrapper.vm.iconClass).toBe(undefined);
       });
-    })
+    });
 
     describe('with prop "type" set to "reset"', () => {
       beforeEach(() => {
@@ -42,7 +42,7 @@ describe('CdrButton', () => {
       it('sets type attr correctly', () => {
         expect(wrapper.attributes().type).toBe('reset');
       });
-    })
+    });
 
     describe('when "el" is set to "a"', () => {
       beforeEach(() => {
@@ -54,7 +54,7 @@ describe('CdrButton', () => {
       it('computes base class correctly', () => {
         expect(wrapper.classes()).toContain('cdr-button');
       });
-    })
+    });
 
     describe('when "iconOnly" is set to true and size is "large"', () => {
       beforeEach(() => {
@@ -69,7 +69,7 @@ describe('CdrButton', () => {
       it('adds custom size class', () => {
         expect(wrapper.vm.sizeClass).toBe('cdr-button--icon-only-large');
       });
-    })
+    });
 
     describe('when "iconOnly" and "withBackground" is set to true', () => {
       beforeEach(() => {
@@ -88,7 +88,7 @@ describe('CdrButton', () => {
       it('adds class for icon background', () => {
         expect(wrapper.classes()).toContain('cdr-button--with-background');
       });
-    })
+    });
 
     describe('with tag prop set to "a"', () => {
       beforeEach(() => {
@@ -100,7 +100,7 @@ describe('CdrButton', () => {
       it('renders a link', () => {
         expect(wrapper.element.tagName).toBe('A');
       });
-    })
+    });
 
     describe('with a function passed to the onClick attribute', () => {
       let spy;
@@ -108,7 +108,7 @@ describe('CdrButton', () => {
         spy = sinon.spy();
         wrapper = shallowMount(CdrButton, {
           attrs: {
-            onClick: spy
+            onClick: spy,
           },
         });
         wrapper.trigger('click');
@@ -119,9 +119,7 @@ describe('CdrButton', () => {
       it('the function is called', () => {
         expect(spy.calledOnce).toBeTruthy();
       });
-    })
-
-
+    });
 
     describe('with an icon-left slot', () => {
       beforeEach(() => {
@@ -135,9 +133,9 @@ describe('CdrButton', () => {
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
       });
-      it('adds the "cdr-button--has-icon-left" class', ()=>{
+      it('adds the "cdr-button--has-icon-left" class', () => {
         expect(wrapper.classes()).toContain('cdr-button--has-icon-left');
-      })
+      });
     });
 
     describe('with an icon-left slot', () => {
@@ -152,9 +150,9 @@ describe('CdrButton', () => {
       it('renders correctly', () => {
         expect(wrapper.element).toMatchSnapshot();
       });
-      it('adds the "cdr-button--has-icon-right" class', ()=>{
+      it('adds the "cdr-button--has-icon-right" class', () => {
         expect(wrapper.classes()).toContain('cdr-button--has-icon-right');
-      })
+      });
     });
   });
 });

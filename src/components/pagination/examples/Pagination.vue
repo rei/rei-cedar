@@ -2,7 +2,7 @@
   <div data-backstop="pagination-page">
     <h2>pagination</h2>
 
-    <hr>
+    <hr />
     <p>Normal</p>
 
     <cdr-pagination
@@ -14,7 +14,7 @@
       @navigate="preventNavigate"
     />
 
-    <hr>
+    <hr />
     <p>intra-page pagination using buttons</p>
     <cdr-pagination
       v-model="page"
@@ -25,7 +25,7 @@
       data-backstop="pagination-default"
       @navigate="preventNavigate"
     />
-    <hr>
+    <hr />
 
     <div
       v-for="datam in paginationData.example1[ex1Page]"
@@ -44,7 +44,7 @@
       @navigate="updateRoute"
     />
 
-    <hr>
+    <hr />
 
     <p>Previous/Next only (known total)</p>
 
@@ -55,7 +55,7 @@
       v-model="ex2PageKnown"
     />
 
-    <hr>
+    <hr />
     <p>Previous/Next only (unknown total)</p>
 
     <cdr-pagination
@@ -64,7 +64,7 @@
       for-label="next"
     />
 
-    <hr>
+    <hr />
     <p>Only 5 pages provided</p>
 
     <cdr-pagination
@@ -73,7 +73,6 @@
       v-model="ex3Page"
       for-label="limit"
     />
-
   </div>
 </template>
 
@@ -142,7 +141,9 @@ export default {
     makePages(total, arg = 'page', startingAt = 0) {
       const adjuster = startingAt > 0 ? startingAt : 0;
       const result = [];
-      const arr = Array(total).fill().map((_, i) => i + adjuster + 1);
+      const arr = Array(total)
+        .fill()
+        .map((_, i) => i + adjuster + 1);
       arr.forEach((n) => {
         const obj = {};
         obj.page = n;
@@ -155,5 +156,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

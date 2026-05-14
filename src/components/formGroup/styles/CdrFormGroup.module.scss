@@ -1,6 +1,5 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrFormGroup.vars' as vars;
-
 @use '../../formError/styles/CdrFormError.module';
 
 .cdr-form-group {
@@ -13,7 +12,8 @@
   &--disabled {
     @include vars.cdr-form-group-disabled-mixin;
 
-    .cdr-form-group__optional, .cdr-form-group__required {
+    .cdr-form-group__optional,
+    .cdr-form-group__required {
       color: tokens.$cdr-color-text-disabled;
     }
   }

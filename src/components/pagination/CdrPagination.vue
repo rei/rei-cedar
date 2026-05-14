@@ -1,90 +1,24 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, watch, nextTick, onMounted, type PropType
-} from 'vue';
-import { paginationItem } from '../../types/interfaces';
+import { useCssModule, computed, ref, watch, nextTick, onMounted } from 'vue';
+import type { CdrPaginationProps, PaginationItem } from './types';
 import mapClasses from '../../utils/mapClasses';
-import propValidator from '../../utils/propValidator';
 import IconCaretLeft from '../icon/comps/caret-left.vue';
 import IconCaretRight from '../icon/comps/caret-right.vue';
 import CdrSelect from '../select/CdrSelect.vue';
 import uid from '../../utils/uid';
 
-/** 
+/**
  * Allows people to navigate to the next or previous page within an experience
- * @uses CdrSelect, CdrIcon 
+ * @uses CdrSelect, CdrIcon
  **/
 defineOptions({
-  name: 'CdrPagination'
+  name: 'CdrPagination',
 });
 
-const props = defineProps({
-  /**
-   * Define a custom slug for the generated pagination item IDs. Slug is randomly generated if no ID provided.
-   * @demoIgnore true
-   */
-    id: {
-    type: String,
-  },
-  /**
-   * Sets the total number of pages for displaying "Page x of <totalPages>".
-   * Sometimes the total number of pages is different than total page data objects in the pages array.
-   * For example, if only the next and previous pages are provided.
-   */
-  totalPages: {
-    type: Number,
-    default: null,
-  },
-  /**
-   * Array of objects containing pagination data.
-   * Objects must have structure of `{ page: number, url: string }`
-   */
-  pages: {
-    type: Array as PropType<paginationItem[]>,
-    required: true,
-    validator: (value: paginationItem[]) => {
-      const result = value.every((obj) => {
-        if (!Object.prototype.hasOwnProperty.call(obj, 'page')
-        || typeof obj.page !== 'number') {
-          console.error('Property "page" is missing or is not a number', obj); // eslint-disable-line
-          return false;
-        } if (!Object.prototype.hasOwnProperty.call(obj, 'url')
-        || typeof obj.url !== 'string') {
-          console.error('Property "url" is missing or is not a string', obj); // eslint-disable-line
-          return false;
-        }
-        return true;
-      });
-      return result;
-    },
-  },
-  /**
-   * Sets which tag type is used to render pagination elements
-   * @values a, button
-   */
-  linkTag: {
-    type: String,
-    default: 'a',
-    validator: (value: string) => propValidator(
-      value,
-      ['a', 'button'],
-    ),
-  },
-  /**
-   * Used to customize the aria-label for the root pagination element.
-   * For page-level pagination (i.e, pagination that updates the entire page content and changes the URL)
-   * this property should be omitted.
-   * For intra-page navigation this property should describe the element being paginated, for example:
-   * `Pagination for sub-content`
-   */
-  forLabel: {
-    type: String,
-    default: '',
-  },
-  /** @ignore used for binding v-model, represents the current page */
-  modelValue: {
-    type: Number,
-  },
+const props = withDefaults(defineProps<CdrPaginationProps>(), {
+  totalPages: null,
+  linkTag: 'a',
+  forLabel: '',
 });
 
 const emits = defineEmits({
@@ -93,13 +27,13 @@ const emits = defineEmits({
    * Only used on small devices
    * @param modelValue
    */
-    'update:modelValue': null,
+  'update:modelValue': null,
   /**
    * $emit event fired when page changes based on user interaction by clicking a link
    * or selecting an option from the select on mobile.
    * `event.preventDefault()` can be used to override the default link navigation behavior.
    */
-  navigate: null,  
+  navigate: null,
 });
 
 const style = useCssModule();
@@ -107,7 +41,7 @@ const currentIdx = ref(0);
 const linkRefs = ref<HTMLElement[]>([]);
 const uniqueId = props.id ? props.id : uid();
 const setCurrentIdx = (page: number | undefined) => {
-  currentIdx.value = (props.pages).map((x) => x.page).indexOf(page as number);
+  currentIdx.value = props.pages.map((x) => x.page).indexOf(page as number);
 };
 const innerValue = computed({
   get: () => props.modelValue,
@@ -117,12 +51,12 @@ const innerValue = computed({
   },
 });
 
-const currentUrl = computed(() => props.pages[currentIdx.value].url);
+const currentUrl = computed(() => props.pages[currentIdx.value]?.url);
 
 const navigate = (pageNum: number, e: Event) => {
-// Dont do anything if clicking the current active page
-  const paginationLinkIsVisible = (e.target as HTMLElement)?.offsetWidth
-    > 0 && (e.target as HTMLElement)?.offsetHeight > 0;
+  // Dont do anything if clicking the current active page
+  const paginationLinkIsVisible =
+    (e.target as HTMLElement)?.offsetWidth > 0 && (e.target as HTMLElement)?.offsetHeight > 0;
   if (pageNum === innerValue.value && paginationLinkIsVisible) {
     e.preventDefault();
     return;
@@ -130,14 +64,13 @@ const navigate = (pageNum: number, e: Event) => {
   innerValue.value = pageNum;
   emits('navigate', pageNum, currentUrl.value, e);
   nextTick(() => {
-  // Done in a nextTick() to ensure rendering complete
+    // Done in a nextTick() to ensure rendering complete
     try {
-    // Emulate native link click page reloading behaviour by blurring the
-    // paginator and returning focus to the document
-      const target = e.currentTarget as HTMLElement || e.target as HTMLElement;
+      // Emulate native link click page reloading behaviour by blurring the
+      // paginator and returning focus to the document
+      const target = (e.currentTarget as HTMLElement) || (e.target as HTMLElement);
       target?.blur();
     } catch (err) {
-    // eslint-disable-next-line no-console
       console.error(err);
     }
   });
@@ -145,7 +78,8 @@ const navigate = (pageNum: number, e: Event) => {
 
 const select = (e: Event) => {
   const linkToClick = linkRefs.value.find(
-    (link) => link?.innerHTML === (e.target as HTMLInputElement)?.value);
+    (link) => link?.innerHTML === (e.target as HTMLInputElement)?.value,
+  );
   if (linkToClick) {
     linkToClick.click();
   }
@@ -159,12 +93,12 @@ const paginationData = computed(() => {
   const total = props.pages.length;
   const current = innerValue.value;
   const delta = 1;
-  let range: paginationItem[] = [];
+  let range: PaginationItem[] = [];
   let over5 = true;
   let over5remain = true;
 
   if (total <= 7) {
-  // all pages
+    // all pages
     return props.pages;
   }
   if (!current) return;
@@ -179,19 +113,15 @@ const paginationData = computed(() => {
     range = props.pages.slice(-5, -1);
   } else {
     // else in between
-    for (
-      let i = Math.max(2, current - delta);
-      i <= Math.min(total - 1, current + delta);
-      i += 1
-    ) {
+    for (let i = Math.max(2, current - delta); i <= Math.min(total - 1, current + delta); i += 1) {
       range.push(props.pages[i - 1]);
     }
   }
 
-  if ((current - delta > 2) && over5) {
+  if (current - delta > 2 && over5) {
     range.unshift({ page: 0, url: '', ellip: true });
   }
-  if ((current + delta < total - 1) && over5remain) {
+  if (current + delta < total - 1 && over5remain) {
     range.push({ page: 0, url: '', ellip: true });
   }
 
@@ -202,8 +132,10 @@ const paginationData = computed(() => {
 });
 
 onMounted(() => setCurrentIdx(innerValue.value));
-watch(() => props.pages, () => setCurrentIdx(innerValue.value));
-
+watch(
+  () => props.pages,
+  () => setCurrentIdx(innerValue.value),
+);
 </script>
 
 <template>
@@ -227,10 +159,14 @@ watch(() => props.pages, () => setCurrentIdx(innerValue.value));
       >
         <span
           aria-disabled="true"
-          :class="mapClasses(style,
-                             'cdr-pagination__link',
-                             'cdr-pagination__prev',
-                             'cdr-pagination__link--disabled')"
+          :class="
+            mapClasses(
+              style,
+              'cdr-pagination__link',
+              'cdr-pagination__prev',
+              'cdr-pagination__link--disabled',
+            )
+          "
         >
           <icon-caret-left
             :class="style['cdr-pagination_caret--prev']"
@@ -245,22 +181,27 @@ watch(() => props.pages, () => setCurrentIdx(innerValue.value));
         :key="`pagination-${uniqueId}-li-${n.page}`"
         :class="style['cdr-pagination__li--links']"
       >
-
         <component
           v-if="!n.ellip"
           :is="linkTag"
           :id="`pagination-${uniqueId}-link-${n.page}`"
-          :class="mapClasses(
-            style,
-            'cdr-pagination__link',
-            n.page === innerValue ? 'cdr-pagination__link--current' : ''
-          )"
-          :aria-label="n.page === innerValue
-            ? `Current page, page ${n.page}`
-            : `Go to page ${n.page}`"
+          :class="
+            mapClasses(
+              style,
+              'cdr-pagination__link',
+              n.page === innerValue ? 'cdr-pagination__link--current' : '',
+            )
+          "
+          :aria-label="
+            n.page === innerValue ? `Current page, page ${n.page}` : `Go to page ${n.page}`
+          "
           :aria-current="n.page === innerValue ? 'page' : null"
           :href="(linkTag === 'a' && n.url) || undefined"
-          :ref="(el: HTMLElement) => { linkRefs[i] = el }"
+          :ref="
+            (el: HTMLElement) => {
+              linkRefs[i] = el;
+            }
+          "
           @click="(e: Event) => navigate(n.page, e)"
         >
           {{ n.page }}
@@ -282,7 +223,7 @@ watch(() => props.pages, () => setCurrentIdx(innerValue.value));
           @change.prevent="(e: Event) => select(e)"
         >
           <option
-            v-for="page in paginationData?.filter(n => n.page)"
+            v-for="page in paginationData?.filter((n) => n.page)"
             :key="`pagination-${uniqueId}-select-${page.page}`"
             :value="page.page"
           >
@@ -309,10 +250,14 @@ watch(() => props.pages, () => setCurrentIdx(innerValue.value));
       >
         <span
           aria-disabled="true"
-          :class="mapClasses(style,
-                             'cdr-pagination__link',
-                             'cdr-pagination__next',
-                             'cdr-pagination__link--disabled')"
+          :class="
+            mapClasses(
+              style,
+              'cdr-pagination__link',
+              'cdr-pagination__next',
+              'cdr-pagination__link--disabled',
+            )
+          "
         >
           Next
           <icon-caret-right
@@ -325,5 +270,4 @@ watch(() => props.pages, () => setCurrentIdx(innerValue.value));
   </nav>
 </template>
 
-<style lang="scss" module src="./styles/CdrPagination.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrPagination.module.scss" />

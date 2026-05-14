@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import sizeProps from '../../props/size';
+import type { CdrRatingProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 import CdrStar100 from './components/CdrStar100.vue';
 import CdrStar75 from './components/CdrStar75.vue';
@@ -13,55 +13,28 @@ import CdrStarNull from './components/CdrStarNull.vue';
 defineOptions({
   name: 'CdrRating',
   components: {
-    CdrStar100, CdrStar75, CdrStar50, CdrStar25, CdrStar00, CdrStarNull,
+    CdrStar100,
+    CdrStar75,
+    CdrStar50,
+    CdrStar25,
+    CdrStar00,
+    CdrStarNull,
   },
 });
 
-const props = defineProps({
-  /**
-   * Sets the rating values between 0 and 5.
-   */
-    rating: {
-    required: true,
-    type: [String, Number],
-    default: 0,
-  },
-  /**
-   * Sets the total number of ratings
-   */
-  count: {
-    required: false,
-    type: [String, Number],
-    default: null,
-  },
-  /**
-   * Hides the word 'reviews' if true
-   */
-  compact: {
-    type: Boolean,
-    default: false,
-  },
-  /**
-   * Sets the rating component (icons and text) to display inline and wraps them in an anchor tag so they can act as link.
-   */
-  href: {
-    type: String,
-  },
-  /**
-   * Sets the rating size.
-   * @demoSelectMultiple false
-   * @values small, medium, large
-  */
-  size: sizeProps,
+const props = withDefaults(defineProps<CdrRatingProps>(), {
+  rating: 0,
+  count: null,
+  compact: false,
 });
 
 const style = useCssModule();
 const baseClass = 'cdr-rating';
 const ratingToNumber = computed(() => Number(props.rating));
 const countToNumber = computed(() => Number(props.count));
-const sizeClass = computed(() => props.size ? `${baseClass}--${props.size}` : '');
-const linkedClass = computed(() => props.href ? `${baseClass}--linked` : '');
-const hasReviews = computed(() => ((ratingToNumber.value > 0 || countToNumber.value > 0)));
+const sizeClass = computed(() => (props.size ? `${baseClass}--${props.size}` : ''));
+const linkedClass = computed(() => (props.href ? `${baseClass}--linked` : ''));
+const hasReviews = computed(() => ratingToNumber.value > 0 || countToNumber.value > 0);
 
 const tag = computed(() => (props.href ? 'a' : 'div'));
 
@@ -89,7 +62,7 @@ const srText = computed(() => {
       return `View the reviews with an average rating of ${displayRating.value} out of 5 stars`;
     }
     // default
-    return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`; // eslint-disable-line max-len
+    return `View the ${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
   }
 
   // non-linked
@@ -102,7 +75,6 @@ const srText = computed(() => {
     return `Rated ${displayRating.value} out of 5 stars`;
   }
   // default
-  // eslint-disable-next-line
   return `${props.count} reviews with an average rating of ${displayRating.value} out of 5 stars`;
 });
 </script>
@@ -111,14 +83,9 @@ const srText = computed(() => {
   <component
     :is="tag"
     :href="href"
-    :class="mapClasses(style,
-                       baseClass,
-                       sizeClass,
-                       linkedClass,
-    )"
+    :class="mapClasses(style, baseClass, sizeClass, linkedClass)"
   >
     <div :class="style['cdr-rating__ratings']">
-
       <CdrStar100
         v-for="star in Array(whole).keys()"
         :size="size"
@@ -134,7 +101,7 @@ const srText = computed(() => {
 
       <component
         v-for="empty in Array(empties).keys()"
-        :is="(hasReviews) ? 'CdrStar00' : 'CdrStarNull'"
+        :is="hasReviews ? 'CdrStar00' : 'CdrStarNull'"
         :size="size"
         :key="`rating-empty-${empty}`"
         aria-hidden="true"
@@ -165,5 +132,4 @@ const srText = computed(() => {
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrRating.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrRating.module.scss" />

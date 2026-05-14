@@ -1,4 +1,4 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrFilmstrip.vars' as vars;
 
 .cdr-filmstrip {
@@ -22,11 +22,17 @@
 
   &__arrow {
     @include vars.arrow-vars;
+
     box-shadow: vars.$prominence-02;
     pointer-events: all;
+
     --button-half: #{tokens.$cdr-space-one-and-a-half-x};
+
     position: absolute;
-    top: var(--cdr-filmstrip-arrow-top, calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x));
+    top: var(
+      --cdr-filmstrip-arrow-top,
+      calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x)
+    );
     z-index: 1;
 
     &:active,
@@ -51,6 +57,7 @@
     &--right {
       --extra-frame-width: calc(1px * ((var(--frame-width) * var(--frame-extra))));
       --half-gap: calc(var(--frames-gap) / 2 * 1px);
+
       right: calc(var(--extra-frame-width) + var(--half-gap) - var(--button-half));
     }
 

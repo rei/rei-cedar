@@ -42,7 +42,7 @@ import type {
   CdrFilmstripScrollPayload,
   CdrFilmstripAdapter,
 } from './interfaces';
-import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
+import { computed, h, provide, ref, useAttrs, useId } from 'vue';
 import { CdrFilmstripEventKey } from '../../types/symbols';
 
 /**
@@ -72,6 +72,11 @@ const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
   adapter: (): CdrFilmstripAdapter<Record<string, unknown>> => {
     return (): CdrFilmstripConfig<Record<string, unknown>> => {
       console.warn(`No adapter provided for CdrFilmstrip`);
+
+      defineSlots<{
+        /** Optional injection of a heading element for the filmstrip */
+        'heading'(props: Record<string, never>): any;
+      }>();
       return {
         frames: [],
         filmstripId: 'empty-filmstrip',
@@ -143,6 +148,11 @@ const CdrFilmstripContainer = ref<HTMLElement | null>(null);
 const FRAMES_TO_SHOW_DEFAULT = 6;
 
 /**
+ * Unique ID suffix generated at setup scope (useId must not be called inside computed).
+ */
+const filmstripUniqueId = useId();
+
+/**
  * Resolves and transforms the filmstrip model.
  * The adapter function is applied to the model to obtain a consistent filmstrip configuration.
  *
@@ -184,7 +194,7 @@ const hasFilmstripFrames = computed(() => frames.value.length > 0);
  *
  * @returns {string} A unique identifier for the filmstrip.
  */
-const filmstripId = computed(() => `${filmstripConfig.value.filmstripId}-${useId()}`);
+const filmstripId = computed(() => `${filmstripConfig.value.filmstripId}-${filmstripUniqueId}`);
 
 /**
  * Retrieves the description for the filmstrip.
@@ -287,15 +297,8 @@ const onResize = useDebounceFn(() => {
 
 /**
  * Sets up a resize observer on the filmstrip container element.
- * This ensures that the filmstrip layout updates automatically when the container size changes.
+ * Called at setup scope so only one observer is ever created and VueUse
+ * handles cleanup via its own onUnmounted hook (no watch accumulation).
  */
-watch(
-  () => CdrFilmstripContainer.value,
-  (el) => {
-    if (el) {
-      useResizeObserver(el, onResize);
-    }
-  },
-  { immediate: true },
-);
+useResizeObserver(CdrFilmstripContainer, onResize);
 </script>

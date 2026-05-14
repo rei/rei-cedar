@@ -1,6 +1,5 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrCheckbox.vars' as vars;
-
 @use '../../labelWrapper/styles/CdrLabelWrapper.module';
 
 .cdr-checkbox {
@@ -23,19 +22,25 @@
   /* Checked
   ========== */
   &__input:checked {
-    & ~ .cdr-label-wrapper__figure {
+    ~ .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-checkbox-checked-mixin;
     }
 
-    & ~ .cdr-checkbox__svg-box {
+    ~ .cdr-checkbox__svg-box {
       svg {
-        //ITEM_DOC: Fill color of the checkbox check icon when checked
-        fill: var(--cdr-form-figure-checkbox-fill-checked, var(--cdr-color-icon-checkbox-default-selected, #{tokens.$cdr-color-icon-checkbox-default-selected}));
+        // ITEM_DOC: Fill color of the checkbox check icon when checked
+        fill: var(
+          --cdr-form-figure-checkbox-fill-checked,
+          var(
+            --cdr-color-icon-checkbox-default-selected,
+            #{tokens.$cdr-color-icon-checkbox-default-selected}
+          )
+        );
       }
     }
-  } 
+  }
 
-  //cdr-checkbox__svg-box
+  // cdr-checkbox__svg-box
   &__input[indeterminate] ~ .cdr-label-wrapper__figure {
     box-shadow: inset 0 0 0 1px tokens.$cdr-color-border-input-default-selected;
 
@@ -51,7 +56,7 @@
       border-radius: tokens.$cdr-radius-soft;
     }
   }
-  
+
   &:hover {
     .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-checkbox-hover-mixin;
@@ -65,8 +70,14 @@
       }
 
       &:checked ~ .cdr-checkbox__svg-box svg {
-        //ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
-        fill: var(--cdr-form-figure-checkbox-fill-checked-hover, var(--cdr-color-icon-checkbox-default-selected-hover, #{tokens.$cdr-color-icon-checkbox-default-selected-hover}));
+        // ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
+        fill: var(
+          --cdr-form-figure-checkbox-fill-checked-hover,
+          var(
+            --cdr-color-icon-checkbox-default-selected-hover,
+            #{tokens.$cdr-color-icon-checkbox-default-selected-hover}
+          )
+        );
       }
 
       /* Hover + Indeterminate
@@ -84,11 +95,11 @@
   /* Disabled
   ========== */
   &__input:disabled {
-    & ~ .cdr-label-wrapper__figure {
+    ~ .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-checkbox-disabled-mixin;
     }
 
-    & ~ .cdr-checkbox__svg-box {
+    ~ .cdr-checkbox__svg-box {
       svg {
         fill: transparent !important;
       }
@@ -97,7 +108,7 @@
     /* Disabled + Checked
     ========== */
     &:checked {
-      & ~ .cdr-label-wrapper__figure {
+      ~ .cdr-label-wrapper__figure {
         @include vars.cdr-form-figure-checkbox-checked-disabled-mixin;
       }
     }
@@ -105,7 +116,7 @@
     /* Disabled + Active
     ========== */
     &:active {
-      & ~ .cdr-checkbox__svg-box {
+      ~ .cdr-checkbox__svg-box {
         svg {
           fill: transparent;
         }
@@ -115,7 +126,7 @@
     /* Disabled + Indeterminate
     ========== */
     &[indeterminate] {
-      & ~ .cdr-label-wrapper__figure {
+      ~ .cdr-label-wrapper__figure {
         box-shadow: inset 0 0 0 1px tokens.$cdr-color-border-input-default-disabled !important;
 
         &::after {
@@ -128,14 +139,18 @@
   /* Active
   ========== */
   &:active {
-    .cdr-label-wrapper__figure, .cdr-checkbox__input:checked ~ .cdr-label-wrapper__figure  {
+    .cdr-label-wrapper__figure,
+    .cdr-checkbox__input:checked ~ .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-checkbox-active-mixin;
     }
 
-   .cdr-checkbox__svg-box {
+    .cdr-checkbox__svg-box {
       svg {
-        //ITEM_DOC: Fill color of the checkbox check icon when active
-        fill: var(--cdr-form-figure-checkbox-fill-active , var(--cdr-color-icon-checkbox-default-selected-active))
+        // ITEM_DOC: Fill color of the checkbox check icon when active
+        fill: var(
+          --cdr-form-figure-checkbox-fill-active,
+          var(--cdr-color-icon-checkbox-default-selected-active)
+        );
       }
     }
 

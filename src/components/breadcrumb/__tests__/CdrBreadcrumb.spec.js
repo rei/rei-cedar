@@ -58,14 +58,14 @@ describe('CdrBreadcrumb', () => {
     let ellipse;
     beforeEach(() => {
       wrapper = mount(CdrBreadcrumb, {
-        propsData: {
+        props: {
           id: 'bc-test',
-          items: itemsA
+          items: itemsA,
         },
-        attachTo: document.body
-      })
+        attachTo: document.body,
+      });
       ellipse = wrapper.find('.cdr-breadcrumb__ellipses');
-    })
+    });
     it('renders correctly', async () => {
       expect(wrapper.element).toMatchSnapshot();
     });
@@ -94,7 +94,7 @@ describe('CdrBreadcrumb', () => {
       it('the ellipse button has the expected "aria-expanded" value', () => {
         expect(ellipse.attributes()['aria-expanded']).toBe('false');
       });
-    })
+    });
 
     describe('when truncated breadcrumb items list has been expanded', () => {
       beforeEach(() => {
@@ -105,20 +105,20 @@ describe('CdrBreadcrumb', () => {
         expect(wrapper.find('.cdr-breadcrumb__ellipses').exists()).toBeFalsy();
       });
 
-      it('applies focus to first breadcrumb on ellipsis click', ()=>{
-        expect(document.activeElement.textContent).toBe('Longer Breadcrumb List Step 1')
-      })
-    })
+      it('applies focus to first breadcrumb on ellipsis click', () => {
+        expect(document.activeElement.textContent).toBe('Longer Breadcrumb List Step 1');
+      });
+    });
   });
 
   describe('when there is fewer than 3 items', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrBreadcrumb, {
-        propsData: {
+        props: {
           id: 'bc-test',
           items: itemsB,
-        }
+        },
       });
     });
     it('is not truncated', () => {
@@ -131,5 +131,5 @@ describe('CdrBreadcrumb', () => {
       await wrapper.vm.$nextTick();
       expect(wrapper.find('.cdr-breadcrumb__ellipses').exists()).toBe(true);
     });
-  })
+  });
 });

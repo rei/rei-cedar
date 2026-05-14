@@ -1,0 +1,23 @@
+// Custom Storybook styles for Cedar component library
+
+.sb-show-main.sb-main-padded {
+  padding: 16px;
+}
+
+// Story wrapper styles
+.story-wrapper {
+  margin: 16px 0;
+}
+
+// Component spacing utilities for stories
+.story-spacing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+
+  &--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

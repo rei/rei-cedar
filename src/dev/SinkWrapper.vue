@@ -45,7 +45,7 @@ export default {
       immediate: true,
       handler(newValue) {
         this.palette = newValue || 'default';
-      }
+      },
     },
     palette() {
       this.$router.replace({
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .sink-wrapper {
   &__radios {

@@ -2,7 +2,7 @@
 
 exports[`CdrFormError > using an error slot > renders correctly 1`] = `
 <div
-  class="cdr-form-error --active-error"
+  class="cdr-form-error cdr-form-error--active"
 >
   <span
     class="cdr-form-error__icon"
@@ -48,7 +48,7 @@ exports[`CdrFormError > using an error slot > renders correctly 1`] = `
 
 exports[`CdrFormError > using just the error prop (no slot) > renders correctly 1`] = `
 <div
-  class="cdr-form-error --active-error"
+  class="cdr-form-error cdr-form-error--active"
 >
   <span
     class="cdr-form-error__icon"

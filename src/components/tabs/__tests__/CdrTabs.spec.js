@@ -9,15 +9,15 @@ describe('CdrTabs', () => {
     wrapper = mount(CdrTabs, {
       slots: {
         default: [
-          h(CdrTabPanel, { name: 'tab1', 'aria-labelledby': 'tab-small-one', }),
+          h(CdrTabPanel, { name: 'tab1', 'aria-labelledby': 'tab-small-one' }),
           h(CdrTabPanel, { name: 'tab2' }),
           h(CdrTabPanel, { name: 'tab3', disabled: true }),
-          h(CdrTabPanel, { name: 'tab4' })
+          h(CdrTabPanel, { name: 'tab4' }),
         ],
       },
-      attachTo: document.body
+      attachTo: document.body,
     });
-  })
+  });
   describe('mounted', () => {
     it('mounts tabs', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -74,25 +74,25 @@ describe('CdrTabs', () => {
     wrapper.vm.selectedIndex = 0;
     wrapper.vm.selectTabNext();
     expect(wrapper.vm.selectedIndex).toBe(1);
-  })
+  });
 
   it('selectTabPrev() selects changes the selectedIndex as expected', () => {
     wrapper.vm.selectedIndex = 1;
     wrapper.vm.selectTabPrev();
     expect(wrapper.vm.selectedIndex).toBe(0);
-  })
+  });
 
   it('skips disabled tabs with selectTabNext()', () => {
     wrapper.vm.selectedIndex = 2;
     wrapper.vm.selectTabNext();
     expect(wrapper.vm.selectedIndex).toBe(3);
-  })
+  });
 
   it('skips disabled tabs with selectTabPrev()', () => {
     wrapper.vm.selectedIndex = 3;
     wrapper.vm.selectTabPrev();
     expect(wrapper.vm.selectedIndex).toBe(1);
-  })
+  });
 
   describe('selectTab()', () => {
     it('changes the selectedIndex', () => {
@@ -120,14 +120,22 @@ describe('CdrTabs', () => {
       wrapper.vm.overflowLeft = true;
       wrapper.vm.overflowRight = false;
       await wrapper.vm.$nextTick();
-      expect(wrapper.find('.cdr-tabs__gradient--right.cdr-tabs__gradient--active').exists()).toBe(false);
-      expect(wrapper.find('.cdr-tabs__gradient--left.cdr-tabs__gradient--active').exists()).toBe(true);
+      expect(wrapper.find('.cdr-tabs__gradient--right.cdr-tabs__gradient--active').exists()).toBe(
+        false,
+      );
+      expect(wrapper.find('.cdr-tabs__gradient--left.cdr-tabs__gradient--active').exists()).toBe(
+        true,
+      );
     });
 
     it('adds gradient-right class', async () => {
       await wrapper.vm.$nextTick();
-      expect(wrapper.find('.cdr-tabs__gradient--right.cdr-tabs__gradient--active').exists()).toBe(true);
-      expect(wrapper.find('.cdr-tabs__gradient--left.cdr-tabs__gradient--active').exists()).toBe(false);
+      expect(wrapper.find('.cdr-tabs__gradient--right.cdr-tabs__gradient--active').exists()).toBe(
+        true,
+      );
+      expect(wrapper.find('.cdr-tabs__gradient--left.cdr-tabs__gradient--active').exists()).toBe(
+        false,
+      );
     });
   });
 
@@ -135,7 +143,7 @@ describe('CdrTabs', () => {
     let tab1;
     beforeEach(() => {
       tab1 = wrapper.find('#tab-small-one');
-    })
+    });
 
     it('selected tab has the expect aria-selected value', async () => {
       expect(tab1.attributes()['aria-selected']).toBe('true');
@@ -152,7 +160,7 @@ describe('CdrTabs', () => {
     it('the tab container has the correct tablist role', async () => {
       expect(wrapper.find('.cdr-tabs__header-container').attributes()['role']).toBe('tablist');
     });
-  })
+  });
 
   it('focuses on the selected tab button element', async () => {
     await wrapper.vm.selectTab(1);

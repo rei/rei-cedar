@@ -2,16 +2,18 @@
 import { useCssModule, computed } from 'vue';
 import mapClasses from '../../utils/mapClasses';
 import { getStructureStyles } from '../../utils/layout';
-import type { Layout, NameValuePair } from '../../types/interfaces';
-import type { Structure } from '../../types/other';
+import type { CdrLayoutProps, NameValuePair } from './types';
+import type { Structure } from '../../types/componentOptions';
 import { modifyClassName } from '../../utils/buildClass';
 import CdrSurface from '../surface/CdrSurface.vue';
 
-/** Foundational container for creating structured layouts */
-
+/**
+ * Foundational container for creating structured layouts.
+ * Provides a CSS Grid-based layout system with responsive columns, rows, and gap controls.
+ */
 defineOptions({ name: 'CdrLayout' });
 
-const props = withDefaults(defineProps<Layout>(), {
+const props = withDefaults(defineProps<CdrLayoutProps>(), {
   gap: 'zero',
   rowGap: 'zero',
   columnGap: 'zero',
@@ -22,6 +24,11 @@ const props = withDefaults(defineProps<Layout>(), {
   flow: undefined,
   flowValue: 'auto',
 });
+
+defineSlots<{
+  /** Where all default content should be placed. */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 
@@ -74,7 +81,7 @@ const rootProps = computed(() => {
   return { class: mapClasses(style, ...classes) || undefined, style: inlineStyles };
 });
 
-const componentIs = props.as === 'CdrSurface' ? CdrSurface : props.as;
+const componentIs = computed(() => (props.as === 'CdrSurface' ? CdrSurface : props.as));
 </script>
 
 <template>
@@ -87,4 +94,4 @@ const componentIs = props.as === 'CdrSurface' ? CdrSurface : props.as;
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrLayout.module.scss"></style>
+<style lang="scss" module src="./styles/CdrLayout.module.scss" />

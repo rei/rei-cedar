@@ -3,44 +3,34 @@
     class="breadcrumb-demo-container"
     data-backstop="breadcrumbs"
   >
-    <h2>
-      Breadcrumb
-    </h2>
+    <h2>Breadcrumb</h2>
     <cdr-breadcrumb
       :items="averageBreadcrumbItems"
       data-backstop="breadcrumbs-ellipsis"
       aria-label="two-item-breadcrumb"
       id="two-item-breadcrumb"
     />
-    <h3>
-      Two-Item Breadcrumb
-    </h3>
+    <h3>Two-Item Breadcrumb</h3>
     <cdr-breadcrumb
       :items="shortBreadcrumbItems"
       data-backstop="breadcrumbs-default"
       aria-label="three-item-breadcrumb"
       id="three-item-breadcrumb"
     />
-    <h3>
-      Three-Item Breadcrumb
-    </h3>
+    <h3>Three-Item Breadcrumb</h3>
     <cdr-breadcrumb
       :items="superLongBreadcrumbItems"
       aria-label="longest-breadcrumb"
       id="longest-breadcrumb"
     />
-    <h3>
-      REI.com's Longest Breadcrumb
-    </h3>
+    <h3>REI.com's Longest Breadcrumb</h3>
     <cdr-breadcrumb
       :items="reiExampleBreadcrumbItems"
       aria-label="rei-example-breadcrumb"
       id="rei-example-breadcrumb"
     />
 
-    <h3>
-      Breadcrumb handle navigate events
-    </h3>
+    <h3>Breadcrumb handle navigate events</h3>
     <cdr-breadcrumb
       :items="shortBreadcrumbItems"
       data-backstop="breadcrumbs-default"
@@ -165,7 +155,7 @@ export default {
         {
           item: {
             url: 'http://rei.com',
-            name: 'Women\'s Cross-Country Ski Gloves',
+            name: "Women's Cross-Country Ski Gloves",
           },
         },
       ],
@@ -180,5 +170,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

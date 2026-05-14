@@ -117,6 +117,22 @@ const props = defineProps({
   labelClass: String,
 });
 
+defineSlots<{
+  /** Helper text above the input field */
+  'helper-text-top'(props: Record<string, never>): any;
+  /** Link or icon to the right above the input field. */
+  'info'(props: Record<string, never>): any;
+  /** Icon preceding text within the input field */
+  'pre-icon'(props: Record<string, never>): any;
+  /** Icon after text within the input field */
+  'post-icon'(props: Record<string, never>): any;
+  'info-action'(props: Record<string, never>): any;
+  /** Helper text below the input field */
+  'helper-text-bottom'(props: Record<string, never>): any;
+  /** Error messaging text that is displayed when the `error` prop is true. */
+  'error'(props: Record<string, never>): any;
+}>();
+
 const emits = defineEmits({
   /**
    * Event emitted by v-model on the <input> element
@@ -131,17 +147,19 @@ const style = useCssModule();
 
 const baseClass = 'cdr-input';
 const isFocused = ref(false);
-const hasHelperTop = slots['helper-text-top'];
-const hasHelperBottom = slots['helper-text-bottom'];
-const hasPreIcon = slots['pre-icon'];
-const hasPostIcon = computed(() => slots['post-icon']);
-const hasPostIcons = computed(() => (slots['post-icon'] ? slots['post-icon']().length > 1 : false));
-const hasInfo = slots.info;
-const hasInfoAction = slots['info-action'];
+const hasHelperTop = computed(() => !!slots['helper-text-top']);
+const hasHelperBottom = computed(() => !!slots['helper-text-bottom']);
+const hasPreIcon = computed(() => !!slots['pre-icon']);
+const hasPostIcon = computed(() => !!slots['post-icon']);
+const hasPostIcons = computed(() =>
+  slots['post-icon'] ? slots['post-icon']({}).length > 1 : false,
+);
+const hasInfo = computed(() => !!slots.info);
+const hasInfoAction = computed(() => !!slots['info-action']);
 
 const uniqueId = props.id ? props.id : uid();
 const multilineClass = computed(() => (props.rows > 1 ? 'cdr-input--multiline' : ''));
-const preIconClass = computed(() => (hasPreIcon ? 'cdr-input--preicon' : ''));
+const preIconClass = computed(() => (hasPreIcon.value ? 'cdr-input--preicon' : ''));
 const postIconClass = computed(() => (hasPostIcon.value ? 'cdr-input--posticon' : ''));
 const postIconsClass = computed(() => (hasPostIcons.value ? 'cdr-input--posticons' : ''));
 const errorClass = computed(() => (props.error ? 'cdr-input--error' : ''));
@@ -166,11 +184,11 @@ const describedby = computed(() => {
 });
 
 // Defining an interface for the inputAttrs object because Vue doesn't correctly infer inputmode type
-interface inputAttrsObject extends InputHTMLAttributes {
+interface InputAttrsObject extends InputHTMLAttributes {
   id: string;
 }
 
-const inputAttrs = computed<inputAttrsObject>(() => {
+const inputAttrs = computed<InputAttrsObject>(() => {
   const isNum = props.numeric || props.type === 'number';
   return {
     id: uniqueId,
@@ -322,4 +340,4 @@ const inputModel = computed({
   </cdr-label-standalone>
 </template>
 
-<style lang="scss" module src="./styles/CdrInput.module.scss"></style>
+<style lang="scss" module src="./styles/CdrInput.module.scss" />

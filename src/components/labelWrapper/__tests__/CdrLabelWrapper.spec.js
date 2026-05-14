@@ -1,25 +1,24 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrLabelWrapper from '../CdrLabelWrapper.vue';
-import { h } from '@vue/runtime-core';
+import { h } from 'vue';
 
 describe('CdrLabelWrapper', () => {
   it('matches snapshot', () => {
     const wrapper = mount(CdrLabelWrapper, {
-      propsData: {
+      props: {
         labelClass: 'custom-label-class',
         contentClass: 'custom-content-class',
         name: 'testName',
         modifier: 'hide-figure',
-        size: 'medium'
+        size: 'medium',
       },
       attrs: {
         class: 'foo',
         'data-ui': 'wrapper',
-
       },
       slots: {
         default: 'Label Wrapper Test',
-        input: h('input', { type: 'checkbox' })
+        input: h('input', { type: 'checkbox' }),
       },
     });
     expect(wrapper.element).toMatchSnapshot();

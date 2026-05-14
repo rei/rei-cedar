@@ -9,13 +9,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - run: npm run build --if-present
-    - run: npm run lint
-    - run: npm run unit
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Check formatting
+        run: pnpm run format:check
+      - run: pnpm run build --if-present
+      - run: pnpm run lint
+      - run: pnpm run unit

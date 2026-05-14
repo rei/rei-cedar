@@ -19,13 +19,13 @@
     height: 100%;
     position: relative;
   }
-  
+
   &__layout {
     height: auto;
     position: relative;
     z-index: 1;
   }
-  
+
   &__loading {
     position: absolute;
     inset: 0;
@@ -35,11 +35,11 @@
     transition: opacity var(--cdr-duration-1-x);
   }
 
-  &[data-loading="true"] &__loading {
+  &[data-loading='true'] &__loading {
     opacity: 1;
   }
 
-  &[data-loading="true"] &__layout {
+  &[data-loading='true'] &__layout {
     opacity: 0;
   }
 }

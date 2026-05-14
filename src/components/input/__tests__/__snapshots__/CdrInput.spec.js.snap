@@ -403,7 +403,7 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
     
     
     <div
-      class="cdr-form-error --active-error"
+      class="cdr-form-error cdr-form-error--active"
       id="renders-error"
     >
       <span
@@ -499,7 +499,7 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
     
     
     <div
-      class="cdr-form-error --active-error"
+      class="cdr-form-error cdr-form-error--active"
       id="renders-error"
     >
       <span
@@ -563,7 +563,7 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -659,7 +659,7 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -936,7 +936,7 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -1245,7 +1245,7 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
     
     
     <div
-      class="cdr-form-error --active-error"
+      class="cdr-form-error cdr-form-error--active"
       id="test-error"
     >
       <span
@@ -1343,7 +1343,7 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
     
     
     <div
-      class="cdr-form-error --active-error"
+      class="cdr-form-error cdr-form-error--active"
       id="test-error"
     >
       <span
@@ -1431,7 +1431,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
         <!-- @slot Icon after text within the input field -->
         
         <button
-          class="cdr-button cdr-button--primary cdr-button--medium"
+          class="cdr-button cdr-button--primary cdr-button--"
           type="button"
         >
           <!-- @slot Icon to the left of text content -->
@@ -1448,7 +1448,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
           
         </button>
         <button
-          class="cdr-button cdr-button--primary cdr-button--medium"
+          class="cdr-button cdr-button--primary cdr-button--"
           type="button"
         >
           <!-- @slot Icon to the left of text content -->

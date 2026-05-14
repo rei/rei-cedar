@@ -228,7 +228,7 @@ exports[`CdrSelect > default configuration with a name attribute > with a requir
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -426,7 +426,7 @@ exports[`CdrSelect > default configuration with a name attribute > with an error
     
     <div
       aria-live="polite"
-      class="cdr-form-error --active-error"
+      class="cdr-form-error cdr-form-error--active"
       id="renders-error"
     >
       <span

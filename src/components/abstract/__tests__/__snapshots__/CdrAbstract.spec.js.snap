@@ -4,6 +4,7 @@ exports[`CdrAbstract > matches snapshot 1`] = `
 <p
   class="cdr-abstract"
 >
+  <!-- @slot Default slot for abstract content -->
   
   This is an abstract
   

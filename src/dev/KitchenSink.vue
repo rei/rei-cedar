@@ -8,9 +8,7 @@
       :key="e.name"
       class="kitchen-sink-section"
     >
-      <component
-        :is="e"
-      />
+      <component :is="e" />
     </div>
   </section>
 </template>
@@ -32,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .kitchen-sink-section {
-    margin: 16px 0;
-  }
+.kitchen-sink-section {
+  margin: 16px 0;
+}
 </style>

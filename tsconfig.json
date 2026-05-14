@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2022",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vitest/globals"],
     "skipLibCheck": true,
     "allowJs": true,
 
@@ -22,6 +23,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["src/dev/*"],
+  "exclude": ["src/dev/*", "src/components/icon/build/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

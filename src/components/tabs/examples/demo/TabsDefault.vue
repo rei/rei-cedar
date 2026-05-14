@@ -5,13 +5,11 @@
       height="500px"
       data-backstop="tab-default"
       :background-color="backgroundColor"
-
     >
       <cdr-tab-panel
         name="Details"
         aria-labelledby="tab-default-details"
         id="tab-panel-default-details"
-        
       >
         <cdr-text
           tag="h3"
@@ -20,13 +18,18 @@
           Details
         </cdr-text>
 
-        <cdr-list
-          modifier="unordered"
-        >
-          <li>Tuckaway, spacer-mesh shoulder straps and integrated handle make carrying a breeze</li>
+        <cdr-list modifier="unordered">
+          <li>
+            Tuckaway, spacer-mesh shoulder straps and integrated handle make carrying a breeze
+          </li>
           <li>Back pocket holds a hydration reservoir (sold separately)</li>
-          <li>Large main compartment has padded interior sleeve to hold a tablet or other device</li>
-          <li>Zippered mesh organizer pocket with key fob; 2 side mesh pockets; open-topped stash pocket for jacket or other quick-use items; small front zip pocket</li>
+          <li>
+            Large main compartment has padded interior sleeve to hold a tablet or other device
+          </li>
+          <li>
+            Zippered mesh organizer pocket with key fob; 2 side mesh pockets; open-topped stash
+            pocket for jacket or other quick-use items; small front zip pocket
+          </li>
           <li>Mesh-covered back panel has slotted foam for ventilation and breathability</li>
           <li>Attaches to a variety of compatible Osprey packs (sold separately)</li>
         </cdr-list>
@@ -42,9 +45,7 @@
         >
           Specs
         </cdr-text>
-        <cdr-table
-          modifier="compact borderless"
-        >
+        <cdr-table modifier="compact borderless">
           <tr>
             <th>Best Use</th>
             <td>Hiking, Travel</td>
@@ -92,7 +93,8 @@
       <cdr-tab-panel
         name="Q&A"
         aria-labelledby="tab-default-Q&A"
-        id="tab-panel-default-Q&A"      >
+        id="tab-panel-default-Q&A"
+      >
         <cdr-text
           tag="h3"
           class="cdr-text-dev--heading-serif-400 tab-title"
@@ -106,19 +108,18 @@
           @accordion-toggle="accordion1 = !accordion1"
           level="4"
         >
-          <template #label>
-            A short label
-          </template>
-          <cdr-text
-            class="cdr-text-dev--body-300"
-          >
+          <template #label>A short label</template>
+          <cdr-text class="cdr-text-dev--body-300">
             This is some text. It's in a
             <cdr-text
               tag="strong"
               class="cdr-text-dev--body-strong-300"
-            >cdr-text paragraph with a modifier of <code>body-300</code></cdr-text> element as
-            thats how you assign the correct font and line-height for text dislpay on REI.
-            does not include margin or add space to the container. Lorem ipsum dolor
+            >
+              cdr-text paragraph with a modifier of
+              <code>body-300</code>
+            </cdr-text>
+            element as thats how you assign the correct font and line-height for text dislpay on
+            REI. does not include margin or add space to the container. Lorem ipsum dolor
           </cdr-text>
         </cdr-accordion>
         <cdr-accordion
@@ -128,7 +129,8 @@
           level="4"
         >
           <template #label>
-            Label with multiple words, so many words in fact that this content may wrap to several lines
+            Label with multiple words, so many words in fact that this content may wrap to several
+            lines
           </template>
           <cdr-list modifier="unordered">
             <li>This is a cdr-list item inside an accordion.</li>
@@ -166,11 +168,11 @@ export default {
 </script>
 
 <style>
-  .tabs-demo-default {
-    max-width: 800px;
-  }
+.tabs-demo-default {
+  max-width: 800px;
+}
 
-  h3.tab-title {
-    margin: 20px 0;
-  }
+h3.tab-title {
+  margin: 20px 0;
+}
 </style>

@@ -1,18 +1,30 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { fulfillmentTileIcon } from '../../types/interfaces';
+import type { FulfillmentTileIcon } from './types';
 
-/** Stylized icon to display a status for fulfillment tile */
+/**
+ * CdrFulfillmentTileIcon - Stylized icon to display a status for fulfillment tile
+ *
+ * Fulfillment tile icons provide visual indicators for delivery or pickup options.
+ * Use these icons to communicate status, availability, or selection state.
+ */
 
 defineOptions({ name: 'CdrFulfillmentTileIcon' });
 
-const props = withDefaults(defineProps<fulfillmentTileIcon>(), {
+const props = withDefaults(defineProps<FulfillmentTileIcon>(), {
   type: 'default',
 });
 
-const style = useCssModule();
-const baseClass = 'cdr-fulfillment-tile-icon';
-const typeClass = computed(() => `${baseClass}--${props.type}`);
+defineSlots<{
+  /** Where all default content should be placed. */
+  'default'(props: Record<string, never>): any;
+}>();
+
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-fulfillment-tile-icon';
+
+/** Computed type class for the icon variant */
+const typeClass = computed<string>(() => `${baseClass}--${props.type}`);
 </script>
 
 <template>
@@ -22,4 +34,4 @@ const typeClass = computed(() => `${baseClass}--${props.type}`);
   </span>
 </template>
 
-<style lang="scss" module src="./styles/CdrFulfillmentTileIcon.module.scss"></style>
+<style lang="scss" module src="./styles/CdrFulfillmentTileIcon.module.scss" />

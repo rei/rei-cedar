@@ -1,5 +1,5 @@
 /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 html {
   -webkit-box-sizing: border-box;
@@ -22,14 +22,10 @@ html {
   box-sizing: inherit;
 }
 
-@viewport {
-  width: device-width;
-}
-
 body {
   /* cdr-text-default */
 
-  font-family: Graphik, "Graphik fallback", "Helvetica Neue", sans-serif;
+  font-family: Graphik, 'Graphik fallback', 'Helvetica Neue', sans-serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: -0.16px;
@@ -39,7 +35,7 @@ body {
 
   /* cdr-color-text-primary */
 
-  color: var(--cdr-color-text-primary), rgba(12, 11, 8, 0.75);
+  color: var(--cdr-color-text-primary), rgb(12 11 8 / 0.75);
 
   /* cdr-color-background-primary */
 
@@ -112,4 +108,3 @@ input[type='month'] {
 [type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-

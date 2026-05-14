@@ -49,7 +49,7 @@ exports[`CdrFormGroup > form group with error slot > renders correctly 1`] = `
   </div>
   <div
     aria-live="polite"
-    class="cdr-form-error --active-error"
+    class="cdr-form-error cdr-form-error--active"
     id="123-error"
   >
     <span
@@ -122,7 +122,7 @@ exports[`CdrFormGroup > form group with error state > renders correctly 1`] = `
   </div>
   <div
     aria-live="polite"
-    class="cdr-form-error --active-error"
+    class="cdr-form-error cdr-form-error--active"
     id="renders-error"
   >
     <span
@@ -207,7 +207,7 @@ exports[`CdrFormGroup > form group with optional state > renders correctly 1`] =
     <span
       class="cdr-form-group__optional"
     >
-       (optional)
+       (optional) 
     </span>
   </legend>
   <div
@@ -235,7 +235,7 @@ exports[`CdrFormGroup > form group with required and optional state > renders co
     <span
       aria-label="required"
     >
-       *
+       * 
     </span>
     <!--v-if-->
   </legend>
@@ -264,7 +264,7 @@ exports[`CdrFormGroup > form group with required state > renders correctly 1`] =
     <span
       aria-label="required"
     >
-       *
+       * 
     </span>
     <!--v-if-->
   </legend>
@@ -328,7 +328,7 @@ exports[`CdrFormGroup > when text is passed as error prop > renders correctly 1`
   </div>
   <div
     aria-live="polite"
-    class="cdr-form-error --active-error"
+    class="cdr-form-error cdr-form-error--active"
     id="123-error"
   >
     <span

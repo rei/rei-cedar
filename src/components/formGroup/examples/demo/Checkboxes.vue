@@ -7,36 +7,45 @@
       <cdr-checkbox
         custom-value="A"
         v-model="exGroup"
-      >A</cdr-checkbox>
+      >
+        A
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="B"
         v-model="exGroup"
-      >B</cdr-checkbox>
+      >
+        B
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="C"
         v-model="exGroup"
-      >C</cdr-checkbox>
+      >
+        C
+      </cdr-checkbox>
     </cdr-form-group>
 
     <cdr-form-group id="favorite-letter-label-override">
-
       <template #label>
-        <cdr-text class="cdr-text-dev--heading-sans-600">
-          Optional Label Override Example
-        </cdr-text>
+        <cdr-text class="cdr-text-dev--heading-sans-600">Optional Label Override Example</cdr-text>
       </template>
       <cdr-checkbox
         custom-value="A"
         v-model="exGroup"
-      >A</cdr-checkbox>
+      >
+        A
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="B"
         v-model="exGroup"
-      >B</cdr-checkbox>
+      >
+        B
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="C"
         v-model="exGroup"
-      >C</cdr-checkbox>
+      >
+        C
+      </cdr-checkbox>
     </cdr-form-group>
 
     <cdr-form-group
@@ -47,15 +56,21 @@
       <cdr-checkbox
         custom-value="A"
         v-model="exGroup"
-      >A</cdr-checkbox>
+      >
+        A
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="B"
         v-model="exGroup"
-      >B</cdr-checkbox>
+      >
+        B
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="C"
         v-model="exGroup"
-      >C</cdr-checkbox>
+      >
+        C
+      </cdr-checkbox>
     </cdr-form-group>
 
     <cdr-form-group
@@ -69,17 +84,23 @@
         custom-value="A"
         v-model="errorA"
         @change="validate"
-      >A</cdr-checkbox>
+      >
+        A
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="B"
         v-model="errorA"
         @change="validate"
-      >B</cdr-checkbox>
+      >
+        B
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="C"
         v-model="errorA"
         @change="validate"
-      >C</cdr-checkbox>
+      >
+        C
+      </cdr-checkbox>
       <template #error>
         <span id="errorStatus">You must make a selection!</span>
       </template>
@@ -97,17 +118,23 @@
         custom-value="Q"
         v-model="errorB"
         @change="validateAlert"
-      >A</cdr-checkbox>
+      >
+        A
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="Z"
         v-model="errorB"
         @change="validateAlert"
-      >B</cdr-checkbox>
+      >
+        B
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="X"
         v-model="errorB"
         @change="validateAlert"
-      >C</cdr-checkbox>
+      >
+        C
+      </cdr-checkbox>
       <template #error>
         <span id="errorAlert">You must make a selection within two minutes!</span>
       </template>
@@ -123,17 +150,23 @@
         custom-value="A"
         v-model="exGroup"
         :disabled="true"
-      >A</cdr-checkbox>
+      >
+        A
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="B"
         v-model="exGroup"
         :disabled="true"
-      >B</cdr-checkbox>
+      >
+        B
+      </cdr-checkbox>
       <cdr-checkbox
         custom-value="C"
         v-model="exGroup"
         :disabled="true"
-      >C</cdr-checkbox>
+      >
+        C
+      </cdr-checkbox>
     </cdr-form-group>
   </div>
 </template>
@@ -168,6 +201,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

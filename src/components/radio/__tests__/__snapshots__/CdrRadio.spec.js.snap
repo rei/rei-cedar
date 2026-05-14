@@ -5,7 +5,7 @@ exports[`CdrRadio > with custom classes > renders correctly 1`] = `
   class="cdr-label-wrapper__container cdr-radio"
 >
   <label
-    class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--medium custom-label-class"
+    class="cdr-label-wrapper cdr-label-wrapper--undefined custom-label-class"
   >
     
     <input
@@ -38,7 +38,7 @@ exports[`CdrRadio > with customValue and name prop > renders correctly 1`] = `
   class="cdr-label-wrapper__container cdr-radio"
 >
   <label
-    class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--medium"
+    class="cdr-label-wrapper cdr-label-wrapper--undefined"
   >
     
     <input

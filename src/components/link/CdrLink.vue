@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCssModule, computed, useAttrs } from 'vue';
-import type { CdrLinkProps } from '../../types/interfaces';
+import type { CdrLinkProps } from './types';
 
 /** Clickable text elements used for navigating to other pages or sections */
 defineOptions({ name: 'CdrLink' });
@@ -11,6 +11,11 @@ const props = withDefaults(defineProps<CdrLinkProps>(), {
   inheritColor: false,
   modifier: '',
 });
+
+defineSlots<{
+  /** Readable text of the link */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 const attrs = useAttrs();
@@ -24,6 +29,12 @@ const computedRel = computed(() => {
     return props.rel || 'noopener noreferrer';
   }
   return props.rel;
+});
+
+/** attrs without `class` — class is handled by the `:class` binding to avoid duplication */
+const attrsWithoutClass = computed(() => {
+  const { class: _class, ...rest } = attrs;
+  return rest;
 });
 
 const getModifierClasses = (modifier: string) => {
@@ -44,12 +55,12 @@ const getModifierClasses = (modifier: string) => {
       baseClass,
       ...getModifierClasses(props.modifier),
       props.inheritColor && style['cdr-link--inherit-color'],
-      ...(attrs.class ? [attrs.class] : [])
+      ...(attrs.class ? [attrs.class] : []),
     ]"
     :href="computedHref"
     :rel="computedRel"
     :target="props.target"
-    v-bind="attrs"
+    v-bind="attrsWithoutClass"
   >
     <!-- @slot Readable text of the link  -->
     <slot />

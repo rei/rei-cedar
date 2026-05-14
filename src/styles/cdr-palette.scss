@@ -1,42 +1,109 @@
 /* Tokens */
-@use '/node_modules/@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
+@use '@rei/cdr-tokens/rei-dot-com/scss/palettes/cdr-palette-membership-subtle' as membershipSubtle;
+@use '@rei/cdr-tokens/rei-dot-com/scss/palettes/cdr-palette-membership-vibrant' as membershipVibrant;
 
 // Sandstone palettes
 
 [data-palette='sandstone'] {
-  --cdr-color-background-primary: #{tokens.$cdr-color-background-secondary};
-  --cdr-color-background-secondary: #dcd6cb;
-  --cdr-color-border-primary: #{tokens.$cdr-color-border-secondary};
-  --cdr-color-border-secondary: #726d64;
+  --cdr-color-background-surface-primary: #{tokens.$cdr-color-background-surface-secondary};
+  --cdr-color-background-surface-secondary: #dcd6cb;
+  --cdr-color-border-surface-primary: #{tokens.$cdr-color-border-surface-secondary};
+  --cdr-color-border-surface-secondary: #726d64;
 }
 
 // Membership palettes
 
 [data-palette='membership-subtle'] {
-  --cdr-color-background-primary: var(--cdr-membership-subtle-color-background-primary, #{tokens.$cdr-membership-subtle-color-background-primary});
-  --cdr-color-text-primary: var(--cdr-membership-subtle-color-text-primary, #{tokens.$cdr-membership-subtle-color-text-primary});
-  --cdr-color-border-button-primary-rest: var(--cdr-membership-subtle-color-border-button-primary-rest, #{tokens.$cdr-membership-subtle-color-border-button-primary-rest});
-  --cdr-color-border-button-primary-active: var(--cdr-membership-subtle-color-border-button-primary-active, #{tokens.$cdr-membership-subtle-color-border-button-primary-active});
-  --cdr-color-border-button-primary-hover: var(--cdr-membership-subtle-color-border-button-primary-hover, #{tokens.$cdr-membership-subtle-color-border-button-primary-hover});
-  --cdr-color-text-button-primary-hover: var(--cdr-membership-subtle-color-text-button-primary-hover, #{tokens.$cdr-membership-subtle-color-text-button-primary-hover});
-  --cdr-color-background-button-primary-rest: var(--cdr-membership-subtle-color-background-button-primary-rest, #{tokens.$cdr-membership-subtle-color-background-button-primary-rest});
-  --cdr-color-background-button-primary-active: var(--cdr-membership-subtle-color-background-button-primary-active, #{tokens.$cdr-membership-subtle-color-background-button-primary-active});
-  --cdr-color-text-link-rest: var(--cdr-membership-subtle-color-text-link-rest, #{tokens.$cdr-membership-subtle-color-text-link-rest});
-  --cdr-color-text-link-hover: var(--cdr-membership-subtle-color-text-link-hover, #{tokens.$cdr-membership-subtle-color-text-link-hover});
-  --cdr-color-text-link-visited: var(--cdr-membership-subtle-color-text-link-visited, #{tokens.$cdr-membership-subtle-color-text-link-visited});
+  --cdr-color-background-surface-primary: var(
+    --cdr-membership-subtle-color-background-primary,
+    #{membershipSubtle.$cdr-membership-subtle-color-background-primary}
+  );
+  --cdr-color-text-primary: var(
+    --cdr-membership-subtle-color-text-primary,
+    #{membershipSubtle.$cdr-membership-subtle-color-text-primary}
+  );
+  --cdr-color-border-button-primary-rest: var(
+    --cdr-membership-subtle-color-border-button-primary-rest,
+    #{membershipSubtle.$cdr-membership-subtle-color-border-button-primary-rest}
+  );
+  --cdr-color-border-button-primary-active: var(
+    --cdr-membership-subtle-color-border-button-primary-active,
+    #{membershipSubtle.$cdr-membership-subtle-color-border-button-primary-active}
+  );
+  --cdr-color-border-button-primary-hover: var(
+    --cdr-membership-subtle-color-border-button-primary-hover,
+    #{membershipSubtle.$cdr-membership-subtle-color-border-button-primary-hover}
+  );
+  --cdr-color-text-button-primary-hover: var(
+    --cdr-membership-subtle-color-text-button-primary-hover,
+    #{membershipSubtle.$cdr-membership-subtle-color-text-button-primary-hover}
+  );
+  --cdr-color-background-button-primary-rest: var(
+    --cdr-membership-subtle-color-background-button-primary-rest,
+    #{membershipSubtle.$cdr-membership-subtle-color-background-button-primary-rest}
+  );
+  --cdr-color-background-button-primary-active: var(
+    --cdr-membership-subtle-color-background-button-primary-active,
+    #{membershipSubtle.$cdr-membership-subtle-color-background-button-primary-active}
+  );
+  --cdr-color-text-link-rest: var(
+    --cdr-membership-subtle-color-text-link-rest,
+    #{membershipSubtle.$cdr-membership-subtle-color-text-link-rest}
+  );
+  --cdr-color-text-link-hover: var(
+    --cdr-membership-subtle-color-text-link-hover,
+    #{membershipSubtle.$cdr-membership-subtle-color-text-link-hover}
+  );
+  --cdr-color-text-link-visited: var(
+    --cdr-membership-subtle-color-text-link-visited,
+    #{membershipSubtle.$cdr-membership-subtle-color-text-link-visited}
+  );
 }
 
 [data-palette='membership-vibrant'] {
-  --cdr-color-background-primary: var(--cdr-membership-vibrant-color-background-primary, #{tokens.$cdr-membership-vibrant-color-background-primary});
-  --cdr-color-text-primary: var(--cdr-membership-vibrant-color-text-primary, #{tokens.$cdr-membership-vibrant-color-text-primary});
-  --cdr-color-border-button-primary-rest: var(--cdr-membership-vibrant-color-border-button-primary-rest, #{tokens.$cdr-membership-vibrant-color-border-button-primary-rest});
-  --cdr-color-border-button-primary-active: var(--cdr-membership-vibrant-color-border-button-primary-active, #{tokens.$cdr-membership-vibrant-color-border-button-primary-active});
-  --cdr-color-border-button-primary-hover: var(--cdr-membership-vibrant-color-border-button-primary-hover, #{tokens.$cdr-membership-vibrant-color-border-button-primary-hover});
-  --cdr-color-text-button-primary-hover: var(--cdr-membership-vibrant-color-text-button-primary-hover, #{tokens.$cdr-membership-vibrant-color-text-button-primary-hover});
-  --cdr-color-background-button-primary-rest: var(--cdr-membership-vibrant-color-background-button-primary-rest, #{tokens.$cdr-membership-vibrant-color-background-button-primary-rest});
-  --cdr-color-background-button-primary-active: var(--cdr-membership-vibrant-color-background-button-primary-active, #{tokens.$cdr-membership-vibrant-color-background-button-primary-active});
-  --cdr-color-text-link-rest: var(--cdr-membership-subtle-color-text-link-rest, #{tokens.$cdr-membership-subtle-color-text-link-rest});
-  --cdr-color-text-link-hover: var(--cdr-membership-subtle-color-text-link-hover, #{tokens.$cdr-membership-subtle-color-text-link-hover});
-  --cdr-color-text-link-visited: var(--cdr-membership-subtle-color-text-link-visited, #{tokens.$cdr-membership-subtle-color-text-link-visited});
+  --cdr-color-background-surface-primary: var(
+    --cdr-membership-vibrant-color-background-primary,
+    #{membershipVibrant.$cdr-membership-vibrant-color-background-primary}
+  );
+  --cdr-color-text-primary: var(
+    --cdr-membership-vibrant-color-text-primary,
+    #{membershipVibrant.$cdr-membership-vibrant-color-text-primary}
+  );
+  --cdr-color-border-button-primary-rest: var(
+    --cdr-membership-vibrant-color-border-button-primary-rest,
+    #{membershipVibrant.$cdr-membership-vibrant-color-border-button-primary-rest}
+  );
+  --cdr-color-border-button-primary-active: var(
+    --cdr-membership-vibrant-color-border-button-primary-active,
+    #{membershipVibrant.$cdr-membership-vibrant-color-border-button-primary-active}
+  );
+  --cdr-color-border-button-primary-hover: var(
+    --cdr-membership-vibrant-color-border-button-primary-hover,
+    #{membershipVibrant.$cdr-membership-vibrant-color-border-button-primary-hover}
+  );
+  --cdr-color-text-button-primary-hover: var(
+    --cdr-membership-vibrant-color-text-button-primary-hover,
+    #{membershipVibrant.$cdr-membership-vibrant-color-text-button-primary-hover}
+  );
+  --cdr-color-background-button-primary-rest: var(
+    --cdr-membership-vibrant-color-background-button-primary-rest,
+    #{membershipVibrant.$cdr-membership-vibrant-color-background-button-primary-rest}
+  );
+  --cdr-color-background-button-primary-active: var(
+    --cdr-membership-vibrant-color-background-button-primary-active,
+    #{membershipVibrant.$cdr-membership-vibrant-color-background-button-primary-active}
+  );
+  --cdr-color-text-link-rest: var(
+    --cdr-membership-vibrant-color-text-link-rest,
+    #{membershipVibrant.$cdr-membership-vibrant-color-text-link-rest}
+  );
+  --cdr-color-text-link-hover: var(
+    --cdr-membership-vibrant-color-text-link-hover,
+    #{membershipVibrant.$cdr-membership-vibrant-color-text-link-hover}
+  );
+  --cdr-color-text-link-visited: var(
+    --cdr-membership-vibrant-color-text-link-visited,
+    #{membershipVibrant.$cdr-membership-vibrant-color-text-link-visited}
+  );
 }
-

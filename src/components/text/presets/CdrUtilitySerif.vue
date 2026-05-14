@@ -1,36 +1,41 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
+import { typeScaleCssSuffix } from '../../../tokens/adapters';
+import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrUtilitySerif',
 });
 
-interface utilitySerifTextProps extends baseTextProps {
-   /** 
-   * Sets the type scale
-   * @type scaleValue
-   * @values -1,0,1,2,3
+interface UtilitySerifTextProps extends BaseTextProps {
+  /**
+   * Sets the type scale using Cedar values derived from cdr-tokens CdrTypeKey values.
+   * @type TypeScale
+   * @values scale-minus-1, scale-0, scale-1, scale-2, scale-3
    */
-  scale?: '-1'|'0'|'1'|'2'|'3',
+  scale?: Extract<TypeScale, 'scale-minus-1' | 'scale-0' | 'scale-1' | 'scale-2' | 'scale-3'>;
   /** Toggles the strong variant */
-  strong?: boolean,
+  strong?: boolean;
 }
 
-const props = withDefaults(defineProps<utilitySerifTextProps>(), {
+const props = withDefaults(defineProps<UtilitySerifTextProps>(), {
   tag: 'p',
-  scale: '1',
+  scale: 'scale-1',
   strong: false,
 });
 
-const typeProperties = computed(() => {
-  return {
-    '--cdr-utility-serif-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-utility-serif-line-height': 
-    `var(--cdr-line-height-ratio-utility-${props.scale})`,
-    '--cdr-utility-serif-font-weight': props.strong ? '600' : '400',
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
-  }
+const typeProperties = computed(() => {
+  const suffix = typeScaleCssSuffix(props.scale!);
+  return {
+    '--cdr-utility-serif-font-size': `var(--cdr-type-scale-${suffix})`,
+    '--cdr-utility-serif-line-height': `var(--cdr-line-height-ratio-utility-${suffix})`,
+    '--cdr-utility-serif-font-weight': props.strong ? '600' : '400',
+  };
 });
 
 const baseClass = 'cdr-utility-serif';
@@ -47,5 +52,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrUtilitySerif.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrUtilitySerif.module.scss" lang="scss"></style>

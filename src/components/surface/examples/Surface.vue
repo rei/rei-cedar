@@ -3,14 +3,15 @@ import CdrSurface from '../CdrSurface.vue';
 import CdrText from '../../text/CdrText.vue';
 import CdrTitle from '../../title/CdrTitle.vue';
 import CdrButton from '../../button/CdrButton.vue';
-import type { surface, HtmlAttributes } from '../../../types/interfaces';
+import type { Surface } from '../types';
+import type { HtmlAttributes } from '../../mediaObject/types';
 
 defineOptions({ name: 'Surface' });
 
 export interface Example {
   label: string;
   title: string;
-  props: surface | HtmlAttributes;
+  props: Surface | HtmlAttributes;
 }
 
 const boxes: Example[] = [
@@ -39,38 +40,42 @@ const boxes: Example[] = [
     },
   },
   {
-    label: 'This surface uses the primary modifier to apply a background but is in the membership-subtle palette ',
+    label:
+      'This surface uses the primary modifier to apply a background but is in the membership-subtle palette ',
     title: 'membership-subtle palette',
     props: {
       class: 'example__card',
-      palette: 'membership-subtle',  // Updated to use membership-subtle palette
+      palette: 'membership-subtle', // Updated to use membership-subtle palette
       background: 'primary',
     },
   },
   {
-    label: 'This surface uses the secondary modifier to apply a background it is in the membership-subtle palette, however the palette had no secondary color defined thus default palette values are used ',
+    label:
+      'This surface uses the secondary modifier to apply a background it is in the membership-subtle palette, however the palette had no secondary color defined thus default palette values are used ',
     title: 'membership-subtle palette',
     props: {
       class: 'example__card',
-      palette: 'membership-subtle',  // Updated to use membership-subtle palette
+      palette: 'membership-subtle', // Updated to use membership-subtle palette
       background: 'secondary',
     },
   },
   {
-    label: 'This surface uses the primary modifier to apply a background but is in the membership-vibrant palette ',
+    label:
+      'This surface uses the primary modifier to apply a background but is in the membership-vibrant palette ',
     title: 'membership-vibrant palette',
     props: {
       class: 'example__card',
-      palette: 'membership-vibrant',  // Updated to use membership-subtle palette
+      palette: 'membership-vibrant', // Updated to use membership-subtle palette
       background: 'primary',
     },
   },
   {
-    label: 'This surface uses the secondary modifier to apply a background it is in the membership-vibrant palette, however the palette had no secondary color defined thus default palette values are used ',
+    label:
+      'This surface uses the secondary modifier to apply a background it is in the membership-vibrant palette, however the palette had no secondary color defined thus default palette values are used ',
     title: 'membership-vibrant palette',
     props: {
       class: 'example__card',
-      palette: 'membership-vibrant',  // Updated to use membership-subtle palette
+      palette: 'membership-vibrant', // Updated to use membership-subtle palette
       background: 'secondary',
       borderWidth: 'quarter-x',
       borderStyle: 'solid',
@@ -91,14 +96,15 @@ const boxes: Example[] = [
       <CdrSurface v-bind="props">
         <CdrTitle>{{ title }}</CdrTitle>
         <CdrText>{{ label }}</CdrText>
-        <CdrButton>Primary button</CdrButton> <cdrLink>and link</cdrLink>
+        <CdrButton>Primary button</CdrButton>
+        <cdrLink>and link</cdrLink>
       </CdrSurface>
     </template>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .example {
   &__hr {

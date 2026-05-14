@@ -27,7 +27,7 @@ describe('CdrSurfaceSelection', () => {
   it('shows custom loading slot', () => {
     const wrapper = mount(CdrSurfaceSelection, {
       props: { loading: true },
-      slots: { loading: 'Custom loading' }
+      slots: { loading: 'Custom loading' },
     });
     expect(wrapper.find('.cdr-surface-selection__loading').text()).toBe('Custom loading');
     expect(wrapper.element).toMatchSnapshot();
@@ -56,9 +56,9 @@ describe('CdrSurfaceSelection', () => {
       props: {
         layout: {
           columns: ['auto', 1],
-          gap: 'one-x'
-        }
-      }
+          gap: 'one-x',
+        },
+      },
     });
     const layout = wrapper.find('.cdr-surface-selection__layout');
     expect(layout.classes()).toContain('cdr-layout--columns');
@@ -72,7 +72,7 @@ describe('CdrSurfaceSelection', () => {
         checked: true,
         disabled: true,
         loading: true,
-      }
+      },
     });
     expect(wrapper.attributes('aria-checked')).toBe('true');
     expect(wrapper.attributes('aria-disabled')).toBe('true');
@@ -87,8 +87,8 @@ describe('CdrSurfaceSelection', () => {
         borderColor: 'primary',
         borderWidth: 'one-x',
         borderStyle: 'solid',
-        boxShadow: 'raised'
-      }
+        boxShadow: 'raised',
+      },
     });
     expect(wrapper.attributes('data-background')).toBe('primary');
     expect(wrapper.attributes('data-border-color')).toBe('primary');

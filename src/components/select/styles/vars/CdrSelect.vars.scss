@@ -1,18 +1,28 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-select-base-mixin() {
   @include tokens.cdr-text-utility-sans-300;
 
   font-weight: 500;
 
-  //ITEM_DOC: Background color of cdr-select
-  background: var(--cdr-select-background-color, var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default}));
+  // ITEM_DOC: Background color of cdr-select
+  background: var(
+    --cdr-select-background-color,
+    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+  );
 
-  //ITEM_DOC: Text color of cdr-select
-  color: var(--cdr-select-text-color, var(--cdr-color-text-input-default, #{tokens.$cdr-color-text-input-default}));
+  // ITEM_DOC: Text color of cdr-select
+  color: var(
+    --cdr-select-text-color,
+    var(--cdr-color-text-input-default, #{tokens.$cdr-color-text-input-default})
+  );
 
-  //ITEM_DOC: Box-shadow color of cdr-select
-  box-shadow: inset 0 0 0 1px var(--cdr-select-box-shadow-color, var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default}));
+  // ITEM_DOC: Box-shadow color of cdr-select
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-select-box-shadow-color,
+      var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
+    );
   border: 0;
   border-radius: tokens.$cdr-radius-softer;
   padding-left: tokens.$cdr-space-half-x;
@@ -24,25 +34,52 @@
   margin: 0;
 
   &[disabled] {
-    //ITEM_DOC: Background color of a disabled cdr-select
-    background-color: var(--cdr-select-background-color-disabled, var(--cdr-color-background-input-default-disabled, #{tokens.$cdr-color-background-input-default-disabled}));
+    // ITEM_DOC: Background color of a disabled cdr-select
+    background-color: var(
+      --cdr-select-background-color-disabled,
+      var(
+        --cdr-color-background-input-default-disabled,
+        #{tokens.$cdr-color-background-input-default-disabled}
+      )
+    );
 
-    //ITEM_DOC: Text color of a disabled cdr-select
-    color: var(--cdr-select-text-color-disabled, var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled}));
+    // ITEM_DOC: Text color of a disabled cdr-select
+    color: var(
+      --cdr-select-text-color-disabled,
+      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+    );
 
-    //ITEM_DOC: Box-shadow color of a disabled cdr-select
-    box-shadow: inset 0 0 0 1px var(--cdr-select-box-shadow-color-disabled, var(--cdr-color-border-input-default-disabled, #{tokens.$cdr-color-border-input-default-disabled}));
+    // ITEM_DOC: Box-shadow color of a disabled cdr-select
+    box-shadow: inset 0 0 0 1px
+      var(
+        --cdr-select-box-shadow-color-disabled,
+        var(
+          --cdr-color-border-input-default-disabled,
+          #{tokens.$cdr-color-border-input-default-disabled}
+        )
+      );
 
     &:hover {
-      box-shadow: inset 0 0 0 1px var(--cdr-select-hover-box-shadow-color-disabled, var(--cdr-color-border-input-default-disabled, #{tokens.$cdr-color-border-input-default-disabled}));
+      box-shadow: inset 0 0 0 1px
+        var(
+          --cdr-select-hover-box-shadow-color-disabled,
+          var(
+            --cdr-color-border-input-default-disabled,
+            #{tokens.$cdr-color-border-input-default-disabled}
+          )
+        );
       cursor: not-allowed;
     }
   }
 
   &:active,
   &:focus {
-    //ITEM_DOC: Box-shadow color of a cdr-select when active or focused
-    box-shadow: inset 0 0 0 2px var(--cdr-select-box-shadow-color-focus, var(--cdr-color-border-input-default-focus, #{tokens.$cdr-color-border-input-default-focus}));
+    // ITEM_DOC: Box-shadow color of a cdr-select when active or focused
+    box-shadow: inset 0 0 0 2px
+      var(
+        --cdr-select-box-shadow-color-focus,
+        var(--cdr-color-border-input-default-focus, #{tokens.$cdr-color-border-input-default-focus})
+      );
     outline: none;
   }
 }
@@ -52,12 +89,18 @@
 
   font-style: normal;
 
-  //ITEM_DOC: Text color of cdr-select prompt
-  color: var(--cdr-select-prompt-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
+  // ITEM_DOC: Text color of cdr-select prompt
+  color: var(
+    --cdr-select-prompt-text-color,
+    var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+  );
 
   &[disabled] {
-    //ITEM_DOC: Text color of a disabled cdr-select prompt
-    color: var(--cdr-select-prompt-text-color-disabled, var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled}));
+    // ITEM_DOC: Text color of a disabled cdr-select prompt
+    color: var(
+      --cdr-select-prompt-text-color-disabled,
+      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+    );
   }
 }
 
@@ -69,31 +112,56 @@
 }
 
 @mixin cdr-select-primary-mixin() {
-  //ITEM_DOC: Background color of a primary cdr-select
-  background-color: var(--cdr-select-primary-background-color, var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default}));
+  // ITEM_DOC: Background color of a primary cdr-select
+  background-color: var(
+    --cdr-select-primary-background-color,
+    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+  );
 
   &:active,
   &:focus {
-    //ITEM_DOC: Background color of a primary cdr-select when active or focused
-    background-color: var(--cdr-select-primary-background-color-active, var(--cdr-color-background-input-default-active, #{tokens.$cdr-color-background-input-default-active}));
+    // ITEM_DOC: Background color of a primary cdr-select when active or focused
+    background-color: var(
+      --cdr-select-primary-background-color-active,
+      var(
+        --cdr-color-background-input-default-active,
+        #{tokens.$cdr-color-background-input-default-active}
+      )
+    );
   }
 }
 
 @mixin cdr-select-secondary-mixin() {
-  //ITEM_DOC: Background color of a secondary cdr-select
-  background-color: var(--cdr-select-secondary-background-color, var(--cdr-color-background-input-secondary, #{tokens.$cdr-color-background-input-secondary}));
+  // ITEM_DOC: Background color of a secondary cdr-select
+  background-color: var(
+    --cdr-select-secondary-background-color,
+    var(--cdr-color-background-input-secondary, #{tokens.$cdr-color-background-input-secondary})
+  );
 
   &:active,
   &:focus {
-    //ITEM_DOC: Background color of a secondary cdr-select when active or focused
-    background-color: var(--cdr-select-secondary-background-color-active, var(--cdr-color-background-input-secondary-active, #{tokens.$cdr-color-background-input-secondary-active}));
+    // ITEM_DOC: Background color of a secondary cdr-select when active or focused
+    background-color: var(
+      --cdr-select-secondary-background-color-active,
+      var(
+        --cdr-color-background-input-secondary-active,
+        #{tokens.$cdr-color-background-input-secondary-active}
+      )
+    );
   }
 }
 
 @mixin cdr-select-error-mixin() {
-  //ITEM_DOC: Background color of a cdr-select error
-  background-color: var(--cdr-select-background-color-error, var(--cdr-color-background-input-error, #{tokens.$cdr-color-background-input-error}));
+  // ITEM_DOC: Background color of a cdr-select error
+  background-color: var(
+    --cdr-select-background-color-error,
+    var(--cdr-color-background-input-error, #{tokens.$cdr-color-background-input-error})
+  );
 
-  //ITEM_DOC: Box-shadow color of a cdr-select error
-  box-shadow: inset 0 0 0 1px var(--cdr-select-box-shadow-color-error, var(--cdr-color-border-input-error, #{tokens.$cdr-color-border-input-error}));
+  // ITEM_DOC: Box-shadow color of a cdr-select error
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-select-box-shadow-color-error,
+      var(--cdr-color-border-input-error, #{tokens.$cdr-color-border-input-error})
+    );
 }

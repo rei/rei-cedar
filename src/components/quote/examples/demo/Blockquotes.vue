@@ -1,10 +1,7 @@
 <template>
   <div>
-    <h2>
-      Blockquote
-    </h2>
+    <h2>Blockquote</h2>
     <cdr-quote
-
       cite="http://github.com/rei/rei-cedar"
       summary="Blockquote Summary:
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -14,9 +11,7 @@
       citation="Blockquote Citation: Lorem ipsum dolor sit"
     />
 
-    <h3>
-      Summary only
-    </h3>
+    <h3>Summary only</h3>
     <cdr-quote
       summary="Blockquote Summary:
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -25,16 +20,10 @@
       odio fuga reiciendis blanditiis magni?"
     />
 
-    <h3>
-      Citation only
-    </h3>
-    <cdr-quote
-      citation="Citation: Lorem ipsum dolor sit"
-    />
+    <h3>Citation only</h3>
+    <cdr-quote citation="Citation: Lorem ipsum dolor sit" />
 
-    <h3>
-      Nested blockquote
-    </h3>
+    <h3>Nested blockquote</h3>
     <cdr-quote
       summary="Blockquote Summary:
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -42,18 +31,14 @@
       ex aliquam. Temporibus, veritatis laudantium molestiae accusamus asperiores
       odio fuga reiciendis blanditiis magni?"
     >
-      <cdr-quote
-        citation="bob"
-      >
+      <cdr-quote citation="bob">
         <cdr-text>
-          consectetur adipisicing elit. At perferendis reiciendis
-          sapiente delectus commodi eaque sunt aperiam ex aliquam.
-          Temporibus, veritatis laudantium molestiae accusamus asperiores
+          consectetur adipisicing elit. At perferendis reiciendis sapiente delectus commodi eaque
+          sunt aperiam ex aliquam. Temporibus, veritatis laudantium molestiae accusamus asperiores
           odio fuga reiciendis blanditiis magni?
         </cdr-text>
       </cdr-quote>
     </cdr-quote>
-
   </div>
 </template>
 
@@ -66,5 +51,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

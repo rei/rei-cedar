@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    // Vue 3 language support (Volar)
+    "Vue.volar",
+    // OXC: oxlint in-editor diagnostics
+    "oxc.oxc-vscode",
+    // dprint / oxfmt formatter integration
+    "dprint.dprint",
+    // Stylelint for SCSS
+    "stylelint.vscode-stylelint",
+    // EditorConfig support
+    "EditorConfig.EditorConfig"
+  ]
+}

@@ -5,7 +5,7 @@
   margin: 0;
 
   li + li {
-    & > .cdr-accordion {
+    > .cdr-accordion {
       border-top: none;
     }
   }

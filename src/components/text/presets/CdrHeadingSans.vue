@@ -1,32 +1,37 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
+import { typeScaleCssSuffix } from '../../../tokens/adapters';
+import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrHeadingSans',
 });
 
-interface headingSansTextProps extends baseTextProps {
-   /** 
-     * Sets the type scale
-     * @type scaleValue
-     * @values 1,2,3
+interface HeadingSansTextProps extends BaseTextProps {
+  /**
+   * Sets the type scale using Cedar values derived from cdr-tokens CdrTypeKey values.
+   * @type TypeScale
+   * @values scale-1, scale-2, scale-3
    */
-  scale?: '1'|'2'|'3',
-
+  scale?: Extract<TypeScale, 'scale-1' | 'scale-2' | 'scale-3'>;
 }
 
-const props = withDefaults(defineProps<headingSansTextProps>(), {
+const props = withDefaults(defineProps<HeadingSansTextProps>(), {
   tag: 'h2',
-  scale: '3',
+  scale: 'scale-3',
 });
 
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
+
 const typeProperties = computed(() => {
+  const suffix = typeScaleCssSuffix(props.scale!);
   return {
-    '--cdr-heading-sans-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-line-height': 
-    `var(--cdr-line-height-ratio-heading-${props.scale})`
-  }
+    '--cdr-heading-sans-font-size': `var(--cdr-type-scale-${suffix})`,
+    '--cdr-heading-line-height': `var(--cdr-line-height-ratio-heading-${suffix})`,
+  };
 });
 
 const baseClass = 'cdr-heading-sans';
@@ -43,5 +48,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrHeadingSans.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrHeadingSans.module.scss" lang="scss"></style>

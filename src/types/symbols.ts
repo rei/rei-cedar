@@ -1,5 +1,5 @@
 import { type InjectionKey, type Ref } from 'vue';
-import { CdrFilmstripEventEmitter } from './interfaces';
+import type { CdrFilmstripEventEmitter } from '../components/filmstrip/interfaces';
 
 /** Skeleton injection key */
 export const motionKey: InjectionKey<Ref<boolean>> = Symbol();

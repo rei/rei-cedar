@@ -6,10 +6,10 @@ describe('CdrRadio', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrRadio, {
-        propsData: {
+        props: {
           customValue: 'A',
           name: 'testName',
-        }
+        },
       });
     });
 
@@ -30,7 +30,7 @@ describe('CdrRadio', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrRadio, {
-        propsData: {
+        props: {
           labelClass: 'custom-label-class',
           inputClass: 'custom-input-class',
           contentClass: 'custom-content-class',
@@ -64,40 +64,40 @@ describe('CdrRadio', () => {
       expect(wrapper.find('input').element.checked).toBe(true);
     });
 
-    describe('with no modelValue', ()=> {
-      beforeEach(()=>{
-        wrapper.setProps({ modelValue: '' })
+    describe('with no modelValue', () => {
+      beforeEach(() => {
+        wrapper.setProps({ modelValue: '' });
         const rb = wrapper.find('input');
         rb.element.checked = 'true';
-        rb.trigger('change')
-      })
+        rb.trigger('change');
+      });
 
       it('emits a change event with correct value', () => {
         expect(wrapper.emitted()['update:modelValue'][0][0]).toBe('A');
       });
-    })
+    });
 
-    describe('when the model value changes', ()=>{
-      beforeEach(()=>{
-        wrapper.setProps({ modelValue: 'AA' })
-      })
+    describe('when the model value changes', () => {
+      beforeEach(() => {
+        wrapper.setProps({ modelValue: 'AA' });
+      });
 
       it('evaluates simple not checked state correctly', () => {
         expect(wrapper.find('input').element.checked).toBe(false);
       });
-    })
+    });
 
     describe('a complex group with a non-matching modelValue', () => {
       beforeEach(() => {
         wrapper.setProps({
           customValue: { test: 'B', arr: [1, 2, 3] },
           modelValue: { test: 'B' },
-        })
-      })
+        });
+      });
       it('evaluates complex group not checked state correctly', () => {
         expect(wrapper.find('input').element.checked).toBe(false);
       });
-    })
+    });
   });
 
   // TODO: would need to update CdrRadio.vue to do deepEquality check in order to support complex objects like this.
@@ -107,7 +107,7 @@ describe('CdrRadio', () => {
   // const options = {foo: {test: 'b', arr: [1,2,3]}}, etc.
   // xit('evaluates complex group checked state correctly', () => {
   //   const wrapper = mount(CdrRadio, {
-  //     propsData: {
+  //     props: {
   //       customValue: {test: 'B', arr: [1,2,3]},
   //       name: 'testName',
   //       modelValue: {test: 'B', arr: [1,2,3]},

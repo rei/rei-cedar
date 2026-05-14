@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { baseTextProps } from '../../types/interfaces';
+import { CdrTextProps } from './types';
 
 /** Text container used for any text element such as paragraphs, headings, and lists */
 defineOptions({
   name: 'CdrText',
 });
 
-withDefaults(defineProps<baseTextProps>(), {
+withDefaults(defineProps<CdrTextProps>(), {
   tag: 'p',
 });
+
+defineSlots<{
+  /** CdrText content */
+  'default'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 </script>
@@ -24,5 +29,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrText.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrText.module.scss" />
