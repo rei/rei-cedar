@@ -20,7 +20,7 @@ const assetExtensions = new Set([
 ]);
 
 const htmlReferencePattern = /\s(?:href|src)=["'](\.\/[^"']+)["']/g;
-const cssPreloadReferencePattern = /["'](\.\/[^"']+\.css(?:[?#][^"']*)?)["']/g;
+const jsAssetReferencePattern = /["'](\.\/[^"']+\.(?:css|js|mjs)(?:[?#][^"']*)?)["']/g;
 
 type MissingReference = {
   sourceFile: string;
@@ -39,6 +39,13 @@ const walkFiles = (directory: string): string[] => {
   });
 };
 
+const hasJekyllIgnoredPath = (filePath: string): boolean => {
+  return path
+    .relative(outputDir, filePath)
+    .split(path.sep)
+    .some((segment) => segment.startsWith('_'));
+};
+
 const hasAssetExtension = (reference: string): boolean => {
   const referencePath = reference.split(/[?#]/, 1)[0];
   return assetExtensions.has(path.extname(referencePath));
@@ -51,12 +58,19 @@ if (!fs.existsSync(outputDir)) {
   process.exit(1);
 }
 
-for (const sourceFile of walkFiles(outputDir)) {
+const outputFiles = walkFiles(outputDir);
+
+if (outputFiles.some(hasJekyllIgnoredPath) && !fs.existsSync(path.join(outputDir, '.nojekyll'))) {
+  console.error('Storybook output contains underscore-prefixed assets but is missing .nojekyll.');
+  process.exit(1);
+}
+
+for (const sourceFile of outputFiles) {
   if (!sourceExtensions.has(path.extname(sourceFile))) continue;
 
   const source = fs.readFileSync(sourceFile, 'utf8');
   const referencePattern =
-    path.extname(sourceFile) === '.html' ? htmlReferencePattern : cssPreloadReferencePattern;
+    path.extname(sourceFile) === '.html' ? htmlReferencePattern : jsAssetReferencePattern;
 
   for (const match of source.matchAll(referencePattern)) {
     const reference = match[1];
