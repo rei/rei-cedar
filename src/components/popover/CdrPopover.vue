@@ -44,6 +44,7 @@ const style = useCssModule();
 const isOpen = ref(false);
 let lastActive: Element | null;
 let focusTimeoutId: ReturnType<typeof setTimeout> | undefined;
+let isMounted = false;
 
 const triggerEl = ref<HTMLDivElement | null>(null);
 const popupEl = ref<InstanceType<typeof CdrPopup> | null>(null);
@@ -52,7 +53,7 @@ const hasTrigger = computed(() => !!slots.trigger);
 const hasTitle = computed(() => !!slots.title || !!props.label);
 
 const openPopover = (e?: Event) => {
-  if (isOpen.value === true) {
+  if (isOpen.value === true || typeof document === 'undefined') {
     return;
   }
   const { activeElement } = document;
@@ -69,7 +70,7 @@ const openPopover = (e?: Event) => {
 const closePopover = (e?: Event) => {
   isOpen.value = false;
   emits('closed', e);
-  if (lastActive) (lastActive as HTMLElement).focus();
+  if (typeof document !== 'undefined' && lastActive) (lastActive as HTMLElement).focus();
 };
 
 const addHandlers = () => {
@@ -89,6 +90,8 @@ const removeHandlers = () => {
 watch(
   () => props.open,
   () => {
+    if (!isMounted) return;
+
     if (props.open) {
       openPopover();
     } else {
@@ -99,6 +102,7 @@ watch(
 );
 
 onMounted(() => {
+  isMounted = true;
   addHandlers();
 
   const trigger = triggerEl.value?.children[0];
@@ -106,9 +110,14 @@ onMounted(() => {
     trigger.setAttribute('aria-controls', props.id);
     trigger.setAttribute('aria-haspopup', 'dialog');
   }
+
+  if (props.open) {
+    openPopover();
+  }
 });
 
 onUnmounted(() => {
+  isMounted = false;
   removeHandlers();
   if (focusTimeoutId) clearTimeout(focusTimeoutId);
 });

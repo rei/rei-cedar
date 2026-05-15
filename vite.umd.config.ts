@@ -15,6 +15,7 @@ export default defineConfig({
     emptyOutDir: false,
     lib: {
       entry: './src/lib.ts',
+      fileName: () => 'cedar.umd.js',
       formats: ['umd'],
       name: 'cedar',
     },

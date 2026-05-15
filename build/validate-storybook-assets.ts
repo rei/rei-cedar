@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const outputDir = path.resolve(process.argv[2] ?? 'storybook-static');
-const sourceExtensions = new Set(['.html', '.js']);
+const sourceExtensions = new Set(['.css', '.html', '.js']);
 const assetExtensions = new Set([
   '.css',
   '.gif',
@@ -19,8 +19,10 @@ const assetExtensions = new Set([
   '.woff2',
 ]);
 
-const htmlReferencePattern = /\s(?:href|src)=["'](\.\/[^"']+)["']/g;
+const htmlReferencePattern = /\s(?:href|poster|src)=["']([^"']+)["']/g;
+const htmlSrcsetPattern = /\ssrcset=["']([^"']+)["']/g;
 const jsAssetReferencePattern = /["'](\.\/[^"']+\.(?:css|js|mjs)(?:[?#][^"']*)?)["']/g;
+const cssUrlPattern = /url\(["']?([^"')]+)["']?\)/g;
 
 type MissingReference = {
   sourceFile: string;
@@ -51,6 +53,57 @@ const hasAssetExtension = (reference: string): boolean => {
   return assetExtensions.has(path.extname(referencePath));
 };
 
+const normalizeReference = (reference: string): string => reference.split(/[?#]/, 1)[0];
+
+const resolveReference = (sourceFile: string, reference: string): string | undefined => {
+  const normalizedReference = normalizeReference(reference);
+
+  if (
+    normalizedReference.startsWith('data:') ||
+    normalizedReference.startsWith('http://') ||
+    normalizedReference.startsWith('https://') ||
+    normalizedReference.startsWith('//') ||
+    normalizedReference.startsWith('#')
+  ) {
+    return undefined;
+  }
+
+  if (normalizedReference.startsWith('/rei-cedar/')) {
+    return path.resolve(outputDir, normalizedReference.replace(/^\/rei-cedar\//, ''));
+  }
+
+  if (normalizedReference.startsWith('/')) {
+    return path.resolve(outputDir, normalizedReference.replace(/^\//, ''));
+  }
+
+  return path.resolve(path.dirname(sourceFile), normalizedReference);
+};
+
+const collectReferences = (sourceFile: string, source: string): string[] => {
+  const extension = path.extname(sourceFile);
+
+  if (extension === '.html') {
+    const references = [...source.matchAll(htmlReferencePattern)].map((match) => match[1]);
+
+    for (const match of source.matchAll(htmlSrcsetPattern)) {
+      references.push(
+        ...match[1]
+          .split(',')
+          .map((srcsetPart) => srcsetPart.trim().split(/\s+/, 1)[0])
+          .filter(Boolean),
+      );
+    }
+
+    return references;
+  }
+
+  if (extension === '.css') {
+    return [...source.matchAll(cssUrlPattern)].map((match) => match[1]);
+  }
+
+  return [...source.matchAll(jsAssetReferencePattern)].map((match) => match[1]);
+};
+
 const missingReferences: MissingReference[] = [];
 
 if (!fs.existsSync(outputDir)) {
@@ -69,18 +122,13 @@ for (const sourceFile of outputFiles) {
   if (!sourceExtensions.has(path.extname(sourceFile))) continue;
 
   const source = fs.readFileSync(sourceFile, 'utf8');
-  const referencePattern =
-    path.extname(sourceFile) === '.html' ? htmlReferencePattern : jsAssetReferencePattern;
 
-  for (const match of source.matchAll(referencePattern)) {
-    const reference = match[1];
-
+  for (const reference of collectReferences(sourceFile, source)) {
     if (!hasAssetExtension(reference)) continue;
 
-    const referencedPath = reference.split(/[?#]/, 1)[0];
-    const resolvedPath = path.resolve(path.dirname(sourceFile), referencedPath);
+    const resolvedPath = resolveReference(sourceFile, reference);
 
-    if (!fs.existsSync(resolvedPath)) {
+    if (resolvedPath && !fs.existsSync(resolvedPath)) {
       missingReferences.push({ sourceFile, reference });
     }
   }

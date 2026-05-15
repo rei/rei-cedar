@@ -41,7 +41,7 @@ const baseClass = 'cdr-toast';
 const hasIconLeft = computed(() => !!slots['icon-left']);
 const opened = ref(false);
 const toastEl = ref<HTMLDivElement | null>(null);
-let timeout: ReturnType<typeof setTimeout>;
+let timeout: ReturnType<typeof setTimeout> | undefined;
 let toastElement: HTMLDivElement | null;
 
 const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
@@ -49,6 +49,7 @@ const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
 const openToast = (e?: Event) => {
   if (timeout) {
     clearTimeout(timeout);
+    timeout = undefined;
   } else {
     emits('open', e);
   }
@@ -59,13 +60,22 @@ const openToast = (e?: Event) => {
 };
 
 const closeToast = (e?: Event) => {
+  if (timeout) {
+    clearTimeout(timeout);
+    timeout = undefined;
+  }
   removeHandlers();
   opened.value = false;
   emits('closed', e);
 };
 
 const closeToastWithDelay = (e?: Event) => {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+
   timeout = setTimeout(() => {
+    timeout = undefined;
     removeHandlers();
     opened.value = false;
     emits('closed', e);

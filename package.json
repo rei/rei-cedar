@@ -51,13 +51,14 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build && touch storybook-static/.nojekyll",
     "validate-storybook": "tsx build/validate-storybook-assets.ts",
-    "build": "npm run build:entrypoints && vue-tsc -p tsconfig.build.json --noEmit && vite build && npm run build:entrypoint-types && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",
+    "build": "pnpm run build:entrypoints && pnpm run build:icons && vue-tsc -p tsconfig.build.json --noEmit && vite build && pnpm run build:entrypoint-types && pnpm run build:umd && pnpm run build:docgen && pnpm run build:copycss && pnpm run validate-package",
     "build:entrypoints": "tsx build/generate-entrypoints.ts",
     "build:entrypoint-types": "tsx build/generate-entrypoint-dts.ts",
     "build:docgen": "tsx build/docgen.ts",
     "build:icons": "tsx src/components/icon/build/generate.ts",
     "build:copycss": "tsx build/copy-css.ts",
     "build:umd": "vite build --config vite.umd.config.ts",
+    "validate-package": "tsx build/validate-package.ts",
     "build:variables": "tsx build/component-variables-transfer.ts",
     "pages": "vite build --config vite.pages.config.mts",
     "preview": "vite preview --config vite.pages.config.mts",
@@ -165,8 +166,9 @@
     "**/*.{css,html,json,jsonc,json5,md,mdx,toml,yml,yaml}": "oxfmt --no-error-on-unmatched-pattern"
   },
   "engines": {
-    "node": ">=20.19.0 <21 || >=22.12.0"
+    "node": ">=22.12.0 <23"
   },
+  "packageManager": "pnpm@10.23.0",
   "pnpm": {
     "overrides": {
       "defu": "6.1.5",

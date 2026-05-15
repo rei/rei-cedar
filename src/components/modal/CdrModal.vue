@@ -363,6 +363,10 @@ onUnmounted(() => {
   pendingOpenToken += 1;
   window.removeEventListener('resize', handleResize);
   if (openedTimeoutId !== undefined) clearTimeout(openedTimeoutId);
+  unsubscribe?.();
+  unsubscribe = undefined;
+  ariaShowBackgroundContent();
+  removeNoScroll();
   // Clean up document-level handlers in case the modal unmounts while open
   document.removeEventListener('focusin', handleFocus, true);
   document.removeEventListener('keydown', handleKeyDown);

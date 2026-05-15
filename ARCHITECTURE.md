@@ -113,11 +113,11 @@ Additionally, git hooks are part of the enforcement path via Husky, especially p
 
 ### Prerequisites
 
-- Node.js version must satisfy `engines.node` (`>=20.19.0 <21 || >=22.12.0`).
+- Node.js version must satisfy `engines.node` (`>=22.12.0 <23`); `.nvmrc` pins the current project version.
 - Use pnpm for all package/script workflows.
 - Optionally enable Corepack for consistent pnpm invocation:
   - `corepack enable`
-  - `corepack prepare pnpm@latest --activate` (optional if pnpm already available and compatible)
+  - `corepack prepare pnpm@10.23.0 --activate` (optional if pnpm already available and compatible)
 
 ### First-time setup
 
@@ -174,8 +174,8 @@ Additionally, git hooks are part of the enforcement path via Husky, especially p
    - Impact: consumers can import from supported component entrypoints, but deep imports into internal files are no longer part of the contract.
 5. **Build layout:** custom build scripts and helpers now live under `build/`.
    - Impact: contributor documentation and tooling references should use the new file locations.
-6. **Node runtime floor:** contributors and CI must run a supported Node version matching `engines.node` (`>=20.19.0 <21 || >=22.12.0`).
-   - Impact: older local Node versions and unsupported Node 21 / early Node 22 releases will fail installs/scripts.
+6. **Node runtime floor:** contributors and CI must run a supported Node version matching `engines.node` (`>=22.12.0 <23`).
+   - Impact: local Node versions outside Node 22 will fail installs/scripts.
 7. **Commit-time quality gate:** Husky pre-commit now enforces unit + staged lint/format checks.
    - Impact: commits can be blocked until local quality issues are resolved.
 

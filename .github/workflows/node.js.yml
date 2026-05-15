@@ -14,16 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: .nvmrc
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Check formatting
         run: pnpm run format:check
       - run: pnpm run build --if-present
+      - name: Check generated icons are committed
+        run: git diff --exit-code src/components/icon
       - run: pnpm run lint
       - run: pnpm run unit
+      - run: pnpm run build-storybook
+      - run: pnpm run validate-storybook
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm run test:playwright
