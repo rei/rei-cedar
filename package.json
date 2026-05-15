@@ -50,6 +50,7 @@
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "validate-storybook": "tsx build/validate-storybook-assets.ts",
     "build": "npm run build:entrypoints && vue-tsc -p tsconfig.build.json --noEmit && vite build && npm run build:entrypoint-types && npm run build:umd && npm run build:icons && npm run build:docgen && npm run build:copycss",
     "build:entrypoints": "tsx build/generate-entrypoints.ts",
     "build:entrypoint-types": "tsx build/generate-entrypoint-dts.ts",

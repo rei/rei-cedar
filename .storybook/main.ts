@@ -1,6 +1,34 @@
 import type { StorybookConfig } from '@storybook/vue3-vite';
 import { fileURLToPath, URL } from 'url';
-import { mergeConfig } from 'vite';
+import { mergeConfig, type PluginOption } from 'vite';
+
+const excludedVitePlugins = new Set(['vite:dts', 'css-name-normalizer']);
+
+const removeExcludedPlugins = async (plugins: PluginOption[]): Promise<PluginOption[]> => {
+  const filteredPlugins = await Promise.all(
+    plugins.map(async (plugin) => {
+      const resolvedPlugin = await plugin;
+
+      if (Array.isArray(resolvedPlugin)) {
+        return removeExcludedPlugins(resolvedPlugin);
+      }
+
+      if (
+        resolvedPlugin &&
+        typeof resolvedPlugin === 'object' &&
+        'name' in resolvedPlugin &&
+        typeof resolvedPlugin.name === 'string' &&
+        excludedVitePlugins.has(resolvedPlugin.name)
+      ) {
+        return [];
+      }
+
+      return [resolvedPlugin];
+    }),
+  );
+
+  return filteredPlugins.flat();
+};
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -11,14 +39,7 @@ const config: StorybookConfig = {
   },
   docs: {},
   viteFinal: async (config) => {
-    config.plugins = (config.plugins ?? []).filter((plugin) => {
-      return !(
-        plugin &&
-        typeof plugin === 'object' &&
-        'name' in plugin &&
-        plugin.name === 'vite:dts'
-      );
-    });
+    config.plugins = await removeExcludedPlugins(config.plugins ?? []);
 
     return mergeConfig(config, {
       resolve: {

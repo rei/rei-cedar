@@ -22,6 +22,7 @@ jobs:
         run: |
           pnpm install
           pnpm run build-storybook
+          pnpm run validate-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
