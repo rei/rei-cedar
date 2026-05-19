@@ -1,1 +1,4 @@
-pnpm install
+#!/usr/bin/env sh
+
+# Avoid running install lifecycle from a Git hook.
+exit 0
