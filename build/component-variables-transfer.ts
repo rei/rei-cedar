@@ -9,8 +9,6 @@ const __dirname = path.dirname(__filename);
 const DEST_REPO_NAME = 'rei-cedar-component-variables';
 const DEST_PATH = 'dist/scss';
 const SUPPORTED_COMPONENTS: string[] = [
-  /* global vars */
-  'options.vars.scss',
   /* component vars */
   'CdrButton.vars.scss',
   'CdrCard.vars.scss',

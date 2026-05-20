@@ -1,5 +1,4 @@
 @use '@rei/cdr-tokens/scss' as tokens;
-@use '../../../../styles/settings/options.vars.scss' as vars;
 
 @mixin cdr-button-base-text-mixin-small() {
   font-family: tokens.$cdr-font-family-sans;
@@ -662,7 +661,8 @@
 
   &:focus {
     // ITEM_DOC: Link variant of cdr-button's outline
-    outline: var(--cdr-button-link-outline, var(--default-outline, #{vars.$default-outline}));
+    // Deleted reference to $default-outline var. TODO: Add value to tokens
+    outline: var(--cdr-button-link-outline, var(--default-outline, 0.2rem solid Highlight));
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
   }
