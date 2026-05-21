@@ -71,3 +71,6 @@ storybook-static
 .agents/
 skills-lock.json
 AGENTS.md
+
+# Storybook generated data (rebuilt on storybook dev/build)
+.storybook/generated/

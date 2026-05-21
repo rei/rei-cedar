@@ -1,0 +1,19 @@
+{
+  "$comment": "Append-only release index. Never rewrite existing records.",
+  "schemaVersion": "1.0.0",
+  "releases": [
+    {
+      "version": "17.0.0",
+      "date": "2026-05-20",
+      "repo": "rei-cedar",
+      "tag": "v17.0.0",
+      "humanNotes": "dist/release-notes.md",
+      "machineJSON": "docs/releases/v17.0.0.json",
+      "intentArchive": "docs/releases/v17.0.0-intent.md",
+      "breaking": true,
+      "previous": "16.3.1",
+      "next": null,
+      "schemaVersion": "1.0.0"
+    }
+  ]
+}

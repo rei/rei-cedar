@@ -48,8 +48,8 @@
     "prepare": "husky",
     "prepublishOnly": "npm-run-all lint build",
     "dev": "vite",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build && touch storybook-static/.nojekyll",
+    "storybook": "pnpm run storybook:release-notes && storybook dev -p 6006",
+    "build-storybook": "pnpm run storybook:release-notes && storybook build && touch storybook-static/.nojekyll",
     "validate-storybook": "tsx build/validate-storybook-assets.ts",
     "build": "pnpm run build:entrypoints && pnpm run build:icons && vue-tsc -p tsconfig.build.json --noEmit && vite build && pnpm run build:entrypoint-types && pnpm run build:umd && pnpm run build:docgen && pnpm run build:copycss && pnpm run validate-package",
     "build:entrypoints": "tsx build/generate-entrypoints.ts",
@@ -84,7 +84,9 @@
     "lint-staged": "lint-staged",
     "prepush": "npm-run-all lint unit",
     "create": "node generator.js",
-    "prerelease": "npm-publish-prerelease"
+    "prerelease": "npm-publish-prerelease",
+    "storybook:release-notes": "tsx ./scripts/storybook-release-notes.ts",
+    "docs:release-notes": "node scripts/generate-release-notes.mjs"
   },
   "dependencies": {
     "@rei/cdr-tokens": "14.0.0-alpha.7",

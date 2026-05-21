@@ -1,0 +1,5 @@
+{
+  "$comment": "Accepted ADR patches merged at agent startup. Never edit manually.",
+  "schemaVersion": "1.0.0",
+  "overrides": []
+}

@@ -1,0 +1,75 @@
+{
+  "$comment": "Cedar editorial rules. Read-only to automation. All changes require human PR + ADR.",
+  "version": "1.0.0",
+  "voice": "active, single unified Cedar Voice — that of a candid senior engineer — throughout all sections",
+  "case": "sentence — first word and proper nouns only",
+  "numerals": "always: 1, 2, 3 — never one, two, three",
+  "punctuation": {
+    "listItems": "no trailing period",
+    "prose": "standard"
+  },
+  "contractions": "use when natural",
+  "prohibited": [
+    "copied-from-ticket language",
+    "passive voice where active is possible",
+    "unnecessary capitalization",
+    "file paths in human output",
+    "source file names as change descriptions",
+    "file counts as the substance of a change",
+    "'please note', 'it should be noted', 'various improvements'",
+    "generic migration steps without specific token or prop names",
+    "marketing language",
+    "starting a bullet with a component or token name — always lead with the action",
+    "describing what changed without explaining what it unlocks — 'modular imports are now available' is not enough; say what a team can now do that they could not do before",
+    "overview that leads with implementation details before consumer value — architecture first, benefit second is the wrong order",
+    "new feature entries that omit a before/after capability comparison — the reader must be able to answer 'why would I care about this?'"
+  ],
+  "required": [
+    "new feature entries must include a 'to get started' line",
+    "new feature entries must include a before/after capability comparison: what a team can do now that they could not do (or could only do with significant friction) before — one concrete example per feature is the minimum",
+    "overview must open with consumer value, not implementation detail — the architectural reason for a change belongs after the benefit, never before it",
+    "overview must include at least one concrete capability example drawn from release-intent.md 'What consumers will care about most'",
+    "improvements and bug-fixes bullets must begin with a past-tense active verb: Fixed, Added, Updated, Removed",
+    "deprecation entries must include a planned removal version and a replacement",
+    "breaking change entries must include why the change was made",
+    "migration steps must name the specific token, prop, or import path",
+    "overview must state whether the reader needs to take action"
+  ],
+  "qualityChecks": {
+    "$comment": "unifyDraftTone (Opus) runs these on the complete draft before finalizing.",
+    "humanTest": "Would a senior engineer not on this project understand this in one read?",
+    "ticketTest": "Does this read like it was copied from an engineering ticket? If yes, rewrite.",
+    "parallelTest": "Do all entries in this section follow the same structure?",
+    "overviewTest": "Does the overview open with a consumer capability, not an implementation detail? Does it include a concrete example? Does it state whether action is required?",
+    "capabilityTest": "For every new-features entry: can the reader answer 'what can I do now that I could not do before?' If no, the before/after contrast is missing — add it.",
+    "architectureLeadTest": "Does any sentence in the overview or new-features section lead with an architectural reason before the consumer benefit? If yes, flip the order.",
+    "migrationTest": "Is every migration step concrete enough to write a codemod from?",
+    "voiceTest": "Does the entire document read as if one person wrote it?",
+    "breakingFormatTest": "Every breaking change entry must have bold **Why:** **Before:** **After:** **Migrate:** sub-bullets. Plain 'Why:' without bold is a formatting failure — rewrite.",
+    "fileListTest": "Does the output contain any file paths, file counts, or 'Changes in this branch' sections? If yes, strip them entirely before finalizing."
+  },
+  "voiceCalibration": {
+    "$comment": "Read this file before generating any human-facing output. It is the canonical standard.",
+    "path": "docs/releases/golden-exemplar.md",
+    "purpose": "Calibrate tone and structure to the ideal Cedar release standard. Do not deviate from this style."
+  },
+  "codeFormatting": {
+    "tokenNames": "`cdr-color-text-primary`",
+    "propNames": "`modifier`",
+    "booleanValues": "`true`, `false`",
+    "componentNames": "`cdr-button`",
+    "cssVariables": "`--cdr-color-text-primary`",
+    "importPaths": "`@rei/cedar-tokens/color`"
+  },
+  "sectionGuidance": {
+    "overview": "Open with the headline consumer benefit — what teams can now do, not what changed internally. Follow with one concrete capability example. Close with whether action is required and the co-release dependency if one exists. 2–4 sentences total. The architectural reason for any change belongs after the benefit, never before it. Test: if you removed the first sentence, would the reader know what this release is for? If yes, move that sentence to the front.",
+    "do-i-need-to-update": "Two lines maximum. Binary answer with one-line reason.",
+    "breaking-changes": "What changed, why, and how to fix it. Always use specific names.",
+    "new-features": "Each entry has three parts: (1) the headline capability in bold — name what a team can now do; (2) the before/after contrast — one sentence on what this replaces or what friction it removes, with a concrete code example where the diff is non-obvious; (3) a 'To get started' line with the minimum action. The before/after contrast is mandatory. If a feature has no meaningful before state (it is entirely net-new), say so explicitly rather than omitting the contrast.",
+    "improvements": "One concise sentence per item, leading with a past-tense active verb.",
+    "bug-fixes": "What was wrong and what is fixed. Technical and blameless.",
+    "bolo": "Candid about gotchas. What to watch for and why, in plain language.",
+    "token-changes": "Accurate and scannable. Translate token shifts into design impact where relevant.",
+    "migration-guide": "Numbered steps. Active voice. Group batch changes. Before/after code blocks."
+  }
+}

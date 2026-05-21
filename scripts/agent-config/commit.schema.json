@@ -1,0 +1,52 @@
+{
+  "$comment": "How the agent maps commits and branch names to release note entries.",
+  "version": "1.0.0",
+  "branchPrefixes": {
+    "feature": { "section": "new-features", "filtered": false },
+    "fix": { "section": "bug-fixes", "filtered": false },
+    "improvement": { "section": "improvements", "filtered": false },
+    "breaking": { "section": "breaking-changes", "filtered": false, "autoMigration": true },
+    "a11y": { "section": "improvements", "filtered": false, "subsection": "accessibility" },
+    "token": { "section": "token-changes", "filtered": false },
+    "component": { "section": "component-api-changes", "filtered": false },
+    "chore": { "section": null, "filtered": true },
+    "docs": { "section": null, "filtered": true },
+    "refactor": { "section": null, "filtered": true },
+    "release-notes": { "section": null, "filtered": true }
+  },
+  "commitTypes": {
+    "consumerFacing": ["feat", "fix", "perf", "token", "component", "a11y", "breaking"],
+    "internal": ["chore", "refactor", "docs", "test", "ci"],
+    "sectionMap": {
+      "feat": "new-features",
+      "fix": "bug-fixes",
+      "perf": "improvements",
+      "token": "token-changes",
+      "component": "component-api-changes",
+      "a11y": "improvements",
+      "breaking": "breaking-changes"
+    }
+  },
+  "wellFormedRule": {
+    "$comment": "Matches commitlint enforcement. Any commit passing the hook is well-formed.",
+    "pattern": "^(feat|fix|perf|refactor|chore|docs|test|ci|token|component|a11y|breaking)(\\([a-z0-9/\\-]+\\))?(!)?: .{1,72}",
+    "breakingIndicators": ["BREAKING CHANGE:", "!", "breaking:"]
+  },
+  "branchSlugConversion": {
+    "stripPrefix": true,
+    "separator": "-",
+    "cdrComponentPattern": "cdr-[a-z-]+",
+    "wrapComponentInBackticks": true,
+    "applySentenceCase": true
+  },
+  "fallbackChain": {
+    "priority": [
+      "named branch + well-formed commits → branch headline + commit detail",
+      "named branch + malformed commits   → branch headline + diff analysis + agent-note",
+      "filtered branch prefix             → excluded entirely",
+      "no branch + well-formed commits    → commits grouped by type",
+      "no branch + malformed commits      → diff analysis + agent-note"
+    ],
+    "neverFailBuild": true
+  }
+}
