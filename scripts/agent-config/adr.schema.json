@@ -1,0 +1,50 @@
+{
+  "$comment": "Rules for generating Architecture Decision Records to persist learned agent context across sessions.",
+  "version": "1.0.0",
+  "storage": {
+    "directory": "docs/agent-adr/",
+    "namingConvention": "YYYY-MM-DD-short-kebab-subject.md",
+    "ledgerFile": "docs/agent-adr/learned-overrides.json"
+  },
+  "overrideRecord": {
+    "$comment": "Structure of each entry in learned-overrides.json.",
+    "fields": {
+      "id": "string — matches ADR filename without extension",
+      "date": "ISO 8601",
+      "status": "proposed | accepted | reverted",
+      "$comment_status": "Reverted entries are skipped during hydration. Never delete entries.",
+      "targetSchema": "string — e.g. editorial.json",
+      "overridePath": "string — JSON path to patch",
+      "executableRule": "string | boolean | string[] — the value to enforce"
+    }
+  },
+  "triggers": {
+    "$comment": "The agent must propose an ADR if any of these occur during a run.",
+    "conditions": [
+      "A schema or workflow rule is manually overridden by the human",
+      "A recurring edge case requires handling not covered by existing rules",
+      "A new cross-repo dependency pattern is discovered",
+      "A CI policy violation is detected and resolved with a new rule"
+    ]
+  },
+  "template": {
+    "requiredSections": [
+      "# ADR: [Title]",
+      "**Date:** YYYY-MM-DD",
+      "**Status:** Proposed",
+      "## Context — what was the edge case or limitation?",
+      "## Decision — the new rule in plain language",
+      "## Machine Override",
+      "```json",
+      "{",
+      "  \"id\": \"YYYY-MM-DD-short-subject\",",
+      "  \"date\": \"YYYY-MM-DD\",",
+      "  \"status\": \"proposed\",",
+      "  \"targetSchema\": \"editorial.json\",",
+      "  \"overridePath\": \"prohibited\",",
+      "  \"executableRule\": \"the exact rule string or value\"",
+      "}",
+      "```"
+    ]
+  }
+}
