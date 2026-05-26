@@ -1,0 +1,237 @@
+{
+  "$comment": "Source of truth for release note generation. Edit here, never in scripts. Requires PR + ADR to change.",
+  "version": "1.0.0",
+  "modelRouting": {
+    "$comment": "Claude model per task. Change here only — never in scripts.",
+    "reasoning": {
+      "model": "claude-opus-4-6",
+      "usedFor": [
+        "detectBreakingChanges",
+        "generateHumanReleaseNotes",
+        "generateDesignSummary",
+        "draftMigrationSteps",
+        "resolveEntrySignal",
+        "detectCrossRepoImpact",
+        "proposeVersionBump",
+        "scanForSecurityViolations",
+        "unifyDraftTone"
+      ],
+      "$comment": "Opus for judgment, editorial quality, cross-repo reasoning, security, tone unification"
+    },
+    "structured": {
+      "model": "claude-sonnet-4-6",
+      "usedFor": [
+        "generateMachineReleaseNotes",
+        "scaffoldStory",
+        "updateStory",
+        "summarizeTokenChanges",
+        "summarizeComponentApiChanges",
+        "parseCommitLog",
+        "groupCommitsByBranch"
+      ],
+      "$comment": "Sonnet for schema-constrained generation"
+    },
+    "validation": {
+      "model": "claude-haiku-4-5-20251001",
+      "usedFor": ["validateAgainstSchema", "stripInternalSections"],
+      "$comment": "Haiku for pattern-matching validation and internal section stripping"
+    },
+    "pipelineOrder": {
+      "$comment": "Canonical execution order for Phase 6. Change here only.",
+      "steps": [
+        "detectBreakingChanges",
+        "generateHumanReleaseNotes",
+        "generateDesignSummary",
+        "draftMigrationSteps",
+        "generateMachineReleaseNotes",
+        "unifyDraftTone",
+        "stripInternalSections",
+        "scanForSecurityViolations"
+      ]
+    }
+  },
+  "outputs": {
+    "humanDraft": { "path": "dist/release-notes.draft.md", "published": "dist/release-notes.md" },
+    "machineJSON": { "path": "dist/release-notes.json" },
+    "designDraft": { "path": "dist/release-notes.design.md" }
+  },
+  "versioning": {
+    "$comment": "Agent proposes; human confirms before any file is written.",
+    "major": "any entry in breaking-changes",
+    "minor": "new-features with no breaking changes",
+    "patch": "improvements, bug-fixes, or token/component changes only",
+    "proposalFormat": "State current version, proposed version, bump type, and the specific changes driving it. Wait for confirmation."
+  },
+  "crossRepoImpact": {
+    "$comment": "When a change in one repo affects consumers of the other.",
+    "enabled": true,
+    "triggers": [
+      "token removed or renamed that is referenced in rei-cedar component styles",
+      "CSS custom property removed from dist that rei-cedar components consume",
+      "TypeScript type removed that rei-cedar re-exports",
+      "import path changed that rei-cedar references internally",
+      "hard co-release dependency: one package version requires a specific version of the other to function — both versions must ship together and the release notes for each must name the required counterpart version explicitly"
+    ],
+    "coRelease": {
+      "$comment": "Use when two packages must ship together. Agent surfaces this prominently in overview and BOLO — not buried in cross-repo notes.",
+      "fields": {
+        "requires": "string — the counterpart package and version (e.g. '@rei/cedar@17')",
+        "reason": "string — one sentence on why they are coupled",
+        "upgradeOrder": "string | null — if order matters, state it explicitly"
+      }
+    },
+    "machineFieldSchema": {
+      "affectedRepo": "rei-cedar | rei-cedar-tokens",
+      "impactType": "breaking | warning | informational",
+      "description": "string",
+      "automatable": "boolean"
+    }
+  },
+  "consumerSurface": {
+    "$comment": "Applied before any analysis. Filtered items never appear in any output.",
+    "counts": [
+      "dist/ published outputs",
+      "published token names",
+      "component props, slots, events",
+      "import paths",
+      "CSS custom property names in dist",
+      "TypeScript type exports"
+    ],
+    "ignore": [
+      "tokens/ source files",
+      "style-dictionary/ internals",
+      "scripts/",
+      "stories/ source",
+      "docs/",
+      "test-consumer/",
+      ".github/ .husky/ .vscode/",
+      "lockfiles",
+      "*.json5 → *.json renames",
+      "dist/ regeneration with identical API",
+      "features added in alpha and reverted before stable — these must not appear in stable release notes and must appear in BOLO only if consumers may have depended on the alpha behavior"
+    ],
+    "breakingOnlyIf": "the change alters what a consumer imports, references, or relies on"
+  },
+  "humanSections": {
+    "$comment": "Omit empty sections. Never write empty headers.",
+    "order": [
+      "overview",
+      "do-i-need-to-update",
+      "breaking-changes",
+      "new-features",
+      "improvements",
+      "bug-fixes",
+      "bolo",
+      "token-changes",
+      "component-api-changes",
+      "migration-guide"
+    ],
+    "required": ["overview", "do-i-need-to-update"],
+    "conditionallyRequired": {
+      "migration-guide": "required if breaking-changes exist",
+      "token-changes": "rei-cedar-tokens only",
+      "component-api-changes": "rei-cedar only",
+      "bolo": "only if release-intent.md BOLO is not 'None.'"
+    },
+    "stripFromOutput": [
+      "Changes in this branch",
+      "Updates branch:",
+      "any section containing only file path lists"
+    ],
+    "breakingChangeSubBulletFormat": {
+      "$comment": "Sub-bullets under breaking changes must use bold labels. Enforce during unifyDraftTone pass.",
+      "required": ["**Why:**", "**Before:**", "**After:**", "**Migrate:**"],
+      "pattern": "  - \\*\\*<label>:\\*\\* <content>"
+    }
+  },
+  "machineRecord": {
+    "$comment": "One record per discrete consumer-surface change.",
+    "fields": {
+      "id": "string — format: <repo>/<version>/<changeType>/<subject-slug>",
+      "repo": "rei-cedar | rei-cedar-tokens",
+      "changeType": "breaking | feature | improvement | fix | token | api | deprecation",
+      "category": "token | component | build | docs | tooling | config",
+      "subject": "string",
+      "before": "string | null",
+      "after": "string | null",
+      "resolvedValue": "{ before: string, after: string } | null — actual CSS/JS values",
+      "breaking": "boolean",
+      "consumerActionRequired": "boolean — computed from breaking + migrationSteps + crossRepoImpact",
+      "consumerImpact": "string — one sentence",
+      "compatibilityRange": "{ safeFrom: string, requiresMigrationFrom: string } | null",
+      "crossRepoImpact": "CrossRepoImpact | null",
+      "visualImpact": "color | spacing | typography | motion | radius | none",
+      "figmaAction": "{ type: update-value | rename-variable | none, variableName, before, after } | null",
+      "deprecation": "{ plannedRemovalVersion: string, replacement: string } | null",
+      "affectedComponents": "string[]",
+      "migrationSteps": "string[]",
+      "commitSource": "string | null — internal only; scrubbed in external publish",
+      "signalSource": "commit | diff | mixed",
+      "agentNote": "string | null — internal only; scrubbed in external publish"
+    }
+  },
+  "releaseIndex": {
+    "$comment": "Append-only. Never rewrite existing records. Corrections use corrects pointer.",
+    "path": "docs/releases/index.json",
+    "recordFields": {
+      "version": "string",
+      "date": "ISO 8601",
+      "repo": "rei-cedar | rei-cedar-tokens",
+      "tag": "string",
+      "humanNotes": "string — path to published markdown",
+      "machineJSON": "string — path to archived scrubbed JSON",
+      "intentArchive": "string — path to intent file",
+      "breaking": "boolean",
+      "previous": "string | null",
+      "next": "string | null — filled on next release",
+      "schemaVersion": "string"
+    }
+  },
+  "breakingChangeRules": {
+    "enabled": true,
+    "rules": [
+      { "id": "token-removed", "match": "published token name removed from dist", "enabled": true },
+      { "id": "token-renamed", "match": "published token name changed in dist", "enabled": true },
+      {
+        "id": "token-semantic",
+        "match": "token meaning or intended usage changed",
+        "enabled": true
+      },
+      { "id": "prop-removed", "match": "component prop removed from public API", "enabled": true },
+      { "id": "prop-renamed", "match": "component prop renamed in public API", "enabled": true },
+      {
+        "id": "default-changed",
+        "match": "prop default changed in consumer-visible way",
+        "enabled": true
+      },
+      { "id": "slot-removed", "match": "named slot removed", "enabled": true },
+      { "id": "event-removed", "match": "emitted event removed", "enabled": true },
+      { "id": "event-payload", "match": "event payload shape changed", "enabled": true },
+      {
+        "id": "css-var-removed",
+        "match": "CSS custom property removed from published dist",
+        "enabled": true
+      },
+      {
+        "id": "dom-structure",
+        "match": "DOM structure change breaking consumer selectors",
+        "enabled": true
+      },
+      {
+        "id": "import-removed",
+        "match": "published import path or export removed",
+        "enabled": true
+      }
+    ],
+    "notBreaking": [
+      "source file renames (.json5 → .json)",
+      "internal refactors with no consumer-visible effect",
+      "dist regeneration with unchanged API",
+      "tooling or config changes with no output change",
+      "documentation-only changes",
+      "adding new exports",
+      "Storybook story changes",
+      "features added in alpha and fully reverted before stable — treat as never shipped; add BOLO entry only if the alpha was public and consumers may have built against it"
+    ]
+  }
+}

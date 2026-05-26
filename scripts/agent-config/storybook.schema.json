@@ -1,0 +1,36 @@
+{
+  "$comment": "Story scaffolding and update rules. All component docs live in Storybook. No standalone markdown component docs.",
+  "version": "1.0.0",
+  "storyStructure": {
+    "defaultExport": {
+      "required": ["title", "component", "tags"],
+      "tags": ["autodocs"]
+    },
+    "requiredStories": ["Default"],
+    "conditionalStories": {
+      "perEnumValue": "one story per meaningful enum variant",
+      "booleanToggle": "one story enabled, one disabled",
+      "accessibility": "one story with explicit role and aria annotations"
+    }
+  },
+  "argTypeInference": {
+    "boolean": { "control": "boolean" },
+    "string": { "control": "text" },
+    "number": { "control": "number" },
+    "enum": { "control": "select", "options": "from prop union type" },
+    "slot": { "control": "text", "description": "Slot content" },
+    "event": { "action": "true", "description": "Emitted event" }
+  },
+  "updateRules": {
+    "addControl": "new prop added",
+    "removeControl": "prop removed",
+    "updateDefault": "default changed",
+    "addStory": "new enum value or meaningful variant",
+    "regenerate": "API changed so substantially that patching is less clear"
+  },
+  "namingConventions": {
+    "storyTitle": "Cedar/<ComponentName>",
+    "storyExportName": "PascalCase matching the variant",
+    "fileName": "<ComponentName>.stories.ts"
+  }
+}
