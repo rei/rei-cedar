@@ -24,6 +24,11 @@ const preview: Preview = {
       theme: cedarTheme,
       toc: false,
     },
+    options: {
+      storySort: {
+        order: ['Release Notes', '*'],
+      },
+    },
     backgrounds: {
       default: 'cedar-light',
       values: [
