@@ -11,13 +11,12 @@ const ReleaseNotesView = defineComponent({
 
     return () =>
       h('div', {
+        class: 'docs-page cdr-doc-content',
         innerHTML: `
-          <section class="release-notes-shell">
-            <article class="release-notes">
-              ${html}
-              <p class="release-notes-meta">${meta}</p>
-            </article>
-          </section>
+          <article>
+            ${html}
+            <p class="release-notes-meta">${meta}</p>
+          </article>
         `,
       });
   },
@@ -26,9 +25,11 @@ const ReleaseNotesView = defineComponent({
 const meta: Meta<typeof ReleaseNotesView> = {
   title: 'Release Notes/V17.0.0',
   component: ReleaseNotesView,
+  tags: ['!autodocs'],
   parameters: {
-    layout: 'padded',
+    layout: 'fullscreen',
     controls: { disable: true },
+    actions: { disable: true },
   },
 };
 

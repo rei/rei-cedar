@@ -62,7 +62,7 @@ const Box = ({ color = '#0067A0', height = '100px' }: any) => `
 
 export const Default = {
   args: {
-    columns: '3',
+    columns: 3,
     gap: 'one-x',
   },
   render: (args: any) => ({
@@ -85,7 +85,7 @@ export const Default = {
 
 export const TwoColumns: Story = {
   args: {
-    columns: '2',
+    columns: 2,
     gap: 'two-x',
   },
   render: (args: any) => ({
@@ -106,7 +106,7 @@ export const TwoColumns: Story = {
 
 export const FourColumns: Story = {
   args: {
-    columns: '4',
+    columns: 4,
     gap: 'one-x',
   },
   render: (args: any) => ({
@@ -151,8 +151,8 @@ export const CustomColumnSizes: Story = {
 
 export const WithRowsAndColumns: Story = {
   args: {
-    columns: '3',
-    rows: '2',
+    columns: 3,
+    rows: 2,
     gap: 'one-x',
   },
   render: (args: any) => ({
@@ -175,7 +175,7 @@ export const WithRowsAndColumns: Story = {
 
 export const DifferentGaps: Story = {
   args: {
-    columns: '3',
+    columns: 3,
     rowGap: 'two-x',
     columnGap: 'one-x',
   },
@@ -221,7 +221,7 @@ export const AutoFlow: Story = {
 
 export const ResponsiveColumns: Story = {
   args: {
-    columns: { xs: '1', sm: '2', md: '3', lg: '4' },
+    columns: { xs: 1, sm: 2, md: 3, lg: 4 },
     gap: 'one-x',
   },
   render: (args: any) => ({
@@ -246,7 +246,7 @@ export const ResponsiveColumns: Story = {
 
 export const AsSection: Story = {
   args: {
-    columns: '2',
+    columns: 2,
     gap: 'two-x',
     as: 'section',
   },

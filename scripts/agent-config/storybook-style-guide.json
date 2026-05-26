@@ -1,0 +1,184 @@
+{
+  "$comment": "Cedar Storybook documentation style guide. Human-authored. Read-only to automation. Changes require PR + ADR. Must stay in sync with .storybook/_content.scss.",
+  "version": "1.0.0",
+
+  "principles": {
+    "$comment": "The three rules a human or agent should check any new style decision against.",
+    "tokenFirst": "Every value must trace to a Cedar token. No hardcoded px, colors, or font names.",
+    "docSiteParityRule": "When in doubt, match cedar.rei.com. Open content-styles.scss and check.",
+    "semanticNotVisual": "Reference tokens by their semantic name (cdr-color-text-primary), not their visual description (dark gray)."
+  },
+
+  "wrapperClass": {
+    "$comment": "Every story that renders documentation content must use this class. The agent must emit it.",
+    "name": "cdr-doc-content",
+    "appliedBy": "per-story wrapper — applied by each story that renders prose content (not a global decorator)"
+  },
+
+  "typography": {
+    "$comment": "Element-to-mixin mapping. Agent uses this to generate story prose templates.",
+    "body": { "mixin": "cdr-text-body-300", "color": "$cdr-color-text-primary" },
+    "small": { "mixin": "cdr-text-body-300", "color": "$cdr-color-text-primary" },
+    "h1": {
+      "mixin": "cdr-text-heading-sans-600",
+      "fontSize": "3.6rem",
+      "color": "$cdr-color-text-emphasis"
+    },
+    "h2": {
+      "mixin": "cdr-text-heading-sans-600",
+      "fontSize": "2.8rem",
+      "color": "$cdr-color-text-primary"
+    },
+    "h3": {
+      "mixin": "cdr-text-heading-sans-500",
+      "fontSize": "2.0rem",
+      "color": "$cdr-color-text-primary"
+    },
+    "h4": {
+      "mixin": "cdr-text-heading-sans-400",
+      "fontSize": "1.8rem",
+      "color": "$cdr-color-text-primary"
+    },
+    "h5": {
+      "mixin": "cdr-text-heading-sans-300",
+      "fontSize": "1.6rem",
+      "color": "$cdr-color-text-primary"
+    },
+    "code": {
+      "family": "$cdr-font-family-mono-brand-font",
+      "background": "$cdr-color-background-primary"
+    },
+    "note": "Never use $cdr-color-text-brand (green) for documentation headings. That is a brand accent, not a content hierarchy signal."
+  },
+
+  "knownWrongPatterns": {
+    "$comment": "Patterns the agent must flag and correct. This is the diff between what Windsurf generated and what is correct.",
+    "headingFontFamily": {
+      "wrong": "$cdr-font-family-serif",
+      "correct": "$cdr-text-heading-sans-600 mixin",
+      "reason": "Doc site uses sans (Graphik) for headings. Serif (Stuart) is editorial body copy only."
+    },
+    "headingColor": {
+      "wrong": "$cdr-color-text-brand",
+      "correct": "$cdr-color-text-primary",
+      "reason": "Brand green is an accent. Documentation headings use primary text color."
+    },
+    "tableHeaderBackground": {
+      "wrong": "$cdr-color-background-primary",
+      "correct": "$cdr-color-background-table-header",
+      "reason": "Semantic table token exists. Use it."
+    },
+    "tableRowBorder": {
+      "wrong": "$cdr-color-border-primary",
+      "correct": "$cdr-color-border-table-row",
+      "reason": "Semantic table token exists. Use it."
+    },
+    "tablePadding": {
+      "wrong": "$cdr-space-half-x $cdr-space-three-quarter-x",
+      "correct": "$cdr-space-one-x",
+      "reason": "Doc site uses one-x on all sides. Half-x is cramped."
+    },
+    "listStyle": {
+      "wrong": "disc or default browser bullet",
+      "correct": "\\2014 (em dash) via list-style-type",
+      "reason": "Doc site uses em dash list markers."
+    },
+    "linkStyle": {
+      "wrong": "raw var(--cdr-color-text-link-rest) without interaction states",
+      "correct": "full link styles with hover, active, visited states",
+      "reason": "Links must handle rest, hover, active, visited states. Post-NX: use cdr-link-base-mixin."
+    }
+  },
+
+  "spacing": {
+    "$comment": "Approved margins for documentation elements. These match content-styles.scss exactly.",
+    "paragraph": "$cdr-space-one-and-a-half-x 0",
+    "h1": "0 0 $cdr-space-one-x",
+    "h2": "$cdr-space-two-x 0 $cdr-space-half-x",
+    "h3": "$cdr-space-one-and-a-half-x 0 $cdr-space-half-x",
+    "h4": "$cdr-space-one-and-a-half-x 0 $cdr-space-half-x",
+    "h5": "$cdr-space-one-and-a-half-x 0 $cdr-space-half-x",
+    "listBlock": "$cdr-space-one-x 0 $cdr-space-two-x",
+    "codeBlock": "$cdr-space-one-and-a-half-x 0",
+    "table": "$cdr-space-one-and-a-half-x 0"
+  },
+
+  "calloutComponents": {
+    "$comment": "Semantic wrappers for special content blocks. Use these instead of ad-hoc styling.",
+    "note": {
+      "class": "cdr-doc-note",
+      "background": "$cdr-color-background-primary",
+      "usage": "Informational callouts, BOLO entries"
+    },
+    "warning": {
+      "class": "cdr-doc-warning",
+      "background": "$cdr-color-background-message-warning-01",
+      "usage": "Breaking change notices, deprecation warnings"
+    }
+  },
+
+  "releaseNotes": {
+    "$comment": "Release notes are documentation content. They use cdr-doc-content. No additional class needed unless a release-note-specific override is required.",
+    "wrapperClass": "cdr-doc-content",
+    "boloClass": "cdr-doc-warning",
+    "breakingChangeClass": "cdr-doc-warning"
+  },
+
+  "prohibitedPatterns": {
+    "$comment": "Patterns the agent must never emit in story SCSS or story template styles.",
+    "list": [
+      "hardcoded px, rem, or em values where a space token exists",
+      "hardcoded hex or rgb color values",
+      "$cdr-color-text-brand for heading or body text",
+      "$cdr-font-family-serif for headings",
+      "inline style attributes on documentation wrapper elements",
+      "custom CSS classes not registered in this file's calloutComponents"
+    ]
+  },
+
+  "tokenGaps": {
+    "$comment": "Tokens referenced in content-styles.scss that do not exist as SCSS variables in the docsite theme build. These are documented here so humans and agents know the gap exists.",
+    "cdr-color-background-code": {
+      "substitute": "$cdr-color-background-primary",
+      "source": "tokens/themes/docsite/code.json"
+    },
+    "cdr-color-background-code-snippet": {
+      "substitute": "$cdr-color-background-primary",
+      "source": "tokens/themes/docsite/code-snippet.json"
+    },
+    "cdr-color-background-note": {
+      "substitute": "$cdr-color-background-primary",
+      "source": "tokens/themes/docsite/note.json"
+    },
+    "cdr-font-family-mono": {
+      "substitute": "$cdr-font-family-mono-brand-font",
+      "note": "Variable name includes '-brand-font' suffix"
+    },
+    "cdr-link-base-mixin": {
+      "substitute": "inlined link styles",
+      "source": "@rei/cdr-component-variables (not installed)"
+    },
+    "cdr-list-base-mixin": {
+      "substitute": "inlined list styles",
+      "source": "@rei/cdr-component-variables (not installed)"
+    }
+  },
+
+  "agentInstructions": {
+    "$comment": "Loaded by the agent before any story generation or style validation. These are the enforcement rules.",
+    "beforeGenerating": [
+      "Read this file completely before writing any story template or SCSS.",
+      "Check every heading against typography.note — never use $cdr-color-text-brand.",
+      "Check every table against knownWrongPatterns before emitting table styles.",
+      "Every link must include hover, active, and visited states.",
+      "Every list must use em dash (\\2014) list markers."
+    ],
+    "validationChecks": [
+      "Does every story that renders prose content have class='cdr-doc-content' on its wrapper?",
+      "Does any heading use $cdr-color-text-brand or $cdr-font-family-serif? If yes, flag and correct.",
+      "Does any table use $cdr-color-background-primary instead of $cdr-color-background-table-header? If yes, flag and correct.",
+      "Does any link omit hover/active/visited states? If yes, flag and correct.",
+      "Does any hardcoded px value appear where a Cedar space token exists? If yes, flag and correct."
+    ]
+  }
+}

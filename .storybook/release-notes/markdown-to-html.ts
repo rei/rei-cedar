@@ -46,13 +46,15 @@ export function markdownToHtml(markdown: string): string {
     const rawLine = lines[index] ?? '';
     const line = rawLine.trimEnd();
 
-    if (line.startsWith('```')) {
+    if (line.trimStart().startsWith('```')) {
       if (inCodeFence) {
         html.push('</code></pre>');
         inCodeFence = false;
       } else {
         closeList();
-        html.push('<pre><code>');
+        const lang = line.trimStart().slice(3).trim();
+        const langClass = lang ? ` class="language-${lang}"` : '';
+        html.push(`<pre${langClass}><code>`);
         inCodeFence = true;
       }
       continue;

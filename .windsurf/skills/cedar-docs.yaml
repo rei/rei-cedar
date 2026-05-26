@@ -28,6 +28,7 @@ tools:
   - validateAgainstSchema
   - scaffoldStory
   - updateStory
+  - validateDocStyle
 triggers:
   - on: manual
   - on: branch_merge

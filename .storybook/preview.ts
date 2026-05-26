@@ -11,6 +11,7 @@ import '../src/styles/cdr-palette.scss';
 
 // Custom styles for Storybook
 import './storybook.scss';
+import './_content.scss';
 
 const preview: Preview = {
   parameters: {
@@ -30,7 +31,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'cedar-light',
+      default: 'cedar-primary',
       values: [
         { name: 'cedar-light', value: '#fafbf9' },
         { name: 'cedar-primary', value: '#ffffff' },

@@ -32,5 +32,18 @@
     "storyTitle": "Cedar/<ComponentName>",
     "storyExportName": "PascalCase matching the variant",
     "fileName": "<ComponentName>.stories.ts"
+  },
+  "styleValidation": {
+    "$comment": "Run after scaffoldStory and updateStory. Checks generated output against storybook-style-guide.json.",
+    "enabled": true,
+    "styleGuide": "scripts/agent-config/storybook-style-guide.json",
+    "contentScss": ".storybook/_content.scss",
+    "checks": [
+      "wrapperClass present on every prose-rendering template",
+      "no knownWrongPatterns in emitted SCSS",
+      "no prohibitedPatterns in emitted styles",
+      "all callout elements use registered calloutComponents classes"
+    ],
+    "onViolation": "flag with agent-note, do not block build"
   }
 }
