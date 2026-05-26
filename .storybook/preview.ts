@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/vue3';
+import { cedarTheme } from './cedar-theme';
 
 // Import Cedar tokens CSS (provides CSS variables)
 import '@rei/cdr-tokens/css';
@@ -19,12 +20,19 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    docs: {
+      theme: cedarTheme,
+      toc: false,
+    },
     backgrounds: {
-      default: 'light',
+      default: 'cedar-light',
       values: [
-        { name: 'light', value: '#ffffff' },
-        { name: 'dark', value: '#292929' },
-        { name: 'sale', value: '#b11020' },
+        { name: 'cedar-light', value: '#fafbf9' },
+        { name: 'cedar-primary', value: '#ffffff' },
+        { name: 'cedar-secondary', value: '#f7f5f3' },
+        { name: 'cedar-dark', value: '#2e2e2b' },
+        { name: 'cedar-spruce', value: '#1f513f' },
+        { name: 'cedar-sale', value: '#c7370f' },
       ],
     },
     viewport: {

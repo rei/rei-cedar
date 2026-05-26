@@ -1,23 +1,160 @@
+// Docsite tokens for Storybook scaffold/editorial styling.
+// Components in the preview area use rei-dot-com CSS custom properties
+// loaded via @rei/cdr-tokens/css in preview.ts.
+@use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
+
 // Custom Storybook styles for Cedar component library
 
 .sb-show-main.sb-main-padded {
-  padding: 16px;
+  padding: $cdr-space-one-x;
 }
 
 // Story wrapper styles
 .story-wrapper {
-  margin: 16px 0;
+  margin: $cdr-space-one-x 0;
 }
 
 // Component spacing utilities for stories
 .story-spacing {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: $cdr-space-one-x;
   align-items: center;
 
   &--vertical {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+// ─── Doc-site-aligned Storybook docs styles ───
+
+// Docs page container
+.sbdocs.sbdocs-wrapper {
+  background: $cdr-color-background-primary;
+  padding: $cdr-space-two-x $cdr-space-three-x 9.6rem;
+}
+
+.sbdocs.sbdocs-content {
+  max-width: 1100px;
+}
+
+// Docs headings — match cedar-site-nuxt content-styles.scss
+.sbdocs .sbdocs-h1 {
+  font-family: $cdr-font-family-sans;
+  font-weight: 500;
+  font-size: 5.4rem;
+  line-height: 6rem;
+  color: $cdr-color-text-emphasis;
+}
+
+.sbdocs .sbdocs-h2 {
+  font-family: $cdr-font-family-sans;
+  font-weight: 500;
+  font-size: 4.8rem;
+  line-height: 5.2rem;
+  color: $cdr-color-text-emphasis;
+  border-bottom: 1px solid $cdr-color-border-primary;
+  padding-bottom: $cdr-space-half-x;
+}
+
+.sbdocs .sbdocs-h3 {
+  font-family: $cdr-font-family-sans;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 4.6rem;
+  color: $cdr-color-text-secondary;
+}
+
+.sbdocs .sbdocs-h4 {
+  @include cdr-text-heading-sans-600;
+
+  color: $cdr-color-text-secondary;
+}
+
+// Docs body text
+.sbdocs .sbdocs-p {
+  @include cdr-text-body-400;
+
+  color: $cdr-color-text-secondary;
+  max-width: 60ch;
+}
+
+// Docs links — rei-dot-com link color (resolved at runtime via CSS custom properties)
+.sbdocs .sbdocs-a {
+  color: var(--cdr-color-text-link-rest);
+
+  &:hover {
+    color: var(--cdr-color-text-link-hover);
+    text-decoration: underline;
+  }
+}
+
+// Docs code blocks
+.sbdocs code {
+  // Pressura with monospace fallback (token $cdr-font-family-mono-brand-font uses sans fallback)
+  font-family: Pressura, 'Courier New', monospace;
+  background: $cdr-color-background-primary;
+  border: 1px solid $cdr-color-border-primary;
+  border-radius: $cdr-radius-soft;
+  padding: 2px 6px;
+  font-size: 0.9em;
+  color: $cdr-color-text-emphasis;
+}
+
+.sbdocs pre code {
+  background: $cdr-color-background-primary;
+  border: none;
+  padding: 0;
+}
+
+.sbdocs pre {
+  background: $cdr-color-background-primary;
+  border: 1px solid $cdr-color-border-primary;
+  border-radius: $cdr-radius-soft;
+  padding: $cdr-space-one-x;
+}
+
+// Docs tables — match cedar-site-nuxt table styling
+.sbdocs table {
+  @include cdr-text-utility-sans-200;
+
+  color: $cdr-color-text-secondary;
+  border-collapse: collapse;
+  width: 100%;
+
+  thead {
+    background: $cdr-color-background-primary;
+  }
+
+  th {
+    @include cdr-text-utility-sans-strong-200;
+
+    text-align: left;
+    padding: $cdr-space-three-quarter-x $cdr-space-one-x;
+    border-bottom: 1px solid $cdr-color-border-secondary;
+  }
+
+  td {
+    padding: $cdr-space-three-quarter-x $cdr-space-one-x;
+    border-bottom: 1px solid $cdr-color-border-primary;
+  }
+}
+
+// Docs lists
+.sbdocs ul,
+.sbdocs ol {
+  @include cdr-text-body-400;
+
+  color: $cdr-color-text-secondary;
+  max-width: 50ch;
+}
+
+.sbdocs ul {
+  list-style-type: '\2014';
+  padding-left: $cdr-space-one-x;
+
+  li {
+    padding-left: $cdr-space-half-x;
   }
 }
