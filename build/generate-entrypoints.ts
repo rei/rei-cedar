@@ -6,12 +6,6 @@ const workspaceRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url))
 const componentsDir = path.join(workspaceRoot, 'src/components');
 const componentEntrypointsDir = path.join(workspaceRoot, 'src/entrypoints');
 
-const toKebabCase = (value: string) =>
-  value
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
-    .toLowerCase();
-
 const toImportPath = (fromFilePath: string, toFilePath: string) => {
   const relativePath = path.relative(path.dirname(fromFilePath), toFilePath).replace(/\\/g, '/');
 
@@ -46,9 +40,8 @@ export const generateComponentEntrypoints = () => {
         : null;
 
     vueEntries.forEach((fileName) => {
-      const componentName = fileName.replace(/^Cdr/, '').replace(/\.vue$/, '');
       const componentExportName = fileName.replace(/\.vue$/, '');
-      const entryName = toKebabCase(componentName);
+      const entryName = componentExportName;
       const componentEntryFilePath = path.join(componentEntrypointsDir, `${entryName}.ts`);
       const componentFilePath = path.join(componentPath, fileName);
       const entryFileContents = [

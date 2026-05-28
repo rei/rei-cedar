@@ -34,6 +34,8 @@ export function markdownToHtml(markdown: string): string {
 
   let listType: 'ul' | 'ol' | null = null;
   let inCodeFence = false;
+  let inDetails = false;
+  let afterSummary = false;
 
   const closeList = (): void => {
     if (listType) {
@@ -45,6 +47,46 @@ export function markdownToHtml(markdown: string): string {
   for (let index = 0; index < lines.length; index += 1) {
     const rawLine = lines[index] ?? '';
     const line = rawLine.trimEnd();
+
+    // Pass through raw HTML tags (details, summary) without escaping
+    const htmlTagMatch = line.match(/^\s*<\/?(details|summary)(?:\s[^>]*)?>\s*$/);
+    if (htmlTagMatch && !inCodeFence) {
+      closeList();
+      const tag = htmlTagMatch[1];
+      if (tag === 'details') {
+        if (line.startsWith('</')) {
+          // Closing details - close wrapper div if we opened one
+          if (inDetails && afterSummary) {
+            html.push('</div>');
+          }
+          inDetails = false;
+          afterSummary = false;
+        } else {
+          // Opening details
+          inDetails = true;
+          afterSummary = false;
+        }
+      } else if (tag === 'summary') {
+        if (line.startsWith('</')) {
+          // Closing summary - open wrapper div for content
+          afterSummary = true;
+          html.push('<div class="accordion-content">');
+        }
+      }
+      html.push(line);
+      continue;
+    }
+
+    // Handle <summary>## heading text</summary>
+    const summaryHeadingMatch = line.match(/^<summary>\s*##\s+(.+)<\/summary>$/);
+    if (summaryHeadingMatch && !inCodeFence) {
+      closeList();
+      html.push(`<summary><h2>${inlineMarkdown(summaryHeadingMatch[1] ?? '')}</h2></summary>`);
+      // After summary, open wrapper div for content
+      afterSummary = true;
+      html.push('<div class="accordion-content">');
+      continue;
+    }
 
     if (line.trimStart().startsWith('```')) {
       if (inCodeFence) {
@@ -154,6 +196,45 @@ export function markdownToHtml(markdown: string): string {
         listType = 'ol';
       }
       html.push(`<li>${inlineMarkdown(orderedMatch[2] ?? '')}</li>`);
+      continue;
+    }
+
+    // Checkbox list items: - [ ] or - [x]
+    const checkboxMatch = line.match(/^- \[([ xX])\] (.*)$/);
+    if (checkboxMatch) {
+      if (listType !== 'ul') {
+        closeList();
+        html.push('<ul class="checklist">');
+        listType = 'ul';
+      }
+      const checked = checkboxMatch[1] !== ' ' ? ' checked disabled' : ' disabled';
+      html.push(
+        `<li><input type="checkbox"${checked}> ${inlineMarkdown(checkboxMatch[2] ?? '')}</li>`,
+      );
+      continue;
+    }
+
+    // Indented checkbox list items:   - [ ] or   - [x]
+    const indentedCheckboxMatch = line.match(/^\s+- \[([ xX])\] (.*)$/);
+    if (indentedCheckboxMatch) {
+      const checked = indentedCheckboxMatch[1] !== ' ' ? ' checked disabled' : ' disabled';
+      html.push(
+        `<li class="indent"><input type="checkbox"${checked}> ${inlineMarkdown(indentedCheckboxMatch[2] ?? '')}</li>`,
+      );
+      continue;
+    }
+
+    // Indented sub-list items:   - text
+    const indentedListMatch = line.match(/^(\s{2,})- (.*)$/);
+    if (indentedListMatch) {
+      html.push(`<li class="indent">${inlineMarkdown(indentedListMatch[2] ?? '')}</li>`);
+      continue;
+    }
+
+    // Indented continuation text (e.g. "  To get started: ...")
+    const indentedTextMatch = line.match(/^(\s{2,})(.+)$/);
+    if (indentedTextMatch && listType) {
+      html.push(`<p class="indent">${inlineMarkdown(indentedTextMatch[2] ?? '')}</p>`);
       continue;
     }
 

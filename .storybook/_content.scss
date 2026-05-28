@@ -255,4 +255,163 @@
     border-top: 1px solid $cdr-color-border-primary;
     padding-top: $cdr-space-three-quarter-x;
   }
+
+  // ── Accordion sections (details/summary) ─────────────────────────────────
+  details {
+    border: 1px solid $cdr-color-border-primary;
+    border-radius: $cdr-radius-soft;
+    margin: 0;
+    padding: 0;
+
+    + details {
+      border-top: none;
+      border-radius: 0;
+    }
+
+    &:first-of-type {
+      border-radius: $cdr-radius-soft $cdr-radius-soft 0 0;
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 $cdr-radius-soft $cdr-radius-soft;
+    }
+
+    &:only-of-type {
+      border-radius: $cdr-radius-soft;
+    }
+
+    &[open] > summary {
+      border-bottom: 1px solid $cdr-color-border-primary;
+    }
+
+    // Wrapper div for accordion content
+    .accordion-content {
+      padding: 0 1.2rem;
+    }
+
+    // Lists inside accordion panels
+    ul,
+    ol {
+      margin: $cdr-space-half-x 0 $cdr-space-one-x;
+      padding-left: $cdr-space-one-and-a-half-x;
+      max-width: none;
+    }
+
+    // Tighter spacing for sub-list items inside accordions
+    li + li {
+      margin-top: $cdr-space-quarter-x;
+    }
+
+    // Parent list items should be visually prominent
+    > .accordion-content > ul > li,
+    > .accordion-content > ol > li {
+      @include cdr-text-body-300;
+
+      font-weight: 600;
+      margin-top: $cdr-space-one-x;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      // Sub-items should be lighter weight, tighter, more indented, and no bullets
+      ul,
+      ol {
+        margin-top: $cdr-space-half-x;
+        margin-bottom: 0;
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      li {
+        font-weight: 400;
+        margin-top: $cdr-space-quarter-x;
+        padding-left: $cdr-space-two-x;
+      }
+    }
+
+    // Code blocks inside accordion panels
+    pre {
+      margin: $cdr-space-half-x 0 $cdr-space-one-x;
+    }
+
+    // Paragraphs inside accordion panels
+    p {
+      margin: $cdr-space-half-x 0;
+    }
+
+    // Headings inside accordion panels (h3, h4)
+    h3 {
+      margin: $cdr-space-one-and-a-half-x 0 $cdr-space-quarter-x;
+    }
+
+    h4 {
+      margin: $cdr-space-one-x 0 $cdr-space-quarter-x;
+    }
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: $cdr-space-half-x;
+    cursor: pointer;
+    padding: $cdr-space-one-x $cdr-space-one-and-a-half-x;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '\25B6'; // right-pointing triangle
+      font-size: 1.2rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      display: inline;
+      margin: 0;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+    }
+  }
+
+  details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+  // Checkbox lists inside accordions
+  ul.checklist {
+    list-style: none;
+    padding-left: $cdr-space-half-x;
+
+    > li {
+      padding-left: 0;
+      font-weight: 400;
+      margin-top: $cdr-space-three-quarter-x;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    input[type='checkbox'] {
+      margin-right: $cdr-space-half-x;
+      vertical-align: middle;
+    }
+
+    // Code blocks after checkboxes should be indented
+    + pre,
+    ~ pre {
+      margin-left: $cdr-space-one-and-a-half-x;
+    }
+  }
+
+  // Indented sub-items and continuation text
+  .indent {
+    padding-left: $cdr-space-three-x;
+    list-style-type: none;
+  }
 }

@@ -1,6 +1,6 @@
 {
   "$comment": "Cedar editorial rules. Read-only to automation. All changes require human PR + ADR.",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "voice": "active, single unified Cedar Voice — that of a candid senior engineer — throughout all sections",
   "case": "sentence — first word and proper nouns only",
   "numerals": "always: 1, 2, 3 — never one, two, three",
@@ -62,14 +62,13 @@
     "importPaths": "`@rei/cedar-tokens/color`"
   },
   "sectionGuidance": {
-    "overview": "Open with the headline consumer benefit — what teams can now do, not what changed internally. Follow with one concrete capability example. Close with whether action is required and the co-release dependency if one exists. 2–4 sentences total. The architectural reason for any change belongs after the benefit, never before it. Test: if you removed the first sentence, would the reader know what this release is for? If yes, move that sentence to the front.",
-    "do-i-need-to-update": "Two lines maximum. Binary answer with one-line reason.",
+    "overview": "PM-focused overview that emphasizes consumer value and business impact. Open with what this enables for product teams and end users, not implementation details. Include metadata or W3C alignment implications where relevant for PMs. Follow with one concrete capability example. Close with whether action is required and the co-release dependency if one exists. 2–4 sentences total. The architectural reason for any change belongs after the benefit, never before it. Test: if you removed the first sentence, would the reader know what this release is for? If yes, move that sentence to the front. NOTE: Overview is the ONLY section that should NOT use accordion formatting.",
     "breaking-changes": "What changed, why, and how to fix it. Always use specific names.",
-    "new-features": "Each entry has three parts: (1) the headline capability in bold — name what a team can now do; (2) the before/after contrast — one sentence on what this replaces or what friction it removes, with a concrete code example where the diff is non-obvious; (3) a 'To get started' line with the minimum action. The before/after contrast is mandatory. If a feature has no meaningful before state (it is entirely net-new), say so explicitly rather than omitting the contrast.",
+    "new-features": "Each entry has three parts: (1) the headline capability in bold — name what a team can now do; (2) the before/after contrast — one sentence on what this replaces or what friction it removes, with a concrete code example where the diff is non-obvious; (3) a 'To get started' line with the minimum action. The before/after contrast is mandatory. If a feature has no meaningful before state (it is entirely net-new), say so explicitly rather than omitting the contrast. Use accordion formatting for collapsible content.",
     "improvements": "One concise sentence per item, leading with a past-tense active verb.",
     "bug-fixes": "What was wrong and what is fixed. Technical and blameless.",
-    "bolo": "Candid about gotchas. What to watch for and why, in plain language.",
-    "token-changes": "Accurate and scannable. Translate token shifts into design impact where relevant.",
-    "migration-guide": "Numbered steps. Active voice. Group batch changes. Before/after code blocks."
+    "be-aware-of": "Candid about gotchas. What to watch for and why, in plain language. Use accordion formatting for collapsible content.",
+    "token-changes": "Accurate and scannable. Translate token shifts into design impact where relevant. Use accordion formatting for collapsible content.",
+    "migration-guide": "Checkbox format with two categories: 'Must update' (required breaking changes) and 'Optional update' (recommended improvements). Each item is a concrete step naming specific tokens, props, or import paths. Include a 'To get the most out of this update' section highlighting new capabilities enabled by the migration. Use accordion formatting for collapsible sections. This section appears immediately after Overview to prioritize upgrade information. Active voice. Group batch changes. Before/after code blocks."
   }
 }

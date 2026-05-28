@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
-import { parseFrontMatter, selectReleaseNote } from './release-notes-utils';
+import { parseFrontMatter, selectReleaseNote } from './release-notes-utils.ts';
 
 type ReleaseNoteSelection = {
   fileName: string;
@@ -79,7 +79,7 @@ function getChangedFiles(): string[] {
   }
 }
 
-function groupLabelFromPath(filePath: string): string {
+function _groupLabelFromPath(filePath: string): string {
   const topLevel = filePath.split('/')[0] ?? '';
 
   if (topLevel === '.storybook') return 'Storybook';
@@ -94,7 +94,7 @@ function groupLabelFromPath(filePath: string): string {
   return topLevel;
 }
 
-function verbForPath(filePath: string): 'Adds' | 'Updates' | 'Fixes' {
+function _verbForPath(filePath: string): 'Adds' | 'Updates' | 'Fixes' {
   const normalizedPath = filePath.toLowerCase();
 
   if (normalizedPath.includes('fix')) {
@@ -108,7 +108,7 @@ function verbForPath(filePath: string): 'Adds' | 'Updates' | 'Fixes' {
   return 'Updates';
 }
 
-function summarizeFiles(files: string[], maxVisible = 3): string {
+function _summarizeFiles(files: string[], maxVisible = 3): string {
   if (files.length <= maxVisible) {
     return files.join(', ');
   }
@@ -118,7 +118,7 @@ function summarizeFiles(files: string[], maxVisible = 3): string {
   return `${visibleFiles.join(', ')}, +${hiddenCount} more`;
 }
 
-function buildBranchChangesMarkdown(changedFiles: string[]): string {
+function _buildBranchChangesMarkdown(changedFiles: string[]): string {
   if (changedFiles.length === 0) {
     return '- Updates branch: no file changes detected.';
   }
@@ -126,7 +126,7 @@ function buildBranchChangesMarkdown(changedFiles: string[]): string {
   const grouped = new Map<string, string[]>();
 
   for (const filePath of changedFiles) {
-    const group = groupLabelFromPath(filePath);
+    const group = _groupLabelFromPath(filePath);
     const existing = grouped.get(group) ?? [];
     existing.push(filePath);
     grouped.set(group, existing);
@@ -136,8 +136,8 @@ function buildBranchChangesMarkdown(changedFiles: string[]): string {
 
   for (const group of [...grouped.keys()].sort((a, b) => a.localeCompare(b))) {
     const files = (grouped.get(group) ?? []).sort((a, b) => a.localeCompare(b));
-    const verb = verbForPath(files[0] ?? '');
-    lines.push(`- ${verb} ${group} (${files.length} files): ${summarizeFiles(files)}`);
+    const verb = _verbForPath(files[0] ?? '');
+    lines.push(`- ${verb} ${group} (${files.length} files): ${_summarizeFiles(files)}`);
   }
 
   return lines.join('\n').trim();
@@ -208,10 +208,9 @@ function buildGeneratedModuleSource(input: {
 function main(): void {
   const { selection, allFiles } = getReleaseNoteSelection();
   const changedFiles = getChangedFiles();
-  const branchChangesMarkdown = buildBranchChangesMarkdown(changedFiles);
   const cleanupResult = cleanupDoneTicketDocs();
 
-  const combinedMarkdown = `${selection.markdown}\n\n## Changes in this branch\n\n${branchChangesMarkdown}`;
+  const combinedMarkdown = selection.markdown;
 
   fs.mkdirSync(generatedDir, { recursive: true });
   fs.writeFileSync(

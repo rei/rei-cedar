@@ -7,15 +7,13 @@ const ReleaseNotesView = defineComponent({
   name: 'ReleaseNotesView',
   setup() {
     const html = markdownToHtml(releaseNotesData.markdown);
-    const meta = `Selected file: ${releaseNotesData.selectedFile} | Available files: ${releaseNotesData.availableFiles.length} | Generated: ${releaseNotesData.generatedAt}`;
-
     return () =>
       h('div', {
         class: 'docs-page cdr-doc-content',
         innerHTML: `
           <article>
             ${html}
-            <p class="release-notes-meta">${meta}</p>
+            <p class="release-notes-meta">Cedar is supported one major version back from the current release. For questions or help upgrading, reach out in the <strong>#cedar-user-support</strong> Slack channel.</p>
           </article>
         `,
       });
