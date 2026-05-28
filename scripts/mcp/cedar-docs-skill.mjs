@@ -88,7 +88,7 @@ export function compareBranchToMaster(repo) {
     return { groups: {}, baseBranch, totalFiles: 0, files: [] };
   }
 
-  const ignorePatterns = schema.fileGroupingRules.ignoreInOutput;
+  const ignorePatterns = schema.consumerSurface?.ignore || [];
   const lines = nameStatus.split('\n').filter(Boolean);
   const files = [];
 
@@ -405,17 +405,13 @@ export function generateHumanReleaseNotes(structuredDiff) {
     groups: Object.keys(structuredDiff.diff?.groups || {}).length,
   });
 
-  const { diff, breakingChanges = [], tokenSummary, componentSummary, repo } = structuredDiff;
-  // Validate schema is loadable before generating output
-  releaseNotesSchema();
+  const { diff, breakingChanges = [], tokenSummary, _componentSummary, repo } = structuredDiff;
   const sections = [];
-
-  const breakingWithMigrations = breakingChanges.filter((b) => b.migrationSteps?.length > 0);
-  const agentNotes = breakingChanges.filter((b) => b.agentNote);
 
   // Header
   const version = getPackageVersion();
-  sections.push(`# Release notes – v${version}\n`);
+  sections.push(`# Release notes – v${version}
+`);
   sections.push(
     `<!-- agent-diff: ${countSections(structuredDiff)} sections, ${breakingChanges.length} breaking changes, ${breakingWithMigrations.length} auto-drafted migrations, ${agentNotes.length} agent-notes -->`,
   );
@@ -423,13 +419,57 @@ export function generateHumanReleaseNotes(structuredDiff) {
     '<!-- Review the agent-notes below before publishing. Promote draft to release-notes.md when ready. -->\n',
   );
 
-  // Overview
+  // Overview (no accordion)
   sections.push('## Overview\n');
   sections.push(generateOverview(structuredDiff) + '\n');
 
-  // Breaking changes
+  // Migration guide (with accordion)
   if (breakingChanges.length > 0) {
-    sections.push('## Breaking changes\n');
+    sections.push('<details>\n<summary>## Migration guide</summary>\n');
+
+    // Must update section
+    sections.push('### Must update');
+    sections.push(
+      'Required breaking changes that must be addressed to continue using this version.\n',
+    );
+    breakingChanges.forEach((bc) => {
+      sections.push(`- [ ] \`${bc.subject || bc.file || bc.ruleId}\` — ${bc.description}`);
+      if (bc.migrationSteps?.length) {
+        bc.migrationSteps.forEach((step) => {
+          sections.push(`  - [ ] ${step}`);
+        });
+      }
+    });
+    sections.push('');
+
+    // Optional update section
+    sections.push('### Optional update');
+    sections.push('Recommended improvements to get the most out of this update.\n');
+    sections.push(
+      '- [ ] Review new features and improvements for opportunities to enhance your implementation',
+    );
+    sections.push('- [ ] Check for updated token values that may improve visual consistency');
+    sections.push('- [ ] Run your test suite to confirm compatibility');
+    sections.push('');
+
+    // To get the most out of this update
+    sections.push('### To get the most out of this update');
+    sections.push('This release enables the following new capabilities:');
+    if (tokenSummary && tokenSummary.added.length > 0) {
+      sections.push(`- ${tokenSummary.added.length} new token(s) for enhanced design flexibility`);
+    }
+    if (tokenSummary && tokenSummary.valueChanges.length > 0) {
+      sections.push(`- Updated token values for improved visual consistency`);
+    }
+    sections.push('- Review the new features section for specific capability improvements');
+    sections.push('');
+
+    sections.push('</details>\n');
+  }
+
+  // Breaking changes (with accordion)
+  if (breakingChanges.length > 0) {
+    sections.push('<details>\n<summary>## Breaking changes</summary>\n');
     for (const bc of breakingChanges) {
       sections.push(`- \`${bc.subject || bc.file || bc.ruleId}\` — ${bc.description}`);
       if (bc.agentNote) {
@@ -442,17 +482,17 @@ export function generateHumanReleaseNotes(structuredDiff) {
         });
       }
     }
-    sections.push('');
+    sections.push('</details>\n');
   }
 
-  // New features
+  // New features (with accordion)
   const featureGroups = Object.entries(diff.groups || {}).filter(
     ([g]) => !['ci', 'git-hooks', 'config', 'other', 'documentation'].includes(g),
   );
   if (featureGroups.length > 0) {
     const addedFiles = (diff.files || []).filter((f) => f.type === 'added');
     if (addedFiles.length > 0) {
-      sections.push('## New features\n');
+      sections.push('<details>\n<summary>## New features</summary>\n');
       for (const [group, files] of Object.entries(diff.groups || {})) {
         const groupAdded = files.filter((f) => f.type === 'added');
         if (groupAdded.length > 0 && !['ci', 'git-hooks', 'config', 'other'].includes(group)) {
@@ -462,74 +502,13 @@ export function generateHumanReleaseNotes(structuredDiff) {
         }
       }
       sections.push('');
-    }
-  }
-
-  // Improvements
-  const modifiedGroups = Object.entries(diff.groups || {}).filter(
-    ([g, files]) =>
-      files.some((f) => f.type === 'modified') && !['ci', 'git-hooks', 'other'].includes(g),
-  );
-  if (modifiedGroups.length > 0) {
-    sections.push('## Improvements\n');
-    for (const [group, files] of modifiedGroups) {
-      const modCount = files.filter((f) => f.type === 'modified').length;
-      sections.push(`- ${humanizeGroup(group)} — updates ${modCount} file(s)`);
-    }
-    sections.push('');
-  }
-
-  // Token changes (rei-cedar-tokens only)
-  if (tokenSummary && repo === 'rei-cedar-tokens') {
-    sections.push('## Token changes\n');
-    if (tokenSummary.added.length > 0) {
-      sections.push('### Added');
-      for (const t of tokenSummary.added) {
-        sections.push(`- \`${path.basename(t.path, '.json')}\` — new token source`);
-      }
-      sections.push('');
-    }
-    if (tokenSummary.removed.length > 0) {
-      sections.push('### Removed');
-      for (const t of tokenSummary.removed) {
-        sections.push(`- \`${path.basename(t.path, '.json')}\` — removed`);
-      }
-      sections.push('');
-    }
-    if (tokenSummary.renamed.length > 0) {
-      sections.push('### Renamed');
-      for (const t of tokenSummary.renamed) {
-        sections.push(
-          `- \`${path.basename(t.oldPath, '.json')}\` → \`${path.basename(t.path, '.json')}\``,
-        );
-      }
-      sections.push('');
-    }
-    if (tokenSummary.valueChanges.length > 0) {
-      sections.push('### Value changes');
-      for (const vc of tokenSummary.valueChanges) {
-        sections.push(
-          `- \`${path.basename(vc.file, '.json')}\` — ${vc.changeCount} value(s) changed`,
-        );
-        if (vc.agentNote) sections.push(`  <!-- agent-note: ${vc.agentNote} -->`);
-      }
-      sections.push('');
-    }
-    if (tokenSummary.semanticChanges.length > 0) {
-      sections.push('### Semantic changes');
-      for (const sc of tokenSummary.semanticChanges) {
-        sections.push(
-          `- \`${path.basename(sc.file, '.json')}\` — description or usage intent changed`,
-        );
-        if (sc.agentNote) sections.push(`  <!-- agent-note: ${sc.agentNote} -->`);
-      }
-      sections.push('');
+      sections.push('</details>\n');
     }
   }
 
   // Component API changes (rei-cedar only)
   if (componentSummary && repo === 'rei-cedar' && Object.keys(componentSummary).length > 0) {
-    sections.push('## Component API changes\n');
+    sections.push('<details>\n<summary>## Component API changes</summary>\n');
     for (const [name, changes] of Object.entries(componentSummary)) {
       sections.push(`### \`cdr-${name}\``);
       for (const p of changes.props) {
@@ -543,22 +522,7 @@ export function generateHumanReleaseNotes(structuredDiff) {
       }
       sections.push('');
     }
-  }
-
-  // Migration guide
-  if (breakingChanges.length > 0) {
-    sections.push('## Migration guide\n');
-    breakingChanges.forEach((bc, i) => {
-      sections.push(`### ${i + 1}. \`${bc.subject || bc.file || bc.ruleId}\`\n`);
-      if (bc.migrationSteps?.length) {
-        bc.migrationSteps.forEach((step, j) => {
-          sections.push(`${j + 1}. ${step}`);
-        });
-      } else {
-        sections.push('Review the breaking change details above and update your code accordingly.');
-      }
-      sections.push('');
-    });
+    sections.push('</details>\n');
   }
 
   return sections.join('\n');

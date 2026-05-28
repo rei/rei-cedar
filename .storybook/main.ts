@@ -64,6 +64,9 @@ const config: StorybookConfig = {
           },
         },
       },
+      optimizeDeps: {
+        include: ['@vueuse/core'],
+      },
     });
   },
 };

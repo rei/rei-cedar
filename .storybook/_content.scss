@@ -1,0 +1,417 @@
+// .storybook/_content.scss
+// ─────────────────────────────────────────────────────────────────────────────
+// Cedar documentation content styles — Storybook edition
+// This file is the single source of truth for how documentation content looks
+// inside Storybook. It mirrors cedar.rei.com/content-styles.scss.
+// EDITING THIS FILE:
+//   - Use Cedar SCSS tokens only. No hardcoded values.
+//   - Cross-reference with content-styles.scss before adding anything new.
+//   - Changes here affect every story that uses .cdr-doc-content. Review in
+//     Storybook before merging.
+//   - If you add a new element style, add a corresponding entry in
+//     scripts/agent-config/storybook-style-guide.json so the agent knows it.
+// TOKEN AVAILABILITY NOTES:
+//   - Docsite SCSS tokens are loaded via @use from @rei/cdr-tokens/dist/docsite.
+//   - cdr-link-base-mixin and cdr-list-base-mixin live in @rei/cdr-component-variables,
+//     which is not a dependency of this repo. Link and list styles are inlined from
+//     the doc site source until the NX migration consolidates dependencies.
+//   - Code/note background tokens (code.json, note.json) are not compiled to SCSS
+//     variables. Nearest semantic tokens are used with comments.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
+
+// ── Page surface ─────────────────────────────────────────────────────────────
+// Used with layout:'fullscreen' stories to provide a proper page container
+// with background, padding, and max-width matching ConsumerContract pages.
+.docs-page {
+  background: $cdr-color-background-primary;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $cdr-space-four-x $cdr-space-three-x 8rem;
+}
+
+.cdr-doc-content {
+  // ── Layout ────────────────────────────────────────────────────────────────
+  max-width: 800px;
+
+  // ── Body text ──────────────────────────────────────────────────────────────
+  @include cdr-text-body-300;
+
+  color: $cdr-color-text-primary;
+
+  p {
+    margin: $cdr-space-one-x 0;
+    max-width: 60ch;
+  }
+
+  // ── Headings ───────────────────────────────────────────────────────────────
+  // Font family: sans (Graphik), not serif (Stuart).
+  // Color: $cdr-color-text-primary, not $cdr-color-text-brand.
+  // See: content-styles.scss — headings never use brand green.
+
+  h1 {
+    @include cdr-text-heading-sans-600;
+
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    margin: 0 0 $cdr-space-half-x;
+    color: $cdr-color-text-emphasis;
+  }
+
+  h2 {
+    @include cdr-text-heading-sans-600;
+
+    font-size: 2.8rem;
+    line-height: 3.6rem;
+    margin: $cdr-space-two-x 0 $cdr-space-half-x;
+    color: $cdr-color-text-primary;
+  }
+
+  h3 {
+    @include cdr-text-heading-sans-500;
+
+    margin: $cdr-space-one-and-a-half-x 0 $cdr-space-half-x;
+    color: $cdr-color-text-primary;
+  }
+
+  h4 {
+    @include cdr-text-heading-sans-400;
+
+    margin: $cdr-space-one-x 0 $cdr-space-half-x;
+    color: $cdr-color-text-primary;
+  }
+
+  h5 {
+    @include cdr-text-heading-sans-300;
+
+    margin: $cdr-space-one-x 0 $cdr-space-half-x;
+    color: $cdr-color-text-primary;
+  }
+
+  // ── Links ──────────────────────────────────────────────────────────────────
+  // Inlined from cdr-link-base-mixin (source: @rei/cdr-component-variables).
+  // TODO: Replace with @include cdr-link-base-mixin after NX migration.
+  a {
+    color: var(--cdr-color-text-link-rest);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: var(--cdr-color-text-link-hover);
+    }
+
+    &:active {
+      color: var(--cdr-color-text-link-active);
+    }
+
+    &:visited {
+      color: var(--cdr-color-text-link-visited);
+    }
+  }
+
+  // ── Lists ──────────────────────────────────────────────────────────────────
+  // Inlined from cdr-list-base-mixin (source: @rei/cdr-component-variables).
+  // TODO: Replace with @include cdr-list-base-mixin after NX migration.
+  ul,
+  ol {
+    @include cdr-text-body-300;
+
+    margin: $cdr-space-one-x 0 $cdr-space-two-x;
+    padding-left: $cdr-space-one-x;
+    max-width: 50ch;
+
+    li {
+      padding-left: 1rem;
+    }
+  }
+
+  ul {
+    list-style-type: '\2014'; // em dash — matching doc site
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li + li {
+    margin-top: $cdr-space-half-x;
+  }
+
+  // ── Tables ─────────────────────────────────────────────────────────────────
+  table {
+    @include cdr-text-utility-sans-200;
+
+    color: $cdr-color-text-primary;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+    overflow-x: auto;
+    margin: $cdr-space-one-and-a-half-x 0;
+  }
+
+  thead {
+    background-color: $cdr-color-background-table-header;
+  }
+
+  th {
+    @include cdr-text-utility-sans-strong-200;
+
+    padding: $cdr-space-one-x;
+    border: none;
+    text-align: left;
+  }
+
+  tr:not(thead tr) {
+    border-bottom: 1px solid $cdr-color-border-table-row;
+  }
+
+  td {
+    @include cdr-text-body-300;
+
+    padding: $cdr-space-one-x;
+    vertical-align: top;
+  }
+
+  // ── Inline code ──────────────────────────────────────────────────────────────
+  code {
+    font-family: $cdr-font-family-mono-brand-font;
+    font-size: 0.85em;
+    background: $cdr-color-background-secondary;
+    border: 1px solid $cdr-color-border-primary;
+    border-radius: $cdr-radius-soft;
+    padding: 0.15em 0.4em;
+    color: $cdr-color-text-primary;
+  }
+
+  // ── Code blocks ─────────────────────────────────────────────────────────────
+  // Dark theme matching ConsumerContract story styling.
+  pre {
+    background: #202421;
+    color: #f6f7f4;
+    border: none;
+    border-radius: 1rem;
+    padding: $cdr-space-one-and-a-half-x;
+    overflow-x: auto;
+    margin: $cdr-space-one-and-a-half-x 0;
+    font-family: $cdr-font-family-mono-brand-font;
+    font-size: 1.2rem;
+    line-height: 1.7;
+
+    code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: inherit;
+      color: inherit;
+    }
+  }
+
+  // Diff highlighting for ```diff code blocks
+  pre.language-diff code {
+    .line-added,
+    .line-removed {
+      display: block;
+    }
+  }
+
+  // ── Blockquote / callout ───────────────────────────────────────────────────
+  blockquote {
+    border-left: 4px solid $cdr-color-border-secondary;
+    margin: $cdr-space-two-x 0;
+    padding: $cdr-space-one-x $cdr-space-one-and-a-half-x;
+    color: $cdr-color-text-secondary;
+  }
+
+  // ── Note / warning boxes ───────────────────────────────────────────────────
+  // Used for BOLO callouts in release notes and deprecation notices.
+  // No dedicated $cdr-color-background-note SCSS variable exists in docsite.
+  // Using $cdr-color-background-primary as nearest semantic match.
+  .cdr-doc-note {
+    @include cdr-text-body-300;
+
+    background: $cdr-color-background-primary;
+    border-radius: $cdr-radius-soft;
+    padding: $cdr-space-one-x $cdr-space-one-and-a-half-x;
+    margin: $cdr-space-one-and-a-half-x 0;
+  }
+
+  .cdr-doc-warning {
+    @include cdr-text-body-300;
+
+    background: $cdr-color-background-message-warning-01;
+    border-radius: $cdr-radius-soft;
+    padding: $cdr-space-one-x $cdr-space-one-and-a-half-x;
+    margin: $cdr-space-one-and-a-half-x 0;
+  }
+
+  // ── Release notes meta ─────────────────────────────────────────────────────
+  .release-notes-meta {
+    @include cdr-text-utility-sans-200;
+
+    margin-top: $cdr-space-one-and-a-half-x;
+    color: $cdr-color-text-secondary;
+    border-top: 1px solid $cdr-color-border-primary;
+    padding-top: $cdr-space-three-quarter-x;
+  }
+
+  // ── Accordion sections (details/summary) ─────────────────────────────────
+  details {
+    border: 1px solid $cdr-color-border-primary;
+    border-radius: $cdr-radius-soft;
+    margin: 0;
+    padding: 0;
+
+    + details {
+      border-top: none;
+      border-radius: 0;
+    }
+
+    &:first-of-type {
+      border-radius: $cdr-radius-soft $cdr-radius-soft 0 0;
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 $cdr-radius-soft $cdr-radius-soft;
+    }
+
+    &:only-of-type {
+      border-radius: $cdr-radius-soft;
+    }
+
+    &[open] > summary {
+      border-bottom: 1px solid $cdr-color-border-primary;
+    }
+
+    // Wrapper div for accordion content
+    .accordion-content {
+      padding: 0 1.2rem;
+    }
+
+    // Lists inside accordion panels
+    ul,
+    ol {
+      margin: $cdr-space-half-x 0 $cdr-space-one-x;
+      padding-left: $cdr-space-one-and-a-half-x;
+      max-width: none;
+    }
+
+    // Tighter spacing for sub-list items inside accordions
+    li + li {
+      margin-top: $cdr-space-quarter-x;
+    }
+
+    // Parent list items should be visually prominent
+    > .accordion-content > ul > li,
+    > .accordion-content > ol > li {
+      @include cdr-text-body-300;
+
+      font-weight: 600;
+      margin-top: $cdr-space-one-x;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      // Sub-items should be lighter weight, tighter, more indented, and no bullets
+      ul,
+      ol {
+        margin-top: $cdr-space-half-x;
+        margin-bottom: 0;
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      li {
+        font-weight: 400;
+        margin-top: $cdr-space-quarter-x;
+        padding-left: $cdr-space-two-x;
+      }
+    }
+
+    // Code blocks inside accordion panels
+    pre {
+      margin: $cdr-space-half-x 0 $cdr-space-one-x;
+    }
+
+    // Paragraphs inside accordion panels
+    p {
+      margin: $cdr-space-half-x 0;
+    }
+
+    // Headings inside accordion panels (h3, h4)
+    h3 {
+      margin: $cdr-space-one-and-a-half-x 0 $cdr-space-quarter-x;
+    }
+
+    h4 {
+      margin: $cdr-space-one-x 0 $cdr-space-quarter-x;
+    }
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: $cdr-space-half-x;
+    cursor: pointer;
+    padding: $cdr-space-one-x $cdr-space-one-and-a-half-x;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '\25B6'; // right-pointing triangle
+      font-size: 1.2rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      display: inline;
+      margin: 0;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+    }
+  }
+
+  details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+  // Checkbox lists inside accordions
+  ul.checklist {
+    list-style: none;
+    padding-left: $cdr-space-half-x;
+
+    > li {
+      padding-left: 0;
+      font-weight: 400;
+      margin-top: $cdr-space-three-quarter-x;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    input[type='checkbox'] {
+      margin-right: $cdr-space-half-x;
+      vertical-align: middle;
+    }
+
+    // Code blocks after checkboxes should be indented
+    + pre,
+    ~ pre {
+      margin-left: $cdr-space-one-and-a-half-x;
+    }
+  }
+
+  // Indented sub-items and continuation text
+  .indent {
+    padding-left: $cdr-space-three-x;
+    list-style-type: none;
+  }
+}

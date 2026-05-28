@@ -1,0 +1,189 @@
+/* ─── Manager-level fonts and sidebar styling ───
+ * The manager frame (sidebar, toolbar) runs separately from the preview iframe.
+ * Fonts must be loaded here — preview.ts imports only affect the preview.
+ */
+
+/* ─── Cedar font-face declarations (inlined from cdr-fonts.scss) ─── */
+
+@font-face {
+  font-display: swap;
+  font-family: Stuart;
+  font-weight: 1 999;
+  src:
+    url('//www.rei.com/satchel/media/font-optimized/Stuart/REIStuart-VF-Web-Subset.woff2')
+      format('woff2-variations'),
+    url('//www.rei.com/satchel/media/font-optimized/Stuart/REIStuart-VF-Web-Subset.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'Stuart fallback';
+  src: local('Georgia');
+  size-adjust: 106%;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Stuart;
+  font-weight: 1 999;
+  font-style: italic;
+  src:
+    url('//www.rei.com/satchel/media/font-optimized/Stuart/REIStuartWebItalics-VF-Web-Subset.woff2')
+      format('woff2-variations'),
+    url('//www.rei.com/satchel/media/font-optimized/Stuart/REIStuartWebItalics-VF-Web-Subset.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Graphik;
+  font-weight: 1 999;
+  src:
+    url('//www.rei.com/satchel/media/font-optimized/Graphik/Graphik-VF-Web-Subset.woff2')
+      format('woff2-variations'),
+    url('//www.rei.com/satchel/media/font-optimized/Graphik/Graphik-VF-Web-Subset.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'Graphik fallback';
+  src: local('Verdana');
+  size-adjust: 92%;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Graphik;
+  font-weight: 1 999;
+  font-style: italic;
+  src:
+    url('//www.rei.com/satchel/media/font-optimized/Graphik/GraphikWebItalic-VF-Web-Subset.woff2')
+      format('woff2-variations'),
+    url('//www.rei.com/satchel/media/font-optimized/Graphik/GraphikWebItalic-VF-Web-Subset.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Pressura;
+  font-weight: 400;
+  src:
+    url('//www.rei.com/satchel/media/font-optimized/Pressura/gt-pressura-mono-regular.woff2')
+      format('woff2'),
+    url('//www.rei.com/satchel/media/font-optimized/Pressura/gt-pressura-mono-regular.woff')
+      format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Pressura;
+  font-weight: 700;
+  src:
+    url('//www.rei.com/satchel/media/font-optimized/Pressura/gt-pressura-mono-bold.woff2')
+      format('woff2'),
+    url('//www.rei.com/satchel/media/font-optimized/Pressura/gt-pressura-mono-bold.woff')
+      format('woff');
+}
+
+/* ─── Sidebar overrides to match cedar.rei.com left nav ───
+ * Doc site nav reference (LayoutMainNav.vue):
+ *   Primary labels:  cdr-text-utility-sans-400 (1.8rem), weight 500
+ *   Nav links:       cdr-text-utility-sans-300 (1.6rem)
+ *   Category labels: cdr-text-utility-sans-strong-100 (1.2rem)
+ *   Color:           $cdr-color-text-emphasis (#2e2e2b)
+ *   Hover bg:        $cdr-color-background-primary (#f7f5f3)
+ *   Active bg:       #edeae3 (warm-grey-200)
+ *   Border-radius:   8px
+ *   Selected:        spruce bar indicator on left (no icons, no blue)
+ */
+
+/* Ensure Graphik renders in all manager UI */
+#storybook-panel-root,
+.sidebar-container,
+[role='tree'],
+[role='treeitem'] {
+  font-family: Graphik, 'Graphik fallback', 'Helvetica Neue', sans-serif;
+}
+
+/* ─── Hide sidebar type-indicator icons ───
+ * Doc site nav has no icons — just clean text with indentation.
+ * Hide the colored status dots and type icons Storybook adds. */
+[role='treeitem']
+  svg:not([class*='expand']):not([class*='caret']):not([class*='chevron']):not([class*='arrow']) {
+  display: none !important;
+}
+
+/* Also hide any small colored status indicator circles */
+[role='treeitem'] [class*='StatusBadge'],
+[role='treeitem'] [class*='TypeIcon'],
+[role='treeitem'] [class*='status'],
+[role='treeitem'] [class*='icon-'] {
+  display: none !important;
+}
+
+/* All tree items — base styling */
+[role='treeitem'] {
+  border-radius: 8px;
+  color: #2e2e2b; /* $cdr-color-text-emphasis */
+  position: relative;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+[role='treeitem']:hover {
+  background-color: #f7f5f3; /* $cdr-color-background-primary */
+  color: #2e2e2b;
+}
+
+[role='treeitem']:active {
+  background-color: #edeae3; /* warm-grey-200 */
+  color: #2e2e2b;
+}
+
+/* Root/group items — section headers (like doc site primary labels) */
+[data-nodetype='root'],
+[data-nodetype='group'] {
+  font-weight: 500;
+  color: #2e2e2b; /* $cdr-color-text-emphasis */
+  letter-spacing: 0.02em;
+}
+
+/* Component items */
+[data-nodetype='component'] {
+  font-weight: 400;
+  color: #2e2e2b; /* $cdr-color-text-emphasis */
+}
+
+/* Story and docs links */
+[data-nodetype='story'],
+[data-nodetype='docs'] {
+  font-weight: 400;
+  color: #4b4a48; /* $cdr-color-text-secondary */
+}
+
+/* Selected state — spruce bar on left, like doc site [aria-current='page'] */
+[data-selected='true'],
+[aria-current='true'] {
+  background-color: transparent;
+  color: #2e2e2b; /* $cdr-color-text-emphasis */
+  font-weight: 500;
+}
+
+[data-selected='true']::before,
+[aria-current='true']::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  height: 50%;
+  width: 3px;
+  border-radius: 2px;
+  background-color: #1f513f; /* $cdr-color-text-brand — spruce bar */
+}
+
+/* Search field */
+#storybook-explorer-searchfield {
+  font-family: Graphik, 'Graphik fallback', 'Helvetica Neue', sans-serif;
+  border-radius: 8px;
+}
