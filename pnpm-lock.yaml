@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@rei/cdr-tokens':
-        specifier: 14.0.0-alpha.7
-        version: 14.0.0-alpha.7
+        specifier: 14.0.0
+        version: 14.0.0
       '@vueuse/core':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -1639,8 +1639,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@rei/cdr-tokens@14.0.0-alpha.7':
-    resolution: {integrity: sha512-dV/XYYQbRxUM53Pshkp/ODOmuYtS5sSXG0lBrY72RkHpllq9Y8knXPlFKZCNaNfZLzgnLgAnWD+YJzDSjL+MHg==}
+  '@rei/cdr-tokens@14.0.0':
+    resolution: {integrity: sha512-t41tbwxyYn6HAcD6aBRwf/Nf0bK1vh8ySnuetT65//cDD0p2gFoYVHKjRZMZ7ON/hE9xB//tfETxLLYsumIw7w==}
     engines: {node: '>= 22.0.0', pnpm: '>= 10.0.0'}
 
   '@rei/cedar-icons@2.6.1':
@@ -4369,6 +4369,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  semver@7.8.3:
+    resolution: {integrity: sha512-wnilbGyMxzbY7dNOl7jpKbLSjcfeweJWU5j4+u5qW+6/wuGD9KzIGOyZnQVSBM9E7DtWaaH3CyHkppYrKYoxwg==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
     engines: {node: '>= 0.4'}
@@ -4934,8 +4939,8 @@ packages:
   vue-component-type-helpers@2.2.12:
     resolution: {integrity: sha512-YbGqHZ5/eW4SnkPNR44mKVc6ZKQoRs/Rux1sxC6rdwXb4qpbOSYfDr9DsTHolOTGmIKgM9j141mZbBeg05R1pw==}
 
-  vue-component-type-helpers@3.2.9:
-    resolution: {integrity: sha512-S3BiWYaLSzHxTpln665ELSrMR9UYmrIDUmhik7nVZxmJjTKL2/a+ew1hvGxksKelivm0ujjWfG1fYOiU/2e8rA==}
+  vue-component-type-helpers@3.3.4:
+    resolution: {integrity: sha512-joip1uZTaQR0nD23N400gIdJ7xY+WiiiMA/BCKz842gvGBknqDQAzklUvDEhqFvvrhQY8S2ZANBMu4X70VMFGw==}
 
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
@@ -6568,7 +6573,9 @@ snapshots:
     dependencies:
       playwright: 1.57.0
 
-  '@rei/cdr-tokens@14.0.0-alpha.7': {}
+  '@rei/cdr-tokens@14.0.0':
+    dependencies:
+      semver: 7.8.3
 
   '@rei/cedar-icons@2.6.1': {}
 
@@ -6858,7 +6865,7 @@ snapshots:
       storybook: 10.3.3(@testing-library/dom@10.4.0)(prettier@2.8.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       type-fest: 2.19.0
       vue: 3.5.26(typescript@5.9.3)
-      vue-component-type-helpers: 3.2.9
+      vue-component-type-helpers: 3.3.4
 
   '@swc/helpers@0.5.18':
     dependencies:
@@ -9461,6 +9468,8 @@ snapshots:
 
   semver@7.7.3: {}
 
+  semver@7.8.3: {}
+
   set-function-length@1.2.2:
     dependencies:
       define-data-property: 1.1.4
@@ -10061,7 +10070,7 @@ snapshots:
 
   vue-component-type-helpers@2.2.12: {}
 
-  vue-component-type-helpers@3.2.9: {}
+  vue-component-type-helpers@3.3.4: {}
 
   vue-demi@0.14.10(vue@3.5.26(typescript@5.9.3)):
     dependencies:

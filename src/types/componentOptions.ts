@@ -16,12 +16,12 @@ import type { CedarTypeScale } from '../tokens/adapters';
 // Types whose values originate from @rei/cdr-tokens key types.
 export type Breakpoint = CdrBreakpointKey;
 export type SpaceFixed = CdrSpaceKey;
-type SpaceScaleRangeKey = Extract<CdrSpaceScaleKey, '01' | '34' | '35'>;
+type SpaceScaleRangeKey = Extract<CdrSpaceScaleKey, 'range0-to1' | 'range3-to4' | 'range3-to5'>;
 type SpaceScaleSingleKey = Exclude<CdrSpaceScaleKey, SpaceScaleRangeKey>;
 type CedarSpaceScaleRangeMap = {
-  '01': 'scale-0--1';
-  '34': 'scale-3--4';
-  '35': 'scale-3--5';
+  'range0-to1': 'scale-0--1';
+  'range3-to4': 'scale-3--4';
+  'range3-to5': 'scale-3--5';
 };
 export type SpaceFluid = `scale-${SpaceScaleSingleKey}`;
 export type SpaceScale = CedarSpaceScaleRangeMap[SpaceScaleRangeKey];
@@ -64,9 +64,10 @@ function mapTokenNames<T extends string>(
 }
 
 function spaceScaleKey(suffix: string): SpaceFluid | SpaceScale {
-  if (suffix.length === 1) return `scale-${suffix}` as SpaceFluid;
-
-  return `scale-${suffix.split('').join('--')}` as SpaceScale;
+  if (suffix === 'Range0To1') return 'scale-0--1' as SpaceScale;
+  if (suffix === 'Range3To4') return 'scale-3--4' as SpaceScale;
+  if (suffix === 'Range3To5') return 'scale-3--5' as SpaceScale;
+  return `scale-${suffix}` as SpaceFluid;
 }
 
 export const surfaceBackgroundTokens = mapTokenNames<CdrColorBackgroundKey>(

@@ -26,7 +26,11 @@ import {
 export const breakpoints = [...CdrBreakpointOrder] as Breakpoint[];
 
 function spaceScaleCssVar(tokenName: string): string {
-  return `var(--cdr-space-scale-${tokenName.replace('CdrSpaceScale', '').split('').join('-')})`;
+  const suffix = tokenName.replace('CdrSpaceScale', '');
+  if (suffix === 'Range0To1') return 'var(--cdr-space-scale-0-1)';
+  if (suffix === 'Range3To4') return 'var(--cdr-space-scale-3-4)';
+  if (suffix === 'Range3To5') return 'var(--cdr-space-scale-3-5)';
+  return `var(--cdr-space-scale-${suffix})`;
 }
 
 const fixedSpacing = Object.fromEntries(
