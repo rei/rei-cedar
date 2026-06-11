@@ -84,18 +84,12 @@ const spacingBase = {
 
 // Add simplified aliases for fluid spacing (e.g., '4' maps to 'scale-4')
 const simplifiedSpacingAliases = Object.fromEntries(
-  Object.entries(fluidSpacing).map(([key, value]) => [
-    key.replace('scale-', ''),
-    value,
-  ]),
+  Object.entries(fluidSpacing).map(([key, value]) => [key.replace('scale-', ''), value]),
 ) as Record<string, string>;
 
 // Add simplified aliases for scale spacing (e.g., '3--5' maps to 'scale-3--5')
 const scaleSpacingAliases = Object.fromEntries(
-  Object.entries(scaleSpacing).map(([key, value]) => [
-    key.replace('scale-', ''),
-    value,
-  ]),
+  Object.entries(scaleSpacing).map(([key, value]) => [key.replace('scale-', ''), value]),
 ) as Record<string, string>;
 
 export const spacing = {
