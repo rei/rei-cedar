@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@rei/cdr-tokens':
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: 14.0.1
+        version: 14.0.1
       '@vueuse/core':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -1639,8 +1639,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@rei/cdr-tokens@14.0.0':
-    resolution: {integrity: sha512-t41tbwxyYn6HAcD6aBRwf/Nf0bK1vh8ySnuetT65//cDD0p2gFoYVHKjRZMZ7ON/hE9xB//tfETxLLYsumIw7w==}
+  '@rei/cdr-tokens@14.0.1':
+    resolution: {integrity: sha512-AVDHyCi+gOrUjQ7Ne3ajWf0KJmS4Wiijtegn5qArFGsIsZZHVqpbU2/ZU4ERZkhWb+HE13mwSgwk4BOdVS8RZw==}
     engines: {node: '>= 22.0.0', pnpm: '>= 10.0.0'}
 
   '@rei/cedar-icons@2.6.1':
@@ -6573,7 +6573,7 @@ snapshots:
     dependencies:
       playwright: 1.57.0
 
-  '@rei/cdr-tokens@14.0.0':
+  '@rei/cdr-tokens@14.0.1':
     dependencies:
       semver: 7.8.3
 
