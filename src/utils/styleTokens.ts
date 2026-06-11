@@ -68,17 +68,40 @@ const scaleSpacing = Object.fromEntries(
  * @example
  * spacing['one-x'] // => '16px'
  * spacing['half-x'] // => '8px'
- * spacing['4'] // => 'var(--cdr-space-scale-4)'
+ * spacing['scale-4'] // => 'var(--cdr-space-scale-4)'
+ * spacing['4'] // => 'var(--cdr-space-scale-4)' (simplified alias)
  *
  * @example
  * // Using in a component
  * const gap = spacing[spaceCssVar(props.gap)] || props.gap;
  * style.gap = gap;
  */
-export const spacing = {
+const spacingBase = {
   ...fixedSpacing,
   ...fluidSpacing,
   ...scaleSpacing,
+} as Record<SpaceFixed | SpaceFluid | SpaceScale, string>;
+
+// Add simplified aliases for fluid spacing (e.g., '4' maps to 'scale-4')
+const simplifiedSpacingAliases = Object.fromEntries(
+  Object.entries(fluidSpacing).map(([key, value]) => [
+    key.replace('scale-', ''),
+    value,
+  ]),
+) as Record<string, string>;
+
+// Add simplified aliases for scale spacing (e.g., '3--5' maps to 'scale-3--5')
+const scaleSpacingAliases = Object.fromEntries(
+  Object.entries(scaleSpacing).map(([key, value]) => [
+    key.replace('scale-', ''),
+    value,
+  ]),
+) as Record<string, string>;
+
+export const spacing = {
+  ...spacingBase,
+  ...simplifiedSpacingAliases,
+  ...scaleSpacingAliases,
 } as { [key in Space]: string };
 
 /**

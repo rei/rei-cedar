@@ -26,7 +26,11 @@ type CedarSpaceScaleRangeMap = {
 export type SpaceFluid = `scale-${SpaceScaleSingleKey}`;
 export type SpaceScale = CedarSpaceScaleRangeMap[SpaceScaleRangeKey];
 // Simplified space format for consumer API (e.g., '4', '3--5' instead of 'scale-4', 'scale-3--5')
-export type SpaceSimplified = SpaceFixed | `${number}` | `${number}--${number}`;
+// Derived from actual supported token keys to avoid overly permissive types
+export type SpaceSimplified =
+  | SpaceFixed
+  | (SpaceFluid extends `scale-${infer K}` ? K : never)
+  | (SpaceScale extends `scale-${infer K}` ? K : never);
 export type Space = SpaceFixed | SpaceFluid | SpaceScale | SpaceSimplified;
 export type TypeScale = CedarTypeScale;
 export type Background = CdrColorBackgroundKey;

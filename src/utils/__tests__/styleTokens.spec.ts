@@ -1,4 +1,4 @@
-import { breakpoints, spacing } from '../styleTokens';
+import { breakpoints, spacing, getSpaceValue } from '../styleTokens';
 
 describe('style token utilities', () => {
   describe('breakpoints', () => {
@@ -43,6 +43,48 @@ describe('style token utilities', () => {
     it('scale values use CSS variables', () => {
       expect(spacing['scale-0']).toMatch(/^var\(--cdr-space-scale-/);
       expect(spacing['scale-5']).toMatch(/^var\(--cdr-space-scale-/);
+    });
+
+    it('contains simplified aliases for fluid spacing', () => {
+      expect(spacing['4']).toBe('var(--cdr-space-scale-4)');
+      expect(spacing['1']).toBe('var(--cdr-space-scale-1)');
+    });
+
+    it('contains simplified aliases for scale spacing', () => {
+      expect(spacing['3--5']).toBe('var(--cdr-space-scale-3-5)');
+      expect(spacing['0--1']).toBe('var(--cdr-space-scale-0-1)');
+    });
+  });
+
+  describe('getSpaceValue', () => {
+    it('normalizes simplified fluid spacing to CSS variables', () => {
+      expect(getSpaceValue('4')).toBe('var(--cdr-space-scale-4)');
+      expect(getSpaceValue('1')).toBe('var(--cdr-space-scale-1)');
+    });
+
+    it('normalizes simplified scale spacing to CSS variables', () => {
+      expect(getSpaceValue('3--5')).toBe('var(--cdr-space-scale-3-5)');
+      expect(getSpaceValue('0--1')).toBe('var(--cdr-space-scale-0-1)');
+    });
+
+    it('handles verbose format correctly', () => {
+      expect(getSpaceValue('scale-4')).toBe('var(--cdr-space-scale-4)');
+      expect(getSpaceValue('scale-3--5')).toBe('var(--cdr-space-scale-3-5)');
+    });
+
+    it('handles fixed spacing correctly', () => {
+      expect(getSpaceValue('one-x')).toBe('16px');
+      expect(getSpaceValue('half-x')).toBe('8px');
+    });
+
+    it('falls back to string conversion for unknown values', () => {
+      expect(getSpaceValue('unknown')).toBe('unknown');
+      expect(getSpaceValue('123')).toBe('123');
+    });
+
+    it('handles numeric input', () => {
+      expect(getSpaceValue(4)).toBe('var(--cdr-space-scale-4)');
+      expect(getSpaceValue(123)).toBe('123');
     });
   });
 });

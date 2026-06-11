@@ -2,13 +2,13 @@
 
 ## Overview
 
-This patch release simplifies Cedar's component prop API by removing verbose token prefixes from consumer-facing props. Scale props now use numeric values (e.g., `scale="3"` instead of `scale="scale-3"`), and space props use simplified format (e.g., `gap="4"` instead of `gap="scale-4"`). The Node engine requirement now supports Node 24 LTS by removing the upper version bound. SASS deprecation warnings from component variables are resolved by migrating to modern @use modules. **Requires @rei/cdr-tokens v14.0.2** for Webpack 4 compatibility.
+This patch release simplifies Cedar's component prop API by removing verbose token prefixes from consumer-facing props. Scale props now use numeric values (e.g., `scale="3"` instead of `scale="scale-3"`), and space props use simplified format (e.g., `gap="4"` instead of `gap="scale-4"`). The Node engine requirement now supports Node 24 LTS by removing the upper version bound. SASS deprecation warnings from component variables are resolved by migrating to modern @use modules. **Requires @rei/cdr-tokens v14.0.1** for Webpack 4 compatibility.
 
 ## Migration guide
 
 ### Must update
 
-- [ ] Upgrade @rei/cdr-tokens to v14.0.2 (required for Webpack 4 compatibility)
+- [ ] Upgrade @rei/cdr-tokens to v14.0.1 (required for Webpack 4 compatibility)
 - [ ] Update scale prop values to numeric format (e.g., `scale="3"` instead of `scale="scale-3"`)
 - [ ] Update space prop values to simplified format (e.g., `gap="4"` instead of `gap="scale-4"`)
 
@@ -71,7 +71,7 @@ Fixed SASS deprecation warnings in @rei/cdr-component-variables by migrating fro
 
 Fixed Node engine version requirement blocking Node 24 LTS by removing upper bound (<23) from engines field
 
-Fixed Webpack 4 compatibility issue with @rei/cdr-tokens v14.0.1 exports map wildcards by adding explicit exports for type paths (requires @rei/cdr-tokens v14.0.2)
+Fixed Webpack 4 compatibility issue with @rei/cdr-tokens v14.0.1 exports map wildcards by adding explicit exports for type paths
 
 ## Be Aware Of
 
