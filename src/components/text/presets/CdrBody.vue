@@ -2,7 +2,6 @@
 import { useCssModule, computed } from 'vue';
 import { BaseTextProps } from '../types';
 import { typeScaleCssSuffix } from '../../../tokens/adapters';
-import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrBody',
@@ -12,16 +11,16 @@ export interface BodyTextProps extends BaseTextProps {
   /**
    * Sets the type scale using Cedar values derived from cdr-tokens CdrTypeKey values.
    * @type TypeScale
-   * @values scale-minus-2, scale-minus-1, scale-0, scale-1
+   * @values -2, -1, 0, 1
    */
-  scale?: Extract<TypeScale, 'scale-minus-2' | 'scale-minus-1' | 'scale-0' | 'scale-1'>;
+  scale?: '-2' | '-1' | '0' | '1';
   /** Toggles the strong variant */
   strong?: boolean;
 }
 
 const props = withDefaults(defineProps<BodyTextProps>(), {
   tag: 'p',
-  scale: 'scale-0',
+  scale: '0',
   strong: false,
 });
 
@@ -30,7 +29,7 @@ defineSlots<{
 }>();
 
 const typeProperties = computed(() => {
-  const lineHeightSuffix = props.scale === 'scale-1' ? '1' : '0';
+  const lineHeightSuffix = props.scale === '1' ? '1' : '0';
   const suffix = typeScaleCssSuffix(props.scale!);
   return {
     '--cdr-body-font-size': `var(--cdr-type-scale-${suffix})`,

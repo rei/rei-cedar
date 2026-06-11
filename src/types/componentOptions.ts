@@ -25,7 +25,9 @@ type CedarSpaceScaleRangeMap = {
 };
 export type SpaceFluid = `scale-${SpaceScaleSingleKey}`;
 export type SpaceScale = CedarSpaceScaleRangeMap[SpaceScaleRangeKey];
-export type Space = SpaceFixed | SpaceFluid | SpaceScale;
+// Simplified space format for consumer API (e.g., '4', '3--5' instead of 'scale-4', 'scale-3--5')
+export type SpaceSimplified = SpaceFixed | `${number}` | `${number}--${number}`;
+export type Space = SpaceFixed | SpaceFluid | SpaceScale | SpaceSimplified;
 export type TypeScale = CedarTypeScale;
 export type Background = CdrColorBackgroundKey;
 export type BorderColor = CdrColorBorderKey;
@@ -165,8 +167,8 @@ export const layoutGapDemoOptions = [
   'zero',
   'one-x',
   'two-x',
-  'scale-4',
-  'scale-3--5',
+  '4',
+  '3--5',
 ] as const satisfies readonly Space[];
 export const mediaObjectContentPaddingDemoOptions = [
   'zero',

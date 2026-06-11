@@ -10,6 +10,7 @@ import {
   type SpaceFluid,
   type SpaceScale,
 } from '../types/componentOptions';
+import { spaceCssVar } from '../tokens/adapters';
 
 /**
  * Array of Cedar breakpoint names ordered from smallest to largest.
@@ -41,11 +42,17 @@ const fixedSpacing = Object.fromEntries(
 ) as Record<SpaceFixed, string>;
 
 const fluidSpacing = Object.fromEntries(
-  Object.entries(spaceFluidTokens).map(([key, tokenName]) => [key, spaceScaleCssVar(tokenName)]),
+  Object.entries(spaceFluidTokens).map(([key, tokenName]) => [
+    key,
+    spaceScaleCssVar(tokenName as string),
+  ]),
 ) as Record<SpaceFluid, string>;
 
 const scaleSpacing = Object.fromEntries(
-  Object.entries(spaceScaleTokens).map(([key, tokenName]) => [key, spaceScaleCssVar(tokenName)]),
+  Object.entries(spaceScaleTokens).map(([key, tokenName]) => [
+    key,
+    spaceScaleCssVar(tokenName as string),
+  ]),
 ) as Record<SpaceScale, string>;
 
 /**
@@ -53,7 +60,7 @@ const scaleSpacing = Object.fromEntries(
  *
  * Provides consistent spacing values across components. Includes both
  * fixed spacing tokens (e.g., 'one-x', 'two-x') and fluid scale tokens
- * (e.g., 'scale-0', 'scale-1') that respond to viewport size.
+ * (e.g., '4', '3--5') that respond to viewport size.
  *
  * @constant
  * @type {Record<Space, string>}
@@ -61,11 +68,11 @@ const scaleSpacing = Object.fromEntries(
  * @example
  * spacing['one-x'] // => '16px'
  * spacing['half-x'] // => '8px'
- * spacing['scale-3'] // => 'var(--cdr-space-scale-3)'
+ * spacing['4'] // => 'var(--cdr-space-scale-4)'
  *
  * @example
  * // Using in a component
- * const gap = spacing[props.gap] || props.gap;
+ * const gap = spacing[spaceCssVar(props.gap)] || props.gap;
  * style.gap = gap;
  */
 export const spacing = {
@@ -73,3 +80,14 @@ export const spacing = {
   ...fluidSpacing,
   ...scaleSpacing,
 } as { [key in Space]: string };
+
+/**
+ * Gets the CSS value for a space prop, handling both simplified and verbose formats.
+ *
+ * @param key - The space value (e.g., '4', '3--5', 'one-x', or 'scale-4')
+ * @returns The CSS value for the space
+ */
+export function getSpaceValue(key: string | number): string {
+  const normalizedKey = spaceCssVar(key);
+  return spacing[normalizedKey as Space] || String(key);
+}

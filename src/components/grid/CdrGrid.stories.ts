@@ -1,13 +1,51 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrGrid from './CdrGrid.vue';
+import { gridGutterSizeOptions } from './types';
+
+const responsiveGutterExamples = [
+  'none@xs small@sm medium@md large@lg',
+  'small@xs medium@sm medium@md large@lg',
+  'medium@xs medium@sm large@md large@lg',
+] as const;
+
+const gutterControlOptions = [...gridGutterSizeOptions, ...responsiveGutterExamples];
 
 const meta: Meta<typeof CdrGrid> = {
   title: 'Components/Grid',
   component: CdrGrid,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: [
+          'Default slot accepts grid child elements.',
+          '',
+          'Slot examples:',
+          '- Card grid: `<div class="card">Card content</div>`',
+          '- Product tiles: `<article>Product tile</article>`',
+          '- List layout (with `tag="ul"`): `<li>List item</li>`',
+        ].join('\n'),
+      },
+    },
+  },
   args: {
     gutter: 'medium@xs medium@sm large@md large@lg',
     tag: 'div',
+  },
+  argTypes: {
+    gutter: {
+      control: 'select',
+      options: gutterControlOptions,
+      description:
+        'Grid gutter spacing. Use a single size (none|small|medium|large) or responsive tokens like small@xs medium@sm large@md large@lg.',
+      table: {
+        type: {
+          summary:
+            "'none' | 'small' | 'medium' | 'large' | '<size>@<breakpoint>' (space-separated for responsive)",
+        },
+        defaultValue: { summary: 'medium@xs medium@sm large@md large@lg' },
+      },
+    },
   },
 };
 
@@ -32,6 +70,34 @@ export const Default: Story = {
           {{ item }}
         </div>
       </CdrGrid>
+    `,
+  }),
+};
+
+export const SlotContentExamples: Story = {
+  name: 'Slot Content Examples',
+  render: () => ({
+    components: { CdrGrid },
+    template: `
+      <div style="display: grid; gap: 24px;">
+        <section>
+          <h3 style="margin-bottom: 8px;">Card grid slot content (div children)</h3>
+          <CdrGrid gutter="medium" style="grid-template-columns: repeat(3, 1fr);">
+            <div v-for="i in 3" :key="'card-' + i" style="border: 1px solid #999; padding: 16px; background: #f5f5f5;">
+              Card {{ i }}
+            </div>
+          </CdrGrid>
+        </section>
+
+        <section>
+          <h3 style="margin-bottom: 8px;">List slot content (li children with tag=ul)</h3>
+          <CdrGrid tag="ul" gutter="small" style="grid-template-columns: repeat(3, 1fr); list-style: none; padding: 0; margin: 0;">
+            <li v-for="i in 3" :key="'list-' + i" style="border: 1px solid #999; padding: 12px; text-align: center;">
+              Item {{ i }}
+            </li>
+          </CdrGrid>
+        </section>
+      </div>
     `,
   }),
 };

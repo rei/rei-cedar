@@ -8,7 +8,7 @@ const placeholderParagraph =
 <template>
   <h2>Body</h2>
   <Text.CdrBody>{{ placeholderParagraph }}</Text.CdrBody>
-  <Text.CdrBody scale="scale-1">{{ placeholderParagraph }}</Text.CdrBody>
+  <Text.CdrBody scale="1">{{ placeholderParagraph }}</Text.CdrBody>
   <Text.CdrBody :strong="true">{{ placeholderParagraph }}</Text.CdrBody>
 
   <h2>Eyebrow</h2>

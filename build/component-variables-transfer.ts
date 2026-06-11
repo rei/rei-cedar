@@ -47,7 +47,7 @@ files.forEach((f) => {
 });
 
 /* iterate over SUPPORTED_COMPONENTS to ensure that vars are loaded in correct order */
-const indexFile = SUPPORTED_COMPONENTS.map((fname) => `@import "./${fname}";`).join('\n');
+const indexFile = SUPPORTED_COMPONENTS.map((fname) => `@use "./${fname}" as *;`).join('\n');
 const singleFile = SUPPORTED_COMPONENTS.map((fname) =>
   fs.readFileSync(`${destMixinsDir}/${fname}`, 'utf8'),
 ).join('\n');

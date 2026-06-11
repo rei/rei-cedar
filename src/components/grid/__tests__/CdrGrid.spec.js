@@ -24,7 +24,7 @@ describe('CdrGrid', () => {
     beforeEach(() => {
       wrapper = mount(CdrGrid, {
         props: {
-          gutter: 'none@xs large@sm medium@md small@sm',
+          gutter: 'none',
           tag: 'ul',
         },
         slots: {

@@ -2,7 +2,6 @@
 import { useCssModule, computed } from 'vue';
 import { BaseTextProps } from '../types';
 import { typeScaleCssSuffix } from '../../../tokens/adapters';
-import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrHeadingDisplay',
@@ -12,14 +11,14 @@ interface HeadingDisplayTextProps extends BaseTextProps {
   /**
    * Sets the type scale using Cedar values derived from cdr-tokens CdrTypeKey values.
    * @type TypeScale
-   * @values scale-2, scale-3, scale-4, scale-5, scale-6, scale-7
+   * @values 2, 3, 4, 5, 6, 7
    */
-  scale?: Extract<TypeScale, 'scale-2' | 'scale-3' | 'scale-4' | 'scale-5' | 'scale-6' | 'scale-7'>;
+  scale?: '2' | '3' | '4' | '5' | '6' | '7';
 }
 
 const props = withDefaults(defineProps<HeadingDisplayTextProps>(), {
   tag: 'h1',
-  scale: 'scale-7',
+  scale: '7',
 });
 
 defineSlots<{

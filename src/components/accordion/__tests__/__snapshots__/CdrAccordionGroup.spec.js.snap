@@ -140,7 +140,7 @@ exports[`CdrAccordionGroup > when wrapped > renders correctly 1`] = `
   <!-- @slot CdrAccordionGroup content (i.e. CdrAccordion components) -->
   
   <div
-    class="cdr-accordion"
+    class="cdr-accordion cdr-accordion--focused"
     id="tab1-accordion"
   >
     <h2

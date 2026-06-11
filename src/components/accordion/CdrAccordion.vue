@@ -94,6 +94,9 @@ const borderAlignedClass = computed(() =>
   props.borderAligned ? modifyClassName(baseClass, 'border-aligned') : '',
 );
 
+/** Returns focused modifier class when accordion header button is focused */
+const focusedClass = computed(() => (focused.value ? modifyClassName(baseClass, 'focused') : ''));
+
 /** Returns unwrap modifier class if accordion is unwrapped */
 const unwrapClass = computed(() => (unwrap.value ? modifyClassName(baseClass, 'unwrap') : ''));
 
@@ -204,7 +207,14 @@ onBeforeUnmount(() => {
   <div
     :class="
       !unwrap
-        ? mapClasses(style, baseClass, compactClass, borderAlignedClass, noSpacingClass)
+        ? mapClasses(
+            style,
+            baseClass,
+            compactClass,
+            borderAlignedClass,
+            focusedClass,
+            noSpacingClass,
+          )
         : null
     "
     :id="`${id}-accordion`"

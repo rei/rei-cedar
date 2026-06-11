@@ -17,15 +17,16 @@ const props = withDefaults(defineProps<CdrBannerProps>(), {
 });
 
 defineSlots<{
-  /** Icon matching banner type */
-  'icon-left'(props: Record<string, never>): any;
-  /** Primary message content */
-  'default'(props: Record<string, never>): any;
-  /** Additional icon */
-  'icon-right'(props: Record<string, never>): any;
-  /** Additional content about the message */
-  'message-body'(props: Record<string, never>): any;
-  'info-action'(props: Record<string, never>): any;
+  /** Icon matching banner type (typically an inline SVG). Example: warning or info icon. */
+  'icon-left'(): any;
+  /** Primary message content. Example: `Your order has shipped.` */
+  'default'(): any;
+  /** Additional icon/action element. Example: close icon button. */
+  'icon-right'(): any;
+  /** Additional details under the main message. Example: remediation text or policy details. */
+  'message-body'(): any;
+  /** Secondary action area. Example: `More info` icon button. */
+  'info-action'(): any;
 }>();
 
 const slots = useSlots();
@@ -69,18 +70,18 @@ const hasInfoAction = computed<boolean>(() => !!slots['info-action']);
           v-if="hasIconLeft"
           :class="[style['cdr-banner__icon-left']]"
         >
-          <!-- @slot Icon matching banner type -->
+          <!-- @slot Icon matching banner type (typically inline SVG). -->
           <slot name="icon-left" />
         </div>
         <span :class="[style['cdr-banner__message']]">
-          <!-- @slot Primary message content -->
+          <!-- @slot Primary message content. Example: `Your order has shipped.` -->
           <slot />
         </span>
         <div
           v-if="hasIconRight"
           :class="[style['cdr-banner__icon-right']]"
         >
-          <!-- @slot Additional icon -->
+          <!-- @slot Additional icon/action element. Example: close icon button. -->
           <slot name="icon-right" />
         </div>
       </div>
@@ -88,7 +89,7 @@ const hasInfoAction = computed<boolean>(() => !!slots['info-action']);
         v-if="hasMessageBody"
         :class="[style['cdr-banner__message-body']]"
       >
-        <!-- @slot Additional content about the message -->
+        <!-- @slot Additional details under the main message. -->
         <slot name="message-body" />
       </div>
     </div>
@@ -96,7 +97,7 @@ const hasInfoAction = computed<boolean>(() => !!slots['info-action']);
       v-if="hasInfoAction"
       :class="[style['cdr-banner__info-action']]"
     >
-      <!-- @slot Action-wrapped icon -->
+      <!-- @slot Secondary action area (for example, `More info` icon button). -->
       <slot name="info-action" />
     </div>
   </div>

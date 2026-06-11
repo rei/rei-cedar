@@ -185,4 +185,9 @@
       padding: tokens.$cdr-space-quarter-x 0 tokens.$cdr-space-three-quarter-x;
     }
   }
+
+  &--focused {
+    // Keep focused accordion above adjacent items so the browser focus ring remains visible.
+    z-index: 10;
+  }
 }

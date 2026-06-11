@@ -41,19 +41,19 @@ export interface Layout {
   /**
    * Specifies a gap based on the token options within Cedar.
    * @demoSelectMultiple false
-   * @values zero, one-x, two-x, scale-4, scale-3--5
+   * @values zero, one-x, two-x, 4, 3--5
    */
   gap?: Space;
   /**
    * Specifies a row gap based on the token options within Cedar.
    * @demoSelectMultiple false
-   * @values zero, one-x, two-x, scale-4, scale-3--5
+   * @values zero, one-x, two-x, 4, 3--5
    */
   rowGap?: Space;
   /**
    * Specifies a column gap based on the token options within Cedar.
    * @demoSelectMultiple false
-   * @values zero, one-x, two-x, scale-4, scale-3--5
+   * @values zero, one-x, two-x, 4, 3--5
    */
   columnGap?: Space;
   /**

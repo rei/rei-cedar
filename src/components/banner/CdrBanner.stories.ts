@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrBanner from './CdrBanner.vue';
 import CdrButton from '../button/CdrButton.vue';
-import { statusTypeOptions } from '../../types/componentOptions';
+import { bannerTypeOptions } from './types';
 
 const meta: Meta<typeof CdrBanner> = {
   title: 'Components/Banner',
@@ -13,10 +13,10 @@ const meta: Meta<typeof CdrBanner> = {
   argTypes: {
     type: {
       control: 'select',
-      options: statusTypeOptions,
-      description: 'Sets the banner type',
+      options: bannerTypeOptions,
+      description: 'Sets the banner status style: default, info, warning, success, or error.',
       table: {
-        type: { summary: statusTypeOptions.join(' | ') },
+        type: { summary: bannerTypeOptions.join(' | ') },
         defaultValue: { summary: 'default' },
       },
     },

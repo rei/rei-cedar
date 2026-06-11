@@ -20,7 +20,7 @@ describe('CdrHeadingSans', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrHeadingSans, {
-        props: { scale: 'scale-1' },
+        props: { scale: '1' },
         slots: {
           default: 'paragraph',
         },

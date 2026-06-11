@@ -6,7 +6,7 @@ import type { Breakpoint } from '../../types/componentOptions';
 import { modifyClassName } from '../../utils/buildClass';
 import { getLayoutStyling } from '../../utils/mediaObject';
 import CdrLayout from '../layout/CdrLayout.vue';
-import { breakpoints, spacing } from '../../utils/styleTokens';
+import { breakpoints, getSpaceValue } from '../../utils/styleTokens';
 
 /** Component that pairs images or videos with related text in a consistent way */
 
@@ -54,14 +54,15 @@ const rootProps = computed(() => {
 
   if (contentPadding !== 'zero') {
     if (typeof contentPadding === 'string') {
-      inlineStyles['--cdr-media-object-content-padding'] = spacing[contentPadding];
+      inlineStyles['--cdr-media-object-content-padding'] = getSpaceValue(contentPadding);
     } else {
       classes.push(modifyClassName(baseClass, 'content-padding-mq'));
 
       breakpoints.forEach((breakpoint: Breakpoint) => {
         // Add in padding styles for various breakpoints
-        inlineStyles[`--cdr-media-object-content-padding-${breakpoint}`] =
-          spacing[contentPadding[breakpoint]];
+        inlineStyles[`--cdr-media-object-content-padding-${breakpoint}`] = getSpaceValue(
+          contentPadding[breakpoint],
+        );
       });
     }
   }

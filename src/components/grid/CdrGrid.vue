@@ -23,8 +23,15 @@ const props = withDefaults(defineProps<CdrGridProps>(), {
 });
 
 defineSlots<{
-  /** CdrGrid content (grid child elements) */
-  'default'(props: Record<string, never>): any;
+  /**
+   * CdrGrid content (grid child elements).
+   *
+   * Examples:
+   * - Card grid: <div class="card">...</div>
+   * - Product tiles: <article>...</article>
+   * - List layout (when tag="ul"): <li>...</li>
+   */
+  'default'(): any;
 }>();
 
 const style: Record<string, string> = useCssModule();
@@ -41,7 +48,7 @@ const gutterClass = computed<string>(() =>
     :is="tag"
     :class="mapClasses(style, baseClass, gutterClass)"
   >
-    <!-- @slot CdrGrid content (grid child elements) -->
+    <!-- @slot CdrGrid content (grid child elements). Pass repeated layout children like <div> cards, <article> tiles, or <li> when tag="ul". -->
     <slot />
   </component>
 </template>

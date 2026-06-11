@@ -1,5 +1,5 @@
 import type { Component } from 'vue';
-import type { TypeScale, StatusType } from '../../types/componentOptions';
+import type { StatusType } from '../../types/componentOptions';
 import type { CdrSurfaceSelectionProps } from '../surfaceSelection/types';
 
 /**
@@ -9,9 +9,9 @@ export interface FulfillmentTileContent {
   /**
    * Sets the type scale for text sizing using Cedar values derived from cdr-tokens CdrTypeKey values.
    * @type TypeScale
-   * @values scale-minus-2, scale-minus-1, scale-0, scale-1
+   * @values -2, -1, 0, 1
    */
-  scale?: Extract<TypeScale, 'scale-minus-2' | 'scale-minus-1' | 'scale-0' | 'scale-1'>;
+  scale?: '-2' | '-1' | '0' | '1';
 }
 
 /**

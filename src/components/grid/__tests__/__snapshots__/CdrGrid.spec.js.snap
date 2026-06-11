@@ -2,7 +2,7 @@
 
 exports[`CdrGrid > complex grid example > renders correctly 1`] = `
 <ul
-  class="cdr-grid cdr-grid--gutter-none@xs cdr-grid--gutter-large@sm cdr-grid--gutter-medium@md cdr-grid--gutter-small@sm"
+  class="cdr-grid cdr-grid--gutter-none"
 >
   <!-- @slot CdrGrid content (grid child elements) -->
   
