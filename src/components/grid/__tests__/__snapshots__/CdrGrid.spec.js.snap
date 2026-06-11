@@ -4,7 +4,7 @@ exports[`CdrGrid > complex grid example > renders correctly 1`] = `
 <ul
   class="cdr-grid cdr-grid--gutter-none"
 >
-  <!-- @slot CdrGrid content (grid child elements) -->
+  <!-- @slot CdrGrid content (grid child elements). Pass repeated layout children like &lt;div&gt; cards, &lt;article&gt; tiles, or &lt;li&gt; when tag="ul". -->
   
   <li>
     list
@@ -17,7 +17,7 @@ exports[`CdrGrid > simple grid > renders correctly 1`] = `
 <div
   class="cdr-grid cdr-grid--gutter-medium@xs cdr-grid--gutter-medium@sm cdr-grid--gutter-large@md cdr-grid--gutter-large@lg"
 >
-  <!-- @slot CdrGrid content (grid child elements) -->
+  <!-- @slot CdrGrid content (grid child elements). Pass repeated layout children like &lt;div&gt; cards, &lt;article&gt; tiles, or &lt;li&gt; when tag="ul". -->
   
   <div>
     griddy

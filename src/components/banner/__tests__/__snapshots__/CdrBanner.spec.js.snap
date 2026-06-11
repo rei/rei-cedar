@@ -13,7 +13,7 @@ exports[`CdrBanner > with icon-left slot > renders correctly 1`] = `
       <div
         class="cdr-banner__icon-left"
       >
-        <!-- @slot Icon matching banner type -->
+        <!-- @slot Icon matching banner type (typically inline SVG). -->
         
         <div />
         
@@ -21,7 +21,7 @@ exports[`CdrBanner > with icon-left slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
-        <!-- @slot Primary message content -->
+        <!-- @slot Primary message content. Example: \`Your order has shipped.\` -->
         
         hey im a banner
         
@@ -48,7 +48,7 @@ exports[`CdrBanner > with icon-right slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
-        <!-- @slot Primary message content -->
+        <!-- @slot Primary message content. Example: \`Your order has shipped.\` -->
         
         hey im a banner
         
@@ -56,7 +56,7 @@ exports[`CdrBanner > with icon-right slot > renders correctly 1`] = `
       <div
         class="cdr-banner__icon-right"
       >
-        <!-- @slot Additional icon -->
+        <!-- @slot Additional icon/action element. Example: close icon button. -->
         
         <div />
         
@@ -82,7 +82,7 @@ exports[`CdrBanner > with info-action slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
-        <!-- @slot Primary message content -->
+        <!-- @slot Primary message content. Example: \`Your order has shipped.\` -->
         
         hey im a banner
         
@@ -94,7 +94,7 @@ exports[`CdrBanner > with info-action slot > renders correctly 1`] = `
   <div
     class="cdr-banner__info-action"
   >
-    <!-- @slot Action-wrapped icon -->
+    <!-- @slot Secondary action area (for example, \`More info\` icon button). -->
     
     <div />
     
@@ -116,7 +116,7 @@ exports[`CdrBanner > with just the default slot > with "type" prop set to "info"
       <span
         class="cdr-banner__message"
       >
-        <!-- @slot Primary message content -->
+        <!-- @slot Primary message content. Example: \`Your order has shipped.\` -->
         
         hey im a banner
         
@@ -143,7 +143,7 @@ exports[`CdrBanner > with message-body slot > renders correctly 1`] = `
       <span
         class="cdr-banner__message"
       >
-        <!-- @slot Primary message content -->
+        <!-- @slot Primary message content. Example: \`Your order has shipped.\` -->
         
         hey im a banner
         
@@ -153,7 +153,7 @@ exports[`CdrBanner > with message-body slot > renders correctly 1`] = `
     <div
       class="cdr-banner__message-body"
     >
-      <!-- @slot Additional content about the message -->
+      <!-- @slot Additional details under the main message. -->
       
       and I am some extra information
       
