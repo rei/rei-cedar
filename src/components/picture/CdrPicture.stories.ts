@@ -6,17 +6,15 @@ const meta = {
   component: CdrPicture,
   tags: ['autodocs'],
   args: {
-    alt: 'Outdoor adventure',
+    alt: 'Outdoor landscape',
   },
 } satisfies Meta<typeof CdrPicture>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const imageSrc =
-  'https://www.rei.com/dam/content_team_041115_25915_campaign_yosemite_0291_article_c_1.jpg';
-const imageWebP =
-  'https://www.rei.com/dam/content_team_041115_25915_campaign_yosemite_0291_article_c_1.webp';
+const imageSrc = 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md';
+const imageWebP = 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md';
 
 export const Default: Story = {
   args: {
