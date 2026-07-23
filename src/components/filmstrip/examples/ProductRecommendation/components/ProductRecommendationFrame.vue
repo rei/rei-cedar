@@ -48,12 +48,14 @@ import type { ProductRecommendationFrame, ProductRecommendationFrameClickPayload
 
 import { CdrFilmstripEventKey } from '../../../../../types/symbols';
 
+/** Product data passed through unchanged by the recommendation adapter. */
 const props = defineProps<ProductRecommendationFrame>();
 
 const formattedTitle = computed(() => props.name?.replace('&quot;', '"'));
 const imageSrc = computed(() => `https://rei.com/media/product/${props.id}?size=300`);
 
 const emitEvent = inject(CdrFilmstripEventKey);
+/** Publishes the activated product through the injected filmstrip event channel. */
 const onFrameClick = (event: Event) => {
   emitEvent?.('frameClick', {
     event,

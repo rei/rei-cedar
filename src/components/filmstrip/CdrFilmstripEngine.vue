@@ -36,6 +36,7 @@
           @keydown.right="(e) => onShiftFocus(e, 'right')"
           @keydown.left="(e) => onShiftFocus(e, 'left')"
         >
+          <!-- @slot Renders one frame with adapter props and managed focus state. -->
           <slot
             name="frame"
             :index="index"
@@ -46,6 +47,7 @@
       </ul>
     </CdrSurfaceScroll>
     <template v-for="{ direction, attributes, icon } in arrows">
+      <!-- @slot Replaces a built-in navigation arrow while preserving its behavior. -->
       <slot
         name="arrow"
         v-bind="{ attributes, direction, icon }"
@@ -88,8 +90,14 @@ const classObj = useCssModule();
 const BASE_CLASS = 'cdr-filmstrip';
 
 /**
- * Responsive filmstrip component providing smooth, accessible scrolling through frames.
- * @uses CdrButton, CdrIcon
+ * Low-level layout and interaction engine for a horizontal frame list.
+ *
+ * The engine calculates frame widths, bounds arrow navigation to complete
+ * visible sets, manages a roving tabindex across frame content, and reports
+ * visible-frame changes for assistive technology.
+ *
+ * @uses CdrSurfaceScroll for the scrollable viewport
+ * @uses CdrButton for built-in navigation controls
  */
 defineOptions({ name: 'CdrFilmstripEngine' });
 
@@ -108,7 +116,9 @@ const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
 });
 
 defineSlots<{
+  /** Renders one frame with adapter props, its index, and managed tabindex. */
   'frame'(props: { index: number; tabindex: string; [key: string]: any }): any;
+  /** Replaces the built-in arrow while preserving its state and click handler. */
   'arrow'?(props: {
     attributes: Record<string, any>;
     direction: CdrFilmstripArrow['direction'];
@@ -121,8 +131,11 @@ const attrs = useAttrs();
 const classAttr = attrs.class || '';
 
 const emit = defineEmits<{
+  /** Fires after a built-in or slotted navigation arrow is activated. */
   (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
+  /** Fires during direct viewport scrolling with the nearest frame index. */
   (e: 'scrollNavigate', payload: CdrFilmstripScrollPayload): void;
+  /** Reports visible-frame status for a consumer-owned live region. */
   (e: 'ariaMessage', message: string): void;
 }>();
 
@@ -134,9 +147,12 @@ const containerWidth = ref(0);
 const currentIndex = ref(0);
 const focusIndex = ref(0);
 const isContainerHovered = useElementHover(containerRef);
+/** Suppresses the native scroll event produced by arrow navigation. */
 const isProgrammaticScroll = ref(false);
+/** Last index that can begin a complete visible set. */
 const lastFrameStartIndex = computed(() => Math.max(props.frames.length - props.framesToShow, 0));
 
+/** Frame width after reserving gaps and the configured next-frame preview. */
 const frameWidth = computed(() => {
   const totalGaps = props.framesToShow * props.framesGap;
   return (containerWidth.value - totalGaps) / (props.framesToShow + props.frameExtra);
@@ -215,6 +231,7 @@ function visibleFramesLabel(prefix: 'Now showing' | 'Showing'): string {
     : `${prefix} frames ${start} through ${end} of ${total}`;
 }
 
+/** Announces a settled scroll position without flooding the live region. */
 const announceFrames = useDebounceFn((): void => {
   emit('ariaMessage', visibleFramesLabel('Now showing'));
 }, 300);
@@ -229,6 +246,7 @@ const handleFocusIn = (e: FocusEvent): void => {
   }
 };
 
+/** Moves the roving tabindex between frame-owned focus targets. */
 function onShiftFocus(e: Event, direction: CdrFilmstripArrow['direction']): void {
   e.preventDefault();
   isProgrammaticScroll.value = true;
@@ -244,6 +262,10 @@ function onShiftFocus(e: Event, direction: CdrFilmstripArrow['direction']): void
     ?.focus();
 }
 
+/**
+ * Converts the scroll offset to the nearest valid frame and distinguishes
+ * direct scrolling from the native scroll event caused by an arrow click.
+ */
 const debouncedHandleScroll = useDebounceFn((e: Event): void => {
   const scrollLeft = (e.target as HTMLElement).scrollLeft;
   const frameStep = frameWidth.value + props.framesGap;
@@ -268,6 +290,7 @@ const { stop: stopResizeObserver } = useResizeObserver(containerRef, (entries) =
   containerWidth.value = entries[0]?.contentRect.width ?? 0;
 });
 
+/** The Radix viewport is not available until `CdrSurfaceScroll` mounts. */
 let viewportElement: HTMLElement | undefined;
 onMounted(() => {
   viewportElement = viewportRef.value?.viewportElement;

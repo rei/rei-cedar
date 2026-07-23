@@ -4,35 +4,32 @@
     data-ui="base-picture"
     :style="cssVars"
   >
-    <!-- XS (always high res) -->
+    <!-- High-density sources use breakpoint-specific art direction. -->
     <source
       :media="`(max-width: 767px)${dprQuery}`"
       :srcset="xsSrcSet"
       :sizes="renderedSizeMobile"
     />
 
-    <!-- LG - High res -->
     <source
       :media="`(min-width: 1232px)${dprQuery}`"
       :srcset="lgSrcSet"
       :sizes="renderedSizeDesktop"
     />
 
-    <!-- MD -->
     <source
       :media="`(min-width: 992px)${dprQuery}`"
       :srcset="mdSrcSet"
       :sizes="renderedSizeMobile"
     />
 
-    <!-- SM -->
     <source
       :media="`(min-width: 768px)${dprQuery}`"
       :srcset="smSrcSet"
       :sizes="renderedSizeMobile"
     />
 
-    <!-- 1x Screen Art Direction -->
+    <!-- Low-density variants avoid oversized assets on 1x screens. -->
     <source
       v-if="useResizing"
       media="(min-width: 1232px) and (-webkit-device-pixel-ratio: 1)"
@@ -76,22 +73,35 @@ const sizes = {
   lg: [350, 550, 700, 800, 900, 1200, 2000, 3000, 4000],
 };
 
+/** Builds an REI image-service `srcset` for one source rendition. */
 const generateResizeSrcSet = (widths: number[], src?: string, lowDensity = false) =>
   widths
     .map((width) => `${src}?im=Resize,width=${width}${lowDensity ? '&density=1x' : ''} ${width}w`)
     .join(', ');
 
+/** Settings used by the lifestyle example's responsive image renderer. */
 export interface BasePictureProps {
+  /** Breakpoint-specific source images and renditions. */
   images: Images;
+  /** Select a wide or vertical crop instead of the original rendition. */
   useBannerCrop?: boolean;
+  /** CSS aspect ratio applied to the fallback image. */
   ratio?: string;
+  /** CSS border radius applied to the fallback image. */
   radius?: string;
+  /** Alternative text for the rendered image. */
   alt?: string;
+  /** Browser `sizes` values for mobile and desktop sources. */
   renderedSizes?: RenderedSizes;
+  /** Whether the fallback image uses native lazy loading. */
   lazyLoad?: boolean;
+  /** Browser fetch priority for the fallback image. */
   fetchPriority?: 'high' | 'low' | 'auto' | '';
+  /** Whether assistive technology ignores the fallback image. */
   ariaHidden?: boolean;
+  /** CSS object-fit value applied to the fallback image. */
   objectFit?: string;
+  /** Whether source URLs are expanded into image-service `srcset` values. */
   useResizing?: boolean;
 }
 
@@ -114,6 +124,7 @@ const cssVars = computed(() => ({
   '--radius': props.radius,
 }));
 
+/** Selects the configured art-directed crop, then exposes its source URL. */
 const getImage = (size: keyof Images) => {
   const { wide, vertical, original } = props.images[size]?.renditions ?? {};
   return props.useBannerCrop ? wide?.src || vertical?.src : original?.src;
@@ -125,6 +136,7 @@ const imageSm = imageSource('sm');
 const imageMd = imageSource('md');
 const imageLg = imageSource('lg');
 
+/** Returns a responsive `srcset`, or the original URL when resizing is disabled. */
 const resizeSource = (size: keyof typeof sizes, source: typeof imageXs, lowDensity = false) =>
   computed(() =>
     props.useResizing ? generateResizeSrcSet(sizes[size], source.value, lowDensity) : source.value,

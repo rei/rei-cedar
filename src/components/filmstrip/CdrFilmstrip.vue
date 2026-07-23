@@ -4,7 +4,7 @@
     ref="CdrFilmstripContainer"
     v-bind="dataAttributes"
   >
-    <!-- @slot Optional injection of a heading element for the filmstrip -->
+    <!-- @slot Heading rendered before the scrollable frame list. -->
     <slot name="heading" />
     <CdrFilmstripEngine
       :class="classAttr"
@@ -47,34 +47,25 @@ import { computed, h, provide, ref, useAttrs, useId } from 'vue';
 import { CdrFilmstripEventKey } from '../../types/symbols';
 
 /**
- * Responsive, accessible filmstrip for displaying a horizontal list of content frames.
+ * Adapts consumer-owned data into a horizontal, accessible content rail.
  *
- * @uses CdrFilmstripEngine
+ * The adapter selects the frame component and maps source data into frame
+ * props. `CdrFilmstripEngine` owns layout, scrolling, navigation, and focus.
+ * Frame descendants can emit consumer-defined events through
+ * `CdrFilmstripEventKey`. A missing adapter warns and renders no frames.
+ *
+ * @uses CdrFilmstripEngine for layout and interaction
  */
 defineOptions({ name: 'CdrFilmstrip' });
 
 defineSlots<{
-  /** Optional injection of a heading element for the filmstrip */
+  /** Heading rendered before the scrollable frame list. */
   'heading'(props: Record<string, never>): any;
 }>();
 
 const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
-  /**
-   * Default model provided to the filmstrip.
-   * Returns an empty object when no model is passed.
-   * @returns {Record<string, unknown>}
-   * @default {}
-   */
   model: (): Record<string, unknown> => ({}),
 
-  /**
-   * Default adapter used by the filmstrip when no custom adapter is provided.
-   * Returns an empty filmstrip configuration using a generic wrapper element.
-   *
-   * @param {Record<string, unknown>} modelData - The raw model data passed to the adapter.
-   * @returns {CdrFilmstripConfig<Record<string, unknown>>} A valid empty configuration for the filmstrip.
-   * @default empty filmstrip adapter
-   */
   adapter: (): CdrFilmstripConfig<Record<string, unknown>> => {
     console.warn(`No adapter provided for CdrFilmstrip`);
     return {
@@ -88,32 +79,32 @@ const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
 
 const emit = defineEmits<{
   /**
-   * Emitted when a user clicks the navigation arrows.
-   * @param payload - The arrow click event metadata.
+   * Fires after a built-in navigation button is activated.
+   * @param payload Original event, direction, and source model.
    */
   (e: 'arrowClick', payload: CdrFilmstripArrowClickPayload): void;
 
   /**
-   * Emitted when the filmstrip scrolls to a new frame.
-   * @param payload - The scroll event metadata including target index.
+   * Fires during direct viewport scrolling.
+   * @param payload Original event, zero-based frame index, and source model.
    */
   (e: 'scrollNavigate', payload: CdrFilmstripScrollPayload): void;
 
   /**
-   * Emitted when the layout changes due to screen or container resize.
-   * @param payload - The resize metadata including updated frame counts.
+   * Fires when the filmstrip container changes size.
+   * @param payload Mutable frame counts and the source model.
    */
   (e: 'resize', payload: CdrFilmstripResizePayload): void;
 
   /**
-   * Emitted to update screen readers with the current frame information.
-   * @param payload - A string message intended for screen readers.
+   * Provides navigation status text for a consumer-owned live region.
+   * @param payload Current visible-frame message.
    */
   (e: 'ariaMessage', payload: string): void;
 
   /**
-   * Emitted when a custom event is triggered.
-   * @param payload - The optional payload for a custom event.
+   * Forwards consumer-defined events emitted by frame descendants.
+   * @param payload Optional event data supplied by the frame component.
    */
   (e: string, payload?: unknown): void;
 }>();
@@ -121,12 +112,14 @@ const emit = defineEmits<{
 const attrs = useAttrs();
 const classAttr = attrs.class || '';
 
+/** Lets deeply nested frame controls publish events through the wrapper. */
 provide(CdrFilmstripEventKey, emit);
 
 const CdrFilmstripContainer = ref<HTMLElement | null>(null);
 const FRAMES_TO_SHOW_DEFAULT = 6;
 const filmstripUniqueId = useId();
 const filmstripConfig = computed<CdrFilmstripConfig<unknown>>(() => props.adapter(props.model));
+/** Mutable layout values initialized from the adapter and updated on resize. */
 const framesToShow = ref(filmstripConfig.value.framesToShow ?? FRAMES_TO_SHOW_DEFAULT);
 const framesToScroll = ref(filmstripConfig.value.framesToScroll ?? framesToShow.value);
 const frames = computed(() => filmstripConfig.value.frames as CdrFilmstripFrame<never>[]);
@@ -157,12 +150,17 @@ function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
   });
 }
 
+/** Cedar's optional breakpoint policy for consumers without a custom strategy. */
 function defaultResizeStrategy() {
   const screenWidth = window.innerWidth;
   framesToShow.value = screenWidth >= 1024 ? 5 : screenWidth >= 768 ? 4 : 2;
   framesToScroll.value = Math.max(framesToShow.value - 1, 1);
 }
 
+/**
+ * Applies the default policy first, then exposes mutable refs so a consumer's
+ * `resize` handler can override the resulting frame counts.
+ */
 const onResize = useDebounceFn(() => {
   if (useDefaultResizeStrategy) {
     defaultResizeStrategy();

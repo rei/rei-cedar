@@ -27,6 +27,7 @@ import ProductRecommendationAdapter from './adapter';
 const ProductRecommendationModelData = ProductRecommendationModel as Record<string, unknown>;
 const announcement = ref('');
 
+/** Connects engine status messages to the example's polite live region. */
 const onAriaMessage = (message: unknown) => {
   if (typeof message === 'string') {
     announcement.value = message;

@@ -2,6 +2,7 @@ import type { CdrFilmstripArrowClickPayload, CdrFilmstripResizePayload } from '.
 import type { Lifestyle, LifestyleFrameClickPayload } from '.';
 import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens/tokens';
 
+/** Demonstrates how a frame event can be translated into click analytics. */
 export function onFrameClick(payload: unknown): void {
   const { event, item } = payload as LifestyleFrameClickPayload;
 
@@ -13,6 +14,7 @@ export function onFrameClick(payload: unknown): void {
   console.log('onFrameClick', { event, item, analytics });
 }
 
+/** Demonstrates analytics derived from the source model and arrow direction. */
 export function onArrowClick(payload: unknown): void {
   const { direction, event, model = {} } = payload as CdrFilmstripArrowClickPayload;
   const { framesVisible, frameStyle } = model as Partial<Lifestyle>;
@@ -28,6 +30,12 @@ export function onArrowClick(payload: unknown): void {
   console.log('onArrowClick', { event, direction, analytics });
 }
 
+/**
+ * Applies the lifestyle example's responsive frame counts.
+ *
+ * This consumer-owned policy updates the mutable refs emitted by
+ * `CdrFilmstrip`; it is separate from Cedar's optional default policy.
+ */
 export function onResize(payload: unknown): void {
   const { framesToScroll, framesToShow, model = {} } = payload as CdrFilmstripResizePayload;
   const { framesVisible = 3 } = model as Partial<Lifestyle>;

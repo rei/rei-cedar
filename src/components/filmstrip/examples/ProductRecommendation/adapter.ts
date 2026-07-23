@@ -2,6 +2,12 @@ import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from 
 import FrameComponent from './components/ProductRecommendationFrame.vue';
 import type { ProductRecommendation, ProductRecommendationFrame } from '.';
 
+/**
+ * Maps recommendation data to product frames and placement metadata.
+ *
+ * Product cards receive recommendation items unchanged. The placement name is
+ * retained on the container for analytics and debugging.
+ */
 export const adapter: CdrFilmstripAdapter<ProductRecommendationFrame> = (modelData) => {
   const { items = [], placementName } = modelData as Partial<ProductRecommendation>;
   const filmstripId = `product-${placementName || 'unknown'}`;
