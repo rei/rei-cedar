@@ -107,6 +107,18 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(wrapper.vm.currentIndex).toBe(1);
   });
 
+  it('stops at the last complete set of visible frames', async () => {
+    await wrapper.setProps({
+      framesToShow: 2,
+      framesToScroll: 4,
+    });
+
+    await wrapper.vm.onArrowClick(new Event('click'), 'right');
+    await nextTick();
+
+    expect(wrapper.vm.currentIndex).toBe(3);
+  });
+
   it('emits arrowClick event when arrow is clicked', async () => {
     const arrowEvent: CdrFilmstripArrowClickPayload = {
       event: new Event('click'),

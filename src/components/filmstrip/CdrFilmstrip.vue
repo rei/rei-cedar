@@ -10,11 +10,14 @@
       :class="classAttr"
       :id="filmstripId"
       :description="description"
+      :frame-extra="frameExtra"
       :frames="frames"
       :frames-gap="framesGap"
       :frames-to-show="framesToShow"
       :frames-to-scroll="framesToScroll"
       :focus-selector="focusSelector"
+      :is-showing-arrows="isShowingArrows"
+      :viewport-tabindex="viewportTabindex"
       @aria-message="$emit('ariaMessage', $event)"
       @arrow-click="onArrowClick"
       @scroll-navigate="onScrollNavigate"
@@ -172,7 +175,7 @@ const framesToShow = ref<number>(filmstripConfig?.value?.framesToShow ?? FRAMES_
  * Number of frames to scroll at a time.
  * Typically matches the number of frames displayed unless overridden.
  */
-const framesToScroll = ref<number>(framesToShow.value);
+const framesToScroll = ref<number>(filmstripConfig.value.framesToScroll ?? framesToShow.value);
 
 /**
  * Extracts frames from the resolved filmstrip model.
@@ -212,6 +215,16 @@ const description = computed(() => filmstripConfig.value.description);
 const framesGap = computed(() => filmstripConfig?.value?.framesGap || 0);
 
 /**
+ * Fraction of an additional frame visible in the viewport.
+ */
+const frameExtra = computed(() => filmstripConfig.value.frameExtra ?? 0.25);
+
+/**
+ * Determines whether navigation arrows are rendered.
+ */
+const isShowingArrows = computed(() => filmstripConfig.value.isShowingArrows ?? true);
+
+/**
  * Determines if the filmstrip should use the default resize strategy.
  * This flag controls whether the component automatically adjusts the number
  * of frames displayed based on the window size.
@@ -231,6 +244,11 @@ const useDefaultResizeStrategy = ref<boolean>(
  * @returns {string} The CSS selector for the focusable element.
  */
 const focusSelector = computed(() => filmstripConfig?.value?.focusSelector || ':first-child');
+
+/**
+ * Tabindex value applied to the scroll viewport.
+ */
+const viewportTabindex = computed(() => filmstripConfig.value.viewportTabindex ?? '-1');
 
 /**
  * Retrieves additional data attributes for the filmstrip container.
