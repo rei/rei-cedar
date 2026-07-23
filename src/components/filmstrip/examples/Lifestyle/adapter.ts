@@ -2,6 +2,7 @@ import { CdrSpaceThreeQuarterX } from '@rei/cdr-tokens/tokens';
 import type { Lifestyle, LifestyleFrameExtended } from '.';
 import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from '../../interfaces';
 import FrameComponent from './LifestyleFrame.vue';
+import { resizeStrategy } from './handlers';
 
 /**
  * Maps the lifestyle example model to frame props and layout settings.
@@ -31,7 +32,8 @@ export const adapter: CdrFilmstripAdapter<LifestyleFrameExtended, Partial<Lifest
     framesGap: parseInt(CdrSpaceThreeQuarterX, 10),
     framesToShow: framesVisible,
     focusSelector: '[data-focus]',
-  } satisfies CdrFilmstripConfig<LifestyleFrameExtended>;
+    resizeStrategy,
+  } satisfies CdrFilmstripConfig<LifestyleFrameExtended, Partial<Lifestyle>>;
 };
 
 export default adapter;

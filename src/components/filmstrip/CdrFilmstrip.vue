@@ -45,6 +45,7 @@ import type {
   CdrFilmstripResizePayload,
   CdrFilmstripConfig,
   CdrFilmstrip,
+  CdrFilmstripLayout,
   CdrFilmstripScrollPayload,
 } from './interfaces';
 import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
@@ -70,7 +71,7 @@ defineSlots<{
 const props = withDefaults(defineProps<CdrFilmstrip<Model, FrameProps>>(), {
   model: (): Model => ({}) as Model,
 
-  adapter: (): CdrFilmstripConfig<FrameProps> => {
+  adapter: (): CdrFilmstripConfig<FrameProps, Model> => {
     console.warn(`No adapter provided for CdrFilmstrip`);
     return {
       frames: [],
@@ -122,7 +123,9 @@ provide(CdrFilmstripEventKey, emit);
 const CdrFilmstripContainer = ref<HTMLElement | null>(null);
 const FRAMES_TO_SHOW_DEFAULT = 6;
 const filmstripUniqueId = useId();
-const filmstripConfig = computed<CdrFilmstripConfig<FrameProps>>(() => props.adapter(props.model));
+const filmstripConfig = computed<CdrFilmstripConfig<FrameProps, Model>>(() =>
+  props.adapter(props.model),
+);
 /** Mutable layout values initialized from the adapter and updated on resize. */
 const framesToShow = ref(filmstripConfig.value.framesToShow ?? FRAMES_TO_SHOW_DEFAULT);
 const framesToScroll = ref(filmstripConfig.value.framesToScroll ?? framesToShow.value);
@@ -162,19 +165,41 @@ function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
 }
 
 /** Cedar's optional breakpoint policy for consumers without a custom strategy. */
-function defaultResizeStrategy() {
+function defaultResizeStrategy(): CdrFilmstripLayout {
   const screenWidth = window.innerWidth;
-  framesToShow.value = screenWidth >= 1024 ? 5 : screenWidth >= 768 ? 4 : 2;
-  framesToScroll.value = Math.max(framesToShow.value - 1, 1);
+  const nextFramesToShow = screenWidth >= 1024 ? 5 : screenWidth >= 768 ? 4 : 2;
+  return {
+    framesToShow: nextFramesToShow,
+    framesToScroll: Math.max(nextFramesToShow - 1, 1),
+  };
+}
+
+function applyLayout(layout: CdrFilmstripLayout): void {
+  framesToShow.value = layout.framesToShow;
+  framesToScroll.value = layout.framesToScroll;
 }
 
 /**
- * Applies the default policy first, then exposes mutable refs so a consumer's
- * `resize` handler can override the resulting frame counts.
+ * Applies an adapter or Cedar policy first, then exposes the legacy mutable
+ * refs so existing `resize` handlers can override the resulting frame counts.
  */
-const onResize = useDebounceFn(() => {
-  if (useDefaultResizeStrategy.value) {
-    defaultResizeStrategy();
+const onResize = useDebounceFn((entries: ResizeObserverEntry[] = []) => {
+  const resizeStrategy = filmstripConfig.value.resizeStrategy;
+  const containerWidth =
+    entries[0]?.contentRect.width ??
+    CdrFilmstripContainer.value?.getBoundingClientRect().width ??
+    0;
+
+  if (resizeStrategy) {
+    applyLayout(
+      resizeStrategy({
+        containerWidth,
+        model: props.model,
+        viewportWidth: window.innerWidth,
+      }),
+    );
+  } else if (useDefaultResizeStrategy.value) {
+    applyLayout(defaultResizeStrategy());
   }
 
   emit('resize', {

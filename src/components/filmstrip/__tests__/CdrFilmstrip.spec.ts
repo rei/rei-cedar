@@ -257,6 +257,46 @@ describe('CdrFilmstrip.vue', () => {
     expect(resizePayload.framesToScroll.value).toBe(Math.max(wrapper.vm.framesToShow - 1, 1));
   });
 
+  it('applies an adapter resize strategy before emitting the legacy resize event', async () => {
+    const model = { placement: 'homepage' };
+    const resizeStrategy = vi.fn(() => ({
+      framesToScroll: 2,
+      framesToShow: 3,
+    }));
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model,
+        adapter: () => ({
+          component: h('div'),
+          description: 'Strategy filmstrip',
+          filmstripId: 'strategy-filmstrip',
+          frames: sampleFrames,
+          framesToScroll: 3,
+          framesToShow: 4,
+          resizeStrategy,
+        }),
+      },
+    });
+
+    await wrapper.vm.onResize([
+      {
+        contentRect: { width: 640 },
+      } as ResizeObserverEntry,
+    ]);
+
+    expect(resizeStrategy).toHaveBeenCalledWith({
+      containerWidth: 640,
+      model,
+      viewportWidth: window.innerWidth,
+    });
+    expect(wrapper.vm.framesToShow).toBe(3);
+    expect(wrapper.vm.framesToScroll).toBe(2);
+
+    const resizePayload = wrapper.emitted('resize')?.at(-1)?.[0] as CdrFilmstripResizePayload;
+    expect(resizePayload.framesToShow.value).toBe(3);
+    expect(resizePayload.framesToScroll.value).toBe(2);
+  });
+
   it('does not render when the adapter returns no frames', async () => {
     wrapper = mount(CdrFilmstrip, {
       props: {

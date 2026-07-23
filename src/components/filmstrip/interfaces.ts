@@ -64,7 +64,7 @@ export interface CdrFilmstrip<Model, FrameProps = Model> {
  * Adapters own the frame component and source-data mapping. The shared
  * filmstrip owns layout, scrolling, focus, and navigation.
  */
-export interface CdrFilmstripConfig<T = Record<string, unknown>> {
+export interface CdrFilmstripConfig<T = Record<string, unknown>, Model = unknown> {
   /** Component used to render every frame. */
   component: Component;
   /** Ordered frames and their component props. */
@@ -85,8 +85,10 @@ export interface CdrFilmstripConfig<T = Record<string, unknown>> {
   framesToShow?: number;
   /** Whether the built-in previous and next buttons can be shown. */
   isShowingArrows?: boolean;
-  /** Whether Cedar's breakpoint-based resize policy runs before the `resize` event. */
+  /** Whether Cedar's breakpoint policy runs when no `resizeStrategy` is supplied. */
   useDefaultResizeStrategy?: boolean;
+  /** Responsive layout policy applied before the legacy `resize` event. */
+  resizeStrategy?: CdrFilmstripResizeStrategy<Model>;
   /** Selector for the primary action that receives the managed frame tabindex. */
   focusSelector?: string;
   /** Tabindex applied to the scrollable viewport. */
@@ -127,6 +129,29 @@ export interface CdrFilmstripResizePayload<T = Record<string, unknown>> {
   model?: T;
 }
 
+/** Frame counts returned by a filmstrip resize strategy. */
+export interface CdrFilmstripLayout {
+  /** Number of complete frames visible in the viewport. */
+  framesToShow: number;
+  /** Number of frames advanced by an arrow click. */
+  framesToScroll: number;
+}
+
+/** Measurements and source data supplied to a filmstrip resize strategy. */
+export interface CdrFilmstripResizeContext<Model = unknown> {
+  /** Current width of the filmstrip container in pixels. */
+  containerWidth: number;
+  /** Current browser viewport width in pixels. */
+  viewportWidth: number;
+  /** Consumer-owned model supplied to `CdrFilmstrip`. */
+  model: Model;
+}
+
+/** Computes responsive frame counts without mutating component-owned refs. */
+export interface CdrFilmstripResizeStrategy<Model = unknown> {
+  (context: CdrFilmstripResizeContext<Model>): CdrFilmstripLayout;
+}
+
 /** Internal render model for one navigation button. */
 export interface CdrFilmstripArrow {
   direction: 'left' | 'right';
@@ -163,5 +188,5 @@ export interface CdrFilmstripEventEmitter {
  * @returns Frame rendering and layout settings for the shared engine.
  */
 export interface CdrFilmstripAdapter<FrameProps, Model = unknown> {
-  (modelData: Model): CdrFilmstripConfig<FrameProps>;
+  (modelData: Model): CdrFilmstripConfig<FrameProps, Model>;
 }
