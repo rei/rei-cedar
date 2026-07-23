@@ -5,18 +5,33 @@
     :adapter="ProductRecommendationAdapter"
     @frame-click="onFrameClick"
     @arrow-click="onArrowClick"
-    @aria-message="(msg) => console.log(msg)"
+    @aria-message="onAriaMessage"
     @scroll-navigate="onScrollNavigate"
   />
+  <p
+    class="product-recommendation-filmstrip__announcement"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    {{ announcement }}
+  </p>
 </template>
 
 <script setup lang="ts">
 import CdrFilmstrip from '../../CdrFilmstrip.vue';
 import ProductRecommendationModel from './mock.json';
-
-const ProductRecommendationModelData = ProductRecommendationModel as Record<string, unknown>;
+import { ref } from 'vue';
 import { onFrameClick, onArrowClick, onScrollNavigate } from './handlers';
 import ProductRecommendationAdapter from './adapter';
+
+const ProductRecommendationModelData = ProductRecommendationModel as Record<string, unknown>;
+const announcement = ref('');
+
+const onAriaMessage = (message: unknown) => {
+  if (typeof message === 'string') {
+    announcement.value = message;
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -29,6 +44,10 @@ import ProductRecommendationAdapter from './adapter';
   @include cdr-sm-mq-up {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &__announcement {
+    @include cdr-display-sr-only;
   }
 }
 </style>
