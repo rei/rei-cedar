@@ -73,7 +73,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule, watch } from 'vue';
 import type { Component } from 'vue';
-import { useResizeObserver, useElementHover, useDebounceFn } from '@vueuse/core';
+import { useResizeObserver, useDebounceFn } from '@vueuse/core';
 
 import mapClasses from '../../utils/mapClasses';
 import CdrButton from '../button/CdrButton.vue';
@@ -146,7 +146,6 @@ const framesItemsRef = ref<Array<HTMLElement> | null>(null);
 const containerWidth = ref(0);
 const currentIndex = ref(0);
 const focusIndex = ref(0);
-const isContainerHovered = useElementHover(containerRef);
 /** Suppresses the native scroll event produced by arrow navigation. */
 const isProgrammaticScroll = ref(false);
 /** Last index that can begin a complete visible set. */
@@ -191,7 +190,6 @@ const arrows = computed<CdrFilmstripArrow[]>(() =>
             `${BASE_CLASS}__arrow`,
             `${BASE_CLASS}__arrow--${direction}`,
             isEnabled ? '' : `${BASE_CLASS}__arrow--disabled`,
-            isContainerHovered.value ? `${BASE_CLASS}__arrow--visible` : '',
           ),
           classAttr ? `${classAttr}__arrow` : null,
           classAttr ? `${classAttr}__arrow--${direction}` : null,
