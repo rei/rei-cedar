@@ -5,7 +5,6 @@
     :adapter="LifestyleAdapter"
     @frame-click="onFrameClick"
     @arrow-click="onArrowClick"
-    @resize="onResize"
   />
 </template>
 
@@ -15,7 +14,7 @@ import lifestyleModel from './mock.json';
 import type { Lifestyle } from '.';
 
 const lifestyleModelData = lifestyleModel as Partial<Lifestyle>;
-import { onFrameClick, onArrowClick, onResize } from './handlers';
+import { onFrameClick, onArrowClick } from './handlers';
 import LifestyleAdapter from './adapter';
 </script>
 

@@ -1,4 +1,8 @@
-import type { CdrFilmstripArrowClickPayload, CdrFilmstripResizePayload } from '../../interfaces';
+import type {
+  CdrFilmstripArrowClickPayload,
+  CdrFilmstripLayout,
+  CdrFilmstripResizeContext,
+} from '../../interfaces';
 import type { Lifestyle, LifestyleFrameClickPayload } from '.';
 import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens/tokens';
 
@@ -31,27 +35,22 @@ export function onArrowClick(payload: unknown): void {
 }
 
 /**
- * Applies the lifestyle example's responsive frame counts.
- *
- * This consumer-owned policy updates the mutable refs emitted by
- * `CdrFilmstrip`; it is separate from Cedar's optional default policy.
+ * Returns the lifestyle example's responsive frame counts.
  */
-export function onResize(payload: unknown): void {
-  const { framesToScroll, framesToShow, model = {} } = payload as CdrFilmstripResizePayload;
-  const { framesVisible = 3 } = model as Partial<Lifestyle>;
+export function resizeStrategy({
+  model,
+  viewportWidth,
+}: CdrFilmstripResizeContext<Partial<Lifestyle>>): CdrFilmstripLayout {
+  const { framesVisible = 3 } = model;
+  const framesToShow =
+    viewportWidth >= Number(CdrBreakpointLg)
+      ? framesVisible
+      : viewportWidth >= Number(CdrBreakpointMd)
+        ? 3
+        : 2;
 
-  const { clientWidth } = window.document.body;
-  switch (true) {
-    case clientWidth >= Number(CdrBreakpointLg):
-      framesToShow.value = framesVisible;
-      framesToScroll.value = framesVisible - 1;
-      break;
-    case clientWidth >= Number(CdrBreakpointMd):
-      framesToShow.value = 3;
-      framesToScroll.value = 2;
-      break;
-    default:
-      framesToShow.value = 2;
-      framesToScroll.value = 1;
-  }
+  return {
+    framesToShow,
+    framesToScroll: framesToShow - 1,
+  };
 }
