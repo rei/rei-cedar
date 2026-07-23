@@ -194,7 +194,7 @@ const arrows = computed<CdrFilmstripArrow[]>(() =>
           ),
           classAttr ? `${classAttr}__arrow` : null,
           classAttr ? `${classAttr}__arrow--${direction}` : null,
-          isEnabled ? '' : classAttr && `${BASE_CLASS}__arrow--disabled`,
+          isEnabled ? '' : classAttr && `${classAttr}__arrow--disabled`,
         ]
           .filter(Boolean)
           .join(' '),
