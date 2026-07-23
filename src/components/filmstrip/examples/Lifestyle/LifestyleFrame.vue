@@ -1,7 +1,7 @@
 <template>
   <div
     class="lifestyle-frame"
-    :class="[frameStyle, { 'lifestyle-frame--last': lastFrame }]"
+    :class="frameStyle"
   >
     <template v-if="media">
       <BasePicture
@@ -53,75 +53,39 @@
 
 <script lang="ts" setup>
 import { CdrButton, CdrLink, CdrImg } from '../../../../lib';
-import BasePicture, { type Images } from './BasePicture.vue';
+import BasePicture from './BasePicture.vue';
 import type {
   Cta,
+  Images,
   LegacyMedia,
   LifestyleFrameClickPayload,
   LifestyleFrameExtended,
   Media,
 } from '.';
-import type { CdrFilmstripEventEmitter } from '../../interfaces';
 import { CdrFilmstripEventKey } from '../../../../types/symbols';
 import { computed, inject } from 'vue';
 
-/**
- * Type Guard to check if `media` is of type `Media`.
- */
-const isMedia = (media: Media | LegacyMedia): media is Media => {
-  return 'images' in media;
-};
+const isMedia = (media: Media | LegacyMedia): media is Media => 'images' in media;
 
-/**
- * Props for the LifestyleFrame component.
- */
 const props = withDefaults(defineProps<LifestyleFrameExtended>(), {
   cta: () => ({}) as Cta,
   media: () => ({}) as Media | LegacyMedia,
   frameStyle: 'lifestyle-portrait',
-  lastFrame: false,
 });
 
-/**
- * Determines if the frame style is a lifestyle portrait (large or small).
- */
 const isLifestylePortrait = computed(() => props.frameStyle.startsWith('lifestyle-portrait'));
-
-/**
- * Determines if the frame style is a lifestyle square.
- */
 const isLifestyleSquare = computed(() => props.frameStyle === 'lifestyle-square');
-
-/**
- * Checks if the media format is legacy (non-responsive image format).
- */
 const isLegacyMedia = computed(() => !isMedia(props.media));
-
-/**
- * Determines the button size based on frame style.
- */
 const buttonSize = computed(() =>
   props.frameStyle === 'lifestyle-portrait-sm' ? 'small@xs small@sm small@md' : 'medium',
 );
-
-/**
- * Computes the images object from the media object.
- */
 const images = computed(() => (props.media as Media).images);
-
-const emitEvent = inject(CdrFilmstripEventKey) as CdrFilmstripEventEmitter;
-
-/**
- * Handles the click event on a frame, emitting a 'frameClick' event with the event details and the frame item.
- *
- * @param {Event} event - The click event that triggered this function.
- * @return {void}
- */
+const emitEvent = inject(CdrFilmstripEventKey);
 const onFrameClick = (event: Event) => {
   emitEvent?.('frameClick', {
     event,
     item: props,
-  } as LifestyleFrameClickPayload);
+  } satisfies LifestyleFrameClickPayload);
 };
 </script>
 
@@ -172,10 +136,6 @@ const onFrameClick = (event: Event) => {
     }
   }
 
-  &.lifestyle-frame--last {
-    margin-right: 0;
-  }
-
   &__button-container {
     position: absolute;
     display: flex;
@@ -220,15 +180,6 @@ const onFrameClick = (event: Event) => {
     &:focus,
     &:active {
       color: $cdr-color-text-primary;
-
-      // TODO: refactor
-      & ~ .lifestyle-frame__inner {
-        box-shadow: inset 0 0 80px #ece6db;
-
-        img {
-          transform: scale(1.07);
-        }
-      }
     }
     &::before {
       content: '';

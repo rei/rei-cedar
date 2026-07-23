@@ -46,7 +46,6 @@ import { CdrRating, CdrImg, CdrText, CdrLink } from '../../../../../lib';
 import ProductRecommendationPrice from './ProductRecommendationPrice.vue';
 import type { ProductRecommendationFrame, ProductRecommendationFrameClickPayload } from '..';
 
-import type { CdrFilmstripEventEmitter } from '../../../interfaces';
 import { CdrFilmstripEventKey } from '../../../../../types/symbols';
 
 const props = defineProps<ProductRecommendationFrame>();
@@ -54,19 +53,12 @@ const props = defineProps<ProductRecommendationFrame>();
 const formattedTitle = computed(() => props.name?.replace('&quot;', '"'));
 const imageSrc = computed(() => `https://rei.com/media/product/${props.id}?size=300`);
 
-const emitEvent = inject(CdrFilmstripEventKey) as CdrFilmstripEventEmitter;
-
-/**
- * Handles the click event on a frame, emitting a 'frameClick' event with the event details and the frame item.
- *
- * @param {Event} event - The click event that triggered this function.
- * @return {void}
- */
+const emitEvent = inject(CdrFilmstripEventKey);
 const onFrameClick = (event: Event) => {
   emitEvent?.('frameClick', {
     event,
     item: props,
-  } as ProductRecommendationFrameClickPayload);
+  } satisfies ProductRecommendationFrameClickPayload);
 };
 </script>
 
