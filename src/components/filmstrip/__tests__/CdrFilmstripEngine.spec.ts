@@ -8,14 +8,11 @@ const resizeObserver = vi.hoisted(() => ({
   callback: undefined as ((entries: ResizeObserverEntry[]) => void) | undefined,
   stop: vi.fn(),
 }));
-const hoverState = vi.hoisted(() => ({ value: true }));
 
 vi.mock('@vueuse/core', async () => {
   const actual = await vi.importActual('@vueuse/core');
-  const { ref: vueRef } = await vi.importActual<typeof import('vue')>('vue');
   return {
     ...actual,
-    useElementHover: () => vueRef(hoverState.value),
     useResizeObserver: (_target: unknown, callback: (entries: ResizeObserverEntry[]) => void) => {
       resizeObserver.callback = callback;
       return { stop: resizeObserver.stop };
@@ -35,7 +32,6 @@ describe('CdrFilmstripEngine.vue', () => {
   let wrapper: VueWrapper<any>;
 
   beforeEach(() => {
-    hoverState.value = true;
     wrapper = mount(CdrFilmstripEngine, {
       attachTo: document.body,
       props: {
@@ -276,8 +272,7 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]').exists()).toBe(false);
   });
 
-  it('keeps enabled arrows keyboard-focusable when the container is not hovered', () => {
-    hoverState.value = false;
+  it('keeps enabled arrows keyboard-focusable without JavaScript hover state', () => {
     wrapper = mount(CdrFilmstripEngine, {
       attachTo: document.body,
       props: {
