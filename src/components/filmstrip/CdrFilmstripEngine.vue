@@ -71,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule } from 'vue';
+import { computed, onMounted, onUnmounted, ref, useAttrs, useCssModule, watch } from 'vue';
 import type { Component } from 'vue';
 import { useResizeObserver, useElementHover, useDebounceFn } from '@vueuse/core';
 
@@ -151,6 +151,11 @@ const isContainerHovered = useElementHover(containerRef);
 const isProgrammaticScroll = ref(false);
 /** Last index that can begin a complete visible set. */
 const lastFrameStartIndex = computed(() => Math.max(props.frames.length - props.framesToShow, 0));
+
+watch([lastFrameStartIndex, () => props.frames.length], ([lastStartIndex, frameCount]) => {
+  currentIndex.value = Math.min(currentIndex.value, lastStartIndex);
+  focusIndex.value = Math.min(focusIndex.value, Math.max(frameCount - 1, 0));
+});
 
 /** Frame width after reserving gaps and the configured next-frame preview. */
 const frameWidth = computed(() => {

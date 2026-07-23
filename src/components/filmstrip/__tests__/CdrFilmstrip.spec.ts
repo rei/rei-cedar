@@ -101,6 +101,49 @@ describe('CdrFilmstrip.vue', () => {
     expect(engine.props('viewportTabindex')).toBe('0');
   });
 
+  it('updates adapter-owned layout when the model changes', async () => {
+    const adapter = (model: unknown): CdrFilmstripConfig => {
+      const { framesToScroll, framesToShow, useDefaultResizeStrategy } = model as {
+        framesToScroll: number;
+        framesToShow: number;
+        useDefaultResizeStrategy: boolean;
+      };
+
+      return {
+        component: h('div'),
+        description: 'Reactive filmstrip',
+        filmstripId: 'reactive-filmstrip',
+        frames: sampleFrames,
+        framesToScroll,
+        framesToShow,
+        useDefaultResizeStrategy,
+      };
+    };
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        adapter,
+        model: {
+          framesToScroll: 2,
+          framesToShow: 3,
+          useDefaultResizeStrategy: false,
+        },
+      },
+    });
+
+    await wrapper.setProps({
+      model: {
+        framesToScroll: 1,
+        framesToShow: 2,
+        useDefaultResizeStrategy: true,
+      },
+    });
+
+    const engine = wrapper.findComponent(CdrFilmstripEngine);
+    expect(engine.props('framesToShow')).toBe(2);
+    expect(engine.props('framesToScroll')).toBe(1);
+    expect(wrapper.vm.useDefaultResizeStrategy).toBe(true);
+  });
+
   // ✅ 3. Event Bubbling
   it('bubbles up ariaMessage event to the parent', async () => {
     const message = 'Now showing frames 1-3';

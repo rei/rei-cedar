@@ -131,6 +131,23 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(wrapper.vm.currentIndex).toBe(3);
   });
 
+  it('clamps navigation and focus indexes when the available range shrinks', async () => {
+    await wrapper.vm.onArrowClick(new Event('click'), 'right');
+    await wrapper.vm.onArrowClick(new Event('click'), 'right');
+    await wrapper.vm.onShiftFocus(new Event('keydown'), 'left');
+
+    expect(wrapper.vm.currentIndex).toBe(2);
+    expect(wrapper.vm.focusIndex).toBe(sampleFrames.length - 1);
+
+    await wrapper.setProps({
+      frames: sampleFrames.slice(0, 2),
+      framesToShow: 2,
+    });
+
+    expect(wrapper.vm.currentIndex).toBe(0);
+    expect(wrapper.vm.focusIndex).toBe(1);
+  });
+
   it('emits arrowClick event when arrow is clicked', async () => {
     const arrowEvent: CdrFilmstripArrowClickPayload = {
       event: new Event('click'),
