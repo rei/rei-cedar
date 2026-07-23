@@ -1,14 +1,23 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
-import { nextTick, ref } from 'vue';
+import { h, nextTick, ref } from 'vue';
 import type { CdrFilmstripArrowClickPayload } from '../interfaces';
+
+const resizeObserver = vi.hoisted(() => ({
+  callback: undefined as ((entries: ResizeObserverEntry[]) => void) | undefined,
+  stop: vi.fn(),
+}));
 
 vi.mock('@vueuse/core', async () => {
   const actual = await vi.importActual('@vueuse/core');
   return {
     ...actual,
-    useElementHover: () => ref(true), // Mock hover state as always true
+    useElementHover: () => ref(true),
+    useResizeObserver: (_target: unknown, callback: (entries: ResizeObserverEntry[]) => void) => {
+      resizeObserver.callback = callback;
+      return { stop: resizeObserver.stop };
+    },
   };
 });
 
@@ -25,26 +34,31 @@ describe('CdrFilmstripEngine.vue', () => {
 
   beforeEach(() => {
     wrapper = mount(CdrFilmstripEngine, {
+      attachTo: document.body,
       props: {
         frames: sampleFrames,
         framesToShow: 2,
         framesToScroll: 1,
         isShowingArrows: true,
       },
+      slots: {
+        frame: (slotProps: { index: number; tabindex: string; [key: string]: any }) =>
+          h('button', { tabindex: slotProps.tabindex }, slotProps.text),
+      } as any,
     });
 
-    // Mock `scrollBy()` on the viewport element
     const mockViewport = wrapper.vm.viewportRef?.viewportElement;
     if (mockViewport) {
-      mockViewport.scrollBy = vi.fn(); // Mock as a no-op function
+      mockViewport.scrollBy = vi.fn();
     }
   });
 
   afterEach(() => {
+    wrapper.unmount();
     vi.restoreAllMocks();
+    resizeObserver.stop.mockClear();
   });
 
-  // ✅ 1. Basic Rendering
   it('renders correctly with provided frames', async () => {
     await nextTick();
     expect(wrapper.find('.cdr-surface-scroll__viewport').exists()).toBe(true);
@@ -65,7 +79,6 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(wrapper.findAll('.cdr-filmstrip__frame')).toHaveLength(0);
   });
 
-  // ✅ 2. Arrow Navigation
   it('disables left arrow at the start and right arrow at the end', async () => {
     await wrapper.setProps({ isShowingArrows: true });
     await nextTick();
@@ -79,7 +92,6 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(leftArrow.attributes('disabled')).toBeDefined();
     expect(rightArrow.attributes('disabled')).toBeUndefined();
 
-    // Move to the last frame
     await wrapper.vm.onArrowClick(new Event('click'), 'right');
     await wrapper.vm.onArrowClick(new Event('click'), 'right');
     await wrapper.vm.onArrowClick(new Event('click'), 'right');
@@ -132,7 +144,6 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(wrapper.emitted('arrowClick')?.[0]).toEqual([arrowEvent]);
   });
 
-  // ✅ 3. Accessibility
   it('emits ariaMessage event when scrolling', async () => {
     await wrapper.vm.announceFrames();
     await nextTick();
@@ -150,12 +161,99 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(wrapper.emitted('ariaMessage')?.[0][0]).toContain('Showing');
   });
 
-  // ✅ 4. Responsive Behavior
-  it('updates frame width when resizing', async () => {
-    const initialWidth = wrapper.vm.frameWidth;
-    wrapper.vm.containerWidth = 800;
+  it('announces a single visible frame', async () => {
+    await wrapper.setProps({ framesToShow: 1 });
+
+    await wrapper.vm.announceFrames();
+    await wrapper.vm.handleFocusIn(new FocusEvent('focusin'));
+
+    expect(wrapper.emitted('ariaMessage')).toEqual([
+      ['Now showing frame 1 of 5'],
+      ['Showing frame 1 of 5. Use left and right arrow keys to navigate.'],
+    ]);
+  });
+
+  it('does not announce when focus moves within the filmstrip', async () => {
+    const container = wrapper.element as HTMLElement;
+    const child = container.querySelector('button');
+
+    await wrapper.vm.handleFocusIn({
+      currentTarget: container,
+      relatedTarget: child,
+    } as unknown as FocusEvent);
+
+    expect(wrapper.emitted('ariaMessage')).toBeUndefined();
+  });
+
+  it('moves focus between frames and wraps at each boundary', async () => {
+    const frameItems = wrapper.findAll('.cdr-filmstrip__frame');
+    const lastButton = frameItems.at(-1)?.find('button');
+
+    await frameItems[0].trigger('keydown', { key: 'ArrowLeft' });
+    expect(wrapper.vm.focusIndex).toBe(sampleFrames.length - 1);
+    expect(lastButton?.element).toBe(document.activeElement);
+
+    await frameItems.at(-1)?.trigger('keydown', { key: 'ArrowRight' });
+    expect(wrapper.vm.focusIndex).toBe(0);
+    expect(frameItems[0].find('button').element).toBe(document.activeElement);
+  });
+
+  it('emits manual scroll navigation and announces a changed frame', async () => {
+    wrapper.vm.containerWidth = 500;
     await nextTick();
 
-    expect(wrapper.vm.frameWidth).not.toBe(initialWidth);
+    const scrollTarget = document.createElement('div');
+    scrollTarget.scrollLeft = wrapper.vm.calculateScrollPosition(2);
+    const scrollEvent = { target: scrollTarget } as unknown as Event;
+
+    await wrapper.vm.debouncedHandleScroll(scrollEvent);
+    await wrapper.vm.announceFrames();
+
+    expect(wrapper.vm.currentIndex).toBe(2);
+    expect(wrapper.emitted('scrollNavigate')?.[0]).toEqual([
+      {
+        event: scrollEvent,
+        index: 2,
+      },
+    ]);
+    expect(wrapper.emitted('ariaMessage')?.at(-1)).toEqual(['Now showing frames 3 through 4 of 5']);
+  });
+
+  it('suppresses manual navigation events during programmatic scrolling', async () => {
+    const clickEvent = new Event('click');
+    await wrapper.vm.onArrowClick(clickEvent, 'right');
+
+    const scrollTarget = document.createElement('div');
+    scrollTarget.scrollLeft = wrapper.vm.calculateScrollPosition(1);
+    await wrapper.vm.debouncedHandleScroll({
+      target: scrollTarget,
+    } as unknown as Event);
+
+    expect(wrapper.emitted('scrollNavigate')).toBeUndefined();
+  });
+
+  it('hides default arrows when arrow navigation is disabled', async () => {
+    await wrapper.setProps({ isShowingArrows: false });
+
+    expect(wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]').exists()).toBe(false);
+    expect(wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]').exists()).toBe(false);
+  });
+
+  it('updates frame width when resizing', async () => {
+    resizeObserver.callback?.([
+      {
+        contentRect: { width: 800 },
+      } as ResizeObserverEntry,
+    ]);
+    await nextTick();
+
+    expect(wrapper.vm.containerWidth).toBe(800);
+    expect(wrapper.vm.frameWidth).toBeGreaterThan(0);
+  });
+
+  it('stops observing resize when unmounted', () => {
+    wrapper.unmount();
+
+    expect(resizeObserver.stop).toHaveBeenCalledOnce();
   });
 });

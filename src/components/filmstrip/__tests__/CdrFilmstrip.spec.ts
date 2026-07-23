@@ -2,7 +2,8 @@ import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import CdrFilmstrip from '../CdrFilmstrip.vue';
 import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
-import { h, nextTick } from 'vue';
+import { defineComponent, h, inject, nextTick } from 'vue';
+import { CdrFilmstripEventKey } from '../../../types/symbols';
 import type {
   CdrFilmstripFrame,
   CdrFilmstripConfig,
@@ -124,6 +125,61 @@ describe('CdrFilmstrip.vue', () => {
     expect(wrapper.emitted('arrowClick')?.[0]).toEqual([arrowEvent]);
   });
 
+  it('adds the model to scroll navigation events', async () => {
+    const model = { placement: 'homepage' };
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model,
+        adapter: mockAdapter,
+      },
+    });
+    const scrollEvent = {
+      event: new Event('scroll'),
+      index: 2,
+    };
+
+    await wrapper.findComponent(CdrFilmstripEngine).vm.$emit('scrollNavigate', scrollEvent);
+
+    expect(wrapper.emitted('scrollNavigate')?.[0]).toEqual([
+      {
+        ...scrollEvent,
+        model,
+      },
+    ]);
+  });
+
+  it('forwards custom events from frame descendants', async () => {
+    const FrameComponent = defineComponent({
+      setup() {
+        const emitFilmstripEvent = inject(CdrFilmstripEventKey);
+        return () =>
+          h(
+            'button',
+            {
+              onClick: (event: Event) => emitFilmstripEvent?.('frameClick', { event }),
+            },
+            'Frame',
+          );
+      },
+    });
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model: {},
+        adapter: () => ({
+          component: FrameComponent,
+          description: 'Custom event filmstrip',
+          filmstripId: 'custom-event',
+          frames: [{ key: 'frame', props: {} }],
+        }),
+      },
+    });
+
+    await wrapper.find('button').trigger('click');
+
+    expect(wrapper.emitted('frameClick')).toHaveLength(1);
+    expect(wrapper.emitted('frameClick')?.[0][0]).toHaveProperty('event');
+  });
+
   it('updates framesToShow based on window resize (default strategy)', async () => {
     setWindowWidth(1024); // Desktop
     window.dispatchEvent(new Event('resize'));
@@ -158,7 +214,7 @@ describe('CdrFilmstrip.vue', () => {
     expect(resizePayload.framesToScroll.value).toBe(Math.max(wrapper.vm.framesToShow - 1, 1));
   });
 
-  it('handles case when no adapter is provided', async () => {
+  it('does not render when the adapter returns no frames', async () => {
     wrapper = mount(CdrFilmstrip, {
       props: {
         model: {},
@@ -174,9 +230,38 @@ describe('CdrFilmstrip.vue', () => {
     await nextTick();
 
     expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
+  });
 
-    // ✅ Instead of checking <div>, check the `hasFilmstripFrames` computed value
-    expect(wrapper.vm.hasFilmstripFrames).toBe(false);
+  it('warns and renders nothing when no adapter is provided', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+
+    wrapper = mount(CdrFilmstrip);
+
+    expect(warn).toHaveBeenCalledWith('No adapter provided for CdrFilmstrip');
+    expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
+  });
+
+  it('preserves configured frame counts when default resizing is disabled', async () => {
+    setWindowWidth(400);
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model: {},
+        adapter: () => ({
+          component: h('div'),
+          description: 'Fixed layout filmstrip',
+          filmstripId: 'fixed-layout',
+          frames: sampleFrames,
+          framesToScroll: 2,
+          framesToShow: 3,
+          useDefaultResizeStrategy: false,
+        }),
+      },
+    });
+
+    await wrapper.vm.onResize();
+
+    expect(wrapper.vm.framesToShow).toBe(3);
+    expect(wrapper.vm.framesToScroll).toBe(2);
   });
 
   it('sets focusSelector correctly', async () => {
