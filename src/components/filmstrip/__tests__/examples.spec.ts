@@ -4,8 +4,10 @@ import { mount } from '@vue/test-utils';
 import { adapter as lifestyleAdapter } from '../examples/Lifestyle/adapter';
 import { onResize as resizeLifestyle } from '../examples/Lifestyle/handlers';
 import BasePicture from '../examples/Lifestyle/BasePicture.vue';
+import LifestyleFrame from '../examples/Lifestyle/LifestyleFrame.vue';
 import { adapter as productAdapter } from '../examples/ProductRecommendation/adapter';
 import type { ImageObject } from '../examples/Lifestyle';
+import { CdrFilmstripEventKey } from '../../../types/symbols';
 
 describe('filmstrip example adapters', () => {
   it('maps lifestyle frames and applies layout defaults', () => {
@@ -20,7 +22,7 @@ describe('filmstrip example adapters', () => {
       description: 'Lifestyle filmstrip',
       filmstripId: 'lifestyle',
       framesToShow: 4,
-      focusSelector: ':first-child a',
+      focusSelector: '[data-focus]',
     });
     expect(config.frames).toEqual([
       {
@@ -51,6 +53,27 @@ describe('filmstrip example adapters', () => {
     expect(lifestyleAdapter({ frames: null }).frames).toEqual([]);
     expect(productAdapter({ items: null }).frames).toEqual([]);
     expect(productAdapter({}).filmstripId).toBe('product-unknown');
+  });
+});
+
+describe('lifestyle frame focus', () => {
+  it('applies the managed tabindex to the primary action', () => {
+    const wrapper = mount(LifestyleFrame, {
+      props: {
+        cta: { target: '/camping', text: 'Shop camping' },
+        frameStyle: 'lifestyle-square',
+        media: { src: '/camping.jpg', alt: 'A campsite' },
+        tabindex: '0',
+      },
+      global: {
+        provide: {
+          [CdrFilmstripEventKey as symbol]: () => undefined,
+        },
+      },
+    });
+
+    expect(wrapper.attributes('tabindex')).toBeUndefined();
+    expect(wrapper.find('[data-focus]').attributes('tabindex')).toBe('0');
   });
 });
 

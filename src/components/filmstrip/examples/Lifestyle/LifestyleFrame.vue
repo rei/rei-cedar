@@ -30,7 +30,7 @@
           modifier="secondary"
           data-focus
           :size="buttonSize"
-          :tabindex="-1"
+          :tabindex="tabindex"
           @click.once.prevent="onFrameClick"
         >
           {{ cta.text }}
@@ -40,7 +40,7 @@
       <cdr-link
         v-if="isLifestyleSquare"
         :href="cta.target"
-        :tabindex="-1"
+        :tabindex="tabindex"
         modifier="standalone"
         class="lifestyle-frame__link"
         data-focus

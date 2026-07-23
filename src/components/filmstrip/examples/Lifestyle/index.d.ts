@@ -84,7 +84,7 @@ export interface Lifestyle {
 }
 
 /** Props received by the lifestyle frame component. */
-export type LifestyleFrameExtended = Lifestyle & LifestyleFrame;
+export type LifestyleFrameExtended = Lifestyle & LifestyleFrame & CdrFilmstripFrameFocusProps;
 
 /** Payload published by a lifestyle frame through `CdrFilmstripEventKey`. */
 export interface LifestyleFrameClickPayload {
@@ -93,3 +93,4 @@ export interface LifestyleFrameClickPayload {
   /** Lifestyle item represented by the activated frame. */
   item: LifestyleFrameExtended;
 }
+import type { CdrFilmstripFrameFocusProps } from '../../interfaces';

@@ -32,7 +32,7 @@ export const adapter: CdrFilmstripAdapter<LifestyleFrameExtended> = (modelData) 
     description: 'Lifestyle filmstrip',
     framesGap: parseInt(CdrSpaceThreeQuarterX, 10),
     framesToShow: framesVisible,
-    focusSelector: ':first-child a',
+    focusSelector: '[data-focus]',
   } satisfies CdrFilmstripConfig<LifestyleFrameExtended>;
 };
 
