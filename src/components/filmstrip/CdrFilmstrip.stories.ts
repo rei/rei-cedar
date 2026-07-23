@@ -30,7 +30,8 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'A lifestyle content rail composed with the Lifestyle adapter and frame component.',
+        story:
+          'A lifestyle content rail composed with the Lifestyle adapter, frame component, and a deterministic local placeholder image.',
       },
     },
   },
@@ -45,7 +46,7 @@ export const ProductRecommendations: Story = {
     docs: {
       description: {
         story:
-          'A product recommendation rail composed with a separate model, adapter, and frame component.',
+          'A product recommendation rail composed with a separate model, adapter, frame component, and local placeholder image.',
       },
     },
   },

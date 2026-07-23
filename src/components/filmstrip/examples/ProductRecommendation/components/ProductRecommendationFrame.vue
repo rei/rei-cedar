@@ -7,7 +7,7 @@
     <div class="product-recommendation__image-container">
       <CdrImg
         :src="imageSrc"
-        :alt="formattedTitle"
+        alt=""
         fit="contain"
         ratio="1/1"
         class="product-recommendation__image"
@@ -52,7 +52,7 @@ import { CdrFilmstripEventKey } from '../../../../../types/symbols';
 const props = defineProps<ProductRecommendationFrame>();
 
 const formattedTitle = computed(() => props.name?.replace('&quot;', '"'));
-const imageSrc = computed(() => `https://rei.com/media/product/${props.id}?size=300`);
+const imageSrc = './svg/storybook-landscape.svg';
 
 const emitEvent = inject(CdrFilmstripEventKey);
 /** Publishes the activated product through the injected filmstrip event channel. */
