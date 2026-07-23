@@ -13,6 +13,17 @@ export interface CdrFilmstripFrame<Props = Record<string, unknown>> {
   props: Props;
 }
 
+/**
+ * Focus state supplied to each frame by `CdrFilmstripEngine`.
+ *
+ * A frame applies this value to the same primary action selected by
+ * `focusSelector`.
+ */
+export interface CdrFilmstripFrameFocusProps {
+  /** Managed tab position for the frame's primary action. */
+  tabindex?: string;
+}
+
 /** Layout, navigation, and focus settings accepted by `CdrFilmstripEngine`. */
 export interface CdrFilmstripEngine {
   /** Root ID and prefix for IDs referenced by ARIA attributes. */
@@ -33,7 +44,7 @@ export interface CdrFilmstripEngine {
   framesGap?: number;
   /** Fraction of the next frame left visible as a visual cue. */
   frameExtra?: number;
-  /** Selector used to find the focus target inside each frame. */
+  /** Selector for the primary action that receives the managed frame tabindex. */
   focusSelector?: string;
   /** Tabindex applied to the scrollable viewport. */
   viewportTabindex?: string;
@@ -76,7 +87,7 @@ export interface CdrFilmstripConfig<T = Record<string, unknown>> {
   isShowingArrows?: boolean;
   /** Whether Cedar's breakpoint-based resize policy runs before the `resize` event. */
   useDefaultResizeStrategy?: boolean;
-  /** Selector used to find the focus target inside each frame. */
+  /** Selector for the primary action that receives the managed frame tabindex. */
   focusSelector?: string;
   /** Tabindex applied to the scrollable viewport. */
   viewportTabindex?: string;
