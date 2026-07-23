@@ -142,15 +142,15 @@
 }
 
 // Docs lists
-.sbdocs ul,
-.sbdocs ol {
+.sbdocs ul:not(.docs-story ul),
+.sbdocs ol:not(.docs-story ol) {
   @include cdr-text-body-400;
 
   color: $cdr-color-text-secondary;
   max-width: 50ch;
 }
 
-.sbdocs ul {
+.sbdocs ul:not(.docs-story ul) {
   list-style-type: '\2014';
   padding-left: $cdr-space-one-x;
 
