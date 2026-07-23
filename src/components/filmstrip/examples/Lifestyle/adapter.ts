@@ -9,12 +9,10 @@ import FrameComponent from './LifestyleFrame.vue';
  * The model selects the visual treatment and desktop frame count. The shared
  * engine remains responsible for navigation and focus.
  */
-export const adapter: CdrFilmstripAdapter<LifestyleFrameExtended> = (modelData) => {
-  const {
-    frames: frameItems = [],
-    frameStyle,
-    framesVisible = 4,
-  } = modelData as Partial<Lifestyle>;
+export const adapter: CdrFilmstripAdapter<LifestyleFrameExtended, Partial<Lifestyle>> = (
+  modelData,
+) => {
+  const { frames: frameItems = [], frameStyle, framesVisible = 4 } = modelData;
   const frames: CdrFilmstripFrame<LifestyleFrameExtended>[] = Array.isArray(frameItems)
     ? frameItems.map((frame, index) => ({
         key: `lifestyle-frame-${index}`,

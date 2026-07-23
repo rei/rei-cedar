@@ -51,11 +51,11 @@ export interface CdrFilmstripEngine {
 }
 
 /** Consumer-owned model and the adapter that translates it for the filmstrip. */
-export interface CdrFilmstrip<T> {
+export interface CdrFilmstrip<Model, FrameProps = Model> {
   /** Converts the source model into the engine's rendering contract. */
-  adapter: CdrFilmstripAdapter<T>;
+  adapter: CdrFilmstripAdapter<FrameProps, Model>;
   /** Source data passed to the adapter and included with emitted events. */
-  model: T;
+  model: Model;
 }
 
 /**
@@ -155,11 +155,13 @@ export interface CdrFilmstripEventEmitter {
 /**
  * Converts consumer-owned data into the shared filmstrip rendering contract.
  *
- * `T` describes the props passed to each frame component.
+ * `FrameProps` describes the props passed to each frame component. `Model`
+ * optionally describes the consumer-owned source data; it defaults to
+ * `unknown` so existing one-parameter adapter declarations remain compatible.
  *
  * @param modelData Consumer-owned model supplied to `CdrFilmstrip`.
  * @returns Frame rendering and layout settings for the shared engine.
  */
-export interface CdrFilmstripAdapter<T> {
-  (modelData: unknown): CdrFilmstripConfig<T>;
+export interface CdrFilmstripAdapter<FrameProps, Model = unknown> {
+  (modelData: Model): CdrFilmstripConfig<FrameProps>;
 }
