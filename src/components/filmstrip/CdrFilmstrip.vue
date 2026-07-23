@@ -32,7 +32,11 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+  generic="Model extends object = Record<string, unknown>, FrameProps = Model"
+>
 import CdrFilmstripEngine from './CdrFilmstripEngine.vue';
 import { useResizeObserver, useDebounceFn } from '@vueuse/core';
 import type {
@@ -63,10 +67,10 @@ defineSlots<{
   'heading'(props: Record<string, never>): any;
 }>();
 
-const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
-  model: (): Record<string, unknown> => ({}),
+const props = withDefaults(defineProps<CdrFilmstrip<Model, FrameProps>>(), {
+  model: (): Model => ({}) as Model,
 
-  adapter: (): CdrFilmstripConfig<Record<string, unknown>> => {
+  adapter: (): CdrFilmstripConfig<FrameProps> => {
     console.warn(`No adapter provided for CdrFilmstrip`);
     return {
       frames: [],
@@ -118,7 +122,7 @@ provide(CdrFilmstripEventKey, emit);
 const CdrFilmstripContainer = ref<HTMLElement | null>(null);
 const FRAMES_TO_SHOW_DEFAULT = 6;
 const filmstripUniqueId = useId();
-const filmstripConfig = computed<CdrFilmstripConfig<unknown>>(() => props.adapter(props.model));
+const filmstripConfig = computed<CdrFilmstripConfig<FrameProps>>(() => props.adapter(props.model));
 /** Mutable layout values initialized from the adapter and updated on resize. */
 const framesToShow = ref(filmstripConfig.value.framesToShow ?? FRAMES_TO_SHOW_DEFAULT);
 const framesToScroll = ref(filmstripConfig.value.framesToScroll ?? framesToShow.value);

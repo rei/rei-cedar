@@ -23,8 +23,9 @@ import ProductRecommendationModel from './mock.json';
 import { ref } from 'vue';
 import { onFrameClick, onArrowClick, onScrollNavigate } from './handlers';
 import ProductRecommendationAdapter from './adapter';
+import type { ProductRecommendation } from '.';
 
-const ProductRecommendationModelData = ProductRecommendationModel as Record<string, unknown>;
+const ProductRecommendationModelData = ProductRecommendationModel as Partial<ProductRecommendation>;
 const announcement = ref('');
 
 /** Connects engine status messages to the example's polite live region. */

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, expectTypeOf, it } from 'vitest';
 import { ref } from 'vue';
 import { mount } from '@vue/test-utils';
 import { adapter as lifestyleAdapter } from '../examples/Lifestyle/adapter';
@@ -6,10 +6,16 @@ import { onResize as resizeLifestyle } from '../examples/Lifestyle/handlers';
 import BasePicture from '../examples/Lifestyle/BasePicture.vue';
 import LifestyleFrame from '../examples/Lifestyle/LifestyleFrame.vue';
 import { adapter as productAdapter } from '../examples/ProductRecommendation/adapter';
-import type { ImageObject } from '../examples/Lifestyle';
+import type { ImageObject, Lifestyle } from '../examples/Lifestyle';
+import type { ProductRecommendation } from '../examples/ProductRecommendation';
 import { CdrFilmstripEventKey } from '../../../types/symbols';
 
 describe('filmstrip example adapters', () => {
+  it('types source models separately from frame props', () => {
+    expectTypeOf(lifestyleAdapter).parameter(0).toEqualTypeOf<Partial<Lifestyle>>();
+    expectTypeOf(productAdapter).parameter(0).toEqualTypeOf<Partial<ProductRecommendation>>();
+  });
+
   it('maps lifestyle frames and applies layout defaults', () => {
     const frame = {
       cta: { target: '/camping', text: 'Shop camping' },
@@ -33,7 +39,23 @@ describe('filmstrip example adapters', () => {
   });
 
   it('maps product frames and placement metadata', () => {
-    const item = { id: '123', name: 'Tent' };
+    const item = {
+      analyticsConfig: {
+        linkName: 'Tent',
+        location: 'homepage',
+        products: '123',
+        rrMessage: 'Recommended',
+        rrPlacementName: 'homepage',
+        rrStrategy: 'similar',
+      },
+      brand: 'REI Co-op',
+      href: '/product/123',
+      id: '123',
+      name: 'Tent',
+      price: { base: 199, isRange: false },
+      rating: { average: 4.5, count: 10 },
+      rrClickUrl: '/track/123',
+    };
 
     const config = productAdapter({
       items: [item],
@@ -50,8 +72,12 @@ describe('filmstrip example adapters', () => {
   });
 
   it('uses safe defaults for invalid frame collections', () => {
-    expect(lifestyleAdapter({ frames: null }).frames).toEqual([]);
-    expect(productAdapter({ items: null }).frames).toEqual([]);
+    expect(lifestyleAdapter({ frames: null as unknown as Lifestyle['frames'] }).frames).toEqual([]);
+    expect(
+      productAdapter({
+        items: null as unknown as ProductRecommendation['items'],
+      }).frames,
+    ).toEqual([]);
     expect(productAdapter({}).filmstripId).toBe('product-unknown');
   });
 });

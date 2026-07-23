@@ -8,8 +8,11 @@ import type { ProductRecommendation, ProductRecommendationFrame } from '.';
  * Product cards receive recommendation items unchanged. The placement name is
  * retained on the container for analytics and debugging.
  */
-export const adapter: CdrFilmstripAdapter<ProductRecommendationFrame> = (modelData) => {
-  const { items = [], placementName } = modelData as Partial<ProductRecommendation>;
+export const adapter: CdrFilmstripAdapter<
+  ProductRecommendationFrame,
+  Partial<ProductRecommendation>
+> = (modelData) => {
+  const { items = [], placementName } = modelData;
   const filmstripId = `product-${placementName || 'unknown'}`;
   const frames: CdrFilmstripFrame<ProductRecommendationFrame>[] = Array.isArray(items)
     ? items.map((item, index) => ({
