@@ -43,7 +43,7 @@ import type {
   CdrFilmstrip,
   CdrFilmstripScrollPayload,
 } from './interfaces';
-import { computed, h, provide, ref, useAttrs, useId } from 'vue';
+import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
 import { CdrFilmstripEventKey } from '../../types/symbols';
 
 /**
@@ -129,10 +129,17 @@ const description = computed(() => filmstripConfig.value.description);
 const framesGap = computed(() => filmstripConfig.value.framesGap ?? 0);
 const frameExtra = computed(() => filmstripConfig.value.frameExtra ?? 0.25);
 const isShowingArrows = computed(() => filmstripConfig.value.isShowingArrows ?? true);
-const useDefaultResizeStrategy = filmstripConfig.value.useDefaultResizeStrategy ?? false;
+const useDefaultResizeStrategy = computed(
+  () => filmstripConfig.value.useDefaultResizeStrategy ?? false,
+);
 const focusSelector = computed(() => filmstripConfig.value.focusSelector ?? ':first-child');
 const viewportTabindex = computed(() => filmstripConfig.value.viewportTabindex ?? '-1');
 const dataAttributes = computed(() => filmstripConfig.value.dataAttributes ?? {});
+
+watch(filmstripConfig, (config) => {
+  framesToShow.value = config.framesToShow ?? FRAMES_TO_SHOW_DEFAULT;
+  framesToScroll.value = config.framesToScroll ?? framesToShow.value;
+});
 
 function onArrowClick({ event, direction }: CdrFilmstripArrowClickPayload) {
   emit('arrowClick', {
@@ -162,7 +169,7 @@ function defaultResizeStrategy() {
  * `resize` handler can override the resulting frame counts.
  */
 const onResize = useDebounceFn(() => {
-  if (useDefaultResizeStrategy) {
+  if (useDefaultResizeStrategy.value) {
     defaultResizeStrategy();
   }
 
