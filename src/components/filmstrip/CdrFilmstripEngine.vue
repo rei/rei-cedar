@@ -54,7 +54,7 @@
         :on-click="(e: Event) => onArrowClick(e, direction)"
       >
         <CdrButton
-          v-if="isContainerHovered && props.isShowingArrows"
+          v-if="props.isShowingArrows"
           :key="direction"
           :icon-only="true"
           :with-background="true"
@@ -191,6 +191,7 @@ const arrows = computed<CdrFilmstripArrow[]>(() =>
             `${BASE_CLASS}__arrow`,
             `${BASE_CLASS}__arrow--${direction}`,
             isEnabled ? '' : `${BASE_CLASS}__arrow--disabled`,
+            isContainerHovered.value ? `${BASE_CLASS}__arrow--visible` : '',
           ),
           classAttr ? `${classAttr}__arrow` : null,
           classAttr ? `${classAttr}__arrow--${direction}` : null,

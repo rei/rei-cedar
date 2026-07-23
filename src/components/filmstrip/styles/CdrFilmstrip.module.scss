@@ -48,7 +48,8 @@ $prominence-03:
     --button-half: #{tokens.$cdr-space-one-and-a-half-x};
 
     box-shadow: $prominence-02;
-    pointer-events: all;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
     top: var(
       --cdr-filmstrip-arrow-top,
@@ -63,8 +64,10 @@ $prominence-03:
         $prominence-02;
     }
 
-    @include tokens.cdr-sm-mq-down {
-      display: none;
+    &--visible,
+    &:focus {
+      opacity: 1;
+      pointer-events: all;
     }
 
     &--left {

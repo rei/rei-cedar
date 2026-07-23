@@ -1,19 +1,21 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
-import { h, nextTick, ref } from 'vue';
+import { h, nextTick } from 'vue';
 import type { CdrFilmstripArrowClickPayload } from '../interfaces';
 
 const resizeObserver = vi.hoisted(() => ({
   callback: undefined as ((entries: ResizeObserverEntry[]) => void) | undefined,
   stop: vi.fn(),
 }));
+const hoverState = vi.hoisted(() => ({ value: true }));
 
 vi.mock('@vueuse/core', async () => {
   const actual = await vi.importActual('@vueuse/core');
+  const { ref: vueRef } = await vi.importActual<typeof import('vue')>('vue');
   return {
     ...actual,
-    useElementHover: () => ref(true),
+    useElementHover: () => vueRef(hoverState.value),
     useResizeObserver: (_target: unknown, callback: (entries: ResizeObserverEntry[]) => void) => {
       resizeObserver.callback = callback;
       return { stop: resizeObserver.stop };
@@ -33,6 +35,7 @@ describe('CdrFilmstripEngine.vue', () => {
   let wrapper: VueWrapper<any>;
 
   beforeEach(() => {
+    hoverState.value = true;
     wrapper = mount(CdrFilmstripEngine, {
       attachTo: document.body,
       props: {
@@ -271,6 +274,24 @@ describe('CdrFilmstripEngine.vue', () => {
 
     expect(wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]').exists()).toBe(false);
     expect(wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]').exists()).toBe(false);
+  });
+
+  it('keeps enabled arrows keyboard-focusable when the container is not hovered', () => {
+    hoverState.value = false;
+    wrapper = mount(CdrFilmstripEngine, {
+      attachTo: document.body,
+      props: {
+        frames: sampleFrames,
+        framesToShow: 2,
+        isShowingArrows: true,
+      },
+    });
+
+    const rightArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]');
+    (rightArrow.element as HTMLElement).focus();
+
+    expect(rightArrow.exists()).toBe(true);
+    expect(rightArrow.element).toBe(document.activeElement);
   });
 
   it('updates frame width when resizing', async () => {
