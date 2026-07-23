@@ -25,9 +25,13 @@ describe('CdrFilmstrip.vue', () => {
       filmstripId: 'test-filmstrip',
       component: h('div'),
       description: 'Test filmstrip description',
+      frameExtra: 0.5,
       framesGap: 10,
+      framesToScroll: 2,
       framesToShow: 3,
+      isShowingArrows: false,
       useDefaultResizeStrategy: true,
+      viewportTabindex: '0',
     }),
   );
 
@@ -88,8 +92,12 @@ describe('CdrFilmstrip.vue', () => {
 
     expect(engine.props('id')).toMatch(/^test-filmstrip/);
     expect(engine.props('description')).toBe('Test filmstrip description');
+    expect(engine.props('frameExtra')).toBe(0.5);
     expect(engine.props('framesGap')).toBe(10);
+    expect(engine.props('framesToScroll')).toBe(2);
     expect(engine.props('framesToShow')).toBe(3);
+    expect(engine.props('isShowingArrows')).toBe(false);
+    expect(engine.props('viewportTabindex')).toBe('0');
   });
 
   // ✅ 3. Event Bubbling

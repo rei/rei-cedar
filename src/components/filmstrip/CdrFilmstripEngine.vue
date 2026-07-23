@@ -162,6 +162,9 @@ const isContainerHovered = useElementHover(containerRef);
 // Flag to track if scroll is programmatic to avoid emitting events unnecessarily
 const isProgrammaticScroll = ref(false);
 
+// Last frame index that can begin a complete visible set
+const lastFrameStartIndex = computed(() => Math.max(props.frames.length - props.framesToShow, 0));
+
 /**
  * Calculates the width of each frame based on the container's width,
  * the gap between frames, and any extra width defined.
@@ -196,7 +199,7 @@ const computedCSSVars = computed(() => ({
  */
 const arrows = computed(() => {
   const isAtLeftBoundary = currentIndex.value === 0;
-  const isAtRightBoundary = currentIndex.value >= props.frames.length - props.framesToShow;
+  const isAtRightBoundary = currentIndex.value >= lastFrameStartIndex.value;
 
   return ['left', 'right'].map((direction) => {
     const isEnabled = direction === 'left' ? !isAtLeftBoundary : !isAtRightBoundary;
@@ -268,7 +271,7 @@ const onArrowClick = (event: Event, direction: 'left' | 'right'): void => {
   const delta = direction === 'left' ? -props.framesToScroll : props.framesToScroll;
   const proposedIndex = currentIndex.value + delta;
 
-  currentIndex.value = Math.max(0, Math.min(proposedIndex, props.frames.length - 1));
+  currentIndex.value = Math.max(0, Math.min(proposedIndex, lastFrameStartIndex.value));
   isProgrammaticScroll.value = true;
   scrollToIndex(currentIndex.value);
 };
@@ -364,11 +367,11 @@ function onShiftFocus(e: Event, direction: string): void {
 const debouncedHandleScroll = useDebounceFn((e: Event): void => {
   const scrollLeft = (e.target as HTMLElement).scrollLeft;
   const positions = props.frames.map((_, index) => calculateScrollPosition(index));
-  const closestIndex = positions.findIndex(
-    (pos) =>
-      Math.abs(pos - scrollLeft) ===
-      Math.min(...positions.map((pos) => Math.abs(pos - scrollLeft))),
-  );
+  const closestIndex = positions.reduce((nearestIndex, position, index) => {
+    const nearestDistance = Math.abs(positions[nearestIndex] - scrollLeft);
+    const currentDistance = Math.abs(position - scrollLeft);
+    return currentDistance < nearestDistance ? index : nearestIndex;
+  }, 0);
 
   if (closestIndex !== currentIndex.value) {
     currentIndex.value = closestIndex;

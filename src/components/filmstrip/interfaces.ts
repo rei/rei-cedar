@@ -57,10 +57,14 @@ export interface CdrFilmstrip<T> {
  * @property {string} filmstripId - Unique ID for the filmstrip instance.
  * @property {string} description - Textual description for screen readers.
  * @property {Record<string, unknown>} [dataAttributes] - Optional HTML data attributes.
+ * @property {number} [frameExtra] - Fraction of an additional frame visible in the viewport.
  * @property {number} [framesGap] - Pixel gap between frames.
+ * @property {number} [framesToScroll] - Count of frames advanced by arrow navigation.
  * @property {number} [framesToShow] - Count of visible frames.
+ * @property {boolean} [isShowingArrows] - Whether navigation arrows are rendered.
  * @property {boolean} [useDefaultResizeStrategy] - Whether to auto-resize based on container.
  * @property {string} [focusSelector] - CSS selector for focus management.
+ * @property {string} [viewportTabindex] - Tabindex value for the scroll viewport.
  */
 export interface CdrFilmstripConfig<T = Record<string, unknown>> {
   component: Component;
@@ -68,10 +72,14 @@ export interface CdrFilmstripConfig<T = Record<string, unknown>> {
   filmstripId: string;
   description: string;
   dataAttributes?: Record<string, unknown>;
+  frameExtra?: number;
   framesGap?: number;
+  framesToScroll?: number;
   framesToShow?: number;
+  isShowingArrows?: boolean;
   useDefaultResizeStrategy?: boolean;
   focusSelector?: string;
+  viewportTabindex?: string;
 }
 
 /**
