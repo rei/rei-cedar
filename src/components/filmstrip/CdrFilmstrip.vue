@@ -39,7 +39,6 @@ import type {
   CdrFilmstripFrame,
   CdrFilmstripArrowClickPayload,
   CdrFilmstripResizePayload,
-  CdrFilmstripEventEmitter,
   CdrFilmstripConfig,
   CdrFilmstrip,
   CdrFilmstripScrollPayload,
@@ -119,201 +118,62 @@ const emit = defineEmits<{
   (e: string, payload?: unknown): void;
 }>();
 
-/**
- * Provides a centralized event emitter function for the filmstrip and its frames.
- * This enables child components to dispatch events upward.
- *
- * @param {string} eventName - The name of the event to emit.
- * @param {unknown} payload - The data payload to emit with the event.
- */
-const emitEvent: CdrFilmstripEventEmitter = (eventName, payload) => {
-  emit(eventName, payload);
-};
-
 const attrs = useAttrs();
-/**
- * Extracts the class attribute from the component's attributes.
- * This class is applied to the CdrFilmstripEngine for styling purposes.
- */
 const classAttr = attrs.class || '';
 
-/**
- * Provides the event emitter function to child components via dependency injection.
- * This allows descendant components to trigger events on the filmstrip component.
- */
-provide(CdrFilmstripEventKey, emitEvent);
+provide(CdrFilmstripEventKey, emit);
 
-// Reference to the filmstrip container element.
 const CdrFilmstripContainer = ref<HTMLElement | null>(null);
 const FRAMES_TO_SHOW_DEFAULT = 6;
-
-/**
- * Unique ID suffix generated at setup scope (useId must not be called inside computed).
- */
 const filmstripUniqueId = useId();
-
-/**
- * Resolves and transforms the filmstrip model.
- * The adapter function is applied to the model to obtain a consistent filmstrip configuration.
- *
- * @returns {CdrFilmstripConfig<unknown>} The transformed filmstrip configuration.
- */
 const filmstripConfig = computed<CdrFilmstripConfig<unknown>>(() => props.adapter(props.model));
-
-/**
- * Number of frames to display at a time.
- * Defaults to FRAMES_TO_SHOW_DEFAULT if the adapter does not specify a value.
- *
- * @default FRAMES_TO_SHOW_DEFAULT
- */
-const framesToShow = ref<number>(filmstripConfig?.value?.framesToShow ?? FRAMES_TO_SHOW_DEFAULT);
-
-/**
- * Number of frames to scroll at a time.
- * Typically matches the number of frames displayed unless overridden.
- */
-const framesToScroll = ref<number>(filmstripConfig.value.framesToScroll ?? framesToShow.value);
-
-/**
- * Extracts frames from the resolved filmstrip model.
- *
- * @returns {CdrFilmstripFrame<never>[]} An array of frames to be rendered by the filmstrip engine.
- */
+const framesToShow = ref(filmstripConfig.value.framesToShow ?? FRAMES_TO_SHOW_DEFAULT);
+const framesToScroll = ref(filmstripConfig.value.framesToScroll ?? framesToShow.value);
 const frames = computed(() => filmstripConfig.value.frames as CdrFilmstripFrame<never>[]);
-
-/**
- * Checks if the filmstrip has any frames to display.
- *
- * @returns {boolean} True if there is at least one frame, false otherwise.
- */
 const hasFilmstripFrames = computed(() => frames.value.length > 0);
-
-/**
- * Retrieves filmstrip metadata and generates a unique filmstrip ID.
- * The unique ID is used for accessibility and to prevent DOM conflicts.
- *
- * @returns {string} A unique identifier for the filmstrip.
- */
 const filmstripId = computed(() => `${filmstripConfig.value.filmstripId}-${filmstripUniqueId}`);
-
-/**
- * Retrieves the description for the filmstrip.
- * This description is used to provide context for screen readers.
- *
- * @returns {string} The filmstrip's description.
- */
 const description = computed(() => filmstripConfig.value.description);
-
-/**
- * Retrieves the gap between frames as defined in the filmstrip configuration.
- *
- * @returns {number} The gap (in pixels) between individual frames.
- */
-const framesGap = computed(() => filmstripConfig?.value?.framesGap || 0);
-
-/**
- * Fraction of an additional frame visible in the viewport.
- */
+const framesGap = computed(() => filmstripConfig.value.framesGap ?? 0);
 const frameExtra = computed(() => filmstripConfig.value.frameExtra ?? 0.25);
-
-/**
- * Determines whether navigation arrows are rendered.
- */
 const isShowingArrows = computed(() => filmstripConfig.value.isShowingArrows ?? true);
-
-/**
- * Determines if the filmstrip should use the default resize strategy.
- * This flag controls whether the component automatically adjusts the number
- * of frames displayed based on the window size.
- *
- * @returns {boolean} True if the default resize strategy is enabled, false otherwise.
- */
-const useDefaultResizeStrategy = ref<boolean>(
-  typeof filmstripConfig?.value?.useDefaultResizeStrategy === 'boolean'
-    ? filmstripConfig.value.useDefaultResizeStrategy
-    : false,
-);
-
-/**
- * Retrieves the focus selector for the filmstrip.
- * This selector determines which element within a frame should receive focus for accessibility.
- *
- * @returns {string} The CSS selector for the focusable element.
- */
-const focusSelector = computed(() => filmstripConfig?.value?.focusSelector || ':first-child');
-
-/**
- * Tabindex value applied to the scroll viewport.
- */
+const useDefaultResizeStrategy = filmstripConfig.value.useDefaultResizeStrategy ?? false;
+const focusSelector = computed(() => filmstripConfig.value.focusSelector ?? ':first-child');
 const viewportTabindex = computed(() => filmstripConfig.value.viewportTabindex ?? '-1');
+const dataAttributes = computed(() => filmstripConfig.value.dataAttributes ?? {});
 
-/**
- * Retrieves additional data attributes for the filmstrip container.
- *
- * @returns {Record<string, unknown>} An object containing data attributes to be applied to the container.
- */
-const dataAttributes = computed(() => filmstripConfig.value?.dataAttributes || {});
-
-/**
- * Handles arrow click events for navigating through the filmstrip.
- * Constructs an arrow click payload and emits the 'arrowClick' event.
- *
- * @param {CdrFilmstripArrowClickPayload} param0 - The arrow click event payload.
- */
 function onArrowClick({ event, direction }: CdrFilmstripArrowClickPayload) {
-  const arrowClickPayload: CdrFilmstripArrowClickPayload = {
+  emit('arrowClick', {
     event,
     direction,
     model: props.model as Record<string, unknown>,
-  };
-  emit('arrowClick', arrowClickPayload);
+  });
 }
 
-/**
- * Handles scroll navigation events in the filmstrip.
- * Constructs a scroll payload and emits the 'scrollNavigate' event.
- *
- * @param {CdrFilmstripScrollPayload} param0 - The scroll event payload.
- */
 function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
-  const scrollPayload: CdrFilmstripScrollPayload = {
+  emit('scrollNavigate', {
     event,
     index,
     model: props.model as Record<string, unknown>,
-  };
-  emit('scrollNavigate', scrollPayload);
+  });
 }
 
-/**
- * Updates the number of frames displayed based on the current screen width.
- * This function implements a default resize strategy in the absence of a custom strategy.
- */
 function defaultResizeStrategy() {
   const screenWidth = window.innerWidth;
   framesToShow.value = screenWidth >= 1024 ? 5 : screenWidth >= 768 ? 4 : 2;
   framesToScroll.value = Math.max(framesToShow.value - 1, 1);
 }
 
-/**
- * Handles window resize events and updates the filmstrip layout accordingly.
- * The resize handling is debounced to improve performance.
- */
 const onResize = useDebounceFn(() => {
-  const resizePayload: CdrFilmstripResizePayload = {
-    model: props.model as Record<string, unknown>,
-    framesToShow: framesToShow,
-    framesToScroll: framesToScroll,
-  };
-  emit('resize', resizePayload);
-  if (useDefaultResizeStrategy.value) {
+  if (useDefaultResizeStrategy) {
     defaultResizeStrategy();
   }
+
+  emit('resize', {
+    model: props.model as Record<string, unknown>,
+    framesToShow,
+    framesToScroll,
+  } satisfies CdrFilmstripResizePayload);
 }, 25);
 
-/**
- * Sets up a resize observer on the filmstrip container element.
- * Called at setup scope so only one observer is ever created and VueUse
- * handles cleanup via its own onUnmounted hook (no watch accumulation).
- */
 useResizeObserver(CdrFilmstripContainer, onResize);
 </script>
