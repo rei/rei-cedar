@@ -43,7 +43,6 @@ import type {
   CdrFilmstripConfig,
   CdrFilmstrip,
   CdrFilmstripScrollPayload,
-  CdrFilmstripAdapter,
 } from './interfaces';
 import { computed, h, provide, ref, useAttrs, useId } from 'vue';
 import { CdrFilmstripEventKey } from '../../types/symbols';
@@ -54,6 +53,11 @@ import { CdrFilmstripEventKey } from '../../types/symbols';
  * @uses CdrFilmstripEngine
  */
 defineOptions({ name: 'CdrFilmstrip' });
+
+defineSlots<{
+  /** Optional injection of a heading element for the filmstrip */
+  'heading'(props: Record<string, never>): any;
+}>();
 
 const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
   /**
@@ -70,22 +74,15 @@ const props = withDefaults(defineProps<CdrFilmstrip<unknown>>(), {
    *
    * @param {Record<string, unknown>} modelData - The raw model data passed to the adapter.
    * @returns {CdrFilmstripConfig<Record<string, unknown>>} A valid empty configuration for the filmstrip.
-   * @default defaultAdapter
+   * @default empty filmstrip adapter
    */
-  adapter: (): CdrFilmstripAdapter<Record<string, unknown>> => {
-    return (): CdrFilmstripConfig<Record<string, unknown>> => {
-      console.warn(`No adapter provided for CdrFilmstrip`);
-
-      defineSlots<{
-        /** Optional injection of a heading element for the filmstrip */
-        'heading'(props: Record<string, never>): any;
-      }>();
-      return {
-        frames: [],
-        filmstripId: 'empty-filmstrip',
-        component: h('div'),
-        description: 'An empty filmstrip',
-      };
+  adapter: (): CdrFilmstripConfig<Record<string, unknown>> => {
+    console.warn(`No adapter provided for CdrFilmstrip`);
+    return {
+      frames: [],
+      filmstripId: 'empty-filmstrip',
+      component: h('div'),
+      description: 'An empty filmstrip',
     };
   },
 });
