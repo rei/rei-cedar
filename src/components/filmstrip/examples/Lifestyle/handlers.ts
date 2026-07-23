@@ -2,12 +2,6 @@ import type { CdrFilmstripArrowClickPayload, CdrFilmstripResizePayload } from '.
 import type { Lifestyle, LifestyleFrameClickPayload } from '.';
 import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens/tokens';
 
-/**
- * Handles frame click events in the filmstrip and logs analytics data.
- *
- * @param {unknown} payload - The event payload containing details about the clicked frame.
- * @return {void}
- */
 export function onFrameClick(payload: unknown): void {
   const { event, item } = payload as LifestyleFrameClickPayload;
 
@@ -19,13 +13,6 @@ export function onFrameClick(payload: unknown): void {
   console.log('onFrameClick', { event, item, analytics });
 }
 
-/**
- * Handles arrow click events in the filmstrip.
- * Determines scroll direction and formats analytics tracking data.
- *
- * @param {unknown} payload - The event payload containing navigation details.
- * @return {void}
- */
 export function onArrowClick(payload: unknown): void {
   const { direction, event, model = {} } = payload as CdrFilmstripArrowClickPayload;
   const { framesVisible, frameStyle } = model as Partial<Lifestyle>;
@@ -33,7 +20,7 @@ export function onArrowClick(payload: unknown): void {
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';
   const scrollValue = `scroll-${direction}`;
   const analytics = {
-    [scrollDirection]: scrollValue, // Scroll direction tracking key
+    [scrollDirection]: scrollValue,
     framesVisible,
     frameStyle,
   };
@@ -41,15 +28,6 @@ export function onArrowClick(payload: unknown): void {
   console.log('onArrowClick', { event, direction, analytics });
 }
 
-/**
- * Handles window resize events and updates the filmstrip's
- * internal state for `framesToShow` and `framesToScroll` based
- * on the current window size.
- *
- * @param {unknown} payload - The event payload containing
- *   information about the filmstrip's config and model.
- * @return {void}
- */
 export function onResize(payload: unknown): void {
   const { framesToScroll, framesToShow, model = {} } = payload as CdrFilmstripResizePayload;
   const { framesVisible = 3 } = model as Partial<Lifestyle>;

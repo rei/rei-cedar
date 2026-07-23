@@ -69,9 +69,7 @@ export interface Lifestyle {
   frames?: LifestyleFrame[];
 }
 
-export interface LifestyleFrameExtended extends Lifestyle, LifestyleFrame {
-  lastFrame?: boolean;
-}
+export type LifestyleFrameExtended = Lifestyle & LifestyleFrame;
 
 export interface LifestyleFrameClickPayload {
   /** The event triggered by the frame click. */
