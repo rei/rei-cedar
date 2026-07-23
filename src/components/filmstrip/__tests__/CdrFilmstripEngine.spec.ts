@@ -102,6 +102,23 @@ describe('CdrFilmstripEngine.vue', () => {
     expect(rightArrow.attributes('disabled')).toBeDefined();
   });
 
+  it('adds the consumer disabled modifier to disabled arrows', () => {
+    wrapper = mount(CdrFilmstripEngine, {
+      attrs: {
+        class: 'custom-filmstrip',
+      },
+      props: {
+        frames: sampleFrames,
+        framesToShow: 2,
+        isShowingArrows: true,
+      },
+    });
+
+    const leftArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]');
+
+    expect(leftArrow.classes()).toContain('custom-filmstrip__arrow--disabled');
+  });
+
   it('moves to the next and previous set of frames when clicking arrows', async () => {
     const rightArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--right"]');
     const leftArrow = wrapper.find('[data-ui="cdr-filmstrip__arrow--left"]');
