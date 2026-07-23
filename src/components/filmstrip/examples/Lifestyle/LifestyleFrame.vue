@@ -67,6 +67,7 @@ import { computed, inject } from 'vue';
 
 const isMedia = (media: Media | LegacyMedia): media is Media => 'images' in media;
 
+/** Props produced by the lifestyle adapter for one frame. */
 const props = withDefaults(defineProps<LifestyleFrameExtended>(), {
   cta: () => ({}) as Cta,
   media: () => ({}) as Media | LegacyMedia,
@@ -81,6 +82,7 @@ const buttonSize = computed(() =>
 );
 const images = computed(() => (props.media as Media).images);
 const emitEvent = inject(CdrFilmstripEventKey);
+/** Publishes a frame-specific event without coupling the frame to its wrapper. */
 const onFrameClick = (event: Event) => {
   emitEvent?.('frameClick', {
     event,

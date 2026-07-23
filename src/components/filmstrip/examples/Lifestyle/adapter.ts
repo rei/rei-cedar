@@ -3,6 +3,12 @@ import type { Lifestyle, LifestyleFrameExtended } from '.';
 import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from '../../interfaces';
 import FrameComponent from './LifestyleFrame.vue';
 
+/**
+ * Maps the lifestyle example model to frame props and layout settings.
+ *
+ * The model selects the visual treatment and desktop frame count. The shared
+ * engine remains responsible for navigation and focus.
+ */
 export const adapter: CdrFilmstripAdapter<LifestyleFrameExtended> = (modelData) => {
   const {
     frames: frameItems = [],
