@@ -5,7 +5,7 @@ import { useStar } from '../composables/useStar';
 
 const props = defineProps({
   size: sizeProps,
-})
+});
 const { style, sizeClass } = useStar(props.size);
 </script>
 

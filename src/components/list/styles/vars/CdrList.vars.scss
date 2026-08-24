@@ -1,11 +1,11 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-list-base-mixin() {
   list-style-type: none;
   padding: 0;
   margin: 0;
 
-  & > li + li {
+  > li + li {
     margin-top: tokens.$cdr-space-half-x;
   }
 }
@@ -17,7 +17,7 @@
 }
 
 @mixin cdr-list-compact-mixin() {
-  & > li + li {
+  > li + li {
     margin-top: tokens.$cdr-space-quarter-x;
   }
 }
@@ -31,7 +31,7 @@
   padding-left: 1.5em;
   list-style-position: outside;
 
-  & li {
+  li {
     padding: 0 0 0 tokens.$cdr-space-quarter-x;
   }
 }
@@ -39,17 +39,30 @@
 @mixin cdr-list-ordered-nested-mixin() {
   position: relative;
   padding-left: 1em;
+  list-style-type: none;
 
-  & > li {
+  > li {
+    position: relative;
     padding-left: 0;
+
+    // Collapse margins on first block child to align marker with text
+    > :first-child {
+      margin-block-start: 0;
+    }
 
     &::before {
       content: '\2013';
       position: absolute;
+      left: -1em;
+      top: 0;
+      width: 1em;
+      line-height: inherit;
 
-      //ITEM_DOC: Color of the nested ordered cdr-list item prefix
-      color: var(--cdr-list-ordered-nested-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
-      left: 0;
+      // ITEM_DOC: Color of the nested ordered cdr-list item prefix
+      color: var(
+        --cdr-list-ordered-nested-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
     }
   }
 }
@@ -58,14 +71,28 @@
   position: relative;
   padding-left: 1em;
 
-  & > li::before {
-    content: '\2022';
+  > li {
     position: relative;
-    margin-left: -1em;
-    padding-right: tokens.$cdr-space-half-x;
 
-    //ITEM_DOC: Color of the unordered cdr-list item prefix
-    color: var(--cdr-list-unordered-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+    // Collapse margins on first block child to align marker with text
+    > :first-child {
+      margin-block-start: 0;
+    }
+
+    &::before {
+      content: '\2022';
+      position: absolute;
+      left: -1em;
+      top: 0;
+      width: 1em;
+      line-height: inherit;
+
+      // ITEM_DOC: Color of the unordered cdr-list item prefix
+      color: var(
+        --cdr-list-unordered-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
+    }
   }
 }
 
@@ -73,15 +100,27 @@
   position: relative;
   padding-left: 1em;
 
-  & > li {
+  > li {
+    position: relative;
+
+    // Collapse margins on first block child to align marker with text
+    > :first-child {
+      margin-block-start: 0;
+    }
+
     &::before {
       content: '\2013';
-      position: relative;
-      margin-left: -1em;
-      padding-right: tokens.$cdr-space-half-x;
+      position: absolute;
+      left: -1em;
+      top: 0;
+      width: 1em;
+      line-height: inherit;
 
-      //ITEM_DOC: Color of the nested unordered cdr-list item prefix
-      color: var(--cdr-list-unordered-nested-prefix-color, var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary}));
+      // ITEM_DOC: Color of the nested unordered cdr-list item prefix
+      color: var(
+        --cdr-list-unordered-nested-prefix-color,
+        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+      );
     }
   }
 }

@@ -1,36 +1,41 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
+import { typeScaleCssSuffix } from '../../../tokens/adapters';
+import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrHeadingSerif',
 });
 
-interface headingSerifTextProps extends baseTextProps {
-   /** 
-     * Sets the type scale
-     * @type scaleValue
-     * @values 1,2,3,4,5
+interface HeadingSerifTextProps extends BaseTextProps {
+  /**
+   * Sets the type scale using Cedar values derived from cdr-tokens CdrTypeKey values.
+   * @type TypeScale
+   * @values scale-1, scale-2, scale-3, scale-4, scale-5
    */
-  scale?: '1'|'2'|'3'|'4'|'5',
+  scale?: Extract<TypeScale, 'scale-1' | 'scale-2' | 'scale-3' | 'scale-4' | 'scale-5'>;
   /** Toggles the strong variant */
-  strong?: boolean,
+  strong?: boolean;
 }
 
-const props = withDefaults(defineProps<headingSerifTextProps>(), {
+const props = withDefaults(defineProps<HeadingSerifTextProps>(), {
   tag: 'h1',
-  scale: '5',
-  strong: false
+  scale: 'scale-5',
+  strong: false,
 });
 
-const typeProperties = computed(() => {
-  return {
-    '--cdr-heading-serif-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-line-height': 
-    `var(--cdr-line-height-ratio-heading-${props.scale})`,
-    '--cdr-heading-serif-font-weight': props.strong ? '600' : '400',
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
-  }
+const typeProperties = computed(() => {
+  const suffix = typeScaleCssSuffix(props.scale!);
+  return {
+    '--cdr-heading-serif-font-size': `var(--cdr-type-scale-${suffix})`,
+    '--cdr-heading-line-height': `var(--cdr-line-height-ratio-heading-${suffix})`,
+    '--cdr-heading-serif-font-weight': props.strong ? '600' : '400',
+  };
 });
 
 const baseClass = 'cdr-heading-serif';
@@ -47,5 +52,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrHeadingSerif.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrHeadingSerif.module.scss" lang="scss"></style>

@@ -7,18 +7,19 @@
         slot="icon-left"
         inherit-color
         size="small"
-      />Hey
+      />
+      Hey
     </cdr-chip>
     <cdr-chip>
       <icon-heart-stroke
         slot="icon-right"
         inherit-color
         size="small"
-      />Hey
+      />
+      Hey
     </cdr-chip>
-    <cdr-chip>Hey
-    </cdr-chip>
-    <hr>
+    <cdr-chip>Hey</cdr-chip>
+    <hr />
 
     <h3>Toggle Chip</h3>
     <cdr-chip
@@ -40,14 +41,16 @@
       Toggle
     </cdr-chip>
 
-    <hr>
+    <hr />
     <h3>filter chip</h3>
-    <div style="height: 100px;">
+    <div style="height: 100px">
       <cdr-checkbox
         v-model="tents"
         id="tents"
         @change="updateFilters"
-      >tents</cdr-checkbox>
+      >
+        tents
+      </cdr-checkbox>
 
       <cdr-chip
         v-for="filter in filters"
@@ -56,14 +59,15 @@
         aria-controls="tents"
         aria-pressed="true"
       >
-        {{ filter }} <icon-x-lg
+        {{ filter }}
+        <icon-x-lg
           size="small"
           slot="icon-right"
           inherit-color
         />
       </cdr-chip>
     </div>
-    <hr>
+    <hr />
     <h3>chip group</h3>
     <h4>Radio Chip single selection</h4>
     <cdr-chip-group label="Pick One Month">
@@ -94,13 +98,10 @@
       </cdr-chip>
     </cdr-chip-group>
 
-    <hr>
+    <hr />
 
     <h2>disabled chip</h2>
-    <cdr-chip disabled>
-      Default
-    </cdr-chip>
-
+    <cdr-chip disabled>Default</cdr-chip>
   </div>
 </template>
 
@@ -163,5 +164,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

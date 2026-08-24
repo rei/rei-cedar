@@ -1,17 +1,13 @@
 <template>
   <!-- eslint-disable max-len -->
   <div>
-    <h2>
-      Tabs
-    </h2>
+    <h2>Tabs</h2>
 
     <tabs-default :background-color="backgroundColor" />
 
     <!-- small -->
     <div class="tab-demo-secton">
-      <h3>
-        Small Tabs
-      </h3>
+      <h3>Small Tabs</h3>
       <cdr-tabs
         height="100px"
         size="small"
@@ -24,20 +20,14 @@
           :id="'tab-panel-small-' + tab"
           :aria-labelledby="'tab-small-' + tab"
         >
-          <cdr-text
-            class="cdr-text-dev--body-300"
-          >
-            Tab {{ tab }} content
-          </cdr-text>
+          <cdr-text class="cdr-text-dev--body-300">Tab {{ tab }} content</cdr-text>
         </cdr-tab-panel>
       </cdr-tabs>
     </div>
 
     <!-- full-width -->
     <div class="tab-demo-secton">
-      <h3>
-        Full-Width Tabs
-      </h3>
+      <h3>Full-Width Tabs</h3>
       <cdr-tabs
         height="100px"
         modifier="full-width"
@@ -50,20 +40,14 @@
           :id="'tab-panel-full-width-' + tab"
           :aria-labelledby="'tab-full-width-' + tab"
         >
-          <cdr-text
-            class="cdr-text-dev--body-300"
-          >
-            Tab {{ tab }} content
-          </cdr-text>
+          <cdr-text class="cdr-text-dev--body-300">Tab {{ tab }} content</cdr-text>
         </cdr-tab-panel>
       </cdr-tabs>
     </div>
 
     <!-- No-border -->
     <div class="tab-demo-secton">
-      <h3>
-        No Border Tabs
-      </h3>
+      <h3>No Border Tabs</h3>
       <cdr-tabs
         height="100px"
         modifier="no-border"
@@ -76,20 +60,14 @@
           :id="'tab-panel-no-border-' + tab"
           :aria-labelledby="'tab-no-border-' + tab"
         >
-          <cdr-text
-            class="cdr-text-dev--body-300"
-          >
-            Tab {{ tab }} content
-          </cdr-text>
+          <cdr-text class="cdr-text-dev--body-300">Tab {{ tab }} content</cdr-text>
         </cdr-tab-panel>
       </cdr-tabs>
     </div>
 
     <!-- auto -->
     <div class="tab-demo-secton">
-      <h3>
-        Auto Height Tabs
-      </h3>
+      <h3>Auto Height Tabs</h3>
       <cdr-tabs
         height="auto"
         :background-color="backgroundColor"
@@ -99,11 +77,7 @@
           id="tab-panel-auto-short"
           aria-labelledby="tab-auto-short"
         >
-          <cdr-text
-            class="cdr-text-dev--body-300"
-          >
-            short tab content
-          </cdr-text>
+          <cdr-text class="cdr-text-dev--body-300">short tab content</cdr-text>
         </cdr-tab-panel>
 
         <cdr-tab-panel
@@ -111,16 +85,13 @@
           id="tab-panel-auto-tall"
           aria-labelledby="tab-auto-tall"
         >
-          <cdr-text
-            class="cdr-text-dev--body-300"
-          >
-            tall tab content. look at it go. wow, so much content.
-            letters, punctuation, spaces, all together in one tab.
-            what more could you ask for. in awe at this tab.
-            look at how the height of it's container adjusts to fit all of the content within it.
-            Magical, truly magical. The things you can do with CSS these days i tell ya.
-            Just imagine all the hyper text markup that can be styled with sheets that cascade!
-            The possibilities for displaying content to users of the world wide web are boundless!
+          <cdr-text class="cdr-text-dev--body-300">
+            tall tab content. look at it go. wow, so much content. letters, punctuation, spaces, all
+            together in one tab. what more could you ask for. in awe at this tab. look at how the
+            height of it's container adjusts to fit all of the content within it. Magical, truly
+            magical. The things you can do with CSS these days i tell ya. Just imagine all the hyper
+            text markup that can be styled with sheets that cascade! The possibilities for
+            displaying content to users of the world wide web are boundless!
           </cdr-text>
         </cdr-tab-panel>
       </cdr-tabs>
@@ -128,9 +99,7 @@
 
     <!-- Centered -->
     <div class="tab-demo-secton">
-      <h3>
-        Centered Tabs
-      </h3>
+      <h3>Centered Tabs</h3>
       <cdr-tabs
         height="100px"
         modifier="centered"
@@ -143,11 +112,7 @@
           :id="'tab-panel-centered-' + tab"
           :aria-labelledby="'tab-centered-' + tab"
         >
-          <cdr-text
-            class="cdr-text-dev--body-300"
-          >
-            Tab {{ tab }} content
-          </cdr-text>
+          <cdr-text class="cdr-text-dev--body-300">Tab {{ tab }} content</cdr-text>
         </cdr-tab-panel>
 
         <cdr-tab-panel
@@ -191,10 +156,7 @@
 </template>
 
 <script>
-import {
-  CdrColorBackgroundPrimary,
-  CdrColorBackgroundSecondary,
-} from '@rei/cdr-tokens';
+import { CdrColorBackgroundPrimary, CdrColorBackgroundSecondary } from '@rei/cdr-tokens/tokens';
 import * as Components from 'srcdir/lib';
 import tabsDefault from 'componentsdir/tabs/examples/demo/TabsDefault.vue';
 
@@ -234,7 +196,7 @@ export default {
 </script>
 
 <style>
-  .tab-demo-section {
-    margin-bottom: 30px;
-  }
+.tab-demo-section {
+  margin-bottom: 30px;
+}
 </style>

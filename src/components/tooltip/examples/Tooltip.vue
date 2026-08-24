@@ -6,22 +6,30 @@
         name="position"
         custom-value="top"
         v-model="position"
-      >top</cdr-radio>
+      >
+        top
+      </cdr-radio>
       <cdr-radio
         name="position"
         custom-value="bottom"
         v-model="position"
-      >bottom</cdr-radio>
+      >
+        bottom
+      </cdr-radio>
       <cdr-radio
         name="position"
         custom-value="left"
         v-model="position"
-      >left</cdr-radio>
+      >
+        left
+      </cdr-radio>
       <cdr-radio
         name="position"
         custom-value="right"
         v-model="position"
-      >right</cdr-radio>
+      >
+        right
+      </cdr-radio>
     </cdr-form-group>
 
     <cdr-form-group label="auto position">
@@ -29,12 +37,16 @@
         name="autoPos"
         :custom-value="true"
         v-model="autoPos"
-      >true</cdr-radio>
+      >
+        true
+      </cdr-radio>
       <cdr-radio
         name="autoPos"
         :custom-value="false"
         v-model="autoPos"
-      >false</cdr-radio>
+      >
+        false
+      </cdr-radio>
     </cdr-form-group>
 
     <cdr-form-group label="trigger position">
@@ -42,17 +54,23 @@
         name="trigger"
         custom-value="left"
         v-model="trigger"
-      >left</cdr-radio>
+      >
+        left
+      </cdr-radio>
       <cdr-radio
         name="trigger"
         custom-value="center"
         v-model="trigger"
-      >center</cdr-radio>
+      >
+        center
+      </cdr-radio>
       <cdr-radio
         name="trigger"
         custom-value="right"
         v-model="trigger"
-      >right</cdr-radio>
+      >
+        right
+      </cdr-radio>
     </cdr-form-group>
 
     <div style="clear: both" />
@@ -67,9 +85,7 @@
       @closed="tooltipHandler"
     >
       <template #trigger>
-        <cdr-button>
-          tooltip
-        </cdr-button>
+        <cdr-button>tooltip</cdr-button>
       </template>
 
       <div>
@@ -78,7 +94,7 @@
       </div>
     </cdr-tooltip>
 
-    <hr>
+    <hr />
 
     <div
       style="position: relative; width: max-content"
@@ -107,7 +123,6 @@
           We're using the internet right now!
         </div>
       </cdr-tooltip>
-
     </div>
   </div>
 </template>
@@ -142,7 +157,6 @@ export default {
 </script>
 
 <style scoped>
-
 .tooltip-override {
 }
 

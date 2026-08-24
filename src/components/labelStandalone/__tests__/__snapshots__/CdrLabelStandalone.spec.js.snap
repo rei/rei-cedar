@@ -15,7 +15,7 @@ exports[`CdrFormLabelStandalone > component with both required and optional labe
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -98,7 +98,7 @@ exports[`CdrFormLabelStandalone > component with label, forId, required and help
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <br />
@@ -151,7 +151,7 @@ exports[`CdrFormLabelStandalone > component with optional label > renders correc
       <span
         class="cdr-label-standalone__optional"
       >
-        (optional)
+         (optional) 
       </span>
     </label>
     <!--v-if-->

@@ -1,12 +1,9 @@
 <template>
   <div data-backstop="buttons">
     <div class="button-example inset">
-      <h3>
-        Full Width
-      </h3>
+      <h3>Full Width</h3>
       <cdr-button
         size="small large@xs large@sm"
-
         :full-width="true"
       >
         Full width + responsive sizes

@@ -1,0 +1,236 @@
+import type { Meta, StoryObj } from '@storybook/vue3';
+import CdrInput from './CdrInput.vue';
+import {
+  errorStateOptions,
+  inputTypeOptions,
+  largeSizeOptions,
+  primarySecondaryOptions,
+} from '../../types/componentOptions';
+
+const meta: Meta<typeof CdrInput> = {
+  title: 'Components/Input',
+  component: CdrInput,
+  tags: ['autodocs'],
+  args: {
+    type: 'text',
+    label: 'Input Label',
+    hideLabel: false,
+    background: 'primary',
+    disabled: false,
+    required: false,
+    error: false,
+    rows: 1,
+  },
+  argTypes: {
+    type: {
+      control: 'select',
+      options: inputTypeOptions,
+      description: 'Type attribute for the input',
+      table: {
+        type: { summary: inputTypeOptions.join(' | ') },
+        defaultValue: { summary: 'text' },
+      },
+    },
+    background: {
+      control: 'select',
+      options: primarySecondaryOptions,
+      description: 'Sets the background color the input is rendered on',
+      table: {
+        type: { summary: primarySecondaryOptions.join(' | ') },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    error: {
+      control: 'radio',
+      options: errorStateOptions,
+      description: 'Sets the input to an error state, displays the error slot if one is present',
+      table: {
+        type: { summary: 'boolean | string' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    size: {
+      control: 'select',
+      options: largeSizeOptions,
+      description: 'Sets the input field size',
+      table: {
+        type: { summary: 'large' },
+      },
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof CdrInput>;
+
+export const Default: Story = {
+  args: {
+    label: 'Email Address',
+    type: 'email',
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" />',
+  }),
+};
+
+export const WithPlaceholder: Story = {
+  args: {
+    label: 'Search',
+    type: 'search',
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" placeholder="Search for products..." />',
+  }),
+};
+
+export const Required: Story = {
+  args: {
+    label: 'Full Name',
+    required: true,
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" />',
+  }),
+};
+
+export const WithError: Story = {
+  args: {
+    label: 'Email Address',
+    type: 'email',
+    error: true,
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <CdrInput v-bind="args">
+        <template #error>Please enter a valid email address</template>
+      </CdrInput>
+    `,
+  }),
+};
+
+export const Disabled: Story = {
+  args: {
+    label: 'Disabled Input',
+    disabled: true,
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" value="Cannot edit this" />',
+  }),
+};
+
+export const HiddenLabel: Story = {
+  args: {
+    label: 'Search',
+    hideLabel: true,
+    type: 'search',
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" placeholder="Search..." />',
+  }),
+};
+
+export const LargeSize: Story = {
+  args: {
+    label: 'Large Input',
+    size: 'large',
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" />',
+  }),
+};
+
+export const Textarea: Story = {
+  args: {
+    label: 'Comments',
+    rows: 4,
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" placeholder="Enter your comments here..." />',
+  }),
+};
+
+export const Password: Story = {
+  args: {
+    label: 'Password',
+    type: 'password',
+    required: true,
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: '<CdrInput v-bind="args" />',
+  }),
+};
+
+export const InputTypes: Story = {
+  render: () => ({
+    components: { CdrInput },
+    template: `
+      <div class="story-spacing story-spacing--vertical" style="max-width: 400px;">
+        <CdrInput label="Text" type="text" />
+        <CdrInput label="Email" type="email" />
+        <CdrInput label="Password" type="password" />
+        <CdrInput label="Number" type="number" />
+        <CdrInput label="Search" type="search" />
+        <CdrInput label="Tel" type="tel" />
+        <CdrInput label="URL" type="url" />
+        <CdrInput label="Date" type="date" />
+      </div>
+    `,
+  }),
+};
+
+export const SecondaryBackground: Story = {
+  args: {
+    label: 'Secondary Background',
+    background: 'secondary',
+  },
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
+  render: (args) => ({
+    components: { CdrInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="background: #f7f5f0; padding: 24px; border-radius: 4px;">
+        <CdrInput v-bind="args" />
+      </div>
+    `,
+  }),
+};

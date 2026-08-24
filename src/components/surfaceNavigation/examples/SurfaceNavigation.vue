@@ -6,7 +6,8 @@ import CdrSubheadingSans from '../../text/presets/CdrSubheadingSans.vue';
 import CdrMediaObject from '../../mediaObject/CdrMediaObject.vue';
 import CdrImg from '../../image/CdrImg.vue';
 import CdrRating from '../../rating/CdrRating.vue';
-import type { surface, HtmlAttributes, MediaObject } from '../../../types/interfaces';
+import type { Surface } from '../../surface/types';
+import type { HtmlAttributes, MediaObject } from '../../mediaObject/types';
 
 import tileImage from '../../../dev/static/tile-image.jpg';
 
@@ -19,7 +20,7 @@ export interface Example {
     alt: string;
     width: number;
     height: number;
-  }
+  };
   label: string;
   title: string;
   price: string;
@@ -29,7 +30,7 @@ export interface Example {
     compact: boolean;
     size: string;
   };
-  props: surface | HtmlAttributes;
+  props: Surface | HtmlAttributes;
   mediaObjectProps: MediaObject;
 }
 
@@ -40,29 +41,29 @@ const boxes: Example[] = [
       src: tileImage,
       alt: 'placeholder image',
       width: 150,
-      height: 150
+      height: 150,
     },
-    label: 'Arc\'teryx',
-    title: 'Beta SL Jacket - Men\'s',
+    label: "Arc'teryx",
+    title: "Beta SL Jacket - Men's",
     price: '$299.00',
     props: {
       background: {
         rest: 'primary',
-        hover: 'secondary'
+        hover: 'secondary',
       },
       borderColor: {
-        rest: 'primary'
+        rest: 'primary',
       },
       borderStyle: {
-        rest: 'solid'
+        rest: 'solid',
       },
       borderWidth: {
-        rest: 'sixteenth-x'
+        rest: 'sixteenth-x',
       },
       boxShadow: {
         rest: 'flat',
         hover: 'elevated',
-      }
+      },
     },
     ratingProps: {
       rating: 4.5,
@@ -73,8 +74,8 @@ const boxes: Example[] = [
     mediaObjectProps: {
       contentPadding: 'one-x',
       mediaPosition: 'top',
-    }
-  }
+    },
+  },
 ];
 </script>
 
@@ -82,18 +83,33 @@ const boxes: Example[] = [
   <div class="example">
     <h2>Surface Navigation</h2>
     <template
-      v-for="{ exampleName, label, title, image, props, ratingProps, price, mediaObjectProps } in boxes"
+      v-for="{
+        exampleName,
+        label,
+        title,
+        image,
+        props,
+        ratingProps,
+        price,
+        mediaObjectProps,
+      } in boxes"
       :key="label"
     >
       <hr class="example__hr" />
       <h3>
         {{ exampleName }}
       </h3>
-      <CdrSurfaceNavigation v-bind="props" class="card">
+      <CdrSurfaceNavigation
+        v-bind="props"
+        class="card"
+      >
         <CdrMediaObject v-bind="mediaObjectProps">
           <template #media>
             <div class="card__image-wrapper">
-              <CdrImg v-bind="image" class="card__image" />
+              <CdrImg
+                v-bind="image"
+                class="card__image"
+              />
             </div>
           </template>
           <template #content>
@@ -111,7 +127,7 @@ const boxes: Example[] = [
 </template>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .example {
   &__hr {

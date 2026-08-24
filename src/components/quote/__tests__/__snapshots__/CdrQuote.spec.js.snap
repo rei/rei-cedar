@@ -13,7 +13,6 @@ exports[`CdrQuote > default component > renders correctly 1`] = `
   
   <cite
     class="cdr-quote__citation"
-    tag="cite"
   >
     This is the citation
   </cite>
@@ -33,7 +32,6 @@ exports[`CdrQuote > pullquote > renders correctly 1`] = `
   
   <cite
     class="cdr-quote__citation"
-    tag="cite"
   >
     This is the pull citation
   </cite>

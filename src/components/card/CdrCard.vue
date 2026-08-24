@@ -1,22 +1,31 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-/** Related, interactive containers linking to a single subject or destination */
+import type { CdrCardProps } from './types';
+import type { Tag } from '../../types/componentOptions';
+
+/**
+ * CdrCard - Related, interactive containers linking to a single subject or destination
+ *
+ * Cards are flexible containers for grouping related content and actions.
+ * They serve as an entry point to more detailed information and can contain
+ * various types of content including images, text, links, and buttons.
+ */
 
 defineOptions({
   name: 'CdrCard',
 });
 
-defineProps({
-  /** Sets valid HTML container element tag. */
-  tag: {
-    type: String,
-    default: 'article',
-  },
+withDefaults(defineProps<CdrCardProps>(), {
+  tag: 'article' as Tag,
 });
 
-const style = useCssModule();
-const baseClass = 'cdr-card';
+defineSlots<{
+  /** CdrCard content */
+  'default'(props: Record<string, never>): any;
+}>();
 
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-card';
 </script>
 
 <template>
@@ -29,5 +38,4 @@ const baseClass = 'cdr-card';
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrCard.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrCard.module.scss" />

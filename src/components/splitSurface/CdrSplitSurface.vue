@@ -1,29 +1,26 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
+import type { CdrSplitSurfaceProps } from './types';
 import mapClasses from '../../utils/mapClasses';
 
 /** Introduces a layered surface for distinct content sections, smoothing the transition from one page section to another */
 defineOptions({
-  name: 'CdrSplitSurface'
+  name: 'CdrSplitSurface',
 });
 
-interface splitSurfaceProps {
-  /** 
-   * Sets the orientation of the surface to the top or bottom slot
-   * @demoSelectMultiple false
-   * @values top, bottom
-   */
-  surface?: 'top' | 'bottom'
-  /** Sets the HTML tag for the split-surface element */
-  tag?: string
-}
-
-const props = withDefaults(defineProps<splitSurfaceProps>(), {
+const props = withDefaults(defineProps<CdrSplitSurfaceProps>(), {
   surface: 'bottom',
-  tag: 'div'
+  tag: 'div',
 });
 
-const baseClass = 'cdr-split-surface'
+defineSlots<{
+  /** top slot */
+  'top'(props: Record<string, never>): any;
+  /** bottom slot */
+  'bottom'(props: Record<string, never>): any;
+}>();
+
+const baseClass = 'cdr-split-surface';
 const surfaceClass = computed(() => `${baseClass}--${props.surface}`);
 
 const style = useCssModule();
@@ -45,5 +42,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrSplitSurface.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrSplitSurface.module.scss" />

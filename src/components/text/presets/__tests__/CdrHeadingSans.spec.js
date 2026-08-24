@@ -1,15 +1,14 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
 import CdrHeadingSans from '../CdrHeadingSans.vue';
 
-
 describe('CdrHeadingSans', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrHeadingSans, {
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
@@ -21,15 +20,14 @@ describe('CdrHeadingSans', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrHeadingSans, {
-        props: { scale: '1' },
+        props: { scale: 'scale-1' },
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
   });
-
 });

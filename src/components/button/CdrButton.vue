@@ -1,127 +1,99 @@
 <script setup lang="ts">
 import { useCssModule, computed, useSlots } from 'vue';
+import type { CdrButtonProps } from './types';
 import mapClasses from '../../utils/mapClasses';
-import sizeProps from '../../props/size';
 import { responsiveModifyClass, buildBooleanClass } from '../../utils/buildClass';
-import propValidator from '../../utils/propValidator';
 
-/** Initiates an action, such as completing a task or submitting information */
+/**
+ * CdrButton - Initiates an action, such as completing a task or submitting information
+ *
+ * Buttons allow users to trigger actions and navigate. Use buttons for important
+ * actions like submitting forms or confirming choices. Buttons can contain text,
+ * icons, or both.
+ */
 
 defineOptions({
   name: 'CdrButton',
 });
 
-const props = defineProps({
-  /**
-     * Renders CdrButton as a <button> or <a> element. When using the value of <a>, this element renders as an anchor link.
-     * @demoIgnore true
-     * @values button, a
-     */
-     tag: {
-      type: String,
-      default: 'button',
-      validator: (value: string) => propValidator(value, ['button', 'a']),
-    },
-    /**
-     * Sets the button type
-     * @demoIgnore true
-     * @values button, submit, reset
-     */
-    type: {
-      type: String,
-      default: 'button',
-      validator: (value: string) => propValidator(value, ['button', 'submit', 'reset']),
-    },
-    /**
-     * Modifies the style variant for this component
-     * @demoSelectMultiple false
-     * @values primary, secondary, sale, dark, link
-     */
-    modifier: {
-      type: String,
-      default: 'primary',
-      validator: (value: string) => propValidator(
-        value, ['primary', 'secondary', 'sale', 'dark', 'link']
-        ),
-    },
-    /**
-     * Sets the button size; values can target responsive breakpoints. Example: `large@sm`.
-     * @demoSelectMultiple false
-     * @values small, medium, large
-     */
-    size: sizeProps,
-    /**
-     * Sets button width to 100%. Setting this value to true will set the button width to 100% of the parent container. Use the 'fullWidth' prop with the 'size' prop to control top and bottom padding.
-     */
-    fullWidth: {
-      type: [String, Boolean],
-      default: false,
-      validator: (value: string) => {
-        if (typeof value === 'string') {
-          return propValidator(
-            value,
-            ['@xs', '@sm', '@md', '@lg'],
-            false,
-          );
-        }
-        return typeof value === 'boolean';
-      },
-    },
-    /**
-     * Renders an 'icon-only' button. When this value is true, it will override the size and 'responsiveSize' props. Can be used in conjunction with 'with-background'
-     */
-    iconOnly: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Renders an 'icon-only' button with a background color and border. Must be used in conjunction with the 'iconOnly' prop.
-     */
-    withBackground: {
-      type: Boolean,
-      default: false,
-    },
+const props = withDefaults(defineProps<CdrButtonProps>(), {
+  tag: 'button',
+  type: 'button',
+  modifier: 'primary',
+  fullWidth: false,
+  iconOnly: false,
+  withBackground: false,
 });
-const slots = useSlots();
 
-const style = useCssModule();
-const baseClass = 'cdr-button';
-const buttonType = computed(() => (props.tag === 'button' ? props.type : null));
-const modifierClass = computed(() => `${baseClass}--${props.modifier}`);
-const fullWidthClass = computed(() => !props.iconOnly && props.fullWidth
-  ? buildBooleanClass(baseClass, props.fullWidth, 'full-width')
-  : '');
-const sizeClass = computed(() => (!props.iconOnly
-  ? responsiveModifyClass(baseClass, '', props.size)
-  : `cdr-button--icon-only-${props.size}`));
-const iconLeftClass = computed(() => slots['icon-left'] && slots.default
-  ? `${baseClass}--has-icon-left`
-  : '');
-const iconRightClass = computed(() => slots['icon-right'] && slots.default
-  ? `${baseClass}--has-icon-right`
-  : '');
-const iconOnlyClass = computed(() => props.iconOnly
-? `${baseClass}--icon-only`
-: '');
-const withBackgroundClass = computed(() => props.iconOnly && props.withBackground
-  ? `${baseClass}--with-background`
-  : '');
+defineSlots<{
+  /** Icon to the left of text content */
+  'icon-left'(props: Record<string, never>): any;
+  'icon'(props: Record<string, never>): any;
+  'default'(props: Record<string, never>): any;
+  /** Icon to the right of text content */
+  'icon-right'(props: Record<string, never>): any;
+}>();
 
+const slots: ReturnType<typeof useSlots> = useSlots();
+
+const style: Record<string, string> = useCssModule();
+const baseClass: string = 'cdr-button';
+
+/** Computed button type attribute, null for anchor tags */
+const buttonType = computed<string | null>(() => (props.tag === 'button' ? props.type : null));
+
+/** Computed modifier class for button variants */
+const modifierClass = computed<string>(() => `${baseClass}--${props.modifier}`);
+
+/** Computed full width class when fullWidth prop is enabled */
+const fullWidthClass = computed<string>(() =>
+  !props.iconOnly && props.fullWidth
+    ? buildBooleanClass(baseClass, props.fullWidth, 'full-width')
+    : '',
+);
+
+/** Computed size class based on iconOnly state */
+const sizeClass = computed<string>(() =>
+  !props.iconOnly
+    ? responsiveModifyClass(baseClass, '', props.size ?? '')
+    : `cdr-button--icon-only-${props.size ?? ''}`,
+);
+
+/** Computed class when icon-left slot is used with default content */
+const iconLeftClass = computed<string>(() =>
+  slots['icon-left'] && slots.default ? `${baseClass}--has-icon-left` : '',
+);
+
+/** Computed class when icon-right slot is used with default content */
+const iconRightClass = computed<string>(() =>
+  slots['icon-right'] && slots.default ? `${baseClass}--has-icon-right` : '',
+);
+
+/** Computed class for icon-only button variant */
+const iconOnlyClass = computed<string>(() => (props.iconOnly ? `${baseClass}--icon-only` : ''));
+
+/** Computed class for icon-only button with background */
+const withBackgroundClass = computed<string>(() =>
+  props.iconOnly && props.withBackground ? `${baseClass}--with-background` : '',
+);
 </script>
 
 <template>
   <component
     :is="tag"
-    :class="mapClasses(style,
-                       baseClass,
-                       modifierClass,
-                       sizeClass,
-                       fullWidthClass,
-                       iconOnlyClass,
-                       iconLeftClass,
-                       iconRightClass,
-                       withBackgroundClass,
-    )"
+    :class="
+      mapClasses(
+        style,
+        baseClass,
+        modifierClass,
+        sizeClass,
+        fullWidthClass,
+        iconOnlyClass,
+        iconLeftClass,
+        iconRightClass,
+        withBackgroundClass,
+      )
+    "
     :type="buttonType"
   >
     <!-- @slot Icon to the left of text content -->
@@ -135,5 +107,4 @@ const withBackgroundClass = computed(() => props.iconOnly && props.withBackgroun
   </component>
 </template>
 
-<style lang="scss" module src="./styles/CdrButton.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrButton.module.scss" />

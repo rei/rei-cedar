@@ -10,6 +10,7 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
   >
     <div
       class="cdr-tabs__gradient cdr-tabs__gradient--left"
+      style="background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(255, 255, 255));"
     />
     <ul
       class="cdr-tabs__header-container"
@@ -74,6 +75,7 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     </ul>
     <div
       class="cdr-tabs__gradient cdr-tabs__gradient--right cdr-tabs__gradient--active"
+      style="background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255));"
     />
     <div
       class="cdr-tabs__underline"
@@ -83,7 +85,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
   <!-- @slot CdrTabs content (CdrTabPanel components) -->
   
   <section
-    aria-hidden="false"
     aria-labelledby="tab1"
     class="cdr-tab-panel"
     id="tab1-panel"
@@ -96,7 +97,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     
   </section>
   <section
-    aria-hidden="true"
     aria-labelledby="tab2"
     class="cdr-tab-panel"
     id="tab2-panel"
@@ -109,7 +109,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     
   </section>
   <section
-    aria-hidden="true"
     aria-labelledby="tab3"
     class="cdr-tab-panel"
     disabled="true"
@@ -123,7 +122,6 @@ exports[`CdrTabs > mounted > mounts tabs 1`] = `
     
   </section>
   <section
-    aria-hidden="true"
     aria-labelledby="tab4"
     class="cdr-tab-panel"
     id="tab4-panel"

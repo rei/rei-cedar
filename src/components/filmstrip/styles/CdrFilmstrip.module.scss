@@ -1,8 +1,25 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
-@use './vars/CdrFilmstrip.vars' as vars;
+@use '@rei/cdr-tokens/scss' as tokens;
+
+$prominence-02:
+  5px 12px 4px 0 rgb(75, 74, 72, 0),
+  3px 8px 3px 0 rgb(75, 74, 72, 0.02),
+  2px 4px 3px 0 rgb(75, 74, 72, 0.07),
+  1px 2px 2px 0 rgb(75, 74, 72, 0.12),
+  0 0 1px 0 rgb(75, 74, 72, 0.14);
+$prominence-03:
+  30px 37px 13px 0 rgb(75, 74, 72, 0),
+  19px 24px 12px 0 rgb(75, 74, 72, 0.02),
+  11px 13px 10px 0 rgb(75, 74, 72, 0.07),
+  5px 6px 8px 0 rgb(75, 74, 72, 0.12),
+  1px 1px 4px 0 rgb(75, 74, 72, 0.14);
 
 .cdr-filmstrip {
   position: relative;
+
+  &:hover &__arrow {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   &__frames {
     list-style: none;
@@ -21,23 +38,40 @@
   }
 
   &__arrow {
-    @include vars.arrow-vars;
-    box-shadow: vars.$prominence-02;
-    pointer-events: all;
+    --cdr-button-with-background-background-color-active: #eae0cc;
+    --cdr-button-with-background-background-color-disabled: #eeeae2;
+    --cdr-button-with-background-background-color-interaction: #eae0cc;
+    --cdr-button-with-background-background-color: #eae0cc;
+    --cdr-button-with-background-box-shadow-active: #eae0cc;
+    --cdr-button-with-background-box-shadow-disabled: #eeeae2;
+    --cdr-button-with-background-fill-active: #454441;
+    --cdr-button-with-background-fill-disabled: #b2ab9f;
+    --cdr-button-with-background-icon-fill-active: #454441;
+    --cdr-button-with-background-icon-fill-interaction: #454441;
+    --cdr-button-with-background-icon-fill: #454441;
+    --cdr-color-border-button-secondary-active-inset: #eae0cc;
     --button-half: #{tokens.$cdr-space-one-and-a-half-x};
+
+    box-shadow: $prominence-02;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
-    top: var(--cdr-filmstrip-arrow-top, calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x));
+    top: var(
+      --cdr-filmstrip-arrow-top,
+      calc(50% - (2 * var(--button-half)) - tokens.$cdr-space-half-x)
+    );
     z-index: 1;
 
     &:active,
     &:focus {
       box-shadow:
         inset 0 0 0 tokens.$cdr-space-eighth-x #2e2e2b,
-        vars.$prominence-02;
+        $prominence-02;
     }
 
-    @include tokens.cdr-sm-mq-down {
-      display: none;
+    &:focus {
+      opacity: 1;
+      pointer-events: all;
     }
 
     &--left {
@@ -51,6 +85,7 @@
     &--right {
       --extra-frame-width: calc(1px * ((var(--frame-width) * var(--frame-extra))));
       --half-gap: calc(var(--frames-gap) / 2 * 1px);
+
       right: calc(var(--extra-frame-width) + var(--half-gap) - var(--button-half));
     }
 
@@ -60,11 +95,7 @@
     }
 
     &:hover:not(:disabled) {
-      box-shadow: vars.$prominence-03;
+      box-shadow: $prominence-03;
     }
-  }
-
-  &__sr-only {
-    @include tokens.cdr-display-sr-only;
   }
 }

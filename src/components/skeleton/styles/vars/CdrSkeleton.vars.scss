@@ -1,4 +1,6 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
+
+/* stylelint-disable no-invalid-position-declaration */
 
 @mixin cdr-skeleton-base-mixin() {
   display: flex;
@@ -13,7 +15,7 @@
   border-radius: tokens.$cdr-radius-soft;
 
   // warm-gray-300
-  //ITEM_DOC: Skeleton bone background color
+  // ITEM_DOC: Skeleton bone background color
   background: var(--cdr-skeleton-bone-background-color, #edeae3);
   background-size: 1200px 100%;
 }
@@ -21,8 +23,13 @@
 @mixin cdr-skeleton-shimmer-mixin() {
   @media (prefers-reduced-motion: no-preference) {
     // warm-gray-300 => warm-gray-100 => warm-gray-300
-    //ITEM_DOC: Skeleton shimmer gradient part 1 //ITEM_DOC: Skeleton shimmer gradient part 2 //ITEM_DOC: Skeleton shimmer gradient part 3
-    background-image: linear-gradient(90deg, var(--cdr-skeleton-gradient-1,rgba(237,234,227,1)) 0%, var(--cdr-skeleton-gradient-2, rgba(249,248,240,1)) 15%, var(--cdr-skeleton-gradient-3, rgba(237,234,227,1)) 30%);
+    // ITEM_DOC: Skeleton shimmer gradient part 1 //ITEM_DOC: Skeleton shimmer gradient part 2 //ITEM_DOC: Skeleton shimmer gradient part 3
+    background-image: linear-gradient(
+      90deg,
+      var(--cdr-skeleton-gradient-1, rgb(237, 234, 227, 1)) 0%,
+      var(--cdr-skeleton-gradient-2, rgb(249, 248, 240, 1)) 15%,
+      var(--cdr-skeleton-gradient-3, rgb(237, 234, 227, 1)) 30%
+    );
     animation: shimmer 3s tokens.$cdr-timing-function-linear;
     animation-iteration-count: infinite;
   }

@@ -4,16 +4,21 @@ import CdrSurface from '../surface/CdrSurface.vue';
 import CdrSkeleton from '../skeleton/CdrSkeleton.vue';
 import CdrSkeletonBone from '../skeleton/CdrSkeletonBone.vue';
 import CdrLayout from '../layout/CdrLayout.vue';
-import type { surfaceSelection } from '../../types/interfaces';
+import type { CdrSurfaceSelectionProps } from './types';
 import { getSurfaceProps, getDefaultLayout } from '../../utils/surface';
 
 /** Selection variant of CdrSurface with additional interactive states */
 defineOptions({ name: 'CdrSurfaceSelection' });
 
-const props = withDefaults(defineProps<surfaceSelection>(), {
+const props = withDefaults(defineProps<CdrSurfaceSelectionProps>(), {
   tag: 'div',
   role: 'checkbox',
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+  'loading'(props: Record<string, never>): any;
+}>();
 
 const style = useCssModule();
 

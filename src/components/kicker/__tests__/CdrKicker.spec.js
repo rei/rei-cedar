@@ -5,8 +5,8 @@ describe('CdrKicker', () => {
   it('matches snapshot', () => {
     const wrapper = shallowMount(CdrKicker, {
       slots: {
-        default: 'Kicker'
-      }
+        default: 'Kicker',
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });

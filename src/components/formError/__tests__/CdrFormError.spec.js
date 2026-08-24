@@ -6,11 +6,11 @@ describe('CdrFormError', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrFormError, {
-        propsData: {
+        props: {
           error: 'yahoo!',
         },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -19,20 +19,20 @@ describe('CdrFormError', () => {
     it('renders error prop', () => {
       expect(wrapper.find('.cdr-form-error').text()).toBe('yahoo!');
     });
-  })
+  });
 
   describe('using an error slot', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper =  mount(CdrFormError, {
-        propsData: {
-          error: true
+      wrapper = mount(CdrFormError, {
+        props: {
+          error: true,
         },
         slots: {
-          'error': 'whoops',
+          error: 'whoops',
         },
       });
-    })
+    });
 
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();

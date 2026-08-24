@@ -7,7 +7,7 @@
     <div class="product-recommendation__image-container">
       <CdrImg
         :src="imageSrc"
-        :alt="formattedTitle"
+        alt=""
         fit="contain"
         ratio="1/1"
         class="product-recommendation__image"
@@ -46,32 +46,26 @@ import { CdrRating, CdrImg, CdrText, CdrLink } from '../../../../../lib';
 import ProductRecommendationPrice from './ProductRecommendationPrice.vue';
 import type { ProductRecommendationFrame, ProductRecommendationFrameClickPayload } from '..';
 
-import type { CdrFilmstripEventEmitter } from '../../../interfaces';
 import { CdrFilmstripEventKey } from '../../../../../types/symbols';
 
+/** Product data passed through unchanged by the recommendation adapter. */
 const props = defineProps<ProductRecommendationFrame>();
 
 const formattedTitle = computed(() => props.name?.replace('&quot;', '"'));
-const imageSrc = computed(() => `https://rei.com/media/product/${props.id}?size=300`);
+const imageSrc = './svg/storybook-landscape.svg';
 
-const emitEvent = inject(CdrFilmstripEventKey) as CdrFilmstripEventEmitter;
-
-/**
- * Handles the click event on a frame, emitting a 'frameClick' event with the event details and the frame item.
- *
- * @param {Event} event - The click event that triggered this function.
- * @return {void}
- */
+const emitEvent = inject(CdrFilmstripEventKey);
+/** Publishes the activated product through the injected filmstrip event channel. */
 const onFrameClick = (event: Event) => {
   emitEvent?.('frameClick', {
     event,
     item: props,
-  } as ProductRecommendationFrameClickPayload);
+  } satisfies ProductRecommendationFrameClickPayload);
 };
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
+@use '@rei/cdr-tokens/scss' as *;
 
 .product-recommendation {
   height: 100%;

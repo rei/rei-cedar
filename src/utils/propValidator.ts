@@ -32,7 +32,6 @@ function validateProp(
       if (handler) {
         handler(`Invalid prop value: ${mod}`);
       } else {
-        // eslint-disable-next-line no-console
         console.error(`Invalid prop value: ${mod}`);
       }
     }

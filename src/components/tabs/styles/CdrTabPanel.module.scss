@@ -1,4 +1,4 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .cdr-tab-panel {
   width: 100%;
@@ -6,6 +6,7 @@
   padding-top: tokens.$cdr-space-eighth-x;
 }
 
+/* stylelint-disable keyframes-name-pattern */
 @keyframes :global(exit-left) {
   from {
     transform: translateX(0);

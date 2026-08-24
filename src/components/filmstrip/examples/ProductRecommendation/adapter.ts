@@ -3,28 +3,17 @@ import FrameComponent from './components/ProductRecommendationFrame.vue';
 import type { ProductRecommendation, ProductRecommendationFrame } from '.';
 
 /**
- * Resolves a product filmstrip model from raw model data.
+ * Maps recommendation data to product frames and placement metadata.
  *
- * This function takes `modelData`, extracts relevant product information,
- * and transforms it into a structured filmstrip model that conforms to the
- * `CdrFilmstripConfig<CdrFilmstripFrame>` format.
- *
- * @param {Record<string, unknown>} modelData - The raw data used to populate the filmstrip.
- * @returns {CdrFilmstripConfig<ProductRecommendationFrame>} The resolved product filmstrip model.
+ * Product cards receive recommendation items unchanged. The placement name is
+ * retained on the container for analytics and debugging.
  */
-export const adapter: CdrFilmstripAdapter<ProductRecommendationFrame> = (modelData) => {
-  const { items = [], placementName } = modelData as Partial<ProductRecommendation>;
-
-  /**
-   * Determines the filmstrip ID.
-   */
+export const adapter: CdrFilmstripAdapter<
+  ProductRecommendationFrame,
+  Partial<ProductRecommendation>
+> = (modelData) => {
+  const { items = [], placementName } = modelData;
   const filmstripId = `product-${placementName || 'unknown'}`;
-
-  /**
-   * Transforms raw items into an array of frames for the filmstrip.
-   *
-   * @type {CdrFilmstripFrame<ProductRecommendationFrame>[]}
-   */
   const frames: CdrFilmstripFrame<ProductRecommendationFrame>[] = Array.isArray(items)
     ? items.map((item, index) => ({
         key: `product-frame-${index}`,
@@ -32,12 +21,7 @@ export const adapter: CdrFilmstripAdapter<ProductRecommendationFrame> = (modelDa
       }))
     : [];
 
-  /**
-   * Constructs the filmstrip config with the resolved frames and metadata.
-   *
-   * @type {CdrFilmstripConfig<ProductRecommendationFrame>}
-   */
-  const filmstripConfig: CdrFilmstripConfig<ProductRecommendationFrame> = {
+  return {
     component: FrameComponent,
     frames,
     filmstripId,
@@ -46,9 +30,7 @@ export const adapter: CdrFilmstripAdapter<ProductRecommendationFrame> = (modelDa
       'data-placement-name': placementName,
     },
     useDefaultResizeStrategy: true,
-  };
-
-  return filmstripConfig;
+  } satisfies CdrFilmstripConfig<ProductRecommendationFrame>;
 };
 
 export default adapter;

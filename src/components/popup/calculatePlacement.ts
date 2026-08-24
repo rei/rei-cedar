@@ -12,16 +12,16 @@ export default function calculatePlacement(
   if (!triggerRect || !popupRect) {
     return {
       pos: 'center',
-      corner: undefined
-    }
+      corner: undefined,
+    };
   }
 
   const offset = 14; // 10px for arrow 4px for spacing
   const borderSize = 2; // need to include border for corner calculations
-  const triggerCenterY = triggerRect.top + (triggerRect.height / 2);
-  const triggerCenterX = triggerRect.left + (triggerRect.width / 2);
+  const triggerCenterY = triggerRect.top + triggerRect.height / 2;
+  const triggerCenterX = triggerRect.left + triggerRect.width / 2;
   interface Dirs {
-    [key: string]: number
+    [key: string]: number;
   }
   const dirs: Dirs = {
     top: triggerRect.top - popupRect.height - offset,
@@ -31,10 +31,10 @@ export default function calculatePlacement(
   };
 
   const corners = {
-    left: triggerCenterX - (popupRect.width / 2) - borderSize <= 0,
-    right: triggerCenterX + (popupRect.width / 2) + borderSize >= screenWidth,
-    top: triggerCenterY - (popupRect.height / 2) - borderSize <= 0,
-    bottom: triggerCenterY + (popupRect.height / 2) + borderSize >= screenHeight,
+    left: triggerCenterX - popupRect.width / 2 - borderSize <= 0,
+    right: triggerCenterX + popupRect.width / 2 + borderSize >= screenWidth,
+    top: triggerCenterY - popupRect.height / 2 - borderSize <= 0,
+    bottom: triggerCenterY + popupRect.height / 2 + borderSize >= screenHeight,
   };
 
   const invert = {
@@ -49,7 +49,8 @@ export default function calculatePlacement(
   const sortedDirs = Object.keys(dirs).sort((a, b) => {
     if (dirs[a] > dirs[b]) {
       return -1;
-    } if (dirs[a] < dirs[b]) {
+    }
+    if (dirs[a] < dirs[b]) {
       return 1;
     }
     return 0;
@@ -82,6 +83,7 @@ export default function calculatePlacement(
   }
 
   return {
-    pos, corner,
+    pos,
+    corner,
   };
 }

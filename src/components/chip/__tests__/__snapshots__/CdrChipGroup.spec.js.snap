@@ -24,7 +24,6 @@ exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
       tabindex="0"
     >
       <!--v-if-->
-      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
@@ -33,6 +32,7 @@ exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
         chip 1
         
       </span>
+      <!--v-if-->
     </button>
     <button
       aria-checked="false"
@@ -40,7 +40,6 @@ exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
       role="radio"
       tabindex="-1"
     >
-      <!--v-if-->
       <!--v-if-->
       <span
         class="cdr-chip__content"
@@ -50,6 +49,7 @@ exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
         chip 2
         
       </span>
+      <!--v-if-->
     </button>
     <button
       aria-checked="false"
@@ -57,7 +57,6 @@ exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
       role="radio"
       tabindex="-1"
     >
-      <!--v-if-->
       <!--v-if-->
       <span
         class="cdr-chip__content"
@@ -67,6 +66,7 @@ exports[`CdrChipGroup > default configuration > renders correctly 1`] = `
         chip 3
         
       </span>
+      <!--v-if-->
     </button>
     
   </div>
@@ -97,7 +97,6 @@ exports[`CdrChipGroup > when current index is set > renders correctly 1`] = `
       tabindex="-1"
     >
       <!--v-if-->
-      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
@@ -106,6 +105,7 @@ exports[`CdrChipGroup > when current index is set > renders correctly 1`] = `
         chip 1
         
       </span>
+      <!--v-if-->
     </button>
     <button
       aria-checked="true"
@@ -113,7 +113,6 @@ exports[`CdrChipGroup > when current index is set > renders correctly 1`] = `
       role="radio"
       tabindex="0"
     >
-      <!--v-if-->
       <!--v-if-->
       <span
         class="cdr-chip__content"
@@ -123,6 +122,7 @@ exports[`CdrChipGroup > when current index is set > renders correctly 1`] = `
         chip 2
         
       </span>
+      <!--v-if-->
     </button>
     
   </div>
@@ -153,7 +153,6 @@ exports[`CdrChipGroup > when label is visible > renders correctly 1`] = `
       tabindex="0"
     >
       <!--v-if-->
-      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
@@ -162,6 +161,7 @@ exports[`CdrChipGroup > when label is visible > renders correctly 1`] = `
         chip 1
         
       </span>
+      <!--v-if-->
     </button>
     <button
       aria-checked="false"
@@ -169,7 +169,6 @@ exports[`CdrChipGroup > when label is visible > renders correctly 1`] = `
       role="radio"
       tabindex="-1"
     >
-      <!--v-if-->
       <!--v-if-->
       <span
         class="cdr-chip__content"
@@ -179,6 +178,7 @@ exports[`CdrChipGroup > when label is visible > renders correctly 1`] = `
         chip 2
         
       </span>
+      <!--v-if-->
     </button>
     
   </div>
@@ -209,7 +209,6 @@ exports[`CdrChipGroup > with label slot > renders correctly 1`] = `
       tabindex="0"
     >
       <!--v-if-->
-      <!--v-if-->
       <span
         class="cdr-chip__content"
       >
@@ -218,6 +217,7 @@ exports[`CdrChipGroup > with label slot > renders correctly 1`] = `
         chip 1
         
       </span>
+      <!--v-if-->
     </button>
     <button
       aria-checked="false"
@@ -225,7 +225,6 @@ exports[`CdrChipGroup > with label slot > renders correctly 1`] = `
       role="radio"
       tabindex="-1"
     >
-      <!--v-if-->
       <!--v-if-->
       <span
         class="cdr-chip__content"
@@ -235,6 +234,7 @@ exports[`CdrChipGroup > with label slot > renders correctly 1`] = `
         chip 2
         
       </span>
+      <!--v-if-->
     </button>
     
   </div>

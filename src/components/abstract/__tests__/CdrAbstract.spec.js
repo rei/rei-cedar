@@ -5,8 +5,8 @@ describe('CdrAbstract', () => {
   it('matches snapshot', () => {
     const wrapper = shallowMount(CdrAbstract, {
       slots: {
-        default: 'This is an abstract'
-      }
+        default: 'This is an abstract',
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });

@@ -5,13 +5,13 @@ import { useStar } from '../composables/useStar';
 
 const props = defineProps({
   size: sizeProps,
-})
+});
 const { style, sizeClass } = useStar(props.size);
 </script>
 
 <template>
   <svg
-    :class="mapClasses(style,'cdr-rating__star', sizeClass)"
+    :class="mapClasses(style, 'cdr-rating__star', sizeClass)"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -28,5 +28,4 @@ const { style, sizeClass } = useStar(props.size);
   </svg>
 </template>
 
-<style lang="scss" module src="../styles/CdrRating.module.scss">
-</style>
+<style lang="scss" module src="../styles/CdrRating.module.scss"></style>

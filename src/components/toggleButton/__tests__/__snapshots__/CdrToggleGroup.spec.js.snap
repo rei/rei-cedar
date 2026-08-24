@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CdrToggleGroup > renders correctly 1`] = `
+<ul
+  class="cdr-toggle-group cdr-toggle-group--medium"
+  role="radiogroup"
+>
+  <!-- @slot CdrToggleGroup content (CdrToggleButton components) -->
+  
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="true"
+      aria-label="a"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="0"
+      value="a"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      A
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="b"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="b"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      B
+      
+    </button>
+  </li>
+  <li
+    class="cdr-toggle-button__container"
+    role="presentation"
+  >
+    <button
+      aria-checked="false"
+      aria-label="c"
+      class="cdr-toggle-button__item"
+      role="radio"
+      tabindex="-1"
+      value="c"
+    >
+      <!-- @slot CdrToggleButton label content -->
+      
+      C
+      
+    </button>
+  </li>
+  
+</ul>
+`;

@@ -1,7 +1,6 @@
 <template>
   <CdrText class="product-recommendation__price">
     <span>
-      <!-- Handle price range -->
       <span v-if="isRange">
         <span class="sr-only">Prices range from</span>
         <span :class="getSalePriceClass(formatted.min)">{{ formatted.min }}</span>
@@ -10,13 +9,11 @@
         <span>{{ formatted.max }}</span>
       </span>
 
-      <!-- Handle single price -->
       <span v-else>
         <span :class="getSalePriceClass(formatted.base)">{{ formatted.base }}</span>
       </span>
     </span>
 
-    <!-- Compare price -->
     <span
       v-if="formatted.compare"
       class="product-recommendation__price--compare"
@@ -34,7 +31,7 @@ import { computed } from 'vue';
 
 const props = defineProps<Price>();
 
-// Currency formatter
+/** Formats optional price values while leaving missing values empty. */
 const formatPrice = (price?: number) =>
   price
     ? new Intl.NumberFormat('en-US', {
@@ -43,10 +40,9 @@ const formatPrice = (price?: number) =>
       }).format(price)
     : '';
 
-// Determine if price is on sale (e.g., ends in .3 or .9)
+/** Applies the example's merchandising rule for identifying sale prices. */
 const hasSalePricing = (price: string) => price?.endsWith('3') || price?.endsWith('9');
 
-// Computed formatted prices
 const formatted = computed(() => ({
   base: formatPrice(props.base),
   min: formatPrice(props.min),
@@ -54,16 +50,14 @@ const formatted = computed(() => ({
   compare: formatPrice(props.compare),
 }));
 
-// Check if this is a price range
 const isRange = computed(() => props.min !== undefined && props.max !== undefined);
 
-// Get sale price class
 const getSalePriceClass = (price: string) =>
   hasSalePricing(price) ? 'product-recommendation__price--sale' : '';
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
+@use '@rei/cdr-tokens/scss' as *;
 
 .product-recommendation__price {
   @include cdr-text-utility-sans-200;

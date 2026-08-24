@@ -5,7 +5,7 @@ exports[`CdrTable.vue > with basic content > border and striped set to true > re
   class="cdr-table--responsive"
 >
   <table
-    class="cdr-table cdr-table--medium cdr-table--striped cdr-table--full-width"
+    class="cdr-table cdr-table--striped cdr-table--full-width"
   >
     <!-- @slot CdrTable content (Valid table elements &lt;th&gt;, &lt;tbody&gt;, &lt;tr&gt;, &lt;td&gt;, etc.) -->
     
@@ -49,7 +49,7 @@ exports[`CdrTable.vue > with basic content > renders correctly 1`] = `
   class="cdr-table--responsive"
 >
   <table
-    class="cdr-table cdr-table--medium cdr-table--border cdr-table--full-width"
+    class="cdr-table cdr-table--border cdr-table--full-width"
   >
     <!-- @slot CdrTable content (Valid table elements &lt;th&gt;, &lt;tbody&gt;, &lt;tr&gt;, &lt;td&gt;, etc.) -->
     
@@ -93,7 +93,7 @@ exports[`CdrTable.vue > with basic content > with xs prop provided > renders cor
   class="cdr-table--responsive"
 >
   <table
-    class="cdr-table cdr-table--medium cdr-table--border cdr-table--full-width@xs"
+    class="cdr-table cdr-table--border cdr-table--full-width@xs"
   >
     <!-- @slot CdrTable content (Valid table elements &lt;th&gt;, &lt;tbody&gt;, &lt;tr&gt;, &lt;td&gt;, etc.) -->
     
@@ -139,7 +139,7 @@ exports[`CdrTable.vue > with the aria-label attr set > renders correctly 1`] = `
 >
   <table
     aria-label="test table"
-    class="cdr-table cdr-table--medium cdr-table--border cdr-table--full-width"
+    class="cdr-table cdr-table--border cdr-table--full-width"
   >
     <!-- @slot CdrTable content (Valid table elements &lt;th&gt;, &lt;tbody&gt;, &lt;tr&gt;, &lt;td&gt;, etc.) -->
     

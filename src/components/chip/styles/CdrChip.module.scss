@@ -7,7 +7,7 @@
 .cdr-chip__icon-left {
   @include vars.cdr-chip-icon-left-mixin;
 
-  & svg {
+  svg {
     fill: inherit;
   }
 }
@@ -15,7 +15,7 @@
 .cdr-chip__icon-right {
   @include vars.cdr-chip-icon-right-mixin;
 
-  & svg {
+  svg {
     fill: inherit;
   }
 }

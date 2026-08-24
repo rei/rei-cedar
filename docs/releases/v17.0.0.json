@@ -1,0 +1,179 @@
+[
+  {
+    "id": "rei-cedar/17.0.0/breaking/exports-map-restricts-deep-imports",
+    "repo": "rei-cedar",
+    "changeType": "breaking",
+    "category": "build",
+    "subject": "Package.json exports map restricts deep imports",
+    "before": "./dist/* catch-all allowing any dist/ sub-path",
+    "after": "explicit entry points: per-component (@rei/cedar/CdrButton), barrel (@rei/cedar), and ./dist/*.css pattern",
+    "resolvedValue": null,
+    "breaking": true,
+    "consumerActionRequired": true,
+    "consumerImpact": "Bare dist/ path imports (e.g., @rei/cedar/dist/lib.mjs) no longer resolve; use documented entry points",
+    "compatibilityRange": {
+      "safeFrom": "16.3.1",
+      "requiresMigrationFrom": "17.0.0"
+    },
+    "crossRepoImpact": null,
+    "visualImpact": "none",
+    "figmaAction": null,
+    "deprecation": null,
+    "affectedComponents": [],
+    "migrationSteps": [
+      "Replace direct dist/ imports with documented entry points",
+      "Use @rei/cedar or @rei/cedar/CdrButton for components",
+      "Use ./dist/*.css pattern for direct stylesheet imports"
+    ],
+    "signalSource": "diff"
+  },
+  {
+    "id": "rei-cedar/17.0.0/breaking/type-exports-barrel-replaced",
+    "repo": "rei-cedar",
+    "changeType": "breaking",
+    "category": "build",
+    "subject": "Type exports barrel replaced with per-component exports from package root",
+    "before": "import type { CdrButtonProps } from '@rei/cedar/types/interfaces'",
+    "after": "import type { CdrButtonProps } from '@rei/cedar'",
+    "resolvedValue": null,
+    "breaking": true,
+    "consumerActionRequired": true,
+    "consumerImpact": "Type imports from types/interfaces and types/other paths no longer resolve",
+    "compatibilityRange": {
+      "safeFrom": "16.3.1",
+      "requiresMigrationFrom": "17.0.0"
+    },
+    "crossRepoImpact": null,
+    "visualImpact": "none",
+    "figmaAction": null,
+    "deprecation": null,
+    "affectedComponents": [],
+    "migrationSteps": [
+      "Replace imports from '@rei/cedar/types/interfaces' with '@rei/cedar'",
+      "Replace imports from '@rei/cedar/types/other' with '@rei/cedar'"
+    ],
+    "signalSource": "diff"
+  },
+  {
+    "id": "rei-cedar/17.0.0/breaking/requires-cdr-tokens-v14",
+    "repo": "rei-cedar",
+    "changeType": "breaking",
+    "category": "build",
+    "subject": "Requires @rei/cdr-tokens v14 for direct token consumption",
+    "before": "@rei/cdr-tokens v13.x",
+    "after": "@rei/cdr-tokens >=14.0.0",
+    "resolvedValue": null,
+    "breaking": true,
+    "consumerActionRequired": true,
+    "consumerImpact": "Cedar v17 will not build without @rei/cdr-tokens v14; both must be upgraded together",
+    "compatibilityRange": {
+      "safeFrom": "16.3.1",
+      "requiresMigrationFrom": "17.0.0"
+    },
+    "crossRepoImpact": {
+      "affectedRepo": "rei-cedar-tokens",
+      "impactType": "breaking",
+      "description": "Hard co-release dependency: Cedar v17 imports directly from tokens v14 modular paths",
+      "automatable": false
+    },
+    "visualImpact": "none",
+    "figmaAction": null,
+    "deprecation": null,
+    "affectedComponents": [],
+    "migrationSteps": [
+      "Upgrade @rei/cdr-tokens to v14 in the same PR",
+      "Run: npm install @rei/cdr-tokens@14"
+    ],
+    "signalSource": "diff"
+  },
+  {
+    "id": "rei-cedar/17.0.0/feature/modular-component-imports",
+    "repo": "rei-cedar",
+    "changeType": "feature",
+    "category": "build",
+    "subject": "Per-component modular imports via package.json exports map",
+    "before": "barrel import only: import { CdrButton } from '@rei/cedar'",
+    "after": "per-component: import CdrButton from '@rei/cedar/CdrButton' (barrel still works)",
+    "resolvedValue": null,
+    "breaking": false,
+    "consumerActionRequired": false,
+    "consumerImpact": "Teams can import individual components for smaller bundles without changing existing barrel imports",
+    "compatibilityRange": null,
+    "crossRepoImpact": null,
+    "visualImpact": "none",
+    "figmaAction": null,
+    "deprecation": null,
+    "affectedComponents": [],
+    "migrationSteps": [],
+    "signalSource": "diff"
+  },
+  {
+    "id": "rei-cedar/17.0.0/feature/per-component-type-exports",
+    "repo": "rei-cedar",
+    "changeType": "feature",
+    "category": "build",
+    "subject": "Per-component TypeScript props interfaces exported from package root",
+    "before": "types from internal barrel paths or InstanceType workarounds",
+    "after": "import type { CdrButtonProps } from '@rei/cedar' — every component props type at the root",
+    "resolvedValue": null,
+    "breaking": false,
+    "consumerActionRequired": false,
+    "consumerImpact": "Clean, stable type imports for all component props without workarounds",
+    "compatibilityRange": null,
+    "crossRepoImpact": null,
+    "visualImpact": "none",
+    "figmaAction": null,
+    "deprecation": null,
+    "affectedComponents": [],
+    "migrationSteps": [],
+    "signalSource": "diff"
+  },
+  {
+    "id": "rei-cedar/17.0.0/fix/modal-ssr-hydration",
+    "repo": "rei-cedar",
+    "changeType": "fix",
+    "category": "component",
+    "subject": "CdrModal SSR hydration mismatch resolved",
+    "before": "Teleport race condition caused client/server markup divergence on modal open",
+    "after": "Teleport starts disabled during SSR, enables after client mount, tick-capped guard on open",
+    "resolvedValue": null,
+    "breaking": false,
+    "consumerActionRequired": false,
+    "consumerImpact": "SSR modal workarounds (ClientOnly, delayed mount) can be removed",
+    "compatibilityRange": null,
+    "crossRepoImpact": null,
+    "visualImpact": "none",
+    "figmaAction": null,
+    "deprecation": null,
+    "affectedComponents": ["CdrModal"],
+    "migrationSteps": [
+      "Remove ClientOnly wrappers around CdrModal in SSR contexts",
+      "Remove delayed opened binding workarounds"
+    ],
+    "signalSource": "diff"
+  },
+  {
+    "id": "rei-cedar/17.0.0/feature/ts4-compatible-declarations",
+    "repo": "rei-cedar",
+    "changeType": "feature",
+    "category": "build",
+    "subject": "TS 4 compatible declaration re-exports",
+    "before": "declaration files required TS 5 resolution behavior",
+    "after": "re-export syntax resolves correctly under both TS 4 and TS 5",
+    "resolvedValue": null,
+    "breaking": false,
+    "consumerActionRequired": false,
+    "consumerImpact": "Teams on TS 4 can consume Cedar types without compiler errors or skipLibCheck",
+    "compatibilityRange": null,
+    "crossRepoImpact": null,
+    "visualImpact": "none",
+    "figmaAction": null,
+    "deprecation": null,
+    "affectedComponents": [],
+    "migrationSteps": [
+      "Remove skipLibCheck: true if added solely for Cedar type compatibility",
+      "Remove local Cedar type shims if present"
+    ],
+    "signalSource": "diff"
+  }
+]

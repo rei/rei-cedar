@@ -1,32 +1,37 @@
 <script setup lang="ts">
 import { useCssModule, computed } from 'vue';
-import { baseTextProps } from '../../../types/interfaces';
+import { BaseTextProps } from '../types';
+import { typeScaleCssSuffix } from '../../../tokens/adapters';
+import type { TypeScale } from '../../../types/componentOptions';
 
 defineOptions({
   name: 'CdrHeadingDisplay',
 });
 
-interface headingDisplayTextProps extends baseTextProps {
-   /** 
-   * Sets the type scale
-   * @type scaleValue
-   * @values 2,3,4,5,6,7
+interface HeadingDisplayTextProps extends BaseTextProps {
+  /**
+   * Sets the type scale using Cedar values derived from cdr-tokens CdrTypeKey values.
+   * @type TypeScale
+   * @values scale-2, scale-3, scale-4, scale-5, scale-6, scale-7
    */
-  scale?: '2'|'3'|'4'|'5'|'6'|'7',
-
+  scale?: Extract<TypeScale, 'scale-2' | 'scale-3' | 'scale-4' | 'scale-5' | 'scale-6' | 'scale-7'>;
 }
 
-const props = withDefaults(defineProps<headingDisplayTextProps>(), {
+const props = withDefaults(defineProps<HeadingDisplayTextProps>(), {
   tag: 'h1',
-  scale: '7',
+  scale: 'scale-7',
 });
 
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
+
 const typeProperties = computed(() => {
+  const suffix = typeScaleCssSuffix(props.scale!);
   return {
-    '--cdr-heading-display-font-size': `var(--cdr-type-scale-${props.scale})`,
-    '--cdr-heading-display-line-height': 
-    `var(--cdr-line-height-ratio-heading-display-${props.scale})`
-  }
+    '--cdr-heading-display-font-size': `var(--cdr-type-scale-${suffix})`,
+    '--cdr-heading-display-line-height': `var(--cdr-line-height-ratio-heading-display-${suffix})`,
+  };
 });
 
 const baseClass = 'cdr-heading-display';
@@ -43,5 +48,4 @@ const style = useCssModule();
   </component>
 </template>
 
-<style module src="./styles/CdrHeadingDisplay.module.scss" lang="scss">
-</style>  
+<style module src="./styles/CdrHeadingDisplay.module.scss" lang="scss"></style>

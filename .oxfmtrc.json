@@ -1,0 +1,27 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "proseWrap": "preserve",
+  "htmlWhitespaceSensitivity": "ignore",
+  "vueIndentScriptAndStyle": false,
+  "endOfLine": "lf",
+  "singleAttributePerLine": true,
+  "ignorePatterns": [
+    "dist/",
+    "node_modules/",
+    "templates/",
+    "src/components/icon/comps/",
+    "coverage/",
+    "storybook-static/",
+    "*.log",
+    ".DS_Store"
+  ]
+}

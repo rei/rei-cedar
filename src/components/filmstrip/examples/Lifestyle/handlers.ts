@@ -1,13 +1,12 @@
-import type { CdrFilmstripArrowClickPayload, CdrFilmstripResizePayload } from '../../interfaces';
+import type {
+  CdrFilmstripArrowClickPayload,
+  CdrFilmstripLayout,
+  CdrFilmstripResizeContext,
+} from '../../interfaces';
 import type { Lifestyle, LifestyleFrameClickPayload } from '.';
-import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens';
+import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens/tokens';
 
-/**
- * Handles frame click events in the filmstrip and logs analytics data.
- *
- * @param {unknown} payload - The event payload containing details about the clicked frame.
- * @return {void}
- */
+/** Demonstrates how a frame event can be translated into click analytics. */
 export function onFrameClick(payload: unknown): void {
   const { event, item } = payload as LifestyleFrameClickPayload;
 
@@ -19,13 +18,7 @@ export function onFrameClick(payload: unknown): void {
   console.log('onFrameClick', { event, item, analytics });
 }
 
-/**
- * Handles arrow click events in the filmstrip.
- * Determines scroll direction and formats analytics tracking data.
- *
- * @param {unknown} payload - The event payload containing navigation details.
- * @return {void}
- */
+/** Demonstrates analytics derived from the source model and arrow direction. */
 export function onArrowClick(payload: unknown): void {
   const { direction, event, model = {} } = payload as CdrFilmstripArrowClickPayload;
   const { framesVisible, frameStyle } = model as Partial<Lifestyle>;
@@ -33,7 +26,7 @@ export function onArrowClick(payload: unknown): void {
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';
   const scrollValue = `scroll-${direction}`;
   const analytics = {
-    [scrollDirection]: scrollValue, // Scroll direction tracking key
+    [scrollDirection]: scrollValue,
     framesVisible,
     frameStyle,
   };
@@ -42,30 +35,22 @@ export function onArrowClick(payload: unknown): void {
 }
 
 /**
- * Handles window resize events and updates the filmstrip's
- * internal state for `framesToShow` and `framesToScroll` based
- * on the current window size.
- *
- * @param {unknown} payload - The event payload containing
- *   information about the filmstrip's config and model.
- * @return {void}
+ * Returns the lifestyle example's responsive frame counts.
  */
-export function onResize(payload: unknown): void {
-  const { framesToScroll, framesToShow, model = {} } = payload as CdrFilmstripResizePayload;
-  const { framesVisible = 3 } = model as Partial<Lifestyle>;
+export function resizeStrategy({
+  model,
+  viewportWidth,
+}: CdrFilmstripResizeContext<Partial<Lifestyle>>): CdrFilmstripLayout {
+  const { framesVisible = 3 } = model;
+  const framesToShow =
+    viewportWidth >= Number(CdrBreakpointLg)
+      ? framesVisible
+      : viewportWidth >= Number(CdrBreakpointMd)
+        ? 3
+        : 2;
 
-  const { clientWidth } = window.document.body;
-  switch (true) {
-    case clientWidth >= Number(CdrBreakpointLg):
-      framesToShow.value = framesVisible;
-      framesToScroll.value = framesVisible - 1;
-      break;
-    case clientWidth >= Number(CdrBreakpointMd):
-      framesToShow.value = 3;
-      framesToScroll.value = 2;
-      break;
-    default:
-      framesToShow.value = 2;
-      framesToScroll.value = 1;
-  }
+  return {
+    framesToShow,
+    framesToScroll: framesToShow - 1,
+  };
 }

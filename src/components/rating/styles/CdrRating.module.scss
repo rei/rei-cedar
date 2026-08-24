@@ -1,17 +1,17 @@
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 $rating-color: #2b6692;
 $empty-star: '\2606';
 $filled-star: '\2605';
 
 @mixin cdr-rating-small() {
-  & .cdr-rating__icon {
+  .cdr-rating__icon {
     width: tokens.$cdr-icon-size-sm;
     height: tokens.$cdr-icon-size-sm;
     font-size: tokens.$cdr-icon-size-sm;
   }
 
-  & .cdr-rating__count {
+  .cdr-rating__count {
     @include tokens.cdr-text-utility-sans-100;
 
     margin-left: tokens.$cdr-space-quarter-x;
@@ -33,13 +33,13 @@ $filled-star: '\2605';
 }
 
 @mixin cdr-rating-large() {
-  & .cdr-rating__icon {
+  .cdr-rating__icon {
     width: tokens.$cdr-icon-size-lg;
     height: tokens.$cdr-icon-size-lg;
     font-size: tokens.$cdr-icon-size-lg;
   }
 
-  & .cdr-rating__count {
+  .cdr-rating__count {
     @include tokens.cdr-text-utility-sans-300;
   }
 }
@@ -79,68 +79,75 @@ $filled-star: '\2605';
   /* Linked
     ========== */
 
-    &--linked {
-      display: inline-flex;
-      text-decoration: none;
-    
-      & .cdr-rating__count {
-        &:hover,
-        &:active,
-        &:focus {
-          //ITEM_DOC: Hover text color of cdr-rating count
-          color: var(--cdr-rating-count-hover-color, var(--cdr-color-text-rating-hover, #{tokens.$cdr-color-text-rating-hover}));
-          text-decoration: underline;
-        }
-    
-        & > .cdr-rating__number {
-          //ITEM_DOC: Color of the rating text separator
-          border-right: 1px solid var(--cdr-rating-text-rating-separator, var(--cdr-color-text-rating-separator, #{tokens.$cdr-color-text-rating-separator}));
-          padding: 0 0.6rem;
-          margin-right: 0.6rem;
-        }
+  &--linked {
+    display: inline-flex;
+    text-decoration: none;
+
+    .cdr-rating__count {
+      &:hover,
+      &:active,
+      &:focus {
+        // ITEM_DOC: Hover text color of cdr-rating count
+        color: var(
+          --cdr-rating-count-hover-color,
+          var(--cdr-color-text-rating-hover, #{tokens.$cdr-color-text-rating-hover})
+        );
+        text-decoration: underline;
+      }
+
+      > .cdr-rating__number {
+        // ITEM_DOC: Color of the rating text separator
+        border-right: 1px solid
+          var(
+            --cdr-rating-text-rating-separator,
+            var(--cdr-color-text-rating-separator, #{tokens.$cdr-color-text-rating-separator})
+          );
+        padding: 0 0.6rem;
+        margin-right: 0.6rem;
       }
     }
+  }
 
   &__star {
     width: tokens.$cdr-icon-size;
     height: tokens.$cdr-icon-size;
 
     &--null-fill {
-      //ITEM_DOC: Fill color of a null star
-      fill: var(--cdr-rating-star-null-fill-color, #F9F8F6);
+      // ITEM_DOC: Fill color of a null star
+      fill: var(--cdr-rating-star-null-fill-color, #f9f8f6);
     }
-  
+
     &--null-outline {
-      //ITEM_DOC: Outline color of a null star
-      fill: var(--cdr-rating-star-null-outline-color, #928B80);
+      // ITEM_DOC: Outline color of a null star
+      fill: var(--cdr-rating-star-null-outline-color, #928b80);
     }
-  
+
     &--partial-fill {
-      //ITEM_DOC: Fill color of a partially filled star
-      fill: var(--cdr-rating-star-partial-fill-color, #FFD280);
+      // ITEM_DOC: Fill color of a partially filled star
+      fill: var(--cdr-rating-star-partial-fill-color, #ffd280);
     }
-  
+
     &--partial-stroke {
-      //ITEM_DOC: Stroke color of a partially filled star
-      stroke: var(--cdr-rating-star-partial-stroke-color, #BD7B2D);
+      // ITEM_DOC: Stroke color of a partially filled star
+      stroke: var(--cdr-rating-star-partial-stroke-color, #bd7b2d);
     }
 
     &--filled {
-      //ITEM_DOC: Fill color of a filled star
-      fill: var(--cdr-rating-star-filled-fill-color, #FFD280);
+      // ITEM_DOC: Fill color of a filled star
+      fill: var(--cdr-rating-star-filled-fill-color, #ffd280);
 
-      //ITEM_DOC: Stroke color of a filled star
-      stroke: var(--cdr-rating-star-filled-stroke-color, #BD7B2D);
+      // ITEM_DOC: Stroke color of a filled star
+      stroke: var(--cdr-rating-star-filled-stroke-color, #bd7b2d);
     }
-  
+
     &--empty {
-      //ITEM_DOC: Fill color of an empty star
-      fill: var(--cdr-rating-star-empty-fill-color, #F9F8F6);
+      // ITEM_DOC: Fill color of an empty star
+      fill: var(--cdr-rating-star-empty-fill-color, #f9f8f6);
 
-      //ITEM_DOC: Stroke color of an empty star
-      stroke: var(--cdr-rating-star-empty-stroke-color, #BD7B2D);
+      // ITEM_DOC: Stroke color of an empty star
+      stroke: var(--cdr-rating-star-empty-stroke-color, #bd7b2d);
     }
-    
+
     &--small {
       width: tokens.$cdr-icon-size-sm;
       height: tokens.$cdr-icon-size-sm;
@@ -161,12 +168,12 @@ $filled-star: '\2605';
         width: tokens.$cdr-icon-size-sm;
         height: tokens.$cdr-icon-size-sm;
       }
-  
+
       &--medium\@xs {
         width: tokens.$cdr-icon-size;
         height: tokens.$cdr-icon-size;
       }
-  
+
       &--large\@xs {
         width: tokens.$cdr-icon-size-lg;
         height: tokens.$cdr-icon-size-lg;
@@ -178,12 +185,12 @@ $filled-star: '\2605';
         width: tokens.$cdr-icon-size-sm;
         height: tokens.$cdr-icon-size-sm;
       }
-  
+
       &--medium\@sm {
         width: tokens.$cdr-icon-size;
         height: tokens.$cdr-icon-size;
       }
-  
+
       &--large\@sm {
         width: tokens.$cdr-icon-size-lg;
         height: tokens.$cdr-icon-size-lg;
@@ -195,12 +202,12 @@ $filled-star: '\2605';
         width: tokens.$cdr-icon-size-sm;
         height: tokens.$cdr-icon-size-sm;
       }
-  
+
       &--medium\@md {
         width: tokens.$cdr-icon-size;
         height: tokens.$cdr-icon-size;
       }
-  
+
       &--large\@md {
         width: tokens.$cdr-icon-size-lg;
         height: tokens.$cdr-icon-size-lg;
@@ -212,21 +219,18 @@ $filled-star: '\2605';
         width: tokens.$cdr-icon-size-sm;
         height: tokens.$cdr-icon-size-sm;
       }
-  
+
       &--medium\@lg {
         width: tokens.$cdr-icon-size;
         height: tokens.$cdr-icon-size;
       }
-  
+
       &--large\@lg {
         width: tokens.$cdr-icon-size-lg;
         height: tokens.$cdr-icon-size-lg;
       }
     }
-
   }
- 
-
 
   /* Large
     ========== */

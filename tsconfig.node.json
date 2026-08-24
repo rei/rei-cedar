@@ -4,10 +4,16 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true
   },
   "include": [
+    "*.d.ts",
     "vite.config.ts",
-    "vite-plugin-css-name-normalizer.ts"
+    "vite.umd.config.ts",
+    "vite.pages.config.mts",
+    "build/**/*.ts",
+    "build/**/*.mts",
+    "build/**/*.mjs"
   ]
 }

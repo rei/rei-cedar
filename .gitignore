@@ -26,7 +26,8 @@
 *.sublime-workspace
 nbproject
 Thumbs.db
-.vscode
+.vscode/*
+!.vscode/extensions.json
 jsconfig.json
 
 # Folders to ignore
@@ -46,12 +47,15 @@ coverage/
 # Build assets
 **/dist/*
 src/**/styles/themes/*
+src/entrypoints/
+*.tsbuildinfo
 
 src/**/package-lock\.json
 unmigrated/
 
 ## Dev output for hosting
 pages
+storybook-static
 
 # Ignore reports directory
 /reports/
@@ -59,3 +63,14 @@ pages
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# AI
+# AGENTS.md
+# .agents/skills/
+# .skills-lock.json
+.agents/
+skills-lock.json
+AGENTS.md
+
+# Storybook generated data (rebuilt on storybook dev/build)
+.storybook/generated/

@@ -4,12 +4,9 @@
     class="link-examples"
     data-backstop="all-links"
   >
-    <h2>
-      Links
-    </h2>
+    <h2>Links</h2>
     <standard-links class="mega-stack" />
     <resilience-test class="mega-stack" />
-
   </div>
 </template>
 
@@ -35,5 +32,4 @@ export default {
   //   margin: 1rem;
   // }
 }
-
 </style>

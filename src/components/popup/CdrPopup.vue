@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted,
-} from 'vue';
+import { useCssModule, computed, ref, watch, nextTick, onMounted, onUnmounted } from 'vue';
 import { debounce } from '../../utils/debounce';
-import propValidator from '../../utils/propValidator';
 import calculatePlacement from './calculatePlacement';
 import mapClasses from '../../utils/mapClasses';
+import type { CdrPopupProps } from './types';
 
 /** An internal helper component used by Popover and Tooltip */
 defineOptions({
@@ -14,28 +12,15 @@ defineOptions({
   customOptions: {},
 });
 
-const props = defineProps({
-  opened: {
-    type: Boolean,
-    default: false,
-  },
-  position: {
-    type: String,
-    required: false,
-    default: 'top',
-    validator: (value: string) => propValidator(
-      value,
-      ['top', 'bottom', 'left', 'right'],
-    ),
-  },
-  autoPosition: {
-    type: Boolean,
-    default: true,
-  },
-  contentClass: {
-    type: String,
-  },
+const props = withDefaults(defineProps<CdrPopupProps>(), {
+  opened: false,
+  position: 'top',
+  autoPosition: true,
 });
+
+defineSlots<{
+  'default'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   closed: null,
@@ -53,21 +38,13 @@ const closed = ref(!props.opened);
 const popupEl = ref<HTMLDivElement | null>(null);
 const rootEl = ref<HTMLDivElement | null>(null);
 
-const positionClass = computed(() => (props.opened || exiting.value
-  ? `cdr-popup--${pos.value}`
-  : ''));
-const cornerClass = computed(() => (corner.value
-  ? `cdr-popup--corner-${corner.value}`
-  : ''));
-const openClass = computed(() => (props.opened
-  ? 'cdr-popup--open'
-  : ''));
-const closedClass = computed(() => (closed.value && !exiting.value
-  ? 'cdr-popup--closed'
-  : ''));
-const exitingClass = computed(() => (exiting.value
-  ? 'cdr-popup--exit'
-  : ''));
+const positionClass = computed(() =>
+  props.opened || exiting.value ? `cdr-popup--${pos.value}` : '',
+);
+const cornerClass = computed(() => (corner.value ? `cdr-popup--corner-${corner.value}` : ''));
+const openClass = computed(() => (props.opened ? 'cdr-popup--open' : ''));
+const closedClass = computed(() => (closed.value && !exiting.value ? 'cdr-popup--closed' : ''));
+const exitingClass = computed(() => (exiting.value ? 'cdr-popup--exit' : ''));
 
 const closePopup = (e: Event) => {
   emits('closed', e);
@@ -79,7 +56,8 @@ const handleKeydown = (e: KeyboardEvent) => {
     case 'Esc':
       closePopup(e);
       break;
-    default: break;
+    default:
+      break;
   }
 };
 
@@ -99,16 +77,17 @@ const measurePopup = () => {
   });
 };
 
-const handleResize = () => {
-  debounce(() => {
-    measurePopup();
-  }, 300);
-};
+const handleResize = debounce(() => {
+  measurePopup();
+}, 300);
 
 const addHandlers = () => {
   document.addEventListener('keydown', handleKeydown);
   document.addEventListener('click', handleClick);
 };
+
+let openedTimeoutId: ReturnType<typeof setTimeout> | undefined;
+let exitingTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
 const handleOpened = () => {
   pos.value = props.position;
@@ -125,14 +104,14 @@ const handleOpened = () => {
         innerHeight,
         props.position,
       );
-      pos.value = calculated.pos;
+      pos.value = calculated.pos as 'top' | 'bottom' | 'left' | 'right';
       corner.value = calculated.corner;
     });
   }
 
   closed.value = false;
 
-  setTimeout(() => {
+  openedTimeoutId = setTimeout(() => {
     addHandlers();
   }, 1);
 };
@@ -142,20 +121,25 @@ const handleClosed = () => {
   document.removeEventListener('keydown', handleKeydown);
   document.removeEventListener('click', handleClick);
   exiting.value = true;
-  setTimeout(() => {
+  exitingTimeoutId = setTimeout(() => {
     exiting.value = false;
   }, 200); // $cdr-duration-2;
 };
 
-// eslint-disable-next-line no-return-assign
-watch(() => props.position, () => pos.value = props.position);
-watch(() => props.opened, () => {
-  if (props.opened) {
-    handleOpened();
-  } else {
-    handleClosed();
-  }
-});
+watch(
+  () => props.position,
+  () => (pos.value = props.position),
+);
+watch(
+  () => props.opened,
+  () => {
+    if (props.opened) {
+      handleOpened();
+    } else {
+      handleClosed();
+    }
+  },
+);
 
 onMounted(() => {
   measurePopup();
@@ -165,21 +149,16 @@ onUnmounted(() => {
   document.removeEventListener('keydown', handleKeydown);
   document.removeEventListener('click', handleClick);
   window.removeEventListener('resize', handleResize);
+  if (openedTimeoutId !== undefined) clearTimeout(openedTimeoutId);
+  if (exitingTimeoutId !== undefined) clearTimeout(exitingTimeoutId);
 });
-
 </script>
 <template>
   <div
     ref="rootEl"
-    :class="mapClasses(
-      style,
-      baseClass,
-      openClass,
-      exitingClass,
-      positionClass,
-      cornerClass,
-      closedClass,
-    )"
+    :class="
+      mapClasses(style, baseClass, openClass, exitingClass, positionClass, cornerClass, closedClass)
+    "
   >
     <div
       v-bind="$attrs"
@@ -192,5 +171,4 @@ onUnmounted(() => {
   </div>
 </template>
 
-<style lang="scss" module src="./styles/CdrPopup.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrPopup.module.scss" />

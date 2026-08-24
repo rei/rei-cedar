@@ -3,7 +3,7 @@
     <CdrHeadingSerif
       class="showcase__heading"
       tag="h2"
-      scale="4"
+      scale="scale-4"
     >
       Filmstrip showcase
     </CdrHeadingSerif>
@@ -35,7 +35,7 @@ import ProductRecommendationFilmstrip from './ProductRecommendation/Example.vue'
 </script>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as *;
+@use '@rei/cdr-tokens/scss' as *;
 
 .showcase {
   div:not(:last-child) {

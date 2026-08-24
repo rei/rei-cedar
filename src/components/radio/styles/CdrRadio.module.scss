@@ -1,5 +1,4 @@
 @use './vars/CdrRadio.vars' as vars;
-
 @use '../../labelWrapper/styles/CdrLabelWrapper.module';
 
 .cdr-radio {
@@ -33,14 +32,14 @@
   /* Disabled
   ========== */
   &__input:disabled {
-    & ~ .cdr-label-wrapper__figure {
+    ~ .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-radio-disabled-mixin;
     }
 
     /* Disabled + Checked
     ========== */
     &:checked {
-      & ~ .cdr-label-wrapper__figure {
+      ~ .cdr-label-wrapper__figure {
         @include vars.cdr-form-figure-radio-checked-disabled-mixin;
       }
     }
@@ -59,7 +58,8 @@
   /* Active
   ========== */
   &:active {
-    .cdr-label-wrapper__figure, .cdr-radio__input:checked ~ .cdr-label-wrapper__figure {
+    .cdr-label-wrapper__figure,
+    .cdr-radio__input:checked ~ .cdr-label-wrapper__figure {
       @include vars.cdr-form-figure-radio-active-mixin;
     }
   }

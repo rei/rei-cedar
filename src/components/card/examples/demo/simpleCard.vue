@@ -1,14 +1,14 @@
 <template>
   <div>
-      <cdr-card
-        class="card-example"
+    <cdr-card class="card-example">
+      <cdr-link
+        href="#bar"
+        class="cdr-card__link"
+        style="padding: 1.6rem"
       >
-        <cdr-link
-          href="#bar"
-          class="cdr-card__link"
-          style="padding:1.6rem"
-        >A simple card</cdr-link>
-      </cdr-card>
+        A simple card
+      </cdr-link>
+    </cdr-card>
   </div>
 </template>
 
@@ -22,9 +22,9 @@ export default {
 </script>
 
 <style>
-  .card-example {
-    max-width: 250px;
-    width: 250px;
-    min-height:120px;
-  }
+.card-example {
+  max-width: 250px;
+  width: 250px;
+  min-height: 120px;
+}
 </style>

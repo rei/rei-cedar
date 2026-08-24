@@ -1,41 +1,27 @@
 <script setup lang="ts">
-import {
-  ref, watch, onMounted, provide, computed, useCssModule,
-} from 'vue';
+import { ref, watch, onMounted, provide, computed, useCssModule } from 'vue';
+import type { CdrToggleGroupProps } from './types';
 import mapClasses from '../../utils/mapClasses';
-import propValidator from '../../utils/propValidator';
 import { selectedToggleKey } from '../../types/symbols';
 
 defineOptions({
   name: 'CdrToggleGroup',
 });
 
-const props = defineProps({
-  /** @ignore */
-  modelValue: {
-    type: [String, Number, Boolean, Object, Array],
-    required: true,
-  },
-  /**
-   * Sets toggle button size
-   * @demoSelectMultiple false
-   * @values medium, large
-  */
-  size: {
-    type: String,
-    default: 'medium',
-    validator: (value: string) => propValidator(
-      value,
-      ['medium', 'large'],
-    ),
-  },
+const props = withDefaults(defineProps<CdrToggleGroupProps>(), {
+  size: 'medium',
 });
 
+defineSlots<{
+  /** CdrToggleGroup content (CdrToggleButton components) */
+  'default'(props: Record<string, never>): any;
+}>();
+
 const emits = defineEmits({
-/**
- * Event emitted by v-model
- * @param modelValue
- */
+  /**
+   * Event emitted by v-model
+   * @param modelValue
+   */
   'update:modelValue': null,
 });
 
@@ -46,21 +32,24 @@ const toggleGroup = ref<HTMLUListElement | null>(null);
 const selectedToggleValue = ref(props.modelValue);
 provide(selectedToggleKey, selectedToggleValue);
 
-const sizeClass = computed(() => (props.size
-  ? `cdr-toggle-group--${props.size}`
-  : 'cdr-toggle-group--medium'));
+const sizeClass = computed(() =>
+  props.size ? `cdr-toggle-group--${props.size}` : 'cdr-toggle-group--medium',
+);
 
-let toggleButtonElements: HTMLButtonElement[];
+const toggleButtonElements = ref<HTMLButtonElement[]>([]);
 
 onMounted(() => {
   if (toggleGroup.value) {
-    toggleButtonElements = Array.from(toggleGroup.value.querySelectorAll('button'));
+    toggleButtonElements.value = Array.from(toggleGroup.value.querySelectorAll('button'));
   }
 });
 
-watch(() => props.modelValue, (value) => {
-  selectedToggleValue.value = value;
-});
+watch(
+  () => props.modelValue,
+  (value) => {
+    selectedToggleValue.value = value;
+  },
+);
 
 const selectToggleButton = (e: Event) => {
   if (!(e.target as HTMLElement)?.closest('button')) {
@@ -76,30 +65,29 @@ const selectToggleButton = (e: Event) => {
 
 const focusNext = (e: KeyboardEvent) => {
   const currentButton = e.target as HTMLButtonElement;
-  const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
-  const isLastButton = (currentButtonIndex === toggleButtonElements.length - 1);
+  const currentButtonIndex = toggleButtonElements.value.indexOf(currentButton);
+  const isLastButton = currentButtonIndex === toggleButtonElements.value.length - 1;
 
   if (isLastButton) {
     return;
   }
 
-  const nextButton = toggleButtonElements[currentButtonIndex + 1];
+  const nextButton = toggleButtonElements.value[currentButtonIndex + 1];
   nextButton.focus();
 };
 
 const focusPrev = (e: KeyboardEvent) => {
   const currentButton = e.target as HTMLButtonElement;
-  const currentButtonIndex = toggleButtonElements.indexOf(currentButton);
-  const isFirstButton = (currentButtonIndex === 0);
+  const currentButtonIndex = toggleButtonElements.value.indexOf(currentButton);
+  const isFirstButton = currentButtonIndex === 0;
 
   if (isFirstButton) {
     return;
   }
 
-  const nextButton = toggleButtonElements[currentButtonIndex - 1];
+  const nextButton = toggleButtonElements.value[currentButtonIndex - 1];
   nextButton.focus();
 };
-
 </script>
 
 <template>
@@ -107,11 +95,7 @@ const focusPrev = (e: KeyboardEvent) => {
     ref="toggleGroup"
     role="radiogroup"
     v-bind="$attrs"
-    :class="mapClasses(
-      style,
-      baseClass,
-      sizeClass,
-    )"
+    :class="mapClasses(style, baseClass, sizeClass)"
     @click.prevent="selectToggleButton"
     @keyup.right.prevent="focusNext"
     @keyup.left.prevent="focusPrev"
@@ -121,5 +105,4 @@ const focusPrev = (e: KeyboardEvent) => {
   </ul>
 </template>
 
-<style lang="scss" module src="./styles/CdrToggleGroup.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrToggleGroup.module.scss" />

@@ -1,0 +1,50 @@
+{
+  "$comment": "Security rules for all published Cedar artifacts. Requires PR + ADR to change.",
+  "version": "1.0.0",
+  "publishTargets": {
+    "internal": {
+      "$comment": "Full fidelity. Used for review drafts only — never committed externally.",
+      "includeFields": ["commitSource", "agentNote", "signalSource"]
+    },
+    "external": {
+      "$comment": "Scrubbed copy committed to docs/releases/ and published.",
+      "stripFields": ["commitSource", "agentNote"],
+      "stripComments": true
+    }
+  },
+  "blocklist": {
+    "$comment": "Patterns that must never appear in any published artifact.",
+    "patterns": [
+      "JIRA-[0-9]+",
+      "CEDAR-[0-9]+",
+      "ticket #[0-9]+",
+      "internal\\.rei\\.com",
+      "tokens/.*\\.json5?(?= )",
+      "style-dictionary/",
+      "scripts/agent-config/",
+      "scripts/agent/"
+    ],
+    "action": "redact and flag as agent-note before any publish step",
+    "contentRules": [
+      {
+        "pattern": "## Changes in this branch",
+        "action": "strip entire section including all content below it"
+      },
+      { "pattern": "Updates .* \\([0-9]+ files?\\):", "action": "strip line" }
+    ]
+  },
+  "agentNoteGate": {
+    "$comment": "Unresolved agent-notes must be resolved before promoting draft to published.",
+    "scanBeforePromote": true,
+    "warnMessage": "N unresolved agent-notes found. Resolve or explicitly dismiss before publishing.",
+    "blockPublish": false
+  },
+  "immutability": {
+    "$comment": "Published release records are immutable. Corrections append a new record.",
+    "correctionFormat": {
+      "id": "<original-id>-correction-1",
+      "corrects": "<original-id>",
+      "reason": "string"
+    }
+  }
+}

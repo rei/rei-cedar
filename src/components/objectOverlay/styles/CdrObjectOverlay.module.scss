@@ -1,39 +1,94 @@
 @use 'sass:map';
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 $breakpoints: (
   '': '',
   '-sm': tokens.$cdr-breakpoint-sm,
   '-md': tokens.$cdr-breakpoint-md,
-  '-lg': tokens.$cdr-breakpoint-lg
+  '-lg': tokens.$cdr-breakpoint-lg,
 );
-
 $positions: (
-  'left-top': (top: 0, left: 0, transform: none),
-  'center-top': (top: 0, left: 50%, transform: translateX(-50%)),
-  'right-top': (top: 0, right: 0, transform: none),
-  'left-center': (top: 50%, left: 0, transform: translateY(-50%)),
-  'center-center': (top: 50%, left: 50%, transform: translate(-50%, -50%)),
-  'right-center': (top: 50%, right: 0, transform: translateY(-50%)),
-  'left-bottom': (bottom: 0, left: 0, transform: none),
-  'center-bottom': (bottom: 0, left: 50%, transform: translateX(-50%)),
-  'right-bottom': (bottom: 0, right: 0, transform: none)
+  'left-top': (
+    top: 0,
+    left: 0,
+    transform: none,
+  ),
+  'center-top': (
+    top: 0,
+    left: 50%,
+    transform: translateX(-50%),
+  ),
+  'right-top': (
+    top: 0,
+    right: 0,
+    transform: none,
+  ),
+  'left-center': (
+    top: 50%,
+    left: 0,
+    transform: translateY(-50%),
+  ),
+  'center-center': (
+    top: 50%,
+    left: 50%,
+    transform: translate(-50%, -50%),
+  ),
+  'right-center': (
+    top: 50%,
+    right: 0,
+    transform: translateY(-50%),
+  ),
+  'left-bottom': (
+    bottom: 0,
+    left: 0,
+    transform: none,
+  ),
+  'center-bottom': (
+    bottom: 0,
+    left: 50%,
+    transform: translateX(-50%),
+  ),
+  'right-bottom': (
+    bottom: 0,
+    right: 0,
+    transform: none,
+  ),
 );
 
 // Dark theme gradients (default)
 $dark-gradients: (
-  'to-top': linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%),
-  'to-bottom': linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%),
-  'to-left': linear-gradient(to left, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%),
-  'to-right': linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.5) 20%, transparent 40%)
+  'to-top': linear-gradient(to top, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
+  'to-bottom': linear-gradient(to bottom, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
+  'to-left': linear-gradient(to left, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
+  'to-right': linear-gradient(to right, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
 );
 
 // Light theme gradients
 $light-gradients: (
-  'to-top': linear-gradient(to top, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%),
-  'to-bottom': linear-gradient(to bottom, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%),
-  'to-left': linear-gradient(to left, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%),
-  'to-right': linear-gradient(to right, white 0%, rgba(tokens.$cdr-color-background-primary, 0.5) 20%, transparent 40%)
+  'to-top': linear-gradient(
+      to top,
+      white 0%,
+      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      transparent 40%
+    ),
+  'to-bottom': linear-gradient(
+      to bottom,
+      white 0%,
+      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      transparent 40%
+    ),
+  'to-left': linear-gradient(
+      to left,
+      white 0%,
+      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      transparent 40%
+    ),
+  'to-right': linear-gradient(
+      to right,
+      white 0%,
+      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      transparent 40%
+    ),
 );
 
 .cdr-object-overlay {
@@ -80,14 +135,19 @@ $light-gradients: (
     @include at-breakpoint($breakpoint-suffix) {
       // Position
       @each $position, $properties in $positions {
-        $selector: if($breakpoint-suffix == '', 
-                     '[data-position="#{$position}"]', 
-                     '[data-position#{$breakpoint-suffix}="#{$position}"]');
-                     
+        $selector: '';
+
+        @if $breakpoint-suffix == '' {
+          $selector: '[data-position="#{$position}"]';
+        } @else {
+          $selector: '[data-position#{$breakpoint-suffix}="#{$position}"]';
+        }
+
         &#{$selector} &__content {
           @each $prop, $value in $properties {
             #{$prop}: $value;
           }
+
           // Set unused positions to auto
           @each $side in top, right, bottom, left {
             @if not map.has-key($properties, $side) {
@@ -99,11 +159,15 @@ $light-gradients: (
 
       // Dark theme gradients (default)
       @each $gradient, $direction in $dark-gradients {
-        $selector: if($breakpoint-suffix == '', 
-                     '[data-gradient="#{$gradient}"]', 
-                     '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]');
-                     
-        &#{$selector}:not([data-gradient-theme="light"])::before {
+        $selector: '';
+
+        @if $breakpoint-suffix == '' {
+          $selector: '[data-gradient="#{$gradient}"]';
+        } @else {
+          $selector: '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]';
+        }
+
+        &#{$selector}:not([data-gradient-theme='light'])::before {
           background-image: $direction;
           border-radius: inherit;
           display: block;
@@ -115,11 +179,15 @@ $light-gradients: (
 
       // Light theme gradients
       @each $gradient, $direction in $light-gradients {
-        $selector: if($breakpoint-suffix == '', 
-                     '[data-gradient="#{$gradient}"]', 
-                     '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]');
-                     
-        &#{$selector}[data-gradient-theme="light"]::before {
+        $selector: '';
+
+        @if $breakpoint-suffix == '' {
+          $selector: '[data-gradient="#{$gradient}"]';
+        } @else {
+          $selector: '[data-gradient#{$breakpoint-suffix}="#{$gradient}"]';
+        }
+
+        &#{$selector}[data-gradient-theme='light']::before {
           background-image: $direction;
           border-radius: inherit;
           display: block;

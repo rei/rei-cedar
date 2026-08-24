@@ -3,11 +3,14 @@ import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
-import dts from 'vite-plugin-dts'
-import options from './rollupOptions.mjs';
-import cssNameNormalizer  from './vite-plugin-css-name-normalizer';
+import dts from 'vite-plugin-dts';
+import options from './build/config/rollupOptions.mjs';
+import { generateComponentEntrypoints } from './build/generate-entrypoints';
+import cssNameNormalizer from './build/plugins/vite-plugin-css-name-normalizer';
 
-const version = process.env.npm_package_version;
+const version = process.env.npm_package_version ?? '0.0.0';
+const componentEntries = generateComponentEntrypoints();
+const shouldGenerateDeclarations = process.env.STORYBOOK !== 'true';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,11 +18,14 @@ export default defineConfig({
   build: {
     cssCodeSplit: true,
     lib: {
-      entry: './src/lib.ts',
+      entry: {
+        lib: './src/lib.ts',
+        ...componentEntries,
+      },
       formats: ['es'],
-      fileName: '[name]',
+      fileName: (_format, entryName) => `${entryName}.mjs`,
     },
-    rollupOptions: options,
+    rolldownOptions: options,
   },
   server: {
     port: 3000,
@@ -32,9 +38,9 @@ export default defineConfig({
       scss: {
         charset: false,
         quietDeps: true,
-        api: 'modern'
-      }
-    }
+        api: 'modern',
+      } as never,
+    },
   },
   resolve: {
     alias: {
@@ -51,13 +57,21 @@ export default defineConfig({
     environment: 'jsdom',
     css: {
       modules: {
-        classNameStrategy: 'non-scoped'
+        classNameStrategy: 'non-scoped',
       },
     },
   },
   plugins: [
     vue(),
     cssNameNormalizer(),
-    dts({ rollupTypes: true }),
+    ...(shouldGenerateDeclarations
+      ? [
+          dts({
+            tsconfigPath: './tsconfig.build.json',
+            rollupTypes: false,
+            exclude: ['src/**/*.stories.ts', 'src/**/examples/**'],
+          }),
+        ]
+      : []),
   ],
 });

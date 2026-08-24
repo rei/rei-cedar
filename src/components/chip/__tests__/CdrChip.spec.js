@@ -5,8 +5,8 @@ describe('CdrChip', () => {
   it('default matches snapshot', () => {
     const wrapper = mount(CdrChip, {
       slots: {
-        default: 'tortilla chip'
-      }
+        default: 'tortilla chip',
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });
@@ -16,8 +16,8 @@ describe('CdrChip', () => {
       slots: {
         default: 'tortilla chip',
         'icon-left': '🌮',
-        'icon-right': '🍔'
-      }
+        'icon-right': '🍔',
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });

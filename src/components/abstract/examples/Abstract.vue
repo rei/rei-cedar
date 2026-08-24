@@ -1,9 +1,15 @@
 <template>
   <div>
     <h2>abstract</h2>
-    <CdrAbstract>Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.</CdrAbstract>
+    <CdrAbstract>
+      Fueling well is the key to longevity and improvement in running. Our experts guide you on
+      filling your plate for your goals.
+    </CdrAbstract>
     <div class="abstract-container">
-      <CdrAbstract>Fueling well is the key to longevity and improvement in running. Our experts guide you on filling your plate for your goals.</CdrAbstract>
+      <CdrAbstract>
+        Fueling well is the key to longevity and improvement in running. Our experts guide you on
+        filling your plate for your goals.
+      </CdrAbstract>
     </div>
   </div>
 </template>

@@ -2,65 +2,50 @@ import type { CdrFilmstripArrowClickPayload, CdrFilmstripScrollPayload } from '.
 
 import type { ProductRecommendation, ProductRecommendationFrameClickPayload } from '.';
 
-/**
- * Handles frame click events in the filmstrip.
- * Extracts relevant analytics data and logs the event.
- *
- * @param {unknown} payload - The event payload containing details about the clicked frame.
- */
+/** Normalizes recommendation identifiers for analytics link names. */
+const format = (value?: string): string | undefined => value?.replace(/_/g, '-');
+
+/** Demonstrates the click data available to a frame analytics handler. */
 export function onFrameClick(payload: unknown): void {
   const { event, item } = payload as ProductRecommendationFrameClickPayload;
 
   const analytics = {
-    rrClickUrl: item.rrClickUrl, // URL for tracking clicks
-    redirectHref: item.href, // Destination URL for navigation
-    analyticsConfig: item.analyticsConfig, // Custom analytics config
+    rrClickUrl: item.rrClickUrl,
+    redirectHref: item.href,
+    analyticsConfig: item.analyticsConfig,
   };
 
   console.log('onFrameClick', { event, item, analytics });
 }
 
-/**
- * Handles arrow click events in the filmstrip.
- * Determines scroll direction and formats analytics tracking data.
- *
- * @param {unknown} payload - The event payload containing navigation details.
- */
+/** Builds arrow-navigation analytics from recommendation placement data. */
 export function onArrowClick(payload: unknown): void {
   const { direction, event, model = {} } = payload as CdrFilmstripArrowClickPayload;
   const { placementName, strategy } = model as Partial<ProductRecommendation>;
 
   const scrollDirection = direction === 'right' ? 'forwardScroll' : 'backScroll';
   const scrollValue = `scroll-${direction}`;
-  const format = (str?: string): string | undefined => str?.replace(/_/g, '-');
 
   const analytics = {
-    rrPlacementName: format(placementName), // Formatted placement name for tracking
-    rrStrategy: format(strategy), // Formatted strategy type
-    [scrollDirection]: scrollValue, // Scroll direction tracking key
-    linkName: `rr_${format(placementName)}_${format(strategy)}_${scrollValue}`, // Analytics event label
+    rrPlacementName: format(placementName),
+    rrStrategy: format(strategy),
+    [scrollDirection]: scrollValue,
+    linkName: `rr_${format(placementName)}_${format(strategy)}_${scrollValue}`,
   };
 
   console.log('onArrowClick', { event, direction, analytics });
 }
 
-/**
- * Handles scroll navigation events in the filmstrip.
- * Extracts relevant analytics data based on the scrolled-to frame.
- *
- * @param {unknown} payload - The event payload containing scroll details.
- */
+/** Builds direct-scroll analytics for the first visible product index. */
 export function onScrollNavigate(payload: unknown): void {
   const { index, event, model = {} } = payload as CdrFilmstripScrollPayload;
   const { placementName, strategy } = model as Partial<ProductRecommendation>;
 
-  const format = (str?: string): string | undefined => str?.replace(/_/g, '-');
-
   const analytics = {
-    rrPlacementName: format(placementName), // Formatted placement name
-    rrStrategy: format(strategy), // Formatted strategy type
-    scrollPosition: index, // Index scrolled to
-    linkName: `rr_${format(placementName)}_${format(strategy)}_scroll-${index}`, // Analytics label
+    rrPlacementName: format(placementName),
+    rrStrategy: format(strategy),
+    scrollPosition: index,
+    linkName: `rr_${format(placementName)}_${format(strategy)}_scroll-${index}`,
   };
 
   console.log('onScrollNavigate', { index, model, event, analytics });

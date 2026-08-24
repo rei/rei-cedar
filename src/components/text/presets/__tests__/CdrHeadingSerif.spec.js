@@ -1,15 +1,14 @@
 import { mount } from '../../../../../test/vue-jest-style-workaround.js';
 import CdrHeadingSerif from '../CdrHeadingSerif.vue';
 
-
 describe('CdrHeadingSerif', () => {
   describe('default configuration', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrHeadingSerif, {
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
@@ -21,10 +20,10 @@ describe('CdrHeadingSerif', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrHeadingSerif, {
-        props: { scale: '1' },
+        props: { scale: 'scale-1' },
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
@@ -38,13 +37,12 @@ describe('CdrHeadingSerif', () => {
       wrapper = mount(CdrHeadingSerif, {
         props: { strong: true },
         slots: {
-          default: 'paragraph'
-        }
+          default: 'paragraph',
+        },
       });
     });
     it('renders correctly', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
   });
-
 });

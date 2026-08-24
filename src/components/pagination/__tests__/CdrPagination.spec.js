@@ -5,7 +5,9 @@ function makePages(total, startingAt = 0) {
   const arg = 'page';
   const adjuster = startingAt > 0 ? startingAt : 0;
   const result = [];
-  const arr = Array(total).fill().map((_, i) => i + adjuster + 1);
+  const arr = Array(total)
+    .fill()
+    .map((_, i) => i + adjuster + 1);
   arr.forEach((n) => {
     const obj = {};
     obj.page = n;
@@ -36,19 +38,19 @@ async function setActivePageNumber(wrapper, number) {
 function bothPrevAndNextLinksExist(wrapper) {
   let prev = wrapper.find('a .cdr-pagination_caret--prev');
   let next = wrapper.find('a .cdr-pagination_caret--next');
-  return (prev.exists() && next.exists())
+  return prev.exists() && next.exists();
 }
 
 function onlyNextLinkExists(wrapper) {
   let prev = wrapper.find('a .cdr-pagination_caret--prev');
   let next = wrapper.find('a .cdr-pagination_caret--next');
-  return (!prev.exists() && next.exists())
+  return !prev.exists() && next.exists();
 }
 
 function onlyPrevLinkExists(wrapper) {
   let prev = wrapper.find('a .cdr-pagination_caret--prev');
   let next = wrapper.find('a .cdr-pagination_caret--next');
-  return (prev.exists() && !next.exists())
+  return prev.exists() && !next.exists();
 }
 
 describe('CdrPagination', () => {
@@ -56,7 +58,7 @@ describe('CdrPagination', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(20),
           modelValue: 1,
@@ -78,7 +80,7 @@ describe('CdrPagination', () => {
 
     describe('with button pagination', () => {
       beforeEach(() => {
-        wrapper.setProps({ linkTag: 'button' })
+        wrapper.setProps({ linkTag: 'button' });
       });
 
       it('renders correctly', async () => {
@@ -93,7 +95,7 @@ describe('CdrPagination', () => {
 
     describe('with "forLabel" prop set', () => {
       beforeEach(() => {
-        wrapper.setProps({ forLabel: 'Pagination for reviews' })
+        wrapper.setProps({ forLabel: 'Pagination for reviews' });
       });
 
       it('renders correctly', () => {
@@ -128,7 +130,7 @@ describe('CdrPagination', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(5),
           modelValue: 1,
@@ -143,24 +145,23 @@ describe('CdrPagination', () => {
     it('sorts the pages correctly', async () => {
       await setActivePageNumber(wrapper, 1);
       expect(getPageNumArray(wrapper.vm.paginationData)).toEqual([1, 2, 3, 4, 5]);
-      expect(onlyNextLinkExists(wrapper)).toBe(true)
+      expect(onlyNextLinkExists(wrapper)).toBe(true);
 
       await setActivePageNumber(wrapper, 4);
       expect(getPageNumArray(wrapper.vm.paginationData)).toEqual([1, 2, 3, 4, 5]);
-      expect(bothPrevAndNextLinksExist(wrapper)).toBe(true)
+      expect(bothPrevAndNextLinksExist(wrapper)).toBe(true);
 
-      await setActivePageNumber(wrapper, 5)
+      await setActivePageNumber(wrapper, 5);
       expect(getPageNumArray(wrapper.vm.paginationData)).toEqual([1, 2, 3, 4, 5]);
       expect(onlyPrevLinkExists(wrapper)).toBe(true);
     });
   });
 
-
   describe('when the active page is in the middle', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(getPrevNextPages(5), 3),
           modelValue: 5,
@@ -186,7 +187,7 @@ describe('CdrPagination', () => {
     let disabledPrev;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(getPrevNextPages(1), -1),
           modelValue: 1,
@@ -218,7 +219,7 @@ describe('CdrPagination', () => {
     let disabledNext;
     beforeEach(() => {
       wrapper = mount(CdrPagination, {
-        propsData: {
+        props: {
           id: 'test',
           pages: makePages(getPrevNextPages(10), 8),
           modelValue: 10,

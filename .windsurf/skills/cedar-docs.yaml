@@ -1,0 +1,35 @@
+name: cedar-docs
+displayName: Cedar Documentation
+description: >
+  Generates release notes, Storybook stories, and token change summaries for
+  rei-cedar and rei-cedar-tokens. Reads release-intent.md for context, diffs
+  against the last stable tag, and produces a human-reviewed draft, a
+  machine-readable JSON artifact, and a design-facing change summary.
+version: 1.0.0
+entrypoint: scripts/agent/cedar-docs-skill.mjs
+configPath: scripts/agent-config/release-notes.schema.json
+tools:
+  - getBaseline
+  - compareSinceBaseline
+  - parseCommitLog
+  - groupCommitsByBranch
+  - resolveEntrySignal
+  - proposeVersionBump
+  - detectBreakingChanges
+  - draftMigrationSteps
+  - detectCrossRepoImpact
+  - summarizeTokenChanges
+  - summarizeComponentApiChanges
+  - generateHumanReleaseNotes
+  - generateDesignSummary
+  - generateMachineReleaseNotes
+  - unifyDraftTone
+  - scanForSecurityViolations
+  - validateAgainstSchema
+  - scaffoldStory
+  - updateStory
+  - validateDocStyle
+triggers:
+  - on: manual
+  - on: branch_merge
+    branchPattern: '^(feature|fix|improvement|breaking|a11y|token|component)\/'

@@ -4,10 +4,10 @@ import CdrCaption from '../CdrCaption.vue';
 describe('CdrCaption', () => {
   it('renders correctly', () => {
     const wrapper = mount(CdrCaption, {
-      propsData: {
+      props: {
         summary: 'This is a summary',
         credit: 'This is a credit',
-      }
+      },
     });
     expect(wrapper.element).toMatchSnapshot();
   });

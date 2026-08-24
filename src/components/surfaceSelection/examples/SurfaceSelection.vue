@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import CdrSurfaceSelection from '../CdrSurfaceSelection.vue';
-import type { surfaceSelection } from '../../../types/interfaces';
+import type { SurfaceSelection } from '../types';
 import CdrSwitch from '../../switch/CdrSwitch.vue';
 
 defineOptions({ name: 'SurfaceSelection' });
 
 const loading = ref(false);
 
-const commonProps = <surfaceSelection>{
+const commonProps = <SurfaceSelection>{
   variant: 'selection',
-  role: 'checkbox'
+  role: 'checkbox',
 };
 
 const examples = computed(
   () =>
-    <surfaceSelection[]>[
+    <SurfaceSelection[]>[
       {
         ...commonProps,
         checked: false,
@@ -24,7 +24,7 @@ const examples = computed(
       {
         ...commonProps,
         checked: true,
-        loading: loading.value
+        loading: loading.value,
       },
       {
         ...commonProps,
@@ -53,7 +53,7 @@ const examples = computed(
         loading: loading.value,
         class: 'example__wide',
         layout: { columns: ['auto', 1] },
-        variant: 'selection'
+        variant: 'selection',
       },
       {
         ...commonProps,
@@ -107,7 +107,7 @@ const examples = computed(
 </template>
 
 <style lang="scss" scoped>
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens' as tokens;
+@use '@rei/cdr-tokens/scss' as tokens;
 
 .example {
   &__hr {
@@ -144,7 +144,7 @@ const examples = computed(
   }
 
   &__color-row {
-    padding: .2rem .8rem;
+    padding: 0.2rem 0.8rem;
     color: white;
     background: black;
   }

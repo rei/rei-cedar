@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {
-  useCssModule, computed, ref, watch, onUpdated, useSlots,
-} from 'vue';
-import propValidator from '../../utils/propValidator';
+import { useCssModule, computed, ref, watch, onUpdated, onUnmounted, useSlots } from 'vue';
+import type { CdrToastProps } from './types';
 import IconXSm from '../icon/comps/x-sm.vue';
 import CdrButton from '../button/CdrButton.vue';
 
@@ -14,39 +12,20 @@ defineOptions({
   name: 'CdrToast',
 });
 
-const props = defineProps({
-  /**
-   * Sets the toast type.
-   * @demoSelectMultiple false
-   * @values info, success, warning, error, default
-  */
-  type: {
-    type: String,
-    validator: (value: string) => propValidator(
-      value,
-      ['info', 'warning', 'success', 'error', 'default'],
-    ),
-    default: 'default',
-  },
-  /**
-   * Used to programmatically control the toast open/close state.
-   * @demoIgnore true
-  */
-  open: {
-    type: Boolean,
-    default: false,
-  },
-  /** Set to `false` to disable automatic closing after the `dismissDelay`. */
-  autoDismiss: {
-    type: Boolean,
-    default: true,
-  },
-  /** Sets the interval (in milliseconds) before the toast automatically closes. */
-  dismissDelay: {
-    type: Number,
-    default: 5000,
-  },
+const props = withDefaults(defineProps<CdrToastProps>(), {
+  type: 'default',
+  open: false,
+  autoDismiss: true,
+  dismissDelay: 5000,
 });
+
+defineSlots<{
+  /** Icon matching toast messaging type */
+  'icon-left'(props: Record<string, never>): any;
+  /** CdrToast content */
+  'default'(props: Record<string, never>): any;
+  'icon'(props: Record<string, never>): any;
+}>();
 
 const emits = defineEmits({
   /** Emits when toast opens */
@@ -56,13 +35,13 @@ const emits = defineEmits({
 });
 
 const style = useCssModule();
-const slots = useSlots();
+const slots: ReturnType<typeof useSlots> = useSlots();
 
 const baseClass = 'cdr-toast';
-const hasIconLeft = slots['icon-left'];
+const hasIconLeft = computed(() => !!slots['icon-left']);
 const opened = ref(false);
 const toastEl = ref<HTMLDivElement | null>(null);
-let timeout: ReturnType<typeof setTimeout>;
+let timeout: ReturnType<typeof setTimeout> | undefined;
 let toastElement: HTMLDivElement | null;
 
 const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
@@ -70,6 +49,7 @@ const typeClass = computed(() => props.type && `${baseClass}--${props.type}`);
 const openToast = (e?: Event) => {
   if (timeout) {
     clearTimeout(timeout);
+    timeout = undefined;
   } else {
     emits('open', e);
   }
@@ -80,13 +60,22 @@ const openToast = (e?: Event) => {
 };
 
 const closeToast = (e?: Event) => {
+  if (timeout) {
+    clearTimeout(timeout);
+    timeout = undefined;
+  }
   removeHandlers();
   opened.value = false;
   emits('closed', e);
 };
 
 const closeToastWithDelay = (e?: Event) => {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+
   timeout = setTimeout(() => {
+    timeout = undefined;
     removeHandlers();
     opened.value = false;
     emits('closed', e);
@@ -108,14 +97,24 @@ const removeHandlers = () => {
   }
 };
 
-watch(() => props.open, () => {
-  if (props.open) openToast();
-});
+watch(
+  () => props.open,
+  () => {
+    if (props.open) openToast();
+  },
+);
 
 onUpdated(() => {
-  if (props.autoDismiss) addHandlers();
+  if (props.autoDismiss) {
+    removeHandlers();
+    addHandlers();
+  }
 });
 
+onUnmounted(() => {
+  if (timeout) clearTimeout(timeout);
+  removeHandlers();
+});
 </script>
 
 <template>
@@ -151,9 +150,7 @@ onUpdated(() => {
           size="small"
         >
           <slot name="icon">
-            <icon-x-sm
-              inherit-color
-            />
+            <icon-x-sm inherit-color />
           </slot>
         </cdr-button>
       </div>
@@ -161,5 +158,4 @@ onUpdated(() => {
   </transition>
 </template>
 
-<style lang="scss" module src="./styles/CdrToast.module.scss">
-</style>
+<style lang="scss" module src="./styles/CdrToast.module.scss" />

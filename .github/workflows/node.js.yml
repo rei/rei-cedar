@@ -9,13 +9,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - run: npm run build --if-present
-    - run: npm run lint
-    - run: npm run unit
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check formatting
+        run: pnpm run format:check
+      - run: pnpm run build --if-present
+      - name: Check generated icons are committed
+        run: git diff --exit-code src/components/icon
+      - run: pnpm run lint
+      - run: pnpm run unit
+      - run: pnpm run build-storybook
+      - run: pnpm run validate-storybook
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm run test:playwright

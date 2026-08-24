@@ -43,6 +43,47 @@ exports[`CdrInput >  when error state is inactive > renders correctly 1`] = `
     
     
     
+    <div
+      class="cdr-form-error"
+      id="test-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -91,6 +132,47 @@ exports[`CdrInput > basic input component > renders correctly 1`] = `
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -139,6 +221,47 @@ exports[`CdrInput > basic input component > when "multiline" is set to true and 
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -187,6 +310,47 @@ exports[`CdrInput > basic input component > when "type" is set to url > renders 
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -239,12 +403,12 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
     
     
     <div
-      class="cdr-form-error"
+      class="cdr-form-error cdr-form-error--active"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
+        style=""
       >
         <svg
           aria-hidden="true"
@@ -270,11 +434,18 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
           <!--v-if-->
         </svg>
       </span>
-      
-      <span>
-        Something is wrong!
-      </span>
-      
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <div>
+          
+          Something is wrong!
+          
+        </div>
+      </div>
     </div>
     
   </div>
@@ -328,12 +499,12 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
     
     
     <div
-      class="cdr-form-error"
+      class="cdr-form-error cdr-form-error--active"
       id="renders-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
+        style=""
       >
         <svg
           aria-hidden="true"
@@ -359,11 +530,18 @@ exports[`CdrInput > basic input component > with error prop set > renders correc
           <!--v-if-->
         </svg>
       </span>
-      
-      <span>
-        incorrect!
-      </span>
-      
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <div>
+          
+          incorrect!
+          
+        </div>
+      </div>
     </div>
     
   </div>
@@ -385,7 +563,7 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -420,6 +598,47 @@ exports[`CdrInput > basic input component > with prop "numeric" set to true > re
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -440,7 +659,7 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -475,6 +694,47 @@ exports[`CdrInput > basic input component > with prop "type" set to "number" > r
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -525,6 +785,47 @@ exports[`CdrInput > basic input component > with prop type of "number" > renders
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -574,6 +875,47 @@ exports[`CdrInput > basic input component > with the "disabled" prop set to true
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -594,7 +936,7 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
       <span
         aria-hidden="true"
       >
-        *
+         * 
       </span>
     </label>
     <!--v-if-->
@@ -627,6 +969,47 @@ exports[`CdrInput > basic input component > with the "required" prop set to true
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -674,6 +1057,47 @@ exports[`CdrInput > basic input component > with the "rows" prop set to 2 > rend
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -728,6 +1152,47 @@ exports[`CdrInput > components with attributes > renders correctly 1`] = `
     
     
     
+    <div
+      class="cdr-form-error"
+      id="test-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -780,9 +1245,8 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
     
     
     <div
-      class="cdr-form-error"
+      class="cdr-form-error cdr-form-error--active"
       id="test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -811,12 +1275,21 @@ exports[`CdrInput > when error is active and a helper-bottom-text slot has been 
           <!--v-if-->
         </svg>
       </span>
-      
-      <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
-      
-      whoops
-      
-      
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <div>
+          
+          <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
+          
+          whoops
+          
+          
+        </div>
+      </div>
     </div>
     
   </div>
@@ -870,9 +1343,8 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
     
     
     <div
-      class="cdr-form-error"
+      class="cdr-form-error cdr-form-error--active"
       id="test-error"
-      role="status"
     >
       <span
         class="cdr-form-error__icon"
@@ -901,12 +1373,21 @@ exports[`CdrInput > when error state is active > renders correctly 1`] = `
           <!--v-if-->
         </svg>
       </span>
-      
-      <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
-      
-      whoops
-      
-      
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <div>
+          
+          <!-- @slot Error messaging text that is displayed when the \`error\` prop is true. -->
+          
+          whoops
+          
+          
+        </div>
+      </div>
     </div>
     
   </div>
@@ -950,7 +1431,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
         <!-- @slot Icon after text within the input field -->
         
         <button
-          class="cdr-button cdr-button--primary cdr-button--medium"
+          class="cdr-button cdr-button--primary cdr-button--"
           type="button"
         >
           <!-- @slot Icon to the left of text content -->
@@ -967,7 +1448,7 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
           
         </button>
         <button
-          class="cdr-button cdr-button--primary cdr-button--medium"
+          class="cdr-button cdr-button--primary cdr-button--"
           type="button"
         >
           <!-- @slot Icon to the left of text content -->
@@ -996,6 +1477,47 @@ exports[`CdrInput > when multiple elements are present in post-icon slot > rende
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -1054,6 +1576,47 @@ exports[`CdrInput > with "helper-text-bottom" slot > renders correctly 1`] = `
     </span>
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -1109,6 +1672,47 @@ exports[`CdrInput > with a post-icon slot > renders correctly 1`] = `
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -1164,6 +1768,47 @@ exports[`CdrInput > with a pre-icon slot > renders correctly 1`] = `
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -1232,6 +1877,47 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots > ren
     </span>
     
     
+    <div
+      class="cdr-form-error"
+      id="aria-test-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -1300,6 +1986,47 @@ exports[`CdrInput > with both helper-text-top and helper-text-bottom slots and a
     </span>
     
     
+    <div
+      class="cdr-form-error"
+      id="aria-test-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>
@@ -1357,6 +2084,47 @@ exports[`CdrInput > with info action slot > renders correctly 1`] = `
     
     
     
+    <div
+      class="cdr-form-error"
+      id="renders-error"
+    >
+      <span
+        class="cdr-form-error__icon"
+        style="display: none;"
+      >
+        <svg
+          aria-hidden="true"
+          class="cdr-icon cdr-icon--small cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+          
+          
+          <g>
+            <path
+              d="M15.293 16.707a1 1 0 001.414-1.414L9.121 7.707a1 1 0 10-1.414 1.414l7.586 7.586z"
+              role="presentation"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"
+              fill-rule="evenodd"
+            />
+          </g>
+          
+          <!--v-if-->
+        </svg>
+      </span>
+      <div
+        aria-atomic="true"
+        aria-relevant="all"
+        role="status"
+        style="display: inline-block;"
+      >
+        <!--v-if-->
+      </div>
+    </div>
     
   </div>
 </div>

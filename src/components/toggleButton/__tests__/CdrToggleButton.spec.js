@@ -13,7 +13,7 @@ describe('CdrToggleButton', () => {
     beforeEach(() => {
       wrapper = mount(CdrToggleGroup, {
         props: {
-          modelValue: 'thing-1'
+          modelValue: 'thing-1',
         },
         slots: {
           default: [
@@ -22,13 +22,13 @@ describe('CdrToggleButton', () => {
             h(CdrToggleButton, { 'toggle-value': 'thing-3' }),
           ],
         },
-        attachTo: document.body
+        attachTo: document.body,
       });
       firstButton = wrapper.findAll('button')[0];
       secondButton = wrapper.findAll('button')[1];
       thirdButton = wrapper.findAll('button')[2];
       firstButton.element.focus();
-    })
+    });
 
     it('matches the snapshot', () => {
       expect(wrapper.element).toMatchSnapshot();
@@ -40,7 +40,7 @@ describe('CdrToggleButton', () => {
 
     it('the tabindex of the first button is 0', () => {
       expect(firstButton.attributes('tabindex')).toBe('0');
-    })
+    });
 
     it('the tabindex of the second button is -1', () => {
       expect(secondButton.attributes('tabindex')).toBe('-1');
@@ -48,30 +48,30 @@ describe('CdrToggleButton', () => {
 
     it('the aria-checked value of the first button is true', () => {
       expect(firstButton.attributes('aria-checked')).toBe('true');
-    })
+    });
 
     it('the aria-checked value of the second button is false', () => {
       expect(secondButton.attributes('aria-checked')).toBe('false');
     });
 
-    describe('adding the large prop', ()=>{
-      beforeEach(()=>{
-        wrapper.setProps({ size: 'large'})
-      })
+    describe('adding the large prop', () => {
+      beforeEach(() => {
+        wrapper.setProps({ size: 'large' });
+      });
 
       it('matches the snapshot', () => {
         expect(wrapper.element).toMatchSnapshot();
       });
-    })
+    });
 
     describe('changing the model value', () => {
-      beforeEach(async()=>{
-        wrapper.setProps({ modelValue: 'thing-3'})
-      })
+      beforeEach(async () => {
+        wrapper.setProps({ modelValue: 'thing-3' });
+      });
 
-      it('should select the expected button', ()=>{
+      it('should select the expected button', () => {
         expect(thirdButton.attributes('aria-checked')).toBe('true');
-      })
+      });
     });
 
     describe('when hitting the right arrow key', () => {
@@ -84,8 +84,8 @@ describe('CdrToggleButton', () => {
 
       it('the second button is focused', () => {
         expect(document.activeElement).toBe(secondButton.wrapperElement);
-      })
-    })
+      });
+    });
 
     describe('when hitting the right arrow key', () => {
       beforeEach(async () => {
@@ -100,7 +100,7 @@ describe('CdrToggleButton', () => {
 
       it('the second button is focused', () => {
         expect(document.activeElement).toBe(secondButton.wrapperElement);
-      })
+      });
     });
 
     //Test for when the third button is selected and you're hitting right
@@ -137,7 +137,7 @@ describe('CdrToggleButton', () => {
 
       it('updates the modelValue with the expected value', () => {
         expect(wrapper.emitted()['update:modelValue'][0][0]).toBe('thing-2');
-      })
+      });
     });
-  })
+  });
 });

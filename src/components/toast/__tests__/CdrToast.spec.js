@@ -1,7 +1,5 @@
 import { mount } from '../../../../test/vue-jest-style-workaround.js';
 import CdrToast from '../CdrToast.vue';
-import sinon from 'sinon';
-import { beforeAll } from 'vitest';
 
 describe('CdrToast', () => {
   let wrapper;
@@ -21,11 +19,10 @@ describe('CdrToast', () => {
   });
 
   it('handles close triggers', async () => {
-    const spyCloseToast = vi.spyOn(wrapper.vm, 'closeToast');
     wrapper.setProps({ open: true });
     await wrapper.vm.$nextTick();
-    wrapper.find('button').trigger('click');
-    expect(spyCloseToast).toBeCalled();
+    await wrapper.find('button').trigger('click');
+    expect(wrapper.emitted()['closed']).toBeDefined();
   });
 
   it('emits close event after 5 seconds', async () => {
