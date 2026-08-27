@@ -23,7 +23,8 @@
     "src/components/icon/build/*",
     "**/*.spec.ts",
     "**/*.test.ts",
-    "**/__tests__/**"
+    "**/__tests__/**",
+    "**/*.tokens.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
