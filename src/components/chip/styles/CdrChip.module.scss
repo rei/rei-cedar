@@ -24,6 +24,6 @@
   @include vars.cdr-chip-content-right-mixin;
 }
 
-.cdr-chip__icon-right ~ .cdr-chip__content {
+.cdr-chip__content:has(~ .cdr-chip__icon-right) {
   @include vars.cdr-chip-content-left-mixin;
 }
