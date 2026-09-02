@@ -35,7 +35,8 @@ $button-defaults: (
   // Elevation
   elevation: 0 0 0 0 transparent,
   elevation-hover: tokens.$cdr-prominence-raised,
-  elevation-active: 0 0 0 0 transparent
+  elevation-active: 0 0 0 0 transparent,
+  elevation-focus-visible: tokens.$cdr-prominence-raised
 );
 
 // ============================================================================
@@ -64,6 +65,22 @@ $button-colors: (
         #{tokens.$cdr-color-border-button-primary-hover}
       ),
     fill-hover: var(
+        --cdr-color-action-text-brand-faint,
+        #{tokens.$cdr-color-text-button-primary-hover}
+      ),
+    background-focus-visible: var(
+        --cdr-color-action-surface-brand-faint,
+        #{tokens.$cdr-color-background-button-primary-hover}
+      ),
+    text-focus-visible: var(
+        --cdr-color-action-text-brand-faint,
+        #{tokens.$cdr-color-text-button-primary-hover}
+      ),
+    border-focus-visible: var(
+        --cdr-color-action-border-brand-faint,
+        #{tokens.$cdr-color-border-button-primary-hover}
+      ),
+    fill-focus-visible: var(
         --cdr-color-action-text-brand-faint,
         #{tokens.$cdr-color-text-button-primary-hover}
       ),
@@ -122,6 +139,22 @@ $button-colors: (
         --cdr-color-action-text-neutral-subtle,
         #{tokens.$cdr-color-text-button-secondary-hover}
       ),
+    background-focus-visible: var(
+        --cdr-color-action-surface-neutral,
+        #{tokens.$cdr-color-background-button-secondary-hover}
+      ),
+    text-focus-visible: var(
+        --cdr-color-action-text-neutral-subtle,
+        #{tokens.$cdr-color-text-button-secondary-hover}
+      ),
+    border-focus-visible: var(
+        --cdr-color-action-border-neutral,
+        #{tokens.$cdr-color-border-button-secondary-hover}
+      ),
+    fill-focus-visible: var(
+        --cdr-color-action-text-neutral-subtle,
+        #{tokens.$cdr-color-text-button-secondary-hover}
+      ),
     background-active: var(
         --cdr-color-action-surface-neutral-subtle,
         #{tokens.$cdr-color-background-button-secondary-active}
@@ -177,6 +210,22 @@ $button-colors: (
         #{tokens.$cdr-color-border-button-dark-hover}
       ),
     fill-hover: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-button-dark-hover}),
+    background-focus-visible: var(
+        --cdr-color-action-surface-neutral-bold,
+        #{tokens.$cdr-color-background-button-dark-hover}
+      ),
+    text-focus-visible: var(
+        --cdr-color-action-text-neutral,
+        #{tokens.$cdr-color-text-button-dark-hover}
+      ),
+    border-focus-visible: var(
+        --cdr-color-action-border-neutral-intense,
+        #{tokens.$cdr-color-border-button-dark-hover}
+      ),
+    fill-focus-visible: var(
+        --cdr-color-action-text-neutral,
+        #{tokens.$cdr-color-text-button-dark-hover}
+      ),
     background-active: var(
         --cdr-color-action-surface-neutral-intense,
         #{tokens.$cdr-color-background-button-dark-rest}
@@ -229,6 +278,22 @@ $button-colors: (
         #{tokens.$cdr-color-border-button-sale-hover}
       ),
     fill-hover: var(--cdr-color-action-text-sale-faint, #{tokens.$cdr-color-text-button-sale-hover}),
+    background-focus-visible: var(
+        --cdr-color-action-surface-sale-faint,
+        #{tokens.$cdr-color-background-button-sale-hover}
+      ),
+    text-focus-visible: var(
+        --cdr-color-action-text-sale-faint,
+        #{tokens.$cdr-color-text-button-sale-hover}
+      ),
+    border-focus-visible: var(
+        --cdr-color-action-border-sale-faint,
+        #{tokens.$cdr-color-border-button-sale-hover}
+      ),
+    fill-focus-visible: var(
+        --cdr-color-action-text-sale-faint,
+        #{tokens.$cdr-color-text-button-sale-hover}
+      ),
     background-active: var(
         --cdr-color-action-surface-sale,
         #{tokens.$cdr-color-background-button-sale-active}

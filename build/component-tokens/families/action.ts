@@ -1,20 +1,30 @@
 /**
- * Action Family — CSS Behavior Template
+ * Action Family — CSS Token-Assignment Template
  *
- * Defines the structural CSS pattern shared by action-family components:
- * Button, Chip, Card, ToggleButton.
+ * Defines the token-assignment pattern shared by action-family components:
+ * Button, Chip, Card, ToggleButton, carousel arrows, media controls.
  *
- * Pattern: rest state has base colors; hover thickens border + adds elevation;
- * active adds inset ring; disabled grays out.
+ * ACTION intent: Interactive elements that trigger user actions, navigation,
+ * content manipulation, or final submission.
  *
- * The family template is combined with a component's token contract to produce
- * complete CSS. The contract provides the DATA (which tokens, which variants);
- * the template provides the BEHAVIOR (how states work, how box-shadow is built).
+ * This is NOT the full component stylesheet. It generates the layer that maps
+ * semantic custom properties to a component's `--cdr-{component}-*` properties.
+ * Component modules remain responsible for selectors, layout, and special cases.
+ *
+ * The contract provides DATA (which tokens, which variants, which recipe).
+ * The family template provides the SCHEMA (which slots and states must be set).
  *
  * Lives here temporarily — moves to a shared package when more families exist.
  */
 
-import type { ComponentTokenContract } from '../types';
+import type {
+  ComponentTokenContract,
+  ColorSlotMap,
+  InteractionState,
+  ContractValue,
+} from '../types';
+
+type Role = keyof ColorSlotMap;
 
 // ============================================================================
 // BREAKPOINTS (from @rei/cdr-tokens)
@@ -31,16 +41,37 @@ const BREAKPOINTS = [
 // VALUE RESOLUTION
 // ============================================================================
 
-/** Resolve a contract default value to a CSS expression */
-function cssValue(value: string | number): string {
-  if (typeof value === 'number') return String(value);
-  if (value.startsWith('cdr-')) return `var(--${value})`;
-  return value;
+/** Resolve a contract value to a CSS expression */
+function cssValue(value: ContractValue): string {
+  if (value.kind === 'literal') {
+    return typeof value.value === 'number' ? String(value.value) : value.value;
+  }
+  return `var(--${value.name})`;
 }
 
-/** Build a semantic custom property name from intent + CSS depth + suffix */
-function semanticProp(intent: string, cssDepth: string, suffix: string): string {
-  return `--cdr-color-${intent}-${cssDepth}-${suffix}`;
+/** Component property name for each confirmed role */
+const PROP_NAME: Record<Role, string> = {
+  surface: 'background',
+  text: 'text',
+  border: 'border',
+  icon: 'fill',
+};
+
+/** Component property name for a given role and state */
+function componentProp(role: Role, state: InteractionState): string {
+  const base = PROP_NAME[role];
+  return state === 'rest' ? base : `${base}-${state}`;
+}
+
+/**
+ * Build a semantic custom property name, honoring the omittable interaction
+ * segment. Icon color resolves against the text-role token family.
+ */
+function semanticProp(interaction: string | undefined, role: Role, suffix: string): string {
+  const cssRole = role === 'icon' ? 'text' : role;
+  return interaction
+    ? `--cdr-color-${interaction}-${cssRole}-${suffix}`
+    : `--cdr-color-${cssRole}-${suffix}`;
 }
 
 /** Build a dual-value CSS expression: semantic with legacy fallback */
@@ -49,19 +80,7 @@ function dualValue(semanticVar: string, legacyToken?: string): string {
   return `var(${semanticVar}, var(--${legacyToken}))`;
 }
 
-const CSS_DEPTH: Record<string, string> = { bg: 'surface', fg: 'text', edge: 'border' };
-const PROP_NAME: Record<string, string> = {
-  bg: 'background',
-  fg: 'text',
-  edge: 'border',
-  fill: 'fill',
-};
-const STATES = ['rest', 'hover', 'active', 'disabled'] as const;
-
-function propKey(depth: string, state: string): string {
-  const name = PROP_NAME[depth] ?? depth;
-  return state === 'rest' ? name : `${name}-${state}`;
-}
+const STATES: InteractionState[] = ['rest', 'hover', 'focus-visible', 'active', 'disabled'];
 
 // ============================================================================
 // CSS GENERATION
@@ -88,7 +107,8 @@ export function generateActionCSS(contract: ComponentTokenContract): string {
 function header(contract: ComponentTokenContract): string {
   return [
     `/* ${'='.repeat(72)} */`,
-    `/* GENERATED — ${contract.component} (action family)`,
+    `/* GENERATED — ${contract.component} token assignments (action family)`,
+    `/* Recipe: ${contract.recipe ?? 'pressable'}`,
     `/* Source: ${contract.component.replace('cdr-', '')}/CdrButton.tokens.ts`,
     `/* Regenerate: npx tsx build/generate-component-maps.ts`,
     `/* ${'='.repeat(72)} */`,
@@ -101,106 +121,36 @@ function baseRule(cls: string, p: string, contract: ComponentTokenContract): str
   const lines: string[] = [];
   lines.push(`${cls} {`);
 
-  // CSS resets
-  lines.push(`  /* resets */`);
-  lines.push(`  border: none;`);
-  lines.push(`  cursor: pointer;`);
-  lines.push(`  display: inline-flex;`);
-  lines.push(`  font-style: normal;`);
-  lines.push(`  outline: none;`);
-  lines.push(`  overflow: visible;`);
-  lines.push(`  margin: 0;`);
-  lines.push(`  text-align: left;`);
-  lines.push(`  text-decoration: none;`);
-  lines.push(`  text-transform: none;`);
-  lines.push(`  vertical-align: middle;`);
-  lines.push(``);
-
   // Custom property defaults
   lines.push(`  /* defaults */`);
   for (const [key, value] of Object.entries(contract.defaults)) {
     lines.push(`  ${p}-${key}: ${cssValue(value)};`);
   }
-  lines.push(``);
-
-  // Applied properties
-  lines.push(`  /* applied */`);
-  lines.push(`  border-radius: var(${p}-radius);`);
-  lines.push(`  font-family: var(${p}-font-family);`);
-  lines.push(`  font-weight: var(${p}-font-weight);`);
-  lines.push(`  letter-spacing: var(${p}-letter-spacing);`);
-  lines.push(`  font-size: var(${p}-font-size);`);
-  lines.push(`  line-height: var(${p}-line-height);`);
-  lines.push(`  padding: var(${p}-padding);`);
-  lines.push(`  background-color: var(${p}-background);`);
-  lines.push(`  color: var(${p}-text);`);
-  lines.push(`  fill: var(${p}-fill);`);
-  lines.push(`  box-shadow:`);
-  lines.push(`    inset 0 0 0 1px var(${p}-border),`);
-  lines.push(`    var(${p}-elevation);`);
-  lines.push(`  transition:`);
-  lines.push(`    box-shadow var(${p}-transition-duration) var(${p}-transition-timing),`);
-  lines.push(`    background-color var(${p}-transition-duration) var(${p}-transition-timing),`);
-  lines.push(`    color var(${p}-transition-duration) var(${p}-transition-timing),`);
-  lines.push(`    fill var(${p}-transition-duration) var(${p}-transition-timing);`);
 
   lines.push(`}`);
   return lines.join('\n');
 }
 
-// ── State Rules ─────────────────────────────────────────────────────────────
+// ── State Rules (token-assignment skeleton) ─────────────────────────────────
 
 function stateRules(cls: string, p: string): string {
-  const sections: string[] = [];
-
-  // Hover / Focus
-  sections.push(
-    [
-      `${cls}:hover,`,
-      `${cls}:focus {`,
-      `  outline: none;`,
-      `  outline-offset: 0;`,
-      `  text-decoration: none;`,
-      `  background-color: var(${p}-background-hover, var(${p}-background));`,
-      `  color: var(${p}-text-hover, var(${p}-text));`,
-      `  fill: var(${p}-fill-hover, var(${p}-fill));`,
-      `  box-shadow:`,
-      `    inset 0 0 0 3px var(${p}-border-hover, var(${p}-border)),`,
-      `    var(${p}-elevation-hover);`,
-      `}`,
-    ].join('\n'),
-  );
-
-  // Active
-  sections.push(
-    [
-      `${cls}:active {`,
-      `  outline: none;`,
-      `  background-color: var(${p}-background-active, var(${p}-background));`,
-      `  color: var(${p}-text-active, var(${p}-text));`,
-      `  fill: var(${p}-fill-active, var(${p}-fill));`,
-      `  box-shadow:`,
-      `    inset 0 0 0 3px var(${p}-border-active, var(${p}-border)),`,
-      `    inset 0 0 0 5px var(${p}-active-inset, transparent),`,
-      `    var(${p}-elevation-active);`,
-      `}`,
-    ].join('\n'),
-  );
-
-  // Disabled
-  sections.push(
-    [
-      `${cls}[disabled] {`,
-      `  cursor: not-allowed;`,
-      `  background-color: var(${p}-background-disabled, var(${p}-background));`,
-      `  color: var(${p}-text-disabled, var(${p}-text));`,
-      `  fill: var(${p}-fill-disabled, var(${p}-fill));`,
-      `  box-shadow: inset 0 0 0 1px var(${p}-border-disabled, var(${p}-border));`,
-      `}`,
-    ].join('\n'),
-  );
-
-  return sections.join('\n\n');
+  return [
+    `${cls}:hover {`,
+    `  /* use --${p.replace(/^--/, '')}-*-hover custom properties */`,
+    `}`,
+    ``,
+    `${cls}:focus-visible {`,
+    `  /* use --${p.replace(/^--/, '')}-*-focus-visible custom properties */`,
+    `}`,
+    ``,
+    `${cls}:active {`,
+    `  /* use --${p.replace(/^--/, '')}-*-active custom properties */`,
+    `}`,
+    ``,
+    `${cls}[disabled] {`,
+    `  /* use --${p.replace(/^--/, '')}-*-disabled custom properties */`,
+    `}`,
+  ].join('\n');
 }
 
 // ── Icon Rules ──────────────────────────────────────────────────────────────
@@ -208,8 +158,6 @@ function stateRules(cls: string, p: string): string {
 function iconRules(cls: string, p: string): string {
   return [
     `${cls} svg {`,
-    `  align-self: center;`,
-    `  fill: inherit;`,
     `  width: var(${p}-icon-size);`,
     `  height: var(${p}-icon-size);`,
     `}`,
@@ -217,15 +165,8 @@ function iconRules(cls: string, p: string): string {
     `${cls}${cls}--has-icon-left {`,
     `  padding-left: calc(var(${p}-icon-padding) - var(${p}-icon-gap));`,
     `}`,
-    `${cls}${cls}--has-icon-left svg {`,
-    `  margin-right: var(${p}-icon-gap);`,
-    `}`,
-    ``,
     `${cls}${cls}--has-icon-right {`,
     `  padding-right: calc(var(${p}-icon-padding) - var(${p}-icon-gap));`,
-    `}`,
-    `${cls}${cls}--has-icon-right svg {`,
-    `  margin-left: var(${p}-icon-gap);`,
     `}`,
   ].join('\n');
 }
@@ -241,36 +182,17 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
     lines.push(`${cls}--${variantName} {`);
 
     for (const state of STATES) {
-      const depthMap = variant[state];
+      const slotMap = variant[state] as ColorSlotMap;
 
-      for (const depth of ['bg', 'fg', 'edge'] as const) {
-        const suffix = depthMap[depth];
-        const cssDepth = CSS_DEPTH[depth];
-        const key = propKey(depth, state);
-        const semVar = semanticProp(variant.intent, cssDepth, suffix);
+      for (const role of ['surface', 'text', 'border', 'icon'] as Role[]) {
+        const value = slotMap[role];
+        const key = componentProp(role, state);
+        const semVar =
+          typeof value === 'object' && 'fullPath' in value
+            ? `--cdr-color-${value.fullPath}`
+            : semanticProp(contract.interaction, role, value);
         const legacyToken = legacy[`${variantName}/${key}`];
         lines.push(`  ${p}-${key}: ${dualValue(semVar, legacyToken)};`);
-      }
-
-      // Fill
-      const fillKey = propKey('fill', state);
-      const fillOverride = variant.fillOverrides?.[state];
-
-      if (fillOverride) {
-        let semVar: string;
-        if (typeof fillOverride === 'object' && 'fullPath' in fillOverride) {
-          semVar = `--cdr-color-${fillOverride.fullPath}`;
-        } else {
-          semVar = semanticProp(variant.intent, 'text', fillOverride);
-        }
-        const legacyToken = legacy[`${variantName}/${fillKey}`];
-        lines.push(`  ${p}-${fillKey}: ${dualValue(semVar, legacyToken)};`);
-      } else {
-        // Mirror foreground
-        const fgSuffix = depthMap.fg;
-        const semVar = semanticProp(variant.intent, 'text', fgSuffix);
-        const legacyToken = legacy[`${variantName}/${propKey('fg', state)}`];
-        lines.push(`  ${p}-${fillKey}: ${dualValue(semVar, legacyToken)};`);
       }
     }
 
@@ -297,7 +219,7 @@ function sizeBlock(
   cls: string,
   p: string,
   sizeName: string,
-  dims: Record<string, string | number>,
+  dims: Record<string, ContractValue>,
   suffix = '',
 ): string {
   const lines: string[] = [];

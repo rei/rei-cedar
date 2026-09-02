@@ -55,11 +55,8 @@
     color var(--cdr-button-transition-duration) var(--cdr-button-transition-timing),
     fill var(--cdr-button-transition-duration) var(--cdr-button-transition-timing);
 
-  // ── States ──
-  &:hover,
-  &:focus {
-    outline: none;
-    outline-offset: 0;
+  // ── Hover ──
+  &:hover {
     text-decoration: none;
 
     @include _state-colors(hover);
@@ -69,6 +66,20 @@
       var(--cdr-button-elevation-hover);
   }
 
+  // ── Focus-visible ──
+  &:focus-visible {
+    outline: none;
+    outline-offset: 0;
+    text-decoration: none;
+
+    @include _state-colors(focus-visible);
+
+    box-shadow:
+      inset 0 0 0 3px var(--cdr-button-border-focus-visible, var(--cdr-button-border)),
+      var(--cdr-button-elevation-focus-visible, var(--cdr-button-elevation));
+  }
+
+  // ── Active ──
   &:active {
     outline: none;
 
@@ -80,6 +91,7 @@
       var(--cdr-button-elevation-active);
   }
 
+  // ── Disabled ──
   &[disabled] {
     cursor: not-allowed;
 
@@ -98,6 +110,7 @@
 
   &.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
     svg {
       margin-right: var(--cdr-button-icon-gap);
     }
@@ -105,6 +118,7 @@
 
   &.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
     svg {
       margin-left: var(--cdr-button-icon-gap);
     }
@@ -142,13 +156,16 @@
 
   &--icon-only {
     @include vars.cdr-button-icon-only-mixin;
+
     > svg {
       margin: 0;
     }
   }
+
   &--icon-only-large {
     padding: tokens.$cdr-space-three-quarter-x;
   }
+
   &--with-background {
     @include vars.cdr-button-with-background-mixin;
   }
