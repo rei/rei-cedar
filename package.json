@@ -76,7 +76,7 @@
     "lint:styles": "stylelint src/**/*.scss",
     "lint:styles:fix": "stylelint 'src/**/*.scss' --fix",
     "lint:styles:report": "stylelint src/**/*.scss --custom-formatter=./stylelint-report-formatter.js",
-    "lint:types": "vue-tsc --noEmit",
+    "lint:types": "vue-tsc -p tsconfig.build.json --noEmit",
     "lint:report": "tsx build/lint-report-generator.ts",
     "lint:full": "npm-run-all lint lint:report",
     "format": "oxfmt",
