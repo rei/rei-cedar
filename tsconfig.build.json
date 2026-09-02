@@ -21,6 +21,7 @@
   "exclude": [
     "src/dev/*",
     "src/components/icon/build/*",
+    "build/*",
     "**/*.spec.ts",
     "**/*.test.ts",
     "**/__tests__/**",
