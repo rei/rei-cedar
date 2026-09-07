@@ -105,12 +105,14 @@ export function generateActionCSS(contract: ComponentTokenContract): string {
 // ── Header ──────────────────────────────────────────────────────────────────
 
 function header(contract: ComponentTokenContract): string {
+  const shortName = contract.component.replace(/^cdr-/, '');
+  const contractFile = `Cdr${shortName[0].toUpperCase()}${shortName.slice(1)}.tokens.ts`;
   return [
     `/* ${'='.repeat(72)} */`,
     `/* GENERATED — ${contract.component} token assignments (action family)`,
     `/* Recipe: ${contract.recipe ?? 'pressable'}`,
-    `/* Source: ${contract.component.replace('cdr-', '')}/CdrButton.tokens.ts`,
-    `/* Regenerate: npx tsx build/generate-component-maps.ts`,
+    `/* Source: ${shortName}/${contractFile}`,
+    `/* Regenerate: pnpm build:maps`,
     `/* ${'='.repeat(72)} */`,
   ].join('\n');
 }

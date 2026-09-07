@@ -104,7 +104,7 @@ Button properties map to semantic roles:
 ## Files Modified
 
 - `src/components/button/CdrButton.tokens.ts` - Token contract with semantic mappings
-- `src/components/button/styles/CdrButton.css` - Generated CSS with semantic tokens
+- `src/components/button/styles/CdrButton.tokens.css` - Generated CSS with semantic tokens
 - `src/components/button/styles/vars/CdrButton.maps.scss` - SCSS maps with semantic tokens
 - `src/components/button/styles/CdrButton.module.scss` - Component styles using generated maps
 

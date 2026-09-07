@@ -12,6 +12,8 @@ const SUPPORTED_COMPONENTS: string[] = [
   /* component vars */
   'CdrButton.maps.scss',
   'CdrButton.vars.scss',
+  'CdrBanner.maps.scss',
+  'CdrBanner.vars.scss',
   'CdrCard.vars.scss',
   'CdrChip.vars.scss',
   'CdrBreadcrumb.vars.scss',

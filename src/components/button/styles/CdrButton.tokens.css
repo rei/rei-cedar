@@ -2,7 +2,7 @@
 /* GENERATED — cdr-button token assignments (action family)
 /* Recipe: pressable
 /* Source: button/CdrButton.tokens.ts
-/* Regenerate: npx tsx build/generate-component-maps.ts
+/* Regenerate: pnpm build:maps
 /* ======================================================================== */
 
 .cdr-button {

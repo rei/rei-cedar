@@ -60,7 +60,7 @@
     "build:umd": "vite build --config vite.umd.config.ts",
     "validate-package": "tsx build/validate-package.ts",
     "build:variables": "tsx build/component-variables-transfer.ts",
-    "build:maps": "tsx build/generate-component-maps.ts",
+    "build:maps": "tsx build/generate-component-maps.ts && oxfmt --write \"src/**/*.maps.scss\" \"src/**/*.tokens.css\"",
     "pages": "vite build --config vite.pages.config.mts",
     "preview": "vite preview --config vite.pages.config.mts",
     "unit": "vitest run",

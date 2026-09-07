@@ -30,7 +30,9 @@ export interface TokenManifest {
 /**
  * Load the token manifest from @rei/cdr-tokens JSON files.
  *
- * Currently scans the foundation JSON files for known tokens. Semantic tokens
+ * Scans the full published JSON tree (foundations, components, and platform
+ * files) for known tokens — component-level tokens such as
+ * `cdr-color-text-link-rest` live outside `foundations/`. Semantic tokens
  * are not yet published, so the semantic set is empty until the pipeline
  * produces a manifest.
  */
@@ -40,13 +42,12 @@ export async function loadTokenManifest(): Promise<TokenManifest> {
 
   const tokenJsonDir = path.join(
     __dirname,
-    '../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/json/foundations',
+    '../../node_modules/@rei/cdr-tokens/dist/rei-dot-com/json',
   );
 
   if (fs.existsSync(tokenJsonDir)) {
-    const files = fs.readdirSync(tokenJsonDir).filter((f) => f.endsWith('.json'));
-    for (const file of files) {
-      const content = JSON.parse(fs.readFileSync(path.join(tokenJsonDir, file), 'utf-8'));
+    for (const file of collectJsonFiles(tokenJsonDir)) {
+      const content = JSON.parse(fs.readFileSync(file, 'utf-8'));
       extractTokenNames(content, knownTokens);
     }
   }
@@ -59,6 +60,20 @@ export async function loadTokenManifest(): Promise<TokenManifest> {
   }
 
   return { knownTokens, semanticTokens };
+}
+
+/** Recursively collect every JSON file under a directory. */
+function collectJsonFiles(dir: string): string[] {
+  const results: string[] = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...collectJsonFiles(fullPath));
+    } else if (entry.name.endsWith('.json')) {
+      results.push(fullPath);
+    }
+  }
+  return results;
 }
 
 function extractTokenNames(obj: unknown, out: Set<string>, prefix = '') {

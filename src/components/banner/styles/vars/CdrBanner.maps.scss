@@ -1,0 +1,159 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/banner/CdrBanner.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$banner-defaults: (
+  message-body-background: tokens.$cdr-color-background-primary,
+  icon-right-fill: tokens.$cdr-color-text-emphasis,
+  info-action-fill: tokens.$cdr-color-text-link-rest,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$banner-colors: (
+  default: (
+    background: var(
+        --cdr-color-feedback-surface-neutral,
+        #{tokens.$cdr-color-background-message-default-01}
+      ),
+    text: var(--cdr-color-feedback-text-neutral-bold),
+    border: var(--cdr-color-feedback-border-neutral, #{tokens.$cdr-color-border-message-default-01}),
+    fill: var(--cdr-color-feedback-text-neutral, #{tokens.$cdr-color-icon-message-default}),
+    background-hover: var(--cdr-color-feedback-surface-neutral),
+    text-hover: var(--cdr-color-feedback-text-neutral-bold),
+    border-hover: var(--cdr-color-feedback-border-neutral),
+    fill-hover: var(--cdr-color-feedback-text-neutral),
+    background-focus-visible: var(--cdr-color-feedback-surface-neutral),
+    text-focus-visible: var(--cdr-color-feedback-text-neutral-bold),
+    border-focus-visible: var(--cdr-color-feedback-border-neutral),
+    fill-focus-visible: var(--cdr-color-feedback-text-neutral),
+    background-active: var(--cdr-color-feedback-surface-neutral),
+    text-active: var(--cdr-color-feedback-text-neutral-bold),
+    border-active: var(--cdr-color-feedback-border-neutral),
+    fill-active: var(--cdr-color-feedback-text-neutral),
+    background-disabled: var(--cdr-color-feedback-surface-neutral),
+    text-disabled: var(--cdr-color-feedback-text-neutral-bold),
+    border-disabled: var(--cdr-color-feedback-border-neutral),
+    fill-disabled: var(--cdr-color-feedback-text-neutral),
+    outline: #{tokens.$cdr-color-border-message-default-02},
+    icon-tile-background: #{tokens.$cdr-color-background-message-default-02},
+  ),
+  info: (
+    background: var(
+        --cdr-color-feedback-surface-info,
+        #{tokens.$cdr-color-background-message-info-01}
+      ),
+    text: var(--cdr-color-feedback-text-info-bold),
+    border: var(--cdr-color-feedback-border-info, #{tokens.$cdr-color-border-message-info-01}),
+    fill: var(--cdr-color-feedback-text-info, #{tokens.$cdr-color-icon-message-info}),
+    background-hover: var(--cdr-color-feedback-surface-info),
+    text-hover: var(--cdr-color-feedback-text-info-bold),
+    border-hover: var(--cdr-color-feedback-border-info),
+    fill-hover: var(--cdr-color-feedback-text-info),
+    background-focus-visible: var(--cdr-color-feedback-surface-info),
+    text-focus-visible: var(--cdr-color-feedback-text-info-bold),
+    border-focus-visible: var(--cdr-color-feedback-border-info),
+    fill-focus-visible: var(--cdr-color-feedback-text-info),
+    background-active: var(--cdr-color-feedback-surface-info),
+    text-active: var(--cdr-color-feedback-text-info-bold),
+    border-active: var(--cdr-color-feedback-border-info),
+    fill-active: var(--cdr-color-feedback-text-info),
+    background-disabled: var(--cdr-color-feedback-surface-info),
+    text-disabled: var(--cdr-color-feedback-text-info-bold),
+    border-disabled: var(--cdr-color-feedback-border-info),
+    fill-disabled: var(--cdr-color-feedback-text-info),
+    outline: #{tokens.$cdr-color-border-message-info-02},
+    icon-tile-background: #{tokens.$cdr-color-background-message-info-02},
+  ),
+  success: (
+    background: var(
+        --cdr-color-feedback-surface-success,
+        #{tokens.$cdr-color-background-message-success-01}
+      ),
+    text: var(--cdr-color-feedback-text-success-bold),
+    border: var(--cdr-color-feedback-border-success, #{tokens.$cdr-color-border-message-success-01}),
+    fill: var(--cdr-color-feedback-text-success, #{tokens.$cdr-color-icon-message-success}),
+    background-hover: var(--cdr-color-feedback-surface-success),
+    text-hover: var(--cdr-color-feedback-text-success-bold),
+    border-hover: var(--cdr-color-feedback-border-success),
+    fill-hover: var(--cdr-color-feedback-text-success),
+    background-focus-visible: var(--cdr-color-feedback-surface-success),
+    text-focus-visible: var(--cdr-color-feedback-text-success-bold),
+    border-focus-visible: var(--cdr-color-feedback-border-success),
+    fill-focus-visible: var(--cdr-color-feedback-text-success),
+    background-active: var(--cdr-color-feedback-surface-success),
+    text-active: var(--cdr-color-feedback-text-success-bold),
+    border-active: var(--cdr-color-feedback-border-success),
+    fill-active: var(--cdr-color-feedback-text-success),
+    background-disabled: var(--cdr-color-feedback-surface-success),
+    text-disabled: var(--cdr-color-feedback-text-success-bold),
+    border-disabled: var(--cdr-color-feedback-border-success),
+    fill-disabled: var(--cdr-color-feedback-text-success),
+    outline: #{tokens.$cdr-color-border-message-success-02},
+    icon-tile-background: #{tokens.$cdr-color-background-message-success-02},
+  ),
+  warning: (
+    background: var(
+        --cdr-color-feedback-surface-warning,
+        #{tokens.$cdr-color-background-message-warning-01}
+      ),
+    text: var(--cdr-color-feedback-text-warning-bold),
+    border: var(--cdr-color-feedback-border-warning, #{tokens.$cdr-color-border-message-warning-01}),
+    fill: var(--cdr-color-feedback-text-warning, #{tokens.$cdr-color-icon-message-warning}),
+    background-hover: var(--cdr-color-feedback-surface-warning),
+    text-hover: var(--cdr-color-feedback-text-warning-bold),
+    border-hover: var(--cdr-color-feedback-border-warning),
+    fill-hover: var(--cdr-color-feedback-text-warning),
+    background-focus-visible: var(--cdr-color-feedback-surface-warning),
+    text-focus-visible: var(--cdr-color-feedback-text-warning-bold),
+    border-focus-visible: var(--cdr-color-feedback-border-warning),
+    fill-focus-visible: var(--cdr-color-feedback-text-warning),
+    background-active: var(--cdr-color-feedback-surface-warning),
+    text-active: var(--cdr-color-feedback-text-warning-bold),
+    border-active: var(--cdr-color-feedback-border-warning),
+    fill-active: var(--cdr-color-feedback-text-warning),
+    background-disabled: var(--cdr-color-feedback-surface-warning),
+    text-disabled: var(--cdr-color-feedback-text-warning-bold),
+    border-disabled: var(--cdr-color-feedback-border-warning),
+    fill-disabled: var(--cdr-color-feedback-text-warning),
+    outline: #{tokens.$cdr-color-border-message-warning-02},
+    icon-tile-background: #{tokens.$cdr-color-background-message-warning-02},
+  ),
+  error: (
+    background: var(
+        --cdr-color-feedback-surface-error,
+        #{tokens.$cdr-color-background-message-error-01}
+      ),
+    text: var(--cdr-color-feedback-text-error-bold),
+    border: var(--cdr-color-feedback-border-error, #{tokens.$cdr-color-border-message-error-01}),
+    fill: var(--cdr-color-feedback-text-error, #{tokens.$cdr-color-icon-message-error}),
+    background-hover: var(--cdr-color-feedback-surface-error),
+    text-hover: var(--cdr-color-feedback-text-error-bold),
+    border-hover: var(--cdr-color-feedback-border-error),
+    fill-hover: var(--cdr-color-feedback-text-error),
+    background-focus-visible: var(--cdr-color-feedback-surface-error),
+    text-focus-visible: var(--cdr-color-feedback-text-error-bold),
+    border-focus-visible: var(--cdr-color-feedback-border-error),
+    fill-focus-visible: var(--cdr-color-feedback-text-error),
+    background-active: var(--cdr-color-feedback-surface-error),
+    text-active: var(--cdr-color-feedback-text-error-bold),
+    border-active: var(--cdr-color-feedback-border-error),
+    fill-active: var(--cdr-color-feedback-text-error),
+    background-disabled: var(--cdr-color-feedback-surface-error),
+    text-disabled: var(--cdr-color-feedback-text-error-bold),
+    border-disabled: var(--cdr-color-feedback-border-error),
+    fill-disabled: var(--cdr-color-feedback-text-error),
+    outline: #{tokens.$cdr-color-border-message-error-02},
+    icon-tile-background: #{tokens.$cdr-color-background-message-error-02},
+  ),
+);

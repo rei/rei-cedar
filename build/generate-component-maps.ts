@@ -8,7 +8,7 @@
  * Generated artifacts are committed and verified by CI.
  *
  * Usage:
- *   npx tsx build/generate-component-maps.ts
+ *   pnpm build:maps
  */
 
 import fs from 'fs';
@@ -77,7 +77,7 @@ const STATES: Array<keyof VariantContract & string> = [
 // GENERATORS
 // ============================================================================
 
-function generateDefaults(defaults: Record<string, ContractValue>): string {
+function generateDefaults(defaults: Record<string, ContractValue>, prefix: string): string {
   const lines: string[] = [];
   const entries = Object.entries(defaults);
 
@@ -97,10 +97,11 @@ function generateDefaults(defaults: Record<string, ContractValue>): string {
   const maxKeyLen = Math.max(...entries.map(([k]) => k.length));
 
   for (const group of groups) {
+    const present = group.keys.filter((key) => defaults[key]);
+    if (present.length === 0) continue;
     lines.push(`  // ${group.comment}`);
-    for (const key of group.keys) {
+    for (const key of present) {
       const value = defaults[key];
-      if (!value) continue;
       const pad = ' '.repeat(maxKeyLen - key.length);
       lines.push(`  ${key}:${pad} ${scssValue(value)},`);
     }
@@ -114,7 +115,7 @@ function generateDefaults(defaults: Record<string, ContractValue>): string {
     }
   }
 
-  return `$button-defaults: (\n${lines.join('\n')}\n);`;
+  return `$${prefix}-defaults: (\n${lines.join('\n')}\n);`;
 }
 
 function generateColorVariant(
@@ -164,15 +165,19 @@ function generateColors(
   variants: Record<string, VariantContract>,
   interaction: string | undefined,
   legacy: Record<string, string>,
+  prefix: string,
 ): string {
   const variantBlocks = Object.entries(variants)
     .map(([name, variant]) => generateColorVariant(name, variant, interaction, legacy))
     .join('\n');
 
-  return `$button-colors: (\n${variantBlocks}\n);`;
+  return `$${prefix}-colors: (\n${variantBlocks}\n);`;
 }
 
-function generateSizes(sizes: Record<string, Record<string, ContractValue>>): string {
+function generateSizes(
+  sizes: Record<string, Record<string, ContractValue>>,
+  prefix: string,
+): string {
   const sizeBlocks = Object.entries(sizes)
     .map(([sizeName, dims]) => {
       const entries = Object.entries(dims)
@@ -182,7 +187,7 @@ function generateSizes(sizes: Record<string, Record<string, ContractValue>>): st
     })
     .join('\n');
 
-  return `$button-sizes: (\n${sizeBlocks}\n);`;
+  return `$${prefix}-sizes: (\n${sizeBlocks}\n);`;
 }
 
 // ============================================================================
@@ -245,26 +250,31 @@ async function main() {
 
 function generateScss(contract: ComponentTokenContract, sourcePath: string): string {
   const relSource = path.relative(path.join(__dirname, '..'), sourcePath);
+  // Map prefix derived from the component name (cdr-button → button) so each
+  // contract generates its own namespaced maps.
+  const prefix = contract.component.replace(/^cdr-/, '');
   const sections: string[] = [];
 
   sections.push(`// ${'='.repeat(76)}`);
   sections.push(`// GENERATED FILE — do not edit manually`);
   sections.push(`// Source: ${relSource}`);
-  sections.push(`// Regenerate: npx tsx build/generate-component-maps.ts`);
+  sections.push(`// Regenerate: pnpm build:maps`);
   sections.push(`// ${'='.repeat(76)}\n`);
   sections.push(`@use '@rei/cdr-tokens/scss' as tokens;\n`);
 
   sections.push(`// ${'='.repeat(76)}`);
   sections.push(`// DEFAULTS MAP`);
   sections.push(`// ${'='.repeat(76)}\n`);
-  sections.push(generateDefaults(contract.defaults));
+  sections.push(generateDefaults(contract.defaults, prefix));
 
   if (Object.keys(contract.variants).length > 0) {
     sections.push('');
     sections.push(`// ${'='.repeat(76)}`);
     sections.push(`// COLOR MAP`);
     sections.push(`// ${'='.repeat(76)}\n`);
-    sections.push(generateColors(contract.variants, contract.interaction, contract.legacy ?? {}));
+    sections.push(
+      generateColors(contract.variants, contract.interaction, contract.legacy ?? {}, prefix),
+    );
   }
 
   if (contract.sizes && Object.keys(contract.sizes).length > 0) {
@@ -272,7 +282,7 @@ function generateScss(contract: ComponentTokenContract, sourcePath: string): str
     sections.push(`// ${'='.repeat(76)}`);
     sections.push(`// SIZE MAP`);
     sections.push(`// ${'='.repeat(76)}\n`);
-    sections.push(generateSizes(contract.sizes));
+    sections.push(generateSizes(contract.sizes, prefix));
   }
 
   return sections.join('\n') + '\n';
