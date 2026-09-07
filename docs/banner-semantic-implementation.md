@@ -156,7 +156,9 @@ pnpm lint:styles
 2. **Generator resolves `icon` against the text namespace** (`semanticVar` in `build/generate-component-maps.ts`). Values are specified independently per variant, but Figma confirms icon values differ from text values — the generator should emit `--cdr-color-{family}-icon-*` once icon-family tokens ship.
 3. **One surface slot, two surfaces** (main background + icon tile) and **one border slot, two borders** (accent + thin outline). Components with layered surfaces need extended slots or compositional conditions; `extras` is legacy-only today.
 4. **`feedback.icon.{info,success,warning}` absent from Figma's mapping page** (only `neutral` and `error` appear) — fills currently resolve via the text namespace per item 2.
-5. **Regeneration is not byte-stable for Button's maps file**: the committed `CdrButton.maps.scss` wrapping differs from fresh generator + repo-style Prettier output (single-quote, width 100). Pin the formatter config or accept regen noise on that file.
+5. **Regeneration is self-stabilizing**: `pnpm build:maps` now pipes generator output
+   through `oxfmt --write`, so committed maps files are canonical and regeneration
+   is byte-stable (verified: re-running produces zero diff, including Button).
 
 ## For Other Engineers
 

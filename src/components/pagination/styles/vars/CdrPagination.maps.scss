@@ -1,0 +1,63 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/pagination/CdrPagination.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$pagination-defaults: ();
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$pagination-colors: (
+  default: (
+    background: var(--cdr-color-action-surface-neutral-faint),
+    text: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border: var(
+        --cdr-color-action-border-neutral,
+        #{tokens.$cdr-color-background-pagination-keyline}
+      ),
+    fill: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-hover: var(
+        --cdr-color-action-surface-neutral-faint,
+        #{tokens.$cdr-color-background-pagination-hover}
+      ),
+    text-hover: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border-hover: var(
+        --cdr-color-action-border-neutral,
+        #{tokens.$cdr-color-background-pagination-keyline}
+      ),
+    fill-hover: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-focus-visible: var(
+        --cdr-color-action-surface-neutral-faint,
+        #{tokens.$cdr-color-background-pagination-hover}
+      ),
+    text-focus-visible: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border-focus-visible: var(
+        --cdr-color-action-border-neutral,
+        #{tokens.$cdr-color-background-pagination-keyline}
+      ),
+    fill-focus-visible: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-active: var(
+        --cdr-color-action-surface-neutral-faint,
+        #{tokens.$cdr-color-background-pagination-hover}
+      ),
+    text-active: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border-active: var(
+        --cdr-color-action-border-neutral,
+        #{tokens.$cdr-color-background-pagination-keyline}
+      ),
+    fill-active: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-disabled: var(--cdr-color-action-surface-neutral-faint),
+    text-disabled: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-disabled}),
+    border-disabled: var(--cdr-color-action-border-neutral),
+    fill-disabled: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-disabled}),
+  ),
+);

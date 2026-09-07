@@ -168,6 +168,14 @@ export function validateContract(contract: ComponentTokenContract, manifest: Tok
     }
   }
 
+  // Flag compositional conditions: the generator has no conditions support,
+  // so these would be silently dropped — model them as variants instead.
+  if (contract.conditions && Object.keys(contract.conditions).length > 0) {
+    warnings.push(
+      `${contract.component}: conditions [${Object.keys(contract.conditions).join(', ')}] are not consumed by the generator — use variants instead`,
+    );
+  }
+
   // Validate legacy token references
   if (contract.legacy) {
     for (const [key, tokenName] of Object.entries(contract.legacy)) {

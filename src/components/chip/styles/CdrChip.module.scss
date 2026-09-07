@@ -1,7 +1,61 @@
+@use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrChip.maps' as maps;
 @use './vars/CdrChip.vars' as vars;
 
 .cdr-chip {
   @include vars.cdr-chip-base-mixin;
+
+  // Default colors from the contract map
+  @each $key, $value in map.get(maps.$chip-colors, default) {
+    --cdr-chip-#{$key}: #{$value};
+  }
+
+  color: var(--cdr-chip-text);
+  fill: var(--cdr-chip-fill);
+  background-color: var(--cdr-chip-background);
+  box-shadow: inset 0 0 0 1px var(--cdr-chip-border);
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    cursor: not-allowed !important;
+    background-color: var(--cdr-chip-background-disabled) !important;
+    box-shadow: inset 0 0 0 1px var(--cdr-chip-border-disabled) !important;
+    color: var(--cdr-chip-text-disabled) !important;
+  }
+
+  &:hover {
+    background-color: var(--cdr-chip-background-hover);
+    box-shadow: inset 0 0 0 2px var(--cdr-chip-border-hover);
+  }
+
+  &:focus {
+    outline: none;
+    outline-offset: 0;
+    background-color: var(--cdr-chip-background-focus-visible);
+    box-shadow:
+      inset 0 0 0 3px var(--cdr-chip-border-focus-visible),
+      tokens.$cdr-prominence-raised;
+  }
+
+  &:active {
+    background-color: var(--cdr-chip-background-active);
+    box-shadow:
+      inset 0 0 0 3px var(--cdr-chip-border-active),
+      tokens.$cdr-prominence-raised;
+  }
+
+  &[aria-pressed='true'],
+  &[aria-checked='true'] {
+    font-weight: 500;
+
+    // Selected colors reassign the same properties, so every state rule above
+    // automatically follows (pressed wins over disabled, matching legacy order)
+    @each $key, $value in map.get(maps.$chip-colors, selected) {
+      --cdr-chip-#{$key}: #{$value};
+    }
+  }
 }
 
 .cdr-chip__icon-left {

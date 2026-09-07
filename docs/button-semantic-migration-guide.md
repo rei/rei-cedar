@@ -138,13 +138,14 @@ When applying this pattern to another component:
 ### Selection Components (SELECTION intent)
 
 ```scss
-// Chip component example
+// Chip component example (see src/components/chip/CdrChip.tokens.ts —
+// selection surfaces exist only at trace/faint/base/subtle steps)
 --cdr-chip-background: var(
-  --cdr-color-selection-surface-neutral,
+  --cdr-color-selection-surface-neutral-faint,
   var(--cdr-color-background-chip-rest)
 );
 --cdr-chip-background-selected: var(
-  --cdr-color-selection-surface-brand,
+  --cdr-color-selection-surface-neutral-subtle,
   var(--cdr-color-background-chip-selected)
 );
 ```

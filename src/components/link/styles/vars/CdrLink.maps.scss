@@ -1,0 +1,64 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/link/CdrLink.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$link-defaults: ();
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$link-colors: (
+  standard: (
+    background: var(--cdr-color-action-surface-trigger),
+    text: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-rest}),
+    border: var(--cdr-color-action-border-trigger),
+    fill: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-rest}),
+    background-hover: var(--cdr-color-action-surface-trigger-faint),
+    text-hover: var(--cdr-color-action-text-trigger-faint, #{tokens.$cdr-color-text-link-hover}),
+    border-hover: var(--cdr-color-action-border-trigger-faint),
+    fill-hover: var(--cdr-color-action-text-trigger-faint, #{tokens.$cdr-color-text-link-hover}),
+    background-focus-visible: var(--cdr-color-action-surface-trigger),
+    text-focus-visible: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-active}),
+    border-focus-visible: var(--cdr-color-action-border-trigger),
+    fill-focus-visible: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-active}),
+    background-active: var(--cdr-color-action-surface-trigger),
+    text-active: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-active}),
+    border-active: var(--cdr-color-action-border-trigger),
+    fill-active: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-active}),
+    background-disabled: var(--cdr-color-action-surface-trigger),
+    text-disabled: var(--cdr-color-action-text-trigger),
+    border-disabled: var(--cdr-color-action-border-trigger),
+    fill-disabled: var(--cdr-color-action-text-trigger),
+  ),
+  neutral: (
+    background: var(--cdr-color-action-surface-neutral),
+    text: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border: var(--cdr-color-action-border-neutral),
+    fill: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-hover: var(--cdr-color-action-surface-neutral),
+    text-hover: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border-hover: var(--cdr-color-action-border-neutral),
+    fill-hover: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-focus-visible: var(--cdr-color-action-surface-neutral),
+    text-focus-visible: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border-focus-visible: var(--cdr-color-action-border-neutral),
+    fill-focus-visible: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-active: var(--cdr-color-action-surface-neutral),
+    text-active: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    border-active: var(--cdr-color-action-border-neutral),
+    fill-active: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-primary}),
+    background-disabled: var(--cdr-color-action-surface-neutral),
+    text-disabled: var(--cdr-color-action-text-neutral),
+    border-disabled: var(--cdr-color-action-border-neutral),
+    fill-disabled: var(--cdr-color-action-text-neutral),
+  ),
+);
