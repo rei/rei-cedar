@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar",
-  "version": "17.1.0",
+  "version": "17.1.1-rc.0",
   "private": false,
   "description": "REI Cedar Component Library",
   "homepage": "https://rei.github.io/rei-cedar/",
@@ -89,7 +89,7 @@
     "docs:release-notes": "node scripts/generate-release-notes.mjs"
   },
   "dependencies": {
-    "@rei/cdr-tokens": "14.0.0",
+    "@rei/cdr-tokens": "14.0.2",
     "@vueuse/core": "^14.1.0",
     "radix-vue": "^1.9.17",
     "tabbable": "^6.4.0"
