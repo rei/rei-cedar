@@ -1,0 +1,136 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/switch/CdrSwitch.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$switch-defaults: (
+  // Color
+  border: var(
+      --cdr-color-control-border-neutral,
+      var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
+    ),
+  surface: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-switch-default-rest,
+        #{tokens.$cdr-color-background-switch-default-rest}
+      )
+    ),
+  icon: var(
+      --cdr-color-control-icon-neutral,
+      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+    ),
+  surface-focus: var(
+      --cdr-color-control-surface-neutral-subtle,
+      var(
+        --cdr-color-background-switch-default-focus,
+        #{tokens.$cdr-color-background-switch-default-focus}
+      )
+    ),
+  handle-surface-focus: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-switch-handle-default-focus,
+        #{tokens.$cdr-color-background-switch-handle-default-focus}
+      )
+    ),
+  border-hover: var(
+      --cdr-color-control-border-neutral-bold,
+      var(--cdr-color-border-switch-default-hover, #{tokens.$cdr-color-border-switch-default-hover})
+    ),
+  surface-hover: var(
+      --cdr-color-control-surface-neutral-subtle,
+      var(
+        --cdr-color-background-switch-default-hover,
+        #{tokens.$cdr-color-background-switch-default-hover}
+      )
+    ),
+  icon-hover: var(
+      --cdr-color-control-icon-neutral-bold,
+      var(--cdr-color-icon-emphasis, #{tokens.$cdr-color-icon-emphasis})
+    ),
+  surface-checked: var(
+      --cdr-color-control-surface-neutral-bold,
+      var(
+        --cdr-color-background-switch-selected-default-rest,
+        #{tokens.$cdr-color-background-switch-selected-default-rest}
+      )
+    ),
+  icon-checked: var(
+      --cdr-color-control-icon-neutral-intense,
+      var(
+        --cdr-color-icon-switch-selected-default-rest,
+        #{tokens.$cdr-color-icon-switch-selected-default-rest}
+      )
+    ),
+  surface-checked-focus: var(
+      --cdr-color-control-surface-neutral-bold,
+      var(
+        --cdr-color-background-switch-selected-default-focus,
+        #{tokens.$cdr-color-background-switch-selected-default-focus}
+      )
+    ),
+  handle-border-focus: var(
+      --cdr-color-control-border-neutral-bold,
+      var(
+        --cdr-color-border-switch-handle-default-focus,
+        #{tokens.$cdr-color-border-switch-handle-default-focus}
+      )
+    ),
+  handle-surface-checked-focus: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-switch-handle-selected-default-focus,
+        #{tokens.$cdr-color-background-switch-handle-selected-default-focus}
+      )
+    ),
+  icon-checked-focus: var(
+      --cdr-color-control-icon-neutral-intense,
+      var(
+        --cdr-color-icon-switch-selected-default-focus,
+        #{tokens.$cdr-color-icon-switch-selected-default-focus}
+      )
+    ),
+  handle-surface-checked: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-switch-handle-selected-default-rest,
+        #{tokens.$cdr-color-background-switch-handle-selected-default-rest}
+      )
+    ),
+  surface-checked-hover: var(
+      --cdr-color-control-surface-neutral-intense,
+      var(
+        --cdr-color-background-switch-selected-default-hover,
+        #{tokens.$cdr-color-background-switch-selected-default-hover}
+      )
+    ),
+  icon-checked-hover: var(
+      --cdr-color-control-icon-neutral-intense,
+      var(
+        --cdr-color-icon-switch-selected-default-hover,
+        #{tokens.$cdr-color-icon-switch-selected-default-hover}
+      )
+    ),
+  handle-border-hover: var(
+      --cdr-color-control-border-neutral-bold,
+      var(
+        --cdr-color-border-switch-handle-default-hover,
+        #{tokens.$cdr-color-border-switch-handle-default-hover}
+      )
+    ),
+  handle-surface: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-switch-handle-default-rest,
+        #{tokens.$cdr-color-background-switch-handle-default-rest}
+      )
+    )
+);

@@ -1,0 +1,40 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/card/CdrCard.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$card-defaults: ();
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$card-colors: (
+  default: (
+    background: var(
+        --cdr-color-action-surface-neutral-trace,
+        var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+      ),
+    text: var(
+        --cdr-color-action-text-neutral-bold,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+  ),
+  link: (
+    text: var(
+        --cdr-color-action-text-neutral-bold,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    text-hover: var(
+        --cdr-color-action-text-trigger,
+        var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+      ),
+  ),
+);

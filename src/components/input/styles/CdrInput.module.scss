@@ -1,3 +1,5 @@
+@use './vars/CdrInput.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrInput.vars' as vars;
 @use '../../labelStandalone/styles/CdrLabelStandalone.module';
@@ -20,7 +22,7 @@
       // ITEM_DOC: Background color of the cdr-button label
       background-color: var(
         --cdr-input-label-background-color,
-        var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
+        #{map.get(maps.$input-defaults, border)}
       );
       position: absolute;
       left: -1px;
@@ -38,31 +40,22 @@
     // ITEM_DOC: Background color of the cdr-input label in hover, active, focus, and focus-within states
     background-color: var(
       --cdr-input-label-background-interaction,
-      var(
-        --cdr-color-background-input-default-active,
-        #{tokens.$cdr-color-background-input-default-active}
-      )
+      #{map.get(maps.$input-defaults, surface-active)}
     );
 
     // ITEM_DOC: Box-shadow color of the cdr-input label in hover, active, focus, and focus-within states
     box-shadow: inset 0 0 0 2px
-      var(
-        --cdr-input-label-box-shadow-interaction,
-        var(--cdr-color-border-input-default-focus, #{tokens.$cdr-color-border-input-default-focus})
-      );
+      var(--cdr-input-label-box-shadow-interaction, #{map.get(maps.$input-defaults, border-focus)});
     outline: none;
 
     // ITEM_DOC: Fill color of the cdr-input label in hover, active, focus, and focus-within states
-    fill: var(
-      --cdr-input-label-fill-interaction,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
+    fill: var(--cdr-input-label-fill-interaction, #{map.get(maps.$input-defaults, prompt-icon)});
 
     svg {
       box-shadow: none;
       fill: var(
         --cdr-input-label-svg-fill-interaction,
-        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+        #{map.get(maps.$input-defaults, prompt-icon)}
       ) !important;
     }
 
@@ -93,7 +86,7 @@
       // ITEM_DOC: Fill color of the cdr-input SVG when the parent is focused
       fill: var(
         --cdr-input-svg-fill-focus,
-        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+        #{map.get(maps.$input-defaults, prompt-icon)}
       ) !important;
     }
   }
@@ -209,8 +202,5 @@
   flex-grow: 1;
 
   // ITEM_DOC: Fill color of the cdr-input wrapper
-  fill: var(
-    --cdr-input-wrap-fill,
-    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-  );
+  fill: var(--cdr-input-wrap-fill, #{map.get(maps.$input-defaults, icon)});
 }

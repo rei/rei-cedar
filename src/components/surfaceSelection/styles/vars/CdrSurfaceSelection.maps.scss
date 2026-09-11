@@ -1,0 +1,31 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/surfaceSelection/CdrSurfaceSelection.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$surface-selection-defaults: (
+  // Color
+  border: var(
+      --cdr-color-selection-border-neutral,
+      var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
+    ),
+  surface-hover: var(--cdr-color-selection-surface-neutral, var(--cdr-surface-background)),
+  surface-active: var(--cdr-color-selection-surface-neutral-subtle, var(--cdr-surface-background)),
+  surface-checked: var(--cdr-color-selection-surface-neutral-subtle, var(--cdr-surface-background)),
+  border-checked: var(--cdr-color-selection-border-neutral-subtle, var(--cdr-surface-border-color)),
+  surface: var(
+      --cdr-color-selection-surface-neutral-faint,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    ),
+  surface-disabled: var(
+      --cdr-color-selection-surface-neutral-trace,
+      var(--cdr-color-background-secondary, #{tokens.$cdr-color-background-secondary})
+    )
+);

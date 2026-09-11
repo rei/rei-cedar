@@ -1,10 +1,9 @@
-@use '@rei/cdr-tokens/scss' as tokens;
-
 /**
  * Base styles for CdrLink.
  * Uses custom properties for easy theming and overrides.
  * - Typography/layout: font, size, alignment, etc.
- * - Color: uses --cdr-link-text-color and --cdr-link-fill-color for theming.
+ * - Color: --cdr-link-text(-hover/-active) and --cdr-link-fill(-hover/-active),
+ *   fed by CdrLink.maps.scss (semantic tokens with legacy fallbacks).
  * - Decoration: uses --cdr-link-text-decoration for underline/none.
  */
 @mixin cdr-link-base-mixin() {
@@ -22,45 +21,21 @@
   vertical-align: var(--cdr-link-vertical-align, top);
 
   // Themed color and decoration
-  color: var(
-    --cdr-link-text-color,
-    var(
-      --cdr-color-text-link-rest,
-      var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
-    )
-  );
-  fill: var(
-    --cdr-link-fill-color,
-    var(
-      --cdr-color-text-link-rest,
-      var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
-    )
-  );
+  color: var(--cdr-link-text);
+  fill: var(--cdr-link-fill);
   text-decoration: var(--cdr-link-text-decoration, underline);
 
-  &:active,
-  &:focus {
-    color: var(
-      --cdr-link-active-text-color-active,
-      var(
-        --cdr-color-text-link-active,
-        var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
-      )
-    );
+  &:active {
+    color: var(--cdr-link-text-active);
   }
 
   &:hover {
-    color: var(
-      --cdr-link-text-color-hover,
-      var(
-        --cdr-color-text-link-hover,
-        var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
-      )
-    );
+    color: var(--cdr-link-text-hover);
     text-decoration: var(--cdr-link-text-decoration-hover, none);
   }
 
   &:focus {
+    color: var(--cdr-link-text-focus-visible);
     outline: 2px solid var(--cdr-color-outline, Highlight);
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
@@ -72,10 +47,12 @@
   color: inherit !important;
   fill: inherit !important;
 
-  --cdr-link-text-color: inherit;
-  --cdr-link-fill-color: inherit;
-  --cdr-link-text-color-hover: inherit;
-  --cdr-link-active-text-color-active: inherit;
+  --cdr-link-text: inherit;
+  --cdr-link-text-hover: inherit;
+  --cdr-link-text-active: inherit;
+  --cdr-link-fill: inherit;
+  --cdr-link-fill-hover: inherit;
+  --cdr-link-fill-active: inherit;
 }
 
 @mixin cdr-link-standalone-mixin() {
@@ -83,15 +60,4 @@
   // Only set text-decoration if not already set by another variant
   --cdr-link-text-decoration: none;
   --cdr-link-text-decoration-hover: underline;
-}
-
-@mixin cdr-link-neutral-mixin() {
-  // Neutral variant: all states use primary text color
-  // Only set color variables if not already set by another variant
-  --cdr-link-text-color: var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary});
-  --cdr-link-text-color-hover: var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary});
-  --cdr-link-active-text-color-active: var(
-    --cdr-color-text-primary,
-    #{tokens.$cdr-color-text-primary}
-  );
 }

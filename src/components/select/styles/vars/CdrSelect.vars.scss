@@ -1,3 +1,5 @@
+@use './CdrSelect.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-select-base-mixin() {
@@ -6,23 +8,14 @@
   font-weight: 500;
 
   // ITEM_DOC: Background color of cdr-select
-  background: var(
-    --cdr-select-background-color,
-    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
-  );
+  background: var(--cdr-select-background-color, #{map.get(maps.$select-defaults, surface)});
 
   // ITEM_DOC: Text color of cdr-select
-  color: var(
-    --cdr-select-text-color,
-    var(--cdr-color-text-input-default, #{tokens.$cdr-color-text-input-default})
-  );
+  color: var(--cdr-select-text-color, #{map.get(maps.$select-defaults, text)});
 
   // ITEM_DOC: Box-shadow color of cdr-select
   box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-select-box-shadow-color,
-      var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
-    );
+    var(--cdr-select-box-shadow-color, #{map.get(maps.$select-defaults, border)});
   border: 0;
   border-radius: tokens.$cdr-radius-softer;
   padding-left: tokens.$cdr-space-half-x;
@@ -37,36 +30,24 @@
     // ITEM_DOC: Background color of a disabled cdr-select
     background-color: var(
       --cdr-select-background-color-disabled,
-      var(
-        --cdr-color-background-input-default-disabled,
-        #{tokens.$cdr-color-background-input-default-disabled}
-      )
+      #{map.get(maps.$select-defaults, surface-disabled)}
     );
 
     // ITEM_DOC: Text color of a disabled cdr-select
-    color: var(
-      --cdr-select-text-color-disabled,
-      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
-    );
+    color: var(--cdr-select-text-color-disabled, #{map.get(maps.$select-defaults, text-disabled)});
 
     // ITEM_DOC: Box-shadow color of a disabled cdr-select
     box-shadow: inset 0 0 0 1px
       var(
         --cdr-select-box-shadow-color-disabled,
-        var(
-          --cdr-color-border-input-default-disabled,
-          #{tokens.$cdr-color-border-input-default-disabled}
-        )
+        #{map.get(maps.$select-defaults, border-disabled)}
       );
 
     &:hover {
       box-shadow: inset 0 0 0 1px
         var(
           --cdr-select-hover-box-shadow-color-disabled,
-          var(
-            --cdr-color-border-input-default-disabled,
-            #{tokens.$cdr-color-border-input-default-disabled}
-          )
+          #{map.get(maps.$select-defaults, border-disabled)}
         );
       cursor: not-allowed;
     }
@@ -76,10 +57,7 @@
   &:focus {
     // ITEM_DOC: Box-shadow color of a cdr-select when active or focused
     box-shadow: inset 0 0 0 2px
-      var(
-        --cdr-select-box-shadow-color-focus,
-        var(--cdr-color-border-input-default-focus, #{tokens.$cdr-color-border-input-default-focus})
-      );
+      var(--cdr-select-box-shadow-color-focus, #{map.get(maps.$select-defaults, border-focus)});
     outline: none;
   }
 }
@@ -90,16 +68,13 @@
   font-style: normal;
 
   // ITEM_DOC: Text color of cdr-select prompt
-  color: var(
-    --cdr-select-prompt-text-color,
-    var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-  );
+  color: var(--cdr-select-prompt-text-color, #{map.get(maps.$select-defaults, prompt)});
 
   &[disabled] {
     // ITEM_DOC: Text color of a disabled cdr-select prompt
     color: var(
       --cdr-select-prompt-text-color-disabled,
-      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+      #{map.get(maps.$select-defaults, text-disabled)}
     );
   }
 }
@@ -115,7 +90,7 @@
   // ITEM_DOC: Background color of a primary cdr-select
   background-color: var(
     --cdr-select-primary-background-color,
-    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    #{map.get(maps.$select-defaults, surface)}
   );
 
   &:active,
@@ -123,10 +98,7 @@
     // ITEM_DOC: Background color of a primary cdr-select when active or focused
     background-color: var(
       --cdr-select-primary-background-color-active,
-      var(
-        --cdr-color-background-input-default-active,
-        #{tokens.$cdr-color-background-input-default-active}
-      )
+      #{map.get(maps.$select-defaults, surface-active)}
     );
   }
 }
@@ -135,7 +107,7 @@
   // ITEM_DOC: Background color of a secondary cdr-select
   background-color: var(
     --cdr-select-secondary-background-color,
-    var(--cdr-color-background-input-secondary, #{tokens.$cdr-color-background-input-secondary})
+    #{map.get(maps.$select-defaults, surface-secondary)}
   );
 
   &:active,
@@ -143,10 +115,7 @@
     // ITEM_DOC: Background color of a secondary cdr-select when active or focused
     background-color: var(
       --cdr-select-secondary-background-color-active,
-      var(
-        --cdr-color-background-input-secondary-active,
-        #{tokens.$cdr-color-background-input-secondary-active}
-      )
+      #{map.get(maps.$select-defaults, surface-secondary-active)}
     );
   }
 }
@@ -155,13 +124,10 @@
   // ITEM_DOC: Background color of a cdr-select error
   background-color: var(
     --cdr-select-background-color-error,
-    var(--cdr-color-background-input-error, #{tokens.$cdr-color-background-input-error})
+    #{map.get(maps.$select-defaults, error-surface)}
   );
 
   // ITEM_DOC: Box-shadow color of a cdr-select error
   box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-select-box-shadow-color-error,
-      var(--cdr-color-border-input-error, #{tokens.$cdr-color-border-input-error})
-    );
+    var(--cdr-select-box-shadow-color-error, #{map.get(maps.$select-defaults, error-border)});
 }

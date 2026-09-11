@@ -1,0 +1,61 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/surface/CdrSurface.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$surface-defaults: (
+  // Color
+  border: var(
+      --cdr-color-border-neutral-subtle,
+      var(--cdr-color-border-surface-primary, #{tokens.$cdr-color-border-surface-primary})
+    ),
+  surface: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-surface-primary, #{tokens.$cdr-color-background-surface-primary})
+    ),
+  surface-secondary: var(
+      --cdr-color-surface-neutral-faint,
+      var(
+        --cdr-color-background-surface-secondary,
+        #{tokens.$cdr-color-background-surface-secondary}
+      )
+    ),
+  surface-brand: var(
+      --cdr-color-surface-brand,
+      var(
+        --cdr-color-background-surface-brand-spruce,
+        #{tokens.$cdr-color-background-surface-brand-spruce}
+      )
+    ),
+  surface-sale: var(
+      --cdr-color-surface-sale,
+      var(--cdr-color-background-surface-sale, #{tokens.$cdr-color-background-surface-sale})
+    ),
+  border-secondary: var(
+      --cdr-color-border-neutral,
+      var(--cdr-color-border-surface-secondary, #{tokens.$cdr-color-border-surface-secondary})
+    ),
+  border-success: var(
+      --cdr-color-feedback-border-success,
+      var(--cdr-color-border-surface-success, #{tokens.$cdr-color-border-surface-success})
+    ),
+  border-warning: var(
+      --cdr-color-feedback-border-warning,
+      var(--cdr-color-border-surface-warning, #{tokens.$cdr-color-border-surface-warning})
+    ),
+  border-error: var(
+      --cdr-color-feedback-border-error,
+      var(--cdr-color-border-surface-error, #{tokens.$cdr-color-border-surface-error})
+    ),
+  border-info: var(
+      --cdr-color-feedback-border-info,
+      var(--cdr-color-border-surface-info, #{tokens.$cdr-color-border-surface-info})
+    )
+);

@@ -1,0 +1,66 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/pagination/CdrPagination.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$pagination-defaults: ();
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$pagination-colors: (
+  default: (
+    text: var(
+        --cdr-color-action-text-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    border: var(
+        --cdr-color-action-border-trigger,
+        var(
+          --cdr-color-background-pagination-keyline,
+          #{tokens.$cdr-color-background-pagination-keyline}
+        )
+      ),
+    fill: var(
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    background-hover: var(
+        --cdr-color-action-surface-neutral-faint,
+        var(
+          --cdr-color-background-pagination-hover,
+          #{tokens.$cdr-color-background-pagination-hover}
+        )
+      ),
+    background-focus-visible: var(
+        --cdr-color-action-surface-neutral-faint,
+        var(
+          --cdr-color-background-pagination-hover,
+          #{tokens.$cdr-color-background-pagination-hover}
+        )
+      ),
+    background-active: var(
+        --cdr-color-action-surface-neutral-faint,
+        var(
+          --cdr-color-background-pagination-hover,
+          #{tokens.$cdr-color-background-pagination-hover}
+        )
+      ),
+    text-disabled: var(
+        --cdr-color-action-text-neutral-faint,
+        var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
+      ),
+    fill-disabled: var(
+        --cdr-color-action-icon-neutral-faint,
+        var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
+      ),
+  ),
+);

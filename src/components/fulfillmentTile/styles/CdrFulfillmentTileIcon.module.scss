@@ -1,6 +1,9 @@
+@use './vars/CdrFulfillmentTile.maps' as maps;
+@use 'sass:map';
+
 .cdr-fulfillment-tile-icon {
   align-items: center;
-  background: var(--cdr-color-background-primary);
+  background: #{map.get(maps.$fulfillment-tile-defaults, icon-surface)};
   border-radius: var(--cdr-radius-round);
   display: flex;
   fill: var(--cdr-fulfillment-tile-icon-fill);
@@ -25,7 +28,7 @@
   svg {
     max-height: 2rem;
     max-width: 2rem;
-    stroke: white;
+    stroke: #{map.get(maps.$fulfillment-tile-defaults, icon-halo)};
     stroke-width: var(--cdr-space-eighth-x);
     paint-order: stroke fill;
     margin: var(--cdr-space-quarter-x);
@@ -34,35 +37,35 @@
   &--default {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-default-icon-fill,
-      var(--cdr-color-icon-message-default, var(--cdr-color-icon-message-default))
+      #{map.get(maps.$fulfillment-tile-defaults, icon)}
     );
   }
 
   &--info {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-info-icon-fill,
-      var(--cdr-color-border-message-info-01, var(--cdr-color-border-message-info-01))
+      #{map.get(maps.$fulfillment-tile-defaults, icon-info)}
     );
   }
 
   &--warning {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-warning-icon-fill,
-      var(--cdr-color-border-message-warning-01, var(--cdr-color-border-message-warning-01))
+      #{map.get(maps.$fulfillment-tile-defaults, icon-warning)}
     );
   }
 
   &--success {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-success-icon-fill,
-      var(--cdr-color-icon-message-success, var(--cdr-color-icon-message-success))
+      #{map.get(maps.$fulfillment-tile-defaults, icon-success)}
     );
   }
 
   &--error {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-error-icon-fill,
-      var(--cdr-color-border-message-error-01, var(--cdr-color-border-message-error-01))
+      #{map.get(maps.$fulfillment-tile-defaults, icon-error)}
     );
   }
 }

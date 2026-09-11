@@ -1,0 +1,31 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/rating/CdrRating.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$rating-defaults: (
+  // Color
+  text: var(
+      --cdr-color-text-neutral,
+      var(--cdr-color-text-rating-default, #{tokens.$cdr-color-text-rating-default})
+    ),
+  text-hover: var(
+      --cdr-color-action-text-trigger-faint,
+      var(--cdr-color-text-rating-hover, #{tokens.$cdr-color-text-rating-hover})
+    ),
+  separator: var(
+      --cdr-color-border-neutral-subtle,
+      var(--cdr-color-text-rating-separator, #{tokens.$cdr-color-text-rating-separator})
+    ),
+  star-empty: var(--cdr-color-icon-neutral-trace, #f9f8f6),
+  star-null-outline: var(--cdr-color-icon-neutral-subtle, #928b80),
+  star-fill: var(--cdr-color-icon-rating, #ffd280),
+  star-stroke: var(--cdr-color-border-rating, #bd7b2d)
+);

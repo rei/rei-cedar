@@ -1,0 +1,17 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/skeleton/CdrSkeleton.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$skeleton-defaults: (
+  surface: var(--cdr-color-feedback-surface-neutral-faint, #edeae3),
+  shimmer-base: var(--cdr-color-feedback-surface-neutral-faint, rgb(237, 234, 227, 1)),
+  shimmer-highlight: var(--cdr-color-feedback-surface-neutral-trace, rgb(249, 248, 240, 1)),
+);

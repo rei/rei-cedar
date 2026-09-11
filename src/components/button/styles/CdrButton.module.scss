@@ -1,67 +1,158 @@
 @use '@rei/cdr-tokens/scss' as tokens;
-@use './vars/CdrButton.vars' as vars;
+@use 'sass:map';
+@use './vars/CdrButton.maps' as maps;
+@use './vars/CdrButton.vars' as vars; // special cases only
+
+// ── Local helpers ──
+@mixin _apply-size($dims) {
+  @each $key, $value in $dims {
+    --cdr-button-#{$key}: #{$value};
+  }
+
+  width: auto;
+}
+
+@mixin _state-colors($state) {
+  background-color: var(--cdr-button-background-#{$state}, var(--cdr-button-background));
+  color: var(--cdr-button-text-#{$state}, var(--cdr-button-text));
+  fill: var(--cdr-button-fill-#{$state}, var(--cdr-button-fill));
+}
 
 .cdr-button {
-  @include vars.cdr-button-base-mixin;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  font-style: normal;
+  outline: none;
+  overflow: visible;
+  margin: 0;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  vertical-align: middle;
 
+  // ── Custom property defaults (from maps) ──
+  @each $key, $value in maps.$button-defaults {
+    --cdr-button-#{$key}: #{$value};
+  }
+
+  border-radius: var(--cdr-button-radius);
+  font-family: var(--cdr-button-font-family);
+  font-weight: var(--cdr-button-font-weight);
+  letter-spacing: var(--cdr-button-letter-spacing);
+  font-size: var(--cdr-button-font-size);
+  line-height: var(--cdr-button-line-height);
+  padding: var(--cdr-button-padding);
+  background-color: var(--cdr-button-background);
+  color: var(--cdr-button-text);
+  fill: var(--cdr-button-fill);
+  box-shadow:
+    inset 0 0 0 1px var(--cdr-button-border),
+    var(--cdr-button-elevation);
+  transition:
+    box-shadow var(--cdr-button-transition-duration) var(--cdr-button-transition-timing),
+    background-color var(--cdr-button-transition-duration) var(--cdr-button-transition-timing),
+    color var(--cdr-button-transition-duration) var(--cdr-button-transition-timing),
+    fill var(--cdr-button-transition-duration) var(--cdr-button-transition-timing);
+
+  // ── Hover ──
+  &:hover {
+    text-decoration: none;
+
+    @include _state-colors(hover);
+
+    box-shadow:
+      inset 0 0 0 3px var(--cdr-button-border-hover, var(--cdr-button-border)),
+      var(--cdr-button-elevation-hover);
+  }
+
+  // ── Focus-visible ──
+  &:focus-visible {
+    outline: none;
+    outline-offset: 0;
+    text-decoration: none;
+
+    @include _state-colors(focus-visible);
+
+    box-shadow:
+      inset 0 0 0 3px var(--cdr-button-border-focus-visible, var(--cdr-button-border)),
+      var(--cdr-button-elevation-focus-visible, var(--cdr-button-elevation));
+  }
+
+  // ── Active ──
+  &:active {
+    outline: none;
+
+    @include _state-colors(active);
+
+    box-shadow:
+      inset 0 0 0 3px var(--cdr-button-border-active, var(--cdr-button-border)),
+      inset 0 0 0 5px var(--cdr-button-active-inset, transparent),
+      var(--cdr-button-elevation-active);
+  }
+
+  // ── Disabled ──
+  &[disabled] {
+    cursor: not-allowed;
+
+    @include _state-colors(disabled);
+
+    box-shadow: inset 0 0 0 1px var(--cdr-button-border-disabled, var(--cdr-button-border));
+  }
+
+  // ── Icons ──
   svg {
-    @include vars.cdr-button-base-icon-mixin;
+    align-self: center;
+    fill: inherit;
+    width: var(--cdr-button-icon-size);
+    height: var(--cdr-button-icon-size);
   }
 
-  &.cdr-button--has-icon-left svg {
-    margin-right: tokens.$cdr-space-quarter-x;
+  &.cdr-button--has-icon-left {
+    padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
+    svg {
+      margin-right: var(--cdr-button-icon-gap);
+    }
   }
 
-  &.cdr-button--has-icon-right svg {
-    margin-left: tokens.$cdr-space-quarter-x;
+  &.cdr-button--has-icon-right {
+    padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
+    svg {
+      margin-left: var(--cdr-button-icon-gap);
+    }
   }
 
-  /* Modifier style variants
-    ========================================================================== */
-  &--primary {
-    @include vars.cdr-button-primary-mixin;
+  // ════════════════════════════════════════════════════════════════════════
+  // COLOR VARIANTS — each sets --cdr-button-* custom properties from map
+  // ════════════════════════════════════════════════════════════════════════
+
+  @each $variant, $colors in maps.$button-colors {
+    &--#{$variant} {
+      @each $key, $value in $colors {
+        --cdr-button-#{$key}: #{$value};
+      }
+    }
   }
 
-  &--secondary {
-    @include vars.cdr-button-secondary-mixin;
+  // ════════════════════════════════════════════════════════════════════════
+  // SIZES — each sets --cdr-button-* dimension overrides from map
+  // ════════════════════════════════════════════════════════════════════════
+
+  @each $size, $dims in maps.$button-sizes {
+    &--#{$size} {
+      @include _apply-size($dims);
+    }
   }
 
-  &--dark {
-    @include vars.cdr-button-dark-mixin;
-  }
-
-  &--sale {
-    @include vars.cdr-button-sale-mixin;
-  }
+  // ════════════════════════════════════════════════════════════════════════
+  // SPECIAL CASES — structural variants that override the standard pattern
+  // ════════════════════════════════════════════════════════════════════════
 
   &--link {
     @include vars.cdr-button-link-mixin;
   }
-
-  /* Size variants
-    ========================================================================== */
-
-  /* Large
-     ========== */
-  &--large {
-    @include vars.cdr-button-large-mixin;
-  }
-
-  /* Medium
-     ========== */
-  &--medium {
-    @include vars.cdr-button-medium-mixin;
-  }
-
-  /* Small
-     ========== */
-
-  &--small {
-    @include vars.cdr-button-small-mixin;
-  }
-
-  /* Icon Only
-     ========= */
 
   &--icon-only {
     @include vars.cdr-button-icon-only-mixin;
@@ -79,97 +170,64 @@
     @include vars.cdr-button-with-background-mixin;
   }
 
-  /* Full Width
-    ========== */
-
   &--full-width {
-    @include vars.cdr-button-full-width-mixin;
+    width: 100% !important;
+    justify-content: center;
   }
 
-  /* Breakpoint variants
+  // ════════════════════════════════════════════════════════════════════════
+  // RESPONSIVE SIZES
+  // ════════════════════════════════════════════════════════════════════════
 
-  /* @xs
-    0px - 767px
-    ========== */
   @include tokens.cdr-xs-mq-only {
-    &--small\@xs {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@xs {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@xs {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@xs {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@xs {
-      @include vars.cdr-button-full-width-mixin;
+      width: 100% !important;
+      justify-content: center;
     }
   }
 
-  /* @sm
-    768px - 991px
-    ========== */
   @include tokens.cdr-sm-mq-only {
-    &--small\@sm {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@sm {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@sm {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@sm {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@sm {
-      @include vars.cdr-button-full-width-mixin;
+      width: 100% !important;
+      justify-content: center;
     }
   }
 
-  /* @md
-    992px - 1199px
-    ========== */
   @include tokens.cdr-md-mq-only {
-    &--small\@md {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@md {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@md {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@md {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@md {
-      @include vars.cdr-button-full-width-mixin;
+      width: 100% !important;
+      justify-content: center;
     }
   }
 
-  /* @lg
-    1200px and up
-    ========== */
-
   @include tokens.cdr-lg-mq-only {
-    &--small\@lg {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@lg {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@lg {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@lg {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@lg {
-      @include vars.cdr-button-full-width-mixin;
+      width: 100% !important;
+      justify-content: center;
     }
   }
 }

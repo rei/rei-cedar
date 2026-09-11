@@ -1,3 +1,5 @@
+@use './CdrCaption.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-caption-container-mixin() {
@@ -15,10 +17,7 @@
   margin: 0;
 
   // ITEM_DOC: Text color of a cdr-caption
-  color: var(
-    --cdr-caption-summary-color,
-    var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-  );
+  color: var(--cdr-caption-summary-color, #{map.get(maps.$caption-defaults, text)});
 
   + cite {
     display: inline-block;
@@ -34,9 +33,6 @@
   line-height: 1.8rem;
 
   // ITEM_DOC: Text color of a cdr-caption
-  color: var(
-    --cdr-caption-cite-color,
-    var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
-  );
+  color: var(--cdr-caption-cite-color, #{map.get(maps.$caption-defaults, text-secondary)});
   font-style: normal;
 }

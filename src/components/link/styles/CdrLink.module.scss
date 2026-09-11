@@ -9,10 +9,17 @@
       :Style variants
         :Standalone
 ========================================================================== */
+@use 'sass:map';
+@use './vars/CdrLink.maps' as maps;
 @use './vars/CdrLink.vars' as vars;
 
 .cdr-link {
   @include vars.cdr-link-base-mixin;
+
+  // Standard (trigger) colors from the contract map
+  @each $key, $value in map.get(maps.$link-colors, standard) {
+    --cdr-link-#{$key}: #{$value};
+  }
 }
 
 .cdr-link--standalone {
@@ -24,5 +31,8 @@
 }
 
 .cdr-link--neutral {
-  @include vars.cdr-link-neutral-mixin;
+  // Neutral variant colors from the contract map
+  @each $key, $value in map.get(maps.$link-colors, neutral) {
+    --cdr-link-#{$key}: #{$value};
+  }
 }

@@ -1,0 +1,137 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/toast/CdrToast.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$toast-defaults: (
+  icon-halo: white,
+  close-icon: var(
+      --cdr-color-action-icon-neutral-bold,
+      var(--cdr-color-text-emphasis, #{tokens.$cdr-color-text-emphasis})
+    ),
+  default-icon-tile: var(
+      --cdr-color-feedback-surface-neutral-bold,
+      var(
+        --cdr-color-background-message-default-02,
+        #{tokens.$cdr-color-background-message-default-02}
+      )
+    ),
+  default-icon: var(
+      --cdr-color-feedback-icon-neutral,
+      var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default})
+    ),
+  default-border: var(
+      --cdr-color-feedback-border-neutral,
+      var(--cdr-color-border-message-default-01, #{tokens.$cdr-color-border-message-default-01})
+    ),
+  info-icon-tile: var(
+      --cdr-color-feedback-surface-info-bold,
+      var(--cdr-color-background-message-info-02, #{tokens.$cdr-color-background-message-info-02})
+    ),
+  info-icon: var(
+      --cdr-color-feedback-icon-info,
+      var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info})
+    ),
+  info-border: var(
+      --cdr-color-feedback-border-info,
+      var(--cdr-color-border-message-info-01, #{tokens.$cdr-color-border-message-info-01})
+    ),
+  warning-icon-tile: var(
+      --cdr-color-feedback-surface-warning-bold,
+      var(
+        --cdr-color-background-message-warning-02,
+        #{tokens.$cdr-color-background-message-warning-02}
+      )
+    ),
+  warning-icon: var(
+      --cdr-color-feedback-icon-warning,
+      var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning})
+    ),
+  warning-border: var(
+      --cdr-color-feedback-border-warning,
+      var(--cdr-color-border-message-warning-01, #{tokens.$cdr-color-border-message-warning-01})
+    ),
+  success-icon-tile: var(
+      --cdr-color-feedback-surface-success-bold,
+      var(
+        --cdr-color-background-message-success-02,
+        #{tokens.$cdr-color-background-message-success-02}
+      )
+    ),
+  success-icon: var(
+      --cdr-color-feedback-icon-success,
+      var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success})
+    ),
+  success-border: var(
+      --cdr-color-feedback-border-success,
+      var(--cdr-color-border-message-success-01, #{tokens.$cdr-color-border-message-success-01})
+    ),
+  error-icon-tile: var(
+      --cdr-color-feedback-surface-error-bold,
+      var(--cdr-color-background-message-error-02, #{tokens.$cdr-color-background-message-error-02})
+    ),
+  error-icon: var(
+      --cdr-color-feedback-icon-error,
+      var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error})
+    ),
+  error-border: var(
+      --cdr-color-feedback-border-error,
+      var(--cdr-color-border-message-error-01, #{tokens.$cdr-color-border-message-error-01})
+    ),
+  default-surface: var(
+      --cdr-color-feedback-surface-neutral,
+      var(
+        --cdr-color-background-message-default-01,
+        #{tokens.$cdr-color-background-message-default-01}
+      )
+    ),
+  default-outline: var(
+      --cdr-color-feedback-border-neutral-faint,
+      var(--cdr-color-border-message-default-02, #{tokens.$cdr-color-border-message-default-02})
+    ),
+  info-surface: var(
+      --cdr-color-feedback-surface-info,
+      var(--cdr-color-background-message-info-01, #{tokens.$cdr-color-background-message-info-01})
+    ),
+  info-outline: var(
+      --cdr-color-feedback-border-info-faint,
+      var(--cdr-color-border-message-info-02, #{tokens.$cdr-color-border-message-info-02})
+    ),
+  success-surface: var(
+      --cdr-color-feedback-surface-success,
+      var(
+        --cdr-color-background-message-success-01,
+        #{tokens.$cdr-color-background-message-success-01}
+      )
+    ),
+  success-outline: var(
+      --cdr-color-feedback-border-success-faint,
+      var(--cdr-color-border-message-success-02, #{tokens.$cdr-color-border-message-success-02})
+    ),
+  warning-surface: var(
+      --cdr-color-feedback-surface-warning,
+      var(
+        --cdr-color-background-message-warning-01,
+        #{tokens.$cdr-color-background-message-warning-01}
+      )
+    ),
+  warning-outline: var(
+      --cdr-color-feedback-border-warning-faint,
+      var(--cdr-color-border-message-warning-02, #{tokens.$cdr-color-border-message-warning-02})
+    ),
+  error-surface: var(
+      --cdr-color-feedback-surface-error,
+      var(--cdr-color-background-message-error-01, #{tokens.$cdr-color-background-message-error-01})
+    ),
+  error-outline: var(
+      --cdr-color-feedback-border-error-faint,
+      var(--cdr-color-border-message-error-02, #{tokens.$cdr-color-border-message-error-02})
+    ),
+);

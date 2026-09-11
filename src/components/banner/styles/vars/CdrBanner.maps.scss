@@ -1,0 +1,173 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/banner/CdrBanner.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$banner-defaults: (
+  message-body-background: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    ),
+  icon-right-fill: var(
+      --cdr-color-action-icon-neutral-bold,
+      var(--cdr-color-text-emphasis, #{tokens.$cdr-color-text-emphasis})
+    ),
+  info-action-fill: var(
+      --cdr-color-action-icon-trigger,
+      var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
+    ),
+  icon-halo: white,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$banner-colors: (
+  default: (
+    background: var(
+        --cdr-color-feedback-surface-neutral,
+        var(
+          --cdr-color-background-message-default-01,
+          #{tokens.$cdr-color-background-message-default-01}
+        )
+      ),
+    border: var(
+        --cdr-color-feedback-border-neutral,
+        var(--cdr-color-border-message-default-01, #{tokens.$cdr-color-border-message-default-01})
+      ),
+    fill: var(
+        --cdr-color-feedback-icon-neutral,
+        var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default})
+      ),
+    text: var(--cdr-color-feedback-text-neutral-bold, inherit),
+    outline: var(
+        --cdr-color-feedback-border-neutral-faint,
+        var(--cdr-color-border-message-default-02, #{tokens.$cdr-color-border-message-default-02})
+      ),
+    icon-tile-background: var(
+        --cdr-color-feedback-surface-neutral-bold,
+        var(
+          --cdr-color-background-message-default-02,
+          #{tokens.$cdr-color-background-message-default-02}
+        )
+      ),
+  ),
+  info: (
+    background: var(
+        --cdr-color-feedback-surface-info,
+        var(--cdr-color-background-message-info-01, #{tokens.$cdr-color-background-message-info-01})
+      ),
+    border: var(
+        --cdr-color-feedback-border-info,
+        var(--cdr-color-border-message-info-01, #{tokens.$cdr-color-border-message-info-01})
+      ),
+    fill: var(
+        --cdr-color-feedback-icon-info,
+        var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info})
+      ),
+    text: var(--cdr-color-feedback-text-info-bold, inherit),
+    outline: var(
+        --cdr-color-feedback-border-info-faint,
+        var(--cdr-color-border-message-info-02, #{tokens.$cdr-color-border-message-info-02})
+      ),
+    icon-tile-background: var(
+        --cdr-color-feedback-surface-info-bold,
+        var(--cdr-color-background-message-info-02, #{tokens.$cdr-color-background-message-info-02})
+      ),
+  ),
+  success: (
+    background: var(
+        --cdr-color-feedback-surface-success,
+        var(
+          --cdr-color-background-message-success-01,
+          #{tokens.$cdr-color-background-message-success-01}
+        )
+      ),
+    border: var(
+        --cdr-color-feedback-border-success,
+        var(--cdr-color-border-message-success-01, #{tokens.$cdr-color-border-message-success-01})
+      ),
+    fill: var(
+        --cdr-color-feedback-icon-success,
+        var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success})
+      ),
+    text: var(--cdr-color-feedback-text-success-bold, inherit),
+    outline: var(
+        --cdr-color-feedback-border-success-faint,
+        var(--cdr-color-border-message-success-02, #{tokens.$cdr-color-border-message-success-02})
+      ),
+    icon-tile-background: var(
+        --cdr-color-feedback-surface-success-bold,
+        var(
+          --cdr-color-background-message-success-02,
+          #{tokens.$cdr-color-background-message-success-02}
+        )
+      ),
+  ),
+  warning: (
+    background: var(
+        --cdr-color-feedback-surface-warning,
+        var(
+          --cdr-color-background-message-warning-01,
+          #{tokens.$cdr-color-background-message-warning-01}
+        )
+      ),
+    border: var(
+        --cdr-color-feedback-border-warning,
+        var(--cdr-color-border-message-warning-01, #{tokens.$cdr-color-border-message-warning-01})
+      ),
+    fill: var(
+        --cdr-color-feedback-icon-warning,
+        var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning})
+      ),
+    text: var(--cdr-color-feedback-text-warning-bold, inherit),
+    outline: var(
+        --cdr-color-feedback-border-warning-faint,
+        var(--cdr-color-border-message-warning-02, #{tokens.$cdr-color-border-message-warning-02})
+      ),
+    icon-tile-background: var(
+        --cdr-color-feedback-surface-warning-bold,
+        var(
+          --cdr-color-background-message-warning-02,
+          #{tokens.$cdr-color-background-message-warning-02}
+        )
+      ),
+  ),
+  error: (
+    background: var(
+        --cdr-color-feedback-surface-error,
+        var(
+          --cdr-color-background-message-error-01,
+          #{tokens.$cdr-color-background-message-error-01}
+        )
+      ),
+    border: var(
+        --cdr-color-feedback-border-error,
+        var(--cdr-color-border-message-error-01, #{tokens.$cdr-color-border-message-error-01})
+      ),
+    fill: var(
+        --cdr-color-feedback-icon-error,
+        var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error})
+      ),
+    text: var(--cdr-color-feedback-text-error-bold, inherit),
+    outline: var(
+        --cdr-color-feedback-border-error-faint,
+        var(--cdr-color-border-message-error-02, #{tokens.$cdr-color-border-message-error-02})
+      ),
+    icon-tile-background: var(
+        --cdr-color-feedback-surface-error-bold,
+        var(
+          --cdr-color-background-message-error-02,
+          #{tokens.$cdr-color-background-message-error-02}
+        )
+      ),
+  ),
+);

@@ -1,0 +1,88 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/link/CdrLink.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$link-defaults: ();
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$link-colors: (
+  standard: (
+    text: var(
+        --cdr-color-action-text-trigger,
+        var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
+      ),
+    fill: var(
+        --cdr-color-action-icon-trigger,
+        var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
+      ),
+    text-hover: var(
+        --cdr-color-action-text-trigger-faint,
+        var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+      ),
+    fill-hover: var(
+        --cdr-color-action-icon-trigger-faint,
+        var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+      ),
+    text-focus-visible: var(
+        --cdr-color-action-text-trigger-bold,
+        var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
+      ),
+    fill-focus-visible: var(
+        --cdr-color-action-icon-trigger-bold,
+        var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
+      ),
+    text-active: var(
+        --cdr-color-action-text-trigger-bold,
+        var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
+      ),
+    fill-active: var(
+        --cdr-color-action-icon-trigger-bold,
+        var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
+      ),
+  ),
+  neutral: (
+    text: var(
+        --cdr-color-action-text-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    fill: var(
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    text-hover: var(
+        --cdr-color-action-text-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    fill-hover: var(
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    text-focus-visible: var(
+        --cdr-color-action-text-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    fill-focus-visible: var(
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    text-active: var(
+        --cdr-color-action-text-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    fill-active: var(
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+  ),
+);

@@ -1,0 +1,31 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/breadcrumb/CdrBreadcrumb.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$breadcrumb-defaults: (
+  // Color
+  text: var(
+      --cdr-color-action-text-neutral-subtle,
+      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+    ),
+  text-icon: var(
+      --cdr-color-action-icon-neutral-subtle,
+      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+    ),
+  text-interaction-icon: var(
+      --cdr-color-action-icon-trigger-faint,
+      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+    ),
+  text-interaction: var(
+      --cdr-color-action-text-trigger-faint,
+      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+    )
+);

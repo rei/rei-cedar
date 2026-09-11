@@ -1,8 +1,6 @@
+@use './vars/CdrRating.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
-
-$rating-color: #2b6692;
-$empty-star: '\2606';
-$filled-star: '\2605';
 
 @mixin cdr-rating-small() {
   .cdr-rating__icon {
@@ -51,7 +49,7 @@ $filled-star: '\2605';
   align-items: center;
   position: relative;
   line-height: 1;
-  color: tokens.$cdr-color-text-rating-default;
+  color: map.get(maps.$rating-defaults, text);
 
   /* Elements
     ========================================================================== */
@@ -88,20 +86,14 @@ $filled-star: '\2605';
       &:active,
       &:focus {
         // ITEM_DOC: Hover text color of cdr-rating count
-        color: var(
-          --cdr-rating-count-hover-color,
-          var(--cdr-color-text-rating-hover, #{tokens.$cdr-color-text-rating-hover})
-        );
+        color: var(--cdr-rating-count-hover-color, #{map.get(maps.$rating-defaults, text-hover)});
         text-decoration: underline;
       }
 
       > .cdr-rating__number {
         // ITEM_DOC: Color of the rating text separator
         border-right: 1px solid
-          var(
-            --cdr-rating-text-rating-separator,
-            var(--cdr-color-text-rating-separator, #{tokens.$cdr-color-text-rating-separator})
-          );
+          var(--cdr-rating-text-rating-separator, #{map.get(maps.$rating-defaults, separator)});
         padding: 0 0.6rem;
         margin-right: 0.6rem;
       }
@@ -114,38 +106,50 @@ $filled-star: '\2605';
 
     &--null-fill {
       // ITEM_DOC: Fill color of a null star
-      fill: var(--cdr-rating-star-null-fill-color, #f9f8f6);
+      fill: var(--cdr-rating-star-null-fill-color, #{map.get(maps.$rating-defaults, star-empty)});
     }
 
     &--null-outline {
       // ITEM_DOC: Outline color of a null star
-      fill: var(--cdr-rating-star-null-outline-color, #928b80);
+      fill: var(
+        --cdr-rating-star-null-outline-color,
+        #{map.get(maps.$rating-defaults, star-null-outline)}
+      );
     }
 
     &--partial-fill {
       // ITEM_DOC: Fill color of a partially filled star
-      fill: var(--cdr-rating-star-partial-fill-color, #ffd280);
+      fill: var(--cdr-rating-star-partial-fill-color, #{map.get(maps.$rating-defaults, star-fill)});
     }
 
     &--partial-stroke {
       // ITEM_DOC: Stroke color of a partially filled star
-      stroke: var(--cdr-rating-star-partial-stroke-color, #bd7b2d);
+      stroke: var(
+        --cdr-rating-star-partial-stroke-color,
+        #{map.get(maps.$rating-defaults, star-stroke)}
+      );
     }
 
     &--filled {
       // ITEM_DOC: Fill color of a filled star
-      fill: var(--cdr-rating-star-filled-fill-color, #ffd280);
+      fill: var(--cdr-rating-star-filled-fill-color, #{map.get(maps.$rating-defaults, star-fill)});
 
       // ITEM_DOC: Stroke color of a filled star
-      stroke: var(--cdr-rating-star-filled-stroke-color, #bd7b2d);
+      stroke: var(
+        --cdr-rating-star-filled-stroke-color,
+        #{map.get(maps.$rating-defaults, star-stroke)}
+      );
     }
 
     &--empty {
       // ITEM_DOC: Fill color of an empty star
-      fill: var(--cdr-rating-star-empty-fill-color, #f9f8f6);
+      fill: var(--cdr-rating-star-empty-fill-color, #{map.get(maps.$rating-defaults, star-empty)});
 
       // ITEM_DOC: Stroke color of an empty star
-      stroke: var(--cdr-rating-star-empty-stroke-color, #bd7b2d);
+      stroke: var(
+        --cdr-rating-star-empty-stroke-color,
+        #{map.get(maps.$rating-defaults, star-stroke)}
+      );
     }
 
     &--small {

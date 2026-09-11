@@ -1,20 +1,21 @@
+@use './vars/CdrSurface.maps' as maps;
 @use 'sass:map';
 
 // Property maps
 $properties: (
   background: (
-    primary: var(--cdr-color-background-surface-primary),
-    secondary: var(--cdr-color-background-surface-secondary),
-    brand: var(--cdr-color-background-surface-brand-spruce),
-    sale: var(--cdr-color-background-surface-sale),
+    primary: #{map.get(maps.$surface-defaults, surface)},
+    secondary: #{map.get(maps.$surface-defaults, surface-secondary)},
+    brand: #{map.get(maps.$surface-defaults, surface-brand)},
+    sale: #{map.get(maps.$surface-defaults, surface-sale)},
   ),
   border-color: (
-    primary: var(--cdr-color-border-surface-primary),
-    secondary: var(--cdr-color-border-surface-secondary),
-    success: var(--cdr-color-border-surface-success),
-    warning: var(--cdr-color-border-surface-warning),
-    error: var(--cdr-color-border-surface-error),
-    info: var(--cdr-color-border-surface-info),
+    primary: #{map.get(maps.$surface-defaults, border)},
+    secondary: #{map.get(maps.$surface-defaults, border-secondary)},
+    success: #{map.get(maps.$surface-defaults, border-success)},
+    warning: #{map.get(maps.$surface-defaults, border-warning)},
+    error: #{map.get(maps.$surface-defaults, border-error)},
+    info: #{map.get(maps.$surface-defaults, border-info)},
   ),
   border-width: (
     zero: var(--cdr-space-zero),
@@ -97,6 +98,10 @@ $css-vars: (
         $selector: '&:hover:not([aria-pressed="true"], [aria-checked="true"], :disabled)';
       } @else if $state == 'active' {
         $selector: '&:active, &:focus';
+      } @else if $state == 'checked' {
+        $selector: '&[aria-checked="true"], &[aria-pressed="true"], &[data-checked="true"]';
+      } @else if $state == 'disabled' {
+        $selector: '&:disabled, &[aria-disabled="true"], &[data-disabled="true"]';
       } @else {
         $selector: '&[data-#{$state}="true"]';
       }
@@ -105,7 +110,12 @@ $css-vars: (
         @each $value-name, $value in $values {
           &[data-#{$prop}-#{$state}='#{$value-name}'] {
             #{$selector} {
-              #{map.get($css-vars, $prop)}: #{$value};
+              #{map.get($css-vars, $prop)}-#{$state}: #{$value};
+
+              // Visited has no shared state rule below.
+              @if $state == 'visited' {
+                #{map.get($css-vars, $prop)}: #{$value};
+              }
             }
           }
         }

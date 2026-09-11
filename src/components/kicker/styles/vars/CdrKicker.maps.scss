@@ -1,0 +1,19 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/kicker/CdrKicker.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$kicker-defaults: (
+  // Color
+  text: var(
+      --cdr-color-text-neutral,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    )
+);

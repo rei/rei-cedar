@@ -1,0 +1,18 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/icon/CdrIcon.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$icon-defaults: (
+  icon: var(
+      --cdr-color-icon-neutral,
+      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+    ),
+);

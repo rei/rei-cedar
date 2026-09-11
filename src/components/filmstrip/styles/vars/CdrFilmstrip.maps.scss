@@ -1,0 +1,15 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/filmstrip/CdrFilmstrip.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$filmstrip-defaults: (
+  border-focus: var(--cdr-color-action-border-neutral-bold, #2e2e2b),
+);

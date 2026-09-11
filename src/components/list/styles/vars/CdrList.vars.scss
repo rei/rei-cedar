@@ -1,3 +1,5 @@
+@use './CdrList.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-list-base-mixin() {
@@ -61,7 +63,7 @@
       // ITEM_DOC: Color of the nested ordered cdr-list item prefix
       color: var(
         --cdr-list-ordered-nested-prefix-color,
-        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+        #{map.get(maps.$list-defaults, text-secondary)}
       );
     }
   }
@@ -90,7 +92,7 @@
       // ITEM_DOC: Color of the unordered cdr-list item prefix
       color: var(
         --cdr-list-unordered-prefix-color,
-        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+        #{map.get(maps.$list-defaults, text-secondary)}
       );
     }
   }
@@ -119,7 +121,7 @@
       // ITEM_DOC: Color of the nested unordered cdr-list item prefix
       color: var(
         --cdr-list-unordered-nested-prefix-color,
-        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+        #{map.get(maps.$list-defaults, text-secondary)}
       );
     }
   }
