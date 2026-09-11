@@ -1,4 +1,7 @@
 # built files
+# generated token artifacts (verified by pnpm check:maps instead of lint;
+# machine output cannot satisfy hand-written SCSS rules like BEM selectors)
+**/*.tokens.css
 public/
 dist/
 dist-docs/

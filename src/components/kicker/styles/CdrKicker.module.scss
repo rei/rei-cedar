@@ -1,9 +1,11 @@
+@use './vars/CdrKicker.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 .cdr-kicker {
   @include tokens.cdr-text-eyebrow-100;
 
-  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
+  color: var(--cdr-text-color, #{map.get(maps.$kicker-defaults, text)});
   font-size: var(--cdr-type-scale-minus-1);
   line-height: var(--cdr-line-height-ratio-heading-serif-1);
 }

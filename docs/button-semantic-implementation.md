@@ -1,5 +1,7 @@
 # Button Semantic Token Implementation
 
+> Historical PR implementation notes. The [component rollout](component-semantic-rollout.md) records the current sparse contracts, independent icon roles, corrected taxonomy paths and fallback policy. Current contracts and generated maps supersede examples below.
+
 **Status:** Reference implementation for semantic token migration pattern
 
 ## Current Implementation

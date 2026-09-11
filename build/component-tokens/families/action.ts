@@ -17,6 +17,7 @@
  * Lives here temporarily — moves to a shared package when more families exist.
  */
 
+import path from 'path';
 import type {
   ComponentTokenContract,
   ColorSlotMap,
@@ -43,6 +44,9 @@ const BREAKPOINTS = [
 
 /** Resolve a contract value to a CSS expression */
 function cssValue(value: ContractValue): string {
+  if (value.kind === 'semantic') {
+    return `var(--cdr-color-${value.name}, ${cssValue(value.fallback)})`;
+  }
   if (value.kind === 'literal') {
     return typeof value.value === 'number' ? String(value.value) : value.value;
   }
@@ -65,13 +69,12 @@ function componentProp(role: Role, state: InteractionState): string {
 
 /**
  * Build a semantic custom property name, honoring the omittable interaction
- * segment. Icon color resolves against the text-role token family.
+ * segment and the independent icon role.
  */
 function semanticProp(interaction: string | undefined, role: Role, suffix: string): string {
-  const cssRole = role === 'icon' ? 'text' : role;
   return interaction
-    ? `--cdr-color-${interaction}-${cssRole}-${suffix}`
-    : `--cdr-color-${cssRole}-${suffix}`;
+    ? `--cdr-color-${interaction}-${role}-${suffix}`
+    : `--cdr-color-${role}-${suffix}`;
 }
 
 /** Build a dual-value CSS expression: semantic with legacy fallback */
@@ -86,12 +89,12 @@ const STATES: InteractionState[] = ['rest', 'hover', 'focus-visible', 'active', 
 // CSS GENERATION
 // ============================================================================
 
-export function generateActionCSS(contract: ComponentTokenContract): string {
+export function generateActionCSS(contract: ComponentTokenContract, sourcePath?: string): string {
   const cls = `.${contract.component}`;
   const p = contract.prefix;
   const sections: string[] = [];
 
-  sections.push(header(contract));
+  sections.push(header(contract, sourcePath));
   sections.push(baseRule(cls, p, contract));
   sections.push(stateRules(cls, p));
   sections.push(iconRules(cls, p));
@@ -104,14 +107,20 @@ export function generateActionCSS(contract: ComponentTokenContract): string {
 
 // ── Header ──────────────────────────────────────────────────────────────────
 
-function header(contract: ComponentTokenContract): string {
+function header(contract: ComponentTokenContract, sourcePath?: string): string {
+  // Prefer the real contract path: deriving filenames from the component name
+  // breaks for multi-word components (e.g. cdr-fulfillment-tile lives in
+  // fulfillmentTile/CdrFulfillmentTile.tokens.ts).
   const shortName = contract.component.replace(/^cdr-/, '');
   const contractFile = `Cdr${shortName[0].toUpperCase()}${shortName.slice(1)}.tokens.ts`;
+  const source = sourcePath
+    ? path.relative(path.join(__dirname, '..', '..', '..'), sourcePath)
+    : `${shortName}/${contractFile}`;
   return [
     `/* ${'='.repeat(72)} */`,
     `/* GENERATED — ${contract.component} token assignments (action family)`,
     `/* Recipe: ${contract.recipe ?? 'pressable'}`,
-    `/* Source: ${shortName}/${contractFile}`,
+    `/* Source: ${source}`,
     `/* Regenerate: pnpm build:maps`,
     `/* ${'='.repeat(72)} */`,
   ].join('\n');
@@ -185,9 +194,11 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
 
     for (const state of STATES) {
       const slotMap = variant[state] as ColorSlotMap;
+      if (!slotMap) continue;
 
       for (const role of ['surface', 'text', 'border', 'icon'] as Role[]) {
         const value = slotMap[role];
+        if (!value) continue;
         const key = componentProp(role, state);
         const semVar =
           typeof value === 'object' && 'fullPath' in value
@@ -200,9 +211,11 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
 
     // Extras (e.g. active-inset)
     if (variant.extras) {
-      for (const extraKey of Object.keys(variant.extras)) {
+      for (const [extraKey, value] of Object.entries(variant.extras)) {
         const legacyToken = legacy[`${variantName}/${extraKey}`];
-        if (legacyToken) {
+        if (value) {
+          lines.push(`  ${p}-${extraKey}: ${cssValue(value)};`);
+        } else if (legacyToken) {
           lines.push(`  ${p}-${extraKey}: var(--${legacyToken});`);
         }
       }

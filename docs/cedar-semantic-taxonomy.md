@@ -1,10 +1,10 @@
 # Cedar Semantic Taxonomy — Discovery & Alignment
 
-**Status:** Confirmed against source material (Aug 2026), refined with component analysis (Sept 2026)
+**Status:** Working taxonomy reported by PR #249, refined with component analysis (Sept 2026). The source decks are not present in this checkout, so their claims are not independently verified here.
 **Sources:**
 
-- `Semantics - Color.pdf`, `Primitives - Color.pdf` (Figma-exported token/primitive decks)
-- `Cedar Evolution: Strategic Shift.pptx` (Michelle Lam, Cedar Product Designer, Sept 2026)
+- `Semantics - Color.pdf`, `Primitives - Color.pdf` (Figma-exported token/primitive decks cited by the PR; unavailable here)
+- `Cedar Evolution: Strategic Shift.pptx` (cited by the PR; unavailable here)
 - Working session with engineering (this document)
 
 **Supersedes:** `docs/semantic-taxonomy-confluence.md` is an earlier, parallel effort using different
@@ -14,7 +14,7 @@ current; treat the Confluence doc as historical input that needs re-validation a
 
 ## The five-tier model
 
-Confirmed verbatim from the strategic deck (slide 14):
+Reported by the strategic deck cited by the PR (slide 14); the deck is unavailable for independent verification in this checkout:
 
 ```
 FOUNDATION           "The system domain."

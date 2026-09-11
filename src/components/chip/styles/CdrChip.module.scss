@@ -51,7 +51,8 @@
     font-weight: 500;
 
     // Selected colors reassign the same properties, so every state rule above
-    // automatically follows (pressed wins over disabled, matching legacy order)
+    // automatically follows. Pressed wins for surface/border (matching legacy
+    // order); disabled wins for text, which legacy pressed rules never set.
     @each $key, $value in map.get(maps.$chip-colors, selected) {
       --cdr-chip-#{$key}: #{$value};
     }

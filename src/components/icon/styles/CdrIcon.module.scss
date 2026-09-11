@@ -1,3 +1,5 @@
+@use './vars/CdrIcon.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 .cdr-icon {
@@ -8,10 +10,7 @@
   height: tokens.$cdr-icon-size;
 
   // ITEM_DOC: Fill color of an icon
-  fill: var(
-    --cdr-icon-fill-default,
-    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-  );
+  fill: var(--cdr-icon-fill-default, #{map.get(maps.$icon-defaults, icon)});
 
   &--small {
     width: tokens.$cdr-icon-size-sm;

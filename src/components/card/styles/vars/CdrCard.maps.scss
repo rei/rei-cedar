@@ -18,47 +18,23 @@ $card-defaults: ();
 
 $card-colors: (
   default: (
-    background: var(--cdr-color-surface-primary, #{tokens.$cdr-color-background-primary}),
-    text: var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}),
-    border: var(--cdr-color-border-neutral),
-    fill: var(--cdr-color-text-neutral),
-    background-hover: var(--cdr-color-surface-primary),
-    text-hover: var(--cdr-color-text-primary),
-    border-hover: var(--cdr-color-border-neutral),
-    fill-hover: var(--cdr-color-text-neutral),
-    background-focus-visible: var(--cdr-color-surface-primary),
-    text-focus-visible: var(--cdr-color-text-primary),
-    border-focus-visible: var(--cdr-color-border-neutral),
-    fill-focus-visible: var(--cdr-color-text-neutral),
-    background-active: var(--cdr-color-surface-primary),
-    text-active: var(--cdr-color-text-primary),
-    border-active: var(--cdr-color-border-neutral),
-    fill-active: var(--cdr-color-text-neutral),
-    background-disabled: var(--cdr-color-surface-primary),
-    text-disabled: var(--cdr-color-text-primary),
-    border-disabled: var(--cdr-color-border-neutral),
-    fill-disabled: var(--cdr-color-text-neutral),
+    background: var(
+        --cdr-color-action-surface-neutral-trace,
+        var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+      ),
+    text: var(
+        --cdr-color-action-text-neutral-bold,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
   ),
   link: (
-    background: var(--cdr-color-surface-primary),
-    text: var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}),
-    border: var(--cdr-color-border-neutral),
-    fill: var(--cdr-color-text-neutral),
-    background-hover: var(--cdr-color-surface-primary),
-    text-hover: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-hover}),
-    border-hover: var(--cdr-color-border-neutral),
-    fill-hover: var(--cdr-color-text-neutral),
-    background-focus-visible: var(--cdr-color-surface-primary),
-    text-focus-visible: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-hover}),
-    border-focus-visible: var(--cdr-color-border-neutral),
-    fill-focus-visible: var(--cdr-color-text-neutral),
-    background-active: var(--cdr-color-surface-primary),
-    text-active: var(--cdr-color-action-text-trigger, #{tokens.$cdr-color-text-link-hover}),
-    border-active: var(--cdr-color-border-neutral),
-    fill-active: var(--cdr-color-text-neutral),
-    background-disabled: var(--cdr-color-surface-primary),
-    text-disabled: var(--cdr-color-text-primary),
-    border-disabled: var(--cdr-color-border-neutral),
-    fill-disabled: var(--cdr-color-text-neutral),
+    text: var(
+        --cdr-color-action-text-neutral-bold,
+        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      ),
+    text-hover: var(
+        --cdr-color-action-text-trigger,
+        var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+      ),
   ),
 );

@@ -1,0 +1,35 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/accordion/CdrAccordion.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$accordion-defaults: (
+  // Color
+  text: var(
+      --cdr-color-control-text-neutral,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    ),
+  border: var(
+      --cdr-color-border-neutral-subtle,
+      var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
+    ),
+  surface-hover: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(--cdr-color-background-accordion-hover, #{tokens.$cdr-color-background-accordion-hover})
+    ),
+  icon: var(
+      --cdr-color-control-icon-neutral,
+      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+    ),
+  content-text: var(
+      --cdr-color-text-neutral,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    )
+);

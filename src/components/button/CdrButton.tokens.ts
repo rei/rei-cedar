@@ -1,111 +1,60 @@
 import type { ComponentTokenContract } from '../../../build/component-tokens/types';
-import { token, literal } from '../../../build/component-tokens/types';
+import { token, literal, semantic } from '../../../build/component-tokens/types';
 
-/**
- * CdrButton Token Contract
- *
- * Declares the styling dependencies for the button component using the
- * confirmed Cedar semantic taxonomy (see docs/cedar-semantic-taxonomy.md):
- *
- *   Foundation → Interaction Family → Role → Identity → Expression
- *   color        action              surface  brand      faint
- *
- * - interaction: CdrButton is wholly the 'action' interaction family.
- *   ACTION intent: Interactive elements that trigger user actions, navigation,
- *   content manipulation, or final submission.
- * - variants: each variant has an identity (brand/neutral/sale) and a
- *   role × state matrix (surface/text/border/icon). Suffixes are identity +
- *   optional expression, e.g. 'brand-faint'. A bare identity name with no
- *   expression suffix (e.g. 'brand') means base expression — base is never
- *   written literally as a token suffix.
- * - "dark" is `identity: neutral` at an intense expression, not a separate
- *   inverse identity. There is no `link` identity here yet (link/trigger
- *   text lives in the CdrButton.vars.scss special-case mixin, identity: trigger).
- * - legacy: temporary bridge to current @rei/cdr-tokens Sass variable names.
- *
- * Migration Guide: See docs/button-semantic-migration-guide.md for the pattern
- * to apply to other components.
- *
- * Future Architecture: See docs/future-architecture/ADR-component-token-contracts.md
- * for the comprehensive contract architecture (future reference).
- *
- * To regenerate the SCSS maps and CSS from this contract:
- *   npx tsx build/generate-component-maps.ts
+/** Pressable action recipe. Link and icon-only treatments share this contract; icon is an independent semantic role.
+ * See docs/component-semantic-rollout.md for migration decisions and design gaps.
  */
-
 const contract: ComponentTokenContract = {
   component: 'cdr-button',
   prefix: '--cdr-button',
   interaction: 'action',
   recipe: 'pressable',
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // FOUNDATION ASSIGNMENTS — future architecture for organizing token references
-  // by foundation domain (color, radius, typography, prominence, space).
-  // This aligns with Cedar's move toward Design Foundations → Component Contracts → Platform Output.
-  //
-  // IMPLEMENTATION TIMING: This should remain as "Future Architecture" until space, typography,
-  // and prominence foundations are actually semanticized. Right now it is a useful destination,
-  // not a current implementation requirement.
-  //
-  // TEMPORARY: Not yet implemented; using defaults flat structure for now.
-  // ══════════════════════════════════════════════════════════════════════════
-
-  foundationAssignments: {
-    // Future: color: { ... }, radius: { ... }, typography: { ... }, prominence: { ... }, space: { ... }
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // DEFAULTS — base custom property values applied by the base mixin.
-  // Use token('...') for token references and literal('...' | N) for raw values.
-  // TEMPORARY: Will migrate to foundationAssignments structure (color, radius, typography, prominence, space)
-  // ══════════════════════════════════════════════════════════════════════════
-
   defaults: {
-    // Layout
     radius: token('cdr-radius-softer'),
     padding: token('cdr-space-inset-one-x-squish'),
-    // Typography
     'font-family': token('cdr-font-family-sans'),
     'font-weight': literal(500),
     'letter-spacing': literal('-0.008rem'),
     'font-size': literal('1.6rem'),
     'line-height': literal('2.2rem'),
-    // Icons
     'icon-size': token('cdr-icon-size'),
     'icon-padding': token('cdr-space-one-x'),
     'icon-gap': token('cdr-space-quarter-x'),
-    // Transitions
     'transition-duration': token('cdr-duration-2-x'),
     'transition-timing': token('cdr-timing-function-ease'),
-    // Color (base state — overridden by variant mixins)
     background: literal('transparent'),
     text: literal('inherit'),
     fill: literal('inherit'),
     border: literal('transparent'),
-    // Elevation
     elevation: literal('0 0 0 0 transparent'),
     'elevation-hover': token('cdr-prominence-raised'),
     'elevation-focus-visible': token('cdr-prominence-raised'),
     'elevation-active': literal('0 0 0 0 transparent'),
+    'link-text': semantic('action-text-trigger', token('cdr-color-text-link-rest')),
+    'link-text-hover': semantic('action-text-trigger-faint', token('cdr-color-text-link-hover')),
+    'link-text-active': semantic('action-text-trigger', token('cdr-color-text-link-active')),
+    'link-icon': semantic('action-icon-trigger', token('cdr-color-text-link-rest')),
+    'link-icon-hover': semantic('action-icon-trigger-faint', token('cdr-color-text-link-hover')),
+    'link-icon-active': semantic('action-icon-trigger', token('cdr-color-text-link-active')),
+    'icon-only-fill': semantic('action-icon-neutral', token('cdr-color-icon-default')),
+    'icon-only-fill-disabled': semantic(
+      'action-icon-neutral-faint',
+      token('cdr-color-icon-disabled'),
+    ),
+    'icon-only-border-focus': semantic(
+      'action-border-neutral-subtle',
+      token('cdr-color-border-button-secondary-active'),
+    ),
   },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // COLOR VARIANTS — role × state → semantic token suffix
-  //
-  // surface → background-color
-  // text    → color
-  // border  → border / box-shadow inset
-  // icon    → fill (independent role, not mirrored from text)
-  //
-  // The generator builds: --cdr-color-{interaction}-{role}-{suffix}
-  // with a legacy fallback where one is provided.
-  // ══════════════════════════════════════════════════════════════════════════
-
   variants: {
     primary: {
       identity: 'brand',
-      rest: { surface: 'brand', text: 'brand', border: 'brand', icon: 'brand' },
+      rest: {
+        surface: 'brand',
+        text: 'brand',
+        border: 'brand',
+        icon: 'brand',
+      },
       hover: {
         surface: 'brand-faint',
         text: 'brand-faint',
@@ -118,23 +67,32 @@ const contract: ComponentTokenContract = {
         border: 'brand-faint',
         icon: 'brand-faint',
       },
-      active: { surface: 'brand', text: 'brand', border: 'brand', icon: 'brand' },
+      active: {
+        surface: 'brand',
+        text: 'brand',
+        border: 'brand',
+        icon: 'brand',
+      },
       disabled: {
         surface: 'neutral-trace',
-        text: 'disabled',
+        text: 'neutral-faint',
         border: 'neutral-trace',
-        icon: 'disabled',
+        icon: 'neutral-faint',
       },
-      extras: { 'active-inset': null },
+      extras: {
+        'active-inset': semantic(
+          'action-border-brand-subtle',
+          token('cdr-color-border-button-primary-active-inset'),
+        ),
+      },
     },
-
     secondary: {
       identity: 'neutral',
       rest: {
         surface: 'neutral-faint',
         text: 'neutral',
         border: 'neutral-faint',
-        icon: { fullPath: 'icon-default' },
+        icon: 'neutral',
       },
       hover: {
         surface: 'neutral',
@@ -156,14 +114,17 @@ const contract: ComponentTokenContract = {
       },
       disabled: {
         surface: 'neutral-faint',
-        text: 'disabled-secondary',
+        text: 'neutral-faint',
         border: 'neutral-trace',
-        icon: 'disabled-secondary',
+        icon: 'neutral-faint',
       },
-      extras: { 'active-inset': null },
+      extras: {
+        'active-inset': semantic(
+          'action-border-neutral-subtle',
+          token('cdr-color-border-button-secondary-active-inset'),
+        ),
+      },
     },
-
-    // "dark" is identity: neutral at an intense expression — not a separate inverse identity.
     dark: {
       identity: 'neutral',
       rest: {
@@ -192,16 +153,25 @@ const contract: ComponentTokenContract = {
       },
       disabled: {
         surface: 'neutral-trace',
-        text: 'disabled',
+        text: 'neutral-faint',
         border: 'neutral-trace',
-        icon: 'disabled',
+        icon: 'neutral-faint',
       },
-      extras: { 'active-inset': null },
+      extras: {
+        'active-inset': semantic(
+          'action-border-neutral-intense',
+          token('cdr-color-border-button-dark-active-inset'),
+        ),
+      },
     },
-
     sale: {
       identity: 'sale',
-      rest: { surface: 'sale', text: 'sale', border: 'sale', icon: 'sale' },
+      rest: {
+        surface: 'sale',
+        text: 'sale',
+        border: 'sale',
+        icon: 'sale',
+      },
       hover: {
         surface: 'sale-faint',
         text: 'sale-faint',
@@ -214,21 +184,26 @@ const contract: ComponentTokenContract = {
         border: 'sale-faint',
         icon: 'sale-faint',
       },
-      active: { surface: 'sale', text: 'sale', border: 'sale', icon: 'sale' },
+      active: {
+        surface: 'sale',
+        text: 'sale',
+        border: 'sale',
+        icon: 'sale',
+      },
       disabled: {
         surface: 'neutral-trace',
-        text: 'disabled',
+        text: 'neutral-faint',
         border: 'neutral-trace',
-        icon: 'disabled',
+        icon: 'neutral-faint',
       },
-      extras: { 'active-inset': null },
+      extras: {
+        'active-inset': semantic(
+          'action-border-sale-subtle',
+          token('cdr-color-border-button-sale-active-inset'),
+        ),
+      },
     },
   },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // SIZES — dimension values per size.
-  // ══════════════════════════════════════════════════════════════════════════
-
   sizes: {
     small: {
       'font-size': literal('1.4rem'),
@@ -252,17 +227,7 @@ const contract: ComponentTokenContract = {
       'icon-size': token('cdr-icon-size'),
     },
   },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // LEGACY FALLBACK MAP — TEMPORARY
-  // Delete this entire section when semantic tokens ship in @rei/cdr-tokens.
-  //
-  // Maps '{variant}/{componentProperty}' → legacy Sass variable name.
-  // The generator produces: var(--cdr-color-..., #{tokens.$legacy})
-  // ══════════════════════════════════════════════════════════════════════════
-
   legacy: {
-    // ── Primary ──
     'primary/background': 'cdr-color-background-button-primary-rest',
     'primary/background-hover': 'cdr-color-background-button-primary-hover',
     'primary/background-focus-visible': 'cdr-color-background-button-primary-hover',
@@ -278,14 +243,11 @@ const contract: ComponentTokenContract = {
     'primary/border-focus-visible': 'cdr-color-border-button-primary-hover',
     'primary/border-active': 'cdr-color-border-button-primary-rest',
     'primary/border-disabled': 'cdr-color-border-button-default-disabled',
-    'primary/active-inset': 'cdr-color-border-button-primary-active-inset',
     'primary/fill': 'cdr-color-text-button-primary',
     'primary/fill-hover': 'cdr-color-text-button-primary-hover',
     'primary/fill-focus-visible': 'cdr-color-text-button-primary-hover',
     'primary/fill-active': 'cdr-color-text-button-primary',
     'primary/fill-disabled': 'cdr-color-text-button-primary-disabled',
-
-    // ── Secondary ──
     'secondary/background': 'cdr-color-background-button-secondary-rest',
     'secondary/background-hover': 'cdr-color-background-button-secondary-hover',
     'secondary/background-focus-visible': 'cdr-color-background-button-secondary-hover',
@@ -306,9 +268,6 @@ const contract: ComponentTokenContract = {
     'secondary/fill-focus-visible': 'cdr-color-text-button-secondary-hover',
     'secondary/fill-active': 'cdr-color-text-button-secondary-active',
     'secondary/fill-disabled': 'cdr-color-text-button-secondary-disabled',
-    'secondary/active-inset': 'cdr-color-border-button-secondary-active-inset',
-
-    // ── Dark ──
     'dark/background': 'cdr-color-background-button-dark-rest',
     'dark/background-hover': 'cdr-color-background-button-dark-hover',
     'dark/background-focus-visible': 'cdr-color-background-button-dark-hover',
@@ -329,9 +288,6 @@ const contract: ComponentTokenContract = {
     'dark/fill-focus-visible': 'cdr-color-text-button-dark-hover',
     'dark/fill-active': 'cdr-color-text-button-dark-active',
     'dark/fill-disabled': 'cdr-color-text-button-dark-disabled',
-    'dark/active-inset': 'cdr-color-border-button-dark-active-inset',
-
-    // ── Sale ──
     'sale/background': 'cdr-color-background-button-sale-rest',
     'sale/background-hover': 'cdr-color-background-button-sale-hover',
     'sale/background-focus-visible': 'cdr-color-background-button-sale-hover',
@@ -352,7 +308,6 @@ const contract: ComponentTokenContract = {
     'sale/fill-focus-visible': 'cdr-color-text-button-sale-hover',
     'sale/fill-active': 'cdr-color-text-button-sale-active',
     'sale/fill-disabled': 'cdr-color-text-button-sale-disabled',
-    'sale/active-inset': 'cdr-color-border-button-sale-active-inset',
   },
 };
 

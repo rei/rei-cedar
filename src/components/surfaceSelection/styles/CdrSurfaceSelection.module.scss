@@ -1,3 +1,6 @@
+@use './vars/CdrSurfaceSelection.maps' as maps;
+@use 'sass:map';
+
 .cdr-surface-selection {
   -webkit-tap-highlight-color: transparent;
   appearance: none;
@@ -6,14 +9,31 @@
   touch-action: manipulation;
   padding: var(--cdr-space-inset-half-x-stretch);
 
-  --cdr-surface-background: var(--cdr-color-background-primary);
-  --cdr-surface-background-disabled: var(--cdr-color-background-secondary);
-  --cdr-surface-border-color: var(--cdr-color-border-secondary);
+  --cdr-surface-background: #{map.get(maps.$surface-selection-defaults, surface)};
+  --cdr-surface-background-disabled: #{map.get(maps.$surface-selection-defaults, surface-disabled)};
+  --cdr-surface-border-color: #{map.get(maps.$surface-selection-defaults, border)};
   --cdr-surface-border-style: solid;
   --cdr-surface-border-style-disabled: dashed;
   --cdr-surface-border-width: var(--cdr-space-sixteenth-x);
   --cdr-surface-border-width-checked: var(--cdr-space-three-sixteenth-x);
   --cdr-surface-border-radius: var(--cdr-radius-softest);
+
+  // Explicit state props still own their styling; defaults supply semantic selection states.
+  &:not([data-background-hover]) {
+    --cdr-surface-background-hover: #{map.get(maps.$surface-selection-defaults, surface-hover)};
+  }
+
+  &:not([data-background-active]) {
+    --cdr-surface-background-active: #{map.get(maps.$surface-selection-defaults, surface-active)};
+  }
+
+  &:not([data-background-checked]) {
+    --cdr-surface-background-checked: #{map.get(maps.$surface-selection-defaults, surface-checked)};
+  }
+
+  &:not([data-border-color-checked]) {
+    --cdr-surface-border-color-checked: #{map.get(maps.$surface-selection-defaults, border-checked)};
+  }
 
   &__inner {
     height: 100%;

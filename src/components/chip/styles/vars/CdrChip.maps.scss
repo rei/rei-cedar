@@ -20,117 +20,213 @@ $chip-colors: (
   default: (
     background: var(
         --cdr-color-selection-surface-neutral-faint,
-        #{tokens.$cdr-color-background-chip-default-rest}
+        var(
+          --cdr-color-background-chip-default-rest,
+          #{tokens.$cdr-color-background-chip-default-rest}
+        )
       ),
-    text: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    text: var(
+        --cdr-color-selection-text-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     border: var(
         --cdr-color-selection-border-neutral-faint,
-        #{tokens.$cdr-color-border-chip-default-rest}
+        var(--cdr-color-border-chip-default-rest, #{tokens.$cdr-color-border-chip-default-rest})
       ),
-    fill: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    fill: var(
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     background-hover: var(
         --cdr-color-selection-surface-neutral,
-        #{tokens.$cdr-color-background-chip-default-hover}
+        var(
+          --cdr-color-background-chip-default-hover,
+          #{tokens.$cdr-color-background-chip-default-hover}
+        )
       ),
-    text-hover: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    text-hover: var(
+        --cdr-color-selection-text-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     border-hover: var(
         --cdr-color-selection-border-neutral,
-        #{tokens.$cdr-color-border-chip-default-hover}
+        var(--cdr-color-border-chip-default-hover, #{tokens.$cdr-color-border-chip-default-hover})
       ),
-    fill-hover: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    fill-hover: var(
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     background-focus-visible: var(
         --cdr-color-selection-surface-neutral,
-        #{tokens.$cdr-color-background-chip-default-focus}
+        var(
+          --cdr-color-background-chip-default-focus,
+          #{tokens.$cdr-color-background-chip-default-focus}
+        )
       ),
     text-focus-visible: var(
         --cdr-color-selection-text-neutral,
-        #{tokens.$cdr-color-text-chip-default}
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
       ),
     border-focus-visible: var(
         --cdr-color-selection-border-neutral,
-        #{tokens.$cdr-color-border-chip-default-focus}
+        var(--cdr-color-border-chip-default-focus, #{tokens.$cdr-color-border-chip-default-focus})
       ),
     fill-focus-visible: var(
-        --cdr-color-selection-text-neutral,
-        #{tokens.$cdr-color-text-chip-default}
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
       ),
     background-active: var(
         --cdr-color-selection-surface-neutral-subtle,
-        #{tokens.$cdr-color-background-chip-default-active}
+        var(
+          --cdr-color-background-chip-default-active,
+          #{tokens.$cdr-color-background-chip-default-active}
+        )
       ),
-    text-active: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    text-active: var(
+        --cdr-color-selection-text-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     border-active: var(
         --cdr-color-selection-border-neutral-subtle,
-        #{tokens.$cdr-color-border-chip-default-active}
+        var(--cdr-color-border-chip-default-active, #{tokens.$cdr-color-border-chip-default-active})
       ),
-    fill-active: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    fill-active: var(
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     background-disabled: var(
         --cdr-color-selection-surface-neutral-trace,
-        #{tokens.$cdr-color-background-chip-default-disabled}
+        var(
+          --cdr-color-background-chip-default-disabled,
+          #{tokens.$cdr-color-background-chip-default-disabled}
+        )
       ),
-    text-disabled: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-disabled}),
+    text-disabled: var(
+        --cdr-color-selection-text-neutral-faint,
+        var(--cdr-color-text-chip-disabled, #{tokens.$cdr-color-text-chip-disabled})
+      ),
     border-disabled: var(
         --cdr-color-selection-border-neutral-faint,
-        #{tokens.$cdr-color-border-chip-default-disabled}
+        var(
+          --cdr-color-border-chip-default-disabled,
+          #{tokens.$cdr-color-border-chip-default-disabled}
+        )
       ),
-    fill-disabled: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-disabled}),
+    fill-disabled: var(
+        --cdr-color-selection-icon-neutral-faint,
+        var(--cdr-color-text-chip-disabled, #{tokens.$cdr-color-text-chip-disabled})
+      ),
   ),
   selected: (
     background: var(
         --cdr-color-selection-surface-neutral-subtle,
-        #{tokens.$cdr-color-background-chip-default-selected}
+        var(
+          --cdr-color-background-chip-default-selected,
+          #{tokens.$cdr-color-background-chip-default-selected}
+        )
       ),
-    text: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    text: var(
+        --cdr-color-selection-text-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     border: var(
         --cdr-color-selection-border-neutral-subtle,
-        #{tokens.$cdr-color-border-chip-default-selected-rest}
+        var(
+          --cdr-color-border-chip-default-selected-rest,
+          #{tokens.$cdr-color-border-chip-default-selected-rest}
+        )
       ),
-    fill: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    fill: var(
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     background-hover: var(
         --cdr-color-selection-surface-neutral-subtle,
-        #{tokens.$cdr-color-background-chip-default-selected-hover}
+        var(
+          --cdr-color-background-chip-default-selected-hover,
+          #{tokens.$cdr-color-background-chip-default-selected-hover}
+        )
       ),
-    text-hover: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    text-hover: var(
+        --cdr-color-selection-text-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     border-hover: var(
         --cdr-color-selection-border-neutral-subtle,
-        #{tokens.$cdr-color-border-chip-default-selected-hover}
+        var(
+          --cdr-color-border-chip-default-selected-hover,
+          #{tokens.$cdr-color-border-chip-default-selected-hover}
+        )
       ),
-    fill-hover: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    fill-hover: var(
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     background-focus-visible: var(
         --cdr-color-selection-surface-neutral-subtle,
-        #{tokens.$cdr-color-background-chip-default-selected-focus}
+        var(
+          --cdr-color-background-chip-default-selected-focus,
+          #{tokens.$cdr-color-background-chip-default-selected-focus}
+        )
       ),
     text-focus-visible: var(
         --cdr-color-selection-text-neutral,
-        #{tokens.$cdr-color-text-chip-default}
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
       ),
     border-focus-visible: var(
         --cdr-color-selection-border-neutral-subtle,
-        #{tokens.$cdr-color-border-chip-default-selected-focus}
+        var(
+          --cdr-color-border-chip-default-selected-focus,
+          #{tokens.$cdr-color-border-chip-default-selected-focus}
+        )
       ),
     fill-focus-visible: var(
-        --cdr-color-selection-text-neutral,
-        #{tokens.$cdr-color-text-chip-default}
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
       ),
     background-active: var(
         --cdr-color-selection-surface-neutral-subtle,
-        #{tokens.$cdr-color-background-chip-default-selected-active}
+        var(
+          --cdr-color-background-chip-default-selected-active,
+          #{tokens.$cdr-color-background-chip-default-selected-active}
+        )
       ),
-    text-active: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    text-active: var(
+        --cdr-color-selection-text-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     border-active: var(
         --cdr-color-selection-border-neutral-subtle,
-        #{tokens.$cdr-color-border-chip-default-selected-focus}
+        var(
+          --cdr-color-border-chip-default-selected-focus,
+          #{tokens.$cdr-color-border-chip-default-selected-focus}
+        )
       ),
-    fill-active: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    fill-active: var(
+        --cdr-color-selection-icon-neutral,
+        var(--cdr-color-text-chip-default, #{tokens.$cdr-color-text-chip-default})
+      ),
     background-disabled: var(
         --cdr-color-selection-surface-neutral-subtle,
-        #{tokens.$cdr-color-background-chip-default-selected}
+        var(
+          --cdr-color-background-chip-default-selected,
+          #{tokens.$cdr-color-background-chip-default-selected}
+        )
       ),
-    text-disabled: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    text-disabled: var(
+        --cdr-color-selection-text-neutral-faint,
+        var(--cdr-color-text-chip-disabled, #{tokens.$cdr-color-text-chip-disabled})
+      ),
     border-disabled: var(
         --cdr-color-selection-border-neutral-subtle,
-        #{tokens.$cdr-color-border-chip-default-selected-rest}
+        var(
+          --cdr-color-border-chip-default-selected-rest,
+          #{tokens.$cdr-color-border-chip-default-selected-rest}
+        )
       ),
-    fill-disabled: var(--cdr-color-selection-text-neutral, #{tokens.$cdr-color-text-chip-default}),
+    fill-disabled: var(
+        --cdr-color-selection-icon-neutral-faint,
+        var(--cdr-color-text-chip-disabled, #{tokens.$cdr-color-text-chip-disabled})
+      ),
   ),
 );

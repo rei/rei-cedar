@@ -11,18 +11,12 @@
 // ── Link — no background/border, underline instead ──────────────────────────
 
 @mixin cdr-button-link-mixin() {
-  --cdr-button-text: var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest});
-  --cdr-button-fill: var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest});
-  --cdr-button-text-hover: var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover});
-  --cdr-button-fill-hover: var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover});
-  --cdr-button-text-active: var(
-    --cdr-color-text-link-active,
-    #{tokens.$cdr-color-text-link-active}
-  );
-  --cdr-button-fill-active: var(
-    --cdr-color-text-link-active,
-    #{tokens.$cdr-color-text-link-active}
-  );
+  --cdr-button-text: #{map.get(maps.$button-defaults, link-text)};
+  --cdr-button-fill: #{map.get(maps.$button-defaults, link-icon)};
+  --cdr-button-text-hover: #{map.get(maps.$button-defaults, link-text-hover)};
+  --cdr-button-fill-hover: #{map.get(maps.$button-defaults, link-icon-hover)};
+  --cdr-button-text-active: #{map.get(maps.$button-defaults, link-text-active)};
+  --cdr-button-fill-active: #{map.get(maps.$button-defaults, link-icon-active)};
   --cdr-button-background: transparent;
   --cdr-button-background-hover: transparent;
   --cdr-button-background-active: transparent;
@@ -73,7 +67,7 @@
   line-height: normal;
   padding: tokens.$cdr-space-inset-half-x;
 
-  --cdr-button-fill: var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default});
+  --cdr-button-fill: #{map.get(maps.$button-defaults, icon-only-fill)};
 
   fill: var(--cdr-button-fill);
 
@@ -82,7 +76,7 @@
     box-shadow: none;
     border: none;
 
-    --cdr-button-fill: var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default});
+    --cdr-button-fill: #{map.get(maps.$button-defaults, icon-only-fill)};
 
     fill: var(--cdr-button-fill);
   }
@@ -94,16 +88,12 @@
     border: none;
     box-shadow: none;
 
-    --cdr-button-fill: var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default});
+    --cdr-button-fill: #{map.get(maps.$button-defaults, icon-only-fill)};
 
     fill: var(--cdr-button-fill);
 
     svg {
-      box-shadow: inset 0 0 0 1px
-        var(
-          --cdr-color-action-border-neutral-subtle,
-          #{tokens.$cdr-color-border-button-secondary-active}
-        );
+      box-shadow: inset 0 0 0 1px map.get(maps.$button-defaults, icon-only-border-focus);
     }
   }
 
@@ -112,7 +102,7 @@
     box-shadow: none;
     border: none;
 
-    --cdr-button-fill: var(--cdr-color-icon-disabled, #{tokens.$cdr-color-icon-disabled});
+    --cdr-button-fill: #{map.get(maps.$button-defaults, icon-only-fill-disabled)};
 
     fill: var(--cdr-button-fill);
   }
@@ -129,8 +119,8 @@
     --cdr-button-#{$key}: #{$value};
   }
 
-  --cdr-button-fill: var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default});
-  --cdr-button-fill-hover: var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default});
+  --cdr-button-fill: #{map.get(maps.$button-defaults, icon-only-fill)};
+  --cdr-button-fill-hover: #{map.get(maps.$button-defaults, icon-only-fill)};
 }
 
 // ============================================================================
@@ -216,6 +206,7 @@
 
   &.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
     svg {
       margin-right: var(--cdr-button-icon-gap);
     }
@@ -223,6 +214,7 @@
 
   &.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
     svg {
       margin-left: var(--cdr-button-icon-gap);
     }

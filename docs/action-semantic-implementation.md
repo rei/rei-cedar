@@ -1,5 +1,7 @@
 # Action-Family Semantic Token Implementation (Link, Pagination, Chip, Card)
 
+> Historical PR implementation notes. The [component rollout](component-semantic-rollout.md) records the current sparse contracts, independent icon roles, corrected taxonomy paths and fallback policy. Current contracts and generated maps supersede examples below.
+
 **Status:** Follow-up to Button (reference) and Banner (`docs/banner-semantic-implementation.md`)
 
 This document covers the four remaining action-family migrations. Each follows the
@@ -9,12 +11,12 @@ changes (its generated outputs are byte-identical before/after the pipeline work
 
 ## Intent Classification
 
-| Component     | Family                               | Identity mapping                              |
-| ------------- | ------------------------------------ | --------------------------------------------- |
-| CdrLink       | `action` (navigation)                | `standard → trigger`, `neutral → neutral`     |
-| CdrPagination | `action` (navigation)                | single `default → neutral`                    |
-| CdrChip       | `selection` (choice selection)       | `default → neutral`, `selected → neutral`     |
-| CdrCard       | _(omitted — foundation-only canvas)_ | `default → neutral`, `link overlay → trigger` |
+| Component     | Family                               | Identity mapping                                                   |
+| ------------- | ------------------------------------ | ------------------------------------------------------------------ |
+| CdrLink       | `action` (navigation)                | `standard → trigger`, `neutral → neutral`                          |
+| CdrPagination | `action` (navigation)                | single `default → neutral`                                         |
+| CdrChip       | `selection` (choice selection)       | `default → neutral`, `selected → neutral`                          |
+| CdrCard       | _(omitted — foundation-only canvas)_ | `default → neutral`, `link rest → neutral`, `link hover → trigger` |
 
 None declares a `recipe`: only pressable-style components get generated CSS, so all
 four consume the SCSS maps directly (Banner precedent).
@@ -47,7 +49,7 @@ four consume the SCSS maps directly (Banner precedent).
   the generator has no `conditions` support — the selected treatment reassigns the
   same `--cdr-chip-*` properties under `[aria-pressed]`, so state rules follow
   automatically (pressed wins over disabled, matching legacy CSS order).
-- Expressions use only Figma-confirmed selection steps: rest faint, hover/focus
+- Expressions use the selection steps reported by the PR source material: rest faint, hover/focus
   base (focus distinguished by elevation, as in legacy), active/selected subtle,
   disabled trace. Text never recolors (legacy parity).
 - The legacy `selected-:active` block's own quirk (it references the
@@ -59,7 +61,7 @@ four consume the SCSS maps directly (Banner precedent).
   canvas colors. Two variants: `default` (canvas) and `link` (stretched overlay,
   whose hover escapes to the real Figma token `action-text-trigger` via fullPath).
 - Border/icon slots are unconsumed (elevation via box-shadow) and bare.
-- Cards's canvas tokens do not exist in the deck — see gap G3 below.
+- Card's canvas tokens do not exist in the deck — see gap G3 below. Its link overlay remains neutral at rest and uses the trigger identity only on hover.
 
 ## Figma Gap Matrix (verified against `Visual Token Mapping & Examples`)
 

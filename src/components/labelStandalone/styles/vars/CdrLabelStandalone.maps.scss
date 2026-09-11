@@ -1,0 +1,30 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/labelStandalone/CdrLabelStandalone.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$label-standalone-defaults: (
+  label: var(
+      --cdr-color-control-text-neutral,
+      var(--cdr-color-text-input-label, #{tokens.$cdr-color-text-input-label})
+    ),
+  text-disabled: var(
+      --cdr-color-control-text-neutral-faint,
+      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+    ),
+  optional: var(
+      --cdr-color-control-text-neutral-subtle,
+      var(--cdr-color-text-input-optional, #{tokens.$cdr-color-text-input-optional})
+    ),
+  helper: var(
+      --cdr-color-control-text-neutral-subtle,
+      var(--cdr-color-text-input-help, #{tokens.$cdr-color-text-input-help})
+    ),
+);

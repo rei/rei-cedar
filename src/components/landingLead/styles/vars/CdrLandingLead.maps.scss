@@ -1,0 +1,18 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/landingLead/CdrLandingLead.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$landing-lead-defaults: (
+  surface: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    ),
+);

@@ -1,0 +1,30 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/formGroup/CdrFormGroup.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$form-group-defaults: (
+  text-disabled: var(
+      --cdr-color-control-text-neutral-faint,
+      var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
+    ),
+  error-border: var(
+      --cdr-color-feedback-border-error,
+      var(--cdr-color-border-input-error, #{tokens.$cdr-color-border-input-error})
+    ),
+  error-surface: var(
+      --cdr-color-feedback-surface-error-faint,
+      var(--cdr-color-background-input-error, #{tokens.$cdr-color-background-input-error})
+    ),
+  optional: var(
+      --cdr-color-control-text-neutral-subtle,
+      var(--cdr-color-text-input-optional, #{tokens.$cdr-color-text-input-optional})
+    ),
+);

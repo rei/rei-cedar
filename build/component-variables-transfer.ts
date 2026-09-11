@@ -8,21 +8,15 @@ const __dirname = path.dirname(__filename);
 
 const DEST_REPO_NAME = 'rei-cedar-component-variables';
 const DEST_PATH = 'dist/scss';
-const SUPPORTED_COMPONENTS: string[] = [
-  /* component vars */
-  'CdrButton.maps.scss',
+const sourceDir = path.join(__dirname, '../src');
+const mapFiles = globSync('components/**/styles/vars/*.maps.scss', { cwd: sourceDir }).sort();
+const SUPPORTED_COMPONENTS = [
+  ...mapFiles.map((file) => path.basename(file)),
   'CdrButton.vars.scss',
-  'CdrBanner.maps.scss',
   'CdrBanner.vars.scss',
-  'CdrPagination.maps.scss',
-  'CdrLink.maps.scss',
   'CdrLink.vars.scss',
-  'CdrChip.maps.scss',
   'CdrChip.vars.scss',
-  'CdrCard.maps.scss',
   'CdrCard.vars.scss',
-  'CdrCard.vars.scss',
-  'CdrChip.vars.scss',
   'CdrBreadcrumb.vars.scss',
   'CdrFormGroup.vars.scss',
   'CdrFormError.vars.scss',
@@ -31,7 +25,6 @@ const SUPPORTED_COMPONENTS: string[] = [
   'CdrLabelWrapper.vars.scss',
   'CdrRadio.vars.scss',
   'CdrCheckbox.vars.scss',
-  'CdrLink.vars.scss',
   'CdrInput.vars.scss',
   'CdrSelect.vars.scss',
   'CdrSkeleton.vars.scss',
@@ -39,10 +32,12 @@ const SUPPORTED_COMPONENTS: string[] = [
   'CdrTable.vars.scss',
 ];
 
-const destMixinsDir = path.join(__dirname, `../../${DEST_REPO_NAME + path.sep + DEST_PATH}`);
+const destMixinsDir = process.argv[2]
+  ? path.resolve(process.argv[2])
+  : path.join(__dirname, `../../${DEST_REPO_NAME + path.sep + DEST_PATH}`);
 
 // get vars files
-const files = globSync('./**/*.{vars,maps}.scss', { ignore: ['../**/node_modules/**'] });
+const files = globSync('**/*.{vars,maps}.scss', { cwd: sourceDir, absolute: true });
 
 // copy vars files
 files.forEach((f) => {
@@ -56,11 +51,7 @@ files.forEach((f) => {
   console.log(`copied ${fname} to ${outDest}`);
 });
 
-/* iterate over SUPPORTED_COMPONENTS to ensure that vars are loaded in correct order */
-const indexFile = SUPPORTED_COMPONENTS.map((fname) => `@import "./${fname}";`).join('\n');
-const singleFile = SUPPORTED_COMPONENTS.map((fname) =>
-  fs.readFileSync(`${destMixinsDir}/${fname}`, 'utf8'),
-).join('\n');
-
+// Sass modules must load once; concatenating files repeats their @use namespaces.
+const indexFile = SUPPORTED_COMPONENTS.map((fname) => `@forward "./${fname}";`).join('\n') + '\n';
 fs.outputFileSync(`${destMixinsDir}/index.scss`, indexFile);
-fs.outputFileSync(`${destMixinsDir}/cedar-component-variables.scss`, singleFile);
+fs.outputFileSync(`${destMixinsDir}/cedar-component-variables.scss`, '@forward "./index";\n');

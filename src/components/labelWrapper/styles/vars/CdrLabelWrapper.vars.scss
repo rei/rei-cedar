@@ -1,3 +1,5 @@
+@use './CdrLabelWrapper.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-label-wrapper-base-mixin() {
@@ -8,15 +10,12 @@
   padding-right: tokens.$cdr-space-three-quarter-x;
 
   // ITEM_DOC: Text color of a label wrapper
-  color: var(
-    --cdr-label-wrapper-text-color,
-    var(--cdr-color-text-input-label, #{tokens.$cdr-color-text-input-label})
-  );
+  color: var(--cdr-label-wrapper-text-color, #{map.get(maps.$label-wrapper-defaults, label)});
 
   // ITEM_DOC: Background color of a label wrapper
   background-color: var(
     --cdr-label-wrapper-background-color,
-    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    #{map.get(maps.$label-wrapper-defaults, surface)}
   );
   border-radius: tokens.$cdr-radius-softer;
   width: 100%;
@@ -29,10 +28,7 @@
     // ITEM_DOC: Background color of a primary label wrapper when hovered
     background-color: var(
       --cdr-label-wrapper-primary-background-color-hover,
-      var(
-        --cdr-color-background-label-default-hover,
-        #{tokens.$cdr-color-background-label-default-hover}
-      )
+      #{map.get(maps.$label-wrapper-defaults, surface-default-hover)}
     );
     cursor: pointer;
   }
@@ -41,17 +37,14 @@
     // ITEM_DOC: Background color of a primary label wrapper when it has focus within
     background-color: var(
       --cdr-label-wrapper-primary-background-color-focus,
-      var(
-        --cdr-color-background-label-default-focus,
-        #{tokens.$cdr-color-background-label-default-focus}
-      )
+      #{map.get(maps.$label-wrapper-defaults, surface-default-focus)}
     );
 
     // ITEM_DOC: Box shadow color of a primary label wrapper when it has focus within
     box-shadow: inset 0 0 0 2px
       var(
         --cdr-label-wrapper-primary-focus-box-shadow-color,
-        var(--cdr-color-border-label-default-focus, #{tokens.$cdr-color-border-label-default-focus})
+        #{map.get(maps.$label-wrapper-defaults, border-focus)}
       );
   }
 
@@ -59,10 +52,7 @@
     // ITEM_DOC: Background color of a primary label wrapper when active
     background-color: var(
       --cdr-label-wrapper-primary-background-color-active,
-      var(
-        --cdr-color-background-label-default-active,
-        #{tokens.$cdr-color-background-label-default-active}
-      )
+      #{map.get(maps.$label-wrapper-defaults, surface-default-active)}
     );
   }
 }
@@ -71,17 +61,14 @@
   // ITEM_DOC: Background color of a secondary label wrapper
   background-color: var(
     --cdr-label-wrapper-secondary-background-color,
-    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    #{map.get(maps.$label-wrapper-defaults, surface)}
   );
 
   &:hover {
     // ITEM_DOC: Background color of a secondary label wrapper when hovered
     background-color: var(
       --cdr-label-wrapper-secondary-background-color-hover,
-      var(
-        --cdr-color-background-label-secondary-hover,
-        #{tokens.$cdr-color-background-label-secondary-hover}
-      )
+      #{map.get(maps.$label-wrapper-defaults, surface-secondary-hover)}
     );
     cursor: pointer;
   }
@@ -90,10 +77,7 @@
     // ITEM_DOC: Background color of a secondary label wrapper when it has focus within
     background-color: var(
       --cdr-label-wrapper-secondary-background-color-focus,
-      var(
-        --cdr-color-background-label-secondary-focus,
-        #{tokens.$cdr-color-background-label-secondary-focus}
-      )
+      #{map.get(maps.$label-wrapper-defaults, surface-secondary-focus)}
     );
   }
 
@@ -101,10 +85,7 @@
     // ITEM_DOC: Background color of a secondary label wrapper when active
     background-color: var(
       --cdr-label-wrapper-secondary-background-color-active,
-      var(
-        --cdr-color-background-label-secondary-active,
-        #{tokens.$cdr-color-background-label-secondary-active}
-      )
+      #{map.get(maps.$label-wrapper-defaults, surface-secondary-active)}
     );
   }
 }
@@ -113,7 +94,7 @@
   // ITEM_DOC: Text color of a disabled label wrapper
   color: var(
     --cdr-label-wrapper-text-color-disabled,
-    var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+    #{map.get(maps.$label-wrapper-defaults, text-disabled)}
   ) !important;
   cursor: not-allowed !important;
 
@@ -123,7 +104,7 @@
     // ITEM_DOC: Background color of a disabled label wrapper
     background-color: var(
       --cdr-label-wrapper-background-color-disabled,
-      var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+      #{map.get(maps.$label-wrapper-defaults, surface)}
     ) !important;
   }
 }
@@ -194,15 +175,12 @@
   // ITEM_DOC: Background color of a form figure
   background-color: var(
     --cdr-form-figure-background-color,
-    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    #{map.get(maps.$label-wrapper-defaults, surface)}
   );
 
   // ITEM_DOC: Box shadow color of a form figure
   box-shadow: 0 0 0 1px
-    var(
-      --cdr-form-figure-box-shadow-color,
-      var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
-    );
+    var(--cdr-form-figure-box-shadow-color, #{map.get(maps.$label-wrapper-defaults, border)});
   transition: box-shadow tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease;
 }
 

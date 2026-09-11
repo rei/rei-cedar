@@ -1,0 +1,77 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/labelWrapper/CdrLabelWrapper.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$label-wrapper-defaults: (
+  // Color
+  border: var(
+      --cdr-color-control-border-neutral,
+      var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
+    ),
+  label: var(
+      --cdr-color-control-text-neutral,
+      var(--cdr-color-text-input-label, #{tokens.$cdr-color-text-input-label})
+    ),
+  surface: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    ),
+  surface-default-hover: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-label-default-hover,
+        #{tokens.$cdr-color-background-label-default-hover}
+      )
+    ),
+  surface-default-focus: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-label-default-focus,
+        #{tokens.$cdr-color-background-label-default-focus}
+      )
+    ),
+  border-focus: var(
+      --cdr-color-control-border-neutral-bold,
+      var(--cdr-color-border-label-default-focus, #{tokens.$cdr-color-border-label-default-focus})
+    ),
+  surface-default-active: var(
+      --cdr-color-control-surface-neutral-subtle,
+      var(
+        --cdr-color-background-label-default-active,
+        #{tokens.$cdr-color-background-label-default-active}
+      )
+    ),
+  surface-secondary-hover: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-label-secondary-hover,
+        #{tokens.$cdr-color-background-label-secondary-hover}
+      )
+    ),
+  surface-secondary-focus: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-label-secondary-focus,
+        #{tokens.$cdr-color-background-label-secondary-focus}
+      )
+    ),
+  surface-secondary-active: var(
+      --cdr-color-control-surface-neutral-subtle,
+      var(
+        --cdr-color-background-label-secondary-active,
+        #{tokens.$cdr-color-background-label-secondary-active}
+      )
+    ),
+  text-disabled: var(
+      --cdr-color-control-text-neutral-faint,
+      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+    )
+);

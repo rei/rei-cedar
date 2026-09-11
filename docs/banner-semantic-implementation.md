@@ -1,5 +1,7 @@
 # Banner Semantic Token Implementation
 
+> Historical PR implementation notes. The [component rollout](component-semantic-rollout.md) records the current sparse contracts, independent icon roles, corrected taxonomy paths and fallback policy. Current contracts and generated maps supersede examples below.
+
 **Status:** Second component migrated with the semantic token pattern (after Button)
 
 ## Current Implementation
@@ -153,9 +155,9 @@ pnpm lint:styles
    `default` to these feedback-family tokens prospectively so the pipeline knows they
    are missing; design to add them to the `Visual Token Mapping & Examples` deck.
    Rendering is unaffected (legacy fallbacks) until they ship.
-2. **Generator resolves `icon` against the text namespace** (`semanticVar` in `build/generate-component-maps.ts`). Values are specified independently per variant, but Figma confirms icon values differ from text values — the generator should emit `--cdr-color-{family}-icon-*` once icon-family tokens ship.
+2. **Historical generator note:** the old PR generator resolved `icon` against the text namespace. The current generator emits `--cdr-color-{family}-icon-*` independently.
 3. **One surface slot, two surfaces** (main background + icon tile) and **one border slot, two borders** (accent + thin outline). Components with layered surfaces need extended slots or compositional conditions; `extras` is legacy-only today.
-4. **`feedback.icon.{info,success,warning}` absent from Figma's mapping page** (only `neutral` and `error` appear) — fills currently resolve via the text namespace per item 2.
+4. **`feedback.icon.{info,success,warning}` source status is unverified here** — the current contracts preserve the published icon fallbacks and keep their icon role independent.
 5. **Regeneration is self-stabilizing**: `pnpm build:maps` now pipes generator output
    through `oxfmt --write`, so committed maps files are canonical and regeneration
    is byte-stable (verified: re-running produces zero diff, including Button).

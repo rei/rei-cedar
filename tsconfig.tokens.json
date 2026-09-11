@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "types": ["vite"]
+  },
+  "include": [
+    "build/component-tokens/**/*.ts",
+    "build/component-variables-transfer.ts",
+    "build/generate-component-maps.ts",
+    "src/components/**/*.tokens.ts"
+  ],
+  "exclude": [],
+  "references": []
+}

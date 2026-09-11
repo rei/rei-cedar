@@ -45,6 +45,15 @@ describe('CdrSurfaceSelection', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
+  it('uses native disabled semantics for button surfaces', () => {
+    const wrapper = mount(CdrSurfaceSelection, {
+      props: { tag: 'button', disabled: true },
+    });
+    expect(wrapper.element.tagName).toBe('BUTTON');
+    expect(wrapper.attributes('disabled')).toBe('');
+    expect(wrapper.attributes('aria-disabled')).toBe('true');
+  });
+
   it('applies loading state', () => {
     const wrapper = mount(CdrSurfaceSelection, { props: { loading: true } });
     expect(wrapper.attributes('data-loading')).toBe('true');

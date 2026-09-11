@@ -22,6 +22,12 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Check formatting
         run: pnpm run format:check
+      - name: Check token contract types
+        run: pnpm run check:tokens
+      - name: Run token contract tests
+        run: pnpm run test:tokens
+      - name: Check generated component tokens
+        run: pnpm run check:maps
       - run: pnpm run build --if-present
       - name: Check generated icons are committed
         run: git diff --exit-code src/components/icon

@@ -20,7 +20,14 @@ describe('CdrTabs', () => {
   });
   describe('mounted', () => {
     it('mounts tabs', () => {
+      // The default gradient now resolves the canvas from CdrTabs.tokens.ts at runtime.
       expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it('preserves an explicit gradient background color', async () => {
+      await wrapper.setProps({ backgroundColor: 'red' });
+      expect(wrapper.find('.cdr-tabs__gradient--left').attributes('style')).toContain('red');
+      expect(wrapper.find('.cdr-tabs__gradient--right').attributes('style')).toContain('red');
     });
 
     it('has the expected number of tabs', () => {
@@ -92,6 +99,17 @@ describe('CdrTabs', () => {
     wrapper.vm.selectedIndex = 3;
     wrapper.vm.selectTabPrev();
     expect(wrapper.vm.selectedIndex).toBe(1);
+  });
+
+  it('skips consecutive disabled tabs in both directions', () => {
+    wrapper.vm.tabElements[1].disabled = true;
+    wrapper.vm.selectedIndex = 0;
+    wrapper.vm.selectTabNext();
+    expect(wrapper.vm.selectedIndex).toBe(3);
+
+    wrapper.vm.selectedIndex = 3;
+    wrapper.vm.selectTabPrev();
+    expect(wrapper.vm.selectedIndex).toBe(0);
   });
 
   describe('selectTab()', () => {

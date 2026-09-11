@@ -1,3 +1,5 @@
+@use './vars/CdrFilmstrip.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 $prominence-02:
@@ -38,18 +40,6 @@ $prominence-03:
   }
 
   &__arrow {
-    --cdr-button-with-background-background-color-active: #eae0cc;
-    --cdr-button-with-background-background-color-disabled: #eeeae2;
-    --cdr-button-with-background-background-color-interaction: #eae0cc;
-    --cdr-button-with-background-background-color: #eae0cc;
-    --cdr-button-with-background-box-shadow-active: #eae0cc;
-    --cdr-button-with-background-box-shadow-disabled: #eeeae2;
-    --cdr-button-with-background-fill-active: #454441;
-    --cdr-button-with-background-fill-disabled: #b2ab9f;
-    --cdr-button-with-background-icon-fill-active: #454441;
-    --cdr-button-with-background-icon-fill-interaction: #454441;
-    --cdr-button-with-background-icon-fill: #454441;
-    --cdr-color-border-button-secondary-active-inset: #eae0cc;
     --button-half: #{tokens.$cdr-space-one-and-a-half-x};
 
     box-shadow: $prominence-02;
@@ -65,7 +55,7 @@ $prominence-03:
     &:active,
     &:focus {
       box-shadow:
-        inset 0 0 0 tokens.$cdr-space-eighth-x #2e2e2b,
+        inset 0 0 0 tokens.$cdr-space-eighth-x #{map.get(maps.$filmstrip-defaults, border-focus)},
         $prominence-02;
     }
 

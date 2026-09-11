@@ -14,6 +14,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { format } from 'oxfmt';
 import type {
   ComponentTokenContract,
   ColorSlotMap,
@@ -33,6 +34,13 @@ const SRC_DIR = path.join(__dirname, '../src');
 
 /** Format a contract value for SCSS output */
 function scssValue(value: ContractValue): string {
+  if (value.kind === 'semantic') {
+    const fallback =
+      value.fallback.kind === 'token'
+        ? `var(--${value.fallback.name}, #{tokens.$${value.fallback.name}})`
+        : value.fallback.value;
+    return `var(--cdr-color-${value.name}, ${fallback})`;
+  }
   if (value.kind === 'literal') {
     return typeof value.value === 'number' ? String(value.value) : value.value;
   }
@@ -59,10 +67,9 @@ function semanticVar(
   role: keyof ColorSlotMap,
   suffix: string,
 ): string {
-  const cssRole = role === 'icon' ? 'text' : role; // icon color resolves against the text-role token family
   return interaction
-    ? `--cdr-color-${interaction}-${cssRole}-${suffix}`
-    : `--cdr-color-${cssRole}-${suffix}`;
+    ? `--cdr-color-${interaction}-${role}-${suffix}`
+    : `--cdr-color-${role}-${suffix}`;
 }
 
 const STATES: Array<keyof VariantContract & string> = [
@@ -127,10 +134,12 @@ function generateColorVariant(
   const lines: string[] = [];
 
   for (const state of STATES) {
-    const slotMap = variant[state];
+    const slotMap = variant[state] as ColorSlotMap | undefined;
+    if (!slotMap) continue;
 
     for (const role of ['surface', 'text', 'border', 'icon'] as const) {
       const value = slotMap[role];
+      if (!value) continue;
       const key = propKey(role, state);
       const legacyKey = `${variantName}/${key}`;
       const legacyToken = legacy[legacyKey];
@@ -143,16 +152,20 @@ function generateColorVariant(
       if (!legacyToken) {
         lines.push(`    ${key}: var(${semanticProp}),`);
       } else {
-        lines.push(`    ${key}: var(${semanticProp}, #{tokens.$${legacyToken}}),`);
+        lines.push(
+          `    ${key}: var(${semanticProp}, var(--${legacyToken}, #{tokens.$${legacyToken}})),`,
+        );
       }
     }
   }
 
   if (variant.extras) {
-    for (const extraKey of Object.keys(variant.extras)) {
+    for (const [extraKey, value] of Object.entries(variant.extras)) {
       const legacyKey = `${variantName}/${extraKey}`;
       const legacyToken = legacy[legacyKey];
-      if (legacyToken) {
+      if (value) {
+        lines.push(`    ${extraKey}: ${scssValue(value)},`);
+      } else if (legacyToken) {
         lines.push(`    ${extraKey}: #{tokens.$${legacyToken}},`);
       }
     }
@@ -196,6 +209,25 @@ function generateSizes(
 
 async function main() {
   const manifest = await loadTokenManifest();
+  const check = process.argv.includes('--check');
+  // Pass only formatting fields to the formatter: .oxfmtrc.json also carries
+  // file-selection keys (e.g. ignorePatterns) that are not format options.
+  const { ignorePatterns: _ignorePatterns, ...formatConfig } = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '../.oxfmtrc.json'), 'utf8'),
+  );
+  const stale: string[] = [];
+  async function emit(outPath: string, source: string) {
+    const result = await format(outPath, source, formatConfig);
+    if (result.errors.length)
+      throw new Error(`Cannot format ${outPath}: ${JSON.stringify(result.errors)}`);
+    if (check) {
+      if (!fs.existsSync(outPath) || fs.readFileSync(outPath, 'utf8') !== result.code)
+        stale.push(outPath);
+    } else {
+      fs.mkdirSync(path.dirname(outPath), { recursive: true });
+      fs.writeFileSync(outPath, result.code, 'utf8');
+    }
+  }
 
   const contractFiles = findContracts(SRC_DIR);
 
@@ -218,37 +250,38 @@ async function main() {
     const componentName = path.basename(contractPath, '.tokens.ts');
     const outPath = path.join(componentDir, 'styles', 'vars', `${componentName}.maps.scss`);
 
-    fs.mkdirSync(path.dirname(outPath), { recursive: true });
-    fs.writeFileSync(outPath, scss, 'utf-8');
+    await emit(outPath, scss);
     console.log(`  → ${path.relative(SRC_DIR, outPath)} (${scss.split('\n').length} lines)`);
 
-    // Generate CSS token-assignment file if the contract declares a recipe family.
-    // Note: `interaction` (the taxonomy tier) and the CSS behavior template
-    // dispatch key are separate concepts. CdrButton's interaction is 'action'
-    // and it also happens to use the 'action' behavior template, but the
-    // dispatch below is driven by the recipe's family, not the taxonomy tier.
+    // Generate CSS token-assignment file if the contract declares a recipe.
+    // Dispatch is driven by the recipe (the CSS behavior template), not by
+    // the interaction tier: today only 'pressable' exists, and unknown
+    // recipes fail loudly instead of silently skipping output.
     if (contract.recipe) {
       const cssOutPath = path.join(componentDir, 'styles', `${componentName}.tokens.css`);
 
       let css: string;
-      switch (contract.interaction) {
-        case 'action':
-          css = generateActionCSS(contract);
+      switch (contract.recipe) {
+        case 'pressable':
+          css = generateActionCSS(contract, contractPath);
           break;
         default:
-          console.log(
-            `  ⚠ No CSS behavior template for interaction "${contract.interaction}" — skipping CSS generation`,
+          throw new Error(
+            `No CSS behavior template for recipe "${contract.recipe}" (${path.relative(SRC_DIR, contractPath)})`,
           );
-          continue;
       }
 
-      fs.writeFileSync(cssOutPath, css, 'utf-8');
+      await emit(cssOutPath, css);
       console.log(`  → ${path.relative(SRC_DIR, cssOutPath)} (${css.split('\n').length} lines)`);
     }
   }
+  if (stale.length)
+    throw new Error(
+      `Generated tokens are stale. Run pnpm build:maps:\n${stale.map((file) => path.relative(SRC_DIR, file)).join('\n')}`,
+    );
 }
 
-function generateScss(contract: ComponentTokenContract, sourcePath: string): string {
+export function generateScss(contract: ComponentTokenContract, sourcePath: string): string {
   const relSource = path.relative(path.join(__dirname, '..'), sourcePath);
   // Map prefix derived from the component name (cdr-button → button) so each
   // contract generates its own namespaced maps.
@@ -288,9 +321,11 @@ function generateScss(contract: ComponentTokenContract, sourcePath: string): str
   return sections.join('\n') + '\n';
 }
 
-function findContracts(dir: string): string[] {
+export function findContracts(dir: string): string[] {
   const results: string[] = [];
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const entries = fs
+    .readdirSync(dir, { withFileTypes: true })
+    .sort((a, b) => a.name.localeCompare(b.name));
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
@@ -302,7 +337,9 @@ function findContracts(dir: string): string[] {
   return results;
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  main().catch((err) => {
+    console.error(err);
+    process.exitCode = 1;
+  });
+}

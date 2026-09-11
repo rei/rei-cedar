@@ -1,3 +1,5 @@
+@use './vars/CdrBreadcrumb.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrBreadcrumb.vars' as vars;
 
@@ -56,7 +58,7 @@
       // ITEM_DOC: Ellipses icon color
       color: var(
         --cdr-breadcrumb-ellipses-icon-color,
-        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+        #{map.get(maps.$breadcrumb-defaults, text-icon)}
       );
       border-bottom: 1px solid transparent;
       fill: inherit;
@@ -69,7 +71,7 @@
         // ITEM_DOC: Ellipses icon hover, active and focus color
         color: var(
           --cdr-breadcrumb-ellipses-icon-highlight-color,
-          var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+          #{map.get(maps.$breadcrumb-defaults, text-interaction-icon)}
         );
         text-decoration: underline;
       }

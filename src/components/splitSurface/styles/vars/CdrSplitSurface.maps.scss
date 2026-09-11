@@ -1,0 +1,18 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/splitSurface/CdrSplitSurface.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$split-surface-defaults: (
+  surface: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    ),
+);

@@ -7,7 +7,7 @@
  *
  * The taxonomy was refined in Sept 2026 to clarify intent distinctions:
  * - ACTION: triggers user actions, navigation, content manipulation, or final submission
- * - CONTROL: form elements submitted together as data (error states use FEEDBACK intent)
+ * - CONTROL: manipulating or configuring the interface (errors use FEEDBACK intent)
  * - SELECTION: interactive choice selection that doesn't itself submit data
  * - FEEDBACK: system communications including inline validation on form controls
  *
@@ -29,7 +29,14 @@ export interface LiteralValue {
   value: string | number;
 }
 
-export type ContractValue = TokenReference | LiteralValue;
+/** A semantic color and its current, publishable fallback. */
+export interface SemanticReference {
+  kind: 'semantic';
+  name: SemanticColorPath;
+  fallback: TokenReference | LiteralValue;
+}
+
+export type ContractValue = TokenReference | LiteralValue | SemanticReference;
 
 export function token(name: string): TokenReference {
   return { kind: 'token', name };
@@ -37,6 +44,13 @@ export function token(name: string): TokenReference {
 
 export function literal(value: string | number): LiteralValue {
   return { kind: 'literal', value };
+}
+
+export function semantic(
+  name: SemanticColorPath,
+  fallback: TokenReference | LiteralValue,
+): SemanticReference {
+  return { kind: 'semantic', name, fallback };
 }
 
 // ============================================================================
@@ -58,10 +72,12 @@ export function literal(value: string | number): LiteralValue {
  * token, e.g. `color.surface.neutral`) simply has no interaction segment in
  * its name. There is no "universal" value — omission IS the universal case.
  */
-export type Interaction = 'action' | 'feedback' | 'selection' | 'control';
+export const INTERACTION_FAMILIES = ['action', 'feedback', 'selection', 'control'] as const;
+export type Interaction = (typeof INTERACTION_FAMILIES)[number];
 
 /** Role — "what job does it perform". */
-export type ColorRole = 'surface' | 'text' | 'border' | 'icon';
+export const COLOR_ROLES = ['surface', 'text', 'border', 'icon'] as const;
+export type ColorRole = (typeof COLOR_ROLES)[number];
 
 /**
  * Identity — "what does it mean". Confirmed list from token decks (broader
@@ -87,19 +103,21 @@ export type ColorRole = 'surface' | 'text' | 'border' | 'icon';
  * remains exploratory and should not be introduced until a clear semantic or
  * implementation benefit has been demonstrated.
  */
-export type ColorIdentity =
-  | 'brand'
-  | 'accent'
-  | 'warning'
-  | 'success'
-  | 'sale'
-  | 'trigger'
-  | 'neutral'
-  | 'natural'
-  | 'info'
-  | 'membership'
-  | 'rating'
-  | 'error';
+export const COLOR_IDENTITIES = [
+  'brand',
+  'accent',
+  'warning',
+  'success',
+  'sale',
+  'trigger',
+  'neutral',
+  'natural',
+  'info',
+  'membership',
+  'rating',
+  'error',
+] as const;
+export type ColorIdentity = (typeof COLOR_IDENTITIES)[number];
 
 /**
  * Expression — "how strongly it expresses itself". This is a hierarchy
@@ -111,7 +129,19 @@ export type ColorIdentity =
  * state of not appending an expression segment at all.
  * `color.surface.brand` IS `color.surface.brand.base`.
  */
-export type Expression = 'trace' | 'faint' | 'subtle' | 'base' | 'prominent' | 'bold' | 'intense';
+export const EXPRESSIONS = [
+  'trace',
+  'faint',
+  'subtle',
+  'base',
+  'prominent',
+  'bold',
+  'intense',
+] as const;
+export type Expression = (typeof EXPRESSIONS)[number];
+
+export type SemanticColorPath =
+  `${'' | `${Interaction}-`}${ColorRole}-${ColorIdentity}${'' | `-${Exclude<Expression, 'base'>}`}`;
 
 /** Interaction states a component can expose (component-behavior concept, not a taxonomy tier) */
 export type InteractionState = 'rest' | 'hover' | 'focus-visible' | 'active' | 'disabled';
@@ -136,13 +166,12 @@ export type VisualRecipe =
  * A color-slot value is either a semantic token suffix (identity + optional
  * expression, e.g. 'brand', 'brand-faint') or an escape hatch to a fully
  * qualified path outside the component's interaction/identity context
- * (e.g. the foundation-only `icon-default` token).
+ * (e.g. the foundation-only `icon-neutral` token).
  */
 export type ColorSlotValue = string | { fullPath: string };
 
 /**
- * Maps each of the four confirmed roles to a semantic token suffix for one
- * interaction state.
+ * Maps only the roles consumed by this component in this interaction state.
  *
  * The suffix is the part after `--cdr-color-{interaction}-{role}-`. It
  * includes the identity and, if not base, the expression:
@@ -150,12 +179,7 @@ export type ColorSlotValue = string | { fullPath: string };
  *   'brand-faint'    → --cdr-color-action-surface-brand-faint
  *   'neutral-trace'  → --cdr-color-action-surface-neutral-trace    (cross-identity)
  */
-export interface ColorSlotMap {
-  surface: ColorSlotValue;
-  text: ColorSlotValue;
-  border: ColorSlotValue;
-  icon: ColorSlotValue;
-}
+export type ColorSlotMap = Partial<Record<ColorRole, ColorSlotValue>>;
 
 export interface VariantContract {
   /** Which identity this variant uses */
@@ -163,16 +187,17 @@ export interface VariantContract {
 
   /** State → role mappings */
   rest: ColorSlotMap;
-  hover: ColorSlotMap;
-  'focus-visible': ColorSlotMap;
-  active: ColorSlotMap;
-  disabled: ColorSlotMap;
+  hover?: ColorSlotMap;
+  'focus-visible'?: ColorSlotMap;
+  active?: ColorSlotMap;
+  disabled?: ColorSlotMap;
 
   /**
    * Extra component properties beyond the standard role × state matrix.
-   * Key = component property name, value = null (legacy-only, no semantic custom property yet).
+   * Key = component property name. Values may reference semantics directly;
+   * null uses the matching legacy entry during migration.
    */
-  extras?: Record<string, null>;
+  extras?: Record<string, ContractValue | null>;
 }
 
 export interface ComponentTokenContract {
@@ -188,7 +213,7 @@ export interface ComponentTokenContract {
    */
   interaction?: Interaction;
 
-  /** Which visual recipe to apply (defaults to a family-specific recipe if omitted) */
+  /** Optional CSS assignment recipe. Omit to generate only SCSS maps. */
   recipe?: VisualRecipe;
 
   /**
@@ -216,7 +241,8 @@ export interface ComponentTokenContract {
 
   /**
    * Default custom property values.
-   * Use `token('cdr-...')` for token references, `literal(...)` for raw CSS values.
+   * Use semantic(path, fallback) for colors, token('cdr-...') for existing
+   * foundations, and literal(...) for intentional CSS values.
    *
    * AUTHORITY: This is the transitional representation during migration from legacy component tokens.
    * Once foundationAssignments is implemented, defaults should become an implementation detail
@@ -229,7 +255,9 @@ export interface ComponentTokenContract {
   /** Color variant definitions */
   variants: Record<string, VariantContract>;
 
-  /** Optional compositional conditions (e.g. selected, checked) applied over the variant */
+  /** Optional compositional conditions (e.g. selected, checked) applied over the variant.
+   * TEMPORARY: not generated — the validator rejects non-empty conditions.
+   * Model conditional treatments as variants until generation is implemented. */
   conditions?: Record<string, ColorSlotMap>;
 
   /** Size definitions (not all components have sizes) */

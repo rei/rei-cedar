@@ -1,3 +1,5 @@
+@use './CdrCheckbox.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-form-figure-checkbox-checked-mixin() {
@@ -5,19 +7,13 @@
   box-shadow: inset 0 0 0 1px
     var(
       --cdr-form-figure-checkbox-box-shadow-checked,
-      var(
-        --cdr-color-border-input-default-selected,
-        #{tokens.$cdr-color-border-input-default-selected}
-      )
+      #{map.get(maps.$checkbox-defaults, border-checked)}
     );
 
   // ITEM_DOC: Background color of a checked cdr-checkbox
   background-color: var(
     --cdr-form-figure-checkbox-background-color-checked,
-    var(
-      --cdr-color-background-input-default-selected,
-      #{tokens.$cdr-color-background-input-default-selected}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-checked)}
   );
   background-repeat: no-repeat;
 }
@@ -30,21 +26,18 @@
     inset 0 0 0 1px
       var(
         --cdr-form-figure-checkbox-box-shadow-hover,
-        var(--cdr-color-border-input-default-hover, #{tokens.$cdr-color-border-input-default-hover})
+        #{map.get(maps.$checkbox-defaults, border-hover)}
       ),
     0 0 0 1px
       var(
         --cdr-form-figure-checkbox-box-shadow-hover,
-        var(--cdr-color-border-input-default-hover, #{tokens.$cdr-color-border-input-default-hover})
+        #{map.get(maps.$checkbox-defaults, border-hover)}
       );
 
   // ITEM_DOC: Background color of a hovered cdr-checkbox
   background-color: var(
     --cdr-form-figure-checkbox-background-hover,
-    var(
-      --cdr-color-background-input-default-hover,
-      #{tokens.$cdr-color-background-input-default-hover}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-hover)}
   );
 }
 
@@ -54,27 +47,18 @@
     inset 0 0 0 1px
       var(
         --cdr-form-figure-checkbox-checked-box-shadow-hover,
-        var(
-          --cdr-color-border-input-default-selected-hover,
-          #{tokens.$cdr-color-border-input-default-selected-hover}
-        )
+        #{map.get(maps.$checkbox-defaults, border-checked-hover)}
       ),
     0 0 0 1px
       var(
         --cdr-form-figure-checkbox-checked-hover-box-shadow,
-        var(
-          --cdr-color-border-input-default-selected-hover,
-          #{tokens.$cdr-color-border-input-default-selected-hover}
-        )
+        #{map.get(maps.$checkbox-defaults, border-checked-hover)}
       );
 
   // ITEM_DOC: Background color of a checked and hovered cdr-checkbox
   background-color: var(
     --cdr-form-figure-checkbox-checked-background-hover,
-    var(
-      --cdr-color-background-input-default-selected-hover,
-      #{tokens.$cdr-color-background-input-default-selected-hover}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-checked-hover)}
   );
 }
 
@@ -83,19 +67,13 @@
   box-shadow: inset 0 0 0 1px
     var(
       --cdr-form-figure-checkbox-box-shadow-disabled,
-      var(
-        --cdr-color-border-input-default-disabled,
-        #{tokens.$cdr-color-border-input-default-disabled}
-      )
+      #{map.get(maps.$checkbox-defaults, border-disabled)}
     ) !important;
 
   // ITEM_DOC: Background color of a cdr-checkbox when disabled
   background-color: var(
     --cdr-form-figure-checkbox-background-disabled,
-    var(
-      --cdr-color-background-input-default-disabled,
-      #{tokens.$cdr-color-background-input-default-disabled}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-disabled)}
   ) !important;
   background-image: none !important;
 }
@@ -104,10 +82,7 @@
   // ITEM_DOC: Background color of a checked cdr-checkbox when disabled
   background-color: var(
     --cdr-form-figure-checkbox-background-checked-disabled,
-    var(
-      --cdr-color-background-input-default-disabled,
-      #{tokens.$cdr-color-background-input-default-disabled}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-disabled)}
   ) !important;
 }
 
@@ -117,27 +92,18 @@
     inset 0 0 0 1px
       var(
         --cdr-form-figure-checkbox-box-shadow-active,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
+        #{map.get(maps.$checkbox-defaults, border-active)}
       ),
     0 0 0 1px
       var(
         --cdr-form-figure-checkbox-box-shadow-active,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
+        #{map.get(maps.$checkbox-defaults, border-active)}
       );
 
   // ITEM_DOC: Background color of a cdr-checkbox when active
   background-color: var(
     --cdr-form-figure-checkbox-background-active,
-    var(
-      --cdr-color-background-input-default-active,
-      #{tokens.$cdr-color-background-input-default-active}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-active)}
   );
 }
 
@@ -147,27 +113,18 @@
     inset 0 0 0 1px
       var(
         --cdr-form-figure-checkbox-box-shadow-focus,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
+        #{map.get(maps.$checkbox-defaults, border-active)}
       ),
     0 0 0 1px
       var(
         --cdr-form-figure-checkbox-box-shadow-focus,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
+        #{map.get(maps.$checkbox-defaults, border-active)}
       );
 
   // ITEM_DOC: Background color of a cdr-checkbox when focused
   background-color: var(
     --cdr-form-figure-checkbox-background-focus,
-    var(
-      --cdr-color-background-input-default-focus,
-      #{tokens.$cdr-color-background-input-default-focus}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-focus)}
   );
 }
 
@@ -175,9 +132,6 @@
   // ITEM_DOC: Background color of a checked cdr-checkbox when focused
   background-color: var(
     --cdr-form-figure-checkbox-background-checked-focus,
-    var(
-      --cdr-color-background-input-default-selected-focus,
-      #{tokens.$cdr-color-background-input-default-selected-focus}
-    )
+    #{map.get(maps.$checkbox-defaults, surface-checked-focus)}
   );
 }

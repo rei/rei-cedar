@@ -36,7 +36,46 @@ $button-defaults: (
   elevation: 0 0 0 0 transparent,
   elevation-hover: tokens.$cdr-prominence-raised,
   elevation-active: 0 0 0 0 transparent,
-  elevation-focus-visible: tokens.$cdr-prominence-raised
+  elevation-focus-visible: tokens.$cdr-prominence-raised,
+  link-text: var(
+      --cdr-color-action-text-trigger,
+      var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
+    ),
+  link-text-hover: var(
+      --cdr-color-action-text-trigger-faint,
+      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+    ),
+  link-text-active: var(
+      --cdr-color-action-text-trigger,
+      var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
+    ),
+  link-icon: var(
+      --cdr-color-action-icon-trigger,
+      var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
+    ),
+  link-icon-hover: var(
+      --cdr-color-action-icon-trigger-faint,
+      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+    ),
+  link-icon-active: var(
+      --cdr-color-action-icon-trigger,
+      var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
+    ),
+  icon-only-fill: var(
+      --cdr-color-action-icon-neutral,
+      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+    ),
+  icon-only-fill-disabled: var(
+      --cdr-color-action-icon-neutral-faint,
+      var(--cdr-color-icon-disabled, #{tokens.$cdr-color-icon-disabled})
+    ),
+  icon-only-border-focus: var(
+      --cdr-color-action-border-neutral-subtle,
+      var(
+        --cdr-color-border-button-secondary-active,
+        #{tokens.$cdr-color-border-button-secondary-active}
+      )
+    )
 );
 
 // ============================================================================
@@ -47,280 +86,478 @@ $button-colors: (
   primary: (
     background: var(
         --cdr-color-action-surface-brand,
-        #{tokens.$cdr-color-background-button-primary-rest}
+        var(
+          --cdr-color-background-button-primary-rest,
+          #{tokens.$cdr-color-background-button-primary-rest}
+        )
       ),
-    text: var(--cdr-color-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
-    border: var(--cdr-color-action-border-brand, #{tokens.$cdr-color-border-button-primary-rest}),
-    fill: var(--cdr-color-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
+    text: var(
+        --cdr-color-action-text-brand,
+        var(--cdr-color-text-button-primary, #{tokens.$cdr-color-text-button-primary})
+      ),
+    border: var(
+        --cdr-color-action-border-brand,
+        var(--cdr-color-border-button-primary-rest, #{tokens.$cdr-color-border-button-primary-rest})
+      ),
+    fill: var(
+        --cdr-color-action-icon-brand,
+        var(--cdr-color-text-button-primary, #{tokens.$cdr-color-text-button-primary})
+      ),
     background-hover: var(
         --cdr-color-action-surface-brand-faint,
-        #{tokens.$cdr-color-background-button-primary-hover}
+        var(
+          --cdr-color-background-button-primary-hover,
+          #{tokens.$cdr-color-background-button-primary-hover}
+        )
       ),
     text-hover: var(
         --cdr-color-action-text-brand-faint,
-        #{tokens.$cdr-color-text-button-primary-hover}
+        var(--cdr-color-text-button-primary-hover, #{tokens.$cdr-color-text-button-primary-hover})
       ),
     border-hover: var(
         --cdr-color-action-border-brand-faint,
-        #{tokens.$cdr-color-border-button-primary-hover}
+        var(
+          --cdr-color-border-button-primary-hover,
+          #{tokens.$cdr-color-border-button-primary-hover}
+        )
       ),
     fill-hover: var(
-        --cdr-color-action-text-brand-faint,
-        #{tokens.$cdr-color-text-button-primary-hover}
+        --cdr-color-action-icon-brand-faint,
+        var(--cdr-color-text-button-primary-hover, #{tokens.$cdr-color-text-button-primary-hover})
       ),
     background-focus-visible: var(
         --cdr-color-action-surface-brand-faint,
-        #{tokens.$cdr-color-background-button-primary-hover}
+        var(
+          --cdr-color-background-button-primary-hover,
+          #{tokens.$cdr-color-background-button-primary-hover}
+        )
       ),
     text-focus-visible: var(
         --cdr-color-action-text-brand-faint,
-        #{tokens.$cdr-color-text-button-primary-hover}
+        var(--cdr-color-text-button-primary-hover, #{tokens.$cdr-color-text-button-primary-hover})
       ),
     border-focus-visible: var(
         --cdr-color-action-border-brand-faint,
-        #{tokens.$cdr-color-border-button-primary-hover}
+        var(
+          --cdr-color-border-button-primary-hover,
+          #{tokens.$cdr-color-border-button-primary-hover}
+        )
       ),
     fill-focus-visible: var(
-        --cdr-color-action-text-brand-faint,
-        #{tokens.$cdr-color-text-button-primary-hover}
+        --cdr-color-action-icon-brand-faint,
+        var(--cdr-color-text-button-primary-hover, #{tokens.$cdr-color-text-button-primary-hover})
       ),
     background-active: var(
         --cdr-color-action-surface-brand,
-        #{tokens.$cdr-color-background-button-primary-rest}
+        var(
+          --cdr-color-background-button-primary-rest,
+          #{tokens.$cdr-color-background-button-primary-rest}
+        )
       ),
-    text-active: var(--cdr-color-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
+    text-active: var(
+        --cdr-color-action-text-brand,
+        var(--cdr-color-text-button-primary, #{tokens.$cdr-color-text-button-primary})
+      ),
     border-active: var(
         --cdr-color-action-border-brand,
-        #{tokens.$cdr-color-border-button-primary-rest}
+        var(--cdr-color-border-button-primary-rest, #{tokens.$cdr-color-border-button-primary-rest})
       ),
-    fill-active: var(--cdr-color-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
+    fill-active: var(
+        --cdr-color-action-icon-brand,
+        var(--cdr-color-text-button-primary, #{tokens.$cdr-color-text-button-primary})
+      ),
     background-disabled: var(
         --cdr-color-action-surface-neutral-trace,
-        #{tokens.$cdr-color-background-button-default-disabled}
+        var(
+          --cdr-color-background-button-default-disabled,
+          #{tokens.$cdr-color-background-button-default-disabled}
+        )
       ),
     text-disabled: var(
-        --cdr-color-action-text-disabled,
-        #{tokens.$cdr-color-text-button-primary-disabled}
+        --cdr-color-action-text-neutral-faint,
+        var(
+          --cdr-color-text-button-primary-disabled,
+          #{tokens.$cdr-color-text-button-primary-disabled}
+        )
       ),
     border-disabled: var(
         --cdr-color-action-border-neutral-trace,
-        #{tokens.$cdr-color-border-button-default-disabled}
+        var(
+          --cdr-color-border-button-default-disabled,
+          #{tokens.$cdr-color-border-button-default-disabled}
+        )
       ),
     fill-disabled: var(
-        --cdr-color-action-text-disabled,
-        #{tokens.$cdr-color-text-button-primary-disabled}
+        --cdr-color-action-icon-neutral-faint,
+        var(
+          --cdr-color-text-button-primary-disabled,
+          #{tokens.$cdr-color-text-button-primary-disabled}
+        )
       ),
-    active-inset: #{tokens.$cdr-color-border-button-primary-active-inset},
+    active-inset: var(
+        --cdr-color-action-border-brand-subtle,
+        var(
+          --cdr-color-border-button-primary-active-inset,
+          #{tokens.$cdr-color-border-button-primary-active-inset}
+        )
+      ),
   ),
   secondary: (
     background: var(
         --cdr-color-action-surface-neutral-faint,
-        #{tokens.$cdr-color-background-button-secondary-rest}
+        var(
+          --cdr-color-background-button-secondary-rest,
+          #{tokens.$cdr-color-background-button-secondary-rest}
+        )
       ),
-    text: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-button-secondary}),
+    text: var(
+        --cdr-color-action-text-neutral,
+        var(--cdr-color-text-button-secondary, #{tokens.$cdr-color-text-button-secondary})
+      ),
     border: var(
         --cdr-color-action-border-neutral-faint,
-        #{tokens.$cdr-color-border-button-secondary-rest}
+        var(
+          --cdr-color-border-button-secondary-rest,
+          #{tokens.$cdr-color-border-button-secondary-rest}
+        )
       ),
-    fill: var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default}),
+    fill: var(
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+      ),
     background-hover: var(
         --cdr-color-action-surface-neutral,
-        #{tokens.$cdr-color-background-button-secondary-hover}
+        var(
+          --cdr-color-background-button-secondary-hover,
+          #{tokens.$cdr-color-background-button-secondary-hover}
+        )
       ),
     text-hover: var(
         --cdr-color-action-text-neutral-subtle,
-        #{tokens.$cdr-color-text-button-secondary-hover}
+        var(
+          --cdr-color-text-button-secondary-hover,
+          #{tokens.$cdr-color-text-button-secondary-hover}
+        )
       ),
     border-hover: var(
         --cdr-color-action-border-neutral,
-        #{tokens.$cdr-color-border-button-secondary-hover}
+        var(
+          --cdr-color-border-button-secondary-hover,
+          #{tokens.$cdr-color-border-button-secondary-hover}
+        )
       ),
     fill-hover: var(
-        --cdr-color-action-text-neutral-subtle,
-        #{tokens.$cdr-color-text-button-secondary-hover}
+        --cdr-color-action-icon-neutral-subtle,
+        var(
+          --cdr-color-text-button-secondary-hover,
+          #{tokens.$cdr-color-text-button-secondary-hover}
+        )
       ),
     background-focus-visible: var(
         --cdr-color-action-surface-neutral,
-        #{tokens.$cdr-color-background-button-secondary-hover}
+        var(
+          --cdr-color-background-button-secondary-hover,
+          #{tokens.$cdr-color-background-button-secondary-hover}
+        )
       ),
     text-focus-visible: var(
         --cdr-color-action-text-neutral-subtle,
-        #{tokens.$cdr-color-text-button-secondary-hover}
+        var(
+          --cdr-color-text-button-secondary-hover,
+          #{tokens.$cdr-color-text-button-secondary-hover}
+        )
       ),
     border-focus-visible: var(
         --cdr-color-action-border-neutral,
-        #{tokens.$cdr-color-border-button-secondary-hover}
+        var(
+          --cdr-color-border-button-secondary-hover,
+          #{tokens.$cdr-color-border-button-secondary-hover}
+        )
       ),
     fill-focus-visible: var(
-        --cdr-color-action-text-neutral-subtle,
-        #{tokens.$cdr-color-text-button-secondary-hover}
+        --cdr-color-action-icon-neutral-subtle,
+        var(
+          --cdr-color-text-button-secondary-hover,
+          #{tokens.$cdr-color-text-button-secondary-hover}
+        )
       ),
     background-active: var(
         --cdr-color-action-surface-neutral-subtle,
-        #{tokens.$cdr-color-background-button-secondary-active}
+        var(
+          --cdr-color-background-button-secondary-active,
+          #{tokens.$cdr-color-background-button-secondary-active}
+        )
       ),
     text-active: var(
         --cdr-color-action-text-neutral-bold,
-        #{tokens.$cdr-color-text-button-secondary-active}
+        var(
+          --cdr-color-text-button-secondary-active,
+          #{tokens.$cdr-color-text-button-secondary-active}
+        )
       ),
     border-active: var(
         --cdr-color-action-border-neutral-subtle,
-        #{tokens.$cdr-color-border-button-secondary-active}
+        var(
+          --cdr-color-border-button-secondary-active,
+          #{tokens.$cdr-color-border-button-secondary-active}
+        )
       ),
     fill-active: var(
-        --cdr-color-action-text-neutral-bold,
-        #{tokens.$cdr-color-text-button-secondary-active}
+        --cdr-color-action-icon-neutral-bold,
+        var(
+          --cdr-color-text-button-secondary-active,
+          #{tokens.$cdr-color-text-button-secondary-active}
+        )
       ),
     background-disabled: var(
         --cdr-color-action-surface-neutral-faint,
-        #{tokens.$cdr-color-background-button-secondary-disabled}
+        var(
+          --cdr-color-background-button-secondary-disabled,
+          #{tokens.$cdr-color-background-button-secondary-disabled}
+        )
       ),
     text-disabled: var(
-        --cdr-color-action-text-disabled-secondary,
-        #{tokens.$cdr-color-text-button-secondary-disabled}
+        --cdr-color-action-text-neutral-faint,
+        var(
+          --cdr-color-text-button-secondary-disabled,
+          #{tokens.$cdr-color-text-button-secondary-disabled}
+        )
       ),
     border-disabled: var(
         --cdr-color-action-border-neutral-trace,
-        #{tokens.$cdr-color-border-button-default-disabled}
+        var(
+          --cdr-color-border-button-default-disabled,
+          #{tokens.$cdr-color-border-button-default-disabled}
+        )
       ),
     fill-disabled: var(
-        --cdr-color-action-text-disabled-secondary,
-        #{tokens.$cdr-color-text-button-secondary-disabled}
+        --cdr-color-action-icon-neutral-faint,
+        var(
+          --cdr-color-text-button-secondary-disabled,
+          #{tokens.$cdr-color-text-button-secondary-disabled}
+        )
       ),
-    active-inset: #{tokens.$cdr-color-border-button-secondary-active-inset},
+    active-inset: var(
+        --cdr-color-action-border-neutral-subtle,
+        var(
+          --cdr-color-border-button-secondary-active-inset,
+          #{tokens.$cdr-color-border-button-secondary-active-inset}
+        )
+      ),
   ),
   dark: (
     background: var(
         --cdr-color-action-surface-neutral-intense,
-        #{tokens.$cdr-color-background-button-dark-rest}
+        var(
+          --cdr-color-background-button-dark-rest,
+          #{tokens.$cdr-color-background-button-dark-rest}
+        )
       ),
-    text: var(--cdr-color-action-text-neutral-intense, #{tokens.$cdr-color-text-button-dark}),
+    text: var(
+        --cdr-color-action-text-neutral-intense,
+        var(--cdr-color-text-button-dark, #{tokens.$cdr-color-text-button-dark})
+      ),
     border: var(
         --cdr-color-action-border-neutral-intense,
-        #{tokens.$cdr-color-border-button-dark-rest}
+        var(--cdr-color-border-button-dark-rest, #{tokens.$cdr-color-border-button-dark-rest})
       ),
-    fill: var(--cdr-color-action-text-neutral-intense, #{tokens.$cdr-color-text-button-dark}),
+    fill: var(
+        --cdr-color-action-icon-neutral-intense,
+        var(--cdr-color-text-button-dark, #{tokens.$cdr-color-text-button-dark})
+      ),
     background-hover: var(
         --cdr-color-action-surface-neutral-bold,
-        #{tokens.$cdr-color-background-button-dark-hover}
+        var(
+          --cdr-color-background-button-dark-hover,
+          #{tokens.$cdr-color-background-button-dark-hover}
+        )
       ),
-    text-hover: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-button-dark-hover}),
+    text-hover: var(
+        --cdr-color-action-text-neutral,
+        var(--cdr-color-text-button-dark-hover, #{tokens.$cdr-color-text-button-dark-hover})
+      ),
     border-hover: var(
         --cdr-color-action-border-neutral-intense,
-        #{tokens.$cdr-color-border-button-dark-hover}
+        var(--cdr-color-border-button-dark-hover, #{tokens.$cdr-color-border-button-dark-hover})
       ),
-    fill-hover: var(--cdr-color-action-text-neutral, #{tokens.$cdr-color-text-button-dark-hover}),
+    fill-hover: var(
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-text-button-dark-hover, #{tokens.$cdr-color-text-button-dark-hover})
+      ),
     background-focus-visible: var(
         --cdr-color-action-surface-neutral-bold,
-        #{tokens.$cdr-color-background-button-dark-hover}
+        var(
+          --cdr-color-background-button-dark-hover,
+          #{tokens.$cdr-color-background-button-dark-hover}
+        )
       ),
     text-focus-visible: var(
         --cdr-color-action-text-neutral,
-        #{tokens.$cdr-color-text-button-dark-hover}
+        var(--cdr-color-text-button-dark-hover, #{tokens.$cdr-color-text-button-dark-hover})
       ),
     border-focus-visible: var(
         --cdr-color-action-border-neutral-intense,
-        #{tokens.$cdr-color-border-button-dark-hover}
+        var(--cdr-color-border-button-dark-hover, #{tokens.$cdr-color-border-button-dark-hover})
       ),
     fill-focus-visible: var(
-        --cdr-color-action-text-neutral,
-        #{tokens.$cdr-color-text-button-dark-hover}
+        --cdr-color-action-icon-neutral,
+        var(--cdr-color-text-button-dark-hover, #{tokens.$cdr-color-text-button-dark-hover})
       ),
     background-active: var(
         --cdr-color-action-surface-neutral-intense,
-        #{tokens.$cdr-color-background-button-dark-rest}
+        var(
+          --cdr-color-background-button-dark-rest,
+          #{tokens.$cdr-color-background-button-dark-rest}
+        )
       ),
     text-active: var(
         --cdr-color-action-text-neutral-intense,
-        #{tokens.$cdr-color-text-button-dark-active}
+        var(--cdr-color-text-button-dark-active, #{tokens.$cdr-color-text-button-dark-active})
       ),
     border-active: var(
         --cdr-color-action-border-neutral-intense,
-        #{tokens.$cdr-color-border-button-dark-active}
+        var(--cdr-color-border-button-dark-active, #{tokens.$cdr-color-border-button-dark-active})
       ),
     fill-active: var(
-        --cdr-color-action-text-neutral-intense,
-        #{tokens.$cdr-color-text-button-dark-active}
+        --cdr-color-action-icon-neutral-intense,
+        var(--cdr-color-text-button-dark-active, #{tokens.$cdr-color-text-button-dark-active})
       ),
     background-disabled: var(
         --cdr-color-action-surface-neutral-trace,
-        #{tokens.$cdr-color-background-button-default-disabled}
+        var(
+          --cdr-color-background-button-default-disabled,
+          #{tokens.$cdr-color-background-button-default-disabled}
+        )
       ),
     text-disabled: var(
-        --cdr-color-action-text-disabled,
-        #{tokens.$cdr-color-text-button-dark-disabled}
+        --cdr-color-action-text-neutral-faint,
+        var(--cdr-color-text-button-dark-disabled, #{tokens.$cdr-color-text-button-dark-disabled})
       ),
     border-disabled: var(
         --cdr-color-action-border-neutral-trace,
-        #{tokens.$cdr-color-border-button-default-disabled}
+        var(
+          --cdr-color-border-button-default-disabled,
+          #{tokens.$cdr-color-border-button-default-disabled}
+        )
       ),
     fill-disabled: var(
-        --cdr-color-action-text-disabled,
-        #{tokens.$cdr-color-text-button-dark-disabled}
+        --cdr-color-action-icon-neutral-faint,
+        var(--cdr-color-text-button-dark-disabled, #{tokens.$cdr-color-text-button-dark-disabled})
       ),
-    active-inset: #{tokens.$cdr-color-border-button-dark-active-inset},
+    active-inset: var(
+        --cdr-color-action-border-neutral-intense,
+        var(
+          --cdr-color-border-button-dark-active-inset,
+          #{tokens.$cdr-color-border-button-dark-active-inset}
+        )
+      ),
   ),
   sale: (
     background: var(
         --cdr-color-action-surface-sale,
-        #{tokens.$cdr-color-background-button-sale-rest}
+        var(
+          --cdr-color-background-button-sale-rest,
+          #{tokens.$cdr-color-background-button-sale-rest}
+        )
       ),
-    text: var(--cdr-color-action-text-sale, #{tokens.$cdr-color-text-button-sale}),
-    border: var(--cdr-color-action-border-sale, #{tokens.$cdr-color-border-button-sale-rest}),
-    fill: var(--cdr-color-action-text-sale, #{tokens.$cdr-color-text-button-sale}),
+    text: var(
+        --cdr-color-action-text-sale,
+        var(--cdr-color-text-button-sale, #{tokens.$cdr-color-text-button-sale})
+      ),
+    border: var(
+        --cdr-color-action-border-sale,
+        var(--cdr-color-border-button-sale-rest, #{tokens.$cdr-color-border-button-sale-rest})
+      ),
+    fill: var(
+        --cdr-color-action-icon-sale,
+        var(--cdr-color-text-button-sale, #{tokens.$cdr-color-text-button-sale})
+      ),
     background-hover: var(
         --cdr-color-action-surface-sale-faint,
-        #{tokens.$cdr-color-background-button-sale-hover}
+        var(
+          --cdr-color-background-button-sale-hover,
+          #{tokens.$cdr-color-background-button-sale-hover}
+        )
       ),
-    text-hover: var(--cdr-color-action-text-sale-faint, #{tokens.$cdr-color-text-button-sale-hover}),
+    text-hover: var(
+        --cdr-color-action-text-sale-faint,
+        var(--cdr-color-text-button-sale-hover, #{tokens.$cdr-color-text-button-sale-hover})
+      ),
     border-hover: var(
         --cdr-color-action-border-sale-faint,
-        #{tokens.$cdr-color-border-button-sale-hover}
+        var(--cdr-color-border-button-sale-hover, #{tokens.$cdr-color-border-button-sale-hover})
       ),
-    fill-hover: var(--cdr-color-action-text-sale-faint, #{tokens.$cdr-color-text-button-sale-hover}),
+    fill-hover: var(
+        --cdr-color-action-icon-sale-faint,
+        var(--cdr-color-text-button-sale-hover, #{tokens.$cdr-color-text-button-sale-hover})
+      ),
     background-focus-visible: var(
         --cdr-color-action-surface-sale-faint,
-        #{tokens.$cdr-color-background-button-sale-hover}
+        var(
+          --cdr-color-background-button-sale-hover,
+          #{tokens.$cdr-color-background-button-sale-hover}
+        )
       ),
     text-focus-visible: var(
         --cdr-color-action-text-sale-faint,
-        #{tokens.$cdr-color-text-button-sale-hover}
+        var(--cdr-color-text-button-sale-hover, #{tokens.$cdr-color-text-button-sale-hover})
       ),
     border-focus-visible: var(
         --cdr-color-action-border-sale-faint,
-        #{tokens.$cdr-color-border-button-sale-hover}
+        var(--cdr-color-border-button-sale-hover, #{tokens.$cdr-color-border-button-sale-hover})
       ),
     fill-focus-visible: var(
-        --cdr-color-action-text-sale-faint,
-        #{tokens.$cdr-color-text-button-sale-hover}
+        --cdr-color-action-icon-sale-faint,
+        var(--cdr-color-text-button-sale-hover, #{tokens.$cdr-color-text-button-sale-hover})
       ),
     background-active: var(
         --cdr-color-action-surface-sale,
-        #{tokens.$cdr-color-background-button-sale-active}
+        var(
+          --cdr-color-background-button-sale-active,
+          #{tokens.$cdr-color-background-button-sale-active}
+        )
       ),
-    text-active: var(--cdr-color-action-text-sale, #{tokens.$cdr-color-text-button-sale-active}),
+    text-active: var(
+        --cdr-color-action-text-sale,
+        var(--cdr-color-text-button-sale-active, #{tokens.$cdr-color-text-button-sale-active})
+      ),
     border-active: var(
         --cdr-color-action-border-sale,
-        #{tokens.$cdr-color-border-button-sale-active}
+        var(--cdr-color-border-button-sale-active, #{tokens.$cdr-color-border-button-sale-active})
       ),
-    fill-active: var(--cdr-color-action-text-sale, #{tokens.$cdr-color-text-button-sale-active}),
+    fill-active: var(
+        --cdr-color-action-icon-sale,
+        var(--cdr-color-text-button-sale-active, #{tokens.$cdr-color-text-button-sale-active})
+      ),
     background-disabled: var(
         --cdr-color-action-surface-neutral-trace,
-        #{tokens.$cdr-color-background-button-default-disabled}
+        var(
+          --cdr-color-background-button-default-disabled,
+          #{tokens.$cdr-color-background-button-default-disabled}
+        )
       ),
     text-disabled: var(
-        --cdr-color-action-text-disabled,
-        #{tokens.$cdr-color-text-button-sale-disabled}
+        --cdr-color-action-text-neutral-faint,
+        var(--cdr-color-text-button-sale-disabled, #{tokens.$cdr-color-text-button-sale-disabled})
       ),
     border-disabled: var(
         --cdr-color-action-border-neutral-trace,
-        #{tokens.$cdr-color-border-button-default-disabled}
+        var(
+          --cdr-color-border-button-default-disabled,
+          #{tokens.$cdr-color-border-button-default-disabled}
+        )
       ),
     fill-disabled: var(
-        --cdr-color-action-text-disabled,
-        #{tokens.$cdr-color-text-button-sale-disabled}
+        --cdr-color-action-icon-neutral-faint,
+        var(--cdr-color-text-button-sale-disabled, #{tokens.$cdr-color-text-button-sale-disabled})
       ),
-    active-inset: #{tokens.$cdr-color-border-button-sale-active-inset},
+    active-inset: var(
+        --cdr-color-action-border-sale-subtle,
+        var(
+          --cdr-color-border-button-sale-active-inset,
+          #{tokens.$cdr-color-border-button-sale-active-inset}
+        )
+      ),
   ),
 );
 

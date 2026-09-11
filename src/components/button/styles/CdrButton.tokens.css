@@ -1,7 +1,7 @@
 /* ======================================================================== */
 /* GENERATED — cdr-button token assignments (action family)
 /* Recipe: pressable
-/* Source: button/CdrButton.tokens.ts
+/* Source: src/components/button/CdrButton.tokens.ts
 /* Regenerate: pnpm build:maps
 /* ======================================================================== */
 
@@ -27,6 +27,33 @@
   --cdr-button-elevation-hover: var(--cdr-prominence-raised);
   --cdr-button-elevation-focus-visible: var(--cdr-prominence-raised);
   --cdr-button-elevation-active: 0 0 0 0 transparent;
+  --cdr-button-link-text: var(--cdr-color-action-text-trigger, var(--cdr-color-text-link-rest));
+  --cdr-button-link-text-hover: var(
+    --cdr-color-action-text-trigger-faint,
+    var(--cdr-color-text-link-hover)
+  );
+  --cdr-button-link-text-active: var(
+    --cdr-color-action-text-trigger,
+    var(--cdr-color-text-link-active)
+  );
+  --cdr-button-link-icon: var(--cdr-color-action-icon-trigger, var(--cdr-color-text-link-rest));
+  --cdr-button-link-icon-hover: var(
+    --cdr-color-action-icon-trigger-faint,
+    var(--cdr-color-text-link-hover)
+  );
+  --cdr-button-link-icon-active: var(
+    --cdr-color-action-icon-trigger,
+    var(--cdr-color-text-link-active)
+  );
+  --cdr-button-icon-only-fill: var(--cdr-color-action-icon-neutral, var(--cdr-color-icon-default));
+  --cdr-button-icon-only-fill-disabled: var(
+    --cdr-color-action-icon-neutral-faint,
+    var(--cdr-color-icon-disabled)
+  );
+  --cdr-button-icon-only-border-focus: var(
+    --cdr-color-action-border-neutral-subtle,
+    var(--cdr-color-border-button-secondary-active)
+  );
 }
 
 .cdr-button:hover {
@@ -67,7 +94,7 @@
     --cdr-color-action-border-brand,
     var(--cdr-color-border-button-primary-rest)
   );
-  --cdr-button-fill: var(--cdr-color-action-text-brand, var(--cdr-color-text-button-primary));
+  --cdr-button-fill: var(--cdr-color-action-icon-brand, var(--cdr-color-text-button-primary));
   --cdr-button-background-hover: var(
     --cdr-color-action-surface-brand-faint,
     var(--cdr-color-background-button-primary-hover)
@@ -81,7 +108,7 @@
     var(--cdr-color-border-button-primary-hover)
   );
   --cdr-button-fill-hover: var(
-    --cdr-color-action-text-brand-faint,
+    --cdr-color-action-icon-brand-faint,
     var(--cdr-color-text-button-primary-hover)
   );
   --cdr-button-background-focus-visible: var(
@@ -97,7 +124,7 @@
     var(--cdr-color-border-button-primary-hover)
   );
   --cdr-button-fill-focus-visible: var(
-    --cdr-color-action-text-brand-faint,
+    --cdr-color-action-icon-brand-faint,
     var(--cdr-color-text-button-primary-hover)
   );
   --cdr-button-background-active: var(
@@ -113,7 +140,7 @@
     var(--cdr-color-border-button-primary-rest)
   );
   --cdr-button-fill-active: var(
-    --cdr-color-action-text-brand,
+    --cdr-color-action-icon-brand,
     var(--cdr-color-text-button-primary)
   );
   --cdr-button-background-disabled: var(
@@ -121,7 +148,7 @@
     var(--cdr-color-background-button-default-disabled)
   );
   --cdr-button-text-disabled: var(
-    --cdr-color-action-text-disabled,
+    --cdr-color-action-text-neutral-faint,
     var(--cdr-color-text-button-primary-disabled)
   );
   --cdr-button-border-disabled: var(
@@ -129,10 +156,13 @@
     var(--cdr-color-border-button-default-disabled)
   );
   --cdr-button-fill-disabled: var(
-    --cdr-color-action-text-disabled,
+    --cdr-color-action-icon-neutral-faint,
     var(--cdr-color-text-button-primary-disabled)
   );
-  --cdr-button-active-inset: var(--cdr-color-border-button-primary-active-inset);
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-brand-subtle,
+    var(--cdr-color-border-button-primary-active-inset)
+  );
 }
 
 .cdr-button--secondary {
@@ -145,7 +175,7 @@
     --cdr-color-action-border-neutral-faint,
     var(--cdr-color-border-button-secondary-rest)
   );
-  --cdr-button-fill: var(--cdr-color-icon-default, var(--cdr-color-icon-default));
+  --cdr-button-fill: var(--cdr-color-action-icon-neutral, var(--cdr-color-icon-default));
   --cdr-button-background-hover: var(
     --cdr-color-action-surface-neutral,
     var(--cdr-color-background-button-secondary-hover)
@@ -159,7 +189,7 @@
     var(--cdr-color-border-button-secondary-hover)
   );
   --cdr-button-fill-hover: var(
-    --cdr-color-action-text-neutral-subtle,
+    --cdr-color-action-icon-neutral-subtle,
     var(--cdr-color-text-button-secondary-hover)
   );
   --cdr-button-background-focus-visible: var(
@@ -175,7 +205,7 @@
     var(--cdr-color-border-button-secondary-hover)
   );
   --cdr-button-fill-focus-visible: var(
-    --cdr-color-action-text-neutral-subtle,
+    --cdr-color-action-icon-neutral-subtle,
     var(--cdr-color-text-button-secondary-hover)
   );
   --cdr-button-background-active: var(
@@ -191,7 +221,7 @@
     var(--cdr-color-border-button-secondary-active)
   );
   --cdr-button-fill-active: var(
-    --cdr-color-action-text-neutral-bold,
+    --cdr-color-action-icon-neutral-bold,
     var(--cdr-color-text-button-secondary-active)
   );
   --cdr-button-background-disabled: var(
@@ -199,7 +229,7 @@
     var(--cdr-color-background-button-secondary-disabled)
   );
   --cdr-button-text-disabled: var(
-    --cdr-color-action-text-disabled-secondary,
+    --cdr-color-action-text-neutral-faint,
     var(--cdr-color-text-button-secondary-disabled)
   );
   --cdr-button-border-disabled: var(
@@ -207,10 +237,13 @@
     var(--cdr-color-border-button-default-disabled)
   );
   --cdr-button-fill-disabled: var(
-    --cdr-color-action-text-disabled-secondary,
+    --cdr-color-action-icon-neutral-faint,
     var(--cdr-color-text-button-secondary-disabled)
   );
-  --cdr-button-active-inset: var(--cdr-color-border-button-secondary-active-inset);
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-neutral-subtle,
+    var(--cdr-color-border-button-secondary-active-inset)
+  );
 }
 
 .cdr-button--dark {
@@ -227,7 +260,7 @@
     var(--cdr-color-border-button-dark-rest)
   );
   --cdr-button-fill: var(
-    --cdr-color-action-text-neutral-intense,
+    --cdr-color-action-icon-neutral-intense,
     var(--cdr-color-text-button-dark)
   );
   --cdr-button-background-hover: var(
@@ -243,7 +276,7 @@
     var(--cdr-color-border-button-dark-hover)
   );
   --cdr-button-fill-hover: var(
-    --cdr-color-action-text-neutral,
+    --cdr-color-action-icon-neutral,
     var(--cdr-color-text-button-dark-hover)
   );
   --cdr-button-background-focus-visible: var(
@@ -259,7 +292,7 @@
     var(--cdr-color-border-button-dark-hover)
   );
   --cdr-button-fill-focus-visible: var(
-    --cdr-color-action-text-neutral,
+    --cdr-color-action-icon-neutral,
     var(--cdr-color-text-button-dark-hover)
   );
   --cdr-button-background-active: var(
@@ -275,7 +308,7 @@
     var(--cdr-color-border-button-dark-active)
   );
   --cdr-button-fill-active: var(
-    --cdr-color-action-text-neutral-intense,
+    --cdr-color-action-icon-neutral-intense,
     var(--cdr-color-text-button-dark-active)
   );
   --cdr-button-background-disabled: var(
@@ -283,7 +316,7 @@
     var(--cdr-color-background-button-default-disabled)
   );
   --cdr-button-text-disabled: var(
-    --cdr-color-action-text-disabled,
+    --cdr-color-action-text-neutral-faint,
     var(--cdr-color-text-button-dark-disabled)
   );
   --cdr-button-border-disabled: var(
@@ -291,10 +324,13 @@
     var(--cdr-color-border-button-default-disabled)
   );
   --cdr-button-fill-disabled: var(
-    --cdr-color-action-text-disabled,
+    --cdr-color-action-icon-neutral-faint,
     var(--cdr-color-text-button-dark-disabled)
   );
-  --cdr-button-active-inset: var(--cdr-color-border-button-dark-active-inset);
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-neutral-intense,
+    var(--cdr-color-border-button-dark-active-inset)
+  );
 }
 
 .cdr-button--sale {
@@ -307,7 +343,7 @@
     --cdr-color-action-border-sale,
     var(--cdr-color-border-button-sale-rest)
   );
-  --cdr-button-fill: var(--cdr-color-action-text-sale, var(--cdr-color-text-button-sale));
+  --cdr-button-fill: var(--cdr-color-action-icon-sale, var(--cdr-color-text-button-sale));
   --cdr-button-background-hover: var(
     --cdr-color-action-surface-sale-faint,
     var(--cdr-color-background-button-sale-hover)
@@ -321,7 +357,7 @@
     var(--cdr-color-border-button-sale-hover)
   );
   --cdr-button-fill-hover: var(
-    --cdr-color-action-text-sale-faint,
+    --cdr-color-action-icon-sale-faint,
     var(--cdr-color-text-button-sale-hover)
   );
   --cdr-button-background-focus-visible: var(
@@ -337,7 +373,7 @@
     var(--cdr-color-border-button-sale-hover)
   );
   --cdr-button-fill-focus-visible: var(
-    --cdr-color-action-text-sale-faint,
+    --cdr-color-action-icon-sale-faint,
     var(--cdr-color-text-button-sale-hover)
   );
   --cdr-button-background-active: var(
@@ -353,7 +389,7 @@
     var(--cdr-color-border-button-sale-active)
   );
   --cdr-button-fill-active: var(
-    --cdr-color-action-text-sale,
+    --cdr-color-action-icon-sale,
     var(--cdr-color-text-button-sale-active)
   );
   --cdr-button-background-disabled: var(
@@ -361,7 +397,7 @@
     var(--cdr-color-background-button-default-disabled)
   );
   --cdr-button-text-disabled: var(
-    --cdr-color-action-text-disabled,
+    --cdr-color-action-text-neutral-faint,
     var(--cdr-color-text-button-sale-disabled)
   );
   --cdr-button-border-disabled: var(
@@ -369,10 +405,13 @@
     var(--cdr-color-border-button-default-disabled)
   );
   --cdr-button-fill-disabled: var(
-    --cdr-color-action-text-disabled,
+    --cdr-color-action-icon-neutral-faint,
     var(--cdr-color-text-button-sale-disabled)
   );
-  --cdr-button-active-inset: var(--cdr-color-border-button-sale-active-inset);
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-sale-subtle,
+    var(--cdr-color-border-button-sale-active-inset)
+  );
 }
 
 .cdr-button--small {

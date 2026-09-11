@@ -1,0 +1,22 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/formError/CdrFormError.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$form-error-defaults: (
+  error-text: var(
+      --cdr-color-feedback-text-error-bold,
+      var(--cdr-color-text-input-error, #{tokens.$cdr-color-text-input-error})
+    ),
+  error-text-icon: var(
+      --cdr-color-feedback-icon-error,
+      var(--cdr-color-text-input-error, #{tokens.$cdr-color-text-input-error})
+    ),
+);

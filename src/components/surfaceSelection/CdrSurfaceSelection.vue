@@ -28,6 +28,7 @@ const surfaceProps = computed(() => ({
   'aria-checked': props.checked,
   'aria-disabled': props.disabled,
   'data-loading': props.loading,
+  ...(props.tag === 'button' ? { disabled: props.disabled } : {}),
 }));
 
 // Merge default layout with any passed layout props
