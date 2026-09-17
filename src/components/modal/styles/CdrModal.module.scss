@@ -1,3 +1,5 @@
+@use './vars/CdrModal.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 $modal-animation-duration: 150ms;
@@ -20,7 +22,7 @@ $modal-animation-duration: 150ms;
     // ITEM_DOC: Background color of the modal overlay
     background-color: var(
       --cdr-modal-overlay-background-color,
-      var(--cdr-color-background-modal-overlay, #{tokens.$cdr-color-background-modal-overlay})
+      var(--cdr-color-background-modal-overlay, #{map.get(maps.$modal-defaults, scrim)})
     );
     backdrop-filter: blur(tokens.$cdr-space-one-x);
     inset: 0;
@@ -44,7 +46,7 @@ $modal-animation-duration: 150ms;
     // ITEM_DOC: Background color of the content wrap
     background-color: var(
       --cdr-modal-content-wrap-background-color,
-      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+      #{map.get(maps.$modal-defaults, surface)}
     );
     display: flex;
     flex-direction: column;

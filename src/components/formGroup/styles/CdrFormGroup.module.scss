@@ -1,3 +1,5 @@
+@use './vars/CdrFormGroup.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrFormGroup.vars' as vars;
 @use '../../formError/styles/CdrFormError.module';
@@ -14,7 +16,7 @@
 
     .cdr-form-group__optional,
     .cdr-form-group__required {
-      color: tokens.$cdr-color-text-disabled;
+      color: map.get(maps.$form-group-defaults, text-disabled);
     }
   }
 

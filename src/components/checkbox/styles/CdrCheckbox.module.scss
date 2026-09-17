@@ -1,3 +1,5 @@
+@use './vars/CdrCheckbox.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrCheckbox.vars' as vars;
 @use '../../labelWrapper/styles/CdrLabelWrapper.module';
@@ -31,10 +33,7 @@
         // ITEM_DOC: Fill color of the checkbox check icon when checked
         fill: var(
           --cdr-form-figure-checkbox-fill-checked,
-          var(
-            --cdr-color-icon-checkbox-default-selected,
-            #{tokens.$cdr-color-icon-checkbox-default-selected}
-          )
+          #{map.get(maps.$checkbox-defaults, icon-checked)}
         );
       }
     }
@@ -42,7 +41,7 @@
 
   // cdr-checkbox__svg-box
   &__input[indeterminate] ~ .cdr-label-wrapper__figure {
-    box-shadow: inset 0 0 0 1px tokens.$cdr-color-border-input-default-selected;
+    box-shadow: inset 0 0 0 1px map.get(maps.$checkbox-defaults, border-checked);
 
     &::after {
       content: '';
@@ -52,7 +51,7 @@
       transform: translate(-50%, -50%);
       width: 8px;
       height: 2px;
-      background-color: tokens.$cdr-color-background-input-default-selected;
+      background-color: map.get(maps.$checkbox-defaults, surface-checked);
       border-radius: tokens.$cdr-radius-soft;
     }
   }
@@ -73,20 +72,17 @@
         // ITEM_DOC: Fill color of the checkbox check icon when checked and hovered
         fill: var(
           --cdr-form-figure-checkbox-fill-checked-hover,
-          var(
-            --cdr-color-icon-checkbox-default-selected-hover,
-            #{tokens.$cdr-color-icon-checkbox-default-selected-hover}
-          )
+          #{map.get(maps.$checkbox-defaults, icon-checked-hover)}
         );
       }
 
       /* Hover + Indeterminate
       ========== */
       &[indeterminate] ~ .cdr-label-wrapper__figure {
-        box-shadow: inset 0 0 0 2px tokens.$cdr-color-border-input-default-selected-hover;
+        box-shadow: inset 0 0 0 2px map.get(maps.$checkbox-defaults, border-checked-hover);
 
         &::after {
-          background-color: tokens.$cdr-color-icon-checkbox-default-selected-hover;
+          background-color: map.get(maps.$checkbox-defaults, icon-checked-hover);
         }
       }
     }
@@ -127,10 +123,10 @@
     ========== */
     &[indeterminate] {
       ~ .cdr-label-wrapper__figure {
-        box-shadow: inset 0 0 0 1px tokens.$cdr-color-border-input-default-disabled !important;
+        box-shadow: inset 0 0 0 1px map.get(maps.$checkbox-defaults, border-disabled) !important;
 
         &::after {
-          background-color: tokens.$cdr-color-background-input-default-disabled !important;
+          background-color: map.get(maps.$checkbox-defaults, surface-disabled) !important;
         }
       }
     }
@@ -149,7 +145,7 @@
         // ITEM_DOC: Fill color of the checkbox check icon when active
         fill: var(
           --cdr-form-figure-checkbox-fill-active,
-          var(--cdr-color-icon-checkbox-default-selected-active)
+          #{map.get(maps.$checkbox-defaults, icon-active)}
         );
       }
     }

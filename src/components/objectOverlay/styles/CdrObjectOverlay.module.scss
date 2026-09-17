@@ -1,3 +1,4 @@
+@use './vars/CdrObjectOverlay.maps' as maps;
 @use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
@@ -57,36 +58,60 @@ $positions: (
 
 // Dark theme gradients (default)
 $dark-gradients: (
-  'to-top': linear-gradient(to top, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
-  'to-bottom': linear-gradient(to bottom, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
-  'to-left': linear-gradient(to left, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
-  'to-right': linear-gradient(to right, black 0%, rgb(0, 0, 0, 0.5) 20%, transparent 40%),
+  'to-top': linear-gradient(
+      to top,
+      map.get(maps.$object-overlay-defaults, dark-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, dark-stop) 50%, transparent) 20%,
+      transparent 40%
+    ),
+  'to-bottom': linear-gradient(
+      to bottom,
+      map.get(maps.$object-overlay-defaults, dark-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, dark-stop) 50%, transparent) 20%,
+      transparent 40%
+    ),
+  'to-left': linear-gradient(
+      to left,
+      map.get(maps.$object-overlay-defaults, dark-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, dark-stop) 50%, transparent) 20%,
+      transparent 40%
+    ),
+  'to-right': linear-gradient(
+      to right,
+      map.get(maps.$object-overlay-defaults, dark-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, dark-stop) 50%, transparent) 20%,
+      transparent 40%
+    ),
 );
 
 // Light theme gradients
 $light-gradients: (
   'to-top': linear-gradient(
       to top,
-      white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      map.get(maps.$object-overlay-defaults, light-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, light-midpoint) 50%, transparent)
+        20%,
       transparent 40%
     ),
   'to-bottom': linear-gradient(
       to bottom,
-      white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      map.get(maps.$object-overlay-defaults, light-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, light-midpoint) 50%, transparent)
+        20%,
       transparent 40%
     ),
   'to-left': linear-gradient(
       to left,
-      white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      map.get(maps.$object-overlay-defaults, light-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, light-midpoint) 50%, transparent)
+        20%,
       transparent 40%
     ),
   'to-right': linear-gradient(
       to right,
-      white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      map.get(maps.$object-overlay-defaults, light-stop) 0%,
+      color-mix(in srgb, map.get(maps.$object-overlay-defaults, light-midpoint) 50%, transparent)
+        20%,
       transparent 40%
     ),
 );

@@ -1,0 +1,39 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/fulfillmentTile/CdrFulfillmentTile.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$fulfillment-tile-defaults: (
+  icon-surface: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    ),
+  icon-halo: white,
+  icon: var(
+      --cdr-color-feedback-icon-neutral,
+      var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default})
+    ),
+  icon-info: var(
+      --cdr-color-feedback-icon-info,
+      var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info})
+    ),
+  icon-warning: var(
+      --cdr-color-feedback-icon-warning,
+      var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning})
+    ),
+  icon-success: var(
+      --cdr-color-feedback-icon-success,
+      var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success})
+    ),
+  icon-error: var(
+      --cdr-color-feedback-icon-error,
+      var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error})
+    ),
+);

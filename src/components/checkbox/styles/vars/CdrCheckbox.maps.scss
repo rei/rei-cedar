@@ -1,0 +1,113 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/checkbox/CdrCheckbox.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$checkbox-defaults: (
+  icon-checked: var(
+      --cdr-color-control-icon-neutral-intense,
+      var(
+        --cdr-color-icon-checkbox-default-selected,
+        #{tokens.$cdr-color-icon-checkbox-default-selected}
+      )
+    ),
+  border-checked: var(
+      --cdr-color-control-border-neutral-bold,
+      var(
+        --cdr-color-border-input-default-selected,
+        #{tokens.$cdr-color-border-input-default-selected}
+      )
+    ),
+  surface-checked: var(
+      --cdr-color-control-surface-neutral-bold,
+      var(
+        --cdr-color-background-input-default-selected,
+        #{tokens.$cdr-color-background-input-default-selected}
+      )
+    ),
+  icon-checked-hover: var(
+      --cdr-color-control-icon-neutral-intense,
+      var(
+        --cdr-color-icon-checkbox-default-selected-hover,
+        #{tokens.$cdr-color-icon-checkbox-default-selected-hover}
+      )
+    ),
+  border-checked-hover: var(
+      --cdr-color-control-border-neutral-intense,
+      var(
+        --cdr-color-border-input-default-selected-hover,
+        #{tokens.$cdr-color-border-input-default-selected-hover}
+      )
+    ),
+  border-disabled: var(
+      --cdr-color-control-border-neutral-faint,
+      var(
+        --cdr-color-border-input-default-disabled,
+        #{tokens.$cdr-color-border-input-default-disabled}
+      )
+    ),
+  surface-disabled: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-input-default-disabled,
+        #{tokens.$cdr-color-background-input-default-disabled}
+      )
+    ),
+  icon-active: var(
+      --cdr-color-control-icon-neutral-bold,
+      var(
+        --cdr-color-icon-checkbox-default-selected-active,
+        #{tokens.$cdr-color-icon-checkbox-default-selected-active}
+      )
+    ),
+  border-hover: var(
+      --cdr-color-control-border-neutral-bold,
+      var(--cdr-color-border-input-default-hover, #{tokens.$cdr-color-border-input-default-hover})
+    ),
+  surface-hover: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-input-default-hover,
+        #{tokens.$cdr-color-background-input-default-hover}
+      )
+    ),
+  surface-checked-hover: var(
+      --cdr-color-control-surface-neutral-intense,
+      var(
+        --cdr-color-background-input-default-selected-hover,
+        #{tokens.$cdr-color-background-input-default-selected-hover}
+      )
+    ),
+  border-active: var(
+      --cdr-color-control-border-neutral-bold,
+      var(--cdr-color-border-input-default-active, #{tokens.$cdr-color-border-input-default-active})
+    ),
+  surface-active: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-input-default-active,
+        #{tokens.$cdr-color-background-input-default-active}
+      )
+    ),
+  surface-focus: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-input-default-focus,
+        #{tokens.$cdr-color-background-input-default-focus}
+      )
+    ),
+  surface-checked-focus: var(
+      --cdr-color-control-surface-neutral-bold,
+      var(
+        --cdr-color-background-input-default-selected-focus,
+        #{tokens.$cdr-color-background-input-default-selected-focus}
+      )
+    ),
+);

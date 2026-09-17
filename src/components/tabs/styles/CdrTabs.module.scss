@@ -1,3 +1,5 @@
+@use './vars/CdrTabs.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './CdrTabPanel.module';
 
@@ -20,6 +22,8 @@
 }
 
 .cdr-tabs {
+  --cdr-tabs-gradient-surface: #{map.get(maps.$tabs-defaults, gradient-surface)};
+
   /* overflow-x: auto; */
   display: flex;
   flex-flow: column;
@@ -34,8 +38,8 @@
 
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgb(0, 0, 0, 0.5);
-    box-shadow: 0 0 1px rgb(255, 255, 255, 0.5);
+    background-color: #{map.get(maps.$tabs-defaults, scrollbar-thumb)};
+    box-shadow: 0 0 1px #{map.get(maps.$tabs-defaults, scrollbar-edge)};
   }
 
   &__header-container {
@@ -46,10 +50,7 @@
 
     // ITEM_DOC: Keyline color of the cdr-tabs header container
     border-bottom: 1px solid
-      var(
-        --cdr-tabs-header-container-keyline-color,
-        var(--cdr-color-border-tab-keyline-rest, #{tokens.$cdr-color-border-tab-keyline-rest})
-      );
+      var(--cdr-tabs-header-container-keyline-color, #{map.get(maps.$tabs-defaults, keyline)});
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 
@@ -84,10 +85,7 @@
     display: block;
 
     // ITEM_DOC: Text color in a tab
-    color: var(
-      --cdr-tabs-tab-text-color,
-      var(--cdr-color-text-tab-rest, #{tokens.$cdr-color-text-tab-rest})
-    );
+    color: var(--cdr-tabs-tab-text-color, #{map.get(maps.$tabs-defaults, text)});
     font-weight: 300;
     text-decoration: none;
     padding: tokens.$cdr-space-inset-half-x-stretch;
@@ -96,10 +94,7 @@
 
     &-active {
       // ITEM_DOC: Text color of an active tab
-      color: var(
-        --cdr-tabs-tab-text-color-active,
-        var(--cdr-color-text-tab-active, #{tokens.$cdr-color-text-tab-active})
-      );
+      color: var(--cdr-tabs-tab-text-color-active, #{map.get(maps.$tabs-defaults, text-selected)});
       font-weight: 500;
     }
 
@@ -121,7 +116,7 @@
       // ITEM_DOC: Text color of a tab on active, focus, or hover
       color: var(
         --cdr-tabs-tab-text-color-interaction,
-        var(--cdr-color-text-tab-hover, #{tokens.$cdr-color-text-tab-hover})
+        #{map.get(maps.$tabs-defaults, text-interaction)}
       );
     }
 
@@ -132,7 +127,7 @@
       // ITEM_DOC: Text color of a disabled tab
       color: var(
         --cdr-tabs-tab-text-color-disabled,
-        var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled})
+        #{map.get(maps.$tabs-defaults, text-disabled)}
       );
 
       &:active,
@@ -140,7 +135,7 @@
       &:focus {
         color: var(
           --cdr-tabs-tab-text-color-disabled,
-          var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled})
+          #{map.get(maps.$tabs-defaults, text-disabled)}
         );
         cursor: not-allowed;
       }
@@ -187,7 +182,7 @@
     // ITEM_DOC: Background color of the cdr-tabs keyline
     background-color: var(
       --cdr-tabs-keyline-background-color,
-      var(--cdr-color-border-tab-keyline-active, #{tokens.$cdr-color-border-tab-keyline-active})
+      #{map.get(maps.$tabs-defaults, keyline-selected)}
     );
     transition: tokens.$cdr-duration-4-x tokens.$cdr-timing-function-ease-out;
   }

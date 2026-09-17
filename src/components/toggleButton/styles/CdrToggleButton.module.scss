@@ -1,3 +1,5 @@
+@use './vars/CdrToggleButton.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrToggleButton.vars' as vars;
 
@@ -14,19 +16,13 @@
     // ITEM_DOC: Default text color of the cdr-toggle-button
     color: var(
       --cdr-toggle-button-color-default-rest,
-      var(
-        --cdr-color-text-toggle-button-default-rest,
-        #{tokens.$cdr-color-text-toggle-button-default-rest}
-      )
+      #{map.get(maps.$toggle-button-defaults, text)}
     );
 
     // ITEM_DOC: Default background color of the cdr-toggle-button
     background-color: var(
       --cdr-toggle-button-background-color-default-rest,
-      var(
-        --cdr-color-background-toggle-button-default-rest,
-        #{tokens.$cdr-color-background-toggle-button-default-rest}
-      )
+      #{map.get(maps.$toggle-button-defaults, surface)}
     );
     width: 100%;
     height: 100%;
@@ -40,19 +36,13 @@
       border: 0.3rem solid
         var(
           --cdr-toggle-button-border-color-default-focus,
-          var(
-            --cdr-color-border-toggle-button-default-focus,
-            #{tokens.$cdr-color-border-toggle-button-default-focus}
-          )
+          #{map.get(maps.$toggle-button-defaults, border-focus)}
         );
 
       // ITEM_DOC: Focus background color of the cdr-toggle-button
       background-color: var(
         --cdr-toggle-button-background-color-default-focus,
-        var(
-          --cdr-color-background-toggle-button-default-focus,
-          #{tokens.$cdr-color-background-toggle-button-default-focus}
-        )
+        #{map.get(maps.$toggle-button-defaults, surface-focus)}
       );
     }
 
@@ -60,7 +50,7 @@
       // ITEM_DOC: Default fill color of the cdr-toggle-button's svg
       fill: var(
         --cdr-toggle-button-icon-fill-default,
-        var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+        #{map.get(maps.$toggle-button-defaults, icon)}
       );
     }
 
@@ -68,10 +58,7 @@
       // ITEM_DOC: Selected background color of the cdr-toggle-button at rest
       background-color: var(
         --cdr-toggle-button-background-color-default-selected-rest,
-        var(
-          --cdr-color-background-toggle-button-default-selected-rest,
-          #{tokens.$cdr-color-background-toggle-button-default-selected-rest}
-        )
+        #{map.get(maps.$toggle-button-defaults, surface-selected)}
       );
       padding: 0.8rem 1.4rem;
 
@@ -79,10 +66,7 @@
       border: 0.2rem solid
         var(
           --cdr-toggle-button-border-color-default-selected-rest,
-          var(
-            --cdr-color-border-toggle-button-default-selected-rest,
-            #{tokens.$cdr-color-border-toggle-button-default-selected-rest}
-          )
+          #{map.get(maps.$toggle-button-defaults, border-selected)}
         );
       border-radius: 0.2rem;
       font-weight: 500;
@@ -92,7 +76,7 @@
         // ITEM_DOC: Selected fill color of the cdr-toggle-button's svg at rest
         fill: var(
           --cdr-toggle-button-icon-fill-selected-rest,
-          var(--cdr-color-icon-emphasis, #{tokens.$cdr-color-icon-emphasis})
+          #{map.get(maps.$toggle-button-defaults, icon-selected)}
         );
       }
 
@@ -103,10 +87,7 @@
         border: 0.3rem solid
           var(
             --cdr-toggle-button-border-color-default-selected-focus,
-            var(
-              --cdr-color-border-toggle-button-default-selected-focus,
-              #{tokens.$cdr-color-border-toggle-button-default-selected-focus}
-            )
+            #{map.get(maps.$toggle-button-defaults, border-selected-focus)}
           );
         border-radius: 0.2rem;
       }
@@ -115,10 +96,7 @@
         // ITEM_DOC: Selected background color of the cdr-toggle-button on hover
         background-color: var(
           --cdr-toggle-button-background-color-default-selected-hover,
-          var(
-            --cdr-color-background-toggle-button-default-selected-hover,
-            #{tokens.$cdr-color-background-toggle-button-default-selected-hover}
-          )
+          #{map.get(maps.$toggle-button-defaults, surface-selected-hover)}
         );
       }
     }
@@ -127,10 +105,7 @@
       // ITEM_DOC: Background color of the cdr-toggle-button on hover
       background-color: var(
         --cdr-toggle-button-background-color-default-hover,
-        var(
-          --cdr-color-background-toggle-button-default-hover,
-          #{tokens.$cdr-color-background-toggle-button-default-hover}
-        )
+        #{map.get(maps.$toggle-button-defaults, surface-hover)}
       );
       padding: 0.7rem 1.3rem;
       border-radius: 0.2rem;
@@ -140,10 +115,7 @@
         border: 0.3rem solid
           var(
             --cdr-toggle-button-border-color-hover-focus,
-            var(
-              --cdr-color-border-toggle-button-default-selected-focus,
-              #{tokens.$cdr-color-border-toggle-button-default-selected-focus}
-            )
+            #{map.get(maps.$toggle-button-defaults, border-selected-focus)}
           );
         padding: 0.7rem 1.3rem;
       }

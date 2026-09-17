@@ -1,9 +1,11 @@
+@use './vars/CdrAbstract.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 .cdr-abstract {
   @include tokens.cdr-text-subheading-sans-500;
 
-  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
+  color: var(--cdr-text-color, #{map.get(maps.$abstract-defaults, text)});
   margin: 0;
   font-size: var(--cdr-type-scale-1);
   line-height: var(--cdr-line-height-ratio-subheading-sans-1);

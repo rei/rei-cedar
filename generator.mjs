@@ -1,11 +1,11 @@
 #!/usr/bin/env/ node
 
-const chalk = require('chalk');
-const _ = require('lodash');
-const inquirer = require('inquirer');
-const fs = require('fs-extra');
-const path = require('path');
-const walk = require('klaw-sync');
+import chalk from 'chalk';
+import _ from 'lodash';
+import inquirer from 'inquirer';
+import fs from 'fs-extra';
+import path from 'path';
+import walk from 'klaw-sync';
 
 function resolve(dir) {
   return path.join(__dirname, dir);

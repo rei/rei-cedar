@@ -1,9 +1,21 @@
+@use 'sass:map';
+@use './vars/CdrCard.maps' as maps;
 @use './vars/CdrCard.vars' as vars;
 
 .cdr-card {
+  // Default (canvas) colors from the contract map
+  @each $key, $value in map.get(maps.$card-colors, default) {
+    --cdr-card-#{$key}: #{$value};
+  }
+
   @include vars.cdr-card-base-mixin;
 }
 
 :global(.cdr-card__link) {
+  // Link overlay colors from the contract map
+  @each $key, $value in map.get(maps.$card-colors, link) {
+    --cdr-card-link-#{$key}: #{$value};
+  }
+
   @include vars.cdr-card-link-mixin;
 }

@@ -1,3 +1,5 @@
+@use './CdrQuote.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-quote-base-container() {
@@ -9,10 +11,7 @@
     @include tokens.cdr-text-utility-sans-100;
 
     // ITEM_DOC: Text color of a cdr-quote citation
-    color: var(
-      --cdr-quote-cite-text-color,
-      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
-    );
+    color: var(--cdr-quote-cite-text-color, #{map.get(maps.$quote-defaults, text-secondary)});
     display: block;
   }
 }
@@ -25,10 +24,7 @@
   letter-spacing: -0.08rem;
 
   // ITEM_DOC: Text color of cdr-quote content
-  color: var(
-    --cdr-quote-content-text-color,
-    var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-  );
+  color: var(--cdr-quote-content-text-color, #{map.get(maps.$quote-defaults, text)});
   margin: 0;
 
   @include tokens.cdr-xs-mq-only {
@@ -47,7 +43,7 @@
   // ITEM_DOC: Border color of a cdr-quote pull container
   border-color: var(
     --cdr-quote-pull-container-border-color,
-    var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
+    #{map.get(maps.$quote-defaults, border)}
   );
 
   @include tokens.cdr-xs-mq-up {

@@ -1,3 +1,5 @@
+@use './CdrRadio.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @mixin cdr-form-figure-radio-base-mixin() {
@@ -18,31 +20,19 @@
 @mixin cdr-form-figure-radio-checked-mixin() {
   // ITEM_DOC: Box-shadow color of cdr-radio when selected
   box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-radio-box-shadow-color-selected,
-      var(
-        --cdr-color-border-input-default-selected,
-        #{tokens.$cdr-color-border-input-default-selected}
-      )
-    );
+    var(--cdr-radio-box-shadow-color-selected, #{map.get(maps.$radio-defaults, border-checked)});
 
   // ITEM_DOC: Background color of cdr-radio when selected
   background-color: var(
     --cdr-radio-background-color-selected,
-    var(
-      --cdr-color-background-input-default-selected,
-      #{tokens.$cdr-color-background-input-default-selected}
-    )
+    #{map.get(maps.$radio-defaults, surface-checked)}
   );
 
   &::after {
     // ITEM_DOC: Background color of the inner circle of cdr-radio when selected
     background-color: var(
       --cdr-radio-inner-circle-background-color-selected,
-      var(
-        --cdr-color-icon-checkbox-default-selected,
-        #{tokens.$cdr-color-icon-checkbox-default-selected}
-      )
+      #{map.get(maps.$radio-defaults, icon-checked-dot)}
     );
   }
 }
@@ -53,23 +43,14 @@
   // ITEM_DOC: Box-shadow color of cdr-radio on hover
   box-shadow:
     inset 0 0 0 1px
-      var(
-        --cdr-radio-box-shadow-color-hover,
-        var(--cdr-color-border-input-default-hover, #{tokens.$cdr-color-border-input-default-hover})
-      ),
+      var(--cdr-radio-box-shadow-color-hover, #{map.get(maps.$radio-defaults, border-hover)}),
     0 0 0 1px
-      var(
-        --cdr-radio-box-shadow-color-hover,
-        var(--cdr-color-border-input-default-hover, #{tokens.$cdr-color-border-input-default-hover})
-      );
+      var(--cdr-radio-box-shadow-color-hover, #{map.get(maps.$radio-defaults, border-hover)});
 
   // ITEM_DOC: Background color of cdr-radio on hover
   background-color: var(
     --cdr-radio-background-color-hover,
-    var(
-      --cdr-color-background-input-default-hover,
-      #{tokens.$cdr-color-background-input-default-hover}
-    )
+    #{map.get(maps.$radio-defaults, surface-hover)}
   );
 }
 
@@ -79,27 +60,18 @@
     inset 0 0 0 1px
       var(
         --cdr-radio-box-shadow-color-selected-hover,
-        var(
-          --cdr-color-border-input-default-selected-hover,
-          #{tokens.$cdr-color-border-input-default-selected-hover}
-        )
+        #{map.get(maps.$radio-defaults, border-checked-hover)}
       ),
     0 0 0 1px
       var(
         --cdr-radio-box-shadow-color-selected-hover,
-        var(
-          --cdr-color-border-input-default-selected-hover,
-          #{tokens.$cdr-color-border-input-default-selected-hover}
-        )
+        #{map.get(maps.$radio-defaults, border-checked-hover)}
       );
 
   // ITEM_DOC: Background color of cdr-radio when selected on hover
   background-color: var(
     --cdr-radio-background-color-selected-hover,
-    var(
-      --cdr-color-background-input-default-selected-hover,
-      #{tokens.$cdr-color-background-input-default-selected-hover}
-    )
+    #{map.get(maps.$radio-defaults, surface-checked-hover)}
   );
 }
 
@@ -108,31 +80,19 @@
 
   // ITEM_DOC: Box-shadow color of cdr-radio when disabled
   box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-radio-box-shadow-color-disabled,
-      var(
-        --cdr-color-border-input-default-disabled,
-        #{tokens.$cdr-color-border-input-default-disabled}
-      )
-    ) !important;
+    var(--cdr-radio-box-shadow-color-disabled, #{map.get(maps.$radio-defaults, border-disabled)}) !important;
 
   // ITEM_DOC: Background color of cdr-radio when disabled
   background-color: var(
     --cdr-radio-background-color-disabled,
-    var(
-      --cdr-color-background-input-default-disabled,
-      #{tokens.$cdr-color-background-input-default-disabled}
-    )
+    #{map.get(maps.$radio-defaults, surface-disabled)}
   ) !important;
 
   &::after {
     // ITEM_DOC: Background color of the inner circle of cdr-radio when disabled
     background-color: var(
       --cdr-radio-inner-circle-background-color-disabled,
-      var(
-        --cdr-color-background-input-default-disabled,
-        #{tokens.$cdr-color-background-input-default-disabled}
-      )
+      #{map.get(maps.$radio-defaults, surface-disabled-dot)}
     ) !important;
   }
 }
@@ -142,10 +102,7 @@
     // ITEM_DOC: Background color of the inner circle of cdr-radio when selected and disabled
     background-color: var(
       --cdr-radio-inner-circle-background-color-selected-disabled,
-      var(
-        --cdr-color-background-input-default-disabled,
-        #{tokens.$cdr-color-background-input-default-disabled}
-      )
+      #{map.get(maps.$radio-defaults, surface-disabled-dot)}
     ) !important;
   }
 }
@@ -154,29 +111,14 @@
   // ITEM_DOC: Box-shadow color of cdr-radio on focus
   box-shadow:
     inset 0 0 0 1px
-      var(
-        --cdr-radio-box-shadow-color-focus,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
-      ),
+      var(--cdr-radio-box-shadow-color-focus, #{map.get(maps.$radio-defaults, border-active)}),
     0 0 0 1px
-      var(
-        --cdr-radio-box-shadow-color-focus,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
-      );
+      var(--cdr-radio-box-shadow-color-focus, #{map.get(maps.$radio-defaults, border-active)});
 
   // ITEM_DOC: Background color of cdr-radio on focus
   background-color: var(
     --cdr-radio-background-color-focus,
-    var(
-      --cdr-color-background-input-default-focus,
-      #{tokens.$cdr-color-background-input-default-focus}
-    )
+    #{map.get(maps.$radio-defaults, surface-focus)}
   );
 }
 
@@ -184,10 +126,7 @@
   // ITEM_DOC: Background color of cdr-radio when selected on focus
   background-color: var(
     --cdr-radio-background-color-selected-focus,
-    var(
-      --cdr-color-background-input-default-selected-focus,
-      #{tokens.$cdr-color-background-input-default-selected-focus}
-    )
+    #{map.get(maps.$radio-defaults, surface-checked-focus)}
   );
 }
 
@@ -195,39 +134,21 @@
   // ITEM_DOC: Box-shadow color of cdr-radio when active
   box-shadow:
     inset 0 0 0 1px
-      var(
-        --cdr-radio-box-shadow-color-active,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
-      ),
+      var(--cdr-radio-box-shadow-color-active, #{map.get(maps.$radio-defaults, border-active)}),
     0 0 0 1px
-      var(
-        --cdr-radio-box-shadow-color-active,
-        var(
-          --cdr-color-border-input-default-active,
-          #{tokens.$cdr-color-border-input-default-active}
-        )
-      );
+      var(--cdr-radio-box-shadow-color-active, #{map.get(maps.$radio-defaults, border-active)});
 
   // ITEM_DOC: Background color of cdr-radio when active
   background-color: var(
     --cdr-radio-background-color-active,
-    var(
-      --cdr-color-background-input-default-active,
-      #{tokens.$cdr-color-background-input-default-active}
-    )
+    #{map.get(maps.$radio-defaults, surface-active)}
   );
 
   &::after {
     // ITEM_DOC: Background color of the inner circle of cdr-radio when selected and active
     background-color: var(
       --cdr-radio-inner-circle-background-color-selected-active,
-      var(
-        --cdr-color-icon-checkbox-default-selected-active,
-        #{tokens.$cdr-color-icon-checkbox-default-selected-active}
-      )
+      #{map.get(maps.$radio-defaults, icon-active-dot)}
     );
   }
 }

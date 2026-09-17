@@ -1,0 +1,20 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/objectOverlay/CdrObjectOverlay.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$object-overlay-defaults: (
+  dark-stop: var(--cdr-color-surface-neutral-intense, black),
+  light-stop: var(--cdr-color-surface-neutral-trace, white),
+  light-midpoint: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    ),
+);

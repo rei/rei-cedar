@@ -1,0 +1,97 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/toggleButton/CdrToggleButton.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$toggle-button-defaults: (
+  // Color
+  text: var(
+      --cdr-color-selection-text-neutral,
+      var(
+        --cdr-color-text-toggle-button-default-rest,
+        #{tokens.$cdr-color-text-toggle-button-default-rest}
+      )
+    ),
+  surface: var(
+      --cdr-color-selection-surface-neutral-faint,
+      var(
+        --cdr-color-background-toggle-button-default-rest,
+        #{tokens.$cdr-color-background-toggle-button-default-rest}
+      )
+    ),
+  border-focus: var(
+      --cdr-color-selection-border-neutral,
+      var(
+        --cdr-color-border-toggle-button-default-focus,
+        #{tokens.$cdr-color-border-toggle-button-default-focus}
+      )
+    ),
+  surface-focus: var(
+      --cdr-color-selection-surface-neutral,
+      var(
+        --cdr-color-background-toggle-button-default-focus,
+        #{tokens.$cdr-color-background-toggle-button-default-focus}
+      )
+    ),
+  icon: var(
+      --cdr-color-selection-icon-neutral,
+      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+    ),
+  surface-selected: var(
+      --cdr-color-selection-surface-neutral-subtle,
+      var(
+        --cdr-color-background-toggle-button-default-selected-rest,
+        #{tokens.$cdr-color-background-toggle-button-default-selected-rest}
+      )
+    ),
+  border-selected: var(
+      --cdr-color-selection-border-neutral-subtle,
+      var(
+        --cdr-color-border-toggle-button-default-selected-rest,
+        #{tokens.$cdr-color-border-toggle-button-default-selected-rest}
+      )
+    ),
+  icon-selected: var(
+      --cdr-color-selection-icon-neutral-bold,
+      var(--cdr-color-icon-emphasis, #{tokens.$cdr-color-icon-emphasis})
+    ),
+  border-selected-focus: var(
+      --cdr-color-selection-border-neutral-subtle,
+      var(
+        --cdr-color-border-toggle-button-default-selected-focus,
+        #{tokens.$cdr-color-border-toggle-button-default-selected-focus}
+      )
+    ),
+  surface-selected-hover: var(
+      --cdr-color-selection-surface-neutral-subtle,
+      var(
+        --cdr-color-background-toggle-button-default-selected-hover,
+        #{tokens.$cdr-color-background-toggle-button-default-selected-hover}
+      )
+    ),
+  surface-hover: var(
+      --cdr-color-selection-surface-neutral,
+      var(
+        --cdr-color-background-toggle-button-default-hover,
+        #{tokens.$cdr-color-background-toggle-button-default-hover}
+      )
+    ),
+  group-border: var(
+      --cdr-color-border-neutral-subtle,
+      var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
+    ),
+  group-surface: var(
+      --cdr-color-surface-neutral-faint,
+      var(
+        --cdr-color-background-toggle-group-default-rest,
+        #{tokens.$cdr-color-background-toggle-group-default-rest}
+      )
+    )
+);

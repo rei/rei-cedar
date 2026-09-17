@@ -1,3 +1,5 @@
+@use './vars/CdrSwitch.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 .cdr-switch {
@@ -11,53 +13,34 @@
     overflow: hidden;
 
     // ITEM_DOC: Border of the cdr-switch button
-    border: 0.1rem solid
-      var(
-        --cdr-switch-border-color,
-        var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
-      );
+    border: 0.1rem solid var(--cdr-switch-border-color, #{map.get(maps.$switch-defaults, border)});
 
     // ITEM_DOC: Background color of the cdr-switch button
     background-color: var(
       --cdr-switch-background-color,
-      var(
-        --cdr-color-background-switch-default-rest,
-        #{tokens.$cdr-color-background-switch-default-rest}
-      )
+      #{map.get(maps.$switch-defaults, surface)}
     );
 
     .cdr-switch__button-icon {
       // ITEM_DOC: Fill of the cdr-switch x and check icons
-      fill: var(
-        --cdr-switch-icon-fill,
-        var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-      );
+      fill: var(--cdr-switch-icon-fill, #{map.get(maps.$switch-defaults, icon)});
     }
 
     &:focus {
       // ITEM_DOC: Box-shadow of the cdr-switch button on focus
       box-shadow: 0 0 0 0.2rem
-        var(
-          --cdr-switch-box-shadow-color-focus,
-          var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
-        );
+        var(--cdr-switch-box-shadow-color-focus, #{map.get(maps.$switch-defaults, border)});
       outline: none;
 
       // ITEM_DOC: Background color of the cdr-switch button on focus
       background-color: var(
         --cdr-switch-background-color-focus,
-        var(
-          --cdr-color-background-switch-default-focus,
-          #{tokens.$cdr-color-background-switch-default-focus}
-        )
+        #{map.get(maps.$switch-defaults, surface-focus)}
       );
 
       .cdr-switch__button-icon {
         // ITEM_DOC: Fill of the cdr-switch x and check icons on focus
-        fill: var(
-          --cdr-switch-icon-fill-focus,
-          var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-        );
+        fill: var(--cdr-switch-icon-fill-focus, #{map.get(maps.$switch-defaults, icon)});
       }
 
       .cdr-switch__handle {
@@ -65,10 +48,7 @@
           // ITEM_DOC: Background color of the cdr-switch handle before on focus
           background-color: var(
             --cdr-switch-handle-background-color-focus,
-            var(
-              --cdr-color-background-switch-handle-default-focus,
-              #{tokens.$cdr-color-background-switch-handle-default-focus}
-            )
+            #{map.get(maps.$switch-defaults, handle-surface-focus)}
           );
         }
       }
@@ -77,29 +57,17 @@
     &:hover:not(:focus) {
       // ITEM_DOC: Border of the cdr-switch button on hover when not in focus
       border: 0.1rem solid
-        var(
-          --cdr-switch-hover-border-color,
-          var(
-            --cdr-color-border-switch-default-hover,
-            #{tokens.$cdr-color-border-switch-default-hover}
-          )
-        );
+        var(--cdr-switch-hover-border-color, #{map.get(maps.$switch-defaults, border-hover)});
 
       // ITEM_DOC: Background color of the cdr-switch button on hover when not in focus
       background-color: var(
         --cdr-switch-background-color-hover,
-        var(
-          --cdr-color-background-switch-default-hover,
-          #{tokens.$cdr-color-background-switch-default-hover}
-        )
+        #{map.get(maps.$switch-defaults, surface-hover)}
       );
 
       .cdr-switch__button-icon {
         // ITEM_DOC: Fill of the cdr-switch x and check icons on hover when not in focus
-        fill: var(
-          --cdr-switch-icon-fill-hover,
-          var(--cdr-color-icon-emphasis, #{tokens.$cdr-color-icon-emphasis})
-        );
+        fill: var(--cdr-switch-icon-fill-hover, #{map.get(maps.$switch-defaults, icon-hover)});
       }
 
       .cdr-switch__handle {
@@ -108,10 +76,7 @@
           border: 0.1rem solid
             var(
               --cdr-switch-handle-border-color-hover,
-              var(
-                --cdr-color-border-switch-default-hover,
-                #{tokens.$cdr-color-border-switch-default-hover}
-              )
+              #{map.get(maps.$switch-defaults, border-hover)}
             );
         }
       }
@@ -123,21 +88,12 @@
       // ITEM_DOC: Background color of the cdr-switch button when it is checked
       background-color: var(
         --cdr-switch-background-color-checked,
-        var(
-          --cdr-color-background-switch-selected-default-rest,
-          #{tokens.$cdr-color-background-switch-selected-default-rest}
-        )
+        #{map.get(maps.$switch-defaults, surface-checked)}
       );
 
       .cdr-switch__button-icon {
         // ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked
-        fill: var(
-          --cdr-switch-icon-fill-checked,
-          var(
-            --cdr-color-icon-switch-selected-default-rest,
-            #{tokens.$cdr-color-icon-switch-selected-default-rest}
-          )
-        );
+        fill: var(--cdr-switch-icon-fill-checked, #{map.get(maps.$switch-defaults, icon-checked)});
       }
 
       &:focus {
@@ -145,16 +101,13 @@
         box-shadow: 0 0 0 0.2rem
           var(
             --cdr-switch-box-shadow-color-checked-focus,
-            var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
+            #{map.get(maps.$switch-defaults, border)}
           );
 
         // ITEM_DOC: Background color of the cdr-switch button when it is checked and in focus
         background-color: var(
           --cdr-switch-background-color-checked-focus,
-          var(
-            --cdr-color-background-switch-selected-default-focus,
-            #{tokens.$cdr-color-background-switch-selected-default-focus}
-          )
+          #{map.get(maps.$switch-defaults, surface-checked-focus)}
         );
         outline: none;
 
@@ -164,19 +117,13 @@
             border: 0.1rem solid
               var(
                 --cdr-switch-handle-border-color-checked-focus,
-                var(
-                  --cdr-color-border-switch-handle-default-focus,
-                  #{tokens.$cdr-color-border-switch-handle-default-focus}
-                )
+                #{map.get(maps.$switch-defaults, handle-border-focus)}
               );
 
             // ITEM_DOC: Background color of the cdr-switch handle when it is checked and in focus
             background-color: var(
               --cdr-switch-handle-background-color-checked-focus,
-              var(
-                --cdr-color-background-switch-handle-selected-default-focus,
-                #{tokens.$cdr-color-background-switch-handle-selected-default-focus}
-              )
+              #{map.get(maps.$switch-defaults, handle-surface-checked-focus)}
             );
           }
         }
@@ -185,10 +132,7 @@
           // ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked and in focus
           fill: var(
             --cdr-switch-icon-fill-checked-focus,
-            var(
-              --cdr-color-icon-switch-selected-default-focus,
-              #{tokens.$cdr-color-icon-switch-selected-default-focus}
-            )
+            #{map.get(maps.$switch-defaults, icon-checked-focus)}
           );
         }
       }
@@ -200,10 +144,7 @@
           // ITEM_DOC: Background color of the cdr-switch handle when it is checked
           background-color: var(
             --cdr-switch-handle-background-color-checked,
-            var(
-              --cdr-color-background-switch-handle-selected-default-rest,
-              #{tokens.$cdr-color-background-switch-handle-selected-default-rest}
-            )
+            #{map.get(maps.$switch-defaults, handle-surface-checked)}
           );
         }
       }
@@ -211,28 +152,19 @@
       &:hover:not(:focus) {
         // ITEM_DOC: Border of the cdr-switch button when it is checked and on hover but not in focus
         border: 0.1rem solid
-          var(
-            --cdr-switch-border-color-checked-hover,
-            var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
-          );
+          var(--cdr-switch-border-color-checked-hover, #{map.get(maps.$switch-defaults, border)});
 
         // ITEM_DOC: Background color of the cdr-switch button when it is checked and on hover but not in focus
         background-color: var(
           --cdr-switch-background-color-checked-hover,
-          var(
-            --cdr-color-background-switch-selected-default-hover,
-            #{tokens.$cdr-color-background-switch-selected-default-hover}
-          )
+          #{map.get(maps.$switch-defaults, surface-checked-hover)}
         );
 
         .cdr-switch__button-icon {
           // ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked and on hover but not in focus
           fill: var(
             --cdr-switch-icon-fill-checked-hover,
-            var(
-              --cdr-color-icon-switch-selected-default-hover,
-              #{tokens.$cdr-color-icon-switch-selected-default-hover}
-            )
+            #{map.get(maps.$switch-defaults, icon-checked-hover)}
           );
         }
 
@@ -242,10 +174,7 @@
             border: 0.1rem solid
               var(
                 --cdr-switch-handle-border-color-checked-hover,
-                var(
-                  --cdr-color-border-switch-handle-default-hover,
-                  #{tokens.$cdr-color-border-switch-handle-default-hover}
-                )
+                #{map.get(maps.$switch-defaults, handle-border-hover)}
               );
           }
         }
@@ -271,18 +200,12 @@
 
       // ITEM_DOC: Border color of the cdr-switch handle
       border: 0.1rem solid
-        var(
-          --cdr-switch-handle-border,
-          var(--cdr-color-border-secondary, #{tokens.$cdr-color-border-secondary})
-        );
+        var(--cdr-switch-handle-border, #{map.get(maps.$switch-defaults, border)});
 
       // ITEM_DOC: Background color of the cdr-switch handle
       background-color: var(
         --cdr-switch-handle-background-color-rest,
-        var(
-          --cdr-color-background-switch-handle-default-rest,
-          #{tokens.$cdr-color-background-switch-handle-default-rest}
-        )
+        #{map.get(maps.$switch-defaults, handle-surface)}
       );
       transition:
         left tokens.$cdr-duration-3-x tokens.$cdr-timing-function-ease-out,

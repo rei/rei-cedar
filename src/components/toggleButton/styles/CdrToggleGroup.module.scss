@@ -1,21 +1,17 @@
+@use './vars/CdrToggleButton.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 .cdr-toggle-group {
   // ITEM_DOC: Border color of the cdr-toggle-group
   border: 0.1rem solid
-    var(
-      --cdr-toggle-group-border-color,
-      var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
-    );
+    var(--cdr-toggle-group-border-color, #{map.get(maps.$toggle-button-defaults, group-border)});
   border-radius: 0.4rem;
 
   // ITEM_DOC: Default background color of the cdr-toggle-group
   background-color: var(
     --cdr-toggle-group-background-color-default-rest,
-    var(
-      --cdr-color-background-toggle-group-default-rest,
-      #{tokens.$cdr-color-background-toggle-group-default-rest}
-    )
+    #{map.get(maps.$toggle-button-defaults, group-surface)}
   );
   display: grid;
   grid-auto-columns: 1fr;

@@ -1,3 +1,5 @@
+@use './vars/CdrAccordion.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use '../../icon/styles/CdrIcon.module';
 @use './CdrAccordionGroup.module';
@@ -5,10 +7,7 @@
 .cdr-accordion {
   // ITEM_DOC: Border color of cdr-accordion
   --cdr-accordion-border: 1px solid
-    var(
-      --cdr-accordion-border-color,
-      var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
-    );
+    var(--cdr-accordion-border-color, #{map.get(maps.$accordion-defaults, border)});
 
   border-top: var(--cdr-accordion-border);
   border-bottom: var(--cdr-accordion-border);
@@ -27,10 +26,7 @@
     border: none;
 
     // ITEM_DOC: Text color of a cdr-accordion header button
-    color: var(
-      --cdr-accordion-button-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
+    color: var(--cdr-accordion-button-color, #{map.get(maps.$accordion-defaults, text)});
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -46,7 +42,7 @@
       // ITEM_DOC: Background color of a cdr-accordion header button on focus and hover
       background-color: var(
         --cdr-accordion-button-background-color-hover,
-        var(--cdr-color-background-accordion-hover, #{tokens.$cdr-color-background-accordion-hover})
+        #{map.get(maps.$accordion-defaults, surface-hover)}
       );
     }
   }
@@ -73,10 +69,7 @@
     margin-left: tokens.$cdr-space-one-x;
 
     // ITEM_DOC: Fill color of icons on a cdr-accordion. This is used for the caret which changes orientation when the accordion collapses and expands
-    fill: var(
-      --cdr-accordion-icon-fill,
-      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-    );
+    fill: var(--cdr-accordion-icon-fill, #{map.get(maps.$accordion-defaults, icon)});
     transition: transform tokens.$cdr-duration-3-x tokens.$cdr-timing-function-ease-out;
 
     &.cdr-accordion--open {
@@ -104,7 +97,7 @@
     // ITEM_DOC: Text color of cdr-accordion content
     color: var(
       --cdr-accordion-content-text-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      #{map.get(maps.$accordion-defaults, content-text)}
     );
     padding: tokens.$cdr-space-half-x tokens.$cdr-space-one-x tokens.$cdr-space-one-x;
     transition: opacity tokens.$cdr-duration-1-x linear;

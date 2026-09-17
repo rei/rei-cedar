@@ -1,0 +1,16 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/surfaceScroll/CdrSurfaceScroll.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$surface-scroll-defaults: (
+  track: var(--cdr-color-control-surface-neutral-faint, #e8e0ce),
+  thumb: var(--cdr-color-control-surface-neutral-bold, #454441),
+);

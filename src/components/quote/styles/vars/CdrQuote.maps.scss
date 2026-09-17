@@ -1,0 +1,27 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/quote/CdrQuote.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$quote-defaults: (
+  // Color
+  text: var(
+      --cdr-color-text-neutral,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    ),
+  border: var(
+      --cdr-color-border-neutral-subtle,
+      var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
+    ),
+  text-secondary: var(
+      --cdr-color-text-neutral-subtle,
+      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+    )
+);

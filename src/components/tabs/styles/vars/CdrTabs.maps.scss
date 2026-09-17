@@ -1,0 +1,45 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/tabs/CdrTabs.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$tabs-defaults: (
+  // Color
+  text: var(
+      --cdr-color-control-text-neutral-subtle,
+      var(--cdr-color-text-tab-rest, #{tokens.$cdr-color-text-tab-rest})
+    ),
+  gradient-surface: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    ),
+  scrollbar-thumb: var(--cdr-color-control-surface-neutral-bold, rgb(0, 0, 0, 0.5)),
+  scrollbar-edge: rgb(255, 255, 255, 0.5),
+  keyline: var(
+      --cdr-color-border-neutral-subtle,
+      var(--cdr-color-border-tab-keyline-rest, #{tokens.$cdr-color-border-tab-keyline-rest})
+    ),
+  text-selected: var(
+      --cdr-color-control-text-neutral-bold,
+      var(--cdr-color-text-tab-active, #{tokens.$cdr-color-text-tab-active})
+    ),
+  text-interaction: var(
+      --cdr-color-control-text-neutral,
+      var(--cdr-color-text-tab-hover, #{tokens.$cdr-color-text-tab-hover})
+    ),
+  text-disabled: var(
+      --cdr-color-control-text-neutral-faint,
+      var(--cdr-color-text-tab-disabled, #{tokens.$cdr-color-text-tab-disabled})
+    ),
+  keyline-selected: var(
+      --cdr-color-control-border-neutral-bold,
+      var(--cdr-color-border-tab-keyline-active, #{tokens.$cdr-color-border-tab-keyline-active})
+    )
+);

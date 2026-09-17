@@ -1,0 +1,23 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/caption/CdrCaption.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$caption-defaults: (
+  // Color
+  text: var(
+      --cdr-color-text-neutral,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    ),
+  text-secondary: var(
+      --cdr-color-text-neutral-subtle,
+      var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+    )
+);

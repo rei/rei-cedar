@@ -1,4 +1,6 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrPagination.maps' as maps;
 @use '../../icon/styles/CdrIcon.module';
 @use '../../select/styles/CdrSelect.module';
 
@@ -8,6 +10,11 @@
   align-items: center;
   list-style: none;
   padding: 0;
+
+  // Default (neutral) colors from the contract map; inherited by page links
+  @each $key, $value in map.get(maps.$pagination-colors, default) {
+    --cdr-pagination-#{$key}: #{$value};
+  }
 
   &__li {
     &--links {
@@ -30,32 +37,28 @@
     border: none;
 
     // ITEM_DOC: Text color of a cdr-pagination link
-    color: var(
-      --cdr-pagination-link-text-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
+    color: var(--cdr-pagination-text);
 
     // ITEM_DOC: Fill color of a cdr-pagination link
-    fill: var(
-      --cdr-pagination-link-fill-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
+    fill: var(--cdr-pagination-fill);
     display: block;
     padding: tokens.$cdr-space-inset-three-quarter-x-squish;
     text-decoration: none;
     border-radius: tokens.$cdr-radius-softer;
 
-    &:hover,
-    &:focus,
-    &:active {
+    &:hover {
       // ITEM_DOC: Background color of a cdr-pagination link on hover/focus/active
-      background-color: var(
-        --cdr-pagination-link-background-color-interaction,
-        var(
-          --cdr-color-background-pagination-hover,
-          #{tokens.$cdr-color-background-pagination-hover}
-        )
-      );
+      background-color: var(--cdr-pagination-background-hover);
+      cursor: pointer;
+    }
+
+    &:focus {
+      background-color: var(--cdr-pagination-background-focus-visible);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: var(--cdr-pagination-background-active);
       cursor: pointer;
     }
 
@@ -72,13 +75,7 @@
         width: 80%;
 
         // ITEM_DOC: Background color of the keyline for the current cdr-pagination link
-        background-color: var(
-          --cdr-pagination-link-current-background-color-keyline,
-          var(
-            --cdr-color-background-pagination-keyline,
-            #{tokens.$cdr-color-background-pagination-keyline}
-          )
-        );
+        background-color: var(--cdr-pagination-border);
       }
 
       &:hover,
@@ -90,26 +87,17 @@
 
     &#{&}--disabled {
       // ITEM_DOC: Text color of a disabled cdr-pagination link
-      color: var(
-        --cdr-pagination-link-text-color-disabled,
-        var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
-      );
+      color: var(--cdr-pagination-text-disabled);
 
       // ITEM_DOC: Fill color of a disabled cdr-pagination link
-      fill: var(
-        --cdr-pagination-link-fill-color-disabled,
-        var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
-      );
+      fill: var(--cdr-pagination-fill-disabled);
       cursor: not-allowed;
 
       &:hover,
       &:focus,
       &:active {
         // ITEM_DOC: Text color of a disabled cdr-pagination link on hover/focus/active
-        color: var(
-          --cdr-pagination-link-text-color-interactive-disabled,
-          var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
-        );
+        color: var(--cdr-pagination-text-disabled);
         background-color: transparent;
       }
     }

@@ -1,0 +1,578 @@
+/* ======================================================================== */
+/* GENERATED — cdr-button token assignments (action family)
+/* Recipe: pressable
+/* Source: src/components/button/CdrButton.tokens.ts
+/* Regenerate: pnpm build:maps
+/* ======================================================================== */
+
+.cdr-button {
+  /* defaults */
+  --cdr-button-radius: var(--cdr-radius-softer);
+  --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+  --cdr-button-font-family: var(--cdr-font-family-sans);
+  --cdr-button-font-weight: 500;
+  --cdr-button-letter-spacing: -0.008rem;
+  --cdr-button-font-size: 1.6rem;
+  --cdr-button-line-height: 2.2rem;
+  --cdr-button-icon-size: var(--cdr-icon-size);
+  --cdr-button-icon-padding: var(--cdr-space-one-x);
+  --cdr-button-icon-gap: var(--cdr-space-quarter-x);
+  --cdr-button-transition-duration: var(--cdr-duration-2-x);
+  --cdr-button-transition-timing: var(--cdr-timing-function-ease);
+  --cdr-button-background: transparent;
+  --cdr-button-text: inherit;
+  --cdr-button-fill: inherit;
+  --cdr-button-border: transparent;
+  --cdr-button-elevation: 0 0 0 0 transparent;
+  --cdr-button-elevation-hover: var(--cdr-prominence-raised);
+  --cdr-button-elevation-focus-visible: var(--cdr-prominence-raised);
+  --cdr-button-elevation-active: 0 0 0 0 transparent;
+  --cdr-button-link-text: var(--cdr-color-action-text-trigger, var(--cdr-color-text-link-rest));
+  --cdr-button-link-text-hover: var(
+    --cdr-color-action-text-trigger-faint,
+    var(--cdr-color-text-link-hover)
+  );
+  --cdr-button-link-text-active: var(
+    --cdr-color-action-text-trigger,
+    var(--cdr-color-text-link-active)
+  );
+  --cdr-button-link-icon: var(--cdr-color-action-icon-trigger, var(--cdr-color-text-link-rest));
+  --cdr-button-link-icon-hover: var(
+    --cdr-color-action-icon-trigger-faint,
+    var(--cdr-color-text-link-hover)
+  );
+  --cdr-button-link-icon-active: var(
+    --cdr-color-action-icon-trigger,
+    var(--cdr-color-text-link-active)
+  );
+  --cdr-button-icon-only-fill: var(--cdr-color-action-icon-neutral, var(--cdr-color-icon-default));
+  --cdr-button-icon-only-fill-disabled: var(
+    --cdr-color-action-icon-neutral-faint,
+    var(--cdr-color-icon-disabled)
+  );
+  --cdr-button-icon-only-border-focus: var(
+    --cdr-color-action-border-neutral-subtle,
+    var(--cdr-color-border-button-secondary-active)
+  );
+}
+
+.cdr-button:hover {
+  /* use --cdr-button-*-hover custom properties */
+}
+
+.cdr-button:focus-visible {
+  /* use --cdr-button-*-focus-visible custom properties */
+}
+
+.cdr-button:active {
+  /* use --cdr-button-*-active custom properties */
+}
+
+.cdr-button[disabled] {
+  /* use --cdr-button-*-disabled custom properties */
+}
+
+.cdr-button svg {
+  width: var(--cdr-button-icon-size);
+  height: var(--cdr-button-icon-size);
+}
+
+.cdr-button.cdr-button--has-icon-left {
+  padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+}
+.cdr-button.cdr-button--has-icon-right {
+  padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+}
+
+.cdr-button--primary {
+  --cdr-button-background: var(
+    --cdr-color-action-surface-brand,
+    var(--cdr-color-background-button-primary-rest)
+  );
+  --cdr-button-text: var(--cdr-color-action-text-brand, var(--cdr-color-text-button-primary));
+  --cdr-button-border: var(
+    --cdr-color-action-border-brand,
+    var(--cdr-color-border-button-primary-rest)
+  );
+  --cdr-button-fill: var(--cdr-color-action-icon-brand, var(--cdr-color-text-button-primary));
+  --cdr-button-background-hover: var(
+    --cdr-color-action-surface-brand-faint,
+    var(--cdr-color-background-button-primary-hover)
+  );
+  --cdr-button-text-hover: var(
+    --cdr-color-action-text-brand-faint,
+    var(--cdr-color-text-button-primary-hover)
+  );
+  --cdr-button-border-hover: var(
+    --cdr-color-action-border-brand-faint,
+    var(--cdr-color-border-button-primary-hover)
+  );
+  --cdr-button-fill-hover: var(
+    --cdr-color-action-icon-brand-faint,
+    var(--cdr-color-text-button-primary-hover)
+  );
+  --cdr-button-background-focus-visible: var(
+    --cdr-color-action-surface-brand-faint,
+    var(--cdr-color-background-button-primary-hover)
+  );
+  --cdr-button-text-focus-visible: var(
+    --cdr-color-action-text-brand-faint,
+    var(--cdr-color-text-button-primary-hover)
+  );
+  --cdr-button-border-focus-visible: var(
+    --cdr-color-action-border-brand-faint,
+    var(--cdr-color-border-button-primary-hover)
+  );
+  --cdr-button-fill-focus-visible: var(
+    --cdr-color-action-icon-brand-faint,
+    var(--cdr-color-text-button-primary-hover)
+  );
+  --cdr-button-background-active: var(
+    --cdr-color-action-surface-brand,
+    var(--cdr-color-background-button-primary-rest)
+  );
+  --cdr-button-text-active: var(
+    --cdr-color-action-text-brand,
+    var(--cdr-color-text-button-primary)
+  );
+  --cdr-button-border-active: var(
+    --cdr-color-action-border-brand,
+    var(--cdr-color-border-button-primary-rest)
+  );
+  --cdr-button-fill-active: var(
+    --cdr-color-action-icon-brand,
+    var(--cdr-color-text-button-primary)
+  );
+  --cdr-button-background-disabled: var(
+    --cdr-color-action-surface-neutral-trace,
+    var(--cdr-color-background-button-default-disabled)
+  );
+  --cdr-button-text-disabled: var(
+    --cdr-color-action-text-neutral-faint,
+    var(--cdr-color-text-button-primary-disabled)
+  );
+  --cdr-button-border-disabled: var(
+    --cdr-color-action-border-neutral-trace,
+    var(--cdr-color-border-button-default-disabled)
+  );
+  --cdr-button-fill-disabled: var(
+    --cdr-color-action-icon-neutral-faint,
+    var(--cdr-color-text-button-primary-disabled)
+  );
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-brand-subtle,
+    var(--cdr-color-border-button-primary-active-inset)
+  );
+}
+
+.cdr-button--secondary {
+  --cdr-button-background: var(
+    --cdr-color-action-surface-neutral-faint,
+    var(--cdr-color-background-button-secondary-rest)
+  );
+  --cdr-button-text: var(--cdr-color-action-text-neutral, var(--cdr-color-text-button-secondary));
+  --cdr-button-border: var(
+    --cdr-color-action-border-neutral-faint,
+    var(--cdr-color-border-button-secondary-rest)
+  );
+  --cdr-button-fill: var(--cdr-color-action-icon-neutral, var(--cdr-color-icon-default));
+  --cdr-button-background-hover: var(
+    --cdr-color-action-surface-neutral,
+    var(--cdr-color-background-button-secondary-hover)
+  );
+  --cdr-button-text-hover: var(
+    --cdr-color-action-text-neutral-subtle,
+    var(--cdr-color-text-button-secondary-hover)
+  );
+  --cdr-button-border-hover: var(
+    --cdr-color-action-border-neutral,
+    var(--cdr-color-border-button-secondary-hover)
+  );
+  --cdr-button-fill-hover: var(
+    --cdr-color-action-icon-neutral-subtle,
+    var(--cdr-color-text-button-secondary-hover)
+  );
+  --cdr-button-background-focus-visible: var(
+    --cdr-color-action-surface-neutral,
+    var(--cdr-color-background-button-secondary-hover)
+  );
+  --cdr-button-text-focus-visible: var(
+    --cdr-color-action-text-neutral-subtle,
+    var(--cdr-color-text-button-secondary-hover)
+  );
+  --cdr-button-border-focus-visible: var(
+    --cdr-color-action-border-neutral,
+    var(--cdr-color-border-button-secondary-hover)
+  );
+  --cdr-button-fill-focus-visible: var(
+    --cdr-color-action-icon-neutral-subtle,
+    var(--cdr-color-text-button-secondary-hover)
+  );
+  --cdr-button-background-active: var(
+    --cdr-color-action-surface-neutral-subtle,
+    var(--cdr-color-background-button-secondary-active)
+  );
+  --cdr-button-text-active: var(
+    --cdr-color-action-text-neutral-bold,
+    var(--cdr-color-text-button-secondary-active)
+  );
+  --cdr-button-border-active: var(
+    --cdr-color-action-border-neutral-subtle,
+    var(--cdr-color-border-button-secondary-active)
+  );
+  --cdr-button-fill-active: var(
+    --cdr-color-action-icon-neutral-bold,
+    var(--cdr-color-text-button-secondary-active)
+  );
+  --cdr-button-background-disabled: var(
+    --cdr-color-action-surface-neutral-faint,
+    var(--cdr-color-background-button-secondary-disabled)
+  );
+  --cdr-button-text-disabled: var(
+    --cdr-color-action-text-neutral-faint,
+    var(--cdr-color-text-button-secondary-disabled)
+  );
+  --cdr-button-border-disabled: var(
+    --cdr-color-action-border-neutral-trace,
+    var(--cdr-color-border-button-default-disabled)
+  );
+  --cdr-button-fill-disabled: var(
+    --cdr-color-action-icon-neutral-faint,
+    var(--cdr-color-text-button-secondary-disabled)
+  );
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-neutral-subtle,
+    var(--cdr-color-border-button-secondary-active-inset)
+  );
+}
+
+.cdr-button--dark {
+  --cdr-button-background: var(
+    --cdr-color-action-surface-neutral-intense,
+    var(--cdr-color-background-button-dark-rest)
+  );
+  --cdr-button-text: var(
+    --cdr-color-action-text-neutral-intense,
+    var(--cdr-color-text-button-dark)
+  );
+  --cdr-button-border: var(
+    --cdr-color-action-border-neutral-intense,
+    var(--cdr-color-border-button-dark-rest)
+  );
+  --cdr-button-fill: var(
+    --cdr-color-action-icon-neutral-intense,
+    var(--cdr-color-text-button-dark)
+  );
+  --cdr-button-background-hover: var(
+    --cdr-color-action-surface-neutral-bold,
+    var(--cdr-color-background-button-dark-hover)
+  );
+  --cdr-button-text-hover: var(
+    --cdr-color-action-text-neutral,
+    var(--cdr-color-text-button-dark-hover)
+  );
+  --cdr-button-border-hover: var(
+    --cdr-color-action-border-neutral-intense,
+    var(--cdr-color-border-button-dark-hover)
+  );
+  --cdr-button-fill-hover: var(
+    --cdr-color-action-icon-neutral,
+    var(--cdr-color-text-button-dark-hover)
+  );
+  --cdr-button-background-focus-visible: var(
+    --cdr-color-action-surface-neutral-bold,
+    var(--cdr-color-background-button-dark-hover)
+  );
+  --cdr-button-text-focus-visible: var(
+    --cdr-color-action-text-neutral,
+    var(--cdr-color-text-button-dark-hover)
+  );
+  --cdr-button-border-focus-visible: var(
+    --cdr-color-action-border-neutral-intense,
+    var(--cdr-color-border-button-dark-hover)
+  );
+  --cdr-button-fill-focus-visible: var(
+    --cdr-color-action-icon-neutral,
+    var(--cdr-color-text-button-dark-hover)
+  );
+  --cdr-button-background-active: var(
+    --cdr-color-action-surface-neutral-intense,
+    var(--cdr-color-background-button-dark-rest)
+  );
+  --cdr-button-text-active: var(
+    --cdr-color-action-text-neutral-intense,
+    var(--cdr-color-text-button-dark-active)
+  );
+  --cdr-button-border-active: var(
+    --cdr-color-action-border-neutral-intense,
+    var(--cdr-color-border-button-dark-active)
+  );
+  --cdr-button-fill-active: var(
+    --cdr-color-action-icon-neutral-intense,
+    var(--cdr-color-text-button-dark-active)
+  );
+  --cdr-button-background-disabled: var(
+    --cdr-color-action-surface-neutral-trace,
+    var(--cdr-color-background-button-default-disabled)
+  );
+  --cdr-button-text-disabled: var(
+    --cdr-color-action-text-neutral-faint,
+    var(--cdr-color-text-button-dark-disabled)
+  );
+  --cdr-button-border-disabled: var(
+    --cdr-color-action-border-neutral-trace,
+    var(--cdr-color-border-button-default-disabled)
+  );
+  --cdr-button-fill-disabled: var(
+    --cdr-color-action-icon-neutral-faint,
+    var(--cdr-color-text-button-dark-disabled)
+  );
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-neutral-intense,
+    var(--cdr-color-border-button-dark-active-inset)
+  );
+}
+
+.cdr-button--sale {
+  --cdr-button-background: var(
+    --cdr-color-action-surface-sale,
+    var(--cdr-color-background-button-sale-rest)
+  );
+  --cdr-button-text: var(--cdr-color-action-text-sale, var(--cdr-color-text-button-sale));
+  --cdr-button-border: var(
+    --cdr-color-action-border-sale,
+    var(--cdr-color-border-button-sale-rest)
+  );
+  --cdr-button-fill: var(--cdr-color-action-icon-sale, var(--cdr-color-text-button-sale));
+  --cdr-button-background-hover: var(
+    --cdr-color-action-surface-sale-faint,
+    var(--cdr-color-background-button-sale-hover)
+  );
+  --cdr-button-text-hover: var(
+    --cdr-color-action-text-sale-faint,
+    var(--cdr-color-text-button-sale-hover)
+  );
+  --cdr-button-border-hover: var(
+    --cdr-color-action-border-sale-faint,
+    var(--cdr-color-border-button-sale-hover)
+  );
+  --cdr-button-fill-hover: var(
+    --cdr-color-action-icon-sale-faint,
+    var(--cdr-color-text-button-sale-hover)
+  );
+  --cdr-button-background-focus-visible: var(
+    --cdr-color-action-surface-sale-faint,
+    var(--cdr-color-background-button-sale-hover)
+  );
+  --cdr-button-text-focus-visible: var(
+    --cdr-color-action-text-sale-faint,
+    var(--cdr-color-text-button-sale-hover)
+  );
+  --cdr-button-border-focus-visible: var(
+    --cdr-color-action-border-sale-faint,
+    var(--cdr-color-border-button-sale-hover)
+  );
+  --cdr-button-fill-focus-visible: var(
+    --cdr-color-action-icon-sale-faint,
+    var(--cdr-color-text-button-sale-hover)
+  );
+  --cdr-button-background-active: var(
+    --cdr-color-action-surface-sale,
+    var(--cdr-color-background-button-sale-active)
+  );
+  --cdr-button-text-active: var(
+    --cdr-color-action-text-sale,
+    var(--cdr-color-text-button-sale-active)
+  );
+  --cdr-button-border-active: var(
+    --cdr-color-action-border-sale,
+    var(--cdr-color-border-button-sale-active)
+  );
+  --cdr-button-fill-active: var(
+    --cdr-color-action-icon-sale,
+    var(--cdr-color-text-button-sale-active)
+  );
+  --cdr-button-background-disabled: var(
+    --cdr-color-action-surface-neutral-trace,
+    var(--cdr-color-background-button-default-disabled)
+  );
+  --cdr-button-text-disabled: var(
+    --cdr-color-action-text-neutral-faint,
+    var(--cdr-color-text-button-sale-disabled)
+  );
+  --cdr-button-border-disabled: var(
+    --cdr-color-action-border-neutral-trace,
+    var(--cdr-color-border-button-default-disabled)
+  );
+  --cdr-button-fill-disabled: var(
+    --cdr-color-action-icon-neutral-faint,
+    var(--cdr-color-text-button-sale-disabled)
+  );
+  --cdr-button-active-inset: var(
+    --cdr-color-action-border-sale-subtle,
+    var(--cdr-color-border-button-sale-active-inset)
+  );
+}
+
+.cdr-button--small {
+  --cdr-button-font-size: 1.4rem;
+  --cdr-button-line-height: 1.8rem;
+  --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+  --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+  --cdr-button-icon-size: 2rem;
+  width: auto;
+}
+
+.cdr-button--medium {
+  --cdr-button-font-size: 1.6rem;
+  --cdr-button-line-height: 2.2rem;
+  --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+  --cdr-button-icon-padding: var(--cdr-space-one-x);
+  --cdr-button-icon-size: var(--cdr-icon-size);
+  width: auto;
+}
+
+.cdr-button--large {
+  --cdr-button-font-size: 1.6rem;
+  --cdr-button-line-height: 2.2rem;
+  --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+  --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+  --cdr-button-icon-size: var(--cdr-icon-size);
+  width: auto;
+}
+
+@media (max-width: 767px) {
+  .cdr-button--small\@xs {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@xs {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@xs {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@xs {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .cdr-button--small\@sm {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@sm {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@sm {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@sm {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1231px) {
+  .cdr-button--small\@md {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@md {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@md {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@md {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1232px) {
+  .cdr-button--small\@lg {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@lg {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@lg {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@lg {
+    width: 100%;
+    justify-content: center;
+  }
+}

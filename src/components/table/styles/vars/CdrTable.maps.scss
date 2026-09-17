@@ -1,0 +1,39 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/table/CdrTable.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$table-defaults: (
+  // Color
+  text: var(
+      --cdr-color-text-neutral,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    ),
+  row-surface: var(
+      --cdr-color-surface-neutral-trace,
+      var(--cdr-color-background-table-row, #{tokens.$cdr-color-background-table-row})
+    ),
+  header-surface: var(
+      --cdr-color-surface-neutral-subtle,
+      var(--cdr-color-background-table-header, #{tokens.$cdr-color-background-table-header})
+    ),
+  row-border: var(
+      --cdr-color-border-neutral-subtle,
+      var(--cdr-color-border-table-default, #{tokens.$cdr-color-border-table-default})
+    ),
+  header-border: var(
+      --cdr-color-border-neutral,
+      var(--cdr-color-border-table-head, #{tokens.$cdr-color-border-table-head})
+    ),
+  row-alternate-surface: var(
+      --cdr-color-surface-neutral-faint,
+      var(--cdr-color-background-table-row-alt, #{tokens.$cdr-color-background-table-row-alt})
+    )
+);

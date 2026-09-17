@@ -1,3 +1,5 @@
+@use './CdrToast.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 $timing-function: tokens.$cdr-timing-function-ease-out;
@@ -19,17 +21,14 @@ $timing-function: tokens.$cdr-timing-function-ease-out;
   // ITEM_DOC: Default background color of cdr-toast
   background-color: var(
     --cdr-toast-background-color-default,
-    var(
-      --cdr-color-background-message-default-01,
-      #{tokens.$cdr-color-background-message-default-01}
-    )
+    #{map.get(maps.$toast-defaults, default-surface)}
   );
   outline: thin solid;
 
   // ITEM_DOC: Default outline color of cdr-toast
   outline-color: var(
     --cdr-toast-outline-color-default,
-    var(--cdr-color-border-message-default-02, #{tokens.$cdr-color-border-message-default-02})
+    #{map.get(maps.$toast-defaults, default-outline)}
   );
   outline-offset: -1px;
 }
@@ -38,10 +37,10 @@ $timing-function: tokens.$cdr-timing-function-ease-out;
   // ITEM_DOC: Info background color of cdr-toast
   background-color: var(
     --cdr-toast-background-color-info,
-    var(--cdr-color-background-message-info-01, #{tokens.$cdr-color-background-message-info-01})
+    #{map.get(maps.$toast-defaults, info-surface)}
   );
   outline: thin solid;
-  outline-color: tokens.$cdr-color-border-message-info-02;
+  outline-color: map.get(maps.$toast-defaults, info-outline);
   outline-offset: -1px;
 }
 
@@ -49,17 +48,14 @@ $timing-function: tokens.$cdr-timing-function-ease-out;
   // ITEM_DOC: Success background color of cdr-toast
   background-color: var(
     --cdr-toast-background-color-success,
-    var(
-      --cdr-color-background-message-success-01,
-      #{tokens.$cdr-color-background-message-success-01}
-    )
+    #{map.get(maps.$toast-defaults, success-surface)}
   );
   outline: thin solid;
 
   // ITEM_DOC: Success outline color of cdr-toast
   outline-color: var(
     --cdr-toast-outline-color-success,
-    var(--cdr-color-border-message-success-02, #{tokens.$cdr-color-border-message-success-02})
+    #{map.get(maps.$toast-defaults, success-outline)}
   );
   outline-offset: -1px;
 }
@@ -68,17 +64,14 @@ $timing-function: tokens.$cdr-timing-function-ease-out;
   // ITEM_DOC: Warning background color of cdr-toast
   background-color: var(
     --cdr-toast-background-color-warning,
-    var(
-      --cdr-color-background-message-warning-01,
-      #{tokens.$cdr-color-background-message-warning-01}
-    )
+    #{map.get(maps.$toast-defaults, warning-surface)}
   );
   outline: thin solid;
 
   // ITEM_DOC: Warning outline color of cdr-toast
   outline-color: var(
     --cdr-toast-outline-color-warning,
-    var(--cdr-color-border-message-warning-02, #{tokens.$cdr-color-border-message-warning-02})
+    #{map.get(maps.$toast-defaults, warning-outline)}
   );
   outline-offset: -1px;
 }
@@ -87,14 +80,14 @@ $timing-function: tokens.$cdr-timing-function-ease-out;
   // ITEM_DOC: Error background color of cdr-toast
   background-color: var(
     --cdr-toast-background-color-error,
-    var(--cdr-color-background-message-error-01, #{tokens.$cdr-color-background-message-error-01})
+    #{map.get(maps.$toast-defaults, error-surface)}
   );
   outline: thin solid;
 
   // ITEM_DOC: Error outline color of cdr-toast
   outline-color: var(
     --cdr-toast-outline-color-error,
-    var(--cdr-color-border-message-error-02, #{tokens.$cdr-color-border-message-error-02})
+    #{map.get(maps.$toast-defaults, error-outline)}
   );
   outline-offset: -1px;
 }

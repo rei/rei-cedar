@@ -1,0 +1,27 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/tooltip/CdrTooltip.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$tooltip-defaults: (
+  // Color
+  text: var(
+      --cdr-color-text-neutral-intense,
+      var(--cdr-color-text-tooltip-default, #{tokens.$cdr-color-text-tooltip-default})
+    ),
+  border: var(
+      --cdr-color-border-neutral-trace,
+      var(--cdr-color-border-tooltip-default, #{tokens.$cdr-color-border-tooltip-default})
+    ),
+  surface: var(
+      --cdr-color-surface-neutral-bold,
+      var(--cdr-color-background-tooltip-default, #{tokens.$cdr-color-background-tooltip-default})
+    )
+);

@@ -1,9 +1,11 @@
+@use './vars/CdrTitle.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 
 .cdr-title {
   @include tokens.cdr-text-heading-display-1200;
 
-  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
+  color: var(--cdr-text-color, #{map.get(maps.$title-defaults, text)});
   margin: 0;
   font-size: var(--cdr-type-scale-4);
   line-height: var(--cdr-line-height-ratio-heading-4);

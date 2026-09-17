@@ -12,7 +12,7 @@ import {
 import type { ComponentInternalInstance } from 'vue';
 import type { CdrTabsProps } from './types';
 import { debounce } from '../../utils/debounce';
-import { CdrColorBackgroundPrimary, CdrSpaceOneX, CdrSpaceHalfX } from '@rei/cdr-tokens/tokens';
+import { CdrSpaceOneX, CdrSpaceHalfX } from '@rei/cdr-tokens/tokens';
 import mapClasses from '../../utils/mapClasses';
 import { modifyClassName } from '../../utils/buildClass';
 import { selectedTabKey } from '../../types/symbols';
@@ -25,7 +25,7 @@ defineOptions({
 const props = withDefaults(defineProps<CdrTabsProps>(), {
   height: '240px',
   activeTab: 0,
-  backgroundColor: CdrColorBackgroundPrimary,
+  backgroundColor: 'var(--cdr-tabs-gradient-surface)',
 });
 
 defineSlots<{
@@ -91,8 +91,7 @@ const gradientLeftStyle = computed(() => {
   };
 });
 const gradientRightStyle = computed(() => {
-  const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0),
-    ${props.backgroundColor})`;
+  const gradient = `linear-gradient(to right, rgba(255, 255, 255, 0), ${props.backgroundColor})`;
   return {
     background: gradient,
   };
@@ -161,41 +160,21 @@ const selectTab = async (index: number) => {
   updateUnderline();
 };
 
+const findEnabledTab = (start: number, step: 1 | -1) => {
+  for (let index = start; index >= 0 && index < tabElements.value.length; index += step) {
+    if (!tabElements.value[index].disabled) return index;
+  }
+  return null;
+};
+
 const selectTabNext = () => {
-  const isLastTab = selectedIndex.value === tabElements.value.length - 1;
-  if (isLastTab) {
-    return;
-  }
-
-  let nextIndex = (selectedIndex.value || 0) + 1;
-  if (tabElements.value[nextIndex].disabled) {
-    nextIndex += 1;
-  }
-
-  const nextIndexExists = nextIndex <= tabElements.value.length - 1;
-  if (!nextIndexExists) {
-    return;
-  }
-
-  selectTab(nextIndex);
+  const nextIndex = findEnabledTab((selectedIndex.value ?? -1) + 1, 1);
+  if (nextIndex !== null) selectTab(nextIndex);
 };
 
 const selectTabPrev = () => {
-  const isFirstTab = selectedIndex.value !== null && selectedIndex.value <= 0;
-  if (isFirstTab) {
-    return;
-  }
-
-  let prevIndex = (selectedIndex.value || 0) - 1;
-  if (tabElements.value[prevIndex].disabled) {
-    prevIndex -= 1;
-  }
-
-  const previousIndexExists = prevIndex >= 0;
-  if (!previousIndexExists) {
-    return;
-  }
-  selectTab(prevIndex);
+  const previousIndex = findEnabledTab((selectedIndex.value ?? 0) - 1, -1);
+  if (previousIndex !== null) selectTab(previousIndex);
 };
 
 const setInitialTabStates = () => {

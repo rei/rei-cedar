@@ -1,0 +1,123 @@
+import type { ComponentTokenContract } from '../../../build/component-tokens/types';
+
+/** Choice selection: faint at rest, base on interaction, subtle when selected. Existing selected/disabled CSS precedence is preserved.
+ * See docs/component-semantic-rollout.md for migration decisions and design gaps.
+ */
+const contract: ComponentTokenContract = {
+  component: 'cdr-chip',
+  prefix: '--cdr-chip',
+  interaction: 'selection',
+  defaults: {},
+  variants: {
+    default: {
+      identity: 'neutral',
+      rest: {
+        surface: 'neutral-faint',
+        text: 'neutral',
+        border: 'neutral-faint',
+        icon: 'neutral',
+      },
+      hover: {
+        surface: 'neutral',
+        text: 'neutral',
+        border: 'neutral',
+        icon: 'neutral',
+      },
+      'focus-visible': {
+        surface: 'neutral',
+        text: 'neutral',
+        border: 'neutral',
+        icon: 'neutral',
+      },
+      active: {
+        surface: 'neutral-subtle',
+        text: 'neutral',
+        border: 'neutral-subtle',
+        icon: 'neutral',
+      },
+      disabled: {
+        surface: 'neutral-trace',
+        text: 'neutral-faint',
+        border: 'neutral-faint',
+        icon: 'neutral-faint',
+      },
+    },
+    selected: {
+      identity: 'neutral',
+      rest: {
+        surface: 'neutral-subtle',
+        text: 'neutral',
+        border: 'neutral-subtle',
+        icon: 'neutral',
+      },
+      hover: {
+        surface: 'neutral-subtle',
+        text: 'neutral',
+        border: 'neutral-subtle',
+        icon: 'neutral',
+      },
+      'focus-visible': {
+        surface: 'neutral-subtle',
+        text: 'neutral',
+        border: 'neutral-subtle',
+        icon: 'neutral',
+      },
+      active: {
+        surface: 'neutral-subtle',
+        text: 'neutral',
+        border: 'neutral-subtle',
+        icon: 'neutral',
+      },
+      disabled: {
+        surface: 'neutral-subtle',
+        text: 'neutral-faint',
+        border: 'neutral-subtle',
+        icon: 'neutral-faint',
+      },
+    },
+  },
+  legacy: {
+    'default/background': 'cdr-color-background-chip-default-rest',
+    'default/background-hover': 'cdr-color-background-chip-default-hover',
+    'default/background-focus-visible': 'cdr-color-background-chip-default-focus',
+    'default/background-active': 'cdr-color-background-chip-default-active',
+    'default/background-disabled': 'cdr-color-background-chip-default-disabled',
+    'default/text': 'cdr-color-text-chip-default',
+    'default/text-hover': 'cdr-color-text-chip-default',
+    'default/text-focus-visible': 'cdr-color-text-chip-default',
+    'default/text-active': 'cdr-color-text-chip-default',
+    'default/text-disabled': 'cdr-color-text-chip-disabled',
+    'default/border': 'cdr-color-border-chip-default-rest',
+    'default/border-hover': 'cdr-color-border-chip-default-hover',
+    'default/border-focus-visible': 'cdr-color-border-chip-default-focus',
+    'default/border-active': 'cdr-color-border-chip-default-active',
+    'default/border-disabled': 'cdr-color-border-chip-default-disabled',
+    'default/fill': 'cdr-color-text-chip-default',
+    'default/fill-hover': 'cdr-color-text-chip-default',
+    'default/fill-focus-visible': 'cdr-color-text-chip-default',
+    'default/fill-active': 'cdr-color-text-chip-default',
+    'default/fill-disabled': 'cdr-color-text-chip-disabled',
+    'selected/background': 'cdr-color-background-chip-default-selected',
+    'selected/background-hover': 'cdr-color-background-chip-default-selected-hover',
+    'selected/background-focus-visible': 'cdr-color-background-chip-default-selected-focus',
+    'selected/background-active': 'cdr-color-background-chip-default-selected-active',
+    'selected/background-disabled': 'cdr-color-background-chip-default-selected',
+    'selected/text': 'cdr-color-text-chip-default',
+    'selected/text-hover': 'cdr-color-text-chip-default',
+    'selected/text-focus-visible': 'cdr-color-text-chip-default',
+    'selected/text-active': 'cdr-color-text-chip-default',
+    'selected/text-disabled': 'cdr-color-text-chip-disabled',
+    'selected/border': 'cdr-color-border-chip-default-selected-rest',
+    'selected/border-hover': 'cdr-color-border-chip-default-selected-hover',
+    'selected/border-focus-visible': 'cdr-color-border-chip-default-selected-focus',
+    'selected/border-active': 'cdr-color-border-chip-default-selected-focus',
+    'selected/border-disabled': 'cdr-color-border-chip-default-selected-rest',
+    'selected/fill': 'cdr-color-text-chip-default',
+    'selected/fill-hover': 'cdr-color-text-chip-default',
+    'selected/fill-focus-visible': 'cdr-color-text-chip-default',
+    'selected/fill-active': 'cdr-color-text-chip-default',
+    'selected/fill-disabled': 'cdr-color-text-chip-disabled',
+  },
+};
+
+export default contract;

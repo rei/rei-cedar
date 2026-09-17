@@ -1,0 +1,91 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/input/CdrInput.tokens.ts
+// Regenerate: pnpm build:maps
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$input-defaults: (
+  // Color
+  text: var(
+      --cdr-color-control-text-neutral,
+      var(--cdr-color-text-input-default, #{tokens.$cdr-color-text-input-default})
+    ),
+  border: var(
+      --cdr-color-control-border-neutral,
+      var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
+    ),
+  surface: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    ),
+  surface-active: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-input-default-active,
+        #{tokens.$cdr-color-background-input-default-active}
+      )
+    ),
+  border-focus: var(
+      --cdr-color-control-border-neutral-bold,
+      var(--cdr-color-border-input-default-focus, #{tokens.$cdr-color-border-input-default-focus})
+    ),
+  prompt-icon: var(
+      --cdr-color-control-icon-neutral,
+      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    ),
+  icon: var(
+      --cdr-color-control-icon-neutral,
+      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
+    ),
+  placeholder: var(
+      --cdr-color-control-text-neutral-subtle,
+      var(--cdr-color-text-input-placeholder, #{tokens.$cdr-color-text-input-placeholder})
+    ),
+  surface-disabled: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(
+        --cdr-color-background-input-default-disabled,
+        #{tokens.$cdr-color-background-input-default-disabled}
+      )
+    ),
+  text-disabled: var(
+      --cdr-color-control-text-neutral-faint,
+      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+    ),
+  border-disabled: var(
+      --cdr-color-control-border-neutral-faint,
+      var(
+        --cdr-color-border-input-default-disabled,
+        #{tokens.$cdr-color-border-input-default-disabled}
+      )
+    ),
+  surface-secondary: var(
+      --cdr-color-control-surface-neutral-faint,
+      var(--cdr-color-background-input-secondary, #{tokens.$cdr-color-background-input-secondary})
+    ),
+  surface-secondary-active: var(
+      --cdr-color-control-surface-neutral-trace,
+      var(
+        --cdr-color-background-input-secondary-active,
+        #{tokens.$cdr-color-background-input-secondary-active}
+      )
+    ),
+  error-surface: var(
+      --cdr-color-feedback-surface-error-faint,
+      var(--cdr-color-background-input-error, #{tokens.$cdr-color-background-input-error})
+    ),
+  error-border: var(
+      --cdr-color-feedback-border-error,
+      var(--cdr-color-border-input-error, #{tokens.$cdr-color-border-input-error})
+    ),
+  helper: var(
+      --cdr-color-control-text-neutral-subtle,
+      var(--cdr-color-text-input-help, #{tokens.$cdr-color-text-input-help})
+    )
+);

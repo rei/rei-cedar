@@ -1,3 +1,5 @@
+@use './vars/CdrSurfaceScroll.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as *;
 
 $prominence-03:
@@ -48,7 +50,7 @@ $prominence-03:
     }
 
     &::after {
-      background-color: #e8e0ce;
+      background-color: #{map.get(maps.$surface-scroll-defaults, track)};
     }
 
     &[data-orientation='horizontal'] {
@@ -139,7 +141,7 @@ $prominence-03:
 
     &::after {
       content: '';
-      background: #454441;
+      background: #{map.get(maps.$surface-scroll-defaults, thumb)};
       border-radius: $cdr-radius-round;
     }
   }

@@ -1,3 +1,5 @@
+@use './vars/CdrSelect.maps' as maps;
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrSelect.vars' as vars;
 @use '../../icon/styles/CdrIcon.module';
@@ -53,10 +55,7 @@
 
   &__caret {
     // ITEM_DOC: Color of the cdr-select caret
-    fill: var(
-      --cdr-select-caret-fill,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
+    fill: var(--cdr-select-caret-fill, #{map.get(maps.$select-defaults, prompt-icon)});
     position: absolute;
     top: 50%;
     right: tokens.$cdr-space-half-x;
@@ -65,10 +64,7 @@
 
     &--disabled {
       // ITEM_DOC: Color of  a disabled cdr-select caret
-      fill: var(
-        --cdr-select-caret-fill-disabled,
-        var(--cdr-color-icon-disabled, #{tokens.$cdr-color-icon-disabled})
-      );
+      fill: var(--cdr-select-caret-fill-disabled, #{map.get(maps.$select-defaults, icon-disabled)});
     }
   }
 
