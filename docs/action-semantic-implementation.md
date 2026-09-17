@@ -11,12 +11,12 @@ changes (its generated outputs are byte-identical before/after the pipeline work
 
 ## Intent Classification
 
-| Component     | Family                               | Identity mapping                                                   |
-| ------------- | ------------------------------------ | ------------------------------------------------------------------ |
-| CdrLink       | `action` (navigation)                | `standard → trigger`, `neutral → neutral`                          |
-| CdrPagination | `action` (navigation)                | single `default → neutral`                                         |
-| CdrChip       | `selection` (choice selection)       | `default → neutral`, `selected → neutral`                          |
-| CdrCard       | _(omitted — foundation-only canvas)_ | `default → neutral`, `link rest → neutral`, `link hover → trigger` |
+| Component     | Family                               |
+| ------------- | ------------------------------------ |
+| CdrLink       | `action` (navigation)                |
+| CdrPagination | `action` (navigation)                |                                    
+| CdrChip       | `selection` (choice selection)       |                   
+| CdrCard       | `action` — (navigation).             | 
 
 None declares a `recipe`: only pressable-style components get generated CSS, so all
 four consume the SCSS maps directly (Banner precedent).
