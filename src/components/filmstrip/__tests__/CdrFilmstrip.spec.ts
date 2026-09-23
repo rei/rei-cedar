@@ -141,7 +141,7 @@ describe('CdrFilmstrip.vue', () => {
     const engine = wrapper.findComponent(CdrFilmstripEngine);
     expect(engine.props('framesToShow')).toBe(2);
     expect(engine.props('framesToScroll')).toBe(1);
-    expect(wrapper.vm.useDefaultResizeStrategy).toBe(true);
+    expect(engine.props('responsiveFrames')).toEqual({ xs: 2, sm: 4, md: 5, lg: 5 });
   });
 
   // ✅ 3. Event Bubbling
@@ -224,7 +224,12 @@ describe('CdrFilmstrip.vue', () => {
   });
 
   it('updates framesToShow based on container width (default strategy)', async () => {
-    expect(wrapper.findComponent(CdrFilmstripEngine).props('cssFirstDefaultLayout')).toBe(true);
+    expect(wrapper.findComponent(CdrFilmstripEngine).props('responsiveFrames')).toEqual({
+      xs: 2,
+      sm: 4,
+      md: 5,
+      lg: 5,
+    });
     setWindowWidth(1200); // Keep the viewport wide while the container changes.
     const resizeTo = (width: number) =>
       wrapper.vm.onResize([{ contentRect: { width } } as ResizeObserverEntry]);
@@ -240,6 +245,57 @@ describe('CdrFilmstrip.vue', () => {
 
     await resizeTo(767); // Below Cedar sm
     expect(wrapper.vm.framesToShow).toBe(2);
+  });
+
+  it('uses configured container breakpoints for sizing and navigation', async () => {
+    wrapper = mount(CdrFilmstrip, {
+      props: {
+        model: {},
+        adapter: () => ({
+          component: h('div'),
+          description: 'Responsive filmstrip',
+          filmstripId: 'responsive-filmstrip',
+          frames: sampleFrames,
+          responsiveFrames: { xs: 2, md: 3, lg: 4 },
+        }),
+      },
+    });
+    const engine = wrapper.findComponent(CdrFilmstripEngine);
+    expect(engine.props('responsiveFrames')).toEqual({ xs: 2, sm: 2, md: 3, lg: 4 });
+
+    for (const [width, show, scroll] of [
+      [600, 2, 1],
+      [900, 2, 1],
+      [1000, 3, 2],
+      [1232, 4, 3],
+    ]) {
+      await wrapper.vm.onResize([{ contentRect: { width } } as ResizeObserverEntry]);
+      expect(wrapper.vm.framesToShow).toBe(show);
+      expect(wrapper.vm.framesToScroll).toBe(scroll);
+    }
+  });
+
+  it('updates a responsive count when the model changes at the same width', async () => {
+    const adapter = (model: unknown): CdrFilmstripConfig => ({
+      component: h('div'),
+      description: 'Responsive filmstrip',
+      filmstripId: 'responsive-filmstrip',
+      frames: sampleFrames,
+      responsiveFrames: { xs: 2, lg: (model as { desktopCount: number }).desktopCount },
+    });
+    wrapper = mount(CdrFilmstrip, { props: { model: { desktopCount: 4 }, adapter } });
+    await wrapper.vm.onResize([{ contentRect: { width: 1300 } } as ResizeObserverEntry]);
+    expect(wrapper.vm.framesToShow).toBe(4);
+
+    await wrapper.setProps({ model: { desktopCount: 5 } });
+    expect(wrapper.vm.framesToShow).toBe(5);
+    expect(wrapper.vm.framesToScroll).toBe(4);
+    expect(wrapper.findComponent(CdrFilmstripEngine).props('responsiveFrames')).toEqual({
+      xs: 2,
+      sm: 2,
+      md: 2,
+      lg: 5,
+    });
   });
 
   it('emits a resize event with updated framesToShow and framesToScroll', async () => {
@@ -272,12 +328,14 @@ describe('CdrFilmstrip.vue', () => {
           frames: sampleFrames,
           framesToScroll: 3,
           framesToShow: 4,
+          responsiveFrames: { xs: 2, md: 5 },
+          useDefaultResizeStrategy: true,
           resizeStrategy,
         }),
       },
     });
 
-    expect(wrapper.findComponent(CdrFilmstripEngine).props('cssFirstDefaultLayout')).toBe(false);
+    expect(wrapper.findComponent(CdrFilmstripEngine).props('responsiveFrames')).toBeUndefined();
 
     await wrapper.vm.onResize([
       {

@@ -9,8 +9,13 @@ process.env.npm_package_version = JSON.parse(
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
 try {
-  const { FilmstripFixture } = await vite.ssrLoadModule('/test/fixtures/filmstrip-first-paint.ts');
-  process.stdout.write(await renderToString(createSSRApp(FilmstripFixture)));
+  const { FilmstripFixture, ResponsiveFilmstripFixture } = await vite.ssrLoadModule(
+    '/test/fixtures/filmstrip-first-paint.ts',
+  );
+  const fixture = process.argv.includes('responsive')
+    ? ResponsiveFilmstripFixture
+    : FilmstripFixture;
+  process.stdout.write(await renderToString(createSSRApp(fixture)));
 } finally {
   await vite.close();
 }

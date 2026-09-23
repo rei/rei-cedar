@@ -15,7 +15,7 @@
       :frames-gap="framesGap"
       :frames-to-show="framesToShow"
       :frames-to-scroll="framesToScroll"
-      :css-first-default-layout="useCssDefaultLayout"
+      :responsive-frames="responsiveFrames"
       :focus-selector="focusSelector"
       :is-showing-arrows="isShowingArrows"
       :viewport-tabindex="viewportTabindex"
@@ -53,10 +53,11 @@ import type {
   CdrFilmstripConfig,
   CdrFilmstrip,
   CdrFilmstripLayout,
+  CdrFilmstripResponsiveFrames,
   CdrFilmstripScrollPayload,
 } from './interfaces';
 import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
-import { CdrBreakpointMd, CdrBreakpointSm } from '@rei/cdr-tokens/tokens';
+import { CdrBreakpointLg, CdrBreakpointMd, CdrBreakpointSm } from '@rei/cdr-tokens/tokens';
 import { CdrFilmstripEventKey } from '../../types/symbols';
 
 /**
@@ -131,14 +132,43 @@ provide(CdrFilmstripEventKey, emit);
 const CdrFilmstripContainer = ref<HTMLElement | null>(null);
 /** A zero-height target keeps content height changes out of resize delivery. */
 const resizeMeasureRef = ref<HTMLElement | null>(null);
+let measuredContainerWidth = 0;
 const FRAMES_TO_SHOW_DEFAULT = 6;
 const filmstripUniqueId = useId();
 const filmstripConfig = computed<CdrFilmstripConfig<FrameProps, Model>>(() =>
   props.adapter(props.model),
 );
+const responsiveFrames = computed<Required<CdrFilmstripResponsiveFrames> | undefined>(() => {
+  const config = filmstripConfig.value;
+  if (config.resizeStrategy) return undefined;
+  const frames =
+    config.responsiveFrames ??
+    (config.useDefaultResizeStrategy ? { xs: 2, sm: 4, md: 5 } : undefined);
+  if (!frames) return undefined;
+  const sm = frames.sm ?? frames.xs;
+  const md = frames.md ?? sm;
+  return {
+    xs: frames.xs,
+    sm,
+    md,
+    lg: frames.lg ?? md,
+  };
+});
+function initialFrameCounts(
+  config: CdrFilmstripConfig<FrameProps, Model>,
+  counts?: Required<CdrFilmstripResponsiveFrames>,
+): CdrFilmstripLayout {
+  const framesToShow = config.framesToShow ?? counts?.xs ?? FRAMES_TO_SHOW_DEFAULT;
+  return {
+    framesToShow,
+    framesToScroll:
+      config.framesToScroll ?? (counts ? Math.max(framesToShow - 1, 1) : framesToShow),
+  };
+}
 /** Mutable layout values initialized from the adapter and updated on resize. */
-const framesToShow = ref(filmstripConfig.value.framesToShow ?? FRAMES_TO_SHOW_DEFAULT);
-const framesToScroll = ref(filmstripConfig.value.framesToScroll ?? framesToShow.value);
+const initialCounts = initialFrameCounts(filmstripConfig.value, responsiveFrames.value);
+const framesToShow = ref(initialCounts.framesToShow);
+const framesToScroll = ref(initialCounts.framesToScroll);
 const frames = computed(() => filmstripConfig.value.frames as CdrFilmstripFrame<never>[]);
 const hasFilmstripFrames = computed(() => frames.value.length > 0);
 const filmstripId = computed(() => `${filmstripConfig.value.filmstripId}-${filmstripUniqueId}`);
@@ -146,19 +176,15 @@ const description = computed(() => filmstripConfig.value.description);
 const framesGap = computed(() => filmstripConfig.value.framesGap ?? 0);
 const frameExtra = computed(() => filmstripConfig.value.frameExtra ?? 0.25);
 const isShowingArrows = computed(() => filmstripConfig.value.isShowingArrows ?? true);
-const useDefaultResizeStrategy = computed(
-  () => filmstripConfig.value.useDefaultResizeStrategy ?? false,
-);
-const useCssDefaultLayout = computed(
-  () => useDefaultResizeStrategy.value && !filmstripConfig.value.resizeStrategy,
-);
 const focusSelector = computed(() => filmstripConfig.value.focusSelector ?? ':first-child');
 const viewportTabindex = computed(() => filmstripConfig.value.viewportTabindex ?? '-1');
 const dataAttributes = computed(() => filmstripConfig.value.dataAttributes ?? {});
 
 watch(filmstripConfig, (config) => {
-  framesToShow.value = config.framesToShow ?? FRAMES_TO_SHOW_DEFAULT;
-  framesToScroll.value = config.framesToScroll ?? framesToShow.value;
+  applyLayout(initialFrameCounts(config, responsiveFrames.value));
+  if (responsiveFrames.value && measuredContainerWidth) {
+    applyLayout(responsiveLayout(measuredContainerWidth, responsiveFrames.value));
+  }
 });
 
 function onArrowClick({ event, direction }: CdrFilmstripArrowClickPayload) {
@@ -177,14 +203,15 @@ function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
   });
 }
 
-/** Cedar's optional breakpoint policy for consumers without a custom strategy. */
-function defaultResizeStrategy(containerWidth: number): CdrFilmstripLayout {
-  const nextFramesToShow =
-    containerWidth >= Number(CdrBreakpointMd)
-      ? 5
-      : containerWidth >= Number(CdrBreakpointSm)
-        ? 4
-        : 2;
+/** Select the same container breakpoint that CSS uses before hydration. */
+function responsiveLayout(
+  containerWidth: number,
+  counts: Required<CdrFilmstripResponsiveFrames>,
+): CdrFilmstripLayout {
+  let nextFramesToShow = counts.xs;
+  if (containerWidth >= Number(CdrBreakpointLg)) nextFramesToShow = counts.lg;
+  else if (containerWidth >= Number(CdrBreakpointMd)) nextFramesToShow = counts.md;
+  else if (containerWidth >= Number(CdrBreakpointSm)) nextFramesToShow = counts.sm;
   return {
     framesToShow: nextFramesToShow,
     framesToScroll: Math.max(nextFramesToShow - 1, 1),
@@ -206,6 +233,7 @@ const onResize = useDebounceFn((entries: ResizeObserverEntry[] = []) => {
     entries[0]?.contentRect.width ??
     CdrFilmstripContainer.value?.getBoundingClientRect().width ??
     0;
+  measuredContainerWidth = containerWidth;
 
   if (resizeStrategy) {
     applyLayout(
@@ -215,8 +243,8 @@ const onResize = useDebounceFn((entries: ResizeObserverEntry[] = []) => {
         viewportWidth: window.innerWidth,
       }),
     );
-  } else if (useDefaultResizeStrategy.value) {
-    applyLayout(defaultResizeStrategy(containerWidth));
+  } else if (responsiveFrames.value) {
+    applyLayout(responsiveLayout(containerWidth, responsiveFrames.value));
   }
 
   emit('resize', {
