@@ -116,7 +116,7 @@ export interface CdrFilmstripScrollPayload<T = Record<string, unknown>> {
 }
 
 /**
- * Mutable layout values emitted when the filmstrip container changes size.
+ * Mutable layout values emitted when the filmstrip's available width changes.
  *
  * Consumers can update the refs to apply their own responsive policy.
  */
