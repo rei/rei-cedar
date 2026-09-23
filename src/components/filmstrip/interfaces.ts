@@ -48,6 +48,8 @@ export interface CdrFilmstripEngine {
   focusSelector?: string;
   /** Tabindex applied to the scrollable viewport. */
   viewportTabindex?: string;
+  /** Render Cedar's default responsive frame widths in CSS before measurement. */
+  cssFirstDefaultLayout?: boolean;
 }
 
 /** Consumer-owned model and the adapter that translates it for the filmstrip. */

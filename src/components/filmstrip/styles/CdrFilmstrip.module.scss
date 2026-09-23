@@ -37,6 +37,23 @@ $prominence-03:
     scroll-snap-align: start;
   }
 
+  &--default-responsive {
+    container-type: inline-size;
+  }
+
+  // Keep these viewport breakpoints and frame counts in sync with defaultResizeStrategy.
+  &--default-responsive &__frames {
+    grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 2)) / (2 + var(--frame-extra)));
+
+    @media (width >= 768px) {
+      grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 4)) / (4 + var(--frame-extra)));
+    }
+
+    @media (width >= 1024px) {
+      grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 5)) / (5 + var(--frame-extra)));
+    }
+  }
+
   &__arrow {
     --cdr-button-with-background-background-color-active: #eae0cc;
     --cdr-button-with-background-background-color-disabled: #eeeae2;

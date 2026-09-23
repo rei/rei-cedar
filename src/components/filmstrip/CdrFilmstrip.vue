@@ -15,6 +15,7 @@
       :frames-gap="framesGap"
       :frames-to-show="framesToShow"
       :frames-to-scroll="framesToScroll"
+      :css-first-default-layout="useCssDefaultLayout"
       :focus-selector="focusSelector"
       :is-showing-arrows="isShowingArrows"
       :viewport-tabindex="viewportTabindex"
@@ -146,6 +147,9 @@ const frameExtra = computed(() => filmstripConfig.value.frameExtra ?? 0.25);
 const isShowingArrows = computed(() => filmstripConfig.value.isShowingArrows ?? true);
 const useDefaultResizeStrategy = computed(
   () => filmstripConfig.value.useDefaultResizeStrategy ?? false,
+);
+const useCssDefaultLayout = computed(
+  () => useDefaultResizeStrategy.value && !filmstripConfig.value.resizeStrategy,
 );
 const focusSelector = computed(() => filmstripConfig.value.focusSelector ?? ':first-child');
 const viewportTabindex = computed(() => filmstripConfig.value.viewportTabindex ?? '-1');

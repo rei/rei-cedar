@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>Filmstrip first paint</title>
+    <style>
+      html {
+        font-size: 10px;
+      }
+      body {
+        margin: 0;
+        font:
+          16px Arial,
+          sans-serif;
+      }
+      .product-frame {
+        box-sizing: border-box;
+        padding: 8px;
+      }
+      .product-image {
+        width: 100%;
+        aspect-ratio: 1;
+        background: #ddd;
+      }
+      .product-frame p {
+        margin: 8px 0;
+      }
+      .below {
+        height: 300px;
+        background: #eef;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="below">Content below filmstrip</div>
+    <script
+      type="module"
+      src="./filmstrip-first-paint.ts"
+    ></script>
+  </body>
+</html>
