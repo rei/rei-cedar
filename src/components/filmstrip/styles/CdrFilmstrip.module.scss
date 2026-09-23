@@ -37,20 +37,28 @@ $prominence-03:
     scroll-snap-align: start;
   }
 
-  &--default-responsive {
+  &--responsive {
     container-type: inline-size;
   }
 
-  // Keep these container breakpoints and frame counts in sync with defaultResizeStrategy.
-  &--default-responsive &__frames {
-    grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 2)) / (2 + var(--frame-extra)));
+  &--responsive &__frames {
+    --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-xs);
+
+    grid-auto-columns: calc(
+      (100cqw - (var(--frames-gap) * 1px * var(--cdr-filmstrip-active-frames))) /
+        (var(--cdr-filmstrip-active-frames) + var(--frame-extra))
+    );
 
     @include tokens.cdr-sm-cq-up {
-      grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 4)) / (4 + var(--frame-extra)));
+      --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-sm);
     }
 
     @include tokens.cdr-md-cq-up {
-      grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 5)) / (5 + var(--frame-extra)));
+      --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-md);
+    }
+
+    @include tokens.cdr-lg-cq-up {
+      --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-lg);
     }
   }
 

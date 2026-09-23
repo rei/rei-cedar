@@ -1,10 +1,5 @@
-import type {
-  CdrFilmstripArrowClickPayload,
-  CdrFilmstripLayout,
-  CdrFilmstripResizeContext,
-} from '../../interfaces';
+import type { CdrFilmstripArrowClickPayload } from '../../interfaces';
 import type { Lifestyle, LifestyleFrameClickPayload } from '.';
-import { CdrBreakpointLg, CdrBreakpointMd } from '@rei/cdr-tokens/tokens';
 
 /** Demonstrates how a frame event can be translated into click analytics. */
 export function onFrameClick(payload: unknown): void {
@@ -32,25 +27,4 @@ export function onArrowClick(payload: unknown): void {
   };
 
   console.log('onArrowClick', { event, direction, analytics });
-}
-
-/**
- * Returns the lifestyle example's responsive frame counts.
- */
-export function resizeStrategy({
-  model,
-  viewportWidth,
-}: CdrFilmstripResizeContext<Partial<Lifestyle>>): CdrFilmstripLayout {
-  const { framesVisible = 3 } = model;
-  const framesToShow =
-    viewportWidth >= Number(CdrBreakpointLg)
-      ? framesVisible
-      : viewportWidth >= Number(CdrBreakpointMd)
-        ? 3
-        : 2;
-
-  return {
-    framesToShow,
-    framesToScroll: framesToShow - 1,
-  };
 }

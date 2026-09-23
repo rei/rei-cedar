@@ -27,8 +27,23 @@ export const FilmstripFixture = defineComponent({
   render: () => h(CdrFilmstrip, { model, adapter }),
 });
 
+const responsiveAdapter = (source: typeof model) => ({
+  component: ProductFrame,
+  frames: source.items.map((item, index) => ({ key: index, props: item })),
+  filmstripId: 'responsive-fixture',
+  description: 'Responsive filmstrip',
+  responsiveFrames: { xs: 2, md: 3, lg: 4 },
+});
+
+export const ResponsiveFilmstripFixture = defineComponent({
+  render: () => h(CdrFilmstrip, { model, adapter: responsiveAdapter }),
+});
+
 if (typeof document !== 'undefined') {
   const root = document.querySelector('#app')!;
-  const app = root.hasChildNodes() ? createSSRApp(FilmstripFixture) : createApp(FilmstripFixture);
+  const fixture = location.search.includes('responsive')
+    ? ResponsiveFilmstripFixture
+    : FilmstripFixture;
+  const app = root.hasChildNodes() ? createSSRApp(fixture) : createApp(fixture);
   app.mount(root);
 }

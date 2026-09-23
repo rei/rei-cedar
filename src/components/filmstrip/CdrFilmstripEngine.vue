@@ -4,10 +4,7 @@
     ref="containerRef"
     :data-ui="dataUi"
     :style="computedCSSVars"
-    :class="[
-      classObj[BASE_CLASS],
-      props.cssFirstDefaultLayout && classObj[`${BASE_CLASS}--default-responsive`],
-    ]"
+    :class="[classObj[BASE_CLASS], props.responsiveFrames && classObj[`${BASE_CLASS}--responsive`]]"
     @focusin="handleFocusIn"
   >
     <CdrSurfaceScroll
@@ -122,7 +119,6 @@ const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
   frameExtra: 0.25,
   focusSelector: ':first-child',
   viewportTabindex: '-1',
-  cssFirstDefaultLayout: false,
 });
 
 defineSlots<{
@@ -177,6 +173,12 @@ const computedCSSVars = computed(() => ({
   '--frames-gap': props.framesGap,
   '--frame-width': frameWidth.value,
   '--frame-extra': props.frameExtra,
+  ...(props.responsiveFrames && {
+    '--cdr-filmstrip-frames-xs': props.responsiveFrames.xs,
+    '--cdr-filmstrip-frames-sm': props.responsiveFrames.sm,
+    '--cdr-filmstrip-frames-md': props.responsiveFrames.md,
+    '--cdr-filmstrip-frames-lg': props.responsiveFrames.lg,
+  }),
 }));
 
 const arrowIcons = {

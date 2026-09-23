@@ -1,7 +1,6 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { adapter as lifestyleAdapter } from '../examples/Lifestyle/adapter';
-import { resizeStrategy as resizeLifestyle } from '../examples/Lifestyle/handlers';
 import BasePicture from '../examples/Lifestyle/BasePicture.vue';
 import LifestyleFrame from '../examples/Lifestyle/LifestyleFrame.vue';
 import { adapter as productAdapter } from '../examples/ProductRecommendation/adapter';
@@ -26,9 +25,8 @@ describe('filmstrip example adapters', () => {
     expect(config).toMatchObject({
       description: 'Lifestyle filmstrip',
       filmstripId: 'lifestyle',
-      framesToShow: 4,
+      responsiveFrames: { xs: 2, md: 3, lg: 4 },
       focusSelector: '[data-focus]',
-      resizeStrategy: resizeLifestyle,
     });
     expect(config.frames).toEqual([
       {
@@ -154,22 +152,5 @@ describe('lifestyle responsive picture', () => {
     expect(wrapper.findAll('source')).toHaveLength(4);
     expect(wrapper.find('source').attributes('srcset')).toBe('/xs-wide.jpg');
     expect(wrapper.find('img').attributes('src')).toBe('/lg-wide.jpg');
-  });
-});
-
-describe('lifestyle resize strategy', () => {
-  it.each([
-    [1280, 5, 4],
-    [1000, 3, 2],
-    [500, 2, 1],
-  ])('uses the expected frame counts at %ipx', (clientWidth, visible, scroll) => {
-    const layout = resizeLifestyle({
-      containerWidth: clientWidth,
-      model: { framesVisible: 5 },
-      viewportWidth: clientWidth,
-    });
-
-    expect(layout.framesToShow).toBe(visible);
-    expect(layout.framesToScroll).toBe(scroll);
   });
 });

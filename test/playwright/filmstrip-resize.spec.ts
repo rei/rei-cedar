@@ -72,7 +72,7 @@ for (const width of [390, 768, 992, 1200]) {
         if (frame) {
           sampledWindow.__frameWidths.push(frame.getBoundingClientRect().width);
         }
-        if (performance.now() < 1000) requestAnimationFrame(sample);
+        if (sampledWindow.__frameWidths.length < 10) requestAnimationFrame(sample);
       };
       requestAnimationFrame(sample);
     });
@@ -95,7 +95,7 @@ test('default filmstrip follows its container width in a wide viewport', async (
     const sample = () => {
       const frame = document.querySelector('.product-frame');
       if (frame) sampledWindow.__frameWidths.push(frame.getBoundingClientRect().width);
-      if (performance.now() < 1000) requestAnimationFrame(sample);
+      if (sampledWindow.__frameWidths.length < 10) requestAnimationFrame(sample);
     };
     requestAnimationFrame(sample);
   });
@@ -155,7 +155,7 @@ test('default filmstrip keeps its frame width through SSR hydration', async ({ p
     const sample = () => {
       const frame = document.querySelector('.product-frame');
       if (frame) sampledWindow.__frameWidths.push(frame.getBoundingClientRect().width);
-      if (performance.now() < 1000) requestAnimationFrame(sample);
+      if (sampledWindow.__frameWidths.length < 10) requestAnimationFrame(sample);
     };
     requestAnimationFrame(sample);
   });
@@ -178,6 +178,67 @@ test('default filmstrip keeps its frame width through SSR hydration', async ({ p
     const widths = await page.evaluate(() => (window as WidthSamplingWindow).__frameWidths);
     expect(widths.length).toBeGreaterThan(1);
     expect(Math.abs(widths[0] - widths.at(-1)!)).toBeLessThan(1);
+  }
+  expect(browserErrors).toEqual([]);
+});
+
+test('configured container breakpoints keep frame widths through hydration and navigation', async ({
+  page,
+}) => {
+  const serverMarkup = execFileSync(
+    process.execPath,
+    [resolve('test/fixtures/render-filmstrip-first-paint.mjs'), 'responsive'],
+    { cwd: process.cwd(), encoding: 'utf8' },
+  );
+  const browserErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error' || message.text().includes('Hydration'))
+      browserErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => browserErrors.push(error.message));
+  await page.addInitScript(() => {
+    const sampledWindow = window as WidthSamplingWindow;
+    sampledWindow.__frameWidths = [];
+    const sample = () => {
+      const frame = document.querySelector('.product-frame');
+      if (frame) sampledWindow.__frameWidths.push(frame.getBoundingClientRect().width);
+      if (sampledWindow.__frameWidths.length < 10) requestAnimationFrame(sample);
+    };
+    requestAnimationFrame(sample);
+  });
+  await page.route('**/filmstrip-first-paint.html*', async (route) => {
+    const response = await route.fetch();
+    const body = (await response.text())
+      .replace('<div id="app"></div>', `<div id="app">${serverMarkup}</div>`)
+      .replace(
+        '</head>',
+        '<link rel="stylesheet" href="/rei-cedar/src/components/filmstrip/styles/CdrFilmstrip.module.scss?direct" /></head>',
+      );
+    await route.fulfill({ response, body });
+  });
+
+  for (const [width, count] of [
+    [390, 2],
+    [1000, 3],
+    [1300, 4],
+  ]) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto(
+      'http://localhost:3000/rei-cedar/test/fixtures/filmstrip-first-paint.html?responsive',
+    );
+    const frame = page.locator('.product-frame').first();
+    await expect(frame).toBeVisible();
+    await page.waitForTimeout(150);
+    const widths = await page.evaluate(() => (window as WidthSamplingWindow).__frameWidths);
+    expect(widths.length).toBeGreaterThan(1);
+    const containerWidth = await page
+      .locator('[data-ui="cdr-filmstrip"]')
+      .evaluate((element) => element.getBoundingClientRect().width);
+    expect(widths[0]).toBeCloseTo(containerWidth / (count + 0.25), 0);
+    expect(Math.abs(widths[0] - widths.at(-1)!)).toBeLessThan(1);
+    await page.locator('[data-ui="cdr-filmstrip"]').hover();
+    await page.getByRole('button', { name: 'Next Frame' }).click();
+    await expect(page.getByRole('button', { name: 'Previous Frame' })).toBeEnabled();
   }
   expect(browserErrors).toEqual([]);
 });
