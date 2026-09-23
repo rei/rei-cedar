@@ -41,15 +41,15 @@ $prominence-03:
     container-type: inline-size;
   }
 
-  // Keep these viewport breakpoints and frame counts in sync with defaultResizeStrategy.
+  // Keep these container breakpoints and frame counts in sync with defaultResizeStrategy.
   &--default-responsive &__frames {
     grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 2)) / (2 + var(--frame-extra)));
 
-    @include tokens.cdr-sm-mq-up {
+    @include tokens.cdr-sm-cq-up {
       grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 4)) / (4 + var(--frame-extra)));
     }
 
-    @include tokens.cdr-md-mq-up {
+    @include tokens.cdr-md-cq-up {
       grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 5)) / (5 + var(--frame-extra)));
     }
   }

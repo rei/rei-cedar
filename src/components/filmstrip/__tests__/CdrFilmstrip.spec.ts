@@ -223,30 +223,22 @@ describe('CdrFilmstrip.vue', () => {
     expect(wrapper.emitted('frameClick')?.[0][0]).toHaveProperty('event');
   });
 
-  it('updates framesToShow based on window resize (default strategy)', async () => {
+  it('updates framesToShow based on container width (default strategy)', async () => {
     expect(wrapper.findComponent(CdrFilmstripEngine).props('cssFirstDefaultLayout')).toBe(true);
-    setWindowWidth(992); // Cedar md and above
-    window.dispatchEvent(new Event('resize'));
-    await nextTick();
-    await wrapper.vm.onResize();
+    setWindowWidth(1200); // Keep the viewport wide while the container changes.
+    const resizeTo = (width: number) =>
+      wrapper.vm.onResize([{ contentRect: { width } } as ResizeObserverEntry]);
+
+    await resizeTo(992); // Cedar md and above
     expect(wrapper.vm.framesToShow).toBe(5);
 
-    setWindowWidth(991); // Below Cedar md
-    window.dispatchEvent(new Event('resize'));
-    await nextTick();
-    await wrapper.vm.onResize();
+    await resizeTo(991); // Below Cedar md
     expect(wrapper.vm.framesToShow).toBe(4);
 
-    setWindowWidth(768); // Tablet
-    window.dispatchEvent(new Event('resize'));
-    await nextTick();
-    await wrapper.vm.onResize();
+    await resizeTo(768); // Cedar sm
     expect(wrapper.vm.framesToShow).toBe(4);
 
-    setWindowWidth(400); // Mobile
-    window.dispatchEvent(new Event('resize'));
-    await nextTick();
-    await wrapper.vm.onResize();
+    await resizeTo(767); // Below Cedar sm
     expect(wrapper.vm.framesToShow).toBe(2);
   });
 
