@@ -4,7 +4,10 @@
     ref="containerRef"
     :data-ui="dataUi"
     :style="computedCSSVars"
-    :class="classObj[BASE_CLASS]"
+    :class="[
+      classObj[BASE_CLASS],
+      props.cssFirstDefaultLayout && classObj[`${BASE_CLASS}--default-responsive`],
+    ]"
     @focusin="handleFocusIn"
   >
     <CdrSurfaceScroll
@@ -119,6 +122,7 @@ const props = withDefaults(defineProps<CdrFilmstripEngine>(), {
   frameExtra: 0.25,
   focusSelector: ':first-child',
   viewportTabindex: '-1',
+  cssFirstDefaultLayout: false,
 });
 
 defineSlots<{

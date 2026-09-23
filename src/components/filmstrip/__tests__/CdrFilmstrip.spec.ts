@@ -224,6 +224,7 @@ describe('CdrFilmstrip.vue', () => {
   });
 
   it('updates framesToShow based on window resize (default strategy)', async () => {
+    expect(wrapper.findComponent(CdrFilmstripEngine).props('cssFirstDefaultLayout')).toBe(true);
     setWindowWidth(1024); // Desktop
     window.dispatchEvent(new Event('resize'));
     await nextTick();
@@ -277,6 +278,8 @@ describe('CdrFilmstrip.vue', () => {
         }),
       },
     });
+
+    expect(wrapper.findComponent(CdrFilmstripEngine).props('cssFirstDefaultLayout')).toBe(false);
 
     await wrapper.vm.onResize([
       {
