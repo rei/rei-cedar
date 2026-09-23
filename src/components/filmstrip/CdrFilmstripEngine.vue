@@ -67,6 +67,12 @@
         </CdrButton>
       </slot>
     </template>
+    <!-- Measure available width without observing frame-driven height changes. -->
+    <div
+      ref="resizeMeasureRef"
+      aria-hidden="true"
+      style="width: 100%; height: 0; overflow: hidden"
+    />
   </div>
 </template>
 
@@ -141,6 +147,7 @@ const emit = defineEmits<{
 
 const surfaceScrollRef = ref<typeof CdrSurfaceScroll | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
+const resizeMeasureRef = ref<HTMLElement | null>(null);
 const viewportRef = computed(() => surfaceScrollRef.value?.viewportRef);
 const framesItemsRef = ref<Array<HTMLElement> | null>(null);
 const containerWidth = ref(0);
@@ -290,7 +297,7 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
   isProgrammaticScroll.value = false;
 }, 100);
 
-const { stop: stopResizeObserver } = useResizeObserver(containerRef, (entries) => {
+const { stop: stopResizeObserver } = useResizeObserver(resizeMeasureRef, (entries) => {
   containerWidth.value = entries[0]?.contentRect.width ?? 0;
 });
 

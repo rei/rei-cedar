@@ -29,6 +29,12 @@
         />
       </template>
     </CdrFilmstripEngine>
+    <!-- Width changes drive layout; frame height changes must not re-trigger it. -->
+    <div
+      ref="resizeMeasureRef"
+      aria-hidden="true"
+      style="width: 100%; height: 0; overflow: hidden"
+    />
   </div>
 </template>
 
@@ -96,7 +102,7 @@ const emit = defineEmits<{
   (e: 'scrollNavigate', payload: CdrFilmstripScrollPayload): void;
 
   /**
-   * Fires when the filmstrip container changes size.
+   * Fires when the filmstrip's available width changes.
    * @param payload Mutable frame counts and the source model.
    */
   (e: 'resize', payload: CdrFilmstripResizePayload): void;
@@ -121,6 +127,8 @@ const classAttr = attrs.class || '';
 provide(CdrFilmstripEventKey, emit);
 
 const CdrFilmstripContainer = ref<HTMLElement | null>(null);
+/** A zero-height target keeps content height changes out of resize delivery. */
+const resizeMeasureRef = ref<HTMLElement | null>(null);
 const FRAMES_TO_SHOW_DEFAULT = 6;
 const filmstripUniqueId = useId();
 const filmstripConfig = computed<CdrFilmstripConfig<FrameProps, Model>>(() =>
@@ -209,5 +217,5 @@ const onResize = useDebounceFn((entries: ResizeObserverEntry[] = []) => {
   } satisfies CdrFilmstripResizePayload);
 }, 25);
 
-useResizeObserver(CdrFilmstripContainer, onResize);
+useResizeObserver(resizeMeasureRef, onResize);
 </script>
