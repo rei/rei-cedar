@@ -178,10 +178,13 @@ function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
 }
 
 /** Cedar's optional breakpoint policy for consumers without a custom strategy. */
-function defaultResizeStrategy(): CdrFilmstripLayout {
-  const screenWidth = window.innerWidth;
+function defaultResizeStrategy(containerWidth: number): CdrFilmstripLayout {
   const nextFramesToShow =
-    screenWidth >= Number(CdrBreakpointMd) ? 5 : screenWidth >= Number(CdrBreakpointSm) ? 4 : 2;
+    containerWidth >= Number(CdrBreakpointMd)
+      ? 5
+      : containerWidth >= Number(CdrBreakpointSm)
+        ? 4
+        : 2;
   return {
     framesToShow: nextFramesToShow,
     framesToScroll: Math.max(nextFramesToShow - 1, 1),
@@ -213,7 +216,7 @@ const onResize = useDebounceFn((entries: ResizeObserverEntry[] = []) => {
       }),
     );
   } else if (useDefaultResizeStrategy.value) {
-    applyLayout(defaultResizeStrategy());
+    applyLayout(defaultResizeStrategy(containerWidth));
   }
 
   emit('resize', {
