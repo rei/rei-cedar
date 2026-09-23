@@ -59,7 +59,7 @@ test('filmstrip responds to width and content height without a ResizeObserver wa
   expect(await page.evaluate(() => (window as InstrumentedWindow).__resizeWarnings)).toEqual([]);
 });
 
-for (const width of [390, 768, 1200]) {
+for (const width of [390, 768, 992, 1200]) {
   test(`default filmstrip renders its settled frame width on first paint at ${width}px`, async ({
     page,
   }) => {

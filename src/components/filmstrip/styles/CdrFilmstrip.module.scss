@@ -45,11 +45,11 @@ $prominence-03:
   &--default-responsive &__frames {
     grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 2)) / (2 + var(--frame-extra)));
 
-    @media (width >= 768px) {
+    @include tokens.cdr-sm-mq-up {
       grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 4)) / (4 + var(--frame-extra)));
     }
 
-    @media (width >= 1024px) {
+    @include tokens.cdr-md-mq-up {
       grid-auto-columns: calc((100cqw - (var(--frames-gap) * 1px * 5)) / (5 + var(--frame-extra)));
     }
   }

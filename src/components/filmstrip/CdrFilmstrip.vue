@@ -56,6 +56,7 @@ import type {
   CdrFilmstripScrollPayload,
 } from './interfaces';
 import { computed, h, provide, ref, useAttrs, useId, watch } from 'vue';
+import { CdrBreakpointMd, CdrBreakpointSm } from '@rei/cdr-tokens/tokens';
 import { CdrFilmstripEventKey } from '../../types/symbols';
 
 /**
@@ -179,7 +180,8 @@ function onScrollNavigate({ index, event }: CdrFilmstripScrollPayload): void {
 /** Cedar's optional breakpoint policy for consumers without a custom strategy. */
 function defaultResizeStrategy(): CdrFilmstripLayout {
   const screenWidth = window.innerWidth;
-  const nextFramesToShow = screenWidth >= 1024 ? 5 : screenWidth >= 768 ? 4 : 2;
+  const nextFramesToShow =
+    screenWidth >= Number(CdrBreakpointMd) ? 5 : screenWidth >= Number(CdrBreakpointSm) ? 4 : 2;
   return {
     framesToShow: nextFramesToShow,
     framesToScroll: Math.max(nextFramesToShow - 1, 1),

@@ -225,11 +225,17 @@ describe('CdrFilmstrip.vue', () => {
 
   it('updates framesToShow based on window resize (default strategy)', async () => {
     expect(wrapper.findComponent(CdrFilmstripEngine).props('cssFirstDefaultLayout')).toBe(true);
-    setWindowWidth(1024); // Desktop
+    setWindowWidth(992); // Cedar md and above
     window.dispatchEvent(new Event('resize'));
     await nextTick();
     await wrapper.vm.onResize();
     expect(wrapper.vm.framesToShow).toBe(5);
+
+    setWindowWidth(991); // Below Cedar md
+    window.dispatchEvent(new Event('resize'));
+    await nextTick();
+    await wrapper.vm.onResize();
+    expect(wrapper.vm.framesToShow).toBe(4);
 
     setWindowWidth(768); // Tablet
     window.dispatchEvent(new Event('resize'));
