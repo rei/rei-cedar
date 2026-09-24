@@ -43,10 +43,6 @@ $prominence-03:
     cursor: grab;
     border-radius: $cdr-radius-round;
 
-    &[data-state='hidden'] {
-      visibility: hidden;
-    }
-
     &:active {
       cursor: grabbing;
     }
