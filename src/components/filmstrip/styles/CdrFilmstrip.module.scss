@@ -43,10 +43,13 @@ $prominence-03:
 
   &--responsive &__frames {
     --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-xs);
+    --cdr-filmstrip-available-width: calc(
+      100cqw - var(--frames-gap) * 1px * var(--cdr-filmstrip-active-frames)
+    );
+    --cdr-filmstrip-frame-divisor: calc(var(--cdr-filmstrip-active-frames) + var(--frame-extra));
 
     grid-auto-columns: calc(
-      (100cqw - (var(--frames-gap) * 1px * var(--cdr-filmstrip-active-frames))) /
-        (var(--cdr-filmstrip-active-frames) + var(--frame-extra))
+      var(--cdr-filmstrip-available-width) / var(--cdr-filmstrip-frame-divisor)
     );
 
     @include tokens.cdr-sm-cq-up {
