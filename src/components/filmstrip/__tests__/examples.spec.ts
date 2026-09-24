@@ -1,6 +1,8 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { adapter as lifestyleAdapter } from '../examples/Lifestyle/adapter';
+import LifestyleExample from '../examples/Lifestyle/Example.vue';
+import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
 import BasePicture from '../examples/Lifestyle/BasePicture.vue';
 import LifestyleFrame from '../examples/Lifestyle/LifestyleFrame.vue';
 import { adapter as productAdapter } from '../examples/ProductRecommendation/adapter';
@@ -34,6 +36,17 @@ describe('filmstrip example adapters', () => {
         props: { ...frame, frameStyle: 'lifestyle-square' },
       },
     ]);
+  });
+
+  it('lets the lifestyle example update responsive frame counts', async () => {
+    const wrapper = mount(LifestyleExample, {
+      props: { responsiveFrames: { xs: 2, sm: 2, md: 3, lg: 4 } },
+    });
+    const engine = wrapper.findComponent(CdrFilmstripEngine);
+    expect(engine.props('responsiveFrames')).toEqual({ xs: 2, sm: 2, md: 3, lg: 4 });
+
+    await wrapper.setProps({ responsiveFrames: { xs: 3, sm: 3, md: 4, lg: 5 } });
+    expect(engine.props('responsiveFrames')).toEqual({ xs: 3, sm: 3, md: 4, lg: 5 });
   });
 
   it('maps product frames and placement metadata', () => {
