@@ -2,7 +2,7 @@
   <CdrFilmstrip
     class="lifestyle-filmstrip"
     :model="lifestyleModelData"
-    :adapter="LifestyleAdapter"
+    :adapter="adapter"
     @frame-click="onFrameClick"
     @arrow-click="onArrowClick"
   />
@@ -12,10 +12,16 @@
 import CdrFilmstrip from '../../CdrFilmstrip.vue';
 import lifestyleModel from './mock.json';
 import type { Lifestyle } from '.';
-
-const lifestyleModelData = lifestyleModel as Partial<Lifestyle>;
+import type { CdrFilmstripResponsiveFrames } from '../../interfaces';
 import { onFrameClick, onArrowClick } from './handlers';
 import LifestyleAdapter from './adapter';
+
+const lifestyleModelData = lifestyleModel as Partial<Lifestyle>;
+const props = defineProps<{ responsiveFrames?: CdrFilmstripResponsiveFrames }>();
+const adapter = (model: Partial<Lifestyle>) => ({
+  ...LifestyleAdapter(model),
+  ...(props.responsiveFrames && { responsiveFrames: props.responsiveFrames }),
+});
 </script>
 
 <style lang="scss" scoped>

@@ -39,21 +39,25 @@ export const Default: Story = {
 
 export const ContainerBreakpoints: Story = {
   name: 'Container breakpoints',
-  args: { containerWidth: 600 },
+  args: { containerWidth: 600, xs: 2, sm: 2, md: 3, lg: 4 },
   argTypes: {
     containerWidth: { control: { type: 'range', min: 320, max: 1400, step: 1 } },
+    xs: { control: { type: 'range', min: 1, max: 6, step: 1 } },
+    sm: { control: { type: 'range', min: 1, max: 6, step: 1 } },
+    md: { control: { type: 'range', min: 1, max: 6, step: 1 } },
+    lg: { control: { type: 'range', min: 1, max: 6, step: 1 } },
   },
   render: (args) => ({
     components: { LifestyleExample },
     setup: () => ({ args }),
     template:
-      "<div :style=\"{ width: args.containerWidth + 'px', maxWidth: '100%' }\"><LifestyleExample /></div>",
+      '<div :style="{ width: args.containerWidth + \'px\', maxWidth: \'100%\' }"><LifestyleExample :responsive-frames="{ xs: args.xs, sm: args.sm, md: args.md, lg: args.lg }" /></div>',
   }),
   parameters: {
     docs: {
       description: {
         story:
-          'Change the container width while keeping the viewport fixed. The same xs, md, and lg counts size frames before measurement and drive navigation.',
+          'Change the container width and the xs, sm, md, or lg frame counts. The layout and navigation use the same values.',
       },
     },
   },
