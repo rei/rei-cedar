@@ -6,6 +6,11 @@ type InstrumentedWindow = Window & { __resizeWarnings: string[] };
 
 type WidthSamplingWindow = Window & { __frameWidths: number[] };
 
+const ssrStyles = [
+  '<link rel="stylesheet" href="/rei-cedar/src/components/filmstrip/styles/CdrFilmstrip.module.scss?direct" />',
+  '<link rel="stylesheet" href="/rei-cedar/src/components/surfaceScroll/styles/CdrSurfaceScroll.module.scss?direct" />',
+].join('');
+
 async function settlePaint(page: import('@playwright/test').Page): Promise<void> {
   await page.evaluate(
     () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
@@ -163,10 +168,7 @@ test('default filmstrip keeps its frame width through SSR hydration', async ({ p
     const response = await route.fetch();
     const body = (await response.text())
       .replace('<div id="app"></div>', `<div id="app">${serverMarkup}</div>`)
-      .replace(
-        '</head>',
-        '<link rel="stylesheet" href="/rei-cedar/src/components/filmstrip/styles/CdrFilmstrip.module.scss?direct" /></head>',
-      );
+      .replace('</head>', `${ssrStyles}</head>`);
     await route.fulfill({ response, body });
   });
 
@@ -210,10 +212,7 @@ test('configured container breakpoints keep frame widths through hydration and n
     const response = await route.fetch();
     const body = (await response.text())
       .replace('<div id="app"></div>', `<div id="app">${serverMarkup}</div>`)
-      .replace(
-        '</head>',
-        '<link rel="stylesheet" href="/rei-cedar/src/components/filmstrip/styles/CdrFilmstrip.module.scss?direct" /></head>',
-      );
+      .replace('</head>', `${ssrStyles}</head>`);
     await route.fulfill({ response, body });
   });
 
