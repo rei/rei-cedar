@@ -4,7 +4,7 @@
     ref="containerRef"
     :data-ui="dataUi"
     :style="computedCSSVars"
-    :class="classObj[BASE_CLASS]"
+    :class="[classObj[BASE_CLASS], props.responsiveFrames && classObj[`${BASE_CLASS}--responsive`]]"
     @focusin="handleFocusIn"
   >
     <CdrSurfaceScroll
@@ -67,6 +67,12 @@
         </CdrButton>
       </slot>
     </template>
+    <!-- Measure available width without observing frame-driven height changes. -->
+    <div
+      ref="resizeMeasureRef"
+      aria-hidden="true"
+      style="width: 100%; height: 0; overflow: hidden"
+    />
   </div>
 </template>
 
@@ -141,6 +147,7 @@ const emit = defineEmits<{
 
 const surfaceScrollRef = ref<typeof CdrSurfaceScroll | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
+const resizeMeasureRef = ref<HTMLElement | null>(null);
 const viewportRef = computed(() => surfaceScrollRef.value?.viewportRef);
 const framesItemsRef = ref<Array<HTMLElement> | null>(null);
 const containerWidth = ref(0);
@@ -166,6 +173,12 @@ const computedCSSVars = computed(() => ({
   '--frames-gap': props.framesGap,
   '--frame-width': frameWidth.value,
   '--frame-extra': props.frameExtra,
+  ...(props.responsiveFrames && {
+    '--cdr-filmstrip-frames-xs': props.responsiveFrames.xs,
+    '--cdr-filmstrip-frames-sm': props.responsiveFrames.sm,
+    '--cdr-filmstrip-frames-md': props.responsiveFrames.md,
+    '--cdr-filmstrip-frames-lg': props.responsiveFrames.lg,
+  }),
 }));
 
 const arrowIcons = {
@@ -290,7 +303,7 @@ const debouncedHandleScroll = useDebounceFn((e: Event): void => {
   isProgrammaticScroll.value = false;
 }, 100);
 
-const { stop: stopResizeObserver } = useResizeObserver(containerRef, (entries) => {
+const { stop: stopResizeObserver } = useResizeObserver(resizeMeasureRef, (entries) => {
   containerWidth.value = entries[0]?.contentRect.width ?? 0;
 });
 

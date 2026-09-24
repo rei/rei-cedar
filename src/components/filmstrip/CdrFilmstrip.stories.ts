@@ -31,7 +31,33 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          'A lifestyle content rail composed with the Lifestyle adapter, frame component, and a deterministic local placeholder image.',
+          'The Lifestyle adapter opts in with `responsiveFrames: { xs: 2, md: 3, lg: framesVisible }`. Counts follow the container width.',
+      },
+    },
+  },
+};
+
+export const ContainerBreakpoints: Story = {
+  name: 'Container breakpoints',
+  args: { containerWidth: 600, xs: 2, sm: 2, md: 3, lg: 4 },
+  argTypes: {
+    containerWidth: { control: { type: 'range', min: 320, max: 1400, step: 1 } },
+    xs: { control: { type: 'range', min: 1, max: 6, step: 1 } },
+    sm: { control: { type: 'range', min: 1, max: 6, step: 1 } },
+    md: { control: { type: 'range', min: 1, max: 6, step: 1 } },
+    lg: { control: { type: 'range', min: 1, max: 6, step: 1 } },
+  },
+  render: (args) => ({
+    components: { LifestyleExample },
+    setup: () => ({ args }),
+    template:
+      '<div :style="{ width: args.containerWidth + \'px\', maxWidth: \'100%\' }"><LifestyleExample :responsive-frames="{ xs: args.xs, sm: args.sm, md: args.md, lg: args.lg }" /></div>',
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Change the container width and the xs, sm, md, or lg frame counts. The layout and navigation use the same values.',
       },
     },
   },

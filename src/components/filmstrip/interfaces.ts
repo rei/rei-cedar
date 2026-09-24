@@ -48,6 +48,16 @@ export interface CdrFilmstripEngine {
   focusSelector?: string;
   /** Tabindex applied to the scrollable viewport. */
   viewportTabindex?: string;
+  /** Resolved container-width frame counts used by CSS before measurement. */
+  responsiveFrames?: Required<CdrFilmstripResponsiveFrames>;
+}
+
+/** Visible frames at Cedar container breakpoints. Missing sizes inherit the preceding count. */
+export interface CdrFilmstripResponsiveFrames {
+  xs: number;
+  sm?: number;
+  md?: number;
+  lg?: number;
 }
 
 /** Consumer-owned model and the adapter that translates it for the filmstrip. */
@@ -87,7 +97,9 @@ export interface CdrFilmstripConfig<T = Record<string, unknown>, Model = unknown
   isShowingArrows?: boolean;
   /** Whether Cedar's breakpoint policy runs when no `resizeStrategy` is supplied. */
   useDefaultResizeStrategy?: boolean;
-  /** Responsive layout policy applied before the legacy `resize` event. */
+  /** Container-based counts for first-paint CSS and navigation; advances by one fewer frame. */
+  responsiveFrames?: CdrFilmstripResponsiveFrames;
+  /** Custom policy applied before the legacy `resize` event; takes precedence over responsive counts. */
   resizeStrategy?: CdrFilmstripResizeStrategy<Model>;
   /** Selector for the primary action that receives the managed frame tabindex. */
   focusSelector?: string;
@@ -116,7 +128,7 @@ export interface CdrFilmstripScrollPayload<T = Record<string, unknown>> {
 }
 
 /**
- * Mutable layout values emitted when the filmstrip container changes size.
+ * Mutable layout values emitted when the filmstrip's available width changes.
  *
  * Consumers can update the refs to apply their own responsive policy.
  */

@@ -1,7 +1,8 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { adapter as lifestyleAdapter } from '../examples/Lifestyle/adapter';
-import { resizeStrategy as resizeLifestyle } from '../examples/Lifestyle/handlers';
+import LifestyleExample from '../examples/Lifestyle/Example.vue';
+import CdrFilmstripEngine from '../CdrFilmstripEngine.vue';
 import BasePicture from '../examples/Lifestyle/BasePicture.vue';
 import LifestyleFrame from '../examples/Lifestyle/LifestyleFrame.vue';
 import { adapter as productAdapter } from '../examples/ProductRecommendation/adapter';
@@ -26,9 +27,8 @@ describe('filmstrip example adapters', () => {
     expect(config).toMatchObject({
       description: 'Lifestyle filmstrip',
       filmstripId: 'lifestyle',
-      framesToShow: 4,
+      responsiveFrames: { xs: 2, md: 3, lg: 4 },
       focusSelector: '[data-focus]',
-      resizeStrategy: resizeLifestyle,
     });
     expect(config.frames).toEqual([
       {
@@ -36,6 +36,17 @@ describe('filmstrip example adapters', () => {
         props: { ...frame, frameStyle: 'lifestyle-square' },
       },
     ]);
+  });
+
+  it('lets the lifestyle example update responsive frame counts', async () => {
+    const wrapper = mount(LifestyleExample, {
+      props: { responsiveFrames: { xs: 2, sm: 2, md: 3, lg: 4 } },
+    });
+    const engine = wrapper.findComponent(CdrFilmstripEngine);
+    expect(engine.props('responsiveFrames')).toEqual({ xs: 2, sm: 2, md: 3, lg: 4 });
+
+    await wrapper.setProps({ responsiveFrames: { xs: 3, sm: 3, md: 4, lg: 5 } });
+    expect(engine.props('responsiveFrames')).toEqual({ xs: 3, sm: 3, md: 4, lg: 5 });
   });
 
   it('maps product frames and placement metadata', () => {
@@ -154,22 +165,5 @@ describe('lifestyle responsive picture', () => {
     expect(wrapper.findAll('source')).toHaveLength(4);
     expect(wrapper.find('source').attributes('srcset')).toBe('/xs-wide.jpg');
     expect(wrapper.find('img').attributes('src')).toBe('/lg-wide.jpg');
-  });
-});
-
-describe('lifestyle resize strategy', () => {
-  it.each([
-    [1280, 5, 4],
-    [1000, 3, 2],
-    [500, 2, 1],
-  ])('uses the expected frame counts at %ipx', (clientWidth, visible, scroll) => {
-    const layout = resizeLifestyle({
-      containerWidth: clientWidth,
-      model: { framesVisible: 5 },
-      viewportWidth: clientWidth,
-    });
-
-    expect(layout.framesToShow).toBe(visible);
-    expect(layout.framesToScroll).toBe(scroll);
   });
 });

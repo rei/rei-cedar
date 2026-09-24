@@ -37,6 +37,34 @@ $prominence-03:
     scroll-snap-align: start;
   }
 
+  &--responsive {
+    container-type: inline-size;
+  }
+
+  &--responsive &__frames {
+    --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-xs);
+    --cdr-filmstrip-available-width: calc(
+      100cqw - var(--frames-gap) * 1px * var(--cdr-filmstrip-active-frames)
+    );
+    --cdr-filmstrip-frame-divisor: calc(var(--cdr-filmstrip-active-frames) + var(--frame-extra));
+
+    grid-auto-columns: calc(
+      var(--cdr-filmstrip-available-width) / var(--cdr-filmstrip-frame-divisor)
+    );
+
+    @include tokens.cdr-sm-cq-up {
+      --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-sm);
+    }
+
+    @include tokens.cdr-md-cq-up {
+      --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-md);
+    }
+
+    @include tokens.cdr-lg-cq-up {
+      --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-lg);
+    }
+  }
+
   &__arrow {
     --cdr-button-with-background-background-color-active: #eae0cc;
     --cdr-button-with-background-background-color-disabled: #eeeae2;
