@@ -7,7 +7,6 @@
     :class="[classObj[BASE_CLASS], props.responsiveFrames && classObj[`${BASE_CLASS}--responsive`]]"
     @focusin="handleFocusIn"
   >
-    <!-- Keep the scrollbar lane in SSR markup before overflow is measured. -->
     <CdrSurfaceScroll
       ref="surfaceScrollRef"
       :viewport-props="{
@@ -16,7 +15,6 @@
       }"
       :scrollbar-props="{
         orientation: 'horizontal',
-        forceMount: true,
       }"
     >
       <ul

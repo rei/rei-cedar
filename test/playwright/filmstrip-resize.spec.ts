@@ -6,11 +6,6 @@ type InstrumentedWindow = Window & { __resizeWarnings: string[] };
 
 type WidthSamplingWindow = Window & { __frameWidths: number[] };
 
-const ssrStyles = [
-  '<link rel="stylesheet" href="/rei-cedar/src/components/filmstrip/styles/CdrFilmstrip.module.scss?direct" />',
-  '<link rel="stylesheet" href="/rei-cedar/src/components/surfaceScroll/styles/CdrSurfaceScroll.module.scss?direct" />',
-].join('');
-
 async function settlePaint(page: import('@playwright/test').Page): Promise<void> {
   await page.evaluate(
     () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
@@ -168,7 +163,10 @@ test('default filmstrip keeps its frame width through SSR hydration', async ({ p
     const response = await route.fetch();
     const body = (await response.text())
       .replace('<div id="app"></div>', `<div id="app">${serverMarkup}</div>`)
-      .replace('</head>', `${ssrStyles}</head>`);
+      .replace(
+        '</head>',
+        '<link rel="stylesheet" href="/rei-cedar/src/components/filmstrip/styles/CdrFilmstrip.module.scss?direct" /></head>',
+      );
     await route.fulfill({ response, body });
   });
 
@@ -182,43 +180,6 @@ test('default filmstrip keeps its frame width through SSR hydration', async ({ p
     expect(Math.abs(widths[0] - widths.at(-1)!)).toBeLessThan(1);
   }
   expect(browserErrors).toEqual([]);
-});
-
-test('horizontal scrollbar reserves its space before hydration', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  const serverMarkup = execFileSync(
-    process.execPath,
-    [resolve('test/fixtures/render-filmstrip-first-paint.mjs'), 'responsive'],
-    { cwd: process.cwd(), encoding: 'utf8' },
-  );
-  await page.route('**/filmstrip-first-paint.html*', async (route) => {
-    const response = await route.fetch();
-    const body = (await response.text())
-      .replace('<div id="app"></div>', `<div id="app">${serverMarkup}</div>`)
-      .replace(/<script\s+type="module"\s+src="\.\/filmstrip-first-paint\.ts"\s*><\/script>/, '')
-      .replace('</head>', `${ssrStyles}</head>`);
-    await route.fulfill({ response, body });
-  });
-
-  await page.goto(
-    'http://localhost:3000/rei-cedar/test/fixtures/filmstrip-first-paint.html?responsive',
-  );
-  const scrollbar = page.locator('[data-orientation="horizontal"]');
-  await expect(scrollbar).toHaveAttribute('data-state', 'hidden');
-  expect(await scrollbar.evaluate((element) => element.getBoundingClientRect().height)).toBe(24);
-  const beforeY = await page
-    .locator('.below')
-    .evaluate((element) => element.getBoundingClientRect().y);
-
-  await page.addScriptTag({
-    type: 'module',
-    url: 'http://localhost:3000/rei-cedar/test/fixtures/filmstrip-first-paint.ts',
-  });
-  await expect(scrollbar).toHaveAttribute('data-state', 'visible');
-  const afterY = await page
-    .locator('.below')
-    .evaluate((element) => element.getBoundingClientRect().y);
-  expect(Math.abs(afterY - beforeY)).toBeLessThan(1);
 });
 
 test('configured container breakpoints keep frame widths through hydration and navigation', async ({
@@ -249,7 +210,10 @@ test('configured container breakpoints keep frame widths through hydration and n
     const response = await route.fetch();
     const body = (await response.text())
       .replace('<div id="app"></div>', `<div id="app">${serverMarkup}</div>`)
-      .replace('</head>', `${ssrStyles}</head>`);
+      .replace(
+        '</head>',
+        '<link rel="stylesheet" href="/rei-cedar/src/components/filmstrip/styles/CdrFilmstrip.module.scss?direct" /></head>',
+      );
     await route.fulfill({ response, body });
   });
 
