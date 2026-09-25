@@ -10,7 +10,7 @@ interface CSSProperty {
 
 function extractCssVariables(rule: Declaration, prevNode: Node | null): CSSProperty[] | null {
   const varUsageMatches = Array.from(
-    rule.value.matchAll(/var\((--[\w-]+),\s*(.*?)(?:, #\{\$[\w-]+\})?\)/g),
+    rule.value.matchAll(/var\(\s*(--[\w-]+),\s*(.*?)(?:, #\{\$[\w-]+\})?\)/g),
   );
 
   const cssProperties: CSSProperty[] = [];
