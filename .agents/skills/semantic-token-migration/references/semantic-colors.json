@@ -1,0 +1,790 @@
+{
+  "color": {
+    "surface": {
+      "brand": {
+        "name": "--cdr-color-surface-brand",
+        "value": "#143528",
+        "legacy": "--cdr-color-background-brand-spruce"
+      },
+      "brand-subtle": {
+        "name": "--cdr-color-surface-brand-subtle",
+        "value": "#7A7105"
+      },
+      "membership": {
+        "name": "--cdr-color-surface-membership",
+        "value": "#FFDB22"
+      },
+      "sale": {
+        "name": "--cdr-color-surface-sale",
+        "value": "#D44703",
+        "legacy": "--cdr-color-background-sale"
+      },
+      "natural": {
+        "name": "--cdr-color-surface-natural",
+        "value": "#F8F7F2",
+        "legacy": "--cdr-color-background-secondary"
+      },
+      "neutral-intense": {
+        "name": "--cdr-color-surface-neutral-intense",
+        "value": "#312D27"
+      },
+      "neutral": {
+        "name": "--cdr-color-surface-neutral",
+        "value": "#F1F0ED"
+      },
+      "neutral-subtle": {
+        "name": "--cdr-color-surface-neutral-subtle",
+        "value": "#F7F7F5"
+      },
+      "neutral-trace": {
+        "name": "--cdr-color-surface-neutral-trace",
+        "value": "#FFFFFF"
+      }
+    },
+    "border": {
+      "brand": {
+        "name": "--cdr-color-border-brand",
+        "value": "#143528",
+        "contrast": "\u2713 AAA: surface/neutral-trace (13.4:1), surface/natural (12.5:1), surface/neutral-subtle (12.5:1), surface/neutral (11.7:1) \u2717 Avoid: surface/brand (1.0:1), surface/neutral-intense (1.0:1), surface/brand-subtle (2.7:1)"
+      },
+      "accent": {
+        "name": "--cdr-color-border-accent",
+        "value": "#E5FD9C",
+        "contrast": "\u2713 AAA: surface/neutral-intense (12.3:1), surface/brand (12.0:1) \u25b3 Large only: surface/brand-subtle (4.5:1), surface/sale (4.0:1) \u2717 Avoid: surface/neutral (1.0:1), surface/neutral-subtle (1.0:1), surface/natural (1.0:1)"
+      },
+      "neutral-bold": {
+        "name": "--cdr-color-border-neutral-bold",
+        "value": "#8E887D",
+        "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), surface/brand (3.8:1), surface/neutral-trace (3.5:1) \u2717 Avoid: surface/sale (1.3:1), surface/brand-subtle (1.4:1), surface/membership (2.6:1)"
+      },
+      "neutral-prominent": {
+        "name": "--cdr-color-border-neutral-prominent",
+        "value": "#979187",
+        "contrast": "\u25b3 Large only: surface/neutral-intense (4.4:1), surface/brand (4.3:1), surface/neutral-trace (3.1:1) \u2717 Avoid: surface/sale (1.4:1), surface/brand-subtle (1.6:1), surface/membership (2.3:1)"
+      },
+      "neutral": {
+        "name": "--cdr-color-border-neutral",
+        "value": "#CECAC3",
+        "contrast": "\u2713 AAA: surface/neutral-intense (8.4:1), surface/brand (8.2:1) \u25b3 Large only: surface/brand-subtle (3.1:1) \u2717 Avoid: surface/membership (1.2:1), surface/neutral (1.4:1), surface/neutral-subtle (1.5:1)"
+      },
+      "neutral-subtle": {
+        "name": "--cdr-color-border-neutral-subtle",
+        "value": "#D7D4CE",
+        "contrast": "\u2713 AAA: surface/neutral-intense (9.2:1), surface/brand (9.0:1) \u25b3 Large only: surface/brand-subtle (3.4:1), surface/sale (3.0:1) \u2717 Avoid: surface/membership (1.1:1), surface/neutral (1.3:1), surface/neutral-subtle (1.4:1)"
+      },
+      "neutral-trace": {
+        "name": "--cdr-color-border-neutral-trace",
+        "value": "#FFFFFF",
+        "contrast": "\u2713 AAA: surface/neutral-intense (13.7:1), surface/brand (13.4:1) \u2713 AA: surface/brand-subtle (5.0:1) \u25b3 Large only: surface/sale (4.5:1) \u2717 Avoid: surface/neutral-trace (1.0:1), surface/natural (1.1:1), surface/neutral-subtle (1.1:1)"
+      }
+    },
+    "text": {
+      "neutral-bold": {
+        "name": "--cdr-color-text-neutral-bold",
+        "value": "#312D27",
+        "contrast": "\u2713 AAA: surface/neutral-trace (13.7:1), surface/natural (12.8:1), surface/neutral-subtle (12.8:1), surface/neutral (12.0:1) \u25b3 Large only: surface/sale (3.1:1) \u2717 Avoid: surface/neutral-intense (1.0:1), surface/brand (1.0:1), surface/brand-subtle (2.7:1)"
+      },
+      "neutral-prominent": {
+        "name": "--cdr-color-text-neutral-prominent",
+        "value": "#4C473E",
+        "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), surface/natural (8.6:1), surface/neutral-subtle (8.6:1), surface/neutral (8.1:1) \u2713 AA: surface/membership (6.8:1) \u2717 Avoid: surface/brand (1.5:1), surface/neutral-intense (1.5:1), surface/brand-subtle (1.8:1)"
+      },
+      "neutral": {
+        "name": "--cdr-color-text-neutral",
+        "value": "#746E63",
+        "legacy": "--cdr-color-text-primary",
+        "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), surface/natural (4.7:1), surface/neutral-subtle (4.7:1) \u25b3 Large only: surface/neutral (4.4:1), surface/membership (3.7:1) \u2717 Avoid: surface/brand-subtle (1.0:1), surface/sale (1.1:1), surface/brand (2.6:1)"
+      },
+      "neutral-subtle": {
+        "name": "--cdr-color-text-neutral-subtle",
+        "value": "#D7D4CE",
+        "contrast": "\u2713 AAA: surface/neutral-intense (9.2:1), surface/brand (9.0:1) \u25b3 Large only: surface/brand-subtle (3.4:1), surface/sale (3.0:1) \u2717 Avoid: surface/membership (1.1:1), surface/neutral (1.3:1), surface/neutral-subtle (1.4:1)"
+      },
+      "neutral-trace": {
+        "name": "--cdr-color-text-neutral-trace",
+        "value": "#FFFFFF",
+        "contrast": "\u2713 AAA: surface/neutral-intense (13.7:1), surface/brand (13.4:1) \u2713 AA: surface/brand-subtle (5.0:1) \u25b3 Large only: surface/sale (4.5:1) \u2717 Avoid: surface/neutral-trace (1.0:1), surface/natural (1.1:1), surface/neutral-subtle (1.1:1)"
+      },
+      "sale": {
+        "name": "--cdr-color-text-sale",
+        "value": "#D44703",
+        "legacy": "--cdr-color-text-sale",
+        "contrast": "\u25b3 Large only: surface/neutral-trace (4.5:1), surface/natural (4.2:1), surface/neutral-subtle (4.2:1) \u2717 Avoid: surface/sale (1.0:1), surface/brand-subtle (1.1:1), surface/brand (3.0:1)"
+      },
+      "brand": {
+        "name": "--cdr-color-text-brand",
+        "value": "#143528",
+        "legacy": "--cdr-color-text-brand",
+        "contrast": "\u2713 AAA: surface/neutral-trace (13.4:1), surface/natural (12.5:1), surface/neutral-subtle (12.5:1), surface/neutral (11.7:1) \u2717 Avoid: surface/brand (1.0:1), surface/neutral-intense (1.0:1), surface/brand-subtle (2.7:1)"
+      },
+      "accent": {
+        "name": "--cdr-color-text-accent",
+        "value": "#E5FD9C",
+        "contrast": "\u2713 AAA: surface/neutral-intense (12.3:1), surface/brand (12.0:1) \u25b3 Large only: surface/brand-subtle (4.5:1), surface/sale (4.0:1) \u2717 Avoid: surface/neutral (1.0:1), surface/neutral-subtle (1.0:1), surface/natural (1.0:1)"
+      },
+      "natural": {
+        "name": "--cdr-color-text-natural",
+        "value": "#F8F7F2",
+        "contrast": "\u2713 AAA: surface/neutral-intense (12.8:1), surface/brand (12.5:1) \u2713 AA: surface/brand-subtle (4.7:1) \u25b3 Large only: surface/sale (4.2:1) \u2717 Avoid: surface/natural (1.0:1), surface/neutral-subtle (1.0:1), surface/neutral (1.1:1)"
+      }
+    },
+    "graphic": {
+      "surface": {
+        "brand": {
+          "name": "--cdr-color-graphic-surface-brand",
+          "value": "#143528"
+        },
+        "membership": {
+          "name": "--cdr-color-graphic-surface-membership",
+          "value": "#FFDB22"
+        },
+        "natural": {
+          "name": "--cdr-color-graphic-surface-natural",
+          "value": "#F8F7F2"
+        },
+        "accent-bold": {
+          "name": "--cdr-color-graphic-surface-accent-bold",
+          "value": "#7A7105"
+        },
+        "accent": {
+          "name": "--cdr-color-graphic-surface-accent",
+          "value": "#C5D82A"
+        },
+        "accent-faint": {
+          "name": "--cdr-color-graphic-surface-accent-faint",
+          "value": "#E5FD9C"
+        },
+        "sale": {
+          "name": "--cdr-color-graphic-surface-sale",
+          "value": "#D44703"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-graphic-surface-neutral-faint",
+          "value": "#F7F7F5"
+        },
+        "rating-bold": {
+          "name": "--cdr-color-graphic-surface-rating-bold",
+          "value": "#BA7B00"
+        },
+        "rating": {
+          "name": "--cdr-color-graphic-surface-rating",
+          "value": "#FFD378"
+        },
+        "rating-faint": {
+          "name": "--cdr-color-graphic-surface-rating-faint",
+          "value": "#FCFCFB"
+        }
+      },
+      "border": {
+        "brand": {
+          "name": "--cdr-color-graphic-border-brand",
+          "value": "#143528",
+          "contrast": "\u2713 AAA: surface/neutral-trace (13.4:1), control/surface/neutral-trace (13.4:1), selection/surface/neutral-trace (13.4:1), feedback/surface/neutral-trace (13.4:1) \u25b3 Large only: action/surface/neutral-bold (3.8:1), control/surface/neutral-prominent (3.8:1), graphic/surface/rating-bold (3.8:1) \u2717 Avoid: surface/brand (1.0:1), action/surface/brand (1.0:1), graphic/surface/brand (1.0:1)"
+        },
+        "accent-bold": {
+          "name": "--cdr-color-graphic-border-accent-bold",
+          "value": "#7A7105",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.0:1), control/surface/neutral-trace (5.0:1), selection/surface/neutral-trace (5.0:1), feedback/surface/neutral-trace (5.0:1) \u25b3 Large only: graphic/surface/accent-faint (4.5:1), selection/surface/natural (4.4:1), surface/neutral (4.4:1) \u2717 Avoid: surface/brand-subtle (1.0:1), graphic/surface/accent-bold (1.0:1), feedback/surface/warning-bold (1.0:1)"
+        },
+        "accent": {
+          "name": "--cdr-color-graphic-border-accent",
+          "value": "#C5D82A",
+          "contrast": "\u2713 AAA: surface/neutral-intense (8.6:1), control/surface/neutral-intense (8.6:1), surface/brand (8.4:1), action/surface/brand (8.4:1) \u2713 AA: action/surface/neutral-intense (5.8:1), control/surface/neutral-bold (5.8:1) \u25b3 Large only: feedback/surface/error-bold (3.5:1), feedback/surface/natural-bold (3.2:1), feedback/surface/warning-bold (3.2:1) \u2717 Avoid: graphic/surface/accent (1.0:1), action/surface/neutral-prominent (1.1:1), control/surface/natural-bold (1.1:1)"
+        },
+        "accent-faint": {
+          "name": "--cdr-color-graphic-border-accent-faint",
+          "value": "#E5FD9C",
+          "contrast": "\u2713 AAA: surface/neutral-intense (12.3:1), control/surface/neutral-intense (12.3:1), surface/brand (12.0:1), action/surface/brand (12.0:1) \u2713 AA: feedback/surface/error-bold (5.0:1), feedback/surface/natural-bold (4.6:1), feedback/surface/warning-bold (4.6:1) \u25b3 Large only: surface/brand-subtle (4.5:1), graphic/surface/accent-bold (4.5:1), feedback/surface/info-bold (4.4:1) \u2717 Avoid: graphic/surface/accent-faint (1.0:1), feedback/surface/error-faint (1.0:1), selection/surface/natural (1.0:1)"
+        },
+        "neutral-bold": {
+          "name": "--cdr-color-graphic-border-neutral-bold",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-graphic-border-neutral",
+          "value": "#8E887D",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "sale": {
+          "name": "--cdr-color-graphic-border-sale",
+          "value": "#D44703",
+          "contrast": "\u25b3 Large only: surface/neutral-trace (4.5:1), control/surface/neutral-trace (4.5:1), selection/surface/neutral-trace (4.5:1) \u2717 Avoid: surface/sale (1.0:1), action/surface/sale (1.0:1), graphic/surface/sale (1.0:1)"
+        },
+        "membership": {
+          "name": "--cdr-color-graphic-border-membership",
+          "value": "#FFDB22",
+          "contrast": "\u2713 AAA: surface/neutral-intense (10.0:1), control/surface/neutral-intense (10.0:1), surface/brand (9.8:1), action/surface/brand (9.8:1) \u2713 AA: action/surface/neutral-intense (6.8:1), control/surface/neutral-bold (6.8:1) \u25b3 Large only: feedback/surface/error-bold (4.1:1), feedback/surface/natural-bold (3.7:1), feedback/surface/warning-bold (3.7:1) \u2717 Avoid: surface/membership (1.0:1), graphic/surface/membership (1.0:1), feedback/surface/natural (1.0:1)"
+        },
+        "rating": {
+          "name": "--cdr-color-graphic-border-rating",
+          "value": "#BA7B00",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: graphic/surface/rating-bold (1.0:1), action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1)"
+        },
+        "natural": {
+          "name": "--cdr-color-graphic-border-natural",
+          "value": "#F8F7F2",
+          "contrast": "\u2713 AAA: surface/neutral-intense (12.8:1), control/surface/neutral-intense (12.8:1), surface/brand (12.5:1), action/surface/brand (12.5:1) \u2713 AA: feedback/surface/error-bold (5.2:1), feedback/surface/natural-bold (4.7:1), feedback/surface/warning-bold (4.7:1), surface/brand-subtle (4.7:1) \u25b3 Large only: feedback/surface/success-bold (4.5:1), surface/sale (4.2:1), action/surface/sale (4.2:1) \u2717 Avoid: surface/natural (1.0:1), feedback/surface/natural-faint (1.0:1), graphic/surface/natural (1.0:1)"
+        }
+      }
+    },
+    "feedback": {
+      "surface": {
+        "natural-bold": {
+          "name": "--cdr-color-feedback-surface-natural-bold",
+          "value": "#756E5C"
+        },
+        "natural": {
+          "name": "--cdr-color-feedback-surface-natural",
+          "value": "#E6DDC9"
+        },
+        "natural-faint": {
+          "name": "--cdr-color-feedback-surface-natural-faint",
+          "value": "#F8F7F2"
+        },
+        "info-bold": {
+          "name": "--cdr-color-feedback-surface-info-bold",
+          "value": "#257D81"
+        },
+        "info": {
+          "name": "--cdr-color-feedback-surface-info",
+          "value": "#C8E5E6"
+        },
+        "info-faint": {
+          "name": "--cdr-color-feedback-surface-info-faint",
+          "value": "#F1F8F9",
+          "legacy": "--cdr-color-background-info"
+        },
+        "success-bold": {
+          "name": "--cdr-color-feedback-surface-success-bold",
+          "value": "#3D8044"
+        },
+        "success": {
+          "name": "--cdr-color-feedback-surface-success",
+          "value": "#C8E8C9"
+        },
+        "success-faint": {
+          "name": "--cdr-color-feedback-surface-success-faint",
+          "value": "#EEFBEE",
+          "legacy": "--cdr-color-background-success"
+        },
+        "warning-bold": {
+          "name": "--cdr-color-feedback-surface-warning-bold",
+          "value": "#8A6A00"
+        },
+        "warning": {
+          "name": "--cdr-color-feedback-surface-warning",
+          "value": "#F2DD9F"
+        },
+        "warning-faint": {
+          "name": "--cdr-color-feedback-surface-warning-faint",
+          "value": "#FEF7E1",
+          "legacy": "--cdr-color-background-warning"
+        },
+        "error-bold": {
+          "name": "--cdr-color-feedback-surface-error-bold",
+          "value": "#C33122"
+        },
+        "error": {
+          "name": "--cdr-color-feedback-surface-error",
+          "value": "#FFCCC1"
+        },
+        "error-faint": {
+          "name": "--cdr-color-feedback-surface-error-faint",
+          "value": "#FFF1ED",
+          "legacy": "--cdr-color-background-error"
+        },
+        "error-trace": {
+          "name": "--cdr-color-feedback-surface-error-trace",
+          "value": "#FFF8F6"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-feedback-surface-neutral-trace",
+          "value": "#FFFFFF"
+        }
+      },
+      "border": {
+        "natural": {
+          "name": "--cdr-color-feedback-border-natural",
+          "value": "#756E5C",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: selection/surface/natural (4.5:1), surface/neutral (4.4:1), action/surface/neutral-subtle (4.4:1) \u2717 Avoid: feedback/surface/natural-bold (1.0:1), feedback/surface/warning-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "info": {
+          "name": "--cdr-color-feedback-border-info",
+          "value": "#257D81",
+          "contrast": "\u2713 AA: surface/neutral-trace (4.9:1), control/surface/neutral-trace (4.9:1), selection/surface/neutral-trace (4.9:1), feedback/surface/neutral-trace (4.9:1) \u25b3 Large only: feedback/surface/error-faint (4.4:1), graphic/surface/accent-faint (4.4:1), selection/surface/natural (4.3:1) \u2717 Avoid: feedback/surface/info-bold (1.0:1), feedback/surface/success-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "info-faint": {
+          "name": "--cdr-color-feedback-border-info-faint",
+          "value": "#C8E5E6",
+          "contrast": "\u2713 AAA: surface/neutral-intense (10.3:1), control/surface/neutral-intense (10.3:1), surface/brand (10.1:1), action/surface/brand (10.1:1) \u2713 AA: action/surface/neutral-intense (6.9:1), control/surface/neutral-bold (6.9:1) \u25b3 Large only: feedback/surface/error-bold (4.2:1), feedback/surface/natural-bold (3.8:1), feedback/surface/warning-bold (3.8:1) \u2717 Avoid: feedback/surface/info (1.0:1), feedback/surface/success (1.0:1), feedback/surface/warning (1.0:1)"
+        },
+        "success": {
+          "name": "--cdr-color-feedback-border-success",
+          "value": "#3D8044",
+          "contrast": "\u2713 AA: surface/neutral-trace (4.8:1), control/surface/neutral-trace (4.8:1), selection/surface/neutral-trace (4.8:1), feedback/surface/neutral-trace (4.8:1) \u25b3 Large only: feedback/surface/warning-faint (4.5:1), surface/natural (4.5:1), feedback/surface/natural-faint (4.5:1) \u2717 Avoid: feedback/surface/success-bold (1.0:1), feedback/surface/info-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "success-faint": {
+          "name": "--cdr-color-feedback-border-success-faint",
+          "value": "#C8E8C9",
+          "contrast": "\u2713 AAA: surface/neutral-intense (10.3:1), control/surface/neutral-intense (10.3:1), surface/brand (10.1:1), action/surface/brand (10.1:1) \u2713 AA: action/surface/neutral-intense (7.0:1), control/surface/neutral-bold (7.0:1) \u25b3 Large only: feedback/surface/error-bold (4.2:1), feedback/surface/natural-bold (3.8:1), feedback/surface/warning-bold (3.8:1) \u2717 Avoid: feedback/surface/success (1.0:1), feedback/surface/info (1.0:1), feedback/surface/warning (1.0:1)"
+        },
+        "warning": {
+          "name": "--cdr-color-feedback-border-warning",
+          "value": "#8A6A00",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: selection/surface/natural (4.5:1), surface/neutral (4.4:1), action/surface/neutral-subtle (4.4:1) \u2717 Avoid: feedback/surface/warning-bold (1.0:1), feedback/surface/natural-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "warning-faint": {
+          "name": "--cdr-color-feedback-border-warning-faint",
+          "value": "#F2DD9F",
+          "contrast": "\u2713 AAA: surface/neutral-intense (10.2:1), control/surface/neutral-intense (10.2:1), surface/brand (10.0:1), action/surface/brand (10.0:1) \u2713 AA: action/surface/neutral-intense (6.9:1), control/surface/neutral-bold (6.9:1) \u25b3 Large only: feedback/surface/error-bold (4.1:1), feedback/surface/natural-bold (3.8:1), feedback/surface/warning-bold (3.8:1) \u2717 Avoid: feedback/surface/warning (1.0:1), feedback/surface/natural (1.0:1), feedback/surface/info (1.0:1)"
+        },
+        "error": {
+          "name": "--cdr-color-feedback-border-error",
+          "value": "#C33122",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.6:1), control/surface/neutral-trace (5.6:1), selection/surface/neutral-trace (5.6:1), feedback/surface/neutral-trace (5.6:1) \u25b3 Large only: feedback/surface/success (4.2:1), feedback/surface/info (4.2:1), feedback/surface/warning (4.1:1) \u2717 Avoid: feedback/surface/error-bold (1.0:1), feedback/surface/natural-bold (1.1:1), feedback/surface/warning-bold (1.1:1)"
+        },
+        "error-faint": {
+          "name": "--cdr-color-feedback-border-error-faint",
+          "value": "#FFCCC1",
+          "contrast": "\u2713 AAA: surface/neutral-intense (9.5:1), control/surface/neutral-intense (9.5:1), surface/brand (9.3:1), action/surface/brand (9.3:1) \u2713 AA: action/surface/neutral-intense (6.4:1), control/surface/neutral-bold (6.4:1) \u25b3 Large only: feedback/surface/error-bold (3.9:1), feedback/surface/natural-bold (3.5:1), feedback/surface/warning-bold (3.5:1) \u2717 Avoid: feedback/surface/error (1.0:1), graphic/surface/rating (1.0:1), action/surface/brand-faint (1.0:1)"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-feedback-border-neutral-trace",
+          "value": "#FFFFFF",
+          "contrast": "\u2713 AAA: surface/neutral-intense (13.7:1), surface/brand (13.4:1) \u2713 AA: surface/brand-subtle (5.0:1) \u25b3 Large only: surface/sale (4.5:1) \u2717 Avoid: surface/neutral-trace (1.0:1), surface/natural (1.1:1), surface/neutral-subtle (1.1:1)"
+        },
+        "natural-faint": {
+          "name": "--cdr-color-feedback-border-natural-faint",
+          "value": "#E6DDC9",
+          "contrast": "\u2713 AAA: surface/neutral-intense (10.1:1), control/surface/neutral-intense (10.1:1), surface/brand (9.9:1), action/surface/brand (9.9:1) \u2713 AA: action/surface/neutral-intense (6.8:1), control/surface/neutral-bold (6.8:1) \u25b3 Large only: feedback/surface/error-bold (4.1:1), feedback/surface/natural-bold (3.8:1), feedback/surface/warning-bold (3.8:1) \u2717 Avoid: feedback/surface/natural (1.0:1), feedback/surface/warning (1.0:1), surface/membership (1.0:1)"
+        }
+      },
+      "text": {
+        "natural": {
+          "name": "--cdr-color-feedback-text-natural-bold",
+          "value": "#4C473B",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (7.0:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.4:1)"
+        },
+        "info": {
+          "name": "--cdr-color-feedback-text-info-bold",
+          "value": "#165154",
+          "legacy": "--cdr-color-text-info",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.0:1), surface/natural (8.4:1), surface/neutral-subtle (8.4:1), surface/neutral (7.9:1) \u2713 AA: surface/membership (6.6:1) \u2717 Avoid: surface/brand (1.5:1), surface/neutral-intense (1.5:1), surface/brand-subtle (1.8:1)"
+        },
+        "success": {
+          "name": "--cdr-color-feedback-text-success-bold",
+          "value": "#1E5525",
+          "legacy": "--cdr-color-text-success",
+          "contrast": "\u2713 AAA: surface/neutral-trace (8.8:1), surface/natural (8.2:1), surface/neutral-subtle (8.2:1), surface/neutral (7.7:1) \u2713 AA: surface/membership (6.5:1) \u2717 Avoid: surface/brand (1.5:1), surface/neutral-intense (1.6:1), surface/brand-subtle (1.8:1)"
+        },
+        "warning": {
+          "name": "--cdr-color-feedback-text-warning-bold",
+          "value": "#5B4500",
+          "legacy": "--cdr-color-text-warning",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.1:1), surface/natural (8.5:1), surface/neutral-subtle (8.5:1), surface/neutral (8.0:1) \u2713 AA: surface/membership (6.7:1) \u2717 Avoid: surface/brand (1.5:1), surface/neutral-intense (1.5:1), surface/brand-subtle (1.8:1)"
+        },
+        "error": {
+          "name": "--cdr-color-feedback-text-error-bold",
+          "value": "#880E05",
+          "legacy": "--cdr-color-text-error",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.9:1), surface/natural (9.3:1), surface/neutral-subtle (9.3:1), surface/neutral (8.7:1) \u2717 Avoid: surface/brand (1.3:1), surface/neutral-intense (1.4:1), surface/brand-subtle (2.0:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-feedback-text-neutral-faint",
+          "value": "#746E63",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), surface/natural (4.7:1), surface/neutral-subtle (4.7:1) \u25b3 Large only: surface/neutral (4.4:1), surface/membership (3.7:1) \u2717 Avoid: surface/brand-subtle (1.0:1), surface/sale (1.1:1), surface/brand (2.6:1)"
+        }
+      },
+      "icon": {
+        "error": {
+          "name": "--cdr-color-feedback-icon-error",
+          "value": "#C33122",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.6:1), control/surface/neutral-trace (5.6:1), selection/surface/neutral-trace (5.6:1), feedback/surface/neutral-trace (5.6:1) \u25b3 Large only: feedback/surface/success (4.2:1), feedback/surface/info (4.2:1), feedback/surface/warning (4.1:1) \u2717 Avoid: feedback/surface/error-bold (1.0:1), feedback/surface/natural-bold (1.1:1), feedback/surface/warning-bold (1.1:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-feedback-icon-neutral",
+          "value": "#FFFFFF",
+          "contrast": "\u2713 AAA: surface/neutral-intense (13.7:1), surface/brand (13.4:1) \u2713 AA: surface/brand-subtle (5.0:1) \u25b3 Large only: surface/sale (4.5:1) \u2717 Avoid: surface/neutral-trace (1.0:1), surface/natural (1.1:1), surface/neutral-subtle (1.1:1)"
+        }
+      }
+    },
+    "action": {
+      "surface": {
+        "sale": {
+          "name": "--cdr-color-action-surface-sale",
+          "value": "#D44703"
+        },
+        "sale-faint": {
+          "name": "--cdr-color-action-surface-sale-faint",
+          "value": "#FFE9E0"
+        },
+        "brand": {
+          "name": "--cdr-color-action-surface-brand",
+          "value": "#143528"
+        },
+        "brand-faint": {
+          "name": "--cdr-color-action-surface-brand-faint",
+          "value": "#BFDDCA"
+        },
+        "neutral-intense": {
+          "name": "--cdr-color-action-surface-neutral-intense",
+          "value": "#4C473E"
+        },
+        "neutral-bold": {
+          "name": "--cdr-color-action-surface-neutral-bold",
+          "value": "#8E887D"
+        },
+        "neutral-prominent": {
+          "name": "--cdr-color-action-surface-neutral-prominent",
+          "value": "#D7D4CE"
+        },
+        "neutral": {
+          "name": "--cdr-color-action-surface-neutral",
+          "value": "#EAE7E4"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-action-surface-neutral-subtle",
+          "value": "#F1F0ED"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-action-surface-neutral-faint",
+          "value": "#F7F7F5"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-action-surface-neutral-trace",
+          "value": "#FCFCFB"
+        }
+      },
+      "border": {
+        "trigger": {
+          "name": "--cdr-color-action-border-trigger",
+          "value": "#3D6DB9",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: action/surface/sale-faint (4.4:1), control/surface/natural (4.2:1), action/surface/neutral (4.2:1) \u2717 Avoid: feedback/surface/natural-bold (1.0:1), feedback/surface/warning-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "trigger-faint": {
+          "name": "--cdr-color-action-border-trigger-faint",
+          "value": "#5889D6",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "brand": {
+          "name": "--cdr-color-action-border-brand",
+          "value": "#143528",
+          "contrast": "\u2713 AAA: surface/neutral-trace (13.4:1), control/surface/neutral-trace (13.4:1), selection/surface/neutral-trace (13.4:1), feedback/surface/neutral-trace (13.4:1) \u25b3 Large only: action/surface/neutral-bold (3.8:1), control/surface/neutral-prominent (3.8:1), graphic/surface/rating-bold (3.8:1) \u2717 Avoid: surface/brand (1.0:1), action/surface/brand (1.0:1), graphic/surface/brand (1.0:1)"
+        },
+        "sale": {
+          "name": "--cdr-color-action-border-sale",
+          "value": "#D44703",
+          "contrast": "\u25b3 Large only: surface/neutral-trace (4.5:1), control/surface/neutral-trace (4.5:1), selection/surface/neutral-trace (4.5:1) \u2717 Avoid: surface/sale (1.0:1), action/surface/sale (1.0:1), graphic/surface/sale (1.0:1)"
+        },
+        "neutral-bold": {
+          "name": "--cdr-color-action-border-neutral-bold",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral-prominent": {
+          "name": "--cdr-color-action-border-neutral-prominent",
+          "value": "#746E63",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: selection/surface/natural (4.4:1), surface/neutral (4.4:1), action/surface/neutral-subtle (4.4:1) \u2717 Avoid: feedback/surface/warning-bold (1.0:1), feedback/surface/natural-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-action-border-neutral",
+          "value": "#8E887D",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-action-border-neutral-faint",
+          "value": "#D7D4CE",
+          "contrast": "\u2713 AAA: surface/neutral-intense (9.2:1), control/surface/neutral-intense (9.2:1), surface/brand (9.0:1), action/surface/brand (9.0:1) \u2713 AA: action/surface/neutral-intense (6.2:1), control/surface/neutral-bold (6.2:1) \u25b3 Large only: feedback/surface/error-bold (3.8:1), feedback/surface/natural-bold (3.4:1), feedback/surface/warning-bold (3.4:1) \u2717 Avoid: action/surface/neutral-prominent (1.0:1), control/surface/natural-bold (1.0:1), action/surface/brand-faint (1.0:1)"
+        }
+      },
+      "text": {
+        "brand": {
+          "name": "--cdr-color-action-text-brand",
+          "value": "#143528",
+          "contrast": "\u2713 AAA: surface/neutral-trace (13.4:1), control/surface/neutral-trace (13.4:1), selection/surface/neutral-trace (13.4:1), feedback/surface/neutral-trace (13.4:1) \u25b3 Large only: action/surface/neutral-bold (3.8:1), control/surface/neutral-prominent (3.8:1), graphic/surface/rating-bold (3.8:1) \u2717 Avoid: surface/brand (1.0:1), action/surface/brand (1.0:1), graphic/surface/brand (1.0:1)"
+        },
+        "sale": {
+          "name": "--cdr-color-action-text-sale",
+          "value": "#D44703",
+          "contrast": "\u25b3 Large only: surface/neutral-trace (4.5:1), control/surface/neutral-trace (4.5:1), selection/surface/neutral-trace (4.5:1) \u2717 Avoid: surface/sale (1.0:1), action/surface/sale (1.0:1), graphic/surface/sale (1.0:1)"
+        },
+        "trigger-bold": {
+          "name": "--cdr-color-action-text-trigger-bold",
+          "value": "#1E4683",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.3:1), control/surface/neutral-trace (9.3:1), selection/surface/neutral-trace (9.3:1), feedback/surface/neutral-trace (9.3:1) \u2713 AA: feedback/surface/info (7.0:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.9:1), surface/membership (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.4:1)"
+        },
+        "trigger": {
+          "name": "--cdr-color-action-text-trigger",
+          "value": "#3D6DB9",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: action/surface/sale-faint (4.4:1), control/surface/natural (4.2:1), action/surface/neutral (4.2:1) \u2717 Avoid: feedback/surface/natural-bold (1.0:1), feedback/surface/warning-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "trigger-faint": {
+          "name": "--cdr-color-action-text-trigger-faint",
+          "value": "#5889D6",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "neutral-intense": {
+          "name": "--cdr-color-action-text-neutral-intense",
+          "value": "#171613",
+          "contrast": "\u2713 AAA: surface/neutral-trace (18.1:1), control/surface/neutral-trace (18.1:1), selection/surface/neutral-trace (18.1:1), feedback/surface/neutral-trace (18.1:1) \u2713 AA: action/surface/neutral-bold (5.1:1), control/surface/neutral-prominent (5.1:1), graphic/surface/rating-bold (5.1:1) \u25b3 Large only: surface/sale (4.1:1), action/surface/sale (4.1:1), graphic/surface/sale (4.1:1) \u2717 Avoid: surface/neutral-intense (1.3:1), control/surface/neutral-intense (1.3:1), surface/brand (1.4:1)"
+        },
+        "neutral-bold": {
+          "name": "--cdr-color-action-text-neutral-bold",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral-prominent": {
+          "name": "--cdr-color-action-text-neutral-prominent",
+          "value": "#746E63",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: selection/surface/natural (4.4:1), surface/neutral (4.4:1), action/surface/neutral-subtle (4.4:1) \u2717 Avoid: feedback/surface/warning-bold (1.0:1), feedback/surface/natural-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-action-text-neutral",
+          "value": "#8E887D",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-action-text-neutral-subtle",
+          "value": "#CECAC3",
+          "contrast": "\u2713 AAA: surface/neutral-intense (8.4:1), control/surface/neutral-intense (8.4:1), surface/brand (8.2:1), action/surface/brand (8.2:1) \u2713 AA: action/surface/neutral-intense (5.6:1), control/surface/neutral-bold (5.6:1) \u25b3 Large only: feedback/surface/error-bold (3.4:1), feedback/surface/natural-bold (3.1:1), feedback/surface/warning-bold (3.1:1) \u2717 Avoid: graphic/surface/accent (1.0:1), action/surface/neutral-prominent (1.1:1), control/surface/natural-bold (1.1:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-action-text-neutral-faint",
+          "value": "#F7F7F5",
+          "contrast": "\u2713 AAA: surface/neutral-intense (12.8:1), control/surface/neutral-intense (12.8:1), surface/brand (12.5:1), action/surface/brand (12.5:1) \u2713 AA: feedback/surface/error-bold (5.2:1), feedback/surface/natural-bold (4.7:1), feedback/surface/warning-bold (4.7:1), surface/brand-subtle (4.7:1) \u25b3 Large only: feedback/surface/success-bold (4.5:1), surface/sale (4.2:1), action/surface/sale (4.2:1) \u2717 Avoid: surface/neutral-subtle (1.0:1), action/surface/neutral-faint (1.0:1), control/surface/neutral-subtle (1.0:1)"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-action-text-neutral-trace",
+          "value": "#FFFFFF",
+          "contrast": "\u2713 AAA: surface/neutral-intense (13.7:1), control/surface/neutral-intense (13.7:1), surface/brand (13.4:1), action/surface/brand (13.4:1) \u2713 AA: feedback/surface/error-bold (5.6:1), feedback/surface/natural-bold (5.1:1), feedback/surface/warning-bold (5.1:1), surface/brand-subtle (5.0:1) \u25b3 Large only: surface/sale (4.5:1), action/surface/sale (4.5:1), graphic/surface/sale (4.5:1) \u2717 Avoid: surface/neutral-trace (1.0:1), control/surface/neutral-trace (1.0:1), selection/surface/neutral-trace (1.0:1)"
+        }
+      },
+      "icon": {
+        "neutral-bold": {
+          "name": "--cdr-color-action-icon-neutral-bold",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-action-icon-neutral",
+          "value": "#8E887D",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-action-icon-neutral-subtle",
+          "value": "#D7D4CE",
+          "contrast": "\u2713 AAA: surface/neutral-intense (9.2:1), control/surface/neutral-intense (9.2:1), surface/brand (9.0:1), action/surface/brand (9.0:1) \u2713 AA: action/surface/neutral-intense (6.2:1), control/surface/neutral-bold (6.2:1) \u25b3 Large only: feedback/surface/error-bold (3.8:1), feedback/surface/natural-bold (3.4:1), feedback/surface/warning-bold (3.4:1) \u2717 Avoid: action/surface/neutral-prominent (1.0:1), control/surface/natural-bold (1.0:1), action/surface/brand-faint (1.0:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-action-icon-neutral-faint",
+          "value": "#F7F7F5",
+          "contrast": "\u2713 AAA: surface/neutral-intense (12.8:1), control/surface/neutral-intense (12.8:1), surface/brand (12.5:1), action/surface/brand (12.5:1) \u2713 AA: feedback/surface/error-bold (5.2:1), feedback/surface/natural-bold (4.7:1), feedback/surface/warning-bold (4.7:1), surface/brand-subtle (4.7:1) \u25b3 Large only: feedback/surface/success-bold (4.5:1), surface/sale (4.2:1), action/surface/sale (4.2:1) \u2717 Avoid: surface/neutral-subtle (1.0:1), action/surface/neutral-faint (1.0:1), control/surface/neutral-subtle (1.0:1)"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-action-icon-neutral-trace",
+          "value": "#FFFFFF",
+          "contrast": "\u2713 AAA: surface/neutral-intense (13.7:1), control/surface/neutral-intense (13.7:1), surface/brand (13.4:1), action/surface/brand (13.4:1) \u2713 AA: feedback/surface/error-bold (5.6:1), feedback/surface/natural-bold (5.1:1), feedback/surface/warning-bold (5.1:1), surface/brand-subtle (5.0:1) \u25b3 Large only: surface/sale (4.5:1), action/surface/sale (4.5:1), graphic/surface/sale (4.5:1) \u2717 Avoid: surface/neutral-trace (1.0:1), control/surface/neutral-trace (1.0:1), selection/surface/neutral-trace (1.0:1)"
+        },
+        "sale": {
+          "name": "--cdr-color-action-icon-sale",
+          "value": "#D44703",
+          "contrast": "\u25b3 Large only: surface/neutral-trace (4.5:1), control/surface/neutral-trace (4.5:1), selection/surface/neutral-trace (4.5:1) \u2717 Avoid: surface/sale (1.0:1), action/surface/sale (1.0:1), graphic/surface/sale (1.0:1)"
+        }
+      }
+    },
+    "control": {
+      "surface": {
+        "natural-bold": {
+          "name": "--cdr-color-control-surface-natural-bold",
+          "value": "#DDD4BC"
+        },
+        "natural": {
+          "name": "--cdr-color-control-surface-natural",
+          "value": "#EEE7D8"
+        },
+        "natural-faint": {
+          "name": "--cdr-color-control-surface-natural-faint",
+          "value": "#F4F0E6"
+        },
+        "neutral-intense": {
+          "name": "--cdr-color-control-surface-neutral-intense",
+          "value": "#312D27"
+        },
+        "neutral-bold": {
+          "name": "--cdr-color-control-surface-neutral-bold",
+          "value": "#4C473E"
+        },
+        "neutral-prominent": {
+          "name": "--cdr-color-control-surface-neutral-prominent",
+          "value": "#8E887D"
+        },
+        "neutral": {
+          "name": "--cdr-color-control-surface-neutral",
+          "value": "#EAE7E4"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-control-surface-neutral-subtle",
+          "value": "#F7F7F5"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-control-surface-neutral-faint",
+          "value": "#FCFCFB"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-control-surface-neutral-trace",
+          "value": "#FFFFFF"
+        }
+      },
+      "border": {
+        "neutral-intense": {
+          "name": "--cdr-color-control-border-neutral-intense",
+          "value": "#171613",
+          "contrast": "\u2713 AAA: surface/neutral-trace (18.1:1), control/surface/neutral-trace (18.1:1), selection/surface/neutral-trace (18.1:1), feedback/surface/neutral-trace (18.1:1) \u2713 AA: action/surface/neutral-bold (5.1:1), control/surface/neutral-prominent (5.1:1), graphic/surface/rating-bold (5.1:1) \u25b3 Large only: surface/sale (4.1:1), action/surface/sale (4.1:1), graphic/surface/sale (4.1:1) \u2717 Avoid: surface/neutral-intense (1.3:1), control/surface/neutral-intense (1.3:1), surface/brand (1.4:1)"
+        },
+        "neutral-bold": {
+          "name": "--cdr-color-control-border-neutral-bold",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-control-border-neutral",
+          "value": "#8E887D",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-control-border-neutral-faint",
+          "value": "#CECAC3",
+          "contrast": "\u2713 AAA: surface/neutral-intense (8.4:1), control/surface/neutral-intense (8.4:1), surface/brand (8.2:1), action/surface/brand (8.2:1) \u2713 AA: action/surface/neutral-intense (5.6:1), control/surface/neutral-bold (5.6:1) \u25b3 Large only: feedback/surface/error-bold (3.4:1), feedback/surface/natural-bold (3.1:1), feedback/surface/warning-bold (3.1:1) \u2717 Avoid: graphic/surface/accent (1.0:1), action/surface/neutral-prominent (1.1:1), control/surface/natural-bold (1.1:1)"
+        }
+      },
+      "text": {
+        "neutral-bold": {
+          "name": "--cdr-color-control-text-neutral-bold",
+          "value": "#171613",
+          "contrast": "\u2713 AAA: surface/neutral-trace (18.1:1), control/surface/neutral-trace (18.1:1), selection/surface/neutral-trace (18.1:1), feedback/surface/neutral-trace (18.1:1) \u2713 AA: action/surface/neutral-bold (5.1:1), control/surface/neutral-prominent (5.1:1), graphic/surface/rating-bold (5.1:1) \u25b3 Large only: surface/sale (4.1:1), action/surface/sale (4.1:1), graphic/surface/sale (4.1:1) \u2717 Avoid: surface/neutral-intense (1.3:1), control/surface/neutral-intense (1.3:1), surface/brand (1.4:1)"
+        },
+        "neutral-prominent": {
+          "name": "--cdr-color-control-text-neutral-prominent",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-control-text-neutral",
+          "value": "#746E63",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: selection/surface/natural (4.4:1), surface/neutral (4.4:1), action/surface/neutral-subtle (4.4:1) \u2717 Avoid: feedback/surface/warning-bold (1.0:1), feedback/surface/natural-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-control-text-neutral-subtle",
+          "value": "#B4AFA6",
+          "contrast": "\u2713 AA: surface/neutral-intense (6.3:1), control/surface/neutral-intense (6.3:1), surface/brand (6.1:1), action/surface/brand (6.1:1) \u25b3 Large only: action/surface/neutral-intense (4.2:1), control/surface/neutral-bold (4.2:1) \u2717 Avoid: graphic/surface/accent (1.4:1), action/surface/neutral-prominent (1.5:1), control/surface/natural-bold (1.5:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-control-text-neutral-faint",
+          "value": "#CECAC3",
+          "contrast": "\u2713 AAA: surface/neutral-intense (8.4:1), control/surface/neutral-intense (8.4:1), surface/brand (8.2:1), action/surface/brand (8.2:1) \u2713 AA: action/surface/neutral-intense (5.6:1), control/surface/neutral-bold (5.6:1) \u25b3 Large only: feedback/surface/error-bold (3.4:1), feedback/surface/natural-bold (3.1:1), feedback/surface/warning-bold (3.1:1) \u2717 Avoid: graphic/surface/accent (1.0:1), action/surface/neutral-prominent (1.1:1), control/surface/natural-bold (1.1:1)"
+        }
+      },
+      "icon": {
+        "neutral-intense": {
+          "name": "--cdr-color-control-icon-neutral-intense",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral-bold": {
+          "name": "--cdr-color-control-icon-neutral-bold",
+          "value": "#605A4F",
+          "contrast": "\u2713 AA: surface/neutral-trace (6.8:1), control/surface/neutral-trace (6.8:1), selection/surface/neutral-trace (6.8:1), feedback/surface/neutral-trace (6.8:1) \u25b3 Large only: graphic/surface/accent (4.3:1) \u2717 Avoid: feedback/surface/error-bold (1.2:1), feedback/surface/natural-bold (1.3:1), feedback/surface/warning-bold (1.3:1)"
+        },
+        "neutral-prominent": {
+          "name": "--cdr-color-control-icon-neutral-prominent",
+          "value": "#8E887D",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-control-icon-neutral",
+          "value": "#CECAC3",
+          "contrast": "\u2713 AAA: surface/neutral-intense (8.4:1), control/surface/neutral-intense (8.4:1), surface/brand (8.2:1), action/surface/brand (8.2:1) \u2713 AA: action/surface/neutral-intense (5.6:1), control/surface/neutral-bold (5.6:1) \u25b3 Large only: feedback/surface/error-bold (3.4:1), feedback/surface/natural-bold (3.1:1), feedback/surface/warning-bold (3.1:1) \u2717 Avoid: graphic/surface/accent (1.0:1), action/surface/neutral-prominent (1.1:1), control/surface/natural-bold (1.1:1)"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-control-icon-neutral-subtle",
+          "value": "#F7F7F5",
+          "contrast": "\u2713 AAA: surface/neutral-intense (12.8:1), control/surface/neutral-intense (12.8:1), surface/brand (12.5:1), action/surface/brand (12.5:1) \u2713 AA: feedback/surface/error-bold (5.2:1), feedback/surface/natural-bold (4.7:1), feedback/surface/warning-bold (4.7:1), surface/brand-subtle (4.7:1) \u25b3 Large only: feedback/surface/success-bold (4.5:1), surface/sale (4.2:1), action/surface/sale (4.2:1) \u2717 Avoid: surface/neutral-subtle (1.0:1), action/surface/neutral-faint (1.0:1), control/surface/neutral-subtle (1.0:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-control-icon-neutral-faint",
+          "value": "#FCFCFB",
+          "contrast": "\u2713 AAA: surface/neutral-intense (13.3:1), control/surface/neutral-intense (13.3:1), surface/brand (13.0:1), action/surface/brand (13.0:1) \u2713 AA: feedback/surface/error-bold (5.4:1), feedback/surface/natural-bold (4.9:1), feedback/surface/warning-bold (4.9:1), surface/brand-subtle (4.9:1) \u25b3 Large only: surface/sale (4.4:1), action/surface/sale (4.4:1), graphic/surface/sale (4.4:1) \u2717 Avoid: action/surface/neutral-trace (1.0:1), control/surface/neutral-faint (1.0:1), graphic/surface/rating-faint (1.0:1)"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-control-icon-neutral-trace",
+          "value": "#FFFFFF",
+          "contrast": "\u2713 AAA: surface/neutral-intense (13.7:1), control/surface/neutral-intense (13.7:1), surface/brand (13.4:1), action/surface/brand (13.4:1) \u2713 AA: feedback/surface/error-bold (5.6:1), feedback/surface/natural-bold (5.1:1), feedback/surface/warning-bold (5.1:1), surface/brand-subtle (5.0:1) \u25b3 Large only: surface/sale (4.5:1), action/surface/sale (4.5:1), graphic/surface/sale (4.5:1) \u2717 Avoid: surface/neutral-trace (1.0:1), control/surface/neutral-trace (1.0:1), selection/surface/neutral-trace (1.0:1)"
+        }
+      }
+    },
+    "selection": {
+      "surface": {
+        "natural": {
+          "name": "--cdr-color-selection-surface-natural",
+          "value": "#F4F0E6"
+        },
+        "neutral": {
+          "name": "--cdr-color-selection-surface-neutral",
+          "value": "#EAE7E4"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-selection-surface-neutral-subtle",
+          "value": "#F1F0ED"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-selection-surface-neutral-faint",
+          "value": "#F7F7F5"
+        },
+        "neutral-trace": {
+          "name": "--cdr-color-selection-surface-neutral-trace",
+          "value": "#FFFFFF"
+        }
+      },
+      "border": {
+        "trigger": {
+          "name": "--cdr-color-selection-border-trigger",
+          "value": "#3D6DB9",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: action/surface/sale-faint (4.4:1), control/surface/natural (4.2:1), action/surface/neutral (4.2:1) \u2717 Avoid: feedback/surface/natural-bold (1.0:1), feedback/surface/warning-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-selection-border-neutral",
+          "value": "#8E887D",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (3.9:1), control/surface/neutral-intense (3.9:1), surface/brand (3.8:1) \u2717 Avoid: action/surface/neutral-bold (1.0:1), control/surface/neutral-prominent (1.0:1), graphic/surface/rating-bold (1.0:1)"
+        },
+        "neutral-subtle": {
+          "name": "--cdr-color-selection-border-neutral-subtle",
+          "value": "#979187",
+          "contrast": "\u25b3 Large only: surface/neutral-intense (4.4:1), control/surface/neutral-intense (4.4:1), surface/brand (4.3:1) \u2717 Avoid: action/surface/neutral-bold (1.1:1), control/surface/neutral-prominent (1.1:1), graphic/surface/rating-bold (1.1:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-selection-border-neutral-faint",
+          "value": "#CECAC3",
+          "contrast": "\u2713 AAA: surface/neutral-intense (8.4:1), control/surface/neutral-intense (8.4:1), surface/brand (8.2:1), action/surface/brand (8.2:1) \u2713 AA: action/surface/neutral-intense (5.6:1), control/surface/neutral-bold (5.6:1) \u25b3 Large only: feedback/surface/error-bold (3.4:1), feedback/surface/natural-bold (3.1:1), feedback/surface/warning-bold (3.1:1) \u2717 Avoid: graphic/surface/accent (1.0:1), action/surface/neutral-prominent (1.1:1), control/surface/natural-bold (1.1:1)"
+        }
+      },
+      "text": {
+        "trigger": {
+          "name": "--cdr-color-selection-text-trigger",
+          "value": "#3D6DB9",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: action/surface/sale-faint (4.4:1), control/surface/natural (4.2:1), action/surface/neutral (4.2:1) \u2717 Avoid: feedback/surface/natural-bold (1.0:1), feedback/surface/warning-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        },
+        "neutral": {
+          "name": "--cdr-color-selection-text-neutral",
+          "value": "#4C473E",
+          "contrast": "\u2713 AAA: surface/neutral-trace (9.2:1), control/surface/neutral-trace (9.2:1), selection/surface/neutral-trace (9.2:1), feedback/surface/neutral-trace (9.2:1) \u2713 AA: feedback/surface/success (7.0:1), feedback/surface/info (6.9:1), feedback/surface/warning (6.9:1), feedback/surface/natural (6.8:1) \u2717 Avoid: action/surface/neutral-intense (1.0:1), control/surface/neutral-bold (1.0:1), surface/brand (1.5:1)"
+        },
+        "neutral-faint": {
+          "name": "--cdr-color-selection-text-neutral-faint",
+          "value": "#746E63",
+          "contrast": "\u2713 AA: surface/neutral-trace (5.1:1), control/surface/neutral-trace (5.1:1), selection/surface/neutral-trace (5.1:1), feedback/surface/neutral-trace (5.1:1) \u25b3 Large only: selection/surface/natural (4.4:1), surface/neutral (4.4:1), action/surface/neutral-subtle (4.4:1) \u2717 Avoid: feedback/surface/warning-bold (1.0:1), feedback/surface/natural-bold (1.0:1), surface/brand-subtle (1.0:1)"
+        }
+      }
+    }
+  }
+}
