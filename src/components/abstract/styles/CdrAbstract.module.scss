@@ -1,18 +1,29 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrAbstract.maps' as maps;
 
 .cdr-abstract {
   @include tokens.cdr-text-subheading-sans-500;
 
-  color: var(--cdr-text-color, var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary}));
-  margin: 0;
-  font-size: var(--cdr-type-scale-1);
-  line-height: var(--cdr-line-height-ratio-subheading-sans-1);
-  max-width: 75ch;
+  @each $key, $value in maps.$abstract-defaults {
+    --cdr-abstract-#{$key}: #{$value};
+  }
+
+  // Temporary until --cdr-color-text-neutral ships from @rei/cdr-tokens.
+  // This local value enables the semantic color now; consumers can still
+  // override it with --cdr-color-abstract-text. Remove this when it ships.
+  --cdr-color-text-neutral: #746e63;
+
+  color: var(--cdr-color-abstract-text, map.get(maps.$abstract-colors, default, text));
+  margin: var(--cdr-abstract-margin);
+  font-size: var(--cdr-abstract-font-size);
+  line-height: var(--cdr-abstract-line-height);
+  max-width: var(--cdr-abstract-max-width);
 
   @container (max-width: 720px) {
     @include tokens.cdr-text-body-500;
 
-    font-size: var(--cdr-type-scale-0);
-    line-height: var(--cdr-line-height-ratio-subheading-sans-0);
+    font-size: var(--cdr-abstract-font-size-condensed);
+    line-height: var(--cdr-abstract-line-height-condensed);
   }
 }

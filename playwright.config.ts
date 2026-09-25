@@ -36,16 +36,28 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      testIgnore: /visual-.*baseline\.spec\.ts$/,
+      use: { ...devices['Desktop Chrome'] },
+    },
+
+    {
+      // Migration visuals run only when explicitly selected. Their snapshots
+      // route to test/visual-baseline/<component>/ from the screenshot name arg.
+      name: 'visual',
+      testMatch: /visual-.*baseline\.spec\.ts$/,
+      snapshotPathTemplate: '{testDir}/../visual-baseline/{arg}{ext}',
       use: { ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'firefox',
+      testIgnore: /visual-.*baseline\.spec\.ts$/,
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
+      testIgnore: /visual-.*baseline\.spec\.ts$/,
       use: { ...devices['Desktop Safari'] },
     },
 

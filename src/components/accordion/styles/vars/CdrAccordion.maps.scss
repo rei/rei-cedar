@@ -1,0 +1,81 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/accordion/CdrAccordion.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$accordion-defaults: (
+  container-position: relative,
+  container-list-style: none,
+  container-border-width: 1px,
+  container-border-style: solid,
+  button-border: none,
+  button-cursor: pointer,
+  button-display: flex,
+  button-justify-content: space-between,
+  button-position: relative,
+  button-padding: tokens.$cdr-space-inset-one-x,
+  header-surface: transparent,
+  button-text-align: left,
+  button-width: 100%,
+  label-margin-bottom: 0,
+  header-margin: 0,
+  header-padding: 0,
+  header-font-weight: unset,
+  header-font-style: unset,
+  header-font-size: unset,
+  unwrapped-header-margin: tokens.$cdr-space-one-x,
+  icon-margin-left: tokens.$cdr-space-one-x,
+  icon-transition-duration: tokens.$cdr-duration-3-x,
+  icon-transition-timing: tokens.$cdr-timing-function-ease-out,
+  content-container-overflow: hidden,
+  content-container-transition-duration: tokens.$cdr-duration-3-x,
+  content-container-transition-property: max-height,
+  content-container-transition-timing: cubic-bezier(0.15, 0, 0.15, 1),
+  content-padding-top: tokens.$cdr-space-half-x,
+  content-padding-inline: tokens.$cdr-space-one-x,
+  content-padding-bottom: tokens.$cdr-space-one-x,
+  content-fade-duration: tokens.$cdr-duration-1-x,
+  content-fade-timing: linear,
+  content-opacity: 0,
+  content-surface: transparent,
+  compact-button-padding: tokens.$cdr-space-inset-three-quarter-x,
+  compact-content-padding-top: tokens.$cdr-space-quarter-x,
+  compact-content-padding-inline: tokens.$cdr-space-three-quarter-x,
+  compact-content-padding-bottom: tokens.$cdr-space-three-quarter-x,
+  border-aligned-margin-inline: tokens.$cdr-space-inset-one-x,
+  border-aligned-button-offset: tokens.$cdr-space-one-x,
+  compact-border-aligned-button-offset: tokens.$cdr-space-three-quarter-x,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$accordion-colors: (
+  frame: (
+    border: var(--cdr-color-control-border-neutral-faint),
+  ),
+  header: (
+    text: var(--cdr-color-control-text-neutral-prominent),
+    fill: var(--cdr-color-control-icon-neutral-prominent),
+    background-hover: var(--cdr-color-control-surface-neutral-faint),
+    text-hover: var(--cdr-color-control-text-neutral-prominent),
+    fill-hover: var(--cdr-color-control-icon-neutral-prominent),
+    background-focus-visible: var(--cdr-color-control-surface-neutral-faint),
+    text-focus-visible: var(--cdr-color-control-text-neutral-prominent),
+    fill-focus-visible: var(--cdr-color-control-icon-neutral-prominent),
+    background-active: var(--cdr-color-control-surface-neutral-faint),
+    text-active: var(--cdr-color-control-text-neutral-prominent),
+    fill-active: var(--cdr-color-control-icon-neutral-prominent),
+  ),
+  content: (
+    text: var(--cdr-color-control-text-neutral-prominent),
+  ),
+);

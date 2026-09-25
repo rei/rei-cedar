@@ -1,24 +1,36 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
 @use './vars/CdrBreadcrumb.vars' as vars;
+@use './vars/CdrBreadcrumb.maps' as maps;
 
 .cdr-breadcrumb {
-  line-height: 1;
+  // Set the component's base custom properties from the generated contract map.
+  @each $key, $value in maps.$breadcrumb-defaults {
+    --cdr-breadcrumb-#{$key}: #{$value};
+  }
+
+  // Temporary values from the approved color list until these tokens ship
+  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
+  --cdr-color-action-text-neutral-prominent: #746e63;
+  --cdr-color-action-text-trigger: #3d6db9;
+
+  line-height: var(--cdr-breadcrumb-line-height);
 
   /* List
   ========== */
   &__list {
-    display: inline-flex;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
+    display: var(--cdr-breadcrumb-list-display);
+    flex-wrap: var(--cdr-breadcrumb-list-flex-wrap);
+    padding: var(--cdr-breadcrumb-list-padding);
+    margin: var(--cdr-breadcrumb-list-margin);
   }
 
   /* Item
   ========== */
   &__item {
-    display: inline-flex;
-    flex: none;
-    padding: 0;
+    display: var(--cdr-breadcrumb-item-display);
+    flex: var(--cdr-breadcrumb-item-flex);
+    padding: var(--cdr-breadcrumb-item-padding);
 
     @include vars.cdr-breadcrumb-item-mixin;
   }
@@ -32,46 +44,66 @@
   /* Delimiter
   ========== */
   &__delimiter {
-    color: inherit;
-    padding: 0 tokens.$cdr-space-half-x;
+    color: var(--cdr-breadcrumb-delimiter-color);
+    padding: 0 var(--cdr-breadcrumb-delimiter-padding);
   }
 
   /* Ellipses
     ========== */
   &__ellipses {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    border: none;
-    background: none;
-    background-color: transparent;
-    cursor: pointer;
-    display: inline-block;
-    fill: inherit;
-    padding: 0;
+    font-family: var(--cdr-breadcrumb-ellipses-font-family);
+    font-size: var(--cdr-breadcrumb-ellipses-font-size);
+    line-height: var(--cdr-breadcrumb-ellipses-line-height);
+    border: var(--cdr-breadcrumb-ellipses-border);
+    background: var(--cdr-breadcrumb-ellipses-background);
+    background-color: var(--cdr-breadcrumb-ellipses-background-color);
+    cursor: var(--cdr-breadcrumb-ellipses-cursor);
+    display: var(--cdr-breadcrumb-ellipses-display);
+    fill: var(--cdr-breadcrumb-ellipses-fill);
+    padding: var(--cdr-breadcrumb-ellipses-padding);
 
     /* Ellipses Icon
     ========== */
     .cdr-breadcrumb__ellipses-icon {
-      // ITEM_DOC: Ellipses icon color
+      // ITEM_DOC: Ellipses icon color. Override with --cdr-color-breadcrumb-ellipsis-text.
       color: var(
-        --cdr-breadcrumb-ellipses-icon-color,
-        var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
+        --cdr-color-breadcrumb-ellipsis-text,
+        map.get(maps.$breadcrumb-colors, ellipsis, text)
       );
-      border-bottom: 1px solid transparent;
-      fill: inherit;
+      border-bottom: var(--cdr-breadcrumb-ellipses-icon-border-bottom);
+      fill: var(--cdr-breadcrumb-ellipses-icon-fill);
     }
 
-    &:hover,
-    &:active,
+    &:hover {
+      .cdr-breadcrumb__ellipses-icon {
+        // ITEM_DOC: Ellipses icon hover color. Override with --cdr-color-breadcrumb-ellipsis-text-hover.
+        color: var(
+          --cdr-color-breadcrumb-ellipsis-text-hover,
+          map.get(maps.$breadcrumb-colors, ellipsis, text-hover)
+        );
+        text-decoration: var(--cdr-breadcrumb-ellipses-icon-text-decoration);
+      }
+    }
+
     &:focus {
       .cdr-breadcrumb__ellipses-icon {
-        // ITEM_DOC: Ellipses icon hover, active and focus color
+        // ITEM_DOC: Ellipses icon focus color. Override with --cdr-color-breadcrumb-ellipsis-text-focus-visible.
         color: var(
-          --cdr-breadcrumb-ellipses-icon-highlight-color,
-          var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+          --cdr-color-breadcrumb-ellipsis-text-focus-visible,
+          map.get(maps.$breadcrumb-colors, ellipsis, text-focus-visible)
         );
-        text-decoration: underline;
+        text-decoration: var(--cdr-breadcrumb-ellipses-icon-text-decoration);
+      }
+    }
+
+    &:active {
+      .cdr-breadcrumb__ellipses-icon {
+        // ITEM_DOC: Ellipses icon active color. Override with --cdr-color-breadcrumb-ellipsis-text-active.
+        color: var(
+          --cdr-color-breadcrumb-ellipsis-text-active,
+          map.get(maps.$breadcrumb-colors, ellipsis, text-active)
+        );
+        text-decoration: var(--cdr-breadcrumb-ellipses-icon-text-decoration);
       }
     }
   }

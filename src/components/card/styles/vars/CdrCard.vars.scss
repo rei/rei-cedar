@@ -6,7 +6,7 @@
   // ITEM_DOC: Background color of a cdr-card
   background-color: var(
     --cdr-card-base-background-color,
-    var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    var(--cdr-color-background-primary, #{tokens.$cdr-color-background-surface-secondary})
   );
   border-radius: tokens.$cdr-radius-softer;
   box-shadow: tokens.$cdr-prominence-raised;
