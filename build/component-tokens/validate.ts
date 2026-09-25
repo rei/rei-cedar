@@ -1,9 +1,9 @@
 /**
  * Token validation for component token contracts.
  *
- * Loads the published token manifest from @rei/cdr-tokens and validates that
- * the contract's token references and generated semantic custom properties
- * can be satisfied by the token system.
+ * Loads the published @rei/cdr-tokens manifest and checks contract shape,
+ * known foundation references, and legacy Sass token names. Semantic color
+ * paths are still design-approved future names, not published runtime tokens.
  *
  * While the semantic token layer is not yet fully shipped, validation falls
  * back to warning about unknown semantic combinations. Legacy token references
@@ -13,7 +13,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import type { ComponentTokenContract, ColorSlotMap, InteractionState } from './types';
+import type {
+  ColorRole,
+  ColorSlotMap,
+  ColorSlotValue,
+  ComponentTokenContract,
+  InteractionState,
+} from './types';
+import { slotVar } from './naming';
 
 type Role = keyof ColorSlotMap;
 
@@ -51,10 +58,19 @@ export async function loadTokenManifest(): Promise<TokenManifest> {
     }
   }
 
-  // Load optional local semantic manifest if present
+  // Load optional local semantic manifests if present. The normalized color
+  // list supplies approved future runtime names before those tokens ship.
   const semanticManifestPath = path.join(__dirname, '../../canonical/tokens.json');
   if (fs.existsSync(semanticManifestPath)) {
     const content = JSON.parse(fs.readFileSync(semanticManifestPath, 'utf-8'));
+    extractSemanticTokens(content, semanticTokens);
+  }
+  const semanticColorListPath = path.join(
+    __dirname,
+    '../../.agents/skills/semantic-token-migration/references/semantic-colors.json',
+  );
+  if (fs.existsSync(semanticColorListPath)) {
+    const content = JSON.parse(fs.readFileSync(semanticColorListPath, 'utf-8'));
     extractSemanticTokens(content, semanticTokens);
   }
 
@@ -126,38 +142,79 @@ export function validateContract(contract: ComponentTokenContract, manifest: Tok
     }
   }
 
-  // Validate variants have all required roles and states
-  for (const [variantName, variant] of Object.entries(contract.variants)) {
-    const requiredRoles: Role[] = ['surface', 'text', 'border', 'icon'];
-    const requiredStates: InteractionState[] = [
-      'rest',
-      'hover',
-      'focus-visible',
-      'active',
-      'disabled',
-    ];
+  if (Object.keys(contract.defaults).length === 0) {
+    errors.push(
+      `${contract.component}: defaults must include values captured from the existing stylesheet`,
+    );
+  }
+  if (contract.recipe && contract.interaction !== 'action') {
+    errors.push(
+      `${contract.component}: recipe "${contract.recipe}" currently requires interaction "action"`,
+    );
+  }
 
-    for (const state of requiredStates) {
-      const slotMap = variant[state] as ColorSlotMap | undefined;
-      if (!slotMap) {
-        errors.push(`${contract.component}: variants.${variantName} missing state "${state}"`);
+  // Components declare only the roles and states they actually style.
+  // `rest` must contain at least one role; additional states are optional.
+  const validRoles = new Set<Role>(['surface', 'text', 'border', 'icon']);
+  const missingSemanticSlots = new Map<string, Set<string>>();
+  const validSlotValue = (value: unknown): boolean => {
+    if (typeof value === 'string') return /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(value);
+    if (value && typeof value === 'object' && 'fullPath' in value) {
+      const fullPath = (value as { fullPath: unknown }).fullPath;
+      return typeof fullPath === 'string' && /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(fullPath);
+    }
+    return false;
+  };
+  const states: InteractionState[] = ['rest', 'hover', 'focus-visible', 'active', 'disabled'];
+  for (const [variantName, variant] of Object.entries(contract.variants)) {
+    if (!variant.rest || Object.keys(variant.rest).length === 0) {
+      errors.push(
+        `${contract.component}: variants.${variantName}.rest must declare at least one color role`,
+      );
+      continue;
+    }
+    for (const state of states) {
+      const slotMap = variant[state] as Partial<ColorSlotMap> | undefined;
+      if (!slotMap) continue;
+      if (Object.keys(slotMap).length === 0) {
+        errors.push(
+          `${contract.component}: variants.${variantName}.${state} is empty; omit unsupported states`,
+        );
         continue;
       }
-      for (const role of requiredRoles) {
-        if (!(role in slotMap) || !slotMap[role]) {
+      for (const [role, value] of Object.entries(slotMap)) {
+        const location = `${contract.component}: variants.${variantName}.${state}.${role}`;
+        if (!validRoles.has(role as Role)) {
+          errors.push(`${location} is not a supported color role`);
+        } else if (!validSlotValue(value)) {
           errors.push(
-            `${contract.component}: variants.${variantName}.${state} missing role "${role}"`,
+            `${location} must be a semantic suffix or a fullPath with bare path segments`,
           );
+        } else if (manifest.semanticTokens.size > 0) {
+          const semanticName = slotVar(
+            contract.interaction,
+            role as ColorRole,
+            value as ColorSlotValue,
+          ).replace(/^--/, '');
+          if (!manifest.semanticTokens.has(semanticName)) {
+            const locations = missingSemanticSlots.get(semanticName) ?? new Set<string>();
+            locations.add(`variants.${variantName}.${state}.${role}`);
+            missingSemanticSlots.set(semanticName, locations);
+          }
         }
       }
     }
   }
 
+  for (const [semanticName, locations] of missingSemanticSlots) {
+    warnings.push(
+      `${contract.component}: semantic color --${semanticName} is not in the approved color list (used by ${[...locations].join(', ')})`,
+    );
+  }
+
   // Validate legacy token references
   if (contract.legacy) {
     for (const [key, tokenName] of Object.entries(contract.legacy)) {
-      // Legacy tokens are Sass variables; we can't validate them against the JSON manifest directly,
-      // but they should match tokens.$cdr-* so the Sass compile will catch typos.
       if (!tokenName.startsWith('cdr-')) {
         warnings.push(
           `${contract.component}: legacy["${key}"] token "${tokenName}" does not look like a Cedar token name`,

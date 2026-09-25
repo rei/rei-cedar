@@ -17,14 +17,8 @@
  * Lives here temporarily — moves to a shared package when more families exist.
  */
 
-import type {
-  ComponentTokenContract,
-  ColorSlotMap,
-  InteractionState,
-  ContractValue,
-} from '../types';
-
-type Role = keyof ColorSlotMap;
+import type { ComponentTokenContract, ContractValue } from '../types';
+import { explicitSlots, propKey, slotVar } from '../naming';
 
 // ============================================================================
 // BREAKPOINTS (from @rei/cdr-tokens)
@@ -49,51 +43,23 @@ function cssValue(value: ContractValue): string {
   return `var(--${value.name})`;
 }
 
-/** Component property name for each confirmed role */
-const PROP_NAME: Record<Role, string> = {
-  surface: 'background',
-  text: 'text',
-  border: 'border',
-  icon: 'fill',
-};
-
-/** Component property name for a given role and state */
-function componentProp(role: Role, state: InteractionState): string {
-  const base = PROP_NAME[role];
-  return state === 'rest' ? base : `${base}-${state}`;
-}
-
-/**
- * Build a semantic custom property name, honoring the omittable interaction
- * segment. Icon color resolves against the text-role token family.
- */
-function semanticProp(interaction: string | undefined, role: Role, suffix: string): string {
-  const cssRole = role === 'icon' ? 'text' : role;
-  return interaction
-    ? `--cdr-color-${interaction}-${cssRole}-${suffix}`
-    : `--cdr-color-${cssRole}-${suffix}`;
-}
-
 /** Build a dual-value CSS expression: semantic with legacy fallback */
 function dualValue(semanticVar: string, legacyToken?: string): string {
   if (!legacyToken) return `var(${semanticVar})`;
   return `var(${semanticVar}, var(--${legacyToken}))`;
 }
 
-const STATES: InteractionState[] = ['rest', 'hover', 'focus-visible', 'active', 'disabled'];
-
 // ============================================================================
 // CSS GENERATION
 // ============================================================================
 
-export function generateActionCSS(contract: ComponentTokenContract): string {
+export function generateActionCSS(contract: ComponentTokenContract, source: string): string {
   const cls = `.${contract.component}`;
   const p = contract.prefix;
   const sections: string[] = [];
 
-  sections.push(header(contract));
+  sections.push(header(contract, source));
   sections.push(baseRule(cls, p, contract));
-  sections.push(stateRules(cls, p));
   sections.push(iconRules(cls, p));
   sections.push(variantRules(cls, p, contract));
   sections.push(sizeRules(cls, p, contract));
@@ -104,12 +70,12 @@ export function generateActionCSS(contract: ComponentTokenContract): string {
 
 // ── Header ──────────────────────────────────────────────────────────────────
 
-function header(contract: ComponentTokenContract): string {
+function header(contract: ComponentTokenContract, source: string): string {
   return [
     `/* ${'='.repeat(72)} */`,
     `/* GENERATED — ${contract.component} token assignments (action family)`,
     `/* Recipe: ${contract.recipe ?? 'pressable'}`,
-    `/* Source: ${contract.component.replace('cdr-', '')}/CdrButton.tokens.ts`,
+    `/* Source: ${source}`,
     `/* Regenerate: npx tsx build/generate-component-maps.ts`,
     `/* ${'='.repeat(72)} */`,
   ].join('\n');
@@ -129,28 +95,6 @@ function baseRule(cls: string, p: string, contract: ComponentTokenContract): str
 
   lines.push(`}`);
   return lines.join('\n');
-}
-
-// ── State Rules (token-assignment skeleton) ─────────────────────────────────
-
-function stateRules(cls: string, p: string): string {
-  return [
-    `${cls}:hover {`,
-    `  /* use --${p.replace(/^--/, '')}-*-hover custom properties */`,
-    `}`,
-    ``,
-    `${cls}:focus-visible {`,
-    `  /* use --${p.replace(/^--/, '')}-*-focus-visible custom properties */`,
-    `}`,
-    ``,
-    `${cls}:active {`,
-    `  /* use --${p.replace(/^--/, '')}-*-active custom properties */`,
-    `}`,
-    ``,
-    `${cls}[disabled] {`,
-    `  /* use --${p.replace(/^--/, '')}-*-disabled custom properties */`,
-    `}`,
-  ].join('\n');
 }
 
 // ── Icon Rules ──────────────────────────────────────────────────────────────
@@ -181,19 +125,11 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
     const lines: string[] = [];
     lines.push(`${cls}--${variantName} {`);
 
-    for (const state of STATES) {
-      const slotMap = variant[state] as ColorSlotMap;
-
-      for (const role of ['surface', 'text', 'border', 'icon'] as Role[]) {
-        const value = slotMap[role];
-        const key = componentProp(role, state);
-        const semVar =
-          typeof value === 'object' && 'fullPath' in value
-            ? `--cdr-color-${value.fullPath}`
-            : semanticProp(contract.interaction, role, value);
-        const legacyToken = legacy[`${variantName}/${key}`];
-        lines.push(`  ${p}-${key}: ${dualValue(semVar, legacyToken)};`);
-      }
+    for (const { state, role, value } of explicitSlots(variant)) {
+      const key = propKey(role, state);
+      const semVar = slotVar(contract.interaction, role, value);
+      const legacyToken = legacy[`${variantName}/${key}`];
+      lines.push(`  ${p}-${key}: ${dualValue(semVar, legacyToken)};`);
     }
 
     // Extras (e.g. active-inset)
@@ -202,6 +138,8 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
         const legacyToken = legacy[`${variantName}/${extraKey}`];
         if (legacyToken) {
           lines.push(`  ${p}-${extraKey}: var(--${legacyToken});`);
+        } else {
+          console.warn(`  ⚠ ${variantName}/${extraKey}: extra has no legacy entry and is omitted`);
         }
       }
     }

@@ -134,9 +134,10 @@ export type VisualRecipe =
 
 /**
  * A color-slot value is either a semantic token suffix (identity + optional
- * expression, e.g. 'brand', 'brand-faint') or an escape hatch to a fully
- * qualified path outside the component's interaction/identity context
- * (e.g. the foundation-only `icon-default` token).
+ * expression, e.g. 'brand', 'brand-faint') or a `fullPath` escape hatch.
+ * Suffixes are expanded by naming.ts to `--cdr-color-[<interaction>-]<role>-…`.
+ * A fullPath is the portion after `--cdr-color-` (e.g. `text-neutral` →
+ * `--cdr-color-text-neutral`).
  */
 export type ColorSlotValue = string | { fullPath: string };
 
@@ -144,7 +145,7 @@ export type ColorSlotValue = string | { fullPath: string };
  * Maps each of the four confirmed roles to a semantic token suffix for one
  * interaction state.
  *
- * The suffix is the part after `--cdr-color-{interaction}-{role}-`. It
+ * The suffix is the part after `--cdr-color-[<interaction>-]<role>-`. It
  * includes the identity and, if not base, the expression:
  *   'brand'          → --cdr-color-action-surface-brand            (implicit .base)
  *   'brand-faint'    → --cdr-color-action-surface-brand-faint
@@ -161,12 +162,16 @@ export interface VariantContract {
   /** Which identity this variant uses */
   identity: ColorIdentity;
 
-  /** State → role mappings */
-  rest: ColorSlotMap;
-  hover: ColorSlotMap;
-  'focus-visible': ColorSlotMap;
-  active: ColorSlotMap;
-  disabled: ColorSlotMap;
+  /**
+   * State → role mappings. `rest` is required; add only states and roles this
+   * component actually styles. A plain text component may declare just
+   * `rest: { text: ... }`; no interaction states are inferred or generated.
+   */
+  rest: Partial<ColorSlotMap>;
+  hover?: Partial<ColorSlotMap>;
+  'focus-visible'?: Partial<ColorSlotMap>;
+  active?: Partial<ColorSlotMap>;
+  disabled?: Partial<ColorSlotMap>;
 
   /**
    * Extra component properties beyond the standard role × state matrix.
@@ -229,8 +234,11 @@ export interface ComponentTokenContract {
   /** Color variant definitions */
   variants: Record<string, VariantContract>;
 
-  /** Optional compositional conditions (e.g. selected, checked) applied over the variant */
-  conditions?: Record<string, ColorSlotMap>;
+  /**
+   * Reserved for future compositional conditions (e.g. selected, checked).
+   * The current generator does not consume this field; do not use it yet.
+   */
+  conditions?: Record<string, Partial<ColorSlotMap>>;
 
   /** Size definitions (not all components have sizes) */
   sizes?: Record<string, Record<string, ContractValue>>;
@@ -239,8 +247,12 @@ export interface ComponentTokenContract {
    * TEMPORARY: Legacy token fallback map.
    * Delete when semantic tokens ship in @rei/cdr-tokens.
    *
-   * Keyed by `{variantName}/{componentProperty}` → legacy Sass variable name.
-   * e.g. `'primary/background' → 'cdr-color-background-button-primary-rest'`
+   * Keyed by `{variantName}/{componentProperty[-state]}` → legacy Sass variable
+   * name without the `$` or `--` prefix. Example:
+   * `'primary/background-hover' → 'cdr-color-background-button-primary-hover'`.
+   * New migrations that require the two-level component override pattern omit
+   * this field; adding this fallback below the override would make three `var()`
+   * levels after compilation.
    */
   legacy?: Record<string, string>;
 }

@@ -5,7 +5,8 @@
  *   - SCSS maps files (`Cdr{Component}.maps.scss`) for internal use
  *   - Flat CSS files (`Cdr{Component}.tokens.css`) for non-SCSS consumers
  *
- * Generated artifacts are committed and verified by CI.
+ * Generated artifacts should be reviewed and committed with their contracts.
+ * The current CI workflow does not verify regeneration.
  *
  * Usage:
  *   npx tsx build/generate-component-maps.ts
@@ -16,10 +17,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import type {
   ComponentTokenContract,
-  ColorSlotMap,
   ContractValue,
   VariantContract,
 } from './component-tokens/types';
+import { explicitSlots, mapSlug, propKey, slotVar } from './component-tokens/naming';
 import { generateActionCSS } from './component-tokens/families/action';
 import { loadTokenManifest, validateContract } from './component-tokens/validate';
 
@@ -39,45 +40,11 @@ function scssValue(value: ContractValue): string {
   return `tokens.$${value.name}`;
 }
 
-/** Component property name for each confirmed role */
-const PROP_NAME: Record<keyof ColorSlotMap, string> = {
-  surface: 'background',
-  text: 'text',
-  border: 'border',
-  icon: 'fill',
-};
-
-/** Component property name for a given role + state */
-function propKey(role: keyof ColorSlotMap, state: string): string {
-  const name = PROP_NAME[role];
-  return state === 'rest' ? name : `${name}-${state}`;
-}
-
-/** Build a semantic custom property, honoring the omittable interaction segment */
-function semanticVar(
-  interaction: string | undefined,
-  role: keyof ColorSlotMap,
-  suffix: string,
-): string {
-  const cssRole = role === 'icon' ? 'text' : role; // icon color resolves against the text-role token family
-  return interaction
-    ? `--cdr-color-${interaction}-${cssRole}-${suffix}`
-    : `--cdr-color-${cssRole}-${suffix}`;
-}
-
-const STATES: Array<keyof VariantContract & string> = [
-  'rest',
-  'hover',
-  'focus-visible',
-  'active',
-  'disabled',
-];
-
 // ============================================================================
 // GENERATORS
 // ============================================================================
 
-function generateDefaults(defaults: Record<string, ContractValue>): string {
+function generateDefaults(slug: string, defaults: Record<string, ContractValue>): string {
   const lines: string[] = [];
   const entries = Object.entries(defaults);
 
@@ -94,13 +61,14 @@ function generateDefaults(defaults: Record<string, ContractValue>): string {
     { comment: 'Elevation', keys: ['elevation', 'elevation-hover', 'elevation-active'] },
   ];
 
-  const maxKeyLen = Math.max(...entries.map(([k]) => k.length));
+  const maxKeyLen = entries.length > 0 ? Math.max(...entries.map(([k]) => k.length)) : 0;
 
   for (const group of groups) {
+    const present = group.keys.filter((key) => defaults[key] !== undefined);
+    if (present.length === 0) continue;
     lines.push(`  // ${group.comment}`);
-    for (const key of group.keys) {
+    for (const key of present) {
       const value = defaults[key];
-      if (!value) continue;
       const pad = ' '.repeat(maxKeyLen - key.length);
       lines.push(`  ${key}:${pad} ${scssValue(value)},`);
     }
@@ -114,7 +82,7 @@ function generateDefaults(defaults: Record<string, ContractValue>): string {
     }
   }
 
-  return `$button-defaults: (\n${lines.join('\n')}\n);`;
+  return `$${slug}-defaults: (\n${lines.join('\n')}\n);`;
 }
 
 function generateColorVariant(
@@ -125,25 +93,15 @@ function generateColorVariant(
 ): string {
   const lines: string[] = [];
 
-  for (const state of STATES) {
-    const slotMap = variant[state];
+  for (const { state, role, value } of explicitSlots(variant)) {
+    const key = propKey(role, state);
+    const legacyToken = legacy[`${variantName}/${key}`];
+    const semanticProp = slotVar(interaction, role, value);
 
-    for (const role of ['surface', 'text', 'border', 'icon'] as const) {
-      const value = slotMap[role];
-      const key = propKey(role, state);
-      const legacyKey = `${variantName}/${key}`;
-      const legacyToken = legacy[legacyKey];
-
-      const semanticProp =
-        typeof value === 'object' && 'fullPath' in value
-          ? `--cdr-color-${value.fullPath}`
-          : semanticVar(interaction, role, value);
-
-      if (!legacyToken) {
-        lines.push(`    ${key}: var(${semanticProp}),`);
-      } else {
-        lines.push(`    ${key}: var(${semanticProp}, #{tokens.$${legacyToken}}),`);
-      }
+    if (!legacyToken) {
+      lines.push(`    ${key}: var(${semanticProp}),`);
+    } else {
+      lines.push(`    ${key}: var(${semanticProp}, #{tokens.$${legacyToken}}),`);
     }
   }
 
@@ -153,6 +111,8 @@ function generateColorVariant(
       const legacyToken = legacy[legacyKey];
       if (legacyToken) {
         lines.push(`    ${extraKey}: #{tokens.$${legacyToken}},`);
+      } else {
+        console.warn(`  ⚠ ${variantName}/${extraKey}: extra has no legacy entry and is omitted`);
       }
     }
   }
@@ -161,6 +121,7 @@ function generateColorVariant(
 }
 
 function generateColors(
+  slug: string,
   variants: Record<string, VariantContract>,
   interaction: string | undefined,
   legacy: Record<string, string>,
@@ -169,10 +130,10 @@ function generateColors(
     .map(([name, variant]) => generateColorVariant(name, variant, interaction, legacy))
     .join('\n');
 
-  return `$button-colors: (\n${variantBlocks}\n);`;
+  return `$${slug}-colors: (\n${variantBlocks}\n);`;
 }
 
-function generateSizes(sizes: Record<string, Record<string, ContractValue>>): string {
+function generateSizes(slug: string, sizes: Record<string, Record<string, ContractValue>>): string {
   const sizeBlocks = Object.entries(sizes)
     .map(([sizeName, dims]) => {
       const entries = Object.entries(dims)
@@ -182,7 +143,20 @@ function generateSizes(sizes: Record<string, Record<string, ContractValue>>): st
     })
     .join('\n');
 
-  return `$button-sizes: (\n${sizeBlocks}\n);`;
+  return `$${slug}-sizes: (\n${sizeBlocks}\n);`;
+}
+
+/** Current visual recipes are implemented by the action CSS template. */
+function recipeFamily(recipe: NonNullable<ComponentTokenContract['recipe']>): string {
+  switch (recipe) {
+    case 'pressable':
+    case 'text-action':
+    case 'elevated':
+    case 'icon-only':
+    case 'outlined':
+      return 'action';
+  }
+  return 'unimplemented';
 }
 
 // ============================================================================
@@ -217,22 +191,22 @@ async function main() {
     fs.writeFileSync(outPath, scss, 'utf-8');
     console.log(`  → ${path.relative(SRC_DIR, outPath)} (${scss.split('\n').length} lines)`);
 
-    // Generate CSS token-assignment file if the contract declares a recipe family.
-    // Note: `interaction` (the taxonomy tier) and the CSS behavior template
-    // dispatch key are separate concepts. CdrButton's interaction is 'action'
-    // and it also happens to use the 'action' behavior template, but the
-    // dispatch below is driven by the recipe's family, not the taxonomy tier.
+    // Generate CSS only when this recipe has an implemented behavior template.
+    // No output is promised just because a contract declares an interaction.
     if (contract.recipe) {
       const cssOutPath = path.join(componentDir, 'styles', `${componentName}.tokens.css`);
 
       let css: string;
-      switch (contract.interaction) {
+      switch (recipeFamily(contract.recipe)) {
         case 'action':
-          css = generateActionCSS(contract);
+          css = generateActionCSS(
+            contract,
+            path.relative(path.join(__dirname, '..'), contractPath),
+          );
           break;
         default:
-          console.log(
-            `  ⚠ No CSS behavior template for interaction "${contract.interaction}" — skipping CSS generation`,
+          console.warn(
+            `  ⚠ No CSS behavior template for recipe "${contract.recipe}" — skipping CSS generation`,
           );
           continue;
       }
@@ -245,6 +219,7 @@ async function main() {
 
 function generateScss(contract: ComponentTokenContract, sourcePath: string): string {
   const relSource = path.relative(path.join(__dirname, '..'), sourcePath);
+  const slug = mapSlug(contract.component);
   const sections: string[] = [];
 
   sections.push(`// ${'='.repeat(76)}`);
@@ -257,14 +232,16 @@ function generateScss(contract: ComponentTokenContract, sourcePath: string): str
   sections.push(`// ${'='.repeat(76)}`);
   sections.push(`// DEFAULTS MAP`);
   sections.push(`// ${'='.repeat(76)}\n`);
-  sections.push(generateDefaults(contract.defaults));
+  sections.push(generateDefaults(slug, contract.defaults));
 
   if (Object.keys(contract.variants).length > 0) {
     sections.push('');
     sections.push(`// ${'='.repeat(76)}`);
     sections.push(`// COLOR MAP`);
     sections.push(`// ${'='.repeat(76)}\n`);
-    sections.push(generateColors(contract.variants, contract.interaction, contract.legacy ?? {}));
+    sections.push(
+      generateColors(slug, contract.variants, contract.interaction, contract.legacy ?? {}),
+    );
   }
 
   if (contract.sizes && Object.keys(contract.sizes).length > 0) {
@@ -272,7 +249,7 @@ function generateScss(contract: ComponentTokenContract, sourcePath: string): str
     sections.push(`// ${'='.repeat(76)}`);
     sections.push(`// SIZE MAP`);
     sections.push(`// ${'='.repeat(76)}\n`);
-    sections.push(generateSizes(contract.sizes));
+    sections.push(generateSizes(slug, contract.sizes));
   }
 
   return sections.join('\n') + '\n';

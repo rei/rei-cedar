@@ -14,6 +14,7 @@ const SUPPORTED_COMPONENTS: string[] = [
   'CdrButton.vars.scss',
   'CdrCard.vars.scss',
   'CdrChip.vars.scss',
+  'CdrBreadcrumb.maps.scss',
   'CdrBreadcrumb.vars.scss',
   'CdrFormGroup.vars.scss',
   'CdrFormError.vars.scss',

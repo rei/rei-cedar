@@ -52,7 +52,7 @@
     // ITEM_DOC: Message body background color
     background-color: var(
       --cdr-banner-message-body-background-color,
-      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-surface-secondary})
     );
     padding: tokens.$cdr-space-half-x;
   }

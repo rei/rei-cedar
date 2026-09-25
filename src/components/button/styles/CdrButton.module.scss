@@ -1,9 +1,9 @@
 @use '@rei/cdr-tokens/scss' as tokens;
 @use 'sass:map';
 @use './vars/CdrButton.maps' as maps;
-@use './vars/CdrButton.vars' as vars; // special cases only
+@use './vars/CdrButton.vars' as vars; // one-off styles not represented by the generated maps
 
-// ── Local helpers ──
+// Apply the values for a size and let the button take its natural width.
 @mixin _apply-size($dims) {
   @each $key, $value in $dims {
     --cdr-button-#{$key}: #{$value};
@@ -13,6 +13,7 @@
 }
 
 @mixin _state-colors($state) {
+  // Use this state's value when present; otherwise keep the resting value.
   background-color: var(--cdr-button-background-#{$state}, var(--cdr-button-background));
   color: var(--cdr-button-text-#{$state}, var(--cdr-button-text));
   fill: var(--cdr-button-fill-#{$state}, var(--cdr-button-fill));
@@ -31,7 +32,7 @@
   text-transform: none;
   vertical-align: middle;
 
-  // ── Custom property defaults (from maps) ──
+  // Set the button's base custom properties from the generated contract map.
   @each $key, $value in maps.$button-defaults {
     --cdr-button-#{$key}: #{$value};
   }
@@ -124,9 +125,7 @@
     }
   }
 
-  // ════════════════════════════════════════════════════════════════════════
-  // COLOR VARIANTS — each sets --cdr-button-* custom properties from map
-  // ════════════════════════════════════════════════════════════════════════
+  // Each color modifier gets its values from the generated contract map.
 
   @each $variant, $colors in maps.$button-colors {
     &--#{$variant} {
@@ -136,9 +135,7 @@
     }
   }
 
-  // ════════════════════════════════════════════════════════════════════════
-  // SIZES — each sets --cdr-button-* dimension overrides from map
-  // ════════════════════════════════════════════════════════════════════════
+  // Each size modifier gets its dimensions from the generated contract map.
 
   @each $size, $dims in maps.$button-sizes {
     &--#{$size} {
@@ -146,9 +143,7 @@
     }
   }
 
-  // ════════════════════════════════════════════════════════════════════════
-  // SPECIAL CASES — structural variants that override the standard pattern
-  // ════════════════════════════════════════════════════════════════════════
+  // One-off layout modifiers with styles not covered by the generated maps.
 
   &--link {
     @include vars.cdr-button-link-mixin;
@@ -175,9 +170,7 @@
     justify-content: center;
   }
 
-  // ════════════════════════════════════════════════════════════════════════
-  // RESPONSIVE SIZES
-  // ════════════════════════════════════════════════════════════════════════
+  // Apply size and full-width modifiers only at their requested breakpoints.
 
   @include tokens.cdr-xs-mq-only {
     @each $size, $dims in maps.$button-sizes {

@@ -12,7 +12,7 @@ $timing-function: tokens.$cdr-timing-function-ease-out;
   }
 
   &::after {
-    border-#{$borderSide}-color: tokens.$cdr-color-background-primary;
+    border-#{$borderSide}-color: tokens.$cdr-color-background-surface-secondary;
   }
 }
 
