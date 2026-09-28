@@ -147,6 +147,11 @@ export function validateContract(contract: ComponentTokenContract, manifest: Tok
       `${contract.component}: defaults must include values captured from the existing stylesheet`,
     );
   }
+  if (contract.defaultVariant && !(contract.defaultVariant in contract.variants)) {
+    errors.push(
+      `${contract.component}: defaultVariant "${contract.defaultVariant}" is not a declared variant`,
+    );
+  }
   if (contract.recipe && contract.interaction !== 'action') {
     errors.push(
       `${contract.component}: recipe "${contract.recipe}" currently requires interaction "action"`,
@@ -201,6 +206,29 @@ export function validateContract(contract: ComponentTokenContract, manifest: Tok
             locations.add(`variants.${variantName}.${state}.${role}`);
             missingSemanticSlots.set(semanticName, locations);
           }
+        }
+      }
+    }
+    if (variant.extras) {
+      for (const [extraKey, extraValue] of Object.entries(variant.extras)) {
+        const location = `${contract.component}: variants.${variantName}.extras.${extraKey}`;
+        if (!/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(extraKey)) {
+          errors.push(`${location} is not a valid extra property name`);
+        }
+        if (extraValue === null) continue; // legacy-only entries are allowed
+        const kind = (extraValue as { kind?: unknown }).kind;
+        if (kind === 'token') {
+          const name = (extraValue as { name?: unknown }).name;
+          if (typeof name !== 'string' || !name.startsWith('cdr-')) {
+            errors.push(`${location} token reference must be a cdr-* token name`);
+          }
+        } else if (kind === 'literal') {
+          const value = (extraValue as { value?: unknown }).value;
+          if (typeof value !== 'string' && typeof value !== 'number') {
+            errors.push(`${location} literal must be a string or number`);
+          }
+        } else {
+          errors.push(`${location} must be token(), literal(), or null`);
         }
       }
     }

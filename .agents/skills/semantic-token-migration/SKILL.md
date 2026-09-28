@@ -4,7 +4,7 @@ description: Migrate Cedar components to semantic colors through a generic token
 license: proprietary
 metadata:
   author: rei-cedar
-  version: '0.3.0'
+  version: '0.4.0'
   taxonomy: docs/cedar-semantic-taxonomy.md
 ---
 
@@ -195,8 +195,18 @@ Create `src/components/<folder>/Cdr<Name>.tokens.ts` from the existing styles:
 5. Omit the contract's `legacy` fallback map for this two-level cutover. Keep
    old names and values in the Gate 0 table; a legacy fallback nested under the
    component override would add a third `var()` level.
-6. Run `pnpm build:maps`. Review
-   `styles/vars/Cdr<Name>.maps.scss` and, when a recipe emits it,
+6. When the stylesheet will iterate the generated maps, set `hooks: true` and
+   `defaultVariant` (the variant whose hooks omit the scope segment). Move any
+   colors that live outside the role × state matrix — an inner ring, a
+   transparent link background — into value-carrying `extras`; the generator
+   gives each entry a scope hook plus the declared fallback and writes the
+   docgen-only `Cdr<Name>.hooks.scss` partial. Coverage note: every scope that
+   renders an interactive state (`hover`, `focus-visible`, `active`,
+   `disabled`) must declare that state explicitly — including variants such as
+   link-style text.
+7. Run `pnpm build:maps`. Review
+   `styles/vars/Cdr<Name>.maps.scss`, `styles/vars/Cdr<Name>.hooks.scss` when
+   generated, and, when a recipe emits it,
    `styles/Cdr<Name>.tokens.css`. CI does not currently enforce regeneration;
    verify by rerunning the generator and reviewing the resulting diff. The
    generator warns when a semantic name is absent from the approved color list;
@@ -231,6 +241,12 @@ unchanged literal, the captured component default) is second. Do not define the
 override custom property inside the component. For a default/single variant
 omit `<variant>`; for non-rest values append `-hover`, `-focus-visible`,
 `-active`, or `-disabled`.
+
+With `hooks: true` the generated maps already carry that whole expression, so
+iterate them instead of repeating per-state declarations (see
+`references/contract-pattern.md` for the `_state-colors` loop, the composed
+border shadows, and the `map.get()`/`var()` Sass caveat). Both routes must
+compile to exactly the two `var()` levels above.
 
 Until these future semantic tokens are provided by `@rei/cdr-tokens`, define a
 temporary local shim for each approved semantic color used by the component,

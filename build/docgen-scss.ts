@@ -64,6 +64,12 @@ async function parseSCSS(filePath: string): Promise<CSSProperty[]> {
       if (node.type === 'decl') {
         // Handle multiline CSS properties
         const declNode = node as Declaration;
+        // Sass variables (e.g. generated `$component-colors: (...)`) are not
+        // CSS declarations; skipping them keeps the maps out of the docs pipeline.
+        if (declNode.prop.startsWith('$')) {
+          prevNode = node;
+          return;
+        }
         const singleLineValue = declNode.value.replace(/\s+/g, ' ');
         declNode.value = singleLineValue;
 

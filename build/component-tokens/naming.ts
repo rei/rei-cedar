@@ -84,3 +84,34 @@ export function* explicitSlots(
 export function mapSlug(component: string): string {
   return component.replace(/^cdr-/, '');
 }
+
+/**
+ * Resolve the scope segment used in a public override hook. The contract's
+ * default variant omits the segment ('primary' → --cdr-color-button-surface),
+ * every other scope includes it ('secondary' → --cdr-color-button-secondary-surface).
+ */
+export function hookScope(
+  scopeName: string,
+  defaultVariant: string | undefined,
+): string | undefined {
+  return defaultVariant !== undefined && scopeName === defaultVariant ? undefined : scopeName;
+}
+
+/**
+ * Public override hook for one color entry:
+ *   --cdr-color-<component>[-<scope>]-<segment>[-<state>]
+ * `segment` is the role for role × state slots, or the extra property name
+ * (e.g. `active-inset`) for extras.
+ */
+export function hookVar(
+  component: string,
+  scope: string | undefined,
+  segment: string,
+  state: InteractionState,
+): string {
+  const parts = ['--cdr-color', component.replace(/^cdr-/, '')];
+  if (scope) parts.push(scope);
+  parts.push(segment);
+  if (state !== 'rest') parts.push(state);
+  return parts.join('-');
+}

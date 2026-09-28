@@ -17,6 +17,13 @@ const contract: ComponentTokenContract = {
   // Omit interaction for Universal and Graphics categories.
   // recipe is optional; only set it when a supported CSS behavior template exists.
 
+  // Optional hook surface. `hooks: true` makes the generator wrap every color
+  // entry in its public override hook and write a docgen-only hooks partial.
+  // `defaultVariant` names the variant whose hooks omit the scope segment
+  // (e.g. 'primary' → --cdr-color-button-surface, others keep their scope).
+  // hooks: true,
+  // defaultVariant: 'primary',
+
   // Copy each value from the current stylesheet. This is not an empty placeholder.
   defaults: {
     margin: literal('0'),
@@ -32,6 +39,11 @@ const contract: ComponentTokenContract = {
       // Declare only roles and states this component actually styles.
       rest: { text: 'neutral' },
       // Add hover/focus-visible/active/disabled only when implemented.
+
+      // Optional: color entries outside the role × state matrix (an inner
+      // ring, a transparent link background). Each value becomes a scope hook
+      // with that value as its fallback; `null` keeps the legacy-only behavior.
+      // extras: { 'active-inset': literal('var(--cdr-color-border-neutral-trace)') },
     },
   },
 
@@ -99,6 +111,45 @@ the separate `graphic` namespace, so `{ fullPath: 'graphic-surface-brand' }`
 produces `--cdr-color-graphic-surface-brand`. A Universal text suffix can be
 written directly as `rest: { text: 'neutral' }` → `--cdr-color-text-neutral`.
 
+## Hook surface and extras (`hooks: true`)
+
+Contracts whose stylesheet iterates the generated maps opt into the hook
+surface:
+
+```ts
+hooks: true,
+defaultVariant: 'primary',
+```
+
+The generator then wraps every color entry so the map itself carries the full
+two-level expression, and value-carrying `extras` get their own scope hooks:
+
+```scss
+$button-colors: (
+  primary: (
+    // ITEM_DOC: Primary button's background color. Override with --cdr-color-button-surface.
+    background: var(--cdr-color-button-surface, var(--cdr-color-action-surface-brand)),
+    // ...
+    // ITEM_DOC: Primary button's inset border color when active. Override with --cdr-color-button-active-inset.
+    active-inset: var(--cdr-color-button-active-inset, var(--cdr-color-border-neutral-trace)),
+  ),
+);
+```
+
+- The hook is `--cdr-color-<component>[-<scope>]-<role>[-<state>]`.
+  `defaultVariant` omits the scope segment for that variant; every other scope
+  includes it.
+- `extras` use `--cdr-color-<component>[-<scope>]-<extra-key>` and keep the
+  declared token or literal as the fallback. A `null` value keeps the
+  legacy-only behavior (emitted only when a `legacy` entry exists).
+- The generator also writes a documentation-only partial,
+  `styles/vars/Cdr<Name>.hooks.scss`. Docgen reads declarations, not Sass maps,
+  so this partial is what lists the hooks in the docs site; it is never
+  imported at runtime.
+- Run `pnpm build:maps` after every contract change. Contracts without
+  `hooks: true` keep the bare `var(--cdr-color-<semantic>)` map shape, so their
+  generated files stay byte-identical.
+
 ## Generated maps and stylesheet consumption
 
 Run:
@@ -154,6 +205,48 @@ New migrations omit `legacy` fallbacks because they would create an extra
 state-complete migration table instead. The contract type retains `legacy` for
 existing compatibility contracts. `conditions` is reserved and currently not
 generated; do not use it.
+
+With `hooks: true`, the map entries already contain the two-level expression,
+so the stylesheet iterates the maps instead of repeating declarations. Group
+the loops by state (`_state-colors` here is a private helper, not a public
+mixin):
+
+```scss
+@mixin _state-colors($colors, $suffix) {
+  @each $key, $value in $colors {
+    @if $key == 'background#{$suffix}' {
+      background-color: $value;
+    } @else if $key == 'text#{$suffix}' {
+      color: $value;
+    } @else if $key == 'fill#{$suffix}' {
+      fill: $value;
+    }
+  }
+}
+
+.cdr-button {
+  @each $variant, $colors in maps.$button-colors {
+    &--#{$variant} {
+      @include _state-colors($colors, '');
+
+      &:hover {
+        @include _state-colors($colors, '-hover');
+      }
+      // focus-visible / active / disabled follow the same pattern
+    }
+  }
+}
+```
+
+Borders need their composed `box-shadow` per state (1px rest; 3px hover and
+focus; 3px plus the inset ring when active; 1px disabled). Read the border
+entries and the `active-inset` extra from the same map; the inset needs its own
+hook plus the declared fallback so consumers can override it.
+
+**Sass caveat:** never pass a `var()` as the default argument of `map.get()`.
+When the key exists Sass drops the returned value, so the declaration silently
+loses its color (shadows then fall back to `currentColor`). Guard with
+`@if map.has-key(...)` and read the key directly instead.
 
 Generated artifacts should be committed with their source contract, but current
 CI does not verify regeneration. Review the maps diff and ensure rerunning

@@ -18,7 +18,7 @@
  */
 
 import type { ComponentTokenContract, ContractValue } from '../types';
-import { explicitSlots, propKey, slotVar } from '../naming';
+import { explicitSlots, hookScope, hookVar, propKey, slotVar } from '../naming';
 
 // ============================================================================
 // BREAKPOINTS (from @rei/cdr-tokens)
@@ -123,23 +123,37 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
 
   for (const [variantName, variant] of Object.entries(contract.variants)) {
     const lines: string[] = [];
+    const scope = hookScope(variantName, contract.defaultVariant);
     lines.push(`${cls}--${variantName} {`);
 
     for (const { state, role, value } of explicitSlots(variant)) {
       const key = propKey(role, state);
       const semVar = slotVar(contract.interaction, role, value);
       const legacyToken = legacy[`${variantName}/${key}`];
-      lines.push(`  ${p}-${key}: ${dualValue(semVar, legacyToken)};`);
+      const hook = hookVar(contract.component, scope, role, state);
+
+      if (legacyToken) {
+        // Legacy bridge keeps the old component property surface.
+        lines.push(`  ${p}-${key}: ${dualValue(semVar, legacyToken)};`);
+      } else {
+        lines.push(`  ${hook}: ${dualValue(semVar)};`);
+      }
     }
 
-    // Extras (e.g. active-inset)
+    // Extras (e.g. active-inset) become scoped override hooks too.
     if (variant.extras) {
-      for (const extraKey of Object.keys(variant.extras)) {
+      for (const [extraKey, extraValue] of Object.entries(variant.extras)) {
+        const hook = hookVar(contract.component, scope, extraKey, 'rest');
         const legacyToken = legacy[`${variantName}/${extraKey}`];
-        if (legacyToken) {
+
+        if (extraValue && typeof extraValue === 'object') {
+          lines.push(`  ${hook}: ${cssValue(extraValue)};`);
+        } else if (legacyToken) {
           lines.push(`  ${p}-${extraKey}: var(--${legacyToken});`);
         } else {
-          console.warn(`  ⚠ ${variantName}/${extraKey}: extra has no legacy entry and is omitted`);
+          console.warn(
+            `  ⚠ ${variantName}/${extraKey}: extra has no value and no legacy entry; omitted`,
+          );
         }
       }
     }

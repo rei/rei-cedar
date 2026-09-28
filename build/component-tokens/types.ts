@@ -175,9 +175,12 @@ export interface VariantContract {
 
   /**
    * Extra component properties beyond the standard role × state matrix.
-   * Key = component property name, value = null (legacy-only, no semantic custom property yet).
+   * Key = component property name (the generator exposes it under the scope's
+   * hook, e.g. `--cdr-color-button-active-inset`).
+   * Value = the token/literal that becomes the hook's fallback; `null` keeps
+   * the legacy-only behavior (emitted only when a `legacy` entry exists).
    */
-  extras?: Record<string, null>;
+  extras?: Record<string, ContractValue | null>;
 }
 
 export interface ComponentTokenContract {
@@ -195,6 +198,22 @@ export interface ComponentTokenContract {
 
   /** Which visual recipe to apply (defaults to a family-specific recipe if omitted) */
   recipe?: VisualRecipe;
+
+  /**
+   * The variant whose generated override hooks omit the scope segment, e.g.
+   * `primary` renders `--cdr-color-button-surface` while `secondary` renders
+   * `--cdr-color-button-secondary-surface`. Defaults to no scope omission.
+   */
+  defaultVariant?: string;
+
+  /**
+   * Emit public override hooks into the generated maps and a companion
+   * `Cdr<Name>.hooks.scss` documentation partial:
+   *   `var(--cdr-color-<component>[-<scope>]-<role>[-<state>], var(--cdr-color-<semantic>))`
+   * Only set this for contracts whose stylesheet iterates the generated maps.
+   * Without it, maps keep the bare `var(--cdr-color-<semantic>)` shape.
+   */
+  hooks?: boolean;
 
   /**
    * Foundation assignments (future architecture).
