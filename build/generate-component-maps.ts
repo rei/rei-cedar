@@ -71,20 +71,24 @@ const EXTRA_LABEL: Record<string, string> = {
   surface: 'background color',
 };
 
-const SCOPE_WORDING: Record<string, string> = {
-  'with-background': "Button with background's",
-  'icon-only': "Icon-only button's",
-};
-
-function docPrefix(scope: string): string {
-  const special = SCOPE_WORDING[scope];
-  if (special) return `${special} `;
-  const words = scope.replace(/-/g, ' ');
-  return `${words.charAt(0).toUpperCase()}${words.slice(1)} button's `;
+function componentLabel(component: string): string {
+  return component.replace(/^cdr-/, '').replace(/-/g, ' ');
 }
 
-function docComment(scope: string, description: string, hook: string): string {
-  return `    // ITEM_DOC: ${docPrefix(scope)}${description}. Override with ${hook}.`;
+function capitalize(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function docPrefix(scope: string, component: string): string {
+  const label = componentLabel(component);
+  if (scope === 'with-background') return `${capitalize(label)} with background's `;
+  if (scope === 'icon-only') return `Icon-only ${label}'s `;
+  const words = scope.replace(/-/g, ' ');
+  return `${capitalize(words)} ${label}'s `;
+}
+
+function docComment(scope: string, component: string, description: string, hook: string): string {
+  return `    // ITEM_DOC: ${docPrefix(scope, component)}${description}. Override with ${hook}.`;
 }
 
 // ============================================================================
@@ -164,7 +168,7 @@ function generateColorVariant(
     } else if (useHooks) {
       const hook = hookVar(contract.component, scope, role, state);
       const description = `${ROLE_LABEL[role] ?? role} color${STATE_LABEL[state] ?? ''}`;
-      lines.push(docComment(variantName, description, hook));
+      lines.push(docComment(variantName, contract.component, description, hook));
       lines.push(`    ${key}: var(${hook}, var(${semanticProp})),`);
     } else {
       lines.push(`    ${key}: var(${semanticProp}),`);
@@ -178,7 +182,7 @@ function generateColorVariant(
 
       if (extraValue && typeof extraValue === 'object' && useHooks) {
         const description = EXTRA_LABEL[extraKey] ?? extraKey.replace(/-/g, ' ');
-        lines.push(docComment(variantName, description, hook));
+        lines.push(docComment(variantName, contract.component, description, hook));
         lines.push(`    ${extraKey}: var(${hook}, ${scssValue(extraValue)}),`);
       } else if (extraValue && typeof extraValue === 'object') {
         lines.push(`    ${extraKey}: ${scssValue(extraValue)},`);
@@ -230,7 +234,7 @@ function generateHooksDoc(contract: ComponentTokenContract, sourcePath: string):
       if (legacy[`${variantName}/${key}`]) continue; // legacy bridge has no hook
       const hook = hookVar(contract.component, scope, role, state);
       const semanticProp = slotVar(contract.interaction, role, value);
-      const description = `${docPrefix(variantName)}${ROLE_LABEL[role] ?? role} color${STATE_LABEL[state] ?? ''}`;
+      const description = `${docPrefix(variantName, contract.component)}${ROLE_LABEL[role] ?? role} color${STATE_LABEL[state] ?? ''}`;
       pushEntry(hook, `var(${semanticProp})`, description);
     }
 
@@ -239,7 +243,7 @@ function generateHooksDoc(contract: ComponentTokenContract, sourcePath: string):
         if (!extraValue || typeof extraValue !== 'object') continue;
         if (legacy[`${variantName}/${extraKey}`]) continue;
         const hook = hookVar(contract.component, scope, extraKey, 'rest');
-        const description = `${docPrefix(variantName)}${EXTRA_LABEL[extraKey] ?? extraKey.replace(/-/g, ' ')}`;
+        const description = `${docPrefix(variantName, contract.component)}${EXTRA_LABEL[extraKey] ?? extraKey.replace(/-/g, ' ')}`;
         pushEntry(hook, scssValue(extraValue), description);
       }
     }
