@@ -10,9 +10,11 @@ const DEST_REPO_NAME = 'rei-cedar-component-variables';
 const DEST_PATH = 'dist/scss';
 const SUPPORTED_COMPONENTS: string[] = [
   /* component vars */
+  'CdrButton.maps.scss',
   'CdrButton.vars.scss',
   'CdrCard.vars.scss',
   'CdrChip.vars.scss',
+  'CdrBreadcrumb.maps.scss',
   'CdrBreadcrumb.vars.scss',
   'CdrFormGroup.vars.scss',
   'CdrFormError.vars.scss',
@@ -32,7 +34,7 @@ const SUPPORTED_COMPONENTS: string[] = [
 const destMixinsDir = path.join(__dirname, `../../${DEST_REPO_NAME + path.sep + DEST_PATH}`);
 
 // get vars files
-const files = globSync('./**/*.vars.scss', { ignore: ['../**/node_modules/**'] });
+const files = globSync('./**/*.{vars,maps}.scss', { ignore: ['../**/node_modules/**'] });
 
 // copy vars files
 files.forEach((f) => {

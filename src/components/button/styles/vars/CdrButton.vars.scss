@@ -1,4 +1,10 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './CdrButton.maps' as maps;
+
+// ============================================================================
+// BASE
+// ============================================================================
 
 @mixin cdr-button-base-text-mixin-small() {
   font-family: tokens.$cdr-font-family-sans;
@@ -19,25 +25,35 @@
 }
 
 @mixin cdr-button-base-mixin() {
-  @include cdr-button-base-text-mixin-medium;
-
   border: none;
-  border-radius: tokens.$cdr-radius-softer;
   cursor: pointer;
   display: inline-flex;
   outline: none;
   overflow: visible;
   margin: 0;
-  padding: tokens.$cdr-space-inset-one-x-squish;
   text-align: left;
   text-decoration: none;
   text-transform: none;
   vertical-align: middle;
+
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$button-defaults {
+    --cdr-button-#{$key}: #{$value};
+  }
+
+  border-radius: var(--cdr-button-radius);
+  font-family: var(--cdr-button-font-family);
+  font-style: var(--cdr-button-font-style);
+  font-weight: var(--cdr-button-font-weight);
+  letter-spacing: var(--cdr-button-letter-spacing);
+  font-size: var(--cdr-button-font-size);
+  line-height: var(--cdr-button-line-height);
+  padding: var(--cdr-button-padding);
   transition:
-    box-shadow tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease,
-    background-color tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease,
-    color tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease,
-    fill tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease;
+    box-shadow var(--cdr-button-transition-duration) var(--cdr-button-transition-timing),
+    background-color var(--cdr-button-transition-duration) var(--cdr-button-transition-timing),
+    color var(--cdr-button-transition-duration) var(--cdr-button-transition-timing),
+    fill var(--cdr-button-transition-duration) var(--cdr-button-transition-timing);
 
   &:hover,
   &:active,
@@ -52,932 +68,235 @@
   }
 }
 
-@mixin cdr-button-base-icon-mixin() {
-  align-self: center;
-  fill: inherit;
+// ============================================================================
+// COLOR SCOPES
+// Driven by the generated maps. Every entry already carries its public
+// override hook plus the semantic token, for example
+// var(--cdr-color-button-surface, var(--cdr-color-action-surface-brand)),
+// so the loops below compile to exactly two var() levels per declaration.
+// ============================================================================
+
+// Emit the surface/text/icon declarations for one generated state suffix.
+@mixin _state-colors($colors, $suffix) {
+  @each $key, $value in $colors {
+    @if $key == 'background#{$suffix}' {
+      background-color: $value;
+    } @else if $key == 'text#{$suffix}' {
+      color: $value;
+    } @else if $key == 'fill#{$suffix}' {
+      fill: $value;
+    }
+  }
+}
+
+// Emit the border box-shadow for one state. Active scopes add the inset ring.
+@mixin _border-shadow($colors, $state) {
+  @if $state == rest {
+    @if map.has-key($colors, border) {
+      box-shadow:
+        inset 0 0 0 1px map.get($colors, border),
+        var(--cdr-button-elevation);
+    }
+  } @else if $state == hover {
+    @if map.has-key($colors, border-hover) {
+      box-shadow:
+        inset 0 0 0 3px map.get($colors, border-hover),
+        var(--cdr-button-elevation-hover);
+    }
+  } @else if $state == focus-visible {
+    @if map.has-key($colors, border-focus-visible) {
+      box-shadow:
+        inset 0 0 0 3px map.get($colors, border-focus-visible),
+        var(--cdr-button-elevation-focus-visible);
+    }
+  } @else if $state == active {
+    @if map.has-key($colors, border-active) {
+      @if map.has-key($colors, active-inset) {
+        box-shadow:
+          inset 0 0 0 3px map.get($colors, border-active),
+          inset 0 0 0 5px map.get($colors, active-inset),
+          var(--cdr-button-elevation-active);
+      } @else {
+        box-shadow:
+          inset 0 0 0 3px map.get($colors, border-active),
+          inset 0 0 0 5px var(--cdr-color-border-neutral-trace),
+          var(--cdr-button-elevation-active);
+      }
+    }
+  } @else if $state == disabled {
+    @if map.has-key($colors, border-disabled) {
+      box-shadow: inset 0 0 0 1px map.get($colors, border-disabled);
+    }
+  }
+}
+
+// Emit a full role × state scope (primary/secondary/dark/sale).
+@mixin cdr-button-variant-colors($colors) {
+  @include _state-colors($colors, '');
+  @include _border-shadow($colors, rest);
+
+  &:hover {
+    @include _state-colors($colors, '-hover');
+    @include _border-shadow($colors, hover);
+  }
+
+  &:focus-visible {
+    @include _state-colors($colors, '-focus-visible');
+    @include _border-shadow($colors, focus-visible);
+  }
+
+  &:active {
+    @include _state-colors($colors, '-active');
+    @include _border-shadow($colors, active);
+  }
+
+  &[disabled] {
+    @include _state-colors($colors, '-disabled');
+    @include _border-shadow($colors, disabled);
+  }
 }
 
 @mixin cdr-button-primary-mixin() {
-  // ITEM_DOC: Primary button's background color
-  background-color: var(
-    --cdr-button-primary-background-color-rest,
-    var(
-      --cdr-color-background-button-primary-rest,
-      #{tokens.$cdr-color-background-button-primary-rest}
-    )
-  );
-
-  // ITEM_DOC: Primary button's box shadow which serves as a border
-  box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-button-primary-box-shadow-color-rest,
-      var(--cdr-color-border-button-primary-rest, #{tokens.$cdr-color-border-button-primary-rest})
-    );
-
-  // ITEM_DOC: Primary button's text color
-  color: var(
-    --cdr-button-primary-text-color,
-    var(--cdr-color-text-button-primary, #{tokens.$cdr-color-text-button-primary})
-  );
-
-  // ITEM_DOC: Primary button's fill color
-  fill: var(
-    --cdr-button-primary-fill-color,
-    var(--cdr-color-text-button-primary, #{tokens.$cdr-color-text-button-primary})
-  );
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Primary button's text color when hovered or focused
-    color: var(
-      --cdr-button-primary-text-color-interaction,
-      var(--cdr-color-text-button-primary-hover, #{tokens.$cdr-color-text-button-primary-hover})
-    );
-
-    // ITEM_DOC: Primary button's fill color when hovered or focused
-    fill: var(
-      --cdr-button-primary-fill-color-interaction,
-      var(--cdr-color-text-button-primary-hover, #{tokens.$cdr-color-text-button-primary-hover})
-    );
-
-    // ITEM_DOC: Primary button's background color when hovered or focused
-    background-color: var(
-      --cdr-button-primary-background-color-interaction,
-      var(
-        --cdr-color-background-button-primary-hover,
-        #{tokens.$cdr-color-background-button-primary-hover}
-      )
-    );
-
-    // ITEM_DOC: Primary button's box shadow when hovered or focused
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-primary-box-shadow-color-interaction,
-          var(
-            --cdr-color-border-button-primary-hover,
-            #{tokens.$cdr-color-border-button-primary-hover}
-          )
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-
-  &:active {
-    // ITEM_DOC: Primary button's text color when active
-    color: var(
-      --cdr-button-primary-text-color-active,
-      var(--cdr-color-text-button-primary-active, #{tokens.$cdr-color-text-button-primary-active})
-    );
-
-    // ITEM_DOC: Primary button's fill color when active
-    fill: var(
-      --cdr-button-primary-fill-color-active,
-      var(--cdr-color-text-button-primary-active, #{tokens.$cdr-color-text-button-primary-active})
-    );
-
-    // ITEM_DOC: Primary button's background color when active
-    background-color: var(
-      --cdr-button-primary-background-color-active,
-      var(
-        --cdr-color-background-button-primary-active,
-        #{tokens.$cdr-color-background-button-primary-active}
-      )
-    );
-
-    // ITEM_DOC: Primary button's box shadow when active. //ITEM_DOC: Primary button's inset box shadow when active
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-primary-box-shadow-color-active,
-          var(
-            --cdr-color-border-button-primary-active,
-            #{tokens.$cdr-color-border-button-primary-active}
-          )
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-primary-box-shadow-color-active-inset,
-          var(
-            --cdr-color-border-button-primary-active-inset,
-            #{tokens.$cdr-color-border-button-primary-active-inset}
-          )
-        );
-  }
-
-  &[disabled] {
-    // ITEM_DOC: Primary button's background color when disabled
-    background-color: var(
-      --cdr-button-primary-background-color-disabled,
-      var(
-        --cdr-color-background-button-default-disabled,
-        #{tokens.$cdr-color-background-button-default-disabled}
-      )
-    );
-
-    // ITEM_DOC: Primary button's border color when disabled
-    box-shadow: inset 0 0 0 1px
-      var(
-        --cdr-button-primary-box-shadow-color-disabled,
-        var(
-          --cdr-color-border-button-default-disabled,
-          #{tokens.$cdr-color-border-button-default-disabled}
-        )
-      );
-
-    // ITEM_DOC: Primary button's text color when disabled
-    color: var(
-      --cdr-button-primary-text-color-disabled,
-      var(
-        --cdr-color-text-button-primary-disabled,
-        #{tokens.$cdr-color-text-button-primary-disabled}
-      )
-    );
-
-    // ITEM_DOC: Primary button's fill color when disabled
-    fill: var(
-      --cdr-button-primary-fill-color-disabled,
-      var(
-        --cdr-color-text-button-primary-disabled,
-        #{tokens.$cdr-color-text-button-primary-disabled}
-      )
-    );
-  }
+  @include cdr-button-variant-colors(map.get(maps.$button-colors, primary));
 }
 
 @mixin cdr-button-secondary-mixin() {
-  // ITEM_DOC: Secondary button's background color
-  background-color: var(
-    --cdr-button-secondary-background-color-rest,
-    var(
-      --cdr-color-background-button-secondary-rest,
-      #{tokens.$cdr-color-background-button-secondary-rest}
-    )
-  );
-
-  // ITEM_DOC: Secondary button's box shadow which serves as a border
-  box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-button-secondary-box-shadow-color-rest,
-      var(
-        --cdr-color-border-button-secondary-rest,
-        #{tokens.$cdr-color-border-button-secondary-rest}
-      )
-    );
-
-  // ITEM_DOC: Secondary button's text color
-  color: var(
-    --cdr-button-secondary-text-color,
-    var(--cdr-color-text-button-secondary, #{tokens.$cdr-color-text-button-secondary})
-  );
-
-  // ITEM_DOC: Secondary button's fill color
-  fill: var(
-    --cdr-button-secondary-fill-color,
-    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-  );
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Secondary button's text color when hovered or focused
-    color: var(
-      --cdr-button-secondary-text-color-interaction,
-      var(--cdr-color-text-button-secondary-hover, #{tokens.$cdr-color-text-button-secondary-hover})
-    );
-
-    // ITEM_DOC: Secondary button's fill color when hovered or focused
-    fill: var(
-      --cdr-button-secondary-fill-color-interaction,
-      var(--cdr-color-text-button-secondary-hover, #{tokens.$cdr-color-text-button-secondary-hover})
-    );
-
-    // ITEM_DOC: Secondary button's background color when hovered or focused
-    background-color: var(
-      --cdr-button-secondary-background-color-interaction,
-      var(
-        --cdr-color-background-button-secondary-hover,
-        #{tokens.$cdr-color-background-button-secondary-hover}
-      )
-    );
-
-    // ITEM_DOC: Secondary button's box shadow when hovered or focused
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-secondary-box-shadow-color-interaction,
-          var(
-            --cdr-color-border-button-secondary-hover,
-            #{tokens.$cdr-color-border-button-secondary-hover}
-          )
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-
-  &:active {
-    // ITEM_DOC: Secondary button's text color when active
-    color: var(
-      --cdr-button-secondary-text-color-active,
-      var(
-        --cdr-color-text-button-secondary-active,
-        #{tokens.$cdr-color-text-button-secondary-active}
-      )
-    );
-
-    // ITEM_DOC: Secondary button's fill color when active
-    fill: var(
-      --cdr-button-secondary-fill-color-active,
-      var(
-        --cdr-color-text-button-secondary-active,
-        #{tokens.$cdr-color-text-button-secondary-active}
-      )
-    );
-
-    // ITEM_DOC: Secondary button's background color when active
-    background-color: var(
-      --cdr-button-secondary-background-color-active,
-      var(
-        --cdr-color-background-button-secondary-active,
-        #{tokens.$cdr-color-background-button-secondary-active}
-      )
-    );
-
-    // ITEM_DOC: Secondary button's box shadow when active. //ITEM_DOC: Secondary button's inset box shadow when active
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-secondary-box-shadow-color-active,
-          var(
-            --cdr-color-border-button-secondary-active,
-            #{tokens.$cdr-color-border-button-secondary-active}
-          )
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-secondary-border-color-active-inset,
-          var(
-            --cdr-color-border-button-secondary-active-inset,
-            #{tokens.$cdr-color-border-button-secondary-active-inset}
-          )
-        );
-  }
-
-  &[disabled] {
-    // ITEM_DOC: Secondary button's background color when disabled
-    background-color: var(
-      --cdr-button-secondary-background-color-disabled,
-      var(
-        --cdr-color-background-button-secondary-disabled,
-        #{tokens.$cdr-color-background-button-secondary-disabled}
-      )
-    );
-
-    // ITEM_DOC: Secondary button's box shadow color when disabled. The box shadow serves as a border
-    box-shadow: inset 0 0 0 1px
-      var(
-        --cdr-button-secondary-box-shadow-color-disabled,
-        var(
-          --cdr-color-border-button-default-disabled,
-          #{tokens.$cdr-color-border-button-default-disabled}
-        )
-      );
-
-    // ITEM_DOC: Secondary button's text color when disabled
-    color: var(
-      --cdr-button-secondary-text-color-disabled,
-      var(
-        --cdr-color-text-button-secondary-disabled,
-        #{tokens.$cdr-color-text-button-secondary-disabled}
-      )
-    );
-
-    // ITEM_DOC: Secondary button's fill color when disabled
-    fill: var(
-      --cdr-button-secondary-fill-color-disabled,
-      var(
-        --cdr-color-text-button-secondary-disabled,
-        #{tokens.$cdr-color-text-button-secondary-disabled}
-      )
-    );
-  }
+  @include cdr-button-variant-colors(map.get(maps.$button-colors, secondary));
 }
 
 @mixin cdr-button-dark-mixin() {
-  // ITEM_DOC: Dark button's background color
-  background-color: var(
-    --cdr-button-dark-background-color-rest,
-    var(--cdr-color-background-button-dark-rest, #{tokens.$cdr-color-background-button-dark-rest})
-  );
-
-  // ITEM_DOC: Dark button's box shadow which serves as a border
-  box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-button-dark-box-shadow-color-rest,
-      var(--cdr-color-border-button-dark-rest, #{tokens.$cdr-color-border-button-dark-rest})
-    );
-
-  // ITEM_DOC: Dark button's text color
-  color: var(
-    --cdr-button-dark-text-color,
-    var(--cdr-color-text-button-dark, #{tokens.$cdr-color-text-button-dark})
-  );
-
-  // ITEM_DOC: Dark button's fill color
-  fill: var(
-    --cdr-button-dark-fill-color,
-    var(--cdr-color-text-button-dark, #{tokens.$cdr-color-text-button-dark})
-  );
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Dark button's text color when hovered or focused
-    color: var(
-      --cdr-button-dark-text-color-interaction,
-      var(--cdr-color-text-button-dark-hover, #{tokens.$cdr-color-text-button-dark-hover})
-    );
-
-    // ITEM_DOC: Dark button's fill color when hovered or focused
-    fill: var(
-      --cdr-button-dark-fill-color-interaction,
-      var(--cdr-color-text-button-dark-hover, #{tokens.$cdr-color-text-button-dark-hover})
-    );
-
-    // ITEM_DOC: Dark button's background color when hovered or focused
-    background-color: var(
-      --cdr-button-dark-background-color-interaction,
-      var(
-        --cdr-color-background-button-dark-hover,
-        #{tokens.$cdr-color-background-button-dark-hover}
-      )
-    );
-
-    // ITEM_DOC: Dark button's box shadow when hovered or focused
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-dark-box-shadow-color-interaction,
-          var(--cdr-color-border-button-dark-hover, #{tokens.$cdr-color-border-button-dark-hover})
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-
-  &:active {
-    // ITEM_DOC: Dark button's text color when active
-    color: var(
-      --cdr-button-dark-text-color-active,
-      var(--cdr-color-text-button-dark-active, #{tokens.$cdr-color-text-button-dark-active})
-    );
-
-    // ITEM_DOC: Dark button's fill color when active
-    fill: var(
-      --cdr-button-dark-fill-color-active,
-      var(--cdr-color-text-button-dark-active, #{tokens.$cdr-color-text-button-dark-active})
-    );
-
-    // ITEM_DOC: Dark button's background color when active
-    background-color: var(
-      --cdr-button-dark-background-color-active,
-      var(
-        --cdr-color-background-button-dark-active,
-        #{tokens.$cdr-color-background-button-dark-active}
-      )
-    );
-
-    // ITEM_DOC: Dark button's box shadow when active. The box shadow serves as a border. //ITEM_DOC: Dark button's inset box shadow when active. The box shadow serves as a border
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-dark-box-shadow-color-active,
-          var(--cdr-color-border-button-dark-active, #{tokens.$cdr-color-border-button-dark-active})
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-dark-box-shadow-color-active-inset,
-          var(
-            --cdr-color-border-button-dark-active-inset,
-            #{tokens.$cdr-color-border-button-dark-active-inset}
-          )
-        );
-  }
-
-  &[disabled] {
-    // ITEM_DOC: Dark button's background color when disabled
-    background-color: var(
-      --cdr-button-dark-background-color-disabled,
-      var(
-        --cdr-color-background-button-default-disabled,
-        #{tokens.$cdr-color-background-button-default-disabled}
-      )
-    );
-
-    // ITEM_DOC: Dark button's box shadow color when disabled. The box shadow serves as a border
-    box-shadow: inset 0 0 0 1px
-      var(
-        --cdr-button-dark-box-shadow-color-disabled,
-        var(
-          --cdr-color-border-button-default-disabled,
-          #{tokens.$cdr-color-border-button-default-disabled}
-        )
-      );
-
-    // ITEM_DOC: Dark button's text color when disabled
-    color: var(
-      --cdr-button-dark-text-color-disabled,
-      var(--cdr-color-text-button-dark-disabled, #{tokens.$cdr-color-text-button-dark-disabled})
-    );
-
-    // ITEM_DOC: Dark button's fill color when disabled
-    fill: var(
-      --cdr-button-dark-fill-color-disabled,
-      var(--cdr-color-text-button-dark-disabled, #{tokens.$cdr-color-text-button-dark-disabled})
-    );
-  }
+  @include cdr-button-variant-colors(map.get(maps.$button-colors, dark));
 }
 
 @mixin cdr-button-sale-mixin() {
-  // ITEM_DOC: Sale button's background color
-  background-color: var(
-    --cdr-button-sale-background-color-rest,
-    var(--cdr-color-background-button-sale-rest, #{tokens.$cdr-color-background-button-sale-rest})
-  );
-
-  // ITEM_DOC: Sale button's box shadow which serves as a border
-  box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-button-sale-box-shadow-color-rest,
-      var(--cdr-color-border-button-sale-rest, #{tokens.$cdr-color-border-button-sale-rest})
-    );
-
-  // ITEM_DOC: Sale button's text color
-  color: var(
-    --cdr-button-sale-text-color,
-    var(--cdr-color-text-button-sale, #{tokens.$cdr-color-text-button-sale})
-  );
-
-  // ITEM_DOC: Sale button's fill color
-  fill: var(
-    --cdr-button-sale-fill-color,
-    var(--cdr-color-text-button-sale, #{tokens.$cdr-color-text-button-sale})
-  );
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Sale button's text color when hovered or focused
-    color: var(
-      --cdr-button-sale-text-color-interaction,
-      var(--cdr-color-text-button-sale-hover, #{tokens.$cdr-color-text-button-sale-hover})
-    );
-
-    // ITEM_DOC: Sale button's fill color when hovered or focused
-    fill: var(
-      --cdr-button-sale-fill-color-interaction,
-      var(--cdr-color-text-button-sale-hover, #{tokens.$cdr-color-text-button-sale-hover})
-    );
-
-    // ITEM_DOC: Sale button's background color when hovered or focused
-    background-color: var(
-      --cdr-button-sale-background-color-interaction,
-      var(
-        --cdr-color-background-button-sale-hover,
-        #{tokens.$cdr-color-background-button-sale-hover}
-      )
-    );
-
-    // ITEM_DOC: Sale button's box shadow when hovered or focused. The box shadow serves as a border
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-sale-box-shadow-color-interaction,
-          var(--cdr-color-border-button-sale-hover, #{tokens.$cdr-color-border-button-sale-hover})
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-
-  &:active {
-    // ITEM_DOC: Sale button's text color when active
-    color: var(
-      --cdr-button-sale-text-color-active,
-      var(--cdr-color-text-button-sale-active, #{tokens.$cdr-color-text-button-sale-active})
-    );
-
-    // ITEM_DOC: Sale button's fill color when active
-    fill: var(
-      --cdr-button-sale-fill-color-active,
-      var(--cdr-color-text-button-sale-active, #{tokens.$cdr-color-text-button-sale-active})
-    );
-
-    // ITEM_DOC: Sale button's background color when active
-    background-color: var(
-      --cdr-button-sale-background-color-active,
-      var(
-        --cdr-color-background-button-sale-active,
-        #{tokens.$cdr-color-background-button-sale-active}
-      )
-    );
-
-    // ITEM_DOC: Sale button's box shadow when active. The box shadow serves as a border. //ITEM_DOC: Sale button's inset box shadow when active. The box shadow serves as a border
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-sale-box-shadow-color-active,
-          var(--cdr-color-border-button-sale-active, #{tokens.$cdr-color-border-button-sale-active})
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-sale-box-shadow-color-active-inset,
-          var(
-            --cdr-color-border-button-sale-active-inset,
-            #{tokens.$cdr-color-border-button-sale-active-inset}
-          )
-        );
-  }
-
-  &[disabled] {
-    // ITEM_DOC: Sale button's background color when disabled
-    background-color: var(
-      --cdr-button-sale-background-color-disabled,
-      var(
-        --cdr-color-background-button-default-disabled,
-        #{tokens.$cdr-color-background-button-default-disabled}
-      )
-    );
-
-    // ITEM_DOC: Sale button's border color when disabled
-    box-shadow: inset 0 0 0 1px
-      var(
-        --cdr-button-sale-box-shadow-color-disabled,
-        var(
-          --cdr-color-border-button-default-disabled,
-          #{tokens.$cdr-color-border-button-default-disabled}
-        )
-      );
-
-    // ITEM_DOC: Sale button's text color when disabled
-    color: var(
-      --cdr-button-sale-text-color-disabled,
-      var(--cdr-color-text-button-sale-disabled, #{tokens.$cdr-color-text-button-sale-disabled})
-    );
-
-    // ITEM_DOC: Sale button's fill color when disabled
-    fill: var(
-      --cdr-button-sale-fill-color-disabled,
-      var(--cdr-color-text-button-sale-disabled, #{tokens.$cdr-color-text-button-sale-disabled})
-    );
-  }
+  @include cdr-button-variant-colors(map.get(maps.$button-colors, sale));
 }
 
-@mixin cdr-button-link-mixin() {
-  // ITEM_DOC: Link variant of cdr-button's text color
-  color: var(
-    --cdr-button-link-text-color,
-    var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
-  );
+// ============================================================================
+// SPECIAL CASE MIXINS
+// Structural variants that override the standard action-family pattern.
+// Used by the module file and component-variables consumers. Values come from
+// the same generated maps, so their hooks stay overridable.
+// ============================================================================
 
-  // ITEM_DOC: Link variant of cdr-button's fill color
-  fill: var(
-    --cdr-button-link-fill-color,
-    var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
-  );
-  background-color: transparent;
+// ── Link — no background/border, underline instead ──────────────────────────
+
+@mixin cdr-button-link-mixin() {
+  $colors: map.get(maps.$button-colors, link);
+
+  background-color: map.get($colors, surface);
+  color: map.get($colors, text);
+  fill: map.get($colors, fill);
   text-decoration: underline;
 
-  &:active,
-  &:focus {
-    // ITEM_DOC: Link variant of cdr-button's text color when active or focused
-    color: var(
-      --cdr-button-link-text-color-active,
-      var(--cdr-color-text-link-active, #{tokens.$cdr-color-text-link-active})
-    );
-  }
-
   &:hover {
-    // ITEM_DOC: Link variant of cdr-button's text color when hovered
-    color: var(
-      --cdr-button-link-text-color-hover,
-      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
-    );
-
-    // ITEM_DOC: Link variant of cdr-button's text decoration when hovered
+    color: map.get($colors, text-hover);
     text-decoration: none;
   }
 
+  &:focus-visible {
+    color: map.get($colors, text-focus-visible);
+  }
+
+  &:active {
+    color: map.get($colors, text-active);
+  }
+
+  &[disabled] {
+    color: map.get($colors, text-disabled);
+    fill: map.get($colors, fill-disabled);
+    text-decoration: none;
+  }
+
+  // ITEM_DOC: Link button's focus outline. Override with --cdr-button-link-outline.
   &:focus {
-    // ITEM_DOC: Link variant of cdr-button's outline
-    // Deleted reference to $default-outline var. TODO: Add value to tokens
     outline: var(--cdr-button-link-outline, var(--default-outline, 0.2rem solid Highlight));
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
   }
 }
 
-@mixin cdr-button-secondary-elevated-mixin() {
-  // ITEM_DOC: Box shadow color of a secondary elevated cdr-button
-  box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-button-secondary-box-shadow,
-        var(
-          --cdr-color-border-button-secondary-rest,
-          #{tokens.$cdr-color-border-button-secondary-rest}
-        )
-      ),
-    tokens.$cdr-prominence-elevated;
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Box shadow color of a secondary elevated cdr-button when hovered or focused
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-secondary-interaction-box-shadow,
-          var(
-            --cdr-color-border-button-secondary-hover,
-            #{tokens.$cdr-color-border-button-secondary-hover}
-          )
-        ),
-      tokens.$cdr-prominence-floating;
-  }
-
-  &:active {
-    // ITEM_DOC: Box shadow color of a secondary elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a secondary elevated cdr-button when active
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-secondary-active-box-shadow,
-          var(
-            --cdr-color-border-button-secondary-active,
-            #{tokens.$cdr-color-border-button-secondary-active}
-          )
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-secondary-active-inset-box-shadow,
-          var(
-            --cdr-color-border-button-secondary-active-inset,
-            #{tokens.$cdr-color-border-button-secondary-active-inset}
-          )
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-}
-
-@mixin cdr-button-primary-elevated-mixin() {
-  // ITEM_DOC: Box shadow color of a primary elevated cdr-button
-  box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-button-primary-box-shadow,
-        var(--cdr-color-border-button-primary-rest, #{tokens.$cdr-color-border-button-primary-rest})
-      ),
-    tokens.$cdr-prominence-elevated;
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Box shadow color of a primary elevated cdr-button when hovered or focused
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-primary-hover-focus-box-shadow,
-          var(
-            --cdr-color-border-button-primary-hover,
-            #{tokens.$cdr-color-border-button-primary-hover}
-          )
-        ),
-      tokens.$cdr-prominence-floating;
-  }
-
-  &:active {
-    // ITEM_DOC: Box shadow color of a primary elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a primary elevated cdr-button when active
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-primary-active-box-shadow,
-          var(
-            --cdr-color-border-button-primary-active,
-            #{tokens.$cdr-color-border-button-primary-active}
-          )
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-primary-active-inset-box-shadow,
-          var(
-            --cdr-color-border-button-primary-active-inset,
-            #{tokens.$cdr-color-border-button-primary-active-inset}
-          )
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-}
-
-@mixin cdr-button-dark-elevated-mixin() {
-  // ITEM_DOC: Box shadow color of a dark elevated cdr-button
-  box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-button-dark-box-shadow-rest,
-        var(--cdr-color-border-button-dark-rest, #{tokens.$cdr-color-border-button-dark-rest})
-      ),
-    tokens.$cdr-prominence-elevated;
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Box shadow color of a dark elevated cdr-button when hovered or focused
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-dark-box-shadow-interaction,
-          var(--cdr-color-border-button-dark-hover, #{tokens.$cdr-color-border-button-dark-hover})
-        ),
-      tokens.$cdr-prominence-floating;
-  }
-
-  &:active {
-    // ITEM_DOC: Box shadow color of a dark elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a dark elevated cdr-button when active
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-dark-box-shadow-active,
-          var(--cdr-color-border-button-dark-active, #{tokens.$cdr-color-border-button-dark-active})
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-dark-active-inset-box-shadow,
-          var(
-            --cdr-color-border-button-dark-active-inset,
-            #{tokens.$cdr-color-border-button-dark-active-inset}
-          )
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-}
-
-@mixin cdr-button-sale-elevated-mixin() {
-  // ITEM_DOC: Box shadow color of a sale elevated cdr-button
-  box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-button-sale-box-shadow-rest,
-        var(--cdr-color-border-button-sale-rest, #{tokens.$cdr-color-border-button-sale-rest})
-      ),
-    tokens.$cdr-prominence-elevated;
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Box shadow color of a sale elevated cdr-button when hovered or focused
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-sale-box-shadow-interaction,
-          var(--cdr-color-border-button-sale-hover, #{tokens.$cdr-color-border-button-sale-hover})
-        ),
-      tokens.$cdr-prominence-floating;
-  }
-
-  &:active {
-    // ITEM_DOC: Box shadow color of a sale elevated cdr-button when active. //ITEM_DOC: Inset box shadow color of a sale elevated cdr-button when active
-    box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-sale-box-shadow-active,
-          var(--cdr-color-border-button-sale-active, #{tokens.$cdr-color-border-button-sale-active})
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-sale-active-inset-box-shadow,
-          var(
-            --cdr-color-border-button-sale-active-inset,
-            #{tokens.$cdr-color-border-button-sale-active-inset}
-          )
-        ),
-      tokens.$cdr-prominence-raised;
-  }
-}
-
-@mixin cdr-button-full-width-mixin() {
-  width: 100% !important;
-  justify-content: center;
-}
+// ── Icon-only — completely different layout ─────────────────────────────────
 
 @mixin cdr-button-icon-only-mixin() {
+  $colors: map.get(maps.$button-colors, icon-only);
+
   background: none;
   border: none;
-  border-radius: tokens.$cdr-radius-soft;
+  border-radius: var(--cdr-button-icon-only-radius);
   box-shadow: none;
   display: inline-block;
   line-height: normal;
-  padding: tokens.$cdr-space-inset-half-x;
-
-  // ITEM_DOC: Fill color of an icon-only cdr-button
-  fill: var(
-    --cdr-button-icon-only-icon-fill,
-    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-  );
+  padding: var(--cdr-button-icon-only-padding);
+  fill: map.get($colors, fill);
 
   &:hover {
     background: none;
-    box-shadow: none;
     border: none;
-
-    // ITEM_DOC: Fill color of an icon-only cdr-button when hovered
-    fill: var(
-      --cdr-button-icon-only-icon-fill-hover,
-      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-    );
+    box-shadow: none;
+    fill: map.get($colors, fill-hover);
   }
 
-  &:active,
-  &:focus {
+  &:focus-visible {
     background: none;
     outline: none;
     border: none;
     box-shadow: none;
-
-    // ITEM_DOC: Fill color of an icon-only cdr-button when active or focused
-    fill: var(
-      --cdr-button-icon-only-icon-fill-active,
-      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-    );
+    fill: map.get($colors, fill-focus-visible);
 
     svg {
-      // ITEM_DOC: Box shadow of the svg in an icon-only cdr-button when active or focused
-      box-shadow: inset 0 0 0 1px
-        var(
-          --cdr-button-icon-only-icon-svg-box-shadow,
-          var(
-            --cdr-color-border-button-secondary-active,
-            #{tokens.$cdr-color-border-button-secondary-active}
-          )
-        );
+      box-shadow: inset 0 0 0 1px map.get($colors, border-focus-visible);
+    }
+  }
+
+  &:active {
+    background: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    fill: map.get($colors, fill-active);
+
+    svg {
+      box-shadow: inset 0 0 0 1px map.get($colors, border-active);
     }
   }
 
   &[disabled] {
     background: transparent;
-    box-shadow: none;
     border: none;
-
-    // ITEM_DOC: Fill color of a disabled icon-only cdr-button
-    fill: var(
-      --cdr-button-icon-only-disabled-icon-fill,
-      var(--cdr-color-icon-disabled, #{tokens.$cdr-color-icon-disabled})
-    );
+    box-shadow: none;
+    fill: map.get($colors, fill-disabled);
   }
 }
 
+// ── With-background — secondary colors + circular shape ─────────────────────
+
 @mixin cdr-button-with-background-mixin() {
+  $colors: map.get(maps.$button-colors, with-background);
+
   border-radius: 50%;
+  background-color: map.get($colors, background);
+  fill: map.get($colors, fill);
+  box-shadow: inset 0 0 0 1px map.get($colors, border);
 
-  // ITEM_DOC: Fill color of a cdr-button with background
-  fill: var(
-    --cdr-button-with-background-icon-fill,
-    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-  );
-
-  // ITEM_DOC: Background color of a cdr-button with background
-  background-color: var(
-    --cdr-button-with-background-background-color,
-    var(
-      --cdr-color-background-button-secondary-rest,
-      #{tokens.$cdr-color-background-button-secondary-rest}
-    )
-  );
-
-  // ITEM_DOC: Box shadow color of a cdr-button with background
-  box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-button-with-background-box-shadow,
-      var(
-        --cdr-color-border-button-secondary-rest,
-        #{tokens.$cdr-color-border-button-secondary-rest}
-      )
-    );
-
-  &:hover,
-  &:focus {
-    // ITEM_DOC: Fill color of a cdr-button with background during interaction
-    fill: var(
-      --cdr-button-with-background-icon-fill-interaction,
-      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-    );
-
-    // ITEM_DOC: Background color of a cdr-button with background during interaction
-    background-color: var(
-      --cdr-button-with-background-background-color-interaction,
-      var(
-        --cdr-color-background-button-secondary-hover,
-        #{tokens.$cdr-color-background-button-secondary-hover}
-      )
-    );
-
-    // ITEM_DOC: Box shadow color of a cdr-button with background during interaction
+  &:hover {
+    background-color: map.get($colors, background-hover);
+    fill: map.get($colors, fill-hover);
     box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-with-background-box-shadow-interaction,
-          var(
-            --cdr-color-border-button-secondary-hover,
-            #{tokens.$cdr-color-border-button-secondary-hover}
-          )
-        ),
-      tokens.$cdr-prominence-raised;
+      inset 0 0 0 3px map.get($colors, border-hover),
+      var(--cdr-button-elevation-hover);
+
+    svg {
+      box-shadow: none;
+    }
+  }
+
+  &:focus-visible {
+    background-color: map.get($colors, background-focus-visible);
+    fill: map.get($colors, fill-focus-visible);
+    box-shadow:
+      inset 0 0 0 3px map.get($colors, border-focus-visible),
+      var(--cdr-button-elevation-focus-visible);
 
     svg {
       box-shadow: none;
@@ -985,51 +304,13 @@
   }
 
   &:active {
-    // ITEM_DOC: Text color of an active cdr-button with background
-    color: var(
-      --cdr-button-with-background-color-active,
-      var(
-        --cdr-color-text-button-secondary-active,
-        #{tokens.$cdr-color-text-button-secondary-active}
-      )
-    );
-
-    // ITEM_DOC: Fill color of an active cdr-button with background
-    fill: var(
-      --cdr-button-with-background-fill-active,
-      var(
-        --cdr-color-text-button-secondary-active,
-        #{tokens.$cdr-color-text-button-secondary-active}
-      )
-    );
-
-    // ITEM_DOC: Background color of an active cdr-button with background
-    background-color: var(
-      --cdr-button-with-background-background-color-active,
-      var(
-        --cdr-color-background-button-secondary-active,
-        #{tokens.$cdr-color-background-button-secondary-active}
-      )
-    );
-
-    // ITEM_DOC: Box shadow color of an active cdr-button with background
+    background-color: map.get($colors, background-active);
+    color: map.get($colors, text-active);
+    fill: map.get($colors, fill-active);
     box-shadow:
-      inset 0 0 0 3px
-        var(
-          --cdr-button-with-background-box-shadow-active,
-          var(
-            --cdr-color-border-button-secondary-active,
-            #{tokens.$cdr-color-border-button-secondary-active}
-          )
-        ),
-      inset 0 0 0 5px
-        var(
-          --cdr-button-with-background-box-shadow-inset-active,
-          var(
-            --cdr-color-border-button-secondary-active-inset,
-            #{tokens.$cdr-color-border-button-secondary-active-inset}
-          )
-        );
+      inset 0 0 0 3px map.get($colors, border-active),
+      inset 0 0 0 5px map.get($colors, active-inset),
+      var(--cdr-button-elevation-active);
 
     svg {
       box-shadow: none;
@@ -1037,131 +318,82 @@
   }
 
   &[disabled] {
-    // ITEM_DOC: Background color of a disabled cdr-button with background
-    background-color: var(
-      --cdr-button-with-background-background-color-disabled,
-      var(
-        --cdr-color-background-button-secondary-disabled,
-        #{tokens.$cdr-color-background-button-secondary-disabled}
-      )
-    );
-
-    // ITEM_DOC: Box shadow color of a disabled cdr-button with background
-    box-shadow: inset 0 0 0 1px
-      var(
-        --cdr-button-with-background-box-shadow-disabled,
-        var(
-          --cdr-color-border-button-default-disabled,
-          #{tokens.$cdr-color-border-button-default-disabled}
-        )
-      );
-
-    // ITEM_DOC: Fill color of a disabled cdr-button with background
-    fill: var(
-      --cdr-button-with-background-fill-disabled,
-      var(
-        --cdr-color-text-button-secondary-disabled,
-        #{tokens.$cdr-color-text-button-secondary-disabled}
-      )
-    );
+    background-color: map.get($colors, background-disabled);
+    fill: map.get($colors, fill-disabled);
+    box-shadow: inset 0 0 0 1px map.get($colors, border-disabled);
   }
+}
+
+// ── Elevated — swaps the elevation layer ────────────────────────────────────
+
+@mixin cdr-button-elevated-mixin() {
+  --cdr-button-elevation: #{tokens.$cdr-prominence-elevated};
+  --cdr-button-elevation-hover: #{tokens.$cdr-prominence-floating};
+  --cdr-button-elevation-active: #{tokens.$cdr-prominence-raised};
+}
+
+// ============================================================================
+// BACKWARD-COMPAT ALIASES — for component-variables consumers
+// These will be replaced by the generated CSS output (CdrButton.css).
+// ============================================================================
+
+@mixin cdr-button-apply-variant($variant) {
+  @if $variant == link {
+    @include cdr-button-link-mixin;
+  } @else if $variant == icon-only {
+    @include cdr-button-icon-only-mixin;
+  } @else if $variant == with-background {
+    @include cdr-button-with-background-mixin;
+  } @else {
+    $colors: map.get(maps.$button-colors, $variant);
+
+    @if $colors {
+      @include cdr-button-variant-colors($colors);
+    } @else {
+      @error "Unknown CdrButton variant: #{$variant}";
+    }
+  }
+}
+
+@mixin cdr-button-primary-elevated-mixin() {
+  @include cdr-button-elevated-mixin;
+}
+
+@mixin cdr-button-secondary-elevated-mixin() {
+  @include cdr-button-elevated-mixin;
+}
+
+@mixin cdr-button-dark-elevated-mixin() {
+  @include cdr-button-elevated-mixin;
+}
+
+@mixin cdr-button-sale-elevated-mixin() {
+  @include cdr-button-elevated-mixin;
+}
+
+@mixin cdr-button-apply-size($size) {
+  $s: map.get(maps.$button-sizes, $size);
+
+  @each $key, $value in $s {
+    --cdr-button-#{$key}: #{$value};
+  }
+
+  width: auto;
 }
 
 @mixin cdr-button-small-mixin() {
-  @include cdr-button-base-text-mixin-small;
-
-  padding: tokens.$cdr-space-inset-three-quarter-x-squish;
-  width: auto;
-
-  &.cdr-button--has-icon-left {
-    @include cdr-button-has-icon-left-small-mixin;
-  }
-
-  &.cdr-button--has-icon-right {
-    @include cdr-button-has-icon-right-small-mixin;
-  }
-
-  svg {
-    @include cdr-button-icon-small-mixin;
-  }
-}
-
-@mixin cdr-button-has-icon-left-small-mixin {
-  padding-left: calc(#{tokens.$cdr-space-three-quarter-x} - #{tokens.$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-has-icon-right-small-mixin {
-  padding-right: calc(#{tokens.$cdr-space-three-quarter-x} - #{tokens.$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-icon-small-mixin {
-  /* This is to correct icon size vs line height */
-  width: 2rem;
-  height: 2rem;
+  @include cdr-button-apply-size(small);
 }
 
 @mixin cdr-button-medium-mixin() {
-  @include cdr-button-base-text-mixin-medium;
-
-  padding: tokens.$cdr-space-inset-one-x-squish;
-  width: auto;
-
-  &.cdr-button--has-icon-left {
-    @include cdr-button-has-icon-left-medium-mixin;
-  }
-
-  &.cdr-button--has-icon-right {
-    @include cdr-button-has-icon-right-medium-mixin;
-  }
-
-  svg {
-    @include cdr-button-icon-medium-mixin;
-  }
-}
-
-@mixin cdr-button-has-icon-left-medium-mixin {
-  padding-left: calc(#{tokens.$cdr-space-one-x} - #{tokens.$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-has-icon-right-medium-mixin {
-  padding-right: calc(#{tokens.$cdr-space-one-x} - #{tokens.$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-icon-medium-mixin {
-  /* This is to correct icon size vs line height */
-  width: tokens.$cdr-icon-size;
-  height: tokens.$cdr-icon-size;
+  @include cdr-button-apply-size(medium);
 }
 
 @mixin cdr-button-large-mixin() {
-  @include cdr-button-base-text-mixin-medium;
-
-  padding: tokens.$cdr-space-inset-one-and-a-half-x-squish;
-  width: auto;
-
-  &.cdr-button--has-icon-left {
-    @include cdr-button-has-icon-left-large-mixin;
-  }
-
-  &.cdr-button--has-icon-right {
-    @include cdr-button-has-icon-right-large-mixin;
-  }
-
-  svg {
-    @include cdr-button-icon-large-mixin;
-  }
+  @include cdr-button-apply-size(large);
 }
 
-@mixin cdr-button-has-icon-left-large-mixin {
-  padding-left: calc(#{tokens.$cdr-space-one-and-a-half-x} - #{tokens.$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-has-icon-right-large-mixin {
-  padding-right: calc(#{tokens.$cdr-space-one-and-a-half-x} - #{tokens.$cdr-space-quarter-x});
-}
-
-@mixin cdr-button-icon-large-mixin {
-  /* This is to correct icon size vs line height */
-  width: tokens.$cdr-icon-size;
-  height: tokens.$cdr-icon-size;
+@mixin cdr-button-full-width-mixin() {
+  width: 100% !important;
+  justify-content: center;
 }

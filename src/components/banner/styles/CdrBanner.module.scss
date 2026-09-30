@@ -1,8 +1,66 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrBanner.maps' as maps;
 @use './vars/CdrBanner.vars' as vars;
+
+// Emit the tinted parts for one status scope from its generated map entries.
+// Every entry already carries its public override hook plus the semantic token
+// (e.g. var(--cdr-color-banner-info-surface, var(--cdr-color-feedback-surface-info-faint))).
+@mixin _status-colors($colors) {
+  .cdr-banner__main {
+    background-color: map.get($colors, background);
+    outline-color: map.get($colors, outline);
+  }
+
+  .cdr-banner__icon-left {
+    background-color: map.get($colors, icon-left-surface);
+
+    svg {
+      fill: map.get($colors, fill);
+      stroke: map.get($colors, icon-stroke);
+    }
+  }
+
+  .cdr-banner__wrapper {
+    border-left-color: map.get($colors, border);
+  }
+}
 
 .cdr-banner {
   @include vars.cdr-banner-base-mixin;
+
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$banner-defaults {
+    --cdr-banner-#{$key}: #{$value};
+  }
+
+  // Temporary values from the approved color list until these tokens ship
+  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
+  --cdr-color-feedback-surface-natural-faint: #f8f7f2;
+  --cdr-color-feedback-surface-natural: #e6ddc9;
+  --cdr-color-feedback-surface-info-faint: #f1f8f9;
+  --cdr-color-feedback-surface-info: #c8e5e6;
+  --cdr-color-feedback-surface-success-faint: #eefbee;
+  --cdr-color-feedback-surface-success: #c8e8c9;
+  --cdr-color-feedback-surface-warning-faint: #fef7e1;
+  --cdr-color-feedback-surface-warning: #f2dd9f;
+  --cdr-color-feedback-surface-error-trace: #fff8f6;
+  --cdr-color-feedback-surface-error: #ffccc1;
+  --cdr-color-feedback-surface-neutral-trace: #ffffff;
+  --cdr-color-feedback-border-natural-faint: #e6ddc9;
+  --cdr-color-feedback-border-natural: #756e5c;
+  --cdr-color-feedback-border-info-faint: #c8e5e6;
+  --cdr-color-feedback-border-info: #257d81;
+  --cdr-color-feedback-border-success-faint: #c8e8c9;
+  --cdr-color-feedback-border-success: #3d8044;
+  --cdr-color-feedback-border-warning-faint: #f2dd9f;
+  --cdr-color-feedback-border-warning: #8a6a00;
+  --cdr-color-feedback-border-error-faint: #ffccc1;
+  --cdr-color-feedback-border-error: #c33122;
+  --cdr-color-feedback-icon-neutral: #ffffff;
+  --cdr-color-feedback-icon-error: #c33122;
+  --cdr-color-text-neutral-bold: #312d27;
+  --cdr-color-action-text-trigger: #3d6db9;
 
   display: grid;
   grid-template-columns: 1fr auto;
@@ -11,8 +69,10 @@
     'message-body info-action';
 
   &__wrapper {
+    border-left: var(--cdr-banner-left-border-width) var(--cdr-banner-left-border-style);
+
     &--prominence {
-      box-shadow: tokens.$cdr-prominence-raised;
+      box-shadow: var(--cdr-banner-prominence);
     }
   }
 
@@ -21,7 +81,9 @@
     grid-area: main;
     grid-template-columns: auto 1fr auto;
     grid-template-areas: 'icon-left message icon-right';
-    min-height: 3.2rem;
+    min-height: var(--cdr-banner-main-min-height);
+    outline: thin solid;
+    outline-offset: -1px;
   }
 
   &__icon-left {
@@ -30,31 +92,25 @@
     place-items: center center;
 
     svg {
-      max-height: 2.2rem;
-      max-width: 2.2rem;
-      stroke: white;
-      stroke-width: 0.4rem;
-      paint-order: stroke fill;
-      margin: tokens.$cdr-space-quarter-x;
+      max-height: var(--cdr-banner-icon-left-size);
+      max-width: var(--cdr-banner-icon-left-size);
+      stroke-width: var(--cdr-banner-icon-left-stroke-width);
+      paint-order: var(--cdr-banner-icon-left-paint-order);
+      margin: var(--cdr-banner-icon-left-margin);
     }
   }
 
   &__message {
     display: inherit;
     grid-area: message;
-    padding: tokens.$cdr-space-half-x;
+    padding: var(--cdr-banner-message-padding);
     align-items: center;
   }
 
   &__message-body {
     grid-area: message-body;
-
-    // ITEM_DOC: Message body background color
-    background-color: var(
-      --cdr-banner-message-body-background-color,
-      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
-    );
-    padding: tokens.$cdr-space-half-x;
+    background-color: map.get(maps.$banner-colors, message-body, background);
+    padding: var(--cdr-banner-message-body-padding);
   }
 
   &__icon-right {
@@ -63,14 +119,9 @@
     grid-area: icon-right;
 
     svg {
-      max-height: 2rem;
-      max-width: 2rem;
-
-      // ITEM_DOC: Right icon fill color
-      fill: var(
-        --cdr-banner-icon-right-fill,
-        var(--cdr-color-text-emphasis, #{tokens.$cdr-color-text-emphasis})
-      ) !important;
+      max-height: var(--cdr-banner-icon-right-size);
+      max-width: var(--cdr-banner-icon-right-size);
+      fill: map.get(maps.$banner-colors, icon-right, fill) !important;
     }
   }
 
@@ -78,193 +129,35 @@
     display: inherit;
     grid-area: info-action;
     place-content: center center;
-    max-height: 3.2rem;
-    width: 4rem;
+    max-height: var(--cdr-banner-info-action-max-height);
+    width: var(--cdr-banner-info-action-width);
 
     svg {
-      max-height: 2.2rem;
-      max-width: 2.2rem;
-
-      // ITEM_DOC: Info action icon fill color
-      fill: var(
-        --cdr-banner-info-action-fill,
-        var(--cdr-color-text-link-rest, #{tokens.$cdr-color-text-link-rest})
-      ) !important;
+      max-height: var(--cdr-banner-info-action-icon-size);
+      max-width: var(--cdr-banner-info-action-icon-size);
+      fill: map.get(maps.$banner-colors, info-action, fill) !important;
     }
   }
 
+  // Each status gets its tinted surfaces, border, icon colors, and outline.
+
   &--default {
-    .cdr-banner__main {
-      @include vars.cdr-banner-default-mixin;
-
-      .cdr-banner__icon-left {
-        // ITEM_DOC: Left icon background color for default banner
-        background-color: var(
-          --cdr-banner-default-icon-left-background-color,
-          var(
-            --cdr-color-background-message-default-02,
-            #{tokens.$cdr-color-background-message-default-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Left icon fill color for default banner
-          fill: var(
-            --cdr-banner-default-icon-left-fill,
-            var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default})
-          );
-        }
-      }
-    }
-
-    .cdr-banner__wrapper {
-      border-left: vars.$left-border;
-
-      // ITEM_DOC: Wrapper border left color for default banner
-      border-left-color: var(
-        --cdr-banner-default-wrapper-border-left-color,
-        var(--cdr-color-border-message-default-01, #{tokens.$cdr-color-border-message-default-01})
-      );
-    }
+    @include _status-colors(map.get(maps.$banner-colors, default));
   }
 
   &--info {
-    .cdr-banner__main {
-      @include vars.cdr-banner-info-mixin;
-
-      .cdr-banner__icon-left {
-        // ITEM_DOC: Left icon background color for info banner
-        background-color: var(
-          --cdr-banner-info-icon-left-background-color,
-          var(
-            --cdr-color-background-message-info-02,
-            #{tokens.$cdr-color-background-message-info-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Left icon fill color for info banner
-          fill: var(
-            --cdr-banner-info-icon-left-fill,
-            var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info})
-          );
-        }
-      }
-    }
-
-    .cdr-banner__wrapper {
-      border-left: vars.$left-border;
-
-      // ITEM_DOC: Wrapper border left color for info banner
-      border-left-color: var(
-        --cdr-banner-info-wrapper-border-left-color,
-        var(--cdr-color-border-message-info-01, #{tokens.$cdr-color-border-message-info-01})
-      );
-    }
-  }
-
-  &--warning {
-    .cdr-banner__main {
-      @include vars.cdr-banner-warning-mixin;
-
-      .cdr-banner__icon-left {
-        // ITEM_DOC: Left icon background color for warning banner
-        background-color: var(
-          --cdr-banner-warning-icon-left-background-color,
-          var(
-            --cdr-color-background-message-warning-02,
-            #{tokens.$cdr-color-background-message-warning-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Left icon fill color for warning banner
-          fill: var(
-            --cdr-banner-warning-icon-left-fill,
-            var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning})
-          );
-        }
-      }
-    }
-
-    .cdr-banner__wrapper {
-      border-left: vars.$left-border;
-
-      // ITEM_DOC: Wrapper border left color for warning banner
-      border-left-color: var(
-        --cdr-banner-warning-wrapper-border-left-color,
-        var(--cdr-color-border-message-warning-01, #{tokens.$cdr-color-border-message-warning-01})
-      );
-    }
+    @include _status-colors(map.get(maps.$banner-colors, info));
   }
 
   &--success {
-    .cdr-banner__main {
-      @include vars.cdr-banner-success-mixin;
+    @include _status-colors(map.get(maps.$banner-colors, success));
+  }
 
-      .cdr-banner__icon-left {
-        // ITEM_DOC: Left icon background color for success banner
-        background-color: var(
-          --cdr-banner-success-icon-left-background-color,
-          var(
-            --cdr-color-background-message-success-02,
-            #{tokens.$cdr-color-background-message-success-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Left icon fill color for success banner
-          fill: var(
-            --cdr-banner-success-icon-left-fill,
-            var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success})
-          );
-        }
-      }
-    }
-
-    .cdr-banner__wrapper {
-      border-left: vars.$left-border;
-
-      // ITEM_DOC: Wrapper border left color for success banner
-      border-left-color: var(
-        --cdr-banner-success-wrapper-border-left-color,
-        var(--cdr-color-border-message-success-01, #{tokens.$cdr-color-border-message-success-01})
-      );
-    }
+  &--warning {
+    @include _status-colors(map.get(maps.$banner-colors, warning));
   }
 
   &--error {
-    .cdr-banner__main {
-      @include vars.cdr-banner-error-mixin;
-
-      .cdr-banner__icon-left {
-        // ITEM_DOC: Left icon background color for error banner
-        background-color: var(
-          --cdr-banner-error-icon-left-background-color,
-          var(
-            --cdr-color-background-message-error-02,
-            #{tokens.$cdr-color-background-message-error-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Left icon fill color for error banner
-          fill: var(
-            --cdr-banner-error-icon-left-fill,
-            var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error})
-          );
-        }
-      }
-    }
-
-    .cdr-banner__wrapper {
-      border-left: vars.$left-border;
-
-      // ITEM_DOC: Wrapper border left color for error banner
-      border-left-color: var(
-        --cdr-banner-error-wrapper-border-left-color,
-        var(--cdr-color-border-message-error-01, #{tokens.$cdr-color-border-message-error-01})
-      );
-    }
+    @include _status-colors(map.get(maps.$banner-colors, error));
   }
 }

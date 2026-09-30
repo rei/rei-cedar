@@ -2,6 +2,7 @@
 // Components in the preview area use rei-dot-com CSS custom properties
 // loaded via @rei/cdr-tokens/css in preview.ts.
 @use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
+@use './tokens-compat' as *;
 
 // Custom Storybook styles for Cedar component library
 

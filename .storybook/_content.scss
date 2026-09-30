@@ -20,6 +20,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 @use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
+@use './tokens-compat' as *;
 
 // ── Page surface ─────────────────────────────────────────────────────────────
 // Used with layout:'fullscreen' stories to provide a proper page container

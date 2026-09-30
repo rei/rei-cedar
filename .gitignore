@@ -64,13 +64,15 @@ storybook-static
 /blob-report/
 /playwright/.cache/
 
-# AI
-# AGENTS.md
-# .agents/skills/
-# .skills-lock.json
-.agents/
-skills-lock.json
-AGENTS.md
-
 # Storybook generated data (rebuilt on storybook dev/build)
 .storybook/generated/
+/skills-lock.json
+/.agents/*
+!/.agents/skills/
+/.agents/skills/*
+!/.agents/skills/semantic-token-migration/
+/.agents/skills/semantic-token-migration/*
+!/.agents/skills/semantic-token-migration/references/
+!/.agents/skills/semantic-token-migration/**
+/test/visual-after/
+/test/visual-delta/
