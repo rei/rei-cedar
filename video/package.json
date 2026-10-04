@@ -1,0 +1,26 @@
+{
+  "name": "@rei/cedar-token-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remotion video: web-token palettes filtered and rebuilt as the Cedar semantic color structure",
+  "scripts": {
+    "build:data": "node scripts/build-data.mjs",
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "dev": "npm run build:data && npm run fonts && remotion studio src/index.ts",
+    "render": "npm run build:data && npm run fonts && remotion render src/index.ts TokenFilter out/token-filter.mp4",
+    "still": "npm run build:data && npm run fonts && remotion still src/index.ts TokenFilter out/token-filter.png --frame=500",
+    "compositions": "npm run build:data && npm run fonts && remotion compositions src/index.ts",
+    "typecheck": "npm run build:data && tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.529",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.529"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}
