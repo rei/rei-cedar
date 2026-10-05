@@ -2,15 +2,19 @@
   "name": "@rei/cedar-token-video",
   "version": "1.0.0",
   "private": true,
-  "description": "Remotion video: web-token palettes filtered and rebuilt as the Cedar semantic color structure",
+  "description": "A narrated Remotion introduction to Cedar semantic colors and component migration",
   "scripts": {
     "build:data": "node scripts/build-data.mjs",
     "fonts": "node scripts/fetch-fonts.mjs",
-    "dev": "npm run build:data && npm run fonts && remotion studio src/index.ts",
-    "render": "npm run build:data && npm run fonts && remotion render src/index.ts TokenFilter out/token-filter.mp4",
-    "still": "npm run build:data && npm run fonts && remotion still src/index.ts TokenFilter out/token-filter.png --frame=500",
-    "compositions": "npm run build:data && npm run fonts && remotion compositions src/index.ts",
-    "typecheck": "npm run build:data && tsc --noEmit"
+    "audio": "node scripts/build-narration.mjs",
+    "review": "npm run assets && node scripts/review.mjs",
+    "assets": "npm run build:data && npm run fonts && npm run audio",
+    "dev": "npm run assets && remotion studio src/index.ts",
+    "render": "npm run assets && remotion render src/index.ts CedarSemanticTokens out/cedar-semantic-tokens-v2.mp4 && node scripts/finalize-narration.mjs out/cedar-semantic-tokens-v2.mp4",
+    "still": "npm run assets && remotion still src/index.ts CedarSemanticTokens out/cedar-semantic-tokens-v2.png --frame=100",
+    "compositions": "npm run assets && remotion compositions src/index.ts",
+    "typecheck": "npm run build:data && npm run audio && tsc --noEmit",
+    "audio:scratch": "CEDAR_SCRATCH_NARRATION=1 node scripts/build-narration.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.529",

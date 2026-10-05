@@ -205,7 +205,7 @@ tryPick(0, 3);
 const examples = picked.map(({ hue, chroma, ...example }) => example);
 
 // ─── Semantic structure ──────────────────────────────────────────────────────
-// The six interaction families from docs/cedar-semantic-taxonomy.md, each with
+// The six categories (four interaction families plus Universal and Graphics), each with
 // its namespaces, role breakdown and every token resolved to a primitive step.
 
 const CATEGORY_DEFS = [
@@ -306,6 +306,29 @@ const structure = CATEGORY_DEFS.map((definition) => {
   };
 });
 
+// Resolve the old colors from the installed Cedar token package, never from a
+// guessed nearest palette color. Used by the filmed migration mapping table.
+const legacyColors = {};
+const legacyRoot = path.join(repoRoot, 'node_modules/@rei/cdr-tokens/dist/rei-dot-com/json');
+const walkLegacy = (node) => {
+  if (!node || typeof node !== 'object') return;
+  if (typeof node.name === 'string' && /^#[0-9a-f]{6}$/i.test(node.$value ?? '')) {
+    legacyColors[`--${node.name}`] = node.$value.toUpperCase();
+  } else {
+    Object.values(node).forEach(walkLegacy);
+  }
+};
+const readLegacyDirectory = (directory) => {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) readLegacyDirectory(fullPath);
+    else if (entry.name.endsWith('.json')) walkLegacy(readJson(fullPath));
+  }
+};
+if (!fs.existsSync(legacyRoot))
+  throw new Error('Install the repository dependencies to resolve legacy Cedar color values.');
+readLegacyDirectory(legacyRoot);
+
 const model = {
   source: {
     webTokens: 'web-tokens.json',
@@ -322,6 +345,7 @@ const model = {
     unmatchedHexes,
   },
   examples,
+  legacyColors,
   structure,
   palettes,
 };

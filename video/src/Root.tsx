@@ -1,12 +1,12 @@
 import { Composition } from 'remotion';
-import { TokenFilter } from './TokenFilter';
+import { CedarFilm } from './film/CedarFilm';
 import { DURATION_IN_FRAMES, FPS, HEIGHT, WIDTH } from './theme';
 
 export const RemotionRoot: React.FC = () => {
   return (
     <Composition
-      id="TokenFilter"
-      component={TokenFilter}
+      id="CedarSemanticTokens"
+      component={CedarFilm}
       durationInFrames={DURATION_IN_FRAMES}
       fps={FPS}
       width={WIDTH}

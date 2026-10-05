@@ -54,6 +54,7 @@ export type StructureCategory = {
 };
 
 export type TokenModel = {
+  legacyColors: Record<string, string>;
   source: {
     webTokens: string;
     semanticColors: string;

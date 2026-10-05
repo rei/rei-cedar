@@ -1,85 +1,125 @@
-# Token filter video
+# Cedar — Color with intent
 
-A small, self-contained [Remotion](https://remotion.dev) project that renders the
-journey from **all primitive palettes** to **the semantic color structure**:
+A 3:05 narrated Remotion introduction for new Cedar users, 1920 × 1080 at 30 fps,
+with Zelda's voice through Higgsfield's ElevenLabs engine.
+The story follows the supplied Michelle Lam / Michael Hewson transcript and
+slide summaries: repeated decisions create friction; semantic, unified, and
+dynamic capabilities connect the system; two components make the method
+concrete; the Semantic Token Migration skill supports adoption.
 
-1. Shows every palette in `web-tokens.json` (16 palettes, 290 steps) in the Cedar
-   doc-site chrome.
-2. Filters the grid to the steps whose hex appears in
-   `.agents/skills/semantic-token-migration/references/semantic-colors.json`
-   (51 steps across 14 palettes) — the rest ghost out and collapse.
-3. Explains the semantic grammar one level at a time, following the reference:
-   **Foundation → Family → Role → Identity → Expression**. Each row answers
-   one simple question and shows only the relevant values — especially the six
-   families: Universal, Graphic, Action, Feedback, Selection, and Control.
-4. Applies OKLCH to interaction states: a stable `action / surface / brand`
-   meaning is expressed as rest, hover, and active by tuning lightness/chroma
-   while keeping the semantic identity stable.
-5. Closes on the summary: 51/290 steps back 148/157 semantic tokens, with a note
-   on the nine sale tokens (`#D44703`, `#FFE9E0`) that have no palette step.
+## Watch and iterate
 
-Matching is an **exact hex match** (case-insensitive). That is deliberately
-strict, so the video never claims a mapping the token files don't contain.
-
-## Styling
-
-The visual language follows Storybook / the Cedar doc site, and the values are
-kept next to their sources:
-
-- Chrome colors, fonts and radii: `.storybook/cedar-theme.ts` and
-  `@rei/cdr-tokens/dist/docsite` (page `#f7f5f3`, card `#ffffff`, border
-  `#d5cfc3`, ink `#2e2e2b`, brand `#1f513f`, radius 4/8).
-- Type: Graphik (sans), Stuart (display serif), Pressura (mono) — the same
-  families `src/styles/cdr-fonts.scss` declares. `npm run fonts` mirrors the
-  woff2 files into `public/fonts` (gitignored) so renders are offline-safe.
-- The dark closing note reuses the knockout surface from Storybook's code
-  panels (`#2e2e2b`).
-
-## Commands
-
-```bash
-npm install          # install Remotion + React (this folder only)
-npm run build:data   # regenerate src/data/token-model.json from the repo JSONs
-npm run fonts        # fetch Graphik / Pressura / Stuart into public/fonts
-npm run dev          # build data + fonts, open Remotion Studio
-npm run render       # render out/token-filter.mp4 (1920x1080, 30 fps, 52.7 s)
-npm run still        # render one frame (out/token-filter.png, filtered grid)
-npm run typecheck    # build data + tsc --noEmit
+```sh
+cd video
+npm install --package-lock=false
+npm run dev
+npm run render    # out/cedar-semantic-tokens-v2.mp4
+npm run review    # 25 chapter-relative review frames in out/review-v2/
+npm run still
+npm run typecheck
 ```
 
-`web-tokens.json` is read from the repository root (two levels up). The project
-does not modify the repository's sources; it only writes generated data
-(`src/data/token-model.json`), fetched fonts (`public/fonts`) and render output
-(`out/`), all gitignored.
+Composition: `CedarSemanticTokens`. Generated data, narration, renders, and
+proprietary fonts are ignored. The existing lockfile deletion is preserved.
 
-## Structure
+## Narrative
 
-```
-video/
-├── scripts/build-data.mjs        # tokens + semantic colors -> model incl. structure tree
-├── scripts/fetch-fonts.mjs       # mirrors the Storybook webfonts into public/fonts
-├── src/
-│   ├── index.ts                  # Remotion entry (registerRoot)
-│   ├── Root.tsx                  # TokenFilter composition
-│   ├── TokenFilter.tsx           # acts: palette grid / taxonomy / outro
-│   ├── timeline.ts               # one timeline for all scenes (30 fps)
-│   ├── theme.ts                  # doc-site tokens, fonts, geometry
-│   ├── fonts.tsx                 # @font-face injection + delayRender loader
-│   ├── data/model.ts             # typed access to the generated token model
-│   ├── lib/color.ts              # luminance / readable ink on a swatch
-│   ├── components/
-│   │   ├── SwatchGrid.tsx        # palette grid: entrance, filter, reflow
-│   │   ├── Header.tsx / Footer.tsx / StatChip.tsx
-│   └── scenes/
-│       ├── TitleOverlay.tsx
-│       ├── TaxonomyScene.tsx     # Foundation → Family → Role → Identity → Expression
-│       └── OutroOverlay.tsx
-└── remotion.config.ts
-```
+1. Meaning remains: design decisions should travel with their purpose.
+2. Friction: conversations alone make teams decide and translate again.
+3. Semantic framework, unified system, dynamic variables.
+4. The new semantic layer between primitives and components.
+5. All palettes as raw material, with a brief OKLCH introduction.
+6. Colors scoped by purpose: text, surfaces, graphics.
+7. Action, Control, Selection, Feedback, Universal, Graphics.
+8. Five naming questions: foundation, family, role, identity, expression.
+9. One component's surface, border, text, and icon separate and reassemble.
+10. Button: intent → mapping → contract → generated styling → states.
+11. Accordion: intent → parts → contract → opening and closing.
+12. Variables preserve purpose while values adapt across modes/platforms.
+13. Releasing the Semantic Token Migration skill to guide migration.
+14. Less translation, more shared understanding.
 
-## Editing the numbers
+The footer notes teach the scene's main takeaway. Dense hex catalogs, palette
+gap diagnostics, and checkout approval instructions stay out of the film.
+Release dates and productivity estimates from the source deck are omitted.
 
-Everything the video says is computed from the two JSON sources at
-`npm run build:data` time — counts, per-palette matched totals, and the
-unmatched-hex note. Change
-the sources and rebuild; no numbers are hard-coded in components.
+## Narration and synchronization
+
+`src/film/story.json` contains chapter text and spoken beats.
+The final narrator is Zelda, generated through the Higgsfield MCP with the
+ElevenLabs `text2speech_v2` engine. Recordings and generation IDs are preserved
+in `public/audio/elevenlabs/manifest.json`. A local Samantha scratch track is
+available only through `npm run audio:scratch` for timing experiments.
+
+The audio builder measures each clip and quantizes its start/end to 30 fps in
+`src/data/narration-timing.json`. `timing.ts` derives chapter lengths and visual
+cues from those measured values. Speech starts after the incoming wipe and
+finishes before the outgoing wipe. Longer recordings expand a chapter instead
+of cutting words or accelerating the voice. No instrumental score is mixed
+into the narrated revision.
+
+The render command finishes with `scripts/finalize-narration.mjs`: it places
+the original recordings at their measured frame positions, copies the picture
+unchanged, and encodes the final audio once. This avoids the intermediate
+render's audio delay. Exported audio is compared against all fourteen source
+takes to verify synchronization.
+
+Key cues drive family highlights, naming tiers, role separation, component
+contracts, state demos, the variable illustration, and migration steps.
+Higgsfield-generated ElevenLabs recordings are imported from
+`public/audio/elevenlabs/manifest.json` by `scripts/import-narration.mjs`.
+Each chapter entry provides its `id`, source `file`, voice, and a `cues` array
+of measured recording-relative phrase starts. Full chapter recordings preserve
+natural delivery; visual beats use those phrase markers. The importer validates
+all markers against measured audio duration and normalizes volume.
+Word timestamps were measured with Whisper and checked against the script.
+The Button's hover, focus, and pressed transitions follow those spoken words.
+Accordion and closing narration share one source take, split in the silence
+between their sentences. The alignment report is saved beside the manifest.
+`npm run audio` prefers these recordings when the manifest is present.
+`npm run audio:scratch` explicitly recreates the local reference track.
+Changing the narrator requires measuring its replacement phrase cues before
+rendering.
+
+## Source fidelity
+
+- All primitive palette colors come from `../web-tokens.json`.
+- Semantic names and colors come from
+  `../.agents/skills/semantic-token-migration/references/semantic-colors.json`.
+  Exact matching filters the primitive ribbons; every semantic name used by a
+  preview is validated against the list.
+- There are six categories and four interaction families. Universal omits the
+  interaction segment; Graphics uses the `graphic` namespace. The film's
+  naming example uses an actual Action token.
+- Button and Accordion previews reconstruct the checked-in contracts. Color
+  assignments remain driven by those contracts. Code panels are condensed
+  excerpts, not full migration implementations. No component files are changed.
+- The variable/cart modes are conceptual illustrations of adaptable values,
+  not an assertion that these particular dark-mode values have shipped.
+- The skill scene describes the method in
+  `../.agents/skills/semantic-token-migration/SKILL.md`. It does not claim a
+  real Storybook or Playwright migration was run for this film.
+
+## Editing
+
+- `src/film/story.json`: narration and chapter intent.
+- `src/film/timing.ts`: measured chapter boundaries and narration cues.
+- `src/film/NarrativeScenes.tsx`: friction, capabilities, architecture, modes.
+- `src/film/FoundationScenes.tsx`: palettes, taxonomy, grammar, roles, closing.
+- `src/film/ComponentScenes.tsx`: Button, Accordion, migration skill.
+- `src/film/kit.tsx`: typography, transitions, previews, code panels.
+- `src/film/data.ts`: semantic and component-contract resolution.
+- `scripts/review.mjs`: chapter-relative visual QA.
+
+## Design references
+
+The film uses Cedar's Graphik, Stuart, and Pressura fonts, warm surfaces,
+forest green, lichen accents, and topographic motion.
+
+- [Cedar design system](https://cedar.rei.com/)
+- [Cedar motion](https://cedar.rei.com/guidelines/motion)
+- [Cedar Button](https://cedar.rei.com/components/button)
+
+The original composition remains in `src/TokenFilter.tsx` and `src/scenes/`
+for comparison. `out/original-palette.png` records its earlier palette scene.
+The first exported cut is preserved as `out/cedar-semantic-tokens-v1.mp4`.

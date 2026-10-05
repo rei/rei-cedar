@@ -1,0 +1,146 @@
+[
+  {
+    "id": "intro",
+    "label": "Meaning remains",
+    "seconds": 7,
+    "beats": [
+      "Design decisions should travel with their meaning.",
+      "Welcome to Cedar's semantic framework."
+    ]
+  },
+  {
+    "id": "friction",
+    "label": "The cost of repeated decisions",
+    "seconds": 8,
+    "beats": [
+      "When decisions stay in conversations, teams repeat them.",
+      "That translation work slows us down and makes consistency harder."
+    ]
+  },
+  {
+    "id": "pillars",
+    "label": "Three connected capabilities",
+    "seconds": 10,
+    "beats": [
+      "Cedar reduces this friction with three connected capabilities.",
+      "A shared semantic framework.",
+      "A unified design and development system.",
+      "And variables that adapt across platforms."
+    ]
+  },
+  {
+    "id": "architecture",
+    "label": "A new semantic layer",
+    "seconds": 10,
+    "beats": [
+      "The semantic layer sits between primitive values and components.",
+      "It captures why a design choice exists, so its meaning survives changes in implementation."
+    ]
+  },
+  {
+    "id": "palettes",
+    "label": "The color foundations",
+    "seconds": 7,
+    "beats": [
+      "Cedar's complete color palettes are our raw material.",
+      "O K L C H makes their relationships more perceptually consistent."
+    ]
+  },
+  {
+    "id": "filter",
+    "label": "Color scoped by purpose",
+    "seconds": 9,
+    "beats": [
+      "The next step is choosing colors by purpose.",
+      "Scopes guide what works for text, surfaces, and graphics, reducing guesswork."
+    ]
+  },
+  {
+    "id": "families",
+    "label": "Start with the user's intent",
+    "seconds": 14,
+    "beats": [
+      "Begin with the user's intent.",
+      "Actions commit or navigate.",
+      "Controls configure the interface.",
+      "Selections express a choice.",
+      "Feedback communicates status.",
+      "Universal colors support plain content.",
+      "And graphics support visual expression."
+    ]
+  },
+  {
+    "id": "grammar",
+    "label": "Five questions in a token name",
+    "seconds": 14,
+    "beats": [
+      "A token name answers five questions.",
+      "The foundation.",
+      "The interaction family.",
+      "The role.",
+      "The identity.",
+      "And the expression.",
+      "Expression describes how strongly to communicate. It leaves room for future themes."
+    ]
+  },
+  {
+    "id": "roles",
+    "label": "One component, four color roles",
+    "seconds": 9,
+    "beats": [
+      "One component combines several color roles.",
+      "Its surface, border, text, and icon each have a job.",
+      "Each can be mapped independently."
+    ]
+  },
+  {
+    "id": "button",
+    "label": "Action in practice",
+    "seconds": 18,
+    "beats": [
+      "For an Add to cart button, the intent is Action.",
+      "We map its surface and label.",
+      "Capture those choices in a component contract.",
+      "And generate the styling.",
+      "Hover,",
+      "focus,",
+      "and pressed states express the same purpose.",
+      "The user sees one coherent interaction."
+    ]
+  },
+  {
+    "id": "accordion",
+    "label": "Control in practice",
+    "seconds": 10,
+    "beats": ["An accordion is Control.", "Map its parts.", "See it work."]
+  },
+  {
+    "id": "dynamic",
+    "label": "Shared meaning, adaptable expression",
+    "seconds": 12,
+    "beats": [
+      "Variables let the same semantic purpose adapt to different modes and platforms.",
+      "The values can change while the meaning remains.",
+      "Shared foundations leave room for native platform conventions."
+    ]
+  },
+  {
+    "id": "workflow",
+    "label": "The Semantic Token Migration skill",
+    "seconds": 16,
+    "beats": [
+      "We're also releasing the Semantic Token Migration skill to make adoption easier.",
+      "It guides you through choosing a component.",
+      "Mapping intent.",
+      "Building a contract.",
+      "And comparing the result.",
+      "That brings the method into everyday migration work."
+    ]
+  },
+  {
+    "id": "outro",
+    "label": "Less translation, more understanding",
+    "seconds": 6,
+    "beats": ["Less translation.", "More shared understanding."]
+  }
+]
