@@ -83,7 +83,7 @@ rendering.
 
 ## Source fidelity
 
-- All primitive palette colors come from `../web-tokens.json`.
+- All primitive palette colors come from `web-tokens.json` in this folder.
 - Semantic names and colors come from
   `../.agents/skills/semantic-token-migration/references/semantic-colors.json`.
   Exact matching filters the primitive ribbons; every semantic name used by a

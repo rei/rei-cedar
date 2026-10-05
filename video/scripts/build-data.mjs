@@ -2,9 +2,10 @@
 /**
  * Builds the video's data model from the repository token sources.
  *
- * Sources (resolved from the repository root, two levels above this project):
- *   - web-tokens.json
+ * Sources:
+ *   - video/web-tokens.json (local palette reference)
  *   - .agents/skills/semantic-token-migration/references/semantic-colors.json
+ *     (resolved from the repository root)
  *
  * Output: src/data/token-model.json (gitignored; `npm run build:data` before dev/render)
  *
@@ -22,7 +23,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const videoRoot = path.resolve(scriptDir, '..');
 const repoRoot = path.resolve(videoRoot, '..');
 
-const WEB_TOKENS_PATH = path.join(repoRoot, 'web-tokens.json');
+const WEB_TOKENS_PATH = path.join(videoRoot, 'web-tokens.json');
 const SEMANTIC_COLORS_PATH = path.join(
   repoRoot,
   '.agents',
@@ -331,7 +332,7 @@ readLegacyDirectory(legacyRoot);
 
 const model = {
   source: {
-    webTokens: 'web-tokens.json',
+    webTokens: 'video/web-tokens.json',
     semanticColors: '.agents/skills/semantic-token-migration/references/semantic-colors.json',
     generatedAt: new Date().toISOString(),
   },
