@@ -9,7 +9,7 @@
     background: linear-gradient(
       var(
           --cdr-split-surface-surface-color,
-          var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+          var(--cdr-color-background-primary, #{tokens.$cdr-color-background-surface-secondary})
         )
         0 50%,
       transparent 50% 100%
@@ -21,7 +21,7 @@
       transparent 0 50%,
       var(
           --cdr-split-surface-surface-color,
-          var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+          var(--cdr-color-background-primary, #{tokens.$cdr-color-background-surface-secondary})
         )
         50% 100%
     );

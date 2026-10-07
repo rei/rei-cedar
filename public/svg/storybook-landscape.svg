@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Mountain campsite illustration</title>
+  <desc id="desc">A simple mountain landscape used as a deterministic Storybook fixture image.</desc>
+  <rect width="1600" height="900" fill="#253a33"/>
+  <path d="M0 560 320 250l250 250 210-290 360 430 210-260 250 310v210H0Z" fill="#5f6f62"/>
+  <path d="M0 655 420 430l230 180 330-240 620 305v225H0Z" fill="#9aab92"/>
+  <path d="M0 760c190-60 360-80 510-58s260 81 430 73 318-88 480-73c66 6 126 24 180 50v148H0Z" fill="#f4efe4"/>
+  <circle cx="1265" cy="170" r="82" fill="#f8d36b"/>
+</svg>

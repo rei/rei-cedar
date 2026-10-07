@@ -14,66 +14,66 @@
         "images": {
           "xs": {
             "caption": null,
-            "alt": "A runner wearing Vuori apparel.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "sm": {
             "caption": null,
-            "alt": "A runner wearing Vuori apparel.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "md": {
             "caption": null,
-            "alt": "A runner wearing Vuori apparel.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "lg": {
             "caption": null,
-            "alt": "A runner wearing Vuori apparel.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           }
         },
-        "alt": "A runner wearing Vuori apparel.",
+        "alt": "Mountain campsite illustration.",
         "useResizing": true,
         "renderedSizes": {
           "mobile": "33vw",
@@ -90,66 +90,66 @@
         "images": {
           "xs": {
             "caption": null,
-            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "sm": {
             "caption": null,
-            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "md": {
             "caption": null,
-            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "lg": {
             "caption": null,
-            "alt": "A child getting a piggy back ride from a person in a red jacket.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290279_fs-6-rei-coop_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           }
         },
-        "alt": "A child getting a piggy back ride from a person in a red jacket.",
+        "alt": "Mountain campsite illustration.",
         "useResizing": true,
         "renderedSizes": {
           "mobile": "33vw",
@@ -166,66 +166,66 @@
         "images": {
           "xs": {
             "caption": null,
-            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "sm": {
             "caption": null,
-            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "md": {
             "caption": null,
-            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "lg": {
             "caption": null,
-            "alt": "A person walks in casual athletic clothing in front of a cactus.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290282_fs-6-gifting_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           }
         },
-        "alt": "A person walks in casual athletic clothing in front of a cactus.",
+        "alt": "Mountain campsite illustration.",
         "useResizing": true,
         "renderedSizes": {
           "mobile": "33vw",
@@ -242,66 +242,66 @@
         "images": {
           "xs": {
             "caption": null,
-            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "sm": {
             "caption": null,
-            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "md": {
             "caption": null,
-            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "lg": {
             "caption": null,
-            "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290259_fs-6-water-bottles_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           }
         },
-        "alt": "A hat and t-shirt next to an outside with pride R E I Co-op  logo.",
+        "alt": "Mountain campsite illustration.",
         "useResizing": true,
         "renderedSizes": {
           "mobile": "33vw",
@@ -318,66 +318,66 @@
         "images": {
           "xs": {
             "caption": null,
-            "alt": "A runner wearing warm weather gear.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "sm": {
             "caption": null,
-            "alt": "A runner wearing warm weather gear.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "md": {
             "caption": null,
-            "alt": "A runner wearing warm weather gear.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "lg": {
             "caption": null,
-            "alt": "A runner wearing warm weather gear.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290256_fs-6-hiking-footwear-altra_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           }
         },
-        "alt": "A runner wearing warm weather gear.",
+        "alt": "Mountain campsite illustration.",
         "useResizing": true,
         "renderedSizes": {
           "mobile": "33vw",
@@ -394,66 +394,66 @@
         "images": {
           "xs": {
             "caption": null,
-            "alt": "A swimmer dives off of a platform.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "sm": {
             "caption": null,
-            "alt": "A swimmer dives off of a platform.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "md": {
             "caption": null,
-            "alt": "A swimmer dives off of a platform.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           },
           "lg": {
             "caption": null,
-            "alt": "A swimmer dives off of a platform.",
+            "alt": "Mountain campsite illustration.",
             "attribution": null,
             "renditions": {
               "original": {
-                "src": "https://www.rei.com/dam/21290255_fs-6-cycling-new_web_lg.jpeg",
-                "width": 1200,
-                "height": 1600
+                "src": "./svg/storybook-landscape.svg",
+                "width": 1600,
+                "height": 900
               },
               "wide": null,
               "vertical": null
             },
-            "imageType": "jpg"
+            "imageType": "svg"
           }
         },
-        "alt": "A swimmer dives off of a platform.",
+        "alt": "Mountain campsite illustration.",
         "useResizing": true,
         "renderedSizes": {
           "mobile": "33vw",

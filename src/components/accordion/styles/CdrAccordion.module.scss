@@ -1,19 +1,58 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
 @use '../../icon/styles/CdrIcon.module';
 @use './CdrAccordionGroup.module';
+@use './vars/CdrAccordion.maps' as maps;
+
+@mixin _accordion-header-state-colors($state, $background-key, $text-key, $icon-key) {
+  background-color: var(
+    --cdr-color-accordion-header-surface-#{$state},
+    map.get(maps.$accordion-colors, header, $background-key)
+  );
+  color: var(
+    --cdr-color-accordion-header-text-#{$state},
+    map.get(maps.$accordion-colors, header, $text-key)
+  );
+
+  .cdr-accordion__icon {
+    fill: var(
+      --cdr-color-accordion-header-icon-#{$state},
+      map.get(maps.$accordion-colors, header, $icon-key)
+    );
+  }
+}
+
+@mixin _accordion-default-properties() {
+  @each $key, $value in maps.$accordion-defaults {
+    --cdr-accordion-#{$key}: #{$value};
+  }
+}
+
+// Unwrapped accordions do not carry the .cdr-accordion root class; also set
+// defaults where their heading and content styles are actually applied.
+.cdr-accordion,
+.cdr-accordion__header--unwrapped,
+.cdr-accordion__content-container {
+  @include _accordion-default-properties;
+
+  // Temporary values from the approved color list until these tokens ship
+  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
+  --cdr-color-control-border-neutral-faint: #cecac3;
+  --cdr-color-control-surface-neutral-faint: #fcfcfb;
+  --cdr-color-control-text-neutral-prominent: #4c473e;
+  --cdr-color-control-icon-neutral-prominent: #8e887d;
+}
 
 .cdr-accordion {
-  // ITEM_DOC: Border color of cdr-accordion
-  --cdr-accordion-border: 1px solid
-    var(
-      --cdr-accordion-border-color,
-      var(--cdr-color-border-primary, #{tokens.$cdr-color-border-primary})
-    );
-
-  border-top: var(--cdr-accordion-border);
-  border-bottom: var(--cdr-accordion-border);
-  position: relative;
-  list-style: none;
+  // ITEM_DOC: Frame border color. Override with --cdr-color-accordion-frame-border.
+  border-top: var(--cdr-accordion-container-border-width)
+    var(--cdr-accordion-container-border-style)
+    var(--cdr-color-accordion-frame-border, map.get(maps.$accordion-colors, frame, border));
+  border-bottom: var(--cdr-accordion-container-border-width)
+    var(--cdr-accordion-container-border-style)
+    var(--cdr-color-accordion-frame-border, map.get(maps.$accordion-colors, frame, border));
+  position: var(--cdr-accordion-container-position);
+  list-style: var(--cdr-accordion-container-list-style);
 
   & + & {
     border-top: none;
@@ -22,62 +61,66 @@
   &__button {
     @include tokens.cdr-text-utility-sans-strong-300;
 
-    // ITEM_DOC: Background color of a cdr-accordion header button
-    background-color: var(--cdr-accordion-button-background-color, transparent);
-    border: none;
-
-    // ITEM_DOC: Text color of a cdr-accordion header button
-    color: var(
-      --cdr-accordion-button-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    // ITEM_DOC: Resting header surface. Override with --cdr-color-accordion-header-surface.
+    background-color: var(
+      --cdr-color-accordion-header-surface,
+      var(--cdr-accordion-header-surface)
     );
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    padding: tokens.$cdr-space-inset-one-x;
-    position: relative;
-    text-align: left;
-    width: 100%;
+    border: var(--cdr-accordion-button-border);
 
-    // z-index: 1;
+    // ITEM_DOC: Header text color. State-specific override names end in the state.
+    color: var(--cdr-color-accordion-header-text, map.get(maps.$accordion-colors, header, text));
+    cursor: var(--cdr-accordion-button-cursor);
+    display: var(--cdr-accordion-button-display);
+    justify-content: var(--cdr-accordion-button-justify-content);
+    padding: var(--cdr-accordion-button-padding);
+    position: var(--cdr-accordion-button-position);
+    text-align: var(--cdr-accordion-button-text-align);
+    width: var(--cdr-accordion-button-width);
 
-    &:hover,
+    &:hover {
+      @include _accordion-header-state-colors(hover, background-hover, text-hover, fill-hover);
+    }
+
     &:focus {
-      // ITEM_DOC: Background color of a cdr-accordion header button on focus and hover
-      background-color: var(
-        --cdr-accordion-button-background-color-hover,
-        var(--cdr-color-background-accordion-hover, #{tokens.$cdr-color-background-accordion-hover})
+      @include _accordion-header-state-colors(
+        focus-visible,
+        background-focus-visible,
+        text-focus-visible,
+        fill-focus-visible
       );
+    }
+
+    &:active {
+      @include _accordion-header-state-colors(active, background-active, text-active, fill-active);
     }
   }
 
   &__label {
-    margin-bottom: 0;
+    margin-bottom: var(--cdr-accordion-label-margin-bottom);
   }
 
   &__header {
-    margin: 0;
-    padding: 0;
-    font-weight: unset;
-    font-style: unset;
-    font-size: unset;
+    margin: var(--cdr-accordion-header-margin);
+    padding: var(--cdr-accordion-header-padding);
+    font-weight: var(--cdr-accordion-header-font-weight);
+    font-style: var(--cdr-accordion-header-font-style);
+    font-size: var(--cdr-accordion-header-font-size);
 
     &--unwrapped {
       @include tokens.cdr-text-heading-sans-400;
 
-      margin: tokens.$cdr-space-one-x 0;
+      margin: var(--cdr-accordion-unwrapped-header-margin) 0;
     }
   }
 
   &__icon {
-    margin-left: tokens.$cdr-space-one-x;
+    margin-left: var(--cdr-accordion-icon-margin-left);
 
-    // ITEM_DOC: Fill color of icons on a cdr-accordion. This is used for the caret which changes orientation when the accordion collapses and expands
-    fill: var(
-      --cdr-accordion-icon-fill,
-      var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-    );
-    transition: transform tokens.$cdr-duration-3-x tokens.$cdr-timing-function-ease-out;
+    // ITEM_DOC: Header caret color. State-specific override names end in the state.
+    fill: var(--cdr-color-accordion-header-icon, map.get(maps.$accordion-colors, header, fill));
+    transition: transform var(--cdr-accordion-icon-transition-duration)
+      var(--cdr-accordion-icon-transition-timing);
 
     &.cdr-accordion--open {
       transform: rotate(-180deg);
@@ -85,30 +128,32 @@
   }
 
   &__content-container {
-    overflow: hidden;
-    transition-duration: tokens.$cdr-duration-3-x;
-    transition-property: max-height;
-    transition-timing-function: cubic-bezier(0.15, 0, 0.15, 1);
+    overflow: var(--cdr-accordion-content-container-overflow);
+    transition-duration: var(--cdr-accordion-content-container-transition-duration);
+    transition-property: var(--cdr-accordion-content-container-transition-property);
+    transition-timing-function: var(--cdr-accordion-content-container-transition-timing);
 
     .cdr-tabs--open {
-      transition-duration: tokens.$cdr-duration-3-x;
+      transition-duration: var(--cdr-accordion-content-container-transition-duration);
     }
   }
 
   &__content {
     @include tokens.cdr-text-body-300;
 
-    // ITEM_DOC: Background color of cdr-accordion content
-    background-color: var(--cdr-accordion-content-background-color, transparent);
-
-    // ITEM_DOC: Text color of cdr-accordion content
-    color: var(
-      --cdr-accordion-content-text-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+    // ITEM_DOC: Content panel surface; remains transparent unless overridden.
+    background-color: var(
+      --cdr-color-accordion-content-surface,
+      var(--cdr-accordion-content-surface)
     );
-    padding: tokens.$cdr-space-half-x tokens.$cdr-space-one-x tokens.$cdr-space-one-x;
-    transition: opacity tokens.$cdr-duration-1-x linear;
-    opacity: 0;
+
+    // ITEM_DOC: Content text color. Override with --cdr-color-accordion-content-text.
+    color: var(--cdr-color-accordion-content-text, map.get(maps.$accordion-colors, content, text));
+    padding: var(--cdr-accordion-content-padding-top) var(--cdr-accordion-content-padding-inline)
+      var(--cdr-accordion-content-padding-bottom);
+    transition: opacity var(--cdr-accordion-content-fade-duration)
+      var(--cdr-accordion-content-fade-timing);
+    opacity: var(--cdr-accordion-content-opacity);
 
     > * {
       @include tokens.cdr-text-body-300;
@@ -123,49 +168,43 @@
     }
   }
 
-  /* Style variants
-    ========================================================================== */
   &--unwrap {
     padding: 0;
   }
 
-  /* Border-Aligned
-     ========== */
   &--border-aligned {
-    margin: 0 tokens.$cdr-space-inset-one-x;
+    margin: 0 var(--cdr-accordion-border-aligned-margin-inline);
 
     .cdr-accordion__button {
-      margin-left: -#{tokens.$cdr-space-one-x};
-      width: calc(100% + (#{tokens.$cdr-space-one-x} * 2));
+      margin-left: calc(var(--cdr-accordion-border-aligned-button-offset) * -1);
+      width: calc(100% + (var(--cdr-accordion-border-aligned-button-offset) * 2));
     }
 
     .cdr-accordion__content {
-      padding: tokens.$cdr-space-half-x 0 tokens.$cdr-space-one-x;
+      padding: var(--cdr-accordion-content-padding-top) 0
+        var(--cdr-accordion-content-padding-bottom);
     }
   }
 
-  /* No content spacing
-     ========== */
   &--no-spacing {
     .cdr-accordion__content {
       padding: 0;
     }
   }
 
-  /* Compact
-     ========== */
   &--compact {
     .cdr-accordion__button {
       @include tokens.cdr-text-utility-sans-strong-200;
 
-      padding: tokens.$cdr-space-inset-three-quarter-x;
+      padding: var(--cdr-accordion-compact-button-padding);
     }
 
     .cdr-accordion__content {
       @include tokens.cdr-text-utility-sans-200;
 
-      padding: tokens.$cdr-space-quarter-x tokens.$cdr-space-three-quarter-x
-        tokens.$cdr-space-three-quarter-x;
+      padding: var(--cdr-accordion-compact-content-padding-top)
+        var(--cdr-accordion-compact-content-padding-inline)
+        var(--cdr-accordion-compact-content-padding-bottom);
 
       > * {
         @include tokens.cdr-text-utility-sans-200;
@@ -173,16 +212,15 @@
     }
   }
 
-  /* Border-Aligned and Compact
-     ========== */
   &--compact.cdr-accordion--border-aligned {
     .cdr-accordion__button {
-      margin-left: -#{tokens.$cdr-space-three-quarter-x};
-      width: calc(100% + (#{tokens.$cdr-space-three-quarter-x} * 2));
+      margin-left: calc(var(--cdr-accordion-compact-border-aligned-button-offset) * -1);
+      width: calc(100% + (var(--cdr-accordion-compact-border-aligned-button-offset) * 2));
     }
 
     .cdr-accordion__content {
-      padding: tokens.$cdr-space-quarter-x 0 tokens.$cdr-space-three-quarter-x;
+      padding: var(--cdr-accordion-compact-content-padding-top) 0
+        var(--cdr-accordion-compact-content-padding-bottom);
     }
   }
 }

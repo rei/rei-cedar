@@ -21,7 +21,7 @@
     // ITEM_DOC: Background color of cdr-popup content
     background: var(
       --cdr-popup-content-background,
-      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-surface-secondary})
     );
 
     // ITEM_DOC: Border color of cdr-popup content

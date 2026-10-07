@@ -69,8 +69,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const imageSrc =
-  'https://www.rei.com/dam/content_team_041115_25915_campaign_yosemite_0291_article_c_1.jpg';
+const imageSrc = 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md';
 
 export const Default: Story = {
   render: (args) => ({
@@ -81,7 +80,7 @@ export const Default: Story = {
     template: `
       <CdrMediaObject v-bind="args">
         <template #media>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" />
         </template>
         <template #content>
           <CdrText tag="h3">Explore Yosemite</CdrText>
@@ -108,7 +107,7 @@ export const MediaRight: Story = {
     template: `
       <CdrMediaObject v-bind="args">
         <template #media>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" />
         </template>
         <template #content>
           <CdrText tag="h3">Media on Right</CdrText>
@@ -134,7 +133,7 @@ export const MediaTop: Story = {
     template: `
       <CdrMediaObject v-bind="args">
         <template #media>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" />
         </template>
         <template #content>
           <CdrText tag="h3">Media on Top</CdrText>
@@ -160,7 +159,7 @@ export const WithContentPadding: Story = {
     template: `
       <CdrMediaObject v-bind="args">
         <template #media>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" />
         </template>
         <template #content>
           <CdrText tag="h3">With Padding</CdrText>
@@ -188,14 +187,16 @@ export const WithOverlay: Story = {
     template: `
       <CdrMediaObject v-bind="args">
         <template #media>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" fit="cover" />
         </template>
         <template #content>
-          <CdrText tag="h2" style="color: white;">Overlay Content</CdrText>
-          <CdrText style="color: white;">
-            Content overlays the media in this configuration.
-          </CdrText>
-          <CdrButton modifier="primary">Explore Now</CdrButton>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
+            <CdrText tag="h2" style="color: white;">Overlay Content</CdrText>
+            <CdrText style="color: white;">
+              Content overlays the media in this configuration.
+            </CdrText>
+            <CdrButton modifier="primary">Explore Now</CdrButton>
+          </div>
         </template>
       </CdrMediaObject>
     `,
@@ -214,7 +215,7 @@ export const CenteredAlignment: Story = {
     template: `
       <CdrMediaObject v-bind="args">
         <template #media>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="1/1" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="1/1" />
         </template>
         <template #content>
           <CdrText tag="h3">Centered Alignment</CdrText>
@@ -240,7 +241,7 @@ export const WithCover: Story = {
     template: `
       <CdrMediaObject v-bind="args">
         <template #media>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" />
         </template>
         <template #content>
           <CdrText tag="h3">Media Cover</CdrText>

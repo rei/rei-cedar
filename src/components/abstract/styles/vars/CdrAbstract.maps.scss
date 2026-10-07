@@ -1,0 +1,31 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/abstract/CdrAbstract.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$abstract-defaults: (
+  // Typography
+  font-size: var(--cdr-type-scale-1),
+  line-height: var(--cdr-line-height-ratio-subheading-sans-1),
+  margin: 0,
+  max-width: 75ch,
+  font-size-condensed: var(--cdr-type-scale-0),
+  line-height-condensed: var(--cdr-line-height-ratio-subheading-sans-0)
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$abstract-colors: (
+  default: (
+    text: var(--cdr-color-text-neutral),
+  ),
+);

@@ -1,0 +1,8 @@
+// Compatibility aliases for doc-site Sass tokens that the installed
+// @rei/cdr-tokens package no longer exports.
+// Values match the Storybook theme (.storybook/cedar-theme.ts) and the doc-site
+// page styling, so Storybook chrome renders as before. When these tokens return
+// to @rei/cdr-tokens, delete this file and its `@use` in storybook.scss and
+// _content.scss.
+$cdr-color-background-primary: #f7f5f3; // doc-site page background
+$cdr-color-background-secondary: #ffffff; // content/preview background

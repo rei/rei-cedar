@@ -5,16 +5,16 @@
     :adapter="LifestyleAdapter"
     @frame-click="onFrameClick"
     @arrow-click="onArrowClick"
-    @resize="onResize"
   />
 </template>
 
 <script setup lang="ts">
 import CdrFilmstrip from '../../CdrFilmstrip.vue';
 import lifestyleModel from './mock.json';
+import type { Lifestyle } from '.';
 
-const lifestyleModelData = lifestyleModel as Record<string, unknown>;
-import { onFrameClick, onArrowClick, onResize } from './handlers';
+const lifestyleModelData = lifestyleModel as Partial<Lifestyle>;
+import { onFrameClick, onArrowClick } from './handlers';
 import LifestyleAdapter from './adapter';
 </script>
 

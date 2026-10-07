@@ -49,10 +49,27 @@ function getTokenDescriptions(
     .join('\n');
 }
 
-const surfaceColorMetadata = surfaceTokenMetadata.colors as TokenMetadata[];
-const surfaceRadiusMetadata = radiusTokenMetadata.radius as TokenMetadata[];
-const surfaceProminenceMetadata = prominenceTokenMetadata.prominence as TokenMetadata[];
-const surfaceSpacingMetadata = spacingTokenMetadata.spacing as TokenMetadata[];
+/**
+ * The token JSON groups entries into nested objects; collect every leaf that
+ * carries `attributes` metadata so the summaries can look tokens up by their
+ * attribute fields.
+ */
+function flattenTokens(value: unknown, tokens: TokenMetadata[] = []): TokenMetadata[] {
+  if (!value || typeof value !== 'object') return tokens;
+
+  for (const child of Object.values(value)) {
+    if (!child || typeof child !== 'object') continue;
+    if ('attributes' in child) tokens.push(child as TokenMetadata);
+    flattenTokens(child, tokens);
+  }
+
+  return tokens;
+}
+
+const surfaceColorMetadata = flattenTokens(surfaceTokenMetadata);
+const surfaceRadiusMetadata = flattenTokens(radiusTokenMetadata);
+const surfaceProminenceMetadata = flattenTokens(prominenceTokenMetadata);
+const surfaceSpacingMetadata = flattenTokens(spacingTokenMetadata);
 
 const backgroundSummary = getTokenDescriptions(
   surfaceBackgroundOptions,
@@ -85,7 +102,12 @@ const borderRadiusSummary = getTokenDescriptions(
 );
 
 const boxShadowSummary = getTokenDescriptions(surfaceShadowOptions, surfaceShadowTokens, (option) =>
-  surfaceProminenceMetadata.find((token) => token.attributes?.type === option),
+  surfaceProminenceMetadata.find(
+    (token) =>
+      token.attributes?.type === option ||
+      // Prominence entries are stored per axis (e.g. `raised-x`, `raised-y`).
+      token.attributes?.type?.startsWith(`${option}-`),
+  ),
 );
 
 const borderWidthSummary = getTokenDescriptions(spaceFixedOptions, spaceFixedTokens, (option) =>

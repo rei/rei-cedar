@@ -1,0 +1,7 @@
+node_modules/
+out/
+public/fonts/
+public/audio/
+src/data/token-model.json
+
+src/data/narration-timing.json

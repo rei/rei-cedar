@@ -19,8 +19,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const imageSrc =
-  'https://www.rei.com/dam/content_team_041115_25915_campaign_yosemite_0291_article_c_1.jpg';
+const imageSrc = 'https://www.rei.com/dam/gerlach_090622_0135_web_lg.jpeg?t=ea16by9md';
 
 export const CenterCenter: Story = {
   render: (args) => ({
@@ -31,7 +30,7 @@ export const CenterCenter: Story = {
     template: `
       <CdrObjectOverlay v-bind="args">
         <template #container>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" fit="cover" />
         </template>
         <template #content>
           <div style="text-align: center; color: white;">
@@ -57,7 +56,7 @@ export const LeftTop: Story = {
     template: `
       <CdrObjectOverlay v-bind="args">
         <template #container>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" fit="cover" />
         </template>
         <template #content>
           <div style="color: white; background: rgba(0, 0, 0, 0.5); padding: 16px; border-radius: 4px;">
@@ -83,7 +82,7 @@ export const RightBottom: Story = {
     template: `
       <CdrObjectOverlay v-bind="args">
         <template #container>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" fit="cover" />
         </template>
         <template #content>
           <div style="color: white; background: rgba(0, 0, 0, 0.5); padding: 16px; border-radius: 4px;">
@@ -108,7 +107,7 @@ export const CenterTop: Story = {
     template: `
       <CdrObjectOverlay v-bind="args">
         <template #container>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" fit="cover" />
         </template>
         <template #content>
           <div style="text-align: center; color: white;">
@@ -134,7 +133,7 @@ export const CenterBottom: Story = {
     template: `
       <CdrObjectOverlay v-bind="args">
         <template #container>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" fit="cover" />
         </template>
         <template #content>
           <div style="text-align: center; color: white; background: rgba(0, 0, 0, 0.6); padding: 24px; border-radius: 8px;">
@@ -160,7 +159,7 @@ export const LeftCenter: Story = {
     template: `
       <CdrObjectOverlay v-bind="args">
         <template #container>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" fit="cover" />
         </template>
         <template #content>
           <div style="color: white; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 4px; max-width: 300px;">
@@ -195,7 +194,7 @@ export const ResponsivePosition: Story = {
     template: `
       <CdrObjectOverlay v-bind="args">
         <template #container>
-          <CdrImg :src="imageSrc" alt="Yosemite landscape" ratio="16/9" fit="cover" />
+          <CdrImg :src="imageSrc" alt="Outdoor landscape" ratio="16/9" fit="cover" />
         </template>
         <template #content>
           <div style="color: white; background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 4px;">

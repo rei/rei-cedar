@@ -1,0 +1,30 @@
+{
+  "name": "@rei/cedar-token-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A narrated Remotion introduction to Cedar semantic colors and component migration",
+  "scripts": {
+    "build:data": "node scripts/build-data.mjs",
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "audio": "node scripts/build-narration.mjs",
+    "review": "npm run assets && node scripts/review.mjs",
+    "assets": "npm run build:data && npm run fonts && npm run audio",
+    "dev": "npm run assets && remotion studio src/index.ts",
+    "render": "npm run assets && remotion render src/index.ts CedarSemanticTokens out/cedar-semantic-tokens-v2.mp4 && node scripts/finalize-narration.mjs out/cedar-semantic-tokens-v2.mp4",
+    "still": "npm run assets && remotion still src/index.ts CedarSemanticTokens out/cedar-semantic-tokens-v2.png --frame=100",
+    "compositions": "npm run assets && remotion compositions src/index.ts",
+    "typecheck": "npm run build:data && npm run audio && tsc --noEmit",
+    "audio:scratch": "CEDAR_SCRATCH_NARRATION=1 node scripts/build-narration.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.529",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.529"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}

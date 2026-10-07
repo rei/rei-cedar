@@ -198,3 +198,58 @@ export const AsAnchor: Story = {
     template: '<CdrButton v-bind="args" href="#">Button as Link</CdrButton>',
   }),
 };
+
+export const Disabled: Story = {
+  render: () => ({
+    components: { CdrButton },
+    template: `
+      <div class="story-spacing">
+        <CdrButton modifier="primary" disabled>Primary</CdrButton>
+        <CdrButton modifier="secondary" disabled>Secondary</CdrButton>
+        <CdrButton modifier="sale" disabled>Sale</CdrButton>
+        <CdrButton modifier="dark" disabled>Dark</CdrButton>
+        <CdrButton modifier="link" disabled>Link</CdrButton>
+      </div>
+    `,
+  }),
+};
+
+export const IconOnly: Story = {
+  render: () => ({
+    components: { CdrButton },
+    template: `
+      <div class="story-spacing">
+        <CdrButton icon-only aria-label="Add to cart">
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" />
+          </svg>
+        </CdrButton>
+        <CdrButton icon-only disabled aria-label="Add to cart (disabled)">
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" />
+          </svg>
+        </CdrButton>
+      </div>
+    `,
+  }),
+};
+
+export const IconOnlyWithBackground: Story = {
+  render: () => ({
+    components: { CdrButton },
+    template: `
+      <div class="story-spacing">
+        <CdrButton icon-only with-background aria-label="Play">
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" />
+          </svg>
+        </CdrButton>
+        <CdrButton icon-only with-background disabled aria-label="Play (disabled)">
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" />
+          </svg>
+        </CdrButton>
+      </div>
+    `,
+  }),
+};
