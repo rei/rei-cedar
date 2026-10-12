@@ -139,26 +139,26 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 | Property                   | File                                | Legacy token                                        | Hex     | Semantic equivalent |
 | -------------------------- | ----------------------------------- | --------------------------------------------------- | ------- | ------------------- |
-| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-disabled`       | #fafbf9 |                     |
-| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-selected`       | #4b4a48 |                     |
-| `background-color`, `fill` | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-hover`    | #ffffff |                     |
-| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-disabled`           | #d5cfc3 |                     |
-| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected-hover`     | #4b4a48 |                     |
-| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected`           | #4b4a48 |                     |
-| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-active`   | #4b4a48 |                     |
-| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected`          | #ffffff |                     |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-active`         | #fafbf9 |                     |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-disabled`       | #fafbf9 |                     |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-focus`          | #fafbf9 |                     |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-hover`          | #fafbf9 |                     |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-focus` | #958e83 |                     |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-hover` | #958e83 |                     |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected`       | #4b4a48 |                     |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-active`             | #4b4a48 |                     |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-disabled`           | #d5cfc3 |                     |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-hover`              | #2e2e2b |                     |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected-hover`     | #4b4a48 |                     |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected`           | #4b4a48 |                     |
+| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-disabled`       | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
+| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-selected`       | #4b4a48 | `--cdr-color-control-surface-neutral-bold` |
+| `background-color`, `fill` | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-hover`    | #ffffff | `--cdr-color-control-icon-neutral-trace` |
+| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-disabled`           | #d5cfc3 | `--cdr-color-control-border-neutral-faint` |
+| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected-hover`     | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected`           | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-active`   | #4b4a48 | `--cdr-color-control-icon-neutral-bold` |
+| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected`          | #ffffff | `--cdr-color-control-icon-neutral-trace` |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-active`         | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-disabled`       | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-focus`          | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-hover`          | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-focus` | #958e83 | `--cdr-color-control-surface-neutral-prominent` |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-hover` | #958e83 | `--cdr-color-control-surface-neutral-prominent` |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected`       | #4b4a48 | `--cdr-color-control-surface-neutral-bold` |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-active`             | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-disabled`           | #d5cfc3 | `--cdr-color-control-border-neutral-faint` |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-hover`              | #2e2e2b | `--cdr-color-control-border-neutral-intense` (nearest; visibly darker) |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected-hover`     | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected`           | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
 
 ## chip
 
