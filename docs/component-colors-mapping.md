@@ -214,12 +214,12 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 | Property                           | File                                        | Legacy token                          | Hex     | Semantic equivalent |
 | ---------------------------------- | ------------------------------------------- | ------------------------------------- | ------- | ------------------- |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-error-01`   | #bb4045 |                     |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-info-01`    | #408e86 |                     |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-warning-01` | #b68b37 |                     |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-default`      | #726d64 |                     |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-success`      | #3b8349 |                     |
-| `background`                       | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-background-primary`        | #ffffff |                     |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-error-01`   | #bb4045 | `--cdr-color-feedback-icon-error` |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-info-01`    | #408e86 | `--cdr-color-feedback-border-info` |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-warning-01` | #b68b37 | `--cdr-color-feedback-border-warning` (nearest; visibly darker) |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-default`      | #726d64 | `--cdr-color-feedback-border-natural` |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-success`      | #3b8349 | `--cdr-color-feedback-border-success` |
+| `background`                       | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-background-primary`        | #ffffff | `--cdr-color-surface-natural` (hook `--cdr-fulfillment-tile-icon-surface`) |
 
 ## icon
 
