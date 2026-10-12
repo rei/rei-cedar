@@ -1,28 +1,52 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './CdrBreadcrumb.maps' as maps;
+
+// ============================================================================
+// Special case mixins
+// Used by the module file and component-variables consumers.
+// ============================================================================
 
 @mixin cdr-breadcrumb-item-mixin() {
-  // ITEM_DOC: Breadcrumb item color
-  color: var(
-    --cdr-breadcrumb-item-color,
-    var(--cdr-color-text-secondary, #{tokens.$cdr-color-text-secondary})
-  );
+  // ITEM_DOC: Breadcrumb item color. Override with --cdr-color-breadcrumb-text.
+  color: var(--cdr-color-breadcrumb-text, map.get(maps.$breadcrumb-colors, default, text));
 }
 
 @mixin cdr-breadcrumb-item-linked-mixin() {
-  text-decoration: none;
-  color: inherit;
+  color: var(--cdr-breadcrumb-link-color);
+  text-decoration: var(--cdr-breadcrumb-link-text-decoration);
 
-  &:hover,
-  &:active,
-  &:focus {
-    // ITEM_DOC: Breadcrumb item linked hover, active and focus color
+  &:hover {
+    // ITEM_DOC: Breadcrumb link hover color. Override with --cdr-color-breadcrumb-text-hover.
     color: var(
-      --cdr-breadcrumb-item-linked-highlight-color,
-      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+      --cdr-color-breadcrumb-text-hover,
+      map.get(maps.$breadcrumb-colors, default, text-hover)
     );
-    text-decoration: underline;
+    text-decoration: var(--cdr-breadcrumb-link-highlight-text-decoration);
+  }
+
+  &:focus {
+    // ITEM_DOC: Breadcrumb link focus color. Override with --cdr-color-breadcrumb-text-focus-visible.
+    color: var(
+      --cdr-color-breadcrumb-text-focus-visible,
+      map.get(maps.$breadcrumb-colors, default, text-focus-visible)
+    );
+    text-decoration: var(--cdr-breadcrumb-link-highlight-text-decoration);
+  }
+
+  &:active {
+    // ITEM_DOC: Breadcrumb link active color. Override with --cdr-color-breadcrumb-text-active.
+    color: var(
+      --cdr-color-breadcrumb-text-active,
+      map.get(maps.$breadcrumb-colors, default, text-active)
+    );
+    text-decoration: var(--cdr-breadcrumb-link-highlight-text-decoration);
   }
 }
+
+// ============================================================================
+// Typography mixins
+// ============================================================================
 
 @mixin cdr-breadcrumb-xs-text-mixin() {
   @include tokens.cdr-text-utility-sans-100;

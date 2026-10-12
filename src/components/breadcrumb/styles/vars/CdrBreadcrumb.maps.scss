@@ -1,0 +1,60 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/breadcrumb/CdrBreadcrumb.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$breadcrumb-defaults: (
+  // Typography
+  line-height: 1,
+  list-display: inline-flex,
+  list-flex-wrap: wrap,
+  list-padding: 0,
+  list-margin: 0,
+  item-display: inline-flex,
+  item-flex: none,
+  item-padding: 0,
+  delimiter-color: inherit,
+  delimiter-padding: tokens.$cdr-space-half-x,
+  link-color: inherit,
+  link-text-decoration: none,
+  link-highlight-text-decoration: underline,
+  ellipses-font-family: inherit,
+  ellipses-font-size: inherit,
+  ellipses-line-height: inherit,
+  ellipses-border: none,
+  ellipses-background: none,
+  ellipses-background-color: transparent,
+  ellipses-cursor: pointer,
+  ellipses-display: inline-block,
+  ellipses-fill: inherit,
+  ellipses-padding: 0,
+  ellipses-icon-border-bottom: 1px solid transparent,
+  ellipses-icon-fill: inherit,
+  ellipses-icon-text-decoration: underline
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$breadcrumb-colors: (
+  default: (
+    text: var(--cdr-color-action-text-neutral-prominent),
+    text-hover: var(--cdr-color-action-text-trigger),
+    text-focus-visible: var(--cdr-color-action-text-trigger),
+    text-active: var(--cdr-color-action-text-trigger),
+  ),
+  ellipsis: (
+    text: var(--cdr-color-action-text-neutral-prominent),
+    text-hover: var(--cdr-color-action-text-trigger),
+    text-focus-visible: var(--cdr-color-action-text-trigger),
+    text-active: var(--cdr-color-action-text-trigger),
+  ),
+);

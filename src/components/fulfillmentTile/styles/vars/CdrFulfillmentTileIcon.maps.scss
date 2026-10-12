@@ -1,0 +1,42 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/fulfillmentTile/CdrFulfillmentTileIcon.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$fulfillment-tile-icon-defaults: (
+  // Layout
+  radius:        var(--cdr-radius-round),
+  size:          2.2rem,
+  icon-max-size: 2rem,
+  icon-margin:   tokens.$cdr-space-quarter-x,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$fulfillment-tile-icon-colors: (
+  default: (
+    background: var(--cdr-color-surface-natural),
+    fill: var(--cdr-color-feedback-border-natural),
+  ),
+  info: (
+    fill: var(--cdr-color-feedback-border-info),
+  ),
+  warning: (
+    fill: var(--cdr-color-feedback-border-warning),
+  ),
+  success: (
+    fill: var(--cdr-color-feedback-border-success),
+  ),
+  error: (
+    fill: var(--cdr-color-feedback-icon-error),
+  ),
+);

@@ -1,24 +1,51 @@
 /* ==========================================================================
   # CdrCaption
 
-  All values should map to variables in
-  vars/CdrCaption.vars.pcss
-  in order to allow for theming
+  Base values and colors come from the generated maps in
+  styles/vars/CdrCaption.maps.scss (source: CdrCaption.tokens.ts).
 
   TOC:
 
     :Base - CdrCaption
 ========================================================================== */
-@use './vars/CdrCaption.vars' as vars;
+@use 'sass:map';
+@use './vars/CdrCaption.maps' as maps;
 
 .cdr-caption {
-  @include vars.cdr-caption-container-mixin;
+  @each $key, $value in maps.$caption-defaults {
+    --cdr-caption-#{$key}: #{$value};
+  }
+
+  // Temporary values from the approved color list until these tokens ship
+  --cdr-color-text-neutral: #746e63;
+  --cdr-color-text-neutral-prominent: #4c473e;
+
+  max-width: var(--cdr-caption-max-width);
+  line-height: var(--cdr-caption-line-height);
+  padding: var(--cdr-caption-padding-block) var(--cdr-caption-padding-inline);
 
   cite {
-    @include vars.cdr-caption-cite-mixin;
+    font-family: var(--cdr-caption-cite-font-family);
+    font-size: var(--cdr-caption-cite-font-size);
+    font-weight: var(--cdr-caption-cite-font-weight);
+    letter-spacing: var(--cdr-caption-cite-letter-spacing);
+    line-height: var(--cdr-caption-cite-line-height);
+    font-style: var(--cdr-caption-cite-font-style);
+    color: map.get(maps.$caption-colors, cite, text);
   }
 
   &__summary {
-    @include vars.cdr-caption-summary-mixin;
+    font-family: var(--cdr-caption-summary-font-family);
+    font-size: var(--cdr-caption-summary-font-size);
+    font-weight: var(--cdr-caption-summary-font-weight);
+    letter-spacing: var(--cdr-caption-summary-letter-spacing);
+    line-height: var(--cdr-caption-summary-line-height);
+    margin: var(--cdr-caption-summary-margin);
+    color: map.get(maps.$caption-colors, summary, text);
+
+    + cite {
+      display: inline-block;
+      margin-top: var(--cdr-caption-summary-cite-margin-top);
+    }
   }
 }

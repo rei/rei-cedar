@@ -1,0 +1,14 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/caption/CdrCaption.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-caption {
+  // ITEM_DOC: Summary caption's text color. Override with --cdr-color-caption-text.
+  --cdr-color-caption-text: var(--cdr-color-caption-text, var(--cdr-color-text-neutral-prominent));
+
+  // ITEM_DOC: Cite caption's text color. Override with --cdr-color-caption-cite-text.
+  --cdr-color-caption-cite-text: var(--cdr-color-caption-cite-text, var(--cdr-color-text-neutral));
+}

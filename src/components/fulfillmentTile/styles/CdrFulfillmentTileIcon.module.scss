@@ -1,14 +1,34 @@
+@use 'sass:map';
+@use './vars/CdrFulfillmentTileIcon.maps' as maps;
+
 .cdr-fulfillment-tile-icon {
+  @each $key, $value in maps.$fulfillment-tile-icon-defaults {
+    --cdr-fulfillment-tile-icon-#{$key}: #{$value};
+  }
+
+  // Temporary values from the approved color list until these tokens ship
+  --cdr-color-surface-natural: #f8f7f2;
+  --cdr-color-feedback-border-natural: #756e5c;
+  --cdr-color-feedback-border-info: #257d81;
+  --cdr-color-feedback-border-warning: #8a6a00;
+  --cdr-color-feedback-border-success: #3d8044;
+  --cdr-color-feedback-icon-error: #c33122;
+
   align-items: center;
-  background: var(--cdr-color-background-primary);
-  border-radius: var(--cdr-radius-round);
+
+  // ITEM_DOC: Background color of a fulfillment tile icon.
+  background: var(
+    --cdr-fulfillment-tile-icon-surface,
+    map.get(maps.$fulfillment-tile-icon-colors, default, background)
+  );
+  border-radius: var(--cdr-fulfillment-tile-icon-radius);
   display: flex;
   fill: var(--cdr-fulfillment-tile-icon-fill);
   flex-shrink: 0;
-  height: 2.2rem;
+  height: var(--cdr-fulfillment-tile-icon-size);
   justify-content: center;
   position: relative;
-  width: 2.2rem;
+  width: var(--cdr-fulfillment-tile-icon-size);
 
   &::after {
     content: '';
@@ -23,46 +43,46 @@
   }
 
   svg {
-    max-height: 2rem;
-    max-width: 2rem;
+    max-height: var(--cdr-fulfillment-tile-icon-icon-max-size);
+    max-width: var(--cdr-fulfillment-tile-icon-icon-max-size);
     stroke: white;
     stroke-width: var(--cdr-space-eighth-x);
     paint-order: stroke fill;
-    margin: var(--cdr-space-quarter-x);
+    margin: var(--cdr-fulfillment-tile-icon-icon-margin);
   }
 
   &--default {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-default-icon-fill,
-      var(--cdr-color-icon-message-default, var(--cdr-color-icon-message-default))
+      #{map.get(maps.$fulfillment-tile-icon-colors, default, fill)}
     );
   }
 
   &--info {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-info-icon-fill,
-      var(--cdr-color-border-message-info-01, var(--cdr-color-border-message-info-01))
+      #{map.get(maps.$fulfillment-tile-icon-colors, info, fill)}
     );
   }
 
   &--warning {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-warning-icon-fill,
-      var(--cdr-color-border-message-warning-01, var(--cdr-color-border-message-warning-01))
+      #{map.get(maps.$fulfillment-tile-icon-colors, warning, fill)}
     );
   }
 
   &--success {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-success-icon-fill,
-      var(--cdr-color-icon-message-success, var(--cdr-color-icon-message-success))
+      #{map.get(maps.$fulfillment-tile-icon-colors, success, fill)}
     );
   }
 
   &--error {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-error-icon-fill,
-      var(--cdr-color-border-message-error-01, var(--cdr-color-border-message-error-01))
+      #{map.get(maps.$fulfillment-tile-icon-colors, error, fill)}
     );
   }
 }

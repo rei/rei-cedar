@@ -1,0 +1,32 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/formGroup/CdrFormGroup.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$form-group-defaults: (
+  content-border-radius: tokens.$cdr-radius-softer,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$form-group-colors: (
+  error: (
+    background: var(--cdr-color-feedback-surface-error-trace),
+    border: var(--cdr-color-feedback-border-error),
+  ),
+  optional: (
+    text: var(--cdr-color-text-neutral),
+  ),
+  disabled: (
+    text: var(--cdr-color-control-text-neutral-faint),
+  ),
+);

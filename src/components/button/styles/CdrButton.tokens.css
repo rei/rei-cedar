@@ -1,0 +1,350 @@
+/* ======================================================================== */
+/* GENERATED — cdr-button token assignments (action family)
+/* Recipe: pressable
+/* Source: src/components/button/CdrButton.tokens.ts
+/* Regenerate: npx tsx build/generate-component-maps.ts
+/* ======================================================================== */
+
+.cdr-button {
+  /* defaults */
+  --cdr-button-radius: var(--cdr-radius-softer);
+  --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+  --cdr-button-font-family: var(--cdr-font-family-sans);
+  --cdr-button-font-style: normal;
+  --cdr-button-font-weight: 500;
+  --cdr-button-letter-spacing: -0.008rem;
+  --cdr-button-font-size: 1.6rem;
+  --cdr-button-line-height: 2.2rem;
+  --cdr-button-icon-size: var(--cdr-icon-size);
+  --cdr-button-icon-padding: var(--cdr-space-one-x);
+  --cdr-button-icon-gap: var(--cdr-space-quarter-x);
+  --cdr-button-icon-only-radius: var(--cdr-radius-soft);
+  --cdr-button-icon-only-padding: var(--cdr-space-inset-half-x);
+  --cdr-button-icon-only-large-padding: var(--cdr-space-three-quarter-x);
+  --cdr-button-transition-duration: var(--cdr-duration-2-x);
+  --cdr-button-transition-timing: var(--cdr-timing-function-ease);
+  --cdr-button-elevation: 0 0 0 0 transparent;
+  --cdr-button-elevation-hover: var(--cdr-prominence-raised);
+  --cdr-button-elevation-focus-visible: var(--cdr-prominence-raised);
+  --cdr-button-elevation-active: 0 0 0 0 transparent;
+}
+
+.cdr-button svg {
+  width: var(--cdr-button-icon-size);
+  height: var(--cdr-button-icon-size);
+}
+
+.cdr-button.cdr-button--has-icon-left {
+  padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+}
+.cdr-button.cdr-button--has-icon-right {
+  padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+}
+
+.cdr-button--primary {
+  --cdr-color-button-surface: var(--cdr-color-action-surface-brand);
+  --cdr-color-button-text: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-border: var(--cdr-color-action-border-brand);
+  --cdr-color-button-icon: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-surface-hover: var(--cdr-color-action-surface-brand-faint);
+  --cdr-color-button-text-hover: var(--cdr-color-action-text-brand);
+  --cdr-color-button-border-hover: var(--cdr-color-action-border-brand);
+  --cdr-color-button-icon-hover: var(--cdr-color-action-text-brand);
+  --cdr-color-button-surface-focus-visible: var(--cdr-color-action-surface-brand-faint);
+  --cdr-color-button-text-focus-visible: var(--cdr-color-action-text-brand);
+  --cdr-color-button-border-focus-visible: var(--cdr-color-action-border-brand);
+  --cdr-color-button-icon-focus-visible: var(--cdr-color-action-text-brand);
+  --cdr-color-button-surface-active: var(--cdr-color-action-surface-brand);
+  --cdr-color-button-text-active: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-border-active: var(--cdr-color-action-border-brand);
+  --cdr-color-button-icon-active: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-surface-disabled: var(--cdr-color-action-surface-neutral-prominent);
+  --cdr-color-button-text-disabled: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-border-disabled: var(--cdr-color-action-border-neutral-faint);
+  --cdr-color-button-icon-disabled: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-active-inset: var(--cdr-color-border-neutral-trace);
+}
+
+.cdr-button--secondary {
+  --cdr-color-button-secondary-surface: var(--cdr-color-action-surface-neutral-faint);
+  --cdr-color-button-secondary-text: var(--cdr-color-action-text-neutral-bold);
+  --cdr-color-button-secondary-border: var(--cdr-color-action-border-neutral);
+  --cdr-color-button-secondary-icon: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-secondary-surface-hover: var(--cdr-color-action-surface-neutral-subtle);
+  --cdr-color-button-secondary-text-hover: var(--cdr-color-action-text-neutral-bold);
+  --cdr-color-button-secondary-border-hover: var(--cdr-color-action-border-neutral-bold);
+  --cdr-color-button-secondary-icon-hover: var(--cdr-color-action-icon-neutral-bold);
+  --cdr-color-button-secondary-surface-focus-visible: var(
+    --cdr-color-action-surface-neutral-subtle
+  );
+  --cdr-color-button-secondary-text-focus-visible: var(--cdr-color-action-text-neutral-bold);
+  --cdr-color-button-secondary-border-focus-visible: var(--cdr-color-action-border-neutral-bold);
+  --cdr-color-button-secondary-icon-focus-visible: var(--cdr-color-action-icon-neutral-bold);
+  --cdr-color-button-secondary-surface-active: var(--cdr-color-action-surface-neutral-bold);
+  --cdr-color-button-secondary-text-active: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-secondary-border-active: var(--cdr-color-action-border-neutral);
+  --cdr-color-button-secondary-icon-active: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-secondary-surface-disabled: var(--cdr-color-action-surface-neutral-faint);
+  --cdr-color-button-secondary-text-disabled: var(--cdr-color-action-text-neutral-subtle);
+  --cdr-color-button-secondary-border-disabled: var(--cdr-color-action-border-neutral-faint);
+  --cdr-color-button-secondary-icon-disabled: var(--cdr-color-action-icon-neutral-subtle);
+  --cdr-color-button-secondary-active-inset: var(--cdr-color-border-neutral-trace);
+}
+
+.cdr-button--dark {
+  --cdr-color-button-dark-surface: var(--cdr-color-action-surface-neutral-intense);
+  --cdr-color-button-dark-text: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-dark-border: var(--cdr-color-action-border-neutral-bold);
+  --cdr-color-button-dark-icon: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-dark-surface-hover: var(--cdr-color-action-surface-neutral);
+  --cdr-color-button-dark-text-hover: var(--cdr-color-action-text-neutral-bold);
+  --cdr-color-button-dark-border-hover: var(--cdr-color-action-border-neutral-bold);
+  --cdr-color-button-dark-icon-hover: var(--cdr-color-action-icon-neutral-bold);
+  --cdr-color-button-dark-surface-focus-visible: var(--cdr-color-action-surface-neutral);
+  --cdr-color-button-dark-text-focus-visible: var(--cdr-color-action-text-neutral-bold);
+  --cdr-color-button-dark-border-focus-visible: var(--cdr-color-action-border-neutral-bold);
+  --cdr-color-button-dark-icon-focus-visible: var(--cdr-color-action-icon-neutral-bold);
+  --cdr-color-button-dark-surface-active: var(--cdr-color-action-surface-neutral-intense);
+  --cdr-color-button-dark-text-active: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-dark-border-active: var(--cdr-color-action-border-neutral-bold);
+  --cdr-color-button-dark-icon-active: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-dark-surface-disabled: var(--cdr-color-action-surface-neutral-prominent);
+  --cdr-color-button-dark-text-disabled: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-dark-border-disabled: var(--cdr-color-action-border-neutral-faint);
+  --cdr-color-button-dark-icon-disabled: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-dark-active-inset: var(--cdr-color-action-border-neutral-faint);
+}
+
+.cdr-button--sale {
+  --cdr-color-button-sale-surface: var(--cdr-color-action-surface-sale);
+  --cdr-color-button-sale-text: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-sale-border: var(--cdr-color-action-border-sale);
+  --cdr-color-button-sale-icon: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-sale-surface-hover: var(--cdr-color-action-surface-sale-faint);
+  --cdr-color-button-sale-text-hover: var(--cdr-color-action-text-sale);
+  --cdr-color-button-sale-border-hover: var(--cdr-color-action-border-sale);
+  --cdr-color-button-sale-icon-hover: var(--cdr-color-action-icon-sale);
+  --cdr-color-button-sale-surface-focus-visible: var(--cdr-color-action-surface-sale-faint);
+  --cdr-color-button-sale-text-focus-visible: var(--cdr-color-action-text-sale);
+  --cdr-color-button-sale-border-focus-visible: var(--cdr-color-action-border-sale);
+  --cdr-color-button-sale-icon-focus-visible: var(--cdr-color-action-icon-sale);
+  --cdr-color-button-sale-surface-active: var(--cdr-color-action-surface-sale);
+  --cdr-color-button-sale-text-active: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-sale-border-active: var(--cdr-color-action-border-sale);
+  --cdr-color-button-sale-icon-active: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-sale-surface-disabled: var(--cdr-color-action-surface-neutral-prominent);
+  --cdr-color-button-sale-text-disabled: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-sale-border-disabled: var(--cdr-color-action-border-neutral-faint);
+  --cdr-color-button-sale-icon-disabled: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-sale-active-inset: var(--cdr-color-border-neutral-trace);
+}
+
+.cdr-button--link {
+  --cdr-color-button-link-text: var(--cdr-color-action-text-trigger);
+  --cdr-color-button-link-icon: var(--cdr-color-action-text-trigger);
+  --cdr-color-button-link-text-hover: var(--cdr-color-action-text-trigger);
+  --cdr-color-button-link-text-focus-visible: var(--cdr-color-action-text-trigger-bold);
+  --cdr-color-button-link-text-active: var(--cdr-color-action-text-trigger-bold);
+  --cdr-color-button-link-text-disabled: var(--cdr-color-action-text-neutral-subtle);
+  --cdr-color-button-link-icon-disabled: var(--cdr-color-action-icon-neutral-subtle);
+  --cdr-color-button-link-surface: transparent;
+}
+
+.cdr-button--icon-only {
+  --cdr-color-button-icon-only-icon: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-icon-only-icon-hover: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-icon-only-border-focus-visible: var(--cdr-color-action-border-neutral);
+  --cdr-color-button-icon-only-icon-focus-visible: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-icon-only-border-active: var(--cdr-color-action-border-neutral);
+  --cdr-color-button-icon-only-icon-active: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-icon-only-icon-disabled: var(--cdr-color-action-icon-neutral-subtle);
+}
+
+.cdr-button--with-background {
+  --cdr-color-button-with-background-surface: var(--cdr-color-action-surface-neutral-faint);
+  --cdr-color-button-with-background-border: var(--cdr-color-action-border-neutral);
+  --cdr-color-button-with-background-icon: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-with-background-surface-hover: var(--cdr-color-action-surface-neutral-subtle);
+  --cdr-color-button-with-background-border-hover: var(--cdr-color-action-border-neutral-bold);
+  --cdr-color-button-with-background-icon-hover: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-with-background-surface-focus-visible: var(
+    --cdr-color-action-surface-neutral-subtle
+  );
+  --cdr-color-button-with-background-border-focus-visible: var(
+    --cdr-color-action-border-neutral-bold
+  );
+  --cdr-color-button-with-background-icon-focus-visible: var(--cdr-color-action-icon-neutral);
+  --cdr-color-button-with-background-surface-active: var(--cdr-color-action-surface-neutral-bold);
+  --cdr-color-button-with-background-text-active: var(--cdr-color-action-text-neutral-trace);
+  --cdr-color-button-with-background-border-active: var(--cdr-color-action-border-neutral);
+  --cdr-color-button-with-background-icon-active: var(--cdr-color-action-icon-neutral-trace);
+  --cdr-color-button-with-background-surface-disabled: var(
+    --cdr-color-action-surface-neutral-faint
+  );
+  --cdr-color-button-with-background-border-disabled: var(--cdr-color-action-border-neutral-faint);
+  --cdr-color-button-with-background-icon-disabled: var(--cdr-color-action-icon-neutral-subtle);
+  --cdr-color-button-with-background-active-inset: var(--cdr-color-border-neutral-trace);
+}
+
+.cdr-button--small {
+  --cdr-button-font-size: 1.4rem;
+  --cdr-button-line-height: 1.8rem;
+  --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+  --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+  --cdr-button-icon-size: 2rem;
+  width: auto;
+}
+
+.cdr-button--medium {
+  --cdr-button-font-size: 1.6rem;
+  --cdr-button-line-height: 2.2rem;
+  --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+  --cdr-button-icon-padding: var(--cdr-space-one-x);
+  --cdr-button-icon-size: var(--cdr-icon-size);
+  width: auto;
+}
+
+.cdr-button--large {
+  --cdr-button-font-size: 1.6rem;
+  --cdr-button-line-height: 2.2rem;
+  --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+  --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+  --cdr-button-icon-size: var(--cdr-icon-size);
+  width: auto;
+}
+
+@media (max-width: 767px) {
+  .cdr-button--small\@xs {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@xs {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@xs {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@xs {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .cdr-button--small\@sm {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@sm {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@sm {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@sm {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1231px) {
+  .cdr-button--small\@md {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@md {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@md {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@md {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1232px) {
+  .cdr-button--small\@lg {
+    --cdr-button-font-size: 1.4rem;
+    --cdr-button-line-height: 1.8rem;
+    --cdr-button-padding: var(--cdr-space-inset-three-quarter-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-three-quarter-x);
+    --cdr-button-icon-size: 2rem;
+    width: auto;
+  }
+
+  .cdr-button--medium\@lg {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--large\@lg {
+    --cdr-button-font-size: 1.6rem;
+    --cdr-button-line-height: 2.2rem;
+    --cdr-button-padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+    --cdr-button-icon-padding: var(--cdr-space-one-and-a-half-x);
+    --cdr-button-icon-size: var(--cdr-icon-size);
+    width: auto;
+  }
+
+  .cdr-button--full-width\@lg {
+    width: 100%;
+    justify-content: center;
+  }
+}

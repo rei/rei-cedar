@@ -1,0 +1,203 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/banner/CdrBanner.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-banner {
+  // ITEM_DOC: Default banner's background color. Override with --cdr-color-banner-surface.
+  --cdr-color-banner-surface: var(
+    --cdr-color-banner-surface,
+    var(--cdr-color-feedback-surface-natural-faint)
+  );
+
+  // ITEM_DOC: Default banner's border color. Override with --cdr-color-banner-border.
+  --cdr-color-banner-border: var(
+    --cdr-color-banner-border,
+    var(--cdr-color-feedback-border-natural)
+  );
+
+  // ITEM_DOC: Default banner's icon color. Override with --cdr-color-banner-icon.
+  --cdr-color-banner-icon: var(--cdr-color-banner-icon, var(--cdr-color-feedback-border-natural));
+
+  // ITEM_DOC: Default banner's outline. Override with --cdr-color-banner-outline.
+  --cdr-color-banner-outline: var(
+    --cdr-color-banner-outline,
+    var(--cdr-color-feedback-border-natural-faint)
+  );
+
+  // ITEM_DOC: Default banner's icon left surface. Override with --cdr-color-banner-icon-left-surface.
+  --cdr-color-banner-icon-left-surface: var(
+    --cdr-color-banner-icon-left-surface,
+    var(--cdr-color-feedback-surface-natural)
+  );
+
+  // ITEM_DOC: Default banner's icon stroke. Override with --cdr-color-banner-icon-stroke.
+  --cdr-color-banner-icon-stroke: var(
+    --cdr-color-banner-icon-stroke,
+    var(--cdr-color-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Info banner's background color. Override with --cdr-color-banner-info-surface.
+  --cdr-color-banner-info-surface: var(
+    --cdr-color-banner-info-surface,
+    var(--cdr-color-feedback-surface-info-faint)
+  );
+
+  // ITEM_DOC: Info banner's border color. Override with --cdr-color-banner-info-border.
+  --cdr-color-banner-info-border: var(
+    --cdr-color-banner-info-border,
+    var(--cdr-color-feedback-border-info)
+  );
+
+  // ITEM_DOC: Info banner's icon color. Override with --cdr-color-banner-info-icon.
+  --cdr-color-banner-info-icon: var(
+    --cdr-color-banner-info-icon,
+    var(--cdr-color-feedback-border-info)
+  );
+
+  // ITEM_DOC: Info banner's outline. Override with --cdr-color-banner-info-outline.
+  --cdr-color-banner-info-outline: var(
+    --cdr-color-banner-info-outline,
+    var(--cdr-color-feedback-border-info-faint)
+  );
+
+  // ITEM_DOC: Info banner's icon left surface. Override with --cdr-color-banner-info-icon-left-surface.
+  --cdr-color-banner-info-icon-left-surface: var(
+    --cdr-color-banner-info-icon-left-surface,
+    var(--cdr-color-feedback-surface-info)
+  );
+
+  // ITEM_DOC: Info banner's icon stroke. Override with --cdr-color-banner-info-icon-stroke.
+  --cdr-color-banner-info-icon-stroke: var(
+    --cdr-color-banner-info-icon-stroke,
+    var(--cdr-color-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Success banner's background color. Override with --cdr-color-banner-success-surface.
+  --cdr-color-banner-success-surface: var(
+    --cdr-color-banner-success-surface,
+    var(--cdr-color-feedback-surface-success-faint)
+  );
+
+  // ITEM_DOC: Success banner's border color. Override with --cdr-color-banner-success-border.
+  --cdr-color-banner-success-border: var(
+    --cdr-color-banner-success-border,
+    var(--cdr-color-feedback-border-success)
+  );
+
+  // ITEM_DOC: Success banner's icon color. Override with --cdr-color-banner-success-icon.
+  --cdr-color-banner-success-icon: var(
+    --cdr-color-banner-success-icon,
+    var(--cdr-color-feedback-border-success)
+  );
+
+  // ITEM_DOC: Success banner's outline. Override with --cdr-color-banner-success-outline.
+  --cdr-color-banner-success-outline: var(
+    --cdr-color-banner-success-outline,
+    var(--cdr-color-feedback-border-success-faint)
+  );
+
+  // ITEM_DOC: Success banner's icon left surface. Override with --cdr-color-banner-success-icon-left-surface.
+  --cdr-color-banner-success-icon-left-surface: var(
+    --cdr-color-banner-success-icon-left-surface,
+    var(--cdr-color-feedback-surface-success)
+  );
+
+  // ITEM_DOC: Success banner's icon stroke. Override with --cdr-color-banner-success-icon-stroke.
+  --cdr-color-banner-success-icon-stroke: var(
+    --cdr-color-banner-success-icon-stroke,
+    var(--cdr-color-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Warning banner's background color. Override with --cdr-color-banner-warning-surface.
+  --cdr-color-banner-warning-surface: var(
+    --cdr-color-banner-warning-surface,
+    var(--cdr-color-feedback-surface-warning-faint)
+  );
+
+  // ITEM_DOC: Warning banner's border color. Override with --cdr-color-banner-warning-border.
+  --cdr-color-banner-warning-border: var(
+    --cdr-color-banner-warning-border,
+    var(--cdr-color-feedback-border-warning)
+  );
+
+  // ITEM_DOC: Warning banner's icon color. Override with --cdr-color-banner-warning-icon.
+  --cdr-color-banner-warning-icon: var(
+    --cdr-color-banner-warning-icon,
+    var(--cdr-color-feedback-border-warning)
+  );
+
+  // ITEM_DOC: Warning banner's outline. Override with --cdr-color-banner-warning-outline.
+  --cdr-color-banner-warning-outline: var(
+    --cdr-color-banner-warning-outline,
+    var(--cdr-color-feedback-border-warning-faint)
+  );
+
+  // ITEM_DOC: Warning banner's icon left surface. Override with --cdr-color-banner-warning-icon-left-surface.
+  --cdr-color-banner-warning-icon-left-surface: var(
+    --cdr-color-banner-warning-icon-left-surface,
+    var(--cdr-color-feedback-surface-warning)
+  );
+
+  // ITEM_DOC: Warning banner's icon stroke. Override with --cdr-color-banner-warning-icon-stroke.
+  --cdr-color-banner-warning-icon-stroke: var(
+    --cdr-color-banner-warning-icon-stroke,
+    var(--cdr-color-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Error banner's background color. Override with --cdr-color-banner-error-surface.
+  --cdr-color-banner-error-surface: var(
+    --cdr-color-banner-error-surface,
+    var(--cdr-color-feedback-surface-error-trace)
+  );
+
+  // ITEM_DOC: Error banner's border color. Override with --cdr-color-banner-error-border.
+  --cdr-color-banner-error-border: var(
+    --cdr-color-banner-error-border,
+    var(--cdr-color-feedback-border-error)
+  );
+
+  // ITEM_DOC: Error banner's icon color. Override with --cdr-color-banner-error-icon.
+  --cdr-color-banner-error-icon: var(
+    --cdr-color-banner-error-icon,
+    var(--cdr-color-feedback-icon-error)
+  );
+
+  // ITEM_DOC: Error banner's outline. Override with --cdr-color-banner-error-outline.
+  --cdr-color-banner-error-outline: var(
+    --cdr-color-banner-error-outline,
+    var(--cdr-color-feedback-border-error-faint)
+  );
+
+  // ITEM_DOC: Error banner's icon left surface. Override with --cdr-color-banner-error-icon-left-surface.
+  --cdr-color-banner-error-icon-left-surface: var(
+    --cdr-color-banner-error-icon-left-surface,
+    var(--cdr-color-feedback-surface-error)
+  );
+
+  // ITEM_DOC: Error banner's icon stroke. Override with --cdr-color-banner-error-icon-stroke.
+  --cdr-color-banner-error-icon-stroke: var(
+    --cdr-color-banner-error-icon-stroke,
+    var(--cdr-color-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Message body banner's background color. Override with --cdr-color-banner-message-body-surface.
+  --cdr-color-banner-message-body-surface: var(
+    --cdr-color-banner-message-body-surface,
+    var(--cdr-color-feedback-surface-neutral-trace)
+  );
+
+  // ITEM_DOC: Icon right banner's icon color. Override with --cdr-color-banner-icon-right-icon.
+  --cdr-color-banner-icon-right-icon: var(
+    --cdr-color-banner-icon-right-icon,
+    var(--cdr-color-text-neutral-bold)
+  );
+
+  // ITEM_DOC: Info action banner's icon color. Override with --cdr-color-banner-info-action-icon.
+  --cdr-color-banner-info-action-icon: var(
+    --cdr-color-banner-info-action-icon,
+    var(--cdr-color-action-text-trigger)
+  );
+}

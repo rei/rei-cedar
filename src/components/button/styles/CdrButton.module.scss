@@ -1,107 +1,117 @@
 @use '@rei/cdr-tokens/scss' as tokens;
-@use './vars/CdrButton.vars' as vars;
+@use './vars/CdrButton.maps' as maps;
+@use './vars/CdrButton.vars' as vars; // special-case mixins not covered by the generated maps
+
+// Apply the values for a size and let the button take its natural width.
+@mixin _apply-size($dims) {
+  @each $key, $value in $dims {
+    --cdr-button-#{$key}: #{$value};
+  }
+
+  width: auto;
+}
 
 .cdr-button {
   @include vars.cdr-button-base-mixin;
 
+  // Temporary values from the approved color list until these tokens ship
+  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
+  --cdr-color-action-surface-brand: #143528;
+  --cdr-color-action-surface-brand-faint: #bfddca;
+  --cdr-color-action-surface-sale: #d44703;
+  --cdr-color-action-surface-sale-faint: #ffe9e0;
+  --cdr-color-action-surface-neutral-intense: #4c473e;
+  --cdr-color-action-surface-neutral-bold: #8e887d;
+  --cdr-color-action-surface-neutral-prominent: #d7d4ce;
+  --cdr-color-action-surface-neutral: #eae7e4;
+  --cdr-color-action-surface-neutral-subtle: #f1f0ed;
+  --cdr-color-action-surface-neutral-faint: #f7f7f5;
+  --cdr-color-action-text-neutral-trace: #ffffff;
+  --cdr-color-action-text-brand: #143528;
+  --cdr-color-action-text-neutral-bold: #4c473e;
+  --cdr-color-action-text-neutral-subtle: #cecac3;
+  --cdr-color-action-text-sale: #d44703;
+  --cdr-color-action-text-trigger: #3d6db9;
+  --cdr-color-action-text-trigger-bold: #1e4683;
+  --cdr-color-action-border-brand: #143528;
+  --cdr-color-action-border-sale: #d44703;
+  --cdr-color-action-border-neutral: #8e887d;
+  --cdr-color-action-border-neutral-bold: #4c473e;
+  --cdr-color-action-border-neutral-faint: #d7d4ce;
+  --cdr-color-action-icon-neutral-trace: #ffffff;
+  --cdr-color-action-icon-neutral: #8e887d;
+  --cdr-color-action-icon-neutral-bold: #4c473e;
+  --cdr-color-action-icon-neutral-subtle: #d7d4ce;
+  --cdr-color-action-icon-sale: #d44703;
+  --cdr-color-border-neutral-trace: #ffffff;
+
   svg {
-    @include vars.cdr-button-base-icon-mixin;
+    align-self: center;
+    fill: inherit;
+    width: var(--cdr-button-icon-size);
+    height: var(--cdr-button-icon-size);
   }
 
-  &.cdr-button--has-icon-left svg {
-    margin-right: tokens.$cdr-space-quarter-x;
+  &.cdr-button--has-icon-left {
+    padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
+    svg {
+      margin-right: var(--cdr-button-icon-gap);
+    }
   }
 
-  &.cdr-button--has-icon-right svg {
-    margin-left: tokens.$cdr-space-quarter-x;
+  &.cdr-button--has-icon-right {
+    padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
+    svg {
+      margin-left: var(--cdr-button-icon-gap);
+    }
   }
 
-  /* Modifier style variants
-    ========================================================================== */
-  &--primary {
-    @include vars.cdr-button-primary-mixin;
-  }
+  // Every color scope comes from the generated contract map; each entry already
+  // carries its public override hook within the semantic fallback.
 
-  &--secondary {
-    @include vars.cdr-button-secondary-mixin;
-  }
+  @each $variant, $colors in maps.$button-colors {
+    &--#{$variant} {
+      @if $variant == link {
+        @include vars.cdr-button-link-mixin;
+      } @else if $variant == icon-only {
+        @include vars.cdr-button-icon-only-mixin;
 
-  &--dark {
-    @include vars.cdr-button-dark-mixin;
-  }
-
-  &--sale {
-    @include vars.cdr-button-sale-mixin;
-  }
-
-  &--link {
-    @include vars.cdr-button-link-mixin;
-  }
-
-  /* Size variants
-    ========================================================================== */
-
-  /* Large
-     ========== */
-  &--large {
-    @include vars.cdr-button-large-mixin;
-  }
-
-  /* Medium
-     ========== */
-  &--medium {
-    @include vars.cdr-button-medium-mixin;
-  }
-
-  /* Small
-     ========== */
-
-  &--small {
-    @include vars.cdr-button-small-mixin;
-  }
-
-  /* Icon Only
-     ========= */
-
-  &--icon-only {
-    @include vars.cdr-button-icon-only-mixin;
-
-    > svg {
-      margin: 0;
+        > svg {
+          margin: 0;
+        }
+      } @else if $variant == with-background {
+        @include vars.cdr-button-with-background-mixin;
+      } @else {
+        @include vars.cdr-button-variant-colors($colors);
+      }
     }
   }
 
   &--icon-only-large {
-    padding: tokens.$cdr-space-three-quarter-x;
+    padding: var(--cdr-button-icon-only-large-padding);
   }
-
-  &--with-background {
-    @include vars.cdr-button-with-background-mixin;
-  }
-
-  /* Full Width
-    ========== */
 
   &--full-width {
     @include vars.cdr-button-full-width-mixin;
   }
 
-  /* Breakpoint variants
+  // Each size modifier gets its dimensions from the generated contract map.
 
-  /* @xs
-    0px - 767px
-    ========== */
+  @each $size, $dims in maps.$button-sizes {
+    &--#{$size} {
+      @include _apply-size($dims);
+    }
+  }
+
+  // Apply size and full-width modifiers only at their requested breakpoints.
+
   @include tokens.cdr-xs-mq-only {
-    &--small\@xs {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@xs {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@xs {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@xs {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@xs {
@@ -109,20 +119,11 @@
     }
   }
 
-  /* @sm
-    768px - 991px
-    ========== */
   @include tokens.cdr-sm-mq-only {
-    &--small\@sm {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@sm {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@sm {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@sm {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@sm {
@@ -130,20 +131,11 @@
     }
   }
 
-  /* @md
-    992px - 1199px
-    ========== */
   @include tokens.cdr-md-mq-only {
-    &--small\@md {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@md {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@md {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@md {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@md {
@@ -151,21 +143,11 @@
     }
   }
 
-  /* @lg
-    1200px and up
-    ========== */
-
   @include tokens.cdr-lg-mq-only {
-    &--small\@lg {
-      @include vars.cdr-button-small-mixin;
-    }
-
-    &--medium\@lg {
-      @include vars.cdr-button-medium-mixin;
-    }
-
-    &--large\@lg {
-      @include vars.cdr-button-large-mixin;
+    @each $size, $dims in maps.$button-sizes {
+      &--#{$size}\@lg {
+        @include _apply-size($dims);
+      }
     }
 
     &--full-width\@lg {

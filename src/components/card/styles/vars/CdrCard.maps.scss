@@ -1,0 +1,32 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/card/CdrCard.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$card-defaults: (
+  border-radius:    tokens.$cdr-radius-softer,
+  box-shadow:       tokens.$cdr-prominence-raised,
+  box-shadow-hover: tokens.$cdr-prominence-floating,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$card-colors: (
+  base: (
+    background: var(--cdr-color-surface-natural),
+    text: var(--cdr-color-text-neutral-prominent),
+  ),
+  link: (
+    text: var(--cdr-color-action-text-neutral-bold),
+    text-hover: var(--cdr-color-action-text-trigger),
+  ),
+);

@@ -1,0 +1,25 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/formError/CdrFormError.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$form-error-defaults: (
+  margin-top: tokens.$cdr-space-quarter-x,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$form-error-colors: (
+  default: (
+    fill: var(--cdr-color-feedback-icon-error),
+  ),
+);
