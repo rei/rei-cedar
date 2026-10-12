@@ -6,7 +6,7 @@
   position: relative;
 
   // ITEM_DOC: Background color of a cdr-card
-  background-color: var(--cdr-card-base-background-color, map.get(maps.$card-colors, base, surface));
+  background-color: var(--cdr-card-base-background-color, map.get(maps.$card-colors, base, background));
   border-radius: var(--cdr-card-border-radius);
   box-shadow: var(--cdr-card-box-shadow);
 
