@@ -1,0 +1,47 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/caption/CdrCaption.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$caption-defaults: (
+  // Typography
+  line-height:             1,
+  max-width:               530px,
+  padding-block:           tokens.$cdr-space-half-x,
+  padding-inline:          0,
+  summary-font-family:     tokens.$cdr-font-family-sans,
+  summary-font-size:       1.4rem,
+  summary-font-weight:     400,
+  summary-letter-spacing:  0.08px,
+  summary-line-height:     2.2rem,
+  summary-margin:          0,
+  summary-cite-margin-top: tokens.$cdr-space-half-x,
+  cite-font-family:        tokens.$cdr-font-family-sans,
+  cite-font-size:          1.2rem,
+  cite-font-weight:        400,
+  cite-letter-spacing:     0.16px,
+  cite-line-height:        1.8rem,
+  cite-font-style:         normal,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$caption-colors: (
+  summary: (
+    // ITEM_DOC: Summary caption's text color. Override with --cdr-color-caption-text.
+    text: var(--cdr-color-caption-text, var(--cdr-color-text-neutral-prominent)),
+  ),
+  cite: (
+    // ITEM_DOC: Cite caption's text color. Override with --cdr-color-caption-cite-text.
+    text: var(--cdr-color-caption-cite-text, var(--cdr-color-text-neutral)),
+  ),
+);

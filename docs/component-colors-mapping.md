@@ -124,8 +124,8 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 | Property | File                               | Legacy token               | Hex     | Semantic equivalent |
 | -------- | ---------------------------------- | -------------------------- | ------- | ------------------- |
-| `color`  | `styles/vars/CdrCaption.vars.scss` | `cdr-color-text-primary`   | #4b4a48 |                     |
-| `color`  | `styles/vars/CdrCaption.vars.scss` | `cdr-color-text-secondary` | #736e65 |                     |
+| `color`  | `styles/vars/CdrCaption.maps.scss` | `cdr-color-text-primary`   | #4b4a48 | `--cdr-color-text-neutral-prominent` (hook `--cdr-color-caption-text`) |
+| `color`  | `styles/vars/CdrCaption.maps.scss` | `cdr-color-text-secondary` | #736e65 | `--cdr-color-text-neutral` (hook `--cdr-color-caption-cite-text`) |
 
 ## card
 
