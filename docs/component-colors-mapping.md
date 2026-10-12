@@ -198,7 +198,7 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 | Property        | File                                 | Legacy token                 | Hex     | Semantic equivalent |
 | --------------- | ------------------------------------ | ---------------------------- | ------- | ------------------- |
-| `color`, `fill` | `styles/vars/CdrFormError.vars.scss` | `cdr-color-text-input-error` | #b33322 |                     |
+| `color`, `fill` | `styles/vars/CdrFormError.vars.scss` | `cdr-color-text-input-error` | #b33322 | fill `--cdr-color-feedback-icon-error`; text not migrated (no approved match) |
 
 ## formGroup
 
