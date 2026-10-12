@@ -204,11 +204,11 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 | Property           | File                                 | Legacy token                       | Hex                       | Semantic equivalent |
 | ------------------ | ------------------------------------ | ---------------------------------- | ------------------------- | ------------------- |
-| `color`            | `styles/CdrFormGroup.module.scss`    | `cdr-color-text-disabled`          | #d5cfc3                   |                     |
-| `background-color` | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-background-input-error` | rgba(255, 242, 242, 0.75) |                     |
-| `box-shadow`       | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-border-input-error`     | #b33322                   |                     |
-| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-disabled`          | #d5cfc3                   |                     |
-| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-input-optional`    | #736e65                   |                     |
+| `color`            | `styles/CdrFormGroup.module.scss`    | `cdr-color-text-disabled`          | #d5cfc3                   | `--cdr-color-control-text-neutral-faint` |
+| `background-color` | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-background-input-error` | rgba(255, 242, 242, 0.75) | `--cdr-color-feedback-surface-error-trace` |
+| `box-shadow`       | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-border-input-error`     | #b33322                   | `--cdr-color-feedback-border-error` |
+| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-disabled`          | #d5cfc3                   | `--cdr-color-control-text-neutral-faint` |
+| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-input-optional`    | #736e65                   | `--cdr-color-text-neutral` |
 
 ## fulfillmentTile
 
