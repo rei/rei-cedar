@@ -164,25 +164,25 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 | Property           | File                            | Legacy token                                        | Hex     | Semantic equivalent |
 | ------------------ | ------------------------------- | --------------------------------------------------- | ------- | ------------------- |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-active`          | #edeae3 |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-disabled`        | #ffffff |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-focus`           | #ffffff |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-hover`           | #f7f5f3 |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-rest`            | #ffffff |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-active` | #edeae3 |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-focus`  | #d5cfc3 |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-hover`  | #edeae3 |                     |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected`        | #d5cfc3 |                     |
-| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-hover`               | #958e83 |                     |
-| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-rest`                | #958e83 |                     |
-| `color`            | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-disabled`                      | #d5cfc3 |                     |
-| `color`, `fill`    | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-default`                       | #4b4a48 |                     |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-active`              | #4b4a48 |                     |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-disabled`            | #d5cfc3 |                     |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-focus`               | #4b4a48 |                     |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-focus`      | #4b4a48 |                     |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-hover`      | #736e65 |                     |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-rest`       | #4b4a48 |                     |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-active`          | #edeae3 | `--cdr-color-control-surface-neutral` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-disabled`        | #ffffff | `--cdr-color-surface-neutral-trace` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-focus`           | #ffffff | `--cdr-color-surface-neutral-trace` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-hover`           | #f7f5f3 | `--cdr-color-control-surface-neutral-subtle` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-rest`            | #ffffff | `--cdr-color-surface-neutral-trace` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-active` | #edeae3 | `--cdr-color-control-surface-neutral` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-focus`  | #d5cfc3 | `--cdr-color-control-surface-natural-bold` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-hover`  | #edeae3 | `--cdr-color-control-surface-neutral` |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected`        | #d5cfc3 | `--cdr-color-control-surface-natural-bold` |
+| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-hover`               | #958e83 | `--cdr-color-control-border-neutral` |
+| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-rest`                | #958e83 | `--cdr-color-border-neutral-prominent` |
+| `color`            | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-disabled`                      | #d5cfc3 | `--cdr-color-control-text-neutral-faint` |
+| `color`, `fill`    | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-default`                       | #4b4a48 | `--cdr-color-control-text-neutral-prominent` / `--cdr-color-control-icon-neutral-intense` |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-active`              | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-disabled`            | #d5cfc3 | `--cdr-color-border-neutral` |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-focus`               | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-focus`      | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-hover`      | #736e65 | `--cdr-color-action-border-neutral-prominent` |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-rest`       | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
 
 ## filmstrip
 
