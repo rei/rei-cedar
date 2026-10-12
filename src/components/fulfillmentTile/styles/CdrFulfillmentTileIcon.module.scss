@@ -54,35 +54,35 @@
   &--default {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-default-icon-fill,
-      map.get(maps.$fulfillment-tile-icon-colors, default, fill)
+      #{map.get(maps.$fulfillment-tile-icon-colors, default, fill)}
     );
   }
 
   &--info {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-info-icon-fill,
-      map.get(maps.$fulfillment-tile-icon-colors, info, fill)
+      #{map.get(maps.$fulfillment-tile-icon-colors, info, fill)}
     );
   }
 
   &--warning {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-warning-icon-fill,
-      map.get(maps.$fulfillment-tile-icon-colors, warning, fill)
+      #{map.get(maps.$fulfillment-tile-icon-colors, warning, fill)}
     );
   }
 
   &--success {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-success-icon-fill,
-      map.get(maps.$fulfillment-tile-icon-colors, success, fill)
+      #{map.get(maps.$fulfillment-tile-icon-colors, success, fill)}
     );
   }
 
   &--error {
     --cdr-fulfillment-tile-icon-fill: var(
       --cdr-fulfillment-tile-icon-error-icon-fill,
-      map.get(maps.$fulfillment-tile-icon-colors, error, fill)
+      #{map.get(maps.$fulfillment-tile-icon-colors, error, fill)}
     );
   }
 }
