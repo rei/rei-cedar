@@ -131,9 +131,9 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 | Property           | File                            | Legacy token                   | Hex     | Semantic equivalent |
 | ------------------ | ------------------------------- | ------------------------------ | ------- | ------------------- |
-| `background-color` | `styles/vars/CdrCard.vars.scss` | `cdr-color-background-primary` | #ffffff |                     |
-| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-link-hover`    | #406eb5 |                     |
-| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-primary`       | #4b4a48 |                     |
+| `background-color` | `styles/vars/CdrCard.vars.scss` | `cdr-color-background-primary` | #ffffff | `--cdr-color-surface-natural` (hook `--cdr-card-base-background-color`) |
+| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-link-hover`    | #406eb5 | `--cdr-color-action-text-trigger` (hook `--cdr-card-link-hover-color`) |
+| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-primary`       | #4b4a48 | base `--cdr-color-text-neutral-prominent`, link `--cdr-color-action-text-neutral-bold` |
 
 ## checkbox
 
