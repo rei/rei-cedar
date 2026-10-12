@@ -60,6 +60,9 @@ test.describe(`${COMPONENT} visual baseline`, () => {
 
         test(`${story} @ ${state} @ ${vp.name}`, async ({ page }) => {
           await page.setViewportSize({ width: vp.width, height: vp.height });
+          if (process.env.VISUAL_BLOCK_EXTERNAL) {
+            await page.route(/^https:\/\/www\.rei\.com\//, (route) => route.abort());
+          }
           await page.goto(
             `${STORYBOOK_URL}/iframe.html?id=${STORYBOOK_ID}--${story}&viewMode=story`,
           );
