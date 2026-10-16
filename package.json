@@ -83,7 +83,7 @@
     "format:staged": "oxfmt",
     "lint-staged": "lint-staged",
     "prepush": "npm-run-all lint unit",
-    "create": "node generator.js",
+    "create": "node generator.mjs",
     "prerelease": "npm-publish-prerelease",
     "storybook:release-notes": "tsx ./scripts/storybook-release-notes.ts",
     "docs:release-notes": "node scripts/generate-release-notes.mjs"
