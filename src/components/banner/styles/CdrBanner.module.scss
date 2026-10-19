@@ -5,7 +5,7 @@
 
 // Emit the tinted parts for one status scope from its generated map entries.
 // Every entry already carries its public override hook plus the semantic token
-// (e.g. var(--cdr-color-banner-info-surface, var(--cdr-color-feedback-surface-info-faint))).
+// (e.g. var(--cdr-color-banner-info-surface, var(--cdr-feedback-surface-info-faint))).
 @mixin _status-colors($colors) {
   .cdr-banner__main {
     background-color: map.get($colors, background);
@@ -34,33 +34,10 @@
     --cdr-banner-#{$key}: #{$value};
   }
 
-  // Temporary values from the approved color list until these tokens ship
-  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
-  --cdr-color-feedback-surface-natural-faint: #f8f7f2;
-  --cdr-color-feedback-surface-natural: #e6ddc9;
-  --cdr-color-feedback-surface-info-faint: #f1f8f9;
-  --cdr-color-feedback-surface-info: #c8e5e6;
-  --cdr-color-feedback-surface-success-faint: #eefbee;
-  --cdr-color-feedback-surface-success: #c8e8c9;
-  --cdr-color-feedback-surface-warning-faint: #fef7e1;
-  --cdr-color-feedback-surface-warning: #f2dd9f;
-  --cdr-color-feedback-surface-error-trace: #fff8f6;
-  --cdr-color-feedback-surface-error: #ffccc1;
-  --cdr-color-feedback-surface-neutral-trace: #ffffff;
-  --cdr-color-feedback-border-natural-faint: #e6ddc9;
-  --cdr-color-feedback-border-natural: #756e5c;
-  --cdr-color-feedback-border-info-faint: #c8e5e6;
-  --cdr-color-feedback-border-info: #257d81;
-  --cdr-color-feedback-border-success-faint: #c8e8c9;
-  --cdr-color-feedback-border-success: #3d8044;
-  --cdr-color-feedback-border-warning-faint: #f2dd9f;
-  --cdr-color-feedback-border-warning: #8a6a00;
-  --cdr-color-feedback-border-error-faint: #ffccc1;
-  --cdr-color-feedback-border-error: #c33122;
-  --cdr-color-feedback-icon-neutral: #ffffff;
-  --cdr-color-feedback-icon-error: #c33122;
-  --cdr-color-text-neutral-bold: #312d27;
-  --cdr-color-action-text-trigger: #3d6db9;
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-text-neutral-bold: #312d27;
+  --cdr-feedback-border-natural-faint: #e6ddc9;
 
   display: grid;
   grid-template-columns: 1fr auto;

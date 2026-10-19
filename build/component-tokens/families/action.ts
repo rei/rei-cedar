@@ -130,7 +130,7 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
       const key = propKey(role, state);
       const semVar = slotVar(contract.interaction, role, value);
       const legacyToken = legacy[`${variantName}/${key}`];
-      const hook = hookVar(contract.component, scope, role, state);
+      const hook = hookVar(contract.component, scope, role, state, contract.hookPrefix);
 
       if (legacyToken) {
         // Legacy bridge keeps the old component property surface.
@@ -143,7 +143,7 @@ function variantRules(cls: string, p: string, contract: ComponentTokenContract):
     // Extras (e.g. active-inset) become scoped override hooks too.
     if (variant.extras) {
       for (const [extraKey, extraValue] of Object.entries(variant.extras)) {
-        const hook = hookVar(contract.component, scope, extraKey, 'rest');
+        const hook = hookVar(contract.component, scope, extraKey, 'rest', contract.hookPrefix);
         const legacyToken = legacy[`${variantName}/${extraKey}`];
 
         if (extraValue && typeof extraValue === 'object') {

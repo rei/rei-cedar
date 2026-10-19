@@ -8,11 +8,9 @@
     --cdr-form-group-#{$key}: #{$value};
   }
 
-  // Temporary values from the approved color list until these tokens ship
-  --cdr-color-feedback-border-error: #c33122;
-  --cdr-color-feedback-surface-error-trace: #fff8f6;
-  --cdr-color-text-neutral: #746e63;
-  --cdr-color-control-text-neutral-faint: #cecac3;
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-text-neutral: #746e63;
 
   @include vars.cdr-form-group-base-mixin;
 

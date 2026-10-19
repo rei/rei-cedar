@@ -59,23 +59,23 @@ describe('CdrButton token contract', () => {
 
     expect(inset('primary')).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-border-neutral-trace)',
+      value: 'var(--cdr-border-neutral-trace)',
     });
     expect(inset('secondary')).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-border-neutral-trace)',
+      value: 'var(--cdr-border-neutral-trace)',
     });
     expect(inset('dark')).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-action-border-neutral-faint)',
+      value: 'var(--cdr-action-border-neutral-faint)',
     });
     expect(inset('sale')).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-border-neutral-trace)',
+      value: 'var(--cdr-border-neutral-trace)',
     });
     expect(inset('with-background')).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-border-neutral-trace)',
+      value: 'var(--cdr-border-neutral-trace)',
     });
     expect(inset('link')).toBeUndefined();
     expect(inset('icon-only')).toBeUndefined();

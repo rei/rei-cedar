@@ -28,10 +28,7 @@ background: tokens.$cdr-color-background-button-primary-rest;
 **New pattern:**
 
 ```scss
-background: var(
-  --cdr-color-action-surface-brand,
-  #{tokens.$cdr-color-background-button-primary-rest}
-);
+background: var(--cdr-action-surface-brand, #{tokens.$cdr-color-background-button-primary-rest});
 ```
 
 ### 3. Use Dual-Value Custom Properties
@@ -40,7 +37,7 @@ Always provide semantic token with legacy fallback:
 
 ```css
 --cdr-button-background: var(
-  --cdr-color-action-surface-brand,
+  --cdr-action-surface-brand,
   var(--cdr-color-background-button-primary-rest)
 );
 ```
@@ -70,32 +67,29 @@ Here's how the button component maps to semantic tokens:
 .cdr-button--primary {
   // Rest state
   --cdr-button-background: var(
-    --cdr-color-action-surface-brand,
+    --cdr-action-surface-brand,
     var(--cdr-color-background-button-primary-rest)
   );
-  --cdr-button-text: var(--cdr-color-action-text-brand, var(--cdr-color-text-button-primary));
-  --cdr-button-border: var(
-    --cdr-color-action-border-brand,
-    var(--cdr-color-border-button-primary-rest)
-  );
+  --cdr-button-text: var(--cdr-action-text-brand, var(--cdr-color-text-button-primary));
+  --cdr-button-border: var(--cdr-action-border-brand, var(--cdr-color-border-button-primary-rest));
 
   // Hover state
   --cdr-button-background-hover: var(
-    --cdr-color-action-surface-brand-faint,
+    --cdr-action-surface-brand-faint,
     var(--cdr-color-background-button-primary-hover)
   );
   --cdr-button-text-hover: var(
-    --cdr-color-action-text-brand-faint,
+    --cdr-action-text-brand-faint,
     var(--cdr-color-text-button-primary-hover)
   );
 
   // Disabled state
   --cdr-button-background-disabled: var(
-    --cdr-color-action-surface-neutral-trace,
+    --cdr-action-surface-neutral-trace,
     var(--cdr-color-background-button-default-disabled)
   );
   --cdr-button-text-disabled: var(
-    --cdr-color-action-text-disabled,
+    --cdr-action-text-disabled,
     var(--cdr-color-text-button-primary-disabled)
   );
 }
@@ -124,27 +118,21 @@ When applying this pattern to another component:
 
 ```scss
 // Input component example
---cdr-input-border: var(--cdr-color-control-border-neutral, var(--cdr-color-border-input-rest));
+--cdr-input-border: var(--cdr-control-border-neutral, var(--cdr-color-border-input-rest));
 --cdr-input-border-focus: var(
-  --cdr-color-control-border-neutral-bold,
+  --cdr-control-border-neutral-bold,
   var(--cdr-color-border-input-focus)
 );
---cdr-input-border-invalid: var(
-  --cdr-color-feedback-border-error,
-  var(--cdr-color-border-input-error)
-);
+--cdr-input-border-invalid: var(--cdr-feedback-border-error, var(--cdr-color-border-input-error));
 ```
 
 ### Selection Components (SELECTION intent)
 
 ```scss
 // Chip component example
---cdr-chip-background: var(
-  --cdr-color-selection-surface-neutral,
-  var(--cdr-color-background-chip-rest)
-);
+--cdr-chip-background: var(--cdr-selection-surface-neutral, var(--cdr-color-background-chip-rest));
 --cdr-chip-background-selected: var(
-  --cdr-color-selection-surface-brand,
+  --cdr-selection-surface-brand,
   var(--cdr-color-background-chip-selected)
 );
 ```
@@ -154,13 +142,10 @@ When applying this pattern to another component:
 ```scss
 // Banner component example
 --cdr-banner-background: var(
-  --cdr-color-feedback-surface-warning,
+  --cdr-feedback-surface-warning,
   var(--cdr-color-background-banner-warning)
 );
---cdr-banner-text: var(
-  --cdr-color-feedback-text-warning-bold,
-  var(--cdr-color-text-banner-warning)
-);
+--cdr-banner-text: var(--cdr-feedback-text-warning-bold, var(--cdr-color-text-banner-warning));
 ```
 
 ## Next Steps

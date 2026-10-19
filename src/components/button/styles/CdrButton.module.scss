@@ -14,36 +14,15 @@
 .cdr-button {
   @include vars.cdr-button-base-mixin;
 
-  // Temporary values from the approved color list until these tokens ship
-  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
-  --cdr-color-action-surface-brand: #143528;
-  --cdr-color-action-surface-brand-faint: #bfddca;
-  --cdr-color-action-surface-sale: #d44703;
-  --cdr-color-action-surface-sale-faint: #ffe9e0;
-  --cdr-color-action-surface-neutral-intense: #4c473e;
-  --cdr-color-action-surface-neutral-bold: #8e887d;
-  --cdr-color-action-surface-neutral-prominent: #d7d4ce;
-  --cdr-color-action-surface-neutral: #eae7e4;
-  --cdr-color-action-surface-neutral-subtle: #f1f0ed;
-  --cdr-color-action-surface-neutral-faint: #f7f7f5;
-  --cdr-color-action-text-neutral-trace: #ffffff;
-  --cdr-color-action-text-brand: #143528;
-  --cdr-color-action-text-neutral-bold: #4c473e;
-  --cdr-color-action-text-neutral-subtle: #cecac3;
-  --cdr-color-action-text-sale: #d44703;
-  --cdr-color-action-text-trigger: #3d6db9;
-  --cdr-color-action-text-trigger-bold: #1e4683;
-  --cdr-color-action-border-brand: #143528;
-  --cdr-color-action-border-sale: #d44703;
-  --cdr-color-action-border-neutral: #8e887d;
-  --cdr-color-action-border-neutral-bold: #4c473e;
-  --cdr-color-action-border-neutral-faint: #d7d4ce;
-  --cdr-color-action-icon-neutral-trace: #ffffff;
-  --cdr-color-action-icon-neutral: #8e887d;
-  --cdr-color-action-icon-neutral-bold: #4c473e;
-  --cdr-color-action-icon-neutral-subtle: #d7d4ce;
-  --cdr-color-action-icon-sale: #d44703;
-  --cdr-color-border-neutral-trace: #ffffff;
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-border-neutral-trace: #ffffff;
+
+  // Alpha.2's light-mode brand resolves to #800080 (dark: #143528).
+  // Keep the approved spruce green until the token data is corrected.
+  --cdr-action-surface-brand: #143528;
+  --cdr-action-text-brand: #143528;
+  --cdr-action-border-brand: #143528;
 
   svg {
     align-self: center;

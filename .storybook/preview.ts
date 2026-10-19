@@ -3,6 +3,14 @@ import { cedarTheme } from './cedar-theme';
 
 // Import Cedar tokens CSS (provides CSS variables)
 import '@rei/cdr-tokens/css';
+// @rei/cdr-tokens 15.0.0-alpha.2 ships the semantic foundations as separate
+// files; the main CSS entry does not import them yet.
+import '@rei/cdr-tokens/css/color-action';
+import '@rei/cdr-tokens/css/color-control';
+import '@rei/cdr-tokens/css/color-feedback';
+import '@rei/cdr-tokens/css/color-graphik';
+import '@rei/cdr-tokens/css/color-selection';
+import '@rei/cdr-tokens/css/color-surface';
 
 // Import Cedar styles
 import '../src/styles/cdr-reset.scss';

@@ -12,12 +12,12 @@
 
 $chip-defaults: (
   // Typography
-  font-family:    tokens.$cdr-font-family-sans,
-  font-weight:    400,
+  font-family: tokens.$cdr-font-family-sans,
+  font-weight: 400,
   letter-spacing: -0.08px,
-  font-size:      14px,
-  line-height:    15px,
-  border-radius:  30px,
+  font-size: 14px,
+  line-height: 15px,
+  border-radius: 30px
 );
 
 // ============================================================================
@@ -26,28 +26,28 @@ $chip-defaults: (
 
 $chip-colors: (
   default: (
-    background: var(--cdr-color-surface-neutral-trace),
-    text: var(--cdr-color-control-text-neutral-prominent),
-    border: var(--cdr-color-border-neutral-prominent),
-    fill: var(--cdr-color-control-icon-neutral-intense),
-    background-hover: var(--cdr-color-control-surface-neutral-subtle),
-    border-hover: var(--cdr-color-control-border-neutral),
-    background-focus-visible: var(--cdr-color-surface-neutral-trace),
-    border-focus-visible: var(--cdr-color-control-border-neutral-bold),
-    background-active: var(--cdr-color-control-surface-neutral),
-    border-active: var(--cdr-color-control-border-neutral-bold),
-    background-disabled: var(--cdr-color-surface-neutral-trace),
-    text-disabled: var(--cdr-color-control-text-neutral-faint),
-    border-disabled: var(--cdr-color-border-neutral),
+    background: var(--cdr-surface-neutral-trace),
+    text: var(--cdr-control-text-neutral-prominent),
+    border: var(--cdr-border-neutral-prominent),
+    fill: var(--cdr-control-icon-neutral-intense),
+    background-hover: var(--cdr-control-surface-neutral-subtle),
+    border-hover: var(--cdr-control-border-neutral),
+    background-focus-visible: var(--cdr-surface-neutral-trace),
+    border-focus-visible: var(--cdr-control-border-neutral-bold),
+    background-active: var(--cdr-control-surface-neutral),
+    border-active: var(--cdr-control-border-neutral-bold),
+    background-disabled: var(--cdr-surface-neutral-trace),
+    text-disabled: var(--cdr-control-text-neutral-faint),
+    border-disabled: var(--cdr-border-neutral),
   ),
   selected: (
-    background: var(--cdr-color-control-surface-natural-bold),
-    border: var(--cdr-color-control-border-neutral-bold),
-    background-hover: var(--cdr-color-control-surface-neutral),
-    border-hover: var(--cdr-color-action-border-neutral-prominent),
-    background-focus-visible: var(--cdr-color-control-surface-natural-bold),
-    border-focus-visible: var(--cdr-color-control-border-neutral-bold),
-    background-active: var(--cdr-color-control-surface-neutral),
-    border-active: var(--cdr-color-control-border-neutral-bold),
+    background: var(--cdr-control-surface-natural-bold),
+    border: var(--cdr-control-border-neutral-bold),
+    background-hover: var(--cdr-control-surface-neutral),
+    border-hover: var(--cdr-action-border-neutral-prominent),
+    background-focus-visible: var(--cdr-control-surface-natural-bold),
+    border-focus-visible: var(--cdr-control-border-neutral-bold),
+    background-active: var(--cdr-control-surface-neutral),
+    border-active: var(--cdr-control-border-neutral-bold),
   ),
 );

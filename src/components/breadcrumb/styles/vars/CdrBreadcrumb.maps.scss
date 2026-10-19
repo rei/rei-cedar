@@ -46,15 +46,15 @@ $breadcrumb-defaults: (
 
 $breadcrumb-colors: (
   default: (
-    text: var(--cdr-color-action-text-neutral-prominent),
-    text-hover: var(--cdr-color-action-text-trigger),
-    text-focus-visible: var(--cdr-color-action-text-trigger),
-    text-active: var(--cdr-color-action-text-trigger),
+    text: var(--cdr-action-text-neutral-prominent),
+    text-hover: var(--cdr-action-text-trigger),
+    text-focus-visible: var(--cdr-action-text-trigger),
+    text-active: var(--cdr-action-text-trigger),
   ),
   ellipsis: (
-    text: var(--cdr-color-action-text-neutral-prominent),
-    text-hover: var(--cdr-color-action-text-trigger),
-    text-focus-visible: var(--cdr-color-action-text-trigger),
-    text-active: var(--cdr-color-action-text-trigger),
+    text: var(--cdr-action-text-neutral-prominent),
+    text-hover: var(--cdr-action-text-trigger),
+    text-focus-visible: var(--cdr-action-text-trigger),
+    text-active: var(--cdr-action-text-trigger),
   ),
 );

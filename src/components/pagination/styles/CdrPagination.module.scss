@@ -1,4 +1,6 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrPagination.maps' as maps;
 @use '../../icon/styles/CdrIcon.module';
 @use '../../select/styles/CdrSelect.module';
 
@@ -9,12 +11,17 @@
   list-style: none;
   padding: 0;
 
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$pagination-defaults {
+    --cdr-pagination-#{$key}: #{$value};
+  }
+
   &__li {
     &--links {
       display: none;
 
       & + & {
-        margin-left: tokens.$cdr-space-quarter-x;
+        margin-left: var(--cdr-pagination-link-gap);
       }
     }
 
@@ -26,36 +33,27 @@
   &__link {
     @include tokens.cdr-text-utility-sans-300;
 
+    color: map.get(maps.$pagination-colors, default, text);
+    fill: map.get(maps.$pagination-colors, default, fill);
     background-color: transparent;
     border: none;
-
-    // ITEM_DOC: Text color of a cdr-pagination link
-    color: var(
-      --cdr-pagination-link-text-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
-
-    // ITEM_DOC: Fill color of a cdr-pagination link
-    fill: var(
-      --cdr-pagination-link-fill-color,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
     display: block;
-    padding: tokens.$cdr-space-inset-three-quarter-x-squish;
+    padding: var(--cdr-pagination-link-padding);
     text-decoration: none;
-    border-radius: tokens.$cdr-radius-softer;
+    border-radius: var(--cdr-pagination-link-radius);
 
-    &:hover,
-    &:focus,
+    &:hover {
+      background-color: map.get(maps.$pagination-colors, default, background-hover);
+      cursor: pointer;
+    }
+
+    &:focus {
+      background-color: map.get(maps.$pagination-colors, default, background-focus-visible);
+      cursor: pointer;
+    }
+
     &:active {
-      // ITEM_DOC: Background color of a cdr-pagination link on hover/focus/active
-      background-color: var(
-        --cdr-pagination-link-background-color-interaction,
-        var(
-          --cdr-color-background-pagination-hover,
-          #{tokens.$cdr-color-background-pagination-hover}
-        )
-      );
+      background-color: map.get(maps.$pagination-colors, default, background-active);
       cursor: pointer;
     }
 
@@ -68,17 +66,9 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        height: 2px;
-        width: 80%;
-
-        // ITEM_DOC: Background color of the keyline for the current cdr-pagination link
-        background-color: var(
-          --cdr-pagination-link-current-background-color-keyline,
-          var(
-            --cdr-color-background-pagination-keyline,
-            #{tokens.$cdr-color-background-pagination-keyline}
-          )
-        );
+        height: var(--cdr-pagination-keyline-height);
+        width: var(--cdr-pagination-keyline-width);
+        background-color: map.get(maps.$pagination-colors, current, border);
       }
 
       &:hover,
@@ -89,27 +79,14 @@
     }
 
     &#{&}--disabled {
-      // ITEM_DOC: Text color of a disabled cdr-pagination link
-      color: var(
-        --cdr-pagination-link-text-color-disabled,
-        var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
-      );
-
-      // ITEM_DOC: Fill color of a disabled cdr-pagination link
-      fill: var(
-        --cdr-pagination-link-fill-color-disabled,
-        var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
-      );
+      color: map.get(maps.$pagination-colors, default, text-disabled);
+      fill: map.get(maps.$pagination-colors, default, fill-disabled);
       cursor: not-allowed;
 
       &:hover,
       &:focus,
       &:active {
-        // ITEM_DOC: Text color of a disabled cdr-pagination link on hover/focus/active
-        color: var(
-          --cdr-pagination-link-text-color-interactive-disabled,
-          var(--cdr-color-text-disabled, #{tokens.$cdr-color-text-disabled})
-        );
+        color: map.get(maps.$pagination-colors, default, text-disabled);
         background-color: transparent;
       }
     }
@@ -117,28 +94,28 @@
 
   &__ellipse {
     display: block;
-    padding: tokens.$cdr-space-inset-three-quarter-x-squish;
+    padding: var(--cdr-pagination-link-padding);
   }
 
   &__prev {
     display: flex;
     align-items: center;
-    margin-right: tokens.$cdr-space-one-x;
+    margin-right: var(--cdr-pagination-prev-margin-right);
   }
 
   &__next {
     display: flex;
     align-items: center;
-    margin-left: tokens.$cdr-space-one-x;
+    margin-left: var(--cdr-pagination-next-margin-left);
   }
 
   &__caret {
     &--prev {
-      margin-right: tokens.$cdr-space-eighth-x;
+      margin-right: var(--cdr-pagination-caret-margin-right);
     }
 
     &--next {
-      margin-left: tokens.$cdr-space-eighth-x;
+      margin-left: var(--cdr-pagination-caret-margin-left);
     }
   }
 

@@ -6,14 +6,6 @@
     --cdr-fulfillment-tile-icon-#{$key}: #{$value};
   }
 
-  // Temporary values from the approved color list until these tokens ship
-  --cdr-color-surface-natural: #f8f7f2;
-  --cdr-color-feedback-border-natural: #756e5c;
-  --cdr-color-feedback-border-info: #257d81;
-  --cdr-color-feedback-border-warning: #8a6a00;
-  --cdr-color-feedback-border-success: #3d8044;
-  --cdr-color-feedback-icon-error: #c33122;
-
   align-items: center;
 
   // ITEM_DOC: Background color of a fulfillment tile icon.

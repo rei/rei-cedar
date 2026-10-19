@@ -73,7 +73,9 @@ test.describe(`${COMPONENT} visual baseline`, () => {
 
           let pointerIsDown = false;
           if (state !== 'rest') {
-            const target = page.locator(stateSelector).first();
+            // Scope to the story root so Storybook chrome (hidden docs links,
+            // toolbar buttons) can never become the state target.
+            const target = page.locator('#storybook-root').locator(stateSelector).first();
             await expect(target, `state target "${stateSelector}" in ${story}`).toBeVisible();
             if (state === 'hover') {
               await target.hover();
@@ -93,9 +95,13 @@ test.describe(`${COMPONENT} visual baseline`, () => {
           const stateSuffix = state === 'rest' ? '' : `-${state}`;
           const screenshotName = `${story}${stateSuffix}-${vp.name}.png`;
           if (process.env.CAPTURE_AFTER) {
+            // `toHaveScreenshot` auto-stabilizes before capturing, but a plain
+            // screenshot does not. Without this, hover/focus/active captures can
+            // land on the rest state while a CSS transition is still at t=0.
             await page.screenshot({
               path: `test/visual-after/${COMPONENT}/${screenshotName}`,
               fullPage: true,
+              animations: 'disabled',
             });
           } else {
             // Keep the approved five-percent Playwright threshold. Compare
@@ -105,6 +111,7 @@ test.describe(`${COMPONENT} visual baseline`, () => {
               fullPage: true,
               threshold: 0.05,
               maxDiffPixels: 0,
+              animations: 'disabled',
             });
           }
           if (pointerIsDown) await page.mouse.up();

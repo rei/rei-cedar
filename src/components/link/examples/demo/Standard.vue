@@ -189,9 +189,9 @@ export default {
 
 /* Remove .cdr-link-demo-neutral and .cdr-link--neutral, as variants should be set via props */
 
-/* Example: Inherit color using custom property override for legacy/demo only */
+/* Example: Inherit color using custom property override */
 .cdr-link-demo-inherit {
-  --cdr-link-text-color: inherit;
-  --cdr-link-fill-color: inherit;
+  --cdr-link-text: inherit;
+  --cdr-link-icon: inherit;
 }
 </style>

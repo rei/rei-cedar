@@ -1,0 +1,56 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/switch/CdrSwitch.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$switch-defaults: (
+  // Transitions
+  transition-duration: tokens.$cdr-duration-3-x,
+  transition-timing: tokens.$cdr-timing-function-ease-out,
+  margin: tokens.$cdr-space-quarter-x
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$switch-colors: (
+  default: (
+    background: var(--cdr-control-surface-neutral-faint),
+    border: var(--cdr-control-border-neutral),
+    fill: var(--cdr-control-icon-neutral-prominent),
+    background-hover: var(--cdr-control-surface-neutral-faint),
+    border-hover: var(--cdr-control-border-neutral-bold),
+    fill-hover: var(--cdr-control-icon-neutral-intense),
+    background-focus-visible: var(--cdr-control-surface-neutral-faint),
+    border-focus-visible: var(--cdr-control-border-neutral),
+    fill-focus-visible: var(--cdr-control-icon-neutral-prominent),
+  ),
+  checked: (
+    background: var(--cdr-control-surface-neutral-bold),
+    fill: var(--cdr-control-icon-neutral),
+    background-hover: var(--cdr-control-surface-neutral-intense),
+    border-hover: var(--cdr-control-border-neutral),
+    fill-hover: var(--cdr-control-icon-neutral),
+    background-focus-visible: var(--cdr-control-surface-neutral-intense),
+    border-focus-visible: var(--cdr-control-border-neutral),
+    fill-focus-visible: var(--cdr-control-icon-neutral),
+  ),
+  handle: (
+    background: var(--cdr-control-surface-natural-bold),
+    border: var(--cdr-control-border-neutral),
+    border-hover: var(--cdr-control-border-neutral-bold),
+  ),
+  handle-checked: (
+    background: var(--cdr-control-surface-natural-bold),
+    border-hover: var(--cdr-control-border-neutral-bold),
+    border-focus-visible: var(--cdr-control-border-neutral-faint),
+  ),
+);

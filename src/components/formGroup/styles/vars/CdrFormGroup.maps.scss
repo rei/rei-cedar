@@ -20,13 +20,13 @@ $form-group-defaults: (
 
 $form-group-colors: (
   error: (
-    background: var(--cdr-color-feedback-surface-error-trace),
-    border: var(--cdr-color-feedback-border-error),
+    background: var(--cdr-feedback-surface-error-trace),
+    border: var(--cdr-feedback-border-error),
   ),
   optional: (
-    text: var(--cdr-color-text-neutral),
+    text: var(--cdr-text-neutral),
   ),
   disabled: (
-    text: var(--cdr-color-control-text-neutral-faint),
+    text: var(--cdr-control-text-neutral-faint),
   ),
 );

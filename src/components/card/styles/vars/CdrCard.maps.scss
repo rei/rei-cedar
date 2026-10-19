@@ -11,8 +11,8 @@
 // ============================================================================
 
 $card-defaults: (
-  border-radius:    tokens.$cdr-radius-softer,
-  box-shadow:       tokens.$cdr-prominence-raised,
+  border-radius: tokens.$cdr-radius-softer,
+  box-shadow: tokens.$cdr-prominence-raised,
   box-shadow-hover: tokens.$cdr-prominence-floating,
 );
 
@@ -22,11 +22,11 @@ $card-defaults: (
 
 $card-colors: (
   base: (
-    background: var(--cdr-color-surface-natural),
-    text: var(--cdr-color-text-neutral-prominent),
+    background: var(--cdr-surface-natural),
+    text: var(--cdr-text-neutral-prominent),
   ),
   link: (
-    text: var(--cdr-color-action-text-neutral-bold),
-    text-hover: var(--cdr-color-action-text-trigger),
+    text: var(--cdr-action-text-neutral-bold),
+    text-hover: var(--cdr-action-text-trigger),
   ),
 );

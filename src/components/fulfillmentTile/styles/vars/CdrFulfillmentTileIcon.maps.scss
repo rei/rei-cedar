@@ -12,10 +12,10 @@
 
 $fulfillment-tile-icon-defaults: (
   // Layout
-  radius:        var(--cdr-radius-round),
-  size:          2.2rem,
+  radius: var(--cdr-radius-round),
+  size: 2.2rem,
   icon-max-size: 2rem,
-  icon-margin:   tokens.$cdr-space-quarter-x,
+  icon-margin: tokens.$cdr-space-quarter-x
 );
 
 // ============================================================================
@@ -24,19 +24,19 @@ $fulfillment-tile-icon-defaults: (
 
 $fulfillment-tile-icon-colors: (
   default: (
-    background: var(--cdr-color-surface-natural),
-    fill: var(--cdr-color-feedback-border-natural),
+    background: var(--cdr-surface-natural),
+    fill: var(--cdr-feedback-border-natural),
   ),
   info: (
-    fill: var(--cdr-color-feedback-border-info),
+    fill: var(--cdr-feedback-border-info),
   ),
   warning: (
-    fill: var(--cdr-color-feedback-border-warning),
+    fill: var(--cdr-feedback-border-warning),
   ),
   success: (
-    fill: var(--cdr-color-feedback-border-success),
+    fill: var(--cdr-feedback-border-success),
   ),
   error: (
-    fill: var(--cdr-color-feedback-icon-error),
+    fill: var(--cdr-feedback-icon-error),
   ),
 );

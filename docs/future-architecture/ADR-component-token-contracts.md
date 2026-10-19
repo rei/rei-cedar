@@ -279,23 +279,17 @@ same identity, not an `on-*` derivative of surface.
 // CdrButton.maps.scss (excerpt)
 $button-colors: (
   primary: (
-    background: var(
-        --cdr-color-action-surface-brand,
-        #{tokens.$cdr-color-background-button-primary-rest}
-      ),
-    text: var(--cdr-color-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
-    border: var(--cdr-color-action-border-brand, #{tokens.$cdr-color-border-button-primary-rest}),
-    fill: var(--cdr-color-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
+    background: var(--cdr-action-surface-brand, #{tokens.$cdr-color-background-button-primary-rest}),
+    text: var(--cdr-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
+    border: var(--cdr-action-border-brand, #{tokens.$cdr-color-border-button-primary-rest}),
+    fill: var(--cdr-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
     background-hover: var(
-        --cdr-color-action-surface-brand-faint,
+        --cdr-action-surface-brand-faint,
         #{tokens.$cdr-color-background-button-primary-hover}
       ),
-    text-hover: var(
-        --cdr-color-action-text-brand-faint,
-        #{tokens.$cdr-color-text-button-primary-hover}
-      ),
+    text-hover: var(--cdr-action-text-brand-faint, #{tokens.$cdr-color-text-button-primary-hover}),
     background-focus-visible: var(
-        --cdr-color-action-surface-brand-faint,
+        --cdr-action-surface-brand-faint,
         #{tokens.$cdr-color-background-button-primary-hover}
       ),
     // ...
@@ -313,7 +307,7 @@ $button-colors: (
 
 .cdr-button--primary {
   --cdr-button-background: var(
-    --cdr-color-action-surface-brand,
+    --cdr-action-surface-brand,
     var(--cdr-color-background-button-primary-rest)
   );
   /* ... */

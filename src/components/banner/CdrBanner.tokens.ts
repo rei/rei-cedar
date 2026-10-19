@@ -69,9 +69,9 @@ const contract: ComponentTokenContract = {
         icon: { fullPath: 'feedback-border-natural' },
       },
       extras: {
-        outline: literal('var(--cdr-color-feedback-border-natural-faint)'),
-        'icon-left-surface': literal('var(--cdr-color-feedback-surface-natural)'),
-        'icon-stroke': literal('var(--cdr-color-feedback-icon-neutral)'),
+        outline: literal('var(--cdr-feedback-border-natural-faint)'),
+        'icon-left-surface': literal('var(--cdr-feedback-surface-natural)'),
+        'icon-stroke': literal('var(--cdr-feedback-icon-neutral)'),
       },
     },
 
@@ -83,9 +83,9 @@ const contract: ComponentTokenContract = {
         icon: { fullPath: 'feedback-border-info' },
       },
       extras: {
-        outline: literal('var(--cdr-color-feedback-border-info-faint)'),
-        'icon-left-surface': literal('var(--cdr-color-feedback-surface-info)'),
-        'icon-stroke': literal('var(--cdr-color-feedback-icon-neutral)'),
+        outline: literal('var(--cdr-feedback-border-info-faint)'),
+        'icon-left-surface': literal('var(--cdr-feedback-surface-info)'),
+        'icon-stroke': literal('var(--cdr-feedback-icon-neutral)'),
       },
     },
 
@@ -97,9 +97,9 @@ const contract: ComponentTokenContract = {
         icon: { fullPath: 'feedback-border-success' },
       },
       extras: {
-        outline: literal('var(--cdr-color-feedback-border-success-faint)'),
-        'icon-left-surface': literal('var(--cdr-color-feedback-surface-success)'),
-        'icon-stroke': literal('var(--cdr-color-feedback-icon-neutral)'),
+        outline: literal('var(--cdr-feedback-border-success-faint)'),
+        'icon-left-surface': literal('var(--cdr-feedback-surface-success)'),
+        'icon-stroke': literal('var(--cdr-feedback-icon-neutral)'),
       },
     },
 
@@ -111,9 +111,9 @@ const contract: ComponentTokenContract = {
         icon: { fullPath: 'feedback-border-warning' },
       },
       extras: {
-        outline: literal('var(--cdr-color-feedback-border-warning-faint)'),
-        'icon-left-surface': literal('var(--cdr-color-feedback-surface-warning)'),
-        'icon-stroke': literal('var(--cdr-color-feedback-icon-neutral)'),
+        outline: literal('var(--cdr-feedback-border-warning-faint)'),
+        'icon-left-surface': literal('var(--cdr-feedback-surface-warning)'),
+        'icon-stroke': literal('var(--cdr-feedback-icon-neutral)'),
       },
     },
 
@@ -125,9 +125,9 @@ const contract: ComponentTokenContract = {
         icon: 'error',
       },
       extras: {
-        outline: literal('var(--cdr-color-feedback-border-error-faint)'),
-        'icon-left-surface': literal('var(--cdr-color-feedback-surface-error)'),
-        'icon-stroke': literal('var(--cdr-color-feedback-icon-neutral)'),
+        outline: literal('var(--cdr-feedback-border-error-faint)'),
+        'icon-left-surface': literal('var(--cdr-feedback-surface-error)'),
+        'icon-stroke': literal('var(--cdr-feedback-icon-neutral)'),
       },
     },
 

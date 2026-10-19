@@ -9,11 +9,6 @@
     --cdr-breadcrumb-#{$key}: #{$value};
   }
 
-  // Temporary values from the approved color list until these tokens ship
-  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
-  --cdr-color-action-text-neutral-prominent: #746e63;
-  --cdr-color-action-text-trigger: #3d6db9;
-
   line-height: var(--cdr-breadcrumb-line-height);
 
   /* List

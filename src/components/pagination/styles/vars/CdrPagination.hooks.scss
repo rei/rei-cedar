@@ -1,0 +1,56 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/pagination/CdrPagination.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-pagination {
+  // ITEM_DOC: Default pagination's text color. Override with --cdr-color-pagination-text.
+  --cdr-color-pagination-text: var(
+    --cdr-color-pagination-text,
+    var(--cdr-action-text-neutral-bold)
+  );
+
+  // ITEM_DOC: Default pagination's icon color. Override with --cdr-color-pagination-icon.
+  --cdr-color-pagination-icon: var(
+    --cdr-color-pagination-icon,
+    var(--cdr-action-icon-neutral-bold)
+  );
+
+  // ITEM_DOC: Default pagination's background color on hover. Override with --cdr-color-pagination-surface-hover.
+  --cdr-color-pagination-surface-hover: var(
+    --cdr-color-pagination-surface-hover,
+    var(--cdr-action-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default pagination's background color on focus. Override with --cdr-color-pagination-surface-focus-visible.
+  --cdr-color-pagination-surface-focus-visible: var(
+    --cdr-color-pagination-surface-focus-visible,
+    var(--cdr-action-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default pagination's background color when active. Override with --cdr-color-pagination-surface-active.
+  --cdr-color-pagination-surface-active: var(
+    --cdr-color-pagination-surface-active,
+    var(--cdr-action-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default pagination's text color when disabled. Override with --cdr-color-pagination-text-disabled.
+  --cdr-color-pagination-text-disabled: var(
+    --cdr-color-pagination-text-disabled,
+    var(--cdr-action-text-neutral-subtle)
+  );
+
+  // ITEM_DOC: Default pagination's icon color when disabled. Override with --cdr-color-pagination-icon-disabled.
+  --cdr-color-pagination-icon-disabled: var(
+    --cdr-color-pagination-icon-disabled,
+    var(--cdr-action-icon-neutral-subtle)
+  );
+
+  // ITEM_DOC: Current pagination's border color. Override with --cdr-color-pagination-current-border.
+  --cdr-color-pagination-current-border: var(
+    --cdr-color-pagination-current-border,
+    var(--cdr-action-border-trigger)
+  );
+}

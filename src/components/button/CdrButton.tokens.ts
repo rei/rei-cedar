@@ -11,7 +11,7 @@ import { literal, token } from '../../../build/component-tokens/types';
  *
  * Cutover mode: no `legacy` section. The generator wraps every color entry in
  * its public override hook plus the semantic token
- * (`var(--cdr-color-button-<scope>-<role>[-<state>], var(--cdr-color-action-<role>-<identity>))`)
+ * (`var(--cdr-color-button-<scope>-<role>[-<state>], var(--cdr-action-<role>-<identity>))`)
  * and the styles iterate the generated maps, so hooks stay overridable.
  *
  * `defaultVariant: 'primary'` omits the scope segment from the primary hooks.
@@ -93,7 +93,7 @@ const contract: ComponentTokenContract = {
         border: 'neutral-faint',
         icon: 'neutral-trace',
       },
-      extras: { 'active-inset': literal('var(--cdr-color-border-neutral-trace)') },
+      extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
     },
 
     secondary: {
@@ -123,7 +123,7 @@ const contract: ComponentTokenContract = {
         border: 'neutral-faint',
         icon: 'neutral-subtle',
       },
-      extras: { 'active-inset': literal('var(--cdr-color-border-neutral-trace)') },
+      extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
     },
 
     // "dark" is identity: neutral at an intense expression — not a separate inverse identity.
@@ -159,7 +159,7 @@ const contract: ComponentTokenContract = {
         border: 'neutral-faint',
         icon: 'neutral-trace',
       },
-      extras: { 'active-inset': literal('var(--cdr-color-action-border-neutral-faint)') },
+      extras: { 'active-inset': literal('var(--cdr-action-border-neutral-faint)') },
     },
 
     sale: {
@@ -174,7 +174,7 @@ const contract: ComponentTokenContract = {
         border: 'neutral-faint',
         icon: 'neutral-trace',
       },
-      extras: { 'active-inset': literal('var(--cdr-color-border-neutral-trace)') },
+      extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
     },
 
     // Link-style text. The retired `link` identity is `trigger`; there is no
@@ -212,7 +212,7 @@ const contract: ComponentTokenContract = {
         icon: 'neutral-trace',
       },
       disabled: { surface: 'neutral-faint', border: 'neutral-faint', icon: 'neutral-subtle' },
-      extras: { 'active-inset': literal('var(--cdr-color-border-neutral-trace)') },
+      extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
     },
   },
 

@@ -34,13 +34,6 @@
 .cdr-accordion__header--unwrapped,
 .cdr-accordion__content-container {
   @include _accordion-default-properties;
-
-  // Temporary values from the approved color list until these tokens ship
-  // globally from @rei/cdr-tokens. Remove this shim block when they are available.
-  --cdr-color-control-border-neutral-faint: #cecac3;
-  --cdr-color-control-surface-neutral-faint: #fcfcfb;
-  --cdr-color-control-text-neutral-prominent: #4c473e;
-  --cdr-color-control-icon-neutral-prominent: #8e887d;
 }
 
 .cdr-accordion {

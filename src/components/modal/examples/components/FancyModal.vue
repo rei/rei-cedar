@@ -165,7 +165,9 @@ export default {
         }
       }
       .content.green {
-        background-color: tokens.$cdr-color-background-brand-spruce;
+        // $cdr-color-background-brand-spruce was removed from the 15.0.0
+        // alpha SCSS; button primary rest carries the same #1f513f spruce.
+        background-color: tokens.$cdr-color-background-button-primary-rest;
         color: tokens.$cdr-color-background-label-secondary-active;
         padding: tokens.$cdr-space-one-x;
         border-radius: 0 0 tokens.$cdr-radius-softer tokens.$cdr-radius-softer;

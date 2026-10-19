@@ -81,12 +81,12 @@ describe('CdrBanner token contract', () => {
       icon: { fullPath: 'feedback-border-natural' },
     });
     expect(defaultStatus.extras).toEqual({
-      outline: { kind: 'literal', value: 'var(--cdr-color-feedback-border-natural-faint)' },
+      outline: { kind: 'literal', value: 'var(--cdr-feedback-border-natural-faint)' },
       'icon-left-surface': {
         kind: 'literal',
-        value: 'var(--cdr-color-feedback-surface-natural)',
+        value: 'var(--cdr-feedback-surface-natural)',
       },
-      'icon-stroke': { kind: 'literal', value: 'var(--cdr-color-feedback-icon-neutral)' },
+      'icon-stroke': { kind: 'literal', value: 'var(--cdr-feedback-icon-neutral)' },
     });
 
     expect(info.rest).toEqual({
@@ -96,11 +96,11 @@ describe('CdrBanner token contract', () => {
     });
     expect(info.extras?.outline).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-feedback-border-info-faint)',
+      value: 'var(--cdr-feedback-border-info-faint)',
     });
     expect(info.extras?.['icon-left-surface']).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-feedback-surface-info)',
+      value: 'var(--cdr-feedback-surface-info)',
     });
 
     expect(success.rest).toEqual({
@@ -110,7 +110,7 @@ describe('CdrBanner token contract', () => {
     });
     expect(success.extras?.outline).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-feedback-border-success-faint)',
+      value: 'var(--cdr-feedback-border-success-faint)',
     });
 
     expect(warning.rest).toEqual({
@@ -120,7 +120,7 @@ describe('CdrBanner token contract', () => {
     });
     expect(warning.extras?.outline).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-feedback-border-warning-faint)',
+      value: 'var(--cdr-feedback-border-warning-faint)',
     });
 
     expect(error.rest).toEqual({
@@ -130,11 +130,11 @@ describe('CdrBanner token contract', () => {
     });
     expect(error.extras?.outline).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-feedback-border-error-faint)',
+      value: 'var(--cdr-feedback-border-error-faint)',
     });
     expect(error.extras?.['icon-left-surface']).toEqual({
       kind: 'literal',
-      value: 'var(--cdr-color-feedback-surface-error)',
+      value: 'var(--cdr-feedback-surface-error)',
     });
   });
 
@@ -142,7 +142,7 @@ describe('CdrBanner token contract', () => {
     for (const status of ['default', 'info', 'success', 'warning', 'error'] as const) {
       expect(contract.variants[status].extras?.['icon-stroke']).toEqual({
         kind: 'literal',
-        value: 'var(--cdr-color-feedback-icon-neutral)',
+        value: 'var(--cdr-feedback-icon-neutral)',
       });
     }
   });

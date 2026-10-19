@@ -5,11 +5,12 @@
  * CSS custom property names. Previously duplicated (with drift) across
  * generate-component-maps.ts and families/action.ts.
  *
- * Real token grammar (see .agents/skills/semantic-token-migration/
- * references/semantic-colors.json):
- *   --cdr-color-[<interaction>-]<role>-<identity>[-<expression>]
- * The `color-` segment is part of the public CSS custom-property name. `icon`
- * is its own role family (e.g. --cdr-color-action-icon-neutral, not text).
+ * Shipped semantic token grammar (@rei/cdr-tokens >= 15.0.0-alpha.2; see
+ * .agents/skills/semantic-token-migration/references/semantic-colors.json):
+ *   --cdr-[<interaction>-]<role>-<identity>[-<expression>]
+ * Semantic foundations do not carry a `color-` segment. `icon` is its own
+ * role family (e.g. --cdr-action-icon-neutral, not text). Component override
+ * hooks remain in the separate --cdr-color-<component>-* namespace.
  */
 
 import type { ColorRole, ColorSlotValue, InteractionState, VariantContract } from './types';
@@ -30,21 +31,19 @@ export function propKey(role: ColorRole, state: InteractionState): string {
 
 /**
  * Build a semantic custom property name, honoring the omittable interaction
- * segment (absent interaction = Universal, e.g. --cdr-color-text-neutral).
+ * segment (absent interaction = Universal, e.g. --cdr-text-neutral).
  */
 export function semanticVar(
   interaction: string | undefined,
   role: ColorRole,
   suffix: string,
 ): string {
-  return interaction
-    ? `--cdr-color-${interaction}-${role}-${suffix}`
-    : `--cdr-color-${role}-${suffix}`;
+  return interaction ? `--cdr-${interaction}-${role}-${suffix}` : `--cdr-${role}-${suffix}`;
 }
 
-/** Resolve a fullPath suffix after the color foundation segment. */
+/** Resolve a fullPath suffix after the semantic foundation segment. */
 export function fullPathVar(fullPath: string): string {
-  return `--cdr-color-${fullPath}`;
+  return `--cdr-${fullPath}`;
 }
 
 /** Resolve any slot value (plain suffix or fullPath) to its var name. */
@@ -108,8 +107,9 @@ export function hookVar(
   scope: string | undefined,
   segment: string,
   state: InteractionState,
+  hookPrefix?: string,
 ): string {
-  const parts = ['--cdr-color', component.replace(/^cdr-/, '')];
+  const parts = hookPrefix ? [hookPrefix] : ['--cdr-color', component.replace(/^cdr-/, '')];
   if (scope) parts.push(scope);
   parts.push(segment);
   if (state !== 'rest') parts.push(state);

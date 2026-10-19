@@ -7,9 +7,6 @@
     --cdr-form-error-#{$key}: #{$value};
   }
 
-  // Temporary values from the approved color list until these tokens ship
-  --cdr-color-feedback-icon-error: #c33122;
-
   @include vars.cdr-form-error-base-mixin;
 
   height: 0;

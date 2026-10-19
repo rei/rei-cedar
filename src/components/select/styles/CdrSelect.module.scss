@@ -1,4 +1,6 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrSelect.maps' as maps;
 @use './vars/CdrSelect.vars' as vars;
 @use '../../icon/styles/CdrIcon.module';
 @use '../../labelStandalone/styles/CdrLabelStandalone.module';
@@ -7,9 +9,8 @@
 /* ==========================================================================
   # CdrSelect
 
-  All values should map to variables in
-  vars/CdrSelect.vars.pcss
-  in order to allow for theming
+  Base values and colors come from the generated maps in
+  styles/vars/CdrSelect.maps.scss (source: CdrSelect.tokens.ts).
 
   TOC:
 
@@ -18,6 +19,14 @@
 
   /* Style variants
 ========================================================================== */
+
+.cdr-select,
+.cdr-select-wrap {
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$select-defaults {
+    --cdr-select-#{$key}: #{$value};
+  }
+}
 
 .cdr-select {
   @include vars.cdr-select-base-mixin;
@@ -53,13 +62,10 @@
 
   &__caret {
     // ITEM_DOC: Color of the cdr-select caret
-    fill: var(
-      --cdr-select-caret-fill,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-    );
+    fill: var(--cdr-select-caret-fill, map.get(maps.$select-colors, caret, fill));
     position: absolute;
     top: 50%;
-    right: tokens.$cdr-space-half-x;
+    right: var(--cdr-select-icon-offset);
     transform: translateY(-50%);
     pointer-events: none;
 
@@ -67,7 +73,7 @@
       // ITEM_DOC: Color of  a disabled cdr-select caret
       fill: var(
         --cdr-select-caret-fill-disabled,
-        var(--cdr-color-icon-disabled, #{tokens.$cdr-color-icon-disabled})
+        map.get(maps.$select-colors, caret, fill-disabled)
       );
     }
   }
@@ -75,13 +81,13 @@
   &__pre-icon {
     position: absolute;
     top: 50%;
-    left: tokens.$cdr-space-half-x;
+    left: var(--cdr-select-icon-offset);
     transform: translateY(-50%);
   }
 
   &--multiple {
     height: auto;
-    padding: tokens.$cdr-space-half-x;
+    padding: var(--cdr-select-multiple-padding);
 
     + .cdr-select__caret {
       display: none;

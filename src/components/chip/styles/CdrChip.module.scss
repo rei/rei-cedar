@@ -7,20 +7,10 @@
     --cdr-chip-#{$key}: #{$value};
   }
 
-  // Temporary values from the approved color list until these tokens ship
-  --cdr-color-surface-neutral-trace: #ffffff;
-  --cdr-color-border-neutral: #cecac3;
-  --cdr-color-border-neutral-prominent: #979187;
-  --cdr-color-action-border-neutral-prominent: #746e63;
-  --cdr-color-control-text-neutral-prominent: #4c473e;
-  --cdr-color-control-text-neutral-faint: #cecac3;
-  --cdr-color-control-icon-neutral-intense: #4c473e;
-  --cdr-color-control-surface-neutral-subtle: #f7f7f5;
-  --cdr-color-control-surface-neutral: #eae7e4;
-  --cdr-color-control-surface-natural-bold: #ddd4bc;
-  --cdr-color-control-border-neutral: #8e887d;
-  --cdr-color-control-border-neutral-bold: #4c473e;
-  --cdr-color-control-border-neutral-faint: #cecac3;
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-border-neutral: #cecac3;
+  --cdr-border-neutral-prominent: #979187;
 
   @include vars.cdr-chip-base-mixin;
 }

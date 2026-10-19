@@ -1,0 +1,182 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/toast/CdrToast.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-toast {
+  // ITEM_DOC: Default toast's background color. Override with --cdr-color-toast-surface.
+  --cdr-color-toast-surface: var(
+    --cdr-color-toast-surface,
+    var(--cdr-feedback-surface-natural-faint)
+  );
+
+  // ITEM_DOC: Default toast's border color. Override with --cdr-color-toast-border.
+  --cdr-color-toast-border: var(--cdr-color-toast-border, var(--cdr-feedback-border-natural));
+
+  // ITEM_DOC: Default toast's icon color. Override with --cdr-color-toast-icon.
+  --cdr-color-toast-icon: var(--cdr-color-toast-icon, var(--cdr-feedback-border-natural));
+
+  // ITEM_DOC: Default toast's outline. Override with --cdr-color-toast-outline.
+  --cdr-color-toast-outline: var(
+    --cdr-color-toast-outline,
+    var(--cdr-feedback-border-natural-faint)
+  );
+
+  // ITEM_DOC: Default toast's icon left surface. Override with --cdr-color-toast-icon-left-surface.
+  --cdr-color-toast-icon-left-surface: var(
+    --cdr-color-toast-icon-left-surface,
+    var(--cdr-feedback-surface-natural)
+  );
+
+  // ITEM_DOC: Default toast's icon stroke. Override with --cdr-color-toast-icon-stroke.
+  --cdr-color-toast-icon-stroke: var(
+    --cdr-color-toast-icon-stroke,
+    var(--cdr-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Info toast's background color. Override with --cdr-color-toast-info-surface.
+  --cdr-color-toast-info-surface: var(
+    --cdr-color-toast-info-surface,
+    var(--cdr-feedback-surface-info-faint)
+  );
+
+  // ITEM_DOC: Info toast's border color. Override with --cdr-color-toast-info-border.
+  --cdr-color-toast-info-border: var(
+    --cdr-color-toast-info-border,
+    var(--cdr-feedback-border-info)
+  );
+
+  // ITEM_DOC: Info toast's icon color. Override with --cdr-color-toast-info-icon.
+  --cdr-color-toast-info-icon: var(--cdr-color-toast-info-icon, var(--cdr-feedback-border-info));
+
+  // ITEM_DOC: Info toast's outline. Override with --cdr-color-toast-info-outline.
+  --cdr-color-toast-info-outline: var(
+    --cdr-color-toast-info-outline,
+    var(--cdr-feedback-border-info-faint)
+  );
+
+  // ITEM_DOC: Info toast's icon left surface. Override with --cdr-color-toast-info-icon-left-surface.
+  --cdr-color-toast-info-icon-left-surface: var(
+    --cdr-color-toast-info-icon-left-surface,
+    var(--cdr-feedback-surface-info)
+  );
+
+  // ITEM_DOC: Info toast's icon stroke. Override with --cdr-color-toast-info-icon-stroke.
+  --cdr-color-toast-info-icon-stroke: var(
+    --cdr-color-toast-info-icon-stroke,
+    var(--cdr-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Success toast's background color. Override with --cdr-color-toast-success-surface.
+  --cdr-color-toast-success-surface: var(
+    --cdr-color-toast-success-surface,
+    var(--cdr-feedback-surface-success-faint)
+  );
+
+  // ITEM_DOC: Success toast's border color. Override with --cdr-color-toast-success-border.
+  --cdr-color-toast-success-border: var(
+    --cdr-color-toast-success-border,
+    var(--cdr-feedback-border-success)
+  );
+
+  // ITEM_DOC: Success toast's icon color. Override with --cdr-color-toast-success-icon.
+  --cdr-color-toast-success-icon: var(
+    --cdr-color-toast-success-icon,
+    var(--cdr-feedback-border-success)
+  );
+
+  // ITEM_DOC: Success toast's outline. Override with --cdr-color-toast-success-outline.
+  --cdr-color-toast-success-outline: var(
+    --cdr-color-toast-success-outline,
+    var(--cdr-feedback-border-success-faint)
+  );
+
+  // ITEM_DOC: Success toast's icon left surface. Override with --cdr-color-toast-success-icon-left-surface.
+  --cdr-color-toast-success-icon-left-surface: var(
+    --cdr-color-toast-success-icon-left-surface,
+    var(--cdr-feedback-surface-success)
+  );
+
+  // ITEM_DOC: Success toast's icon stroke. Override with --cdr-color-toast-success-icon-stroke.
+  --cdr-color-toast-success-icon-stroke: var(
+    --cdr-color-toast-success-icon-stroke,
+    var(--cdr-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Warning toast's background color. Override with --cdr-color-toast-warning-surface.
+  --cdr-color-toast-warning-surface: var(
+    --cdr-color-toast-warning-surface,
+    var(--cdr-feedback-surface-warning-faint)
+  );
+
+  // ITEM_DOC: Warning toast's border color. Override with --cdr-color-toast-warning-border.
+  --cdr-color-toast-warning-border: var(
+    --cdr-color-toast-warning-border,
+    var(--cdr-feedback-border-warning)
+  );
+
+  // ITEM_DOC: Warning toast's icon color. Override with --cdr-color-toast-warning-icon.
+  --cdr-color-toast-warning-icon: var(
+    --cdr-color-toast-warning-icon,
+    var(--cdr-feedback-border-warning)
+  );
+
+  // ITEM_DOC: Warning toast's outline. Override with --cdr-color-toast-warning-outline.
+  --cdr-color-toast-warning-outline: var(
+    --cdr-color-toast-warning-outline,
+    var(--cdr-feedback-border-warning-faint)
+  );
+
+  // ITEM_DOC: Warning toast's icon left surface. Override with --cdr-color-toast-warning-icon-left-surface.
+  --cdr-color-toast-warning-icon-left-surface: var(
+    --cdr-color-toast-warning-icon-left-surface,
+    var(--cdr-feedback-surface-warning)
+  );
+
+  // ITEM_DOC: Warning toast's icon stroke. Override with --cdr-color-toast-warning-icon-stroke.
+  --cdr-color-toast-warning-icon-stroke: var(
+    --cdr-color-toast-warning-icon-stroke,
+    var(--cdr-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Error toast's background color. Override with --cdr-color-toast-error-surface.
+  --cdr-color-toast-error-surface: var(
+    --cdr-color-toast-error-surface,
+    var(--cdr-feedback-surface-error-trace)
+  );
+
+  // ITEM_DOC: Error toast's border color. Override with --cdr-color-toast-error-border.
+  --cdr-color-toast-error-border: var(
+    --cdr-color-toast-error-border,
+    var(--cdr-feedback-border-error)
+  );
+
+  // ITEM_DOC: Error toast's icon color. Override with --cdr-color-toast-error-icon.
+  --cdr-color-toast-error-icon: var(--cdr-color-toast-error-icon, var(--cdr-feedback-icon-error));
+
+  // ITEM_DOC: Error toast's outline. Override with --cdr-color-toast-error-outline.
+  --cdr-color-toast-error-outline: var(
+    --cdr-color-toast-error-outline,
+    var(--cdr-feedback-border-error-faint)
+  );
+
+  // ITEM_DOC: Error toast's icon left surface. Override with --cdr-color-toast-error-icon-left-surface.
+  --cdr-color-toast-error-icon-left-surface: var(
+    --cdr-color-toast-error-icon-left-surface,
+    var(--cdr-feedback-surface-error)
+  );
+
+  // ITEM_DOC: Error toast's icon stroke. Override with --cdr-color-toast-error-icon-stroke.
+  --cdr-color-toast-error-icon-stroke: var(
+    --cdr-color-toast-error-icon-stroke,
+    var(--cdr-feedback-icon-neutral)
+  );
+
+  // ITEM_DOC: Close button toast's icon color. Override with --cdr-color-toast-close-button-icon.
+  --cdr-color-toast-close-button-icon: var(
+    --cdr-color-toast-close-button-icon,
+    var(--cdr-text-neutral-bold)
+  );
+}

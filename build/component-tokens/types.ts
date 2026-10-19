@@ -135,9 +135,9 @@ export type VisualRecipe =
 /**
  * A color-slot value is either a semantic token suffix (identity + optional
  * expression, e.g. 'brand', 'brand-faint') or a `fullPath` escape hatch.
- * Suffixes are expanded by naming.ts to `--cdr-color-[<interaction>-]<role>-…`.
- * A fullPath is the portion after `--cdr-color-` (e.g. `text-neutral` →
- * `--cdr-color-text-neutral`).
+ * Suffixes are expanded by naming.ts to `--cdr-[<interaction>-]<role>-…`.
+ * A fullPath is the portion after `--cdr-` (e.g. `text-neutral` →
+ * `--cdr-text-neutral`).
  */
 export type ColorSlotValue = string | { fullPath: string };
 
@@ -145,11 +145,11 @@ export type ColorSlotValue = string | { fullPath: string };
  * Maps each of the four confirmed roles to a semantic token suffix for one
  * interaction state.
  *
- * The suffix is the part after `--cdr-color-[<interaction>-]<role>-`. It
+ * The suffix is the part after `--cdr-[<interaction>-]<role>-`. It
  * includes the identity and, if not base, the expression:
- *   'brand'          → --cdr-color-action-surface-brand            (implicit .base)
- *   'brand-faint'    → --cdr-color-action-surface-brand-faint
- *   'neutral-trace'  → --cdr-color-action-surface-neutral-trace    (cross-identity)
+ *   'brand'          → --cdr-action-surface-brand            (implicit .base)
+ *   'brand-faint'    → --cdr-action-surface-brand-faint
+ *   'neutral-trace'  → --cdr-action-surface-neutral-trace    (cross-identity)
  */
 export interface ColorSlotMap {
   surface: ColorSlotValue;
@@ -209,11 +209,19 @@ export interface ComponentTokenContract {
   /**
    * Emit public override hooks into the generated maps and a companion
    * `Cdr<Name>.hooks.scss` documentation partial:
-   *   `var(--cdr-color-<component>[-<scope>]-<role>[-<state>], var(--cdr-color-<semantic>))`
+   *   `var(<hookPrefix>[-<scope>]-<role>[-<state>], var(--cdr-<semantic>))`
+   * `hookPrefix` defaults to `--cdr-color-<component>`.
    * Only set this for contracts whose stylesheet iterates the generated maps.
-   * Without it, maps keep the bare `var(--cdr-color-<semantic>)` shape.
+   * Without it, maps keep the bare `var(--cdr-<semantic>)` shape.
    */
   hooks?: boolean;
+
+  /**
+   * Optional prefix for the public override hooks. Defaults to
+   * `--cdr-color-<component>`. Use for components with a historical custom
+   * hook namespace, e.g. the link's `--cdr-link`.
+   */
+  hookPrefix?: string;
 
   /**
    * Foundation assignments (future architecture).

@@ -43,7 +43,7 @@ const contract: ComponentTokenContract = {
       // Optional: color entries outside the role × state matrix (an inner
       // ring, a transparent link background). Each value becomes a scope hook
       // with that value as its fallback; `null` keeps the legacy-only behavior.
-      // extras: { 'active-inset': literal('var(--cdr-color-border-neutral-trace)') },
+      // extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
     },
   },
 
@@ -87,29 +87,29 @@ what the component actually renders.
 Runtime semantic color names use:
 
 ```text
---cdr-color-[<interaction>-]<role>-<identity>[-<expression>]
+--cdr-[<interaction>-]<role>-<identity>[-<expression>]
 ```
 
 Examples:
 
 ```text
---cdr-color-text-neutral
---cdr-color-action-surface-brand
---cdr-color-feedback-text-warning-bold
---cdr-color-selection-icon-neutral-subtle
+--cdr-text-neutral
+--cdr-action-surface-brand
+--cdr-feedback-text-warning-bold
+--cdr-selection-icon-neutral-subtle
 ```
 
-The Figma export currently omits the `color-` segment from its WEB names. The
-checked-in `semantic-colors.json` and lookup table normalize those names to the
-planned `--cdr-color-*` runtime form. `base` and absent interaction are
-omitted; do not write `-base`, `-universal`, `-graphics`, or `-inverse`.
-`icon` is its own role and must not be substituted with the text role.
+The shipped semantic foundations use the same `--cdr-*` names as the
+checked-in `semantic-colors.json` and lookup table. `base` and absent
+interaction are omitted; do not write `-base`, `-universal`, `-graphics`, or
+`-inverse`. `icon` is its own role and must not be substituted with the text
+role.
 
-`fullPath` is the exact segment after `--cdr-color-` and is used when the token
+`fullPath` is the exact segment after `--cdr-` and is used when the token
 name cannot be built from the interaction/role/suffix grammar. Graphics use
 the separate `graphic` namespace, so `{ fullPath: 'graphic-surface-brand' }`
-produces `--cdr-color-graphic-surface-brand`. A Universal text suffix can be
-written directly as `rest: { text: 'neutral' }` → `--cdr-color-text-neutral`.
+produces `--cdr-graphic-surface-brand`. A Universal text suffix can be
+written directly as `rest: { text: 'neutral' }` → `--cdr-text-neutral`.
 
 ## Hook surface and extras (`hooks: true`)
 
@@ -128,10 +128,10 @@ two-level expression, and value-carrying `extras` get their own scope hooks:
 $button-colors: (
   primary: (
     // ITEM_DOC: Primary button's background color. Override with --cdr-color-button-surface.
-    background: var(--cdr-color-button-surface, var(--cdr-color-action-surface-brand)),
+    background: var(--cdr-color-button-surface, var(--cdr-action-surface-brand)),
     // ...
     // ITEM_DOC: Primary button's inset border color when active. Override with --cdr-color-button-active-inset.
-    active-inset: var(--cdr-color-button-active-inset, var(--cdr-color-border-neutral-trace)),
+    active-inset: var(--cdr-color-button-active-inset, var(--cdr-border-neutral-trace)),
   ),
 );
 ```
@@ -139,6 +139,9 @@ $button-colors: (
 - The hook is `--cdr-color-<component>[-<scope>]-<role>[-<state>]`.
   `defaultVariant` omits the scope segment for that variant; every other scope
   includes it.
+- A component with a historical custom hook namespace sets
+  `hookPrefix` (the link uses `--cdr-link`). The generated map and hooks file
+  then use `<hookPrefix>[-<scope>]-<role>[-<state>]` instead.
 - `extras` use `--cdr-color-<component>[-<scope>]-<extra-key>` and keep the
   declared token or literal as the fallback. A `null` value keeps the
   legacy-only behavior (emitted only when a `legacy` entry exists).
@@ -147,7 +150,7 @@ $button-colors: (
   so this partial is what lists the hooks in the docs site; it is never
   imported at runtime.
 - Run `pnpm build:maps` after every contract change. Contracts without
-  `hooks: true` keep the bare `var(--cdr-color-<semantic>)` map shape, so their
+  `hooks: true` keep the bare `var(--cdr-<semantic>)` map shape, so their
   generated files stay byte-identical.
 
 ## Generated maps and stylesheet consumption

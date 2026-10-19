@@ -1,10 +1,47 @@
 @use '@rei/cdr-tokens/scss' as tokens;
-@use './vars/CdrToast.vars.scss' as vars;
+@use 'sass:map';
+@use './vars/CdrToast.maps' as maps;
+@use './vars/CdrToast.vars' as vars;
 @use '../../button/styles/CdrButton.module';
 @use '../../icon/styles/CdrIcon.module';
 
+// Emit the tinted parts for one status scope from its generated map entries.
+// Every entry already carries its public override hook plus the semantic token
+// (e.g. var(--cdr-color-toast-info-surface, var(--cdr-feedback-surface-info-faint))).
+@mixin _status-colors($colors) {
+  .cdr-toast__main {
+    background-color: map.get($colors, background);
+    outline-color: map.get($colors, outline);
+  }
+
+  .cdr-toast__icon-left {
+    background-color: map.get($colors, icon-left-surface);
+
+    svg {
+      fill: map.get($colors, fill);
+      stroke: map.get($colors, icon-stroke);
+    }
+  }
+
+  border-left-color: map.get($colors, border);
+}
+
 .cdr-toast {
   @include vars.cdr-toast-base-mixin;
+
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$toast-defaults {
+    --cdr-toast-#{$key}: #{$value};
+  }
+
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-text-neutral-bold: #312d27;
+  --cdr-feedback-border-natural-faint: #e6ddc9;
+
+  border-left: var(--cdr-toast-left-border-width) var(--cdr-toast-left-border-style);
+  box-shadow: var(--cdr-toast-prominence);
+  margin-bottom: var(--cdr-toast-margin-bottom);
 
   &__transition {
     &--toast-enter-from {
@@ -29,22 +66,23 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-areas: 'icon-left message close-button';
-    min-height: 3.2rem;
+    min-height: var(--cdr-toast-main-min-height);
+    outline: thin solid;
+    outline-offset: -1px;
   }
 
   &__icon-left {
-    width: 3.2rem;
+    width: var(--cdr-toast-icon-left-width);
     grid-area: icon-left;
     display: grid;
     place-items: center center;
 
     svg {
-      max-height: 2.2rem;
-      max-width: 2.2rem;
-      stroke: white;
-      stroke-width: 0.4rem;
-      paint-order: stroke fill;
-      margin: tokens.$cdr-space-quarter-x;
+      max-height: var(--cdr-toast-icon-left-size);
+      max-width: var(--cdr-toast-icon-left-size);
+      stroke-width: var(--cdr-toast-icon-left-stroke-width);
+      paint-order: var(--cdr-toast-icon-left-paint-order);
+      margin: var(--cdr-toast-icon-left-margin);
     }
   }
 
@@ -52,175 +90,41 @@
     display: grid;
     align-items: center;
     grid-area: message;
-    padding: 0.7rem;
+    padding: var(--cdr-toast-message-padding);
   }
 
   &__close-button {
     display: grid;
     align-content: center;
     grid-area: close-button;
-    max-height: 3.2rem;
+    max-height: var(--cdr-toast-close-button-max-height);
 
     svg {
-      height: 2.2rem;
-      width: 2.2rem;
-
-      // ITEM_DOC: Fill color of the cdr-toast close button icon
-      fill: var(
-        --cdr-toast-close-button-fill,
-        var(--cdr-color-text-emphasis, #{tokens.$cdr-color-text-emphasis})
-      ) !important;
+      height: var(--cdr-toast-close-button-icon-size);
+      width: var(--cdr-toast-close-button-icon-size);
+      fill: map.get(maps.$toast-colors, close-button, fill) !important;
     }
   }
 
+  // Each status gets its tinted surfaces, border, icon colors, and outline.
+
   &--default {
-    .cdr-toast__main {
-      @include vars.cdr-toast-default-mixin;
-
-      .cdr-toast__icon-left {
-        // ITEM_DOC: Default background color of the cdr-toast icon-left
-        background-color: var(
-          --cdr-toast-icon-left-background-color-default,
-          var(
-            --cdr-color-background-message-default-02,
-            #{tokens.$cdr-color-background-message-default-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Default fill color of the cdr-toast icon-left
-          fill: var(
-            --cdr-toast-icon-left-fill-default,
-            var(--cdr-color-icon-message-default, #{tokens.$cdr-color-icon-message-default})
-          );
-        }
-      }
-    }
-
-    border-left-color: tokens.$cdr-color-border-message-default-01;
+    @include _status-colors(map.get(maps.$toast-colors, default));
   }
 
   &--info {
-    .cdr-toast__main {
-      @include vars.cdr-toast-info-mixin;
-
-      .cdr-toast__icon-left {
-        // ITEM_DOC: Info background color of the cdr-toast icon-left
-        background-color: var(
-          --cdr-toast-icon-left-background-color-info,
-          var(
-            --cdr-color-background-message-info-02,
-            #{tokens.$cdr-color-background-message-info-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Info fill color of the cdr-toast icon-left
-          fill: var(
-            --cdr-toast-icon-left-fill-info,
-            var(--cdr-color-icon-message-info, #{tokens.$cdr-color-icon-message-info})
-          );
-        }
-      }
-    }
-
-    // ITEM_DOC: Info border-left color of the cdr-toast
-    border-left-color: var(
-      --cdr-toast-border-left-color-info,
-      var(--cdr-color-border-message-info-01, #{tokens.$cdr-color-border-message-info-01})
-    );
+    @include _status-colors(map.get(maps.$toast-colors, info));
   }
 
   &--warning {
-    .cdr-toast__main {
-      @include vars.cdr-toast-warning-mixin;
-
-      .cdr-toast__icon-left {
-        // ITEM_DOC: Warning background color of the cdr-toast icon-left
-        background-color: var(
-          --cdr-toast-icon-left-background-color-warning,
-          var(
-            --cdr-color-background-message-warning-02,
-            #{tokens.$cdr-color-background-message-warning-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Warning fill color of the cdr-toast icon-left
-          fill: var(
-            --cdr-toast-icon-left-fill-warning,
-            var(--cdr-color-icon-message-warning, #{tokens.$cdr-color-icon-message-warning})
-          );
-        }
-      }
-    }
-
-    // ITEM_DOC: Warning border-left color of the cdr-toast
-    border-left-color: var(
-      --cdr-toast-border-left-color-warning,
-      var(--cdr-color-border-message-warning-01, #{tokens.$cdr-color-border-message-warning-01})
-    );
+    @include _status-colors(map.get(maps.$toast-colors, warning));
   }
 
   &--success {
-    .cdr-toast__main {
-      @include vars.cdr-toast-success-mixin;
-
-      .cdr-toast__icon-left {
-        // ITEM_DOC: Success background color of the cdr-toast icon-left
-        background-color: var(
-          --cdr-toast-icon-left-background-color-success,
-          var(
-            --cdr-color-background-message-success-02,
-            #{tokens.$cdr-color-background-message-success-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Success fill color of the cdr-toast icon-left
-          fill: var(
-            --cdr-toast-icon-left-fill-success,
-            var(--cdr-color-icon-message-success, #{tokens.$cdr-color-icon-message-success})
-          );
-        }
-      }
-    }
-
-    // ITEM_DOC: Success border-left color of the cdr-toast
-    border-left-color: var(
-      --cdr-toast-border-left-color-success,
-      var(--cdr-color-border-message-success-01, #{tokens.$cdr-color-border-message-success-01})
-    );
+    @include _status-colors(map.get(maps.$toast-colors, success));
   }
 
   &--error {
-    .cdr-toast__main {
-      @include vars.cdr-toast-error-mixin;
-
-      .cdr-toast__icon-left {
-        // ITEM_DOC: Error background color of the cdr-toast icon-left
-        background-color: var(
-          --cdr-toast-icon-left-background-color-error,
-          var(
-            --cdr-color-background-message-error-02,
-            #{tokens.$cdr-color-background-message-error-02}
-          )
-        );
-
-        svg {
-          // ITEM_DOC: Error fill color of the cdr-toast icon-left
-          fill: var(
-            --cdr-toast-icon-left-fill-error,
-            var(--cdr-color-icon-message-error, #{tokens.$cdr-color-icon-message-error})
-          );
-        }
-      }
-    }
-
-    // ITEM_DOC: Error border-left color of the cdr-toast
-    border-left-color: var(
-      --cdr-toast-border-left-color-error,
-      var(--cdr-color-border-message-error-01, #{tokens.$cdr-color-border-message-error-01})
-    );
+    @include _status-colors(map.get(maps.$toast-colors, error));
   }
 }

@@ -166,7 +166,7 @@ function generateColorVariant(
       // Legacy bridge: semantic token with a legacy Sass fallback (no hook).
       lines.push(`    ${key}: var(${semanticProp}, #{tokens.$${legacyToken}}),`);
     } else if (useHooks) {
-      const hook = hookVar(contract.component, scope, role, state);
+      const hook = hookVar(contract.component, scope, role, state, contract.hookPrefix);
       const description = `${ROLE_LABEL[role] ?? role} color${STATE_LABEL[state] ?? ''}`;
       lines.push(docComment(variantName, contract.component, description, hook));
       lines.push(`    ${key}: var(${hook}, var(${semanticProp})),`);
@@ -177,7 +177,7 @@ function generateColorVariant(
 
   if (variant.extras) {
     for (const [extraKey, extraValue] of Object.entries(variant.extras)) {
-      const hook = hookVar(contract.component, scope, extraKey, 'rest');
+      const hook = hookVar(contract.component, scope, extraKey, 'rest', contract.hookPrefix);
       const legacyToken = legacy[`${variantName}/${extraKey}`];
 
       if (extraValue && typeof extraValue === 'object' && useHooks) {
@@ -232,7 +232,7 @@ function generateHooksDoc(contract: ComponentTokenContract, sourcePath: string):
     for (const { state, role, value } of explicitSlots(variant)) {
       const key = propKey(role, state);
       if (legacy[`${variantName}/${key}`]) continue; // legacy bridge has no hook
-      const hook = hookVar(contract.component, scope, role, state);
+      const hook = hookVar(contract.component, scope, role, state, contract.hookPrefix);
       const semanticProp = slotVar(contract.interaction, role, value);
       const description = `${docPrefix(variantName, contract.component)}${ROLE_LABEL[role] ?? role} color${STATE_LABEL[state] ?? ''}`;
       pushEntry(hook, `var(${semanticProp})`, description);
@@ -242,7 +242,7 @@ function generateHooksDoc(contract: ComponentTokenContract, sourcePath: string):
       for (const [extraKey, extraValue] of Object.entries(variant.extras)) {
         if (!extraValue || typeof extraValue !== 'object') continue;
         if (legacy[`${variantName}/${extraKey}`]) continue;
-        const hook = hookVar(contract.component, scope, extraKey, 'rest');
+        const hook = hookVar(contract.component, scope, extraKey, 'rest', contract.hookPrefix);
         const description = `${docPrefix(variantName, contract.component)}${EXTRA_LABEL[extraKey] ?? extraKey.replace(/-/g, ' ')}`;
         pushEntry(hook, scssValue(extraValue), description);
       }

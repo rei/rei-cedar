@@ -46,473 +46,380 @@ $button-defaults: (
 $button-colors: (
   primary: (
     // ITEM_DOC: Primary button's background color. Override with --cdr-color-button-surface.
-    background: var(--cdr-color-button-surface, var(--cdr-color-action-surface-brand)),
+    background: var(--cdr-color-button-surface, var(--cdr-action-surface-brand)),
     // ITEM_DOC: Primary button's text color. Override with --cdr-color-button-text.
-    text: var(--cdr-color-button-text, var(--cdr-color-action-text-neutral-trace)),
+    text: var(--cdr-color-button-text, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Primary button's border color. Override with --cdr-color-button-border.
-    border: var(--cdr-color-button-border, var(--cdr-color-action-border-brand)),
+    border: var(--cdr-color-button-border, var(--cdr-action-border-brand)),
     // ITEM_DOC: Primary button's icon color. Override with --cdr-color-button-icon.
-    fill: var(--cdr-color-button-icon, var(--cdr-color-action-icon-neutral-trace)),
+    fill: var(--cdr-color-button-icon, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Primary button's background color on hover. Override with --cdr-color-button-surface-hover.
-    background-hover: var(
-        --cdr-color-button-surface-hover,
-        var(--cdr-color-action-surface-brand-faint)
-      ),
+    background-hover: var(--cdr-color-button-surface-hover, var(--cdr-action-surface-brand-faint)),
     // ITEM_DOC: Primary button's text color on hover. Override with --cdr-color-button-text-hover.
-    text-hover: var(--cdr-color-button-text-hover, var(--cdr-color-action-text-brand)),
+    text-hover: var(--cdr-color-button-text-hover, var(--cdr-action-text-brand)),
     // ITEM_DOC: Primary button's border color on hover. Override with --cdr-color-button-border-hover.
-    border-hover: var(--cdr-color-button-border-hover, var(--cdr-color-action-border-brand)),
+    border-hover: var(--cdr-color-button-border-hover, var(--cdr-action-border-brand)),
     // ITEM_DOC: Primary button's icon color on hover. Override with --cdr-color-button-icon-hover.
-    fill-hover: var(--cdr-color-button-icon-hover, var(--cdr-color-action-text-brand)),
+    fill-hover: var(--cdr-color-button-icon-hover, var(--cdr-action-text-brand)),
     // ITEM_DOC: Primary button's background color on focus. Override with --cdr-color-button-surface-focus-visible.
     background-focus-visible: var(
         --cdr-color-button-surface-focus-visible,
-        var(--cdr-color-action-surface-brand-faint)
+        var(--cdr-action-surface-brand-faint)
       ),
     // ITEM_DOC: Primary button's text color on focus. Override with --cdr-color-button-text-focus-visible.
-    text-focus-visible: var(
-        --cdr-color-button-text-focus-visible,
-        var(--cdr-color-action-text-brand)
-      ),
+    text-focus-visible: var(--cdr-color-button-text-focus-visible, var(--cdr-action-text-brand)),
     // ITEM_DOC: Primary button's border color on focus. Override with --cdr-color-button-border-focus-visible.
     border-focus-visible: var(
         --cdr-color-button-border-focus-visible,
-        var(--cdr-color-action-border-brand)
+        var(--cdr-action-border-brand)
       ),
     // ITEM_DOC: Primary button's icon color on focus. Override with --cdr-color-button-icon-focus-visible.
-    fill-focus-visible: var(
-        --cdr-color-button-icon-focus-visible,
-        var(--cdr-color-action-text-brand)
-      ),
+    fill-focus-visible: var(--cdr-color-button-icon-focus-visible, var(--cdr-action-text-brand)),
     // ITEM_DOC: Primary button's background color when active. Override with --cdr-color-button-surface-active.
-    background-active: var(--cdr-color-button-surface-active, var(--cdr-color-action-surface-brand)),
+    background-active: var(--cdr-color-button-surface-active, var(--cdr-action-surface-brand)),
     // ITEM_DOC: Primary button's text color when active. Override with --cdr-color-button-text-active.
-    text-active: var(--cdr-color-button-text-active, var(--cdr-color-action-text-neutral-trace)),
+    text-active: var(--cdr-color-button-text-active, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Primary button's border color when active. Override with --cdr-color-button-border-active.
-    border-active: var(--cdr-color-button-border-active, var(--cdr-color-action-border-brand)),
+    border-active: var(--cdr-color-button-border-active, var(--cdr-action-border-brand)),
     // ITEM_DOC: Primary button's icon color when active. Override with --cdr-color-button-icon-active.
-    fill-active: var(--cdr-color-button-icon-active, var(--cdr-color-action-icon-neutral-trace)),
+    fill-active: var(--cdr-color-button-icon-active, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Primary button's background color when disabled. Override with --cdr-color-button-surface-disabled.
     background-disabled: var(
         --cdr-color-button-surface-disabled,
-        var(--cdr-color-action-surface-neutral-prominent)
+        var(--cdr-action-surface-neutral-prominent)
       ),
     // ITEM_DOC: Primary button's text color when disabled. Override with --cdr-color-button-text-disabled.
-    text-disabled: var(--cdr-color-button-text-disabled, var(--cdr-color-action-text-neutral-trace)),
+    text-disabled: var(--cdr-color-button-text-disabled, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Primary button's border color when disabled. Override with --cdr-color-button-border-disabled.
-    border-disabled: var(
-        --cdr-color-button-border-disabled,
-        var(--cdr-color-action-border-neutral-faint)
-      ),
+    border-disabled: var(--cdr-color-button-border-disabled, var(--cdr-action-border-neutral-faint)),
     // ITEM_DOC: Primary button's icon color when disabled. Override with --cdr-color-button-icon-disabled.
-    fill-disabled: var(--cdr-color-button-icon-disabled, var(--cdr-color-action-icon-neutral-trace)),
+    fill-disabled: var(--cdr-color-button-icon-disabled, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Primary button's inset border color when active. Override with --cdr-color-button-active-inset.
-    active-inset: var(--cdr-color-button-active-inset, var(--cdr-color-border-neutral-trace)),
+    active-inset: var(--cdr-color-button-active-inset, var(--cdr-border-neutral-trace)),
   ),
   secondary: (
     // ITEM_DOC: Secondary button's background color. Override with --cdr-color-button-secondary-surface.
-    background: var(
-        --cdr-color-button-secondary-surface,
-        var(--cdr-color-action-surface-neutral-faint)
-      ),
+    background: var(--cdr-color-button-secondary-surface, var(--cdr-action-surface-neutral-faint)),
     // ITEM_DOC: Secondary button's text color. Override with --cdr-color-button-secondary-text.
-    text: var(--cdr-color-button-secondary-text, var(--cdr-color-action-text-neutral-bold)),
+    text: var(--cdr-color-button-secondary-text, var(--cdr-action-text-neutral-bold)),
     // ITEM_DOC: Secondary button's border color. Override with --cdr-color-button-secondary-border.
-    border: var(--cdr-color-button-secondary-border, var(--cdr-color-action-border-neutral)),
+    border: var(--cdr-color-button-secondary-border, var(--cdr-action-border-neutral)),
     // ITEM_DOC: Secondary button's icon color. Override with --cdr-color-button-secondary-icon.
-    fill: var(--cdr-color-button-secondary-icon, var(--cdr-color-action-icon-neutral)),
+    fill: var(--cdr-color-button-secondary-icon, var(--cdr-action-icon-neutral)),
     // ITEM_DOC: Secondary button's background color on hover. Override with --cdr-color-button-secondary-surface-hover.
     background-hover: var(
         --cdr-color-button-secondary-surface-hover,
-        var(--cdr-color-action-surface-neutral-subtle)
+        var(--cdr-action-surface-neutral-subtle)
       ),
     // ITEM_DOC: Secondary button's text color on hover. Override with --cdr-color-button-secondary-text-hover.
-    text-hover: var(
-        --cdr-color-button-secondary-text-hover,
-        var(--cdr-color-action-text-neutral-bold)
-      ),
+    text-hover: var(--cdr-color-button-secondary-text-hover, var(--cdr-action-text-neutral-bold)),
     // ITEM_DOC: Secondary button's border color on hover. Override with --cdr-color-button-secondary-border-hover.
     border-hover: var(
         --cdr-color-button-secondary-border-hover,
-        var(--cdr-color-action-border-neutral-bold)
+        var(--cdr-action-border-neutral-bold)
       ),
     // ITEM_DOC: Secondary button's icon color on hover. Override with --cdr-color-button-secondary-icon-hover.
-    fill-hover: var(
-        --cdr-color-button-secondary-icon-hover,
-        var(--cdr-color-action-icon-neutral-bold)
-      ),
+    fill-hover: var(--cdr-color-button-secondary-icon-hover, var(--cdr-action-icon-neutral-bold)),
     // ITEM_DOC: Secondary button's background color on focus. Override with --cdr-color-button-secondary-surface-focus-visible.
     background-focus-visible: var(
         --cdr-color-button-secondary-surface-focus-visible,
-        var(--cdr-color-action-surface-neutral-subtle)
+        var(--cdr-action-surface-neutral-subtle)
       ),
     // ITEM_DOC: Secondary button's text color on focus. Override with --cdr-color-button-secondary-text-focus-visible.
     text-focus-visible: var(
         --cdr-color-button-secondary-text-focus-visible,
-        var(--cdr-color-action-text-neutral-bold)
+        var(--cdr-action-text-neutral-bold)
       ),
     // ITEM_DOC: Secondary button's border color on focus. Override with --cdr-color-button-secondary-border-focus-visible.
     border-focus-visible: var(
         --cdr-color-button-secondary-border-focus-visible,
-        var(--cdr-color-action-border-neutral-bold)
+        var(--cdr-action-border-neutral-bold)
       ),
     // ITEM_DOC: Secondary button's icon color on focus. Override with --cdr-color-button-secondary-icon-focus-visible.
     fill-focus-visible: var(
         --cdr-color-button-secondary-icon-focus-visible,
-        var(--cdr-color-action-icon-neutral-bold)
+        var(--cdr-action-icon-neutral-bold)
       ),
     // ITEM_DOC: Secondary button's background color when active. Override with --cdr-color-button-secondary-surface-active.
     background-active: var(
         --cdr-color-button-secondary-surface-active,
-        var(--cdr-color-action-surface-neutral-bold)
+        var(--cdr-action-surface-neutral-bold)
       ),
     // ITEM_DOC: Secondary button's text color when active. Override with --cdr-color-button-secondary-text-active.
-    text-active: var(
-        --cdr-color-button-secondary-text-active,
-        var(--cdr-color-action-text-neutral-trace)
-      ),
+    text-active: var(--cdr-color-button-secondary-text-active, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Secondary button's border color when active. Override with --cdr-color-button-secondary-border-active.
-    border-active: var(
-        --cdr-color-button-secondary-border-active,
-        var(--cdr-color-action-border-neutral)
-      ),
+    border-active: var(--cdr-color-button-secondary-border-active, var(--cdr-action-border-neutral)),
     // ITEM_DOC: Secondary button's icon color when active. Override with --cdr-color-button-secondary-icon-active.
-    fill-active: var(
-        --cdr-color-button-secondary-icon-active,
-        var(--cdr-color-action-icon-neutral-trace)
-      ),
+    fill-active: var(--cdr-color-button-secondary-icon-active, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Secondary button's background color when disabled. Override with --cdr-color-button-secondary-surface-disabled.
     background-disabled: var(
         --cdr-color-button-secondary-surface-disabled,
-        var(--cdr-color-action-surface-neutral-faint)
+        var(--cdr-action-surface-neutral-faint)
       ),
     // ITEM_DOC: Secondary button's text color when disabled. Override with --cdr-color-button-secondary-text-disabled.
     text-disabled: var(
         --cdr-color-button-secondary-text-disabled,
-        var(--cdr-color-action-text-neutral-subtle)
+        var(--cdr-action-text-neutral-subtle)
       ),
     // ITEM_DOC: Secondary button's border color when disabled. Override with --cdr-color-button-secondary-border-disabled.
     border-disabled: var(
         --cdr-color-button-secondary-border-disabled,
-        var(--cdr-color-action-border-neutral-faint)
+        var(--cdr-action-border-neutral-faint)
       ),
     // ITEM_DOC: Secondary button's icon color when disabled. Override with --cdr-color-button-secondary-icon-disabled.
     fill-disabled: var(
         --cdr-color-button-secondary-icon-disabled,
-        var(--cdr-color-action-icon-neutral-subtle)
+        var(--cdr-action-icon-neutral-subtle)
       ),
     // ITEM_DOC: Secondary button's inset border color when active. Override with --cdr-color-button-secondary-active-inset.
-    active-inset: var(
-        --cdr-color-button-secondary-active-inset,
-        var(--cdr-color-border-neutral-trace)
-      ),
+    active-inset: var(--cdr-color-button-secondary-active-inset, var(--cdr-border-neutral-trace)),
   ),
   dark: (
     // ITEM_DOC: Dark button's background color. Override with --cdr-color-button-dark-surface.
-    background: var(
-        --cdr-color-button-dark-surface,
-        var(--cdr-color-action-surface-neutral-intense)
-      ),
+    background: var(--cdr-color-button-dark-surface, var(--cdr-action-surface-neutral-intense)),
     // ITEM_DOC: Dark button's text color. Override with --cdr-color-button-dark-text.
-    text: var(--cdr-color-button-dark-text, var(--cdr-color-action-text-neutral-trace)),
+    text: var(--cdr-color-button-dark-text, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Dark button's border color. Override with --cdr-color-button-dark-border.
-    border: var(--cdr-color-button-dark-border, var(--cdr-color-action-border-neutral-bold)),
+    border: var(--cdr-color-button-dark-border, var(--cdr-action-border-neutral-bold)),
     // ITEM_DOC: Dark button's icon color. Override with --cdr-color-button-dark-icon.
-    fill: var(--cdr-color-button-dark-icon, var(--cdr-color-action-icon-neutral-trace)),
+    fill: var(--cdr-color-button-dark-icon, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Dark button's background color on hover. Override with --cdr-color-button-dark-surface-hover.
-    background-hover: var(
-        --cdr-color-button-dark-surface-hover,
-        var(--cdr-color-action-surface-neutral)
-      ),
+    background-hover: var(--cdr-color-button-dark-surface-hover, var(--cdr-action-surface-neutral)),
     // ITEM_DOC: Dark button's text color on hover. Override with --cdr-color-button-dark-text-hover.
-    text-hover: var(--cdr-color-button-dark-text-hover, var(--cdr-color-action-text-neutral-bold)),
+    text-hover: var(--cdr-color-button-dark-text-hover, var(--cdr-action-text-neutral-bold)),
     // ITEM_DOC: Dark button's border color on hover. Override with --cdr-color-button-dark-border-hover.
-    border-hover: var(
-        --cdr-color-button-dark-border-hover,
-        var(--cdr-color-action-border-neutral-bold)
-      ),
+    border-hover: var(--cdr-color-button-dark-border-hover, var(--cdr-action-border-neutral-bold)),
     // ITEM_DOC: Dark button's icon color on hover. Override with --cdr-color-button-dark-icon-hover.
-    fill-hover: var(--cdr-color-button-dark-icon-hover, var(--cdr-color-action-icon-neutral-bold)),
+    fill-hover: var(--cdr-color-button-dark-icon-hover, var(--cdr-action-icon-neutral-bold)),
     // ITEM_DOC: Dark button's background color on focus. Override with --cdr-color-button-dark-surface-focus-visible.
     background-focus-visible: var(
         --cdr-color-button-dark-surface-focus-visible,
-        var(--cdr-color-action-surface-neutral)
+        var(--cdr-action-surface-neutral)
       ),
     // ITEM_DOC: Dark button's text color on focus. Override with --cdr-color-button-dark-text-focus-visible.
     text-focus-visible: var(
         --cdr-color-button-dark-text-focus-visible,
-        var(--cdr-color-action-text-neutral-bold)
+        var(--cdr-action-text-neutral-bold)
       ),
     // ITEM_DOC: Dark button's border color on focus. Override with --cdr-color-button-dark-border-focus-visible.
     border-focus-visible: var(
         --cdr-color-button-dark-border-focus-visible,
-        var(--cdr-color-action-border-neutral-bold)
+        var(--cdr-action-border-neutral-bold)
       ),
     // ITEM_DOC: Dark button's icon color on focus. Override with --cdr-color-button-dark-icon-focus-visible.
     fill-focus-visible: var(
         --cdr-color-button-dark-icon-focus-visible,
-        var(--cdr-color-action-icon-neutral-bold)
+        var(--cdr-action-icon-neutral-bold)
       ),
     // ITEM_DOC: Dark button's background color when active. Override with --cdr-color-button-dark-surface-active.
     background-active: var(
         --cdr-color-button-dark-surface-active,
-        var(--cdr-color-action-surface-neutral-intense)
+        var(--cdr-action-surface-neutral-intense)
       ),
     // ITEM_DOC: Dark button's text color when active. Override with --cdr-color-button-dark-text-active.
-    text-active: var(
-        --cdr-color-button-dark-text-active,
-        var(--cdr-color-action-text-neutral-trace)
-      ),
+    text-active: var(--cdr-color-button-dark-text-active, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Dark button's border color when active. Override with --cdr-color-button-dark-border-active.
-    border-active: var(
-        --cdr-color-button-dark-border-active,
-        var(--cdr-color-action-border-neutral-bold)
-      ),
+    border-active: var(--cdr-color-button-dark-border-active, var(--cdr-action-border-neutral-bold)),
     // ITEM_DOC: Dark button's icon color when active. Override with --cdr-color-button-dark-icon-active.
-    fill-active: var(
-        --cdr-color-button-dark-icon-active,
-        var(--cdr-color-action-icon-neutral-trace)
-      ),
+    fill-active: var(--cdr-color-button-dark-icon-active, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Dark button's background color when disabled. Override with --cdr-color-button-dark-surface-disabled.
     background-disabled: var(
         --cdr-color-button-dark-surface-disabled,
-        var(--cdr-color-action-surface-neutral-prominent)
+        var(--cdr-action-surface-neutral-prominent)
       ),
     // ITEM_DOC: Dark button's text color when disabled. Override with --cdr-color-button-dark-text-disabled.
-    text-disabled: var(
-        --cdr-color-button-dark-text-disabled,
-        var(--cdr-color-action-text-neutral-trace)
-      ),
+    text-disabled: var(--cdr-color-button-dark-text-disabled, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Dark button's border color when disabled. Override with --cdr-color-button-dark-border-disabled.
     border-disabled: var(
         --cdr-color-button-dark-border-disabled,
-        var(--cdr-color-action-border-neutral-faint)
+        var(--cdr-action-border-neutral-faint)
       ),
     // ITEM_DOC: Dark button's icon color when disabled. Override with --cdr-color-button-dark-icon-disabled.
-    fill-disabled: var(
-        --cdr-color-button-dark-icon-disabled,
-        var(--cdr-color-action-icon-neutral-trace)
-      ),
+    fill-disabled: var(--cdr-color-button-dark-icon-disabled, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Dark button's inset border color when active. Override with --cdr-color-button-dark-active-inset.
-    active-inset: var(
-        --cdr-color-button-dark-active-inset,
-        var(--cdr-color-action-border-neutral-faint)
-      ),
+    active-inset: var(--cdr-color-button-dark-active-inset, var(--cdr-action-border-neutral-faint)),
   ),
   sale: (
     // ITEM_DOC: Sale button's background color. Override with --cdr-color-button-sale-surface.
-    background: var(--cdr-color-button-sale-surface, var(--cdr-color-action-surface-sale)),
+    background: var(--cdr-color-button-sale-surface, var(--cdr-action-surface-sale)),
     // ITEM_DOC: Sale button's text color. Override with --cdr-color-button-sale-text.
-    text: var(--cdr-color-button-sale-text, var(--cdr-color-action-text-neutral-trace)),
+    text: var(--cdr-color-button-sale-text, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Sale button's border color. Override with --cdr-color-button-sale-border.
-    border: var(--cdr-color-button-sale-border, var(--cdr-color-action-border-sale)),
+    border: var(--cdr-color-button-sale-border, var(--cdr-action-border-sale)),
     // ITEM_DOC: Sale button's icon color. Override with --cdr-color-button-sale-icon.
-    fill: var(--cdr-color-button-sale-icon, var(--cdr-color-action-icon-neutral-trace)),
+    fill: var(--cdr-color-button-sale-icon, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Sale button's background color on hover. Override with --cdr-color-button-sale-surface-hover.
     background-hover: var(
         --cdr-color-button-sale-surface-hover,
-        var(--cdr-color-action-surface-sale-faint)
+        var(--cdr-action-surface-sale-faint)
       ),
     // ITEM_DOC: Sale button's text color on hover. Override with --cdr-color-button-sale-text-hover.
-    text-hover: var(--cdr-color-button-sale-text-hover, var(--cdr-color-action-text-sale)),
+    text-hover: var(--cdr-color-button-sale-text-hover, var(--cdr-action-text-sale)),
     // ITEM_DOC: Sale button's border color on hover. Override with --cdr-color-button-sale-border-hover.
-    border-hover: var(--cdr-color-button-sale-border-hover, var(--cdr-color-action-border-sale)),
+    border-hover: var(--cdr-color-button-sale-border-hover, var(--cdr-action-border-sale)),
     // ITEM_DOC: Sale button's icon color on hover. Override with --cdr-color-button-sale-icon-hover.
-    fill-hover: var(--cdr-color-button-sale-icon-hover, var(--cdr-color-action-icon-sale)),
+    fill-hover: var(--cdr-color-button-sale-icon-hover, var(--cdr-action-icon-sale)),
     // ITEM_DOC: Sale button's background color on focus. Override with --cdr-color-button-sale-surface-focus-visible.
     background-focus-visible: var(
         --cdr-color-button-sale-surface-focus-visible,
-        var(--cdr-color-action-surface-sale-faint)
+        var(--cdr-action-surface-sale-faint)
       ),
     // ITEM_DOC: Sale button's text color on focus. Override with --cdr-color-button-sale-text-focus-visible.
-    text-focus-visible: var(
-        --cdr-color-button-sale-text-focus-visible,
-        var(--cdr-color-action-text-sale)
-      ),
+    text-focus-visible: var(--cdr-color-button-sale-text-focus-visible, var(--cdr-action-text-sale)),
     // ITEM_DOC: Sale button's border color on focus. Override with --cdr-color-button-sale-border-focus-visible.
     border-focus-visible: var(
         --cdr-color-button-sale-border-focus-visible,
-        var(--cdr-color-action-border-sale)
+        var(--cdr-action-border-sale)
       ),
     // ITEM_DOC: Sale button's icon color on focus. Override with --cdr-color-button-sale-icon-focus-visible.
-    fill-focus-visible: var(
-        --cdr-color-button-sale-icon-focus-visible,
-        var(--cdr-color-action-icon-sale)
-      ),
+    fill-focus-visible: var(--cdr-color-button-sale-icon-focus-visible, var(--cdr-action-icon-sale)),
     // ITEM_DOC: Sale button's background color when active. Override with --cdr-color-button-sale-surface-active.
-    background-active: var(
-        --cdr-color-button-sale-surface-active,
-        var(--cdr-color-action-surface-sale)
-      ),
+    background-active: var(--cdr-color-button-sale-surface-active, var(--cdr-action-surface-sale)),
     // ITEM_DOC: Sale button's text color when active. Override with --cdr-color-button-sale-text-active.
-    text-active: var(
-        --cdr-color-button-sale-text-active,
-        var(--cdr-color-action-text-neutral-trace)
-      ),
+    text-active: var(--cdr-color-button-sale-text-active, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Sale button's border color when active. Override with --cdr-color-button-sale-border-active.
-    border-active: var(--cdr-color-button-sale-border-active, var(--cdr-color-action-border-sale)),
+    border-active: var(--cdr-color-button-sale-border-active, var(--cdr-action-border-sale)),
     // ITEM_DOC: Sale button's icon color when active. Override with --cdr-color-button-sale-icon-active.
-    fill-active: var(
-        --cdr-color-button-sale-icon-active,
-        var(--cdr-color-action-icon-neutral-trace)
-      ),
+    fill-active: var(--cdr-color-button-sale-icon-active, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Sale button's background color when disabled. Override with --cdr-color-button-sale-surface-disabled.
     background-disabled: var(
         --cdr-color-button-sale-surface-disabled,
-        var(--cdr-color-action-surface-neutral-prominent)
+        var(--cdr-action-surface-neutral-prominent)
       ),
     // ITEM_DOC: Sale button's text color when disabled. Override with --cdr-color-button-sale-text-disabled.
-    text-disabled: var(
-        --cdr-color-button-sale-text-disabled,
-        var(--cdr-color-action-text-neutral-trace)
-      ),
+    text-disabled: var(--cdr-color-button-sale-text-disabled, var(--cdr-action-text-neutral-trace)),
     // ITEM_DOC: Sale button's border color when disabled. Override with --cdr-color-button-sale-border-disabled.
     border-disabled: var(
         --cdr-color-button-sale-border-disabled,
-        var(--cdr-color-action-border-neutral-faint)
+        var(--cdr-action-border-neutral-faint)
       ),
     // ITEM_DOC: Sale button's icon color when disabled. Override with --cdr-color-button-sale-icon-disabled.
-    fill-disabled: var(
-        --cdr-color-button-sale-icon-disabled,
-        var(--cdr-color-action-icon-neutral-trace)
-      ),
+    fill-disabled: var(--cdr-color-button-sale-icon-disabled, var(--cdr-action-icon-neutral-trace)),
     // ITEM_DOC: Sale button's inset border color when active. Override with --cdr-color-button-sale-active-inset.
-    active-inset: var(--cdr-color-button-sale-active-inset, var(--cdr-color-border-neutral-trace)),
+    active-inset: var(--cdr-color-button-sale-active-inset, var(--cdr-border-neutral-trace)),
   ),
   link: (
     // ITEM_DOC: Link button's text color. Override with --cdr-color-button-link-text.
-    text: var(--cdr-color-button-link-text, var(--cdr-color-action-text-trigger)),
+    text: var(--cdr-color-button-link-text, var(--cdr-action-text-trigger)),
     // ITEM_DOC: Link button's icon color. Override with --cdr-color-button-link-icon.
-    fill: var(--cdr-color-button-link-icon, var(--cdr-color-action-text-trigger)),
+    fill: var(--cdr-color-button-link-icon, var(--cdr-action-text-trigger)),
     // ITEM_DOC: Link button's text color on hover. Override with --cdr-color-button-link-text-hover.
-    text-hover: var(--cdr-color-button-link-text-hover, var(--cdr-color-action-text-trigger)),
+    text-hover: var(--cdr-color-button-link-text-hover, var(--cdr-action-text-trigger)),
     // ITEM_DOC: Link button's text color on focus. Override with --cdr-color-button-link-text-focus-visible.
     text-focus-visible: var(
         --cdr-color-button-link-text-focus-visible,
-        var(--cdr-color-action-text-trigger-bold)
+        var(--cdr-action-text-trigger-bold)
       ),
     // ITEM_DOC: Link button's text color when active. Override with --cdr-color-button-link-text-active.
-    text-active: var(--cdr-color-button-link-text-active, var(--cdr-color-action-text-trigger-bold)),
+    text-active: var(--cdr-color-button-link-text-active, var(--cdr-action-text-trigger-bold)),
     // ITEM_DOC: Link button's text color when disabled. Override with --cdr-color-button-link-text-disabled.
-    text-disabled: var(
-        --cdr-color-button-link-text-disabled,
-        var(--cdr-color-action-text-neutral-subtle)
-      ),
+    text-disabled: var(--cdr-color-button-link-text-disabled, var(--cdr-action-text-neutral-subtle)),
     // ITEM_DOC: Link button's icon color when disabled. Override with --cdr-color-button-link-icon-disabled.
-    fill-disabled: var(
-        --cdr-color-button-link-icon-disabled,
-        var(--cdr-color-action-icon-neutral-subtle)
-      ),
+    fill-disabled: var(--cdr-color-button-link-icon-disabled, var(--cdr-action-icon-neutral-subtle)),
     // ITEM_DOC: Link button's background color. Override with --cdr-color-button-link-surface.
     surface: var(--cdr-color-button-link-surface, transparent),
   ),
   icon-only: (
     // ITEM_DOC: Icon-only button's icon color. Override with --cdr-color-button-icon-only-icon.
-    fill: var(--cdr-color-button-icon-only-icon, var(--cdr-color-action-icon-neutral)),
+    fill: var(--cdr-color-button-icon-only-icon, var(--cdr-action-icon-neutral)),
     // ITEM_DOC: Icon-only button's icon color on hover. Override with --cdr-color-button-icon-only-icon-hover.
-    fill-hover: var(--cdr-color-button-icon-only-icon-hover, var(--cdr-color-action-icon-neutral)),
+    fill-hover: var(--cdr-color-button-icon-only-icon-hover, var(--cdr-action-icon-neutral)),
     // ITEM_DOC: Icon-only button's border color on focus. Override with --cdr-color-button-icon-only-border-focus-visible.
     border-focus-visible: var(
         --cdr-color-button-icon-only-border-focus-visible,
-        var(--cdr-color-action-border-neutral)
+        var(--cdr-action-border-neutral)
       ),
     // ITEM_DOC: Icon-only button's icon color on focus. Override with --cdr-color-button-icon-only-icon-focus-visible.
     fill-focus-visible: var(
         --cdr-color-button-icon-only-icon-focus-visible,
-        var(--cdr-color-action-icon-neutral)
+        var(--cdr-action-icon-neutral)
       ),
     // ITEM_DOC: Icon-only button's border color when active. Override with --cdr-color-button-icon-only-border-active.
-    border-active: var(
-        --cdr-color-button-icon-only-border-active,
-        var(--cdr-color-action-border-neutral)
-      ),
+    border-active: var(--cdr-color-button-icon-only-border-active, var(--cdr-action-border-neutral)),
     // ITEM_DOC: Icon-only button's icon color when active. Override with --cdr-color-button-icon-only-icon-active.
-    fill-active: var(--cdr-color-button-icon-only-icon-active, var(--cdr-color-action-icon-neutral)),
+    fill-active: var(--cdr-color-button-icon-only-icon-active, var(--cdr-action-icon-neutral)),
     // ITEM_DOC: Icon-only button's icon color when disabled. Override with --cdr-color-button-icon-only-icon-disabled.
     fill-disabled: var(
         --cdr-color-button-icon-only-icon-disabled,
-        var(--cdr-color-action-icon-neutral-subtle)
+        var(--cdr-action-icon-neutral-subtle)
       ),
   ),
   with-background: (
     // ITEM_DOC: Button with background's background color. Override with --cdr-color-button-with-background-surface.
     background: var(
         --cdr-color-button-with-background-surface,
-        var(--cdr-color-action-surface-neutral-faint)
+        var(--cdr-action-surface-neutral-faint)
       ),
     // ITEM_DOC: Button with background's border color. Override with --cdr-color-button-with-background-border.
-    border: var(--cdr-color-button-with-background-border, var(--cdr-color-action-border-neutral)),
+    border: var(--cdr-color-button-with-background-border, var(--cdr-action-border-neutral)),
     // ITEM_DOC: Button with background's icon color. Override with --cdr-color-button-with-background-icon.
-    fill: var(--cdr-color-button-with-background-icon, var(--cdr-color-action-icon-neutral)),
+    fill: var(--cdr-color-button-with-background-icon, var(--cdr-action-icon-neutral)),
     // ITEM_DOC: Button with background's background color on hover. Override with --cdr-color-button-with-background-surface-hover.
     background-hover: var(
         --cdr-color-button-with-background-surface-hover,
-        var(--cdr-color-action-surface-neutral-subtle)
+        var(--cdr-action-surface-neutral-subtle)
       ),
     // ITEM_DOC: Button with background's border color on hover. Override with --cdr-color-button-with-background-border-hover.
     border-hover: var(
         --cdr-color-button-with-background-border-hover,
-        var(--cdr-color-action-border-neutral-bold)
+        var(--cdr-action-border-neutral-bold)
       ),
     // ITEM_DOC: Button with background's icon color on hover. Override with --cdr-color-button-with-background-icon-hover.
-    fill-hover: var(
-        --cdr-color-button-with-background-icon-hover,
-        var(--cdr-color-action-icon-neutral)
-      ),
+    fill-hover: var(--cdr-color-button-with-background-icon-hover, var(--cdr-action-icon-neutral)),
     // ITEM_DOC: Button with background's background color on focus. Override with --cdr-color-button-with-background-surface-focus-visible.
     background-focus-visible: var(
         --cdr-color-button-with-background-surface-focus-visible,
-        var(--cdr-color-action-surface-neutral-subtle)
+        var(--cdr-action-surface-neutral-subtle)
       ),
     // ITEM_DOC: Button with background's border color on focus. Override with --cdr-color-button-with-background-border-focus-visible.
     border-focus-visible: var(
         --cdr-color-button-with-background-border-focus-visible,
-        var(--cdr-color-action-border-neutral-bold)
+        var(--cdr-action-border-neutral-bold)
       ),
     // ITEM_DOC: Button with background's icon color on focus. Override with --cdr-color-button-with-background-icon-focus-visible.
     fill-focus-visible: var(
         --cdr-color-button-with-background-icon-focus-visible,
-        var(--cdr-color-action-icon-neutral)
+        var(--cdr-action-icon-neutral)
       ),
     // ITEM_DOC: Button with background's background color when active. Override with --cdr-color-button-with-background-surface-active.
     background-active: var(
         --cdr-color-button-with-background-surface-active,
-        var(--cdr-color-action-surface-neutral-bold)
+        var(--cdr-action-surface-neutral-bold)
       ),
     // ITEM_DOC: Button with background's text color when active. Override with --cdr-color-button-with-background-text-active.
     text-active: var(
         --cdr-color-button-with-background-text-active,
-        var(--cdr-color-action-text-neutral-trace)
+        var(--cdr-action-text-neutral-trace)
       ),
     // ITEM_DOC: Button with background's border color when active. Override with --cdr-color-button-with-background-border-active.
     border-active: var(
         --cdr-color-button-with-background-border-active,
-        var(--cdr-color-action-border-neutral)
+        var(--cdr-action-border-neutral)
       ),
     // ITEM_DOC: Button with background's icon color when active. Override with --cdr-color-button-with-background-icon-active.
     fill-active: var(
         --cdr-color-button-with-background-icon-active,
-        var(--cdr-color-action-icon-neutral-trace)
+        var(--cdr-action-icon-neutral-trace)
       ),
     // ITEM_DOC: Button with background's background color when disabled. Override with --cdr-color-button-with-background-surface-disabled.
     background-disabled: var(
         --cdr-color-button-with-background-surface-disabled,
-        var(--cdr-color-action-surface-neutral-faint)
+        var(--cdr-action-surface-neutral-faint)
       ),
     // ITEM_DOC: Button with background's border color when disabled. Override with --cdr-color-button-with-background-border-disabled.
     border-disabled: var(
         --cdr-color-button-with-background-border-disabled,
-        var(--cdr-color-action-border-neutral-faint)
+        var(--cdr-action-border-neutral-faint)
       ),
     // ITEM_DOC: Button with background's icon color when disabled. Override with --cdr-color-button-with-background-icon-disabled.
     fill-disabled: var(
         --cdr-color-button-with-background-icon-disabled,
-        var(--cdr-color-action-icon-neutral-subtle)
+        var(--cdr-action-icon-neutral-subtle)
       ),
     // ITEM_DOC: Button with background's inset border color when active. Override with --cdr-color-button-with-background-active-inset.
     active-inset: var(
         --cdr-color-button-with-background-active-inset,
-        var(--cdr-color-border-neutral-trace)
+        var(--cdr-border-neutral-trace)
       ),
   ),
 );

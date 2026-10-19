@@ -1,0 +1,47 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/link/CdrLink.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-link {
+  // ITEM_DOC: Default link's text color. Override with --cdr-link-text.
+  --cdr-link-text: var(--cdr-link-text, var(--cdr-action-text-trigger));
+
+  // ITEM_DOC: Default link's icon color. Override with --cdr-link-icon.
+  --cdr-link-icon: var(--cdr-link-icon, var(--cdr-action-text-trigger));
+
+  // ITEM_DOC: Default link's text color on hover. Override with --cdr-link-text-hover.
+  --cdr-link-text-hover: var(--cdr-link-text-hover, var(--cdr-action-text-trigger));
+
+  // ITEM_DOC: Default link's text color on focus. Override with --cdr-link-text-focus-visible.
+  --cdr-link-text-focus-visible: var(
+    --cdr-link-text-focus-visible,
+    var(--cdr-action-text-trigger-bold)
+  );
+
+  // ITEM_DOC: Default link's text color when active. Override with --cdr-link-text-active.
+  --cdr-link-text-active: var(--cdr-link-text-active, var(--cdr-action-text-trigger-bold));
+
+  // ITEM_DOC: Neutral link's text color. Override with --cdr-link-neutral-text.
+  --cdr-link-neutral-text: var(--cdr-link-neutral-text, var(--cdr-action-text-neutral-bold));
+
+  // ITEM_DOC: Neutral link's text color on hover. Override with --cdr-link-neutral-text-hover.
+  --cdr-link-neutral-text-hover: var(
+    --cdr-link-neutral-text-hover,
+    var(--cdr-action-text-neutral-bold)
+  );
+
+  // ITEM_DOC: Neutral link's text color on focus. Override with --cdr-link-neutral-text-focus-visible.
+  --cdr-link-neutral-text-focus-visible: var(
+    --cdr-link-neutral-text-focus-visible,
+    var(--cdr-action-text-neutral-bold)
+  );
+
+  // ITEM_DOC: Neutral link's text color when active. Override with --cdr-link-neutral-text-active.
+  --cdr-link-neutral-text-active: var(
+    --cdr-link-neutral-text-active,
+    var(--cdr-action-text-neutral-bold)
+  );
+}

@@ -4,7 +4,7 @@ description: Migrate Cedar components to semantic colors through a generic token
 license: proprietary
 metadata:
   author: rei-cedar
-  version: '0.4.0'
+  version: '0.5.1'
   taxonomy: docs/cedar-semantic-taxonomy.md
 ---
 
@@ -28,7 +28,8 @@ overwrite unrelated user changes.
 
 - `references/contract-pattern.md` — generic contract and map consumption
 - `references/screenshot-workflow.md` — isolated preview and comparison
-- `references/color-lookup.md` and `references/semantic-colors.json` — allowed colors
+- `references/color-lookup.md` and `references/semantic-colors.json` — approved semantic colors and contrast notes (design reference, not a runtime value source)
+- `@rei/cdr-tokens` ≥ 15.0.0-alpha.2 semantic foundations — the runtime source of truth for semantic values; the package ships them as separate `css/color-*` entries
 - `docs/cedar-semantic-taxonomy.md` — taxonomy and omission rules
 - `docs/semantic-token-mapping.md` — category decision flow, per component part
 - `build/component-tokens/types.ts`, `naming.ts`, `validate.ts`, and `generate-component-maps.ts`
@@ -93,7 +94,7 @@ uses a different category, use `fullPath` to preserve that part's exact
 semantic namespace rather than inheriting the component's primary category.
 
 Universal colors use the ordinary role/identity path with no interaction
-segment (for example, `text.neutral` → `--cdr-color-text-neutral`). Graphics
+segment (for example, `text.neutral` → `--cdr-text-neutral`). Graphics
 colors use the separate `graphic` token group (for example,
 `graphic.surface.brand`); keep `interaction` omitted and use `fullPath` to
 preserve that `graphic-` segment. Do not mislabel Graphics as an interaction.
@@ -211,8 +212,11 @@ Create `src/components/<folder>/Cdr<Name>.tokens.ts` from the existing styles:
    verify by rerunning the generator and reviewing the resulting diff. The
    generator warns when a semantic name is absent from the approved color list;
    resolve every warning for the target rather than accepting a fallback.
-   The generator scans all contracts, so record unrelated pre-existing
-   warnings separately; do not change another component as collateral work.
+   If the name is approved but genuinely absent from the installed
+   `@rei/cdr-tokens` release, stop and report the package gap instead of
+   adding a shim. The generator scans all contracts, so record unrelated
+   pre-existing warnings separately; do not change another component as
+   collateral work.
 
 The stylesheet must consume the generated maps. Loop the defaults map into
 `--cdr-<component>-<property>` values. For a semantic color, read the matching
@@ -221,7 +225,7 @@ put its source value in `defaults` and use that component property as the
 fallback. Both compile to exactly two `var()` levels:
 
 ```scss
-// Rest text, default variant; map value is var(--cdr-color-text-neutral).
+// Rest text, default variant; map value is var(--cdr-text-neutral).
 color: var(--cdr-color-abstract-text, map.get(maps.$abstract-colors, default, text));
 
 // Hover text, named variant.
@@ -235,7 +239,7 @@ background-color: var(--cdr-color-example-header-surface, var(--cdr-example-head
 ```
 
 The compiled form is
-`var(--cdr-color-<component>[-<variant>]-<role>[-<state>], var(--cdr-color-<semantic>))`.
+`var(--cdr-color-<component>[-<variant>]-<role>[-<state>], var(--cdr-<semantic>))`.
 The component-scoped override is first; the semantic token (or, for an
 unchanged literal, the captured component default) is second. Do not define the
 override custom property inside the component. For a default/single variant
@@ -248,16 +252,51 @@ iterate them instead of repeating per-state declarations (see
 border shadows, and the `map.get()`/`var()` Sass caveat). Both routes must
 compile to exactly the two `var()` levels above.
 
-Until these future semantic tokens are provided by `@rei/cdr-tokens`, define a
-temporary local shim for each approved semantic color used by the component,
-using its value from `semantic-colors.json`. Document that shim as temporary
-and remove it when the shared token ships. This shim is distinct from the
-component override hook: never define the override hook locally.
+Semantic runtime names are the ones shipped by `@rei/cdr-tokens`:
+`--cdr-[<interaction>-]<role>-<suffix>` (for example
+`--cdr-control-text-neutral-bold`). There is no `color-` segment in the
+semantic namespace. Component override hooks remain
+`--cdr-color-<component>-...`; do not confuse the two. The link is a documented
+exception: it keeps its historical `--cdr-link-*` hook namespace via the
+contract's `hookPrefix`.
 
-All runtime semantic names use the planned `--cdr-color-*` convention. The
-Figma export's web names omit the `color-` segment; the simplified local list
-is normalized to the planned form (e.g. `--cdr-text-neutral` becomes
-`--cdr-color-text-neutral`). Never mix the forms.
+Do not hardcode semantic color values and do not add a local shim for a shipped
+token. Import the token package's CSS, including the semantic foundations that
+`15.0.0-alpha.2` does not yet add to its main CSS entry:
+
+```ts
+import '@rei/cdr-tokens/css';
+import '@rei/cdr-tokens/css/color-action';
+import '@rei/cdr-tokens/css/color-control';
+import '@rei/cdr-tokens/css/color-feedback';
+import '@rei/cdr-tokens/css/color-graphik';
+import '@rei/cdr-tokens/css/color-selection';
+import '@rei/cdr-tokens/css/color-surface';
+```
+
+#### Known `15.0.0-alpha.2` gaps
+
+The alpha publishes the semantic foundations as separate `css/color-*` files,
+not through the main `css` or `scss` barrels. It also omits the Universal
+`text/*` and `border/*` foundations, the `feedback/text/*-bold` tokens, and
+`feedback/border/natural-faint` (it emits the misspelled
+`--cdr-feedback-border-nautral-faint`). Its light-mode brand resolves to
+`#800080` instead of the approved `#143528` (dark mode is correct).
+
+The repo's migrated components use seven of these missing tokens plus three
+brand overrides (the light-mode data bug), ten local definitions in total; they
+are the only approved component-level local definitions and are marked in the
+component styles. Do not add more. Report new gaps to the tokens repo instead
+of copying values.
+
+Storybook docs chrome also keeps a tracked `_tokens-compat.scss` for two
+removed docsite legacy tokens (`background-primary`, `background-secondary`);
+that is presentation scaffolding, not a component semantic mapping.
+
+If a required token is absent from the installed release, stop and report the
+gap; do not copy its value from `semantic-colors.json` into the component. A
+temporary gap shim may only be added with explicit approval and a tracking note;
+never define the component override hook locally.
 
 ### Isolated preview
 
@@ -313,6 +352,13 @@ red-pixel diff uses a separate absolute Euclidean RGB-distance threshold of 2
 counts; disposition every difference as an approved recolor or an unintended
 change. A Playwright failure caused only by an accepted recolor is expected,
 not a layout regression.
+
+The runner passes `animations: 'disabled'` to both capture paths. A plain
+`page.screenshot` does not auto-stabilize the way `toHaveScreenshot` does, so
+without that option `hover`/`focus-visible`/`active` captures can land on the
+rest state while a CSS transition is still at t=0. Keep the option when editing
+the runner; if state after-images show a rest color, suspect capture timing
+before reporting a token regression.
 
 **Gate 4:** ask one explicit question to accept or adjust the complete proposed
 component, contract, generated-map, and test changes. Until acceptance, the

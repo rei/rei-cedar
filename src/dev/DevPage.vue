@@ -97,7 +97,6 @@ console.log(routes);
 @use '@rei/cdr-tokens/scss' as tokens;
 
 @use '../styles/main.scss' as main;
-@use '@rei/cdr-tokens/css';
 
 .stack {
   margin-top: tokens.$cdr-space-one-x;

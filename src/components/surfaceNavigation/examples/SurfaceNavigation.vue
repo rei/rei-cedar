@@ -145,7 +145,8 @@ const boxes: Example[] = [
   }
 
   &__image-wrapper {
-    background-color: tokens.$cdr-color-background-secondary;
+    // $cdr-color-background-secondary was removed from the alpha SCSS.
+    background-color: var(--cdr-surface-neutral);
     padding: tokens.$cdr-space-inset-one-x;
   }
 

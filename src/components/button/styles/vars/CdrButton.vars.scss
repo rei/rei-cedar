@@ -72,7 +72,7 @@
 // COLOR SCOPES
 // Driven by the generated maps. Every entry already carries its public
 // override hook plus the semantic token, for example
-// var(--cdr-color-button-surface, var(--cdr-color-action-surface-brand)),
+// var(--cdr-color-button-surface, var(--cdr-action-surface-brand)),
 // so the loops below compile to exactly two var() levels per declaration.
 // ============================================================================
 
@@ -119,7 +119,7 @@
       } @else {
         box-shadow:
           inset 0 0 0 3px map.get($colors, border-active),
-          inset 0 0 0 5px var(--cdr-color-border-neutral-trace),
+          inset 0 0 0 5px var(--cdr-border-neutral-trace),
           var(--cdr-button-elevation-active);
       }
     }

@@ -60,22 +60,22 @@ $accordion-defaults: (
 
 $accordion-colors: (
   frame: (
-    border: var(--cdr-color-control-border-neutral-faint),
+    border: var(--cdr-control-border-neutral-faint),
   ),
   header: (
-    text: var(--cdr-color-control-text-neutral-prominent),
-    fill: var(--cdr-color-control-icon-neutral-prominent),
-    background-hover: var(--cdr-color-control-surface-neutral-faint),
-    text-hover: var(--cdr-color-control-text-neutral-prominent),
-    fill-hover: var(--cdr-color-control-icon-neutral-prominent),
-    background-focus-visible: var(--cdr-color-control-surface-neutral-faint),
-    text-focus-visible: var(--cdr-color-control-text-neutral-prominent),
-    fill-focus-visible: var(--cdr-color-control-icon-neutral-prominent),
-    background-active: var(--cdr-color-control-surface-neutral-faint),
-    text-active: var(--cdr-color-control-text-neutral-prominent),
-    fill-active: var(--cdr-color-control-icon-neutral-prominent),
+    text: var(--cdr-control-text-neutral-prominent),
+    fill: var(--cdr-control-icon-neutral-prominent),
+    background-hover: var(--cdr-control-surface-neutral-faint),
+    text-hover: var(--cdr-control-text-neutral-prominent),
+    fill-hover: var(--cdr-control-icon-neutral-prominent),
+    background-focus-visible: var(--cdr-control-surface-neutral-faint),
+    text-focus-visible: var(--cdr-control-text-neutral-prominent),
+    fill-focus-visible: var(--cdr-control-icon-neutral-prominent),
+    background-active: var(--cdr-control-surface-neutral-faint),
+    text-active: var(--cdr-control-text-neutral-prominent),
+    fill-active: var(--cdr-control-icon-neutral-prominent),
   ),
   content: (
-    text: var(--cdr-color-control-text-neutral-prominent),
+    text: var(--cdr-control-text-neutral-prominent),
   ),
 );

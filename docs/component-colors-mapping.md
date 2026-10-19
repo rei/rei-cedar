@@ -2,9 +2,8 @@
 
 Source: `main` branch component styles. Each row is one rendered color: the CSS
 declaration, the file that sets it, the legacy token (or literal), and its hex.
-Fill **Semantic equivalent** with the `--cdr-color-…` name this should resolve to.
-Rule: keep the `color` segment; use Figma’s remainder on conflict
-(`--cdr-color-<figma-web-name-remainder>`).
+Fill **Semantic equivalent** with the shipped `@rei/cdr-tokens` name this
+should resolve to (`--cdr-<path>`), without a `color-` segment.
 
 ## abstract
 
@@ -122,67 +121,67 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## caption
 
-| Property | File                               | Legacy token               | Hex     | Semantic equivalent |
-| -------- | ---------------------------------- | -------------------------- | ------- | ------------------- |
-| `color`  | `styles/vars/CdrCaption.maps.scss` | `cdr-color-text-primary`   | #4b4a48 | `--cdr-color-text-neutral-prominent` (hook `--cdr-color-caption-text`) |
-| `color`  | `styles/vars/CdrCaption.maps.scss` | `cdr-color-text-secondary` | #736e65 | `--cdr-color-text-neutral` (hook `--cdr-color-caption-cite-text`) |
+| Property | File                               | Legacy token               | Hex     | Semantic equivalent                                              |
+| -------- | ---------------------------------- | -------------------------- | ------- | ---------------------------------------------------------------- |
+| `color`  | `styles/vars/CdrCaption.maps.scss` | `cdr-color-text-primary`   | #4b4a48 | `--cdr-text-neutral-prominent` (hook `--cdr-color-caption-text`) |
+| `color`  | `styles/vars/CdrCaption.maps.scss` | `cdr-color-text-secondary` | #736e65 | `--cdr-text-neutral` (hook `--cdr-color-caption-cite-text`)      |
 
 ## card
 
-| Property           | File                            | Legacy token                   | Hex     | Semantic equivalent |
-| ------------------ | ------------------------------- | ------------------------------ | ------- | ------------------- |
-| `background-color` | `styles/vars/CdrCard.vars.scss` | `cdr-color-background-primary` | #ffffff | `--cdr-color-surface-natural` (hook `--cdr-card-base-background-color`) |
-| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-link-hover`    | #406eb5 | `--cdr-color-action-text-trigger` (hook `--cdr-card-link-hover-color`) |
-| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-primary`       | #4b4a48 | base `--cdr-color-text-neutral-prominent`, link `--cdr-color-action-text-neutral-bold` |
+| Property           | File                            | Legacy token                   | Hex     | Semantic equivalent                                                        |
+| ------------------ | ------------------------------- | ------------------------------ | ------- | -------------------------------------------------------------------------- |
+| `background-color` | `styles/vars/CdrCard.vars.scss` | `cdr-color-background-primary` | #ffffff | `--cdr-surface-natural` (hook `--cdr-card-base-background-color`)          |
+| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-link-hover`    | #406eb5 | `--cdr-action-text-trigger` (hook `--cdr-card-link-hover-color`)           |
+| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-primary`       | #4b4a48 | base `--cdr-text-neutral-prominent`, link `--cdr-action-text-neutral-bold` |
 
 ## checkbox
 
-| Property                   | File                                | Legacy token                                        | Hex     | Semantic equivalent |
-| -------------------------- | ----------------------------------- | --------------------------------------------------- | ------- | ------------------- |
-| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-disabled`       | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
-| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-selected`       | #4b4a48 | `--cdr-color-control-surface-neutral-bold` |
-| `background-color`, `fill` | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-hover`    | #ffffff | `--cdr-color-control-icon-neutral-trace` |
-| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-disabled`           | #d5cfc3 | `--cdr-color-control-border-neutral-faint` |
-| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected-hover`     | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
-| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected`           | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
-| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-active`   | #4b4a48 | `--cdr-color-control-icon-neutral-bold` |
-| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected`          | #ffffff | `--cdr-color-control-icon-neutral-trace` |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-active`         | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-disabled`       | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-focus`          | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-hover`          | #fafbf9 | `--cdr-color-control-surface-neutral-faint` |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-focus` | #958e83 | `--cdr-color-control-surface-neutral-prominent` |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-hover` | #958e83 | `--cdr-color-control-surface-neutral-prominent` |
-| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected`       | #4b4a48 | `--cdr-color-control-surface-neutral-bold` |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-active`             | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-disabled`           | #d5cfc3 | `--cdr-color-control-border-neutral-faint` |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-hover`              | #2e2e2b | `--cdr-color-control-border-neutral-intense` (nearest; visibly darker) |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected-hover`     | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
-| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected`           | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| Property                   | File                                | Legacy token                                        | Hex     | Semantic equivalent                                              |
+| -------------------------- | ----------------------------------- | --------------------------------------------------- | ------- | ---------------------------------------------------------------- |
+| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-disabled`       | #fafbf9 | `--cdr-control-surface-neutral-faint`                            |
+| `background-color`         | `styles/CdrCheckbox.module.scss`    | `cdr-color-background-input-default-selected`       | #4b4a48 | `--cdr-control-surface-neutral-bold`                             |
+| `background-color`, `fill` | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-hover`    | #ffffff | `--cdr-control-icon-neutral-trace`                               |
+| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-disabled`           | #d5cfc3 | `--cdr-control-border-neutral-faint`                             |
+| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected-hover`     | #4b4a48 | `--cdr-control-border-neutral-bold`                              |
+| `box-shadow`               | `styles/CdrCheckbox.module.scss`    | `cdr-color-border-input-default-selected`           | #4b4a48 | `--cdr-control-border-neutral-bold`                              |
+| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected-active`   | #4b4a48 | `--cdr-control-icon-neutral-bold`                                |
+| `fill`                     | `styles/CdrCheckbox.module.scss`    | `cdr-color-icon-checkbox-default-selected`          | #ffffff | `--cdr-control-icon-neutral-trace`                               |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-active`         | #fafbf9 | `--cdr-control-surface-neutral-faint`                            |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-disabled`       | #fafbf9 | `--cdr-control-surface-neutral-faint`                            |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-focus`          | #fafbf9 | `--cdr-control-surface-neutral-faint`                            |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-hover`          | #fafbf9 | `--cdr-control-surface-neutral-faint`                            |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-focus` | #958e83 | `--cdr-control-surface-neutral-prominent`                        |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected-hover` | #958e83 | `--cdr-control-surface-neutral-prominent`                        |
+| `background-color`         | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-background-input-default-selected`       | #4b4a48 | `--cdr-control-surface-neutral-bold`                             |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-active`             | #4b4a48 | `--cdr-control-border-neutral-bold`                              |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-disabled`           | #d5cfc3 | `--cdr-control-border-neutral-faint`                             |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-hover`              | #2e2e2b | `--cdr-control-border-neutral-intense` (nearest; visibly darker) |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected-hover`     | #4b4a48 | `--cdr-control-border-neutral-bold`                              |
+| —                          | `styles/vars/CdrCheckbox.vars.scss` | `cdr-color-border-input-default-selected`           | #4b4a48 | `--cdr-control-border-neutral-bold`                              |
 
 ## chip
 
-| Property           | File                            | Legacy token                                        | Hex     | Semantic equivalent |
-| ------------------ | ------------------------------- | --------------------------------------------------- | ------- | ------------------- |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-active`          | #edeae3 | `--cdr-color-control-surface-neutral` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-disabled`        | #ffffff | `--cdr-color-surface-neutral-trace` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-focus`           | #ffffff | `--cdr-color-surface-neutral-trace` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-hover`           | #f7f5f3 | `--cdr-color-control-surface-neutral-subtle` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-rest`            | #ffffff | `--cdr-color-surface-neutral-trace` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-active` | #edeae3 | `--cdr-color-control-surface-neutral` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-focus`  | #d5cfc3 | `--cdr-color-control-surface-natural-bold` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-hover`  | #edeae3 | `--cdr-color-control-surface-neutral` |
-| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected`        | #d5cfc3 | `--cdr-color-control-surface-natural-bold` |
-| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-hover`               | #958e83 | `--cdr-color-control-border-neutral` |
-| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-rest`                | #958e83 | `--cdr-color-border-neutral-prominent` |
-| `color`            | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-disabled`                      | #d5cfc3 | `--cdr-color-control-text-neutral-faint` |
-| `color`, `fill`    | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-default`                       | #4b4a48 | `--cdr-color-control-text-neutral-prominent` / `--cdr-color-control-icon-neutral-intense` |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-active`              | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-disabled`            | #d5cfc3 | `--cdr-color-border-neutral` |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-focus`               | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-focus`      | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-hover`      | #736e65 | `--cdr-color-action-border-neutral-prominent` |
-| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-rest`       | #4b4a48 | `--cdr-color-control-border-neutral-bold` |
+| Property           | File                            | Legacy token                                        | Hex     | Semantic equivalent                                                           |
+| ------------------ | ------------------------------- | --------------------------------------------------- | ------- | ----------------------------------------------------------------------------- |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-active`          | #edeae3 | `--cdr-control-surface-neutral`                                               |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-disabled`        | #ffffff | `--cdr-surface-neutral-trace`                                                 |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-focus`           | #ffffff | `--cdr-surface-neutral-trace`                                                 |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-hover`           | #f7f5f3 | `--cdr-control-surface-neutral-subtle`                                        |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-rest`            | #ffffff | `--cdr-surface-neutral-trace`                                                 |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-active` | #edeae3 | `--cdr-control-surface-neutral`                                               |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-focus`  | #d5cfc3 | `--cdr-control-surface-natural-bold`                                          |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected-hover`  | #edeae3 | `--cdr-control-surface-neutral`                                               |
+| `background-color` | `styles/vars/CdrChip.vars.scss` | `cdr-color-background-chip-default-selected`        | #d5cfc3 | `--cdr-control-surface-natural-bold`                                          |
+| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-hover`               | #958e83 | `--cdr-control-border-neutral`                                                |
+| `box-shadow`       | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-rest`                | #958e83 | `--cdr-border-neutral-prominent`                                              |
+| `color`            | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-disabled`                      | #d5cfc3 | `--cdr-control-text-neutral-faint`                                            |
+| `color`, `fill`    | `styles/vars/CdrChip.vars.scss` | `cdr-color-text-chip-default`                       | #4b4a48 | `--cdr-control-text-neutral-prominent` / `--cdr-control-icon-neutral-intense` |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-active`              | #4b4a48 | `--cdr-control-border-neutral-bold`                                           |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-disabled`            | #d5cfc3 | `--cdr-border-neutral`                                                        |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-focus`               | #4b4a48 | `--cdr-control-border-neutral-bold`                                           |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-focus`      | #4b4a48 | `--cdr-control-border-neutral-bold`                                           |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-hover`      | #736e65 | `--cdr-action-border-neutral-prominent`                                       |
+| —                  | `styles/vars/CdrChip.vars.scss` | `cdr-color-border-chip-default-selected-rest`       | #4b4a48 | `--cdr-control-border-neutral-bold`                                           |
 
 ## filmstrip
 
@@ -196,30 +195,30 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## formError
 
-| Property        | File                                 | Legacy token                 | Hex     | Semantic equivalent |
-| --------------- | ------------------------------------ | ---------------------------- | ------- | ------------------- |
-| `color`, `fill` | `styles/vars/CdrFormError.vars.scss` | `cdr-color-text-input-error` | #b33322 | fill `--cdr-color-feedback-icon-error`; text not migrated (no approved match) |
+| Property        | File                                 | Legacy token                 | Hex     | Semantic equivalent                                                     |
+| --------------- | ------------------------------------ | ---------------------------- | ------- | ----------------------------------------------------------------------- |
+| `color`, `fill` | `styles/vars/CdrFormError.vars.scss` | `cdr-color-text-input-error` | #b33322 | fill `--cdr-feedback-icon-error`; text not migrated (no approved match) |
 
 ## formGroup
 
-| Property           | File                                 | Legacy token                       | Hex                       | Semantic equivalent |
-| ------------------ | ------------------------------------ | ---------------------------------- | ------------------------- | ------------------- |
-| `color`            | `styles/CdrFormGroup.module.scss`    | `cdr-color-text-disabled`          | #d5cfc3                   | `--cdr-color-control-text-neutral-faint` |
-| `background-color` | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-background-input-error` | rgba(255, 242, 242, 0.75) | `--cdr-color-feedback-surface-error-trace` |
-| `box-shadow`       | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-border-input-error`     | #b33322                   | `--cdr-color-feedback-border-error` |
-| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-disabled`          | #d5cfc3                   | `--cdr-color-control-text-neutral-faint` |
-| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-input-optional`    | #736e65                   | `--cdr-color-text-neutral` |
+| Property           | File                                 | Legacy token                       | Hex                       | Semantic equivalent                  |
+| ------------------ | ------------------------------------ | ---------------------------------- | ------------------------- | ------------------------------------ |
+| `color`            | `styles/CdrFormGroup.module.scss`    | `cdr-color-text-disabled`          | #d5cfc3                   | `--cdr-control-text-neutral-faint`   |
+| `background-color` | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-background-input-error` | rgba(255, 242, 242, 0.75) | `--cdr-feedback-surface-error-trace` |
+| `box-shadow`       | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-border-input-error`     | #b33322                   | `--cdr-feedback-border-error`        |
+| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-disabled`          | #d5cfc3                   | `--cdr-control-text-neutral-faint`   |
+| `color`            | `styles/vars/CdrFormGroup.vars.scss` | `cdr-color-text-input-optional`    | #736e65                   | `--cdr-text-neutral`                 |
 
 ## fulfillmentTile
 
-| Property                           | File                                        | Legacy token                          | Hex     | Semantic equivalent |
-| ---------------------------------- | ------------------------------------------- | ------------------------------------- | ------- | ------------------- |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-error-01`   | #bb4045 | `--cdr-color-feedback-icon-error` |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-info-01`    | #408e86 | `--cdr-color-feedback-border-info` |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-warning-01` | #b68b37 | `--cdr-color-feedback-border-warning` (nearest; visibly darker) |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-default`      | #726d64 | `--cdr-color-feedback-border-natural` |
-| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-success`      | #3b8349 | `--cdr-color-feedback-border-success` |
-| `background`                       | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-background-primary`        | #ffffff | `--cdr-color-surface-natural` (hook `--cdr-fulfillment-tile-icon-surface`) |
+| Property                           | File                                        | Legacy token                          | Hex     | Semantic equivalent                                                  |
+| ---------------------------------- | ------------------------------------------- | ------------------------------------- | ------- | -------------------------------------------------------------------- |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-error-01`   | #bb4045 | `--cdr-feedback-icon-error`                                          |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-info-01`    | #408e86 | `--cdr-feedback-border-info`                                         |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-border-message-warning-01` | #b68b37 | `--cdr-feedback-border-warning` (nearest; visibly darker)            |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-default`      | #726d64 | `--cdr-feedback-border-natural`                                      |
+| `--cdr-fulfillment-tile-icon-fill` | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-icon-message-success`      | #3b8349 | `--cdr-feedback-border-success`                                      |
+| `background`                       | `styles/CdrFulfillmentTileIcon.module.scss` | `cdr-color-background-primary`        | #ffffff | `--cdr-surface-natural` (hook `--cdr-fulfillment-tile-icon-surface`) |
 
 ## icon
 
@@ -229,28 +228,28 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## input
 
-| Property           | File                             | Legacy token                                  | Hex                       | Semantic equivalent |
-| ------------------ | -------------------------------- | --------------------------------------------- | ------------------------- | ------------------- |
-| `background-color` | `styles/CdrInput.module.scss`    | `cdr-color-background-input-default-active`   | #fafbf9                   |                     |
-| `background-color` | `styles/CdrInput.module.scss`    | `cdr-color-border-input-default`              | #958e83                   |                     |
-| `box-shadow`       | `styles/CdrInput.module.scss`    | `cdr-color-border-input-default-focus`        | #2e2e2b                   |                     |
-| `fill`             | `styles/CdrInput.module.scss`    | `cdr-color-icon-default`                      | #958e83                   |                     |
-| `fill`             | `styles/CdrInput.module.scss`    | `cdr-color-text-primary`                      | #4b4a48                   |                     |
-| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-default-active`   | #fafbf9                   |                     |
-| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-default-disabled` | #fafbf9                   |                     |
-| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-default`          | rgba(247, 245, 243, 0.15) |                     |
-| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-error`            | rgba(255, 242, 242, 0.75) |                     |
-| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-secondary-active` | #ffffff                   |                     |
-| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-secondary`        | rgba(255, 255, 255, 0.85) |                     |
-| `box-shadow`       | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-default`              | #958e83                   |                     |
-| `box-shadow`       | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-error`                | #b33322                   |                     |
-| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-default`                | #2e2e2b                   |                     |
-| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-disabled`               | #d5cfc3                   |                     |
-| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-help`                   | #736e65                   |                     |
-| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-placeholder`            | #736e65                   |                     |
-| `fill`             | `styles/vars/CdrInput.vars.scss` | `cdr-color-icon-default`                      | #958e83                   |                     |
-| —                  | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-default-disabled`     | #d5cfc3                   |                     |
-| —                  | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-default-focus`        | #2e2e2b                   |                     |
+| Property           | File                             | Legacy token                                  | Hex                       | Semantic equivalent                                                                      |
+| ------------------ | -------------------------------- | --------------------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------- |
+| `background-color` | `styles/CdrInput.module.scss`    | `cdr-color-background-input-default-active`   | #fafbf9                   | `--cdr-control-surface-neutral-faint`                                                    |
+| `background-color` | `styles/CdrInput.module.scss`    | `cdr-color-border-input-default`              | #958e83                   | `--cdr-control-border-neutral`                                                           |
+| `box-shadow`       | `styles/CdrInput.module.scss`    | `cdr-color-border-input-default-focus`        | #2e2e2b                   | `--cdr-control-border-neutral-intense` (nearest; visibly darker)                         |
+| `fill`             | `styles/CdrInput.module.scss`    | `cdr-color-icon-default`                      | #958e83                   | `--cdr-control-icon-neutral-prominent`                                                   |
+| `fill`             | `styles/CdrInput.module.scss`    | `cdr-color-text-primary`                      | #4b4a48                   | `--cdr-control-icon-neutral-intense`                                                     |
+| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-default-active`   | #fafbf9                   | `--cdr-control-surface-neutral-faint`                                                    |
+| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-default-disabled` | #fafbf9                   | `--cdr-control-surface-neutral-faint`                                                    |
+| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-default`          | rgba(247, 245, 243, 0.15) | `--cdr-control-surface-neutral-faint` (translucent legacy flattens to an opaque surface) |
+| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-error`            | rgba(255, 242, 242, 0.75) | `--cdr-feedback-surface-error-trace` (translucent legacy flattens to an opaque surface)  |
+| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-secondary-active` | #ffffff                   | `--cdr-control-surface-neutral-trace`                                                    |
+| `background-color` | `styles/vars/CdrInput.vars.scss` | `cdr-color-background-input-secondary`        | rgba(255, 255, 255, 0.85) | `--cdr-control-surface-neutral-trace` (translucent legacy flattens to an opaque surface) |
+| `box-shadow`       | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-default`              | #958e83                   | `--cdr-control-border-neutral`                                                           |
+| `box-shadow`       | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-error`                | #b33322                   | `--cdr-feedback-border-error`                                                            |
+| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-default`                | #2e2e2b                   | `--cdr-control-text-neutral-bold` (nearest; visibly darker)                              |
+| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-disabled`               | #d5cfc3                   | `--cdr-control-text-neutral-faint`                                                       |
+| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-help`                   | #736e65                   | `--cdr-control-text-neutral`                                                             |
+| `color`            | `styles/vars/CdrInput.vars.scss` | `cdr-color-text-input-placeholder`            | #736e65                   | `--cdr-control-text-neutral`                                                             |
+| `fill`             | `styles/vars/CdrInput.vars.scss` | `cdr-color-icon-default`                      | #958e83                   | `--cdr-control-icon-neutral-prominent`                                                   |
+| —                  | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-default-disabled`     | #d5cfc3                   | `--cdr-control-border-neutral-faint`                                                     |
+| —                  | `styles/vars/CdrInput.vars.scss` | `cdr-color-border-input-default-focus`        | #2e2e2b                   | `--cdr-control-border-neutral-intense` (nearest; visibly darker)                         |
 
 ## kicker
 
@@ -291,13 +290,13 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## link
 
-| Property                                                                                      | File                            | Legacy token                 | Hex     | Semantic equivalent |
-| --------------------------------------------------------------------------------------------- | ------------------------------- | ---------------------------- | ------- | ------------------- |
-| `--cdr-link-active-text-color-active`, `--cdr-link-text-color`, `--cdr-link-text-color-hover` | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-primary`     | #4b4a48 |                     |
-| `color`                                                                                       | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-link-active` | #0b2d60 |                     |
-| `color`                                                                                       | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-link-hover`  | #406eb5 |                     |
-| `color`, `fill`                                                                               | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-link-rest`   | #406eb5 |                     |
-| `outline`                                                                                     | `styles/vars/CdrLink.vars.scss` | `cdr-color-outline`          | ?       |                     |
+| Property                                                                                      | File                            | Legacy token                 | Hex     | Semantic equivalent              |
+| --------------------------------------------------------------------------------------------- | ------------------------------- | ---------------------------- | ------- | -------------------------------- |
+| `--cdr-link-active-text-color-active`, `--cdr-link-text-color`, `--cdr-link-text-color-hover` | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-primary`     | #4b4a48 | `--cdr-action-text-neutral-bold` |
+| `color`                                                                                       | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-link-active` | #0b2d60 | `--cdr-action-text-trigger-bold` |
+| `color`                                                                                       | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-link-hover`  | #406eb5 | `--cdr-action-text-trigger`      |
+| `color`, `fill`                                                                               | `styles/vars/CdrLink.vars.scss` | `cdr-color-text-link-rest`   | #406eb5 | `--cdr-action-text-trigger`      |
+| `outline`                                                                                     | `styles/vars/CdrLink.vars.scss` | `cdr-color-outline`          | ?       | (no approved token; kept as-is)  |
 
 ## list
 
@@ -321,12 +320,12 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## pagination
 
-| Property           | File                               | Legacy token                              | Hex     | Semantic equivalent |
-| ------------------ | ---------------------------------- | ----------------------------------------- | ------- | ------------------- |
-| `background-color` | `styles/CdrPagination.module.scss` | `cdr-color-background-pagination-hover`   | #fafbf9 |                     |
-| `background-color` | `styles/CdrPagination.module.scss` | `cdr-color-background-pagination-keyline` | #406eb5 |                     |
-| `color`, `fill`    | `styles/CdrPagination.module.scss` | `cdr-color-text-disabled`                 | #d5cfc3 |                     |
-| `color`, `fill`    | `styles/CdrPagination.module.scss` | `cdr-color-text-primary`                  | #4b4a48 |                     |
+| Property           | File                               | Legacy token                              | Hex     | Semantic equivalent                                                     |
+| ------------------ | ---------------------------------- | ----------------------------------------- | ------- | ----------------------------------------------------------------------- |
+| `background-color` | `styles/CdrPagination.module.scss` | `cdr-color-background-pagination-hover`   | #fafbf9 | `--cdr-action-surface-neutral-faint`                                    |
+| `background-color` | `styles/CdrPagination.module.scss` | `cdr-color-background-pagination-keyline` | #406eb5 | `--cdr-action-border-trigger`                                           |
+| `color`, `fill`    | `styles/CdrPagination.module.scss` | `cdr-color-text-disabled`                 | #d5cfc3 | `--cdr-action-text-neutral-subtle` / `--cdr-action-icon-neutral-subtle` |
+| `color`, `fill`    | `styles/CdrPagination.module.scss` | `cdr-color-text-primary`                  | #4b4a48 | `--cdr-action-text-neutral-bold` / `--cdr-action-icon-neutral-bold`     |
 
 ## popup
 
@@ -347,22 +346,22 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## radio
 
-| Property           | File                             | Legacy token                                        | Hex     | Semantic equivalent |
-| ------------------ | -------------------------------- | --------------------------------------------------- | ------- | ------------------- |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-active`         | #fafbf9 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-disabled`       | #fafbf9 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-focus`          | #fafbf9 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-hover`          | #fafbf9 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-selected-focus` | #958e83 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-selected-hover` | #958e83 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-selected`       | #4b4a48 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-icon-checkbox-default-selected-active`   | #4b4a48 |                     |
-| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-icon-checkbox-default-selected`          | #ffffff |                     |
-| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-active`             | #4b4a48 |                     |
-| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-disabled`           | #d5cfc3 |                     |
-| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-hover`              | #2e2e2b |                     |
-| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-selected-hover`     | #4b4a48 |                     |
-| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-selected`           | #4b4a48 |                     |
+| Property           | File                             | Legacy token                                        | Hex     | Semantic equivalent                                                                                |
+| ------------------ | -------------------------------- | --------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------- |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-active`         | #fafbf9 | `--cdr-control-surface-neutral-faint`                                                              |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-disabled`       | #fafbf9 | `--cdr-control-surface-neutral-faint` (figure) / `--cdr-control-icon-neutral-faint` (inner circle) |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-focus`          | #fafbf9 | `--cdr-control-surface-neutral-faint`                                                              |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-hover`          | #fafbf9 | `--cdr-control-surface-neutral-faint`                                                              |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-selected-focus` | #958e83 | `--cdr-control-surface-neutral-prominent`                                                          |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-selected-hover` | #958e83 | `--cdr-control-surface-neutral-prominent`                                                          |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-background-input-default-selected`       | #4b4a48 | `--cdr-control-surface-neutral-bold`                                                               |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-icon-checkbox-default-selected-active`   | #4b4a48 | `--cdr-control-icon-neutral-intense` (nearest; checkbox renders same value via alias)              |
+| `background-color` | `styles/vars/CdrRadio.vars.scss` | `cdr-color-icon-checkbox-default-selected`          | #ffffff | `--cdr-control-icon-neutral-trace`                                                                 |
+| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-active`             | #4b4a48 | `--cdr-control-border-neutral-bold`                                                                |
+| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-disabled`           | #d5cfc3 | `--cdr-control-border-neutral-faint`                                                               |
+| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-hover`              | #2e2e2b | `--cdr-control-border-neutral-intense` (nearest; visibly darker)                                   |
+| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-selected-hover`     | #4b4a48 | `--cdr-control-border-neutral-bold`                                                                |
+| —                  | `styles/vars/CdrRadio.vars.scss` | `cdr-color-border-input-default-selected`           | #4b4a48 | `--cdr-control-border-neutral-bold`                                                                |
 
 ## rating
 
@@ -378,23 +377,23 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## select
 
-| Property                         | File                              | Legacy token                                  | Hex                       | Semantic equivalent |
-| -------------------------------- | --------------------------------- | --------------------------------------------- | ------------------------- | ------------------- |
-| `fill`                           | `styles/CdrSelect.module.scss`    | `cdr-color-icon-disabled`                     | #d5cfc3                   |                     |
-| `fill`                           | `styles/CdrSelect.module.scss`    | `cdr-color-text-primary`                      | #4b4a48                   |                     |
-| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-default-active`   | #fafbf9                   |                     |
-| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-default-disabled` | #fafbf9                   |                     |
-| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-error`            | rgba(255, 242, 242, 0.75) |                     |
-| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-secondary-active` | #ffffff                   |                     |
-| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-secondary`        | rgba(255, 255, 255, 0.85) |                     |
-| `background`, `background-color` | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-default`          | rgba(247, 245, 243, 0.15) |                     |
-| `box-shadow`                     | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-default-focus`        | #2e2e2b                   |                     |
-| `box-shadow`                     | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-default`              | #958e83                   |                     |
-| `box-shadow`                     | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-error`                | #b33322                   |                     |
-| `color`                          | `styles/vars/CdrSelect.vars.scss` | `cdr-color-text-input-default`                | #2e2e2b                   |                     |
-| `color`                          | `styles/vars/CdrSelect.vars.scss` | `cdr-color-text-input-disabled`               | #d5cfc3                   |                     |
-| `color`                          | `styles/vars/CdrSelect.vars.scss` | `cdr-color-text-primary`                      | #4b4a48                   |                     |
-| —                                | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-default-disabled`     | #d5cfc3                   |                     |
+| Property                         | File                              | Legacy token                                  | Hex                       | Semantic equivalent                                                                      |
+| -------------------------------- | --------------------------------- | --------------------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------- |
+| `fill`                           | `styles/CdrSelect.module.scss`    | `cdr-color-icon-disabled`                     | #d5cfc3                   | `--cdr-control-icon-neutral`                                                             |
+| `fill`                           | `styles/CdrSelect.module.scss`    | `cdr-color-text-primary`                      | #4b4a48                   | `--cdr-control-icon-neutral-intense`                                                     |
+| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-default-active`   | #fafbf9                   | `--cdr-control-surface-neutral-faint`                                                    |
+| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-default-disabled` | #fafbf9                   | `--cdr-control-surface-neutral-faint`                                                    |
+| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-error`            | rgba(255, 242, 242, 0.75) | `--cdr-feedback-surface-error-trace` (translucent legacy flattens to an opaque surface)  |
+| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-secondary-active` | #ffffff                   | `--cdr-control-surface-neutral-trace`                                                    |
+| `background-color`               | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-secondary`        | rgba(255, 255, 255, 0.85) | `--cdr-control-surface-neutral-trace` (translucent legacy flattens to an opaque surface) |
+| `background`, `background-color` | `styles/vars/CdrSelect.vars.scss` | `cdr-color-background-input-default`          | rgba(247, 245, 243, 0.15) | `--cdr-control-surface-neutral-faint` (translucent legacy flattens to an opaque surface) |
+| `box-shadow`                     | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-default-focus`        | #2e2e2b                   | `--cdr-control-border-neutral-intense` (nearest; visibly darker)                         |
+| `box-shadow`                     | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-default`              | #958e83                   | `--cdr-control-border-neutral`                                                           |
+| `box-shadow`                     | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-error`                | #b33322                   | `--cdr-feedback-border-error`                                                            |
+| `color`                          | `styles/vars/CdrSelect.vars.scss` | `cdr-color-text-input-default`                | #2e2e2b                   | `--cdr-control-text-neutral-bold` (nearest; visibly darker)                              |
+| `color`                          | `styles/vars/CdrSelect.vars.scss` | `cdr-color-text-input-disabled`               | #d5cfc3                   | `--cdr-control-text-neutral-faint`                                                       |
+| `color`                          | `styles/vars/CdrSelect.vars.scss` | `cdr-color-text-primary`                      | #4b4a48                   | `--cdr-control-text-neutral-prominent`                                                   |
+| —                                | `styles/vars/CdrSelect.vars.scss` | `cdr-color-border-input-default-disabled`     | #d5cfc3                   | `--cdr-control-border-neutral-faint`                                                     |
 
 ## skeleton
 
@@ -440,27 +439,27 @@ Rule: keep the `color` segment; use Figma’s remainder on conflict
 
 ## switch
 
-| Property               | File                           | Legacy token                                                | Hex     | Semantic equivalent |
-| ---------------------- | ------------------------------ | ----------------------------------------------------------- | ------- | ------------------- |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-default-focus`                 | #fafbf9 |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-default-hover`                 | #fafbf9 |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-default-rest`                  | #fafbf9 |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-default-focus`          | #d5cfc3 |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-default-rest`           | #d5cfc3 |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-selected-default-focus` | #d5cfc3 |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-selected-default-rest`  | #d5cfc3 |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-selected-default-focus`        | #2e2e2b |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-selected-default-hover`        | #2e2e2b |                     |
-| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-selected-default-rest`         | #4b4a48 |                     |
-| `border`, `box-shadow` | `styles/CdrSwitch.module.scss` | `cdr-color-border-secondary`                                | #958e83 |                     |
-| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-default`                                    | #958e83 |                     |
-| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-emphasis`                                   | #4b4a48 |                     |
-| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-switch-selected-default-focus`              | #d5cfc3 |                     |
-| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-switch-selected-default-hover`              | #d5cfc3 |                     |
-| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-switch-selected-default-rest`               | #d5cfc3 |                     |
-| —                      | `styles/CdrSwitch.module.scss` | `cdr-color-border-switch-default-hover`                     | #4b4a48 |                     |
-| —                      | `styles/CdrSwitch.module.scss` | `cdr-color-border-switch-handle-default-focus`              | #d5cfc3 |                     |
-| —                      | `styles/CdrSwitch.module.scss` | `cdr-color-border-switch-handle-default-hover`              | #4b4a48 |                     |
+| Property               | File                           | Legacy token                                                | Hex     | Semantic equivalent                                                       |
+| ---------------------- | ------------------------------ | ----------------------------------------------------------- | ------- | ------------------------------------------------------------------------- |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-default-focus`                 | #fafbf9 | `--cdr-control-surface-neutral-faint`                                     |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-default-hover`                 | #fafbf9 | `--cdr-control-surface-neutral-faint`                                     |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-default-rest`                  | #fafbf9 | `--cdr-control-surface-neutral-faint`                                     |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-default-focus`          | #d5cfc3 | `--cdr-control-surface-natural-bold` (nearest; matches CdrChip treatment) |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-default-rest`           | #d5cfc3 | `--cdr-control-surface-natural-bold` (nearest; matches CdrChip treatment) |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-selected-default-focus` | #d5cfc3 | `--cdr-control-surface-natural-bold` (nearest; matches CdrChip treatment) |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-handle-selected-default-rest`  | #d5cfc3 | `--cdr-control-surface-natural-bold` (nearest; matches CdrChip treatment) |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-selected-default-focus`        | #2e2e2b | `--cdr-control-surface-neutral-intense`                                   |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-selected-default-hover`        | #2e2e2b | `--cdr-control-surface-neutral-intense`                                   |
+| `background-color`     | `styles/CdrSwitch.module.scss` | `cdr-color-background-switch-selected-default-rest`         | #4b4a48 | `--cdr-control-surface-neutral-bold`                                      |
+| `border`, `box-shadow` | `styles/CdrSwitch.module.scss` | `cdr-color-border-secondary`                                | #958e83 | `--cdr-control-border-neutral`                                            |
+| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-default`                                    | #958e83 | `--cdr-control-icon-neutral-prominent`                                    |
+| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-emphasis`                                   | #4b4a48 | `--cdr-control-icon-neutral-intense`                                      |
+| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-switch-selected-default-focus`              | #d5cfc3 | `--cdr-control-icon-neutral`                                              |
+| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-switch-selected-default-hover`              | #d5cfc3 | `--cdr-control-icon-neutral`                                              |
+| `fill`                 | `styles/CdrSwitch.module.scss` | `cdr-color-icon-switch-selected-default-rest`               | #d5cfc3 | `--cdr-control-icon-neutral`                                              |
+| —                      | `styles/CdrSwitch.module.scss` | `cdr-color-border-switch-default-hover`                     | #4b4a48 | `--cdr-control-border-neutral-bold`                                       |
+| —                      | `styles/CdrSwitch.module.scss` | `cdr-color-border-switch-handle-default-focus`              | #d5cfc3 | `--cdr-control-border-neutral-faint`                                      |
+| —                      | `styles/CdrSwitch.module.scss` | `cdr-color-border-switch-handle-default-hover`              | #4b4a48 | `--cdr-control-border-neutral-bold`                                       |
 
 ## table
 

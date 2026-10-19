@@ -6,6 +6,27 @@
 
 The button component has been updated to use semantic tokens following the pattern described in `docs/button-semantic-migration-guide.md`.
 
+## Runtime imports
+
+`@rei/cdr-tokens@15.0.0-alpha.2` keeps the semantic foundations out of its main
+`css` barrel, so load them explicitly alongside the main entry:
+
+```ts
+import '@rei/cdr-tokens/css';
+import '@rei/cdr-tokens/css/color-action';
+import '@rei/cdr-tokens/css/color-control';
+import '@rei/cdr-tokens/css/color-feedback';
+import '@rei/cdr-tokens/css/color-graphik';
+import '@rei/cdr-tokens/css/color-selection';
+import '@rei/cdr-tokens/css/color-surface';
+```
+
+The Storybook preview (`.storybook/preview.ts`) and dev app (`src/dev/index.js`)
+use these imports. Applications consuming the built Cedar package must load the
+same files until the alpha barrel includes the foundations; otherwise the
+semantic custom properties are undefined and components fall back to the legacy
+tokens or render unset colors.
+
 ## Key Changes
 
 ### 1. Semantic Token Paths
@@ -17,7 +38,7 @@ Button now uses semantic token paths with legacy fallbacks:
 background: tokens.$cdr-color-background-button-primary-rest;
 
 /* New approach */
-background: var(--cdr-color-action-surface-brand, var(--cdr-color-background-button-primary-rest));
+background: var(--cdr-action-surface-brand, var(--cdr-color-background-button-primary-rest));
 ```
 
 ### 2. Intent Classification
@@ -52,26 +73,23 @@ Button properties map to semantic roles:
 
 ```css
 --cdr-button-background: var(
-  --cdr-color-action-surface-brand,
+  --cdr-action-surface-brand,
   var(--cdr-color-background-button-primary-rest)
 );
---cdr-button-text: var(--cdr-color-action-text-brand, var(--cdr-color-text-button-primary));
---cdr-button-border: var(
-  --cdr-color-action-border-brand,
-  var(--cdr-color-border-button-primary-rest)
-);
+--cdr-button-text: var(--cdr-action-text-brand, var(--cdr-color-text-button-primary));
+--cdr-button-border: var(--cdr-action-border-brand, var(--cdr-color-border-button-primary-rest));
 ```
 
 ### Secondary Button (neutral identity)
 
 ```css
 --cdr-button-background: var(
-  --cdr-color-action-surface-neutral-faint,
+  --cdr-action-surface-neutral-faint,
   var(--cdr-color-background-button-secondary-rest)
 );
---cdr-button-text: var(--cdr-color-action-text-neutral, var(--cdr-color-text-button-secondary));
+--cdr-button-text: var(--cdr-action-text-neutral, var(--cdr-color-text-button-secondary));
 --cdr-button-border: var(
-  --cdr-color-action-border-neutral-faint,
+  --cdr-action-border-neutral-faint,
   var(--cdr-color-border-button-secondary-rest)
 );
 ```
@@ -80,12 +98,12 @@ Button properties map to semantic roles:
 
 ```css
 --cdr-button-background: var(
-  --cdr-color-action-surface-neutral-intense,
+  --cdr-action-surface-neutral-intense,
   var(--cdr-color-background-button-dark-rest)
 );
---cdr-button-text: var(--cdr-color-action-text-neutral-intense, var(--cdr-color-text-button-dark));
+--cdr-button-text: var(--cdr-action-text-neutral-intense, var(--cdr-color-text-button-dark));
 --cdr-button-border: var(
-  --cdr-color-action-border-neutral-intense,
+  --cdr-action-border-neutral-intense,
   var(--cdr-color-border-button-dark-rest)
 );
 ```
@@ -94,11 +112,11 @@ Button properties map to semantic roles:
 
 ```css
 --cdr-button-background: var(
-  --cdr-color-action-surface-sale,
+  --cdr-action-surface-sale,
   var(--cdr-color-background-button-sale-rest)
 );
---cdr-button-text: var(--cdr-color-action-text-sale, var(--cdr-color-text-button-sale));
---cdr-button-border: var(--cdr-color-action-border-sale, var(--cdr-color-border-button-sale-rest));
+--cdr-button-text: var(--cdr-action-text-sale, var(--cdr-color-text-button-sale));
+--cdr-button-border: var(--cdr-action-border-sale, var(--cdr-color-border-button-sale-rest));
 ```
 
 ## Files Modified

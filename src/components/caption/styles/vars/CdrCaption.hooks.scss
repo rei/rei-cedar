@@ -7,8 +7,8 @@
 
 .cdr-caption {
   // ITEM_DOC: Summary caption's text color. Override with --cdr-color-caption-text.
-  --cdr-color-caption-text: var(--cdr-color-caption-text, var(--cdr-color-text-neutral-prominent));
+  --cdr-color-caption-text: var(--cdr-color-caption-text, var(--cdr-text-neutral-prominent));
 
   // ITEM_DOC: Cite caption's text color. Override with --cdr-color-caption-cite-text.
-  --cdr-color-caption-cite-text: var(--cdr-color-caption-cite-text, var(--cdr-color-text-neutral));
+  --cdr-color-caption-cite-text: var(--cdr-color-caption-cite-text, var(--cdr-text-neutral));
 }
