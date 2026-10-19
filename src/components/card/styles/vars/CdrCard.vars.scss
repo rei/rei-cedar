@@ -6,7 +6,10 @@
   position: relative;
 
   // ITEM_DOC: Background color of a cdr-card
-  background-color: var(--cdr-card-base-background-color, map.get(maps.$card-colors, base, background));
+  background-color: var(
+    --cdr-card-base-background-color,
+    map.get(maps.$card-colors, base, background)
+  );
   border-radius: var(--cdr-card-border-radius);
   box-shadow: var(--cdr-card-box-shadow);
 
@@ -37,7 +40,10 @@
     text-decoration: underline !important;
 
     // ITEM_DOC: Link hover text color of a cdr-card
-    color: var(--cdr-card-link-hover-color, map.get(maps.$card-colors, link, text-hover)) !important;
+    color: var(
+      --cdr-card-link-hover-color,
+      map.get(maps.$card-colors, link, text-hover)
+    ) !important;
   }
 
   &::before {

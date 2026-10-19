@@ -22,6 +22,9 @@ describe('CdrFulfillmentTileIcon token contract', () => {
 
   it('captures the icon-owned layout values', () => {
     expect(contract.defaults.size).toEqual({ kind: 'literal', value: '2.2rem' });
-    expect(contract.defaults['icon-margin']).toEqual({ kind: 'token', name: 'cdr-space-quarter-x' });
+    expect(contract.defaults['icon-margin']).toEqual({
+      kind: 'token',
+      name: 'cdr-space-quarter-x',
+    });
   });
 });

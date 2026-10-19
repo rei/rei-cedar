@@ -18,7 +18,8 @@
 
 @mixin cdr-form-group-error-mixin() {
   // ITEM_DOC: Box-shadow color of a cdr-form-group error
-  box-shadow: inset 0 0 0 1px var(--cdr-form-group-error-box-shadow, map.get(maps.$form-group-colors, error, border));
+  box-shadow: inset 0 0 0 1px
+    var(--cdr-form-group-error-box-shadow, map.get(maps.$form-group-colors, error, border));
 
   // ITEM_DOC: Background color of a cdr-form-group error
   background-color: var(

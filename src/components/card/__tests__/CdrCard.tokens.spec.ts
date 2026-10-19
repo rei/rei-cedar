@@ -16,7 +16,13 @@ describe('CdrCard token contract', () => {
   });
 
   it('captures the existing radius and shadow defaults', () => {
-    expect(contract.defaults['border-radius']).toEqual({ kind: 'token', name: 'cdr-radius-softer' });
-    expect(contract.defaults['box-shadow']).toEqual({ kind: 'token', name: 'cdr-prominence-raised' });
+    expect(contract.defaults['border-radius']).toEqual({
+      kind: 'token',
+      name: 'cdr-radius-softer',
+    });
+    expect(contract.defaults['box-shadow']).toEqual({
+      kind: 'token',
+      name: 'cdr-prominence-raised',
+    });
   });
 });

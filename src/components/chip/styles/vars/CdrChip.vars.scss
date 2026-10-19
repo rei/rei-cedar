@@ -121,10 +121,7 @@
 
     // ITEM_DOC: Box-shadow color of a cdr-chip when selected
     box-shadow: inset 0 0 0 2px
-      var(
-        --cdr-chip-box-shadow-color-selected-rest,
-        map.get(maps.$chip-colors, selected, border)
-      );
+      var(--cdr-chip-box-shadow-color-selected-rest, map.get(maps.$chip-colors, selected, border));
   }
 
   &[aria-pressed='true']:hover,
