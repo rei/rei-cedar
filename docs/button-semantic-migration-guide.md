@@ -1,8 +1,8 @@
 # Button Semantic Token Migration Guide
 
 **Purpose:** Quick reference for the pattern used by the button migration. The
-canonical, gated workflow — including Gate 0 mapping approval, baselines, and
-the isolated comparison — lives in
+canonical, gated workflow — including Gate 0 mapping approval, the isolated
+preview, and the manual comparison — lives in
 `.agents/skills/semantic-token-migration/SKILL.md`.
 
 ## Runtime source
