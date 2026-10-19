@@ -177,8 +177,8 @@ Two corrections from an earlier draft of this ADR, now fixed in code:
 **Omission is not a value.** Interaction and Expression are optional path segments, not required
 enums with a "none"/"default" member:
 
-- No interaction context → the segment is absent: `cdr-color-surface-brand`, never
-  `cdr-color-universal-surface-brand`.
+- No interaction context → the segment is absent: `cdr-surface-brand`, never
+  `cdr-universal-surface-brand`.
 - Base expression → the segment is absent: `color.surface.brand` **is**
   `color.surface.brand.base`. `base` is never written literally.
 
@@ -263,9 +263,8 @@ const contract: ComponentTokenContract = {
     },
   },
 
-  legacy: {
-    /* temporary fallbacks */
-  },
+  hooks: true,
+  defaultVariant: 'primary',
 };
 ```
 
@@ -279,40 +278,25 @@ same identity, not an `on-*` derivative of surface.
 // CdrButton.maps.scss (excerpt)
 $button-colors: (
   primary: (
-    background: var(--cdr-action-surface-brand, #{tokens.$cdr-color-background-button-primary-rest}),
-    text: var(--cdr-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
-    border: var(--cdr-action-border-brand, #{tokens.$cdr-color-border-button-primary-rest}),
-    fill: var(--cdr-action-text-brand, #{tokens.$cdr-color-text-button-primary}),
-    background-hover: var(
-        --cdr-action-surface-brand-faint,
-        #{tokens.$cdr-color-background-button-primary-hover}
-      ),
-    text-hover: var(--cdr-action-text-brand-faint, #{tokens.$cdr-color-text-button-primary-hover}),
-    background-focus-visible: var(
-        --cdr-action-surface-brand-faint,
-        #{tokens.$cdr-color-background-button-primary-hover}
-      ),
+    // ITEM_DOC: Primary button's background color. Override with --cdr-color-button-surface.
+    background: var(--cdr-color-button-surface, var(--cdr-action-surface-brand)),
+    // ITEM_DOC: Primary button's text color. Override with --cdr-color-button-text.
+    text: var(--cdr-color-button-text, var(--cdr-action-text-neutral-trace)),
+    // ITEM_DOC: Primary button's border color. Override with --cdr-color-button-border.
+    border: var(--cdr-color-button-border, var(--cdr-action-border-brand)),
+    // ITEM_DOC: Primary button's icon color. Override with --cdr-color-button-icon.
+    fill: var(--cdr-color-button-icon, var(--cdr-action-icon-neutral-trace)),
     // ...
-    active-inset: #{tokens.$cdr-color-border-button-primary-active-inset},
   ),
 );
 ```
 
-```css
-/* CdrButton.tokens.css (excerpt) */
-.cdr-button {
-  --cdr-button-radius: var(--cdr-radius-softer);
-  /* ... */
-}
-
-.cdr-button--primary {
-  --cdr-button-background: var(
-    --cdr-action-surface-brand,
-    var(--cdr-color-background-button-primary-rest)
-  );
-  /* ... */
-}
-```
+The public hook is the first level of each value, so the compiled CSS keeps the
+consumer override and the package semantic token in exactly two `var()` levels.
+`CdrButton.module.scss` carries only the approved alpha.2 gap and brand
+overrides (`--cdr-border-neutral-trace`, `--cdr-action-surface-brand`,
+`--cdr-action-text-brand`, `--cdr-action-border-brand`); it does not repeat the
+generated matrix.
 
 ### Module file separation of concerns
 
@@ -343,11 +327,14 @@ Focus is **not** treated as hover. They are independent states with independent 
 
 ## What is temporary
 
-### 1. The `legacy` section in the contract
+### 1. Cutover mode (no `legacy` section)
 
-The `legacy` map bridges current `@rei/cdr-tokens` variable names to the dual-value CSS pattern.
-
-**Delete when:** semantic tokens ship in `@rei/cdr-tokens` and the contract's semantic suffixes resolve without fallbacks.
+The migrated contracts are cutover contracts: every color resolves to a package
+semantic token, so there is no `legacy` fallback map. If a component genuinely
+needs a transitional fallback, add the `legacy` section explicitly and track
+its removal; the shipped migrations do not use one. Missing package names are
+handled by a documented gap shim with explicit approval, not by a general
+fallback layer.
 
 ### 2. Backward-compat aliases in `CdrButton.vars.scss`
 
@@ -367,13 +354,13 @@ Link, icon-only, with-background, and elevated are structural variants that over
 
 ### 4. Generated files are committed
 
-`CdrButton.maps.scss` and `CdrButton.tokens.css` are generated and committed.
-
-**Revisit when:** CI runs the generator and fails on drift. The stronger position is:
+`*.maps.scss`, `*.hooks.scss`, and the flat `CdrButton.tokens.css` are
+generated and committed. `pnpm build:maps` formats its own output, so a clean
+run leaves the tree unchanged. CI can use:
 
 ```bash
-npm run build:maps
-# Regenerate and commit; CI verifies generated artifacts are synchronized with contracts.
+pnpm build:maps
+git diff --exit-code -- 'src/components/**/vars/*.scss' src/components/button/styles/CdrButton.tokens.css
 ```
 
 ## Scope of the flat CSS output
@@ -425,7 +412,9 @@ Create `src/components/{name}/Cdr{Name}.tokens.ts`:
 1. Identify custom properties → `defaults`
 2. Identify color variants and semantic slot mappings → `variants`
 3. Identify sizes → `sizes`
-4. Map current tokens to the `legacy` section
+4. Set `hooks: true` / `defaultVariant` when the stylesheet iterates the
+   generated maps; do not add a legacy fallback section for a cutover
+   migration.
 
 Use `CdrButton.tokens.ts` as the reference.
 

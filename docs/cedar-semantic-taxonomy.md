@@ -42,7 +42,7 @@ Interaction Family and Expression are **optional modifiers on the token path, no
 include a "none" or "default" member.**
 
 - No interaction context → the segment is _absent_ from the token name:
-  - `cdr-color-surface-brand` — not `cdr-color-universal-surface-brand`. There is no `universal`
+  - `cdr-surface-brand` — not `cdr-universal-surface-brand`. There is no `universal`
     identity/interaction value; "universal" is what you get when you don't write an interaction
     segment.
 - Base expression → the segment is _absent_ from the token name:
