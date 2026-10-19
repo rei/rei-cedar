@@ -54,8 +54,7 @@ token belongs in the migration table, not in the compiled CSS.
 6. Verify the change:
    - `pnpm build:maps` is idempotent and leaves the generated files clean.
    - `pnpm lint` and `pnpm unit` are green.
-   - Re-run the component's visual baseline / custom diff and review the
-     accepted recolors.
+   - Review the component in Storybook and confirm the accepted recolors.
 
 ## Component hook surface
 

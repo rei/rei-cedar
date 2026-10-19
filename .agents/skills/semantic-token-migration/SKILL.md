@@ -1,10 +1,10 @@
 ---
 name: semantic-token-migration
-description: Migrate Cedar components to semantic colors through a generic token contract, category-scoped manual mapping, an isolated preview, and Storybook + Playwright comparison. Always asks for the component first, then recommends a category for the human to confirm or change.
+description: Migrate Cedar components to semantic colors through a generic token contract, category-scoped manual mapping, an isolated preview, and a manual Storybook comparison. Always asks for the component first, then recommends a category for the human to confirm or change.
 license: proprietary
 metadata:
   author: rei-cedar
-  version: '0.5.1'
+  version: '0.6.0'
   taxonomy: docs/cedar-semantic-taxonomy.md
 ---
 
@@ -18,16 +18,15 @@ approve it and proceed to the next phase. Do not ask a second “confirm” or
 “continue?” question for the same gate after the human approves.
 
 **Protect the original component:** do not edit the target component's files in
-the active checkout while preparing the proposal or visual preview. Work in an
+the active checkout while preparing the proposal or preview. Work in an
 isolated temporary copy of the current working tree, including existing user
-changes. Show the proposed file diff and visual comparison; copy only approved
-files back after explicit acceptance of the complete change set. Never reset or
-overwrite unrelated user changes.
+changes. Show the proposed file diff and a Storybook before/after comparison;
+copy only approved files back after explicit acceptance of the complete change
+set. Never reset or overwrite unrelated user changes.
 
 ## Read before classifying
 
 - `references/contract-pattern.md` — generic contract and map consumption
-- `references/screenshot-workflow.md` — isolated preview and comparison
 - `references/color-lookup.md` and `references/semantic-colors.json` — approved semantic colors and contrast notes (design reference, not a runtime value source)
 - `@rei/cdr-tokens` ≥ 15.0.0-alpha.2 semantic foundations — the runtime source of truth for semantic values; the package ships them as separate `css/color-*` entries
 - `docs/cedar-semantic-taxonomy.md` — taxonomy and omission rules
@@ -143,33 +142,20 @@ Do not present placeholder colors as evidence. State whether the change is
 intentional. Gate 0 requires explicit approval of the state-complete mapping;
 the original component remains untouched.
 
-## Phase 1 — Capture the original (Gate 1)
+## Phase 1 — Review the original (Gate 1)
 
 Start Storybook manually (`pnpm storybook`, normally port 6006). Playwright's
-configured web server is the Vite app, not Storybook. Inspect the actual story
-IDs and set:
+configured web server is the Vite app, not Storybook. Open the component's
+stories and walk every mapped state (rest, hover, focus-visible, active,
+disabled) at desktop and mobile widths. Storybook is the reference for the
+proposal; nothing is captured or committed for it.
 
-```bash
-export VISUAL_COMPONENT=<kebab-name>
-export VISUAL_STORYBOOK_ID=<storybook-id>
-export VISUAL_STORIES=<comma-separated-story-ids>
-export VISUAL_STATES=<supported-states>
-# For interactive components only:
-export VISUAL_STATE_STORIES=<stories-with-visible-trigger>
-export VISUAL_STATE_SELECTOR=<trigger-selector>
-export STORYBOOK_URL=http://localhost:6006
-npx playwright test test/playwright/visual-baseline.spec.ts \
-  --project=visual --update-snapshots
-```
+Record the story IDs and the supported states for the Gate 0 table. No target
+source edits in the active checkout.
 
-Capture all relevant stories, supported states, and desktop/mobile viewports.
-Baselines live in `test/visual-baseline/<kebab-name>/` and are intended to be
-committed. Verify the baseline files/counts, but do **not** open a baseline-only
-gallery or show original-only screenshots. Keep the baseline ready for the one
-complete comparison after the proposal. No target source edits.
-
-Ask Gate 1 approval once. Approval means the original baseline is accepted and
-Phase 2 may start in the isolated copy; do not ask again whether to continue.
+Ask Gate 1 approval once: the original behavior and the state inventory are
+accepted, and Phase 2 may start in the isolated copy; do not ask again whether
+to continue.
 
 ## Phase 2 — Simplify and draft the contract (isolated copy only)
 
@@ -313,52 +299,26 @@ ln -s "$PWD/node_modules" "$PREVIEW_ROOT/repo/node_modules"
 ```
 
 Apply proposed files only under `$PREVIEW_ROOT/repo`. Start that copy's
-Storybook on an available port and point `STORYBOOK_URL` to it. For an early
-color-only preview, write a temporary CSS override outside the repo and set
-`VISUAL_PREVIEW_CSS=/path/to/preview.css`; Playwright injects that stylesheet
-without modifying the component. A CSS-only preview is not a substitute for
-testing the isolated proposed implementation. Never replace the active
-component directory wholesale.
+Storybook on an available port (for example, `pnpm exec storybook dev --port
+6007`) for the Gate 4 comparison; the active checkout's Storybook can stay on 6006. For an early color-only check, add a temporary stylesheet in the isolated
+copy — it is not a substitute for testing the isolated proposed implementation.
+Never replace the active component directory wholesale.
 
 ## Phase 3 — Test the isolated proposal
 
-Run target unit tests, style lint, type-check, and visual comparison in the
-isolated copy. Tests must assert useful component behavior and contract/state
-details, not only generic tags or snapshots. Ensure stories cover all supported
-visual states. Record repository-wide pre-existing failures separately.
+Run target unit tests, style lint, and type-check in the isolated copy. Tests
+must assert useful component behavior and contract/state details, not only
+generic tags or snapshots. Ensure stories cover all supported visual states.
+Record repository-wide pre-existing failures separately.
 
 ## Phase 4 — Compare and approve the proposal (Gate 4)
 
-Capture the proposed implementation with the same stories/viewports as Gate 1:
-
-```bash
-CAPTURE_AFTER=1 npx playwright test test/playwright/visual-baseline.spec.ts \
-  --project=visual
-pnpm diff \
-  --before "test/visual-baseline/$VISUAL_COMPONENT" \
-  --after "test/visual-after/$VISUAL_COMPONENT" \
-  --out "test/visual-delta/$VISUAL_COMPONENT"
-pnpm gallery \
-  --before "test/visual-baseline/$VISUAL_COMPONENT" \
-  --delta "test/visual-delta/$VISUAL_COMPONENT" \
-  --after "test/visual-after/$VISUAL_COMPONENT" \
-  --title "$VISUAL_COMPONENT — before | delta | proposed"
-```
-
-The gallery opens Before | red-pixel Delta | Proposed After. Keep Playwright's
-approved per-pixel threshold `0.05` (5%) and `maxDiffPixels: 0` unchanged. The
-red-pixel diff uses a separate absolute Euclidean RGB-distance threshold of 2
-(not a percentage) so small token shifts remain visible. Inspect all images and
-counts; disposition every difference as an approved recolor or an unintended
-change. A Playwright failure caused only by an accepted recolor is expected,
-not a layout regression.
-
-The runner passes `animations: 'disabled'` to both capture paths. A plain
-`page.screenshot` does not auto-stabilize the way `toHaveScreenshot` does, so
-without that option `hover`/`focus-visible`/`active` captures can land on the
-rest state while a CSS transition is still at t=0. Keep the option when editing
-the runner; if state after-images show a rest color, suspect capture timing
-before reporting a token regression.
+Compare the isolated proposal against the original with the same stories,
+viewports, and states reviewed in Phase 1: keep both Storybooks open side by
+side and review the proposed file diff at the same time. Inspect the states
+whose colors changed; disposition every difference as an approved recolor or
+an unintended change. An accepted recolor is expected; a layout or state
+regression is not.
 
 **Gate 4:** ask one explicit question to accept or adjust the complete proposed
 component, contract, generated-map, and test changes. Until acceptance, the
@@ -368,9 +328,9 @@ active checkout's original component remains untouched.
 
 After acceptance, apply only the reviewed files from the isolated copy. Confirm
 the target diff matches the approved proposal. Run unit tests,
-`pnpm lint:styles`, `pnpm lint:js`, `pnpm lint:types`, and the Playwright
-comparison. Re-open the final gallery and show the images inline. Document
-pre-existing failures and missing semantic colors; do not invent tokens.
+`pnpm lint:styles`, `pnpm lint:js`, and `pnpm lint:types`; review the component
+in Storybook one last time. Document pre-existing failures and missing semantic
+colors; do not invent tokens.
 
 ## Rules
 

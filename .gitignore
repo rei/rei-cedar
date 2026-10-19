@@ -74,5 +74,3 @@ storybook-static
 /.agents/skills/semantic-token-migration/*
 !/.agents/skills/semantic-token-migration/references/
 !/.agents/skills/semantic-token-migration/**
-/test/visual-after/
-/test/visual-delta/

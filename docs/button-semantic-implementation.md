@@ -94,8 +94,8 @@ is in `.agents/skills/semantic-token-migration/SKILL.md`.
 1. Run `pnpm build:maps`; the generated files must be unchanged (the command
    formats its own output).
 2. Run `pnpm lint` and `pnpm unit`.
-3. Re-run the button visual baseline / custom diff and review the accepted
-   recolors: brand, sale, and the neutral expressions changed by design.
+3. Review the button in Storybook and confirm the accepted recolors: brand,
+   sale, and the neutral expressions changed by design.
 4. Check the public hooks in `CdrButton.hooks.scss`; each one must wrap the
    package semantic token and keep the consumer override first.
 
