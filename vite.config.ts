@@ -53,7 +53,12 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    exclude: [...configDefaults.exclude, '**/test/playwright', '**/templates/__tests__'],
+    exclude: [
+      ...configDefaults.exclude,
+      '**/test/playwright',
+      '**/templates/__tests__',
+      'build/component-variables/__tests__/**',
+    ],
     environment: 'jsdom',
     css: {
       modules: {

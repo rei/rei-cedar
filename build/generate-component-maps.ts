@@ -29,6 +29,8 @@ import {
   slotVar,
 } from './component-tokens/naming';
 import { generateActionCSS } from './component-tokens/families/action';
+import { generateButtonMixins } from './component-tokens/button-mixins';
+import { elevatedLegacyColors } from './component-tokens/button-legacy-hooks';
 import { loadTokenManifest, validateContract } from './component-tokens/validate';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -152,6 +154,7 @@ function generateColorVariant(
   variant: VariantContract,
   contract: ComponentTokenContract,
   legacy: Record<string, string>,
+  hookFallbacks: Record<string, string>,
 ): string {
   const lines: string[] = [];
   const scope = hookScope(variantName, contract.defaultVariant);
@@ -169,7 +172,9 @@ function generateColorVariant(
       const hook = hookVar(contract.component, scope, role, state, contract.hookPrefix);
       const description = `${ROLE_LABEL[role] ?? role} color${STATE_LABEL[state] ?? ''}`;
       lines.push(docComment(variantName, contract.component, description, hook));
-      lines.push(`    ${key}: var(${hook}, var(${semanticProp})),`);
+      const alias = hookFallbacks[`${variantName}/${key}`];
+      const fallback = alias ? `var(${alias}, var(${semanticProp}))` : `var(${semanticProp})`;
+      lines.push(`    ${key}: var(${hook}, ${fallback}),`);
     } else {
       lines.push(`    ${key}: var(${semanticProp}),`);
     }
@@ -183,7 +188,9 @@ function generateColorVariant(
       if (extraValue && typeof extraValue === 'object' && useHooks) {
         const description = EXTRA_LABEL[extraKey] ?? extraKey.replace(/-/g, ' ');
         lines.push(docComment(variantName, contract.component, description, hook));
-        lines.push(`    ${extraKey}: var(${hook}, ${scssValue(extraValue)}),`);
+        const alias = hookFallbacks[`${variantName}/${extraKey}`];
+        const fallback = alias ? `var(${alias}, ${scssValue(extraValue)})` : scssValue(extraValue);
+        lines.push(`    ${extraKey}: var(${hook}, ${fallback}),`);
       } else if (extraValue && typeof extraValue === 'object') {
         lines.push(`    ${extraKey}: ${scssValue(extraValue)},`);
       } else if (legacyToken) {
@@ -253,10 +260,14 @@ function generateHooksDoc(contract: ComponentTokenContract, sourcePath: string):
   return lines.join('\n') + '\n';
 }
 
-function generateColors(slug: string, contract: ComponentTokenContract): string {
+function generateColors(
+  slug: string,
+  contract: ComponentTokenContract,
+  hookFallbacks: Record<string, string>,
+): string {
   const legacy = contract.legacy ?? {};
   const variantBlocks = Object.entries(contract.variants)
-    .map(([name, variant]) => generateColorVariant(name, variant, contract, legacy))
+    .map(([name, variant]) => generateColorVariant(name, variant, contract, legacy, hookFallbacks))
     .join('\n');
 
   return `$${slug}-colors: (\n${variantBlocks}\n);`;
@@ -320,6 +331,15 @@ async function main() {
     fs.writeFileSync(outPath, scss, 'utf-8');
     console.log(`  → ${path.relative(SRC_DIR, outPath)} (${scss.split('\n').length} lines)`);
 
+    if (contract.component === 'cdr-button') {
+      const mixinsPath = path.join(componentDir, 'styles', 'vars', `${componentName}.vars.scss`);
+      fs.writeFileSync(
+        mixinsPath,
+        generateButtonMixins(contract, path.relative(path.join(__dirname, '..'), contractPath)),
+      );
+      console.log(`  → ${path.relative(SRC_DIR, mixinsPath)}`);
+    }
+
     // Generate CSS only when this recipe has an implemented behavior template.
     // No output is promised just because a contract declares an interaction.
     if (contract.recipe) {
@@ -356,7 +376,11 @@ async function main() {
   }
 }
 
-function generateScss(contract: ComponentTokenContract, sourcePath: string): string {
+export function generateScss(
+  contract: ComponentTokenContract,
+  sourcePath: string,
+  hookFallbacks: Record<string, string> = {},
+): string {
   const relSource = path.relative(path.join(__dirname, '..'), sourcePath);
   const slug = mapSlug(contract.component);
   const sections: string[] = [];
@@ -378,7 +402,7 @@ function generateScss(contract: ComponentTokenContract, sourcePath: string): str
     sections.push(`// ${'='.repeat(76)}`);
     sections.push(`// COLOR MAP`);
     sections.push(`// ${'='.repeat(76)}\n`);
-    sections.push(generateColors(slug, contract));
+    sections.push(generateColors(slug, contract, hookFallbacks));
   }
 
   if (contract.sizes && Object.keys(contract.sizes).length > 0) {
@@ -388,6 +412,8 @@ function generateScss(contract: ComponentTokenContract, sourcePath: string): str
     sections.push(`// ${'='.repeat(76)}\n`);
     sections.push(generateSizes(slug, contract.sizes));
   }
+
+  if (contract.component === 'cdr-button') sections.push(elevatedLegacyColors(contract));
 
   return sections.join('\n') + '\n';
 }
@@ -406,7 +432,9 @@ function findContracts(dir: string): string[] {
   return results;
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

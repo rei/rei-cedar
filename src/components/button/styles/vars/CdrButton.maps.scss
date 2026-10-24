@@ -451,3 +451,95 @@ $button-sizes: (
     icon-size: tokens.$cdr-icon-size,
   ),
 );
+
+// Elevated border hooks share the same semantic contract.
+$button-elevated-colors: (
+  primary: (
+    border: var(
+        --cdr-color-button-border,
+        var(--cdr-button-primary-box-shadow, var(--cdr-action-border-brand))
+      ),
+    border-hover: var(
+        --cdr-color-button-border-hover,
+        var(--cdr-button-primary-hover-focus-box-shadow, var(--cdr-action-border-brand))
+      ),
+    border-focus-visible: var(
+        --cdr-color-button-border-focus-visible,
+        var(--cdr-button-primary-hover-focus-box-shadow, var(--cdr-action-border-brand))
+      ),
+    border-active: var(
+        --cdr-color-button-border-active,
+        var(--cdr-button-primary-active-box-shadow, var(--cdr-action-border-brand))
+      ),
+    active-inset: var(
+        --cdr-color-button-active-inset,
+        var(--cdr-button-primary-active-inset-box-shadow, var(--cdr-border-neutral-trace))
+      ),
+  ),
+  secondary: (
+    border: var(
+        --cdr-color-button-secondary-border,
+        var(--cdr-button-secondary-box-shadow, var(--cdr-action-border-neutral))
+      ),
+    border-hover: var(
+        --cdr-color-button-secondary-border-hover,
+        var(--cdr-button-secondary-interaction-box-shadow, var(--cdr-action-border-neutral-bold))
+      ),
+    border-focus-visible: var(
+        --cdr-color-button-secondary-border-focus-visible,
+        var(--cdr-button-secondary-interaction-box-shadow, var(--cdr-action-border-neutral-bold))
+      ),
+    border-active: var(
+        --cdr-color-button-secondary-border-active,
+        var(--cdr-button-secondary-active-box-shadow, var(--cdr-action-border-neutral))
+      ),
+    active-inset: var(
+        --cdr-color-button-secondary-active-inset,
+        var(--cdr-button-secondary-active-inset-box-shadow, var(--cdr-border-neutral-trace))
+      ),
+  ),
+  dark: (
+    border: var(
+        --cdr-color-button-dark-border,
+        var(--cdr-button-dark-box-shadow-rest, var(--cdr-action-border-neutral-bold))
+      ),
+    border-hover: var(
+        --cdr-color-button-dark-border-hover,
+        var(--cdr-button-dark-box-shadow-interaction, var(--cdr-action-border-neutral-bold))
+      ),
+    border-focus-visible: var(
+        --cdr-color-button-dark-border-focus-visible,
+        var(--cdr-button-dark-box-shadow-interaction, var(--cdr-action-border-neutral-bold))
+      ),
+    border-active: var(
+        --cdr-color-button-dark-border-active,
+        var(--cdr-button-dark-box-shadow-active, var(--cdr-action-border-neutral-bold))
+      ),
+    active-inset: var(
+        --cdr-color-button-dark-active-inset,
+        var(--cdr-button-dark-active-inset-box-shadow, var(--cdr-action-border-neutral-faint))
+      ),
+  ),
+  sale: (
+    border: var(
+        --cdr-color-button-sale-border,
+        var(--cdr-button-sale-box-shadow-rest, var(--cdr-action-border-sale))
+      ),
+    border-hover: var(
+        --cdr-color-button-sale-border-hover,
+        var(--cdr-button-sale-box-shadow-interaction, var(--cdr-action-border-sale))
+      ),
+    border-focus-visible: var(
+        --cdr-color-button-sale-border-focus-visible,
+        var(--cdr-button-sale-box-shadow-interaction, var(--cdr-action-border-sale))
+      ),
+    border-active: var(
+        --cdr-color-button-sale-border-active,
+        var(--cdr-button-sale-box-shadow-active, var(--cdr-action-border-sale))
+      ),
+    active-inset: var(
+        --cdr-color-button-sale-active-inset,
+        var(--cdr-button-sale-active-inset-box-shadow, var(--cdr-border-neutral-trace))
+      ),
+  ),
+);
