@@ -1,11 +1,5 @@
-/**
- * Layout-only mixins for CdrLink.
- *
- * Base values and colors come from the generated maps in
- * styles/vars/CdrLink.maps.scss (source: CdrLink.tokens.ts); the module
- * emits the base defaults as `--cdr-link-<key>` and applies the color map.
- * The modifier mixins below only flip custom-property values.
- */
+@use 'sass:map';
+@use './CdrLink.maps' as maps;
 
 /**
  * Base layout for CdrLink.
@@ -27,11 +21,23 @@
   padding: var(--cdr-link-padding);
   vertical-align: var(--cdr-link-vertical-align);
   text-decoration: var(--cdr-link-text-decoration);
+  color: map.get(maps.$link-colors, default, text);
+  fill: map.get(maps.$link-colors, default, fill);
 
   &:focus {
+    color: map.get(maps.$link-colors, default, text-focus-visible);
     outline: 2px solid var(--cdr-color-outline, Highlight);
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
+  }
+
+  &:active {
+    color: map.get(maps.$link-colors, default, text-active);
+  }
+
+  &:hover {
+    color: map.get(maps.$link-colors, default, text-hover);
+    text-decoration: var(--cdr-link-text-decoration-hover);
   }
 }
 
@@ -40,4 +46,31 @@
   // Only set text-decoration if not already set by another variant
   --cdr-link-text-decoration: none;
   --cdr-link-text-decoration-hover: underline;
+}
+
+@mixin cdr-link-inherit-color-mixin() {
+  color: inherit !important;
+  fill: inherit !important;
+
+  --cdr-link-text: inherit;
+  --cdr-link-icon: inherit;
+  --cdr-link-text-hover: inherit;
+  --cdr-link-text-focus-visible: inherit;
+  --cdr-link-text-active: inherit;
+}
+
+@mixin cdr-link-neutral-mixin() {
+  color: map.get(maps.$link-colors, neutral, text);
+
+  &:hover {
+    color: map.get(maps.$link-colors, neutral, text-hover);
+  }
+
+  &:focus {
+    color: map.get(maps.$link-colors, neutral, text-focus-visible);
+  }
+
+  &:active {
+    color: map.get(maps.$link-colors, neutral, text-active);
+  }
 }

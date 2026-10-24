@@ -28,7 +28,7 @@ export function buildScssBundle(directory: string, components: string[]): string
   }
   for (const component of components) visit(`${component}.vars.scss`);
   return (
-    "// GENERATED FILE — pnpm build:variables:button\n@use 'sass:map';\n@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as tokens;\n\n" +
+    "// GENERATED FILE — pnpm build:variables\n@use 'sass:map';\n@use '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss' as tokens;\n\n" +
     chunks.join('\n\n') +
     '\n'
   );

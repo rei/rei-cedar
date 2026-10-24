@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
+import { createRequire } from 'node:module';
 import fs from 'fs-extra';
 import { globSync } from 'glob';
 import { buildButtonCSS, buildButtonDemo } from './component-variables/button';
@@ -8,8 +9,11 @@ import contract from '../src/components/button/CdrButton.tokens';
 import { buttonLegacyHooks } from './component-tokens/button-legacy-hooks';
 import { generateScss } from './generate-component-maps';
 import { buildScssBundle } from './component-variables/bundle';
+import { standaloneScss } from './component-variables/standalone';
+import type { ComponentTokenContract } from './component-tokens/types';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const require = createRequire(import.meta.url);
 const destination = path.resolve(root, '../rei-cedar-component-variables/dist');
 const supported = [
   'CdrButton',
@@ -29,7 +33,24 @@ const supported = [
   'CdrSkeleton',
   'CdrList',
   'CdrTable',
+  'CdrCaption',
+  'CdrQuote',
 ];
+
+// Preserve public component override names while semantic values come from contracts.
+const legacyHooks: Record<string, Record<string, string>> = {
+  CdrLink: Object.fromEntries(
+    ['default', 'neutral'].flatMap((variant) =>
+      Object.entries({
+        text: '--cdr-link-text-color',
+        fill: '--cdr-link-fill-color',
+        'text-hover': '--cdr-link-text-color-hover',
+        'text-focus-visible': '--cdr-link-active-text-color-active',
+        'text-active': '--cdr-link-active-text-color-active',
+      }).map(([key, hook]) => [`${variant}/${key}`, hook]),
+    ),
+  ),
+};
 
 const { values } = parseArgs({ options: { component: { type: 'string' } } });
 if (values.component && !supported.includes(values.component)) {
@@ -57,9 +78,10 @@ for (const component of values.component ? [values.component] : supported) {
   collect(source);
 }
 
-// Resolve every source before writing, so a missing dependency cannot leave a partial transfer.
+// Prepare every source before writing, so missing dependencies/contracts cannot leave a partial transfer.
+const prepared = new Map<string, string>();
 for (const [source, content] of files) {
-  const generated =
+  let generated =
     path.basename(source) === 'CdrButton.maps.scss'
       ? generateScss(
           contract,
@@ -67,13 +89,33 @@ for (const [source, content] of files) {
           buttonLegacyHooks(contract),
         ).trimEnd() + '\n'
       : content;
-  fs.outputFileSync(
-    path.join(destination, 'scss', path.basename(source)),
+  const component = path.basename(source).split('.')[0];
+  const componentRoot = path.resolve(path.dirname(source), '../..');
+  const contractPath = path.join(componentRoot, `${component}.tokens.ts`);
+  if (component !== 'CdrButton' && fs.existsSync(contractPath)) {
+    const { default: componentContract }: { default: ComponentTokenContract } = require(
+      contractPath,
+    );
+    if (source.endsWith('.maps.scss') && legacyHooks[component]) {
+      generated =
+        generateScss(componentContract, contractPath, legacyHooks[component]).trimEnd() + '\n';
+    }
+    generated = standaloneScss(
+      generated,
+      componentContract,
+      fs.readFileSync(path.join(componentRoot, `styles/${component}.module.scss`), 'utf8'),
+    );
+  }
+  prepared.set(
+    source,
     generated.replaceAll(
       '@rei/cdr-tokens/scss',
       '@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss',
     ),
   );
+}
+for (const [source, content] of prepared) {
+  fs.outputFileSync(path.join(destination, 'scss', path.basename(source)), content);
   console.log(`copied ${path.basename(source)}`);
 }
 

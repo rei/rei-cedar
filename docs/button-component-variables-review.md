@@ -21,12 +21,14 @@ Three independent adversarial reviews were completed. They found and resolved:
 Final checks:
 
 - `pnpm unit`: 740 tests in 94 files pass.
-- `pnpm test:variables`: 9 integration checks pass.
+- `pnpm test:variables`: 14 integration checks pass, including all 81 examples
+  across 19 components and a v11 API inventory of 124 mixin names.
 - `pnpm exec playwright test --config playwright.component-variables.config.ts`:
-  12 tests pass across Chromium, Firefox and WebKit. These compare the examples
-  around every breakpoint and exercise interaction states and legacy overrides.
+  15 tests pass across Chromium, Firefox and WebKit. These compare Button examples
+  around every breakpoint, exercise interaction states and legacy overrides, and
+  check the full package's defaults, semantic dependencies and inherited overrides.
 - Lint, Sass lint, TypeScript, changed-file formatting and `git diff --check` pass.
-- Rebuilding leaves all 53 generated artifacts byte-identical.
+- Both full and scoped rebuilds leave all 39 package files byte-identical.
 - Comparing the original PR Sass output with the refactored output finds zero
   declaration differences across its 71 original rules. Elevated CSS classes
   are additional output.
@@ -38,3 +40,11 @@ Final checks:
 The compatibility target is CdrButton's Sass API with the PR's semantic styling.
 It still requires runtime semantic token CSS and migration of old global token
 overrides. The work does not produce LESS or promise pixel identity with v11.
+
+The all-components extension received two further independent adversarial
+reviews. Those caught missing Link inherit/neutral mixins and six retired
+component hooks in Link/Breadcrumb; the exported API now retains them. Existing
+Caption/Quote examples were corrected to apply content mixins to their paragraphs.
+The transfer supplies contract defaults and temporary alpha shims without Vue
+initialization. Full browser parity remains specific to Button; the other
+components receive compilation/API coverage and focused browser checks.

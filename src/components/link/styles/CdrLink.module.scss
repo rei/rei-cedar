@@ -26,52 +26,15 @@
     --cdr-link-#{$key}: #{$value};
   }
 
-  color: map.get(maps.$link-colors, default, text);
-  fill: map.get(maps.$link-colors, default, fill);
-
-  &:focus {
-    color: map.get(maps.$link-colors, default, text-focus-visible);
-  }
-
-  &:active {
-    color: map.get(maps.$link-colors, default, text-active);
-  }
-
-  &:hover {
-    color: map.get(maps.$link-colors, default, text-hover);
-    text-decoration: var(--cdr-link-text-decoration-hover);
-  }
-
   &--standalone {
     @include vars.cdr-link-standalone-mixin;
   }
 
   &--inherit-color {
-    // Inherit text and fill color from parent for the link and its icon content
-    color: inherit !important;
-    fill: inherit !important;
-
-    --cdr-link-text: inherit;
-    --cdr-link-icon: inherit;
-    --cdr-link-text-hover: inherit;
-    --cdr-link-text-focus-visible: inherit;
-    --cdr-link-text-active: inherit;
+    @include vars.cdr-link-inherit-color-mixin;
   }
 
   &--neutral {
-    // Neutral variant: all states use the neutral action text color.
-    color: map.get(maps.$link-colors, neutral, text);
-
-    &:hover {
-      color: map.get(maps.$link-colors, neutral, text-hover);
-    }
-
-    &:focus {
-      color: map.get(maps.$link-colors, neutral, text-focus-visible);
-    }
-
-    &:active {
-      color: map.get(maps.$link-colors, neutral, text-active);
-    }
+    @include vars.cdr-link-neutral-mixin;
   }
 }

@@ -6,6 +6,8 @@ Keep `rei-cedar` and `rei-cedar-component-variables` as sibling checkouts.
 ```sh
 pnpm install --frozen-lockfile
 pnpm build:variables:button
+# Or export every supported component:
+pnpm build:variables
 pnpm test:variables
 pnpm exec playwright test --config playwright.component-variables.config.ts
 ```
@@ -43,6 +45,24 @@ unit checks cover all old mixins/hooks, package entrypoints, a standalone bundle
 unknown modifiers and a contract extended with a new variant/size.
 
 The integration checks run separately from `pnpm unit`, so regular Cedar CI does
-not require a sibling checkout. The button export also retains Card's legacy
-white Sass fallback: alpha.2 removed that old token, and otherwise existing Card
-consumers would fail compilation after the package token upgrade.
+not require a sibling checkout.
+
+## Full package build
+
+In the component-variables checkout, `pnpm build:all` runs Cedar's
+`build:variables` and then rebuilds the documentation data. It exports all 19
+documented components, including Caption/Quote and the Checkbox/Radio examples.
+Migrated components receive their generated contract maps and existing structural
+mixins; components without contracts retain their Sass recipes. The transfer
+adds fallbacks from contract defaults so the mixins do not depend on the Vue
+root class initializing custom properties. Temporary alpha-token fallbacks come
+from the corresponding source module. CdrLink and CdrCaption share their recipes
+with Vue so their palette/state behavior is included in the exports.
+
+For all components, load the token CSS root and `color-surface`, `color-action`,
+`color-control`, and `color-feedback`. The full build generates individual Sass
+entrypoints, their dependencies, index and standalone bundle, plus Button's
+complete CSS/demo. It does not generate a class-based CSS file for every other
+component. `pnpm test:variables` compiles every documentation example and checks
+index, legacy import and a detached bundle. Browser checks exercise structural
+defaults, inherited overrides and semantic token dependencies without Vue.

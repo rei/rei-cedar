@@ -158,13 +158,14 @@ describe('generated CdrButton component variables', () => {
     }
   });
 
-  it('preserves the unmigrated Card fallback when tokens are upgraded', () => {
+  it('keeps Card usable from the combined entrypoints after a full build', () => {
     for (const file of ['index.scss', 'cedar-component-variables.scss']) {
       const css = compile(
         '.card { @include button.cdr-card-base-mixin; }',
         path.join(packageRoot, 'dist/scss', file),
       );
-      expect(css).toContain('var(--cdr-color-background-primary, #ffffff)');
+      expect(css).toContain('var(--cdr-card-base-background-color, var(--cdr-surface-natural))');
+      expect(css).toContain('var(--cdr-card-border-radius, 0.4rem)');
     }
   });
 
