@@ -12,11 +12,19 @@ describe('CdrCheckbox token contract', () => {
     });
   });
 
-  it('maps the checked rest to bold Control tokens with a trace icon', () => {
+  it('maps the checked rest to bold Control tokens with a faint icon', () => {
     expect(contract.variants.checked.rest).toEqual({
       surface: 'neutral-bold',
-      border: 'neutral-bold',
-      icon: 'neutral-trace',
+      border: 'neutral',
+      icon: 'neutral-faint',
+    });
+  });
+
+  it('gives checked a dedicated disabled treatment', () => {
+    expect(contract.variants.checked.disabled).toEqual({
+      surface: 'neutral-prominent',
+      border: 'neutral-faint',
+      icon: 'neutral',
     });
   });
 
