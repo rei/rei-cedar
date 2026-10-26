@@ -4,11 +4,11 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { pathToFileURL } from 'node:url';
 import * as sass from 'sass';
-import type { ButtonExample } from '../../../build/component-variables/button';
+import type { ComponentExample } from '../../../build/component-variables/component';
 
 const packageRoot = path.resolve('../rei-cedar-component-variables');
 const demo = readFileSync(path.join(packageRoot, 'dist/demo/CdrButton.html'), 'utf8');
-const { examples }: { examples: ButtonExample[] } = JSON.parse(
+const { examples }: { examples: ComponentExample[] } = JSON.parse(
   readFileSync(path.join(packageRoot, 'examples/cdr-button.json'), 'utf8'),
 );
 const properties = [

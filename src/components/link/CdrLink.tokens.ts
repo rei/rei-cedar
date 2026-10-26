@@ -40,6 +40,19 @@ const contract: ComponentTokenContract = {
   interaction: 'action',
   hooks: true,
   defaultVariant: 'default',
+  componentVariables: {
+    hooks: Object.fromEntries(
+      ['default', 'neutral'].flatMap((variant) =>
+        Object.entries({
+          text: '--cdr-link-text-color',
+          fill: '--cdr-link-fill-color',
+          'text-hover': '--cdr-link-text-color-hover',
+          'text-focus-visible': '--cdr-link-active-text-color-active',
+          'text-active': '--cdr-link-active-text-color-active',
+        }).map(([key, hook]) => [`${variant}/${key}`, hook]),
+      ),
+    ),
+  },
 
   // Base values captured from the existing stylesheet.
   defaults: {

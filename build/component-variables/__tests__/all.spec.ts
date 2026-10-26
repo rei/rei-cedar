@@ -10,11 +10,12 @@ import { globSync } from 'glob';
 import { standaloneScss } from '../standalone';
 import type { ComponentTokenContract } from '../../component-tokens/types';
 import { literal } from '../../component-tokens/types';
-import type { ButtonExample } from '../button';
+import type { ComponentExample } from '../component';
+import { createHash } from 'node:crypto';
 
 interface ComponentExamples {
   name: string;
-  examples: ButtonExample[];
+  examples: ComponentExample[];
 }
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
@@ -44,6 +45,23 @@ function rules(css: string) {
 }
 
 describe('all component variables', () => {
+  it('matches every package file from before build generalization', () => {
+    const expected: Record<string, string> = JSON.parse(
+      readFileSync(new URL('./fixtures/output-sha256.json', import.meta.url), 'utf8'),
+    );
+    const directory = path.join(packageRoot, 'dist');
+    const actual = Object.fromEntries(
+      globSync('**/*', { cwd: directory, nodir: true })
+        .sort()
+        .map((file) => [
+          file,
+          createHash('sha256')
+            .update(readFileSync(path.join(directory, file)))
+            .digest('hex'),
+        ]),
+    );
+    expect(actual).toEqual(expected);
+  });
   it('retains every previous public mixin and component hook', () => {
     const scss = readdirSync(path.join(packageRoot, 'dist/scss'))
       .filter((name) => name.endsWith('.scss'))
@@ -124,13 +142,14 @@ describe('all component variables', () => {
   });
 
   it('supplies every referenced migrated structural default without Vue initialization', async () => {
-    for (const component of Object.keys(examples).filter((name) => name !== 'CdrButton')) {
+    for (const component of Object.keys(examples)) {
       const [source] = globSync(`src/components/**/${component}.tokens.ts`, {
         cwd: root,
         absolute: true,
       });
       if (!source) continue;
       const { default: contract }: { default: ComponentTokenContract } = await import(source);
+      if (contract.recipe === 'pressable') continue; // Shared recipes initialize their contract defaults.
       const vars = readFileSync(path.join(packageRoot, `dist/scss/${component}.vars.scss`), 'utf8');
       for (const key of Object.keys(contract.defaults ?? {})) {
         expect(vars, `${component}: ${key}`).not.toContain(`var(${contract.prefix}-${key})`);

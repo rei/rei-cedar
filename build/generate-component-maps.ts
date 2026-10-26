@@ -29,8 +29,8 @@ import {
   slotVar,
 } from './component-tokens/naming';
 import { generateActionCSS } from './component-tokens/families/action';
-import { generateButtonMixins } from './component-tokens/button-mixins';
-import { elevatedLegacyColors } from './component-tokens/button-legacy-hooks';
+import { generatePressableMixins } from './component-tokens/pressable-mixins';
+import { generateElevatedColors } from './component-tokens/elevated-colors';
 import { loadTokenManifest, validateContract } from './component-tokens/validate';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -331,11 +331,14 @@ async function main() {
     fs.writeFileSync(outPath, scss, 'utf-8');
     console.log(`  → ${path.relative(SRC_DIR, outPath)} (${scss.split('\n').length} lines)`);
 
-    if (contract.component === 'cdr-button') {
+    if (
+      contract.recipe === 'pressable' &&
+      fs.existsSync(path.join(componentDir, 'styles', 'vars', `${componentName}.recipe.scss`))
+    ) {
       const mixinsPath = path.join(componentDir, 'styles', 'vars', `${componentName}.vars.scss`);
       fs.writeFileSync(
         mixinsPath,
-        generateButtonMixins(contract, path.relative(path.join(__dirname, '..'), contractPath)),
+        generatePressableMixins(contract, path.relative(path.join(__dirname, '..'), contractPath)),
       );
       console.log(`  → ${path.relative(SRC_DIR, mixinsPath)}`);
     }
@@ -413,7 +416,7 @@ export function generateScss(
     sections.push(generateSizes(slug, contract.sizes));
   }
 
-  if (contract.component === 'cdr-button') sections.push(elevatedLegacyColors(contract));
+  if (contract.recipe === 'pressable') sections.push(generateElevatedColors(contract));
 
   return sections.join('\n') + '\n';
 }

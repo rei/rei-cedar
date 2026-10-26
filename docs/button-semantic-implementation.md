@@ -92,7 +92,7 @@ is in `.agents/skills/semantic-token-migration/SKILL.md`.
 - `src/components/button/styles/vars/CdrButton.vars.scss` — generated public mixins
 - `src/components/button/styles/vars/CdrButton.recipe.scss` — shared structural
   behavior and approved local overrides
-- `docs/button-component-variables.md` — local package generation and verification
+- `docs/component-variables.md` — shared package generation and verification
 
 ## Testing
 

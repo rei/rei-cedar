@@ -7,9 +7,9 @@ import { fileURLToPath } from 'node:url';
 import * as sass from 'sass';
 import postcss from 'postcss';
 import contract from '../../../src/components/button/CdrButton.tokens';
-import { generateButtonMixins } from '../../component-tokens/button-mixins';
+import { generatePressableMixins } from '../../component-tokens/pressable-mixins';
 import { generateScss } from '../../generate-component-maps';
-import { buildButtonCSS, compileButtonExamples, sassOptions } from '../button';
+import { buildComponentCSS, compileComponentExamples, sassOptions } from '../component';
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const packageRoot = path.resolve(root, '../rei-cedar-component-variables');
@@ -20,6 +20,17 @@ const { examples } = JSON.parse(
 );
 const compile = (body: string, file = entry) =>
   sass.compileString(`@use '${file}' as button; ${body}`, sassOptions).css;
+
+const compileExamples = (
+  examples: { name: string; html: string; scss: string[] }[],
+  entry: string,
+) => compileComponentExamples(examples, entry, contract.component);
+const buildReferenceCSS = () =>
+  buildComponentCSS(
+    path.join(root, 'src/components/button/styles/vars/CdrButton.vars.scss'),
+    path.join(root, 'src/components/button/styles/CdrButton.module.scss'),
+    contract,
+  );
 
 const legacyHooks: string[] = JSON.parse(
   readFileSync(new URL('./fixtures/legacy-button-hooks.json', import.meta.url), 'utf8'),
@@ -100,7 +111,7 @@ describe('generated CdrButton component variables', () => {
   });
 
   it('retains all 108 legacy component hooks without restoring deprecated token defaults', () => {
-    const css = compileButtonExamples(examples, entry);
+    const css = compileExamples(examples, entry);
     expect(legacyHooks).toHaveLength(108);
     for (const hook of legacyHooks) expect(css, hook).toContain(`var(${hook},`);
     expect(css).not.toContain('var(--cdr-color-background-button-');
@@ -131,8 +142,8 @@ describe('generated CdrButton component variables', () => {
         root.walkComments((comment) => comment.remove());
         return root.toString().trim();
       };
-      expect(clean(compileButtonExamples(examples, bundle))).toBe(
-        clean(compileButtonExamples(examples, entry)),
+      expect(clean(compileExamples(examples, bundle))).toBe(
+        clean(compileExamples(examples, entry)),
       );
     } finally {
       rmSync(directory, { recursive: true, force: true });
@@ -140,7 +151,7 @@ describe('generated CdrButton component variables', () => {
   });
 
   it('compiles all documented combinations without a Vue component', () => {
-    const css = compileButtonExamples(examples, entry);
+    const css = compileExamples(examples, entry);
     expect(css).toContain('.cdr-button-with-background:focus-visible');
     expect(css).toContain('.cdr-button-sale-elevated[disabled]');
     expect(css).not.toMatch(/undefined|\[object Object\]|NaN/);
@@ -169,27 +180,37 @@ describe('generated CdrButton component variables', () => {
     }
   });
 
-  it('generates working wrappers when the contract gains a variant and a size', () => {
+  it('generates working wrappers for a different component, variant and size', () => {
     const updated = structuredClone(contract);
+    updated.component = 'cdr-trigger';
+    updated.prefix = '--cdr-trigger';
+    updated.componentVariables = undefined;
     updated.variants.test = updated.variants.sale;
     updated.sizes!.compact = updated.sizes!.small;
-    const directory = mkdtempSync(path.join(tmpdir(), 'cedar-button-'));
+    const directory = mkdtempSync(path.join(tmpdir(), 'cedar-pressable-'));
     try {
       writeFileSync(
-        path.join(directory, 'CdrButton.vars.scss'),
-        generateButtonMixins(updated, source),
+        path.join(directory, 'CdrTrigger.vars.scss'),
+        generatePressableMixins(updated, source.replace('CdrButton', 'CdrTrigger')),
       );
-      writeFileSync(path.join(directory, 'CdrButton.maps.scss'), generateScss(updated, source));
-      copyFileSync(
-        path.join(root, 'src/components/button/styles/vars/CdrButton.recipe.scss'),
-        path.join(directory, 'CdrButton.recipe.scss'),
+      writeFileSync(path.join(directory, 'CdrTrigger.maps.scss'), generateScss(updated, source));
+      writeFileSync(
+        path.join(directory, 'CdrTrigger.recipe.scss'),
+        readFileSync(
+          path.join(root, 'src/components/button/styles/vars/CdrButton.recipe.scss'),
+          'utf8',
+        )
+          .replaceAll('CdrButton', 'CdrTrigger')
+          .replaceAll('cdr-button', 'cdr-trigger')
+          .replaceAll('maps.$button-', 'maps.$trigger-'),
       );
       const css = compile(
-        '.consumer { @include button.cdr-button-base-mixin; @include button.cdr-button-test-mixin; @include button.cdr-button-compact-mixin; }',
-        path.join(directory, 'CdrButton.vars.scss'),
+        '.consumer { @include button.cdr-trigger-base-mixin; @include button.cdr-trigger-test-mixin; @include button.cdr-trigger-compact-mixin; @include button.cdr-trigger-test-elevated-mixin; }',
+        path.join(directory, 'CdrTrigger.vars.scss'),
       );
-      expect(css).toContain('--cdr-color-button-test-surface');
-      expect(css).toContain('--cdr-button-font-size: 1.4rem');
+      expect(css).toContain('--cdr-color-trigger-test-surface');
+      expect(css).toContain('--cdr-trigger-font-size: 1.4rem');
+      expect(css).not.toContain('--cdr-button-');
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
@@ -197,7 +218,7 @@ describe('generated CdrButton component variables', () => {
 
   it('matches every Vue variant declaration and state, including icon structure', () => {
     const vueRules = new Map<string, string[]>();
-    postcss.parse(buildButtonCSS()).walkRules((rule) => {
+    postcss.parse(buildReferenceCSS()).walkRules((rule) => {
       vueRules.set(
         rule.selector,
         rule.nodes.filter((node) => node.type === 'decl').map((node) => node.toString()),

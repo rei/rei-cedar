@@ -4,9 +4,7 @@ import { parseArgs } from 'node:util';
 import { createRequire } from 'node:module';
 import fs from 'fs-extra';
 import { globSync } from 'glob';
-import { buildButtonCSS, buildButtonDemo } from './component-variables/button';
-import contract from '../src/components/button/CdrButton.tokens';
-import { buttonLegacyHooks } from './component-tokens/button-legacy-hooks';
+import { buildComponentCSS, buildComponentDemo } from './component-variables/component';
 import { generateScss } from './generate-component-maps';
 import { buildScssBundle } from './component-variables/bundle';
 import { standaloneScss } from './component-variables/standalone';
@@ -37,21 +35,6 @@ const supported = [
   'CdrQuote',
 ];
 
-// Preserve public component override names while semantic values come from contracts.
-const legacyHooks: Record<string, Record<string, string>> = {
-  CdrLink: Object.fromEntries(
-    ['default', 'neutral'].flatMap((variant) =>
-      Object.entries({
-        text: '--cdr-link-text-color',
-        fill: '--cdr-link-fill-color',
-        'text-hover': '--cdr-link-text-color-hover',
-        'text-focus-visible': '--cdr-link-active-text-color-active',
-        'text-active': '--cdr-link-active-text-color-active',
-      }).map(([key, hook]) => [`${variant}/${key}`, hook]),
-    ),
-  ),
-};
-
 const { values } = parseArgs({ options: { component: { type: 'string' } } });
 if (values.component && !supported.includes(values.component)) {
   throw new Error(`Unsupported component: ${values.component}`);
@@ -80,31 +63,33 @@ for (const component of values.component ? [values.component] : supported) {
 
 // Prepare every source before writing, so missing dependencies/contracts cannot leave a partial transfer.
 const prepared = new Map<string, string>();
+const recipes = new Map<string, { contract: ComponentTokenContract; source: string }>();
 for (const [source, content] of files) {
-  let generated =
-    path.basename(source) === 'CdrButton.maps.scss'
-      ? generateScss(
-          contract,
-          path.join(root, 'src/components/button/CdrButton.tokens.ts'),
-          buttonLegacyHooks(contract),
-        ).trimEnd() + '\n'
-      : content;
+  let generated = content;
   const component = path.basename(source).split('.')[0];
   const componentRoot = path.resolve(path.dirname(source), '../..');
   const contractPath = path.join(componentRoot, `${component}.tokens.ts`);
-  if (component !== 'CdrButton' && fs.existsSync(contractPath)) {
+  if (fs.existsSync(contractPath)) {
     const { default: componentContract }: { default: ComponentTokenContract } = require(
       contractPath,
     );
-    if (source.endsWith('.maps.scss') && legacyHooks[component]) {
-      generated =
-        generateScss(componentContract, contractPath, legacyHooks[component]).trimEnd() + '\n';
-    }
-    generated = standaloneScss(
-      generated,
-      componentContract,
-      fs.readFileSync(path.join(componentRoot, `styles/${component}.module.scss`), 'utf8'),
+    const sharedRecipe = fs.existsSync(
+      path.join(componentRoot, `styles/vars/${component}.recipe.scss`),
     );
+    if (source.endsWith('.maps.scss') && componentContract.componentVariables?.hooks) {
+      generated =
+        generateScss(
+          componentContract,
+          contractPath,
+          componentContract.componentVariables.hooks,
+        ).trimEnd() + '\n';
+    }
+    const modulePath = path.join(componentRoot, `styles/${component}.module.scss`);
+    if (sharedRecipe && componentContract.recipe === 'pressable') {
+      recipes.set(component, { contract: componentContract, source: modulePath });
+    } else {
+      generated = standaloneScss(generated, componentContract, fs.readFileSync(modulePath, 'utf8'));
+    }
   }
   prepared.set(
     source,
@@ -119,23 +104,6 @@ for (const [source, content] of prepared) {
   console.log(`copied ${path.basename(source)}`);
 }
 
-// Existing entrypoints in a scoped build must resolve tokens with plain Dart Sass too.
-for (const file of globSync('*.scss', { cwd: path.join(destination, 'scss'), absolute: true })) {
-  const content = fs.readFileSync(file, 'utf8');
-  // Card is not migrated in a button-only export; preserve v14's removed white fallback.
-  const compatible =
-    path.basename(file) === 'CdrCard.vars.scss'
-      ? content.replace('#{tokens.$cdr-color-background-primary}', '#ffffff')
-      : content;
-  fs.writeFileSync(
-    file,
-    compatible.replaceAll(
-      "'@rei/cdr-tokens/scss'",
-      "'@rei/cdr-tokens/dist/rei-dot-com/scss/cdr-tokens.scss'",
-    ),
-  );
-}
-
 fs.outputFileSync(
   path.join(destination, 'scss/index.scss'),
   supported.map((component) => `@forward './${component}.vars.scss';`).join('\n') + '\n',
@@ -145,10 +113,13 @@ fs.outputFileSync(
   buildScssBundle(path.join(destination, 'scss'), supported),
 );
 
-if (!values.component || values.component === 'CdrButton') {
+for (const [component, { contract, source }] of recipes) {
   fs.outputFileSync(
-    path.join(destination, 'css/CdrButton.css'),
-    buildButtonCSS(path.join(destination, 'scss/CdrButton.vars.scss')),
+    path.join(destination, `css/${component}.css`),
+    buildComponentCSS(path.join(destination, `scss/${component}.vars.scss`), source, contract),
   );
-  fs.outputFileSync(path.join(destination, 'demo/CdrButton.html'), buildButtonDemo(destination));
+  fs.outputFileSync(
+    path.join(destination, `demo/${component}.html`),
+    buildComponentDemo(destination, component, contract),
+  );
 }
