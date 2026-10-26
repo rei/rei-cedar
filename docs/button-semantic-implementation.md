@@ -65,7 +65,7 @@ CSS.
 ## Local overrides
 
 Only approved alpha.2 gaps and data fixes are defined in the shared
-`styles/vars/CdrButton.recipe.scss` base mixin, used by both Vue and component variables:
+`styles/vars/CdrButton.vars.scss` base mixin, used by both Vue and component variables:
 
 - `--cdr-border-neutral-trace: #ffffff` — approved name not shipped by
   alpha.2.
@@ -89,9 +89,7 @@ is in `.agents/skills/semantic-token-migration/SKILL.md`.
   CSS for docs
 - `src/components/button/styles/CdrButton.module.scss` — module styles,
   selectors and map consumption
-- `src/components/button/styles/vars/CdrButton.vars.scss` — generated public mixins
-- `src/components/button/styles/vars/CdrButton.recipe.scss` — shared structural
-  behavior and approved local overrides
+- `src/components/button/styles/vars/CdrButton.vars.scss` — component mixins and approved local overrides
 - `docs/component-variables.md` — shared package generation and verification
 
 ## Testing

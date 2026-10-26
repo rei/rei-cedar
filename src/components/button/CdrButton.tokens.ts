@@ -1,6 +1,5 @@
 import type { ComponentTokenContract } from '../../../build/component-tokens/types';
 import { literal, token } from '../../../build/component-tokens/types';
-import componentVariables from './CdrButton.variables.json';
 
 /**
  * CdrButton Token Contract (Action, cutover)
@@ -32,7 +31,6 @@ const contract: ComponentTokenContract = {
   prefix: '--cdr-button',
   interaction: 'action',
   recipe: 'pressable',
-  componentVariables,
   hooks: true,
   defaultVariant: 'primary',
 

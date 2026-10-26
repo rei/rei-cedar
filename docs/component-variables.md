@@ -1,7 +1,7 @@
 # Component variables
 
-Keep `rei-cedar` and `rei-cedar-component-variables` as sibling checkouts. With
-Node 22, run the following from Cedar:
+Keep `rei-cedar` and `rei-cedar-component-variables` as sibling checkouts. Use
+Node 22 and run from Cedar:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -10,44 +10,29 @@ pnpm test:variables
 pnpm exec playwright test --config playwright.component-variables.config.ts
 ```
 
-`build:variables` regenerates the maps from the TypeScript contracts, then
-exports the supported components' Sass entrypoints and local dependencies to
-the sibling package. Every component uses the same export path. Components
-without contracts retain their source Sass recipes.
+The build regenerates Sass maps from the component TypeScript contracts, then
+exports the supported `*.vars.scss` entrypoints and their local dependencies.
+All 19 documented components use this path. Structural styles live in the
+component's vars file and are shared with Vue. Contract values remain in the
+generated maps.
 
-The transfer supplies fallbacks from each contract's defaults so the mixins
-work without a Vue root class initializing custom properties. Shared recipes
-initialize their own defaults. Temporary token fallbacks come from the
-corresponding source module. The exported Sass uses
-physical token paths so standard Dart Sass can resolve imports with
-`node_modules` on its load path. `index.scss` forwards the individual modules;
-`cedar-component-variables.scss` flattens them into a standalone bundle.
+The transfer adds contract defaults and source token fallbacks so styles work
+without Vue initializing custom properties. Package imports use physical token
+paths for standard Dart Sass. `index.scss` forwards the individual modules;
+`cedar-component-variables.scss` is a standalone flattened bundle.
 
-In the component-variables checkout, `pnpm build:all` performs that export and
-rebuilds the documentation data. `pnpm test:all` runs checkout setup and Sass
-integration checks. Edit contracts and recipes in Cedar, and examples in the
-component-variables repository; regenerate `dist` instead of editing it.
+From the component-variables checkout, `pnpm build:all` runs this export and
+rebuilds the documentation examples. `pnpm test:all` checks checkout setup and
+all component exports. Edit contracts and styles in Cedar, and examples in the
+companion repository; regenerate `dist` instead of editing it.
 
-The integration suite checks all 19 documented components, their legacy mixin
-APIs, contract defaults, and equivalent CSS from the index, legacy import and
-detached bundle. Browser checks exercise structural defaults, semantic
-dependencies, inherited overrides and selected interaction states. These tests
-run separately from the regular Cedar unit suite so it does not require the
-sibling checkout.
-
-Pressable contracts with a shared `*.recipe.scss` use the common mixin generator,
-CSS compiler and offline demo renderer. Names, variants, sizes and hooks come
-from the contract. `componentVariables.hooks` and `componentVariables.elevatedHooks`
-provide compatibility names as data; shared build code does not name components.
-The generated Sass maps retain the same values and hook precedence as before.
-
-All 39 package files are checked against SHA-256 hashes captured before this
-generalization. A separate fixture changes the component identity, adds a
-variant and a size, and compiles the generated mixins to verify reuse.
+Checks cover every source entrypoint's public mixins, all 81 examples, contract
+defaults and equivalent CSS from the index and detached bundle. Browser tests
+exercise semantic hooks, structural defaults and inherited overrides. The Sass
+integration checks run separately from the regular Cedar unit suite so that
+suite does not require a sibling checkout.
 
 Use `@rei/cdr-tokens@15.0.0-alpha.2` and load its root CSS plus `color-surface`,
-`color-action`, `color-control` and `color-feedback`. The exported APIs and
-semantic hooks follow the migrated Cedar recipes. Consumers of older component
-variables may need to migrate old global token overrides accordingly. The export
-produces Sass for all supported components and retains the existing CSS/demo
-artifacts for shared pressable recipes. No Vue runtime is needed.
+`color-action`, `color-control` and `color-feedback`. Consume the semantic hooks
+defined by the migrated contracts. Applications compile the Sass they need;
+no Vue runtime is required.

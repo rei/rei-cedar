@@ -12,7 +12,9 @@ function tokenCSS(file: string): string {
 
 const requirePackage = createRequire(path.resolve('package.json'));
 const packageRoot = path.resolve('../rei-cedar-component-variables');
-const examples = requirePackage(path.join(packageRoot, 'examples'));
+const examples: Record<string, { examples: { html: string }[] }> = requirePackage(
+  path.join(packageRoot, 'examples'),
+);
 const tokens = ['', '/color-surface', '/color-action', '/color-control', '/color-feedback']
   .map((entry) => tokenCSS(requirePackage.resolve(`@rei/cdr-tokens/css${entry}`)))
   .join('\n');
@@ -33,16 +35,21 @@ const css = sass.compileString(
 
 test('all semantic dependencies and standalone defaults work without Vue', async ({ page }) => {
   await page.setContent(`<style>${tokens}\n${css}</style>
-    <div class="card">Card</div>
+    <main id="fixture"><div class="card">Card</div>
     <div style="--cdr-card-border-radius: 19px"><div class="card" id="override">Override</div></div>
     <button class="cdr-chip-default">Chip</button>
-    <button class="cdr-button-primary">Button</button>
     <input class="large-input"><select class="large-select"><option>Select</option></select>
     <table class="table"><tr><td>One</td></tr><tr><td>Two</td></tr></table>
     ${examples.CdrLink.examples.map((example: { html: string }) => example.html).join('\n')}
     <div class="cdr-radio-dynamic"><div class="cdr-radio-figure"></div></div>
     ${examples.CdrCaption.examples[0].html}
-    ${examples.CdrQuote.examples[0].html}`);
+    ${examples.CdrQuote.examples[0].html}
+    </main><div hidden>${Object.values(examples)
+      .map((component) =>
+        component.examples.map((example: { html: string }) => example.html).join(''),
+      )
+      .join('')}</div>`);
+  const fixture = page.locator('#fixture');
   const semanticReferences = [
     ...new Set(
       [
@@ -51,44 +58,37 @@ test('all semantic dependencies and standalone defaults work without Vue', async
     ),
   ];
   const unresolved = await page.evaluate((names) => {
-    const style = getComputedStyle(document.documentElement);
-    const buttonStyle = getComputedStyle(document.querySelector('.cdr-button-primary')!);
-    return names.filter(
-      (name) => !style.getPropertyValue(name).trim() && !buttonStyle.getPropertyValue(name).trim(),
-    );
+    const styles = [...document.querySelectorAll('*')].map((node) => getComputedStyle(node));
+    return names.filter((name) => !styles.some((style) => style.getPropertyValue(name).trim()));
   }, semanticReferences);
   expect(unresolved).toEqual([]);
-  await expect(page.locator('.card').first()).toHaveCSS('border-radius', '4px');
-  await expect(page.locator('#override')).toHaveCSS('border-radius', '19px');
-  await expect(page.locator('.cdr-chip-default')).toHaveCSS('font-size', '14px');
-  await expect(page.locator('.large-input')).toHaveCSS('height', '48px');
-  await expect(page.locator('.large-select')).toHaveCSS('height', '48px');
-  await expect(page.locator('.table tr + tr td')).toHaveCSS('border-top-width', '1px');
-  await expect(page.locator('.table tr + tr td')).toHaveCSS('border-top-style', 'solid');
-  await expect(page.locator('.cdr-link-default')).toHaveCSS('display', 'inline-flex');
-  await expect(page.locator('.cdr-link-default')).toHaveCSS('text-decoration-line', 'underline');
-  await page.locator('.cdr-link-default').hover();
-  await expect(page.locator('.cdr-link-default')).toHaveCSS('text-decoration-line', 'none');
-  await expect(page.locator('.cdr-link-inherit-color')).toHaveCSS('color', 'rgb(102, 51, 153)');
-  await page.locator('.cdr-link-inherit-color').hover();
-  await expect(page.locator('.cdr-link-inherit-color')).toHaveCSS('color', 'rgb(102, 51, 153)');
-  const neutralColor = await page
+  await expect(fixture.locator('.card').first()).toHaveCSS('border-radius', '4px');
+  await expect(fixture.locator('#override')).toHaveCSS('border-radius', '19px');
+  await expect(fixture.locator('.cdr-chip-default')).toHaveCSS('font-size', '14px');
+  await expect(fixture.locator('.large-input')).toHaveCSS('height', '48px');
+  await expect(fixture.locator('.large-select')).toHaveCSS('height', '48px');
+  await expect(fixture.locator('.table tr + tr td')).toHaveCSS('border-top-width', '1px');
+  await expect(fixture.locator('.table tr + tr td')).toHaveCSS('border-top-style', 'solid');
+  await expect(fixture.locator('.cdr-link-default')).toHaveCSS('display', 'inline-flex');
+  await expect(fixture.locator('.cdr-link-default')).toHaveCSS('text-decoration-line', 'underline');
+  await fixture.locator('.cdr-link-default').hover();
+  await expect(fixture.locator('.cdr-link-default')).toHaveCSS('text-decoration-line', 'none');
+  await expect(fixture.locator('.cdr-link-inherit-color')).toHaveCSS('color', 'rgb(102, 51, 153)');
+  await fixture.locator('.cdr-link-inherit-color').hover();
+  await expect(fixture.locator('.cdr-link-inherit-color')).toHaveCSS('color', 'rgb(102, 51, 153)');
+  const neutralColor = await fixture
     .locator('.cdr-link-neutral')
     .evaluate((node) => getComputedStyle(node).color);
-  await page.locator('.cdr-link-neutral').hover();
-  await expect(page.locator('.cdr-link-neutral')).toHaveCSS('color', neutralColor);
-  await page
-    .locator('.cdr-link-default')
-    .evaluate((node: HTMLElement) => node.style.setProperty('--cdr-link-text-color', 'red'));
-  await expect(page.locator('.cdr-link-default')).toHaveCSS('color', 'rgb(255, 0, 0)');
-  await page
+  await fixture.locator('.cdr-link-neutral').hover();
+  await expect(fixture.locator('.cdr-link-neutral')).toHaveCSS('color', neutralColor);
+  await fixture
     .locator('.cdr-link-default')
     .evaluate((node: HTMLElement) => node.style.setProperty('--cdr-link-text', 'blue'));
-  await expect(page.locator('.cdr-link-default')).toHaveCSS('color', 'rgb(0, 0, 255)');
-  await expect(page.locator('.cdr-caption-default')).toHaveCSS('max-width', '530px');
-  await expect(page.locator('.cdr-caption-default p')).toHaveCSS('margin-top', '0px');
-  await expect(page.locator('.cdr-caption-default cite')).toHaveCSS('margin-top', '8px');
-  await expect(page.locator('.cdr-quote-default p')).toHaveCSS('margin-top', '0px');
-  await expect(page.locator('.cdr-quote-default cite')).toHaveCSS('padding-top', '16px');
-  await expect(page.locator('.cdr-radio-figure')).toHaveCSS('border-radius', '100%');
+  await expect(fixture.locator('.cdr-link-default')).toHaveCSS('color', 'rgb(0, 0, 255)');
+  await expect(fixture.locator('.cdr-caption-default')).toHaveCSS('max-width', '530px');
+  await expect(fixture.locator('.cdr-caption-default p')).toHaveCSS('margin-top', '0px');
+  await expect(fixture.locator('.cdr-caption-default cite')).toHaveCSS('margin-top', '8px');
+  await expect(fixture.locator('.cdr-quote-default p')).toHaveCSS('margin-top', '0px');
+  await expect(fixture.locator('.cdr-quote-default cite')).toHaveCSS('padding-top', '16px');
+  await expect(fixture.locator('.cdr-radio-figure')).toHaveCSS('border-radius', '100%');
 });

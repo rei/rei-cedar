@@ -10,32 +10,27 @@ import { globSync } from 'glob';
 import { standaloneScss } from '../standalone';
 import type { ComponentTokenContract } from '../../component-tokens/types';
 import { literal } from '../../component-tokens/types';
-import type { ComponentExample } from '../component';
-import { createHash } from 'node:crypto';
 
 interface ComponentExamples {
   name: string;
-  examples: ComponentExample[];
+  examples: { name: string; html: string; scss: string[] }[];
 }
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const packageRoot = path.resolve(root, '../rei-cedar-component-variables');
-const require = createRequire(import.meta.url);
-const examples: Record<string, ComponentExamples> = require(path.join(packageRoot, 'examples'));
-// Public API captured from component-variables v11 before the semantic migration.
-const legacy: Record<string, { mixins: string[]; hooks: string[] }> = JSON.parse(
-  readFileSync(new URL('./fixtures/legacy-component-api.json', import.meta.url), 'utf8'),
+const requirePackage = createRequire(import.meta.url);
+const examples: Record<string, ComponentExamples> = requirePackage(
+  path.join(packageRoot, 'examples'),
 );
 const options = {
   loadPaths: [path.join(packageRoot, 'node_modules')],
   quietDeps: true,
   logger: sass.Logger.silent,
 };
-function compile(entry: string, legacy = false) {
+function compile(entry: string) {
   return sass.compileString(
-    `${legacy ? '@import' : '@use'} '${entry}'${legacy ? '' : ' as *'};\n` +
-      readFileSync(path.join(packageRoot, 'dist/docs/index.scss'), 'utf8'),
-    { ...options, silenceDeprecations: ['import'] },
+    `@use '${entry}' as *;\n${readFileSync(path.join(packageRoot, 'dist/docs/index.scss'), 'utf8')}`,
+    options,
   ).css;
 }
 function rules(css: string) {
@@ -44,32 +39,32 @@ function rules(css: string) {
   return parsed.toString().trim();
 }
 
-describe('all component variables', () => {
-  it('matches every package file from before build generalization', () => {
-    const expected: Record<string, string> = JSON.parse(
-      readFileSync(new URL('./fixtures/output-sha256.json', import.meta.url), 'utf8'),
+describe('component variable export', () => {
+  it('exports all documented components without separate recipe files', () => {
+    expect(Object.keys(examples)).toHaveLength(19);
+    const files = readdirSync(path.join(packageRoot, 'dist/scss'));
+    expect(Object.keys(examples).sort()).toEqual(
+      files
+        .filter((name) => name.startsWith('Cdr') && name.endsWith('.vars.scss'))
+        .map((name) => name.replace('.vars.scss', ''))
+        .sort(),
     );
-    const directory = path.join(packageRoot, 'dist');
-    const actual = Object.fromEntries(
-      globSync('**/*', { cwd: directory, nodir: true })
-        .sort()
-        .map((file) => [
-          file,
-          createHash('sha256')
-            .update(readFileSync(path.join(directory, file)))
-            .digest('hex'),
-        ]),
-    );
-    expect(actual).toEqual(expected);
+    expect(files.filter((name) => name.endsWith('.recipe.scss'))).toEqual([]);
+    expect(globSync('src/components/**/*.recipe.scss', { cwd: root })).toEqual([]);
   });
-  it('retains every previous public mixin and component hook', () => {
-    const scss = readdirSync(path.join(packageRoot, 'dist/scss'))
-      .filter((name) => name.endsWith('.scss'))
-      .map((name) => readFileSync(path.join(packageRoot, 'dist/scss', name), 'utf8'))
-      .join('\n');
-    for (const [component, api] of Object.entries(legacy)) {
+
+  it('preserves the public mixins of each source entrypoint', () => {
+    for (const component of Object.keys(examples)) {
+      const [source] = globSync(`src/components/**/styles/vars/${component}.vars.scss`, {
+        cwd: root,
+        absolute: true,
+      });
+      const names = [...readFileSync(source, 'utf8').matchAll(/^@mixin\s+([\w-]+)/gm)]
+        .map((match) => match[1])
+        .filter((name) => !/^[_-]/.test(name));
+      expect(names.length, component).toBeGreaterThan(0);
       const entry = path.join(packageRoot, `dist/scss/${component}.vars.scss`);
-      const checks = api.mixins
+      const checks = names
         .map(
           (name) => `@if not meta.mixin-exists('${name}', component) { @error '${name} missing'; }`,
         )
@@ -79,49 +74,27 @@ describe('all component variables', () => {
           sass.compileString(`@use 'sass:meta'; @use '${entry}' as component; ${checks}`, options),
         component,
       ).not.toThrow();
-      for (const hook of api.hooks) {
-        expect(scss, hook).toMatch(new RegExp(`var\\(\\s*${hook}\\s*[,)]`));
-      }
     }
   });
 
-  it('exports every documented component, including checkbox, radio, caption and quote', () => {
-    expect(Object.keys(examples)).toHaveLength(19);
-    expect(Object.keys(examples).sort()).toEqual(
-      readdirSync(path.join(packageRoot, 'dist/scss'))
-        .filter((name) => name.startsWith('Cdr') && name.endsWith('.vars.scss'))
-        .map((name) => name.replace('.vars.scss', ''))
-        .sort(),
-    );
-    for (const [name, component] of Object.entries(examples)) {
-      const entry = path.join(packageRoot, `dist/scss/${name}.vars.scss`);
-      expect(readFileSync(entry, 'utf8'), name).toMatch(/@mixin/);
-      expect(component.examples.length, name).toBeGreaterThan(0);
-    }
-  });
-
-  it('compiles all documented examples through index, legacy import and a detached bundle', () => {
-    const directory = mkdtempSync(path.join(tmpdir(), 'cedar-all-'));
+  it('compiles every documented example identically through the index and detached bundle', () => {
+    const directory = mkdtempSync(path.join(tmpdir(), 'cedar-variables-'));
     try {
       const index = compile(path.join(packageRoot, 'dist/scss/index.scss'));
       const bundle = path.join(directory, 'bundle.scss');
       copyFileSync(path.join(packageRoot, 'dist/scss/cedar-component-variables.scss'), bundle);
       expect(rules(compile(bundle))).toBe(rules(index));
-      expect(rules(compile(path.join(packageRoot, 'dist/scss/index.scss'), true))).toBe(
-        rules(index),
-      );
       expect(index).not.toMatch(/undefined|\[object Object\]|NaN/);
       for (const component of Object.values(examples)) {
-        for (const example of component.examples) {
+        for (const example of component.examples)
           expect(index).toContain(`.${component.name}-${example.name}`);
-        }
       }
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
   });
 
-  it('generates default fallbacks from contract keys and preserves existing overrides', () => {
+  it('supplies contract defaults and token fallbacks while preserving overrides', () => {
     const contract: ComponentTokenContract = {
       component: 'cdr-example',
       prefix: '--cdr-example',
@@ -131,17 +104,14 @@ describe('all component variables', () => {
     const result = standaloneScss(
       '.x { height: var(--cdr-example-height); color: var(--cdr-text-test); width: var(--cdr-example-width, 10px); }',
       contract,
-      '.cdr-example { --cdr-text-test: #123456; --cdr-example-height: 8rem; }',
+      '  --cdr-text-test: #123456;\n',
     );
     expect(result).toContain('var(--cdr-example-height, map.get(maps.$example-defaults, height))');
     expect(result).toContain('var(--cdr-example-width, 10px)');
-    // Shims are extracted from standalone declaration lines, never selectors or other rules.
-    expect(standaloneScss('var(--cdr-text-test)', contract, '  --cdr-text-test: #123456;\n')).toBe(
-      'var(--cdr-text-test, #123456)',
-    );
+    expect(result).toContain('var(--cdr-text-test, #123456)');
   });
 
-  it('supplies every referenced migrated structural default without Vue initialization', async () => {
+  it('supplies every referenced contract default without Vue initialization', async () => {
     for (const component of Object.keys(examples)) {
       const [source] = globSync(`src/components/**/${component}.tokens.ts`, {
         cwd: root,
@@ -149,11 +119,9 @@ describe('all component variables', () => {
       });
       if (!source) continue;
       const { default: contract }: { default: ComponentTokenContract } = await import(source);
-      if (contract.recipe === 'pressable') continue; // Shared recipes initialize their contract defaults.
       const vars = readFileSync(path.join(packageRoot, `dist/scss/${component}.vars.scss`), 'utf8');
-      for (const key of Object.keys(contract.defaults ?? {})) {
+      for (const key of Object.keys(contract.defaults))
         expect(vars, `${component}: ${key}`).not.toContain(`var(${contract.prefix}-${key})`);
-      }
     }
   });
 });

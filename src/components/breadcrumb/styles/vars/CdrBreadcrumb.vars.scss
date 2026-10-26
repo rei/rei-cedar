@@ -9,10 +9,7 @@
 
 @mixin cdr-breadcrumb-item-mixin() {
   // ITEM_DOC: Breadcrumb item color. Override with --cdr-color-breadcrumb-text.
-  color: var(
-    --cdr-color-breadcrumb-text,
-    var(--cdr-breadcrumb-item-color, map.get(maps.$breadcrumb-colors, default, text))
-  );
+  color: var(--cdr-color-breadcrumb-text, map.get(maps.$breadcrumb-colors, default, text));
 }
 
 @mixin cdr-breadcrumb-item-linked-mixin() {
@@ -23,10 +20,7 @@
     // ITEM_DOC: Breadcrumb link hover color. Override with --cdr-color-breadcrumb-text-hover.
     color: var(
       --cdr-color-breadcrumb-text-hover,
-      var(
-        --cdr-breadcrumb-item-linked-highlight-color,
-        map.get(maps.$breadcrumb-colors, default, text-hover)
-      )
+      map.get(maps.$breadcrumb-colors, default, text-hover)
     );
     text-decoration: var(--cdr-breadcrumb-link-highlight-text-decoration);
   }
@@ -35,10 +29,7 @@
     // ITEM_DOC: Breadcrumb link focus color. Override with --cdr-color-breadcrumb-text-focus-visible.
     color: var(
       --cdr-color-breadcrumb-text-focus-visible,
-      var(
-        --cdr-breadcrumb-item-linked-highlight-color,
-        map.get(maps.$breadcrumb-colors, default, text-focus-visible)
-      )
+      map.get(maps.$breadcrumb-colors, default, text-focus-visible)
     );
     text-decoration: var(--cdr-breadcrumb-link-highlight-text-decoration);
   }
@@ -47,10 +38,7 @@
     // ITEM_DOC: Breadcrumb link active color. Override with --cdr-color-breadcrumb-text-active.
     color: var(
       --cdr-color-breadcrumb-text-active,
-      var(
-        --cdr-breadcrumb-item-linked-highlight-color,
-        map.get(maps.$breadcrumb-colors, default, text-active)
-      )
+      map.get(maps.$breadcrumb-colors, default, text-active)
     );
     text-decoration: var(--cdr-breadcrumb-link-highlight-text-decoration);
   }

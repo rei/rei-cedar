@@ -199,12 +199,6 @@ export interface ComponentTokenContract {
   /** Which visual recipe to apply (defaults to a family-specific recipe if omitted) */
   recipe?: VisualRecipe;
 
-  /** Component-variable compatibility hooks; values remain owned by this contract. */
-  componentVariables?: {
-    hooks?: Record<string, string>;
-    elevatedHooks?: Record<string, Record<string, string>>;
-  };
-
   /**
    * The variant whose generated override hooks omit the scope segment, e.g.
    * `primary` renders `--cdr-color-button-surface` while `secondary` renders
