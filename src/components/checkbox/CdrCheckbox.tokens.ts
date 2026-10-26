@@ -7,7 +7,9 @@ import { literal, token } from '../../../build/component-tokens/types';
  * Checkboxes configure form input in place. Unchecked rest is rendered by
  * CdrLabelWrapper's figure base (unmigrated); `default.rest` documents that
  * effective inherited appearance so the contract shape stays honest. The
- * indeterminate figure reuses the checked-scope values. Documented overrides
+ * indeterminate figure reuses the checked-scope values. Checked gets a
+ * dedicated disabled treatment (muted but visibly checked) rather than
+ * collapsing into the unchecked-disabled look. Documented overrides
  * keep their names (no hooks are generated).
  *
  * Cutover mode: no `legacy` section.
@@ -40,22 +42,34 @@ const contract: ComponentTokenContract = {
     default: {
       identity: 'neutral',
       rest: { surface: 'neutral-faint', border: 'neutral' },
-      hover: { surface: 'neutral-faint', border: 'neutral-intense' },
-      'focus-visible': { surface: 'neutral-faint', border: 'neutral-bold' },
-      active: { surface: 'neutral-faint', border: 'neutral-bold' },
+      hover: { surface: 'neutral-subtle', border: 'neutral-intense' },
+      'focus-visible': { surface: 'neutral-subtle', border: 'neutral-intense' },
+      active: { surface: 'neutral-subtle', border: 'neutral-intense' },
       disabled: { surface: 'neutral-faint', border: 'neutral-faint' },
     },
     checked: {
       identity: 'neutral',
-      rest: { surface: 'neutral-bold', border: 'neutral-bold', icon: 'neutral-trace' },
-      hover: { surface: 'neutral-prominent', border: 'neutral-bold', icon: 'neutral-trace' },
+      rest: { surface: 'neutral-bold', border: 'neutral', icon: 'neutral-faint' },
+      hover: {
+        surface: 'neutral-prominent',
+        border: 'neutral-bold',
+        icon: 'neutral-faint',
+      },
       'focus-visible': {
         surface: 'neutral-prominent',
         border: 'neutral-bold',
-        icon: 'neutral-trace',
+        icon: 'neutral-faint',
       },
-      active: { surface: 'neutral-faint', border: 'neutral-bold', icon: 'neutral-bold' },
-      disabled: { surface: 'neutral-faint', border: 'neutral-faint' },
+      active: {
+        surface: 'neutral-prominent',
+        border: 'neutral-bold',
+        icon: 'neutral-bold',
+      },
+      disabled: {
+        surface: 'neutral-prominent',
+        border: 'neutral-faint',
+        icon: 'neutral',
+      },
     },
   },
 };
