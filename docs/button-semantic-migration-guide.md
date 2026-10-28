@@ -7,23 +7,15 @@ preview, and the manual comparison — lives in
 
 ## Runtime source
 
-`@rei/cdr-tokens@15.0.0-alpha.2` is the runtime source of truth for semantic
-color values. The main `css` entry does not yet import the semantic
-foundations, so load them explicitly:
+`@rei/cdr-tokens@15.0.0-alpha.4` is the runtime source of truth for semantic
+color values. Its main `css` entry includes the semantic foundations:
 
 ```ts
 import '@rei/cdr-tokens/css';
-import '@rei/cdr-tokens/css/color-action';
-import '@rei/cdr-tokens/css/color-control';
-import '@rei/cdr-tokens/css/color-feedback';
-import '@rei/cdr-tokens/css/color-graphik';
-import '@rei/cdr-tokens/css/color-selection';
-import '@rei/cdr-tokens/css/color-surface';
 ```
 
-Applications consuming the built Cedar package must load the same files until
-the alpha barrel includes the foundations. Do not copy package values into
-component styles; use the semantic name.
+Applications consuming the built Cedar package must load the same entry. Do not
+copy package values into component styles; use the semantic name.
 
 ## The pattern
 

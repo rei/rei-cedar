@@ -6,11 +6,8 @@
   # CdrSwitch
 
   Base values and colors come from the generated maps in
-  styles/vars/CdrSwitch.maps.scss (source: CdrSwitch.tokens.ts).
-
-  The control palette shim below provides the approved semantic values until
-  these tokens ship globally from @rei/cdr-tokens. Remove the shim block when
-  they are available.
+  styles/vars/CdrSwitch.maps.scss (source: CdrSwitch.tokens.ts). Semantic values
+  come from @rei/cdr-tokens.
   ========================================================================== */
 
 .cdr-switch {

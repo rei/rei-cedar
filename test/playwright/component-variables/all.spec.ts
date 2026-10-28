@@ -15,9 +15,7 @@ const packageRoot = path.resolve('../rei-cedar-component-variables');
 const examples: Record<string, { examples: { html: string }[] }> = requirePackage(
   path.join(packageRoot, 'examples'),
 );
-const tokens = ['', '/color-surface', '/color-action', '/color-control', '/color-feedback']
-  .map((entry) => tokenCSS(requirePackage.resolve(`@rei/cdr-tokens/css${entry}`)))
-  .join('\n');
+const tokens = tokenCSS(requirePackage.resolve('@rei/cdr-tokens/css'));
 const css = sass.compileString(
   `@use '${packageRoot}/dist/scss/index.scss' as *;
   ${readFileSync(path.join(packageRoot, 'dist/docs/index.scss'), 'utf8')}

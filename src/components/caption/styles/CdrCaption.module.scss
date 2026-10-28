@@ -16,11 +16,6 @@
     --cdr-caption-#{$key}: #{$value};
   }
 
-  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
-  // Remove when the token ships.
-  --cdr-text-neutral: #746e63;
-  --cdr-text-neutral-prominent: #4c473e;
-
   @include vars.cdr-caption-container-mixin;
 
   cite {

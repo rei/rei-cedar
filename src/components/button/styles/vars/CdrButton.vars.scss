@@ -23,12 +23,6 @@
     --cdr-button-#{$key}: #{$value};
   }
 
-  // Approved alpha.2 gap and brand data fixes, shared with non-Vue consumers.
-  --cdr-border-neutral-trace: #ffffff;
-  --cdr-action-surface-brand: #143528;
-  --cdr-action-text-brand: #143528;
-  --cdr-action-border-brand: #143528;
-
   border-radius: var(--cdr-button-radius);
   font-family: var(--cdr-button-font-family);
   font-style: var(--cdr-button-font-style);

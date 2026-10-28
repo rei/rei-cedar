@@ -8,23 +8,17 @@ The button is the reference component for the contract pipeline described in
 
 ## Runtime imports
 
-`@rei/cdr-tokens@15.0.0-alpha.2` keeps the semantic foundations out of its main
-`css` barrel, so load them explicitly alongside the main entry:
+`@rei/cdr-tokens@15.0.0-alpha.4` includes the semantic foundations in its main
+`css` entry, so a single import provides the semantic custom properties:
 
 ```ts
 import '@rei/cdr-tokens/css';
-import '@rei/cdr-tokens/css/color-action';
-import '@rei/cdr-tokens/css/color-control';
-import '@rei/cdr-tokens/css/color-feedback';
-import '@rei/cdr-tokens/css/color-graphik';
-import '@rei/cdr-tokens/css/color-selection';
-import '@rei/cdr-tokens/css/color-surface';
 ```
 
 The Storybook preview (`.storybook/preview.ts`) and dev app (`src/dev/index.js`)
-use these imports. Applications consuming the built Cedar package must load the
-same files until the alpha barrel includes the foundations; otherwise the
-semantic custom properties are undefined and components render unset colors.
+use this import. Applications consuming the built Cedar package must load the
+same entry; otherwise the semantic custom properties are undefined and
+components render unset colors.
 
 ## How the button gets its colors
 
@@ -64,19 +58,14 @@ CSS.
 
 ## Local overrides
 
-Only approved alpha.2 gaps and data fixes are defined in the shared
-`styles/vars/CdrButton.vars.scss` base mixin, used by both Vue and component variables:
-
-- `--cdr-border-neutral-trace: #ffffff` — approved name not shipped by
-  alpha.2.
-- `--cdr-action-surface-brand: #143528`, `--cdr-action-text-brand: #143528`,
-  `--cdr-action-border-brand: #143528` — scoped override because alpha.2's
-  light-mode brand resolves to `#800080`; the approved value is the spruce
-  green until the package data is corrected.
-
-Everything else comes from the package semantic foundations. Report new gaps
-to the tokens repo instead of adding local definitions; the skill's gap policy
-is in `.agents/skills/semantic-token-migration/SKILL.md`.
+The shared `styles/vars/CdrButton.vars.scss` base mixin, used by both Vue and
+component variables, no longer defines semantic color values locally.
+`@rei/cdr-tokens@15.0.0-alpha.4` ships the Universal text and border
+foundations, `feedback/border/natural-faint`, and the corrected light-mode
+brand value (`#143528`). Everything comes from the package semantic
+foundations. Report new gaps to the tokens repo instead of adding local
+definitions; the skill's gap policy is in
+`.agents/skills/semantic-token-migration/SKILL.md`.
 
 ## Files
 
@@ -89,7 +78,7 @@ is in `.agents/skills/semantic-token-migration/SKILL.md`.
   CSS for docs
 - `src/components/button/styles/CdrButton.module.scss` — module styles,
   selectors and map consumption
-- `src/components/button/styles/vars/CdrButton.vars.scss` — component mixins and approved local overrides
+- `src/components/button/styles/vars/CdrButton.vars.scss` — component mixins
 - `docs/component-variables.md` — shared package generation and verification
 
 ## Testing

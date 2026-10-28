@@ -15,8 +15,9 @@ export function standaloneScss(
     );
   }
 
-  // Reuse the migration's temporary alpha-token shims as fallbacks, preserving
-  // consumer overrides. Remove a shim in the source module to remove it here too.
+  // Reuse local token fallbacks declared in the source module, preserving
+  // consumer overrides. Remove a fallback in the source module to remove it
+  // here too.
   for (const match of module.matchAll(/^\s*(--cdr-[\w-]+):\s*([^;{}]+);\s*$/gm)) {
     const [, name, value] = match;
     if (!name.startsWith(`${contract.prefix}-`)) {

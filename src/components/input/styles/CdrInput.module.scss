@@ -8,14 +8,15 @@
 /* ==========================================================================
   # INPUT ROOTS
 
-  All elements that resolve the control palette carry the temporary shim
-  values until these tokens ship globally from @rei/cdr-tokens.
+  All elements that resolve the control palette carry the generated contract
+  defaults. Semantic values come from @rei/cdr-tokens.
   ========================================================================== */
 
 .cdr-input,
 .cdr-input-wrap,
 // The helper text span is slotted into cdr-label-standalone's post-content
-// (a sibling of the input wrap), so it carries the shim on its own class.
+// (a sibling of the input wrap), so it carries the contract defaults on its
+// own class.
 .cdr-input__helper-text,
 :global(.cdr-input__button) {
   // Every base variable comes from the generated contract map.

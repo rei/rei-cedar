@@ -9,11 +9,6 @@
     --cdr-abstract-#{$key}: #{$value};
   }
 
-  // Temporary until --cdr-text-neutral ships from @rei/cdr-tokens.
-  // This local value enables the semantic color now; consumers can still
-  // override it with --cdr-color-abstract-text. Remove this when it ships.
-  --cdr-text-neutral: #746e63;
-
   color: var(--cdr-color-abstract-text, map.get(maps.$abstract-colors, default, text));
   margin: var(--cdr-abstract-margin);
   font-size: var(--cdr-abstract-font-size);

@@ -32,7 +32,7 @@ exercise semantic hooks, structural defaults and inherited overrides. The Sass
 integration checks run separately from the regular Cedar unit suite so that
 suite does not require a sibling checkout.
 
-Use `@rei/cdr-tokens@15.0.0-alpha.2` and load its root CSS plus `color-surface`,
-`color-action`, `color-control` and `color-feedback`. Consume the semantic hooks
-defined by the migrated contracts. Applications compile the Sass they need;
-no Vue runtime is required.
+Use `@rei/cdr-tokens@15.0.0-alpha.4` and load its root CSS
+(`@rei/cdr-tokens/css`), which includes the semantic foundations. Consume the
+semantic hooks defined by the migrated contracts. Applications compile the Sass
+they need; no Vue runtime is required.
