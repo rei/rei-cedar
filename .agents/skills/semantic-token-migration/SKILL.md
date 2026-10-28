@@ -28,7 +28,7 @@ set. Never reset or overwrite unrelated user changes.
 
 - `references/contract-pattern.md` — generic contract and map consumption
 - `references/color-lookup.md` and `references/semantic-colors.json` — approved semantic colors and contrast notes (design reference, not a runtime value source)
-- `@rei/cdr-tokens` ≥ 15.0.0-alpha.2 semantic foundations — the runtime source of truth for semantic values; the package ships them as separate `css/color-*` entries
+- `@rei/cdr-tokens` ≥ 15.0.0-alpha.4 semantic foundations — the runtime source of truth for semantic values; the main `css` entry imports the foundations
 - `docs/cedar-semantic-taxonomy.md` — taxonomy and omission rules
 - `docs/semantic-token-mapping.md` — category decision flow, per component part
 - `build/component-tokens/types.ts`, `naming.ts`, `validate.ts`, and `generate-component-maps.ts`
@@ -247,33 +247,20 @@ exception: it keeps its historical `--cdr-link-*` hook namespace via the
 contract's `hookPrefix`.
 
 Do not hardcode semantic color values and do not add a local shim for a shipped
-token. Import the token package's CSS, including the semantic foundations that
-`15.0.0-alpha.2` does not yet add to its main CSS entry:
+token. Import the token package's root CSS; alpha.4 includes the semantic
+foundations in its main entry:
 
 ```ts
 import '@rei/cdr-tokens/css';
-import '@rei/cdr-tokens/css/color-action';
-import '@rei/cdr-tokens/css/color-control';
-import '@rei/cdr-tokens/css/color-feedback';
-import '@rei/cdr-tokens/css/color-graphik';
-import '@rei/cdr-tokens/css/color-selection';
-import '@rei/cdr-tokens/css/color-surface';
 ```
 
-#### Known `15.0.0-alpha.2` gaps
+#### Known `15.0.0-alpha.4` gaps
 
-The alpha publishes the semantic foundations as separate `css/color-*` files,
-not through the main `css` or `scss` barrels. It also omits the Universal
-`text/*` and `border/*` foundations, the `feedback/text/*-bold` tokens, and
-`feedback/border/natural-faint` (it emits the misspelled
-`--cdr-feedback-border-nautral-faint`). Its light-mode brand resolves to
-`#800080` instead of the approved `#143528` (dark mode is correct).
-
-The repo's migrated components use seven of these missing tokens plus three
-brand overrides (the light-mode data bug), ten local definitions in total; they
-are the only approved component-level local definitions and are marked in the
-component styles. Do not add more. Report new gaps to the tokens repo instead
-of copying values.
+Alpha.4 includes the Universal `text/*`, `border/*`, and `icon/*` foundations,
+`feedback/border/natural-faint`, and the corrected light-mode brand value
+(`#143528`). It still does not publish the `feedback/text/*-bold` tokens; the
+migrated components do not require them. The migrated components no longer
+carry local semantic definitions.
 
 Storybook docs chrome also keeps a tracked `_tokens-compat.scss` for two
 removed docsite legacy tokens (`background-primary`, `background-secondary`);

@@ -34,11 +34,6 @@
     --cdr-banner-#{$key}: #{$value};
   }
 
-  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
-  // Remove when the token ships.
-  --cdr-text-neutral-bold: #312d27;
-  --cdr-feedback-border-natural-faint: #e6ddc9;
-
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas:

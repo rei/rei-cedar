@@ -293,10 +293,9 @@ $button-colors: (
 
 The public hook is the first level of each value, so the compiled CSS keeps the
 consumer override and the package semantic token in exactly two `var()` levels.
-`CdrButton.module.scss` carries only the approved alpha.2 gap and brand
-overrides (`--cdr-border-neutral-trace`, `--cdr-action-surface-brand`,
-`--cdr-action-text-brand`, `--cdr-action-border-brand`); it does not repeat the
-generated matrix.
+`CdrButton.module.scss` does not carry local semantic overrides; the tokens
+package supplies the values, including the corrected light-mode brand. It does
+not repeat the generated matrix.
 
 ### Module file separation of concerns
 
