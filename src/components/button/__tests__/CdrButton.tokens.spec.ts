@@ -58,20 +58,20 @@ describe('CdrButton token contract', () => {
     const inset = (variant: string) => contract.variants[variant].extras?.['active-inset'];
 
     expect(inset('primary')).toEqual({
-      kind: 'literal',
-      value: 'var(--cdr-border-neutral-trace)',
+      kind: 'token',
+      name: 'cdr-action-surface-brand-faint',
     });
     expect(inset('secondary')).toEqual({
-      kind: 'literal',
-      value: 'var(--cdr-border-neutral-trace)',
+      kind: 'token',
+      name: 'cdr-action-surface-neutral-subtle',
     });
     expect(inset('dark')).toEqual({
-      kind: 'literal',
-      value: 'var(--cdr-action-border-neutral-faint)',
+      kind: 'token',
+      name: 'cdr-action-surface-neutral',
     });
     expect(inset('sale')).toEqual({
-      kind: 'literal',
-      value: 'var(--cdr-border-neutral-trace)',
+      kind: 'token',
+      name: 'cdr-action-surface-neutral-trace',
     });
     expect(inset('with-background')).toEqual({
       kind: 'literal',
@@ -93,9 +93,9 @@ describe('CdrButton token contract', () => {
     expect(primary.identity).toBe('brand');
     expect(primary.rest).toEqual({
       surface: 'brand',
-      text: 'neutral-trace',
+      text: 'neutral-faint',
       border: 'brand',
-      icon: 'neutral-trace',
+      icon: 'neutral-faint',
     });
     expect(primary.hover).toEqual({
       surface: 'brand-faint',
@@ -119,13 +119,14 @@ describe('CdrButton token contract', () => {
       icon: 'neutral',
     });
     expect(secondary.active).toEqual({
-      surface: 'neutral-bold',
-      text: 'neutral-trace',
+      // Source-authored cross-role reference from the Figma variable.
+      surface: { fullPath: 'action-icon-neutral' },
+      text: 'neutral-faint',
       border: 'neutral',
-      icon: 'neutral-trace',
+      icon: 'neutral-faint',
     });
     expect(secondary.disabled).toEqual({
-      surface: 'neutral-faint',
+      surface: 'neutral-trace',
       text: 'neutral-subtle',
       border: 'neutral-faint',
       icon: 'neutral-subtle',
@@ -133,9 +134,9 @@ describe('CdrButton token contract', () => {
 
     expect(dark.rest).toEqual({
       surface: 'neutral-intense',
-      text: 'neutral-trace',
+      text: 'neutral-faint',
       border: 'neutral-bold',
-      icon: 'neutral-trace',
+      icon: 'neutral-faint',
     });
     expect(dark.hover.surface).toBe('neutral');
     expect(dark.active).toEqual(dark.rest);

@@ -43,9 +43,9 @@
 
 .cdr-button--primary {
   --cdr-color-button-surface: var(--cdr-action-surface-brand);
-  --cdr-color-button-text: var(--cdr-action-text-neutral-trace);
+  --cdr-color-button-text: var(--cdr-action-text-neutral-faint);
   --cdr-color-button-border: var(--cdr-action-border-brand);
-  --cdr-color-button-icon: var(--cdr-action-icon-neutral-trace);
+  --cdr-color-button-icon: var(--cdr-action-icon-neutral-faint);
   --cdr-color-button-surface-hover: var(--cdr-action-surface-brand-faint);
   --cdr-color-button-text-hover: var(--cdr-action-text-brand);
   --cdr-color-button-border-hover: var(--cdr-action-border-brand);
@@ -55,14 +55,14 @@
   --cdr-color-button-border-focus-visible: var(--cdr-action-border-brand);
   --cdr-color-button-icon-focus-visible: var(--cdr-action-text-brand);
   --cdr-color-button-surface-active: var(--cdr-action-surface-brand);
-  --cdr-color-button-text-active: var(--cdr-action-text-neutral-trace);
+  --cdr-color-button-text-active: var(--cdr-action-text-neutral-faint);
   --cdr-color-button-border-active: var(--cdr-action-border-brand);
-  --cdr-color-button-icon-active: var(--cdr-action-icon-neutral-trace);
+  --cdr-color-button-icon-active: var(--cdr-action-icon-neutral-faint);
   --cdr-color-button-surface-disabled: var(--cdr-action-surface-neutral-prominent);
   --cdr-color-button-text-disabled: var(--cdr-action-text-neutral-trace);
   --cdr-color-button-border-disabled: var(--cdr-action-border-neutral-faint);
   --cdr-color-button-icon-disabled: var(--cdr-action-icon-neutral-trace);
-  --cdr-color-button-active-inset: var(--cdr-border-neutral-trace);
+  --cdr-color-button-active-inset: var(--cdr-action-surface-brand-faint);
 }
 
 .cdr-button--secondary {
@@ -78,22 +78,22 @@
   --cdr-color-button-secondary-text-focus-visible: var(--cdr-action-text-neutral-bold);
   --cdr-color-button-secondary-border-focus-visible: var(--cdr-action-border-neutral-bold);
   --cdr-color-button-secondary-icon-focus-visible: var(--cdr-action-icon-neutral-bold);
-  --cdr-color-button-secondary-surface-active: var(--cdr-action-surface-neutral-bold);
-  --cdr-color-button-secondary-text-active: var(--cdr-action-text-neutral-trace);
+  --cdr-color-button-secondary-surface-active: var(--cdr-action-icon-neutral);
+  --cdr-color-button-secondary-text-active: var(--cdr-action-text-neutral-faint);
   --cdr-color-button-secondary-border-active: var(--cdr-action-border-neutral);
-  --cdr-color-button-secondary-icon-active: var(--cdr-action-icon-neutral-trace);
-  --cdr-color-button-secondary-surface-disabled: var(--cdr-action-surface-neutral-faint);
+  --cdr-color-button-secondary-icon-active: var(--cdr-action-icon-neutral-faint);
+  --cdr-color-button-secondary-surface-disabled: var(--cdr-action-surface-neutral-trace);
   --cdr-color-button-secondary-text-disabled: var(--cdr-action-text-neutral-subtle);
   --cdr-color-button-secondary-border-disabled: var(--cdr-action-border-neutral-faint);
   --cdr-color-button-secondary-icon-disabled: var(--cdr-action-icon-neutral-subtle);
-  --cdr-color-button-secondary-active-inset: var(--cdr-border-neutral-trace);
+  --cdr-color-button-secondary-active-inset: var(--cdr-action-surface-neutral-subtle);
 }
 
 .cdr-button--dark {
   --cdr-color-button-dark-surface: var(--cdr-action-surface-neutral-intense);
-  --cdr-color-button-dark-text: var(--cdr-action-text-neutral-trace);
+  --cdr-color-button-dark-text: var(--cdr-action-text-neutral-faint);
   --cdr-color-button-dark-border: var(--cdr-action-border-neutral-bold);
-  --cdr-color-button-dark-icon: var(--cdr-action-icon-neutral-trace);
+  --cdr-color-button-dark-icon: var(--cdr-action-icon-neutral-faint);
   --cdr-color-button-dark-surface-hover: var(--cdr-action-surface-neutral);
   --cdr-color-button-dark-text-hover: var(--cdr-action-text-neutral-bold);
   --cdr-color-button-dark-border-hover: var(--cdr-action-border-neutral-bold);
@@ -103,14 +103,14 @@
   --cdr-color-button-dark-border-focus-visible: var(--cdr-action-border-neutral-bold);
   --cdr-color-button-dark-icon-focus-visible: var(--cdr-action-icon-neutral-bold);
   --cdr-color-button-dark-surface-active: var(--cdr-action-surface-neutral-intense);
-  --cdr-color-button-dark-text-active: var(--cdr-action-text-neutral-trace);
+  --cdr-color-button-dark-text-active: var(--cdr-action-text-neutral-faint);
   --cdr-color-button-dark-border-active: var(--cdr-action-border-neutral-bold);
-  --cdr-color-button-dark-icon-active: var(--cdr-action-icon-neutral-trace);
+  --cdr-color-button-dark-icon-active: var(--cdr-action-icon-neutral-faint);
   --cdr-color-button-dark-surface-disabled: var(--cdr-action-surface-neutral-prominent);
   --cdr-color-button-dark-text-disabled: var(--cdr-action-text-neutral-trace);
   --cdr-color-button-dark-border-disabled: var(--cdr-action-border-neutral-faint);
   --cdr-color-button-dark-icon-disabled: var(--cdr-action-icon-neutral-trace);
-  --cdr-color-button-dark-active-inset: var(--cdr-action-border-neutral-faint);
+  --cdr-color-button-dark-active-inset: var(--cdr-action-surface-neutral);
 }
 
 .cdr-button--sale {
@@ -134,7 +134,7 @@
   --cdr-color-button-sale-text-disabled: var(--cdr-action-text-neutral-trace);
   --cdr-color-button-sale-border-disabled: var(--cdr-action-border-neutral-faint);
   --cdr-color-button-sale-icon-disabled: var(--cdr-action-icon-neutral-trace);
-  --cdr-color-button-sale-active-inset: var(--cdr-border-neutral-trace);
+  --cdr-color-button-sale-active-inset: var(--cdr-action-surface-neutral-trace);
 }
 
 .cdr-button--link {

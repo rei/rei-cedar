@@ -22,6 +22,11 @@ import { literal, token } from '../../../build/component-tokens/types';
  * identities, so those icon slots reuse the approved text token via fullPath
  * (declared explicitly, not mirrored).
  *
+ * Figma is the design source for the color matrix. The read-only adapter in
+ * build/figma/adapters/button.ts maps the CDR Components button/* variables to
+ * these slots and checks both the semantic alias and resolved value. Run it
+ * with `pnpm figma:check:button`; see docs/figma-sync-adapter.md.
+ *
  * To regenerate the SCSS maps from this contract:
  *   npx tsx build/generate-component-maps.ts
  */
@@ -72,7 +77,12 @@ const contract: ComponentTokenContract = {
   variants: {
     primary: {
       identity: 'brand',
-      rest: { surface: 'brand', text: 'neutral-trace', border: 'brand', icon: 'neutral-trace' },
+      rest: {
+        surface: 'brand',
+        text: 'neutral-faint',
+        border: 'brand',
+        icon: 'neutral-faint',
+      },
       hover: {
         surface: 'brand-faint',
         text: 'brand',
@@ -86,14 +96,19 @@ const contract: ComponentTokenContract = {
         border: 'brand',
         icon: { fullPath: 'action-text-brand' },
       },
-      active: { surface: 'brand', text: 'neutral-trace', border: 'brand', icon: 'neutral-trace' },
+      active: {
+        surface: 'brand',
+        text: 'neutral-faint',
+        border: 'brand',
+        icon: 'neutral-faint',
+      },
       disabled: {
         surface: 'neutral-prominent',
         text: 'neutral-trace',
         border: 'neutral-faint',
         icon: 'neutral-trace',
       },
-      extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
+      extras: { 'active-inset': token('cdr-action-surface-brand-faint') },
     },
 
     secondary: {
@@ -112,18 +127,20 @@ const contract: ComponentTokenContract = {
         icon: 'neutral-bold',
       },
       active: {
-        surface: 'neutral-bold',
-        text: 'neutral-trace',
+        // Source-authored cross-role reference: the Figma variable uses
+        // color/action/icon/neutral for the inner surface.
+        surface: { fullPath: 'action-icon-neutral' },
+        text: 'neutral-faint',
         border: 'neutral',
-        icon: 'neutral-trace',
+        icon: 'neutral-faint',
       },
       disabled: {
-        surface: 'neutral-faint',
+        surface: 'neutral-trace',
         text: 'neutral-subtle',
         border: 'neutral-faint',
         icon: 'neutral-subtle',
       },
-      extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
+      extras: { 'active-inset': token('cdr-action-surface-neutral-subtle') },
     },
 
     // "dark" is identity: neutral at an intense expression — not a separate inverse identity.
@@ -131,9 +148,9 @@ const contract: ComponentTokenContract = {
       identity: 'neutral',
       rest: {
         surface: 'neutral-intense',
-        text: 'neutral-trace',
+        text: 'neutral-faint',
         border: 'neutral-bold',
-        icon: 'neutral-trace',
+        icon: 'neutral-faint',
       },
       hover: {
         surface: 'neutral',
@@ -149,9 +166,9 @@ const contract: ComponentTokenContract = {
       },
       active: {
         surface: 'neutral-intense',
-        text: 'neutral-trace',
+        text: 'neutral-faint',
         border: 'neutral-bold',
-        icon: 'neutral-trace',
+        icon: 'neutral-faint',
       },
       disabled: {
         surface: 'neutral-prominent',
@@ -159,7 +176,7 @@ const contract: ComponentTokenContract = {
         border: 'neutral-faint',
         icon: 'neutral-trace',
       },
-      extras: { 'active-inset': literal('var(--cdr-action-border-neutral-faint)') },
+      extras: { 'active-inset': token('cdr-action-surface-neutral') },
     },
 
     sale: {
@@ -174,7 +191,7 @@ const contract: ComponentTokenContract = {
         border: 'neutral-faint',
         icon: 'neutral-trace',
       },
-      extras: { 'active-inset': literal('var(--cdr-border-neutral-trace)') },
+      extras: { 'active-inset': token('cdr-action-surface-neutral-trace') },
     },
 
     // Link-style text. The retired `link` identity is `trigger`; there is no

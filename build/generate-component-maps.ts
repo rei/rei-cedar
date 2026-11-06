@@ -47,6 +47,17 @@ function scssValue(value: ContractValue): string {
   return `tokens.$${value.name}`;
 }
 
+/**
+ * Color values stay as CSS custom properties in runtime maps and hooks.
+ * Resolving a token to `tokens.$…` here would bake the package value into the
+ * generated CSS and break consumer overrides of the semantic foundation.
+ */
+function colorValue(value: ContractValue): string {
+  if (value.kind === 'literal') return scssValue(value);
+  const name = value.name.startsWith('--') ? value.name : `--${value.name}`;
+  return `var(${name})`;
+}
+
 // ============================================================================
 // DOC LABELS — human text for the generated ITEM_DOC comments
 // ============================================================================
@@ -183,9 +194,9 @@ function generateColorVariant(
       if (extraValue && typeof extraValue === 'object' && useHooks) {
         const description = EXTRA_LABEL[extraKey] ?? extraKey.replace(/-/g, ' ');
         lines.push(docComment(variantName, contract.component, description, hook));
-        lines.push(`    ${extraKey}: var(${hook}, ${scssValue(extraValue)}),`);
+        lines.push(`    ${extraKey}: var(${hook}, ${colorValue(extraValue)}),`);
       } else if (extraValue && typeof extraValue === 'object') {
-        lines.push(`    ${extraKey}: ${scssValue(extraValue)},`);
+        lines.push(`    ${extraKey}: ${colorValue(extraValue)},`);
       } else if (legacyToken) {
         lines.push(`    ${extraKey}: #{tokens.$${legacyToken}},`);
       } else {
@@ -244,7 +255,7 @@ function generateHooksDoc(contract: ComponentTokenContract, sourcePath: string):
         if (legacy[`${variantName}/${extraKey}`]) continue;
         const hook = hookVar(contract.component, scope, extraKey, 'rest', contract.hookPrefix);
         const description = `${docPrefix(variantName, contract.component)}${EXTRA_LABEL[extraKey] ?? extraKey.replace(/-/g, ' ')}`;
-        pushEntry(hook, scssValue(extraValue), description);
+        pushEntry(hook, colorValue(extraValue), description);
       }
     }
   }
