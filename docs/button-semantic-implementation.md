@@ -39,9 +39,9 @@ token second:
 primary: (
   // ITEM_DOC: Primary button's background color. Override with --cdr-color-button-surface.
   background: var(--cdr-color-button-surface, var(--cdr-action-surface-brand)),
-  text: var(--cdr-color-button-text, var(--cdr-action-text-neutral-trace)),
+  text: var(--cdr-color-button-text, var(--cdr-action-text-neutral-faint)),
   border: var(--cdr-color-button-border, var(--cdr-action-border-brand)),
-  fill: var(--cdr-color-button-icon, var(--cdr-action-icon-neutral-trace)) // ...
+  fill: var(--cdr-color-button-icon, var(--cdr-action-icon-neutral-faint)) // ...
 );
 ```
 
@@ -66,6 +66,15 @@ brand value (`#143528`). Everything comes from the package semantic
 foundations. Report new gaps to the tokens repo instead of adding local
 definitions; the skill's gap policy is in
 `.agents/skills/semantic-token-migration/SKILL.md`.
+
+## Figma sync
+
+Run `pnpm figma:check:button` with a read-only `FIGMA_ACCESS_TOKEN` to compare
+the contract with the CDR Components `button/*` variables. The adapter, mapping
+policy, legacy exceptions, and current sale-palette package drift are documented
+in `docs/figma-sync-adapter.md`; the latest per-variable snapshot is in
+`docs/figma-button-sync-report.md`. The check is read-only and never writes to
+Figma.
 
 ## Files
 
