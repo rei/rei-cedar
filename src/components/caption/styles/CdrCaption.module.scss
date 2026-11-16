@@ -8,45 +8,21 @@
 
     :Base - CdrCaption
 ========================================================================== */
-@use 'sass:map';
 @use './vars/CdrCaption.maps' as maps;
+@use './vars/CdrCaption.vars' as vars;
 
 .cdr-caption {
   @each $key, $value in maps.$caption-defaults {
     --cdr-caption-#{$key}: #{$value};
   }
 
-  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
-  // Remove when the token ships.
-  --cdr-text-neutral: #746e63;
-  --cdr-text-neutral-prominent: #4c473e;
-
-  max-width: var(--cdr-caption-max-width);
-  line-height: var(--cdr-caption-line-height);
-  padding: var(--cdr-caption-padding-block) var(--cdr-caption-padding-inline);
+  @include vars.cdr-caption-container-mixin;
 
   cite {
-    font-family: var(--cdr-caption-cite-font-family);
-    font-size: var(--cdr-caption-cite-font-size);
-    font-weight: var(--cdr-caption-cite-font-weight);
-    letter-spacing: var(--cdr-caption-cite-letter-spacing);
-    line-height: var(--cdr-caption-cite-line-height);
-    font-style: var(--cdr-caption-cite-font-style);
-    color: map.get(maps.$caption-colors, cite, text);
+    @include vars.cdr-caption-cite-mixin;
   }
 
   &__summary {
-    font-family: var(--cdr-caption-summary-font-family);
-    font-size: var(--cdr-caption-summary-font-size);
-    font-weight: var(--cdr-caption-summary-font-weight);
-    letter-spacing: var(--cdr-caption-summary-letter-spacing);
-    line-height: var(--cdr-caption-summary-line-height);
-    margin: var(--cdr-caption-summary-margin);
-    color: map.get(maps.$caption-colors, summary, text);
-
-    + cite {
-      display: inline-block;
-      margin-top: var(--cdr-caption-summary-cite-margin-top);
-    }
+    @include vars.cdr-caption-summary-mixin;
   }
 }

@@ -6,11 +6,8 @@
   # CdrRadio
 
   Base values and colors come from the generated maps in
-  styles/vars/CdrRadio.maps.scss (source: CdrRadio.tokens.ts).
-
-  The control palette shim below provides the approved semantic values until
-  these tokens ship globally from @rei/cdr-tokens. Remove the shim block when
-  they are available.
+  styles/vars/CdrRadio.maps.scss (source: CdrRadio.tokens.ts). Semantic values
+  come from @rei/cdr-tokens.
   ========================================================================== */
 
 .cdr-radio {

@@ -59,11 +59,12 @@
     "build:copycss": "tsx build/copy-css.ts",
     "build:umd": "vite build --config vite.umd.config.ts",
     "validate-package": "tsx build/validate-package.ts",
-    "build:variables": "tsx build/component-variables-transfer.ts",
-    "build:maps": "tsx build/generate-component-maps.ts && oxfmt 'src/components/*/styles/vars/*.maps.scss' 'src/components/*/styles/vars/*.hooks.scss' 'src/components/button/styles/CdrButton.tokens.css'",
+    "build:variables": "pnpm build:maps && tsx build/component-variables-transfer.ts",
+    "build:maps": "tsx build/generate-component-maps.ts && oxfmt 'src/components/*/styles/vars/*.maps.scss' 'src/components/*/styles/vars/*.hooks.scss' 'src/components/*/styles/*.tokens.css'",
     "pages": "vite build --config vite.pages.config.mts",
     "preview": "vite preview --config vite.pages.config.mts",
     "unit": "vitest run",
+    "test:variables": "vitest run --config vitest.component-variables.config.ts",
     "unit:update": "vitest --update",
     "watch": "vitest",
     "coverage": "vitest run --coverage",
@@ -91,7 +92,7 @@
     "docs:release-notes": "node scripts/generate-release-notes.mjs"
   },
   "dependencies": {
-    "@rei/cdr-tokens": "15.0.0-alpha.2",
+    "@rei/cdr-tokens": "15.0.0-alpha.4",
     "@vueuse/core": "^14.1.0",
     "radix-vue": "^1.9.17",
     "tabbable": "^6.4.0"

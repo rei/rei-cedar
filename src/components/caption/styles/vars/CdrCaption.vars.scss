@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use './CdrCaption.maps' as maps;
+
+@mixin cdr-caption-container-mixin() {
+  max-width: var(--cdr-caption-max-width);
+  line-height: var(--cdr-caption-line-height);
+  padding: var(--cdr-caption-padding-block) var(--cdr-caption-padding-inline);
+}
+
+@mixin cdr-caption-summary-mixin() {
+  font-family: var(--cdr-caption-summary-font-family);
+  font-size: var(--cdr-caption-summary-font-size);
+  font-weight: var(--cdr-caption-summary-font-weight);
+  letter-spacing: var(--cdr-caption-summary-letter-spacing);
+  line-height: var(--cdr-caption-summary-line-height);
+  margin: var(--cdr-caption-summary-margin);
+  color: map.get(maps.$caption-colors, summary, text);
+
+  + cite {
+    display: inline-block;
+    margin-top: var(--cdr-caption-summary-cite-margin-top);
+  }
+}
+
+@mixin cdr-caption-cite-mixin() {
+  font-family: var(--cdr-caption-cite-font-family);
+  font-size: var(--cdr-caption-cite-font-size);
+  font-weight: var(--cdr-caption-cite-font-weight);
+  letter-spacing: var(--cdr-caption-cite-letter-spacing);
+  line-height: var(--cdr-caption-cite-line-height);
+  font-style: var(--cdr-caption-cite-font-style);
+  color: map.get(maps.$caption-colors, cite, text);
+}

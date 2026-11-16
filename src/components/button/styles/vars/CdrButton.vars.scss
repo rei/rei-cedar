@@ -6,24 +6,6 @@
 // BASE
 // ============================================================================
 
-@mixin cdr-button-base-text-mixin-small() {
-  font-family: tokens.$cdr-font-family-sans;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: -0.008rem;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-}
-
-@mixin cdr-button-base-text-mixin-medium() {
-  font-family: tokens.$cdr-font-family-sans;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: -0.008rem;
-  font-size: 1.6rem;
-  line-height: 2.2rem;
-}
-
 @mixin cdr-button-base-mixin() {
   border: none;
   cursor: pointer;
@@ -66,6 +48,60 @@
   &[disabled] {
     cursor: not-allowed;
   }
+
+  svg {
+    @include cdr-button-base-icon-mixin;
+
+    width: var(--cdr-button-icon-size);
+    height: var(--cdr-button-icon-size);
+  }
+
+  &.cdr-button--has-icon-left {
+    padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
+    svg {
+      margin-right: var(--cdr-button-icon-gap);
+    }
+  }
+
+  &.cdr-button--has-icon-right {
+    padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
+
+    svg {
+      margin-left: var(--cdr-button-icon-gap);
+    }
+  }
+}
+
+@mixin cdr-button-base-icon-mixin() {
+  align-self: center;
+  fill: inherit;
+}
+
+@mixin cdr-button-base-text($size) {
+  @each $property in (font-family, font-style, font-weight, letter-spacing) {
+    #{$property}: map.get(maps.$button-defaults, $property);
+  }
+
+  @each $property in (font-size, line-height) {
+    #{$property}: map.get(maps.$button-sizes, $size, $property);
+  }
+}
+
+@mixin cdr-button-icon-size($size) {
+  --cdr-button-icon-size: #{map.get(maps.$button-sizes, $size, icon-size)};
+
+  width: var(--cdr-button-icon-size);
+  height: var(--cdr-button-icon-size);
+}
+
+@mixin cdr-button-icon-padding($size, $side) {
+  $padding: map.get(maps.$button-sizes, $size, icon-padding);
+  $gap: map.get(maps.$button-defaults, icon-gap);
+
+  --cdr-button-icon-padding: #{$padding};
+
+  padding-#{$side}: calc(#{$padding} - #{$gap});
 }
 
 // ============================================================================
@@ -156,22 +192,6 @@
   }
 }
 
-@mixin cdr-button-primary-mixin() {
-  @include cdr-button-variant-colors(map.get(maps.$button-colors, primary));
-}
-
-@mixin cdr-button-secondary-mixin() {
-  @include cdr-button-variant-colors(map.get(maps.$button-colors, secondary));
-}
-
-@mixin cdr-button-dark-mixin() {
-  @include cdr-button-variant-colors(map.get(maps.$button-colors, dark));
-}
-
-@mixin cdr-button-sale-mixin() {
-  @include cdr-button-variant-colors(map.get(maps.$button-colors, sale));
-}
-
 // ============================================================================
 // SPECIAL CASE MIXINS
 // Structural variants that override the standard action-family pattern.
@@ -181,7 +201,7 @@
 
 // ── Link — no background/border, underline instead ──────────────────────────
 
-@mixin cdr-button-link-mixin() {
+@mixin _link() {
   $colors: map.get(maps.$button-colors, link);
 
   background-color: map.get($colors, surface);
@@ -210,7 +230,7 @@
 
   // ITEM_DOC: Link button's focus outline. Override with --cdr-button-link-outline.
   &:focus {
-    outline: var(--cdr-button-link-outline, var(--default-outline, 0.2rem solid Highlight));
+    outline: var(--cdr-button-link-outline, 0.2rem solid Highlight);
     outline-color: -webkit-focus-ring-color;
     outline-offset: 0;
   }
@@ -218,7 +238,7 @@
 
 // ── Icon-only — completely different layout ─────────────────────────────────
 
-@mixin cdr-button-icon-only-mixin() {
+@mixin _icon-only() {
   $colors: map.get(maps.$button-colors, icon-only);
 
   background: none;
@@ -267,11 +287,15 @@
     box-shadow: none;
     fill: map.get($colors, fill-disabled);
   }
+
+  > svg {
+    margin: 0;
+  }
 }
 
 // ── With-background — secondary colors + circular shape ─────────────────────
 
-@mixin cdr-button-with-background-mixin() {
+@mixin _with-background() {
   $colors: map.get(maps.$button-colors, with-background);
 
   border-radius: 50%;
@@ -329,21 +353,45 @@
 @mixin cdr-button-elevated-mixin() {
   --cdr-button-elevation: #{tokens.$cdr-prominence-elevated};
   --cdr-button-elevation-hover: #{tokens.$cdr-prominence-floating};
+  --cdr-button-elevation-focus-visible: #{tokens.$cdr-prominence-floating};
   --cdr-button-elevation-active: #{tokens.$cdr-prominence-raised};
 }
 
+@mixin cdr-button-elevated-variant($variant) {
+  @include cdr-button-elevated-mixin;
+
+  $colors: map.get(maps.$button-colors, $variant);
+
+  @include _border-shadow($colors, rest);
+
+  &:hover {
+    @include _border-shadow($colors, hover);
+  }
+
+  &:focus-visible {
+    @include _border-shadow($colors, focus-visible);
+  }
+
+  &:active {
+    @include _border-shadow($colors, active);
+  }
+
+  &[disabled] {
+    @include _border-shadow(map.get(maps.$button-colors, $variant), disabled);
+  }
+}
+
 // ============================================================================
-// BACKWARD-COMPAT ALIASES — for component-variables consumers
-// These will be replaced by the generated CSS output (CdrButton.css).
+// VARIANT AND SIZE OPERATIONS
 // ============================================================================
 
 @mixin cdr-button-apply-variant($variant) {
   @if $variant == link {
-    @include cdr-button-link-mixin;
+    @include _link;
   } @else if $variant == icon-only {
-    @include cdr-button-icon-only-mixin;
+    @include _icon-only;
   } @else if $variant == with-background {
-    @include cdr-button-with-background-mixin;
+    @include _with-background;
   } @else {
     $colors: map.get(maps.$button-colors, $variant);
 
@@ -355,24 +403,12 @@
   }
 }
 
-@mixin cdr-button-primary-elevated-mixin() {
-  @include cdr-button-elevated-mixin;
-}
-
-@mixin cdr-button-secondary-elevated-mixin() {
-  @include cdr-button-elevated-mixin;
-}
-
-@mixin cdr-button-dark-elevated-mixin() {
-  @include cdr-button-elevated-mixin;
-}
-
-@mixin cdr-button-sale-elevated-mixin() {
-  @include cdr-button-elevated-mixin;
-}
-
 @mixin cdr-button-apply-size($size) {
   $s: map.get(maps.$button-sizes, $size);
+
+  @if not $s {
+    @error "Unknown CdrButton size: #{$size}";
+  }
 
   @each $key, $value in $s {
     --cdr-button-#{$key}: #{$value};
@@ -381,19 +417,147 @@
   width: auto;
 }
 
-@mixin cdr-button-small-mixin() {
-  @include cdr-button-apply-size(small);
+@mixin cdr-button-at-breakpoint($breakpoint: null) {
+  @if not $breakpoint {
+    @content;
+  } @else if $breakpoint == xs {
+    @include tokens.cdr-xs-mq-only {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @include tokens.cdr-sm-mq-only {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @include tokens.cdr-md-mq-only {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @include tokens.cdr-lg-mq-only {
+      @content;
+    }
+  } @else {
+    @error "Unknown CdrButton breakpoint: #{$breakpoint}";
+  }
 }
 
-@mixin cdr-button-medium-mixin() {
-  @include cdr-button-apply-size(medium);
+@mixin cdr-button-full-width-mixin($breakpoint: null) {
+  @include cdr-button-at-breakpoint($breakpoint) {
+    width: 100% !important;
+    justify-content: center;
+  }
 }
 
-@mixin cdr-button-large-mixin() {
-  @include cdr-button-apply-size(large);
+@mixin cdr-button-icon-only-large-mixin() {
+  padding: var(--cdr-button-icon-only-large-padding);
 }
 
-@mixin cdr-button-full-width-mixin() {
-  width: 100% !important;
-  justify-content: center;
+@mixin cdr-button-primary-mixin() {
+  @include cdr-button-apply-variant(primary);
+}
+
+@mixin cdr-button-primary-elevated-mixin() {
+  @include cdr-button-elevated-variant(primary);
+}
+
+@mixin cdr-button-secondary-mixin() {
+  @include cdr-button-apply-variant(secondary);
+}
+
+@mixin cdr-button-secondary-elevated-mixin() {
+  @include cdr-button-elevated-variant(secondary);
+}
+
+@mixin cdr-button-dark-mixin() {
+  @include cdr-button-apply-variant(dark);
+}
+
+@mixin cdr-button-dark-elevated-mixin() {
+  @include cdr-button-elevated-variant(dark);
+}
+
+@mixin cdr-button-sale-mixin() {
+  @include cdr-button-apply-variant(sale);
+}
+
+@mixin cdr-button-sale-elevated-mixin() {
+  @include cdr-button-elevated-variant(sale);
+}
+
+@mixin cdr-button-link-mixin() {
+  @include cdr-button-apply-variant(link);
+}
+
+@mixin cdr-button-icon-only-mixin() {
+  @include cdr-button-apply-variant(icon-only);
+}
+
+@mixin cdr-button-with-background-mixin() {
+  @include cdr-button-apply-variant(with-background);
+}
+
+@mixin cdr-button-small-mixin($breakpoint: null) {
+  @include cdr-button-at-breakpoint($breakpoint) {
+    @include cdr-button-apply-size(small);
+  }
+}
+
+@mixin cdr-button-base-text-mixin-small() {
+  @include cdr-button-base-text(small);
+}
+
+@mixin cdr-button-icon-small-mixin() {
+  @include cdr-button-icon-size(small);
+}
+
+@mixin cdr-button-has-icon-left-small-mixin() {
+  @include cdr-button-icon-padding(small, left);
+}
+
+@mixin cdr-button-has-icon-right-small-mixin() {
+  @include cdr-button-icon-padding(small, right);
+}
+
+@mixin cdr-button-medium-mixin($breakpoint: null) {
+  @include cdr-button-at-breakpoint($breakpoint) {
+    @include cdr-button-apply-size(medium);
+  }
+}
+
+@mixin cdr-button-base-text-mixin-medium() {
+  @include cdr-button-base-text(medium);
+}
+
+@mixin cdr-button-icon-medium-mixin() {
+  @include cdr-button-icon-size(medium);
+}
+
+@mixin cdr-button-has-icon-left-medium-mixin() {
+  @include cdr-button-icon-padding(medium, left);
+}
+
+@mixin cdr-button-has-icon-right-medium-mixin() {
+  @include cdr-button-icon-padding(medium, right);
+}
+
+@mixin cdr-button-large-mixin($breakpoint: null) {
+  @include cdr-button-at-breakpoint($breakpoint) {
+    @include cdr-button-apply-size(large);
+  }
+}
+
+@mixin cdr-button-base-text-mixin-large() {
+  @include cdr-button-base-text(large);
+}
+
+@mixin cdr-button-icon-large-mixin() {
+  @include cdr-button-icon-size(large);
+}
+
+@mixin cdr-button-has-icon-left-large-mixin() {
+  @include cdr-button-icon-padding(large, left);
+}
+
+@mixin cdr-button-has-icon-right-large-mixin() {
+  @include cdr-button-icon-padding(large, right);
 }

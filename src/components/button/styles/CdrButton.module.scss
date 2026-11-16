@@ -1,6 +1,6 @@
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './vars/CdrButton.maps' as maps;
-@use './vars/CdrButton.vars' as vars; // special-case mixins not covered by the generated maps
+@use './vars/CdrButton.vars' as vars;
 
 // Apply the values for a size and let the button take its natural width.
 @mixin _apply-size($dims) {
@@ -14,62 +14,17 @@
 .cdr-button {
   @include vars.cdr-button-base-mixin;
 
-  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
-  // Remove when the token ships.
-  --cdr-border-neutral-trace: #ffffff;
-
-  // Alpha.2's light-mode brand resolves to #800080 (dark: #143528).
-  // Keep the approved spruce green until the token data is corrected.
-  --cdr-action-surface-brand: #143528;
-  --cdr-action-text-brand: #143528;
-  --cdr-action-border-brand: #143528;
-
-  svg {
-    align-self: center;
-    fill: inherit;
-    width: var(--cdr-button-icon-size);
-    height: var(--cdr-button-icon-size);
-  }
-
-  &.cdr-button--has-icon-left {
-    padding-left: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
-
-    svg {
-      margin-right: var(--cdr-button-icon-gap);
-    }
-  }
-
-  &.cdr-button--has-icon-right {
-    padding-right: calc(var(--cdr-button-icon-padding) - var(--cdr-button-icon-gap));
-
-    svg {
-      margin-left: var(--cdr-button-icon-gap);
-    }
-  }
-
   // Every color scope comes from the generated contract map; each entry already
   // carries its public override hook within the semantic fallback.
 
   @each $variant, $colors in maps.$button-colors {
     &--#{$variant} {
-      @if $variant == link {
-        @include vars.cdr-button-link-mixin;
-      } @else if $variant == icon-only {
-        @include vars.cdr-button-icon-only-mixin;
-
-        > svg {
-          margin: 0;
-        }
-      } @else if $variant == with-background {
-        @include vars.cdr-button-with-background-mixin;
-      } @else {
-        @include vars.cdr-button-variant-colors($colors);
-      }
+      @include vars.cdr-button-apply-variant($variant);
     }
   }
 
   &--icon-only-large {
-    padding: var(--cdr-button-icon-only-large-padding);
+    @include vars.cdr-button-icon-only-large-mixin;
   }
 
   &--full-width {

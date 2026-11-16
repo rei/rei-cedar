@@ -5,7 +5,7 @@
  * CSS custom property names. Previously duplicated (with drift) across
  * generate-component-maps.ts and families/action.ts.
  *
- * Shipped semantic token grammar (@rei/cdr-tokens >= 15.0.0-alpha.2; see
+ * Shipped semantic token grammar (@rei/cdr-tokens >= 15.0.0-alpha.4; see
  * .agents/skills/semantic-token-migration/references/semantic-colors.json):
  *   --cdr-[<interaction>-]<role>-<identity>[-<expression>]
  * Semantic foundations do not carry a `color-` segment. `icon` is its own
