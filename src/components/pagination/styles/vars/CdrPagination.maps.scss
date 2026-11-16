@@ -1,0 +1,59 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/pagination/CdrPagination.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$pagination-defaults: (
+  link-padding: tokens.$cdr-space-inset-three-quarter-x-squish,
+  link-radius: tokens.$cdr-radius-softer,
+  link-gap: tokens.$cdr-space-quarter-x,
+  prev-margin-right: tokens.$cdr-space-one-x,
+  next-margin-left: tokens.$cdr-space-one-x,
+  caret-margin-right: tokens.$cdr-space-eighth-x,
+  caret-margin-left: tokens.$cdr-space-eighth-x,
+  keyline-height: 2px,
+  keyline-width: 80%,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$pagination-colors: (
+  default: (
+    // ITEM_DOC: Default pagination's text color. Override with --cdr-color-pagination-text.
+    text: var(--cdr-color-pagination-text, var(--cdr-action-text-neutral-bold)),
+    // ITEM_DOC: Default pagination's icon color. Override with --cdr-color-pagination-icon.
+    fill: var(--cdr-color-pagination-icon, var(--cdr-action-icon-neutral-bold)),
+    // ITEM_DOC: Default pagination's background color on hover. Override with --cdr-color-pagination-surface-hover.
+    background-hover: var(
+        --cdr-color-pagination-surface-hover,
+        var(--cdr-action-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default pagination's background color on focus. Override with --cdr-color-pagination-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-pagination-surface-focus-visible,
+        var(--cdr-action-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default pagination's background color when active. Override with --cdr-color-pagination-surface-active.
+    background-active: var(
+        --cdr-color-pagination-surface-active,
+        var(--cdr-action-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default pagination's text color when disabled. Override with --cdr-color-pagination-text-disabled.
+    text-disabled: var(--cdr-color-pagination-text-disabled, var(--cdr-action-text-neutral-subtle)),
+    // ITEM_DOC: Default pagination's icon color when disabled. Override with --cdr-color-pagination-icon-disabled.
+    fill-disabled: var(--cdr-color-pagination-icon-disabled, var(--cdr-action-icon-neutral-subtle)),
+  ),
+  current: (
+    // ITEM_DOC: Current pagination's border color. Override with --cdr-color-pagination-current-border.
+    border: var(--cdr-color-pagination-current-border, var(--cdr-action-border-trigger)),
+  ),
+);

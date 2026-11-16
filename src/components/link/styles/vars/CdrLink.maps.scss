@@ -1,0 +1,63 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/link/CdrLink.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$link-defaults: (
+  // Layout
+  padding: 0,
+  // Typography
+  font-family: inherit,
+  font-size: inherit,
+  line-height: inherit,
+  // Color
+  border: 0,
+  align-items: center,
+  background-color: transparent,
+  cursor: pointer,
+  display: inline-flex,
+  margin: 0,
+  outline: none,
+  vertical-align: top,
+  text-decoration: underline,
+  text-decoration-hover: none
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$link-colors: (
+  default: (
+    // ITEM_DOC: Default link's text color. Override with --cdr-link-text.
+    text: var(--cdr-link-text, var(--cdr-action-text-trigger)),
+    // ITEM_DOC: Default link's icon color. Override with --cdr-link-icon.
+    fill: var(--cdr-link-icon, var(--cdr-action-text-trigger)),
+    // ITEM_DOC: Default link's text color on hover. Override with --cdr-link-text-hover.
+    text-hover: var(--cdr-link-text-hover, var(--cdr-action-text-trigger)),
+    // ITEM_DOC: Default link's text color on focus. Override with --cdr-link-text-focus-visible.
+    text-focus-visible: var(--cdr-link-text-focus-visible, var(--cdr-action-text-trigger-bold)),
+    // ITEM_DOC: Default link's text color when active. Override with --cdr-link-text-active.
+    text-active: var(--cdr-link-text-active, var(--cdr-action-text-trigger-bold)),
+  ),
+  neutral: (
+    // ITEM_DOC: Neutral link's text color. Override with --cdr-link-neutral-text.
+    text: var(--cdr-link-neutral-text, var(--cdr-action-text-neutral-bold)),
+    // ITEM_DOC: Neutral link's text color on hover. Override with --cdr-link-neutral-text-hover.
+    text-hover: var(--cdr-link-neutral-text-hover, var(--cdr-action-text-neutral-bold)),
+    // ITEM_DOC: Neutral link's text color on focus. Override with --cdr-link-neutral-text-focus-visible.
+    text-focus-visible: var(
+        --cdr-link-neutral-text-focus-visible,
+        var(--cdr-action-text-neutral-bold)
+      ),
+    // ITEM_DOC: Neutral link's text color when active. Override with --cdr-link-neutral-text-active.
+    text-active: var(--cdr-link-neutral-text-active, var(--cdr-action-text-neutral-bold)),
+  ),
+);

@@ -1,4 +1,6 @@
+@use 'sass:map';
 @use '@rei/cdr-tokens/scss' as tokens;
+@use './CdrCard.maps' as maps;
 
 @mixin cdr-card-base-mixin() {
   position: relative;
@@ -6,16 +8,13 @@
   // ITEM_DOC: Background color of a cdr-card
   background-color: var(
     --cdr-card-base-background-color,
-    var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+    map.get(maps.$card-colors, base, background)
   );
-  border-radius: tokens.$cdr-radius-softer;
-  box-shadow: tokens.$cdr-prominence-raised;
+  border-radius: var(--cdr-card-border-radius);
+  box-shadow: var(--cdr-card-box-shadow);
 
   // ITEM_DOC: Text color of a cdr-card
-  color: var(
-    --cdr-card-base-color,
-    var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-  );
+  color: var(--cdr-card-base-color, map.get(maps.$card-colors, base, text));
   container: card / inline-size;
   width: 100%;
   transition: box-shadow tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease;
@@ -24,7 +23,7 @@
 
   &:active,
   &:hover {
-    box-shadow: tokens.$cdr-prominence-floating;
+    box-shadow: var(--cdr-card-box-shadow-hover);
     transform: translateY(-#{tokens.$cdr-space-eighth-x});
     transition: tokens.$cdr-duration-2-x;
   }
@@ -34,10 +33,7 @@
   position: static;
 
   // ITEM_DOC: Link text color of a cdr-card
-  color: var(
-    --cdr-card-link-color,
-    var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
-  ) !important;
+  color: var(--cdr-card-link-color, map.get(maps.$card-colors, link, text)) !important;
   text-decoration: none !important;
 
   &:hover {
@@ -46,7 +42,7 @@
     // ITEM_DOC: Link hover text color of a cdr-card
     color: var(
       --cdr-card-link-hover-color,
-      var(--cdr-color-text-link-hover, #{tokens.$cdr-color-text-link-hover})
+      map.get(maps.$card-colors, link, text-hover)
     ) !important;
   }
 

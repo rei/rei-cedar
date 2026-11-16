@@ -1,0 +1,55 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/select/CdrSelect.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$select-defaults: (
+  // Layout
+  radius: tokens.$cdr-radius-softer,
+  height: 4rem,
+  large-height: 4.8rem,
+  padding-left: tokens.$cdr-space-half-x,
+  padding-right: tokens.$cdr-space-two-x,
+  icon-offset: tokens.$cdr-space-half-x,
+  multiple-padding: tokens.$cdr-space-half-x
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$select-colors: (
+  default: (
+    background: var(--cdr-control-surface-neutral-faint),
+    text: var(--cdr-control-text-neutral-bold),
+    border: var(--cdr-control-border-neutral),
+    background-focus-visible: var(--cdr-control-surface-neutral-faint),
+    border-focus-visible: var(--cdr-control-border-neutral-intense),
+    background-disabled: var(--cdr-control-surface-neutral-faint),
+    text-disabled: var(--cdr-control-text-neutral-faint),
+    border-disabled: var(--cdr-control-border-neutral-faint),
+  ),
+  secondary: (
+    background: var(--cdr-control-surface-neutral-trace),
+    background-focus-visible: var(--cdr-control-surface-neutral-trace),
+  ),
+  error: (
+    background: var(--cdr-feedback-surface-error-trace),
+    border: var(--cdr-feedback-border-error),
+  ),
+  prompt: (
+    text: var(--cdr-control-text-neutral-prominent),
+    text-disabled: var(--cdr-control-text-neutral-faint),
+  ),
+  caret: (
+    fill: var(--cdr-control-icon-neutral-intense),
+    fill-disabled: var(--cdr-control-icon-neutral),
+  ),
+);

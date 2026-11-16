@@ -1,6 +1,12 @@
+@use 'sass:map';
+@use './vars/CdrFormError.maps' as maps;
 @use './vars/CdrFormError.vars' as vars;
 
 .cdr-form-error {
+  @each $key, $value in maps.$form-error-defaults {
+    --cdr-form-error-#{$key}: #{$value};
+  }
+
   @include vars.cdr-form-error-base-mixin;
 
   height: 0;

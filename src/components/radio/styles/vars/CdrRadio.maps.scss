@@ -1,0 +1,46 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/radio/CdrRadio.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$radio-defaults: (
+  figure-radius: 100%,
+  inner-circle-size: 0.4rem,
+  inner-circle-radius: tokens.$cdr-radius-round,
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$radio-colors: (
+  default: (
+    background: var(--cdr-control-surface-neutral-faint),
+    border: var(--cdr-control-border-neutral),
+    background-hover: var(--cdr-control-surface-neutral-faint),
+    border-hover: var(--cdr-control-border-neutral-intense),
+    background-focus-visible: var(--cdr-control-surface-neutral-faint),
+    border-focus-visible: var(--cdr-control-border-neutral-bold),
+    background-active: var(--cdr-control-surface-neutral-faint),
+    border-active: var(--cdr-control-border-neutral-bold),
+    background-disabled: var(--cdr-control-surface-neutral-faint),
+    border-disabled: var(--cdr-control-border-neutral-faint),
+  ),
+  checked: (
+    background: var(--cdr-control-surface-neutral-bold),
+    border: var(--cdr-control-border-neutral-bold),
+    fill: var(--cdr-control-icon-neutral-trace),
+    background-hover: var(--cdr-control-surface-neutral-prominent),
+    border-hover: var(--cdr-control-border-neutral-bold),
+    background-focus-visible: var(--cdr-control-surface-neutral-prominent),
+    fill-active: var(--cdr-control-icon-neutral-intense),
+    fill-disabled: var(--cdr-control-icon-neutral-faint),
+  ),
+);

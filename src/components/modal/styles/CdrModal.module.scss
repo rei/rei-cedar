@@ -44,7 +44,7 @@ $modal-animation-duration: 150ms;
     // ITEM_DOC: Background color of the content wrap
     background-color: var(
       --cdr-modal-content-wrap-background-color,
-      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-primary})
+      var(--cdr-color-background-primary, #{tokens.$cdr-color-background-surface-secondary})
     );
     display: flex;
     flex-direction: column;

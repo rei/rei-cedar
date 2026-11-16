@@ -1,4 +1,6 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './CdrInput.maps' as maps;
 
 @mixin cdr-input-base-mixin() {
   @include tokens.cdr-text-utility-sans-300;
@@ -6,33 +8,24 @@
   font-weight: 500;
 
   // ITEM_DOC: Text color of a cdr-input by default
-  color: var(
-    --cdr-input-text-color-default,
-    var(--cdr-color-text-input-default, #{tokens.$cdr-color-text-input-default})
-  );
+  color: var(--cdr-input-text-color-default, map.get(maps.$input-colors, default, text));
   border: 0;
 
   // ITEM_DOC: Background color of a cdr-input by default
   background-color: var(
     --cdr-input-background-color-default,
-    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    map.get(maps.$input-colors, default, background)
   );
 
   // ITEM_DOC: Box-shadow color of a cdr-input by default
   box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-input-box-shadow-default,
-      var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
-    );
+    var(--cdr-input-box-shadow-default, map.get(maps.$input-colors, default, border));
 
   // ITEM_DOC: Fill color of an icon in a cdr-input
-  fill: var(
-    --cdr-input-icon-fill,
-    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-  );
-  border-radius: tokens.$cdr-radius-softer;
-  padding: tokens.$cdr-space-inset-half-x;
-  height: tokens.$cdr-form-input-height-default;
+  fill: var(--cdr-input-icon-fill, map.get(maps.$input-colors, default, fill));
+  border-radius: var(--cdr-input-radius);
+  padding: var(--cdr-input-padding);
+  height: var(--cdr-input-height);
   display: block;
   width: 100%;
   overflow: visible;
@@ -54,10 +47,7 @@
       inset 0 0 0 2px
         var(
           --cdr-input-box-shadow-focus,
-          var(
-            --cdr-color-border-input-default-focus,
-            #{tokens.$cdr-color-border-input-default-focus}
-          )
+          map.get(maps.$input-colors, default, border-focus-visible)
         ),
       tokens.$cdr-prominence-raised;
   }
@@ -65,46 +55,31 @@
   &::placeholder {
     @include tokens.cdr-text-utility-sans-300;
 
-    color: var(
-      --cdr-input-placeholder-text-color,
-      var(--cdr-color-text-input-placeholder, #{tokens.$cdr-color-text-input-placeholder})
-    );
+    color: var(--cdr-input-placeholder-text-color, map.get(maps.$input-colors, placeholder, text));
   }
 
   &[disabled] {
     // ITEM_DOC: Background color of a disabled cdr-input
     background-color: var(
       --cdr-input-background-color-disabled,
-      var(
-        --cdr-color-background-input-default-disabled,
-        #{tokens.$cdr-color-background-input-default-disabled}
-      )
+      map.get(maps.$input-colors, default, background-disabled)
     );
 
     // ITEM_DOC: Text color of a disabled cdr-input
     color: var(
       --cdr-input-text-color-disabled,
-      var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+      map.get(maps.$input-colors, default, text-disabled)
     );
 
     // ITEM_DOC: Box-shadow color of a disabled cdr-input
     box-shadow: inset 0 0 0 1px
-      var(
-        --cdr-input-box-shadow-disabled,
-        var(
-          --cdr-color-border-input-default-disabled,
-          #{tokens.$cdr-color-border-input-default-disabled}
-        )
-      );
+      var(--cdr-input-box-shadow-disabled, map.get(maps.$input-colors, default, border-disabled));
 
     &:hover {
       box-shadow: inset 0 0 0 1px
         var(
           --cdr-input-box-shadow-disabled-hover,
-          var(
-            --cdr-color-border-input-default-disabled,
-            #{tokens.$cdr-color-border-input-default-disabled}
-          )
+          map.get(maps.$input-colors, default, border-disabled)
         );
       cursor: not-allowed;
     }
@@ -112,7 +87,7 @@
     &::placeholder {
       color: var(
         --cdr-input-placeholder-text-color-disabled,
-        var(--cdr-color-text-input-disabled, #{tokens.$cdr-color-text-input-disabled})
+        map.get(maps.$input-colors, placeholder, text-disabled)
       );
     }
   }
@@ -122,7 +97,7 @@
   // ITEM_DOC: Background color of a default cdr-input
   background-color: var(
     --cdr-input-background-color-default,
-    var(--cdr-color-background-input-default, #{tokens.$cdr-color-background-input-default})
+    map.get(maps.$input-colors, default, background)
   );
 
   &:active,
@@ -130,10 +105,7 @@
     // ITEM_DOC: Background color of a default cdr-input in active or focus state
     background-color: var(
       --cdr-input-background-color-default-focus,
-      var(
-        --cdr-color-background-input-default-active,
-        #{tokens.$cdr-color-background-input-default-active}
-      )
+      map.get(maps.$input-colors, default, background-focus-visible)
     );
   }
 }
@@ -142,7 +114,7 @@
   // ITEM_DOC: Background color of a secondary cdr-input
   background-color: var(
     --cdr-input-background-color-secondary,
-    var(--cdr-color-background-input-secondary, #{tokens.$cdr-color-background-input-secondary})
+    map.get(maps.$input-colors, secondary, background)
   );
 
   &:active,
@@ -150,10 +122,7 @@
     // ITEM_DOC: Background color of a secondary cdr-input in active or focus state
     background-color: var(
       --cdr-input-background-color-secondary-active,
-      var(
-        --cdr-color-background-input-secondary-active,
-        #{tokens.$cdr-color-background-input-secondary-active}
-      )
+      map.get(maps.$input-colors, secondary, background-focus-visible)
     );
   }
 }
@@ -162,15 +131,12 @@
   // ITEM_DOC: Background color of a cdr-input in error state
   background-color: var(
     --cdr-input-error-background-color,
-    var(--cdr-color-background-input-error, #{tokens.$cdr-color-background-input-error})
+    map.get(maps.$input-colors, error, background)
   );
 
   // ITEM_DOC: Box-shadow color of a cdr-input in error state
   box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-input-error-box-shadow,
-      var(--cdr-color-border-input-error, #{tokens.$cdr-color-border-input-error})
-    );
+    var(--cdr-input-error-box-shadow, map.get(maps.$input-colors, error, border));
 }
 
 @mixin cdr-input-large-mixin() {
@@ -178,7 +144,7 @@
 
   line-height: tokens.$cdr-space-half-x + tokens.$cdr-text-utility-sans-400-line-height;
   padding-left: tokens.$cdr-space-half-x;
-  height: tokens.$cdr-form-input-height-large;
+  height: var(--cdr-input-large-height);
 
   &::placeholder {
     line-height: tokens.$cdr-space-half-x + tokens.$cdr-text-utility-sans-400-line-height;
@@ -189,8 +155,5 @@
   @include tokens.cdr-text-utility-sans-200;
 
   // ITEM_DOC: Text color of a cdr-input's helper text
-  color: var(
-    --cdr-input-helper-text-color,
-    var(--cdr-color-text-input-help, #{tokens.$cdr-color-text-input-help})
-  );
+  color: var(--cdr-input-helper-text-color, map.get(maps.$input-colors, helper, text));
 }

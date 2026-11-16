@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import CdrToast from './CdrToast.vue';
 import CdrButton from '../button/CdrButton.vue';
 import IconInformationFill from '../icon/comps/information-fill.vue';
@@ -230,4 +230,48 @@ export const CustomDelay: Story = {
   args: {
     dismissDelay: 10000,
   },
+};
+
+export const AllTypesOpen: Story = {
+  render: () => ({
+    components: { CdrToast, IconInformationFill, IconCheckFill, IconWarningFill, IconErrorFill },
+    setup() {
+      const opened = ref([false, false, false, false, false]);
+      onMounted(() => {
+        opened.value = [true, true, true, true, true];
+      });
+      return { opened };
+    },
+    template: `
+      <div class="story-spacing story-spacing--vertical">
+        <CdrToast type="default" :open="opened[0]" :auto-dismiss="false">
+          This is a default toast message
+        </CdrToast>
+        <CdrToast type="info" :open="opened[1]" :auto-dismiss="false">
+          <template #icon-left>
+            <IconInformationFill />
+          </template>
+          Your information has been saved
+        </CdrToast>
+        <CdrToast type="success" :open="opened[2]" :auto-dismiss="false">
+          <template #icon-left>
+            <IconCheckFill />
+          </template>
+          Action completed successfully!
+        </CdrToast>
+        <CdrToast type="warning" :open="opened[3]" :auto-dismiss="false">
+          <template #icon-left>
+            <IconWarningFill />
+          </template>
+          Please review your input before continuing
+        </CdrToast>
+        <CdrToast type="error" :open="opened[4]" :auto-dismiss="false">
+          <template #icon-left>
+            <IconErrorFill />
+          </template>
+          An error occurred while processing your request
+        </CdrToast>
+      </div>
+    `,
+  }),
 };

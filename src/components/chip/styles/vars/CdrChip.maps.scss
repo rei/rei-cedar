@@ -1,0 +1,53 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/chip/CdrChip.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// ============================================================================
+
+@use '@rei/cdr-tokens/scss' as tokens;
+
+// ============================================================================
+// DEFAULTS MAP
+// ============================================================================
+
+$chip-defaults: (
+  // Typography
+  font-family: tokens.$cdr-font-family-sans,
+  font-weight: 400,
+  letter-spacing: -0.08px,
+  font-size: 14px,
+  line-height: 15px,
+  border-radius: 30px
+);
+
+// ============================================================================
+// COLOR MAP
+// ============================================================================
+
+$chip-colors: (
+  default: (
+    background: var(--cdr-surface-neutral-trace),
+    text: var(--cdr-control-text-neutral-prominent),
+    border: var(--cdr-border-neutral-prominent),
+    fill: var(--cdr-control-icon-neutral-intense),
+    background-hover: var(--cdr-control-surface-neutral-subtle),
+    border-hover: var(--cdr-control-border-neutral),
+    background-focus-visible: var(--cdr-surface-neutral-trace),
+    border-focus-visible: var(--cdr-control-border-neutral-bold),
+    background-active: var(--cdr-control-surface-neutral),
+    border-active: var(--cdr-control-border-neutral-bold),
+    background-disabled: var(--cdr-surface-neutral-trace),
+    text-disabled: var(--cdr-control-text-neutral-faint),
+    border-disabled: var(--cdr-border-neutral),
+  ),
+  selected: (
+    background: var(--cdr-control-surface-natural-bold),
+    border: var(--cdr-control-border-neutral-bold),
+    background-hover: var(--cdr-control-surface-neutral),
+    border-hover: var(--cdr-action-border-neutral-prominent),
+    background-focus-visible: var(--cdr-control-surface-natural-bold),
+    border-focus-visible: var(--cdr-control-border-neutral-bold),
+    background-active: var(--cdr-control-surface-neutral),
+    border-active: var(--cdr-control-border-neutral-bold),
+  ),
+);

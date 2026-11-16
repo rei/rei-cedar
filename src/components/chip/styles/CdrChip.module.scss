@@ -1,6 +1,17 @@
+@use 'sass:map';
+@use './vars/CdrChip.maps' as maps;
 @use './vars/CdrChip.vars' as vars;
 
 .cdr-chip {
+  @each $key, $value in maps.$chip-defaults {
+    --cdr-chip-#{$key}: #{$value};
+  }
+
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-border-neutral: #cecac3;
+  --cdr-border-neutral-prominent: #979187;
+
   @include vars.cdr-chip-base-mixin;
 }
 

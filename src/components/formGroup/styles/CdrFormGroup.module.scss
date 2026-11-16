@@ -1,8 +1,17 @@
-@use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrFormGroup.maps' as maps;
 @use './vars/CdrFormGroup.vars' as vars;
 @use '../../formError/styles/CdrFormError.module';
 
 .cdr-form-group {
+  @each $key, $value in maps.$form-group-defaults {
+    --cdr-form-group-#{$key}: #{$value};
+  }
+
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-text-neutral: #746e63;
+
   @include vars.cdr-form-group-base-mixin;
 
   &--error {
@@ -14,7 +23,7 @@
 
     .cdr-form-group__optional,
     .cdr-form-group__required {
-      color: tokens.$cdr-color-text-disabled;
+      color: map.get(maps.$form-group-colors, disabled, text);
     }
   }
 

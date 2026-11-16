@@ -3,6 +3,9 @@
 // loaded via @rei/cdr-tokens/css in preview.ts.
 @use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
 
+// Storybook-only aliases for docsite tokens removed from the alpha package.
+@use './tokens-compat' as *;
+
 // Custom Storybook styles for Cedar component library
 
 .sb-show-main.sb-main-padded {

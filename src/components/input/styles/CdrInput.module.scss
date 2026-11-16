@@ -1,7 +1,28 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use 'sass:map';
+@use './vars/CdrInput.maps' as maps;
 @use './vars/CdrInput.vars' as vars;
 @use '../../labelStandalone/styles/CdrLabelStandalone.module';
 @use '../../formError/styles/CdrFormError.module';
+
+/* ==========================================================================
+  # INPUT ROOTS
+
+  All elements that resolve the control palette carry the temporary shim
+  values until these tokens ship globally from @rei/cdr-tokens.
+  ========================================================================== */
+
+.cdr-input,
+.cdr-input-wrap,
+// The helper text span is slotted into cdr-label-standalone's post-content
+// (a sibling of the input wrap), so it carries the shim on its own class.
+.cdr-input__helper-text,
+:global(.cdr-input__button) {
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$input-defaults {
+    --cdr-input-#{$key}: #{$value};
+  }
+}
 
 /* ==========================================================================
   # INPUT LABEL
@@ -20,7 +41,7 @@
       // ITEM_DOC: Background color of the cdr-button label
       background-color: var(
         --cdr-input-label-background-color,
-        var(--cdr-color-border-input-default, #{tokens.$cdr-color-border-input-default})
+        map.get(maps.$input-colors, label, border)
       );
       position: absolute;
       left: -1px;
@@ -38,31 +59,28 @@
     // ITEM_DOC: Background color of the cdr-input label in hover, active, focus, and focus-within states
     background-color: var(
       --cdr-input-label-background-interaction,
-      var(
-        --cdr-color-background-input-default-active,
-        #{tokens.$cdr-color-background-input-default-active}
-      )
+      map.get(maps.$input-colors, default, background-focus-visible)
     );
 
     // ITEM_DOC: Box-shadow color of the cdr-input label in hover, active, focus, and focus-within states
     box-shadow: inset 0 0 0 2px
       var(
         --cdr-input-label-box-shadow-interaction,
-        var(--cdr-color-border-input-default-focus, #{tokens.$cdr-color-border-input-default-focus})
+        map.get(maps.$input-colors, default, border-focus-visible)
       );
     outline: none;
 
     // ITEM_DOC: Fill color of the cdr-input label in hover, active, focus, and focus-within states
     fill: var(
       --cdr-input-label-fill-interaction,
-      var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+      map.get(maps.$input-colors, default, fill-focus-visible)
     );
 
     svg {
       box-shadow: none;
       fill: var(
         --cdr-input-label-svg-fill-interaction,
-        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+        map.get(maps.$input-colors, default, fill-focus-visible)
       ) !important;
     }
 
@@ -72,9 +90,9 @@
   }
 
   &:last-child {
-    margin-right: -#{tokens.$cdr-space-half-x};
-    border-top-right-radius: tokens.$cdr-radius-softer;
-    border-bottom-right-radius: tokens.$cdr-radius-softer;
+    margin-right: calc(-1 * var(--cdr-input-icon-offset));
+    border-top-right-radius: var(--cdr-input-radius);
+    border-bottom-right-radius: var(--cdr-input-radius);
   }
 }
 
@@ -93,7 +111,7 @@
       // ITEM_DOC: Fill color of the cdr-input SVG when the parent is focused
       fill: var(
         --cdr-input-svg-fill-focus,
-        var(--cdr-color-text-primary, #{tokens.$cdr-color-text-primary})
+        map.get(maps.$input-colors, default, fill-focus-visible)
       ) !important;
     }
   }
@@ -180,7 +198,7 @@
   &__pre-icon {
     position: absolute;
     top: 50%;
-    left: tokens.$cdr-space-half-x;
+    left: var(--cdr-input-icon-offset);
     transform: translateY(-50%);
   }
 
@@ -188,7 +206,7 @@
     display: block;
     position: absolute;
     top: 50%;
-    right: tokens.$cdr-space-half-x;
+    right: var(--cdr-input-icon-offset);
     transform: translateY(-50%);
   }
 
@@ -196,7 +214,7 @@
     @include vars.cdr-input-helper-text-mixin;
 
     display: inline-block;
-    margin-top: tokens.$cdr-space-quarter-x;
+    margin-top: var(--cdr-input-helper-margin-top);
   }
 }
 
@@ -209,8 +227,5 @@
   flex-grow: 1;
 
   // ITEM_DOC: Fill color of the cdr-input wrapper
-  fill: var(
-    --cdr-input-wrap-fill,
-    var(--cdr-color-icon-default, #{tokens.$cdr-color-icon-default})
-  );
+  fill: var(--cdr-input-wrap-fill, map.get(maps.$input-colors, default, fill));
 }

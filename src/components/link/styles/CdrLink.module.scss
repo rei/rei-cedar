@@ -1,6 +1,9 @@
 /* ==========================================================================
   # CdrLink
 
+  Base values and colors come from the generated maps in
+  styles/vars/CdrLink.maps.scss (source: CdrLink.tokens.ts).
+
   TOC:
 
     :Base Styles
@@ -8,21 +11,67 @@
     :Modifiers
       :Style variants
         :Standalone
+        :Inherit color
+        :Neutral
 ========================================================================== */
+@use 'sass:map';
+@use './vars/CdrLink.maps' as maps;
 @use './vars/CdrLink.vars' as vars;
 
 .cdr-link {
   @include vars.cdr-link-base-mixin;
-}
 
-.cdr-link--standalone {
-  @include vars.cdr-link-standalone-mixin;
-}
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$link-defaults {
+    --cdr-link-#{$key}: #{$value};
+  }
 
-.cdr-link--inherit-color {
-  @include vars.cdr-link-inherit-color-mixin;
-}
+  color: map.get(maps.$link-colors, default, text);
+  fill: map.get(maps.$link-colors, default, fill);
 
-.cdr-link--neutral {
-  @include vars.cdr-link-neutral-mixin;
+  &:focus {
+    color: map.get(maps.$link-colors, default, text-focus-visible);
+  }
+
+  &:active {
+    color: map.get(maps.$link-colors, default, text-active);
+  }
+
+  &:hover {
+    color: map.get(maps.$link-colors, default, text-hover);
+    text-decoration: var(--cdr-link-text-decoration-hover);
+  }
+
+  &--standalone {
+    @include vars.cdr-link-standalone-mixin;
+  }
+
+  &--inherit-color {
+    // Inherit text and fill color from parent for the link and its icon content
+    color: inherit !important;
+    fill: inherit !important;
+
+    --cdr-link-text: inherit;
+    --cdr-link-icon: inherit;
+    --cdr-link-text-hover: inherit;
+    --cdr-link-text-focus-visible: inherit;
+    --cdr-link-text-active: inherit;
+  }
+
+  &--neutral {
+    // Neutral variant: all states use the neutral action text color.
+    color: map.get(maps.$link-colors, neutral, text);
+
+    &:hover {
+      color: map.get(maps.$link-colors, neutral, text-hover);
+    }
+
+    &:focus {
+      color: map.get(maps.$link-colors, neutral, text-focus-visible);
+    }
+
+    &:active {
+      color: map.get(maps.$link-colors, neutral, text-active);
+    }
+  }
 }

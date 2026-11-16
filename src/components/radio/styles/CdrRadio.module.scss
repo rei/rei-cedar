@@ -1,7 +1,24 @@
+@use './vars/CdrRadio.maps' as maps;
 @use './vars/CdrRadio.vars' as vars;
 @use '../../labelWrapper/styles/CdrLabelWrapper.module';
 
+/* ==========================================================================
+  # CdrRadio
+
+  Base values and colors come from the generated maps in
+  styles/vars/CdrRadio.maps.scss (source: CdrRadio.tokens.ts).
+
+  The control palette shim below provides the approved semantic values until
+  these tokens ship globally from @rei/cdr-tokens. Remove the shim block when
+  they are available.
+  ========================================================================== */
+
 .cdr-radio {
+  // Every base variable comes from the generated contract map.
+  @each $key, $value in maps.$radio-defaults {
+    --cdr-radio-#{$key}: #{$value};
+  }
+
   /* Figure
   ========== */
 

@@ -123,7 +123,7 @@ const handleClosed = () => {
   exiting.value = true;
   exitingTimeoutId = setTimeout(() => {
     exiting.value = false;
-  }, 200); // $cdr-duration-2;
+  }, 200); // $cdr-duration-2-x;
 };
 
 watch(

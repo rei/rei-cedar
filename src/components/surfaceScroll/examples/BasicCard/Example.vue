@@ -72,7 +72,8 @@ const cards = [
 
 .card {
   flex: 0 0 280px;
-  background: $cdr-color-background-primary;
+  // $cdr-color-background-primary was removed from the alpha SCSS.
+  background: var(--cdr-surface-neutral-trace);
   border: 1px solid $cdr-color-border-primary;
   border-radius: $cdr-radius-softer;
   padding: $cdr-space-one-x;

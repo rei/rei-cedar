@@ -1,0 +1,346 @@
+---
+name: semantic-token-migration
+description: Migrate Cedar components to semantic colors through a generic token contract, category-scoped manual mapping, an isolated preview, and a manual Storybook comparison. Always asks for the component first, then recommends a category for the human to confirm or change.
+license: proprietary
+metadata:
+  author: rei-cedar
+  version: '0.6.0'
+  taxonomy: docs/cedar-semantic-taxonomy.md
+---
+
+# Semantic Token Migration
+
+Follow the phases in order and pause at each human approval gate. Color
+assignments are manual: never bulk-replace names or guess an ambiguous mapping.
+
+**One approval question per gate:** show the artifact and ask once whether to
+approve it and proceed to the next phase. Do not ask a second “confirm” or
+“continue?” question for the same gate after the human approves.
+
+**Protect the original component:** do not edit the target component's files in
+the active checkout while preparing the proposal or preview. Work in an
+isolated temporary copy of the current working tree, including existing user
+changes. Show the proposed file diff and a Storybook before/after comparison;
+copy only approved files back after explicit acceptance of the complete change
+set. Never reset or overwrite unrelated user changes.
+
+## Read before classifying
+
+- `references/contract-pattern.md` — generic contract and map consumption
+- `references/color-lookup.md` and `references/semantic-colors.json` — approved semantic colors and contrast notes (design reference, not a runtime value source)
+- `@rei/cdr-tokens` ≥ 15.0.0-alpha.2 semantic foundations — the runtime source of truth for semantic values; the package ships them as separate `css/color-*` entries
+- `docs/cedar-semantic-taxonomy.md` — taxonomy and omission rules
+- `docs/semantic-token-mapping.md` — category decision flow, per component part
+- `build/component-tokens/types.ts`, `naming.ts`, `validate.ts`, and `generate-component-maps.ts`
+- Load `vue-best-practices` when the target is a Vue component.
+
+## Phase 0 — Component first, category second (Gate 0)
+
+### 0.1 Ask for the component (first question)
+
+Use the question tool to ask **“Which component should we migrate?”** and wait
+for a free-text answer. Do not show a list of components or ask for category
+first. Resolve the answer to an actual folder and component under
+`src/components/`. If it is ambiguous or does not resolve, ask for a correction
+before proceeding.
+
+### 0.2 Inspect the component and recommend a category
+
+Read the resolved component's Vue/implementation file, props/types, styles,
+stories, and tests. Classify each color-bearing part (surface, text, border,
+icon, trigger) using `docs/semantic-token-mapping.md`. Base the category
+recommendation on the component's actual purpose and parts, not its name alone.
+
+### 0.3 Ask for the category (second question)
+
+Use the question tool with all six categories. Put the evidence-based
+recommendation first and mark it `(Recommended)`; offer the remaining five as
+alternatives. The question must restate the resolved component and give a
+one-sentence reason for the recommendation. The user may select any category,
+including a different one from the recommendation. Do not proceed until one is
+confirmed.
+Treat this choice as the category for the component's primary interactive
+purpose. If a distinct part clearly has another semantic purpose (for example,
+a control trigger with plain Universal panel content), assign that part its own
+category in the Gate 0 mapping table rather than forcing every color into the
+component's primary category.
+
+- **Universal** — plain content/surface with no interaction or status meaning
+- **Graphics** — decorative or informational visuals
+- **Feedback** — system status, validation, loading, warning, success, or error
+- **Action** — commits, submits, navigates, or triggers an action
+- **Control** — manipulates/configures the interface in place
+- **Selection** — expresses a choice among alternatives
+
+Map the chosen category to the contract's `interaction`:
+
+| Category  | `interaction` |
+| --------- | ------------- |
+| Action    | `action`      |
+| Control   | `control`     |
+| Selection | `selection`   |
+| Feedback  | `feedback`    |
+| Universal | omit          |
+| Graphics  | omit          |
+
+Never write `universal` or `graphics` as an `interaction`. If one component
+contains parts with different purposes, classify those parts separately and
+record the result before drafting the contract. The contract's `interaction`
+is the primary component category; use a separate named color scope for each
+part that needs distinct role/state values. A scope can represent a real
+component variant or a part such as `header`, `content`, or `frame`. If a part
+uses a different category, use `fullPath` to preserve that part's exact
+semantic namespace rather than inheriting the component's primary category.
+
+Universal colors use the ordinary role/identity path with no interaction
+segment (for example, `text.neutral` → `--cdr-text-neutral`). Graphics
+colors use the separate `graphic` token group (for example,
+`graphic.surface.brand`); keep `interaction` omitted and use `fullPath` to
+preserve that `graphic-` segment. Do not mislabel Graphics as an interaction.
+
+### 0.4 Build the complete old → new token table
+
+Inspect the component's actual selectors and behavior to determine supported
+states. For each color-bearing **variant × part × role**, include rows for
+`rest`, `hover`, `focus-visible`, `active`, and `disabled`. For a supported
+state, show the effective old and new mappings. If it inherits `rest`, write
+`inherits rest` and show the effective mapping. If unsupported, write
+`N/A — unsupported`; do not invent a token. A plain text component gets one
+rest mapping and explicit N/A rows for the unsupported interaction states.
+
+| Part | Category | Variant | Role | State | Old token | Old hex | New semantic token | New hex | Why |
+| ---- | -------- | ------- | ---- | ----- | --------- | ------- | ------------------ | ------- | --- |
+
+Use the correct category table in `references/color-lookup.md` for each part;
+the recommended component category scopes its primary interactive part, while
+plain/static parts may use Universal or Graphics when justified by the taxonomy.
+Look up old values recursively under
+`node_modules/@rei/cdr-tokens/dist/rei-dot-com/json/` (both `foundations/` and
+`components/`; component-specific legacy colors are often in the latter). If
+this package path is unavailable, report it rather than guessing. Prefer the
+semantic color list's `legacy` match as the reason; check its contrast notes
+against the actual component surface. That list's `legacy` field contains a
+CSS custom-property name; it is not a Sass variable for the contract.
+
+Also inventory current component-scoped override properties (including
+`ITEM_DOC` comments and repository consumers). List any proposed renames or
+removed hooks separately from color-token mappings. Do not silently break a
+documented override API; get explicit approval or preserve compatibility within
+the two-level rule.
+
+Render a TUI swatch for each real old → new state mapping:
+
+```bash
+pnpm gate0 --compact \
+  --before "<old-hex>" --after "<new-hex>" \
+  --before-name "<old-token>" --after-name "<new-token>" \
+  --state "<state>" --title "Gate 0 — <Component> · <Category>" \
+  --reason "<mapping rationale>"
+```
+
+Do not present placeholder colors as evidence. State whether the change is
+intentional. Gate 0 requires explicit approval of the state-complete mapping;
+the original component remains untouched.
+
+## Phase 1 — Review the original (Gate 1)
+
+Start Storybook manually (`pnpm storybook`, normally port 6006). Playwright's
+configured web server is the Vite app, not Storybook. Open the component's
+stories and walk every mapped state (rest, hover, focus-visible, active,
+disabled) at desktop and mobile widths. Storybook is the reference for the
+proposal; nothing is captured or committed for it.
+
+Record the story IDs and the supported states for the Gate 0 table. No target
+source edits in the active checkout.
+
+Ask Gate 1 approval once: the original behavior and the state inventory are
+accepted, and Phase 2 may start in the isolated copy; do not ask again whether
+to continue.
+
+## Phase 2 — Simplify and draft the contract (isolated copy only)
+
+Refactor only what improves clarity without changing behavior. Follow local Vue
+and SCSS conventions. Use typed props/slots, `mapClasses` where class mapping
+is needed, BEM classes, and external style modules. Avoid mechanical
+abstractions without a concrete benefit.
+
+Create `src/components/<folder>/Cdr<Name>.tokens.ts` from the existing styles:
+
+1. Set `component`, `prefix`, and `interaction` when applicable.
+2. `defaults` must not be empty. Copy existing source values into `token()` or
+   `literal()`—including existing `var(--...)` values. The module loops the
+   generated defaults map into component custom properties and consumes those
+   properties instead of repeating base literals.
+3. Declare only real color scopes/variants, roles, and states. A scope key can
+   represent a component variant or a distinct color-bearing part when that
+   part has its own role/state mapping. `rest` is required and can contain
+   partial roles (plain text can declare only `rest.text`). Add
+   `hover`/`focus-visible`/`active`/`disabled` only when the component actually
+   implements those states. The generator emits explicit entries only; it
+   creates no phantom roles or states.
+4. Include `sizes` only when the component has sizes.
+5. Omit the contract's `legacy` fallback map for this two-level cutover. Keep
+   old names and values in the Gate 0 table; a legacy fallback nested under the
+   component override would add a third `var()` level.
+6. When the stylesheet will iterate the generated maps, set `hooks: true` and
+   `defaultVariant` (the variant whose hooks omit the scope segment). Move any
+   colors that live outside the role × state matrix — an inner ring, a
+   transparent link background — into value-carrying `extras`; the generator
+   gives each entry a scope hook plus the declared fallback and writes the
+   docgen-only `Cdr<Name>.hooks.scss` partial. Coverage note: every scope that
+   renders an interactive state (`hover`, `focus-visible`, `active`,
+   `disabled`) must declare that state explicitly — including variants such as
+   link-style text.
+7. Run `pnpm build:maps`. Review
+   `styles/vars/Cdr<Name>.maps.scss`, `styles/vars/Cdr<Name>.hooks.scss` when
+   generated, and, when a recipe emits it,
+   `styles/Cdr<Name>.tokens.css`. CI does not currently enforce regeneration;
+   verify by rerunning the generator and reviewing the resulting diff. The
+   generator warns when a semantic name is absent from the approved color list;
+   resolve every warning for the target rather than accepting a fallback.
+   If the name is approved but genuinely absent from the installed
+   `@rei/cdr-tokens` release, stop and report the package gap instead of
+   adding a shim. The generator scans all contracts, so record unrelated
+   pre-existing warnings separately; do not change another component as
+   collateral work.
+
+The stylesheet must consume the generated maps. Loop the defaults map into
+`--cdr-<component>-<property>` values. For a semantic color, read the matching
+color-map entry as the fallback. For an unchanged literal such as `transparent`,
+put its source value in `defaults` and use that component property as the
+fallback. Both compile to exactly two `var()` levels:
+
+```scss
+// Rest text, default variant; map value is var(--cdr-text-neutral).
+color: var(--cdr-color-abstract-text, map.get(maps.$abstract-colors, default, text));
+
+// Hover text, named variant.
+color: var(
+  --cdr-color-example-warning-text-hover,
+  map.get(maps.$example-colors, warning, text-hover)
+);
+
+// Unchanged transparent surface uses the captured literal default.
+background-color: var(--cdr-color-example-header-surface, var(--cdr-example-header-surface));
+```
+
+The compiled form is
+`var(--cdr-color-<component>[-<variant>]-<role>[-<state>], var(--cdr-<semantic>))`.
+The component-scoped override is first; the semantic token (or, for an
+unchanged literal, the captured component default) is second. Do not define the
+override custom property inside the component. For a default/single variant
+omit `<variant>`; for non-rest values append `-hover`, `-focus-visible`,
+`-active`, or `-disabled`.
+
+With `hooks: true` the generated maps already carry that whole expression, so
+iterate them instead of repeating per-state declarations (see
+`references/contract-pattern.md` for the `_state-colors` loop, the composed
+border shadows, and the `map.get()`/`var()` Sass caveat). Both routes must
+compile to exactly the two `var()` levels above.
+
+Semantic runtime names are the ones shipped by `@rei/cdr-tokens`:
+`--cdr-[<interaction>-]<role>-<suffix>` (for example
+`--cdr-control-text-neutral-bold`). There is no `color-` segment in the
+semantic namespace. Component override hooks remain
+`--cdr-color-<component>-...`; do not confuse the two. The link is a documented
+exception: it keeps its historical `--cdr-link-*` hook namespace via the
+contract's `hookPrefix`.
+
+Do not hardcode semantic color values and do not add a local shim for a shipped
+token. Import the token package's CSS, including the semantic foundations that
+`15.0.0-alpha.2` does not yet add to its main CSS entry:
+
+```ts
+import '@rei/cdr-tokens/css';
+import '@rei/cdr-tokens/css/color-action';
+import '@rei/cdr-tokens/css/color-control';
+import '@rei/cdr-tokens/css/color-feedback';
+import '@rei/cdr-tokens/css/color-graphik';
+import '@rei/cdr-tokens/css/color-selection';
+import '@rei/cdr-tokens/css/color-surface';
+```
+
+#### Known `15.0.0-alpha.2` gaps
+
+The alpha publishes the semantic foundations as separate `css/color-*` files,
+not through the main `css` or `scss` barrels. It also omits the Universal
+`text/*` and `border/*` foundations, the `feedback/text/*-bold` tokens, and
+`feedback/border/natural-faint` (it emits the misspelled
+`--cdr-feedback-border-nautral-faint`). Its light-mode brand resolves to
+`#800080` instead of the approved `#143528` (dark mode is correct).
+
+The repo's migrated components use seven of these missing tokens plus three
+brand overrides (the light-mode data bug), ten local definitions in total; they
+are the only approved component-level local definitions and are marked in the
+component styles. Do not add more. Report new gaps to the tokens repo instead
+of copying values.
+
+Storybook docs chrome also keeps a tracked `_tokens-compat.scss` for two
+removed docsite legacy tokens (`background-primary`, `background-secondary`);
+that is presentation scaffolding, not a component semantic mapping.
+
+If a required token is absent from the installed release, stop and report the
+gap; do not copy its value from `semantic-colors.json` into the component. A
+temporary gap shim may only be added with explicit approval and a tracking note;
+never define the component override hook locally.
+
+### Isolated preview
+
+Make all proposed changes in an isolated temporary copy of the current working
+tree, including the user's existing changes. For example:
+
+```bash
+PREVIEW_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/cedar-semantic-preview.XXXXXX")"
+mkdir -p "$PREVIEW_ROOT/repo"
+rsync -a --exclude='.git' --exclude='node_modules' --exclude='dist' \
+  --exclude='storybook-static' --exclude='test-results' --exclude='playwright-report' \
+  ./ "$PREVIEW_ROOT/repo/"
+ln -s "$PWD/node_modules" "$PREVIEW_ROOT/repo/node_modules"
+```
+
+Apply proposed files only under `$PREVIEW_ROOT/repo`. Start that copy's
+Storybook on an available port (for example, `pnpm exec storybook dev --port
+6007`) for the Gate 4 comparison; the active checkout's Storybook can stay on 6006. For an early color-only check, add a temporary stylesheet in the isolated
+copy — it is not a substitute for testing the isolated proposed implementation.
+Never replace the active component directory wholesale.
+
+## Phase 3 — Test the isolated proposal
+
+Run target unit tests, style lint, and type-check in the isolated copy. Tests
+must assert useful component behavior and contract/state details, not only
+generic tags or snapshots. Ensure stories cover all supported visual states.
+Record repository-wide pre-existing failures separately.
+
+## Phase 4 — Compare and approve the proposal (Gate 4)
+
+Compare the isolated proposal against the original with the same stories,
+viewports, and states reviewed in Phase 1: keep both Storybooks open side by
+side and review the proposed file diff at the same time. Inspect the states
+whose colors changed; disposition every difference as an approved recolor or
+an unintended change. An accepted recolor is expected; a layout or state
+regression is not.
+
+**Gate 4:** ask one explicit question to accept or adjust the complete proposed
+component, contract, generated-map, and test changes. Until acceptance, the
+active checkout's original component remains untouched.
+
+## Phase 5 — Apply accepted changes and verify
+
+After acceptance, apply only the reviewed files from the isolated copy. Confirm
+the target diff matches the approved proposal. Run unit tests,
+`pnpm lint:styles`, `pnpm lint:js`, and `pnpm lint:types`; review the component
+in Storybook one last time. Document pre-existing failures and missing semantic
+colors; do not invent tokens.
+
+## Rules
+
+- Ask for the component first; ask for category second with an evidence-based
+  recommendation and all six categories available.
+- The old/new token table has state rows for `rest`, `hover`, `focus-visible`,
+  `active`, and `disabled`; unsupported states are explicitly `N/A`.
+- Do not edit the original component until the isolated proposal is explicitly
+  accepted in full.
+- Map colors manually per part/role/state. No bulk replacement or guessing.
+- Keep exactly two color `var()` levels: component override first, mapped
+  semantic token second. No third legacy fallback.
+- Populate defaults from actual source values and consume the generated map.

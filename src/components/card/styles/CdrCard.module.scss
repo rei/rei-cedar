@@ -1,6 +1,16 @@
+@use 'sass:map';
+@use './vars/CdrCard.maps' as maps;
 @use './vars/CdrCard.vars' as vars;
 
 .cdr-card {
+  @each $key, $value in maps.$card-defaults {
+    --cdr-card-#{$key}: #{$value};
+  }
+
+  // Temporary alpha.2 gap: not emitted by @rei/cdr-tokens 15.0.0-alpha.2.
+  // Remove when the token ships.
+  --cdr-text-neutral-prominent: #4c473e;
+
   @include vars.cdr-card-base-mixin;
 }
 

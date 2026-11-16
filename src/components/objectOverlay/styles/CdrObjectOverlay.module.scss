@@ -68,25 +68,25 @@ $light-gradients: (
   'to-top': linear-gradient(
       to top,
       white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      rgba(tokens.$cdr-color-background-surface-secondary, 0.5) 20%,
       transparent 40%
     ),
   'to-bottom': linear-gradient(
       to bottom,
       white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      rgba(tokens.$cdr-color-background-surface-secondary, 0.5) 20%,
       transparent 40%
     ),
   'to-left': linear-gradient(
       to left,
       white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      rgba(tokens.$cdr-color-background-surface-secondary, 0.5) 20%,
       transparent 40%
     ),
   'to-right': linear-gradient(
       to right,
       white 0%,
-      rgba(tokens.$cdr-color-background-primary, 0.5) 20%,
+      rgba(tokens.$cdr-color-background-surface-secondary, 0.5) 20%,
       transparent 40%
     ),
 );
