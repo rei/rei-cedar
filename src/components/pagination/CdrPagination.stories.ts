@@ -47,7 +47,7 @@ export const Default: Story = {
     template: `
       <div>
         <p>Current page: {{ currentPage }}</p>
-        <CdrPagination 
+        <CdrPagination
           v-bind="restArgs"
           v-model="currentPage"
           @navigate="handleNavigate"
@@ -81,7 +81,7 @@ export const FewPages: Story = {
     template: `
       <div>
         <p>Current page: {{ currentPage }}</p>
-        <CdrPagination 
+        <CdrPagination
           v-bind="restArgs"
           v-model="currentPage"
           @navigate="handleNavigate"
@@ -114,8 +114,8 @@ export const ManyPages: Story = {
     },
     template: `
       <div>
-        <p>Current page: {{ currentPage }} of {{ args.totalPages }}</p>
-        <CdrPagination 
+        <p>Current page: {{ currentPage }} of {{ restArgs.totalPages }}</p>
+        <CdrPagination
           v-bind="restArgs"
           v-model="currentPage"
           @navigate="handleNavigate"
@@ -150,7 +150,7 @@ export const MiddlePage: Story = {
     template: `
       <div>
         <p>Current page: {{ currentPage }}</p>
-        <CdrPagination 
+        <CdrPagination
           v-bind="restArgs"
           v-model="currentPage"
           @navigate="handleNavigate"
@@ -185,7 +185,7 @@ export const LastPage: Story = {
     template: `
       <div>
         <p>Current page: {{ currentPage }}</p>
-        <CdrPagination 
+        <CdrPagination
           v-bind="restArgs"
           v-model="currentPage"
           @navigate="handleNavigate"
@@ -222,7 +222,7 @@ export const WithButtons: Story = {
     template: `
       <div>
         <p>Current page: {{ currentPage }}</p>
-        <CdrPagination 
+        <CdrPagination
           v-bind="restArgs"
           v-model="currentPage"
           @navigate="handleNavigate"
