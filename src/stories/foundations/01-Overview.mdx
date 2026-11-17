@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Overview" />
+
+# Cedar Foundations
+
+This section presents Cedar's design foundations — the rules and tokens that
+sit underneath every component. It is the Storybook face of
+[`docs/FOUNDATIONS.md`](../../../docs/FOUNDATIONS.md) (in progress — see
+`docs/tickets/foundations-principles-doc.md`), the normative principles doc
+these pages will cite by section.
+
+The structure follows the pattern proven in design-system audits: one
+**Overview** and one **Tokens** page per foundation area, where the Overview
+states the rules in human language and the Tokens page shows the actual
+values the code enforces.
+
+## Planned sections
+
+| Area              | Will cover                                                                               | Status                 |
+| ----------------- | ---------------------------------------------------------------------------------------- | ---------------------- |
+| Color             | Role discipline (surface / text / border / icon), identity × expression, contrast floors | Pending FOUNDATIONS.md |
+| Typography        | Scale discipline, tracking, which roles components may use                               | Pending FOUNDATIONS.md |
+| Space             | Spacing scale and the relationship rules that replace literal values                     | Pending FOUNDATIONS.md |
+| Elevation & light | Physical height levels under a single light model                                        | Pending FOUNDATIONS.md |
+| Motion            | Feedback durations, what motion may and may not carry, reduced-motion rules              | Pending FOUNDATIONS.md |
+| Iconography       | Icon grammar, stroke weight matched to text, size scale                                  | Pending FOUNDATIONS.md |
+
+## The rule for these pages
+
+Each page cites `FOUNDATIONS.md §n` for its rules the way component contracts
+cite `docs/cedar-semantic-taxonomy.md` for vocabulary. Where a token table is
+shown, it is generated from the shipped token surface — never hand-typed, so
+docs cannot drift from code.
+
+**Until FOUNDATIONS.md lands:** this section is a scaffold. Do not write
+principles into these pages from memory; the doc is authored by humans and
+signed off like an ADR (see the ticket for why).

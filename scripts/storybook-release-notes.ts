@@ -65,7 +65,7 @@ function getReleaseNoteSelection(): { selection: ReleaseNoteSelection; allFiles:
 
 function getChangedFiles(): string[] {
   try {
-    const output = execSync('git diff master...HEAD --name-only', {
+    const output = execSync('git diff main...HEAD --name-only', {
       cwd: repoRoot,
       encoding: 'utf-8',
     });

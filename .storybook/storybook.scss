@@ -4,7 +4,8 @@
 @use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
 
 // Storybook-only aliases for docsite tokens removed from the alpha package.
-@use './tokens-compat' as *;
+// Namespaced to avoid variable conflicts with docsite tokens.
+@use './_tokens-compat' as compat;
 
 // Custom Storybook styles for Cedar component library
 
@@ -34,7 +35,7 @@
 
 // Docs page container
 .sbdocs.sbdocs-wrapper {
-  background: $cdr-color-background-primary;
+  background: compat.$cdr-color-background-primary;
   padding: $cdr-space-two-x $cdr-space-three-x 9.6rem;
 }
 
@@ -97,7 +98,7 @@
 .sbdocs code {
   // Pressura with monospace fallback (token $cdr-font-family-mono-brand-font uses sans fallback)
   font-family: Pressura, 'Courier New', monospace;
-  background: $cdr-color-background-primary;
+  background: compat.$cdr-color-background-primary;
   border: 1px solid $cdr-color-border-primary;
   border-radius: $cdr-radius-soft;
   padding: 2px 6px;
@@ -106,13 +107,13 @@
 }
 
 .sbdocs pre code {
-  background: $cdr-color-background-primary;
+  background: compat.$cdr-color-background-primary;
   border: none;
   padding: 0;
 }
 
 .sbdocs pre {
-  background: $cdr-color-background-primary;
+  background: compat.$cdr-color-background-primary;
   border: 1px solid $cdr-color-border-primary;
   border-radius: $cdr-radius-soft;
   padding: $cdr-space-one-x;
@@ -127,7 +128,7 @@
   width: 100%;
 
   thead {
-    background: $cdr-color-background-primary;
+    background: compat.$cdr-color-background-primary;
   }
 
   th {

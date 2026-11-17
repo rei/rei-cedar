@@ -28,7 +28,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Release Notes', '*'],
+        order: ['Introduction', 'Release Notes', 'Foundations', 'Guides', 'Components'],
       },
     },
     backgrounds: {

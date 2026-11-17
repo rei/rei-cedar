@@ -22,13 +22,14 @@
 @use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
 
 // Storybook-only aliases for docsite tokens removed from the alpha package.
-@use './tokens-compat' as *;
+// Namespaced to avoid variable conflicts with docsite tokens.
+@use './_tokens-compat' as compat;
 
 // ── Page surface ─────────────────────────────────────────────────────────────
 // Used with layout:'fullscreen' stories to provide a proper page container
 // with background, padding, and max-width matching ConsumerContract pages.
 .docs-page {
-  background: $cdr-color-background-primary;
+  background: compat.$cdr-color-background-primary;
   max-width: 1200px;
   margin: 0 auto;
   padding: $cdr-space-four-x $cdr-space-three-x 8rem;
@@ -234,7 +235,7 @@
   .cdr-doc-note {
     @include cdr-text-body-300;
 
-    background: $cdr-color-background-primary;
+    background: compat.$cdr-color-background-primary;
     border-radius: $cdr-radius-soft;
     padding: $cdr-space-one-x $cdr-space-one-and-a-half-x;
     margin: $cdr-space-one-and-a-half-x 0;
