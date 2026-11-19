@@ -30,6 +30,7 @@ defineProps<Props>();
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as *;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-type-mixins' as type;
 
 .custom-frame {
   display: flex;
@@ -65,20 +66,20 @@ defineProps<Props>();
   }
 
   &__category {
-    @include cdr-text-label-sans-300;
+    @include type.cdr-text-utility-sans-200;
     color: $cdr-color-text-secondary;
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
 
   &__title {
-    @include cdr-text-heading-sans-400;
+    @include type.cdr-text-heading-sans-400;
     color: $cdr-color-text-primary;
     margin: 0;
   }
 
   &__description {
-    @include cdr-text-body-sans-200;
+    @include type.cdr-text-body-300;
     color: $cdr-color-text-secondary;
     margin: 0;
   }
