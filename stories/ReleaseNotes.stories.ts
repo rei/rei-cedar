@@ -21,7 +21,7 @@ const ReleaseNotesView = defineComponent({
 });
 
 const meta: Meta<typeof ReleaseNotesView> = {
-  title: 'Release Notes/V17.0.0',
+  title: 'Release Notes/v17.0.0',
   component: ReleaseNotesView,
   tags: ['!autodocs'],
   parameters: {
