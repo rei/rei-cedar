@@ -12,7 +12,9 @@ import customAdapter from './custom-adapter';
 import CustomFrame from './CustomFrame.vue';
 import type { CustomModel } from './types';
 
-// This is your custom data model - the structure your app uses
+// Step 1: Define your data model
+// This is the data structure your application uses
+// It could come from an API, database, or be hardcoded like this example
 const customModel: CustomModel = {
   title: 'Custom Data Example',
   items: [
@@ -24,7 +26,9 @@ const customModel: CustomModel = {
   ],
 };
 
-// The adapter translates your custom model into frame props
+// Step 2: Create the adapter
+// The adapter translates your data into Cedar's format
+// We wrap the base adapter to add the frame component
 const adapter = (model: CustomModel) => ({
   ...customAdapter(model),
   component: CustomFrame,
