@@ -81,7 +81,6 @@ const props = withDefaults(defineProps<CdrFilmstrip<Model, FrameProps>>(), {
   model: (): Model => ({}) as Model,
 
   adapter: (): CdrFilmstripConfig<FrameProps, Model> => {
-    console.warn(`No adapter provided for CdrFilmstrip`);
     return {
       frames: [],
       filmstripId: 'empty-filmstrip',
