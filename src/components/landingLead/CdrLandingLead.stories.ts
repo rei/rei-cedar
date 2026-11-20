@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import { CdrLandingLead } from '../../lib';
 
 const meta: Meta<typeof CdrLandingLead> = {
-  title: 'Components/CdrLandingLead',
+  title: 'Components/Landing Lead',
   component: CdrLandingLead,
   tags: ['autodocs'],
 };

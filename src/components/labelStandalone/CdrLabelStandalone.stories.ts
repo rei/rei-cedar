@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrLabelStandalone from './CdrLabelStandalone.vue';
 
 const meta: Meta<typeof CdrLabelStandalone> = {
-  title: 'Components/CdrLabelStandalone',
+  title: 'Components/Label Standalone',
   component: CdrLabelStandalone,
   tags: ['autodocs'],
 };

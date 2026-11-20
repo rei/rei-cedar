@@ -201,6 +201,7 @@ const columnExamples = [
         <div>
           <CdrText>
             <code>
+              <!-- v-html is safe here: label is from controlled examples data, not user input -->
               <strong v-html="label" />
               <br />
               {{ JSON.stringify(props) }}
@@ -273,6 +274,7 @@ const columnExamples = [
         <div>
           <CdrText>
             <code>
+              <!-- v-html is safe here: label is from controlled examples data, not user input -->
               <strong v-html="label" />
               <br />
               {{ JSON.stringify(props) }}
@@ -328,6 +330,7 @@ const columnExamples = [
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as tokens;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-breakpoint-mixins' as mq;
 
 .example {
   &__hr {
