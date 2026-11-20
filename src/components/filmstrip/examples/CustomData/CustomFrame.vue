@@ -27,7 +27,7 @@ defineProps<{
 .custom-frame {
   padding: $cdr-space-one-x;
   border: 1px solid $cdr-color-border-primary;
-  border-radius: $cdr-radius-md;
+  border-radius: 8px;
   background: $cdr-color-background-primary;
   min-width: 200px;
 
