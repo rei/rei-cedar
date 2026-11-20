@@ -19,13 +19,6 @@ const meta: Meta = {
       },
     },
   },
-  argTypes: {
-    adapter: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 };
 
 export default meta;
