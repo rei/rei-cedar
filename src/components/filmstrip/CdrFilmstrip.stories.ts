@@ -89,7 +89,7 @@ export const CustomData: Story = {
     docs: {
       description: {
         story:
-          'Demonstrates the adapter pattern with a custom data model. This example shows how to translate your application data into filmstrip frames. See the CustomData example files for detailed comments explaining each part of the pattern.',
+          '**What is an adapter?**\n\nAn adapter is a function that converts data from one format to another. Think of it like a travel adapter - it converts your plug to fit the wall outlet.\n\n**Why use an adapter?**\n\n- Your app has data in its own format (e.g., products with IDs, names, prices)\n- Cedar Filmstrip needs data in a different format (frames with keys and props)\n- The adapter converts your data into Cedar\'s format\n- This keeps your data unchanged and lets you control how it maps to Cedar\n\n**How it works:**\n\n1. Define your data model (the structure your app uses)\n2. Create an adapter function that maps each item to a "frame"\n3. Each frame needs a unique key (Vue uses this to track items)\n4. Each frame has props (the data your frame component needs)\n5. The adapter returns configuration (how many items to show, spacing, etc.)\n\n**See the code files for detailed step-by-step comments:**\n- `types.ts` - Explains what a data model is\n- `custom-adapter.ts` - Shows the adapter implementation with line-by-line comments\n- `Example.vue` - Shows how to use the adapter with your data',
       },
     },
   },
