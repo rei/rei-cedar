@@ -89,7 +89,72 @@ export const CustomData: Story = {
     docs: {
       description: {
         story:
-          '**What is an adapter?**\n\nAn adapter is a function that converts data from one format to another. Think of it like a travel adapter - it converts your plug to fit the wall outlet.\n\n**Why use an adapter?**\n\n- Your app has data in its own format (e.g., products with IDs, names, prices)\n- Cedar Filmstrip needs data in a different format (frames with keys and props)\n- The adapter converts your data into Cedar\'s format\n- This keeps your data unchanged and lets you control how it maps to Cedar\n\n**How it works:**\n\n1. Define your data model (the structure your app uses)\n2. Create an adapter function that maps each item to a "frame"\n3. Each frame needs a unique key (Vue uses this to track items)\n4. Each frame has props (the data your frame component needs)\n5. The adapter returns configuration (how many items to show, spacing, etc.)\n\n**See the code files for detailed step-by-step comments:**\n- `types.ts` - Explains what a data model is\n- `custom-adapter.ts` - Shows the adapter implementation with line-by-line comments\n- `Example.vue` - Shows how to use the adapter with your data',
+          '**What is an adapter?**\n\nAn adapter is a function that converts data from one format to another. Think of it like a travel adapter - it converts your plug to fit the wall outlet.\n\n**Why use an adapter?**\n\n- Your app has data in its own format (e.g., products with IDs, names, prices)\n- Cedar Filmstrip needs data in a different format (frames with keys and props)\n- The adapter converts your data into Cedar\'s format\n- This keeps your data unchanged and lets you control how it maps to Cedar\n\n**How it works:**\n\n1. Define your data model (the structure your app uses)\n2. Create an adapter function that maps each item to a "frame"\n3. Each frame needs a unique key (Vue uses this to track items)\n4. Each frame has props (the data your frame component needs)\n5. The adapter returns configuration (how many items to show, spacing, etc.)\n\n**See the code files for detailed step-by-step comments:**\n- `types.ts` - Explains what a data model is\n- `custom-adapter.ts` - Shows the adapter implementation with line-by-line comments\n- `Example.vue` - Shows how to use the adapter with your data\n\n**Interactive Playground:**\n\nUse the controls below to edit the data and see how the adapter transforms it in real-time. Try changing the item names or values to understand how the adapter maps your data to frames.',
+      },
+    },
+  },
+};
+
+export const CustomDataPlayground: Story = {
+  name: 'Custom data playground',
+  args: {
+    title: 'My Custom Data',
+    itemCount: 5,
+  },
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'The title of your filmstrip',
+    },
+    itemCount: {
+      control: { type: 'range', min: 1, max: 10, step: 1 },
+      description: 'How many items to show',
+    },
+  },
+  render: (args) => {
+    // Generate dynamic data based on args
+    const items = Array.from({ length: args.itemCount }, (_, i) => ({
+      id: i + 1,
+      name: `Item ${i + 1}`,
+      value: (i + 1) * 100,
+    }));
+
+    const customModel = {
+      title: args.title,
+      items,
+    };
+
+    const adapter = (model: typeof customModel) => {
+      const frames = model.items.map((item) => ({
+        key: `custom-item-${item.id}`,
+        props: {
+          name: item.name,
+          value: item.value,
+        },
+      }));
+
+      return {
+        component: null,
+        frames,
+        filmstripId: 'custom-playground',
+        description: model.title,
+        framesGap: 12,
+        responsiveFrames: { xs: 1, sm: 2, md: 3, lg: 4 },
+        focusSelector: '[data-focus]',
+      };
+    };
+
+    return {
+      components: { CdrFilmstrip },
+      setup: () => ({ customModel, adapter }),
+      template: '<CdrFilmstrip :model="customModel" :adapter="adapter" />',
+    };
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '**Interactive Playground**\n\nUse the controls to experiment with the adapter pattern:\n\n- Change the title to see how it appears in the filmstrip\n- Adjust the item count to see how the adapter handles different data sizes\n- Watch how the adapter transforms your data into frames\n\nThis demonstrates that the adapter pattern is flexible - it works with any data structure as long as you map it correctly.',
       },
     },
   },
