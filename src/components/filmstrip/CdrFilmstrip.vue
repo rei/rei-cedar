@@ -80,6 +80,10 @@ defineSlots<{
 const props = withDefaults(defineProps<CdrFilmstrip<Model, FrameProps>>(), {
   model: (): Model => ({}) as Model,
 
+  /**
+   * Adapter function that translates your data into filmstrip frames.
+   * See the "Custom data pattern" story for a step-by-step guide.
+   */
   adapter: (): CdrFilmstripConfig<FrameProps, Model> => {
     return {
       frames: [],
