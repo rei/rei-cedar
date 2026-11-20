@@ -15,7 +15,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Filmstrip provides a shared horizontal-navigation engine. Adapters translate consumer models into frame components and responsive behavior.',
+          'Filmstrip provides a shared horizontal-navigation engine. Use an adapter to translate your data into frame components. See the "Custom data pattern" story for a step-by-step guide on how to use adapters.',
       },
     },
   },
