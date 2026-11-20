@@ -2,9 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrFilmstrip from './CdrFilmstrip.vue';
 import LifestyleExample from './examples/Lifestyle/Example.vue';
 import ProductRecommendationExample from './examples/ProductRecommendation/Example.vue';
-import CustomDataExample from './examples/CustomData/Example.vue';
 import CustomFrame from './examples/CustomData/CustomFrame.vue';
-import customAdapter from './examples/CustomData/custom-adapter';
 
 const meta: Meta = {
   title: 'Components/Filmstrip',
@@ -117,7 +115,7 @@ export const CustomData: Story = {
       description: 'Value of the third item',
     },
   },
-  render: (args) => {
+  render: (args: any) => {
     const items = [
       { id: 1, name: args.item1Name, value: args.item1Value },
       { id: 2, name: args.item2Name, value: args.item2Value },
@@ -197,7 +195,7 @@ export const CustomDataPlayground: Story = {
       description: 'Value of the third item',
     },
   },
-  render: (args) => {
+  render: (args: any) => {
     // Build data from args
     const items = [
       { id: 1, name: args.item1Name, value: args.item1Value },
