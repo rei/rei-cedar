@@ -98,29 +98,49 @@ export const CustomData: Story = {
 export const CustomDataPlayground: Story = {
   name: 'Custom data playground',
   args: {
-    title: 'My Custom Data',
-    itemCount: 5,
+    item1Name: 'Product A',
+    item1Value: 100,
+    item2Name: 'Product B',
+    item2Value: 200,
+    item3Name: 'Product C',
+    item3Value: 300,
   },
   argTypes: {
-    title: {
+    item1Name: {
       control: 'text',
-      description: 'The title of your filmstrip',
+      description: '👉 Try changing this to "Hiking Boots"',
     },
-    itemCount: {
-      control: { type: 'range', min: 1, max: 10, step: 1 },
-      description: 'How many items to show',
+    item1Value: {
+      control: { type: 'range', min: 50, max: 500, step: 10 },
+      description: '👉 Try changing this to 150',
+    },
+    item2Name: {
+      control: 'text',
+      description: 'Name of the second item',
+    },
+    item2Value: {
+      control: { type: 'range', min: 50, max: 500, step: 10 },
+      description: 'Value of the second item',
+    },
+    item3Name: {
+      control: 'text',
+      description: 'Name of the third item',
+    },
+    item3Value: {
+      control: { type: 'range', min: 50, max: 500, step: 10 },
+      description: 'Value of the third item',
     },
   },
   render: (args) => {
-    // Generate dynamic data based on args
-    const items = Array.from({ length: args.itemCount }, (_, i) => ({
-      id: i + 1,
-      name: `Item ${i + 1}`,
-      value: (i + 1) * 100,
-    }));
+    // Build data from args
+    const items = [
+      { id: 1, name: args.item1Name, value: args.item1Value },
+      { id: 2, name: args.item2Name, value: args.item2Value },
+      { id: 3, name: args.item3Name, value: args.item3Value },
+    ];
 
     const customModel = {
-      title: args.title,
+      title: 'Product Catalog',
       items,
     };
 
@@ -139,7 +159,7 @@ export const CustomDataPlayground: Story = {
         filmstripId: 'custom-playground',
         description: model.title,
         framesGap: 12,
-        responsiveFrames: { xs: 1, sm: 2, md: 3, lg: 4 },
+        responsiveFrames: { xs: 1, sm: 2, md: 3, lg: 3 },
         focusSelector: '[data-focus]',
       };
     };
@@ -154,7 +174,7 @@ export const CustomDataPlayground: Story = {
     docs: {
       description: {
         story:
-          '**Interactive Playground**\n\nUse the controls to experiment with the adapter pattern:\n\n- Change the title to see how it appears in the filmstrip\n- Adjust the item count to see how the adapter handles different data sizes\n- Watch how the adapter transforms your data into frames\n\nThis demonstrates that the adapter pattern is flexible - it works with any data structure as long as you map it correctly.',
+          '**Interactive Playground**\n\n**Your task:**\n\n1. 👉 Change "Product A" to "Hiking Boots"\n2. 👉 Change the value to 150\n3. Watch how the adapter transforms your data\n\n**What you\'ll learn:**\n\n- The adapter takes your data (Product A, 100) and converts it to a frame\n- Each frame gets a unique key (custom-item-1)\n- The frame component receives the props (name, value)\n- The filmstrip renders with your data\n\n**Try it:**\n\nUse the controls to modify the item names and values. See how the adapter pattern transforms your data into Cedar\'s frame structure in real-time.',
       },
     },
   },
