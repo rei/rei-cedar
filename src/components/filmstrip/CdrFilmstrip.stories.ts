@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrFilmstrip from './CdrFilmstrip.vue';
 import LifestyleExample from './examples/Lifestyle/Example.vue';
 import ProductRecommendationExample from './examples/ProductRecommendation/Example.vue';
+import CustomDataExample from './examples/CustomData/Example.vue';
 
 const meta: Meta = {
   title: 'Components/Filmstrip',
@@ -73,6 +74,22 @@ export const ProductRecommendations: Story = {
       description: {
         story:
           'A product recommendation rail composed with a separate model, adapter, frame component, and local placeholder image.',
+      },
+    },
+  },
+};
+
+export const CustomData: Story = {
+  name: 'Custom data pattern',
+  render: () => ({
+    components: { CustomDataExample },
+    template: '<CustomDataExample />',
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates the adapter pattern with a custom data model. This example shows how to translate your application data into filmstrip frames. See the CustomData example files for detailed comments explaining each part of the pattern.',
       },
     },
   },
