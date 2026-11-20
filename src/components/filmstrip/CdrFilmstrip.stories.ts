@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrFilmstrip from './CdrFilmstrip.vue';
 import LifestyleExample from './examples/Lifestyle/Example.vue';
 import ProductRecommendationExample from './examples/ProductRecommendation/Example.vue';
-import CustomFrame from './examples/CustomData/CustomFrame.vue';
+import CustomDataExample from './examples/CustomData/Example.vue';
 
 const meta: Meta = {
   title: 'Components/Filmstrip',
@@ -81,74 +81,10 @@ export const ProductRecommendations: Story = {
 
 export const CustomData: Story = {
   name: 'Custom data pattern',
-  args: {
-    item1Name: 'Product A',
-    item1Value: 100,
-    item2Name: 'Product B',
-    item2Value: 200,
-    item3Name: 'Product C',
-    item3Value: 300,
-  },
-  argTypes: {
-    item1Name: {
-      control: 'text',
-      description: 'Change this to "Hiking Boots"',
-    },
-    item1Value: {
-      control: { type: 'range', min: 50, max: 500, step: 10 },
-      description: 'Change this to 150',
-    },
-    item2Name: {
-      control: 'text',
-      description: 'Name of the second item',
-    },
-    item2Value: {
-      control: { type: 'range', min: 50, max: 500, step: 10 },
-      description: 'Value of the second item',
-    },
-    item3Name: {
-      control: 'text',
-      description: 'Name of the third item',
-    },
-    item3Value: {
-      control: { type: 'range', min: 50, max: 500, step: 10 },
-      description: 'Value of the third item',
-    },
-  },
-  render: (args: any) => {
-    const items = [
-      { id: 1, name: args.item1Name, value: args.item1Value },
-      { id: 2, name: args.item2Name, value: args.item2Value },
-      { id: 3, name: args.item3Name, value: args.item3Value },
-    ];
-
-    const customModel = {
-      title: 'Product Catalog',
-      items,
-    };
-
-    const adapter = (model: typeof customModel) => ({
-      component: CustomFrame,
-      frames: model.items.map((item) => ({
-        key: `custom-item-${item.id}`,
-        props: {
-          name: item.name,
-          value: item.value,
-        },
-      })),
-      filmstripId: 'custom-data',
-      description: model.title,
-      framesGap: 12,
-      responsiveFrames: { xs: 1, sm: 2, md: 3, lg: 3 },
-      focusSelector: '[data-focus]',
-    });
-
-    return {
-      components: { CdrFilmstrip },
-      setup: () => ({ customModel, adapter }),
-      template: '<CdrFilmstrip :model="customModel" :adapter="adapter" />',
-    };
-  },
+  render: () => ({
+    components: { CustomDataExample },
+    template: '<CustomDataExample />',
+  }),
   parameters: {
     docs: {
       description: {
@@ -159,87 +95,4 @@ export const CustomData: Story = {
   },
 };
 
-export const CustomDataPlayground: Story = {
-  name: 'Custom data playground',
-  args: {
-    item1Name: 'Product A',
-    item1Value: 100,
-    item2Name: 'Product B',
-    item2Value: 200,
-    item3Name: 'Product C',
-    item3Value: 300,
-  },
-  argTypes: {
-    item1Name: {
-      control: 'text',
-      description: 'Change this to "Hiking Boots"',
-    },
-    item1Value: {
-      control: { type: 'range', min: 50, max: 500, step: 10 },
-      description: 'Change this to 150',
-    },
-    item2Name: {
-      control: 'text',
-      description: 'Name of the second item',
-    },
-    item2Value: {
-      control: { type: 'range', min: 50, max: 500, step: 10 },
-      description: 'Value of the second item',
-    },
-    item3Name: {
-      control: 'text',
-      description: 'Name of the third item',
-    },
-    item3Value: {
-      control: { type: 'range', min: 50, max: 500, step: 10 },
-      description: 'Value of the third item',
-    },
-  },
-  render: (args: any) => {
-    // Build data from args
-    const items = [
-      { id: 1, name: args.item1Name, value: args.item1Value },
-      { id: 2, name: args.item2Name, value: args.item2Value },
-      { id: 3, name: args.item3Name, value: args.item3Value },
-    ];
 
-    const customModel = {
-      title: 'Product Catalog',
-      items,
-    };
-
-    const adapter = (model: typeof customModel) => {
-      const frames = model.items.map((item) => ({
-        key: `custom-item-${item.id}`,
-        props: {
-          name: item.name,
-          value: item.value,
-        },
-      }));
-
-      return {
-        component: CustomFrame,
-        frames,
-        filmstripId: 'custom-playground',
-        description: model.title,
-        framesGap: 12,
-        responsiveFrames: { xs: 1, sm: 2, md: 3, lg: 3 },
-        focusSelector: '[data-focus]',
-      };
-    };
-
-    return {
-      components: { CdrFilmstrip },
-      setup: () => ({ customModel, adapter }),
-      template: '<CdrFilmstrip :model="customModel" :adapter="adapter" />',
-    };
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          '**Interactive Playground**\n\n**Try this:**\n\n1. Change "Product A" to "Hiking Boots"\n2. Change the value to 150\n3. Watch how the adapter transforms your data\n\n**What you\'ll learn:**\n\n- The adapter takes your data (Product A, 100) and converts it to a frame\n- Each frame gets a unique key (custom-item-1)\n- The frame component receives the props (name, value)\n- The filmstrip renders with your data\n\n**Try it:**\n\nUse the controls to modify the item names and values. See how the adapter pattern transforms your data into Cedar\'s frame structure in real-time.',
-      },
-    },
-  },
-};

@@ -44,8 +44,8 @@ export const customAdapter: CdrFilmstripAdapter<unknown, CustomModel> = (modelDa
   }));
 
   // Step 4: Return the filmstrip configuration
-  // Note: component will be set by the parent component
   return {
+    component: null as any, // Will be set by the parent component
     frames, // The list of frames we created above
     filmstripId: 'custom-data', // Unique ID for this filmstrip (for accessibility)
     description: title, // Description for screen readers
@@ -58,7 +58,7 @@ export const customAdapter: CdrFilmstripAdapter<unknown, CustomModel> = (modelDa
       lg: 4, // Large screens: show 4 frames
     },
     focusSelector: '[data-focus]', // Which elements in frames can receive keyboard focus
-  } satisfies Omit<CdrFilmstripConfig<unknown, CustomModel>, 'component'>;
+  } satisfies CdrFilmstripConfig<unknown, CustomModel>;
 };
 
 export default customAdapter;
