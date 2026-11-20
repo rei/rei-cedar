@@ -1,6 +1,5 @@
 import type { CustomModel } from './types';
 import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from '../../interfaces';
-import CustomFrame from './CustomFrame.vue';
 
 /**
  * Custom Data Adapter
@@ -29,7 +28,7 @@ export const customAdapter: CdrFilmstripAdapter<unknown, CustomModel> = (modelDa
 
   // Return the filmstrip configuration
   return {
-    component: CustomFrame,
+    component: null, // Will be set by the parent component
     frames,
     filmstripId: 'custom-data',
     description: title,

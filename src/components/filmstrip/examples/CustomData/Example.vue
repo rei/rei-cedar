@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import CdrFilmstrip from '../../CdrFilmstrip.vue';
 import customAdapter from './custom-adapter';
+import CustomFrame from './CustomFrame.vue';
 import type { CustomModel } from './types';
 
 // This is your custom data model - the structure your app uses
@@ -24,7 +25,10 @@ const customModel: CustomModel = {
 };
 
 // The adapter translates your custom model into frame props
-const adapter = customAdapter;
+const adapter = (model: CustomModel) => ({
+  ...customAdapter(model),
+  component: CustomFrame,
+});
 </script>
 
 <style lang="scss" scoped>
