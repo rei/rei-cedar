@@ -33,7 +33,8 @@ defineProps<{
 
   h3 {
     margin: 0 0 $cdr-space-half-x 0;
-    font-size: $cdr-text-heading-sans-400;
+    font-size: 1.25rem;
+    font-weight: 600;
   }
 
   p {
