@@ -29,13 +29,17 @@
     "./components/*": null,
     "./entrypoints/*": null,
     "./mixins": "./dist/mixins/index.scss",
+    "./mixins/breakpoints": {
+      "types": "./dist/mixins/breakpoints.d.ts",
+      "style": "./dist/mixins/breakpoints.scss",
+      "sass": "./dist/mixins/breakpoints.scss",
+      "import": "./dist/mixins/breakpoints.mjs",
+      "default": "./dist/mixins/breakpoints.mjs"
+    },
     "./mixins/*.scss": "./dist/mixins/*.scss",
     "./mixins/*": {
-      "types": "./dist/mixins/*.d.ts",
       "style": "./dist/mixins/*.scss",
-      "sass": "./dist/mixins/*.scss",
-      "import": "./dist/mixins/*.mjs",
-      "default": "./dist/mixins/*.mjs"
+      "sass": "./dist/mixins/*.scss"
     },
     "./props/*": null,
     "./svg/*": null,
