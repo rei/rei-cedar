@@ -1,0 +1,22 @@
+diff --git a/dist/docsite/scss/cdr-tokens.scss b/dist/docsite/scss/cdr-tokens.scss
+index 1d17ba36f7d9c83ca0a3f21ff3eeb02a7492b7fc..e7b50baf641efae8b06bf1e5c447305c46390239 100644
+--- a/dist/docsite/scss/cdr-tokens.scss
++++ b/dist/docsite/scss/cdr-tokens.scss
+@@ -50,3 +50,6 @@
+ @forward "./components/cdr-table";
+ @forward "./components/cdr-toggle-button";
+ @forward "./components/cdr-tooltip";
++@forward "./utilities/cdr-breakpoint-mixins" hide $cdr-breakpoint-xs, $cdr-breakpoint-sm, $cdr-breakpoint-md, $cdr-breakpoint-lg;
++@forward "./utilities/cdr-display-mixins";
++@forward "./utilities/cdr-type-mixins";
+diff --git a/dist/rei-dot-com/scss/cdr-tokens.scss b/dist/rei-dot-com/scss/cdr-tokens.scss
+index 837246ac5c5f90bf044c4f1e03ec87fd7678ed91..eb1a711b8400f3794f59b5159001e767b358003d 100644
+--- a/dist/rei-dot-com/scss/cdr-tokens.scss
++++ b/dist/rei-dot-com/scss/cdr-tokens.scss
+@@ -52,3 +52,6 @@
+ @forward "./components/cdr-tooltip";
+ @forward "./palettes/cdr-palette-membership-subtle";
+ @forward "./palettes/cdr-palette-membership-vibrant";
++@forward "./utilities/cdr-breakpoint-mixins" hide $cdr-breakpoint-xs, $cdr-breakpoint-sm, $cdr-breakpoint-md, $cdr-breakpoint-lg;
++@forward "./utilities/cdr-display-mixins";
++@forward "./utilities/cdr-type-mixins";

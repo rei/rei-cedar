@@ -1,0 +1,1371 @@
+// Cedar replacement for the deprecated `@rei/cdr-tokens` typography mixins.
+// Type values are consumed from `@rei/cdr-tokens` foundations — do not hardcode them here.
+// Usage: @use '@rei/cedar/mixins' as mixins;  @include mixins.cdr-text-body-400;
+// `%` placeholders are preserved for parity with the deprecated mixins so that
+// existing `@extend %cdr-text-body-400` consumers keep working.
+
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-text-family' as family;
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-text-size' as size;
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-text-weight' as weight;
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-text-style' as style;
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-text-line-height' as lh;
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-text-letter-spacing' as ls;
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-space-icon' as icon;
+
+@mixin cdr-icon() {
+  font-size: icon.$cdr-icon-size;
+}
+
+%cdr-icon {
+  font-size: icon.$cdr-icon-size;
+}
+
+@mixin cdr-text-italic() {
+  font-style: style.$cdr-text-italic-style;
+}
+
+%cdr-text-italic {
+  font-style: style.$cdr-text-italic-style;
+}
+
+@mixin cdr-text-strong() {
+  font-weight: weight.$cdr-text-strong-weight;
+}
+
+%cdr-text-strong {
+  font-weight: weight.$cdr-text-strong-weight;
+}
+
+@mixin cdr-text-default() {
+  font-family: family.$cdr-text-default-family;
+  font-size: size.$cdr-text-default-size;
+  font-weight: weight.$cdr-text-default-weight;
+  font-style: style.$cdr-text-default-style;
+  line-height: lh.$cdr-text-default-line-height;
+  letter-spacing: ls.$cdr-text-default-letter-spacing;
+}
+
+%cdr-text-default {
+  font-family: family.$cdr-text-default-family;
+  font-size: size.$cdr-text-default-size;
+  font-weight: weight.$cdr-text-default-weight;
+  font-style: style.$cdr-text-default-style;
+  line-height: lh.$cdr-text-default-line-height;
+  letter-spacing: ls.$cdr-text-default-letter-spacing;
+}
+
+@mixin cdr-text-eyebrow-100() {
+  font-family: family.$cdr-text-eyebrow-100-family;
+  font-size: size.$cdr-text-eyebrow-100-size;
+  font-weight: weight.$cdr-text-eyebrow-100-weight;
+  font-style: style.$cdr-text-eyebrow-100-style;
+  line-height: lh.$cdr-text-eyebrow-100-line-height;
+  letter-spacing: ls.$cdr-text-eyebrow-100-letter-spacing;
+  text-transform: style.$cdr-text-eyebrow-100-transform;
+}
+
+%cdr-text-eyebrow-100 {
+  font-family: family.$cdr-text-eyebrow-100-family;
+  font-size: size.$cdr-text-eyebrow-100-size;
+  font-weight: weight.$cdr-text-eyebrow-100-weight;
+  font-style: style.$cdr-text-eyebrow-100-style;
+  line-height: lh.$cdr-text-eyebrow-100-line-height;
+  letter-spacing: ls.$cdr-text-eyebrow-100-letter-spacing;
+  text-transform: style.$cdr-text-eyebrow-100-transform;
+}
+
+@mixin cdr-text-body-300() {
+  font-family: family.$cdr-text-body-300-family;
+  font-size: size.$cdr-text-body-300-size;
+  font-weight: weight.$cdr-text-body-300-weight;
+  font-style: style.$cdr-text-body-300-style;
+  line-height: lh.$cdr-text-body-300-line-height;
+  letter-spacing: ls.$cdr-text-body-300-letter-spacing;
+}
+
+%cdr-text-body-300 {
+  font-family: family.$cdr-text-body-300-family;
+  font-size: size.$cdr-text-body-300-size;
+  font-weight: weight.$cdr-text-body-300-weight;
+  font-style: style.$cdr-text-body-300-style;
+  line-height: lh.$cdr-text-body-300-line-height;
+  letter-spacing: ls.$cdr-text-body-300-letter-spacing;
+}
+
+@mixin cdr-text-body-400() {
+  font-family: family.$cdr-text-body-400-family;
+  font-size: size.$cdr-text-body-400-size;
+  font-weight: weight.$cdr-text-body-400-weight;
+  font-style: style.$cdr-text-body-400-style;
+  line-height: lh.$cdr-text-body-400-line-height;
+  letter-spacing: ls.$cdr-text-body-400-letter-spacing;
+}
+
+%cdr-text-body-400 {
+  font-family: family.$cdr-text-body-400-family;
+  font-size: size.$cdr-text-body-400-size;
+  font-weight: weight.$cdr-text-body-400-weight;
+  font-style: style.$cdr-text-body-400-style;
+  line-height: lh.$cdr-text-body-400-line-height;
+  letter-spacing: ls.$cdr-text-body-400-letter-spacing;
+}
+
+@mixin cdr-text-body-500() {
+  font-family: family.$cdr-text-body-500-family;
+  font-size: size.$cdr-text-body-500-size;
+  font-weight: weight.$cdr-text-body-500-weight;
+  font-style: style.$cdr-text-body-500-style;
+  line-height: lh.$cdr-text-body-500-line-height;
+  letter-spacing: ls.$cdr-text-body-500-letter-spacing;
+}
+
+%cdr-text-body-500 {
+  font-family: family.$cdr-text-body-500-family;
+  font-size: size.$cdr-text-body-500-size;
+  font-weight: weight.$cdr-text-body-500-weight;
+  font-style: style.$cdr-text-body-500-style;
+  line-height: lh.$cdr-text-body-500-line-height;
+  letter-spacing: ls.$cdr-text-body-500-letter-spacing;
+}
+
+@mixin cdr-text-body-strong-300() {
+  font-family: family.$cdr-text-body-strong-300-family;
+  font-size: size.$cdr-text-body-strong-300-size;
+  font-weight: weight.$cdr-text-body-strong-300-weight;
+  font-style: style.$cdr-text-body-strong-300-style;
+  line-height: lh.$cdr-text-body-strong-300-line-height;
+  letter-spacing: ls.$cdr-text-body-strong-300-letter-spacing;
+}
+
+%cdr-text-body-strong-300 {
+  font-family: family.$cdr-text-body-strong-300-family;
+  font-size: size.$cdr-text-body-strong-300-size;
+  font-weight: weight.$cdr-text-body-strong-300-weight;
+  font-style: style.$cdr-text-body-strong-300-style;
+  line-height: lh.$cdr-text-body-strong-300-line-height;
+  letter-spacing: ls.$cdr-text-body-strong-300-letter-spacing;
+}
+
+@mixin cdr-text-body-strong-400() {
+  font-family: family.$cdr-text-body-strong-400-family;
+  font-size: size.$cdr-text-body-strong-400-size;
+  font-weight: weight.$cdr-text-body-strong-400-weight;
+  font-style: style.$cdr-text-body-strong-400-style;
+  line-height: lh.$cdr-text-body-strong-400-line-height;
+  letter-spacing: ls.$cdr-text-body-strong-400-letter-spacing;
+}
+
+%cdr-text-body-strong-400 {
+  font-family: family.$cdr-text-body-strong-400-family;
+  font-size: size.$cdr-text-body-strong-400-size;
+  font-weight: weight.$cdr-text-body-strong-400-weight;
+  font-style: style.$cdr-text-body-strong-400-style;
+  line-height: lh.$cdr-text-body-strong-400-line-height;
+  letter-spacing: ls.$cdr-text-body-strong-400-letter-spacing;
+}
+
+@mixin cdr-text-body-strong-500() {
+  font-family: family.$cdr-text-body-strong-500-family;
+  font-size: size.$cdr-text-body-strong-500-size;
+  font-weight: weight.$cdr-text-body-strong-500-weight;
+  font-style: style.$cdr-text-body-strong-500-style;
+  line-height: lh.$cdr-text-body-strong-500-line-height;
+  letter-spacing: ls.$cdr-text-body-strong-500-letter-spacing;
+}
+
+%cdr-text-body-strong-500 {
+  font-family: family.$cdr-text-body-strong-500-family;
+  font-size: size.$cdr-text-body-strong-500-size;
+  font-weight: weight.$cdr-text-body-strong-500-weight;
+  font-style: style.$cdr-text-body-strong-500-style;
+  line-height: lh.$cdr-text-body-strong-500-line-height;
+  letter-spacing: ls.$cdr-text-body-strong-500-letter-spacing;
+}
+
+@mixin cdr-text-heading-sans-200() {
+  font-family: family.$cdr-text-heading-sans-200-family;
+  font-size: size.$cdr-text-heading-sans-200-size;
+  font-weight: weight.$cdr-text-heading-sans-200-weight;
+  font-style: style.$cdr-text-heading-sans-200-style;
+  line-height: lh.$cdr-text-heading-sans-200-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-200-letter-spacing;
+}
+
+%cdr-text-heading-sans-200 {
+  font-family: family.$cdr-text-heading-sans-200-family;
+  font-size: size.$cdr-text-heading-sans-200-size;
+  font-weight: weight.$cdr-text-heading-sans-200-weight;
+  font-style: style.$cdr-text-heading-sans-200-style;
+  line-height: lh.$cdr-text-heading-sans-200-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-200-letter-spacing;
+}
+
+@mixin cdr-text-heading-sans-300() {
+  font-family: family.$cdr-text-heading-sans-300-family;
+  font-size: size.$cdr-text-heading-sans-300-size;
+  font-weight: weight.$cdr-text-heading-sans-300-weight;
+  font-style: style.$cdr-text-heading-sans-300-style;
+  line-height: lh.$cdr-text-heading-sans-300-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-300-letter-spacing;
+}
+
+%cdr-text-heading-sans-300 {
+  font-family: family.$cdr-text-heading-sans-300-family;
+  font-size: size.$cdr-text-heading-sans-300-size;
+  font-weight: weight.$cdr-text-heading-sans-300-weight;
+  font-style: style.$cdr-text-heading-sans-300-style;
+  line-height: lh.$cdr-text-heading-sans-300-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-300-letter-spacing;
+}
+
+@mixin cdr-text-heading-sans-400() {
+  font-family: family.$cdr-text-heading-sans-400-family;
+  font-size: size.$cdr-text-heading-sans-400-size;
+  font-weight: weight.$cdr-text-heading-sans-400-weight;
+  font-style: style.$cdr-text-heading-sans-400-style;
+  line-height: lh.$cdr-text-heading-sans-400-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-400-letter-spacing;
+}
+
+%cdr-text-heading-sans-400 {
+  font-family: family.$cdr-text-heading-sans-400-family;
+  font-size: size.$cdr-text-heading-sans-400-size;
+  font-weight: weight.$cdr-text-heading-sans-400-weight;
+  font-style: style.$cdr-text-heading-sans-400-style;
+  line-height: lh.$cdr-text-heading-sans-400-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-400-letter-spacing;
+}
+
+@mixin cdr-text-heading-sans-500() {
+  font-family: family.$cdr-text-heading-sans-500-family;
+  font-size: size.$cdr-text-heading-sans-500-size;
+  font-weight: weight.$cdr-text-heading-sans-500-weight;
+  font-style: style.$cdr-text-heading-sans-500-style;
+  line-height: lh.$cdr-text-heading-sans-500-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-500-letter-spacing;
+}
+
+%cdr-text-heading-sans-500 {
+  font-family: family.$cdr-text-heading-sans-500-family;
+  font-size: size.$cdr-text-heading-sans-500-size;
+  font-weight: weight.$cdr-text-heading-sans-500-weight;
+  font-style: style.$cdr-text-heading-sans-500-style;
+  line-height: lh.$cdr-text-heading-sans-500-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-500-letter-spacing;
+}
+
+@mixin cdr-text-heading-sans-600() {
+  font-family: family.$cdr-text-heading-sans-600-family;
+  font-size: size.$cdr-text-heading-sans-600-size;
+  font-weight: weight.$cdr-text-heading-sans-600-weight;
+  font-style: style.$cdr-text-heading-sans-600-style;
+  line-height: lh.$cdr-text-heading-sans-600-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-600-letter-spacing;
+}
+
+%cdr-text-heading-sans-600 {
+  font-family: family.$cdr-text-heading-sans-600-family;
+  font-size: size.$cdr-text-heading-sans-600-size;
+  font-weight: weight.$cdr-text-heading-sans-600-weight;
+  font-style: style.$cdr-text-heading-sans-600-style;
+  line-height: lh.$cdr-text-heading-sans-600-line-height;
+  letter-spacing: ls.$cdr-text-heading-sans-600-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-200() {
+  font-family: family.$cdr-text-heading-serif-200-family;
+  font-size: size.$cdr-text-heading-serif-200-size;
+  font-weight: weight.$cdr-text-heading-serif-200-weight;
+  font-style: style.$cdr-text-heading-serif-200-style;
+  line-height: lh.$cdr-text-heading-serif-200-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-200-letter-spacing;
+}
+
+%cdr-text-heading-serif-200 {
+  font-family: family.$cdr-text-heading-serif-200-family;
+  font-size: size.$cdr-text-heading-serif-200-size;
+  font-weight: weight.$cdr-text-heading-serif-200-weight;
+  font-style: style.$cdr-text-heading-serif-200-style;
+  line-height: lh.$cdr-text-heading-serif-200-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-200-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-300() {
+  font-family: family.$cdr-text-heading-serif-300-family;
+  font-size: size.$cdr-text-heading-serif-300-size;
+  font-weight: weight.$cdr-text-heading-serif-300-weight;
+  font-style: style.$cdr-text-heading-serif-300-style;
+  line-height: lh.$cdr-text-heading-serif-300-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-300-letter-spacing;
+}
+
+%cdr-text-heading-serif-300 {
+  font-family: family.$cdr-text-heading-serif-300-family;
+  font-size: size.$cdr-text-heading-serif-300-size;
+  font-weight: weight.$cdr-text-heading-serif-300-weight;
+  font-style: style.$cdr-text-heading-serif-300-style;
+  line-height: lh.$cdr-text-heading-serif-300-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-300-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-400() {
+  font-family: family.$cdr-text-heading-serif-400-family;
+  font-size: size.$cdr-text-heading-serif-400-size;
+  font-weight: weight.$cdr-text-heading-serif-400-weight;
+  font-style: style.$cdr-text-heading-serif-400-style;
+  line-height: lh.$cdr-text-heading-serif-400-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-400-letter-spacing;
+}
+
+%cdr-text-heading-serif-400 {
+  font-family: family.$cdr-text-heading-serif-400-family;
+  font-size: size.$cdr-text-heading-serif-400-size;
+  font-weight: weight.$cdr-text-heading-serif-400-weight;
+  font-style: style.$cdr-text-heading-serif-400-style;
+  line-height: lh.$cdr-text-heading-serif-400-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-400-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-500() {
+  font-family: family.$cdr-text-heading-serif-500-family;
+  font-size: size.$cdr-text-heading-serif-500-size;
+  font-weight: weight.$cdr-text-heading-serif-500-weight;
+  font-style: style.$cdr-text-heading-serif-500-style;
+  line-height: lh.$cdr-text-heading-serif-500-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-500-letter-spacing;
+}
+
+%cdr-text-heading-serif-500 {
+  font-family: family.$cdr-text-heading-serif-500-family;
+  font-size: size.$cdr-text-heading-serif-500-size;
+  font-weight: weight.$cdr-text-heading-serif-500-weight;
+  font-style: style.$cdr-text-heading-serif-500-style;
+  line-height: lh.$cdr-text-heading-serif-500-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-500-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-600() {
+  font-family: family.$cdr-text-heading-serif-600-family;
+  font-size: size.$cdr-text-heading-serif-600-size;
+  font-weight: weight.$cdr-text-heading-serif-600-weight;
+  font-style: style.$cdr-text-heading-serif-600-style;
+  line-height: lh.$cdr-text-heading-serif-600-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-600-letter-spacing;
+}
+
+%cdr-text-heading-serif-600 {
+  font-family: family.$cdr-text-heading-serif-600-family;
+  font-size: size.$cdr-text-heading-serif-600-size;
+  font-weight: weight.$cdr-text-heading-serif-600-weight;
+  font-style: style.$cdr-text-heading-serif-600-style;
+  line-height: lh.$cdr-text-heading-serif-600-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-600-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-700() {
+  font-family: family.$cdr-text-heading-serif-700-family;
+  font-size: size.$cdr-text-heading-serif-700-size;
+  font-weight: weight.$cdr-text-heading-serif-700-weight;
+  font-style: style.$cdr-text-heading-serif-700-style;
+  line-height: lh.$cdr-text-heading-serif-700-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-700-letter-spacing;
+}
+
+%cdr-text-heading-serif-700 {
+  font-family: family.$cdr-text-heading-serif-700-family;
+  font-size: size.$cdr-text-heading-serif-700-size;
+  font-weight: weight.$cdr-text-heading-serif-700-weight;
+  font-style: style.$cdr-text-heading-serif-700-style;
+  line-height: lh.$cdr-text-heading-serif-700-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-700-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-800() {
+  font-family: family.$cdr-text-heading-serif-800-family;
+  font-size: size.$cdr-text-heading-serif-800-size;
+  font-weight: weight.$cdr-text-heading-serif-800-weight;
+  font-style: style.$cdr-text-heading-serif-800-style;
+  line-height: lh.$cdr-text-heading-serif-800-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-800-letter-spacing;
+}
+
+%cdr-text-heading-serif-800 {
+  font-family: family.$cdr-text-heading-serif-800-family;
+  font-size: size.$cdr-text-heading-serif-800-size;
+  font-weight: weight.$cdr-text-heading-serif-800-weight;
+  font-style: style.$cdr-text-heading-serif-800-style;
+  line-height: lh.$cdr-text-heading-serif-800-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-800-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-900() {
+  font-family: family.$cdr-text-heading-serif-900-family;
+  font-size: size.$cdr-text-heading-serif-900-size;
+  font-weight: weight.$cdr-text-heading-serif-900-weight;
+  font-style: style.$cdr-text-heading-serif-900-style;
+  line-height: lh.$cdr-text-heading-serif-900-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-900-letter-spacing;
+}
+
+%cdr-text-heading-serif-900 {
+  font-family: family.$cdr-text-heading-serif-900-family;
+  font-size: size.$cdr-text-heading-serif-900-size;
+  font-weight: weight.$cdr-text-heading-serif-900-weight;
+  font-style: style.$cdr-text-heading-serif-900-style;
+  line-height: lh.$cdr-text-heading-serif-900-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-900-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-1000() {
+  font-family: family.$cdr-text-heading-serif-1000-family;
+  font-size: size.$cdr-text-heading-serif-1000-size;
+  font-weight: weight.$cdr-text-heading-serif-1000-weight;
+  font-style: style.$cdr-text-heading-serif-1000-style;
+  line-height: lh.$cdr-text-heading-serif-1000-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-1000-letter-spacing;
+}
+
+%cdr-text-heading-serif-1000 {
+  font-family: family.$cdr-text-heading-serif-1000-family;
+  font-size: size.$cdr-text-heading-serif-1000-size;
+  font-weight: weight.$cdr-text-heading-serif-1000-weight;
+  font-style: style.$cdr-text-heading-serif-1000-style;
+  line-height: lh.$cdr-text-heading-serif-1000-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-1000-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-1100() {
+  font-family: family.$cdr-text-heading-serif-1100-family;
+  font-size: size.$cdr-text-heading-serif-1100-size;
+  font-weight: weight.$cdr-text-heading-serif-1100-weight;
+  font-style: style.$cdr-text-heading-serif-1100-style;
+  line-height: lh.$cdr-text-heading-serif-1100-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-1100-letter-spacing;
+}
+
+%cdr-text-heading-serif-1100 {
+  font-family: family.$cdr-text-heading-serif-1100-family;
+  font-size: size.$cdr-text-heading-serif-1100-size;
+  font-weight: weight.$cdr-text-heading-serif-1100-weight;
+  font-style: style.$cdr-text-heading-serif-1100-style;
+  line-height: lh.$cdr-text-heading-serif-1100-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-1100-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-1200() {
+  font-family: family.$cdr-text-heading-serif-1200-family;
+  font-size: size.$cdr-text-heading-serif-1200-size;
+  font-weight: weight.$cdr-text-heading-serif-1200-weight;
+  font-style: style.$cdr-text-heading-serif-1200-style;
+  line-height: lh.$cdr-text-heading-serif-1200-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-1200-letter-spacing;
+}
+
+%cdr-text-heading-serif-1200 {
+  font-family: family.$cdr-text-heading-serif-1200-family;
+  font-size: size.$cdr-text-heading-serif-1200-size;
+  font-weight: weight.$cdr-text-heading-serif-1200-weight;
+  font-style: style.$cdr-text-heading-serif-1200-style;
+  line-height: lh.$cdr-text-heading-serif-1200-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-1200-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-strong-600() {
+  font-family: family.$cdr-text-heading-serif-strong-600-family;
+  font-size: size.$cdr-text-heading-serif-strong-600-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-600-weight;
+  font-style: style.$cdr-text-heading-serif-strong-600-style;
+  line-height: lh.$cdr-text-heading-serif-strong-600-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-600-letter-spacing;
+}
+
+%cdr-text-heading-serif-strong-600 {
+  font-family: family.$cdr-text-heading-serif-strong-600-family;
+  font-size: size.$cdr-text-heading-serif-strong-600-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-600-weight;
+  font-style: style.$cdr-text-heading-serif-strong-600-style;
+  line-height: lh.$cdr-text-heading-serif-strong-600-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-600-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-strong-700() {
+  font-family: family.$cdr-text-heading-serif-strong-700-family;
+  font-size: size.$cdr-text-heading-serif-strong-700-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-700-weight;
+  font-style: style.$cdr-text-heading-serif-strong-700-style;
+  line-height: lh.$cdr-text-heading-serif-strong-700-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-700-letter-spacing;
+}
+
+%cdr-text-heading-serif-strong-700 {
+  font-family: family.$cdr-text-heading-serif-strong-700-family;
+  font-size: size.$cdr-text-heading-serif-strong-700-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-700-weight;
+  font-style: style.$cdr-text-heading-serif-strong-700-style;
+  line-height: lh.$cdr-text-heading-serif-strong-700-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-700-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-strong-800() {
+  font-family: family.$cdr-text-heading-serif-strong-800-family;
+  font-size: size.$cdr-text-heading-serif-strong-800-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-800-weight;
+  font-style: style.$cdr-text-heading-serif-strong-800-style;
+  line-height: lh.$cdr-text-heading-serif-strong-800-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-800-letter-spacing;
+}
+
+%cdr-text-heading-serif-strong-800 {
+  font-family: family.$cdr-text-heading-serif-strong-800-family;
+  font-size: size.$cdr-text-heading-serif-strong-800-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-800-weight;
+  font-style: style.$cdr-text-heading-serif-strong-800-style;
+  line-height: lh.$cdr-text-heading-serif-strong-800-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-800-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-strong-900() {
+  font-family: family.$cdr-text-heading-serif-strong-900-family;
+  font-size: size.$cdr-text-heading-serif-strong-900-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-900-weight;
+  font-style: style.$cdr-text-heading-serif-strong-900-style;
+  line-height: lh.$cdr-text-heading-serif-strong-900-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-900-letter-spacing;
+}
+
+%cdr-text-heading-serif-strong-900 {
+  font-family: family.$cdr-text-heading-serif-strong-900-family;
+  font-size: size.$cdr-text-heading-serif-strong-900-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-900-weight;
+  font-style: style.$cdr-text-heading-serif-strong-900-style;
+  line-height: lh.$cdr-text-heading-serif-strong-900-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-900-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-strong-1000() {
+  font-family: family.$cdr-text-heading-serif-strong-1000-family;
+  font-size: size.$cdr-text-heading-serif-strong-1000-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-1000-weight;
+  font-style: style.$cdr-text-heading-serif-strong-1000-style;
+  line-height: lh.$cdr-text-heading-serif-strong-1000-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-1000-letter-spacing;
+}
+
+%cdr-text-heading-serif-strong-1000 {
+  font-family: family.$cdr-text-heading-serif-strong-1000-family;
+  font-size: size.$cdr-text-heading-serif-strong-1000-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-1000-weight;
+  font-style: style.$cdr-text-heading-serif-strong-1000-style;
+  line-height: lh.$cdr-text-heading-serif-strong-1000-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-1000-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-strong-1100() {
+  font-family: family.$cdr-text-heading-serif-strong-1100-family;
+  font-size: size.$cdr-text-heading-serif-strong-1100-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-1100-weight;
+  font-style: style.$cdr-text-heading-serif-strong-1100-style;
+  line-height: lh.$cdr-text-heading-serif-strong-1100-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-1100-letter-spacing;
+}
+
+%cdr-text-heading-serif-strong-1100 {
+  font-family: family.$cdr-text-heading-serif-strong-1100-family;
+  font-size: size.$cdr-text-heading-serif-strong-1100-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-1100-weight;
+  font-style: style.$cdr-text-heading-serif-strong-1100-style;
+  line-height: lh.$cdr-text-heading-serif-strong-1100-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-1100-letter-spacing;
+}
+
+@mixin cdr-text-heading-serif-strong-1200() {
+  font-family: family.$cdr-text-heading-serif-strong-1200-family;
+  font-size: size.$cdr-text-heading-serif-strong-1200-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-1200-weight;
+  font-style: style.$cdr-text-heading-serif-strong-1200-style;
+  line-height: lh.$cdr-text-heading-serif-strong-1200-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-1200-letter-spacing;
+}
+
+%cdr-text-heading-serif-strong-1200 {
+  font-family: family.$cdr-text-heading-serif-strong-1200-family;
+  font-size: size.$cdr-text-heading-serif-strong-1200-size;
+  font-weight: weight.$cdr-text-heading-serif-strong-1200-weight;
+  font-style: style.$cdr-text-heading-serif-strong-1200-style;
+  line-height: lh.$cdr-text-heading-serif-strong-1200-line-height;
+  letter-spacing: ls.$cdr-text-heading-serif-strong-1200-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-800() {
+  font-family: family.$cdr-text-heading-display-800-family;
+  font-size: size.$cdr-text-heading-display-800-size;
+  font-weight: weight.$cdr-text-heading-display-800-weight;
+  font-style: style.$cdr-text-heading-display-800-style;
+  line-height: lh.$cdr-text-heading-display-800-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-800-letter-spacing;
+}
+
+%cdr-text-heading-display-800 {
+  font-family: family.$cdr-text-heading-display-800-family;
+  font-size: size.$cdr-text-heading-display-800-size;
+  font-weight: weight.$cdr-text-heading-display-800-weight;
+  font-style: style.$cdr-text-heading-display-800-style;
+  line-height: lh.$cdr-text-heading-display-800-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-800-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-900() {
+  font-family: family.$cdr-text-heading-display-900-family;
+  font-size: size.$cdr-text-heading-display-900-size;
+  font-weight: weight.$cdr-text-heading-display-900-weight;
+  font-style: style.$cdr-text-heading-display-900-style;
+  line-height: lh.$cdr-text-heading-display-900-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-900-letter-spacing;
+}
+
+%cdr-text-heading-display-900 {
+  font-family: family.$cdr-text-heading-display-900-family;
+  font-size: size.$cdr-text-heading-display-900-size;
+  font-weight: weight.$cdr-text-heading-display-900-weight;
+  font-style: style.$cdr-text-heading-display-900-style;
+  line-height: lh.$cdr-text-heading-display-900-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-900-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-1000() {
+  font-family: family.$cdr-text-heading-display-1000-family;
+  font-size: size.$cdr-text-heading-display-1000-size;
+  font-weight: weight.$cdr-text-heading-display-1000-weight;
+  font-style: style.$cdr-text-heading-display-1000-style;
+  line-height: lh.$cdr-text-heading-display-1000-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1000-letter-spacing;
+}
+
+%cdr-text-heading-display-1000 {
+  font-family: family.$cdr-text-heading-display-1000-family;
+  font-size: size.$cdr-text-heading-display-1000-size;
+  font-weight: weight.$cdr-text-heading-display-1000-weight;
+  font-style: style.$cdr-text-heading-display-1000-style;
+  line-height: lh.$cdr-text-heading-display-1000-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1000-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-1100() {
+  font-family: family.$cdr-text-heading-display-1100-family;
+  font-size: size.$cdr-text-heading-display-1100-size;
+  font-weight: weight.$cdr-text-heading-display-1100-weight;
+  font-style: style.$cdr-text-heading-display-1100-style;
+  line-height: lh.$cdr-text-heading-display-1100-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1100-letter-spacing;
+}
+
+%cdr-text-heading-display-1100 {
+  font-family: family.$cdr-text-heading-display-1100-family;
+  font-size: size.$cdr-text-heading-display-1100-size;
+  font-weight: weight.$cdr-text-heading-display-1100-weight;
+  font-style: style.$cdr-text-heading-display-1100-style;
+  line-height: lh.$cdr-text-heading-display-1100-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1100-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-1200() {
+  font-family: family.$cdr-text-heading-display-1200-family;
+  font-size: size.$cdr-text-heading-display-1200-size;
+  font-weight: weight.$cdr-text-heading-display-1200-weight;
+  font-style: style.$cdr-text-heading-display-1200-style;
+  line-height: lh.$cdr-text-heading-display-1200-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1200-letter-spacing;
+}
+
+%cdr-text-heading-display-1200 {
+  font-family: family.$cdr-text-heading-display-1200-family;
+  font-size: size.$cdr-text-heading-display-1200-size;
+  font-weight: weight.$cdr-text-heading-display-1200-weight;
+  font-style: style.$cdr-text-heading-display-1200-style;
+  line-height: lh.$cdr-text-heading-display-1200-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1200-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-1300() {
+  font-family: family.$cdr-text-heading-display-1300-family;
+  font-size: size.$cdr-text-heading-display-1300-size;
+  font-weight: weight.$cdr-text-heading-display-1300-weight;
+  font-style: style.$cdr-text-heading-display-1300-style;
+  line-height: lh.$cdr-text-heading-display-1300-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1300-letter-spacing;
+}
+
+%cdr-text-heading-display-1300 {
+  font-family: family.$cdr-text-heading-display-1300-family;
+  font-size: size.$cdr-text-heading-display-1300-size;
+  font-weight: weight.$cdr-text-heading-display-1300-weight;
+  font-style: style.$cdr-text-heading-display-1300-style;
+  line-height: lh.$cdr-text-heading-display-1300-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1300-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-1400() {
+  font-family: family.$cdr-text-heading-display-1400-family;
+  font-size: size.$cdr-text-heading-display-1400-size;
+  font-weight: weight.$cdr-text-heading-display-1400-weight;
+  font-style: style.$cdr-text-heading-display-1400-style;
+  line-height: lh.$cdr-text-heading-display-1400-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1400-letter-spacing;
+}
+
+%cdr-text-heading-display-1400 {
+  font-family: family.$cdr-text-heading-display-1400-family;
+  font-size: size.$cdr-text-heading-display-1400-size;
+  font-weight: weight.$cdr-text-heading-display-1400-weight;
+  font-style: style.$cdr-text-heading-display-1400-style;
+  line-height: lh.$cdr-text-heading-display-1400-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1400-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-1500() {
+  font-family: family.$cdr-text-heading-display-1500-family;
+  font-size: size.$cdr-text-heading-display-1500-size;
+  font-weight: weight.$cdr-text-heading-display-1500-weight;
+  font-style: style.$cdr-text-heading-display-1500-style;
+  line-height: lh.$cdr-text-heading-display-1500-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1500-letter-spacing;
+}
+
+%cdr-text-heading-display-1500 {
+  font-family: family.$cdr-text-heading-display-1500-family;
+  font-size: size.$cdr-text-heading-display-1500-size;
+  font-weight: weight.$cdr-text-heading-display-1500-weight;
+  font-style: style.$cdr-text-heading-display-1500-style;
+  line-height: lh.$cdr-text-heading-display-1500-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1500-letter-spacing;
+}
+
+@mixin cdr-text-heading-display-1600() {
+  font-family: family.$cdr-text-heading-display-1600-family;
+  font-size: size.$cdr-text-heading-display-1600-size;
+  font-weight: weight.$cdr-text-heading-display-1600-weight;
+  font-style: style.$cdr-text-heading-display-1600-style;
+  line-height: lh.$cdr-text-heading-display-1600-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1600-letter-spacing;
+}
+
+%cdr-text-heading-display-1600 {
+  font-family: family.$cdr-text-heading-display-1600-family;
+  font-size: size.$cdr-text-heading-display-1600-size;
+  font-weight: weight.$cdr-text-heading-display-1600-weight;
+  font-style: style.$cdr-text-heading-display-1600-style;
+  line-height: lh.$cdr-text-heading-display-1600-line-height;
+  letter-spacing: ls.$cdr-text-heading-display-1600-letter-spacing;
+}
+
+@mixin cdr-text-subheading-sans-300() {
+  font-family: family.$cdr-text-subheading-sans-300-family;
+  font-size: size.$cdr-text-subheading-sans-300-size;
+  font-weight: weight.$cdr-text-subheading-sans-300-weight;
+  font-style: style.$cdr-text-subheading-sans-300-style;
+  line-height: lh.$cdr-text-subheading-sans-300-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-300-letter-spacing;
+}
+
+%cdr-text-subheading-sans-300 {
+  font-family: family.$cdr-text-subheading-sans-300-family;
+  font-size: size.$cdr-text-subheading-sans-300-size;
+  font-weight: weight.$cdr-text-subheading-sans-300-weight;
+  font-style: style.$cdr-text-subheading-sans-300-style;
+  line-height: lh.$cdr-text-subheading-sans-300-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-300-letter-spacing;
+}
+
+@mixin cdr-text-subheading-sans-400() {
+  font-family: family.$cdr-text-subheading-sans-400-family;
+  font-size: size.$cdr-text-subheading-sans-400-size;
+  font-weight: weight.$cdr-text-subheading-sans-400-weight;
+  font-style: style.$cdr-text-subheading-sans-400-style;
+  line-height: lh.$cdr-text-subheading-sans-400-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-400-letter-spacing;
+}
+
+%cdr-text-subheading-sans-400 {
+  font-family: family.$cdr-text-subheading-sans-400-family;
+  font-size: size.$cdr-text-subheading-sans-400-size;
+  font-weight: weight.$cdr-text-subheading-sans-400-weight;
+  font-style: style.$cdr-text-subheading-sans-400-style;
+  line-height: lh.$cdr-text-subheading-sans-400-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-400-letter-spacing;
+}
+
+@mixin cdr-text-subheading-sans-500() {
+  font-family: family.$cdr-text-subheading-sans-500-family;
+  font-size: size.$cdr-text-subheading-sans-500-size;
+  font-weight: weight.$cdr-text-subheading-sans-500-weight;
+  font-style: style.$cdr-text-subheading-sans-500-style;
+  line-height: lh.$cdr-text-subheading-sans-500-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-500-letter-spacing;
+}
+
+%cdr-text-subheading-sans-500 {
+  font-family: family.$cdr-text-subheading-sans-500-family;
+  font-size: size.$cdr-text-subheading-sans-500-size;
+  font-weight: weight.$cdr-text-subheading-sans-500-weight;
+  font-style: style.$cdr-text-subheading-sans-500-style;
+  line-height: lh.$cdr-text-subheading-sans-500-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-500-letter-spacing;
+}
+
+@mixin cdr-text-subheading-sans-600() {
+  font-family: family.$cdr-text-subheading-sans-600-family;
+  font-size: size.$cdr-text-subheading-sans-600-size;
+  font-weight: weight.$cdr-text-subheading-sans-600-weight;
+  font-style: style.$cdr-text-subheading-sans-600-style;
+  line-height: lh.$cdr-text-subheading-sans-600-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-600-letter-spacing;
+}
+
+%cdr-text-subheading-sans-600 {
+  font-family: family.$cdr-text-subheading-sans-600-family;
+  font-size: size.$cdr-text-subheading-sans-600-size;
+  font-weight: weight.$cdr-text-subheading-sans-600-weight;
+  font-style: style.$cdr-text-subheading-sans-600-style;
+  line-height: lh.$cdr-text-subheading-sans-600-line-height;
+  letter-spacing: ls.$cdr-text-subheading-sans-600-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-100() {
+  font-family: family.$cdr-text-utility-sans-100-family;
+  font-size: size.$cdr-text-utility-sans-100-size;
+  font-weight: weight.$cdr-text-utility-sans-100-weight;
+  font-style: style.$cdr-text-utility-sans-100-style;
+  line-height: lh.$cdr-text-utility-sans-100-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-100-letter-spacing;
+}
+
+%cdr-text-utility-sans-100 {
+  font-family: family.$cdr-text-utility-sans-100-family;
+  font-size: size.$cdr-text-utility-sans-100-size;
+  font-weight: weight.$cdr-text-utility-sans-100-weight;
+  font-style: style.$cdr-text-utility-sans-100-style;
+  line-height: lh.$cdr-text-utility-sans-100-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-100-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-200() {
+  font-family: family.$cdr-text-utility-sans-200-family;
+  font-size: size.$cdr-text-utility-sans-200-size;
+  font-weight: weight.$cdr-text-utility-sans-200-weight;
+  font-style: style.$cdr-text-utility-sans-200-style;
+  line-height: lh.$cdr-text-utility-sans-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-200-letter-spacing;
+}
+
+%cdr-text-utility-sans-200 {
+  font-family: family.$cdr-text-utility-sans-200-family;
+  font-size: size.$cdr-text-utility-sans-200-size;
+  font-weight: weight.$cdr-text-utility-sans-200-weight;
+  font-style: style.$cdr-text-utility-sans-200-style;
+  line-height: lh.$cdr-text-utility-sans-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-200-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-300() {
+  font-family: family.$cdr-text-utility-sans-300-family;
+  font-size: size.$cdr-text-utility-sans-300-size;
+  font-weight: weight.$cdr-text-utility-sans-300-weight;
+  font-style: style.$cdr-text-utility-sans-300-style;
+  line-height: lh.$cdr-text-utility-sans-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-300-letter-spacing;
+}
+
+%cdr-text-utility-sans-300 {
+  font-family: family.$cdr-text-utility-sans-300-family;
+  font-size: size.$cdr-text-utility-sans-300-size;
+  font-weight: weight.$cdr-text-utility-sans-300-weight;
+  font-style: style.$cdr-text-utility-sans-300-style;
+  line-height: lh.$cdr-text-utility-sans-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-300-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-400() {
+  font-family: family.$cdr-text-utility-sans-400-family;
+  font-size: size.$cdr-text-utility-sans-400-size;
+  font-weight: weight.$cdr-text-utility-sans-400-weight;
+  font-style: style.$cdr-text-utility-sans-400-style;
+  line-height: lh.$cdr-text-utility-sans-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-400-letter-spacing;
+}
+
+%cdr-text-utility-sans-400 {
+  font-family: family.$cdr-text-utility-sans-400-family;
+  font-size: size.$cdr-text-utility-sans-400-size;
+  font-weight: weight.$cdr-text-utility-sans-400-weight;
+  font-style: style.$cdr-text-utility-sans-400-style;
+  line-height: lh.$cdr-text-utility-sans-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-400-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-500() {
+  font-family: family.$cdr-text-utility-sans-500-family;
+  font-size: size.$cdr-text-utility-sans-500-size;
+  font-weight: weight.$cdr-text-utility-sans-500-weight;
+  font-style: style.$cdr-text-utility-sans-500-style;
+  line-height: lh.$cdr-text-utility-sans-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-500-letter-spacing;
+}
+
+%cdr-text-utility-sans-500 {
+  font-family: family.$cdr-text-utility-sans-500-family;
+  font-size: size.$cdr-text-utility-sans-500-size;
+  font-weight: weight.$cdr-text-utility-sans-500-weight;
+  font-style: style.$cdr-text-utility-sans-500-style;
+  line-height: lh.$cdr-text-utility-sans-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-500-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-600() {
+  font-family: family.$cdr-text-utility-sans-600-family;
+  font-size: size.$cdr-text-utility-sans-600-size;
+  font-weight: weight.$cdr-text-utility-sans-600-weight;
+  font-style: style.$cdr-text-utility-sans-600-style;
+  line-height: lh.$cdr-text-utility-sans-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-600-letter-spacing;
+}
+
+%cdr-text-utility-sans-600 {
+  font-family: family.$cdr-text-utility-sans-600-family;
+  font-size: size.$cdr-text-utility-sans-600-size;
+  font-weight: weight.$cdr-text-utility-sans-600-weight;
+  font-style: style.$cdr-text-utility-sans-600-style;
+  line-height: lh.$cdr-text-utility-sans-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-600-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-700() {
+  font-family: family.$cdr-text-utility-sans-700-family;
+  font-size: size.$cdr-text-utility-sans-700-size;
+  font-weight: weight.$cdr-text-utility-sans-700-weight;
+  font-style: style.$cdr-text-utility-sans-700-style;
+  line-height: lh.$cdr-text-utility-sans-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-700-letter-spacing;
+}
+
+%cdr-text-utility-sans-700 {
+  font-family: family.$cdr-text-utility-sans-700-family;
+  font-size: size.$cdr-text-utility-sans-700-size;
+  font-weight: weight.$cdr-text-utility-sans-700-weight;
+  font-style: style.$cdr-text-utility-sans-700-style;
+  line-height: lh.$cdr-text-utility-sans-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-700-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-800() {
+  font-family: family.$cdr-text-utility-sans-800-family;
+  font-size: size.$cdr-text-utility-sans-800-size;
+  font-weight: weight.$cdr-text-utility-sans-800-weight;
+  font-style: style.$cdr-text-utility-sans-800-style;
+  line-height: lh.$cdr-text-utility-sans-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-800-letter-spacing;
+}
+
+%cdr-text-utility-sans-800 {
+  font-family: family.$cdr-text-utility-sans-800-family;
+  font-size: size.$cdr-text-utility-sans-800-size;
+  font-weight: weight.$cdr-text-utility-sans-800-weight;
+  font-style: style.$cdr-text-utility-sans-800-style;
+  line-height: lh.$cdr-text-utility-sans-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-800-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-100() {
+  font-family: family.$cdr-text-utility-sans-strong-100-family;
+  font-size: size.$cdr-text-utility-sans-strong-100-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-100-weight;
+  font-style: style.$cdr-text-utility-sans-strong-100-style;
+  line-height: lh.$cdr-text-utility-sans-strong-100-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-100-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-100 {
+  font-family: family.$cdr-text-utility-sans-strong-100-family;
+  font-size: size.$cdr-text-utility-sans-strong-100-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-100-weight;
+  font-style: style.$cdr-text-utility-sans-strong-100-style;
+  line-height: lh.$cdr-text-utility-sans-strong-100-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-100-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-200() {
+  font-family: family.$cdr-text-utility-sans-strong-200-family;
+  font-size: size.$cdr-text-utility-sans-strong-200-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-200-weight;
+  font-style: style.$cdr-text-utility-sans-strong-200-style;
+  line-height: lh.$cdr-text-utility-sans-strong-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-200-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-200 {
+  font-family: family.$cdr-text-utility-sans-strong-200-family;
+  font-size: size.$cdr-text-utility-sans-strong-200-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-200-weight;
+  font-style: style.$cdr-text-utility-sans-strong-200-style;
+  line-height: lh.$cdr-text-utility-sans-strong-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-200-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-300() {
+  font-family: family.$cdr-text-utility-sans-strong-300-family;
+  font-size: size.$cdr-text-utility-sans-strong-300-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-300-weight;
+  font-style: style.$cdr-text-utility-sans-strong-300-style;
+  line-height: lh.$cdr-text-utility-sans-strong-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-300-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-300 {
+  font-family: family.$cdr-text-utility-sans-strong-300-family;
+  font-size: size.$cdr-text-utility-sans-strong-300-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-300-weight;
+  font-style: style.$cdr-text-utility-sans-strong-300-style;
+  line-height: lh.$cdr-text-utility-sans-strong-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-300-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-400() {
+  font-family: family.$cdr-text-utility-sans-strong-400-family;
+  font-size: size.$cdr-text-utility-sans-strong-400-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-400-weight;
+  font-style: style.$cdr-text-utility-sans-strong-400-style;
+  line-height: lh.$cdr-text-utility-sans-strong-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-400-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-400 {
+  font-family: family.$cdr-text-utility-sans-strong-400-family;
+  font-size: size.$cdr-text-utility-sans-strong-400-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-400-weight;
+  font-style: style.$cdr-text-utility-sans-strong-400-style;
+  line-height: lh.$cdr-text-utility-sans-strong-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-400-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-500() {
+  font-family: family.$cdr-text-utility-sans-strong-500-family;
+  font-size: size.$cdr-text-utility-sans-strong-500-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-500-weight;
+  font-style: style.$cdr-text-utility-sans-strong-500-style;
+  line-height: lh.$cdr-text-utility-sans-strong-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-500-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-500 {
+  font-family: family.$cdr-text-utility-sans-strong-500-family;
+  font-size: size.$cdr-text-utility-sans-strong-500-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-500-weight;
+  font-style: style.$cdr-text-utility-sans-strong-500-style;
+  line-height: lh.$cdr-text-utility-sans-strong-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-500-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-600() {
+  font-family: family.$cdr-text-utility-sans-strong-600-family;
+  font-size: size.$cdr-text-utility-sans-strong-600-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-600-weight;
+  font-style: style.$cdr-text-utility-sans-strong-600-style;
+  line-height: lh.$cdr-text-utility-sans-strong-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-600-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-600 {
+  font-family: family.$cdr-text-utility-sans-strong-600-family;
+  font-size: size.$cdr-text-utility-sans-strong-600-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-600-weight;
+  font-style: style.$cdr-text-utility-sans-strong-600-style;
+  line-height: lh.$cdr-text-utility-sans-strong-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-600-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-700() {
+  font-family: family.$cdr-text-utility-sans-strong-700-family;
+  font-size: size.$cdr-text-utility-sans-strong-700-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-700-weight;
+  font-style: style.$cdr-text-utility-sans-strong-700-style;
+  line-height: lh.$cdr-text-utility-sans-strong-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-700-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-700 {
+  font-family: family.$cdr-text-utility-sans-strong-700-family;
+  font-size: size.$cdr-text-utility-sans-strong-700-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-700-weight;
+  font-style: style.$cdr-text-utility-sans-strong-700-style;
+  line-height: lh.$cdr-text-utility-sans-strong-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-700-letter-spacing;
+}
+
+@mixin cdr-text-utility-sans-strong-800() {
+  font-family: family.$cdr-text-utility-sans-strong-800-family;
+  font-size: size.$cdr-text-utility-sans-strong-800-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-800-weight;
+  font-style: style.$cdr-text-utility-sans-strong-800-style;
+  line-height: lh.$cdr-text-utility-sans-strong-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-800-letter-spacing;
+}
+
+%cdr-text-utility-sans-strong-800 {
+  font-family: family.$cdr-text-utility-sans-strong-800-family;
+  font-size: size.$cdr-text-utility-sans-strong-800-size;
+  font-weight: weight.$cdr-text-utility-sans-strong-800-weight;
+  font-style: style.$cdr-text-utility-sans-strong-800-style;
+  line-height: lh.$cdr-text-utility-sans-strong-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-sans-strong-800-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-200() {
+  font-family: family.$cdr-text-utility-serif-200-family;
+  font-size: size.$cdr-text-utility-serif-200-size;
+  font-weight: weight.$cdr-text-utility-serif-200-weight;
+  font-style: style.$cdr-text-utility-serif-200-style;
+  line-height: lh.$cdr-text-utility-serif-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-200-letter-spacing;
+}
+
+%cdr-text-utility-serif-200 {
+  font-family: family.$cdr-text-utility-serif-200-family;
+  font-size: size.$cdr-text-utility-serif-200-size;
+  font-weight: weight.$cdr-text-utility-serif-200-weight;
+  font-style: style.$cdr-text-utility-serif-200-style;
+  line-height: lh.$cdr-text-utility-serif-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-200-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-300() {
+  font-family: family.$cdr-text-utility-serif-300-family;
+  font-size: size.$cdr-text-utility-serif-300-size;
+  font-weight: weight.$cdr-text-utility-serif-300-weight;
+  font-style: style.$cdr-text-utility-serif-300-style;
+  line-height: lh.$cdr-text-utility-serif-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-300-letter-spacing;
+}
+
+%cdr-text-utility-serif-300 {
+  font-family: family.$cdr-text-utility-serif-300-family;
+  font-size: size.$cdr-text-utility-serif-300-size;
+  font-weight: weight.$cdr-text-utility-serif-300-weight;
+  font-style: style.$cdr-text-utility-serif-300-style;
+  line-height: lh.$cdr-text-utility-serif-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-300-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-400() {
+  font-family: family.$cdr-text-utility-serif-400-family;
+  font-size: size.$cdr-text-utility-serif-400-size;
+  font-weight: weight.$cdr-text-utility-serif-400-weight;
+  font-style: style.$cdr-text-utility-serif-400-style;
+  line-height: lh.$cdr-text-utility-serif-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-400-letter-spacing;
+}
+
+%cdr-text-utility-serif-400 {
+  font-family: family.$cdr-text-utility-serif-400-family;
+  font-size: size.$cdr-text-utility-serif-400-size;
+  font-weight: weight.$cdr-text-utility-serif-400-weight;
+  font-style: style.$cdr-text-utility-serif-400-style;
+  line-height: lh.$cdr-text-utility-serif-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-400-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-500() {
+  font-family: family.$cdr-text-utility-serif-500-family;
+  font-size: size.$cdr-text-utility-serif-500-size;
+  font-weight: weight.$cdr-text-utility-serif-500-weight;
+  font-style: style.$cdr-text-utility-serif-500-style;
+  line-height: lh.$cdr-text-utility-serif-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-500-letter-spacing;
+}
+
+%cdr-text-utility-serif-500 {
+  font-family: family.$cdr-text-utility-serif-500-family;
+  font-size: size.$cdr-text-utility-serif-500-size;
+  font-weight: weight.$cdr-text-utility-serif-500-weight;
+  font-style: style.$cdr-text-utility-serif-500-style;
+  line-height: lh.$cdr-text-utility-serif-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-500-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-600() {
+  font-family: family.$cdr-text-utility-serif-600-family;
+  font-size: size.$cdr-text-utility-serif-600-size;
+  font-weight: weight.$cdr-text-utility-serif-600-weight;
+  font-style: style.$cdr-text-utility-serif-600-style;
+  line-height: lh.$cdr-text-utility-serif-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-600-letter-spacing;
+}
+
+%cdr-text-utility-serif-600 {
+  font-family: family.$cdr-text-utility-serif-600-family;
+  font-size: size.$cdr-text-utility-serif-600-size;
+  font-weight: weight.$cdr-text-utility-serif-600-weight;
+  font-style: style.$cdr-text-utility-serif-600-style;
+  line-height: lh.$cdr-text-utility-serif-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-600-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-700() {
+  font-family: family.$cdr-text-utility-serif-700-family;
+  font-size: size.$cdr-text-utility-serif-700-size;
+  font-weight: weight.$cdr-text-utility-serif-700-weight;
+  font-style: style.$cdr-text-utility-serif-700-style;
+  line-height: lh.$cdr-text-utility-serif-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-700-letter-spacing;
+}
+
+%cdr-text-utility-serif-700 {
+  font-family: family.$cdr-text-utility-serif-700-family;
+  font-size: size.$cdr-text-utility-serif-700-size;
+  font-weight: weight.$cdr-text-utility-serif-700-weight;
+  font-style: style.$cdr-text-utility-serif-700-style;
+  line-height: lh.$cdr-text-utility-serif-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-700-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-800() {
+  font-family: family.$cdr-text-utility-serif-800-family;
+  font-size: size.$cdr-text-utility-serif-800-size;
+  font-weight: weight.$cdr-text-utility-serif-800-weight;
+  font-style: style.$cdr-text-utility-serif-800-style;
+  line-height: lh.$cdr-text-utility-serif-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-800-letter-spacing;
+}
+
+%cdr-text-utility-serif-800 {
+  font-family: family.$cdr-text-utility-serif-800-family;
+  font-size: size.$cdr-text-utility-serif-800-size;
+  font-weight: weight.$cdr-text-utility-serif-800-weight;
+  font-style: style.$cdr-text-utility-serif-800-style;
+  line-height: lh.$cdr-text-utility-serif-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-800-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-strong-200() {
+  font-family: family.$cdr-text-utility-serif-strong-200-family;
+  font-size: size.$cdr-text-utility-serif-strong-200-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-200-weight;
+  font-style: style.$cdr-text-utility-serif-strong-200-style;
+  line-height: lh.$cdr-text-utility-serif-strong-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-200-letter-spacing;
+}
+
+%cdr-text-utility-serif-strong-200 {
+  font-family: family.$cdr-text-utility-serif-strong-200-family;
+  font-size: size.$cdr-text-utility-serif-strong-200-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-200-weight;
+  font-style: style.$cdr-text-utility-serif-strong-200-style;
+  line-height: lh.$cdr-text-utility-serif-strong-200-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-200-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-strong-300() {
+  font-family: family.$cdr-text-utility-serif-strong-300-family;
+  font-size: size.$cdr-text-utility-serif-strong-300-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-300-weight;
+  font-style: style.$cdr-text-utility-serif-strong-300-style;
+  line-height: lh.$cdr-text-utility-serif-strong-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-300-letter-spacing;
+}
+
+%cdr-text-utility-serif-strong-300 {
+  font-family: family.$cdr-text-utility-serif-strong-300-family;
+  font-size: size.$cdr-text-utility-serif-strong-300-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-300-weight;
+  font-style: style.$cdr-text-utility-serif-strong-300-style;
+  line-height: lh.$cdr-text-utility-serif-strong-300-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-300-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-strong-400() {
+  font-family: family.$cdr-text-utility-serif-strong-400-family;
+  font-size: size.$cdr-text-utility-serif-strong-400-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-400-weight;
+  font-style: style.$cdr-text-utility-serif-strong-400-style;
+  line-height: lh.$cdr-text-utility-serif-strong-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-400-letter-spacing;
+}
+
+%cdr-text-utility-serif-strong-400 {
+  font-family: family.$cdr-text-utility-serif-strong-400-family;
+  font-size: size.$cdr-text-utility-serif-strong-400-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-400-weight;
+  font-style: style.$cdr-text-utility-serif-strong-400-style;
+  line-height: lh.$cdr-text-utility-serif-strong-400-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-400-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-strong-500() {
+  font-family: family.$cdr-text-utility-serif-strong-500-family;
+  font-size: size.$cdr-text-utility-serif-strong-500-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-500-weight;
+  font-style: style.$cdr-text-utility-serif-strong-500-style;
+  line-height: lh.$cdr-text-utility-serif-strong-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-500-letter-spacing;
+}
+
+%cdr-text-utility-serif-strong-500 {
+  font-family: family.$cdr-text-utility-serif-strong-500-family;
+  font-size: size.$cdr-text-utility-serif-strong-500-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-500-weight;
+  font-style: style.$cdr-text-utility-serif-strong-500-style;
+  line-height: lh.$cdr-text-utility-serif-strong-500-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-500-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-strong-600() {
+  font-family: family.$cdr-text-utility-serif-strong-600-family;
+  font-size: size.$cdr-text-utility-serif-strong-600-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-600-weight;
+  font-style: style.$cdr-text-utility-serif-strong-600-style;
+  line-height: lh.$cdr-text-utility-serif-strong-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-600-letter-spacing;
+}
+
+%cdr-text-utility-serif-strong-600 {
+  font-family: family.$cdr-text-utility-serif-strong-600-family;
+  font-size: size.$cdr-text-utility-serif-strong-600-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-600-weight;
+  font-style: style.$cdr-text-utility-serif-strong-600-style;
+  line-height: lh.$cdr-text-utility-serif-strong-600-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-600-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-strong-700() {
+  font-family: family.$cdr-text-utility-serif-strong-700-family;
+  font-size: size.$cdr-text-utility-serif-strong-700-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-700-weight;
+  font-style: style.$cdr-text-utility-serif-strong-700-style;
+  line-height: lh.$cdr-text-utility-serif-strong-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-700-letter-spacing;
+}
+
+%cdr-text-utility-serif-strong-700 {
+  font-family: family.$cdr-text-utility-serif-strong-700-family;
+  font-size: size.$cdr-text-utility-serif-strong-700-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-700-weight;
+  font-style: style.$cdr-text-utility-serif-strong-700-style;
+  line-height: lh.$cdr-text-utility-serif-strong-700-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-700-letter-spacing;
+}
+
+@mixin cdr-text-utility-serif-strong-800() {
+  font-family: family.$cdr-text-utility-serif-strong-800-family;
+  font-size: size.$cdr-text-utility-serif-strong-800-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-800-weight;
+  font-style: style.$cdr-text-utility-serif-strong-800-style;
+  line-height: lh.$cdr-text-utility-serif-strong-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-800-letter-spacing;
+}
+
+%cdr-text-utility-serif-strong-800 {
+  font-family: family.$cdr-text-utility-serif-strong-800-family;
+  font-size: size.$cdr-text-utility-serif-strong-800-size;
+  font-weight: weight.$cdr-text-utility-serif-strong-800-weight;
+  font-style: style.$cdr-text-utility-serif-strong-800-style;
+  line-height: lh.$cdr-text-utility-serif-strong-800-line-height;
+  letter-spacing: ls.$cdr-text-utility-serif-strong-800-letter-spacing;
+}

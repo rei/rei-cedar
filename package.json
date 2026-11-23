@@ -28,7 +28,19 @@
     "./_virtual/*": null,
     "./components/*": null,
     "./entrypoints/*": null,
-    "./mixins/*": null,
+    "./mixins": "./dist/mixins/index.scss",
+    "./mixins/breakpoints": {
+      "types": "./dist/mixins/breakpoints.d.ts",
+      "style": "./dist/mixins/breakpoints.scss",
+      "sass": "./dist/mixins/breakpoints.scss",
+      "import": "./dist/mixins/breakpoints.mjs",
+      "default": "./dist/mixins/breakpoints.mjs"
+    },
+    "./mixins/*.scss": "./dist/mixins/*.scss",
+    "./mixins/*": {
+      "style": "./dist/mixins/*.scss",
+      "sass": "./dist/mixins/*.scss"
+    },
     "./props/*": null,
     "./svg/*": null,
     "./types/*": null,
@@ -53,12 +65,13 @@
     "chromatic": "chromatic --build-script-name chromatic:build",
     "chromatic:build": "pnpm run storybook:release-notes && storybook build",
     "validate-storybook": "tsx build/validate-storybook-assets.ts",
-    "build": "pnpm run build:entrypoints && pnpm run build:icons && vue-tsc -p tsconfig.build.json --noEmit && vite build && pnpm run build:entrypoint-types && pnpm run build:umd && pnpm run build:docgen && pnpm run build:copycss && pnpm run validate-package",
+    "build": "pnpm run build:entrypoints && pnpm run build:icons && vue-tsc -p tsconfig.build.json --noEmit && vite build && pnpm run build:entrypoint-types && pnpm run build:umd && pnpm run build:docgen && pnpm run build:copycss && pnpm run build:copymixins && pnpm run validate-package",
     "build:entrypoints": "tsx build/generate-entrypoints.ts",
     "build:entrypoint-types": "tsx build/generate-entrypoint-dts.ts",
     "build:docgen": "tsx build/docgen.ts",
     "build:icons": "tsx src/components/icon/build/generate.ts",
     "build:copycss": "tsx build/copy-css.ts",
+    "build:copymixins": "tsx build/copy-mixins.ts",
     "build:umd": "vite build --config vite.umd.config.ts",
     "validate-package": "tsx build/validate-package.ts",
     "build:variables": "pnpm build:maps && tsx build/component-variables-transfer.ts",
@@ -182,6 +195,9 @@
     "overrides": {
       "defu": "6.1.5",
       "postcss": "8.5.10"
+    },
+    "patchedDependencies": {
+      "@rei/cdr-tokens@15.0.0-alpha.5": "patches/@rei__cdr-tokens@15.0.0-alpha.5.patch"
     }
   }
 }

@@ -1,0 +1,297 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Live } from './SassMixins.stories';
+
+<Meta title="Guides/Sass Mixins" />
+
+# Sass Mixins
+
+Cedar now owns the Sass mixins that used to ship from the token package
+(`@rei/cdr-tokens`). This page is the migration guide: the same four mixin
+families, consumed from `@rei/cedar`, with a guarantee that the output CSS does
+not change.
+
+| Family            | What it covers                         | Surface                         |
+| ----------------- | -------------------------------------- | ------------------------------- |
+| Breakpoints       | Viewport media queries (`cdr-*-mq-*`)  | 11 mixins                       |
+| Container queries | Container-size queries (`cdr-*-cq-*`)  | 11 mixins                       |
+| Display & utility | Screen-reader helpers, containers      | 6 mixins + 2 `%` placeholders   |
+| Typography        | Type styles (`cdr-text-*`, `cdr-icon`) | 77 mixins + 77 `%` placeholders |
+
+The deprecated mixins are meant to keep working in `@rei/cdr-tokens` during the
+overlap period — migrate at your own pace by changing `@use` paths only. One
+known exception: `@rei/cdr-tokens@15.0.0-alpha.5` dropped the utility forwards
+from its barrels (the per-file paths still work); Cedar's build carries a
+temporary patch for that regression until the tokens package republishes a fix.
+Using the Cedar paths below avoids it entirely.
+
+## Import paths
+
+```scss
+// Every family (recommended for most consumers)
+@use '@rei/cedar/mixins' as mixins;
+
+// Or one family at a time
+@use '@rei/cedar/mixins/breakpoints' as mq;
+@use '@rei/cedar/mixins/container-queries' as cq;
+@use '@rei/cedar/mixins/display' as display;
+@use '@rei/cedar/mixins/type' as type;
+```
+
+Appending `.scss` (`@use '@rei/cedar/mixins/breakpoints.scss'`) resolves
+identically. Every token value comes from `@rei/cdr-tokens` foundations through
+`@use`; the only literals in the sources are the structural `1px` constants in
+the original sr-only and breakpoint-boundary recipes, kept for exact parity.
+
+## Live example
+
+<Canvas of={Live} />
+
+## Migration
+
+| Family                | Before (deprecated)                             | After (Cedar)                          |
+| --------------------- | ----------------------------------------------- | -------------------------------------- |
+| Everything            | `@use '@rei/cdr-tokens/scss' as tokens;`        | `@use '@rei/cedar/mixins' as mixins;`  |
+| Breakpoints + queries | `@use '@rei/cdr-tokens/scss/breakpoint-mixins'` | `@use '@rei/cedar/mixins/breakpoints'` |
+| Display & utility     | `@use '@rei/cdr-tokens/scss/display-mixins'`    | `@use '@rei/cedar/mixins/display'`     |
+| Typography            | `@use '@rei/cdr-tokens/scss/type-mixins'`       | `@use '@rei/cedar/mixins/type'`        |
+
+The old per-file entry points are prefix-less (`breakpoint-mixins`, not
+`cdr-breakpoint-mixins`) — a `cdr-`-prefixed variant appears in some older
+notes but does not resolve through the package exports. Container queries have
+always lived in the breakpoint file on the old side.
+
+### Breakpoints
+
+```scss
+// Before
+@use '@rei/cdr-tokens/scss' as tokens;
+
+.sidebar {
+  @include tokens.cdr-sm-mq-up {
+    width: 240px;
+  }
+}
+
+// After
+@use '@rei/cedar/mixins' as mixins;
+
+.sidebar {
+  @include mixins.cdr-sm-mq-up {
+    width: 240px;
+  }
+}
+```
+
+All eleven mixins keep their exact names: `cdr-{bp}-mq-up`,
+`cdr-{bp}-mq-down`, and `cdr-{bp}-mq-only` for each breakpoint (`cdr-lg-mq-only`
+stays intentionally unbounded — there is no breakpoint above `lg`, matching the
+original).
+
+### Container queries
+
+```scss
+// Before
+@use '@rei/cdr-tokens/scss/breakpoint-mixins' as tokens;
+
+.card-grid {
+  container-type: inline-size; // the consumer sets this, not the mixin
+
+  @include tokens.cdr-sm-cq-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// After
+@use '@rei/cedar/mixins/container-queries' as cq;
+
+.card-grid {
+  container-type: inline-size;
+
+  @include cq.cdr-sm-cq-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+```
+
+The optional named-container argument is unchanged:
+`@include cq.cdr-sm-cq-up('sidebar') { ... }`.
+
+### Display & utility
+
+```scss
+// Before
+@use '@rei/cdr-tokens/scss' as tokens;
+
+.skip-link {
+  @extend %cdr-display-sr-only;
+}
+
+.page {
+  @include tokens.cdr-container;
+}
+
+// After
+@use '@rei/cedar/mixins' as mixins;
+
+.skip-link {
+  @extend %cdr-display-sr-only;
+}
+
+.page {
+  @include mixins.cdr-container;
+}
+```
+
+Mixins: `cdr-display-sr-only`, `cdr-display-sr-focusable`,
+`cdr-container-base`, `cdr-container-static`, `cdr-container`,
+`cdr-container-fluid`.
+
+### Typography
+
+```scss
+// Before
+@use '@rei/cdr-tokens/scss' as tokens;
+
+.article-lede {
+  @include tokens.cdr-text-body-400;
+}
+
+.kicker {
+  @extend %cdr-text-eyebrow-100;
+}
+
+// After
+@use '@rei/cedar/mixins/type' as type;
+
+.article-lede {
+  @include type.cdr-text-body-400;
+}
+
+.kicker {
+  @extend %cdr-text-eyebrow-100;
+}
+```
+
+All 77 type mixins and their 77 `%` placeholders are available, named exactly
+as before.
+
+### TypeScript: breakpoints only
+
+```ts
+import getCurrentBreakpoint from '@rei/cedar/mixins/breakpoints';
+
+const breakpoint = getCurrentBreakpoint(); // 'xs' | 'sm' | 'md' | 'lg'
+```
+
+`getCurrentBreakpoint()` reads the same `CdrBreakpoint` tokens the
+media-query mixins interpolate, so JavaScript and CSS agree on where each
+breakpoint starts:
+
+| Value | Min width | Mixin prefix |
+| ----- | --------- | ------------ |
+| `xs`  | 0         | `cdr-xs-*`   |
+| `sm`  | 768px     | `cdr-sm-*`   |
+| `md`  | 992px     | `cdr-md-*`   |
+| `lg`  | 1232px    | `cdr-lg-*`   |
+
+So `getCurrentBreakpoint() === 'md'` means the `cdr-md-mq-up` styles are the
+active ones. No TypeScript counterpart ships for the other families — see
+decisions below.
+
+## Compatibility guarantees
+
+- **Identical output.** Every mixin compiles to byte-for-byte the same CSS as
+  its deprecated counterpart (only pre-existing comment headers differ), so a
+  migration is a `@use` swap, not a visual change.
+- **`%` placeholders kept.** `@extend %cdr-text-body-400` and friends keep
+  working; placeholders mirror each mixin one-for-one.
+- **Container-query fallback kept.** Each `-cq-*` mixin still emits an
+  `@supports not (contain: inline-size)` media-query fallback for parity with
+  the original. Every browser Cedar supports (Safari 17+) handles container
+  queries natively, so the fallback is redundant today and is a candidate for
+  removal once the deprecated mixins go away — treating it as removable is a
+  deliberate change, not a silent one.
+
+## Decisions
+
+### Bundled attribute selectors — evaluated, not adopted
+
+Replacing mixin includes with bundled attribute hooks (for example
+`[data-cdr-text="body-400"]` applying a whole type bundle, following the
+`CdrSurface` `data-*` convention) was evaluated for display/utility and
+typography. Decision: **not part of this replacement.** The evaluation:
+
+- Attribute bundles require markup changes and raise specificity, so output
+  would not match the mixins selector-for-selector — which breaks the 1:1
+  migration this handoff promises.
+- Type and display includes are composed freely today: any selector, nested in
+  media queries, sometimes partial bundles. Attributes are atomic by design.
+- The attribute pattern is a genuinely new consumption model (the token
+  package tracks the intents half as its own ticket, deliberately separate
+  from the mixin restoration) — it belongs in a follow-up RFC once migration
+  completes, not smuggled into a restore-and-hand-off.
+
+### TypeScript surface — breakpoints only
+
+- **Breakpoints:** a runtime query exists (`getCurrentBreakpoint()`), reads the
+  same tokens as the mixins, and already lived in Cedar.
+- **Container queries:** sizing is resolved by the layout engine at runtime; a
+  JS equivalent would mean ResizeObserver bookkeeping with no clear consumer.
+- **Display & utility:** pure CSS helpers; the accessible behaviors live in the
+  components.
+- **Typography:** declarative style bundles; nothing to compute at runtime.
+
+### Naming — one breakpoint vocabulary
+
+Mixin names stay `cdr-*` for migration (renaming would break the 1:1 swap),
+while the TypeScript API keeps Cedar's existing `'xs' | 'sm' | 'md' | 'lg'`
+convention. The two surfaces share the same four names — nothing to translate
+between `getCurrentBreakpoint()` and `cdr-{bp}-mq-*`.
+
+### Foundation variables are not forwarded
+
+The deprecated breakpoint file declared its own `$cdr-breakpoint-*` copies.
+Cedar's mixins do not forward variables — they are tokens, not mixins. Import
+them where they live when you need the raw values:
+
+```scss
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-breakpoint' as bp;
+// bp.$cdr-breakpoint-md, ...
+```
+
+### Distribution surface
+
+The mixins ship from `@rei/cedar` itself (Cedar owns them now): the package
+exports map exposes `./mixins`, `./mixins/<file>`, and `./mixins/<file>.scss`;
+the build copies the sources to `dist/mixins/` and the package validator
+asserts every export target exists; `files: ["dist"]` already ships them.
+`sideEffects` stays `["*.css"]` — Sass sources are consumed by the consumer's
+compiler through `@use`, outside the JavaScript module graph, so the field does
+not apply to them.
+
+## Verification
+
+`src/mixins/__tests__/parity.spec.ts` compiles every family through both the
+deprecated and the Cedar import paths using the same pipeline real builds use
+(Vite Sass + this repo's postcss) and asserts byte-identical CSS, plus
+inventory checks (22 breakpoint/query mixins, 6 + 2 display, 77 + 77 type) so
+any drift on either side fails loudly.
+
+## Status of the deprecated copies
+
+- `@rei/cdr-tokens@15.0.0-alpha.5` currently drops the three utility `@forward`
+  lines from both SCSS barrels; Cedar patches that regression in its own build.
+  Consumers on alpha.5 need the deprecated per-file paths or the fixed tokens
+  release — `origin/next` has not restored the forwards yet.
+- `@rei/cdr-tokens` marks the utility mixins `/* @deprecated */` today; a
+  build-time `@warn` ("removed in the next major, v16 — migrate to the
+  equivalent mixins provided by `@rei/cedar`") ships with its next release
+  (rei/rei-cedar-tokens#316).
+- Cedar's own styles still import the deprecated barrel; migrating them to
+  `@use '@rei/cedar/mixins'` is tracked as a follow-up, intentionally separate
+  from this handoff.
+- The previously started typography exploration (the `sass-use` branch of
+  rei-cedar-tokens) hardcodes values that have since changed and does not
+  consume foundations through `@use`, so it was not usable as a base; the
+  typography family here was generated from the deprecated source with
+  token-equality assertions instead.
