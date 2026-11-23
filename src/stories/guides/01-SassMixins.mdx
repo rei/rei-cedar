@@ -17,8 +17,12 @@ not change.
 | Display & utility | Screen-reader helpers, containers      | 6 mixins + 2 `%` placeholders   |
 | Typography        | Type styles (`cdr-text-*`, `cdr-icon`) | 77 mixins + 77 `%` placeholders |
 
-The deprecated mixins keep working in `@rei/cdr-tokens` during the overlap
-period — migrate at your own pace by changing `@use` paths only.
+The deprecated mixins are meant to keep working in `@rei/cdr-tokens` during the
+overlap period — migrate at your own pace by changing `@use` paths only. One
+known exception: `@rei/cdr-tokens@15.0.0-alpha.5` dropped the utility forwards
+from its barrels (the per-file paths still work); Cedar's build carries a
+temporary patch for that regression until the tokens package republishes a fix.
+Using the Cedar paths below avoids it entirely.
 
 ## Import paths
 
@@ -34,8 +38,9 @@ period — migrate at your own pace by changing `@use` paths only.
 ```
 
 Appending `.scss` (`@use '@rei/cedar/mixins/breakpoints.scss'`) resolves
-identically. Every value is consumed from `@rei/cdr-tokens` foundations through
-`@use` — the mixin sources hardcode nothing.
+identically. Every token value comes from `@rei/cdr-tokens` foundations through
+`@use`; the only literals in the sources are the structural `1px` constants in
+the original sr-only and breakpoint-boundary recipes, kept for exact parity.
 
 ## Live example
 
@@ -274,6 +279,10 @@ any drift on either side fails loudly.
 
 ## Status of the deprecated copies
 
+- `@rei/cdr-tokens@15.0.0-alpha.5` currently drops the three utility `@forward`
+  lines from both SCSS barrels; Cedar patches that regression in its own build.
+  Consumers on alpha.5 need the deprecated per-file paths or the fixed tokens
+  release — `origin/next` has not restored the forwards yet.
 - `@rei/cdr-tokens` marks the utility mixins `/* @deprecated */` today; a
   build-time `@warn` ("removed in the next major, v16 — migrate to the
   equivalent mixins provided by `@rei/cedar`") ships with its next release
