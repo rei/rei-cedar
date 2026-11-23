@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import * as sass from 'sass';
@@ -12,26 +12,32 @@ function tokenCSS(file: string): string {
 
 const requirePackage = createRequire(path.resolve('package.json'));
 const packageRoot = path.resolve('../rei-cedar-component-variables');
-const examples: Record<string, { examples: { html: string }[] }> = requirePackage(
-  path.join(packageRoot, 'examples'),
-);
+// The build artifacts come from a sibling checkout kept by developers (docs/component-variables.md);
+// CI has no such checkout, so this suite skips instead of failing at module load.
+const hasSibling = existsSync(path.join(packageRoot, 'dist/docs/index.scss'));
+const examples: Record<string, { examples: { html: string }[] }> = hasSibling
+  ? requirePackage(path.join(packageRoot, 'examples'))
+  : {};
 const tokens = tokenCSS(requirePackage.resolve('@rei/cdr-tokens/css'));
-const css = sass.compileString(
-  `@use '${packageRoot}/dist/scss/index.scss' as *;
+const css = hasSibling
+  ? sass.compileString(
+      `@use '${packageRoot}/dist/scss/index.scss' as *;
   ${readFileSync(path.join(packageRoot, 'dist/docs/index.scss'), 'utf8')}
   .card { @include cdr-card-base-mixin; }
   .large-input { @include cdr-input-base-mixin; @include cdr-input-large-mixin; }
   .large-select { @include cdr-select-base-mixin; @include cdr-select-large-mixin; }
   .table { @include cdr-table-base-mixin; @include cdr-table-border-mixin; }
   html { font-size: 10px; } * { transition: none !important; }`,
-  {
-    loadPaths: [path.join(packageRoot, 'node_modules')],
-    quietDeps: true,
-    logger: sass.Logger.silent,
-  },
-).css;
+      {
+        loadPaths: [path.join(packageRoot, 'node_modules')],
+        quietDeps: true,
+        logger: sass.Logger.silent,
+      },
+    ).css
+  : '';
 
 test('all semantic dependencies and standalone defaults work without Vue', async ({ page }) => {
+  test.skip(!hasSibling, 'requires a sibling rei-cedar-component-variables checkout');
   await page.setContent(`<style>${tokens}\n${css}</style>
     <main id="fixture"><div class="card">Card</div>
     <div style="--cdr-card-border-radius: 19px"><div class="card" id="override">Override</div></div>
