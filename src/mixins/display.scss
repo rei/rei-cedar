@@ -1,0 +1,92 @@
+// Cedar replacement for the deprecated `@rei/cdr-tokens` display/utility mixins.
+// Consumes values from `@rei/cdr-tokens` — do not hardcode spaces or breakpoints here.
+// Usage: @use '@rei/cedar/mixins' as mixins;  @include mixins.cdr-display-sr-only;
+// `%` placeholders are preserved for parity with the deprecated mixins so that
+// existing `@extend %cdr-display-sr-only` consumers keep working.
+// The `clip` property below is flagged as deprecated by stylelint but is part
+// of the sr-only recipe — required for byte-for-byte output parity.
+
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-space' as space;
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-breakpoint' as bp;
+@use './breakpoints' as mq;
+@use './type' as type;
+
+// stylelint-disable property-no-deprecated -- `clip` keeps output parity with the deprecated sr-only mixins
+@mixin cdr-display-sr-only() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+%cdr-display-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@mixin cdr-display-sr-focusable() {
+  @include cdr-display-sr-only;
+
+  &:hover,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+%cdr-display-sr-focusable {
+  @include cdr-display-sr-only;
+
+  &:hover,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+// stylelint-enable property-no-deprecated
+@mixin cdr-container-base {
+  padding-left: space.$cdr-space-one-x;
+  padding-right: space.$cdr-space-one-x;
+  width: 100%;
+
+  @include mq.cdr-md-mq-up {
+    padding-left: space.$cdr-space-two-x;
+    padding-right: space.$cdr-space-two-x;
+  }
+}
+
+@mixin cdr-container-static {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: bp.$cdr-breakpoint-lg;
+}
+
+@mixin cdr-container {
+  @include type.cdr-text-default;
+  @include cdr-container-base;
+  @include cdr-container-static;
+}
+
+@mixin cdr-container-fluid {
+  @include type.cdr-text-default;
+  @include cdr-container-base;
+}

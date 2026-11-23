@@ -8,13 +8,18 @@ overrides:
   defu: 6.1.5
   postcss: 8.5.10
 
+patchedDependencies:
+  '@rei/cdr-tokens@15.0.0-alpha.5':
+    hash: 43e6b053ed7a5a6cb867eeac3c315c85a1a933447944b0f364ecd55a43ec1cf0
+    path: patches/@rei__cdr-tokens@15.0.0-alpha.5.patch
+
 importers:
 
   .:
     dependencies:
       '@rei/cdr-tokens':
         specifier: 15.0.0-alpha.5
-        version: 15.0.0-alpha.5
+        version: 15.0.0-alpha.5(patch_hash=43e6b053ed7a5a6cb867eeac3c315c85a1a933447944b0f364ecd55a43ec1cf0)
       '@vueuse/core':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -6761,7 +6766,7 @@ snapshots:
     dependencies:
       playwright: 1.57.0
 
-  '@rei/cdr-tokens@15.0.0-alpha.5':
+  '@rei/cdr-tokens@15.0.0-alpha.5(patch_hash=43e6b053ed7a5a6cb867eeac3c315c85a1a933447944b0f364ecd55a43ec1cf0)':
     dependencies:
       semver: 7.8.6
 

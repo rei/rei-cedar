@@ -1,0 +1,148 @@
+// Cedar replacement for the deprecated `@rei/cdr-tokens` container query mixins.
+// Consumes breakpoint values from `@rei/cdr-tokens` — do not hardcode widths here.
+// Usage: @use '@rei/cedar/mixins' as mixins;  @include mixins.cdr-sm-cq-up { ... }
+// The `@supports not (contain: inline-size)` blocks preserve byte-for-byte parity
+// with the deprecated mixins. Cedar's supported browsers (Safari 17+) all handle
+// container queries natively, so these fallbacks are redundant today and may be
+// removed in a future release alongside the deprecated mixins' removal.
+// stylelint-disable media-feature-range-notation -- `max-width` syntax is required for byte-for-byte parity with the deprecated mixins
+
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-breakpoint' as bp;
+
+// stylelint-disable container-name-pattern -- `$name` is a caller-supplied container name interpolated at call time
+// XS
+
+@mixin cdr-xs-cq-up($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-xs}) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-xs}) {
+      @content;
+    }
+  }
+}
+
+@mixin cdr-xs-cq-only($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-xs}) and (max-width: calc(#{bp.$cdr-breakpoint-sm} - 1px)) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-xs}) and (max-width: calc(#{bp.$cdr-breakpoint-sm} - 1px)) {
+      @content;
+    }
+  }
+}
+
+// SM
+@mixin cdr-sm-cq-down($name: '') {
+  @container #{$name} (max-width: calc(#{bp.$cdr-breakpoint-sm} - 1px)) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (max-width: calc(#{bp.$cdr-breakpoint-sm} - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin cdr-sm-cq-up($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-sm}) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-sm}) {
+      @content;
+    }
+  }
+}
+
+@mixin cdr-sm-cq-only($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-sm}) and (max-width: calc(#{bp.$cdr-breakpoint-md} - 1px)) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-sm}) and (max-width: calc(#{bp.$cdr-breakpoint-md} - 1px)) {
+      @content;
+    }
+  }
+}
+
+// MD
+@mixin cdr-md-cq-down($name: '') {
+  @container #{$name} (max-width: calc(#{bp.$cdr-breakpoint-md} - 1px)) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (max-width: calc(#{bp.$cdr-breakpoint-md} - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin cdr-md-cq-up($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-md}) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-md}) {
+      @content;
+    }
+  }
+}
+
+@mixin cdr-md-cq-only($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-md}) and (max-width: calc(#{bp.$cdr-breakpoint-lg} - 1px)) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-md}) and (max-width: calc(#{bp.$cdr-breakpoint-lg} - 1px)) {
+      @content;
+    }
+  }
+}
+
+// LG
+@mixin cdr-lg-cq-down($name: '') {
+  @container #{$name} (max-width: calc(#{bp.$cdr-breakpoint-lg} - 1px)) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (max-width: calc(#{bp.$cdr-breakpoint-lg} - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin cdr-lg-cq-up($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-lg}) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-lg}) {
+      @content;
+    }
+  }
+}
+
+@mixin cdr-lg-cq-only($name: '') {
+  @container #{$name} (min-width: #{bp.$cdr-breakpoint-lg}) {
+    @content;
+  }
+
+  @supports not (contain: inline-size) {
+    @media (min-width: #{bp.$cdr-breakpoint-lg}) {
+      @content;
+    }
+  }
+}

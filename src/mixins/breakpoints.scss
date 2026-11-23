@@ -1,0 +1,76 @@
+// Cedar replacement for the deprecated `@rei/cdr-tokens` breakpoint mixins.
+// Consumes breakpoint values from `@rei/cdr-tokens` — do not hardcode widths here.
+// Usage: @use '@rei/cedar/mixins' as mixins;  @include mixins.cdr-sm-mq-up { ... }
+// stylelint-disable media-feature-range-notation -- `max-width` syntax is required for byte-for-byte parity with the deprecated mixins
+
+@use '@rei/cdr-tokens/rei-dot-com/scss/foundations/cdr-breakpoint' as bp;
+
+// Media query mixins
+// Note: cdr-lg-mq-only has no upper bound (there is no breakpoint above lg).
+// This matches the deprecated mixin exactly, including its behavior.
+
+@mixin cdr-xs-mq-up {
+  @media (min-width: #{bp.$cdr-breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin cdr-xs-mq-only {
+  @media (min-width: #{bp.$cdr-breakpoint-xs}) and (max-width: calc(#{bp.$cdr-breakpoint-sm} - 1px)) {
+    @content;
+  }
+}
+
+@mixin cdr-sm-mq-down {
+  @media (max-width: calc(#{bp.$cdr-breakpoint-sm} - 1px)) {
+    @content;
+  }
+}
+
+@mixin cdr-sm-mq-up {
+  @media (min-width: #{bp.$cdr-breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin cdr-sm-mq-only {
+  @media (min-width: #{bp.$cdr-breakpoint-sm}) and (max-width: calc(#{bp.$cdr-breakpoint-md} - 1px)) {
+    @content;
+  }
+}
+
+@mixin cdr-md-mq-down {
+  @media (max-width: calc(#{bp.$cdr-breakpoint-md} - 1px)) {
+    @content;
+  }
+}
+
+@mixin cdr-md-mq-up {
+  @media (min-width: #{bp.$cdr-breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin cdr-md-mq-only {
+  @media (min-width: #{bp.$cdr-breakpoint-md}) and (max-width: calc(#{bp.$cdr-breakpoint-lg} - 1px)) {
+    @content;
+  }
+}
+
+@mixin cdr-lg-mq-down {
+  @media (max-width: calc(#{bp.$cdr-breakpoint-lg} - 1px)) {
+    @content;
+  }
+}
+
+@mixin cdr-lg-mq-up {
+  @media (min-width: #{bp.$cdr-breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin cdr-lg-mq-only {
+  @media (min-width: #{bp.$cdr-breakpoint-lg}) {
+    @content;
+  }
+}

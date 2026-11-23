@@ -1,0 +1,128 @@
+// Storybook-only scaffolding for the Sass Mixins guide — not shipped in dist.
+// Demonstrates the four Cedar-owned mixin families with live output. Uses a
+// relative @use so the demo always compiles from source.
+
+@use '../../../mixins' as mixins;
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  color: var(--cdr-text-neutral-prominent);
+}
+
+.section-title {
+  @include mixins.cdr-text-heading-sans-600;
+}
+
+.section-lede {
+  @include mixins.cdr-text-body-400;
+}
+
+.note {
+  @include mixins.cdr-text-utility-sans-200;
+
+  margin: 8px 0 0;
+}
+
+// 1. Breakpoint media queries -------------------------------------------------
+
+.mq-box {
+  padding: 16px;
+  border: 2px dashed currentcolor;
+  border-radius: 4px;
+}
+
+.mq-at-md-up {
+  display: none;
+}
+
+@include mixins.cdr-md-mq-up {
+  .mq-box {
+    border-style: solid;
+    background: var(--cdr-color-background-secondary);
+  }
+
+  .mq-below-md {
+    display: none;
+  }
+
+  .mq-at-md-up {
+    display: block;
+  }
+}
+
+// 2. Container queries --------------------------------------------------------
+
+.cq-box {
+  container-type: inline-size;
+  resize: horizontal;
+  overflow: auto;
+  width: 100%;
+  min-width: 320px;
+  max-width: 900px;
+  padding: 16px;
+  border: 2px dashed currentcolor;
+  border-radius: 4px;
+}
+
+.cq-at-sm-up {
+  display: none;
+}
+
+@include mixins.cdr-sm-cq-up {
+  .cq-below-sm {
+    display: none;
+  }
+
+  .cq-at-sm-up {
+    display: block;
+  }
+}
+
+// 3. Display & utility helpers ------------------------------------------------
+
+.well-demo {
+  @include mixins.cdr-container;
+}
+
+.sr-only {
+  @extend %cdr-display-sr-only;
+}
+
+.skip-link {
+  @extend %cdr-display-sr-focusable;
+}
+
+// 4. Typography ---------------------------------------------------------------
+
+.type-row {
+  margin: 0;
+}
+
+.type-name {
+  @include mixins.cdr-text-utility-sans-200;
+
+  display: block;
+  opacity: 0.75;
+}
+
+.type-heading-sans-600 {
+  @include mixins.cdr-text-heading-sans-600;
+}
+
+.type-heading-serif-600 {
+  @include mixins.cdr-text-heading-serif-600;
+}
+
+.type-body-400 {
+  @include mixins.cdr-text-body-400;
+}
+
+.type-eyebrow-100 {
+  @include mixins.cdr-text-eyebrow-100;
+}
+
+.type-utility-sans-300 {
+  @include mixins.cdr-text-utility-sans-300;
+}

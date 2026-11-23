@@ -1,0 +1,16 @@
+// Cedar Sass mixins — replacement for the deprecated `@rei/cdr-tokens`
+// scss/utilities mixins (breakpoint media queries, container queries,
+// display/utility helpers, typography).
+// Usage:
+//   @use '@rei/cedar/mixins' as mixins;
+//   .example { @include mixins.cdr-sm-mq-up { ... } }
+// Individual files are also importable:
+//   @use '@rei/cedar/mixins/breakpoints' as mq;
+//   @use '@rei/cedar/mixins/container-queries' as cq;
+//   @use '@rei/cedar/mixins/display' as display;
+//   @use '@rei/cedar/mixins/type' as type;
+
+@forward './breakpoints';
+@forward './container-queries';
+@forward './display';
+@forward './type';
