@@ -96,7 +96,7 @@ console.log(routes);
 
 <style lang="scss">
 @use '@rei/cdr-tokens/scss' as tokens;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-breakpoint-mixins' as mq;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 @use '../styles/main.scss' as main;
 

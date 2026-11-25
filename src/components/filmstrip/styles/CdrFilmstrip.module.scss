@@ -1,5 +1,5 @@
 @use '@rei/cdr-tokens/scss' as tokens;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-breakpoint-mixins' as mq;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 $prominence-02:
   5px 12px 4px 0 rgb(75, 74, 72, 0),

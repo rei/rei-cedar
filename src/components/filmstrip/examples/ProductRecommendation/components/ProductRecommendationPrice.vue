@@ -58,8 +58,8 @@ const getSalePriceClass = (price: string) =>
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as *;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-type-mixins' as type;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-display-mixins' as display;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-text-mixins' as type;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-display-mixins' as display;
 
 .product-recommendation__price {
   @include type.cdr-text-utility-sans-200;

@@ -38,8 +38,8 @@ const onAriaMessage = (message: unknown) => {
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as *;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-breakpoint-mixins' as mq;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-display-mixins' as display;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-display-mixins' as display;
 
 .product-recommendation-filmstrip {
   margin-left: -$cdr-space-one-x;

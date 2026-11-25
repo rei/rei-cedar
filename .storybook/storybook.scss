@@ -2,7 +2,6 @@
 // Components in the preview area use rei-dot-com CSS custom properties
 // loaded via @rei/cdr-tokens/css in preview.ts.
 @use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
-@use '@rei/cdr-tokens/dist/docsite/scss/utilities/cdr-type-mixins' as *;
 
 // Storybook-only aliases for docsite tokens removed from the alpha package.
 // Namespaced to avoid variable conflicts with docsite tokens.

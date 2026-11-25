@@ -93,8 +93,8 @@ const onFrameClick = (event: Event) => {
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as *;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-type-mixins' as type;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-breakpoint-mixins' as mq;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-text-mixins' as type;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 .lifestyle-frame {
   position: relative;

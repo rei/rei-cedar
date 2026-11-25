@@ -330,7 +330,7 @@ const columnExamples = [
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as tokens;
-@use '@rei/cdr-tokens/dist/rei-dot-com/scss/utilities/cdr-breakpoint-mixins' as mq;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 .example {
   &__hr {
