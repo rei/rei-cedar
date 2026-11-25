@@ -20,6 +20,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 @use '@rei/cdr-tokens/dist/docsite/scss/cdr-tokens' as *;
+@use '@rei/cdr-tokens/dist/docsite/scss/utilities/cdr-type-mixins' as *;
 
 // Storybook-only aliases for docsite tokens removed from the alpha package.
 // Namespaced to avoid variable conflicts with docsite tokens.
