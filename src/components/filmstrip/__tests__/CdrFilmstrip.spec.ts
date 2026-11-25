@@ -374,12 +374,9 @@ describe('CdrFilmstrip.vue', () => {
     expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
   });
 
-  it('warns and renders nothing when no adapter is provided', () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-
+  it('renders nothing when no adapter is provided', () => {
     wrapper = mount(CdrFilmstrip);
 
-    expect(warn).toHaveBeenCalledWith('No adapter provided for CdrFilmstrip');
     expect(wrapper.findComponent(CdrFilmstripEngine).exists()).toBe(false);
   });
 

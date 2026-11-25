@@ -26,12 +26,13 @@ const adapter = (model: Partial<Lifestyle>) => ({
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as *;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 .lifestyle-filmstrip {
   margin-left: -$cdr-space-one-x;
   margin-right: -$cdr-space-one-x;
 
-  @include cdr-sm-mq-up {
+  @include mq.cdr-sm-mq-up {
     margin-left: auto;
     margin-right: auto;
   }

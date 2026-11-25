@@ -18,7 +18,11 @@ const ticketDirectoryCandidates = [
   path.join(repoRoot, 'docs', 'tickets'),
 ];
 
-function getReleaseNoteSelection(): { selection: ReleaseNoteSelection; allFiles: string[] } {
+function getReleaseNoteSelection(): {
+  selection: ReleaseNoteSelection;
+  allFiles: string[];
+  allReleaseNotes: any[];
+} {
   if (!fs.existsSync(releaseNotesDir)) {
     return {
       selection: {
@@ -27,6 +31,7 @@ function getReleaseNoteSelection(): { selection: ReleaseNoteSelection; allFiles:
           '# Release Notes\n\nNo release notes found in `releaseNotes/`. Add markdown files to populate this section.',
       },
       allFiles: [],
+      allReleaseNotes: [],
     };
   }
 
@@ -43,6 +48,7 @@ function getReleaseNoteSelection(): { selection: ReleaseNoteSelection; allFiles:
           '# Release Notes\n\nNo release notes found in `releaseNotes/`. Add markdown files to populate this section.',
       },
       allFiles: [],
+      allReleaseNotes: [],
     };
   }
 
@@ -54,12 +60,20 @@ function getReleaseNoteSelection(): { selection: ReleaseNoteSelection; allFiles:
 
   const selected = selectReleaseNote(parsedFiles);
 
+  // Build allReleaseNotes array with version and markdown
+  const allReleaseNotes = parsedFiles.map((file) => ({
+    version: file.frontMatter.version || file.fileName.replace('.md', ''),
+    markdown: file.body,
+    fileName: file.fileName,
+  }));
+
   return {
     selection: {
       fileName: selected.fileName,
       markdown: selected.body,
     },
     allFiles: markdownFiles,
+    allReleaseNotes,
   };
 }
 
@@ -175,6 +189,7 @@ function buildGeneratedModuleSource(input: {
   markdown: string;
   changedFiles: string[];
   deletedTickets: string[];
+  allReleaseNotes: any[];
 }): string {
   return [
     '// AUTO-GENERATED FILE. DO NOT EDIT MANUALLY.',
@@ -186,6 +201,7 @@ function buildGeneratedModuleSource(input: {
     '  markdown: string;',
     '  changedFiles: string[];',
     '  deletedTickets: string[];',
+    '  allReleaseNotes: Array<{ version: string; markdown: string; fileName: string }>;',
     '  generatedAt: string;',
     '};',
     '',
@@ -196,6 +212,7 @@ function buildGeneratedModuleSource(input: {
         markdown: input.markdown,
         changedFiles: input.changedFiles,
         deletedTickets: input.deletedTickets,
+        allReleaseNotes: input.allReleaseNotes,
         generatedAt: new Date().toISOString(),
       },
       null,
@@ -206,7 +223,7 @@ function buildGeneratedModuleSource(input: {
 }
 
 function main(): void {
-  const { selection, allFiles } = getReleaseNoteSelection();
+  const { selection, allFiles, allReleaseNotes } = getReleaseNoteSelection();
   const changedFiles = getChangedFiles();
   const cleanupResult = cleanupDoneTicketDocs();
 
@@ -221,6 +238,7 @@ function main(): void {
       markdown: combinedMarkdown,
       changedFiles,
       deletedTickets: cleanupResult.deleted,
+      allReleaseNotes,
     }),
     'utf-8',
   );

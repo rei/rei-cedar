@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import { CdrKicker } from '../../lib';
 
 const meta: Meta<typeof CdrKicker> = {
-  title: 'Components/CdrKicker',
+  title: 'Components/Kicker',
   component: CdrKicker,
   tags: ['autodocs'],
 };

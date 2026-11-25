@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import CdrLabelWrapper from './CdrLabelWrapper.vue';
 
 const meta: Meta<typeof CdrLabelWrapper> = {
-  title: 'Components/CdrLabelWrapper',
+  title: 'Components/Label Wrapper',
   component: CdrLabelWrapper,
   tags: ['autodocs'],
 };

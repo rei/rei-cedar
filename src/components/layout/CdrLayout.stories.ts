@@ -3,7 +3,7 @@ import { CdrLayout } from '../../lib';
 import { cdrLayoutFlowOptions, cdrLayoutGapOptions, cdrLayoutQueryTypeOptions } from './types';
 
 const meta: Meta<typeof CdrLayout> = {
-  title: 'Components/CdrLayout',
+  title: 'Components/Layout',
   component: CdrLayout,
   tags: ['autodocs'],
   argTypes: {

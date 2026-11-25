@@ -93,6 +93,8 @@ const onFrameClick = (event: Event) => {
 
 <style lang="scss" scoped>
 @use '@rei/cdr-tokens/scss' as *;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-text-mixins' as type;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 .lifestyle-frame {
   position: relative;
@@ -114,7 +116,7 @@ const onFrameClick = (event: Event) => {
     .lifestyle-frame__button-container {
       padding: $cdr-space-three-quarter-x;
 
-      @include cdr-lg-mq-up {
+      @include mq.cdr-lg-mq-up {
         padding: $cdr-space-one-x;
       }
     }
@@ -149,7 +151,7 @@ const onFrameClick = (event: Event) => {
     padding: $cdr-space-one-x;
     background: transparent;
 
-    @include cdr-md-mq-up {
+    @include mq.cdr-md-mq-up {
       padding: $cdr-space-one-and-a-half-x;
     }
   }
@@ -170,7 +172,7 @@ const onFrameClick = (event: Event) => {
   }
 
   &__link {
-    @include cdr-text-heading-sans-400;
+    @include type.cdr-text-heading-sans-400;
     color: $cdr-color-text-primary;
     display: flex;
     align-items: center;

@@ -1,4 +1,5 @@
 @use '@rei/cdr-tokens/scss' as tokens;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 $prominence-02:
   5px 12px 4px 0 rgb(75, 74, 72, 0),
@@ -52,15 +53,15 @@ $prominence-03:
       var(--cdr-filmstrip-available-width) / var(--cdr-filmstrip-frame-divisor)
     );
 
-    @include tokens.cdr-sm-cq-up {
+    @include mq.cdr-sm-cq-up {
       --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-sm);
     }
 
-    @include tokens.cdr-md-cq-up {
+    @include mq.cdr-md-cq-up {
       --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-md);
     }
 
-    @include tokens.cdr-lg-cq-up {
+    @include mq.cdr-lg-cq-up {
       --cdr-filmstrip-active-frames: var(--cdr-filmstrip-frames-lg);
     }
   }
@@ -106,7 +107,7 @@ $prominence-03:
     &--left {
       left: 0;
 
-      @include tokens.cdr-lg-mq-up {
+      @include mq.cdr-lg-mq-up {
         left: calc(var(--button-half) * -1);
       }
     }

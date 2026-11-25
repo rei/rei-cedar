@@ -48,6 +48,7 @@ console.log(routes);
   >
     <!-- NOTE: For dev environment only, do not load icon sprites in JS in production -->
     <!-- eslint-disable vue/no-v-html -->
+    <!-- v-html is safe here: fullSprite is a generated sprite sheet string, not user input -->
     <div
       style="display: none"
       v-html="fullSprite"
@@ -95,6 +96,7 @@ console.log(routes);
 
 <style lang="scss">
 @use '@rei/cdr-tokens/scss' as tokens;
+@use '@rei/cdr-tokens/dist/rei-dot-com/scss/foundations/cdr-breakpoint-mixins' as mq;
 
 @use '../styles/main.scss' as main;
 
