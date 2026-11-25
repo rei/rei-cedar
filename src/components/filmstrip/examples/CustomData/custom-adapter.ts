@@ -3,22 +3,22 @@ import type { CdrFilmstripAdapter, CdrFilmstripConfig, CdrFilmstripFrame } from 
 
 /**
  * What is an adapter?
- * 
+ *
  * An adapter is a function that converts data from one format to another.
  * Think of it like a travel adapter - it converts your plug to fit the wall outlet.
- * 
+ *
  * In this case:
  * - Your data has the format your app uses (e.g., products with IDs, names, prices)
  * - Cedar Filmstrip needs data in a different format (frames with keys and props)
  * - The adapter converts your data into Cedar's format
- * 
+ *
  * How it works:
  * 1. The adapter receives your data (your model)
  * 2. It maps each item in your data to a "frame" (a single item in the filmstrip)
  * 3. Each frame needs a unique key (Vue uses this to track items)
  * 4. Each frame has props (the data your frame component needs)
  * 5. The adapter returns configuration (how many items to show, spacing, etc.)
- * 
+ *
  * Why use an adapter?
  * - Keeps your data format unchanged (your app doesn't need to change)
  * - Cedar doesn't need to know about your data structure
@@ -34,7 +34,7 @@ export const customAdapter: CdrFilmstripAdapter<unknown, CustomModel> = (modelDa
     // Step 2: Give each frame a unique key
     // This helps Vue track which item is which when the list changes
     key: `custom-item-${item.id}`,
-    
+
     // Step 3: Pass the data your frame component needs
     // Only pass what your CustomFrame component uses
     props: {

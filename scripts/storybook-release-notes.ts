@@ -18,7 +18,11 @@ const ticketDirectoryCandidates = [
   path.join(repoRoot, 'docs', 'tickets'),
 ];
 
-function getReleaseNoteSelection(): { selection: ReleaseNoteSelection; allFiles: string[]; allReleaseNotes: any[] } {
+function getReleaseNoteSelection(): {
+  selection: ReleaseNoteSelection;
+  allFiles: string[];
+  allReleaseNotes: any[];
+} {
   if (!fs.existsSync(releaseNotesDir)) {
     return {
       selection: {

@@ -14,6 +14,7 @@ This ticket is closed because the deprecation was reversed. SCSS utility mixins 
 ## Why this matters
 
 The original goal was for Cedar to take ownership of mixins from the token package. After architectural review, the decision was reversed to keep mixins in @rei/cdr-tokens since:
+
 - The deprecation was still in alpha (not released)
 - Consumer disruption outweighed architectural purity benefits
 - The monorepo migration is a better time to reconsider package boundaries
