@@ -1,0 +1,155 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/checkbox/CdrCheckbox.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-checkbox {
+  // ITEM_DOC: Default checkbox's background color. Override with --cdr-color-checkbox-surface.
+  --cdr-color-checkbox-surface: var(
+    --cdr-color-checkbox-surface,
+    var(--cdr-control-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default checkbox's border color. Override with --cdr-color-checkbox-border.
+  --cdr-color-checkbox-border: var(--cdr-color-checkbox-border, var(--cdr-control-border-neutral));
+
+  // ITEM_DOC: Default checkbox's background color on hover. Override with --cdr-color-checkbox-surface-hover.
+  --cdr-color-checkbox-surface-hover: var(
+    --cdr-color-checkbox-surface-hover,
+    var(--cdr-control-surface-neutral-subtle)
+  );
+
+  // ITEM_DOC: Default checkbox's border color on hover. Override with --cdr-color-checkbox-border-hover.
+  --cdr-color-checkbox-border-hover: var(
+    --cdr-color-checkbox-border-hover,
+    var(--cdr-control-border-neutral-intense)
+  );
+
+  // ITEM_DOC: Default checkbox's background color on focus. Override with --cdr-color-checkbox-surface-focus-visible.
+  --cdr-color-checkbox-surface-focus-visible: var(
+    --cdr-color-checkbox-surface-focus-visible,
+    var(--cdr-control-surface-neutral-subtle)
+  );
+
+  // ITEM_DOC: Default checkbox's border color on focus. Override with --cdr-color-checkbox-border-focus-visible.
+  --cdr-color-checkbox-border-focus-visible: var(
+    --cdr-color-checkbox-border-focus-visible,
+    var(--cdr-control-border-neutral-intense)
+  );
+
+  // ITEM_DOC: Default checkbox's background color when active. Override with --cdr-color-checkbox-surface-active.
+  --cdr-color-checkbox-surface-active: var(
+    --cdr-color-checkbox-surface-active,
+    var(--cdr-control-surface-neutral-subtle)
+  );
+
+  // ITEM_DOC: Default checkbox's border color when active. Override with --cdr-color-checkbox-border-active.
+  --cdr-color-checkbox-border-active: var(
+    --cdr-color-checkbox-border-active,
+    var(--cdr-control-border-neutral-intense)
+  );
+
+  // ITEM_DOC: Default checkbox's background color when disabled. Override with --cdr-color-checkbox-surface-disabled.
+  --cdr-color-checkbox-surface-disabled: var(
+    --cdr-color-checkbox-surface-disabled,
+    var(--cdr-control-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default checkbox's border color when disabled. Override with --cdr-color-checkbox-border-disabled.
+  --cdr-color-checkbox-border-disabled: var(
+    --cdr-color-checkbox-border-disabled,
+    var(--cdr-control-border-neutral-faint)
+  );
+
+  // ITEM_DOC: Checked checkbox's background color. Override with --cdr-color-checkbox-checked-surface.
+  --cdr-color-checkbox-checked-surface: var(
+    --cdr-color-checkbox-checked-surface,
+    var(--cdr-control-surface-neutral-bold)
+  );
+
+  // ITEM_DOC: Checked checkbox's border color. Override with --cdr-color-checkbox-checked-border.
+  --cdr-color-checkbox-checked-border: var(
+    --cdr-color-checkbox-checked-border,
+    var(--cdr-control-border-neutral)
+  );
+
+  // ITEM_DOC: Checked checkbox's icon color. Override with --cdr-color-checkbox-checked-icon.
+  --cdr-color-checkbox-checked-icon: var(
+    --cdr-color-checkbox-checked-icon,
+    var(--cdr-control-icon-neutral-faint)
+  );
+
+  // ITEM_DOC: Checked checkbox's background color on hover. Override with --cdr-color-checkbox-checked-surface-hover.
+  --cdr-color-checkbox-checked-surface-hover: var(
+    --cdr-color-checkbox-checked-surface-hover,
+    var(--cdr-control-surface-neutral-prominent)
+  );
+
+  // ITEM_DOC: Checked checkbox's border color on hover. Override with --cdr-color-checkbox-checked-border-hover.
+  --cdr-color-checkbox-checked-border-hover: var(
+    --cdr-color-checkbox-checked-border-hover,
+    var(--cdr-control-border-neutral-bold)
+  );
+
+  // ITEM_DOC: Checked checkbox's icon color on hover. Override with --cdr-color-checkbox-checked-icon-hover.
+  --cdr-color-checkbox-checked-icon-hover: var(
+    --cdr-color-checkbox-checked-icon-hover,
+    var(--cdr-control-icon-neutral-faint)
+  );
+
+  // ITEM_DOC: Checked checkbox's background color on focus. Override with --cdr-color-checkbox-checked-surface-focus-visible.
+  --cdr-color-checkbox-checked-surface-focus-visible: var(
+    --cdr-color-checkbox-checked-surface-focus-visible,
+    var(--cdr-control-surface-neutral-prominent)
+  );
+
+  // ITEM_DOC: Checked checkbox's border color on focus. Override with --cdr-color-checkbox-checked-border-focus-visible.
+  --cdr-color-checkbox-checked-border-focus-visible: var(
+    --cdr-color-checkbox-checked-border-focus-visible,
+    var(--cdr-control-border-neutral-bold)
+  );
+
+  // ITEM_DOC: Checked checkbox's icon color on focus. Override with --cdr-color-checkbox-checked-icon-focus-visible.
+  --cdr-color-checkbox-checked-icon-focus-visible: var(
+    --cdr-color-checkbox-checked-icon-focus-visible,
+    var(--cdr-control-icon-neutral-faint)
+  );
+
+  // ITEM_DOC: Checked checkbox's background color when active. Override with --cdr-color-checkbox-checked-surface-active.
+  --cdr-color-checkbox-checked-surface-active: var(
+    --cdr-color-checkbox-checked-surface-active,
+    var(--cdr-control-surface-neutral-prominent)
+  );
+
+  // ITEM_DOC: Checked checkbox's border color when active. Override with --cdr-color-checkbox-checked-border-active.
+  --cdr-color-checkbox-checked-border-active: var(
+    --cdr-color-checkbox-checked-border-active,
+    var(--cdr-control-border-neutral-bold)
+  );
+
+  // ITEM_DOC: Checked checkbox's icon color when active. Override with --cdr-color-checkbox-checked-icon-active.
+  --cdr-color-checkbox-checked-icon-active: var(
+    --cdr-color-checkbox-checked-icon-active,
+    var(--cdr-control-icon-neutral-bold)
+  );
+
+  // ITEM_DOC: Checked checkbox's background color when disabled. Override with --cdr-color-checkbox-checked-surface-disabled.
+  --cdr-color-checkbox-checked-surface-disabled: var(
+    --cdr-color-checkbox-checked-surface-disabled,
+    var(--cdr-control-surface-neutral-prominent)
+  );
+
+  // ITEM_DOC: Checked checkbox's border color when disabled. Override with --cdr-color-checkbox-checked-border-disabled.
+  --cdr-color-checkbox-checked-border-disabled: var(
+    --cdr-color-checkbox-checked-border-disabled,
+    var(--cdr-control-border-neutral-faint)
+  );
+
+  // ITEM_DOC: Checked checkbox's icon color when disabled. Override with --cdr-color-checkbox-checked-icon-disabled.
+  --cdr-color-checkbox-checked-icon-disabled: var(
+    --cdr-color-checkbox-checked-icon-disabled,
+    var(--cdr-control-icon-neutral)
+  );
+}

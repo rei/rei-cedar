@@ -22,8 +22,9 @@ import { token } from '../../../build/component-tokens/types';
  * CdrChip treatment of the same legacy value; the selected icons (#d5cfc3)
  * read as control icon neutral (#CECAC3, dRGB 9).
  *
- * Cutover mode: no `legacy` section; no hooks are generated (documented
- * overrides are preserved by the module).
+ * Cutover mode: no `legacy` section. Hooks are generated; the
+ * `--cdr-color-switch-*` override hooks replace the legacy `--cdr-switch-*`
+ * color overrides.
  *
  * To regenerate the SCSS maps from this contract:
  *   npx tsx build/generate-component-maps.ts
@@ -32,6 +33,8 @@ const contract: ComponentTokenContract = {
   component: 'cdr-switch',
   prefix: '--cdr-switch',
   interaction: 'control',
+  hooks: true,
+  defaultVariant: 'default',
 
   defaults: {
     margin: token('cdr-space-quarter-x'),

@@ -4,17 +4,10 @@
 
 @mixin cdr-card-base-mixin() {
   position: relative;
-
-  // ITEM_DOC: Background color of a cdr-card
-  background-color: var(
-    --cdr-card-base-background-color,
-    map.get(maps.$card-colors, base, background)
-  );
+  background-color: map.get(maps.$card-colors, base, background);
   border-radius: var(--cdr-card-border-radius);
   box-shadow: var(--cdr-card-box-shadow);
-
-  // ITEM_DOC: Text color of a cdr-card
-  color: var(--cdr-card-base-color, map.get(maps.$card-colors, base, text));
+  color: map.get(maps.$card-colors, base, text);
   container: card / inline-size;
   width: 100%;
   transition: box-shadow tokens.$cdr-duration-2-x tokens.$cdr-timing-function-ease;
@@ -31,19 +24,12 @@
 
 @mixin cdr-card-link-mixin() {
   position: static;
-
-  // ITEM_DOC: Link text color of a cdr-card
-  color: var(--cdr-card-link-color, map.get(maps.$card-colors, link, text)) !important;
+  color: map.get(maps.$card-colors, link, text) !important;
   text-decoration: none !important;
 
   &:hover {
     text-decoration: underline !important;
-
-    // ITEM_DOC: Link hover text color of a cdr-card
-    color: var(
-      --cdr-card-link-hover-color,
-      map.get(maps.$card-colors, link, text-hover)
-    ) !important;
+    color: map.get(maps.$card-colors, link, text-hover) !important;
   }
 
   &::before {

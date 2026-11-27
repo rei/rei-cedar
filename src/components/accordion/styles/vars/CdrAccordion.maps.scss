@@ -60,22 +60,66 @@ $accordion-defaults: (
 
 $accordion-colors: (
   frame: (
-    border: var(--cdr-control-border-neutral-faint),
+    // ITEM_DOC: Frame accordion's border color. Override with --cdr-color-accordion-frame-border.
+    border: var(--cdr-color-accordion-frame-border, var(--cdr-control-border-neutral-faint)),
   ),
   header: (
-    text: var(--cdr-control-text-neutral-prominent),
-    fill: var(--cdr-control-icon-neutral-prominent),
-    background-hover: var(--cdr-control-surface-neutral-faint),
-    text-hover: var(--cdr-control-text-neutral-prominent),
-    fill-hover: var(--cdr-control-icon-neutral-prominent),
-    background-focus-visible: var(--cdr-control-surface-neutral-faint),
-    text-focus-visible: var(--cdr-control-text-neutral-prominent),
-    fill-focus-visible: var(--cdr-control-icon-neutral-prominent),
-    background-active: var(--cdr-control-surface-neutral-faint),
-    text-active: var(--cdr-control-text-neutral-prominent),
-    fill-active: var(--cdr-control-icon-neutral-prominent),
+    // ITEM_DOC: Header accordion's text color. Override with --cdr-color-accordion-header-text.
+    text: var(--cdr-color-accordion-header-text, var(--cdr-control-text-neutral-prominent)),
+    // ITEM_DOC: Header accordion's icon color. Override with --cdr-color-accordion-header-icon.
+    fill: var(--cdr-color-accordion-header-icon, var(--cdr-control-icon-neutral-prominent)),
+    // ITEM_DOC: Header accordion's background color on hover. Override with --cdr-color-accordion-header-surface-hover.
+    background-hover: var(
+        --cdr-color-accordion-header-surface-hover,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Header accordion's text color on hover. Override with --cdr-color-accordion-header-text-hover.
+    text-hover: var(
+        --cdr-color-accordion-header-text-hover,
+        var(--cdr-control-text-neutral-prominent)
+      ),
+    // ITEM_DOC: Header accordion's icon color on hover. Override with --cdr-color-accordion-header-icon-hover.
+    fill-hover: var(
+        --cdr-color-accordion-header-icon-hover,
+        var(--cdr-control-icon-neutral-prominent)
+      ),
+    // ITEM_DOC: Header accordion's background color on focus. Override with --cdr-color-accordion-header-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-accordion-header-surface-focus-visible,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Header accordion's text color on focus. Override with --cdr-color-accordion-header-text-focus-visible.
+    text-focus-visible: var(
+        --cdr-color-accordion-header-text-focus-visible,
+        var(--cdr-control-text-neutral-prominent)
+      ),
+    // ITEM_DOC: Header accordion's icon color on focus. Override with --cdr-color-accordion-header-icon-focus-visible.
+    fill-focus-visible: var(
+        --cdr-color-accordion-header-icon-focus-visible,
+        var(--cdr-control-icon-neutral-prominent)
+      ),
+    // ITEM_DOC: Header accordion's background color when active. Override with --cdr-color-accordion-header-surface-active.
+    background-active: var(
+        --cdr-color-accordion-header-surface-active,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Header accordion's text color when active. Override with --cdr-color-accordion-header-text-active.
+    text-active: var(
+        --cdr-color-accordion-header-text-active,
+        var(--cdr-control-text-neutral-prominent)
+      ),
+    // ITEM_DOC: Header accordion's icon color when active. Override with --cdr-color-accordion-header-icon-active.
+    fill-active: var(
+        --cdr-color-accordion-header-icon-active,
+        var(--cdr-control-icon-neutral-prominent)
+      ),
+    // ITEM_DOC: Header accordion's background color. Override with --cdr-color-accordion-header-surface.
+    surface: var(--cdr-color-accordion-header-surface, var(--cdr-accordion-header-surface)),
   ),
   content: (
-    text: var(--cdr-control-text-neutral-prominent),
+    // ITEM_DOC: Content accordion's text color. Override with --cdr-color-accordion-content-text.
+    text: var(--cdr-color-accordion-content-text, var(--cdr-control-text-neutral-prominent)),
+    // ITEM_DOC: Content accordion's background color. Override with --cdr-color-accordion-content-surface.
+    surface: var(--cdr-color-accordion-content-surface, var(--cdr-accordion-content-surface)),
   ),
 );

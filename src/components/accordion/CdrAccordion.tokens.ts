@@ -4,11 +4,15 @@ import { literal, token } from '../../../build/component-tokens/types';
 /**
  * CdrAccordion color scopes correspond to its frame, interactive header,
  * and text-bearing content panel.
+ *
+ * Hooks are generated; the header/content transparent rest surfaces are
+ * value-carrying `extras` so their documented hooks keep working.
  */
 const contract: ComponentTokenContract = {
   component: 'cdr-accordion',
   prefix: '--cdr-accordion',
   interaction: 'control',
+  hooks: true,
 
   defaults: {
     'container-position': literal('relative'),
@@ -77,11 +81,14 @@ const contract: ComponentTokenContract = {
         text: 'neutral-prominent',
         icon: 'neutral-prominent',
       },
+      // Transparent rest surface documented as --cdr-color-accordion-header-surface.
+      extras: { surface: literal('var(--cdr-accordion-header-surface)') },
     },
     content: {
       identity: 'neutral',
       // User-confirmed: the content text uses the Control palette too.
       rest: { text: 'neutral-prominent' },
+      extras: { surface: literal('var(--cdr-accordion-content-surface)') },
     },
   },
 };

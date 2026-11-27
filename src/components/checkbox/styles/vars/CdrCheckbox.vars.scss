@@ -2,136 +2,56 @@
 @use '@rei/cdr-tokens/scss' as tokens;
 @use './CdrCheckbox.maps' as maps;
 
-@mixin cdr-form-figure-checkbox-checked-mixin() {
-  // ITEM_DOC: Box-shadow color of a checked cdr-checkbox
-  box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-form-figure-checkbox-box-shadow-checked,
-      map.get(maps.$checkbox-colors, checked, border)
-    );
+@mixin cdr-form-figure-checkbox-base-mixin() {
+  box-shadow: 0 0 0 1px map.get(maps.$checkbox-colors, default, border);
+  background-color: map.get(maps.$checkbox-colors, default, background);
+}
 
-  // ITEM_DOC: Background color of a checked cdr-checkbox
-  background-color: var(
-    --cdr-form-figure-checkbox-background-color-checked,
-    map.get(maps.$checkbox-colors, checked, background)
-  );
+@mixin cdr-form-figure-checkbox-checked-mixin() {
+  box-shadow: inset 0 0 0 1px map.get(maps.$checkbox-colors, checked, border);
+  background-color: map.get(maps.$checkbox-colors, checked, background);
   background-repeat: no-repeat;
 }
 
 @mixin cdr-form-figure-checkbox-hover-mixin() {
   cursor: pointer;
-
-  // ITEM_DOC: Box-shadow color of a hovered cdr-checkbox
   box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-box-shadow-hover,
-        map.get(maps.$checkbox-colors, default, border-hover)
-      ),
-    0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-box-shadow-hover,
-        map.get(maps.$checkbox-colors, default, border-hover)
-      );
-
-  // ITEM_DOC: Background color of a hovered cdr-checkbox
-  background-color: var(
-    --cdr-form-figure-checkbox-background-hover,
-    map.get(maps.$checkbox-colors, default, background-hover)
-  );
+    inset 0 0 0 1px map.get(maps.$checkbox-colors, default, border-hover),
+    0 0 0 1px map.get(maps.$checkbox-colors, default, border-hover);
+  background-color: map.get(maps.$checkbox-colors, default, background-hover);
 }
 
 @mixin cdr-form-figure-checkbox-checked-hover-mixin() {
-  // ITEM_DOC: Box-shadow color of a checked and hovered cdr-checkbox
   box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-checked-box-shadow-hover,
-        map.get(maps.$checkbox-colors, checked, border-hover)
-      ),
-    0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-checked-hover-box-shadow,
-        map.get(maps.$checkbox-colors, checked, border-hover)
-      );
-
-  // ITEM_DOC: Background color of a checked and hovered cdr-checkbox
-  background-color: var(
-    --cdr-form-figure-checkbox-checked-background-hover,
-    map.get(maps.$checkbox-colors, checked, background-hover)
-  );
+    inset 0 0 0 1px map.get(maps.$checkbox-colors, checked, border-hover),
+    0 0 0 1px map.get(maps.$checkbox-colors, checked, border-hover);
+  background-color: map.get(maps.$checkbox-colors, checked, background-hover);
 }
 
 @mixin cdr-form-figure-checkbox-disabled-mixin() {
-  // ITEM_DOC: Box-shadow color of a cdr-checkbox when disabled
-  box-shadow: inset 0 0 0 1px
-    var(
-      --cdr-form-figure-checkbox-box-shadow-disabled,
-      map.get(maps.$checkbox-colors, default, border-disabled)
-    ) !important;
-
-  // ITEM_DOC: Background color of a cdr-checkbox when disabled
-  background-color: var(
-    --cdr-form-figure-checkbox-background-disabled,
-    map.get(maps.$checkbox-colors, default, background-disabled)
-  ) !important;
+  box-shadow: inset 0 0 0 1px map.get(maps.$checkbox-colors, default, border-disabled) !important;
+  background-color: map.get(maps.$checkbox-colors, default, background-disabled) !important;
   background-image: none !important;
 }
 
 @mixin cdr-form-figure-checkbox-checked-disabled-mixin() {
-  // ITEM_DOC: Background color of a checked cdr-checkbox when disabled
-  background-color: var(
-    --cdr-form-figure-checkbox-background-checked-disabled,
-    map.get(maps.$checkbox-colors, checked, background-disabled)
-  ) !important;
+  background-color: map.get(maps.$checkbox-colors, checked, background-disabled) !important;
 }
 
 @mixin cdr-form-figure-checkbox-active-mixin() {
-  // ITEM_DOC: Box-shadow color of a cdr-checkbox when active
   box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-box-shadow-active,
-        map.get(maps.$checkbox-colors, default, border-active)
-      ),
-    0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-box-shadow-active,
-        map.get(maps.$checkbox-colors, default, border-active)
-      );
-
-  // ITEM_DOC: Background color of a cdr-checkbox when active
-  background-color: var(
-    --cdr-form-figure-checkbox-background-active,
-    map.get(maps.$checkbox-colors, default, background-active)
-  );
+    inset 0 0 0 1px map.get(maps.$checkbox-colors, default, border-active),
+    0 0 0 1px map.get(maps.$checkbox-colors, default, border-active);
+  background-color: map.get(maps.$checkbox-colors, default, background-active);
 }
 
 @mixin cdr-form-figure-checkbox-focus-mixin() {
-  // ITEM_DOC: Box-shadow color of a cdr-checkbox when focused
   box-shadow:
-    inset 0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-box-shadow-focus,
-        map.get(maps.$checkbox-colors, default, border-focus-visible)
-      ),
-    0 0 0 1px
-      var(
-        --cdr-form-figure-checkbox-box-shadow-focus,
-        map.get(maps.$checkbox-colors, default, border-focus-visible)
-      );
-
-  // ITEM_DOC: Background color of a cdr-checkbox when focused
-  background-color: var(
-    --cdr-form-figure-checkbox-background-focus,
-    map.get(maps.$checkbox-colors, default, background-focus-visible)
-  );
+    inset 0 0 0 1px map.get(maps.$checkbox-colors, default, border-focus-visible),
+    0 0 0 1px map.get(maps.$checkbox-colors, default, border-focus-visible);
+  background-color: map.get(maps.$checkbox-colors, default, background-focus-visible);
 }
 
 @mixin cdr-form-figure-checkbox-checked-focus-mixin() {
-  // ITEM_DOC: Background color of a checked cdr-checkbox when focused
-  background-color: var(
-    --cdr-form-figure-checkbox-background-checked-focus,
-    map.get(maps.$checkbox-colors, checked, background-focus-visible)
-  );
+  background-color: map.get(maps.$checkbox-colors, checked, background-focus-visible);
 }

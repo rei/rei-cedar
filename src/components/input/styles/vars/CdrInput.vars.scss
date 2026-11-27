@@ -6,23 +6,11 @@
   @include tokens.cdr-text-utility-sans-300;
 
   font-weight: 500;
-
-  // ITEM_DOC: Text color of a cdr-input by default
-  color: var(--cdr-input-text-color-default, map.get(maps.$input-colors, default, text));
+  color: map.get(maps.$input-colors, default, text);
   border: 0;
-
-  // ITEM_DOC: Background color of a cdr-input by default
-  background-color: var(
-    --cdr-input-background-color-default,
-    map.get(maps.$input-colors, default, background)
-  );
-
-  // ITEM_DOC: Box-shadow color of a cdr-input by default
-  box-shadow: inset 0 0 0 1px
-    var(--cdr-input-box-shadow-default, map.get(maps.$input-colors, default, border));
-
-  // ITEM_DOC: Fill color of an icon in a cdr-input
-  fill: var(--cdr-input-icon-fill, map.get(maps.$input-colors, default, fill));
+  background-color: map.get(maps.$input-colors, default, background);
+  box-shadow: inset 0 0 0 1px map.get(maps.$input-colors, default, border);
+  fill: map.get(maps.$input-colors, default, fill);
   border-radius: var(--cdr-input-radius);
   padding: var(--cdr-input-padding);
   height: var(--cdr-input-height);
@@ -41,102 +29,54 @@
   &:active,
   &:focus {
     outline: none;
-
-    // ITEM_DOC: Box shadow of a focused or active cdr-input
     box-shadow:
-      inset 0 0 0 2px
-        var(
-          --cdr-input-box-shadow-focus,
-          map.get(maps.$input-colors, default, border-focus-visible)
-        ),
+      inset 0 0 0 2px map.get(maps.$input-colors, default, border-focus-visible),
       tokens.$cdr-prominence-raised;
   }
 
   &::placeholder {
     @include tokens.cdr-text-utility-sans-300;
 
-    color: var(--cdr-input-placeholder-text-color, map.get(maps.$input-colors, placeholder, text));
+    color: map.get(maps.$input-colors, placeholder, text);
   }
 
   &[disabled] {
-    // ITEM_DOC: Background color of a disabled cdr-input
-    background-color: var(
-      --cdr-input-background-color-disabled,
-      map.get(maps.$input-colors, default, background-disabled)
-    );
-
-    // ITEM_DOC: Text color of a disabled cdr-input
-    color: var(
-      --cdr-input-text-color-disabled,
-      map.get(maps.$input-colors, default, text-disabled)
-    );
-
-    // ITEM_DOC: Box-shadow color of a disabled cdr-input
-    box-shadow: inset 0 0 0 1px
-      var(--cdr-input-box-shadow-disabled, map.get(maps.$input-colors, default, border-disabled));
+    background-color: map.get(maps.$input-colors, default, background-disabled);
+    color: map.get(maps.$input-colors, default, text-disabled);
+    box-shadow: inset 0 0 0 1px map.get(maps.$input-colors, default, border-disabled);
 
     &:hover {
-      box-shadow: inset 0 0 0 1px
-        var(
-          --cdr-input-box-shadow-disabled-hover,
-          map.get(maps.$input-colors, default, border-disabled)
-        );
+      box-shadow: inset 0 0 0 1px map.get(maps.$input-colors, default, border-disabled);
       cursor: not-allowed;
     }
 
     &::placeholder {
-      color: var(
-        --cdr-input-placeholder-text-color-disabled,
-        map.get(maps.$input-colors, placeholder, text-disabled)
-      );
+      color: map.get(maps.$input-colors, placeholder, text-disabled);
     }
   }
 }
 
 @mixin cdr-input-primary-mixin() {
-  // ITEM_DOC: Background color of a default cdr-input
-  background-color: var(
-    --cdr-input-background-color-default,
-    map.get(maps.$input-colors, default, background)
-  );
+  background-color: map.get(maps.$input-colors, default, background);
 
   &:active,
   &:focus {
-    // ITEM_DOC: Background color of a default cdr-input in active or focus state
-    background-color: var(
-      --cdr-input-background-color-default-focus,
-      map.get(maps.$input-colors, default, background-focus-visible)
-    );
+    background-color: map.get(maps.$input-colors, default, background-focus-visible);
   }
 }
 
 @mixin cdr-input-secondary-mixin() {
-  // ITEM_DOC: Background color of a secondary cdr-input
-  background-color: var(
-    --cdr-input-background-color-secondary,
-    map.get(maps.$input-colors, secondary, background)
-  );
+  background-color: map.get(maps.$input-colors, secondary, background);
 
   &:active,
   &:focus {
-    // ITEM_DOC: Background color of a secondary cdr-input in active or focus state
-    background-color: var(
-      --cdr-input-background-color-secondary-active,
-      map.get(maps.$input-colors, secondary, background-focus-visible)
-    );
+    background-color: map.get(maps.$input-colors, secondary, background-focus-visible);
   }
 }
 
 @mixin cdr-input-error-mixin() {
-  // ITEM_DOC: Background color of a cdr-input in error state
-  background-color: var(
-    --cdr-input-error-background-color,
-    map.get(maps.$input-colors, error, background)
-  );
-
-  // ITEM_DOC: Box-shadow color of a cdr-input in error state
-  box-shadow: inset 0 0 0 1px
-    var(--cdr-input-error-box-shadow, map.get(maps.$input-colors, error, border));
+  background-color: map.get(maps.$input-colors, error, background);
+  box-shadow: inset 0 0 0 1px map.get(maps.$input-colors, error, border);
 }
 
 @mixin cdr-input-large-mixin() {
@@ -154,6 +94,5 @@
 @mixin cdr-input-helper-text-mixin() {
   @include tokens.cdr-text-utility-sans-200;
 
-  // ITEM_DOC: Text color of a cdr-input's helper text
-  color: var(--cdr-input-helper-text-color, map.get(maps.$input-colors, helper, text));
+  color: map.get(maps.$input-colors, helper, text);
 }

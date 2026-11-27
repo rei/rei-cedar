@@ -6,12 +6,15 @@ import { token } from '../../../build/component-tokens/types';
  *
  * The card link is the primary interactive part, so it uses Action tokens. The
  * surface and base text are static content, so they use Universal tokens via
- * fullPath. Documented overrides keep their names (no hooks are generated).
+ * fullPath. Hooks are generated; the `--cdr-color-card-*` override hooks
+ * replace the legacy `--cdr-card-*` color overrides.
  */
 const contract: ComponentTokenContract = {
   component: 'cdr-card',
   prefix: '--cdr-card',
   interaction: 'action',
+  hooks: true,
+  defaultVariant: 'base',
 
   defaults: {
     'border-radius': token('cdr-radius-softer'),

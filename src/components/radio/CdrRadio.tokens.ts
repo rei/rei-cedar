@@ -12,8 +12,9 @@ import { literal, token } from '../../../build/component-tokens/types';
  * focus, active and disabled rules resolve the `default` scope; the checked
  * scopes declare only the slots their own rules override.
  *
- * Cutover mode: no `legacy` section; no hooks are generated (documented
- * overrides are preserved by the module).
+ * Cutover mode: no `legacy` section. Hooks are generated; the
+ * `--cdr-color-radio-*` override hooks replace the legacy `--cdr-radio-*`
+ * color overrides.
  *
  * Palette gaps, using the CdrCheckbox treatment of the same legacy values:
  * the hover outline (#2e2e2b) maps to control border neutral-intense
@@ -31,6 +32,8 @@ const contract: ComponentTokenContract = {
   component: 'cdr-radio',
   prefix: '--cdr-radio',
   interaction: 'control',
+  hooks: true,
+  defaultVariant: 'default',
 
   defaults: {
     'figure-radius': literal('100%'),

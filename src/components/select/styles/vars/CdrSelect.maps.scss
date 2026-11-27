@@ -27,29 +27,63 @@ $select-defaults: (
 
 $select-colors: (
   default: (
-    background: var(--cdr-control-surface-neutral-faint),
-    text: var(--cdr-control-text-neutral-bold),
-    border: var(--cdr-control-border-neutral),
-    background-focus-visible: var(--cdr-control-surface-neutral-faint),
-    border-focus-visible: var(--cdr-control-border-neutral-intense),
-    background-disabled: var(--cdr-control-surface-neutral-faint),
-    text-disabled: var(--cdr-control-text-neutral-faint),
-    border-disabled: var(--cdr-control-border-neutral-faint),
+    // ITEM_DOC: Default select's background color. Override with --cdr-color-select-surface.
+    background: var(--cdr-color-select-surface, var(--cdr-control-surface-neutral-faint)),
+    // ITEM_DOC: Default select's text color. Override with --cdr-color-select-text.
+    text: var(--cdr-color-select-text, var(--cdr-control-text-neutral-bold)),
+    // ITEM_DOC: Default select's border color. Override with --cdr-color-select-border.
+    border: var(--cdr-color-select-border, var(--cdr-control-border-neutral)),
+    // ITEM_DOC: Default select's background color on focus. Override with --cdr-color-select-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-select-surface-focus-visible,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default select's border color on focus. Override with --cdr-color-select-border-focus-visible.
+    border-focus-visible: var(
+        --cdr-color-select-border-focus-visible,
+        var(--cdr-control-border-neutral-intense)
+      ),
+    // ITEM_DOC: Default select's background color when disabled. Override with --cdr-color-select-surface-disabled.
+    background-disabled: var(
+        --cdr-color-select-surface-disabled,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default select's text color when disabled. Override with --cdr-color-select-text-disabled.
+    text-disabled: var(--cdr-color-select-text-disabled, var(--cdr-control-text-neutral-faint)),
+    // ITEM_DOC: Default select's border color when disabled. Override with --cdr-color-select-border-disabled.
+    border-disabled: var(
+        --cdr-color-select-border-disabled,
+        var(--cdr-control-border-neutral-faint)
+      ),
   ),
   secondary: (
-    background: var(--cdr-control-surface-neutral-trace),
-    background-focus-visible: var(--cdr-control-surface-neutral-trace),
+    // ITEM_DOC: Secondary select's background color. Override with --cdr-color-select-secondary-surface.
+    background: var(--cdr-color-select-secondary-surface, var(--cdr-control-surface-neutral-trace)),
+    // ITEM_DOC: Secondary select's background color on focus. Override with --cdr-color-select-secondary-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-select-secondary-surface-focus-visible,
+        var(--cdr-control-surface-neutral-trace)
+      ),
   ),
   error: (
-    background: var(--cdr-feedback-surface-error-trace),
-    border: var(--cdr-feedback-border-error),
+    // ITEM_DOC: Error select's background color. Override with --cdr-color-select-error-surface.
+    background: var(--cdr-color-select-error-surface, var(--cdr-feedback-surface-error-trace)),
+    // ITEM_DOC: Error select's border color. Override with --cdr-color-select-error-border.
+    border: var(--cdr-color-select-error-border, var(--cdr-feedback-border-error)),
   ),
   prompt: (
-    text: var(--cdr-control-text-neutral-prominent),
-    text-disabled: var(--cdr-control-text-neutral-faint),
+    // ITEM_DOC: Prompt select's text color. Override with --cdr-color-select-prompt-text.
+    text: var(--cdr-color-select-prompt-text, var(--cdr-control-text-neutral-prominent)),
+    // ITEM_DOC: Prompt select's text color when disabled. Override with --cdr-color-select-prompt-text-disabled.
+    text-disabled: var(
+        --cdr-color-select-prompt-text-disabled,
+        var(--cdr-control-text-neutral-faint)
+      ),
   ),
   caret: (
-    fill: var(--cdr-control-icon-neutral-intense),
-    fill-disabled: var(--cdr-control-icon-neutral),
+    // ITEM_DOC: Caret select's icon color. Override with --cdr-color-select-caret-icon.
+    fill: var(--cdr-color-select-caret-icon, var(--cdr-control-icon-neutral-intense)),
+    // ITEM_DOC: Caret select's icon color when disabled. Override with --cdr-color-select-caret-icon-disabled.
+    fill-disabled: var(--cdr-color-select-caret-icon-disabled, var(--cdr-control-icon-neutral)),
   ),
 );
