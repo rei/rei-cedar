@@ -1,0 +1,23 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/card/CdrCard.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-card {
+  // ITEM_DOC: Base card's background color. Override with --cdr-color-card-surface.
+  --cdr-color-card-surface: var(--cdr-color-card-surface, var(--cdr-surface-natural));
+
+  // ITEM_DOC: Base card's text color. Override with --cdr-color-card-text.
+  --cdr-color-card-text: var(--cdr-color-card-text, var(--cdr-text-neutral-prominent));
+
+  // ITEM_DOC: Link card's text color. Override with --cdr-color-card-link-text.
+  --cdr-color-card-link-text: var(--cdr-color-card-link-text, var(--cdr-action-text-neutral-bold));
+
+  // ITEM_DOC: Link card's text color on hover. Override with --cdr-color-card-link-text-hover.
+  --cdr-color-card-link-text-hover: var(
+    --cdr-color-card-link-text-hover,
+    var(--cdr-action-text-trigger)
+  );
+}

@@ -22,25 +22,67 @@ $radio-defaults: (
 
 $radio-colors: (
   default: (
-    background: var(--cdr-control-surface-neutral-faint),
-    border: var(--cdr-control-border-neutral),
-    background-hover: var(--cdr-control-surface-neutral-faint),
-    border-hover: var(--cdr-control-border-neutral-intense),
-    background-focus-visible: var(--cdr-control-surface-neutral-faint),
-    border-focus-visible: var(--cdr-control-border-neutral-bold),
-    background-active: var(--cdr-control-surface-neutral-faint),
-    border-active: var(--cdr-control-border-neutral-bold),
-    background-disabled: var(--cdr-control-surface-neutral-faint),
-    border-disabled: var(--cdr-control-border-neutral-faint),
+    // ITEM_DOC: Default radio's background color. Override with --cdr-color-radio-surface.
+    background: var(--cdr-color-radio-surface, var(--cdr-control-surface-neutral-faint)),
+    // ITEM_DOC: Default radio's border color. Override with --cdr-color-radio-border.
+    border: var(--cdr-color-radio-border, var(--cdr-control-border-neutral)),
+    // ITEM_DOC: Default radio's background color on hover. Override with --cdr-color-radio-surface-hover.
+    background-hover: var(--cdr-color-radio-surface-hover, var(--cdr-control-surface-neutral-faint)),
+    // ITEM_DOC: Default radio's border color on hover. Override with --cdr-color-radio-border-hover.
+    border-hover: var(--cdr-color-radio-border-hover, var(--cdr-control-border-neutral-intense)),
+    // ITEM_DOC: Default radio's background color on focus. Override with --cdr-color-radio-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-radio-surface-focus-visible,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default radio's border color on focus. Override with --cdr-color-radio-border-focus-visible.
+    border-focus-visible: var(
+        --cdr-color-radio-border-focus-visible,
+        var(--cdr-control-border-neutral-bold)
+      ),
+    // ITEM_DOC: Default radio's background color when active. Override with --cdr-color-radio-surface-active.
+    background-active: var(
+        --cdr-color-radio-surface-active,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default radio's border color when active. Override with --cdr-color-radio-border-active.
+    border-active: var(--cdr-color-radio-border-active, var(--cdr-control-border-neutral-bold)),
+    // ITEM_DOC: Default radio's background color when disabled. Override with --cdr-color-radio-surface-disabled.
+    background-disabled: var(
+        --cdr-color-radio-surface-disabled,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default radio's border color when disabled. Override with --cdr-color-radio-border-disabled.
+    border-disabled: var(--cdr-color-radio-border-disabled, var(--cdr-control-border-neutral-faint)),
   ),
   checked: (
-    background: var(--cdr-control-surface-neutral-bold),
-    border: var(--cdr-control-border-neutral-bold),
-    fill: var(--cdr-control-icon-neutral-trace),
-    background-hover: var(--cdr-control-surface-neutral-prominent),
-    border-hover: var(--cdr-control-border-neutral-bold),
-    background-focus-visible: var(--cdr-control-surface-neutral-prominent),
-    fill-active: var(--cdr-control-icon-neutral-intense),
-    fill-disabled: var(--cdr-control-icon-neutral-faint),
+    // ITEM_DOC: Checked radio's background color. Override with --cdr-color-radio-checked-surface.
+    background: var(--cdr-color-radio-checked-surface, var(--cdr-control-surface-neutral-bold)),
+    // ITEM_DOC: Checked radio's border color. Override with --cdr-color-radio-checked-border.
+    border: var(--cdr-color-radio-checked-border, var(--cdr-control-border-neutral-bold)),
+    // ITEM_DOC: Checked radio's icon color. Override with --cdr-color-radio-checked-icon.
+    fill: var(--cdr-color-radio-checked-icon, var(--cdr-control-icon-neutral-trace)),
+    // ITEM_DOC: Checked radio's background color on hover. Override with --cdr-color-radio-checked-surface-hover.
+    background-hover: var(
+        --cdr-color-radio-checked-surface-hover,
+        var(--cdr-control-surface-neutral-prominent)
+      ),
+    // ITEM_DOC: Checked radio's border color on hover. Override with --cdr-color-radio-checked-border-hover.
+    border-hover: var(
+        --cdr-color-radio-checked-border-hover,
+        var(--cdr-control-border-neutral-bold)
+      ),
+    // ITEM_DOC: Checked radio's background color on focus. Override with --cdr-color-radio-checked-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-radio-checked-surface-focus-visible,
+        var(--cdr-control-surface-neutral-prominent)
+      ),
+    // ITEM_DOC: Checked radio's icon color when active. Override with --cdr-color-radio-checked-icon-active.
+    fill-active: var(--cdr-color-radio-checked-icon-active, var(--cdr-control-icon-neutral-intense)),
+    // ITEM_DOC: Checked radio's icon color when disabled. Override with --cdr-color-radio-checked-icon-disabled.
+    fill-disabled: var(
+        --cdr-color-radio-checked-icon-disabled,
+        var(--cdr-control-icon-neutral-faint)
+      ),
   ),
 );

@@ -13,12 +13,12 @@ should resolve to (`--cdr-<path>`), without a `color-` segment.
 
 ## accordion
 
-| Property                 | File                              | Legacy token                           | Hex     | Semantic equivalent |
-| ------------------------ | --------------------------------- | -------------------------------------- | ------- | ------------------- |
-| `--cdr-accordion-border` | `styles/CdrAccordion.module.scss` | `cdr-color-border-primary`             | #d5cfc3 |                     |
-| `background-color`       | `styles/CdrAccordion.module.scss` | `cdr-color-background-accordion-hover` | #fafbf9 |                     |
-| `color`                  | `styles/CdrAccordion.module.scss` | `cdr-color-text-primary`               | #4b4a48 |                     |
-| `fill`                   | `styles/CdrAccordion.module.scss` | `cdr-color-icon-default`               | #958e83 |                     |
+| Property                             | File                                 | Legacy token                           | Hex     | Semantic equivalent                  |
+| ------------------------------------ | ------------------------------------ | -------------------------------------- | ------- | ------------------------------------ |
+| `--cdr-color-accordion-frame-border` | `styles/vars/CdrAccordion.maps.scss` | `cdr-color-border-primary`             | #d5cfc3 | `--cdr-control-border-neutral-faint` |
+| `background-color`                   | `styles/CdrAccordion.module.scss`    | `cdr-color-background-accordion-hover` | #fafbf9 |                                      |
+| `color`                              | `styles/CdrAccordion.module.scss`    | `cdr-color-text-primary`               | #4b4a48 |                                      |
+| `fill`                               | `styles/CdrAccordion.module.scss`    | `cdr-color-icon-default`               | #958e83 |                                      |
 
 ## banner
 
@@ -130,8 +130,8 @@ should resolve to (`--cdr-<path>`), without a `color-` segment.
 
 | Property           | File                            | Legacy token                   | Hex     | Semantic equivalent                                                        |
 | ------------------ | ------------------------------- | ------------------------------ | ------- | -------------------------------------------------------------------------- |
-| `background-color` | `styles/vars/CdrCard.vars.scss` | `cdr-color-background-primary` | #ffffff | `--cdr-surface-natural` (hook `--cdr-card-base-background-color`)          |
-| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-link-hover`    | #406eb5 | `--cdr-action-text-trigger` (hook `--cdr-card-link-hover-color`)           |
+| `background-color` | `styles/vars/CdrCard.vars.scss` | `cdr-color-background-primary` | #ffffff | `--cdr-surface-natural` (hook `--cdr-color-card-surface`)                  |
+| `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-link-hover`    | #406eb5 | `--cdr-action-text-trigger` (hook `--cdr-color-card-link-text-hover`)      |
 | `color`            | `styles/vars/CdrCard.vars.scss` | `cdr-color-text-primary`       | #4b4a48 | base `--cdr-text-neutral-prominent`, link `--cdr-action-text-neutral-bold` |
 
 ## checkbox

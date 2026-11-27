@@ -24,181 +24,87 @@
     padding: 0;
     position: relative;
     overflow: hidden;
-
-    // ITEM_DOC: Border of the cdr-switch button
-    border: 0.1rem solid
-      var(--cdr-switch-border-color, map.get(maps.$switch-colors, default, border));
-
-    // ITEM_DOC: Background color of the cdr-switch button
-    background-color: var(
-      --cdr-switch-background-color,
-      map.get(maps.$switch-colors, default, background)
-    );
+    border: 0.1rem solid map.get(maps.$switch-colors, default, border);
+    background-color: map.get(maps.$switch-colors, default, background);
 
     .cdr-switch__button-icon {
-      // ITEM_DOC: Fill of the cdr-switch x and check icons
-      fill: var(--cdr-switch-icon-fill, map.get(maps.$switch-colors, default, fill));
+      fill: map.get(maps.$switch-colors, default, fill);
     }
 
     &:focus {
-      // ITEM_DOC: Box-shadow of the cdr-switch button on focus
-      box-shadow: 0 0 0 0.2rem
-        var(
-          --cdr-switch-box-shadow-color-focus,
-          map.get(maps.$switch-colors, default, border-focus-visible)
-        );
+      box-shadow: 0 0 0 0.2rem map.get(maps.$switch-colors, default, border-focus-visible);
       outline: none;
-
-      // ITEM_DOC: Background color of the cdr-switch button on focus
-      background-color: var(
-        --cdr-switch-background-color-focus,
-        map.get(maps.$switch-colors, default, background-focus-visible)
-      );
+      background-color: map.get(maps.$switch-colors, default, background-focus-visible);
 
       .cdr-switch__button-icon {
-        // ITEM_DOC: Fill of the cdr-switch x and check icons on focus
-        fill: var(
-          --cdr-switch-icon-fill-focus,
-          map.get(maps.$switch-colors, default, fill-focus-visible)
-        );
+        fill: map.get(maps.$switch-colors, default, fill-focus-visible);
       }
 
       .cdr-switch__handle {
         &::before {
-          // ITEM_DOC: Background color of the cdr-switch handle before on focus
-          background-color: var(
-            --cdr-switch-handle-background-color-focus,
-            map.get(maps.$switch-colors, handle, background)
-          );
+          background-color: map.get(maps.$switch-colors, handle, background);
         }
       }
     }
 
     &:hover:not(:focus) {
-      // ITEM_DOC: Border of the cdr-switch button on hover when not in focus
-      border: 0.1rem solid
-        var(--cdr-switch-hover-border-color, map.get(maps.$switch-colors, default, border-hover));
-
-      // ITEM_DOC: Background color of the cdr-switch button on hover when not in focus
-      background-color: var(
-        --cdr-switch-background-color-hover,
-        map.get(maps.$switch-colors, default, background-hover)
-      );
+      border: 0.1rem solid map.get(maps.$switch-colors, default, border-hover);
+      background-color: map.get(maps.$switch-colors, default, background-hover);
 
       .cdr-switch__button-icon {
-        // ITEM_DOC: Fill of the cdr-switch x and check icons on hover when not in focus
-        fill: var(--cdr-switch-icon-fill-hover, map.get(maps.$switch-colors, default, fill-hover));
+        fill: map.get(maps.$switch-colors, default, fill-hover);
       }
 
       .cdr-switch__handle {
         &::before {
-          // ITEM_DOC: Border of the cdr-switch handle on hover when not in focus
-          border: 0.1rem solid
-            var(
-              --cdr-switch-handle-border-color-hover,
-              map.get(maps.$switch-colors, handle, border-hover)
-            );
+          border: 0.1rem solid map.get(maps.$switch-colors, handle, border-hover);
         }
       }
     }
 
     &[aria-checked='true'] {
       border: none;
-
-      // ITEM_DOC: Background color of the cdr-switch button when it is checked
-      background-color: var(
-        --cdr-switch-background-color-checked,
-        map.get(maps.$switch-colors, checked, background)
-      );
+      background-color: map.get(maps.$switch-colors, checked, background);
 
       .cdr-switch__button-icon {
-        // ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked
-        fill: var(--cdr-switch-icon-fill-checked, map.get(maps.$switch-colors, checked, fill));
+        fill: map.get(maps.$switch-colors, checked, fill);
       }
 
       &:focus {
-        // ITEM_DOC: Box-shadow of the cdr-switch button when it is checked and in focus
-        box-shadow: 0 0 0 0.2rem
-          var(
-            --cdr-switch-box-shadow-color-checked-focus,
-            map.get(maps.$switch-colors, checked, border-focus-visible)
-          );
-
-        // ITEM_DOC: Background color of the cdr-switch button when it is checked and in focus
-        background-color: var(
-          --cdr-switch-background-color-checked-focus,
-          map.get(maps.$switch-colors, checked, background-focus-visible)
-        );
+        box-shadow: 0 0 0 0.2rem map.get(maps.$switch-colors, checked, border-focus-visible);
+        background-color: map.get(maps.$switch-colors, checked, background-focus-visible);
         outline: none;
 
         .cdr-switch__handle {
           &::before {
-            // ITEM_DOC: Border of the cdr-switch handle when it is checked and in focus
-            border: 0.1rem solid
-              var(
-                --cdr-switch-handle-border-color-checked-focus,
-                map.get(maps.$switch-colors, handle-checked, border-focus-visible)
-              );
-
-            // ITEM_DOC: Background color of the cdr-switch handle when it is checked and in focus
-            background-color: var(
-              --cdr-switch-handle-background-color-checked-focus,
-              map.get(maps.$switch-colors, handle-checked, background)
-            );
+            border: 0.1rem solid map.get(maps.$switch-colors, handle-checked, border-focus-visible);
+            background-color: map.get(maps.$switch-colors, handle-checked, background);
           }
         }
 
         .cdr-switch__button-icon {
-          // ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked and in focus
-          fill: var(
-            --cdr-switch-icon-fill-checked-focus,
-            map.get(maps.$switch-colors, checked, fill-focus-visible)
-          );
+          fill: map.get(maps.$switch-colors, checked, fill-focus-visible);
         }
       }
 
       .cdr-switch__handle {
         &::before {
           border: none;
-
-          // ITEM_DOC: Background color of the cdr-switch handle when it is checked
-          background-color: var(
-            --cdr-switch-handle-background-color-checked,
-            map.get(maps.$switch-colors, handle-checked, background)
-          );
+          background-color: map.get(maps.$switch-colors, handle-checked, background);
         }
       }
 
       &:hover:not(:focus) {
-        // ITEM_DOC: Border of the cdr-switch button when it is checked and on hover but not in focus
-        border: 0.1rem solid
-          var(
-            --cdr-switch-border-color-checked-hover,
-            map.get(maps.$switch-colors, checked, border-hover)
-          );
-
-        // ITEM_DOC: Background color of the cdr-switch button when it is checked and on hover but not in focus
-        background-color: var(
-          --cdr-switch-background-color-checked-hover,
-          map.get(maps.$switch-colors, checked, background-hover)
-        );
+        border: 0.1rem solid map.get(maps.$switch-colors, checked, border-hover);
+        background-color: map.get(maps.$switch-colors, checked, background-hover);
 
         .cdr-switch__button-icon {
-          // ITEM_DOC: Fill of the cdr-switch x and check icons when it is checked and on hover but not in focus
-          fill: var(
-            --cdr-switch-icon-fill-checked-hover,
-            map.get(maps.$switch-colors, checked, fill-hover)
-          );
+          fill: map.get(maps.$switch-colors, checked, fill-hover);
         }
 
         .cdr-switch__handle {
           &::before {
-            // ITEM_DOC: Border of the cdr-switch handle when it is checked and on hover but not in focus
-            border: 0.1rem solid
-              var(
-                --cdr-switch-handle-border-color-checked-hover,
-                map.get(maps.$switch-colors, handle-checked, border-hover)
-              );
+            border: 0.1rem solid map.get(maps.$switch-colors, handle-checked, border-hover);
           }
         }
       }
@@ -220,16 +126,8 @@
     &::before {
       position: absolute;
       content: '';
-
-      // ITEM_DOC: Border color of the cdr-switch handle
-      border: 0.1rem solid
-        var(--cdr-switch-handle-border, map.get(maps.$switch-colors, handle, border));
-
-      // ITEM_DOC: Background color of the cdr-switch handle
-      background-color: var(
-        --cdr-switch-handle-background-color-rest,
-        map.get(maps.$switch-colors, handle, background)
-      );
+      border: 0.1rem solid map.get(maps.$switch-colors, handle, border);
+      background-color: map.get(maps.$switch-colors, handle, background);
       transition:
         left var(--cdr-switch-transition-duration) var(--cdr-switch-transition-timing),
         right var(--cdr-switch-transition-duration) var(--cdr-switch-transition-timing);

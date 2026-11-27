@@ -22,11 +22,15 @@ $card-defaults: (
 
 $card-colors: (
   base: (
-    background: var(--cdr-surface-natural),
-    text: var(--cdr-text-neutral-prominent),
+    // ITEM_DOC: Base card's background color. Override with --cdr-color-card-surface.
+    background: var(--cdr-color-card-surface, var(--cdr-surface-natural)),
+    // ITEM_DOC: Base card's text color. Override with --cdr-color-card-text.
+    text: var(--cdr-color-card-text, var(--cdr-text-neutral-prominent)),
   ),
   link: (
-    text: var(--cdr-action-text-neutral-bold),
-    text-hover: var(--cdr-action-text-trigger),
+    // ITEM_DOC: Link card's text color. Override with --cdr-color-card-link-text.
+    text: var(--cdr-color-card-link-text, var(--cdr-action-text-neutral-bold)),
+    // ITEM_DOC: Link card's text color on hover. Override with --cdr-color-card-link-text-hover.
+    text-hover: var(--cdr-color-card-link-text-hover, var(--cdr-action-text-trigger)),
   ),
 );

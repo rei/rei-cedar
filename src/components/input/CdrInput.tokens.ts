@@ -22,8 +22,9 @@ import { literal, token } from '../../../build/component-tokens/types';
  * the translucent primary and secondary surfaces flatten to the approved
  * opaque faint (#FCFCFB) and trace (#FFFFFF) surfaces.
  *
- * Cutover mode: no `legacy` section; no hooks are generated (documented
- * overrides are preserved by the module).
+ * Cutover mode: no `legacy` section. Hooks are generated; the
+ * `--cdr-color-input-*` override hooks replace the legacy `--cdr-input-*`
+ * color overrides.
  *
  * To regenerate the SCSS maps from this contract:
  *   npx tsx build/generate-component-maps.ts
@@ -32,6 +33,7 @@ const contract: ComponentTokenContract = {
   component: 'cdr-input',
   prefix: '--cdr-input',
   interaction: 'control',
+  hooks: true,
   defaultVariant: 'default',
 
   defaults: {

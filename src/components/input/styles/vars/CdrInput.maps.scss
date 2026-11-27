@@ -26,33 +26,69 @@ $input-defaults: (
 
 $input-colors: (
   default: (
-    background: var(--cdr-control-surface-neutral-faint),
-    text: var(--cdr-control-text-neutral-bold),
-    border: var(--cdr-control-border-neutral),
-    fill: var(--cdr-control-icon-neutral-prominent),
-    background-focus-visible: var(--cdr-control-surface-neutral-faint),
-    border-focus-visible: var(--cdr-control-border-neutral-intense),
-    fill-focus-visible: var(--cdr-control-icon-neutral-intense),
-    background-disabled: var(--cdr-control-surface-neutral-faint),
-    text-disabled: var(--cdr-control-text-neutral-faint),
-    border-disabled: var(--cdr-control-border-neutral-faint),
+    // ITEM_DOC: Default input's background color. Override with --cdr-color-input-surface.
+    background: var(--cdr-color-input-surface, var(--cdr-control-surface-neutral-faint)),
+    // ITEM_DOC: Default input's text color. Override with --cdr-color-input-text.
+    text: var(--cdr-color-input-text, var(--cdr-control-text-neutral-bold)),
+    // ITEM_DOC: Default input's border color. Override with --cdr-color-input-border.
+    border: var(--cdr-color-input-border, var(--cdr-control-border-neutral)),
+    // ITEM_DOC: Default input's icon color. Override with --cdr-color-input-icon.
+    fill: var(--cdr-color-input-icon, var(--cdr-control-icon-neutral-prominent)),
+    // ITEM_DOC: Default input's background color on focus. Override with --cdr-color-input-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-input-surface-focus-visible,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default input's border color on focus. Override with --cdr-color-input-border-focus-visible.
+    border-focus-visible: var(
+        --cdr-color-input-border-focus-visible,
+        var(--cdr-control-border-neutral-intense)
+      ),
+    // ITEM_DOC: Default input's icon color on focus. Override with --cdr-color-input-icon-focus-visible.
+    fill-focus-visible: var(
+        --cdr-color-input-icon-focus-visible,
+        var(--cdr-control-icon-neutral-intense)
+      ),
+    // ITEM_DOC: Default input's background color when disabled. Override with --cdr-color-input-surface-disabled.
+    background-disabled: var(
+        --cdr-color-input-surface-disabled,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default input's text color when disabled. Override with --cdr-color-input-text-disabled.
+    text-disabled: var(--cdr-color-input-text-disabled, var(--cdr-control-text-neutral-faint)),
+    // ITEM_DOC: Default input's border color when disabled. Override with --cdr-color-input-border-disabled.
+    border-disabled: var(--cdr-color-input-border-disabled, var(--cdr-control-border-neutral-faint)),
   ),
   secondary: (
-    background: var(--cdr-control-surface-neutral-trace),
-    background-focus-visible: var(--cdr-control-surface-neutral-trace),
+    // ITEM_DOC: Secondary input's background color. Override with --cdr-color-input-secondary-surface.
+    background: var(--cdr-color-input-secondary-surface, var(--cdr-control-surface-neutral-trace)),
+    // ITEM_DOC: Secondary input's background color on focus. Override with --cdr-color-input-secondary-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-input-secondary-surface-focus-visible,
+        var(--cdr-control-surface-neutral-trace)
+      ),
   ),
   error: (
-    background: var(--cdr-feedback-surface-error-trace),
-    border: var(--cdr-feedback-border-error),
+    // ITEM_DOC: Error input's background color. Override with --cdr-color-input-error-surface.
+    background: var(--cdr-color-input-error-surface, var(--cdr-feedback-surface-error-trace)),
+    // ITEM_DOC: Error input's border color. Override with --cdr-color-input-error-border.
+    border: var(--cdr-color-input-error-border, var(--cdr-feedback-border-error)),
   ),
   placeholder: (
-    text: var(--cdr-control-text-neutral),
-    text-disabled: var(--cdr-control-text-neutral-faint),
+    // ITEM_DOC: Placeholder input's text color. Override with --cdr-color-input-placeholder-text.
+    text: var(--cdr-color-input-placeholder-text, var(--cdr-control-text-neutral)),
+    // ITEM_DOC: Placeholder input's text color when disabled. Override with --cdr-color-input-placeholder-text-disabled.
+    text-disabled: var(
+        --cdr-color-input-placeholder-text-disabled,
+        var(--cdr-control-text-neutral-faint)
+      ),
   ),
   helper: (
-    text: var(--cdr-control-text-neutral),
+    // ITEM_DOC: Helper input's text color. Override with --cdr-color-input-helper-text.
+    text: var(--cdr-color-input-helper-text, var(--cdr-control-text-neutral)),
   ),
   label: (
-    border: var(--cdr-control-border-neutral),
+    // ITEM_DOC: Label input's border color. Override with --cdr-color-input-label-border.
+    border: var(--cdr-color-input-label-border, var(--cdr-control-border-neutral)),
   ),
 );

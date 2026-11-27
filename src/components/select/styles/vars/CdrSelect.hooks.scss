@@ -1,0 +1,98 @@
+// ============================================================================
+// GENERATED FILE — do not edit manually
+// Source: src/components/select/CdrSelect.tokens.ts
+// Regenerate: npx tsx build/generate-component-maps.ts
+// Documentation-only hook surface for docgen; not imported at runtime.
+// ============================================================================
+
+.cdr-select {
+  // ITEM_DOC: Default select's background color. Override with --cdr-color-select-surface.
+  --cdr-color-select-surface: var(
+    --cdr-color-select-surface,
+    var(--cdr-control-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default select's text color. Override with --cdr-color-select-text.
+  --cdr-color-select-text: var(--cdr-color-select-text, var(--cdr-control-text-neutral-bold));
+
+  // ITEM_DOC: Default select's border color. Override with --cdr-color-select-border.
+  --cdr-color-select-border: var(--cdr-color-select-border, var(--cdr-control-border-neutral));
+
+  // ITEM_DOC: Default select's background color on focus. Override with --cdr-color-select-surface-focus-visible.
+  --cdr-color-select-surface-focus-visible: var(
+    --cdr-color-select-surface-focus-visible,
+    var(--cdr-control-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default select's border color on focus. Override with --cdr-color-select-border-focus-visible.
+  --cdr-color-select-border-focus-visible: var(
+    --cdr-color-select-border-focus-visible,
+    var(--cdr-control-border-neutral-intense)
+  );
+
+  // ITEM_DOC: Default select's background color when disabled. Override with --cdr-color-select-surface-disabled.
+  --cdr-color-select-surface-disabled: var(
+    --cdr-color-select-surface-disabled,
+    var(--cdr-control-surface-neutral-faint)
+  );
+
+  // ITEM_DOC: Default select's text color when disabled. Override with --cdr-color-select-text-disabled.
+  --cdr-color-select-text-disabled: var(
+    --cdr-color-select-text-disabled,
+    var(--cdr-control-text-neutral-faint)
+  );
+
+  // ITEM_DOC: Default select's border color when disabled. Override with --cdr-color-select-border-disabled.
+  --cdr-color-select-border-disabled: var(
+    --cdr-color-select-border-disabled,
+    var(--cdr-control-border-neutral-faint)
+  );
+
+  // ITEM_DOC: Secondary select's background color. Override with --cdr-color-select-secondary-surface.
+  --cdr-color-select-secondary-surface: var(
+    --cdr-color-select-secondary-surface,
+    var(--cdr-control-surface-neutral-trace)
+  );
+
+  // ITEM_DOC: Secondary select's background color on focus. Override with --cdr-color-select-secondary-surface-focus-visible.
+  --cdr-color-select-secondary-surface-focus-visible: var(
+    --cdr-color-select-secondary-surface-focus-visible,
+    var(--cdr-control-surface-neutral-trace)
+  );
+
+  // ITEM_DOC: Error select's background color. Override with --cdr-color-select-error-surface.
+  --cdr-color-select-error-surface: var(
+    --cdr-color-select-error-surface,
+    var(--cdr-feedback-surface-error-trace)
+  );
+
+  // ITEM_DOC: Error select's border color. Override with --cdr-color-select-error-border.
+  --cdr-color-select-error-border: var(
+    --cdr-color-select-error-border,
+    var(--cdr-feedback-border-error)
+  );
+
+  // ITEM_DOC: Prompt select's text color. Override with --cdr-color-select-prompt-text.
+  --cdr-color-select-prompt-text: var(
+    --cdr-color-select-prompt-text,
+    var(--cdr-control-text-neutral-prominent)
+  );
+
+  // ITEM_DOC: Prompt select's text color when disabled. Override with --cdr-color-select-prompt-text-disabled.
+  --cdr-color-select-prompt-text-disabled: var(
+    --cdr-color-select-prompt-text-disabled,
+    var(--cdr-control-text-neutral-faint)
+  );
+
+  // ITEM_DOC: Caret select's icon color. Override with --cdr-color-select-caret-icon.
+  --cdr-color-select-caret-icon: var(
+    --cdr-color-select-caret-icon,
+    var(--cdr-control-icon-neutral-intense)
+  );
+
+  // ITEM_DOC: Caret select's icon color when disabled. Override with --cdr-color-select-caret-icon-disabled.
+  --cdr-color-select-caret-icon-disabled: var(
+    --cdr-color-select-caret-icon-disabled,
+    var(--cdr-control-icon-neutral)
+  );
+}

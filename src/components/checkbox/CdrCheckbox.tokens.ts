@@ -9,10 +9,11 @@ import { literal, token } from '../../../build/component-tokens/types';
  * effective inherited appearance so the contract shape stays honest. The
  * indeterminate figure reuses the checked-scope values. Checked gets a
  * dedicated disabled treatment (muted but visibly checked) rather than
- * collapsing into the unchecked-disabled look. Documented overrides
- * keep their names (no hooks are generated).
+ * collapsing into the unchecked-disabled look.
  *
- * Cutover mode: no `legacy` section.
+ * Cutover mode: no `legacy` section. Hooks are generated; the
+ * `--cdr-color-checkbox-*` override hooks replace the legacy
+ * `--cdr-form-figure-checkbox-*` color overrides.
  *
  * Palette gap: no approved Control border matches the hover outline
  * (#2e2e2b); it maps to control-border-neutral-intense (#171613), which
@@ -25,6 +26,8 @@ const contract: ComponentTokenContract = {
   component: 'cdr-checkbox',
   prefix: '--cdr-checkbox',
   interaction: 'control',
+  hooks: true,
+  defaultVariant: 'default',
 
   defaults: {
     'figure-radius': token('cdr-radius-soft'),

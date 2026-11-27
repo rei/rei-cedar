@@ -4,21 +4,14 @@
 @use './CdrAccordionGroup.module';
 @use './vars/CdrAccordion.maps' as maps;
 
+// Map entries already carry the generated --cdr-color-accordion-header-*
+// override hooks, so state declarations read them directly.
 @mixin _accordion-header-state-colors($state, $background-key, $text-key, $icon-key) {
-  background-color: var(
-    --cdr-color-accordion-header-surface-#{$state},
-    map.get(maps.$accordion-colors, header, $background-key)
-  );
-  color: var(
-    --cdr-color-accordion-header-text-#{$state},
-    map.get(maps.$accordion-colors, header, $text-key)
-  );
+  background-color: map.get(maps.$accordion-colors, header, $background-key);
+  color: map.get(maps.$accordion-colors, header, $text-key);
 
   .cdr-accordion__icon {
-    fill: var(
-      --cdr-color-accordion-header-icon-#{$state},
-      map.get(maps.$accordion-colors, header, $icon-key)
-    );
+    fill: map.get(maps.$accordion-colors, header, $icon-key);
   }
 }
 
@@ -37,13 +30,10 @@
 }
 
 .cdr-accordion {
-  // ITEM_DOC: Frame border color. Override with --cdr-color-accordion-frame-border.
   border-top: var(--cdr-accordion-container-border-width)
-    var(--cdr-accordion-container-border-style)
-    var(--cdr-color-accordion-frame-border, map.get(maps.$accordion-colors, frame, border));
+    var(--cdr-accordion-container-border-style) map.get(maps.$accordion-colors, frame, border);
   border-bottom: var(--cdr-accordion-container-border-width)
-    var(--cdr-accordion-container-border-style)
-    var(--cdr-color-accordion-frame-border, map.get(maps.$accordion-colors, frame, border));
+    var(--cdr-accordion-container-border-style) map.get(maps.$accordion-colors, frame, border);
   position: var(--cdr-accordion-container-position);
   list-style: var(--cdr-accordion-container-list-style);
 
@@ -54,15 +44,9 @@
   &__button {
     @include tokens.cdr-text-utility-sans-strong-300;
 
-    // ITEM_DOC: Resting header surface. Override with --cdr-color-accordion-header-surface.
-    background-color: var(
-      --cdr-color-accordion-header-surface,
-      var(--cdr-accordion-header-surface)
-    );
+    background-color: map.get(maps.$accordion-colors, header, surface);
     border: var(--cdr-accordion-button-border);
-
-    // ITEM_DOC: Header text color. State-specific override names end in the state.
-    color: var(--cdr-color-accordion-header-text, map.get(maps.$accordion-colors, header, text));
+    color: map.get(maps.$accordion-colors, header, text);
     cursor: var(--cdr-accordion-button-cursor);
     display: var(--cdr-accordion-button-display);
     justify-content: var(--cdr-accordion-button-justify-content);
@@ -109,9 +93,7 @@
 
   &__icon {
     margin-left: var(--cdr-accordion-icon-margin-left);
-
-    // ITEM_DOC: Header caret color. State-specific override names end in the state.
-    fill: var(--cdr-color-accordion-header-icon, map.get(maps.$accordion-colors, header, fill));
+    fill: map.get(maps.$accordion-colors, header, fill);
     transition: transform var(--cdr-accordion-icon-transition-duration)
       var(--cdr-accordion-icon-transition-timing);
 
@@ -134,14 +116,8 @@
   &__content {
     @include tokens.cdr-text-body-300;
 
-    // ITEM_DOC: Content panel surface; remains transparent unless overridden.
-    background-color: var(
-      --cdr-color-accordion-content-surface,
-      var(--cdr-accordion-content-surface)
-    );
-
-    // ITEM_DOC: Content text color. Override with --cdr-color-accordion-content-text.
-    color: var(--cdr-color-accordion-content-text, map.get(maps.$accordion-colors, content, text));
+    background-color: map.get(maps.$accordion-colors, content, surface);
+    color: map.get(maps.$accordion-colors, content, text);
     padding: var(--cdr-accordion-content-padding-top) var(--cdr-accordion-content-padding-inline)
       var(--cdr-accordion-content-padding-bottom);
     transition: opacity var(--cdr-accordion-content-fade-duration)

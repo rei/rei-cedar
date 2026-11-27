@@ -23,34 +23,93 @@ $switch-defaults: (
 
 $switch-colors: (
   default: (
-    background: var(--cdr-control-surface-neutral-faint),
-    border: var(--cdr-control-border-neutral),
-    fill: var(--cdr-control-icon-neutral-prominent),
-    background-hover: var(--cdr-control-surface-neutral-faint),
-    border-hover: var(--cdr-control-border-neutral-bold),
-    fill-hover: var(--cdr-control-icon-neutral-intense),
-    background-focus-visible: var(--cdr-control-surface-neutral-faint),
-    border-focus-visible: var(--cdr-control-border-neutral),
-    fill-focus-visible: var(--cdr-control-icon-neutral-prominent),
+    // ITEM_DOC: Default switch's background color. Override with --cdr-color-switch-surface.
+    background: var(--cdr-color-switch-surface, var(--cdr-control-surface-neutral-faint)),
+    // ITEM_DOC: Default switch's border color. Override with --cdr-color-switch-border.
+    border: var(--cdr-color-switch-border, var(--cdr-control-border-neutral)),
+    // ITEM_DOC: Default switch's icon color. Override with --cdr-color-switch-icon.
+    fill: var(--cdr-color-switch-icon, var(--cdr-control-icon-neutral-prominent)),
+    // ITEM_DOC: Default switch's background color on hover. Override with --cdr-color-switch-surface-hover.
+    background-hover: var(
+        --cdr-color-switch-surface-hover,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default switch's border color on hover. Override with --cdr-color-switch-border-hover.
+    border-hover: var(--cdr-color-switch-border-hover, var(--cdr-control-border-neutral-bold)),
+    // ITEM_DOC: Default switch's icon color on hover. Override with --cdr-color-switch-icon-hover.
+    fill-hover: var(--cdr-color-switch-icon-hover, var(--cdr-control-icon-neutral-intense)),
+    // ITEM_DOC: Default switch's background color on focus. Override with --cdr-color-switch-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-switch-surface-focus-visible,
+        var(--cdr-control-surface-neutral-faint)
+      ),
+    // ITEM_DOC: Default switch's border color on focus. Override with --cdr-color-switch-border-focus-visible.
+    border-focus-visible: var(
+        --cdr-color-switch-border-focus-visible,
+        var(--cdr-control-border-neutral)
+      ),
+    // ITEM_DOC: Default switch's icon color on focus. Override with --cdr-color-switch-icon-focus-visible.
+    fill-focus-visible: var(
+        --cdr-color-switch-icon-focus-visible,
+        var(--cdr-control-icon-neutral-prominent)
+      ),
   ),
   checked: (
-    background: var(--cdr-control-surface-neutral-bold),
-    fill: var(--cdr-control-icon-neutral),
-    background-hover: var(--cdr-control-surface-neutral-intense),
-    border-hover: var(--cdr-control-border-neutral),
-    fill-hover: var(--cdr-control-icon-neutral),
-    background-focus-visible: var(--cdr-control-surface-neutral-intense),
-    border-focus-visible: var(--cdr-control-border-neutral),
-    fill-focus-visible: var(--cdr-control-icon-neutral),
+    // ITEM_DOC: Checked switch's background color. Override with --cdr-color-switch-checked-surface.
+    background: var(--cdr-color-switch-checked-surface, var(--cdr-control-surface-neutral-bold)),
+    // ITEM_DOC: Checked switch's icon color. Override with --cdr-color-switch-checked-icon.
+    fill: var(--cdr-color-switch-checked-icon, var(--cdr-control-icon-neutral)),
+    // ITEM_DOC: Checked switch's background color on hover. Override with --cdr-color-switch-checked-surface-hover.
+    background-hover: var(
+        --cdr-color-switch-checked-surface-hover,
+        var(--cdr-control-surface-neutral-intense)
+      ),
+    // ITEM_DOC: Checked switch's border color on hover. Override with --cdr-color-switch-checked-border-hover.
+    border-hover: var(--cdr-color-switch-checked-border-hover, var(--cdr-control-border-neutral)),
+    // ITEM_DOC: Checked switch's icon color on hover. Override with --cdr-color-switch-checked-icon-hover.
+    fill-hover: var(--cdr-color-switch-checked-icon-hover, var(--cdr-control-icon-neutral)),
+    // ITEM_DOC: Checked switch's background color on focus. Override with --cdr-color-switch-checked-surface-focus-visible.
+    background-focus-visible: var(
+        --cdr-color-switch-checked-surface-focus-visible,
+        var(--cdr-control-surface-neutral-intense)
+      ),
+    // ITEM_DOC: Checked switch's border color on focus. Override with --cdr-color-switch-checked-border-focus-visible.
+    border-focus-visible: var(
+        --cdr-color-switch-checked-border-focus-visible,
+        var(--cdr-control-border-neutral)
+      ),
+    // ITEM_DOC: Checked switch's icon color on focus. Override with --cdr-color-switch-checked-icon-focus-visible.
+    fill-focus-visible: var(
+        --cdr-color-switch-checked-icon-focus-visible,
+        var(--cdr-control-icon-neutral)
+      ),
   ),
   handle: (
-    background: var(--cdr-control-surface-natural-bold),
-    border: var(--cdr-control-border-neutral),
-    border-hover: var(--cdr-control-border-neutral-bold),
+    // ITEM_DOC: Handle switch's background color. Override with --cdr-color-switch-handle-surface.
+    background: var(--cdr-color-switch-handle-surface, var(--cdr-control-surface-natural-bold)),
+    // ITEM_DOC: Handle switch's border color. Override with --cdr-color-switch-handle-border.
+    border: var(--cdr-color-switch-handle-border, var(--cdr-control-border-neutral)),
+    // ITEM_DOC: Handle switch's border color on hover. Override with --cdr-color-switch-handle-border-hover.
+    border-hover: var(
+        --cdr-color-switch-handle-border-hover,
+        var(--cdr-control-border-neutral-bold)
+      ),
   ),
   handle-checked: (
-    background: var(--cdr-control-surface-natural-bold),
-    border-hover: var(--cdr-control-border-neutral-bold),
-    border-focus-visible: var(--cdr-control-border-neutral-faint),
+    // ITEM_DOC: Handle checked switch's background color. Override with --cdr-color-switch-handle-checked-surface.
+    background: var(
+        --cdr-color-switch-handle-checked-surface,
+        var(--cdr-control-surface-natural-bold)
+      ),
+    // ITEM_DOC: Handle checked switch's border color on hover. Override with --cdr-color-switch-handle-checked-border-hover.
+    border-hover: var(
+        --cdr-color-switch-handle-checked-border-hover,
+        var(--cdr-control-border-neutral-bold)
+      ),
+    // ITEM_DOC: Handle checked switch's border color on focus. Override with --cdr-color-switch-handle-checked-border-focus-visible.
+    border-focus-visible: var(
+        --cdr-color-switch-handle-checked-border-focus-visible,
+        var(--cdr-control-border-neutral-faint)
+      ),
   ),
 );
